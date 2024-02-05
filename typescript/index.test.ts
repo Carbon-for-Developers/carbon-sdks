@@ -1,4 +1,5 @@
 import { Carbon } from "./index";
+import * as fs from "fs";
 
 describe("carbon-typescript-sdk", () => {
   it("initialize client", async () => {
@@ -36,5 +37,12 @@ describe("carbon-typescript-sdk", () => {
   it("health check", async () => {
     const status = await carbon.health.check();
     console.log(status.data);
+  });
+  it("file upload", async () => {
+    const file = await carbon.files.upload({
+      file: fs.readFileSync("README.md"),
+      customerId: "CUSTOMER_ID",
+    });
+    console.log(file.data);
   });
 });
