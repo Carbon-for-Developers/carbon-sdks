@@ -2972,11 +2972,9 @@
               },
               {
                 "type": "integer"
-              },
-              {
-                "type": "null"
               }
-            ]
+            ],
+            "nullable": true
           },
           "content_metadata": {
             "title": "Content Metadata",

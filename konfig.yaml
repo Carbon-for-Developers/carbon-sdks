@@ -4,6 +4,10 @@ outputDirectory: /tmp/carbon-sdks-out
 specRemotePath: https://api.carbon.ai/openapi.json
 specInputPath: openapi.json
 specPath: openapi-fixed.json
+readmeHeader:
+  title: Carbon
+  image: header.png
+  url: https://carbon.ai
 generators:
   python:
     disabled: true
