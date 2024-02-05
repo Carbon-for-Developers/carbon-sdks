@@ -149,7 +149,11 @@ const getAccessTokenResponse = await carbon.auth.getAccessToken({
 
 ### `carbon.auth.getWhiteLabeling`<a id="carbonauthgetwhitelabeling"></a>
 
-Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
+Returns whether or not the organization is white labeled and which integrations are white labeled
+
+:param current_user: the current user
+:param db: the database session
+:return: a WhiteLabelingResponse
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -239,7 +243,100 @@ const revokeAccessTokenResponse = await carbon.dataSources.revokeAccessToken({
 
 ### `carbon.embeddings.getDocuments`<a id="carbonembeddingsgetdocuments"></a>
 
-For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.   When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if not set), it is equal to \"TEXT\". This means that the query will be performed over files that have been parsed as text (for now, this covers all files except image files). If it is equal to \"IMAGE\", the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this field as an additional filter on top of any filters set in `file_ids` and   When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank and select candidate embeddings during information retrieval. By default, these search methods are weighted equally during the ranking process. To adjust the weight (or \"importance\") of each search method, you can use the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are: - `weight_a`: weight to assign to semantic search - `weight_b`: weight to assign to keyword search  You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality has an error tolerance of 0.001 to account for possible floating point issues.  In order to use hybrid search for a customer across a set of documents, two flags need to be enabled: 1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload body for this request is below: ``` {   \"configuration_key_name\": \"sparse_vectors\",   \"value\": {     \"enabled\": true   } } ``` 2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the `/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI\'s multimodal model; for text, we support OpenAI\'s `text-embedding-ada-002` and Cohere\'s embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+and `tags` are specified, `tags` is ignored. `tags_v2` enables
+building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+```json
+{
+    "OR": [
+        {
+            "key": "subject",
+            "value": "holy-bible",
+            "negate": false
+        },
+        {
+            "key": "person-of-interest",
+            "value": "jesus christ",
+            "negate": false
+        },
+        {
+            "key": "genre",
+            "value": "religion",
+            "negate": true
+        }
+        {
+            "AND": [
+                {
+                    "key": "subject",
+                    "value": "tao-te-ching",
+                    "negate": false
+                },
+                {
+                    "key": "author",
+                    "value": "lao-tzu",
+                    "negate": false
+                }
+            ]
+        }
+    ]
+}
+```
+In this case, files will be filtered such that:
+1. "subject" = "holy-bible" OR
+2. "person-of-interest" = "jesus christ" OR
+3. "genre" != "religion" OR
+4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+
+Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+1. "key" isn't optional and must be a `string`
+2. "value" isn't optional and can be `any` or list[`any`]
+3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+the resulting query. It is `false` by default.
+
+
+When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if
+not set), it is equal to "TEXT". This means that the query will be performed over files that have
+been parsed as text (for now, this covers all files except image files). If it is equal to "IMAGE",
+the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this
+field as an additional filter on top of any filters set in `file_ids` and
+
+
+When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank
+and select candidate embeddings during information retrieval. By default, these search methods are weighted
+equally during the ranking process. To adjust the weight (or "importance") of each search method, you can use
+the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are:
+- `weight_a`: weight to assign to semantic search
+- `weight_b`: weight to assign to keyword search
+
+You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality
+has an error tolerance of 0.001 to account for possible floating point issues.
+
+In order to use hybrid search for a customer across a set of documents, two flags need to be enabled:
+1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload
+body for this request is below:
+```
+{
+  "configuration_key_name": "sparse_vectors",
+  "value": {
+    "enabled": true
+  }
+}
+```
+2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the
+`/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`
+
+
+Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+embedding queries, embeddings from files that used the specified model will be considered in the query.
+For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -413,7 +510,17 @@ const uploadChunksAndEmbeddingsResponse =
 
 ### `carbon.files.createUserFileTags`<a id="carbonfilescreateuserfiletags"></a>
 
-A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they\'re automatically converted to strings (e.g. 4 will become \"4\").
+A tag is a key-value pair that can be added to a file. This pair can then be used
+for searches (e.g. embedding searches) in order to narrow down the scope of the search.
+A file can have any number of tags. The following are reserved keys that cannot be used:
+- db_embedding_id
+- organization_id
+- user_id
+- organization_user_file_id
+
+Carbon currently supports two data types for tag values - `string` and `list<string>`.
+Keys can only be `string`. If values other than `string` and `list<string>` are used,
+they're automatically converted to strings (e.g. 4 will become "4").
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -611,7 +718,56 @@ const getRawFileResponse = await carbon.files.getRawFile({
 
 ### `carbon.files.queryUserFiles`<a id="carbonfilesqueryuserfiles"></a>
 
-For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
+For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+and `tags` are specified, `tags` is ignored. `tags_v2` enables
+building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+```json
+{
+    "OR": [
+        {
+            "key": "subject",
+            "value": "holy-bible",
+            "negate": false
+        },
+        {
+            "key": "person-of-interest",
+            "value": "jesus christ",
+            "negate": false
+        },
+        {
+            "key": "genre",
+            "value": "religion",
+            "negate": true
+        }
+        {
+            "AND": [
+                {
+                    "key": "subject",
+                    "value": "tao-te-ching",
+                    "negate": false
+                },
+                {
+                    "key": "author",
+                    "value": "lao-tzu",
+                    "negate": false
+                }
+            ]
+        }
+    ]
+}
+```
+In this case, files will be filtered such that:
+1. "subject" = "holy-bible" OR
+2. "person-of-interest" = "jesus christ" OR
+3. "genre" != "religion" OR
+4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+
+Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+1. "key" isn't optional and must be a `string`
+2. "value" isn't optional and can be `any` or list[`any`]
+3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+the resulting query. It is `false` by default.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -729,7 +885,31 @@ const resyncResponse = await carbon.files.resync({
 
 ### `carbon.files.upload`<a id="carbonfilesupload"></a>
 
-This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request. Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set, PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description of all possible query parameters: - `chunk_size`: the chunk size (in tokens) applied when splitting the document - `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings - `set_page_as_boundary`: described above - `embedding_model`: the model used to generate embeddings for the document chunks - `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently) - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search. - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI\'s multimodal model; for text, we support OpenAI\'s `text-embedding-ada-002` and Cohere\'s embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.
+Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,
+PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates
+of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description
+of all possible query parameters:
+- `chunk_size`: the chunk size (in tokens) applied when splitting the document
+- `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document
+- `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings
+- `set_page_as_boundary`: described above
+- `embedding_model`: the model used to generate embeddings for the document chunks
+- `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently)
+- `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.
+- `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text
+
+
+Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+embedding queries, embeddings from files that used the specified model will be considered in the query.
+For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -857,7 +1037,16 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
 
 ### `carbon.files.uploadText`<a id="carbonfilesuploadtext"></a>
 
-Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI\'s multimodal model; for text, we support OpenAI\'s `text-embedding-ada-002` and Cohere\'s embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+embedding queries, embeddings from files that used the specified model will be considered in the query.
+For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -923,7 +1112,10 @@ const checkResponse = await carbon.health.check();
 
 ### `carbon.integrations.connectFreshdesk`<a id="carbonintegrationsconnectfreshdesk"></a>
 
-Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. 
+Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will 
+trigger an automatic sync of the articles in your "solutions" tab. Additional parameters below can be used to associate 
+data with the synced articles or modify the sync behavior.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -976,7 +1168,13 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 
 ### `carbon.integrations.createAwsIamUser`<a id="carbonintegrationscreateawsiamuser"></a>
 
-Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+Create a new IAM user with permissions to:
+<ol>
+<li>List all buckets.</li>
+<li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
+the same permissions.</li>
+</ol>
+Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1068,7 +1266,13 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ### `carbon.integrations.listConfluencePages`<a id="carbonintegrationslistconfluencepages"></a>
 
-To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
+Confluence account must be specified. This base request returns a list of root pages for
+every space the user has access to in a Confluence instance. To traverse further down
+the user's page directory, additional requests to this endpoint can be made with the same
+`data_source_id` and with `parent_id` set to the id of page from a previous request. For
+convenience, the `has_children` property in each directory item in the response list will
+flag which pages will return non-empty lists of pages when set as the `parent_id`.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1138,7 +1342,10 @@ const listDataSourceItemsResponse =
 
 ### `carbon.integrations.syncConfluence`<a id="carbonintegrationssyncconfluence"></a>
 
-After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+After listing pages in a user's Confluence account, the set of selected page `ids` and the
+connected account's `data_source_id` can be passed into this endpoint to sync them into
+Carbon. Additional parameters listed below can be used to associate data to the selected
+pages or alter the behavior of the sync.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1280,7 +1487,56 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 
 ### `carbon.integrations.syncGmail`<a id="carbonintegrationssyncgmail"></a>
 
-Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  label: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   is: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+Once you have successfully connected your gmail account, you can choose which emails to sync with us
+using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+For now, we support a limited set of keys listed below.
+
+label: Inbuilt Gmail labels, for example "Important" or a custom label you created.  
+after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
+You can also use them in combination to get emails from a certain period.  
+is: Can have the following values - starred, important, snoozed, and unread  
+
+Using keys or values outside of the specified values can lead to unexpected behaviour.
+
+An example of a basic query with filters can be
+```json
+{
+    "filters": {
+            "key": "label",
+            "value": "Test"
+        }
+}
+```
+Which will list all emails that have the label "Test".
+
+You can use AND and OR operation in the following way:
+```json
+{
+    "filters": {
+        "AND": [
+            {
+                "key": "after",
+                "value": "2024/01/07"
+            },
+            {
+                "OR": [
+                    {
+                        "key": "label",
+                        "value": "Personal"
+                    },
+                    {
+                        "key": "is",
+                        "value": "starred"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+This will return emails after 7th of Jan that are either starred or have the label "Personal". 
+Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+in the above example.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1330,7 +1586,66 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 
 ### `carbon.integrations.syncOutlook`<a id="carbonintegrationssyncoutlook"></a>
 
-Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  category: Custom categories that you created in Outlook.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+Once you have successfully connected your Outlook account, you can choose which emails to sync with us
+using the filters and folder parameter. "folder" should be the folder you want to sync from Outlook. By default
+we get messages from your inbox folder.  
+Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+For now, we support a limited set of keys listed below.
+
+category: Custom categories that you created in Outlook.  
+after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
+You can also use them in combination to get emails from a certain period.   
+
+An example of a basic query with filters can be
+```json
+{
+    "filters": {
+            "key": "category",
+            "value": "Test"
+        }
+}
+```
+Which will list all emails that have the category "Test".  
+
+Specifying a custom folder in the same query
+```json
+{
+    "folder": "Folder Name",
+    "filters": {
+            "key": "category",
+            "value": "Test"
+        }
+}
+```
+
+You can use AND and OR operation in the following way:
+```json
+{
+    "filters": {
+        "AND": [
+            {
+                "key": "after",
+                "value": "2024/01/07"
+            },
+            {
+                "OR": [
+                    {
+                        "key": "category",
+                        "value": "Personal"
+                    },
+                    {
+                        "key": "category",
+                        "value": "Test"
+                    },
+                ]
+            }
+        ]
+    }
+}
+```
+This will return emails after 7th of Jan that have either Personal or Test as category. 
+Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+in the above example.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1433,7 +1748,9 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
 
 ### `carbon.integrations.syncS3Files`<a id="carbonintegrationssyncs3files"></a>
 
-After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name  and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name 
+and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+data with the selected items or modify the sync behavior
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1571,7 +1888,13 @@ const toggleUserFeaturesResponse = await carbon.users.toggleUserFeatures({
 
 ### `carbon.utilities.fetchUrls`<a id="carbonutilitiesfetchurls"></a>
 
-Extracts all URLs from a webpage.   Args:     url (str): URL of the webpage  Returns:     FetchURLsResponse: A response object with a list of URLs extracted from the webpage and the webpage content.
+Extracts all URLs from a webpage. 
+
+Args:
+    url (str): URL of the webpage
+
+Returns:
+    FetchURLsResponse: A response object with a list of URLs extracted from the webpage and the webpage content.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1602,7 +1925,14 @@ const fetchUrlsResponse = await carbon.utilities.fetchUrls({
 
 ### `carbon.utilities.fetchYoutubeTranscripts`<a id="carbonutilitiesfetchyoutubetranscripts"></a>
 
-Fetches english transcripts from YouTube videos.  Args:     id (str): The ID of the YouTube video.      raw (bool): Whether to return the raw transcript or not. Defaults to False.  Returns:     dict: A dictionary with the transcript of the YouTube video.
+Fetches english transcripts from YouTube videos.
+
+Args:
+    id (str): The ID of the YouTube video. 
+    raw (bool): Whether to return the raw transcript or not. Defaults to False.
+
+Returns:
+    dict: A dictionary with the transcript of the YouTube video.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1637,7 +1967,13 @@ const fetchYoutubeTranscriptsResponse =
 
 ### `carbon.utilities.processSitemap`<a id="carbonutilitiesprocesssitemap"></a>
 
-Retrieves all URLs from a sitemap, which can subsequently be utilized with our `web_scrape` endpoint.  <!--Args:     url (str): URL of the sitemap  Returns:     dict: A dictionary with a list of URLs extracted from the sitemap.-->
+Retrieves all URLs from a sitemap, which can subsequently be utilized with our `web_scrape` endpoint.
+
+<!--Args:
+    url (str): URL of the sitemap
+
+Returns:
+    dict: A dictionary with a list of URLs extracted from the sitemap.-->
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1664,7 +2000,13 @@ const processSitemapResponse = await carbon.utilities.processSitemap({
 
 ### `carbon.utilities.scrapeSitemap`<a id="carbonutilitiesscrapesitemap"></a>
 
-Extracts all URLs from a sitemap and performs a web scrape on each of them.  Args:     sitemap_url (str): URL of the sitemap  Returns:     dict: A response object with the status of the scraping job message.-->
+Extracts all URLs from a sitemap and performs a web scrape on each of them.
+
+Args:
+    sitemap_url (str): URL of the sitemap
+
+Returns:
+    dict: A response object with the status of the scraping job message.-->
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1720,7 +2062,14 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
 
 ### `carbon.utilities.scrapeWeb`<a id="carbonutilitiesscrapeweb"></a>
 
-Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.  <!--Args:     scraping_requests (List[WebscrapeRequest]): A list of WebscrapeRequest objects.       Returns:     dict: A response object with the status of the scraping job message.-->
+Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.
+
+<!--Args:
+    scraping_requests (List[WebscrapeRequest]): A list of WebscrapeRequest objects.
+
+    
+Returns:
+    dict: A response object with the status of the scraping job message.-->
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1762,7 +2111,25 @@ const scrapeWebResponse = await carbon.utilities.scrapeWeb({
 
 ### `carbon.utilities.searchUrls`<a id="carbonutilitiessearchurls"></a>
 
-Perform a web search and obtain a list of relevant URLs.  As an illustration, when you perform a search for “content related to MRNA,” you will receive a list of links such as the following:      - https://tomrenz.substack.com/p/mrna-and-why-it-matters      - https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race/      - https://www.statnews.com/2022/11/16/covid-19-vaccines-were-a-success-but-mrna-still-has-a-delivery-problem/          - https://joomi.substack.com/p/were-still-being-misled-about-how  Subsequently, you can submit these links to the web_scrape endpoint in order to retrieve the content of the respective web pages.  Args:     query (str): Query to search for  Returns:     FetchURLsResponse: A response object with a list of URLs for a given search query.
+Perform a web search and obtain a list of relevant URLs.
+
+As an illustration, when you perform a search for “content related to MRNA,” you will receive a list of links such as the following:
+
+    - https://tomrenz.substack.com/p/mrna-and-why-it-matters
+
+    - https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race/
+
+    - https://www.statnews.com/2022/11/16/covid-19-vaccines-were-a-success-but-mrna-still-has-a-delivery-problem/
+    
+    - https://joomi.substack.com/p/were-still-being-misled-about-how
+
+Subsequently, you can submit these links to the web_scrape endpoint in order to retrieve the content of the respective web pages.
+
+Args:
+    query (str): Query to search for
+
+Returns:
+    FetchURLsResponse: A response object with a list of URLs for a given search query.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
