@@ -52,8 +52,8 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};

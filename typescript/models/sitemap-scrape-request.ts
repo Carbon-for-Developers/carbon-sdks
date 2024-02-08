@@ -84,5 +84,11 @@ export interface SitemapScrapeRequest {
      * @memberof SitemapScrapeRequest
      */
     'css_classes_to_skip'?: Array<string> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SitemapScrapeRequest
+     */
+    'css_selectors_to_skip'?: Array<string> | null;
 }
 

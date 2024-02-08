@@ -38,13 +38,10 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @summary Get Access Token
-         * @param {string} customerId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAccessToken: async (customerId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'customerId' is not null or undefined
-            assertParamExists('getAccessToken', 'customerId', customerId)
+        getAccessToken: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/auth/v1/access_token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -57,12 +54,12 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -99,8 +96,8 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -131,12 +128,11 @@ export const AuthApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get Access Token
-         * @param {AuthApiGetAccessTokenRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAccessToken(requestParameters: AuthApiGetAccessTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAccessToken(requestParameters.customerId, options);
+        async getAccessToken(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAccessToken(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -162,12 +158,11 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Get Access Token
-         * @param {AuthApiGetAccessTokenRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAccessToken(requestParameters: AuthApiGetAccessTokenRequest, options?: AxiosRequestConfig): AxiosPromise<TokenResponse> {
-            return localVarFp.getAccessToken(requestParameters, options).then((request) => request(axios, basePath));
+        getAccessToken(options?: AxiosRequestConfig): AxiosPromise<TokenResponse> {
+            return localVarFp.getAccessToken(options).then((request) => request(axios, basePath));
         },
         /**
          * Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
@@ -182,22 +177,6 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
 };
 
 /**
- * Request parameters for getAccessToken operation in AuthApi.
- * @export
- * @interface AuthApiGetAccessTokenRequest
- */
-export type AuthApiGetAccessTokenRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof AuthApiGetAccessToken
-    */
-    readonly customerId: string
-    
-}
-
-/**
  * AuthApiGenerated - object-oriented interface
  * @export
  * @class AuthApiGenerated
@@ -207,13 +186,12 @@ export class AuthApiGenerated extends BaseAPI {
     /**
      * 
      * @summary Get Access Token
-     * @param {AuthApiGetAccessTokenRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApiGenerated
      */
-    public getAccessToken(requestParameters: AuthApiGetAccessTokenRequest, options?: AxiosRequestConfig) {
-        return AuthApiFp(this.configuration).getAccessToken(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    public getAccessToken(options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).getAccessToken(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

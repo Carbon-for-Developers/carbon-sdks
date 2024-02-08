@@ -75,11 +75,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {FreshDeskConnectRequest} freshDeskConnectRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        connectFreshdesk: async (freshDeskConnectRequest: FreshDeskConnectRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        connectFreshdesk: async (freshDeskConnectRequest: FreshDeskConnectRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'freshDeskConnectRequest' is not null or undefined
             assertParamExists('connectFreshdesk', 'freshDeskConnectRequest', freshDeskConnectRequest)
             const localVarPath = `/integrations/freshdesk`;
@@ -94,12 +93,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -126,11 +125,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
          * @summary S3 Auth
          * @param {S3AuthRequest} s3AuthRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAwsIamUser: async (s3AuthRequest: S3AuthRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createAwsIamUser: async (s3AuthRequest: S3AuthRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 's3AuthRequest' is not null or undefined
             assertParamExists('createAwsIamUser', 's3AuthRequest', s3AuthRequest)
             const localVarPath = `/integrations/s3`;
@@ -145,12 +143,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -177,11 +175,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary Get Oauth Url
          * @param {OAuthURLRequest} oAuthURLRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOauthUrl: async (oAuthURLRequest: OAuthURLRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getOauthUrl: async (oAuthURLRequest: OAuthURLRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'oAuthURLRequest' is not null or undefined
             assertParamExists('getOauthUrl', 'oAuthURLRequest', oAuthURLRequest)
             const localVarPath = `/integrations/oauth_url`;
@@ -196,12 +193,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -228,11 +225,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
          * @summary Confluence List
          * @param {ListRequest} listRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConfluencePages: async (listRequest: ListRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listConfluencePages: async (listRequest: ListRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'listRequest' is not null or undefined
             assertParamExists('listConfluencePages', 'listRequest', listRequest)
             const localVarPath = `/integrations/confluence/list`;
@@ -247,12 +243,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -279,11 +275,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary List Data Source Items
          * @param {ListDataSourceItemsRequest} listDataSourceItemsRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listDataSourceItems: async (listDataSourceItemsRequest: ListDataSourceItemsRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listDataSourceItems: async (listDataSourceItemsRequest: ListDataSourceItemsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'listDataSourceItemsRequest' is not null or undefined
             assertParamExists('listDataSourceItems', 'listDataSourceItemsRequest', listDataSourceItemsRequest)
             const localVarPath = `/integrations/items/list`;
@@ -298,12 +293,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -330,11 +325,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {SyncFilesRequest} syncFilesRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncConfluence: async (syncFilesRequest: SyncFilesRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncConfluence: async (syncFilesRequest: SyncFilesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'syncFilesRequest' is not null or undefined
             assertParamExists('syncConfluence', 'syncFilesRequest', syncFilesRequest)
             const localVarPath = `/integrations/confluence/sync`;
@@ -349,12 +343,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -381,11 +375,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary Sync Data Source Items
          * @param {SyncDirectoryRequest} syncDirectoryRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncDataSourceItems: async (syncDirectoryRequest: SyncDirectoryRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncDataSourceItems: async (syncDirectoryRequest: SyncDirectoryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'syncDirectoryRequest' is not null or undefined
             assertParamExists('syncDataSourceItems', 'syncDirectoryRequest', syncDirectoryRequest)
             const localVarPath = `/integrations/items/sync`;
@@ -400,12 +393,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -432,11 +425,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary Sync Files
          * @param {SyncFilesRequest} syncFilesRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncFiles: async (syncFilesRequest: SyncFilesRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncFiles: async (syncFilesRequest: SyncFilesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'syncFilesRequest' is not null or undefined
             assertParamExists('syncFiles', 'syncFilesRequest', syncFilesRequest)
             const localVarPath = `/integrations/files/sync`;
@@ -451,12 +443,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -480,14 +472,13 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  label: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   is: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {GmailSyncInput} gmailSyncInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncGmail: async (gmailSyncInput: GmailSyncInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncGmail: async (gmailSyncInput: GmailSyncInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'gmailSyncInput' is not null or undefined
             assertParamExists('syncGmail', 'gmailSyncInput', gmailSyncInput)
             const localVarPath = `/integrations/gmail/sync`;
@@ -502,12 +493,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -531,14 +522,13 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  category: Custom categories that you created in Outlook.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Outlook Sync
          * @param {OutlookSyncInput} outlookSyncInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncOutlook: async (outlookSyncInput: OutlookSyncInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncOutlook: async (outlookSyncInput: OutlookSyncInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'outlookSyncInput' is not null or undefined
             assertParamExists('syncOutlook', 'outlookSyncInput', outlookSyncInput)
             const localVarPath = `/integrations/outlook/sync`;
@@ -553,12 +543,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -585,11 +575,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary Rss Feed
          * @param {RSSFeedInput} rSSFeedInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncRssFeed: async (rSSFeedInput: RSSFeedInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncRssFeed: async (rSSFeedInput: RSSFeedInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rSSFeedInput' is not null or undefined
             assertParamExists('syncRssFeed', 'rSSFeedInput', rSSFeedInput)
             const localVarPath = `/integrations/rss_feed`;
@@ -604,12 +593,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -636,11 +625,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
          * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name  and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
          * @summary S3 Files
          * @param {S3FileSyncInput} s3FileSyncInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        syncS3Files: async (s3FileSyncInput: S3FileSyncInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        syncS3Files: async (s3FileSyncInput: S3FileSyncInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 's3FileSyncInput' is not null or undefined
             assertParamExists('syncS3Files', 's3FileSyncInput', s3FileSyncInput)
             const localVarPath = `/integrations/s3/files`;
@@ -655,12 +643,12 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -701,7 +689,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async connectFreshdesk(requestParameters: IntegrationsApiConnectFreshdeskRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -712,7 +700,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createAwsIamUser(requestParameters: IntegrationsApiCreateAwsIamUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -723,7 +711,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -734,7 +722,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listConfluencePages(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listConfluencePages(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -745,7 +733,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async listDataSourceItems(requestParameters: IntegrationsApiListDataSourceItemsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListDataSourceItemsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -756,7 +744,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncConfluence(requestParameters: IntegrationsApiSyncConfluenceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -767,7 +755,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncDataSourceItems(requestParameters: IntegrationsApiSyncDataSourceItemsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncDataSourceItems(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncDataSourceItems(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -778,29 +766,29 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncFiles(requestParameters: IntegrationsApiSyncFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  label: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   is: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async syncGmail(requestParameters: IntegrationsApiSyncGmailRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  category: Custom categories that you created in Outlook.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Outlook Sync
          * @param {IntegrationsApiSyncOutlookRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async syncOutlook(requestParameters: IntegrationsApiSyncOutlookRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -811,7 +799,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncRssFeed(requestParameters: IntegrationsApiSyncRssFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -822,7 +810,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncS3Files(requestParameters: IntegrationsApiSyncS3FilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -916,7 +904,7 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.syncFiles(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  label: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   is: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -926,7 +914,7 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.syncGmail(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  category: Custom categories that you created in Outlook.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Outlook Sync
          * @param {IntegrationsApiSyncOutlookRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -965,13 +953,6 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
  */
 export type IntegrationsApiConnectFreshdeskRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiConnectFreshdesk
-    */
-    readonly customerId?: string
-    
 } & FreshDeskConnectRequest
 
 /**
@@ -980,13 +961,6 @@ export type IntegrationsApiConnectFreshdeskRequest = {
  * @interface IntegrationsApiCreateAwsIamUserRequest
  */
 export type IntegrationsApiCreateAwsIamUserRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiCreateAwsIamUser
-    */
-    readonly customerId?: string
     
 } & S3AuthRequest
 
@@ -997,13 +971,6 @@ export type IntegrationsApiCreateAwsIamUserRequest = {
  */
 export type IntegrationsApiGetOauthUrlRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiGetOauthUrl
-    */
-    readonly customerId?: string
-    
 } & OAuthURLRequest
 
 /**
@@ -1012,13 +979,6 @@ export type IntegrationsApiGetOauthUrlRequest = {
  * @interface IntegrationsApiListConfluencePagesRequest
  */
 export type IntegrationsApiListConfluencePagesRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiListConfluencePages
-    */
-    readonly customerId?: string
     
 } & ListRequest
 
@@ -1029,13 +989,6 @@ export type IntegrationsApiListConfluencePagesRequest = {
  */
 export type IntegrationsApiListDataSourceItemsRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiListDataSourceItems
-    */
-    readonly customerId?: string
-    
 } & ListDataSourceItemsRequest
 
 /**
@@ -1044,13 +997,6 @@ export type IntegrationsApiListDataSourceItemsRequest = {
  * @interface IntegrationsApiSyncConfluenceRequest
  */
 export type IntegrationsApiSyncConfluenceRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncConfluence
-    */
-    readonly customerId?: string
     
 } & SyncFilesRequest
 
@@ -1061,13 +1007,6 @@ export type IntegrationsApiSyncConfluenceRequest = {
  */
 export type IntegrationsApiSyncDataSourceItemsRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncDataSourceItems
-    */
-    readonly customerId?: string
-    
 } & SyncDirectoryRequest
 
 /**
@@ -1076,13 +1015,6 @@ export type IntegrationsApiSyncDataSourceItemsRequest = {
  * @interface IntegrationsApiSyncFilesRequest
  */
 export type IntegrationsApiSyncFilesRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncFiles
-    */
-    readonly customerId?: string
     
 } & SyncFilesRequest
 
@@ -1093,13 +1025,6 @@ export type IntegrationsApiSyncFilesRequest = {
  */
 export type IntegrationsApiSyncGmailRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncGmail
-    */
-    readonly customerId?: string
-    
 } & GmailSyncInput
 
 /**
@@ -1108,13 +1033,6 @@ export type IntegrationsApiSyncGmailRequest = {
  * @interface IntegrationsApiSyncOutlookRequest
  */
 export type IntegrationsApiSyncOutlookRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncOutlook
-    */
-    readonly customerId?: string
     
 } & OutlookSyncInput
 
@@ -1125,13 +1043,6 @@ export type IntegrationsApiSyncOutlookRequest = {
  */
 export type IntegrationsApiSyncRssFeedRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncRssFeed
-    */
-    readonly customerId?: string
-    
 } & RSSFeedInput
 
 /**
@@ -1140,13 +1051,6 @@ export type IntegrationsApiSyncRssFeedRequest = {
  * @interface IntegrationsApiSyncS3FilesRequest
  */
 export type IntegrationsApiSyncS3FilesRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof IntegrationsApiSyncS3Files
-    */
-    readonly customerId?: string
     
 } & S3FileSyncInput
 
@@ -1254,7 +1158,7 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  label: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   is: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
      * @summary Gmail Sync
      * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1266,7 +1170,7 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  category: Custom categories that you created in Outlook.   after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+     * Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
      * @summary Outlook Sync
      * @param {IntegrationsApiSyncOutlookRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

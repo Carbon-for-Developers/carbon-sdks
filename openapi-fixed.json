@@ -80,18 +80,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -138,18 +133,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -196,18 +186,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -254,18 +239,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -312,21 +292,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "To begin listing a user's Confluence pages, at least a `data_source_id` of a connected\nConfluence account must be specified. This base request returns a list of root pages for\nevery space the user has access to in a Confluence instance. To traverse further down\nthe user's page directory, additional requests to this endpoint can be made with the same\n`data_source_id` and with `parent_id` set to the id of page from a previous request. For\nconvenience, the `has_children` property in each directory item in the response list will\nflag which pages will return non-empty lists of pages when set as the `parent_id`.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -371,21 +346,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "After listing pages in a user's Confluence account, the set of selected page `ids` and the\nconnected account's `data_source_id` can be passed into this endpoint to sync them into\nCarbon. Additional parameters listed below can be used to associate data to the selected\npages or alter the behavior of the sync.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -430,21 +400,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "Create a new IAM user with permissions to:\n<ol>\n<li>List all buckets.</li>\n<li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry \nthe same permissions.</li>\n</ol>\nOnce created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -489,21 +454,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name \nand object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate \ndata with the selected items or modify the sync behavior",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -548,21 +508,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
-        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\nlabel: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \nafter or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \nis: Can have the following values - starred, important, snoozed, and unread  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \n<b>is</b>: Can have the following values - starred, important, snoozed, and unread  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
         "requestBody": {
           "required": true,
           "content": {
@@ -607,18 +562,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -665,21 +615,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
-        "description": "Once you have successfully connected your Outlook account, you can choose which emails to sync with us\nusing the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default\nwe get messages from your inbox folder.  \nFilters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\ncategory: Custom categories that you created in Outlook.  \nafter or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.   \n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the category \"Test\".  \n\nSpecifying a custom folder in the same query\n```json\n{\n    \"folder\": \"Folder Name\",\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Test\"\n                    },\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that have either Personal or Test as category. \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Once you have successfully connected your Outlook account, you can choose which emails to sync with us\nusing the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default\nwe get messages from your inbox folder.  \nFilters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>category</b>: Custom categories that you created in Outlook.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    \n<b>is</b>: Can have the following values: flagged   \n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the category \"Test\".  \n\nSpecifying a custom folder in the same query\n```json\n{\n    \"folder\": \"Folder Name\",\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Test\"\n                    },\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that have either Personal or Test as category. \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
         "requestBody": {
           "required": true,
           "content": {
@@ -724,21 +669,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. \nOnce you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will \ntrigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate \ndata with the synced articles or modify the sync behavior.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -783,18 +723,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "responses": {
@@ -830,13 +765,11 @@
         "operationId": "Auth_getWhiteLabeling",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
         ],
         "description": "Returns whether or not the organization is white labeled and which integrations are white labeled\n\n:param current_user: the current user\n:param db: the database session\n:return: a WhiteLabelingResponse",
-        "parameters": [
-        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -871,21 +804,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`\nand `tags` are specified, `tags` is ignored. `tags_v2` enables\nbuilding complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example:\n```json\n{\n    \"OR\": [\n        {\n            \"key\": \"subject\",\n            \"value\": \"holy-bible\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"person-of-interest\",\n            \"value\": \"jesus christ\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"genre\",\n            \"value\": \"religion\",\n            \"negate\": true\n        }\n        {\n            \"AND\": [\n                {\n                    \"key\": \"subject\",\n                    \"value\": \"tao-te-ching\",\n                    \"negate\": false\n                },\n                {\n                    \"key\": \"author\",\n                    \"value\": \"lao-tzu\",\n                    \"negate\": false\n                }\n            ]\n        }\n    ]\n}\n```\nIn this case, files will be filtered such that:\n1. \"subject\" = \"holy-bible\" OR\n2. \"person-of-interest\" = \"jesus christ\" OR\n3. \"genre\" != \"religion\" OR\n4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"\n\nNote that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3.\nFor tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply:\n1. \"key\" isn't optional and must be a `string`\n2. \"value\" isn't optional and can be `any` or list[`any`]\n3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in\nthe resulting query. It is `false` by default.\n\n\nWhen querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if\nnot set), it is equal to \"TEXT\". This means that the query will be performed over files that have\nbeen parsed as text (for now, this covers all files except image files). If it is equal to \"IMAGE\",\nthe query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this\nfield as an additional filter on top of any filters set in `file_ids` and\n\n\nWhen `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank\nand select candidate embeddings during information retrieval. By default, these search methods are weighted\nequally during the ranking process. To adjust the weight (or \"importance\") of each search method, you can use\nthe `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are:\n- `weight_a`: weight to assign to semantic search\n- `weight_b`: weight to assign to keyword search\n\nYou must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality\nhas an error tolerance of 0.001 to account for possible floating point issues.\n\nIn order to use hybrid search for a customer across a set of documents, two flags need to be enabled:\n1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload\nbody for this request is below:\n```\n{\n  \"configuration_key_name\": \"sparse_vectors\",\n  \"value\": {\n    \"enabled\": true\n  }\n}\n```\n2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the\n`/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`\n\n\nCarbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's\nmultimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.\nThe model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query \nparameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing\nembedding queries, embeddings from files that used the specified model will be considered in the query.\nFor example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with\n`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is\nspecified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that\nthe set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**\nset `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -930,18 +858,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -988,18 +911,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1045,11 +963,9 @@
         "operationId": "Organizations_get",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
-        ],
-        "parameters": [
         ],
         "responses": {
           "200": {
@@ -1084,11 +1000,9 @@
         "operationId": "Users_get",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
-        ],
-        "parameters": [
         ],
         "requestBody": {
           "required": true,
@@ -1134,18 +1048,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1192,6 +1101,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -1308,15 +1223,6 @@
               "type": "integer",
               "nullable": true
             }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -1363,18 +1269,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1421,21 +1322,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's\nmultimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.\nThe model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query \nparameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing\nembedding queries, embeddings from files that used the specified model will be considered in the query.\nFor example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with\n`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is\nspecified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that\nthe set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**\nset `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1480,6 +1376,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -1491,15 +1393,6 @@
             "schema": {
               "title": "File Id",
               "type": "integer"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
             }
           }
         ],
@@ -1537,18 +1430,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1595,21 +1483,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`\nand `tags` are specified, `tags` is ignored. `tags_v2` enables\nbuilding complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example:\n```json\n{\n    \"OR\": [\n        {\n            \"key\": \"subject\",\n            \"value\": \"holy-bible\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"person-of-interest\",\n            \"value\": \"jesus christ\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"genre\",\n            \"value\": \"religion\",\n            \"negate\": true\n        }\n        {\n            \"AND\": [\n                {\n                    \"key\": \"subject\",\n                    \"value\": \"tao-te-ching\",\n                    \"negate\": false\n                },\n                {\n                    \"key\": \"author\",\n                    \"value\": \"lao-tzu\",\n                    \"negate\": false\n                }\n            ]\n        }\n    ]\n}\n```\nIn this case, files will be filtered such that:\n1. \"subject\" = \"holy-bible\" OR\n2. \"person-of-interest\" = \"jesus christ\" OR\n3. \"genre\" != \"religion\" OR\n4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"\n\nNote that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3.\nFor tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply:\n1. \"key\" isn't optional and must be a `string`\n2. \"value\" isn't optional and can be `any` or list[`any`]\n3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in\nthe resulting query. It is `false` by default.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1654,21 +1537,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "A tag is a key-value pair that can be added to a file. This pair can then be used\nfor searches (e.g. embedding searches) in order to narrow down the scope of the search.\nA file can have any number of tags. The following are reserved keys that cannot be used:\n- db_embedding_id\n- organization_id\n- user_id\n- organization_user_file_id\n\nCarbon currently supports two data types for tag values - `string` and `list<string>`.\nKeys can only be `string`. If values other than `string` and `list<string>` are used,\nthey're automatically converted to strings (e.g. 4 will become \"4\").",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1713,18 +1591,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1771,18 +1644,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -1829,6 +1697,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -1841,15 +1715,6 @@
             "schema": {
               "title": "File Id",
               "type": "integer"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
             }
           }
         ],
@@ -1888,6 +1753,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -1900,15 +1771,6 @@
             "schema": {
               "title": "File Id",
               "type": "integer"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
             }
           }
         ],
@@ -1947,21 +1809,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "This route is deprecated. Use `/user_files_v2` instead.",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -2006,11 +1863,9 @@
         "operationId": "Webhooks_urls",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
-        ],
-        "parameters": [
         ],
         "requestBody": {
           "required": true,
@@ -2055,11 +1910,9 @@
         "operationId": "Webhooks_addUrl",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
-        ],
-        "parameters": [
         ],
         "requestBody": {
           "required": true,
@@ -2104,7 +1957,7 @@
         "operationId": "Webhooks_deleteUrl",
         "security": [
           {
-            "apiKey": [
+            "accessToken": [
             ]
           }
         ],
@@ -2153,18 +2006,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -2211,18 +2059,13 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
             ]
-          }
-        ],
-        "parameters": [
+          },
           {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
+            "accessToken": [
+            ]
           }
         ],
         "requestBody": {
@@ -2269,21 +2112,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.\n\n<!--Args:\n    scraping_requests (List[WebscrapeRequest]): A list of WebscrapeRequest objects.\n    \nReturns:\n    dict: A response object with the status of the scraping job message.-->",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -2328,6 +2166,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -2339,15 +2183,6 @@
             "required": true,
             "schema": {
               "title": "Url",
-              "type": "string"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
               "type": "string"
             }
           }
@@ -2386,21 +2221,16 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
         "description": "Extracts all URLs from a sitemap and performs a web scrape on each of them.\n\nArgs:\n    sitemap_url (str): URL of the sitemap\n\nReturns:\n    dict: A response object with the status of the scraping job message.-->",
-        "parameters": [
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -2445,6 +2275,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -2456,15 +2292,6 @@
             "required": true,
             "schema": {
               "title": "Url",
-              "type": "string"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
               "type": "string"
             }
           }
@@ -2503,6 +2330,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -2514,15 +2347,6 @@
             "required": true,
             "schema": {
               "title": "Query",
-              "type": "string"
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
               "type": "string"
             }
           }
@@ -2561,6 +2385,12 @@
         "security": [
           {
             "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
             ]
           }
         ],
@@ -2583,15 +2413,6 @@
               "title": "Raw",
               "type": "boolean",
               "default": false
-            }
-          },
-          {
-            "name": "customer-id",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "title": "Customer-Id",
-              "type": "string"
             }
           }
         ],
@@ -3053,7 +2874,12 @@
           "OPENAI",
           "AZURE_OPENAI",
           "COHERE_MULTILINGUAL_V3",
-          "VERTEX_MULTIMODAL"
+          "VERTEX_MULTIMODAL",
+          "OPENAI_ADA_LARGE_256",
+          "OPENAI_ADA_LARGE_1024",
+          "OPENAI_ADA_LARGE_3072",
+          "OPENAI_ADA_SMALL_512",
+          "OPENAI_ADA_SMALL_1536"
         ]
       },
       "EmbeddingProperties": {
@@ -3335,6 +3161,7 @@
           "BOX",
           "ZENDESK",
           "FRESHDESK",
+          "WEB_SCRAPE",
           "JPG",
           "JPG",
           "PNG",
@@ -4891,6 +4718,16 @@
             },
             "type": "array",
             "nullable": true
+          },
+          "css_selectors_to_skip": {
+            "title": "Css Selectors To Skip",
+            "default": [
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4983,7 +4820,12 @@
         "enum": [
           "OPENAI",
           "AZURE_OPENAI",
-          "COHERE_MULTILINGUAL_V3"
+          "COHERE_MULTILINGUAL_V3",
+          "OPENAI_ADA_LARGE_256",
+          "OPENAI_ADA_LARGE_1024",
+          "OPENAI_ADA_LARGE_3072",
+          "OPENAI_ADA_SMALL_512",
+          "OPENAI_ADA_SMALL_1536"
         ]
       },
       "TokenResponse": {
@@ -5652,6 +5494,16 @@
             },
             "type": "array",
             "nullable": true
+          },
+          "css_selectors_to_skip": {
+            "title": "Css Selectors To Skip",
+            "default": [
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
           }
         },
         "type": "object",
@@ -5776,7 +5628,12 @@
           "OPENAI",
           "AZURE_OPENAI",
           "COHERE_MULTILINGUAL_V3",
-          "VERTEX_MULTIMODAL"
+          "VERTEX_MULTIMODAL",
+          "OPENAI_ADA_LARGE_256",
+          "OPENAI_ADA_LARGE_1024",
+          "OPENAI_ADA_LARGE_3072",
+          "OPENAI_ADA_SMALL_512",
+          "OPENAI_ADA_SMALL_1536"
         ],
         "default": "OPENAI",
         "nullable": true
@@ -5811,6 +5668,7 @@
           "BOX",
           "ZENDESK",
           "FRESHDESK",
+          "WEB_SCRAPE",
           "JPG",
           "JPG",
           "PNG",
@@ -5991,6 +5849,18 @@
       "apiKey": {
         "type": "apiKey",
         "name": "authorization",
+        "in": "header",
+        "x-konfig-prefix": "Bearer "
+      },
+      "accessToken": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header",
+        "x-konfig-prefix": "Token "
+      },
+      "customerId": {
+        "type": "apiKey",
+        "name": "customer-id",
         "in": "header"
       }
     }

@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type EmbeddingGenerators = 'OPENAI' | 'AZURE_OPENAI' | 'COHERE_MULTILINGUAL_V3' | 'VERTEX_MULTIMODAL'
+export type EmbeddingGenerators = 'OPENAI' | 'AZURE_OPENAI' | 'COHERE_MULTILINGUAL_V3' | 'VERTEX_MULTIMODAL' | 'OPENAI_ADA_LARGE_256' | 'OPENAI_ADA_LARGE_1024' | 'OPENAI_ADA_LARGE_3072' | 'OPENAI_ADA_SMALL_512' | 'OPENAI_ADA_SMALL_1536'
 

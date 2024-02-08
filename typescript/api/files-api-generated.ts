@@ -77,11 +77,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they\'re automatically converted to strings (e.g. 4 will become \"4\").
          * @summary Create File Tags
          * @param {OrganizationUserFileTagCreate} organizationUserFileTagCreate 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUserFileTags: async (organizationUserFileTagCreate: OrganizationUserFileTagCreate, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createUserFileTags: async (organizationUserFileTagCreate: OrganizationUserFileTagCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'organizationUserFileTagCreate' is not null or undefined
             assertParamExists('createUserFileTags', 'organizationUserFileTagCreate', organizationUserFileTagCreate)
             const localVarPath = `/create_user_file_tags`;
@@ -96,12 +95,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -128,11 +127,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Delete File Endpoint
          * @param {number} fileId 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete: async (fileId: number, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        delete: async (fileId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'fileId' is not null or undefined
             assertParamExists('delete', 'fileId', fileId)
             const localVarPath = `/deletefile/{file_id}`
@@ -148,12 +146,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -175,11 +173,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Delete File Tags
          * @param {OrganizationUserFileTagsRemove} organizationUserFileTagsRemove 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFileTags: async (organizationUserFileTagsRemove: OrganizationUserFileTagsRemove, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteFileTags: async (organizationUserFileTagsRemove: OrganizationUserFileTagsRemove, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'organizationUserFileTagsRemove' is not null or undefined
             assertParamExists('deleteFileTags', 'organizationUserFileTagsRemove', organizationUserFileTagsRemove)
             const localVarPath = `/delete_user_file_tags`;
@@ -194,12 +191,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -226,11 +223,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Delete Files Endpoint
          * @param {DeleteFilesQueryInput} deleteFilesQueryInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMany: async (deleteFilesQueryInput: DeleteFilesQueryInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteMany: async (deleteFilesQueryInput: DeleteFilesQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'deleteFilesQueryInput' is not null or undefined
             assertParamExists('deleteMany', 'deleteFilesQueryInput', deleteFilesQueryInput)
             const localVarPath = `/delete_files`;
@@ -245,12 +241,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -277,12 +273,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * This route is deprecated. Use `/user_files_v2` instead.
          * @summary Parsed File
          * @param {number} fileId 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        getParsedFile: async (fileId: number, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getParsedFile: async (fileId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'fileId' is not null or undefined
             assertParamExists('getParsedFile', 'fileId', fileId)
             const localVarPath = `/parsed_file/{file_id}`
@@ -298,12 +293,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -325,12 +320,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * This route is deprecated. Use `/user_files_v2` instead.
          * @summary Raw File
          * @param {number} fileId 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        getRawFile: async (fileId: number, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getRawFile: async (fileId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'fileId' is not null or undefined
             assertParamExists('getRawFile', 'fileId', fileId)
             const localVarPath = `/raw_file/{file_id}`
@@ -346,12 +340,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -373,11 +367,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
          * @summary User Files V2
          * @param {OrganizationUserFilesToSyncQueryInput} organizationUserFilesToSyncQueryInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryUserFiles: async (organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        queryUserFiles: async (organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'organizationUserFilesToSyncQueryInput' is not null or undefined
             assertParamExists('queryUserFiles', 'organizationUserFilesToSyncQueryInput', organizationUserFilesToSyncQueryInput)
             const localVarPath = `/user_files_v2`;
@@ -392,12 +385,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -424,12 +417,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * This route is deprecated. Use `/user_files_v2` instead.
          * @summary User Files
          * @param {OrganizationUserFilesToSyncQueryInput} organizationUserFilesToSyncQueryInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @deprecated
          * @throws {RequiredError}
          */
-        queryUserFilesDeprecated: async (organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        queryUserFilesDeprecated: async (organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'organizationUserFilesToSyncQueryInput' is not null or undefined
             assertParamExists('queryUserFilesDeprecated', 'organizationUserFilesToSyncQueryInput', organizationUserFilesToSyncQueryInput)
             const localVarPath = `/user_files`;
@@ -444,12 +436,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -476,11 +468,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Resync File
          * @param {ResyncFileQueryInput} resyncFileQueryInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resync: async (resyncFileQueryInput: ResyncFileQueryInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        resync: async (resyncFileQueryInput: ResyncFileQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resyncFileQueryInput' is not null or undefined
             assertParamExists('resync', 'resyncFileQueryInput', resyncFileQueryInput)
             const localVarPath = `/resync_file`;
@@ -495,12 +486,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -537,11 +528,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [generateSparseVectors] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
          * @param {boolean} [prependFilenameToChunks] Whether or not to prepend the file\&#39;s name to chunks.
          * @param {number} [maxItemsPerChunk] Number of objects per chunk. For json files only.
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -603,8 +593,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             }
             if (!isBrowser()) Object.assign(localVarHeaderParameter, localVarFormParams.getHeaders());
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
             if (chunkSize !== undefined) {
                 localVarQueryParameter['chunk_size'] = chunkSize;
             }
@@ -641,10 +635,6 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['max_items_per_chunk'] = maxItemsPerChunk;
             }
 
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
 
             if (file !== undefined) {
                 await addFormParam('file', file, true, true)
@@ -676,11 +666,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Create Upload File From Url
          * @param {UploadFileFromUrlInput} uploadFileFromUrlInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadFromUrl: async (uploadFileFromUrlInput: UploadFileFromUrlInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadFromUrl: async (uploadFileFromUrlInput: UploadFileFromUrlInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'uploadFileFromUrlInput' is not null or undefined
             assertParamExists('uploadFromUrl', 'uploadFileFromUrlInput', uploadFileFromUrlInput)
             const localVarPath = `/upload_file_from_url`;
@@ -695,12 +684,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -727,11 +716,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI\'s multimodal model; for text, we support OpenAI\'s `text-embedding-ada-002` and Cohere\'s embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
          * @summary Create Raw Text
          * @param {RawTextInput} rawTextInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadText: async (rawTextInput: RawTextInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadText: async (rawTextInput: RawTextInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rawTextInput' is not null or undefined
             assertParamExists('uploadText', 'rawTextInput', rawTextInput)
             const localVarPath = `/upload_text`;
@@ -746,12 +734,12 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -792,7 +780,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createUserFileTags(requestParameters: FilesApiCreateUserFileTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createUserFileTags(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUserFileTags(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -803,7 +791,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(requestParameters.fileId, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(requestParameters.fileId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -814,7 +802,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deleteFileTags(requestParameters: FilesApiDeleteFileTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFileTags(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFileTags(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -825,7 +813,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deleteMany(requestParameters: FilesApiDeleteManyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -837,7 +825,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getParsedFile(requestParameters: FilesApiGetParsedFileRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PresignedURLResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getParsedFile(requestParameters.fileId, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getParsedFile(requestParameters.fileId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -849,7 +837,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getRawFile(requestParameters: FilesApiGetRawFileRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PresignedURLResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getRawFile(requestParameters.fileId, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRawFile(requestParameters.fileId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -860,7 +848,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserFiles(requestParameters: FilesApiQueryUserFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFilesV2>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFiles(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFiles(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -872,7 +860,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserFilesDeprecated(requestParameters: FilesApiQueryUserFilesDeprecatedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserFile>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFilesDeprecated(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFilesDeprecated(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -883,7 +871,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async resync(requestParameters: FilesApiResyncRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.resync(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.resync(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -894,7 +882,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async upload(requestParameters: FilesApiUploadRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, requestParameters, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, requestParameters, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -905,7 +893,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadFromUrl(requestParameters: FilesApiUploadFromUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -916,7 +904,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadText(requestParameters: FilesApiUploadTextRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1062,13 +1050,6 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
  */
 export type FilesApiCreateUserFileTagsRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiCreateUserFileTags
-    */
-    readonly customerId?: string
-    
 } & OrganizationUserFileTagCreate
 
 /**
@@ -1085,13 +1066,6 @@ export type FilesApiDeleteRequest = {
     */
     readonly fileId: number
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiDelete
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -1101,13 +1075,6 @@ export type FilesApiDeleteRequest = {
  */
 export type FilesApiDeleteFileTagsRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiDeleteFileTags
-    */
-    readonly customerId?: string
-    
 } & OrganizationUserFileTagsRemove
 
 /**
@@ -1116,13 +1083,6 @@ export type FilesApiDeleteFileTagsRequest = {
  * @interface FilesApiDeleteManyRequest
  */
 export type FilesApiDeleteManyRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiDeleteMany
-    */
-    readonly customerId?: string
     
 } & DeleteFilesQueryInput
 
@@ -1140,13 +1100,6 @@ export type FilesApiGetParsedFileRequest = {
     */
     readonly fileId: number
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiGetParsedFile
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -1163,13 +1116,6 @@ export type FilesApiGetRawFileRequest = {
     */
     readonly fileId: number
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiGetRawFile
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -1178,13 +1124,6 @@ export type FilesApiGetRawFileRequest = {
  * @interface FilesApiQueryUserFilesRequest
  */
 export type FilesApiQueryUserFilesRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiQueryUserFiles
-    */
-    readonly customerId?: string
     
 } & OrganizationUserFilesToSyncQueryInput
 
@@ -1195,13 +1134,6 @@ export type FilesApiQueryUserFilesRequest = {
  */
 export type FilesApiQueryUserFilesDeprecatedRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiQueryUserFilesDeprecated
-    */
-    readonly customerId?: string
-    
 } & OrganizationUserFilesToSyncQueryInput
 
 /**
@@ -1210,13 +1142,6 @@ export type FilesApiQueryUserFilesDeprecatedRequest = {
  * @interface FilesApiResyncRequest
  */
 export type FilesApiResyncRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiResync
-    */
-    readonly customerId?: string
     
 } & ResyncFileQueryInput
 
@@ -1297,13 +1222,6 @@ export type FilesApiUploadRequest = {
     */
     readonly maxItemsPerChunk?: number
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiUpload
-    */
-    readonly customerId?: string
-    
 } & BodyCreateUploadFileUploadfilePost
 
 /**
@@ -1313,13 +1231,6 @@ export type FilesApiUploadRequest = {
  */
 export type FilesApiUploadFromUrlRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiUploadFromUrl
-    */
-    readonly customerId?: string
-    
 } & UploadFileFromUrlInput
 
 /**
@@ -1328,13 +1239,6 @@ export type FilesApiUploadFromUrlRequest = {
  * @interface FilesApiUploadTextRequest
  */
 export type FilesApiUploadTextRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof FilesApiUploadText
-    */
-    readonly customerId?: string
     
 } & RawTextInput
 
