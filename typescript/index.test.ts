@@ -5,31 +5,35 @@ describe("carbon-typescript-sdk", () => {
   it("initialize client", async () => {
     const carbon = new Carbon({
       apiKey: "API_KEY",
+      customerId: "CUSTOMER_ID",
     });
+    expect(carbon).not.toBeNull();
   });
   const carbon = new Carbon({
     apiKey: "API_KEY",
+    customerId: "CUSTOMER_ID",
     basePath: "http://127.0.0.1:4010",
   });
   it("get access token", async () => {
-    const token = await carbon.auth.getAccessToken({
-      customerId: "CUSTOMER_ID",
-    });
+    const token = await carbon.auth.getAccessToken();
+    expect(token).not.toBeNull();
     console.log(token.data);
-  });
-  it("get white labeling", async () => {
-    const whiteLabeling = await carbon.auth.getWhiteLabeling();
+    const carbonClientWithToken = new Carbon({
+      accessToken: token.data.access_token,
+      basePath: "http://127.0.0.1:4010",
+    });
+    expect(carbonClientWithToken).not.toBeNull();
+    const whiteLabeling = await carbonClientWithToken.auth.getWhiteLabeling();
+    expect(whiteLabeling).not.toBeNull();
     console.log(whiteLabeling.data);
   });
+
   it("query user data sources", async () => {
-    const dataSources = await carbon.dataSources.queryUserDataSources({
-      customerId: "CUSTOMER_ID",
-    });
+    const dataSources = await carbon.dataSources.queryUserDataSources({});
     console.log(dataSources.data);
   });
   it("sync s3 files", async () => {
     const syncS3Files = await carbon.integrations.syncS3Files({
-      customerId: "CUSTOMER_ID",
       ids: [{ id: "ID", bucket: "BUCKET" }],
     });
     console.log(syncS3Files.data);
@@ -41,7 +45,6 @@ describe("carbon-typescript-sdk", () => {
   it("file upload", async () => {
     const file = await carbon.files.upload({
       file: fs.readFileSync("README.md"),
-      customerId: "CUSTOMER_ID",
     });
     console.log(file.data);
   });

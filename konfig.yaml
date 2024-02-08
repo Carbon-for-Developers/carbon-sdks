@@ -8,6 +8,26 @@ readmeHeader:
   title: Carbon
   image: header.png
   url: https://carbon.ai
+securitySchemeOverride:
+  security:
+    - apiKey: []
+      customerId: []
+    - accessToken: []
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: authorization
+      in: header
+      x-konfig-prefix: "Bearer "
+    accessToken:
+      type: apiKey
+      name: authorization
+      in: header
+      x-konfig-prefix: "Token "
+    customerId:
+      type: apiKey
+      name: customer-id
+      in: header
 generators:
   python:
     disabled: true
@@ -24,6 +44,9 @@ generators:
     npmName: carbon-typescript-sdk
     outputDirectory: typescript
     clientName: Carbon
+    removeDefaultConfigurationParameters: true
+    useSecurityKeyNameAsPropertyName: true
+    readmeSnippet: snippets/typescriptReadmeGettingStartedSnippet.ts
     git:
       userId: konfig-dev
       repoId: carbon-sdks/tree/main/typescript
