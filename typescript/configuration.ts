@@ -19,15 +19,10 @@ type ApiKey =
   | { [apiKeyName: string]: string | undefined };
 
 export interface ConfigurationParameters {
-    /**
-     * parameter for apiKey security
-     * @param name security name
-     * @memberof Configuration
-     */
-    apiKey?: ApiKey;
-    username?: string;
-    password?: string;
-    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
+    accessToken?: string;
+    apiKey?: string;
+    customerId?: string;
+
     basePath?: string;
     baseOptions?: any;
     userAgent?: string;
@@ -90,16 +85,19 @@ export class Configuration {
     userAgent: string;
 
     constructor(param: ConfigurationParameters = {}) {
-        this.apiKey = param.apiKey
+
         if (this.apiKey === undefined) {
             this.apiKey = {}
+            if (param.accessToken !== undefined)
+                this.apiKey["accessToken"] = param.accessToken
+            if (param.apiKey !== undefined)
+                this.apiKey["apiKey"] = param.apiKey
+            if (param.customerId !== undefined)
+                this.apiKey["customerId"] = param.customerId
         }
-        this.username = param.username;
-        this.password = param.password;
-        this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
-        this.userAgent = param.userAgent === undefined ? "Konfig/0.1.0/typescript" : param.userAgent;
+        this.userAgent = param.userAgent === undefined ? "Konfig/0.1.1/typescript" : param.userAgent;
         this.formDataCtor = param.formDataCtor;
     }
 

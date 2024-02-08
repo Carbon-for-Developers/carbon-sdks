@@ -90,5 +90,11 @@ export interface WebscrapeRequest {
      * @memberof WebscrapeRequest
      */
     'css_classes_to_skip'?: Array<string> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof WebscrapeRequest
+     */
+    'css_selectors_to_skip'?: Array<string> | null;
 }
 

@@ -45,11 +45,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * Extracts all URLs from a webpage.   Args:     url (str): URL of the webpage  Returns:     FetchURLsResponse: A response object with a list of URLs extracted from the webpage and the webpage content.
          * @summary Fetch Urls
          * @param {string} url 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchUrls: async (url: string, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        fetchUrls: async (url: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'url' is not null or undefined
             assertParamExists('fetchUrls', 'url', url)
             const localVarPath = `/fetch_urls`;
@@ -64,14 +63,14 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
             if (url !== undefined) {
                 localVarQueryParameter['url'] = url;
-            }
-
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
             }
 
 
@@ -96,11 +95,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * @summary Fetch Youtube Transcripts
          * @param {string} id 
          * @param {boolean} [raw] 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchYoutubeTranscripts: async (id: string, raw?: boolean, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        fetchYoutubeTranscripts: async (id: string, raw?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('fetchYoutubeTranscripts', 'id', id)
             const localVarPath = `/fetch_youtube_transcript`;
@@ -115,18 +113,18 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
             }
 
             if (raw !== undefined) {
                 localVarQueryParameter['raw'] = raw;
-            }
-
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
             }
 
 
@@ -150,11 +148,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * Retrieves all URLs from a sitemap, which can subsequently be utilized with our `web_scrape` endpoint.  <!--Args:     url (str): URL of the sitemap  Returns:     dict: A dictionary with a list of URLs extracted from the sitemap.-->
          * @summary Sitemap
          * @param {string} url 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processSitemap: async (url: string, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        processSitemap: async (url: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'url' is not null or undefined
             assertParamExists('processSitemap', 'url', url)
             const localVarPath = `/process_sitemap`;
@@ -169,14 +166,14 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
             if (url !== undefined) {
                 localVarQueryParameter['url'] = url;
-            }
-
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
             }
 
 
@@ -200,11 +197,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * Extracts all URLs from a sitemap and performs a web scrape on each of them.  Args:     sitemap_url (str): URL of the sitemap  Returns:     dict: A response object with the status of the scraping job message.-->
          * @summary Scrape Sitemap
          * @param {SitemapScrapeRequest} sitemapScrapeRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapeSitemap: async (sitemapScrapeRequest: SitemapScrapeRequest, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        scrapeSitemap: async (sitemapScrapeRequest: SitemapScrapeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'sitemapScrapeRequest' is not null or undefined
             assertParamExists('scrapeSitemap', 'sitemapScrapeRequest', sitemapScrapeRequest)
             const localVarPath = `/scrape_sitemap`;
@@ -219,12 +215,12 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -251,11 +247,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.  <!--Args:     scraping_requests (List[WebscrapeRequest]): A list of WebscrapeRequest objects.       Returns:     dict: A response object with the status of the scraping job message.-->
          * @summary Web Scrape
          * @param {Array<WebscrapeRequest>} webscrapeRequest 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapeWeb: async (webscrapeRequest: Array<WebscrapeRequest>, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        scrapeWeb: async (webscrapeRequest: Array<WebscrapeRequest>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'webscrapeRequest' is not null or undefined
             assertParamExists('scrapeWeb', 'webscrapeRequest', webscrapeRequest)
             const localVarPath = `/web_scrape`;
@@ -270,12 +265,12 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -302,11 +297,10 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * Perform a web search and obtain a list of relevant URLs.  As an illustration, when you perform a search for “content related to MRNA,” you will receive a list of links such as the following:      - https://tomrenz.substack.com/p/mrna-and-why-it-matters      - https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race/      - https://www.statnews.com/2022/11/16/covid-19-vaccines-were-a-success-but-mrna-still-has-a-delivery-problem/          - https://joomi.substack.com/p/were-still-being-misled-about-how  Subsequently, you can submit these links to the web_scrape endpoint in order to retrieve the content of the respective web pages.  Args:     query (str): Query to search for  Returns:     FetchURLsResponse: A response object with a list of URLs for a given search query.
          * @summary Search Urls
          * @param {string} query 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchUrls: async (query: string, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        searchUrls: async (query: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'query' is not null or undefined
             assertParamExists('searchUrls', 'query', query)
             const localVarPath = `/search_urls`;
@@ -321,14 +315,14 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
             if (query !== undefined) {
                 localVarQueryParameter['query'] = query;
-            }
-
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
             }
 
 
@@ -366,7 +360,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async fetchUrls(requestParameters: UtilitiesApiFetchUrlsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchURLsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchUrls(requestParameters.url, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchUrls(requestParameters.url, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -377,7 +371,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async fetchYoutubeTranscripts(requestParameters: UtilitiesApiFetchYoutubeTranscriptsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<YoutubeTranscriptResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchYoutubeTranscripts(requestParameters.id, requestParameters.raw, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchYoutubeTranscripts(requestParameters.id, requestParameters.raw, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -388,7 +382,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async processSitemap(requestParameters: UtilitiesApiProcessSitemapRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processSitemap(requestParameters.url, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.processSitemap(requestParameters.url, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -399,7 +393,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async scrapeSitemap(requestParameters: UtilitiesApiScrapeSitemapRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -410,7 +404,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async scrapeWeb(requestParameters: UtilitiesApiScrapeWebRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeWeb(requestParameters.requestBody, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeWeb(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -421,7 +415,7 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async searchUrls(requestParameters: UtilitiesApiSearchUrlsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchURLsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchUrls(requestParameters.query, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchUrls(requestParameters.query, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -511,13 +505,6 @@ export type UtilitiesApiFetchUrlsRequest = {
     */
     readonly url: string
     
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiFetchUrls
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -541,13 +528,6 @@ export type UtilitiesApiFetchYoutubeTranscriptsRequest = {
     */
     readonly raw?: boolean
     
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiFetchYoutubeTranscripts
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -564,13 +544,6 @@ export type UtilitiesApiProcessSitemapRequest = {
     */
     readonly url: string
     
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiProcessSitemap
-    */
-    readonly customerId?: string
-    
 }
 
 /**
@@ -580,13 +553,6 @@ export type UtilitiesApiProcessSitemapRequest = {
  */
 export type UtilitiesApiScrapeSitemapRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiScrapeSitemap
-    */
-    readonly customerId?: string
-    
 } & SitemapScrapeRequest
 
 /**
@@ -594,20 +560,7 @@ export type UtilitiesApiScrapeSitemapRequest = {
  * @export
  * @interface UtilitiesApiScrapeWebRequest
  */
-export type UtilitiesApiScrapeWebRequest = {
-    /**
-    * 
-    * @type {Array<WebscrapeRequest>}
-    * @memberof UtilitiesApiScrapeWeb
-    */
-    readonly requestBody: Array<WebscrapeRequest>
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiScrapeWeb
-    */
-    readonly customerId?: string
-}
+export type UtilitiesApiScrapeWebRequest = Array<WebscrapeRequest>
 
 /**
  * Request parameters for searchUrls operation in UtilitiesApi.
@@ -622,13 +575,6 @@ export type UtilitiesApiSearchUrlsRequest = {
     * @memberof UtilitiesApiSearchUrls
     */
     readonly query: string
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof UtilitiesApiSearchUrls
-    */
-    readonly customerId?: string
     
 }
 

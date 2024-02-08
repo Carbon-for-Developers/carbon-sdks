@@ -51,11 +51,10 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
          * 
          * @summary User Data Sources
          * @param {OrganizationUserDataSourceQueryInput} organizationUserDataSourceQueryInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryUserDataSources: async (organizationUserDataSourceQueryInput: OrganizationUserDataSourceQueryInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        queryUserDataSources: async (organizationUserDataSourceQueryInput: OrganizationUserDataSourceQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'organizationUserDataSourceQueryInput' is not null or undefined
             assertParamExists('queryUserDataSources', 'organizationUserDataSourceQueryInput', organizationUserDataSourceQueryInput)
             const localVarPath = `/user_data_sources`;
@@ -70,12 +69,12 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -102,11 +101,10 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
          * 
          * @summary Revoke Access Token
          * @param {RevokeAccessTokenInput} revokeAccessTokenInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        revokeAccessToken: async (revokeAccessTokenInput: RevokeAccessTokenInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        revokeAccessToken: async (revokeAccessTokenInput: RevokeAccessTokenInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'revokeAccessTokenInput' is not null or undefined
             assertParamExists('revokeAccessToken', 'revokeAccessTokenInput', revokeAccessTokenInput)
             const localVarPath = `/revoke_access_token`;
@@ -121,12 +119,12 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -167,7 +165,7 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserDataSources(requestParameters: DataSourcesApiQueryUserDataSourcesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserDataSources(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserDataSources(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -178,7 +176,7 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async revokeAccessToken(requestParameters: DataSourcesApiRevokeAccessTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.revokeAccessToken(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.revokeAccessToken(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -221,13 +219,6 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
  */
 export type DataSourcesApiQueryUserDataSourcesRequest = {
     
-    /**
-    * 
-    * @type {string}
-    * @memberof DataSourcesApiQueryUserDataSources
-    */
-    readonly customerId?: string
-    
 } & OrganizationUserDataSourceQueryInput
 
 /**
@@ -236,13 +227,6 @@ export type DataSourcesApiQueryUserDataSourcesRequest = {
  * @interface DataSourcesApiRevokeAccessTokenRequest
  */
 export type DataSourcesApiRevokeAccessTokenRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof DataSourcesApiRevokeAccessToken
-    */
-    readonly customerId?: string
     
 } & RevokeAccessTokenInput
 

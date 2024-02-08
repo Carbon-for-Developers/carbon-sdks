@@ -71,8 +71,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -118,8 +118,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -159,8 +159,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

@@ -61,8 +61,8 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -89,11 +89,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Toggle User Features
          * @param {ModifyUserConfigurationInput} modifyUserConfigurationInput 
-         * @param {string} [customerId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        toggleUserFeatures: async (modifyUserConfigurationInput: ModifyUserConfigurationInput, customerId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        toggleUserFeatures: async (modifyUserConfigurationInput: ModifyUserConfigurationInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'modifyUserConfigurationInput' is not null or undefined
             assertParamExists('toggleUserFeatures', 'modifyUserConfigurationInput', modifyUserConfigurationInput)
             const localVarPath = `/modify_user_configuration`;
@@ -108,12 +107,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "authorization", configuration })
-            if (customerId != null) {
-                localVarHeaderParameter['customer-id'] = String(customerId);
-            }
-
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -165,7 +164,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.toggleUserFeatures(requestParameters, requestParameters.customerId, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.toggleUserFeatures(requestParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -216,13 +215,6 @@ export type UsersApiGetRequest = {
  * @interface UsersApiToggleUserFeaturesRequest
  */
 export type UsersApiToggleUserFeaturesRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof UsersApiToggleUserFeatures
-    */
-    readonly customerId?: string
     
 } & ModifyUserConfigurationInput
 

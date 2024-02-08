@@ -145,18 +145,10 @@ responseSchemaNames:
       '200':
         application/json: UtilitiesScrapeWebResponse
 securityParameters:
-  authorization:
-    header:
-      in: header
-      name: authorization
-      securityName: apiKey
-      type: apiKey
   chunk_overlap:
     query: false
   chunk_size:
     query: false
-  customer-id:
-    header: false
   embedding_model:
     query: false
   generate_sparse_vectors:

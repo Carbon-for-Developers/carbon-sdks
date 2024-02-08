@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.0-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.0)
+[![npm](https://img.shields.io/badge/npm-v0.1.1-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.1)
 
 </div>
 
@@ -102,17 +102,25 @@ yarn add carbon-typescript-sdk
 ```typescript
 import { Carbon } from "carbon-typescript-sdk";
 
-const carbon = new Carbon({
-  // Defining the base path is optional and defaults to https://api.carbon.ai
-  // basePath: "https://api.carbon.ai",
+// Generally this is done in the backend to avoid exposing API key to the client
+
+const carbonWithApiKey = new Carbon({
   apiKey: "API_KEY",
+  customerId: "CUSTOMER_ID",
 });
 
-const getAccessTokenResponse = await carbon.auth.getAccessToken({
-  customerId: "customerId_example",
+const accessToken = await carbonWithApiKey.auth.getAccessToken();
+
+// Once an access token is obtained, it can be passed to the frontend
+// and used to instantiate the SDK client without an API key
+
+const carbon = new Carbon({
+  accessToken: accessToken.data.access_token,
 });
 
-console.log(getAccessTokenResponse);
+// use SDK as usual
+const whiteLabeling = await carbon.auth.getWhiteLabeling();
+// etc.
 ```
 
 ## Reference<a id="reference"></a>
@@ -125,14 +133,8 @@ Get Access Token
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const getAccessTokenResponse = await carbon.auth.getAccessToken({
-  customerId: "customerId_example",
-});
+const getAccessTokenResponse = await carbon.auth.getAccessToken();
 ```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -195,8 +197,6 @@ const queryUserDataSourcesResponse =
 
 ##### filters: [`OrganizationUserDataSourceQueryInputFilters`](./models/organization-user-data-source-query-input-filters.ts)<a id="filters-organizationuserdatasourcequeryinputfiltersmodelsorganization-user-data-source-query-input-filtersts"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceResponse](./models/organization-user-data-source-response.ts)
@@ -225,8 +225,6 @@ const revokeAccessTokenResponse = await carbon.dataSources.revokeAccessToken({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -401,8 +399,6 @@ Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform 
 
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./models/embedding-generators-nullable.ts)<a id="embedding_model-embeddinggeneratorsnullablemodelsembedding-generators-nullablets"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [DocumentResponseList](./models/document-response-list.ts)
@@ -443,8 +439,6 @@ const getEmbeddingsAndChunksResponse =
 ##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
 
 ##### include_vectors: `boolean`<a id="include_vectors-boolean"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -493,8 +487,6 @@ const uploadChunksAndEmbeddingsResponse =
 
 ##### overwrite_existing: `boolean`<a id="overwrite_existing-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -539,8 +531,6 @@ const createUserFileTagsResponse = await carbon.files.createUserFileTags({
 
 ##### organization_user_file_id: `number`<a id="organization_user_file_id-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -569,8 +559,6 @@ const deleteResponse = await carbon.files.delete({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### fileId: `number`<a id="fileid-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -603,8 +591,6 @@ const deleteFileTagsResponse = await carbon.files.deleteFileTags({
 ##### tags: `string`[]<a id="tags-string"></a>
 
 ##### organization_user_file_id: `number`<a id="organization_user_file_id-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -639,8 +625,6 @@ const deleteManyResponse = await carbon.files.deleteMany({
 
 ##### delete_non_synced_only: `boolean`<a id="delete_non_synced_only-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -670,8 +654,6 @@ const getParsedFileResponse = await carbon.files.getParsedFile({
 
 ##### fileId: `number`<a id="fileid-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [PresignedURLResponse](./models/presigned-urlresponse.ts)
@@ -700,8 +682,6 @@ const getRawFileResponse = await carbon.files.getRawFile({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### fileId: `number`<a id="fileid-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -791,8 +771,6 @@ const queryUserFilesResponse = await carbon.files.queryUserFiles({});
 
 ##### include_additional_files: `boolean`<a id="include_additional_files-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFilesV2](./models/user-files-v2.ts)
@@ -833,8 +811,6 @@ const queryUserFilesDeprecatedResponse =
 
 ##### include_additional_files: `boolean`<a id="include_additional_files-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -867,8 +843,6 @@ const resyncResponse = await carbon.files.resync({
 ##### chunk_size: `number`<a id="chunk_size-number"></a>
 
 ##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -964,8 +938,6 @@ Whether or not to prepend the file\'s name to chunks.
 
 Number of objects per chunk. For json files only.
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1020,8 +992,6 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1075,8 +1045,6 @@ const uploadTextResponse = await carbon.files.uploadText({
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./models/embedding-generators-nullable.ts)<a id="embedding_model-embeddinggeneratorsnullablemodelsembedding-generators-nullablets"></a>
 
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1151,8 +1119,6 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1190,8 +1156,6 @@ const createAwsIamUserResponse = await carbon.integrations.createAwsIamUser({
 ##### access_key: `string`<a id="access_key-string"></a>
 
 ##### access_key_secret: `string`<a id="access_key_secret-string"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1253,8 +1217,6 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/oauth_url` `POST`
@@ -1289,8 +1251,6 @@ const listConfluencePagesResponse =
 
 ##### parent_id: `string`<a id="parent_id-string"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [ListResponse](./models/list-response.ts)
@@ -1324,8 +1284,6 @@ const listDataSourceItemsResponse =
 ##### parent_id: `string`<a id="parent_id-string"></a>
 
 ##### pagination: [`EmbeddingsAndChunksQueryInputPagination`](./models/embeddings-and-chunks-query-input-pagination.ts)<a id="pagination-embeddingsandchunksqueryinputpaginationmodelsembeddings-and-chunks-query-input-paginationts"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1383,8 +1341,6 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1414,8 +1370,6 @@ const syncDataSourceItemsResponse =
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1470,8 +1424,6 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1491,10 +1443,10 @@ Once you have successfully connected your gmail account, you can choose which em
 using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
 For now, we support a limited set of keys listed below.
 
-label: Inbuilt Gmail labels, for example "Important" or a custom label you created.  
-after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
+<b>label</b>: Inbuilt Gmail labels, for example "Important" or a custom label you created.  
+<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
 You can also use them in combination to get emails from a certain period.  
-is: Can have the following values - starred, important, snoozed, and unread  
+<b>is</b>: Can have the following values - starred, important, snoozed, and unread  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 
@@ -1569,8 +1521,6 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1592,9 +1542,9 @@ we get messages from your inbox folder.
 Filters is a JSON object with key value pairs. It also supports AND and OR operations.
 For now, we support a limited set of keys listed below.
 
-category: Custom categories that you created in Outlook.  
-after or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
-You can also use them in combination to get emails from a certain period.   
+<b>category</b>: Custom categories that you created in Outlook.  
+<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
+<b>is</b>: Can have the following values: flagged   
 
 An example of a basic query with filters can be
 ```json
@@ -1681,8 +1631,6 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1730,8 +1678,6 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1784,8 +1730,6 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1871,8 +1815,6 @@ const toggleUserFeaturesResponse = await carbon.users.toggleUserFeatures({
 
 ##### value: `object`<a id="value-object"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1907,8 +1849,6 @@ const fetchUrlsResponse = await carbon.utilities.fetchUrls({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### url: `string`<a id="url-string"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1950,8 +1890,6 @@ const fetchYoutubeTranscriptsResponse =
 
 ##### raw: `boolean`<a id="raw-boolean"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🔄 Return<a id="🔄-return"></a>
 
 [YoutubeTranscriptResponse](./models/youtube-transcript-response.ts)
@@ -1987,8 +1925,6 @@ const processSitemapResponse = await carbon.utilities.processSitemap({
 
 ##### url: `string`<a id="url-string"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/process_sitemap` `GET`
@@ -2022,6 +1958,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   prepend_filename_to_chunks: false,
   html_tags_to_skip: [],
   css_classes_to_skip: [],
+  css_selectors_to_skip: [],
 });
 ```
 
@@ -2049,7 +1986,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
 
 ##### css_classes_to_skip: `string`[]<a id="css_classes_to_skip-string"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
+##### css_selectors_to_skip: `string`[]<a id="css_selectors_to_skip-string"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2074,31 +2011,27 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const scrapeWebResponse = await carbon.utilities.scrapeWeb({
-  requestBody: [
-    {
-      url: "url_example",
-      recursion_depth: 3,
-      max_pages_to_scrape: 100,
-      chunk_size: 1500,
-      chunk_overlap: 20,
-      skip_embedding_generation: false,
-      enable_auto_sync: false,
-      generate_sparse_vectors: false,
-      prepend_filename_to_chunks: false,
-      html_tags_to_skip: [],
-      css_classes_to_skip: [],
-    },
-  ],
-  customerId: "string_example",
-});
+const scrapeWebResponse = await carbon.utilities.scrapeWeb([
+  {
+    url: "url_example",
+    recursion_depth: 3,
+    max_pages_to_scrape: 100,
+    chunk_size: 1500,
+    chunk_overlap: 20,
+    skip_embedding_generation: false,
+    enable_auto_sync: false,
+    generate_sparse_vectors: false,
+    prepend_filename_to_chunks: false,
+    html_tags_to_skip: [],
+    css_classes_to_skip: [],
+    css_selectors_to_skip: [],
+  },
+]);
 ```
 
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
-##### customerId: `string`<a id="customerid-string"></a>
-
-##### requestBody: [`WebscrapeRequest`](./models/webscrape-request.ts)[]<a id="requestbody-webscraperequestmodelswebscrape-requestts"></a>
+[`WebscrapeRequest`](./models/webscrape-request.ts)[]
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2142,8 +2075,6 @@ const searchUrlsResponse = await carbon.utilities.searchUrls({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### query: `string`<a id="query-string"></a>
-
-##### customerId: `string`<a id="customerid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
