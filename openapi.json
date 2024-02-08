@@ -509,7 +509,7 @@
           "Integrations"
         ],
         "summary": "Gmail Sync",
-        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\nlabel: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \nafter or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \nis: Can have the following values - starred, important, snoozed, and unread  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
+        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \n<b>is</b>: Can have the following values - starred, important, snoozed, and unread  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
         "operationId": "gmail_sync_integrations_gmail_sync_post",
         "parameters": [
           {
@@ -632,7 +632,7 @@
           "Integrations"
         ],
         "summary": "Outlook Sync",
-        "description": "Once you have successfully connected your Outlook account, you can choose which emails to sync with us\nusing the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default\nwe get messages from your inbox folder.  \nFilters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\ncategory: Custom categories that you created in Outlook.  \nafter or before: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.   \n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the category \"Test\".  \n\nSpecifying a custom folder in the same query\n```json\n{\n    \"folder\": \"Folder Name\",\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Test\"\n                    },\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that have either Personal or Test as category. \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
+        "description": "Once you have successfully connected your Outlook account, you can choose which emails to sync with us\nusing the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default\nwe get messages from your inbox folder.  \nFilters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>category</b>: Custom categories that you created in Outlook.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    \n<b>is</b>: Can have the following values: flagged   \n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the category \"Test\".  \n\nSpecifying a custom folder in the same query\n```json\n{\n    \"folder\": \"Folder Name\",\n    \"filters\": {\n            \"key\": \"category\",\n            \"value\": \"Test\"\n        }\n}\n```\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"category\",\n                        \"value\": \"Test\"\n                    },\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that have either Personal or Test as category. \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
         "operationId": "outlook_sync_integrations_outlook_sync_post",
         "parameters": [
           {
@@ -3227,7 +3227,12 @@
           "OPENAI",
           "AZURE_OPENAI",
           "COHERE_MULTILINGUAL_V3",
-          "VERTEX_MULTIMODAL"
+          "VERTEX_MULTIMODAL",
+          "OPENAI_ADA_LARGE_256",
+          "OPENAI_ADA_LARGE_1024",
+          "OPENAI_ADA_LARGE_3072",
+          "OPENAI_ADA_SMALL_512",
+          "OPENAI_ADA_SMALL_1536"
         ],
         "title": "EmbeddingGenerators"
       },
@@ -3558,6 +3563,7 @@
           "BOX",
           "ZENDESK",
           "FRESHDESK",
+          "WEB_SCRAPE",
           "JPG",
           "JPG",
           "PNG",
@@ -5739,6 +5745,21 @@
             ],
             "title": "Css Classes To Skip",
             "default": []
+          },
+          "css_selectors_to_skip": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Css Selectors To Skip",
+            "default": []
           }
         },
         "type": "object",
@@ -5880,7 +5901,12 @@
         "enum": [
           "OPENAI",
           "AZURE_OPENAI",
-          "COHERE_MULTILINGUAL_V3"
+          "COHERE_MULTILINGUAL_V3",
+          "OPENAI_ADA_LARGE_256",
+          "OPENAI_ADA_LARGE_1024",
+          "OPENAI_ADA_LARGE_3072",
+          "OPENAI_ADA_SMALL_512",
+          "OPENAI_ADA_SMALL_1536"
         ],
         "title": "TextEmbeddingGenerators"
       },
@@ -6767,6 +6793,21 @@
               }
             ],
             "title": "Css Classes To Skip",
+            "default": []
+          },
+          "css_selectors_to_skip": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Css Selectors To Skip",
             "default": []
           }
         },
