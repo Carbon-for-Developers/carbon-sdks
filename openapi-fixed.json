@@ -18,12 +18,12 @@
   ],
   "tags": [
     {
-      "description": "\n---\nUtilize these API endpoints to manage user documents. Whether the data is sourced from third-party integrations, web pages, or file uploads, Carbon maintains consistency by standardizing all documents as \"files\" within our data model.\n\nCarbon supports the following file formats:\n\n### Text\n- `pdf`\n- `xlsx`\n- `csv`\n- `docx`\n- `txt`\n- `md`\n- `rtf`\n- `tsv`\n- `pptx`\n- `json` (Coming Soon)\n\n### Audio\n- `mp3`\n- `mp4`\n- `mp2`\n- `aac`\n- `wav`\n- `flac`\n- `pcm`\n- `m4a`\n- `ogg`\n- `opus`\n- `webm`\n\n### Images\n- `jpg`\n- `png`\n",
-      "name": "Files"
-    },
-    {
       "description": "\nEmploy these endpoints when syncing files from external data sources outside of Carbon Connect.\n",
       "name": "Integrations"
+    },
+    {
+      "description": "\n---\nUtilize these API endpoints to manage user documents. Whether the data is sourced from third-party integrations, web pages, or file uploads, Carbon maintains consistency by standardizing all documents as \"files\" within our data model.\n\nCarbon supports the following file formats:\n\n### Text\n- `pdf`\n- `xlsx`\n- `csv`\n- `docx`\n- `txt`\n- `md`\n- `rtf`\n- `tsv`\n- `pptx`\n- `json` (Coming Soon)\n\n### Audio\n- `mp3`\n- `mp4`\n- `mp2`\n- `aac`\n- `wav`\n- `flac`\n- `pcm`\n- `m4a`\n- `ogg`\n- `opus`\n- `webm`\n\n### Images\n- `jpg`\n- `png`\n",
+      "name": "Files"
     },
     {
       "description": "\n---\nLeverage these `Utilities` endpoints to execute a wide range of helpful actions, including initiating web scraping, processing sitemaps, retrieving URLs from a specific webpage, obtaining relevant URLs based on a search query, fetching YouTube video transcripts, and many other functionalities.\n",
@@ -678,7 +678,7 @@
             ]
           }
         ],
-        "description": "Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. \nOnce you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will \ntrigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate \ndata with the synced articles or modify the sync behavior.",
+        "description": "Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.\nMake sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.\nOnce you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will \ntrigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate \ndata with the synced articles or modify the sync behavior.",
         "requestBody": {
           "required": true,
           "content": {
@@ -696,6 +696,94 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/outlook/user_folders": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Outlook Folders",
+        "operationId": "Integrations_listFolders",
+        "security": [
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
+            ]
+          }
+        ],
+        "description": "After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes \nboth system folders like \"inbox\" and user created folders.",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationsListFoldersResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/gmail/user_labels": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Gmail Labels",
+        "operationId": "Integrations_listLabels",
+        "security": [
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
+            ]
+          }
+        ],
+        "description": "After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels\nwill have the type \"user\" and Gmail's default labels will have the type \"system\"",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationsListLabelsResponse"
                 }
               }
             }
@@ -5803,6 +5891,20 @@
         }
       },
       "IntegrationsGetOauthUrlResponse": {
+        "type": "object",
+        "properties": {
+        },
+        "example": {
+        }
+      },
+      "IntegrationsListFoldersResponse": {
+        "type": "object",
+        "properties": {
+        },
+        "example": {
+        }
+      },
+      "IntegrationsListLabelsResponse": {
         "type": "object",
         "properties": {
         },

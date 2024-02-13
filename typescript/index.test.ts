@@ -48,4 +48,8 @@ describe("carbon-typescript-sdk", () => {
     });
     console.log(file.data);
   });
+  it("list folders", async () => {
+    const folders = await carbon.integrations.listFolders();
+    console.log(folders.data);
+  });
 });

@@ -18,12 +18,12 @@ securitySchemeOverride:
       type: apiKey
       name: authorization
       in: header
-      x-konfig-prefix: "Bearer "
+      x-konfig-prefix: 'Bearer '
     accessToken:
       type: apiKey
       name: authorization
       in: header
-      x-konfig-prefix: "Token "
+      x-konfig-prefix: 'Token '
     customerId:
       type: apiKey
       name: customer-id
@@ -40,7 +40,7 @@ generators:
       userId: konfig-dev
       repoId: carbon-sdks/tree/main/python
   typescript:
-    version: 0.1.1
+    version: 0.1.2
     npmName: carbon-typescript-sdk
     outputDirectory: typescript
     clientName: Carbon

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.1-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.1)
+[![npm](https://img.shields.io/badge/npm-v0.1.2-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.2)
 
 </div>
 
@@ -42,6 +42,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.getOauthUrl`](#carbonintegrationsgetoauthurl)
   * [`carbon.integrations.listConfluencePages`](#carbonintegrationslistconfluencepages)
   * [`carbon.integrations.listDataSourceItems`](#carbonintegrationslistdatasourceitems)
+  * [`carbon.integrations.listFolders`](#carbonintegrationslistfolders)
+  * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
   * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
   * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
@@ -1080,7 +1082,8 @@ const checkResponse = await carbon.health.check();
 
 ### `carbon.integrations.connectFreshdesk`<a id="carbonintegrationsconnectfreshdesk"></a>
 
-Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. 
+Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.
+Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.
 Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will 
 trigger an automatic sync of the articles in your "solutions" tab. Additional parameters below can be used to associate 
 data with the synced articles or modify the sync behavior.
@@ -1292,6 +1295,46 @@ const listDataSourceItemsResponse =
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/items/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.listFolders`<a id="carbonintegrationslistfolders"></a>
+
+After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
+both system folders like "inbox" and user created folders.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listFoldersResponse = await carbon.integrations.listFolders();
+```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/user_folders` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.listLabels`<a id="carbonintegrationslistlabels"></a>
+
+After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
+will have the type "user" and Gmail's default labels will have the type "system"
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listLabelsResponse = await carbon.integrations.listLabels();
+```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gmail/user_labels` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
