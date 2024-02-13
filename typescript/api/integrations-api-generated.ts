@@ -72,7 +72,7 @@ import { requestBeforeHook } from '../requestBeforeHook';
 export const IntegrationsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {FreshDeskConnectRequest} freshDeskConnectRequest 
          * @param {*} [options] Override http request option.
@@ -314,6 +314,90 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 configuration
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listDataSourceItemsRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+         * @summary Outlook Folders
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listFolders: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/outlook/user_folders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
+         * @summary Gmail Labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listLabels: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/gmail/user_labels`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
+            });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -682,7 +766,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = IntegrationsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -734,6 +818,26 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          */
         async listDataSourceItems(requestParameters: IntegrationsApiListDataSourceItemsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListDataSourceItemsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(requestParameters, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+         * @summary Outlook Folders
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listFolders(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listFolders(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
+         * @summary Gmail Labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listLabels(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listLabels(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -824,7 +928,7 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
     const localVarFp = IntegrationsApiFp(configuration)
     return {
         /**
-         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+         * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -872,6 +976,24 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         listDataSourceItems(requestParameters: IntegrationsApiListDataSourceItemsRequest, options?: AxiosRequestConfig): AxiosPromise<ListDataSourceItemsResponse> {
             return localVarFp.listDataSourceItems(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+         * @summary Outlook Folders
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listFolders(options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listFolders(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
+         * @summary Gmail Labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listLabels(options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listLabels(options).then((request) => request(axios, basePath));
         },
         /**
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
@@ -1062,7 +1184,7 @@ export type IntegrationsApiSyncS3FilesRequest = {
  */
 export class IntegrationsApiGenerated extends BaseAPI {
     /**
-     * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.  Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+     * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
      * @summary Freshdesk Connect
      * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1119,6 +1241,28 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public listDataSourceItems(requestParameters: IntegrationsApiListDataSourceItemsRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).listDataSourceItems(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+     * @summary Outlook Folders
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listFolders(options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listFolders(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
+     * @summary Gmail Labels
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listLabels(options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listLabels(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

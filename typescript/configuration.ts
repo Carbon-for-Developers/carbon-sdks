@@ -86,6 +86,7 @@ export class Configuration {
 
     constructor(param: ConfigurationParameters = {}) {
 
+        
         if (this.apiKey === undefined) {
             this.apiKey = {}
             if (param.accessToken !== undefined)
@@ -95,6 +96,7 @@ export class Configuration {
             if (param.customerId !== undefined)
                 this.apiKey["customerId"] = param.customerId
         }
+        
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
         this.userAgent = param.userAgent === undefined ? "Konfig/0.1.1/typescript" : param.userAgent;
