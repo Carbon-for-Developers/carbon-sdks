@@ -694,7 +694,7 @@
           "Integrations"
         ],
         "summary": "Freshdesk Connect",
-        "description": "Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. \nOnce you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will \ntrigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate \ndata with the synced articles or modify the sync behavior.",
+        "description": "Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.\nMake sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.\nOnce you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will \ntrigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate \ndata with the synced articles or modify the sync behavior.",
         "operationId": "freshdesk_connect_integrations_freshdesk_post",
         "parameters": [
           {
@@ -734,6 +734,106 @@
                 "schema": {
                   "$ref": "#/components/schemas/GenericSuccessResponse"
                 }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/outlook/user_folders": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Outlook Folders",
+        "description": "After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes \nboth system folders like \"inbox\" and user created folders.",
+        "operationId": "outlook_folders_integrations_outlook_user_folders_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Customer-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/gmail/user_labels": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Gmail Labels",
+        "description": "After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels\nwill have the type \"user\" and Gmail's default labels will have the type \"system\"",
+        "operationId": "gmail_labels_integrations_gmail_user_labels_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Customer-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           },
