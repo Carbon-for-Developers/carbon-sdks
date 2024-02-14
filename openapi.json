@@ -5741,8 +5741,7 @@
                 "type": "null"
               }
             ],
-            "title": "Max Pages To Scrape",
-            "default": 100
+            "title": "Max Pages To Scrape"
           },
           "chunk_size": {
             "anyOf": [
