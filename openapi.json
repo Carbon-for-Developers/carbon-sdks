@@ -5741,8 +5741,7 @@
                 "type": "null"
               }
             ],
-            "title": "Max Pages To Scrape",
-            "default": 100
+            "title": "Max Pages To Scrape"
           },
           "chunk_size": {
             "anyOf": [
@@ -6909,6 +6908,14 @@
             ],
             "title": "Css Selectors To Skip",
             "default": []
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
           }
         },
         "type": "object",
