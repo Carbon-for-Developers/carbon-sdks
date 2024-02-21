@@ -3054,6 +3054,11 @@
             "type": "boolean",
             "title": "Delete Non Synced Only",
             "default": false
+          },
+          "send_webhook": {
+            "type": "boolean",
+            "title": "Send Webhook",
+            "default": false
           }
         },
         "type": "object",
@@ -3887,6 +3892,7 @@
           },
           "k": {
             "type": "integer",
+            "minimum": 1,
             "title": "K",
             "description": "Number of related chunks to return."
           },
@@ -5741,8 +5747,7 @@
                 "type": "null"
               }
             ],
-            "title": "Max Pages To Scrape",
-            "default": 100
+            "title": "Max Pages To Scrape"
           },
           "chunk_size": {
             "anyOf": [
@@ -5860,6 +5865,14 @@
             ],
             "title": "Css Selectors To Skip",
             "default": []
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
           }
         },
         "type": "object",
@@ -6909,6 +6922,14 @@
             ],
             "title": "Css Selectors To Skip",
             "default": []
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
           }
         },
         "type": "object",
