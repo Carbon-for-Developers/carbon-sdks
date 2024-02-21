@@ -1256,12 +1256,8 @@
             "schema": {
               "title": "Embedding Model",
               "description": "Embedding model that will be used to embed file chunks.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/TextEmbeddingGenerators"
-                }
-              ],
-              "default": "OPENAI"
+              "default": "OPENAI",
+              "$ref": "#/components/schemas/TextEmbeddingGenerators"
             }
           },
           {
@@ -3019,31 +3015,19 @@
         "title": "EmbeddingsAndChunksQueryInput",
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
             "default": {
               "limit": 10,
               "offset": 0
-            }
+            },
+            "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns"
-              }
-            ],
-            "default": "updated_at"
+            "default": "updated_at",
+            "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
-            "default": "asc"
+            "default": "asc",
+            "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
             "$ref": "#/components/schemas/EmbeddingsAndChunksFilters"
@@ -3598,12 +3582,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
-            "default": "OPENAI"
+            "default": "OPENAI",
+            "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -3667,15 +3647,11 @@
             "nullable": true
           },
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
             "default": {
               "limit": 10,
               "offset": 0
-            }
+            },
+            "$ref": "#/components/schemas/Pagination"
           }
         },
         "type": "object",
@@ -4025,40 +4001,24 @@
         "title": "OrganizationUserDataSourceQueryInput",
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
             "default": {
               "limit": 10,
               "offset": 0
-            }
+            },
+            "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns"
-              }
-            ],
-            "default": "updated_at"
+            "default": "updated_at",
+            "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
-            "default": "asc"
+            "default": "asc",
+            "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserDataSourceFilters"
-              }
-            ],
             "default": {
-            }
+            },
+            "$ref": "#/components/schemas/OrganizationUserDataSourceFilters"
           }
         },
         "type": "object"
@@ -4284,40 +4244,24 @@
         "title": "OrganizationUserFilesToSyncQueryInput",
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
             "default": {
               "limit": 10,
               "offset": 0
-            }
+            },
+            "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
-              }
-            ],
-            "default": "updated_at"
+            "default": "updated_at",
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
-            "default": "asc"
+            "default": "asc",
+            "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-              }
-            ],
             "default": {
-            }
+            },
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
           },
           "include_raw_file": {
             "title": "Include Raw File",
@@ -4374,12 +4318,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
-            "default": "OPENAI"
+            "default": "OPENAI",
+            "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -4461,12 +4401,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
-            "default": "OPENAI"
+            "default": "OPENAI",
+            "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -4623,12 +4559,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
-            "default": "OPENAI"
+            "default": "OPENAI",
+            "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -4967,12 +4899,8 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
-            "default": "OPENAI"
+            "default": "OPENAI",
+            "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -5409,42 +5337,26 @@
         "title": "WebhookQueryInput",
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
             "default": {
               "limit": 10,
               "offset": 0
-            }
+            },
+            "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WebhookOrderByColumns"
-              }
-            ],
-            "default": "updated_at"
+            "default": "updated_at",
+            "$ref": "#/components/schemas/WebhookOrderByColumns"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
-            "default": "asc"
+            "default": "asc",
+            "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WebhookFilters"
-              }
-            ],
             "default": {
               "ids": [
               ]
-            }
+            },
+            "$ref": "#/components/schemas/WebhookFilters"
           }
         },
         "type": "object"

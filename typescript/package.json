@@ -1,6 +1,6 @@
 {
   "name": "carbon-typescript-sdk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Client for Carbon",
   "author": "Konfig",
   "engines": {
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/konfig-dev/carbon-sdks.git",
+    "url": "https://github.com/Carbon-for-Developers/carbon-sdks.git",
     "directory": "typescript"
   },
-  "homepage": "https://github.com/konfig-dev/carbon-sdks/tree/HEAD/typescript#readme",
+  "homepage": "https://github.com/Carbon-for-Developers/carbon-sdks/tree/HEAD/typescript#readme",
   "keywords": [
     "axios",
     "typescript",
