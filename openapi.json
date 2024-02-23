@@ -850,6 +850,187 @@
         }
       }
     },
+    "/integrations/gitbook": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Gitbook Connect",
+        "description": "You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user \ngenerating access token so make sure you have the permission to access spaces you will be syncing. \nRefer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you\nneed to specify the name of organization you will be syncing data from.",
+        "operationId": "gitbook_connect_integrations_gitbook_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Customer-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GitbookConnectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/gitbook/spaces": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Gitbook Spaces",
+        "description": "After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.",
+        "operationId": "gitbook_spaces_integrations_gitbook_spaces_get",
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Data Source Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Customer-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/gitbook/sync": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Gitbook Sync",
+        "description": "You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate \ndata with the synced pages or modify the sync behavior.",
+        "operationId": "gitbook_sync_integrations_gitbook_sync_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "customer-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Customer-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GitbookSyncRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -3004,6 +3185,7 @@
           "WEB_SCRAPE",
           "RSS_FEED",
           "FRESHDESK",
+          "GITBOOK",
           "JPG",
           "PNG",
           "MP3",
@@ -3053,6 +3235,11 @@
           "delete_non_synced_only": {
             "type": "boolean",
             "title": "Delete Non Synced Only",
+            "default": false
+          },
+          "send_webhook": {
+            "type": "boolean",
+            "title": "Send Webhook",
             "default": false
           }
         },
@@ -3573,6 +3760,17 @@
             ],
             "title": "Item Type"
           },
+          "root_external_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Root External Id"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -3600,6 +3798,7 @@
           "organization_user_file_to_sync_id",
           "parent_external_id",
           "item_type",
+          "root_external_id",
           "created_at",
           "updated_at"
         ],
@@ -3664,6 +3863,7 @@
           "ZENDESK",
           "FRESHDESK",
           "WEB_SCRAPE",
+          "GITBOOK",
           "JPG",
           "JPG",
           "PNG",
@@ -3887,6 +4087,7 @@
           },
           "k": {
             "type": "integer",
+            "minimum": 1,
             "title": "K",
             "description": "Number of related chunks to return."
           },
@@ -4109,6 +4310,126 @@
           "k"
         ],
         "title": "GetEmbeddingDocumentsBody"
+      },
+      "GitbookConnectRequest": {
+        "properties": {
+          "organization": {
+            "type": "string",
+            "title": "Organization"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization",
+          "access_token"
+        ],
+        "title": "GitbookConnectRequest"
+      },
+      "GitbookSyncRequest": {
+        "properties": {
+          "space_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Space Ids"
+          },
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "space_ids",
+          "data_source_id"
+        ],
+        "title": "GitbookSyncRequest"
       },
       "GmailSyncInput": {
         "properties": {
@@ -5039,6 +5360,17 @@
               }
             ],
             "title": "Embedding Generators"
+          },
+          "root_files_only": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Root Files Only"
           }
         },
         "type": "object",
@@ -5156,7 +5488,8 @@
                 "type": "null"
               }
             ],
-            "title": "Tags"
+            "title": "Tags",
+            "default": {}
           },
           "chunk_size": {
             "anyOf": [
@@ -5741,8 +6074,7 @@
                 "type": "null"
               }
             ],
-            "title": "Max Pages To Scrape",
-            "default": 100
+            "title": "Max Pages To Scrape"
           },
           "chunk_size": {
             "anyOf": [
@@ -5860,6 +6192,14 @@
             ],
             "title": "Css Selectors To Skip",
             "default": []
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
           }
         },
         "type": "object",
@@ -6909,6 +7249,14 @@
             ],
             "title": "Css Selectors To Skip",
             "default": []
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
           }
         },
         "type": "object",
