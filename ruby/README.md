@@ -16,9 +16,9 @@ gem 'carbon', '~> 1.0.0'
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 
 begin

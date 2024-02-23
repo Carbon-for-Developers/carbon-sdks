@@ -28,9 +28,9 @@ A tag is a key-value pair that can be added to a file. This pair can then be use
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 tags = {
         "key": "string_example",
@@ -92,9 +92,9 @@ Delete File Endpoint
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file_id = 1
 
@@ -148,9 +148,9 @@ Delete File Tags
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 tags = [
         "string_example"
@@ -212,9 +212,9 @@ Delete Files Endpoint
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file_ids = [
         1
@@ -286,9 +286,9 @@ This route is deprecated. Use `/user_files_v2` instead.
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file_id = 1
 
@@ -344,9 +344,9 @@ This route is deprecated. Use `/user_files_v2` instead.
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file_id = 1
 
@@ -402,9 +402,9 @@ For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 pagination = {
         "limit" => 10,
@@ -492,9 +492,9 @@ This route is deprecated. Use `/user_files_v2` instead.
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 pagination = {
         "limit" => 10,
@@ -580,9 +580,9 @@ Resync File
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file_id = 1
 chunk_size = 1
@@ -646,9 +646,9 @@ This endpoint is used to directly upload local files to Carbon. The `POST` reque
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 file = open('/path/to/file', 'rb')
 chunk_size = 1
@@ -748,9 +748,9 @@ Create Upload File From Url
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 url = "string_example"
 file_name = "string_example"
@@ -846,9 +846,9 @@ Carbon supports multiple models for use in generating embeddings for files. For 
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 contents = "string_example"
 name = "string_example"

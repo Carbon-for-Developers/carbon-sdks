@@ -19,9 +19,9 @@ For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 query = "a"
 k = 1
@@ -151,9 +151,9 @@ Retrieve Embeddings And Content
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 filters = {
         "user_file_id" => 1,
@@ -235,9 +235,9 @@ Upload Chunks And Embeddings
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 embedding_model = "OPENAI"
 chunks_and_embeddings = [

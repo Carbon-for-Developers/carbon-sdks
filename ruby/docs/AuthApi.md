@@ -16,9 +16,9 @@ Get Access Token
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 
 begin
@@ -66,7 +66,7 @@ Returns whether or not the organization is white labeled and which integrations 
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
 
 
 begin

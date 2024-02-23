@@ -30,9 +30,9 @@ Refer this article to obtain an API key https://support.freshdesk.com/en/support
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 domain = "string_example"
 api_key = "string_example"
@@ -120,9 +120,9 @@ Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>R
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 access_key = "string_example"
 access_key_secret = "string_example"
@@ -180,9 +180,9 @@ Get Oauth Url
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 service = "GOOGLE_DRIVE"
 tags = None
@@ -290,9 +290,9 @@ To begin listing a user's Confluence pages, at least a `data_source_id` of a con
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 data_source_id = 1
 parent_id = "string_example"
@@ -350,9 +350,9 @@ List Data Source Items
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 data_source_id = 1
 parent_id = "string_example"
@@ -422,9 +422,9 @@ After connecting your Outlook account, you can use this endpoint to list all of 
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 
 begin
@@ -472,9 +472,9 @@ After connecting your Gmail account, you can use this endpoint to list all of yo
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 
 begin
@@ -522,9 +522,9 @@ After listing pages in a user's Confluence account, the set of selected page `id
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 data_source_id = 1
 ids = [
@@ -618,9 +618,9 @@ Sync Data Source Items
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 data_source_id = 1
 
@@ -674,9 +674,9 @@ Sync Files
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 data_source_id = 1
 ids = [
@@ -772,9 +772,9 @@ Once you have successfully connected your gmail account, you can choose which em
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 filters = {}
 tags = {}
@@ -858,9 +858,9 @@ Once you have successfully connected your Outlook account, you can choose which 
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 filters = {}
 tags = {}
@@ -946,9 +946,9 @@ Rss Feed
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 url = "string_example"
 tags = {}
@@ -1032,9 +1032,9 @@ After optionally loading the items via /integrations/items/sync and integrations
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
 
 ids = [
         {

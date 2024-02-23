@@ -17,7 +17,7 @@ Add Webhook Url
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
 
 url = "string_example"
 
@@ -71,7 +71,7 @@ Delete Webhook Url
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
 
 webhook_id = 1
 
@@ -125,7 +125,7 @@ Webhook Urls
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
 
 pagination = {
         "limit" => 10,

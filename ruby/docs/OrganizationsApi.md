@@ -15,7 +15,7 @@ Get Organization
 ```ruby
 require 'carbon'
 
-Carbon. = 'YOUR API KEY'
+Carbon.access_token = 'YOUR API KEY'
 
 
 begin
