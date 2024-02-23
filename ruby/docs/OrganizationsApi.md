@@ -14,13 +14,14 @@ Get Organization
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Get Organization
-  result = Carbon::Organizations.get
+  result = carbon.organizations.get
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Organizations.get: #{e}"

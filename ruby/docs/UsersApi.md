@@ -15,16 +15,17 @@ User Endpoint
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 customer_id = "string_example"
 
 begin
   # User Endpoint
-  result = Carbon::Users.get(
-                                customer_id: customer_id,
-                              )
+  result = carbon.users.get(
+                               customer_id: customer_id,
+                             )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Users.get: #{e}"
@@ -69,20 +70,21 @@ Toggle User Features
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 configuration_key_name = "string_example"
 value = {}
 
 begin
   # Toggle User Features
-  result = Carbon::Users.toggle_user_features(
-                                                 configuration_key_name: configuration_key_name,
-                                                 value: value,
-                                               )
+  result = carbon.users.toggle_user_features(
+                                                configuration_key_name: configuration_key_name,
+                                                value: value,
+                                              )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Users.toggle_user_features: #{e}"

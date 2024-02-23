@@ -21,18 +21,19 @@ Extracts all URLs from a webpage.   Args:     url (str): URL of the webpage  Ret
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "url_example"
 
 begin
   # Fetch Urls
-  result = Carbon::Utilities.fetch_urls(
-                                           url: url,
-                                         )
+  result = carbon.utilities.fetch_urls(
+                                          url: url,
+                                        )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.fetch_urls: #{e}"
@@ -79,20 +80,21 @@ Fetches english transcripts from YouTube videos.  Args:     id (str): The ID of 
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 id = "id_example"
 raw = False
 
 begin
   # Fetch Youtube Transcripts
-  result = Carbon::Utilities.fetch_youtube_transcripts(
-                                                          id: id,
-                                                          raw: raw,
-                                                        )
+  result = carbon.utilities.fetch_youtube_transcripts(
+                                                         id: id,
+                                                         raw: raw,
+                                                       )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.fetch_youtube_transcripts: #{e}"
@@ -142,18 +144,19 @@ Retrieves all URLs from a sitemap, which can subsequently be utilized with our `
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "url_example"
 
 begin
   # Sitemap
-  result = Carbon::Utilities.process_sitemap(
-                                                url: url,
-                                              )
+  result = carbon.utilities.process_sitemap(
+                                               url: url,
+                                             )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.process_sitemap: #{e}"
@@ -200,10 +203,11 @@ Extracts all URLs from a sitemap and performs a web scrape on each of them.  Arg
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "string_example"
 tags = {
@@ -222,20 +226,20 @@ css_selectors_to_skip = []
 
 begin
   # Scrape Sitemap
-  result = Carbon::Utilities.scrape_sitemap(
-                                               url: url,
-                                               tags: tags,
-                                               max_pages_to_scrape: max_pages_to_scrape,
-                                               chunk_size: chunk_size,
-                                               chunk_overlap: chunk_overlap,
-                                               skip_embedding_generation: skip_embedding_generation,
-                                               enable_auto_sync: enable_auto_sync,
-                                               generate_sparse_vectors: generate_sparse_vectors,
-                                               prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                               html_tags_to_skip: html_tags_to_skip,
-                                               css_classes_to_skip: css_classes_to_skip,
-                                               css_selectors_to_skip: css_selectors_to_skip,
-                                             )
+  result = carbon.utilities.scrape_sitemap(
+                                              url: url,
+                                              tags: tags,
+                                              max_pages_to_scrape: max_pages_to_scrape,
+                                              chunk_size: chunk_size,
+                                              chunk_overlap: chunk_overlap,
+                                              skip_embedding_generation: skip_embedding_generation,
+                                              enable_auto_sync: enable_auto_sync,
+                                              generate_sparse_vectors: generate_sparse_vectors,
+                                              prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                              html_tags_to_skip: html_tags_to_skip,
+                                              css_classes_to_skip: css_classes_to_skip,
+                                              css_selectors_to_skip: css_selectors_to_skip,
+                                            )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.scrape_sitemap: #{e}"
@@ -306,10 +310,11 @@ Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 body = [
         {
@@ -330,9 +335,9 @@ body = [
 
 begin
   # Web Scrape
-  result = Carbon::Utilities.scrape_web(
-                                           body: body,
-                                         )
+  result = carbon.utilities.scrape_web(
+                                          body: body,
+                                        )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.scrape_web: #{e}"
@@ -394,18 +399,19 @@ Perform a web search and obtain a list of relevant URLs.  As an illustration, wh
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 query = "query_example"
 
 begin
   # Search Urls
-  result = Carbon::Utilities.search_urls(
-                                            query: query,
-                                          )
+  result = carbon.utilities.search_urls(
+                                           query: query,
+                                         )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Utilities.search_urls: #{e}"

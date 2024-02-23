@@ -18,10 +18,11 @@ For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 query = "a"
 k = 1
@@ -52,22 +53,22 @@ embedding_model = "OPENAI"
 
 begin
   # Embeddings
-  result = Carbon::Embeddings.get_documents(
-                                               query: query,
-                                               k: k,
-                                               tags: tags,
-                                               query_vector: query_vector,
-                                               file_ids: file_ids,
-                                               parent_file_ids: parent_file_ids,
-                                               tags_v2: tags_v2,
-                                               include_tags: include_tags,
-                                               include_vectors: include_vectors,
-                                               include_raw_file: include_raw_file,
-                                               hybrid_search: hybrid_search,
-                                               hybrid_search_tuning_parameters: hybrid_search_tuning_parameters,
-                                               media_type: media_type,
-                                               embedding_model: embedding_model,
-                                             )
+  result = carbon.embeddings.get_documents(
+                                              query: query,
+                                              k: k,
+                                              tags: tags,
+                                              query_vector: query_vector,
+                                              file_ids: file_ids,
+                                              parent_file_ids: parent_file_ids,
+                                              tags_v2: tags_v2,
+                                              include_tags: include_tags,
+                                              include_vectors: include_vectors,
+                                              include_raw_file: include_raw_file,
+                                              hybrid_search: hybrid_search,
+                                              hybrid_search_tuning_parameters: hybrid_search_tuning_parameters,
+                                              media_type: media_type,
+                                              embedding_model: embedding_model,
+                                            )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Embeddings.get_documents: #{e}"
@@ -150,10 +151,11 @@ Retrieve Embeddings And Content
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 filters = {
         "user_file_id" => 1,
@@ -169,13 +171,13 @@ include_vectors = False
 
 begin
   # Retrieve Embeddings And Content
-  result = Carbon::Embeddings.get_embeddings_and_chunks(
-                                                           filters: filters,
-                                                           pagination: pagination,
-                                                           order_by: order_by,
-                                                           order_dir: order_dir,
-                                                           include_vectors: include_vectors,
-                                                         )
+  result = carbon.embeddings.get_embeddings_and_chunks(
+                                                          filters: filters,
+                                                          pagination: pagination,
+                                                          order_by: order_by,
+                                                          order_dir: order_dir,
+                                                          include_vectors: include_vectors,
+                                                        )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Embeddings.get_embeddings_and_chunks: #{e}"
@@ -234,10 +236,11 @@ Upload Chunks And Embeddings
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 embedding_model = "OPENAI"
 chunks_and_embeddings = [
@@ -258,11 +261,11 @@ overwrite_existing = False
 
 begin
   # Upload Chunks And Embeddings
-  result = Carbon::Embeddings.upload_chunks_and_embeddings(
-                                                              embedding_model: embedding_model,
-                                                              chunks_and_embeddings: chunks_and_embeddings,
-                                                              overwrite_existing: overwrite_existing,
-                                                            )
+  result = carbon.embeddings.upload_chunks_and_embeddings(
+                                                             embedding_model: embedding_model,
+                                                             chunks_and_embeddings: chunks_and_embeddings,
+                                                             overwrite_existing: overwrite_existing,
+                                                           )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Embeddings.upload_chunks_and_embeddings: #{e}"

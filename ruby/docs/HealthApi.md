@@ -14,12 +14,13 @@ Health
 
 ```ruby
 require 'carbon'
-
+configuration = Carbon::Configuration.new
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Health
-  result = Carbon::Health.check
+  result = carbon.health.check
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Health.check: #{e}"

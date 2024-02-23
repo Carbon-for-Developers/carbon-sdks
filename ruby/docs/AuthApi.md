@@ -15,15 +15,16 @@ Get Access Token
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Get Access Token
-  result = Carbon::Auth.get_access_token
+  result = carbon.auth.get_access_token
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Auth.get_access_token: #{e}"
@@ -65,13 +66,14 @@ Returns whether or not the organization is white labeled and which integrations 
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Get White Labeling
-  result = Carbon::Auth.get_white_labeling
+  result = carbon.auth.get_white_labeling
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Auth.get_white_labeling: #{e}"

@@ -29,10 +29,11 @@ Refer this article to obtain an API key https://support.freshdesk.com/en/support
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 domain = "string_example"
 api_key = "string_example"
@@ -46,17 +47,17 @@ prepend_filename_to_chunks = False
 
 begin
   # Freshdesk Connect
-  result = Carbon::Integrations.connect_freshdesk(
-                                                     domain: domain,
-                                                     api_key: api_key,
-                                                     tags: tags,
-                                                     chunk_size: chunk_size,
-                                                     chunk_overlap: chunk_overlap,
-                                                     skip_embedding_generation: skip_embedding_generation,
-                                                     embedding_model: embedding_model,
-                                                     generate_sparse_vectors: generate_sparse_vectors,
-                                                     prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                                   )
+  result = carbon.integrations.connect_freshdesk(
+                                                    domain: domain,
+                                                    api_key: api_key,
+                                                    tags: tags,
+                                                    chunk_size: chunk_size,
+                                                    chunk_overlap: chunk_overlap,
+                                                    skip_embedding_generation: skip_embedding_generation,
+                                                    embedding_model: embedding_model,
+                                                    generate_sparse_vectors: generate_sparse_vectors,
+                                                    prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                                  )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.connect_freshdesk: #{e}"
@@ -119,20 +120,21 @@ Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>R
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 access_key = "string_example"
 access_key_secret = "string_example"
 
 begin
   # S3 Auth
-  result = Carbon::Integrations.create_aws_iam_user(
-                                                       access_key: access_key,
-                                                       access_key_secret: access_key_secret,
-                                                     )
+  result = carbon.integrations.create_aws_iam_user(
+                                                      access_key: access_key,
+                                                      access_key_secret: access_key_secret,
+                                                    )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.create_aws_iam_user: #{e}"
@@ -179,10 +181,11 @@ Get Oauth Url
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 service = "GOOGLE_DRIVE"
 tags = None
@@ -201,22 +204,22 @@ max_items_per_chunk = 1
 
 begin
   # Get Oauth Url
-  result = Carbon::Integrations.get_oauth_url(
-                                                 service: service,
-                                                 tags: tags,
-                                                 scope: scope,
-                                                 chunk_size: chunk_size,
-                                                 chunk_overlap: chunk_overlap,
-                                                 skip_embedding_generation: skip_embedding_generation,
-                                                 embedding_model: embedding_model,
-                                                 zendesk_subdomain: zendesk_subdomain,
-                                                 microsoft_tenant: microsoft_tenant,
-                                                 sharepoint_site_name: sharepoint_site_name,
-                                                 confluence_subdomain: confluence_subdomain,
-                                                 generate_sparse_vectors: generate_sparse_vectors,
-                                                 prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                                 max_items_per_chunk: max_items_per_chunk,
-                                               )
+  result = carbon.integrations.get_oauth_url(
+                                                service: service,
+                                                tags: tags,
+                                                scope: scope,
+                                                chunk_size: chunk_size,
+                                                chunk_overlap: chunk_overlap,
+                                                skip_embedding_generation: skip_embedding_generation,
+                                                embedding_model: embedding_model,
+                                                zendesk_subdomain: zendesk_subdomain,
+                                                microsoft_tenant: microsoft_tenant,
+                                                sharepoint_site_name: sharepoint_site_name,
+                                                confluence_subdomain: confluence_subdomain,
+                                                generate_sparse_vectors: generate_sparse_vectors,
+                                                prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                                max_items_per_chunk: max_items_per_chunk,
+                                              )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.get_oauth_url: #{e}"
@@ -289,20 +292,21 @@ To begin listing a user's Confluence pages, at least a `data_source_id` of a con
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 parent_id = "string_example"
 
 begin
   # Confluence List
-  result = Carbon::Integrations.list_confluence_pages(
-                                                         data_source_id: data_source_id,
-                                                         parent_id: parent_id,
-                                                       )
+  result = carbon.integrations.list_confluence_pages(
+                                                        data_source_id: data_source_id,
+                                                        parent_id: parent_id,
+                                                      )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.list_confluence_pages: #{e}"
@@ -349,10 +353,11 @@ List Data Source Items
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 parent_id = "string_example"
@@ -363,11 +368,11 @@ pagination = {
 
 begin
   # List Data Source Items
-  result = Carbon::Integrations.list_data_source_items(
-                                                          data_source_id: data_source_id,
-                                                          parent_id: parent_id,
-                                                          pagination: pagination,
-                                                        )
+  result = carbon.integrations.list_data_source_items(
+                                                         data_source_id: data_source_id,
+                                                         parent_id: parent_id,
+                                                         pagination: pagination,
+                                                       )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.list_data_source_items: #{e}"
@@ -421,15 +426,16 @@ After connecting your Outlook account, you can use this endpoint to list all of 
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Outlook Folders
-  result = Carbon::Integrations.list_folders
+  result = carbon.integrations.list_folders
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.list_folders: #{e}"
@@ -471,15 +477,16 @@ After connecting your Gmail account, you can use this endpoint to list all of yo
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 
 begin
   # Gmail Labels
-  result = Carbon::Integrations.list_labels
+  result = carbon.integrations.list_labels
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.list_labels: #{e}"
@@ -521,10 +528,11 @@ After listing pages in a user's Confluence account, the set of selected page `id
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 ids = [
@@ -541,18 +549,18 @@ max_items_per_chunk = 1
 
 begin
   # Confluence Sync
-  result = Carbon::Integrations.sync_confluence(
-                                                   data_source_id: data_source_id,
-                                                   ids: ids,
-                                                   tags: tags,
-                                                   chunk_size: chunk_size,
-                                                   chunk_overlap: chunk_overlap,
-                                                   skip_embedding_generation: skip_embedding_generation,
-                                                   embedding_model: embedding_model,
-                                                   generate_sparse_vectors: generate_sparse_vectors,
-                                                   prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                                   max_items_per_chunk: max_items_per_chunk,
-                                                 )
+  result = carbon.integrations.sync_confluence(
+                                                  data_source_id: data_source_id,
+                                                  ids: ids,
+                                                  tags: tags,
+                                                  chunk_size: chunk_size,
+                                                  chunk_overlap: chunk_overlap,
+                                                  skip_embedding_generation: skip_embedding_generation,
+                                                  embedding_model: embedding_model,
+                                                  generate_sparse_vectors: generate_sparse_vectors,
+                                                  prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                                  max_items_per_chunk: max_items_per_chunk,
+                                                )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_confluence: #{e}"
@@ -617,18 +625,19 @@ Sync Data Source Items
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 
 begin
   # Sync Data Source Items
-  result = Carbon::Integrations.sync_data_source_items(
-                                                          data_source_id: data_source_id,
-                                                        )
+  result = carbon.integrations.sync_data_source_items(
+                                                         data_source_id: data_source_id,
+                                                       )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_data_source_items: #{e}"
@@ -673,10 +682,11 @@ Sync Files
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 ids = [
@@ -693,18 +703,18 @@ max_items_per_chunk = 1
 
 begin
   # Sync Files
-  result = Carbon::Integrations.sync_files(
-                                              data_source_id: data_source_id,
-                                              ids: ids,
-                                              tags: tags,
-                                              chunk_size: chunk_size,
-                                              chunk_overlap: chunk_overlap,
-                                              skip_embedding_generation: skip_embedding_generation,
-                                              embedding_model: embedding_model,
-                                              generate_sparse_vectors: generate_sparse_vectors,
-                                              prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                              max_items_per_chunk: max_items_per_chunk,
-                                            )
+  result = carbon.integrations.sync_files(
+                                             data_source_id: data_source_id,
+                                             ids: ids,
+                                             tags: tags,
+                                             chunk_size: chunk_size,
+                                             chunk_overlap: chunk_overlap,
+                                             skip_embedding_generation: skip_embedding_generation,
+                                             embedding_model: embedding_model,
+                                             generate_sparse_vectors: generate_sparse_vectors,
+                                             prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                             max_items_per_chunk: max_items_per_chunk,
+                                           )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_files: #{e}"
@@ -771,10 +781,11 @@ Once you have successfully connected your gmail account, you can choose which em
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 filters = {}
 tags = {}
@@ -787,16 +798,16 @@ prepend_filename_to_chunks = False
 
 begin
   # Gmail Sync
-  result = Carbon::Integrations.sync_gmail(
-                                              filters: filters,
-                                              tags: tags,
-                                              chunk_size: chunk_size,
-                                              chunk_overlap: chunk_overlap,
-                                              skip_embedding_generation: skip_embedding_generation,
-                                              embedding_model: embedding_model,
-                                              generate_sparse_vectors: generate_sparse_vectors,
-                                              prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                            )
+  result = carbon.integrations.sync_gmail(
+                                             filters: filters,
+                                             tags: tags,
+                                             chunk_size: chunk_size,
+                                             chunk_overlap: chunk_overlap,
+                                             skip_embedding_generation: skip_embedding_generation,
+                                             embedding_model: embedding_model,
+                                             generate_sparse_vectors: generate_sparse_vectors,
+                                             prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                           )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_gmail: #{e}"
@@ -857,10 +868,11 @@ Once you have successfully connected your Outlook account, you can choose which 
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 filters = {}
 tags = {}
@@ -874,17 +886,17 @@ prepend_filename_to_chunks = False
 
 begin
   # Outlook Sync
-  result = Carbon::Integrations.sync_outlook(
-                                                filters: filters,
-                                                tags: tags,
-                                                folder: folder,
-                                                chunk_size: chunk_size,
-                                                chunk_overlap: chunk_overlap,
-                                                skip_embedding_generation: skip_embedding_generation,
-                                                embedding_model: embedding_model,
-                                                generate_sparse_vectors: generate_sparse_vectors,
-                                                prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                              )
+  result = carbon.integrations.sync_outlook(
+                                               filters: filters,
+                                               tags: tags,
+                                               folder: folder,
+                                               chunk_size: chunk_size,
+                                               chunk_overlap: chunk_overlap,
+                                               skip_embedding_generation: skip_embedding_generation,
+                                               embedding_model: embedding_model,
+                                               generate_sparse_vectors: generate_sparse_vectors,
+                                               prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                             )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_outlook: #{e}"
@@ -945,10 +957,11 @@ Rss Feed
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "string_example"
 tags = {}
@@ -961,16 +974,16 @@ prepend_filename_to_chunks = False
 
 begin
   # Rss Feed
-  result = Carbon::Integrations.sync_rss_feed(
-                                                 url: url,
-                                                 tags: tags,
-                                                 chunk_size: chunk_size,
-                                                 chunk_overlap: chunk_overlap,
-                                                 skip_embedding_generation: skip_embedding_generation,
-                                                 embedding_model: embedding_model,
-                                                 generate_sparse_vectors: generate_sparse_vectors,
-                                                 prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                               )
+  result = carbon.integrations.sync_rss_feed(
+                                                url: url,
+                                                tags: tags,
+                                                chunk_size: chunk_size,
+                                                chunk_overlap: chunk_overlap,
+                                                skip_embedding_generation: skip_embedding_generation,
+                                                embedding_model: embedding_model,
+                                                generate_sparse_vectors: generate_sparse_vectors,
+                                                prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                              )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_rss_feed: #{e}"
@@ -1031,10 +1044,11 @@ After optionally loading the items via /integrations/items/sync and integrations
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 ids = [
         {
@@ -1051,17 +1065,17 @@ max_items_per_chunk = 1
 
 begin
   # S3 Files
-  result = Carbon::Integrations.sync_s3_files(
-                                                 ids: ids,
-                                                 tags: tags,
-                                                 chunk_size: chunk_size,
-                                                 chunk_overlap: chunk_overlap,
-                                                 skip_embedding_generation: skip_embedding_generation,
-                                                 embedding_model: embedding_model,
-                                                 generate_sparse_vectors: generate_sparse_vectors,
-                                                 prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                                 max_items_per_chunk: max_items_per_chunk,
-                                               )
+  result = carbon.integrations.sync_s3_files(
+                                                ids: ids,
+                                                tags: tags,
+                                                chunk_size: chunk_size,
+                                                chunk_overlap: chunk_overlap,
+                                                skip_embedding_generation: skip_embedding_generation,
+                                                embedding_model: embedding_model,
+                                                generate_sparse_vectors: generate_sparse_vectors,
+                                                prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                                max_items_per_chunk: max_items_per_chunk,
+                                              )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Integrations.sync_s3_files: #{e}"

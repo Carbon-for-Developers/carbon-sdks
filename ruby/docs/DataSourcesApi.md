@@ -15,10 +15,11 @@ User Data Sources
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 pagination = {
         "limit" => 10,
@@ -32,7 +33,7 @@ filters = {
 
 begin
   # User Data Sources
-  result = Carbon::DataSources.query_user_data_sources(
+  result = carbon.data_sources.query_user_data_sources(
                                                           pagination: pagination,
                                                           order_by: order_by,
                                                           order_dir: order_dir,
@@ -93,16 +94,17 @@ Revoke Access Token
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 data_source_id = 1
 
 begin
   # Revoke Access Token
-  result = Carbon::DataSources.revoke_access_token(
+  result = carbon.data_sources.revoke_access_token(
                                                       data_source_id: data_source_id,
                                                     )
   p result

@@ -27,10 +27,11 @@ A tag is a key-value pair that can be added to a file. This pair can then be use
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 tags = {
         "key": "string_example",
@@ -39,10 +40,10 @@ organization_user_file_id = 1
 
 begin
   # Create File Tags
-  result = Carbon::Files.create_user_file_tags(
-                                                  tags: tags,
-                                                  organization_user_file_id: organization_user_file_id,
-                                                )
+  result = carbon.files.create_user_file_tags(
+                                                 tags: tags,
+                                                 organization_user_file_id: organization_user_file_id,
+                                               )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.create_user_file_tags: #{e}"
@@ -91,18 +92,19 @@ Delete File Endpoint
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file_id = 1
 
 begin
   # Delete File Endpoint
-  result = Carbon::Files.delete(
-                                   file_id: file_id,
-                                 )
+  result = carbon.files.delete(
+                                  file_id: file_id,
+                                )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.delete: #{e}"
@@ -147,10 +149,11 @@ Delete File Tags
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 tags = [
         "string_example"
@@ -159,10 +162,10 @@ organization_user_file_id = 1
 
 begin
   # Delete File Tags
-  result = Carbon::Files.delete_file_tags(
-                                             tags: tags,
-                                             organization_user_file_id: organization_user_file_id,
-                                           )
+  result = carbon.files.delete_file_tags(
+                                            tags: tags,
+                                            organization_user_file_id: organization_user_file_id,
+                                          )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.delete_file_tags: #{e}"
@@ -211,10 +214,11 @@ Delete Files Endpoint
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file_ids = [
         1
@@ -226,11 +230,11 @@ delete_non_synced_only = False
 
 begin
   # Delete Files Endpoint
-  result = Carbon::Files.delete_many(
-                                        file_ids: file_ids,
-                                        sync_statuses: sync_statuses,
-                                        delete_non_synced_only: delete_non_synced_only,
-                                      )
+  result = carbon.files.delete_many(
+                                       file_ids: file_ids,
+                                       sync_statuses: sync_statuses,
+                                       delete_non_synced_only: delete_non_synced_only,
+                                     )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.delete_many: #{e}"
@@ -285,18 +289,19 @@ This route is deprecated. Use `/user_files_v2` instead.
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file_id = 1
 
 begin
   # Parsed File
-  result = Carbon::Files.get_parsed_file(
-                                            file_id: file_id,
-                                          )
+  result = carbon.files.get_parsed_file(
+                                           file_id: file_id,
+                                         )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.get_parsed_file: #{e}"
@@ -343,18 +348,19 @@ This route is deprecated. Use `/user_files_v2` instead.
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file_id = 1
 
 begin
   # Raw File
-  result = Carbon::Files.get_raw_file(
-                                         file_id: file_id,
-                                       )
+  result = carbon.files.get_raw_file(
+                                        file_id: file_id,
+                                      )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.get_raw_file: #{e}"
@@ -401,10 +407,11 @@ For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 pagination = {
         "limit" => 10,
@@ -420,15 +427,15 @@ include_additional_files = True
 
 begin
   # User Files V2
-  result = Carbon::Files.query_user_files(
-                                             pagination: pagination,
-                                             order_by: order_by,
-                                             order_dir: order_dir,
-                                             filters: filters,
-                                             include_raw_file: include_raw_file,
-                                             include_parsed_text_file: include_parsed_text_file,
-                                             include_additional_files: include_additional_files,
-                                           )
+  result = carbon.files.query_user_files(
+                                            pagination: pagination,
+                                            order_by: order_by,
+                                            order_dir: order_dir,
+                                            filters: filters,
+                                            include_raw_file: include_raw_file,
+                                            include_parsed_text_file: include_parsed_text_file,
+                                            include_additional_files: include_additional_files,
+                                          )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.query_user_files: #{e}"
@@ -491,10 +498,11 @@ This route is deprecated. Use `/user_files_v2` instead.
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 pagination = {
         "limit" => 10,
@@ -510,15 +518,15 @@ include_additional_files = True
 
 begin
   # User Files
-  result = Carbon::Files.query_user_files_deprecated(
-                                                        pagination: pagination,
-                                                        order_by: order_by,
-                                                        order_dir: order_dir,
-                                                        filters: filters,
-                                                        include_raw_file: include_raw_file,
-                                                        include_parsed_text_file: include_parsed_text_file,
-                                                        include_additional_files: include_additional_files,
-                                                      )
+  result = carbon.files.query_user_files_deprecated(
+                                                       pagination: pagination,
+                                                       order_by: order_by,
+                                                       order_dir: order_dir,
+                                                       filters: filters,
+                                                       include_raw_file: include_raw_file,
+                                                       include_parsed_text_file: include_parsed_text_file,
+                                                       include_additional_files: include_additional_files,
+                                                     )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.query_user_files_deprecated: #{e}"
@@ -579,10 +587,11 @@ Resync File
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file_id = 1
 chunk_size = 1
@@ -590,11 +599,11 @@ chunk_overlap = 1
 
 begin
   # Resync File
-  result = Carbon::Files.resync(
-                                   file_id: file_id,
-                                   chunk_size: chunk_size,
-                                   chunk_overlap: chunk_overlap,
-                                 )
+  result = carbon.files.resync(
+                                  file_id: file_id,
+                                  chunk_size: chunk_size,
+                                  chunk_overlap: chunk_overlap,
+                                )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.resync: #{e}"
@@ -645,10 +654,11 @@ This endpoint is used to directly upload local files to Carbon. The `POST` reque
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 file = open('/path/to/file', 'rb')
 chunk_size = 1
@@ -663,18 +673,18 @@ max_items_per_chunk = 1
 
 begin
   # Create Upload File
-  result = Carbon::Files.upload(
-                                   file: file,
-                                   chunk_size: chunk_size,
-                                   chunk_overlap: chunk_overlap,
-                                   skip_embedding_generation: skip_embedding_generation,
-                                   set_page_as_boundary: set_page_as_boundary,
-                                   embedding_model: embedding_model,
-                                   use_ocr: use_ocr,
-                                   generate_sparse_vectors: generate_sparse_vectors,
-                                   prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                   max_items_per_chunk: max_items_per_chunk,
-                                 )
+  result = carbon.files.upload(
+                                  file: file,
+                                  chunk_size: chunk_size,
+                                  chunk_overlap: chunk_overlap,
+                                  skip_embedding_generation: skip_embedding_generation,
+                                  set_page_as_boundary: set_page_as_boundary,
+                                  embedding_model: embedding_model,
+                                  use_ocr: use_ocr,
+                                  generate_sparse_vectors: generate_sparse_vectors,
+                                  prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                  max_items_per_chunk: max_items_per_chunk,
+                                )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.upload: #{e}"
@@ -747,10 +757,11 @@ Create Upload File From Url
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "string_example"
 file_name = "string_example"
@@ -766,19 +777,19 @@ max_items_per_chunk = 1
 
 begin
   # Create Upload File From Url
-  result = Carbon::Files.upload_from_url(
-                                            url: url,
-                                            file_name: file_name,
-                                            chunk_size: chunk_size,
-                                            chunk_overlap: chunk_overlap,
-                                            skip_embedding_generation: skip_embedding_generation,
-                                            set_page_as_boundary: set_page_as_boundary,
-                                            embedding_model: embedding_model,
-                                            generate_sparse_vectors: generate_sparse_vectors,
-                                            use_textract: use_textract,
-                                            prepend_filename_to_chunks: prepend_filename_to_chunks,
-                                            max_items_per_chunk: max_items_per_chunk,
-                                          )
+  result = carbon.files.upload_from_url(
+                                           url: url,
+                                           file_name: file_name,
+                                           chunk_size: chunk_size,
+                                           chunk_overlap: chunk_overlap,
+                                           skip_embedding_generation: skip_embedding_generation,
+                                           set_page_as_boundary: set_page_as_boundary,
+                                           embedding_model: embedding_model,
+                                           generate_sparse_vectors: generate_sparse_vectors,
+                                           use_textract: use_textract,
+                                           prepend_filename_to_chunks: prepend_filename_to_chunks,
+                                           max_items_per_chunk: max_items_per_chunk,
+                                         )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.upload_from_url: #{e}"
@@ -845,10 +856,11 @@ Carbon supports multiple models for use in generating embeddings for files. For 
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
-Carbon.api_key = 'YOUR API KEY'
-Carbon.customer_id = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+configuration.api_key = 'YOUR API KEY'
+configuration.customer_id = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 contents = "string_example"
 name = "string_example"
@@ -861,16 +873,16 @@ generate_sparse_vectors = False
 
 begin
   # Create Raw Text
-  result = Carbon::Files.upload_text(
-                                        contents: contents,
-                                        name: name,
-                                        chunk_size: chunk_size,
-                                        chunk_overlap: chunk_overlap,
-                                        skip_embedding_generation: skip_embedding_generation,
-                                        overwrite_file_id: overwrite_file_id,
-                                        embedding_model: embedding_model,
-                                        generate_sparse_vectors: generate_sparse_vectors,
-                                      )
+  result = carbon.files.upload_text(
+                                       contents: contents,
+                                       name: name,
+                                       chunk_size: chunk_size,
+                                       chunk_overlap: chunk_overlap,
+                                       skip_embedding_generation: skip_embedding_generation,
+                                       overwrite_file_id: overwrite_file_id,
+                                       embedding_model: embedding_model,
+                                       generate_sparse_vectors: generate_sparse_vectors,
+                                     )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Files.upload_text: #{e}"

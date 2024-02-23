@@ -16,16 +16,17 @@ Add Webhook Url
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 url = "string_example"
 
 begin
   # Add Webhook Url
-  result = Carbon::Webhooks.add_url(
-                                       url: url,
-                                     )
+  result = carbon.webhooks.add_url(
+                                      url: url,
+                                    )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Webhooks.add_url: #{e}"
@@ -70,16 +71,17 @@ Delete Webhook Url
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 webhook_id = 1
 
 begin
   # Delete Webhook Url
-  result = Carbon::Webhooks.delete_url(
-                                          webhook_id: webhook_id,
-                                        )
+  result = carbon.webhooks.delete_url(
+                                         webhook_id: webhook_id,
+                                       )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Webhooks.delete_url: #{e}"
@@ -124,8 +126,9 @@ Webhook Urls
 
 ```ruby
 require 'carbon'
-
-Carbon.access_token = 'YOUR API KEY'
+configuration = Carbon::Configuration.new
+configuration.access_token = 'YOUR API KEY'
+carbon = Carbon::Client.new(configuration)
 
 pagination = {
         "limit" => 10,
@@ -139,12 +142,12 @@ filters = {
 
 begin
   # Webhook Urls
-  result = Carbon::Webhooks.urls(
-                                    pagination: pagination,
-                                    order_by: order_by,
-                                    order_dir: order_dir,
-                                    filters: filters,
-                                  )
+  result = carbon.webhooks.urls(
+                                   pagination: pagination,
+                                   order_by: order_by,
+                                   order_dir: order_dir,
+                                   filters: filters,
+                                 )
   p result
 rescue Carbon::ApiError => e
   puts "Exception when calling Carbon::Webhooks.urls: #{e}"
