@@ -29,6 +29,14 @@ securitySchemeOverride:
       name: customer-id
       in: header
 generators:
+  ruby:
+    version: 1.0.0
+    moduleName: Carbon
+    gemName: carbon
+    outputDirectory: ruby
+    git:
+      userId: Carbon-for-Developers
+      repoId: carbon-sdks/tree/main/ruby
   python:
     version: 0.1.1
     packageName: carbon
