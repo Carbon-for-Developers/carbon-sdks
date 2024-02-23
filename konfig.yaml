@@ -30,7 +30,7 @@ securitySchemeOverride:
       in: header
 generators:
   ruby:
-    version: 1.0.0
+    version: 0.1.0
     moduleName: Carbon
     gemName: carbon
     outputDirectory: ruby
