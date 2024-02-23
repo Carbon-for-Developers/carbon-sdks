@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class BodyCreateUploadFileUploadfilePost(BaseModel):
     file: typing.IO = Field(alias='file')
+    class Config:
+        arbitrary_types_allowed = True

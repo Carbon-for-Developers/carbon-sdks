@@ -24,3 +24,5 @@ class ChunksAndEmbeddingsUploadInput(BaseModel):
     chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput] = Field(alias='chunks_and_embeddings')
 
     overwrite_existing: typing.Optional[bool] = Field(None, alias='overwrite_existing')
+    class Config:
+        arbitrary_types_allowed = True

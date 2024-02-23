@@ -25,3 +25,5 @@ class YoutubeTranscriptResponse(BaseModel):
     data: typing.Optional[str] = Field(alias='data')
 
     raw_transcript: YoutubeTranscriptResponseRawTranscript = Field(alias='raw_transcript')
+    class Config:
+        arbitrary_types_allowed = True

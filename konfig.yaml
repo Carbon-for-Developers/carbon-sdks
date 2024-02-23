@@ -37,7 +37,7 @@ generators:
     clientName: Carbon
     readmeSnippet: snippets/pythonReadmeGettingStartedSnippet.py
     git:
-      userId: konfig-dev
+      userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/python
   typescript:
     version: 0.1.3

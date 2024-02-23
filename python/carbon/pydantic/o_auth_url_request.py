@@ -46,3 +46,5 @@ class OAuthURLRequest(BaseModel):
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
 
     max_items_per_chunk: typing.Optional[typing.Optional[int]] = Field(None, alias='max_items_per_chunk')
+    class Config:
+        arbitrary_types_allowed = True

@@ -34,3 +34,5 @@ class OrganizationUserFilesToSyncQueryInput(BaseModel):
     include_parsed_text_file: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_parsed_text_file')
 
     include_additional_files: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_additional_files')
+    class Config:
+        arbitrary_types_allowed = True

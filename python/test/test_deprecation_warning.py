@@ -8,11 +8,11 @@ from carbon.configuration import Configuration
 class RandomClass:
     configuration = Configuration(
     
-        authorization = 'YOUR_API_KEY',
+                access_token = 'YOUR_API_KEY',
     
-        authorization = 'YOUR_API_KEY',
+                api_key = 'YOUR_API_KEY',
     
-        customer_id = 'YOUR_API_KEY',
+                customer_id = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

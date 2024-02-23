@@ -25,3 +25,5 @@ class EmbeddingAndChunk(BaseModel):
     source_content: str = Field(alias='source_content')
 
     embedding: EmbeddingAndChunkEmbedding = Field(alias='embedding')
+    class Config:
+        arbitrary_types_allowed = True

@@ -21,3 +21,5 @@ class EmbeddingsAndChunksFilters(BaseModel):
     user_file_id: int = Field(alias='user_file_id')
 
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = Field(None, alias='embedding_model')
+    class Config:
+        arbitrary_types_allowed = True

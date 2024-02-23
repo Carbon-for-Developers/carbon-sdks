@@ -21,3 +21,5 @@ class EmbeddingsAndChunksResponse(BaseModel):
     results: typing.List[EmbeddingAndChunk] = Field(alias='results')
 
     count: int = Field(alias='count')
+    class Config:
+        arbitrary_types_allowed = True

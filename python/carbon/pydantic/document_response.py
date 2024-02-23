@@ -41,3 +41,5 @@ class DocumentResponse(BaseModel):
     rank: typing.Union[typing.Union[int, float], int] = Field(alias='rank')
 
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
+    class Config:
+        arbitrary_types_allowed = True

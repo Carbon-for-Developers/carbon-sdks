@@ -20,3 +20,5 @@ class ModifyUserConfigurationInput(BaseModel):
     configuration_key_name: str = Field(alias='configuration_key_name')
 
     value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='value')
+    class Config:
+        arbitrary_types_allowed = True

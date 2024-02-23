@@ -58,3 +58,5 @@ class GetEmbeddingDocumentsBody(BaseModel):
     media_type: typing.Optional[FileContentTypesNullable] = Field(None, alias='media_type')
 
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = Field(None, alias='embedding_model')
+    class Config:
+        arbitrary_types_allowed = True

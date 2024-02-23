@@ -27,3 +27,5 @@ class FileStatisticsNullable(BaseModel):
     num_tokens: typing.Optional[int] = Field(alias='num_tokens')
 
     num_embeddings: typing.Optional[int] = Field(alias='num_embeddings')
+    class Config:
+        arbitrary_types_allowed = True

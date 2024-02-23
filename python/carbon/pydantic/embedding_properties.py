@@ -20,3 +20,5 @@ class EmbeddingProperties(BaseModel):
     chunk_size: typing.Optional[int] = Field(alias='chunk_size')
 
     chunk_overlap: typing.Optional[int] = Field(alias='chunk_overlap')
+    class Config:
+        arbitrary_types_allowed = True

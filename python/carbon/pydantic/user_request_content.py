@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class UserRequestContent(BaseModel):
     customer_id: str = Field(alias='customer_id')
+    class Config:
+        arbitrary_types_allowed = True

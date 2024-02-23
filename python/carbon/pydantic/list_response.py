@@ -19,3 +19,5 @@ from carbon.pydantic.directory_item import DirectoryItem
 
 class ListResponse(BaseModel):
     data: typing.List[DirectoryItem] = Field(alias='data')
+    class Config:
+        arbitrary_types_allowed = True

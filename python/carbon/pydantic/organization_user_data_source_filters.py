@@ -24,3 +24,5 @@ class OrganizationUserDataSourceFilters(BaseModel):
     ids: typing.Optional[OrganizationUserDataSourceFiltersIds] = Field(None, alias='ids')
 
     revoked_access: typing.Optional[typing.Optional[bool]] = Field(None, alias='revoked_access')
+    class Config:
+        arbitrary_types_allowed = True

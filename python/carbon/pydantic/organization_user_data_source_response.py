@@ -21,3 +21,5 @@ class OrganizationUserDataSourceResponse(BaseModel):
     results: typing.List[OrganizationUserDataSourceAPI] = Field(alias='results')
 
     count: int = Field(alias='count')
+    class Config:
+        arbitrary_types_allowed = True

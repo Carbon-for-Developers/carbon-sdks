@@ -46,3 +46,5 @@ class WebscrapeRequest(BaseModel):
     css_classes_to_skip: typing.Optional[WebscrapeRequestCssClassesToSkip] = Field(None, alias='css_classes_to_skip')
 
     css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
+    class Config:
+        arbitrary_types_allowed = True

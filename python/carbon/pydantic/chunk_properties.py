@@ -22,3 +22,5 @@ class ChunkProperties(BaseModel):
     prepend_filename_to_chunks: bool = Field(alias='prepend_filename_to_chunks')
 
     max_items_per_chunk: typing.Optional[int] = Field(alias='max_items_per_chunk')
+    class Config:
+        arbitrary_types_allowed = True

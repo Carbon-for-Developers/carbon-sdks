@@ -44,3 +44,5 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
     organization_user_data_source_id: typing.Optional[OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId] = Field(None, alias='organization_user_data_source_id')
 
     embedding_generators: typing.Optional[typing.Optional[typing.List[EmbeddingGenerators]]] = Field(None, alias='embedding_generators')
+    class Config:
+        arbitrary_types_allowed = True

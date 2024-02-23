@@ -20,3 +20,5 @@ class TokenResponse(BaseModel):
     access_token: str = Field(alias='access_token')
 
     refresh_token: str = Field(alias='refresh_token')
+    class Config:
+        arbitrary_types_allowed = True

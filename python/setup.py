@@ -42,7 +42,7 @@ setup(
     description="Carbon",
     author="Konfig",
     author_email="engineering@konfigthis.com",
-    url="https://github.com/konfig-dev/carbon-sdks/tree/main/python",
+    url="https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python",
     keywords=["Konfig", "Carbon"],
     python_requires=">=3.7",
     install_requires=REQUIRES,

@@ -26,3 +26,5 @@ class WebhookNoKey(BaseModel):
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')
+    class Config:
+        arbitrary_types_allowed = True

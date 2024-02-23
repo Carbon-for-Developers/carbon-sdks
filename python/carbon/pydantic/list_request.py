@@ -20,3 +20,5 @@ class ListRequest(BaseModel):
     data_source_id: int = Field(alias='data_source_id')
 
     parent_id: typing.Optional[typing.Optional[str]] = Field(None, alias='parent_id')
+    class Config:
+        arbitrary_types_allowed = True

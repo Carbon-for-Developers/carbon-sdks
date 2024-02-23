@@ -28,3 +28,5 @@ class WebhookQueryInput(BaseModel):
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
     filters: typing.Optional[WebhookFilters] = Field(None, alias='filters')
+    class Config:
+        arbitrary_types_allowed = True

@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class GenericSuccessResponse(BaseModel):
     success: bool = Field(alias='success')
+    class Config:
+        arbitrary_types_allowed = True

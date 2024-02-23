@@ -19,3 +19,5 @@ from carbon.pydantic.webhook_filters_ids import WebhookFiltersIds
 
 class WebhookFilters(BaseModel):
     ids: typing.Optional[WebhookFiltersIds] = Field(None, alias='ids')
+    class Config:
+        arbitrary_types_allowed = True

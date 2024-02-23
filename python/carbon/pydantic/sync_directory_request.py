@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class SyncDirectoryRequest(BaseModel):
     data_source_id: int = Field(alias='data_source_id')
+    class Config:
+        arbitrary_types_allowed = True

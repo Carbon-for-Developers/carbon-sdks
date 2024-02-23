@@ -20,3 +20,5 @@ class Pagination(BaseModel):
     limit: typing.Optional[int] = Field(None, alias='limit')
 
     offset: typing.Optional[int] = Field(None, alias='offset')
+    class Config:
+        arbitrary_types_allowed = True

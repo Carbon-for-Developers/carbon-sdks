@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class AddWebhookProps(BaseModel):
     url: str = Field(alias='url')
+    class Config:
+        arbitrary_types_allowed = True

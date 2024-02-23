@@ -19,3 +19,5 @@ from carbon.pydantic.validation_error import ValidationError
 
 class HTTPValidationError(BaseModel):
     detail: typing.Optional[typing.List[ValidationError]] = Field(None, alias='detail')
+    class Config:
+        arbitrary_types_allowed = True

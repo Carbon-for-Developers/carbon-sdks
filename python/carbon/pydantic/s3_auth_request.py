@@ -20,3 +20,5 @@ class S3AuthRequest(BaseModel):
     access_key: str = Field(alias='access_key')
 
     access_key_secret: str = Field(alias='access_key_secret')
+    class Config:
+        arbitrary_types_allowed = True

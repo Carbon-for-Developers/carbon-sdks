@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Visit Carbon](https://raw.githubusercontent.com/konfig-dev/carbon-sdks/HEAD/python/header.png)](https://carbon.ai)
+[![Visit Carbon](https://raw.githubusercontent.com/Carbon-for-Developers/carbon-sdks/HEAD/python/header.png)](https://carbon.ai)
 
 # Carbon<a id="carbon"></a>
 
@@ -8,7 +8,7 @@ Connect external data to LLMs, no matter the source.
 
 
 [![PyPI](https://img.shields.io/badge/PyPI-v0.1.0-blue)](https://pypi.org/project/carbon-python-sdk/0.1.0)
-[![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/carbon-sdks/tree/main/python#readme)
+[![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
 
@@ -84,27 +84,25 @@ pip install carbon-python-sdk==0.1.0
 ## Getting Started<a id="getting-started"></a>
 
 ```python
-# import { Carbon } from "carbon-typescript-sdk";
+from carbon import Carbon
 
-# // Generally this is done in the backend to avoid exposing API key to the client
+# Generally this is done in the backend to avoid exposing API key to the client
 
-# const carbonWithApiKey = new Carbon({
-#   apiKey: "API_KEY",
-#   customerId: "CUSTOMER_ID",
-# });
+carbon = Carbon(
+    api_key="YOUR_API_KEY",
+    customer_id="YOUR_CUSTOMER_ID",
+)
 
-# const accessToken = await carbonWithApiKey.auth.getAccessToken();
+token = carbon.auth.get_access_token()
 
-# // Once an access token is obtained, it can be passed to the frontend
-# // and used to instantiate the SDK client without an API key
+# Once an access token is obtained, it can be passed to the frontend
+# and used to instantiate the SDK client without an API key
 
-# const carbon = new Carbon({
-#   accessToken: accessToken.data.access_token,
-# });
+carbon = Carbon(access_token=token.access_token)
 
-# // use SDK as usual
-# const whiteLabeling = await carbon.auth.getWhiteLabeling();
-# // etc.
+# use SDK as usual
+white_labeling = carbon.auth.get_white_labeling()
+# etc.
 ```
 
 ## Async<a id="async"></a>
@@ -112,16 +110,69 @@ pip install carbon-python-sdk==0.1.0
 `async` support is available by prepending `a` to any method.
 
 ```python
-cannot use --safe with this file; failed to parse source file AST: keyword argument repeated (<unknown>, line 10)
-This could be caused by running Black with an older Python version that does not support new syntax used in your source file.```
+import asyncio
+from pprint import pprint
+from carbon import Carbon, ApiException
+
+carbon = Carbon(
+    access_token="YOUR_API_KEY",
+    api_key="YOUR_API_KEY",
+    customer_id="YOUR_API_KEY",
+)
+
+
+async def main():
+    try:
+        # Get Access Token
+        get_access_token_response = await carbon.auth.aget_access_token()
+        print(get_access_token_response)
+    except ApiException as e:
+        print("Exception when calling AuthApi.get_access_token: %s\n" % e)
+        pprint(e.body)
+        if e.status == 422:
+            pprint(e.body["detail"])
+        pprint(e.headers)
+        pprint(e.status)
+        pprint(e.reason)
+        pprint(e.round_trip_time)
+
+
+asyncio.run(main())
+```
 
 ## Raw HTTP Response<a id="raw-http-response"></a>
 
 To access raw HTTP response values, use the `.raw` namespace.
 
 ```python
-cannot use --safe with this file; failed to parse source file AST: keyword argument repeated (<unknown>, line 8)
-This could be caused by running Black with an older Python version that does not support new syntax used in your source file.```
+from pprint import pprint
+from carbon import Carbon, ApiException
+
+carbon = Carbon(
+    access_token="YOUR_API_KEY",
+    api_key="YOUR_API_KEY",
+    customer_id="YOUR_API_KEY",
+)
+
+try:
+    # Get Access Token
+    get_access_token_response = carbon.auth.raw.get_access_token()
+    pprint(get_access_token_response.body)
+    pprint(get_access_token_response.body["access_token"])
+    pprint(get_access_token_response.body["refresh_token"])
+    pprint(get_access_token_response.headers)
+    pprint(get_access_token_response.status)
+    pprint(get_access_token_response.round_trip_time)
+except ApiException as e:
+    print("Exception when calling AuthApi.get_access_token: %s\n" % e)
+    pprint(e.body)
+    if e.status == 422:
+        pprint(e.body["detail"])
+    pprint(e.headers)
+    pprint(e.status)
+    pprint(e.reason)
+    pprint(e.round_trip_time)
+```
 
 
 ## Reference<a id="reference"></a>

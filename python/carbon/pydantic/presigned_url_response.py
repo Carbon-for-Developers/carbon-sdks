@@ -18,3 +18,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class PresignedURLResponse(BaseModel):
     presigned_url: str = Field(alias='presigned_url')
+    class Config:
+        arbitrary_types_allowed = True

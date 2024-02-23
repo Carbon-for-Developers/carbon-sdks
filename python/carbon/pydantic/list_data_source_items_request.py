@@ -23,3 +23,5 @@ class ListDataSourceItemsRequest(BaseModel):
     parent_id: typing.Optional[typing.Optional[str]] = Field(None, alias='parent_id')
 
     pagination: typing.Optional[Pagination] = Field(None, alias='pagination')
+    class Config:
+        arbitrary_types_allowed = True
