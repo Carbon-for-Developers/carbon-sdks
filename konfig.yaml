@@ -36,6 +36,7 @@ generators:
     outputDirectory: python
     clientName: Carbon
     readmeSnippet: snippets/pythonReadmeGettingStartedSnippet.py
+    pypiApiTokenEnvironmentVariable: CARBON_PYPI_API_TOKEN
     git:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/python
