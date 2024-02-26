@@ -83,7 +83,6 @@ configuration.access_token = 'YOUR API KEY'
 configuration.api_key = 'YOUR API KEY'
 configuration.customer_id = 'YOUR API KEY'
 carbon = Carbon::Client.new(configuration)
-
 result = carbon.auth.get_access_token
 p result
 ```
@@ -98,7 +97,6 @@ Get Access Token
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.auth.get_access_token
 p result
 ```
@@ -117,7 +115,6 @@ Returns whether or not the organization is white labeled and which integrations 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.auth.get_white_labeling
 p result
 ```
@@ -132,21 +129,16 @@ User Data Sources
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-pagination = {
+result = carbon.data_sources.query_user_data_sources(
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-order_by = "created_at"
-order_dir = "desc"
-filters = {
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
         "source" => "GOOGLE_DRIVE",
-    }
-
-result = carbon.data_sources.query_user_data_sources(
-  pagination: pagination,
-  order_by: order_by,
-  order_dir: order_dir,
-  filters: filters,
+    },
 )
 p result
 ```
@@ -171,10 +163,8 @@ Revoke Access Token
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-
 result = carbon.data_sources.revoke_access_token(
-  data_source_id: data_source_id,
+  data_source_id: 1,
 )
 p result
 ```
@@ -286,48 +276,33 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-query = "a"
-k = 1
-tags = {
+result = carbon.embeddings.get_documents(
+  query: "a",
+  k: 1,
+  tags: {
         "key": "string_example",
-    }
-query_vector = [
+    },
+  query_vector: [
         3.14
-    ]
-file_ids = [
+    ],
+  file_ids: [
         1
-    ]
-parent_file_ids = [
+    ],
+  parent_file_ids: [
         1
-    ]
-tags_v2 = {
-    }
-include_tags = True
-include_vectors = True
-include_raw_file = True
-hybrid_search = True
-hybrid_search_tuning_parameters = {
+    ],
+  tags_v2: {
+    },
+  include_tags: True,
+  include_vectors: True,
+  include_raw_file: True,
+  hybrid_search: True,
+  hybrid_search_tuning_parameters: {
         "weight_a" => 0.5,
         "weight_b" => 0.5,
-    }
-media_type = "TEXT"
-embedding_model = "OPENAI"
-
-result = carbon.embeddings.get_documents(
-  query: query,
-  k: k,
-  tags: tags,
-  query_vector: query_vector,
-  file_ids: file_ids,
-  parent_file_ids: parent_file_ids,
-  tags_v2: tags_v2,
-  include_tags: include_tags,
-  include_vectors: include_vectors,
-  include_raw_file: include_raw_file,
-  hybrid_search: hybrid_search,
-  hybrid_search_tuning_parameters: hybrid_search_tuning_parameters,
-  media_type: media_type,
-  embedding_model: embedding_model,
+    },
+  media_type: "TEXT",
+  embedding_model: "OPENAI",
 )
 p result
 ```
@@ -394,24 +369,18 @@ Retrieve Embeddings And Content
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-filters = {
+result = carbon.embeddings.get_embeddings_and_chunks(
+  filters: {
         "user_file_id" => 1,
         "embedding_model" => "OPENAI",
-    }
-pagination = {
+    },
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-order_by = "created_at"
-order_dir = "desc"
-include_vectors = False
-
-result = carbon.embeddings.get_embeddings_and_chunks(
-  filters: filters,
-  pagination: pagination,
-  order_by: order_by,
-  order_dir: order_dir,
-  include_vectors: include_vectors,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  include_vectors: False,
 )
 p result
 ```
@@ -438,8 +407,9 @@ Upload Chunks And Embeddings
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-embedding_model = "OPENAI"
-chunks_and_embeddings = [
+result = carbon.embeddings.upload_chunks_and_embeddings(
+  embedding_model: "OPENAI",
+  chunks_and_embeddings: [
         {
             "file_id" => 1,
             "chunks_and_embeddings" => [
@@ -452,13 +422,8 @@ chunks_and_embeddings = [
                 }
             ],
         }
-    ]
-overwrite_existing = False
-
-result = carbon.embeddings.upload_chunks_and_embeddings(
-  embedding_model: embedding_model,
-  chunks_and_embeddings: chunks_and_embeddings,
-  overwrite_existing: overwrite_existing,
+    ],
+  overwrite_existing: False,
 )
 p result
 ```
@@ -491,14 +456,11 @@ they're automatically converted to strings (e.g. 4 will become "4").
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-tags = {
-        "key": "string_example",
-    }
-organization_user_file_id = 1
-
 result = carbon.files.create_user_file_tags(
-  tags: tags,
-  organization_user_file_id: organization_user_file_id,
+  tags: {
+        "key": "string_example",
+    },
+  organization_user_file_id: 1,
 )
 p result
 ```
@@ -519,10 +481,8 @@ Delete File Endpoint
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file_id = 1
-
 result = carbon.files.delete(
-  file_id: file_id,
+  file_id: 1,
 )
 p result
 ```
@@ -541,14 +501,11 @@ Delete File Tags
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-tags = [
-        "string_example"
-    ]
-organization_user_file_id = 1
-
 result = carbon.files.delete_file_tags(
-  tags: tags,
-  organization_user_file_id: organization_user_file_id,
+  tags: [
+        "string_example"
+    ],
+  organization_user_file_id: 1,
 )
 p result
 ```
@@ -569,18 +526,14 @@ Delete Files Endpoint
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file_ids = [
-        1
-    ]
-sync_statuses = [
-        "string_example"
-    ]
-delete_non_synced_only = False
-
 result = carbon.files.delete_many(
-  file_ids: file_ids,
-  sync_statuses: sync_statuses,
-  delete_non_synced_only: delete_non_synced_only,
+  file_ids: [
+        1
+    ],
+  sync_statuses: [
+        "string_example"
+    ],
+  delete_non_synced_only: False,
 )
 p result
 ```
@@ -603,10 +556,8 @@ This route is deprecated. Use `/user_files_v2` instead.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file_id = 1
-
 result = carbon.files.get_parsed_file(
-  file_id: file_id,
+  file_id: 1,
 )
 p result
 ```
@@ -625,10 +576,8 @@ This route is deprecated. Use `/user_files_v2` instead.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file_id = 1
-
 result = carbon.files.get_raw_file(
-  file_id: file_id,
+  file_id: 1,
 )
 p result
 ```
@@ -696,26 +645,18 @@ the resulting query. It is `false` by default.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-pagination = {
+result = carbon.files.query_user_files(
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-order_by = "created_at"
-order_dir = "desc"
-filters = {
-    }
-include_raw_file = True
-include_parsed_text_file = True
-include_additional_files = True
-
-result = carbon.files.query_user_files(
-  pagination: pagination,
-  order_by: order_by,
-  order_dir: order_dir,
-  filters: filters,
-  include_raw_file: include_raw_file,
-  include_parsed_text_file: include_parsed_text_file,
-  include_additional_files: include_additional_files,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
+    },
+  include_raw_file: True,
+  include_parsed_text_file: True,
+  include_additional_files: True,
 )
 p result
 ```
@@ -746,26 +687,18 @@ This route is deprecated. Use `/user_files_v2` instead.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-pagination = {
+result = carbon.files.query_user_files_deprecated(
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-order_by = "created_at"
-order_dir = "desc"
-filters = {
-    }
-include_raw_file = True
-include_parsed_text_file = True
-include_additional_files = True
-
-result = carbon.files.query_user_files_deprecated(
-  pagination: pagination,
-  order_by: order_by,
-  order_dir: order_dir,
-  filters: filters,
-  include_raw_file: include_raw_file,
-  include_parsed_text_file: include_parsed_text_file,
-  include_additional_files: include_additional_files,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
+    },
+  include_raw_file: True,
+  include_parsed_text_file: True,
+  include_additional_files: True,
 )
 p result
 ```
@@ -796,14 +729,10 @@ Resync File
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file_id = 1
-chunk_size = 1
-chunk_overlap = 1
-
 result = carbon.files.resync(
-  file_id: file_id,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
+  file_id: 1,
+  chunk_size: 1,
+  chunk_overlap: 1,
 )
 p result
 ```
@@ -850,28 +779,17 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-file = open('/path/to/file', 'rb')
-chunk_size = 1
-chunk_overlap = 1
-skip_embedding_generation = False
-set_page_as_boundary = False
-embedding_model = "OPENAI"
-use_ocr = False
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
 result = carbon.files.upload(
-  file: file,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  set_page_as_boundary: set_page_as_boundary,
-  embedding_model: embedding_model,
-  use_ocr: use_ocr,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+  file: open('/path/to/file', 'rb'),
+  chunk_size: 1,
+  chunk_overlap: 1,
+  skip_embedding_generation: False,
+  set_page_as_boundary: False,
+  embedding_model: "OPENAI",
+  use_ocr: False,
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -926,30 +844,18 @@ Create Upload File From Url
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "string_example"
-file_name = "string_example"
-chunk_size = 1
-chunk_overlap = 1
-skip_embedding_generation = False
-set_page_as_boundary = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-use_textract = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
 result = carbon.files.upload_from_url(
-  url: url,
-  file_name: file_name,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  set_page_as_boundary: set_page_as_boundary,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  use_textract: use_textract,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+  url: "string_example",
+  file_name: "string_example",
+  chunk_size: 1,
+  chunk_overlap: 1,
+  skip_embedding_generation: False,
+  set_page_as_boundary: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  use_textract: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -997,24 +903,15 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-contents = "string_example"
-name = "string_example"
-chunk_size = 1
-chunk_overlap = 1
-skip_embedding_generation = False
-overwrite_file_id = 1
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-
 result = carbon.files.upload_text(
-  contents: contents,
-  name: name,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  overwrite_file_id: overwrite_file_id,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
+  contents: "string_example",
+  name: "string_example",
+  chunk_size: 1,
+  chunk_overlap: 1,
+  skip_embedding_generation: False,
+  overwrite_file_id: 1,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
 )
 p result
 ```
@@ -1047,7 +944,6 @@ Health
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.health.check
 p result
 ```
@@ -1066,26 +962,16 @@ data with the synced articles or modify the sync behavior.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-domain = "string_example"
-api_key = "string_example"
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-
 result = carbon.integrations.connect_freshdesk(
-  domain: domain,
-  api_key: api_key,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
+  domain: "string_example",
+  api_key: "string_example",
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
 )
 p result
 ```
@@ -1126,12 +1012,9 @@ Once created, generate an access key for this user and share the credentials wit
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-access_key = "string_example"
-access_key_secret = "string_example"
-
 result = carbon.integrations.create_aws_iam_user(
-  access_key: access_key,
-  access_key_secret: access_key_secret,
+  access_key: "string_example",
+  access_key_secret: "string_example",
 )
 p result
 ```
@@ -1152,36 +1035,21 @@ Get Oauth Url
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-service = "GOOGLE_DRIVE"
-tags = None
-scope = "string_example"
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-zendesk_subdomain = "string_example"
-microsoft_tenant = "string_example"
-sharepoint_site_name = "string_example"
-confluence_subdomain = "string_example"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
 result = carbon.integrations.get_oauth_url(
-  service: service,
-  tags: tags,
-  scope: scope,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  zendesk_subdomain: zendesk_subdomain,
-  microsoft_tenant: microsoft_tenant,
-  sharepoint_site_name: sharepoint_site_name,
-  confluence_subdomain: confluence_subdomain,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+  service: "GOOGLE_DRIVE",
+  tags: None,
+  scope: "string_example",
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  zendesk_subdomain: "string_example",
+  microsoft_tenant: "string_example",
+  sharepoint_site_name: "string_example",
+  confluence_subdomain: "string_example",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -1232,12 +1100,9 @@ flag which pages will return non-empty lists of pages when set as the `parent_id
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-parent_id = "string_example"
-
 result = carbon.integrations.list_confluence_pages(
-  data_source_id: data_source_id,
-  parent_id: parent_id,
+  data_source_id: 1,
+  parent_id: "string_example",
 )
 p result
 ```
@@ -1258,17 +1123,13 @@ List Data Source Items
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-parent_id = "string_example"
-pagination = {
+result = carbon.integrations.list_data_source_items(
+  data_source_id: 1,
+  parent_id: "string_example",
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-
-result = carbon.integrations.list_data_source_items(
-  data_source_id: data_source_id,
-  parent_id: parent_id,
-  pagination: pagination,
+    },
 )
 p result
 ```
@@ -1292,7 +1153,6 @@ both system folders like "inbox" and user created folders.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.integrations.list_folders
 p result
 ```
@@ -1308,7 +1168,6 @@ will have the type "user" and Gmail's default labels will have the type "system"
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.integrations.list_labels
 p result
 ```
@@ -1326,30 +1185,19 @@ pages or alter the behavior of the sync.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-ids = [
-        "string_example"
-    ]
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
 result = carbon.integrations.sync_confluence(
-  data_source_id: data_source_id,
-  ids: ids,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+  data_source_id: 1,
+  ids: [
+        "string_example"
+    ],
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -1386,10 +1234,8 @@ Sync Data Source Items
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-
 result = carbon.integrations.sync_data_source_items(
-  data_source_id: data_source_id,
+  data_source_id: 1,
 )
 p result
 ```
@@ -1408,30 +1254,19 @@ Sync Files
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-data_source_id = 1
-ids = [
-        "string_example"
-    ]
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
 result = carbon.integrations.sync_files(
-  data_source_id: data_source_id,
-  ids: ids,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+  data_source_id: 1,
+  ids: [
+        "string_example"
+    ],
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -1517,24 +1352,15 @@ in the above example.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-filters = {}
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-
 result = carbon.integrations.sync_gmail(
-  filters: filters,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
+  filters: {},
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
 )
 p result
 ```
@@ -1626,26 +1452,16 @@ in the above example.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-filters = {}
-tags = {}
-folder = "Inbox"
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-
 result = carbon.integrations.sync_outlook(
-  filters: filters,
-  tags: tags,
-  folder: folder,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
+  filters: {},
+  tags: {},
+  folder: "Inbox",
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
 )
 p result
 ```
@@ -1680,24 +1496,15 @@ Rss Feed
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "string_example"
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-
 result = carbon.integrations.sync_rss_feed(
-  url: url,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
+  url: "string_example",
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
 )
 p result
 ```
@@ -1732,29 +1539,19 @@ data with the selected items or modify the sync behavior
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-ids = [
+result = carbon.integrations.sync_s3_files(
+  ids: [
         {
         }
-    ]
-tags = {}
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-embedding_model = "OPENAI"
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-max_items_per_chunk = 1
-
-result = carbon.integrations.sync_s3_files(
-  ids: ids,
-  tags: tags,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  embedding_model: embedding_model,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  max_items_per_chunk: max_items_per_chunk,
+    ],
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  max_items_per_chunk: 1,
 )
 p result
 ```
@@ -1789,7 +1586,6 @@ Get Organization
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-
 result = carbon.organizations.get
 p result
 ```
@@ -1804,10 +1600,8 @@ User Endpoint
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-customer_id = "string_example"
-
 result = carbon.users.get(
-  customer_id: customer_id,
+  customer_id: "string_example",
 )
 p result
 ```
@@ -1826,12 +1620,9 @@ Toggle User Features
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-configuration_key_name = "string_example"
-value = {}
-
 result = carbon.users.toggle_user_features(
-  configuration_key_name: configuration_key_name,
-  value: value,
+  configuration_key_name: "string_example",
+  value: {},
 )
 p result
 ```
@@ -1858,10 +1649,8 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "url_example"
-
 result = carbon.utilities.fetch_urls(
-  url: url,
+  url: "url_example",
 )
 p result
 ```
@@ -1887,12 +1676,9 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-id = "id_example"
-raw = False
-
 result = carbon.utilities.fetch_youtube_transcripts(
-  id: id,
-  raw: raw,
+  id: "id_example",
+  raw: False,
 )
 p result
 ```
@@ -1919,10 +1705,8 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "url_example"
-
 result = carbon.utilities.process_sitemap(
-  url: url,
+  url: "url_example",
 )
 p result
 ```
@@ -1947,34 +1731,21 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "string_example"
-tags = {
-        "key": "string_example",
-    }
-max_pages_to_scrape = 100
-chunk_size = 1500
-chunk_overlap = 20
-skip_embedding_generation = False
-enable_auto_sync = False
-generate_sparse_vectors = False
-prepend_filename_to_chunks = False
-html_tags_to_skip = []
-css_classes_to_skip = []
-css_selectors_to_skip = []
-
 result = carbon.utilities.scrape_sitemap(
-  url: url,
-  tags: tags,
-  max_pages_to_scrape: max_pages_to_scrape,
-  chunk_size: chunk_size,
-  chunk_overlap: chunk_overlap,
-  skip_embedding_generation: skip_embedding_generation,
-  enable_auto_sync: enable_auto_sync,
-  generate_sparse_vectors: generate_sparse_vectors,
-  prepend_filename_to_chunks: prepend_filename_to_chunks,
-  html_tags_to_skip: html_tags_to_skip,
-  css_classes_to_skip: css_classes_to_skip,
-  css_selectors_to_skip: css_selectors_to_skip,
+  url: "string_example",
+  tags: {
+        "key": "string_example",
+    },
+  max_pages_to_scrape: 100,
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: False,
+  enable_auto_sync: False,
+  generate_sparse_vectors: False,
+  prepend_filename_to_chunks: False,
+  html_tags_to_skip: [],
+  css_classes_to_skip: [],
+  css_selectors_to_skip: [],
 )
 p result
 ```
@@ -2022,7 +1793,8 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-body = [
+result = carbon.utilities.scrape_web(
+  body: [
         {
             "url" => "url_example",
             "recursion_depth" => 3,
@@ -2037,10 +1809,7 @@ body = [
             "css_classes_to_skip" => [],
             "css_selectors_to_skip" => [],
         }
-    ]
-
-result = carbon.utilities.scrape_web(
-  body: body,
+    ],
 )
 p result
 ```
@@ -2077,10 +1846,8 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-query = "query_example"
-
 result = carbon.utilities.search_urls(
-  query: query,
+  query: "query_example",
 )
 p result
 ```
@@ -2099,10 +1866,8 @@ Add Webhook Url
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-url = "string_example"
-
 result = carbon.webhooks.add_url(
-  url: url,
+  url: "string_example",
 )
 p result
 ```
@@ -2121,10 +1886,8 @@ Delete Webhook Url
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-webhook_id = 1
-
 result = carbon.webhooks.delete_url(
-  webhook_id: webhook_id,
+  webhook_id: 1,
 )
 p result
 ```
@@ -2143,21 +1906,16 @@ Webhook Urls
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-pagination = {
+result = carbon.webhooks.urls(
+  pagination: {
         "limit" => 10,
         "offset" => 0,
-    }
-order_by = "created_at"
-order_dir = "desc"
-filters = {
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
         "ids" => [],
-    }
-
-result = carbon.webhooks.urls(
-  pagination: pagination,
-  order_by: order_by,
-  order_dir: order_dir,
-  filters: filters,
+    },
 )
 p result
 ```
