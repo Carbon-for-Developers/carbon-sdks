@@ -20,7 +20,6 @@ module Carbon
 
     # User Endpoint
     #
-    #
     # @param customer_id [String] 
     # @param body [UserRequestContent] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -33,7 +32,6 @@ module Carbon
     end
 
     # User Endpoint
-    #
     #
     # @param customer_id [String] 
     # @param body [UserRequestContent] 
@@ -114,7 +112,6 @@ module Carbon
 
     # Toggle User Features
     #
-    #
     # @param configuration_key_name [String] 
     # @param value [Object] 
     # @param body [ModifyUserConfigurationInput] 
@@ -129,7 +126,6 @@ module Carbon
     end
 
     # Toggle User Features
-    #
     #
     # @param configuration_key_name [String] 
     # @param value [Object] 

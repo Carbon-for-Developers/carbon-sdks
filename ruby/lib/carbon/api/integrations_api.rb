@@ -272,7 +272,6 @@ module Carbon
 
     # Get Oauth Url
     #
-    #
     # @param service [DataSourceType] 
     # @param tags [Object] 
     # @param scope [String] 
@@ -311,7 +310,6 @@ module Carbon
     end
 
     # Get Oauth Url
-    #
     #
     # @param service [DataSourceType] 
     # @param tags [Object] 
@@ -532,7 +530,6 @@ module Carbon
 
     # List Data Source Items
     #
-    #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
     # @param pagination [Pagination] 
@@ -549,7 +546,6 @@ module Carbon
     end
 
     # List Data Source Items
-    #
     #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
@@ -932,7 +928,6 @@ module Carbon
 
     # Sync Data Source Items
     #
-    #
     # @param data_source_id [Integer] 
     # @param body [SyncDirectoryRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -945,7 +940,6 @@ module Carbon
     end
 
     # Sync Data Source Items
-    #
     #
     # @param data_source_id [Integer] 
     # @param body [SyncDirectoryRequest] 
@@ -1026,7 +1020,6 @@ module Carbon
 
     # Sync Files
     #
-    #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
     # @param tags [Object] 
@@ -1057,7 +1050,6 @@ module Carbon
     end
 
     # Sync Files
-    #
     #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
@@ -1628,7 +1620,6 @@ module Carbon
 
     # Rss Feed
     #
-    #
     # @param url [String] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1655,7 +1646,6 @@ module Carbon
     end
 
     # Rss Feed
-    #
     #
     # @param url [String] 
     # @param tags [Object] 

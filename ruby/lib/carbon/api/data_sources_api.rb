@@ -20,7 +20,6 @@ module Carbon
 
     # User Data Sources
     #
-    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserDataSourceOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -39,7 +38,6 @@ module Carbon
     end
 
     # User Data Sources
-    #
     #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserDataSourceOrderByColumns] 
@@ -126,7 +124,6 @@ module Carbon
 
     # Revoke Access Token
     #
-    #
     # @param data_source_id [Integer] 
     # @param body [RevokeAccessTokenInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -139,7 +136,6 @@ module Carbon
     end
 
     # Revoke Access Token
-    #
     #
     # @param data_source_id [Integer] 
     # @param body [RevokeAccessTokenInput] 

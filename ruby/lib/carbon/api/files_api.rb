@@ -142,7 +142,6 @@ module Carbon
 
     # Delete File Endpoint
     #
-    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete(file_id:, extra: {})
@@ -151,7 +150,6 @@ module Carbon
     end
 
     # Delete File Endpoint
-    #
     #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -223,7 +221,6 @@ module Carbon
 
     # Delete File Tags
     #
-    #
     # @param tags [Array<String>] 
     # @param organization_user_file_id [Integer] 
     # @param body [OrganizationUserFileTagsRemove] 
@@ -238,7 +235,6 @@ module Carbon
     end
 
     # Delete File Tags
-    #
     #
     # @param tags [Array<String>] 
     # @param organization_user_file_id [Integer] 
@@ -321,7 +317,6 @@ module Carbon
 
     # Delete Files Endpoint
     #
-    #
     # @param file_ids [Array<Integer>] 
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
     # @param delete_non_synced_only [Boolean] 
@@ -338,7 +333,6 @@ module Carbon
     end
 
     # Delete Files Endpoint
-    #
     #
     # @param file_ids [Array<Integer>] 
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
@@ -935,7 +929,6 @@ module Carbon
 
     # Resync File
     #
-    #
     # @param file_id [Integer] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -952,7 +945,6 @@ module Carbon
     end
 
     # Resync File
-    #
     #
     # @param file_id [Integer] 
     # @param chunk_size [Integer] 
@@ -1253,7 +1245,6 @@ module Carbon
 
     # Create Upload File From Url
     #
-    #
     # @param url [String] 
     # @param file_name [String] 
     # @param chunk_size [Integer] 
@@ -1286,7 +1277,6 @@ module Carbon
     end
 
     # Create Upload File From Url
-    #
     #
     # @param url [String] 
     # @param file_name [String] 

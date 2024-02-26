@@ -20,7 +20,6 @@ module Carbon
 
     # Get Organization
     #
-    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get(extra: {})
       data, _status_code, _headers = get_with_http_info_impl(extra)
@@ -28,7 +27,6 @@ module Carbon
     end
 
     # Get Organization
-    #
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_with_http_info(extra: {})

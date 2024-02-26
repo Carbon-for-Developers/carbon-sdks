@@ -356,7 +356,6 @@ module Carbon
 
     # Retrieve Embeddings And Content
     #
-    #
     # @param filters [EmbeddingsAndChunksFilters] 
     # @param pagination [Pagination] 
     # @param order_by [EmbeddingsAndChunksOrderByColumns] 
@@ -377,7 +376,6 @@ module Carbon
     end
 
     # Retrieve Embeddings And Content
-    #
     #
     # @param filters [EmbeddingsAndChunksFilters] 
     # @param pagination [Pagination] 
@@ -466,7 +464,6 @@ module Carbon
 
     # Upload Chunks And Embeddings
     #
-    #
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
@@ -483,7 +480,6 @@ module Carbon
     end
 
     # Upload Chunks And Embeddings
-    #
     #
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 

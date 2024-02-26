@@ -20,7 +20,6 @@ module Carbon
 
     # Add Webhook Url
     #
-    #
     # @param url [String] 
     # @param body [AddWebhookProps] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -33,7 +32,6 @@ module Carbon
     end
 
     # Add Webhook Url
-    #
     #
     # @param url [String] 
     # @param body [AddWebhookProps] 
@@ -114,7 +112,6 @@ module Carbon
 
     # Delete Webhook Url
     #
-    #
     # @param webhook_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete_url(webhook_id:, extra: {})
@@ -123,7 +120,6 @@ module Carbon
     end
 
     # Delete Webhook Url
-    #
     #
     # @param webhook_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -195,7 +191,6 @@ module Carbon
 
     # Webhook Urls
     #
-    #
     # @param pagination [Pagination] 
     # @param order_by [WebhookOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -214,7 +209,6 @@ module Carbon
     end
 
     # Webhook Urls
-    #
     #
     # @param pagination [Pagination] 
     # @param order_by [WebhookOrderByColumns] 
