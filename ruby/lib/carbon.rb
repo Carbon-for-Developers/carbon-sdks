@@ -127,16 +127,42 @@ module Carbon
   @config = Configuration.default
   SENTINEL = Object.new
   class << self
-    extend Forwardable
 
-    def is_sentinel(value)
+    private def is_sentinel(value)
       value == SENTINEL
     end
 
-    def_delegators :@config, :host, :host=
-    def_delegators :@config, :access_token, :access_token= # api key
-    def_delegators :@config, :api_key, :api_key= # api key
-    def_delegators :@config, :customer_id, :customer_id= # api key
+    def host
+      @config.host
+    end
+
+    def host=(value)
+      @config.host = value
+    end
+    # api key from OpenAPI spec
+    def access_token
+      @config.access_token
+    end
+
+    def access_token=(value)
+      @config.access_token = value
+    end
+    # api key from OpenAPI spec
+    def api_key
+      @config.api_key
+    end
+
+    def api_key=(value)
+      @config.api_key = value
+    end
+    # api key from OpenAPI spec
+    def customer_id
+      @config.customer_id
+    end
+
+    def customer_id=(value)
+      @config.customer_id = value
+    end
 
     # Customize default settings for the SDK using block.
     #   Carbon.configure do |config|

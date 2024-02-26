@@ -35,4 +35,25 @@ describe 'GettingStarted' do
     )
     p result
   end
+
+  it 'data_sources.query_user_data_sources static pattern' do
+      Carbon.access_token = "YOUR API KEY"
+      Carbon.api_key = "YOUR API KEY"
+      Carbon.customer_id = "YOUR API KEY"
+      Carbon.host = "http://127.0.0.1:4010"
+      result = Carbon::DataSources.query_user_data_sources(
+        pagination: {
+          "limit" => 10,
+          "offset" => 0,
+        },
+        order_by: "created_at",
+        order_dir: "desc",
+        filters: {
+          "source" => "GOOGLE_DRIVE",
+        },
+      )
+
+      # assert result is not nil
+      expect(result).to_not be_nil
+  end
 end
