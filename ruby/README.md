@@ -101,6 +101,16 @@ result = carbon.auth.get_access_token
 p result
 ```
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[TokenResponse](./lib/carbon/models/token_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/auth/v1/access_token` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -118,6 +128,16 @@ Returns whether or not the organization is white labeled and which integrations 
 result = carbon.auth.get_white_labeling
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[WhiteLabelingResponse](./lib/carbon/models/white_labeling_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/auth/v1/white_labeling` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -153,6 +173,16 @@ p result
 
 ##### filters: [`OrganizationUserDataSourceFilters`](./lib/carbon/models/organization_user_data_source_filters.rb)<a id="filters-organizationuserdatasourcefilterslibcarbonmodelsorganization_user_data_source_filtersrb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceResponse](./lib/carbon/models/organization_user_data_source_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_data_sources` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -172,6 +202,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/revoke_access_token` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -359,6 +399,16 @@ Flag to control whether or not to perform hybrid search.
 
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[DocumentResponseList](./lib/carbon/models/document_response_list.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/embeddings` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -396,6 +446,16 @@ p result
 ##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
 
 ##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EmbeddingsAndChunksResponse](./lib/carbon/models/embeddings_and_chunks_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/text_chunks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -436,6 +496,16 @@ p result
 
 ##### overwrite_existing: `Boolean`<a id="overwrite_existing-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/upload_chunks_and_embeddings` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -471,6 +541,16 @@ p result
 
 ##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/create_user_file_tags` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -490,6 +570,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### file_id: `Integer`<a id="file_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/deletefile/{file_id}` `DELETE`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -515,6 +605,16 @@ p result
 ##### tags: [`Array<String>`](./lib/carbon/models/array_string.rb)<a id="tags-arraylibcarbonmodelsarray_stringrb"></a>
 
 ##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_user_file_tags` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -546,6 +646,16 @@ p result
 
 ##### delete_non_synced_only: `Boolean`<a id="delete_non_synced_only-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -566,6 +676,16 @@ p result
 
 ##### file_id: `Integer`<a id="file_id-integer"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PresignedURLResponse](./lib/carbon/models/presigned_url_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/parsed_file/{file_id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -585,6 +705,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### file_id: `Integer`<a id="file_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PresignedURLResponse](./lib/carbon/models/presigned_url_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/raw_file/{file_id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -677,6 +807,16 @@ p result
 
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFilesV2](./lib/carbon/models/user_files_v2.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_files_v2` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -719,6 +859,16 @@ p result
 
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -744,6 +894,16 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/resync_file` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -834,6 +994,16 @@ Whether or not to prepend the file's name to chunks.
 
 Number of objects per chunk. For json files only.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/uploadfile` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -883,6 +1053,16 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/upload_file_from_url` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -934,6 +1114,16 @@ p result
 
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserFile](./lib/carbon/models/user_file.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/upload_text` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -947,6 +1137,12 @@ Health
 result = carbon.health.check
 p result
 ```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/health` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -996,6 +1192,16 @@ p result
 
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/freshdesk` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1024,6 +1230,16 @@ p result
 ##### access_key: `String`<a id="access_key-string"></a>
 
 ##### access_key_secret: `String`<a id="access_key_secret-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/s3` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1084,6 +1300,12 @@ p result
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/oauth_url` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1112,6 +1334,16 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
 ##### parent_id: `String`<a id="parent_id-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ListResponse](./lib/carbon/models/list_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/confluence/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1142,6 +1374,16 @@ p result
 
 ##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ListDataSourceItemsResponse](./lib/carbon/models/list_data_source_items_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/items/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1157,6 +1399,12 @@ result = carbon.integrations.list_folders
 p result
 ```
 
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/user_folders` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1171,6 +1419,12 @@ will have the type "user" and Gmail's default labels will have the type "system"
 result = carbon.integrations.list_labels
 p result
 ```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gmail/user_labels` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1224,6 +1478,16 @@ p result
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/confluence/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1243,6 +1507,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/items/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1292,6 +1566,16 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/files/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1382,6 +1666,16 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gmail/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1486,6 +1780,16 @@ p result
 
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1526,6 +1830,16 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/rss_feed` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1576,6 +1890,16 @@ p result
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/s3/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1589,6 +1913,16 @@ Get Organization
 result = carbon.organizations.get
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationResponse](./lib/carbon/models/organization_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1609,6 +1943,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### customer_id: `String`<a id="customer_id-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserResponse](./lib/carbon/models/user_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1632,6 +1976,16 @@ p result
 ##### configuration_key_name: `String`<a id="configuration_key_name-string"></a>
 
 ##### value: [`Object`](./lib/carbon/models/object.rb)<a id="value-objectlibcarbonmodelsobjectrb"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/modify_user_configuration` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1658,6 +2012,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### url: `String`<a id="url-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FetchURLsResponse](./lib/carbon/models/fetch_urls_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/fetch_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1689,6 +2053,16 @@ p result
 
 ##### raw: `Boolean`<a id="raw-boolean"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[YoutubeTranscriptResponse](./lib/carbon/models/youtube_transcript_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/fetch_youtube_transcript` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1714,6 +2088,12 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### url: `String`<a id="url-string"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/process_sitemap` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1776,6 +2156,12 @@ p result
 
 ##### css_selectors_to_skip: [`Array<String>`](./lib/carbon/models/array_string.rb)<a id="css_selectors_to_skip-arraylibcarbonmodelsarray_stringrb"></a>
 
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/scrape_sitemap` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1818,6 +2204,12 @@ p result
 
 [`Array<WebscrapeRequest>`](./lib/carbon/models/array_webscrape_request.rb)
 
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/web_scrape` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1856,6 +2248,16 @@ p result
 
 ##### query: `String`<a id="query-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FetchURLsResponse](./lib/carbon/models/fetch_urls_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/search_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1876,6 +2278,16 @@ p result
 
 ##### url: `String`<a id="url-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Webhook](./lib/carbon/models/webhook.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/add_webhook` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1895,6 +2307,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### webhook_id: `Integer`<a id="webhook_id-integer"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_webhook/{webhook_id}` `DELETE`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1929,6 +2351,16 @@ p result
 ##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
 
 ##### filters: [`WebhookFilters`](./lib/carbon/models/webhook_filters.rb)<a id="filters-webhookfilterslibcarbonmodelswebhook_filtersrb"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[WebhookQueryResponse](./lib/carbon/models/webhook_query_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/webhooks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
