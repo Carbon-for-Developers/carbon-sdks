@@ -19,7 +19,19 @@ module Carbon
     end
 
     # Create File Tags
-    # A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they're automatically converted to strings (e.g. 4 will become \"4\").
+    #
+    # A tag is a key-value pair that can be added to a file. This pair can then be used
+    # for searches (e.g. embedding searches) in order to narrow down the scope of the search.
+    # A file can have any number of tags. The following are reserved keys that cannot be used:
+    # - db_embedding_id
+    # - organization_id
+    # - user_id
+    # - organization_user_file_id
+    # 
+    # Carbon currently supports two data types for tag values - `string` and `list<string>`.
+    # Keys can only be `string`. If values other than `string` and `list<string>` are used,
+    # they're automatically converted to strings (e.g. 4 will become "4").
+    #
     # @param tags [Hash<String, Tags1>] 
     # @param organization_user_file_id [Integer] 
     # @param body [OrganizationUserFileTagCreate] 
@@ -34,7 +46,19 @@ module Carbon
     end
 
     # Create File Tags
-    # A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - `string` and `list<string>`. Keys can only be `string`. If values other than `string` and `list<string>` are used, they're automatically converted to strings (e.g. 4 will become \"4\").
+    #
+    # A tag is a key-value pair that can be added to a file. This pair can then be used
+    # for searches (e.g. embedding searches) in order to narrow down the scope of the search.
+    # A file can have any number of tags. The following are reserved keys that cannot be used:
+    # - db_embedding_id
+    # - organization_id
+    # - user_id
+    # - organization_user_file_id
+    # 
+    # Carbon currently supports two data types for tag values - `string` and `list<string>`.
+    # Keys can only be `string`. If values other than `string` and `list<string>` are used,
+    # they're automatically converted to strings (e.g. 4 will become "4").
+    #
     # @param tags [Hash<String, Tags1>] 
     # @param organization_user_file_id [Integer] 
     # @param body [OrganizationUserFileTagCreate] 
@@ -52,7 +76,7 @@ module Carbon
     # @param organization_user_file_tag_create [OrganizationUserFileTagCreate] 
     # @param [Hash] opts the optional parameters
     # @return [UserFile]
-    def create_user_file_tags_impl(organization_user_file_tag_create, opts = {})
+    private def create_user_file_tags_impl(organization_user_file_tag_create, opts = {})
       data, _status_code, _headers = create_user_file_tags_with_http_info(organization_user_file_tag_create, opts)
       data
     end
@@ -62,7 +86,7 @@ module Carbon
     # @param organization_user_file_tag_create [OrganizationUserFileTagCreate] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def create_user_file_tags_with_http_info_impl(organization_user_file_tag_create, opts = {})
+    private def create_user_file_tags_with_http_info_impl(organization_user_file_tag_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.create_user_file_tags ...'
       end
@@ -117,6 +141,8 @@ module Carbon
 
 
     # Delete File Endpoint
+    #
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete(file_id:, extra: {})
@@ -125,6 +151,8 @@ module Carbon
     end
 
     # Delete File Endpoint
+    #
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete_with_http_info(file_id:, extra: {})
@@ -135,7 +163,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def delete_impl(file_id, opts = {})
+    private def delete_impl(file_id, opts = {})
       data, _status_code, _headers = delete_with_http_info(file_id, opts)
       data
     end
@@ -144,7 +172,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def delete_with_http_info_impl(file_id, opts = {})
+    private def delete_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete ...'
       end
@@ -194,6 +222,8 @@ module Carbon
 
 
     # Delete File Tags
+    #
+    #
     # @param tags [Array<String>] 
     # @param organization_user_file_id [Integer] 
     # @param body [OrganizationUserFileTagsRemove] 
@@ -208,6 +238,8 @@ module Carbon
     end
 
     # Delete File Tags
+    #
+    #
     # @param tags [Array<String>] 
     # @param organization_user_file_id [Integer] 
     # @param body [OrganizationUserFileTagsRemove] 
@@ -224,7 +256,7 @@ module Carbon
     # @param organization_user_file_tags_remove [OrganizationUserFileTagsRemove] 
     # @param [Hash] opts the optional parameters
     # @return [UserFile]
-    def delete_file_tags_impl(organization_user_file_tags_remove, opts = {})
+    private def delete_file_tags_impl(organization_user_file_tags_remove, opts = {})
       data, _status_code, _headers = delete_file_tags_with_http_info(organization_user_file_tags_remove, opts)
       data
     end
@@ -233,7 +265,7 @@ module Carbon
     # @param organization_user_file_tags_remove [OrganizationUserFileTagsRemove] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def delete_file_tags_with_http_info_impl(organization_user_file_tags_remove, opts = {})
+    private def delete_file_tags_with_http_info_impl(organization_user_file_tags_remove, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete_file_tags ...'
       end
@@ -288,6 +320,8 @@ module Carbon
 
 
     # Delete Files Endpoint
+    #
+    #
     # @param file_ids [Array<Integer>] 
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
     # @param delete_non_synced_only [Boolean] 
@@ -304,6 +338,8 @@ module Carbon
     end
 
     # Delete Files Endpoint
+    #
+    #
     # @param file_ids [Array<Integer>] 
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
     # @param delete_non_synced_only [Boolean] 
@@ -322,7 +358,7 @@ module Carbon
     # @param delete_files_query_input [DeleteFilesQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def delete_many_impl(delete_files_query_input, opts = {})
+    private def delete_many_impl(delete_files_query_input, opts = {})
       data, _status_code, _headers = delete_many_with_http_info(delete_files_query_input, opts)
       data
     end
@@ -331,7 +367,7 @@ module Carbon
     # @param delete_files_query_input [DeleteFilesQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def delete_many_with_http_info_impl(delete_files_query_input, opts = {})
+    private def delete_many_with_http_info_impl(delete_files_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete_many ...'
       end
@@ -386,7 +422,9 @@ module Carbon
 
 
     # Parsed File
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_parsed_file(file_id:, extra: {})
@@ -395,7 +433,9 @@ module Carbon
     end
 
     # Parsed File
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_parsed_file_with_http_info(file_id:, extra: {})
@@ -407,7 +447,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [PresignedURLResponse]
-    def get_parsed_file_impl(file_id, opts = {})
+    private def get_parsed_file_impl(file_id, opts = {})
       data, _status_code, _headers = get_parsed_file_with_http_info(file_id, opts)
       data
     end
@@ -417,7 +457,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PresignedURLResponse, Integer, Hash)>] PresignedURLResponse data, response status code and response headers
-    def get_parsed_file_with_http_info_impl(file_id, opts = {})
+    private def get_parsed_file_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.get_parsed_file ...'
       end
@@ -467,7 +507,9 @@ module Carbon
 
 
     # Raw File
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_raw_file(file_id:, extra: {})
@@ -476,7 +518,9 @@ module Carbon
     end
 
     # Raw File
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_raw_file_with_http_info(file_id:, extra: {})
@@ -488,7 +532,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [PresignedURLResponse]
-    def get_raw_file_impl(file_id, opts = {})
+    private def get_raw_file_impl(file_id, opts = {})
       data, _status_code, _headers = get_raw_file_with_http_info(file_id, opts)
       data
     end
@@ -498,7 +542,7 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PresignedURLResponse, Integer, Hash)>] PresignedURLResponse data, response status code and response headers
-    def get_raw_file_with_http_info_impl(file_id, opts = {})
+    private def get_raw_file_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.get_raw_file ...'
       end
@@ -548,7 +592,58 @@ module Carbon
 
 
     # User Files V2
-    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn't optional and must be a `string` 2. \"value\" isn't optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
+    #
+    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+    # and `tags` are specified, `tags` is ignored. `tags_v2` enables
+    # building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+    # ```json
+    # {
+    #     "OR": [
+    #         {
+    #             "key": "subject",
+    #             "value": "holy-bible",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "person-of-interest",
+    #             "value": "jesus christ",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "genre",
+    #             "value": "religion",
+    #             "negate": true
+    #         }
+    #         {
+    #             "AND": [
+    #                 {
+    #                     "key": "subject",
+    #                     "value": "tao-te-ching",
+    #                     "negate": false
+    #                 },
+    #                 {
+    #                     "key": "author",
+    #                     "value": "lao-tzu",
+    #                     "negate": false
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # }
+    # ```
+    # In this case, files will be filtered such that:
+    # 1. "subject" = "holy-bible" OR
+    # 2. "person-of-interest" = "jesus christ" OR
+    # 3. "genre" != "religion" OR
+    # 4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+    # 
+    # Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+    # For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+    # 1. "key" isn't optional and must be a `string`
+    # 2. "value" isn't optional and can be `any` or list[`any`]
+    # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+    # the resulting query. It is `false` by default.
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
     # @param order_dir [OrderDir] 
@@ -573,7 +668,58 @@ module Carbon
     end
 
     # User Files V2
-    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn't optional and must be a `string` 2. \"value\" isn't optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
+    #
+    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+    # and `tags` are specified, `tags` is ignored. `tags_v2` enables
+    # building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+    # ```json
+    # {
+    #     "OR": [
+    #         {
+    #             "key": "subject",
+    #             "value": "holy-bible",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "person-of-interest",
+    #             "value": "jesus christ",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "genre",
+    #             "value": "religion",
+    #             "negate": true
+    #         }
+    #         {
+    #             "AND": [
+    #                 {
+    #                     "key": "subject",
+    #                     "value": "tao-te-ching",
+    #                     "negate": false
+    #                 },
+    #                 {
+    #                     "key": "author",
+    #                     "value": "lao-tzu",
+    #                     "negate": false
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # }
+    # ```
+    # In this case, files will be filtered such that:
+    # 1. "subject" = "holy-bible" OR
+    # 2. "person-of-interest" = "jesus christ" OR
+    # 3. "genre" != "religion" OR
+    # 4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+    # 
+    # Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+    # For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+    # 1. "key" isn't optional and must be a `string`
+    # 2. "value" isn't optional and can be `any` or list[`any`]
+    # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+    # the resulting query. It is `false` by default.
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
     # @param order_dir [OrderDir] 
@@ -601,7 +747,7 @@ module Carbon
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [UserFilesV2]
-    def query_user_files_impl(organization_user_files_to_sync_query_input, opts = {})
+    private def query_user_files_impl(organization_user_files_to_sync_query_input, opts = {})
       data, _status_code, _headers = query_user_files_with_http_info(organization_user_files_to_sync_query_input, opts)
       data
     end
@@ -611,7 +757,7 @@ module Carbon
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFilesV2, Integer, Hash)>] UserFilesV2 data, response status code and response headers
-    def query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
+    private def query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.query_user_files ...'
       end
@@ -666,7 +812,9 @@ module Carbon
 
 
     # User Files
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
     # @param order_dir [OrderDir] 
@@ -691,7 +839,9 @@ module Carbon
     end
 
     # User Files
+    #
     # This route is deprecated. Use `/user_files_v2` instead.
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
     # @param order_dir [OrderDir] 
@@ -719,7 +869,7 @@ module Carbon
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<UserFile>]
-    def query_user_files_deprecated_impl(organization_user_files_to_sync_query_input, opts = {})
+    private def query_user_files_deprecated_impl(organization_user_files_to_sync_query_input, opts = {})
       data, _status_code, _headers = query_user_files_deprecated_with_http_info(organization_user_files_to_sync_query_input, opts)
       data
     end
@@ -729,7 +879,7 @@ module Carbon
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<UserFile>, Integer, Hash)>] Array<UserFile> data, response status code and response headers
-    def query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
+    private def query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.query_user_files_deprecated ...'
       end
@@ -784,6 +934,8 @@ module Carbon
 
 
     # Resync File
+    #
+    #
     # @param file_id [Integer] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -800,6 +952,8 @@ module Carbon
     end
 
     # Resync File
+    #
+    #
     # @param file_id [Integer] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -818,7 +972,7 @@ module Carbon
     # @param resync_file_query_input [ResyncFileQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [UserFile]
-    def resync_impl(resync_file_query_input, opts = {})
+    private def resync_impl(resync_file_query_input, opts = {})
       data, _status_code, _headers = resync_with_http_info(resync_file_query_input, opts)
       data
     end
@@ -827,7 +981,7 @@ module Carbon
     # @param resync_file_query_input [ResyncFileQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def resync_with_http_info_impl(resync_file_query_input, opts = {})
+    private def resync_with_http_info_impl(resync_file_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.resync ...'
       end
@@ -882,7 +1036,33 @@ module Carbon
 
 
     # Create Upload File
-    # This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request. Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set, PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description of all possible query parameters: - `chunk_size`: the chunk size (in tokens) applied when splitting the document - `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings - `set_page_as_boundary`: described above - `embedding_model`: the model used to generate embeddings for the document chunks - `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently) - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search. - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.
+    # Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,
+    # PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates
+    # of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description
+    # of all possible query parameters:
+    # - `chunk_size`: the chunk size (in tokens) applied when splitting the document
+    # - `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document
+    # - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings
+    # - `set_page_as_boundary`: described above
+    # - `embedding_model`: the model used to generate embeddings for the document chunks
+    # - `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently)
+    # - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.
+    # - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text
+    # 
+    # 
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param file [File] 
     # @param chunk_size [Integer] Chunk size in tiktoken tokens to be used when processing file.
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
@@ -913,7 +1093,33 @@ module Carbon
     end
 
     # Create Upload File
-    # This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request. Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set, PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description of all possible query parameters: - `chunk_size`: the chunk size (in tokens) applied when splitting the document - `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings - `set_page_as_boundary`: described above - `embedding_model`: the model used to generate embeddings for the document chunks - `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently) - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search. - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.
+    # Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,
+    # PDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates
+    # of the bounding box around the chunk (this can be used for things like text highlighting). Following is a description
+    # of all possible query parameters:
+    # - `chunk_size`: the chunk size (in tokens) applied when splitting the document
+    # - `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document
+    # - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings
+    # - `set_page_as_boundary`: described above
+    # - `embedding_model`: the model used to generate embeddings for the document chunks
+    # - `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently)
+    # - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.
+    # - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text
+    # 
+    # 
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param file [File] 
     # @param chunk_size [Integer] Chunk size in tiktoken tokens to be used when processing file.
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
@@ -950,14 +1156,14 @@ module Carbon
     # @option opts [Integer] :chunk_size Chunk size in tiktoken tokens to be used when processing file.
     # @option opts [Integer] :chunk_overlap Chunk overlap in tiktoken tokens to be used when processing file.
     # @option opts [Boolean] :skip_embedding_generation Flag to control whether or not embeddings should be generated and stored             when processing file. (default to false)
-    # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
+    # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
     # @option opts [TextEmbeddingGenerators] :embedding_model Embedding model that will be used to embed file chunks.
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
-    # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file&#39;s name to chunks. (default to false)
+    # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
     # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
     # @return [UserFile]
-    def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
+    private def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       data, _status_code, _headers = upload_with_http_info(file, body_create_upload_file_uploadfile_post, opts)
       data
     end
@@ -970,14 +1176,14 @@ module Carbon
     # @option opts [Integer] :chunk_size Chunk size in tiktoken tokens to be used when processing file.
     # @option opts [Integer] :chunk_overlap Chunk overlap in tiktoken tokens to be used when processing file.
     # @option opts [Boolean] :skip_embedding_generation Flag to control whether or not embeddings should be generated and stored             when processing file. (default to false)
-    # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
+    # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
     # @option opts [TextEmbeddingGenerators] :embedding_model Embedding model that will be used to embed file chunks.
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
-    # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file&#39;s name to chunks. (default to false)
+    # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
     # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
+    private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload ...'
       end
@@ -1046,6 +1252,8 @@ module Carbon
 
 
     # Create Upload File From Url
+    #
+    #
     # @param url [String] 
     # @param file_name [String] 
     # @param chunk_size [Integer] 
@@ -1078,6 +1286,8 @@ module Carbon
     end
 
     # Create Upload File From Url
+    #
+    #
     # @param url [String] 
     # @param file_name [String] 
     # @param chunk_size [Integer] 
@@ -1112,7 +1322,7 @@ module Carbon
     # @param upload_file_from_url_input [UploadFileFromUrlInput] 
     # @param [Hash] opts the optional parameters
     # @return [UserFile]
-    def upload_from_url_impl(upload_file_from_url_input, opts = {})
+    private def upload_from_url_impl(upload_file_from_url_input, opts = {})
       data, _status_code, _headers = upload_from_url_with_http_info(upload_file_from_url_input, opts)
       data
     end
@@ -1121,7 +1331,7 @@ module Carbon
     # @param upload_file_from_url_input [UploadFileFromUrlInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def upload_from_url_with_http_info_impl(upload_file_from_url_input, opts = {})
+    private def upload_from_url_with_http_info_impl(upload_file_from_url_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload_from_url ...'
       end
@@ -1176,7 +1386,18 @@ module Carbon
 
 
     # Create Raw Text
-    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param contents [String] 
     # @param name [String] 
     # @param chunk_size [Integer] 
@@ -1203,7 +1424,18 @@ module Carbon
     end
 
     # Create Raw Text
-    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param contents [String] 
     # @param name [String] 
     # @param chunk_size [Integer] 
@@ -1233,7 +1465,7 @@ module Carbon
     # @param raw_text_input [RawTextInput] 
     # @param [Hash] opts the optional parameters
     # @return [UserFile]
-    def upload_text_impl(raw_text_input, opts = {})
+    private def upload_text_impl(raw_text_input, opts = {})
       data, _status_code, _headers = upload_text_with_http_info(raw_text_input, opts)
       data
     end
@@ -1243,7 +1475,7 @@ module Carbon
     # @param raw_text_input [RawTextInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
-    def upload_text_with_http_info_impl(raw_text_input, opts = {})
+    private def upload_text_with_http_info_impl(raw_text_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload_text ...'
       end

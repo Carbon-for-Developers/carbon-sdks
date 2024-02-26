@@ -19,6 +19,8 @@ module Carbon
     end
 
     # User Data Sources
+    #
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserDataSourceOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -37,6 +39,8 @@ module Carbon
     end
 
     # User Data Sources
+    #
+    #
     # @param pagination [Pagination] 
     # @param order_by [OrganizationUserDataSourceOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -57,7 +61,7 @@ module Carbon
     # @param organization_user_data_source_query_input [OrganizationUserDataSourceQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [OrganizationUserDataSourceResponse]
-    def query_user_data_sources_impl(organization_user_data_source_query_input, opts = {})
+    private def query_user_data_sources_impl(organization_user_data_source_query_input, opts = {})
       data, _status_code, _headers = query_user_data_sources_with_http_info(organization_user_data_source_query_input, opts)
       data
     end
@@ -66,7 +70,7 @@ module Carbon
     # @param organization_user_data_source_query_input [OrganizationUserDataSourceQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrganizationUserDataSourceResponse, Integer, Hash)>] OrganizationUserDataSourceResponse data, response status code and response headers
-    def query_user_data_sources_with_http_info_impl(organization_user_data_source_query_input, opts = {})
+    private def query_user_data_sources_with_http_info_impl(organization_user_data_source_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DataSourcesApi.query_user_data_sources ...'
       end
@@ -121,6 +125,8 @@ module Carbon
 
 
     # Revoke Access Token
+    #
+    #
     # @param data_source_id [Integer] 
     # @param body [RevokeAccessTokenInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -133,6 +139,8 @@ module Carbon
     end
 
     # Revoke Access Token
+    #
+    #
     # @param data_source_id [Integer] 
     # @param body [RevokeAccessTokenInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -147,7 +155,7 @@ module Carbon
     # @param revoke_access_token_input [RevokeAccessTokenInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def revoke_access_token_impl(revoke_access_token_input, opts = {})
+    private def revoke_access_token_impl(revoke_access_token_input, opts = {})
       data, _status_code, _headers = revoke_access_token_with_http_info(revoke_access_token_input, opts)
       data
     end
@@ -156,7 +164,7 @@ module Carbon
     # @param revoke_access_token_input [RevokeAccessTokenInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def revoke_access_token_with_http_info_impl(revoke_access_token_input, opts = {})
+    private def revoke_access_token_with_http_info_impl(revoke_access_token_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DataSourcesApi.revoke_access_token ...'
       end

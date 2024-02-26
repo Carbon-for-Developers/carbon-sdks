@@ -19,6 +19,8 @@ module Carbon
     end
 
     # Add Webhook Url
+    #
+    #
     # @param url [String] 
     # @param body [AddWebhookProps] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -31,6 +33,8 @@ module Carbon
     end
 
     # Add Webhook Url
+    #
+    #
     # @param url [String] 
     # @param body [AddWebhookProps] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -45,7 +49,7 @@ module Carbon
     # @param add_webhook_props [AddWebhookProps] 
     # @param [Hash] opts the optional parameters
     # @return [Webhook]
-    def add_url_impl(add_webhook_props, opts = {})
+    private def add_url_impl(add_webhook_props, opts = {})
       data, _status_code, _headers = add_url_with_http_info(add_webhook_props, opts)
       data
     end
@@ -54,7 +58,7 @@ module Carbon
     # @param add_webhook_props [AddWebhookProps] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Webhook, Integer, Hash)>] Webhook data, response status code and response headers
-    def add_url_with_http_info_impl(add_webhook_props, opts = {})
+    private def add_url_with_http_info_impl(add_webhook_props, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.add_url ...'
       end
@@ -109,6 +113,8 @@ module Carbon
 
 
     # Delete Webhook Url
+    #
+    #
     # @param webhook_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete_url(webhook_id:, extra: {})
@@ -117,6 +123,8 @@ module Carbon
     end
 
     # Delete Webhook Url
+    #
+    #
     # @param webhook_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete_url_with_http_info(webhook_id:, extra: {})
@@ -127,7 +135,7 @@ module Carbon
     # @param webhook_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def delete_url_impl(webhook_id, opts = {})
+    private def delete_url_impl(webhook_id, opts = {})
       data, _status_code, _headers = delete_url_with_http_info(webhook_id, opts)
       data
     end
@@ -136,7 +144,7 @@ module Carbon
     # @param webhook_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def delete_url_with_http_info_impl(webhook_id, opts = {})
+    private def delete_url_with_http_info_impl(webhook_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.delete_url ...'
       end
@@ -186,6 +194,8 @@ module Carbon
 
 
     # Webhook Urls
+    #
+    #
     # @param pagination [Pagination] 
     # @param order_by [WebhookOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -204,6 +214,8 @@ module Carbon
     end
 
     # Webhook Urls
+    #
+    #
     # @param pagination [Pagination] 
     # @param order_by [WebhookOrderByColumns] 
     # @param order_dir [OrderDir] 
@@ -224,7 +236,7 @@ module Carbon
     # @param webhook_query_input [WebhookQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [WebhookQueryResponse]
-    def urls_impl(webhook_query_input, opts = {})
+    private def urls_impl(webhook_query_input, opts = {})
       data, _status_code, _headers = urls_with_http_info(webhook_query_input, opts)
       data
     end
@@ -233,7 +245,7 @@ module Carbon
     # @param webhook_query_input [WebhookQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(WebhookQueryResponse, Integer, Hash)>] WebhookQueryResponse data, response status code and response headers
-    def urls_with_http_info_impl(webhook_query_input, opts = {})
+    private def urls_with_http_info_impl(webhook_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.urls ...'
       end

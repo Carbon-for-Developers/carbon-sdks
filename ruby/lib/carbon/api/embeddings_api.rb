@@ -19,7 +19,102 @@ module Carbon
     end
 
     # Embeddings
-    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn't optional and must be a `string` 2. \"value\" isn't optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.   When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if not set), it is equal to \"TEXT\". This means that the query will be performed over files that have been parsed as text (for now, this covers all files except image files). If it is equal to \"IMAGE\", the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this field as an additional filter on top of any filters set in `file_ids` and   When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank and select candidate embeddings during information retrieval. By default, these search methods are weighted equally during the ranking process. To adjust the weight (or \"importance\") of each search method, you can use the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are: - `weight_a`: weight to assign to semantic search - `weight_b`: weight to assign to keyword search  You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality has an error tolerance of 0.001 to account for possible floating point issues.  In order to use hybrid search for a customer across a set of documents, two flags need to be enabled: 1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload body for this request is below: ``` {   \"configuration_key_name\": \"sparse_vectors\",   \"value\": {     \"enabled\": true   } } ``` 2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the `/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+    # and `tags` are specified, `tags` is ignored. `tags_v2` enables
+    # building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+    # ```json
+    # {
+    #     "OR": [
+    #         {
+    #             "key": "subject",
+    #             "value": "holy-bible",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "person-of-interest",
+    #             "value": "jesus christ",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "genre",
+    #             "value": "religion",
+    #             "negate": true
+    #         }
+    #         {
+    #             "AND": [
+    #                 {
+    #                     "key": "subject",
+    #                     "value": "tao-te-ching",
+    #                     "negate": false
+    #                 },
+    #                 {
+    #                     "key": "author",
+    #                     "value": "lao-tzu",
+    #                     "negate": false
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # }
+    # ```
+    # In this case, files will be filtered such that:
+    # 1. "subject" = "holy-bible" OR
+    # 2. "person-of-interest" = "jesus christ" OR
+    # 3. "genre" != "religion" OR
+    # 4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+    # 
+    # Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+    # For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+    # 1. "key" isn't optional and must be a `string`
+    # 2. "value" isn't optional and can be `any` or list[`any`]
+    # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+    # the resulting query. It is `false` by default.
+    # 
+    # 
+    # When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if
+    # not set), it is equal to "TEXT". This means that the query will be performed over files that have
+    # been parsed as text (for now, this covers all files except image files). If it is equal to "IMAGE",
+    # the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this
+    # field as an additional filter on top of any filters set in `file_ids` and
+    # 
+    # 
+    # When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank
+    # and select candidate embeddings during information retrieval. By default, these search methods are weighted
+    # equally during the ranking process. To adjust the weight (or "importance") of each search method, you can use
+    # the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are:
+    # - `weight_a`: weight to assign to semantic search
+    # - `weight_b`: weight to assign to keyword search
+    # 
+    # You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality
+    # has an error tolerance of 0.001 to account for possible floating point issues.
+    # 
+    # In order to use hybrid search for a customer across a set of documents, two flags need to be enabled:
+    # 1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload
+    # body for this request is below:
+    # ```
+    # {
+    #   "configuration_key_name": "sparse_vectors",
+    #   "value": {
+    #     "enabled": true
+    #   }
+    # }
+    # ```
+    # 2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the
+    # `/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`
+    # 
+    # 
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param query [String] Query for which to get related chunks and embeddings.
     # @param k [Integer] Number of related chunks to return.
     # @param tags [Hash<String, Tags1>] A set of tags to limit the search to. Deprecated and may be removed in the future.
@@ -58,7 +153,102 @@ module Carbon
     end
 
     # Embeddings
-    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn't optional and must be a `string` 2. \"value\" isn't optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.   When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if not set), it is equal to \"TEXT\". This means that the query will be performed over files that have been parsed as text (for now, this covers all files except image files). If it is equal to \"IMAGE\", the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this field as an additional filter on top of any filters set in `file_ids` and   When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank and select candidate embeddings during information retrieval. By default, these search methods are weighted equally during the ranking process. To adjust the weight (or \"importance\") of each search method, you can use the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are: - `weight_a`: weight to assign to semantic search - `weight_b`: weight to assign to keyword search  You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality has an error tolerance of 0.001 to account for possible floating point issues.  In order to use hybrid search for a customer across a set of documents, two flags need to be enabled: 1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload body for this request is below: ``` {   \"configuration_key_name\": \"sparse_vectors\",   \"value\": {     \"enabled\": true   } } ``` 2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the `/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`   Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0. The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query  parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
+    # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
+    # and `tags` are specified, `tags` is ignored. `tags_v2` enables
+    # building complex filters through the use of "AND", "OR", and negation logic. Take the below input as an example:
+    # ```json
+    # {
+    #     "OR": [
+    #         {
+    #             "key": "subject",
+    #             "value": "holy-bible",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "person-of-interest",
+    #             "value": "jesus christ",
+    #             "negate": false
+    #         },
+    #         {
+    #             "key": "genre",
+    #             "value": "religion",
+    #             "negate": true
+    #         }
+    #         {
+    #             "AND": [
+    #                 {
+    #                     "key": "subject",
+    #                     "value": "tao-te-ching",
+    #                     "negate": false
+    #                 },
+    #                 {
+    #                     "key": "author",
+    #                     "value": "lao-tzu",
+    #                     "negate": false
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # }
+    # ```
+    # In this case, files will be filtered such that:
+    # 1. "subject" = "holy-bible" OR
+    # 2. "person-of-interest" = "jesus christ" OR
+    # 3. "genre" != "religion" OR
+    # 4. "subject" = "tao-te-ching" AND "author" = "lao-tzu"
+    # 
+    # Note that the top level of the query must be either an "OR" or "AND" array. Currently, nesting is limited to 3.
+    # For tag blocks (those with "key", "value", and "negate" keys), the following typing rules apply:
+    # 1. "key" isn't optional and must be a `string`
+    # 2. "value" isn't optional and can be `any` or list[`any`]
+    # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
+    # the resulting query. It is `false` by default.
+    # 
+    # 
+    # When querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if
+    # not set), it is equal to "TEXT". This means that the query will be performed over files that have
+    # been parsed as text (for now, this covers all files except image files). If it is equal to "IMAGE",
+    # the query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this
+    # field as an additional filter on top of any filters set in `file_ids` and
+    # 
+    # 
+    # When `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank
+    # and select candidate embeddings during information retrieval. By default, these search methods are weighted
+    # equally during the ranking process. To adjust the weight (or "importance") of each search method, you can use
+    # the `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are:
+    # - `weight_a`: weight to assign to semantic search
+    # - `weight_b`: weight to assign to keyword search
+    # 
+    # You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality
+    # has an error tolerance of 0.001 to account for possible floating point issues.
+    # 
+    # In order to use hybrid search for a customer across a set of documents, two flags need to be enabled:
+    # 1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload
+    # body for this request is below:
+    # ```
+    # {
+    #   "configuration_key_name": "sparse_vectors",
+    #   "value": {
+    #     "enabled": true
+    #   }
+    # }
+    # ```
+    # 2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the
+    # `/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`
+    # 
+    # 
+    # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
+    # multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
+    # The model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query 
+    # parameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing
+    # embedding queries, embeddings from files that used the specified model will be considered in the query.
+    # For example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with
+    # `COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is
+    # specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that
+    # the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
+    # set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
+    #
     # @param query [String] Query for which to get related chunks and embeddings.
     # @param k [Integer] Number of related chunks to return.
     # @param tags [Hash<String, Tags1>] A set of tags to limit the search to. Deprecated and may be removed in the future.
@@ -100,7 +290,7 @@ module Carbon
     # @param get_embedding_documents_body [GetEmbeddingDocumentsBody] 
     # @param [Hash] opts the optional parameters
     # @return [DocumentResponseList]
-    def get_documents_impl(get_embedding_documents_body, opts = {})
+    private def get_documents_impl(get_embedding_documents_body, opts = {})
       data, _status_code, _headers = get_documents_with_http_info(get_embedding_documents_body, opts)
       data
     end
@@ -110,7 +300,7 @@ module Carbon
     # @param get_embedding_documents_body [GetEmbeddingDocumentsBody] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(DocumentResponseList, Integer, Hash)>] DocumentResponseList data, response status code and response headers
-    def get_documents_with_http_info_impl(get_embedding_documents_body, opts = {})
+    private def get_documents_with_http_info_impl(get_embedding_documents_body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EmbeddingsApi.get_documents ...'
       end
@@ -165,6 +355,8 @@ module Carbon
 
 
     # Retrieve Embeddings And Content
+    #
+    #
     # @param filters [EmbeddingsAndChunksFilters] 
     # @param pagination [Pagination] 
     # @param order_by [EmbeddingsAndChunksOrderByColumns] 
@@ -185,6 +377,8 @@ module Carbon
     end
 
     # Retrieve Embeddings And Content
+    #
+    #
     # @param filters [EmbeddingsAndChunksFilters] 
     # @param pagination [Pagination] 
     # @param order_by [EmbeddingsAndChunksOrderByColumns] 
@@ -207,7 +401,7 @@ module Carbon
     # @param embeddings_and_chunks_query_input [EmbeddingsAndChunksQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [EmbeddingsAndChunksResponse]
-    def get_embeddings_and_chunks_impl(embeddings_and_chunks_query_input, opts = {})
+    private def get_embeddings_and_chunks_impl(embeddings_and_chunks_query_input, opts = {})
       data, _status_code, _headers = get_embeddings_and_chunks_with_http_info(embeddings_and_chunks_query_input, opts)
       data
     end
@@ -216,7 +410,7 @@ module Carbon
     # @param embeddings_and_chunks_query_input [EmbeddingsAndChunksQueryInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmbeddingsAndChunksResponse, Integer, Hash)>] EmbeddingsAndChunksResponse data, response status code and response headers
-    def get_embeddings_and_chunks_with_http_info_impl(embeddings_and_chunks_query_input, opts = {})
+    private def get_embeddings_and_chunks_with_http_info_impl(embeddings_and_chunks_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EmbeddingsApi.get_embeddings_and_chunks ...'
       end
@@ -271,6 +465,8 @@ module Carbon
 
 
     # Upload Chunks And Embeddings
+    #
+    #
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
@@ -287,6 +483,8 @@ module Carbon
     end
 
     # Upload Chunks And Embeddings
+    #
+    #
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
@@ -305,7 +503,7 @@ module Carbon
     # @param chunks_and_embeddings_upload_input [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def upload_chunks_and_embeddings_impl(chunks_and_embeddings_upload_input, opts = {})
+    private def upload_chunks_and_embeddings_impl(chunks_and_embeddings_upload_input, opts = {})
       data, _status_code, _headers = upload_chunks_and_embeddings_with_http_info(chunks_and_embeddings_upload_input, opts)
       data
     end
@@ -314,7 +512,7 @@ module Carbon
     # @param chunks_and_embeddings_upload_input [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, opts = {})
+    private def upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EmbeddingsApi.upload_chunks_and_embeddings ...'
       end

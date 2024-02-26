@@ -19,6 +19,8 @@ module Carbon
     end
 
     # User Endpoint
+    #
+    #
     # @param customer_id [String] 
     # @param body [UserRequestContent] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -31,6 +33,8 @@ module Carbon
     end
 
     # User Endpoint
+    #
+    #
     # @param customer_id [String] 
     # @param body [UserRequestContent] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -45,7 +49,7 @@ module Carbon
     # @param user_request_content [UserRequestContent] 
     # @param [Hash] opts the optional parameters
     # @return [UserResponse]
-    def get_impl(user_request_content, opts = {})
+    private def get_impl(user_request_content, opts = {})
       data, _status_code, _headers = get_with_http_info(user_request_content, opts)
       data
     end
@@ -54,7 +58,7 @@ module Carbon
     # @param user_request_content [UserRequestContent] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserResponse, Integer, Hash)>] UserResponse data, response status code and response headers
-    def get_with_http_info_impl(user_request_content, opts = {})
+    private def get_with_http_info_impl(user_request_content, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.get ...'
       end
@@ -109,6 +113,8 @@ module Carbon
 
 
     # Toggle User Features
+    #
+    #
     # @param configuration_key_name [String] 
     # @param value [Object] 
     # @param body [ModifyUserConfigurationInput] 
@@ -123,6 +129,8 @@ module Carbon
     end
 
     # Toggle User Features
+    #
+    #
     # @param configuration_key_name [String] 
     # @param value [Object] 
     # @param body [ModifyUserConfigurationInput] 
@@ -139,7 +147,7 @@ module Carbon
     # @param modify_user_configuration_input [ModifyUserConfigurationInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def toggle_user_features_impl(modify_user_configuration_input, opts = {})
+    private def toggle_user_features_impl(modify_user_configuration_input, opts = {})
       data, _status_code, _headers = toggle_user_features_with_http_info(modify_user_configuration_input, opts)
       data
     end
@@ -148,7 +156,7 @@ module Carbon
     # @param modify_user_configuration_input [ModifyUserConfigurationInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def toggle_user_features_with_http_info_impl(modify_user_configuration_input, opts = {})
+    private def toggle_user_features_with_http_info_impl(modify_user_configuration_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.toggle_user_features ...'
       end

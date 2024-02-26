@@ -179,16 +179,16 @@ module Carbon
   end
 
   class Client
-    attr_accessor :auth
-    attr_accessor :data_sources
-    attr_accessor :embeddings
-    attr_accessor :files
-    attr_accessor :health
-    attr_accessor :integrations
-    attr_accessor :organizations
-    attr_accessor :users
-    attr_accessor :utilities
-    attr_accessor :webhooks
+    attr_reader :auth
+    attr_reader :data_sources
+    attr_reader :embeddings
+    attr_reader :files
+    attr_reader :health
+    attr_reader :integrations
+    attr_reader :organizations
+    attr_reader :users
+    attr_reader :utilities
+    attr_reader :webhooks
 
     def initialize(config = Configuration.default)
       @api_client = ApiClient::new(config)

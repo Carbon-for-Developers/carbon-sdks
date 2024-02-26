@@ -19,6 +19,8 @@ module Carbon
     end
 
     # Get Access Token
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_access_token(extra: {})
       data, _status_code, _headers = get_access_token_with_http_info_impl(extra)
@@ -26,6 +28,8 @@ module Carbon
     end
 
     # Get Access Token
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_access_token_with_http_info(extra: {})
       get_access_token_with_http_info_impl(extra)
@@ -34,7 +38,7 @@ module Carbon
     # Get Access Token
     # @param [Hash] opts the optional parameters
     # @return [TokenResponse]
-    def get_access_token_impl(opts = {})
+    private def get_access_token_impl(opts = {})
       data, _status_code, _headers = get_access_token_with_http_info(opts)
       data
     end
@@ -42,7 +46,7 @@ module Carbon
     # Get Access Token
     # @param [Hash] opts the optional parameters
     # @return [Array<(TokenResponse, Integer, Hash)>] TokenResponse data, response status code and response headers
-    def get_access_token_with_http_info_impl(opts = {})
+    private def get_access_token_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthApi.get_access_token ...'
       end
@@ -88,7 +92,13 @@ module Carbon
 
 
     # Get White Labeling
-    # Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
+    #
+    # Returns whether or not the organization is white labeled and which integrations are white labeled
+    # 
+    # :param current_user: the current user
+    # :param db: the database session
+    # :return: a WhiteLabelingResponse
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_white_labeling(extra: {})
       data, _status_code, _headers = get_white_labeling_with_http_info_impl(extra)
@@ -96,7 +106,13 @@ module Carbon
     end
 
     # Get White Labeling
-    # Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
+    #
+    # Returns whether or not the organization is white labeled and which integrations are white labeled
+    # 
+    # :param current_user: the current user
+    # :param db: the database session
+    # :return: a WhiteLabelingResponse
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_white_labeling_with_http_info(extra: {})
       get_white_labeling_with_http_info_impl(extra)
@@ -106,7 +122,7 @@ module Carbon
     # Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
     # @param [Hash] opts the optional parameters
     # @return [WhiteLabelingResponse]
-    def get_white_labeling_impl(opts = {})
+    private def get_white_labeling_impl(opts = {})
       data, _status_code, _headers = get_white_labeling_with_http_info(opts)
       data
     end
@@ -115,7 +131,7 @@ module Carbon
     # Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
     # @param [Hash] opts the optional parameters
     # @return [Array<(WhiteLabelingResponse, Integer, Hash)>] WhiteLabelingResponse data, response status code and response headers
-    def get_white_labeling_with_http_info_impl(opts = {})
+    private def get_white_labeling_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthApi.get_white_labeling ...'
       end

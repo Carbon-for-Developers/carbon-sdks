@@ -19,6 +19,8 @@ module Carbon
     end
 
     # Health
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def check(extra: {})
       data, _status_code, _headers = check_with_http_info_impl(extra)
@@ -26,6 +28,8 @@ module Carbon
     end
 
     # Health
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def check_with_http_info(extra: {})
       check_with_http_info_impl(extra)
@@ -34,7 +38,7 @@ module Carbon
     # Health
     # @param [Hash] opts the optional parameters
     # @return [Object]
-    def check_impl(opts = {})
+    private def check_impl(opts = {})
       data, _status_code, _headers = check_with_http_info(opts)
       data
     end
@@ -42,7 +46,7 @@ module Carbon
     # Health
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def check_with_http_info_impl(opts = {})
+    private def check_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: HealthApi.check ...'
       end

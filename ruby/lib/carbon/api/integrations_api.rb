@@ -19,7 +19,13 @@ module Carbon
     end
 
     # Freshdesk Connect
-    # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+    #
+    # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.
+    # Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.
+    # Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will 
+    # trigger an automatic sync of the articles in your "solutions" tab. Additional parameters below can be used to associate 
+    # data with the synced articles or modify the sync behavior.
+    #
     # @param domain [String] 
     # @param api_key [String] 
     # @param tags [Object] 
@@ -48,7 +54,13 @@ module Carbon
     end
 
     # Freshdesk Connect
-    # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
+    #
+    # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.
+    # Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.
+    # Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will 
+    # trigger an automatic sync of the articles in your "solutions" tab. Additional parameters below can be used to associate 
+    # data with the synced articles or modify the sync behavior.
+    #
     # @param domain [String] 
     # @param api_key [String] 
     # @param tags [Object] 
@@ -80,7 +92,7 @@ module Carbon
     # @param fresh_desk_connect_request [FreshDeskConnectRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def connect_freshdesk_impl(fresh_desk_connect_request, opts = {})
+    private def connect_freshdesk_impl(fresh_desk_connect_request, opts = {})
       data, _status_code, _headers = connect_freshdesk_with_http_info(fresh_desk_connect_request, opts)
       data
     end
@@ -90,7 +102,7 @@ module Carbon
     # @param fresh_desk_connect_request [FreshDeskConnectRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, opts = {})
+    private def connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.connect_freshdesk ...'
       end
@@ -145,7 +157,15 @@ module Carbon
 
 
     # S3 Auth
-    # Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+    #
+    # Create a new IAM user with permissions to:
+    # <ol>
+    # <li>List all buckets.</li>
+    # <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
+    # the same permissions.</li>
+    # </ol>
+    # Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+    #
     # @param access_key [String] 
     # @param access_key_secret [String] 
     # @param body [S3AuthRequest] 
@@ -160,7 +180,15 @@ module Carbon
     end
 
     # S3 Auth
-    # Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+    #
+    # Create a new IAM user with permissions to:
+    # <ol>
+    # <li>List all buckets.</li>
+    # <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
+    # the same permissions.</li>
+    # </ol>
+    # Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+    #
     # @param access_key [String] 
     # @param access_key_secret [String] 
     # @param body [S3AuthRequest] 
@@ -178,7 +206,7 @@ module Carbon
     # @param s3_auth_request [S3AuthRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OrganizationUserDataSourceAPI]
-    def create_aws_iam_user_impl(s3_auth_request, opts = {})
+    private def create_aws_iam_user_impl(s3_auth_request, opts = {})
       data, _status_code, _headers = create_aws_iam_user_with_http_info(s3_auth_request, opts)
       data
     end
@@ -188,7 +216,7 @@ module Carbon
     # @param s3_auth_request [S3AuthRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrganizationUserDataSourceAPI, Integer, Hash)>] OrganizationUserDataSourceAPI data, response status code and response headers
-    def create_aws_iam_user_with_http_info_impl(s3_auth_request, opts = {})
+    private def create_aws_iam_user_with_http_info_impl(s3_auth_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.create_aws_iam_user ...'
       end
@@ -243,6 +271,8 @@ module Carbon
 
 
     # Get Oauth Url
+    #
+    #
     # @param service [DataSourceType] 
     # @param tags [Object] 
     # @param scope [String] 
@@ -281,6 +311,8 @@ module Carbon
     end
 
     # Get Oauth Url
+    #
+    #
     # @param service [DataSourceType] 
     # @param tags [Object] 
     # @param scope [String] 
@@ -321,7 +353,7 @@ module Carbon
     # @param o_auth_url_request [OAuthURLRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Object]
-    def get_oauth_url_impl(o_auth_url_request, opts = {})
+    private def get_oauth_url_impl(o_auth_url_request, opts = {})
       data, _status_code, _headers = get_oauth_url_with_http_info(o_auth_url_request, opts)
       data
     end
@@ -330,7 +362,7 @@ module Carbon
     # @param o_auth_url_request [OAuthURLRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def get_oauth_url_with_http_info_impl(o_auth_url_request, opts = {})
+    private def get_oauth_url_with_http_info_impl(o_auth_url_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.get_oauth_url ...'
       end
@@ -385,7 +417,15 @@ module Carbon
 
 
     # Confluence List
-    # To begin listing a user's Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user's page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+    #
+    # To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
+    # Confluence account must be specified. This base request returns a list of root pages for
+    # every space the user has access to in a Confluence instance. To traverse further down
+    # the user's page directory, additional requests to this endpoint can be made with the same
+    # `data_source_id` and with `parent_id` set to the id of page from a previous request. For
+    # convenience, the `has_children` property in each directory item in the response list will
+    # flag which pages will return non-empty lists of pages when set as the `parent_id`.
+    #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
     # @param body [ListRequest] 
@@ -400,7 +440,15 @@ module Carbon
     end
 
     # Confluence List
-    # To begin listing a user's Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user's page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+    #
+    # To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
+    # Confluence account must be specified. This base request returns a list of root pages for
+    # every space the user has access to in a Confluence instance. To traverse further down
+    # the user's page directory, additional requests to this endpoint can be made with the same
+    # `data_source_id` and with `parent_id` set to the id of page from a previous request. For
+    # convenience, the `has_children` property in each directory item in the response list will
+    # flag which pages will return non-empty lists of pages when set as the `parent_id`.
+    #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
     # @param body [ListRequest] 
@@ -418,7 +466,7 @@ module Carbon
     # @param list_request [ListRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ListResponse]
-    def list_confluence_pages_impl(list_request, opts = {})
+    private def list_confluence_pages_impl(list_request, opts = {})
       data, _status_code, _headers = list_confluence_pages_with_http_info(list_request, opts)
       data
     end
@@ -428,7 +476,7 @@ module Carbon
     # @param list_request [ListRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListResponse, Integer, Hash)>] ListResponse data, response status code and response headers
-    def list_confluence_pages_with_http_info_impl(list_request, opts = {})
+    private def list_confluence_pages_with_http_info_impl(list_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_confluence_pages ...'
       end
@@ -483,6 +531,8 @@ module Carbon
 
 
     # List Data Source Items
+    #
+    #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
     # @param pagination [Pagination] 
@@ -499,6 +549,8 @@ module Carbon
     end
 
     # List Data Source Items
+    #
+    #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
     # @param pagination [Pagination] 
@@ -517,7 +569,7 @@ module Carbon
     # @param list_data_source_items_request [ListDataSourceItemsRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ListDataSourceItemsResponse]
-    def list_data_source_items_impl(list_data_source_items_request, opts = {})
+    private def list_data_source_items_impl(list_data_source_items_request, opts = {})
       data, _status_code, _headers = list_data_source_items_with_http_info(list_data_source_items_request, opts)
       data
     end
@@ -526,7 +578,7 @@ module Carbon
     # @param list_data_source_items_request [ListDataSourceItemsRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListDataSourceItemsResponse, Integer, Hash)>] ListDataSourceItemsResponse data, response status code and response headers
-    def list_data_source_items_with_http_info_impl(list_data_source_items_request, opts = {})
+    private def list_data_source_items_with_http_info_impl(list_data_source_items_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_data_source_items ...'
       end
@@ -581,7 +633,10 @@ module Carbon
 
 
     # Outlook Folders
-    # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+    #
+    # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
+    # both system folders like "inbox" and user created folders.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_folders(extra: {})
       data, _status_code, _headers = list_folders_with_http_info_impl(extra)
@@ -589,7 +644,10 @@ module Carbon
     end
 
     # Outlook Folders
-    # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
+    #
+    # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
+    # both system folders like "inbox" and user created folders.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_folders_with_http_info(extra: {})
       list_folders_with_http_info_impl(extra)
@@ -599,7 +657,7 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
     # @param [Hash] opts the optional parameters
     # @return [Object]
-    def list_folders_impl(opts = {})
+    private def list_folders_impl(opts = {})
       data, _status_code, _headers = list_folders_with_http_info(opts)
       data
     end
@@ -608,7 +666,7 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \&quot;inbox\&quot; and user created folders.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def list_folders_with_http_info_impl(opts = {})
+    private def list_folders_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_folders ...'
       end
@@ -654,7 +712,10 @@ module Carbon
 
 
     # Gmail Labels
-    # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\"
+    #
+    # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
+    # will have the type "user" and Gmail's default labels will have the type "system"
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_labels(extra: {})
       data, _status_code, _headers = list_labels_with_http_info_impl(extra)
@@ -662,7 +723,10 @@ module Carbon
     end
 
     # Gmail Labels
-    # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\"
+    #
+    # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
+    # will have the type "user" and Gmail's default labels will have the type "system"
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_labels_with_http_info(extra: {})
       list_labels_with_http_info_impl(extra)
@@ -672,7 +736,7 @@ module Carbon
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\"
     # @param [Hash] opts the optional parameters
     # @return [Object]
-    def list_labels_impl(opts = {})
+    private def list_labels_impl(opts = {})
       data, _status_code, _headers = list_labels_with_http_info(opts)
       data
     end
@@ -681,7 +745,7 @@ module Carbon
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \&quot;user\&quot; and Gmail&#39;s default labels will have the type \&quot;system\&quot;
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def list_labels_with_http_info_impl(opts = {})
+    private def list_labels_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_labels ...'
       end
@@ -727,7 +791,12 @@ module Carbon
 
 
     # Confluence Sync
-    # After listing pages in a user's Confluence account, the set of selected page `ids` and the connected account's `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+    #
+    # After listing pages in a user's Confluence account, the set of selected page `ids` and the
+    # connected account's `data_source_id` can be passed into this endpoint to sync them into
+    # Carbon. Additional parameters listed below can be used to associate data to the selected
+    # pages or alter the behavior of the sync.
+    #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
     # @param tags [Object] 
@@ -758,7 +827,12 @@ module Carbon
     end
 
     # Confluence Sync
-    # After listing pages in a user's Confluence account, the set of selected page `ids` and the connected account's `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+    #
+    # After listing pages in a user's Confluence account, the set of selected page `ids` and the
+    # connected account's `data_source_id` can be passed into this endpoint to sync them into
+    # Carbon. Additional parameters listed below can be used to associate data to the selected
+    # pages or alter the behavior of the sync.
+    #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
     # @param tags [Object] 
@@ -792,7 +866,7 @@ module Carbon
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_confluence_impl(sync_files_request, opts = {})
+    private def sync_confluence_impl(sync_files_request, opts = {})
       data, _status_code, _headers = sync_confluence_with_http_info(sync_files_request, opts)
       data
     end
@@ -802,7 +876,7 @@ module Carbon
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_confluence_with_http_info_impl(sync_files_request, opts = {})
+    private def sync_confluence_with_http_info_impl(sync_files_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_confluence ...'
       end
@@ -857,6 +931,8 @@ module Carbon
 
 
     # Sync Data Source Items
+    #
+    #
     # @param data_source_id [Integer] 
     # @param body [SyncDirectoryRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -869,6 +945,8 @@ module Carbon
     end
 
     # Sync Data Source Items
+    #
+    #
     # @param data_source_id [Integer] 
     # @param body [SyncDirectoryRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -883,7 +961,7 @@ module Carbon
     # @param sync_directory_request [SyncDirectoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OrganizationUserDataSourceAPI]
-    def sync_data_source_items_impl(sync_directory_request, opts = {})
+    private def sync_data_source_items_impl(sync_directory_request, opts = {})
       data, _status_code, _headers = sync_data_source_items_with_http_info(sync_directory_request, opts)
       data
     end
@@ -892,7 +970,7 @@ module Carbon
     # @param sync_directory_request [SyncDirectoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrganizationUserDataSourceAPI, Integer, Hash)>] OrganizationUserDataSourceAPI data, response status code and response headers
-    def sync_data_source_items_with_http_info_impl(sync_directory_request, opts = {})
+    private def sync_data_source_items_with_http_info_impl(sync_directory_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_data_source_items ...'
       end
@@ -947,6 +1025,8 @@ module Carbon
 
 
     # Sync Files
+    #
+    #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
     # @param tags [Object] 
@@ -977,6 +1057,8 @@ module Carbon
     end
 
     # Sync Files
+    #
+    #
     # @param data_source_id [Integer] 
     # @param ids [Array<String>] 
     # @param tags [Object] 
@@ -1009,7 +1091,7 @@ module Carbon
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_files_impl(sync_files_request, opts = {})
+    private def sync_files_impl(sync_files_request, opts = {})
       data, _status_code, _headers = sync_files_with_http_info(sync_files_request, opts)
       data
     end
@@ -1018,7 +1100,7 @@ module Carbon
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_files_with_http_info_impl(sync_files_request, opts = {})
+    private def sync_files_with_http_info_impl(sync_files_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_files ...'
       end
@@ -1073,7 +1155,58 @@ module Carbon
 
 
     # Gmail Sync
-    # Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter in the above example.
+    #
+    # Once you have successfully connected your gmail account, you can choose which emails to sync with us
+    # using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+    # For now, we support a limited set of keys listed below.
+    # 
+    # <b>label</b>: Inbuilt Gmail labels, for example "Important" or a custom label you created.  
+    # <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
+    # You can also use them in combination to get emails from a certain period.  
+    # <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+    # 
+    # Using keys or values outside of the specified values can lead to unexpected behaviour.
+    # 
+    # An example of a basic query with filters can be
+    # ```json
+    # {
+    #     "filters": {
+    #             "key": "label",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # Which will list all emails that have the label "Test".
+    # 
+    # You can use AND and OR operation in the following way:
+    # ```json
+    # {
+    #     "filters": {
+    #         "AND": [
+    #             {
+    #                 "key": "after",
+    #                 "value": "2024/01/07"
+    #             },
+    #             {
+    #                 "OR": [
+    #                     {
+    #                         "key": "label",
+    #                         "value": "Personal"
+    #                     },
+    #                     {
+    #                         "key": "is",
+    #                         "value": "starred"
+    #                     }
+    #                 ]
+    #             }
+    #         ]
+    #     }
+    # }
+    # ```
+    # This will return emails after 7th of Jan that are either starred or have the label "Personal". 
+    # Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+    # in the above example.
+    #
     # @param filters [Object] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1100,7 +1233,58 @@ module Carbon
     end
 
     # Gmail Sync
-    # Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter in the above example.
+    #
+    # Once you have successfully connected your gmail account, you can choose which emails to sync with us
+    # using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+    # For now, we support a limited set of keys listed below.
+    # 
+    # <b>label</b>: Inbuilt Gmail labels, for example "Important" or a custom label you created.  
+    # <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
+    # You can also use them in combination to get emails from a certain period.  
+    # <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+    # 
+    # Using keys or values outside of the specified values can lead to unexpected behaviour.
+    # 
+    # An example of a basic query with filters can be
+    # ```json
+    # {
+    #     "filters": {
+    #             "key": "label",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # Which will list all emails that have the label "Test".
+    # 
+    # You can use AND and OR operation in the following way:
+    # ```json
+    # {
+    #     "filters": {
+    #         "AND": [
+    #             {
+    #                 "key": "after",
+    #                 "value": "2024/01/07"
+    #             },
+    #             {
+    #                 "OR": [
+    #                     {
+    #                         "key": "label",
+    #                         "value": "Personal"
+    #                     },
+    #                     {
+    #                         "key": "is",
+    #                         "value": "starred"
+    #                     }
+    #                 ]
+    #             }
+    #         ]
+    #     }
+    # }
+    # ```
+    # This will return emails after 7th of Jan that are either starred or have the label "Personal". 
+    # Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+    # in the above example.
+    #
     # @param filters [Object] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1130,7 +1314,7 @@ module Carbon
     # @param gmail_sync_input [GmailSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_gmail_impl(gmail_sync_input, opts = {})
+    private def sync_gmail_impl(gmail_sync_input, opts = {})
       data, _status_code, _headers = sync_gmail_with_http_info(gmail_sync_input, opts)
       data
     end
@@ -1140,7 +1324,7 @@ module Carbon
     # @param gmail_sync_input [GmailSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_gmail_with_http_info_impl(gmail_sync_input, opts = {})
+    private def sync_gmail_with_http_info_impl(gmail_sync_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_gmail ...'
       end
@@ -1195,7 +1379,68 @@ module Carbon
 
 
     # Outlook Sync
-    # Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter in the above example.
+    #
+    # Once you have successfully connected your Outlook account, you can choose which emails to sync with us
+    # using the filters and folder parameter. "folder" should be the folder you want to sync from Outlook. By default
+    # we get messages from your inbox folder.  
+    # Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+    # For now, we support a limited set of keys listed below.
+    # 
+    # <b>category</b>: Custom categories that you created in Outlook.  
+    # <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
+    # <b>is</b>: Can have the following values: flagged   
+    # 
+    # An example of a basic query with filters can be
+    # ```json
+    # {
+    #     "filters": {
+    #             "key": "category",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # Which will list all emails that have the category "Test".  
+    # 
+    # Specifying a custom folder in the same query
+    # ```json
+    # {
+    #     "folder": "Folder Name",
+    #     "filters": {
+    #             "key": "category",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # 
+    # You can use AND and OR operation in the following way:
+    # ```json
+    # {
+    #     "filters": {
+    #         "AND": [
+    #             {
+    #                 "key": "after",
+    #                 "value": "2024/01/07"
+    #             },
+    #             {
+    #                 "OR": [
+    #                     {
+    #                         "key": "category",
+    #                         "value": "Personal"
+    #                     },
+    #                     {
+    #                         "key": "category",
+    #                         "value": "Test"
+    #                     },
+    #                 ]
+    #             }
+    #         ]
+    #     }
+    # }
+    # ```
+    # This will return emails after 7th of Jan that have either Personal or Test as category. 
+    # Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+    # in the above example.
+    #
     # @param filters [Object] 
     # @param tags [Object] 
     # @param folder [String] 
@@ -1224,7 +1469,68 @@ module Carbon
     end
 
     # Outlook Sync
-    # Once you have successfully connected your Outlook account, you can choose which emails to sync with us using the filters and folder parameter. \"folder\" should be the folder you want to sync from Outlook. By default we get messages from your inbox folder.   Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>category</b>: Custom categories that you created in Outlook.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.     <b>is</b>: Can have the following values: flagged     An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the category \"Test\".    Specifying a custom folder in the same query ```json {     \"folder\": \"Folder Name\",     \"filters\": {             \"key\": \"category\",             \"value\": \"Test\"         } } ```  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"category\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"category\",                         \"value\": \"Test\"                     },                 ]             }         ]     } } ``` This will return emails after 7th of Jan that have either Personal or Test as category.  Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter in the above example.
+    #
+    # Once you have successfully connected your Outlook account, you can choose which emails to sync with us
+    # using the filters and folder parameter. "folder" should be the folder you want to sync from Outlook. By default
+    # we get messages from your inbox folder.  
+    # Filters is a JSON object with key value pairs. It also supports AND and OR operations.
+    # For now, we support a limited set of keys listed below.
+    # 
+    # <b>category</b>: Custom categories that you created in Outlook.  
+    # <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
+    # <b>is</b>: Can have the following values: flagged   
+    # 
+    # An example of a basic query with filters can be
+    # ```json
+    # {
+    #     "filters": {
+    #             "key": "category",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # Which will list all emails that have the category "Test".  
+    # 
+    # Specifying a custom folder in the same query
+    # ```json
+    # {
+    #     "folder": "Folder Name",
+    #     "filters": {
+    #             "key": "category",
+    #             "value": "Test"
+    #         }
+    # }
+    # ```
+    # 
+    # You can use AND and OR operation in the following way:
+    # ```json
+    # {
+    #     "filters": {
+    #         "AND": [
+    #             {
+    #                 "key": "after",
+    #                 "value": "2024/01/07"
+    #             },
+    #             {
+    #                 "OR": [
+    #                     {
+    #                         "key": "category",
+    #                         "value": "Personal"
+    #                     },
+    #                     {
+    #                         "key": "category",
+    #                         "value": "Test"
+    #                     },
+    #                 ]
+    #             }
+    #         ]
+    #     }
+    # }
+    # ```
+    # This will return emails after 7th of Jan that have either Personal or Test as category. 
+    # Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
+    # in the above example.
+    #
     # @param filters [Object] 
     # @param tags [Object] 
     # @param folder [String] 
@@ -1256,7 +1562,7 @@ module Carbon
     # @param outlook_sync_input [OutlookSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_outlook_impl(outlook_sync_input, opts = {})
+    private def sync_outlook_impl(outlook_sync_input, opts = {})
       data, _status_code, _headers = sync_outlook_with_http_info(outlook_sync_input, opts)
       data
     end
@@ -1266,7 +1572,7 @@ module Carbon
     # @param outlook_sync_input [OutlookSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_outlook_with_http_info_impl(outlook_sync_input, opts = {})
+    private def sync_outlook_with_http_info_impl(outlook_sync_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_outlook ...'
       end
@@ -1321,6 +1627,8 @@ module Carbon
 
 
     # Rss Feed
+    #
+    #
     # @param url [String] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1347,6 +1655,8 @@ module Carbon
     end
 
     # Rss Feed
+    #
+    #
     # @param url [String] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1375,7 +1685,7 @@ module Carbon
     # @param rss_feed_input [RSSFeedInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_rss_feed_impl(rss_feed_input, opts = {})
+    private def sync_rss_feed_impl(rss_feed_input, opts = {})
       data, _status_code, _headers = sync_rss_feed_with_http_info(rss_feed_input, opts)
       data
     end
@@ -1384,7 +1694,7 @@ module Carbon
     # @param rss_feed_input [RSSFeedInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_rss_feed_with_http_info_impl(rss_feed_input, opts = {})
+    private def sync_rss_feed_with_http_info_impl(rss_feed_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_rss_feed ...'
       end
@@ -1439,7 +1749,11 @@ module Carbon
 
 
     # S3 Files
-    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name  and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+    #
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name 
+    # and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+    # data with the selected items or modify the sync behavior
+    #
     # @param ids [Array<S3GetFileInput>] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1468,7 +1782,11 @@ module Carbon
     end
 
     # S3 Files
-    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name  and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+    #
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name 
+    # and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+    # data with the selected items or modify the sync behavior
+    #
     # @param ids [Array<S3GetFileInput>] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
@@ -1500,7 +1818,7 @@ module Carbon
     # @param s3_file_sync_input [S3FileSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
-    def sync_s3_files_impl(s3_file_sync_input, opts = {})
+    private def sync_s3_files_impl(s3_file_sync_input, opts = {})
       data, _status_code, _headers = sync_s3_files_with_http_info(s3_file_sync_input, opts)
       data
     end
@@ -1510,7 +1828,7 @@ module Carbon
     # @param s3_file_sync_input [S3FileSyncInput] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
-    def sync_s3_files_with_http_info_impl(s3_file_sync_input, opts = {})
+    private def sync_s3_files_with_http_info_impl(s3_file_sync_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_s3_files ...'
       end

@@ -19,6 +19,8 @@ module Carbon
     end
 
     # Get Organization
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get(extra: {})
       data, _status_code, _headers = get_with_http_info_impl(extra)
@@ -26,6 +28,8 @@ module Carbon
     end
 
     # Get Organization
+    #
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_with_http_info(extra: {})
       get_with_http_info_impl(extra)
@@ -34,7 +38,7 @@ module Carbon
     # Get Organization
     # @param [Hash] opts the optional parameters
     # @return [OrganizationResponse]
-    def get_impl(opts = {})
+    private def get_impl(opts = {})
       data, _status_code, _headers = get_with_http_info(opts)
       data
     end
@@ -42,7 +46,7 @@ module Carbon
     # Get Organization
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrganizationResponse, Integer, Hash)>] OrganizationResponse data, response status code and response headers
-    def get_with_http_info_impl(opts = {})
+    private def get_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrganizationsApi.get ...'
       end
