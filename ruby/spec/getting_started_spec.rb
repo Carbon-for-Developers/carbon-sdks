@@ -12,7 +12,6 @@ describe 'GettingStarted' do
   end
 
   it 'data_sources.query_user_data_sources' do
-    debugger
     configuration = Carbon::Configuration.new
     configuration.access_token = 'YOUR API KEY'
     configuration.api_key = 'YOUR API KEY'

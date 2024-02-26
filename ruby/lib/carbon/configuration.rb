@@ -32,15 +32,15 @@ module Carbon
     attr_accessor :server_operation_variables
 
     def access_token=(value)
-      @api_key['accessToken'] = value
+      @api_key_store['accessToken'] = value
     end
 
     def api_key=(value)
-      @api_key['apiKey'] = value
+      @api_key_store['apiKey'] = value
     end
 
     def customer_id=(value)
-      @api_key['customerId'] = value
+      @api_key_store['customerId'] = value
     end
 
     # Defines API keys used with API Key authentications.
@@ -48,8 +48,8 @@ module Carbon
     # @return [Hash] key: parameter name, value: parameter value (API key)
     #
     # @example parameter name is "api_key", API key is "xxx" (e.g. "api_key=xxx" in query string)
-    #   config.api_key['api_key'] = 'xxx'
-    attr_accessor :api_key
+    #   config.api_key_store['api_key'] = 'xxx'
+    attr_accessor :api_key_store
 
     # Defines API key prefixes used with API Key authentications.
     #
@@ -142,7 +142,7 @@ module Carbon
       @server_operation_index = {}
       @server_variables = {}
       @server_operation_variables = {}
-      @api_key = {}
+      @api_key_store = {}
       @api_key_prefix = {}
       @client_side_validation = true
       @ssl_verify = true
@@ -210,8 +210,8 @@ module Carbon
     # Gets API key (with prefix if set).
     # @param [String] param_name the parameter name of API key auth
     def api_key_with_prefix(param_name, param_alias = nil)
-      key = @api_key[param_name]
-      key = @api_key.fetch(param_alias, key) unless param_alias.nil?
+      key = @api_key_store[param_name]
+      key = @api_key_store.fetch(param_alias, key) unless param_alias.nil?
       if @api_key_prefix[param_name]
         "#{@api_key_prefix[param_name]} #{key}"
       else
