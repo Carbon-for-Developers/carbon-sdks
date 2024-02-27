@@ -5,10 +5,13 @@ require 'debug'
 
 describe 'GettingStarted' do
   before do
+    Carbon.access_token = "YOUR API KEY"
+    Carbon.api_key = "YOUR API KEY"
+    Carbon.customer_id = "YOUR API KEY"
+    Carbon.host = "http://127.0.0.1:4010"
   end
 
   after do
-    # run after each test
   end
 
   it 'data_sources.query_user_data_sources' do
@@ -37,10 +40,6 @@ describe 'GettingStarted' do
   end
 
   it 'data_sources.query_user_data_sources static pattern' do
-      Carbon.access_token = "YOUR API KEY"
-      Carbon.api_key = "YOUR API KEY"
-      Carbon.customer_id = "YOUR API KEY"
-      Carbon.host = "http://127.0.0.1:4010"
       result = Carbon::DataSources.query_user_data_sources(
         pagination: {
           "limit" => 10,
@@ -91,6 +90,25 @@ describe 'GettingStarted' do
         },
       media_type: "TEXT",
       embedding_model: "OPENAI",
+    )
+    expect(result).to_not be_nil
+  end
+
+  it 'files.upload' do
+    # read from directory of this file ../README.md to file
+    file = File.open(File.join(File.dirname(__FILE__), "../README.md"), "rb")
+
+    result = Carbon::Files.upload(
+      file: file,
+      chunk_size: 1,
+      chunk_overlap: 1,
+      skip_embedding_generation: false,
+      set_page_as_boundary: false,
+      embedding_model: "OPENAI",
+      use_ocr: false,
+      generate_sparse_vectors: false,
+      prepend_filename_to_chunks: false,
+      max_items_per_chunk: 1,
     )
     expect(result).to_not be_nil
   end

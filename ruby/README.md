@@ -897,7 +897,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 
 ```ruby
 result = Carbon::Files.upload(
-  file: open('/path/to/file', 'rb'),
+  file: File.open("path/to/file", "rb"),
   chunk_size: 1,
   chunk_overlap: 1,
   skip_embedding_generation: false,
