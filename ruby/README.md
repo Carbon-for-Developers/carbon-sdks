@@ -88,6 +88,20 @@ result = Carbon::Auth.get_access_token
 p result
 ```
 
+## Raw HTTP Response <a id="raw-http-response"></a>
+
+To access the raw HTTP response, suffix any method with `_with_http_info`
+
+For example:
+
+```ruby
+result = Carbon::Auth.get_access_token_with_http_info
+p result.data # [Object] HTTP response data
+p.result.status_code # [Integer] HTTP status code
+p.result.headers # [Hash] HTTP headers
+p.result.response # [Faraday::Response] Raw HTTP response
+```
+
 ## Reference<a id="reference"></a>
 
 

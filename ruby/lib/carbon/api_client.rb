@@ -416,7 +416,14 @@ module Carbon
 
   # Represents an HTTP response for method that end with *_with_http_info
   class APIResponse
-    attr_reader :data, :status_code, :headers, :response
+    # [Object] deserialized data
+    attr_reader :data
+    # [Integer] response status code
+    attr_reader :status_code
+    # [Hash] response headers
+    attr_reader :headers
+    # [Faraday::Response] the original Faraday response object
+    attr_reader :response
 
     def initialize(data, status_code, headers, response)
       @data = data
