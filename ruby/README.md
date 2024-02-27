@@ -17,52 +17,52 @@ Connect external data to LLMs, no matter the source.
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
-  * [`carbon.auth.get_access_token`](#carbonauthget_access_token)
-  * [`carbon.auth.get_white_labeling`](#carbonauthget_white_labeling)
-  * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
-  * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
-  * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
-  * [`carbon.embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
-  * [`carbon.embeddings.upload_chunks_and_embeddings`](#carbonembeddingsupload_chunks_and_embeddings)
-  * [`carbon.files.create_user_file_tags`](#carbonfilescreate_user_file_tags)
-  * [`carbon.files.delete`](#carbonfilesdelete)
-  * [`carbon.files.delete_file_tags`](#carbonfilesdelete_file_tags)
-  * [`carbon.files.delete_many`](#carbonfilesdelete_many)
-  * [`carbon.files.get_parsed_file`](#carbonfilesget_parsed_file)
-  * [`carbon.files.get_raw_file`](#carbonfilesget_raw_file)
-  * [`carbon.files.query_user_files`](#carbonfilesquery_user_files)
-  * [`carbon.files.query_user_files_deprecated`](#carbonfilesquery_user_files_deprecated)
-  * [`carbon.files.resync`](#carbonfilesresync)
-  * [`carbon.files.upload`](#carbonfilesupload)
-  * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
-  * [`carbon.files.upload_text`](#carbonfilesupload_text)
-  * [`carbon.health.check`](#carbonhealthcheck)
-  * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
-  * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
-  * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
-  * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
-  * [`carbon.integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
-  * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
-  * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
-  * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
-  * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
-  * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
-  * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
-  * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
-  * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
-  * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
-  * [`carbon.organizations.get`](#carbonorganizationsget)
-  * [`carbon.users.get`](#carbonusersget)
-  * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
-  * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
-  * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
-  * [`carbon.utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
-  * [`carbon.utilities.scrape_sitemap`](#carbonutilitiesscrape_sitemap)
-  * [`carbon.utilities.scrape_web`](#carbonutilitiesscrape_web)
-  * [`carbon.utilities.search_urls`](#carbonutilitiessearch_urls)
-  * [`carbon.webhooks.add_url`](#carbonwebhooksadd_url)
-  * [`carbon.webhooks.delete_url`](#carbonwebhooksdelete_url)
-  * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+  * [`Carbon::Auth.get_access_token`](#carbonauthget_access_token)
+  * [`Carbon::Auth.get_white_labeling`](#carbonauthget_white_labeling)
+  * [`Carbon::DataSources.query_user_data_sources`](#carbondatasourcesquery_user_data_sources)
+  * [`Carbon::DataSources.revoke_access_token`](#carbondatasourcesrevoke_access_token)
+  * [`Carbon::Embeddings.get_documents`](#carbonembeddingsget_documents)
+  * [`Carbon::Embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
+  * [`Carbon::Embeddings.upload_chunks_and_embeddings`](#carbonembeddingsupload_chunks_and_embeddings)
+  * [`Carbon::Files.create_user_file_tags`](#carbonfilescreate_user_file_tags)
+  * [`Carbon::Files.delete`](#carbonfilesdelete)
+  * [`Carbon::Files.delete_file_tags`](#carbonfilesdelete_file_tags)
+  * [`Carbon::Files.delete_many`](#carbonfilesdelete_many)
+  * [`Carbon::Files.get_parsed_file`](#carbonfilesget_parsed_file)
+  * [`Carbon::Files.get_raw_file`](#carbonfilesget_raw_file)
+  * [`Carbon::Files.query_user_files`](#carbonfilesquery_user_files)
+  * [`Carbon::Files.query_user_files_deprecated`](#carbonfilesquery_user_files_deprecated)
+  * [`Carbon::Files.resync`](#carbonfilesresync)
+  * [`Carbon::Files.upload`](#carbonfilesupload)
+  * [`Carbon::Files.upload_from_url`](#carbonfilesupload_from_url)
+  * [`Carbon::Files.upload_text`](#carbonfilesupload_text)
+  * [`Carbon::Health.check`](#carbonhealthcheck)
+  * [`Carbon::Integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
+  * [`Carbon::Integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
+  * [`Carbon::Integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
+  * [`Carbon::Integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
+  * [`Carbon::Integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
+  * [`Carbon::Integrations.list_folders`](#carbonintegrationslist_folders)
+  * [`Carbon::Integrations.list_labels`](#carbonintegrationslist_labels)
+  * [`Carbon::Integrations.sync_confluence`](#carbonintegrationssync_confluence)
+  * [`Carbon::Integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
+  * [`Carbon::Integrations.sync_files`](#carbonintegrationssync_files)
+  * [`Carbon::Integrations.sync_gmail`](#carbonintegrationssync_gmail)
+  * [`Carbon::Integrations.sync_outlook`](#carbonintegrationssync_outlook)
+  * [`Carbon::Integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
+  * [`Carbon::Integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
+  * [`Carbon::Organizations.get`](#carbonorganizationsget)
+  * [`Carbon::Users.get`](#carbonusersget)
+  * [`Carbon::Users.toggle_user_features`](#carbonuserstoggle_user_features)
+  * [`Carbon::Utilities.fetch_urls`](#carbonutilitiesfetch_urls)
+  * [`Carbon::Utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
+  * [`Carbon::Utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
+  * [`Carbon::Utilities.scrape_sitemap`](#carbonutilitiesscrape_sitemap)
+  * [`Carbon::Utilities.scrape_web`](#carbonutilitiesscrape_web)
+  * [`Carbon::Utilities.search_urls`](#carbonutilitiessearch_urls)
+  * [`Carbon::Webhooks.add_url`](#carbonwebhooksadd_url)
+  * [`Carbon::Webhooks.delete_url`](#carbonwebhooksdelete_url)
+  * [`Carbon::Webhooks.urls`](#carbonwebhooksurls)
 
 <!-- tocstop -->
 
@@ -78,26 +78,24 @@ gem 'carbon', '~> 0.1.0'
 
 ```ruby
 require 'carbon'
-configuration = Carbon::Configuration.new
-configuration.access_token = 'YOUR API KEY'
-configuration.api_key = 'YOUR API KEY'
-configuration.customer_id = 'YOUR API KEY'
-carbon = Carbon::Client.new(configuration)
-result = carbon.auth.get_access_token
+Carbon.access_token = 'YOUR API KEY'
+Carbon.api_key = 'YOUR API KEY'
+Carbon.customer_id = 'YOUR API KEY'
+result = Carbon::Auth.get_access_token
 p result
 ```
 
 ## Reference<a id="reference"></a>
 
 
-### `carbon.auth.get_access_token`<a id="carbonauthget_access_token"></a>
+### `Carbon::Auth.get_access_token`<a id="carbonauthget_access_token"></a>
 
 Get Access Token
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.auth.get_access_token
+result = Carbon::Auth.get_access_token
 p result
 ```
 
@@ -114,7 +112,7 @@ p result
 ---
 
 
-### `carbon.auth.get_white_labeling`<a id="carbonauthget_white_labeling"></a>
+### `Carbon::Auth.get_white_labeling`<a id="carbonauthget_white_labeling"></a>
 
 Returns whether or not the organization is white labeled and which integrations are white labeled
 
@@ -125,7 +123,7 @@ Returns whether or not the organization is white labeled and which integrations 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.auth.get_white_labeling
+result = Carbon::Auth.get_white_labeling
 p result
 ```
 
@@ -142,14 +140,14 @@ p result
 ---
 
 
-### `carbon.data_sources.query_user_data_sources`<a id="carbondata_sourcesquery_user_data_sources"></a>
+### `Carbon::DataSources.query_user_data_sources`<a id="carbondatasourcesquery_user_data_sources"></a>
 
 User Data Sources
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.data_sources.query_user_data_sources(
+result = Carbon::DataSources.query_user_data_sources(
   pagination: {
         "limit" => 10,
         "offset" => 0,
@@ -182,14 +180,14 @@ p result
 ---
 
 
-### `carbon.data_sources.revoke_access_token`<a id="carbondata_sourcesrevoke_access_token"></a>
+### `Carbon::DataSources.revoke_access_token`<a id="carbondatasourcesrevoke_access_token"></a>
 
 Revoke Access Token
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.data_sources.revoke_access_token(
+result = Carbon::DataSources.revoke_access_token(
   data_source_id: 1,
 )
 p result
@@ -211,7 +209,7 @@ p result
 ---
 
 
-### `carbon.embeddings.get_documents`<a id="carbonembeddingsget_documents"></a>
+### `Carbon::Embeddings.get_documents`<a id="carbonembeddingsget_documents"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
 and `tags` are specified, `tags` is ignored. `tags_v2` enables
@@ -311,7 +309,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.embeddings.get_documents(
+result = Carbon::Embeddings.get_documents(
   query: "a",
   k: 1,
   tags: {
@@ -406,14 +404,14 @@ what value is passed for `embedding_model`.
 ---
 
 
-### `carbon.embeddings.get_embeddings_and_chunks`<a id="carbonembeddingsget_embeddings_and_chunks"></a>
+### `Carbon::Embeddings.get_embeddings_and_chunks`<a id="carbonembeddingsget_embeddings_and_chunks"></a>
 
 Retrieve Embeddings And Content
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.embeddings.get_embeddings_and_chunks(
+result = Carbon::Embeddings.get_embeddings_and_chunks(
   filters: {
         "user_file_id" => 1,
         "embedding_model" => "OPENAI",
@@ -449,14 +447,14 @@ p result
 ---
 
 
-### `carbon.embeddings.upload_chunks_and_embeddings`<a id="carbonembeddingsupload_chunks_and_embeddings"></a>
+### `Carbon::Embeddings.upload_chunks_and_embeddings`<a id="carbonembeddingsupload_chunks_and_embeddings"></a>
 
 Upload Chunks And Embeddings
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.embeddings.upload_chunks_and_embeddings(
+result = Carbon::Embeddings.upload_chunks_and_embeddings(
   embedding_model: "OPENAI",
   chunks_and_embeddings: [
         {
@@ -495,7 +493,7 @@ p result
 ---
 
 
-### `carbon.files.create_user_file_tags`<a id="carbonfilescreate_user_file_tags"></a>
+### `Carbon::Files.create_user_file_tags`<a id="carbonfilescreate_user_file_tags"></a>
 
 A tag is a key-value pair that can be added to a file. This pair can then be used
 for searches (e.g. embedding searches) in order to narrow down the scope of the search.
@@ -512,7 +510,7 @@ they're automatically converted to strings (e.g. 4 will become "4").
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.create_user_file_tags(
+result = Carbon::Files.create_user_file_tags(
   tags: {
         "key": "string_example",
     },
@@ -538,14 +536,14 @@ p result
 ---
 
 
-### `carbon.files.delete`<a id="carbonfilesdelete"></a>
+### `Carbon::Files.delete`<a id="carbonfilesdelete"></a>
 
 Delete File Endpoint
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.delete(
+result = Carbon::Files.delete(
   file_id: 1,
 )
 p result
@@ -567,14 +565,14 @@ p result
 ---
 
 
-### `carbon.files.delete_file_tags`<a id="carbonfilesdelete_file_tags"></a>
+### `Carbon::Files.delete_file_tags`<a id="carbonfilesdelete_file_tags"></a>
 
 Delete File Tags
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.delete_file_tags(
+result = Carbon::Files.delete_file_tags(
   tags: [
         "string_example"
     ],
@@ -600,14 +598,14 @@ p result
 ---
 
 
-### `carbon.files.delete_many`<a id="carbonfilesdelete_many"></a>
+### `Carbon::Files.delete_many`<a id="carbonfilesdelete_many"></a>
 
 Delete Files Endpoint
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.delete_many(
+result = Carbon::Files.delete_many(
   file_ids: [
         1
     ],
@@ -637,14 +635,14 @@ p result
 ---
 
 
-### `carbon.files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
+### `Carbon::Files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
 
 This route is deprecated. Use `/user_files_v2` instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.get_parsed_file(
+result = Carbon::Files.get_parsed_file(
   file_id: 1,
 )
 p result
@@ -666,14 +664,14 @@ p result
 ---
 
 
-### `carbon.files.get_raw_file`<a id="carbonfilesget_raw_file"></a>
+### `Carbon::Files.get_raw_file`<a id="carbonfilesget_raw_file"></a>
 
 This route is deprecated. Use `/user_files_v2` instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.get_raw_file(
+result = Carbon::Files.get_raw_file(
   file_id: 1,
 )
 p result
@@ -695,7 +693,7 @@ p result
 ---
 
 
-### `carbon.files.query_user_files`<a id="carbonfilesquery_user_files"></a>
+### `Carbon::Files.query_user_files`<a id="carbonfilesquery_user_files"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
 and `tags` are specified, `tags` is ignored. `tags_v2` enables
@@ -751,7 +749,7 @@ the resulting query. It is `false` by default.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.query_user_files(
+result = Carbon::Files.query_user_files(
   pagination: {
         "limit" => 10,
         "offset" => 0,
@@ -789,14 +787,14 @@ p result
 ---
 
 
-### `carbon.files.query_user_files_deprecated`<a id="carbonfilesquery_user_files_deprecated"></a>
+### `Carbon::Files.query_user_files_deprecated`<a id="carbonfilesquery_user_files_deprecated"></a>
 
 This route is deprecated. Use `/user_files_v2` instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.query_user_files_deprecated(
+result = Carbon::Files.query_user_files_deprecated(
   pagination: {
         "limit" => 10,
         "offset" => 0,
@@ -834,14 +832,14 @@ p result
 ---
 
 
-### `carbon.files.resync`<a id="carbonfilesresync"></a>
+### `Carbon::Files.resync`<a id="carbonfilesresync"></a>
 
 Resync File
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.resync(
+result = Carbon::Files.resync(
   file_id: 1,
   chunk_size: 1,
   chunk_overlap: 1,
@@ -867,7 +865,7 @@ p result
 ---
 
 
-### `carbon.files.upload`<a id="carbonfilesupload"></a>
+### `Carbon::Files.upload`<a id="carbonfilesupload"></a>
 
 This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.
 Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,
@@ -898,7 +896,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.upload(
+result = Carbon::Files.upload(
   file: open('/path/to/file', 'rb'),
   chunk_size: 1,
   chunk_overlap: 1,
@@ -961,14 +959,14 @@ Number of objects per chunk. For json files only.
 ---
 
 
-### `carbon.files.upload_from_url`<a id="carbonfilesupload_from_url"></a>
+### `Carbon::Files.upload_from_url`<a id="carbonfilesupload_from_url"></a>
 
 Create Upload File From Url
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.upload_from_url(
+result = Carbon::Files.upload_from_url(
   url: "string_example",
   file_name: "string_example",
   chunk_size: 1,
@@ -1010,7 +1008,7 @@ p result
 ---
 
 
-### `carbon.files.upload_text`<a id="carbonfilesupload_text"></a>
+### `Carbon::Files.upload_text`<a id="carbonfilesupload_text"></a>
 
 Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
 multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
@@ -1026,7 +1024,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.files.upload_text(
+result = Carbon::Files.upload_text(
   contents: "string_example",
   name: "string_example",
   chunk_size: 1,
@@ -1062,14 +1060,14 @@ p result
 ---
 
 
-### `carbon.health.check`<a id="carbonhealthcheck"></a>
+### `Carbon::Health.check`<a id="carbonhealthcheck"></a>
 
 Health
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.health.check
+result = Carbon::Health.check
 p result
 ```
 
@@ -1082,7 +1080,7 @@ p result
 ---
 
 
-### `carbon.integrations.connect_freshdesk`<a id="carbonintegrationsconnect_freshdesk"></a>
+### `Carbon::Integrations.connect_freshdesk`<a id="carbonintegrationsconnect_freshdesk"></a>
 
 Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.
 Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.
@@ -1093,7 +1091,7 @@ data with the synced articles or modify the sync behavior.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.connect_freshdesk(
+result = Carbon::Integrations.connect_freshdesk(
   domain: "string_example",
   api_key: "string_example",
   tags: {},
@@ -1131,7 +1129,7 @@ p result
 ---
 
 
-### `carbon.integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
+### `Carbon::Integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
 Create a new IAM user with permissions to:
 <ol>
@@ -1144,7 +1142,7 @@ Once created, generate an access key for this user and share the credentials wit
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.create_aws_iam_user(
+result = Carbon::Integrations.create_aws_iam_user(
   access_key: "string_example",
   access_key_secret: "string_example",
 )
@@ -1168,14 +1166,14 @@ p result
 ---
 
 
-### `carbon.integrations.get_oauth_url`<a id="carbonintegrationsget_oauth_url"></a>
+### `Carbon::Integrations.get_oauth_url`<a id="carbonintegrationsget_oauth_url"></a>
 
 Get Oauth Url
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.get_oauth_url(
+result = Carbon::Integrations.get_oauth_url(
   service: "GOOGLE_DRIVE",
   tags: None,
   scope: "string_example",
@@ -1219,7 +1217,7 @@ p result
 ---
 
 
-### `carbon.integrations.list_confluence_pages`<a id="carbonintegrationslist_confluence_pages"></a>
+### `Carbon::Integrations.list_confluence_pages`<a id="carbonintegrationslist_confluence_pages"></a>
 
 To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
 Confluence account must be specified. This base request returns a list of root pages for
@@ -1232,7 +1230,7 @@ flag which pages will return non-empty lists of pages when set as the `parent_id
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_confluence_pages(
+result = Carbon::Integrations.list_confluence_pages(
   data_source_id: 1,
   parent_id: "string_example",
 )
@@ -1256,14 +1254,14 @@ p result
 ---
 
 
-### `carbon.integrations.list_data_source_items`<a id="carbonintegrationslist_data_source_items"></a>
+### `Carbon::Integrations.list_data_source_items`<a id="carbonintegrationslist_data_source_items"></a>
 
 List Data Source Items
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_data_source_items(
+result = Carbon::Integrations.list_data_source_items(
   data_source_id: 1,
   parent_id: "string_example",
   pagination: {
@@ -1292,7 +1290,7 @@ p result
 ---
 
 
-### `carbon.integrations.list_folders`<a id="carbonintegrationslist_folders"></a>
+### `Carbon::Integrations.list_folders`<a id="carbonintegrationslist_folders"></a>
 
 After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
 both system folders like "inbox" and user created folders.
@@ -1300,7 +1298,7 @@ both system folders like "inbox" and user created folders.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_folders
+result = Carbon::Integrations.list_folders
 p result
 ```
 
@@ -1313,7 +1311,7 @@ p result
 ---
 
 
-### `carbon.integrations.list_labels`<a id="carbonintegrationslist_labels"></a>
+### `Carbon::Integrations.list_labels`<a id="carbonintegrationslist_labels"></a>
 
 After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
 will have the type "user" and Gmail's default labels will have the type "system"
@@ -1321,7 +1319,7 @@ will have the type "user" and Gmail's default labels will have the type "system"
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_labels
+result = Carbon::Integrations.list_labels
 p result
 ```
 
@@ -1334,7 +1332,7 @@ p result
 ---
 
 
-### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
+### `Carbon::Integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
 connected account's `data_source_id` can be passed into this endpoint to sync them into
@@ -1344,7 +1342,7 @@ pages or alter the behavior of the sync.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_confluence(
+result = Carbon::Integrations.sync_confluence(
   data_source_id: 1,
   ids: [
         "string_example"
@@ -1386,14 +1384,14 @@ p result
 ---
 
 
-### `carbon.integrations.sync_data_source_items`<a id="carbonintegrationssync_data_source_items"></a>
+### `Carbon::Integrations.sync_data_source_items`<a id="carbonintegrationssync_data_source_items"></a>
 
 Sync Data Source Items
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_data_source_items(
+result = Carbon::Integrations.sync_data_source_items(
   data_source_id: 1,
 )
 p result
@@ -1415,14 +1413,14 @@ p result
 ---
 
 
-### `carbon.integrations.sync_files`<a id="carbonintegrationssync_files"></a>
+### `Carbon::Integrations.sync_files`<a id="carbonintegrationssync_files"></a>
 
 Sync Files
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_files(
+result = Carbon::Integrations.sync_files(
   data_source_id: 1,
   ids: [
         "string_example"
@@ -1464,7 +1462,7 @@ p result
 ---
 
 
-### `carbon.integrations.sync_gmail`<a id="carbonintegrationssync_gmail"></a>
+### `Carbon::Integrations.sync_gmail`<a id="carbonintegrationssync_gmail"></a>
 
 Once you have successfully connected your gmail account, you can choose which emails to sync with us
 using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
@@ -1520,7 +1518,7 @@ in the above example.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_gmail(
+result = Carbon::Integrations.sync_gmail(
   filters: {},
   tags: {},
   chunk_size: 1500,
@@ -1556,7 +1554,7 @@ p result
 ---
 
 
-### `carbon.integrations.sync_outlook`<a id="carbonintegrationssync_outlook"></a>
+### `Carbon::Integrations.sync_outlook`<a id="carbonintegrationssync_outlook"></a>
 
 Once you have successfully connected your Outlook account, you can choose which emails to sync with us
 using the filters and folder parameter. "folder" should be the folder you want to sync from Outlook. By default
@@ -1622,7 +1620,7 @@ in the above example.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_outlook(
+result = Carbon::Integrations.sync_outlook(
   filters: {},
   tags: {},
   folder: "Inbox",
@@ -1660,14 +1658,14 @@ p result
 ---
 
 
-### `carbon.integrations.sync_rss_feed`<a id="carbonintegrationssync_rss_feed"></a>
+### `Carbon::Integrations.sync_rss_feed`<a id="carbonintegrationssync_rss_feed"></a>
 
 Rss Feed
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_rss_feed(
+result = Carbon::Integrations.sync_rss_feed(
   url: "string_example",
   tags: {},
   chunk_size: 1500,
@@ -1703,7 +1701,7 @@ p result
 ---
 
 
-### `carbon.integrations.sync_s3_files`<a id="carbonintegrationssync_s3_files"></a>
+### `Carbon::Integrations.sync_s3_files`<a id="carbonintegrationssync_s3_files"></a>
 
 After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name 
 and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
@@ -1712,7 +1710,7 @@ data with the selected items or modify the sync behavior
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.sync_s3_files(
+result = Carbon::Integrations.sync_s3_files(
   ids: [
         {
         }
@@ -1753,14 +1751,14 @@ p result
 ---
 
 
-### `carbon.organizations.get`<a id="carbonorganizationsget"></a>
+### `Carbon::Organizations.get`<a id="carbonorganizationsget"></a>
 
 Get Organization
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.organizations.get
+result = Carbon::Organizations.get
 p result
 ```
 
@@ -1777,14 +1775,14 @@ p result
 ---
 
 
-### `carbon.users.get`<a id="carbonusersget"></a>
+### `Carbon::Users.get`<a id="carbonusersget"></a>
 
 User Endpoint
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.users.get(
+result = Carbon::Users.get(
   customer_id: "string_example",
 )
 p result
@@ -1806,14 +1804,14 @@ p result
 ---
 
 
-### `carbon.users.toggle_user_features`<a id="carbonuserstoggle_user_features"></a>
+### `Carbon::Users.toggle_user_features`<a id="carbonuserstoggle_user_features"></a>
 
 Toggle User Features
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.users.toggle_user_features(
+result = Carbon::Users.toggle_user_features(
   configuration_key_name: "string_example",
   value: {},
 )
@@ -1837,7 +1835,7 @@ p result
 ---
 
 
-### `carbon.utilities.fetch_urls`<a id="carbonutilitiesfetch_urls"></a>
+### `Carbon::Utilities.fetch_urls`<a id="carbonutilitiesfetch_urls"></a>
 
 Extracts all URLs from a webpage. 
 
@@ -1850,7 +1848,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.fetch_urls(
+result = Carbon::Utilities.fetch_urls(
   url: "url_example",
 )
 p result
@@ -1872,7 +1870,7 @@ p result
 ---
 
 
-### `carbon.utilities.fetch_youtube_transcripts`<a id="carbonutilitiesfetch_youtube_transcripts"></a>
+### `Carbon::Utilities.fetch_youtube_transcripts`<a id="carbonutilitiesfetch_youtube_transcripts"></a>
 
 Fetches english transcripts from YouTube videos.
 
@@ -1886,7 +1884,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.fetch_youtube_transcripts(
+result = Carbon::Utilities.fetch_youtube_transcripts(
   id: "id_example",
   raw: false,
 )
@@ -1910,7 +1908,7 @@ p result
 ---
 
 
-### `carbon.utilities.process_sitemap`<a id="carbonutilitiesprocess_sitemap"></a>
+### `Carbon::Utilities.process_sitemap`<a id="carbonutilitiesprocess_sitemap"></a>
 
 Retrieves all URLs from a sitemap, which can subsequently be utilized with our `web_scrape` endpoint.
 
@@ -1923,7 +1921,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.process_sitemap(
+result = Carbon::Utilities.process_sitemap(
   url: "url_example",
 )
 p result
@@ -1941,7 +1939,7 @@ p result
 ---
 
 
-### `carbon.utilities.scrape_sitemap`<a id="carbonutilitiesscrape_sitemap"></a>
+### `Carbon::Utilities.scrape_sitemap`<a id="carbonutilitiesscrape_sitemap"></a>
 
 Extracts all URLs from a sitemap and performs a web scrape on each of them.
 
@@ -1954,7 +1952,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.scrape_sitemap(
+result = Carbon::Utilities.scrape_sitemap(
   url: "string_example",
   tags: {
         "key": "string_example",
@@ -1996,7 +1994,7 @@ p result
 ---
 
 
-### `carbon.utilities.scrape_web`<a id="carbonutilitiesscrape_web"></a>
+### `Carbon::Utilities.scrape_web`<a id="carbonutilitiesscrape_web"></a>
 
 Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.
 
@@ -2010,7 +2008,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.scrape_web(
+result = Carbon::Utilities.scrape_web(
   body: [
         {
             "url" => "url_example",
@@ -2043,7 +2041,7 @@ Array<[`WebscrapeRequest`](./lib/carbon/models/webscrape_request.rb)>
 ---
 
 
-### `carbon.utilities.search_urls`<a id="carbonutilitiessearch_urls"></a>
+### `Carbon::Utilities.search_urls`<a id="carbonutilitiessearch_urls"></a>
 
 Perform a web search and obtain a list of relevant URLs.
 
@@ -2068,7 +2066,7 @@ Returns:
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.utilities.search_urls(
+result = Carbon::Utilities.search_urls(
   query: "query_example",
 )
 p result
@@ -2090,14 +2088,14 @@ p result
 ---
 
 
-### `carbon.webhooks.add_url`<a id="carbonwebhooksadd_url"></a>
+### `Carbon::Webhooks.add_url`<a id="carbonwebhooksadd_url"></a>
 
 Add Webhook Url
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.webhooks.add_url(
+result = Carbon::Webhooks.add_url(
   url: "string_example",
 )
 p result
@@ -2119,14 +2117,14 @@ p result
 ---
 
 
-### `carbon.webhooks.delete_url`<a id="carbonwebhooksdelete_url"></a>
+### `Carbon::Webhooks.delete_url`<a id="carbonwebhooksdelete_url"></a>
 
 Delete Webhook Url
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.webhooks.delete_url(
+result = Carbon::Webhooks.delete_url(
   webhook_id: 1,
 )
 p result
@@ -2148,14 +2146,14 @@ p result
 ---
 
 
-### `carbon.webhooks.urls`<a id="carbonwebhooksurls"></a>
+### `Carbon::Webhooks.urls`<a id="carbonwebhooksurls"></a>
 
 Webhook Urls
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.webhooks.urls(
+result = Carbon::Webhooks.urls(
   pagination: {
         "limit" => 10,
         "offset" => 0,

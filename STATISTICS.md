@@ -2,6 +2,6 @@
 
 | SDK Name | Lines of Code |
 | -------- | ------------- |
-| ruby | 39235 |
+| ruby | 39233 |
 | typescript | 19956 |
-| **Total** | 59191 |
+| **Total** | 59189 |
