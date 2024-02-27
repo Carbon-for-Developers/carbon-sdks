@@ -6,6 +6,14 @@ examples_3:
     get:
       '200':
         application/json: {}
+  /integrations/gitbook/spaces:
+    get:
+      '200':
+        application/json: {}
+  /integrations/gitbook/sync:
+    post:
+      '200':
+        application/json: {}
   /integrations/gmail/user_labels:
     get:
       '200':
@@ -64,6 +72,12 @@ operationIds:
     post: Integrations_syncFiles
   /integrations/freshdesk:
     post: Integrations_connectFreshdesk
+  /integrations/gitbook:
+    post: Integrations_connectGitbook
+  /integrations/gitbook/spaces:
+    get: Integrations_listGitbookSpaces
+  /integrations/gitbook/sync:
+    post: Integrations_syncGitbook
   /integrations/gmail/sync:
     post: Integrations_syncGmail
   /integrations/gmail/user_labels:
@@ -136,6 +150,14 @@ responseSchemaNames:
     get:
       '200':
         application/json: HealthCheckResponse
+  /integrations/gitbook/spaces:
+    get:
+      '200':
+        application/json: IntegrationsListGitbookSpacesResponse
+  /integrations/gitbook/sync:
+    post:
+      '200':
+        application/json: IntegrationsSyncGitbookResponse
   /integrations/gmail/user_labels:
     get:
       '200':
@@ -168,6 +190,8 @@ securityParameters:
   chunk_overlap:
     query: false
   chunk_size:
+    query: false
+  data_source_id:
     query: false
   embedding_model:
     query: false

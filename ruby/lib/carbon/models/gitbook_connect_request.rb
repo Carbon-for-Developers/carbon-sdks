@@ -12,43 +12,16 @@ require 'date'
 require 'time'
 
 module Carbon
-  class OrganizationUserFilesToSyncFilters
-    attr_accessor :tags
+  class GitbookConnectRequest
+    attr_accessor :organization
 
-    attr_accessor :source
-
-    attr_accessor :name
-
-    attr_accessor :tags_v2
-
-    attr_accessor :ids
-
-    attr_accessor :external_file_ids
-
-    attr_accessor :sync_statuses
-
-    attr_accessor :parent_file_ids
-
-    attr_accessor :organization_user_data_source_id
-
-    attr_accessor :embedding_generators
-
-    attr_accessor :root_files_only
+    attr_accessor :access_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tags' => :'tags',
-        :'source' => :'source',
-        :'name' => :'name',
-        :'tags_v2' => :'tags_v2',
-        :'ids' => :'ids',
-        :'external_file_ids' => :'external_file_ids',
-        :'sync_statuses' => :'sync_statuses',
-        :'parent_file_ids' => :'parent_file_ids',
-        :'organization_user_data_source_id' => :'organization_user_data_source_id',
-        :'embedding_generators' => :'embedding_generators',
-        :'root_files_only' => :'root_files_only'
+        :'organization' => :'organization',
+        :'access_token' => :'access_token'
       }
     end
 
@@ -60,34 +33,14 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'tags' => :'Hash<String, Tags1>',
-        :'source' => :'SourceProperty',
-        :'name' => :'String',
-        :'tags_v2' => :'Object',
-        :'ids' => :'Array<Integer>',
-        :'external_file_ids' => :'Array<String>',
-        :'sync_statuses' => :'Array<ExternalFileSyncStatuses>',
-        :'parent_file_ids' => :'Array<Integer>',
-        :'organization_user_data_source_id' => :'Array<Integer>',
-        :'embedding_generators' => :'Array<EmbeddingGenerators>',
-        :'root_files_only' => :'Boolean'
+        :'organization' => :'String',
+        :'access_token' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'tags',
-        :'source',
-        :'name',
-        :'tags_v2',
-        :'ids',
-        :'external_file_ids',
-        :'sync_statuses',
-        :'parent_file_ids',
-        :'organization_user_data_source_id',
-        :'embedding_generators',
-        :'root_files_only'
       ])
     end
 
@@ -95,73 +48,23 @@ module Carbon
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::OrganizationUserFilesToSyncFilters` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::GitbookConnectRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::OrganizationUserFilesToSyncFilters`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::GitbookConnectRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Hash)
-          self.tags = value
-        end
+      if attributes.key?(:'organization')
+        self.organization = attributes[:'organization']
       end
 
-      if attributes.key?(:'source')
-        self.source = attributes[:'source']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'tags_v2')
-        self.tags_v2 = attributes[:'tags_v2']
-      end
-
-      if attributes.key?(:'ids')
-        if (value = attributes[:'ids']).is_a?(Array)
-          self.ids = value
-        end
-      end
-
-      if attributes.key?(:'external_file_ids')
-        if (value = attributes[:'external_file_ids']).is_a?(Array)
-          self.external_file_ids = value
-        end
-      end
-
-      if attributes.key?(:'sync_statuses')
-        if (value = attributes[:'sync_statuses']).is_a?(Array)
-          self.sync_statuses = value
-        end
-      end
-
-      if attributes.key?(:'parent_file_ids')
-        if (value = attributes[:'parent_file_ids']).is_a?(Array)
-          self.parent_file_ids = value
-        end
-      end
-
-      if attributes.key?(:'organization_user_data_source_id')
-        if (value = attributes[:'organization_user_data_source_id']).is_a?(Array)
-          self.organization_user_data_source_id = value
-        end
-      end
-
-      if attributes.key?(:'embedding_generators')
-        if (value = attributes[:'embedding_generators']).is_a?(Array)
-          self.embedding_generators = value
-        end
-      end
-
-      if attributes.key?(:'root_files_only')
-        self.root_files_only = attributes[:'root_files_only']
+      if attributes.key?(:'access_token')
+        self.access_token = attributes[:'access_token']
       end
     end
 
@@ -169,12 +72,22 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @organization.nil?
+        invalid_properties.push('invalid value for "organization", organization cannot be nil.')
+      end
+
+      if @access_token.nil?
+        invalid_properties.push('invalid value for "access_token", access_token cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @organization.nil?
+      return false if @access_token.nil?
       true
     end
 
@@ -183,17 +96,8 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tags == o.tags &&
-          source == o.source &&
-          name == o.name &&
-          tags_v2 == o.tags_v2 &&
-          ids == o.ids &&
-          external_file_ids == o.external_file_ids &&
-          sync_statuses == o.sync_statuses &&
-          parent_file_ids == o.parent_file_ids &&
-          organization_user_data_source_id == o.organization_user_data_source_id &&
-          embedding_generators == o.embedding_generators &&
-          root_files_only == o.root_files_only
+          organization == o.organization &&
+          access_token == o.access_token
     end
 
     # @see the `==` method
@@ -205,7 +109,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only].hash
+      [organization, access_token].hash
     end
 
     # Builds the object from hash

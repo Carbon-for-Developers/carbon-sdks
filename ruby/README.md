@@ -38,15 +38,18 @@ Connect external data to LLMs, no matter the source.
   * [`Carbon::Files.upload_text`](#carbonfilesupload_text)
   * [`Carbon::Health.check`](#carbonhealthcheck)
   * [`Carbon::Integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
+  * [`Carbon::Integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`Carbon::Integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`Carbon::Integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`Carbon::Integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
   * [`Carbon::Integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
   * [`Carbon::Integrations.list_folders`](#carbonintegrationslist_folders)
+  * [`Carbon::Integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`Carbon::Integrations.list_labels`](#carbonintegrationslist_labels)
   * [`Carbon::Integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`Carbon::Integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`Carbon::Integrations.sync_files`](#carbonintegrationssync_files)
+  * [`Carbon::Integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`Carbon::Integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`Carbon::Integrations.sync_outlook`](#carbonintegrationssync_outlook)
   * [`Carbon::Integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
@@ -613,6 +616,7 @@ result = Carbon::Files.delete_many(
         "string_example"
     ],
   delete_non_synced_only: false,
+  send_webhook: false,
 )
 p result
 ```
@@ -622,6 +626,7 @@ p result
 ##### file_ids: Array<`Integer`><a id="file_ids-array"></a>
 ##### sync_statuses: Array<[`ExternalFileSyncStatuses`](./lib/carbon/models/external_file_sync_statuses.rb)><a id="sync_statuses-array"></a>
 ##### delete_non_synced_only: `Boolean`<a id="delete_non_synced_only-boolean"></a>
+##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
@@ -1129,6 +1134,40 @@ p result
 ---
 
 
+### `Carbon::Integrations.connect_gitbook`<a id="carbonintegrationsconnect_gitbook"></a>
+
+You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
+generating access token so make sure you have the permission to access spaces you will be syncing. 
+Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
+need to specify the name of organization you will be syncing data from.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = Carbon::Integrations.connect_gitbook(
+  organization: "string_example",
+  access_token: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### organization: `String`<a id="organization-string"></a>
+##### access_token: `String`<a id="access_token-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `Carbon::Integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
 Create a new IAM user with permissions to:
@@ -1311,6 +1350,31 @@ p result
 ---
 
 
+### `Carbon::Integrations.list_gitbook_spaces`<a id="carbonintegrationslist_gitbook_spaces"></a>
+
+After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = Carbon::Integrations.list_gitbook_spaces(
+  data_source_id: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/spaces` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `Carbon::Integrations.list_labels`<a id="carbonintegrationslist_labels"></a>
 
 After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
@@ -1456,6 +1520,50 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `Carbon::Integrations.sync_gitbook`<a id="carbonintegrationssync_gitbook"></a>
+
+You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
+data with the synced pages or modify the sync behavior.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = Carbon::Integrations.sync_gitbook(
+  space_ids: [
+        "string_example"
+    ],
+  data_source_id: 1,
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### space_ids: Array<`String`><a id="space_ids-array"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/sync` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1957,7 +2065,7 @@ result = Carbon::Utilities.scrape_sitemap(
   tags: {
         "key": "string_example",
     },
-  max_pages_to_scrape: 100,
+  max_pages_to_scrape: 1,
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -1967,6 +2075,7 @@ result = Carbon::Utilities.scrape_sitemap(
   html_tags_to_skip: [],
   css_classes_to_skip: [],
   css_selectors_to_skip: [],
+  embedding_model: "OPENAI",
 )
 p result
 ```
@@ -1985,6 +2094,7 @@ p result
 ##### html_tags_to_skip: Array<`String`><a id="html_tags_to_skip-array"></a>
 ##### css_classes_to_skip: Array<`String`><a id="css_classes_to_skip-array"></a>
 ##### css_selectors_to_skip: Array<`String`><a id="css_selectors_to_skip-array"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -2023,6 +2133,7 @@ result = Carbon::Utilities.scrape_web(
             "html_tags_to_skip" => [],
             "css_classes_to_skip" => [],
             "css_selectors_to_skip" => [],
+            "embedding_model" => "OPENAI",
         }
     ],
 )

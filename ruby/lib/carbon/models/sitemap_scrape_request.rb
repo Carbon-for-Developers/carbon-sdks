@@ -37,6 +37,8 @@ module Carbon
 
     attr_accessor :css_selectors_to_skip
 
+    attr_accessor :embedding_model
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -51,7 +53,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
         :'html_tags_to_skip' => :'html_tags_to_skip',
         :'css_classes_to_skip' => :'css_classes_to_skip',
-        :'css_selectors_to_skip' => :'css_selectors_to_skip'
+        :'css_selectors_to_skip' => :'css_selectors_to_skip',
+        :'embedding_model' => :'embedding_model'
       }
     end
 
@@ -74,7 +77,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'Boolean',
         :'html_tags_to_skip' => :'Array<String>',
         :'css_classes_to_skip' => :'Array<String>',
-        :'css_selectors_to_skip' => :'Array<String>'
+        :'css_selectors_to_skip' => :'Array<String>',
+        :'embedding_model' => :'EmbeddingGenerators'
       }
     end
 
@@ -91,7 +95,7 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'html_tags_to_skip',
         :'css_classes_to_skip',
-        :'css_selectors_to_skip'
+        :'css_selectors_to_skip',
       ])
     end
 
@@ -122,8 +126,6 @@ module Carbon
 
       if attributes.key?(:'max_pages_to_scrape')
         self.max_pages_to_scrape = attributes[:'max_pages_to_scrape']
-      else
-        self.max_pages_to_scrape = 100
       end
 
       if attributes.key?(:'chunk_size')
@@ -179,6 +181,12 @@ module Carbon
           self.css_selectors_to_skip = value
         end
       end
+
+      if attributes.key?(:'embedding_model')
+        self.embedding_model = attributes[:'embedding_model']
+      else
+        self.embedding_model = 'OPENAI'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -215,7 +223,8 @@ module Carbon
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
           html_tags_to_skip == o.html_tags_to_skip &&
           css_classes_to_skip == o.css_classes_to_skip &&
-          css_selectors_to_skip == o.css_selectors_to_skip
+          css_selectors_to_skip == o.css_selectors_to_skip &&
+          embedding_model == o.embedding_model
     end
 
     # @see the `==` method
@@ -227,7 +236,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip].hash
+      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model].hash
     end
 
     # Builds the object from hash

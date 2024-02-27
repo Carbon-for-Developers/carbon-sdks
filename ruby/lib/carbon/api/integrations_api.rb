@@ -156,6 +156,114 @@ module Carbon
     end
 
 
+    # Gitbook Connect
+    #
+    # You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
+    # generating access token so make sure you have the permission to access spaces you will be syncing. 
+    # Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
+    # need to specify the name of organization you will be syncing data from.
+    #
+    # @param organization [String] 
+    # @param access_token [String] 
+    # @param body [GitbookConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_gitbook(organization:, access_token:, extra: {})
+      _body = {}
+      _body[:organization] = organization if organization != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      gitbook_connect_request = _body
+      data, _status_code, _headers = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
+      data
+    end
+
+    # Gitbook Connect
+    #
+    # You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
+    # generating access token so make sure you have the permission to access spaces you will be syncing. 
+    # Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
+    # need to specify the name of organization you will be syncing data from.
+    #
+    # @param organization [String] 
+    # @param access_token [String] 
+    # @param body [GitbookConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_gitbook_with_http_info(organization:, access_token:, extra: {})
+      _body = {}
+      _body[:organization] = organization if organization != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      gitbook_connect_request = _body
+      connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
+    end
+
+    # Gitbook Connect
+    # You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+    # @param gitbook_connect_request [GitbookConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def connect_gitbook_impl(gitbook_connect_request, opts = {})
+      data, _status_code, _headers = connect_gitbook_with_http_info(gitbook_connect_request, opts)
+      data
+    end
+
+    # Gitbook Connect
+    # You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+    # @param gitbook_connect_request [GitbookConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
+    private def connect_gitbook_with_http_info_impl(gitbook_connect_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.connect_gitbook ...'
+      end
+      # verify the required parameter 'gitbook_connect_request' is set
+      if @api_client.config.client_side_validation && gitbook_connect_request.nil?
+        fail ArgumentError, "Missing the required parameter 'gitbook_connect_request' when calling IntegrationsApi.connect_gitbook"
+      end
+      # resource path
+      local_var_path = '/integrations/gitbook'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(gitbook_connect_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.connect_gitbook",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#connect_gitbook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers, response
+    end
+
+
     # S3 Auth
     #
     # Create a new IAM user with permissions to:
@@ -707,6 +815,92 @@ module Carbon
     end
 
 
+    # Gitbook Spaces
+    #
+    # After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+    #
+    # @param data_source_id [Integer] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_gitbook_spaces(data_source_id:, extra: {})
+      data, _status_code, _headers = list_gitbook_spaces_with_http_info_impl(data_source_id, extra)
+      data
+    end
+
+    # Gitbook Spaces
+    #
+    # After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+    #
+    # @param data_source_id [Integer] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_gitbook_spaces_with_http_info(data_source_id:, extra: {})
+      list_gitbook_spaces_with_http_info_impl(data_source_id, extra)
+    end
+
+    # Gitbook Spaces
+    # After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+    # @param data_source_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def list_gitbook_spaces_impl(data_source_id, opts = {})
+      data, _status_code, _headers = list_gitbook_spaces_with_http_info(data_source_id, opts)
+      data
+    end
+
+    # Gitbook Spaces
+    # After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+    # @param data_source_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    private def list_gitbook_spaces_with_http_info_impl(data_source_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_gitbook_spaces ...'
+      end
+      # verify the required parameter 'data_source_id' is set
+      if @api_client.config.client_side_validation && data_source_id.nil?
+        fail ArgumentError, "Missing the required parameter 'data_source_id' when calling IntegrationsApi.list_gitbook_spaces"
+      end
+      # resource path
+      local_var_path = '/integrations/gitbook/spaces'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'data_source_id'] = data_source_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.list_gitbook_spaces",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#list_gitbook_spaces\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers, response
+    end
+
+
     # Gmail Labels
     #
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
@@ -1141,6 +1335,138 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers, response
+    end
+
+
+    # Gitbook Sync
+    #
+    # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
+    # data with the synced pages or modify the sync behavior.
+    #
+    # @param space_ids [Array<String>] 
+    # @param data_source_id [Integer] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param body [GitbookSyncRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_gitbook(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:space_ids] = space_ids if space_ids != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      gitbook_sync_request = _body
+      data, _status_code, _headers = sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
+      data
+    end
+
+    # Gitbook Sync
+    #
+    # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
+    # data with the synced pages or modify the sync behavior.
+    #
+    # @param space_ids [Array<String>] 
+    # @param data_source_id [Integer] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param body [GitbookSyncRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_gitbook_with_http_info(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:space_ids] = space_ids if space_ids != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      gitbook_sync_request = _body
+      sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
+    end
+
+    # Gitbook Sync
+    # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+    # @param gitbook_sync_request [GitbookSyncRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def sync_gitbook_impl(gitbook_sync_request, opts = {})
+      data, _status_code, _headers = sync_gitbook_with_http_info(gitbook_sync_request, opts)
+      data
+    end
+
+    # Gitbook Sync
+    # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+    # @param gitbook_sync_request [GitbookSyncRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    private def sync_gitbook_with_http_info_impl(gitbook_sync_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_gitbook ...'
+      end
+      # verify the required parameter 'gitbook_sync_request' is set
+      if @api_client.config.client_side_validation && gitbook_sync_request.nil?
+        fail ArgumentError, "Missing the required parameter 'gitbook_sync_request' when calling IntegrationsApi.sync_gitbook"
+      end
+      # resource path
+      local_var_path = '/integrations/gitbook/sync'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(gitbook_sync_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_gitbook",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_gitbook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers, response
     end

@@ -216,6 +216,10 @@ module Carbon
         invalid_properties.push('invalid value for "k", k cannot be nil.')
       end
 
+      if @k < 1
+        invalid_properties.push('invalid value for "k", must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -225,6 +229,7 @@ module Carbon
       return false if @query.nil?
       return false if @query.to_s.length < 1
       return false if @k.nil?
+      return false if @k < 1
       true
     end
 
@@ -240,6 +245,20 @@ module Carbon
       end
 
       @query = query
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] k Value to be assigned
+    def k=(k)
+      if k.nil?
+        fail ArgumentError, 'k cannot be nil'
+      end
+
+      if k < 1
+        fail ArgumentError, 'invalid value for "k", must be greater than or equal to 1.'
+      end
+
+      @k = k
     end
 
     # Checks equality by comparing each attribute.

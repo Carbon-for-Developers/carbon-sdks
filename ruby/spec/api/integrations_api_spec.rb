@@ -40,6 +40,18 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for connect_gitbook
+  # Gitbook Connect
+  # You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+  # @param gitbook_connect_request 
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessResponse]
+  describe 'connect_gitbook test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_aws_iam_user
   # S3 Auth
   # Create a new IAM user with permissions to: &lt;ol&gt; &lt;li&gt;List all buckets.&lt;/li&gt; &lt;li&gt;Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.&lt;/li&gt; &lt;/ol&gt; Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
@@ -97,6 +109,18 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for list_gitbook_spaces
+  # Gitbook Spaces
+  # After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+  # @param data_source_id 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'list_gitbook_spaces test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for list_labels
   # Gmail Labels
   # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \&quot;user\&quot; and Gmail&#39;s default labels will have the type \&quot;system\&quot;
@@ -137,6 +161,18 @@ describe 'IntegrationsApi' do
   # @param [Hash] opts the optional parameters
   # @return [GenericSuccessResponse]
   describe 'sync_files test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for sync_gitbook
+  # Gitbook Sync
+  # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+  # @param gitbook_sync_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'sync_gitbook test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

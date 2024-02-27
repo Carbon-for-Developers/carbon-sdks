@@ -12,13 +12,13 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for Carbon::OrganizationUserFilesToSyncFilters
-describe Carbon::OrganizationUserFilesToSyncFilters do
-  let(:instance) { Carbon::OrganizationUserFilesToSyncFilters.new }
+# Unit tests for Carbon::GitbookSyncRequest
+describe Carbon::GitbookSyncRequest do
+  let(:instance) { Carbon::GitbookSyncRequest.new }
 
-  describe 'test an instance of OrganizationUserFilesToSyncFilters' do
-    it 'should create an instance of OrganizationUserFilesToSyncFilters' do
-      expect(instance).to be_instance_of(Carbon::OrganizationUserFilesToSyncFilters)
+  describe 'test an instance of GitbookSyncRequest' do
+    it 'should create an instance of GitbookSyncRequest' do
+      expect(instance).to be_instance_of(Carbon::GitbookSyncRequest)
     end
   end
   describe 'test attribute "tags"' do
@@ -27,61 +27,49 @@ describe Carbon::OrganizationUserFilesToSyncFilters do
     end
   end
 
-  describe 'test attribute "source"' do
+  describe 'test attribute "space_ids"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "name"' do
+  describe 'test attribute "data_source_id"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "tags_v2"' do
+  describe 'test attribute "chunk_size"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "ids"' do
+  describe 'test attribute "chunk_overlap"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "external_file_ids"' do
+  describe 'test attribute "skip_embedding_generation"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "sync_statuses"' do
+  describe 'test attribute "embedding_model"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "parent_file_ids"' do
+  describe 'test attribute "generate_sparse_vectors"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "organization_user_data_source_id"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "embedding_generators"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "root_files_only"' do
+  describe 'test attribute "prepend_filename_to_chunks"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -12,14 +12,12 @@ require 'date'
 require 'time'
 
 module Carbon
-  class WebscrapeRequest
+  class GitbookSyncRequest
     attr_accessor :tags
 
-    attr_accessor :url
+    attr_accessor :space_ids
 
-    attr_accessor :recursion_depth
-
-    attr_accessor :max_pages_to_scrape
+    attr_accessor :data_source_id
 
     attr_accessor :chunk_size
 
@@ -27,37 +25,24 @@ module Carbon
 
     attr_accessor :skip_embedding_generation
 
-    attr_accessor :enable_auto_sync
+    attr_accessor :embedding_model
 
     attr_accessor :generate_sparse_vectors
 
     attr_accessor :prepend_filename_to_chunks
 
-    attr_accessor :html_tags_to_skip
-
-    attr_accessor :css_classes_to_skip
-
-    attr_accessor :css_selectors_to_skip
-
-    attr_accessor :embedding_model
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'tags' => :'tags',
-        :'url' => :'url',
-        :'recursion_depth' => :'recursion_depth',
-        :'max_pages_to_scrape' => :'max_pages_to_scrape',
+        :'space_ids' => :'space_ids',
+        :'data_source_id' => :'data_source_id',
         :'chunk_size' => :'chunk_size',
         :'chunk_overlap' => :'chunk_overlap',
         :'skip_embedding_generation' => :'skip_embedding_generation',
-        :'enable_auto_sync' => :'enable_auto_sync',
+        :'embedding_model' => :'embedding_model',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
-        :'html_tags_to_skip' => :'html_tags_to_skip',
-        :'css_classes_to_skip' => :'css_classes_to_skip',
-        :'css_selectors_to_skip' => :'css_selectors_to_skip',
-        :'embedding_model' => :'embedding_model'
+        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks'
       }
     end
 
@@ -69,20 +54,15 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'tags' => :'Hash<String, Tags1>',
-        :'url' => :'String',
-        :'recursion_depth' => :'Integer',
-        :'max_pages_to_scrape' => :'Integer',
+        :'tags' => :'Object',
+        :'space_ids' => :'Array<String>',
+        :'data_source_id' => :'Integer',
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
         :'skip_embedding_generation' => :'Boolean',
-        :'enable_auto_sync' => :'Boolean',
+        :'embedding_model' => :'EmbeddingGenerators',
         :'generate_sparse_vectors' => :'Boolean',
-        :'prepend_filename_to_chunks' => :'Boolean',
-        :'html_tags_to_skip' => :'Array<String>',
-        :'css_classes_to_skip' => :'Array<String>',
-        :'css_selectors_to_skip' => :'Array<String>',
-        :'embedding_model' => :'EmbeddingGenerators'
+        :'prepend_filename_to_chunks' => :'Boolean'
       }
     end
 
@@ -90,17 +70,11 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'tags',
-        :'recursion_depth',
-        :'max_pages_to_scrape',
         :'chunk_size',
         :'chunk_overlap',
         :'skip_embedding_generation',
-        :'enable_auto_sync',
         :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks',
-        :'html_tags_to_skip',
-        :'css_classes_to_skip',
-        :'css_selectors_to_skip',
+        :'prepend_filename_to_chunks'
       ])
     end
 
@@ -108,37 +82,29 @@ module Carbon
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::WebscrapeRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::GitbookSyncRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::WebscrapeRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::GitbookSyncRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Hash)
-          self.tags = value
+        self.tags = attributes[:'tags']
+      end
+
+      if attributes.key?(:'space_ids')
+        if (value = attributes[:'space_ids']).is_a?(Array)
+          self.space_ids = value
         end
       end
 
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
-      end
-
-      if attributes.key?(:'recursion_depth')
-        self.recursion_depth = attributes[:'recursion_depth']
-      else
-        self.recursion_depth = 3
-      end
-
-      if attributes.key?(:'max_pages_to_scrape')
-        self.max_pages_to_scrape = attributes[:'max_pages_to_scrape']
-      else
-        self.max_pages_to_scrape = 100
+      if attributes.key?(:'data_source_id')
+        self.data_source_id = attributes[:'data_source_id']
       end
 
       if attributes.key?(:'chunk_size')
@@ -159,10 +125,10 @@ module Carbon
         self.skip_embedding_generation = false
       end
 
-      if attributes.key?(:'enable_auto_sync')
-        self.enable_auto_sync = attributes[:'enable_auto_sync']
+      if attributes.key?(:'embedding_model')
+        self.embedding_model = attributes[:'embedding_model']
       else
-        self.enable_auto_sync = false
+        self.embedding_model = 'OPENAI'
       end
 
       if attributes.key?(:'generate_sparse_vectors')
@@ -176,38 +142,22 @@ module Carbon
       else
         self.prepend_filename_to_chunks = false
       end
-
-      if attributes.key?(:'html_tags_to_skip')
-        if (value = attributes[:'html_tags_to_skip']).is_a?(Array)
-          self.html_tags_to_skip = value
-        end
-      end
-
-      if attributes.key?(:'css_classes_to_skip')
-        if (value = attributes[:'css_classes_to_skip']).is_a?(Array)
-          self.css_classes_to_skip = value
-        end
-      end
-
-      if attributes.key?(:'css_selectors_to_skip')
-        if (value = attributes[:'css_selectors_to_skip']).is_a?(Array)
-          self.css_selectors_to_skip = value
-        end
-      end
-
-      if attributes.key?(:'embedding_model')
-        self.embedding_model = attributes[:'embedding_model']
-      else
-        self.embedding_model = 'OPENAI'
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @url.nil?
-        invalid_properties.push('invalid value for "url", url cannot be nil.')
+      if @space_ids.nil?
+        invalid_properties.push('invalid value for "space_ids", space_ids cannot be nil.')
+      end
+
+      if @space_ids.length > 20
+        invalid_properties.push('invalid value for "space_ids", number of items must be less than or equal to 20.')
+      end
+
+      if @data_source_id.nil?
+        invalid_properties.push('invalid value for "data_source_id", data_source_id cannot be nil.')
       end
 
       invalid_properties
@@ -216,8 +166,24 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @url.nil?
+      return false if @space_ids.nil?
+      return false if @space_ids.length > 20
+      return false if @data_source_id.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] space_ids Value to be assigned
+    def space_ids=(space_ids)
+      if space_ids.nil?
+        fail ArgumentError, 'space_ids cannot be nil'
+      end
+
+      if space_ids.length > 20
+        fail ArgumentError, 'invalid value for "space_ids", number of items must be less than or equal to 20.'
+      end
+
+      @space_ids = space_ids
     end
 
     # Checks equality by comparing each attribute.
@@ -226,19 +192,14 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           tags == o.tags &&
-          url == o.url &&
-          recursion_depth == o.recursion_depth &&
-          max_pages_to_scrape == o.max_pages_to_scrape &&
+          space_ids == o.space_ids &&
+          data_source_id == o.data_source_id &&
           chunk_size == o.chunk_size &&
           chunk_overlap == o.chunk_overlap &&
           skip_embedding_generation == o.skip_embedding_generation &&
-          enable_auto_sync == o.enable_auto_sync &&
+          embedding_model == o.embedding_model &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
-          prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
-          html_tags_to_skip == o.html_tags_to_skip &&
-          css_classes_to_skip == o.css_classes_to_skip &&
-          css_selectors_to_skip == o.css_selectors_to_skip &&
-          embedding_model == o.embedding_model
+          prepend_filename_to_chunks == o.prepend_filename_to_chunks
     end
 
     # @see the `==` method
@@ -250,7 +211,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model].hash
+      [tags, space_ids, data_source_id, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks].hash
     end
 
     # Builds the object from hash
