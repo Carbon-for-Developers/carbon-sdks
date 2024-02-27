@@ -67,7 +67,7 @@ module Carbon
     # User Data Sources
     # @param organization_user_data_source_query_input [OrganizationUserDataSourceQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(OrganizationUserDataSourceResponse, Integer, Hash)>] OrganizationUserDataSourceResponse data, response status code and response headers
+    # @return [APIResponse] data is OrganizationUserDataSourceResponse, status code, headers and response
     private def query_user_data_sources_with_http_info_impl(organization_user_data_source_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DataSourcesApi.query_user_data_sources ...'
@@ -159,7 +159,7 @@ module Carbon
     # Revoke Access Token
     # @param revoke_access_token_input [RevokeAccessTokenInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
     private def revoke_access_token_with_http_info_impl(revoke_access_token_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DataSourcesApi.revoke_access_token ...'

@@ -43,7 +43,7 @@ module Carbon
 
     # Get Organization
     # @param [Hash] opts the optional parameters
-    # @return [Array<(OrganizationResponse, Integer, Hash)>] OrganizationResponse data, response status code and response headers
+    # @return [APIResponse] data is OrganizationResponse, status code, headers and response
     private def get_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrganizationsApi.get ...'

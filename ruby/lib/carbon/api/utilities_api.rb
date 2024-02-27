@@ -65,7 +65,7 @@ module Carbon
     # Extracts all URLs from a webpage.   Args:     url (str): URL of the webpage  Returns:     FetchURLsResponse: A response object with a list of URLs extracted from the webpage and the webpage content.
     # @param url [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(FetchURLsResponse, Integer, Hash)>] FetchURLsResponse data, response status code and response headers
+    # @return [APIResponse] data is FetchURLsResponse, status code, headers and response
     private def fetch_urls_with_http_info_impl(url, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.fetch_urls ...'
@@ -171,7 +171,7 @@ module Carbon
     # @param id [String] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :raw  (default to false)
-    # @return [Array<(YoutubeTranscriptResponse, Integer, Hash)>] YoutubeTranscriptResponse data, response status code and response headers
+    # @return [APIResponse] data is YoutubeTranscriptResponse, status code, headers and response
     private def fetch_youtube_transcripts_with_http_info_impl(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.fetch_youtube_transcripts ...'
@@ -270,7 +270,7 @@ module Carbon
     # Retrieves all URLs from a sitemap, which can subsequently be utilized with our &#x60;web_scrape&#x60; endpoint.  &lt;!--Args:     url (str): URL of the sitemap  Returns:     dict: A dictionary with a list of URLs extracted from the sitemap.--&gt;
     # @param url [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [APIResponse] data is Object, status code, headers and response
     private def process_sitemap_with_http_info_impl(url, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.process_sitemap ...'
@@ -424,7 +424,7 @@ module Carbon
     # Extracts all URLs from a sitemap and performs a web scrape on each of them.  Args:     sitemap_url (str): URL of the sitemap  Returns:     dict: A response object with the status of the scraping job message.--&gt;
     # @param sitemap_scrape_request [SitemapScrapeRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [APIResponse] data is Object, status code, headers and response
     private def scrape_sitemap_with_http_info_impl(sitemap_scrape_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.scrape_sitemap ...'
@@ -530,7 +530,7 @@ module Carbon
     # Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.  &lt;!--Args:     scraping_requests (List[WebscrapeRequest]): A list of WebscrapeRequest objects.       Returns:     dict: A response object with the status of the scraping job message.--&gt;
     # @param webscrape_request [Array<WebscrapeRequest>] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [APIResponse] data is Object, status code, headers and response
     private def scrape_web_with_http_info_impl(webscrape_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.scrape_web ...'
@@ -656,7 +656,7 @@ module Carbon
     # Perform a web search and obtain a list of relevant URLs.  As an illustration, when you perform a search for “content related to MRNA,” you will receive a list of links such as the following:      - https://tomrenz.substack.com/p/mrna-and-why-it-matters      - https://www.statnews.com/2020/11/10/the-story-of-mrna-how-a-once-dismissed-idea-became-a-leading-technology-in-the-covid-vaccine-race/      - https://www.statnews.com/2022/11/16/covid-19-vaccines-were-a-success-but-mrna-still-has-a-delivery-problem/          - https://joomi.substack.com/p/were-still-being-misled-about-how  Subsequently, you can submit these links to the web_scrape endpoint in order to retrieve the content of the respective web pages.  Args:     query (str): Query to search for  Returns:     FetchURLsResponse: A response object with a list of URLs for a given search query.
     # @param query [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(FetchURLsResponse, Integer, Hash)>] FetchURLsResponse data, response status code and response headers
+    # @return [APIResponse] data is FetchURLsResponse, status code, headers and response
     private def search_urls_with_http_info_impl(query, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UtilitiesApi.search_urls ...'

@@ -43,7 +43,7 @@ module Carbon
 
     # Get Access Token
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TokenResponse, Integer, Hash)>] TokenResponse data, response status code and response headers
+    # @return [APIResponse] data is TokenResponse, status code, headers and response
     private def get_access_token_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthApi.get_access_token ...'
@@ -128,7 +128,7 @@ module Carbon
     # Get White Labeling
     # Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WhiteLabelingResponse, Integer, Hash)>] WhiteLabelingResponse data, response status code and response headers
+    # @return [APIResponse] data is WhiteLabelingResponse, status code, headers and response
     private def get_white_labeling_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthApi.get_white_labeling ...'

@@ -43,7 +43,7 @@ module Carbon
 
     # Health
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    # @return [APIResponse] data is Object, status code, headers and response
     private def check_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: HealthApi.check ...'

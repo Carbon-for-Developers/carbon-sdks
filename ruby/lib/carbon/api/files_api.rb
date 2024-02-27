@@ -85,7 +85,7 @@ module Carbon
     # A tag is a key-value pair that can be added to a file. This pair can then be used for searches (e.g. embedding searches) in order to narrow down the scope of the search. A file can have any number of tags. The following are reserved keys that cannot be used: - db_embedding_id - organization_id - user_id - organization_user_file_id  Carbon currently supports two data types for tag values - &#x60;string&#x60; and &#x60;list&lt;string&gt;&#x60;. Keys can only be &#x60;string&#x60;. If values other than &#x60;string&#x60; and &#x60;list&lt;string&gt;&#x60; are used, they&#39;re automatically converted to strings (e.g. 4 will become \&quot;4\&quot;).
     # @param organization_user_file_tag_create [OrganizationUserFileTagCreate] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def create_user_file_tags_with_http_info_impl(organization_user_file_tag_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.create_user_file_tags ...'
@@ -169,7 +169,7 @@ module Carbon
     # Delete File Endpoint
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
     private def delete_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete ...'
@@ -260,7 +260,7 @@ module Carbon
     # Delete File Tags
     # @param organization_user_file_tags_remove [OrganizationUserFileTagsRemove] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def delete_file_tags_with_http_info_impl(organization_user_file_tags_remove, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete_file_tags ...'
@@ -364,7 +364,7 @@ module Carbon
     # Delete Files Endpoint
     # @param delete_files_query_input [DeleteFilesQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
     private def delete_many_with_http_info_impl(delete_files_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.delete_many ...'
@@ -454,7 +454,7 @@ module Carbon
     # This route is deprecated. Use &#x60;/user_files_v2&#x60; instead.
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PresignedURLResponse, Integer, Hash)>] PresignedURLResponse data, response status code and response headers
+    # @return [APIResponse] data is PresignedURLResponse, status code, headers and response
     private def get_parsed_file_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.get_parsed_file ...'
@@ -539,7 +539,7 @@ module Carbon
     # This route is deprecated. Use &#x60;/user_files_v2&#x60; instead.
     # @param file_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PresignedURLResponse, Integer, Hash)>] PresignedURLResponse data, response status code and response headers
+    # @return [APIResponse] data is PresignedURLResponse, status code, headers and response
     private def get_raw_file_with_http_info_impl(file_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.get_raw_file ...'
@@ -754,7 +754,7 @@ module Carbon
     # For pre-filtering documents, using &#x60;tags_v2&#x60; is preferred to using &#x60;tags&#x60; (which is now deprecated). If both &#x60;tags_v2&#x60; and &#x60;tags&#x60; are specified, &#x60;tags&#x60; is ignored. &#x60;tags_v2&#x60; enables building complex filters through the use of \&quot;AND\&quot;, \&quot;OR\&quot;, and negation logic. Take the below input as an example: &#x60;&#x60;&#x60;json {     \&quot;OR\&quot;: [         {             \&quot;key\&quot;: \&quot;subject\&quot;,             \&quot;value\&quot;: \&quot;holy-bible\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;person-of-interest\&quot;,             \&quot;value\&quot;: \&quot;jesus christ\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;genre\&quot;,             \&quot;value\&quot;: \&quot;religion\&quot;,             \&quot;negate\&quot;: true         }         {             \&quot;AND\&quot;: [                 {                     \&quot;key\&quot;: \&quot;subject\&quot;,                     \&quot;value\&quot;: \&quot;tao-te-ching\&quot;,                     \&quot;negate\&quot;: false                 },                 {                     \&quot;key\&quot;: \&quot;author\&quot;,                     \&quot;value\&quot;: \&quot;lao-tzu\&quot;,                     \&quot;negate\&quot;: false                 }             ]         }     ] } &#x60;&#x60;&#x60; In this case, files will be filtered such that: 1. \&quot;subject\&quot; &#x3D; \&quot;holy-bible\&quot; OR 2. \&quot;person-of-interest\&quot; &#x3D; \&quot;jesus christ\&quot; OR 3. \&quot;genre\&quot; !&#x3D; \&quot;religion\&quot; OR 4. \&quot;subject\&quot; &#x3D; \&quot;tao-te-ching\&quot; AND \&quot;author\&quot; &#x3D; \&quot;lao-tzu\&quot;  Note that the top level of the query must be either an \&quot;OR\&quot; or \&quot;AND\&quot; array. Currently, nesting is limited to 3. For tag blocks (those with \&quot;key\&quot;, \&quot;value\&quot;, and \&quot;negate\&quot; keys), the following typing rules apply: 1. \&quot;key\&quot; isn&#39;t optional and must be a &#x60;string&#x60; 2. \&quot;value\&quot; isn&#39;t optional and can be &#x60;any&#x60; or list[&#x60;any&#x60;] 3. \&quot;negate\&quot; is optional and must be &#x60;true&#x60; or &#x60;false&#x60;. If present and &#x60;true&#x60;, then the filter block is negated in the resulting query. It is &#x60;false&#x60; by default.
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFilesV2, Integer, Hash)>] UserFilesV2 data, response status code and response headers
+    # @return [APIResponse] data is UserFilesV2, status code, headers and response
     private def query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.query_user_files ...'
@@ -876,7 +876,7 @@ module Carbon
     # This route is deprecated. Use &#x60;/user_files_v2&#x60; instead.
     # @param organization_user_files_to_sync_query_input [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UserFile>, Integer, Hash)>] Array<UserFile> data, response status code and response headers
+    # @return [APIResponse] data is Array<UserFile>, status code, headers and response
     private def query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.query_user_files_deprecated ...'
@@ -976,7 +976,7 @@ module Carbon
     # Resync File
     # @param resync_file_query_input [ResyncFileQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def resync_with_http_info_impl(resync_file_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.resync ...'
@@ -1178,7 +1178,7 @@ module Carbon
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
     # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload ...'
@@ -1324,7 +1324,7 @@ module Carbon
     # Create Upload File From Url
     # @param upload_file_from_url_input [UploadFileFromUrlInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_from_url_with_http_info_impl(upload_file_from_url_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload_from_url ...'
@@ -1468,7 +1468,7 @@ module Carbon
     # Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI&#39;s multimodal model; for text, we support OpenAI&#39;s &#x60;text-embedding-ada-002&#x60; and Cohere&#39;s embed-multilingual-v3.0. The model can be specified via the &#x60;embedding_model&#x60; parameter (in the POST body for &#x60;/embeddings&#x60;, and a query  parameter in &#x60;/uploadfile&#x60;). If no model is supplied, the &#x60;text-embedding-ada-002&#x60; is used by default. When performing embedding queries, embeddings from files that used the specified model will be considered in the query. For example, if files A and B have embeddings generated with &#x60;OPENAI&#x60;, and files C and D have embeddings generated with &#x60;COHERE_MULTILINGUAL_V3&#x60;, then by default, queries will only consider files A and B. If &#x60;COHERE_MULTILINGUAL_V3&#x60; is specified as the &#x60;embedding_model&#x60; in &#x60;/embeddings&#x60;, then only files C and D will be considered. Make sure that the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not** set &#x60;VERTEX_MULTIMODAL&#x60; as an &#x60;embedding_model&#x60;. This model is used automatically by Carbon when it detects an image file.
     # @param raw_text_input [RawTextInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(UserFile, Integer, Hash)>] UserFile data, response status code and response headers
+    # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_text_with_http_info_impl(raw_text_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FilesApi.upload_text ...'

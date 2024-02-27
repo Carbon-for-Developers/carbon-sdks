@@ -55,7 +55,7 @@ module Carbon
     # Add Webhook Url
     # @param add_webhook_props [AddWebhookProps] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Webhook, Integer, Hash)>] Webhook data, response status code and response headers
+    # @return [APIResponse] data is Webhook, status code, headers and response
     private def add_url_with_http_info_impl(add_webhook_props, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.add_url ...'
@@ -139,7 +139,7 @@ module Carbon
     # Delete Webhook Url
     # @param webhook_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GenericSuccessResponse, Integer, Hash)>] GenericSuccessResponse data, response status code and response headers
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
     private def delete_url_with_http_info_impl(webhook_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.delete_url ...'
@@ -238,7 +238,7 @@ module Carbon
     # Webhook Urls
     # @param webhook_query_input [WebhookQueryInput] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookQueryResponse, Integer, Hash)>] WebhookQueryResponse data, response status code and response headers
+    # @return [APIResponse] data is WebhookQueryResponse, status code, headers and response
     private def urls_with_http_info_impl(webhook_query_input, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhooksApi.urls ...'
