@@ -152,7 +152,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#connect_freshdesk\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -260,7 +260,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#connect_gitbook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -374,7 +374,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#create_aws_iam_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -518,7 +518,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#get_oauth_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -632,7 +632,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_confluence_pages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -732,7 +732,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_data_source_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -811,7 +811,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_folders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -897,7 +897,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_gitbook_spaces\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -976,7 +976,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_labels\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1116,7 +1116,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_confluence\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1208,7 +1208,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_data_source_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1336,7 +1336,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1468,7 +1468,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_gitbook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1692,7 +1692,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_gmail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1940,7 +1940,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_outlook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -2060,7 +2060,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_rss_feed\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -2194,7 +2194,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_s3_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
   end
 

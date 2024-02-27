@@ -56,6 +56,27 @@ describe 'GettingStarted' do
       expect(result).to_not be_nil
   end
 
+  it 'integrations.sync_gitbook' do
+    result = Carbon::Integrations.sync_gitbook_with_http_info(
+      space_ids: [
+            "string_example"
+        ],
+      data_source_id: 1,
+      tags: {},
+      chunk_size: 1500,
+      chunk_overlap: 20,
+      skip_embedding_generation: false,
+      embedding_model: "OPENAI",
+      generate_sparse_vectors: false,
+      prepend_filename_to_chunks: false,
+    )
+    expect(result).to_not be_nil
+    expect(result.data).to_not be_nil
+    expect(result.status_code).to eq(200)
+    expect(result.headers).to_not be_nil
+    expect(result.response).to_not be_nil
+  end
+
   it 'embedding.get_documents' do
     configuration = Carbon::Configuration.new
     configuration.access_token = 'YOUR API KEY'

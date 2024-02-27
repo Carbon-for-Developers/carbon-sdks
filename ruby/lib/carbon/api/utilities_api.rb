@@ -112,7 +112,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#fetch_urls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -219,7 +219,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#fetch_youtube_transcripts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -317,7 +317,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#process_sitemap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -475,7 +475,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#scrape_sitemap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -581,7 +581,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#scrape_web\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -703,7 +703,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#search_urls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
   end
 

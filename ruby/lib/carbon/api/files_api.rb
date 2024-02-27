@@ -136,7 +136,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#create_user_file_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -215,7 +215,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -311,7 +311,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#delete_file_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -415,7 +415,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#delete_many\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -500,7 +500,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#get_parsed_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -585,7 +585,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#get_raw_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -805,7 +805,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#query_user_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -927,7 +927,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#query_user_files_deprecated\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1027,7 +1027,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#resync\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1243,7 +1243,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1375,7 +1375,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#upload_from_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -1519,7 +1519,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FilesApi#upload_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
   end
 

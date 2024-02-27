@@ -85,7 +85,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AuthApi#get_access_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -170,7 +170,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AuthApi#get_white_labeling\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
   end
 

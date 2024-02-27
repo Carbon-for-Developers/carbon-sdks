@@ -350,7 +350,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EmbeddingsApi#get_documents\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -458,7 +458,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EmbeddingsApi#get_embeddings_and_chunks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
 
 
@@ -558,7 +558,7 @@ module Carbon
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EmbeddingsApi#upload_chunks_and_embeddings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
-      return data, status_code, headers, response
+      APIResponse::new(data, status_code, headers, response)
     end
   end
 
