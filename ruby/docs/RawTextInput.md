@@ -25,7 +25,7 @@ instance = Carbon::RawTextInput.new(
   chunk_overlap: null,
   skip_embedding_generation: false,
   overwrite_file_id: null,
-  embedding_model: null,
+  embedding_model: OPENAI,
   generate_sparse_vectors: false
 )
 ```

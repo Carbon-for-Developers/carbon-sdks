@@ -26,7 +26,7 @@ instance = Carbon::FreshDeskConnectRequest.new(
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
-  embedding_model: null,
+  embedding_model: OPENAI,
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false
 )

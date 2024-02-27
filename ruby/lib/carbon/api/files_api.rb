@@ -647,7 +647,7 @@ module Carbon
     # @param include_additional_files [Boolean] 
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -723,7 +723,7 @@ module Carbon
     # @param include_additional_files [Boolean] 
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_with_http_info(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -818,7 +818,7 @@ module Carbon
     # @param include_additional_files [Boolean] 
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_deprecated(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_deprecated(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -845,7 +845,7 @@ module Carbon
     # @param include_additional_files [Boolean] 
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_deprecated_with_http_info(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_deprecated_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -1058,12 +1058,12 @@ module Carbon
     # @param file [File] 
     # @param chunk_size [Integer] Chunk size in tiktoken tokens to be used when processing file.
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
-    # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored             when processing file.
-    # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
+    # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored when processing file.
+    # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page's worth of content as the maximum amount of content that can appear in a chunk. Only valid for PDFs. See description route description for more information.
     # @param embedding_model [TextEmbeddingGenerators] Embedding model that will be used to embed file chunks.
-    # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
-    # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
-    # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file&#39;s name to chunks.
+    # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
+    # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
+    # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For json files only.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -1115,12 +1115,12 @@ module Carbon
     # @param file [File] 
     # @param chunk_size [Integer] Chunk size in tiktoken tokens to be used when processing file.
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
-    # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored             when processing file.
-    # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
+    # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored when processing file.
+    # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page's worth of content as the maximum amount of content that can appear in a chunk. Only valid for PDFs. See description route description for more information.
     # @param embedding_model [TextEmbeddingGenerators] Embedding model that will be used to embed file chunks.
-    # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
-    # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
-    # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file&#39;s name to chunks.
+    # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
+    # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
+    # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For json files only.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -1258,7 +1258,7 @@ module Carbon
     # @param max_items_per_chunk [Integer] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1291,7 +1291,7 @@ module Carbon
     # @param max_items_per_chunk [Integer] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL

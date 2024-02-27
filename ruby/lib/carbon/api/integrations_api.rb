@@ -1209,7 +1209,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1287,7 +1287,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1444,7 +1444,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -1534,7 +1534,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -1630,7 +1630,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -1657,7 +1657,7 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -1755,7 +1755,7 @@ module Carbon
     # @param max_items_per_chunk [Integer] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -1788,7 +1788,7 @@ module Carbon
     # @param max_items_per_chunk [Integer] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL

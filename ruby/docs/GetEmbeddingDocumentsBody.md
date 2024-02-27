@@ -16,7 +16,7 @@
 | **include_raw_file** | **Boolean** | Flag to control whether or not to include a signed URL to the raw file containing each chunk         in the response. | [optional] |
 | **hybrid_search** | **Boolean** | Flag to control whether or not to perform hybrid search. | [optional] |
 | **hybrid_search_tuning_parameters** | [**HybridSearchTuningParamsNullable**](HybridSearchTuningParamsNullable.md) |  | [optional] |
-| **media_type** | [**FileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional][default to &#39;TEXT&#39;] |
+| **media_type** | [**FileContentTypesNullable**](FileContentTypesNullable.md) | Used to filter the kind of files (e.g. &#x60;TEXT&#x60; or &#x60;IMAGE&#x60;) over which to perform the search. Also         plays a role in determining what embedding model is used to embed the query. If &#x60;IMAGE&#x60; is chosen as the media type,         then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed         for &#x60;embedding_model&#x60;. | [optional][default to &#39;TEXT&#39;] |
 | **embedding_model** | [**EmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional][default to &#39;OPENAI&#39;] |
 
 ## Example
@@ -37,8 +37,8 @@ instance = Carbon::GetEmbeddingDocumentsBody.new(
   include_raw_file: null,
   hybrid_search: null,
   hybrid_search_tuning_parameters: null,
-  media_type: null,
-  embedding_model: null
+  media_type: TEXT,
+  embedding_model: OPENAI
 )
 ```
 

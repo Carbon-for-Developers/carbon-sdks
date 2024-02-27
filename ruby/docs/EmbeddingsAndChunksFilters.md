@@ -14,7 +14,7 @@ require 'carbon'
 
 instance = Carbon::EmbeddingsAndChunksFilters.new(
   user_file_id: null,
-  embedding_model: null
+  embedding_model: OPENAI
 )
 ```
 

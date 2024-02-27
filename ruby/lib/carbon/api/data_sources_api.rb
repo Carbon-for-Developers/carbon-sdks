@@ -26,7 +26,7 @@ module Carbon
     # @param filters [OrganizationUserDataSourceFilters] 
     # @param body [OrganizationUserDataSourceQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_data_sources(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, extra: {})
+    def query_user_data_sources(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -45,7 +45,7 @@ module Carbon
     # @param filters [OrganizationUserDataSourceFilters] 
     # @param body [OrganizationUserDataSourceQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_data_sources_with_http_info(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, extra: {})
+    def query_user_data_sources_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL

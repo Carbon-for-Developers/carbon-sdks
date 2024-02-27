@@ -31,7 +31,7 @@ instance = Carbon::OAuthURLRequest.new(
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
-  embedding_model: null,
+  embedding_model: OPENAI,
   zendesk_subdomain: null,
   microsoft_tenant: null,
   sharepoint_site_name: null,

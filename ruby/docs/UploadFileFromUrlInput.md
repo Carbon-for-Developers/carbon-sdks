@@ -10,7 +10,7 @@
 | **chunk_overlap** | **Integer** |  | [optional] |
 | **skip_embedding_generation** | **Boolean** |  | [optional][default to false] |
 | **set_page_as_boundary** | **Boolean** |  | [optional][default to false] |
-| **embedding_model** | [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] |
+| **embedding_model** | [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional][default to &#39;OPENAI&#39;] |
 | **generate_sparse_vectors** | **Boolean** |  | [optional][default to false] |
 | **use_textract** | **Boolean** |  | [optional][default to false] |
 | **prepend_filename_to_chunks** | **Boolean** |  | [optional][default to false] |
