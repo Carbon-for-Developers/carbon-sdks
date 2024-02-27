@@ -142,6 +142,10 @@ conf = carbon.Configuration(
         self.api_key_prefix = {}
         if api_key_prefix:
             self.api_key_prefix = api_key_prefix
+        else:
+            self.api_key_prefix['accessToken'] = "Token "
+            self.api_key_prefix['apiKey'] = "Bearer "
+            pass
         """dict to store API prefix (e.g. Bearer)
         """
         self.refresh_api_key_hook = None
@@ -350,7 +354,7 @@ conf = carbon.Configuration(
         if key:
             prefix = self.api_key_prefix.get(identifier)
             if prefix:
-                return "%s %s" % (prefix, key)
+                return "%s%s" % (prefix, key)
             else:
                 return key
 
@@ -398,7 +402,7 @@ conf = carbon.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0.0\n"\
-               "SDK Package Version: 0.1.0".\
+               "SDK Package Version: 0.1.1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

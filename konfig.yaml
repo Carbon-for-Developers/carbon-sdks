@@ -30,7 +30,7 @@ securitySchemeOverride:
       in: header
 generators:
   python:
-    version: 0.1.0
+    version: 0.1.1
     packageName: carbon
     projectName: carbon-python-sdk
     outputDirectory: python
