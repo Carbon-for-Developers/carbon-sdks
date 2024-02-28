@@ -4818,6 +4818,11 @@
               }
             ],
             "title": "Max Items Per Chunk"
+          },
+          "set_page_as_boundary": {
+            "type": "boolean",
+            "title": "Set Page As Boundary",
+            "default": false
           }
         },
         "type": "object",
@@ -5937,6 +5942,11 @@
               }
             ],
             "title": "Max Items Per Chunk"
+          },
+          "set_page_as_boundary": {
+            "type": "boolean",
+            "title": "Set Page As Boundary",
+            "default": false
           }
         },
         "type": "object",
@@ -6327,6 +6337,11 @@
               }
             ],
             "title": "Max Items Per Chunk"
+          },
+          "set_page_as_boundary": {
+            "type": "boolean",
+            "title": "Set Page As Boundary",
+            "default": false
           }
         },
         "type": "object",
