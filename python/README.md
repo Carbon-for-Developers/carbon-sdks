@@ -43,15 +43,18 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
   * [`carbon.health.check`](#carbonhealthcheck)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
+  * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
   * [`carbon.integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
   * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
+  * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
+  * [`carbon.integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
@@ -86,8 +89,7 @@ pip install carbon-python-sdk==0.1.1
 ```python
 from carbon import Carbon
 
-# Generally this is done in the backend to avoid exposing API key to the client
-
+# 1) Get an access token for a customer
 carbon = Carbon(
     api_key="YOUR_API_KEY",
     customer_id="YOUR_CUSTOMER_ID",
@@ -95,9 +97,7 @@ carbon = Carbon(
 
 token = carbon.auth.get_access_token()
 
-# Once an access token is obtained, it can be passed to the frontend
-# and used to instantiate the SDK client without an API key
-
+# 2) Use the access token to authenticate moving forward
 carbon = Carbon(access_token=token.access_token)
 
 # use SDK as usual
@@ -703,6 +703,7 @@ delete_many_response = carbon.files.delete_many(
     file_ids=[1],
     sync_statuses=["string_example"],
     delete_non_synced_only=False,
+    send_webhook=False,
 )
 ```
 
@@ -713,6 +714,8 @@ delete_many_response = carbon.files.delete_many(
 ##### sync_statuses: List[[`ExternalFileSyncStatuses`](./carbon/type/external_file_sync_statuses.py)]<a id="sync_statuses-listexternalfilesyncstatusescarbontypeexternal_file_sync_statusespy"></a>
 
 ##### delete_non_synced_only: `bool`<a id="delete_non_synced_only-bool"></a>
+
+##### send_webhook: `bool`<a id="send_webhook-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1278,6 +1281,43 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
 
 ---
 
+### `carbon.integrations.connect_gitbook`<a id="carbonintegrationsconnect_gitbook"></a>
+
+You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
+generating access token so make sure you have the permission to access spaces you will be syncing. 
+Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
+need to specify the name of organization you will be syncing data from.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+connect_gitbook_response = carbon.integrations.connect_gitbook(
+    organization="string_example",
+    access_token="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### organization: `str`<a id="organization-str"></a>
+
+##### access_token: `str`<a id="access_token-str"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`GitbookConnectRequest`](./carbon/type/gitbook_connect_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
 Create a new IAM user with permissions to:
@@ -1484,6 +1524,30 @@ list_folders_response = carbon.integrations.list_folders()
 
 ---
 
+### `carbon.integrations.list_gitbook_spaces`<a id="carbonintegrationslist_gitbook_spaces"></a>
+
+After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_gitbook_spaces_response = carbon.integrations.list_gitbook_spaces(
+    data_source_id=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/spaces` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.integrations.list_labels`<a id="carbonintegrationslist_labels"></a>
 
 After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
@@ -1648,6 +1712,58 @@ sync_files_response = carbon.integrations.sync_files(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_gitbook`<a id="carbonintegrationssync_gitbook"></a>
+
+You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
+data with the synced pages or modify the sync behavior.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_gitbook_response = carbon.integrations.sync_gitbook(
+    space_ids=["string_example"],
+    data_source_id=1,
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### space_ids: [`GitbookSyncRequestSpaceIds`](./carbon/type/gitbook_sync_request_space_ids.py)<a id="space_ids-gitbooksyncrequestspaceidscarbontypegitbook_sync_request_space_idspy"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`GitbookSyncRequest`](./carbon/type/gitbook_sync_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/sync` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -2184,7 +2300,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     tags={
         "key": "string_example",
     },
-    max_pages_to_scrape=100,
+    max_pages_to_scrape=1,
     chunk_size=1500,
     chunk_overlap=20,
     skip_embedding_generation=False,
@@ -2194,6 +2310,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     html_tags_to_skip=[],
     css_classes_to_skip=[],
     css_selectors_to_skip=[],
+    embedding_model="OPENAI",
 )
 ```
 
@@ -2222,6 +2339,8 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
 ##### css_classes_to_skip: [`SitemapScrapeRequestCssClassesToSkip`](./carbon/type/sitemap_scrape_request_css_classes_to_skip.py)<a id="css_classes_to_skip-sitemapscraperequestcssclassestoskipcarbontypesitemap_scrape_request_css_classes_to_skippy"></a>
 
 ##### css_selectors_to_skip: [`SitemapScrapeRequestCssSelectorsToSkip`](./carbon/type/sitemap_scrape_request_css_selectors_to_skip.py)<a id="css_selectors_to_skip-sitemapscraperequestcssselectorstoskipcarbontypesitemap_scrape_request_css_selectors_to_skippy"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2263,6 +2382,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "html_tags_to_skip": [],
             "css_classes_to_skip": [],
             "css_selectors_to_skip": [],
+            "embedding_model": "OPENAI",
         }
     ],
 )

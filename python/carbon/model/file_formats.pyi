@@ -140,6 +140,10 @@ class FileFormats(
         return cls("WEB_SCRAPE")
     
     @schemas.classproperty
+    def GITBOOK(cls):
+        return cls("GITBOOK")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

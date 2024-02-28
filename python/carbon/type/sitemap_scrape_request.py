@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
 from carbon.type.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
 from carbon.type.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
@@ -44,6 +45,8 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
     css_classes_to_skip: SitemapScrapeRequestCssClassesToSkip
 
     css_selectors_to_skip: SitemapScrapeRequestCssSelectorsToSkip
+
+    embedding_model: EmbeddingGenerators
 
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

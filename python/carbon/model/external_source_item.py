@@ -33,6 +33,7 @@ class ExternalSourceItem(
 
     class MetaOapg:
         required = {
+            "root_external_id",
             "item_type",
             "organization_user_data_source_id",
             "created_at",
@@ -164,6 +165,26 @@ class ExternalSourceItem(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class root_external_id(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'root_external_id':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -181,10 +202,12 @@ class ExternalSourceItem(
                 "organization_user_file_to_sync_id": organization_user_file_to_sync_id,
                 "parent_external_id": parent_external_id,
                 "item_type": item_type,
+                "root_external_id": root_external_id,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
     
+    root_external_id: MetaOapg.properties.root_external_id
     item_type: MetaOapg.properties.item_type
     organization_user_data_source_id: MetaOapg.properties.organization_user_data_source_id
     created_at: MetaOapg.properties.created_at
@@ -245,6 +268,9 @@ class ExternalSourceItem(
     def __getitem__(self, name: typing_extensions.Literal["item_type"]) -> MetaOapg.properties.item_type: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["root_external_id"]) -> MetaOapg.properties.root_external_id: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -253,7 +279,7 @@ class ExternalSourceItem(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -301,6 +327,9 @@ class ExternalSourceItem(
     def get_item_oapg(self, name: typing_extensions.Literal["item_type"]) -> MetaOapg.properties.item_type: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["root_external_id"]) -> MetaOapg.properties.root_external_id: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -309,13 +338,14 @@ class ExternalSourceItem(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        root_external_id: typing.Union[MetaOapg.properties.root_external_id, None, str, ],
         item_type: typing.Union[MetaOapg.properties.item_type, None, str, ],
         organization_user_data_source_id: typing.Union[MetaOapg.properties.organization_user_data_source_id, decimal.Decimal, int, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
@@ -338,6 +368,7 @@ class ExternalSourceItem(
         return super().__new__(
             cls,
             *args,
+            root_external_id=root_external_id,
             item_type=item_type,
             organization_user_data_source_id=organization_user_data_source_id,
             created_at=created_at,

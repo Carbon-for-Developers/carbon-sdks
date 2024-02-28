@@ -46,6 +46,8 @@ class ExternalSourceItem(BaseModel):
 
     item_type: typing.Optional[str] = Field(alias='item_type')
 
+    root_external_id: typing.Optional[str] = Field(alias='root_external_id')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

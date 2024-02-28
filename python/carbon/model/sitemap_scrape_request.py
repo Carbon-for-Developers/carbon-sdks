@@ -194,6 +194,10 @@ class SitemapScrapeRequest(
             @staticmethod
             def css_selectors_to_skip() -> typing.Type['SitemapScrapeRequestCssSelectorsToSkip']:
                 return SitemapScrapeRequestCssSelectorsToSkip
+        
+            @staticmethod
+            def embedding_model() -> typing.Type['EmbeddingGenerators']:
+                return EmbeddingGenerators
             __annotations__ = {
                 "url": url,
                 "tags": tags,
@@ -207,6 +211,7 @@ class SitemapScrapeRequest(
                 "html_tags_to_skip": html_tags_to_skip,
                 "css_classes_to_skip": css_classes_to_skip,
                 "css_selectors_to_skip": css_selectors_to_skip,
+                "embedding_model": embedding_model,
             }
     
     url: MetaOapg.properties.url
@@ -248,9 +253,12 @@ class SitemapScrapeRequest(
     def __getitem__(self, name: typing_extensions.Literal["css_selectors_to_skip"]) -> 'SitemapScrapeRequestCssSelectorsToSkip': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["embedding_model"]) -> 'EmbeddingGenerators': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -292,9 +300,12 @@ class SitemapScrapeRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["css_selectors_to_skip"]) -> typing.Union['SitemapScrapeRequestCssSelectorsToSkip', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["embedding_model"]) -> typing.Union['EmbeddingGenerators', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -313,6 +324,7 @@ class SitemapScrapeRequest(
         html_tags_to_skip: typing.Union['SitemapScrapeRequestHtmlTagsToSkip', schemas.Unset] = schemas.unset,
         css_classes_to_skip: typing.Union['SitemapScrapeRequestCssClassesToSkip', schemas.Unset] = schemas.unset,
         css_selectors_to_skip: typing.Union['SitemapScrapeRequestCssSelectorsToSkip', schemas.Unset] = schemas.unset,
+        embedding_model: typing.Union['EmbeddingGenerators', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SitemapScrapeRequest':
@@ -331,10 +343,12 @@ class SitemapScrapeRequest(
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.embedding_generators import EmbeddingGenerators
 from carbon.model.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
 from carbon.model.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
 from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip

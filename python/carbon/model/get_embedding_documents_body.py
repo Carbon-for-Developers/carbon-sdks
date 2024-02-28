@@ -47,7 +47,15 @@ class GetEmbeddingDocumentsBody(
             
                 class MetaOapg:
                     min_length = 1
-            k = schemas.IntSchema
+            
+            
+            class k(
+                schemas.IntSchema
+            ):
+            
+            
+                class MetaOapg:
+                    inclusive_minimum = 1
         
             @staticmethod
             def tags() -> typing.Type['GetEmbeddingDocumentsBodyTags']:

@@ -45,6 +45,8 @@ class RequiredExternalSourceItem(TypedDict):
 
     item_type: typing.Optional[str]
 
+    root_external_id: typing.Optional[str]
+
     created_at: datetime
 
     updated_at: datetime

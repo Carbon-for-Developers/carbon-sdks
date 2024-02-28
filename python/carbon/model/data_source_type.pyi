@@ -144,6 +144,10 @@ class DataSourceType(
         return cls("FRESHDESK")
     
     @schemas.classproperty
+    def GITBOOK(cls):
+        return cls("GITBOOK")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

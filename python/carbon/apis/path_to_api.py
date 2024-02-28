@@ -15,6 +15,9 @@ from carbon.apis.paths.integrations_outlook_sync import IntegrationsOutlookSync
 from carbon.apis.paths.integrations_freshdesk import IntegrationsFreshdesk
 from carbon.apis.paths.integrations_outlook_user_folders import IntegrationsOutlookUserFolders
 from carbon.apis.paths.integrations_gmail_user_labels import IntegrationsGmailUserLabels
+from carbon.apis.paths.integrations_gitbook import IntegrationsGitbook
+from carbon.apis.paths.integrations_gitbook_spaces import IntegrationsGitbookSpaces
+from carbon.apis.paths.integrations_gitbook_sync import IntegrationsGitbookSync
 from carbon.apis.paths.auth_v1_access_token import AuthV1AccessToken
 from carbon.apis.paths.auth_v1_white_labeling import AuthV1WhiteLabeling
 from carbon.apis.paths.embeddings import Embeddings
@@ -65,6 +68,9 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_FRESHDESK: IntegrationsFreshdesk,
         PathValues.INTEGRATIONS_OUTLOOK_USER_FOLDERS: IntegrationsOutlookUserFolders,
         PathValues.INTEGRATIONS_GMAIL_USER_LABELS: IntegrationsGmailUserLabels,
+        PathValues.INTEGRATIONS_GITBOOK: IntegrationsGitbook,
+        PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,
+        PathValues.INTEGRATIONS_GITBOOK_SYNC: IntegrationsGitbookSync,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
@@ -116,6 +122,9 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_FRESHDESK: IntegrationsFreshdesk,
         PathValues.INTEGRATIONS_OUTLOOK_USER_FOLDERS: IntegrationsOutlookUserFolders,
         PathValues.INTEGRATIONS_GMAIL_USER_LABELS: IntegrationsGmailUserLabels,
+        PathValues.INTEGRATIONS_GITBOOK: IntegrationsGitbook,
+        PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,
+        PathValues.INTEGRATIONS_GITBOOK_SYNC: IntegrationsGitbookSync,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
