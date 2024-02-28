@@ -1247,7 +1247,7 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### service: [`DataSourceType`](./lib/carbon/models/data_source_type.rb)<a id="service-datasourcetypelibcarbonmodelsdata_source_typerb"></a>
-##### tags:<a id="tags"></a>
+##### tags: `Object`<a id="tags-object"></a>
 ##### scope: `String`<a id="scope-string"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
