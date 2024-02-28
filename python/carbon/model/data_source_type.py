@@ -62,6 +62,7 @@ class DataSourceType(
             "WEB_SCRAPE": "WEB_SCRAPE",
             "RSS_FEED": "RSS_FEED",
             "FRESHDESK": "FRESHDESK",
+            "GITBOOK": "GITBOOK",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -188,6 +189,10 @@ class DataSourceType(
     @schemas.classproperty
     def FRESHDESK(cls):
         return cls("FRESHDESK")
+    
+    @schemas.classproperty
+    def GITBOOK(cls):
+        return cls("GITBOOK")
     
     @schemas.classproperty
     def JPG(cls):

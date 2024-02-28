@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
+from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.webscrape_request_css_classes_to_skip import WebscrapeRequestCssClassesToSkip
 from carbon.pydantic.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
 from carbon.pydantic.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
@@ -46,5 +47,7 @@ class WebscrapeRequest(BaseModel):
     css_classes_to_skip: typing.Optional[WebscrapeRequestCssClassesToSkip] = Field(None, alias='css_classes_to_skip')
 
     css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
+
+    embedding_model: typing.Optional[EmbeddingGenerators] = Field(None, alias='embedding_model')
     class Config:
         arbitrary_types_allowed = True

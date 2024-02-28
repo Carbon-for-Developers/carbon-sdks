@@ -10,15 +10,18 @@
 """
 
 from carbon.paths.integrations_freshdesk.post import ConnectFreshdesk
+from carbon.paths.integrations_gitbook.post import ConnectGitbook
 from carbon.paths.integrations_s3.post import CreateAwsIamUser
 from carbon.paths.integrations_oauth_url.post import GetOauthUrl
 from carbon.paths.integrations_confluence_list.post import ListConfluencePages
 from carbon.paths.integrations_items_list.post import ListDataSourceItems
 from carbon.paths.integrations_outlook_user_folders.get import ListFolders
+from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpaces
 from carbon.paths.integrations_gmail_user_labels.get import ListLabels
 from carbon.paths.integrations_confluence_sync.post import SyncConfluence
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItems
 from carbon.paths.integrations_files_sync.post import SyncFiles
+from carbon.paths.integrations_gitbook_sync.post import SyncGitbook
 from carbon.paths.integrations_gmail_sync.post import SyncGmail
 from carbon.paths.integrations_outlook_sync.post import SyncOutlook
 from carbon.paths.integrations_rss_feed.post import SyncRssFeed
@@ -28,15 +31,18 @@ from carbon.apis.tags.integrations_api_raw import IntegrationsApiRaw
 
 class IntegrationsApi(
     ConnectFreshdesk,
+    ConnectGitbook,
     CreateAwsIamUser,
     GetOauthUrl,
     ListConfluencePages,
     ListDataSourceItems,
     ListFolders,
+    ListGitbookSpaces,
     ListLabels,
     SyncConfluence,
     SyncDataSourceItems,
     SyncFiles,
+    SyncGitbook,
     SyncGmail,
     SyncOutlook,
     SyncRssFeed,

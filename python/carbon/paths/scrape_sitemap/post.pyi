@@ -37,8 +37,10 @@ from carbon.model.sitemap_scrape_request_css_classes_to_skip import SitemapScrap
 from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags as SitemapScrapeRequestTagsSchema
 from carbon.model.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip as SitemapScrapeRequestCssSelectorsToSkipSchema
 from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip as SitemapScrapeRequestHtmlTagsToSkipSchema
+from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.sitemap_scrape_request import SitemapScrapeRequest as SitemapScrapeRequestSchema
 
+from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
@@ -52,6 +54,7 @@ from carbon.pydantic.sitemap_scrape_request_css_classes_to_skip import SitemapSc
 from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip as SitemapScrapeRequestHtmlTagsToSkipPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags as SitemapScrapeRequestTagsPydantic
+from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
 from carbon.pydantic.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip as SitemapScrapeRequestCssSelectorsToSkipPydantic
 
 # body param
@@ -128,6 +131,7 @@ class BaseApi(api_client.Api):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -155,6 +159,8 @@ class BaseApi(api_client.Api):
             _body["css_classes_to_skip"] = css_classes_to_skip
         if css_selectors_to_skip is not None:
             _body["css_selectors_to_skip"] = css_selectors_to_skip
+        if embedding_model is not None:
+            _body["embedding_model"] = embedding_model
         args.body = _body
         return args
 
@@ -372,6 +378,7 @@ class ScrapeSitemapRaw(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -391,6 +398,7 @@ class ScrapeSitemapRaw(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -411,6 +419,7 @@ class ScrapeSitemapRaw(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -428,6 +437,7 @@ class ScrapeSitemapRaw(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,
@@ -449,6 +459,7 @@ class ScrapeSitemap(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -465,6 +476,7 @@ class ScrapeSitemap(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
             **kwargs,
         )
         if validate:
@@ -486,6 +498,7 @@ class ScrapeSitemap(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.scrape_sitemap(
@@ -501,6 +514,7 @@ class ScrapeSitemap(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -524,6 +538,7 @@ class ApiForpost(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -543,6 +558,7 @@ class ApiForpost(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -563,6 +579,7 @@ class ApiForpost(BaseApi):
         html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip] = None,
         css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = None,
         css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -580,6 +597,7 @@ class ApiForpost(BaseApi):
             html_tags_to_skip=html_tags_to_skip,
             css_classes_to_skip=css_classes_to_skip,
             css_selectors_to_skip=css_selectors_to_skip,
+            embedding_model=embedding_model,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,

@@ -61,6 +61,7 @@ class FileFormats(
             "ZENDESK": "ZENDESK",
             "FRESHDESK": "FRESHDESK",
             "WEB_SCRAPE": "WEB_SCRAPE",
+            "GITBOOK": "GITBOOK",
             "JPG": "JPG",
             "JPG": "JPG",
             "PNG": "PNG",
@@ -184,6 +185,10 @@ class FileFormats(
     @schemas.classproperty
     def WEB_SCRAPE(cls):
         return cls("WEB_SCRAPE")
+    
+    @schemas.classproperty
+    def GITBOOK(cls):
+        return cls("GITBOOK")
     
     @schemas.classproperty
     def JPG(cls):

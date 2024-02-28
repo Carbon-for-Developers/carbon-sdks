@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.webscrape_request_css_classes_to_skip import WebscrapeRequestCssClassesToSkip
 from carbon.type.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
 from carbon.type.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
@@ -46,6 +47,8 @@ class OptionalWebscrapeRequest(TypedDict, total=False):
     css_classes_to_skip: WebscrapeRequestCssClassesToSkip
 
     css_selectors_to_skip: WebscrapeRequestCssSelectorsToSkip
+
+    embedding_model: EmbeddingGenerators
 
 class WebscrapeRequest(RequiredWebscrapeRequest, OptionalWebscrapeRequest):
     pass

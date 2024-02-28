@@ -47,5 +47,7 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
 
     embedding_generators: typing.Optional[typing.List[EmbeddingGenerators]]
 
+    root_files_only: typing.Optional[bool]
+
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

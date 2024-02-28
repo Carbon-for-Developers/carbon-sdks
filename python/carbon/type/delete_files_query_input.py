@@ -27,5 +27,7 @@ class OptionalDeleteFilesQueryInput(TypedDict, total=False):
 
     delete_non_synced_only: bool
 
+    send_webhook: bool
+
 class DeleteFilesQueryInput(RequiredDeleteFilesQueryInput, OptionalDeleteFilesQueryInput):
     pass

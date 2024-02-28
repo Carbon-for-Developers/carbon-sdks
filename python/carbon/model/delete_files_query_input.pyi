@@ -66,10 +66,12 @@ class DeleteFilesQueryInput(
                         _configuration=_configuration,
                     )
             delete_non_synced_only = schemas.BoolSchema
+            send_webhook = schemas.BoolSchema
             __annotations__ = {
                 "file_ids": file_ids,
                 "sync_statuses": sync_statuses,
                 "delete_non_synced_only": delete_non_synced_only,
+                "send_webhook": send_webhook,
             }
     
     @typing.overload
@@ -82,9 +84,12 @@ class DeleteFilesQueryInput(
     def __getitem__(self, name: typing_extensions.Literal["delete_non_synced_only"]) -> MetaOapg.properties.delete_non_synced_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["send_webhook"]) -> MetaOapg.properties.send_webhook: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_ids", "sync_statuses", "delete_non_synced_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_ids", "sync_statuses", "delete_non_synced_only", "send_webhook", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -99,9 +104,12 @@ class DeleteFilesQueryInput(
     def get_item_oapg(self, name: typing_extensions.Literal["delete_non_synced_only"]) -> typing.Union[MetaOapg.properties.delete_non_synced_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["send_webhook"]) -> typing.Union[MetaOapg.properties.send_webhook, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_ids", "sync_statuses", "delete_non_synced_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_ids", "sync_statuses", "delete_non_synced_only", "send_webhook", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -111,6 +119,7 @@ class DeleteFilesQueryInput(
         file_ids: typing.Union['DeleteFilesQueryInputFileIds', schemas.Unset] = schemas.unset,
         sync_statuses: typing.Union[MetaOapg.properties.sync_statuses, list, tuple, None, schemas.Unset] = schemas.unset,
         delete_non_synced_only: typing.Union[MetaOapg.properties.delete_non_synced_only, bool, schemas.Unset] = schemas.unset,
+        send_webhook: typing.Union[MetaOapg.properties.send_webhook, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DeleteFilesQueryInput':
@@ -120,6 +129,7 @@ class DeleteFilesQueryInput(
             file_ids=file_ids,
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
+            send_webhook=send_webhook,
             _configuration=_configuration,
             **kwargs,
         )

@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
+from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
 from carbon.pydantic.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
 from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
@@ -44,5 +45,7 @@ class SitemapScrapeRequest(BaseModel):
     css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = Field(None, alias='css_classes_to_skip')
 
     css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
+
+    embedding_model: typing.Optional[EmbeddingGenerators] = Field(None, alias='embedding_model')
     class Config:
         arbitrary_types_allowed = True

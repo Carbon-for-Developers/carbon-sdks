@@ -44,7 +44,12 @@ class GetEmbeddingDocumentsBody(
                 schemas.StrSchema
             ):
                 pass
-            k = schemas.IntSchema
+            
+            
+            class k(
+                schemas.IntSchema
+            ):
+                pass
         
             @staticmethod
             def tags() -> typing.Type['GetEmbeddingDocumentsBodyTags']:
