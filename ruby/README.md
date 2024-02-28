@@ -2153,7 +2153,7 @@ result = Carbon::Utilities.scrape_web(
 p result
 ```
 
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+#### ⚙️ body<a id="⚙️-body"></a>
 
 Array<[`WebscrapeRequest`](./lib/carbon/models/webscrape_request.rb)>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
