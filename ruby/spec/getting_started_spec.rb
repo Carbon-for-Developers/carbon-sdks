@@ -14,6 +14,29 @@ describe 'GettingStarted' do
   after do
   end
 
+  it 'Utilities.scrape_web' do
+    result = Carbon::Utilities.scrape_web(
+      body: [
+            {
+                "url" => "url_example",
+                "recursion_depth" => 3,
+                "max_pages_to_scrape" => 100,
+                "chunk_size" => 1500,
+                "chunk_overlap" => 20,
+                "skip_embedding_generation" => false,
+                "enable_auto_sync" => false,
+                "generate_sparse_vectors" => false,
+                "prepend_filename_to_chunks" => false,
+                "html_tags_to_skip" => [],
+                "css_classes_to_skip" => [],
+                "css_selectors_to_skip" => [],
+                "embedding_model" => "OPENAI",
+            }
+        ],
+    )
+    expect(result).to_not be_nil
+  end
+
   it 'data_sources.query_user_data_sources' do
     configuration = Carbon::Configuration.new
     configuration.access_token = 'YOUR API KEY'
@@ -111,6 +134,43 @@ describe 'GettingStarted' do
         },
       media_type: "TEXT",
       embedding_model: "OPENAI",
+    )
+    expect(result).to_not be_nil
+  end
+
+  it 'Webhooks.urls' do
+    result = Carbon::Webhooks.urls(
+      pagination: {
+            "limit" => 10,
+            "offset" => 0,
+        },
+      order_by: "created_at",
+      order_dir: "desc",
+      filters: {
+            "ids" => [],
+        },
+    )
+    expect(result).to_not be_nil
+  end
+
+  it 'Embeddings.upload_chunks_and_embeddings' do
+    result = Carbon::Embeddings.upload_chunks_and_embeddings(
+      embedding_model: "OPENAI",
+      chunks_and_embeddings: [
+            {
+                "file_id" => 1,
+                "chunks_and_embeddings" => [
+                    {
+                        "chunk_number" => 1,
+                        "chunk" => "chunk_example",
+                        "embedding" => [
+                            3.14
+                        ],
+                    }
+                ],
+            }
+        ],
+      overwrite_existing: false,
     )
     expect(result).to_not be_nil
   end

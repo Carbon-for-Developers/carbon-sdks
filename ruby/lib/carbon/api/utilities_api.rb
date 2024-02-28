@@ -490,7 +490,7 @@ module Carbon
     #
     # @param body [Array<WebscrapeRequest>] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_web(body, extra: {})
+    def scrape_web(body:, extra: {})
       webscrape_request = body
       data, _status_code, _headers = scrape_web_with_http_info_impl(webscrape_request, extra)
       data
@@ -509,7 +509,7 @@ module Carbon
     #
     # @param body [Array<WebscrapeRequest>] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_web_with_http_info(body, extra: {})
+    def scrape_web_with_http_info(body:, extra: {})
       webscrape_request = body
       scrape_web_with_http_info_impl(webscrape_request, extra)
     end
