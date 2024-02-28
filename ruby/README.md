@@ -16,6 +16,7 @@ Connect external data to LLMs, no matter the source.
 
 - [Installation](#installation)
 - [Getting Started](#getting-started)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [`Carbon::Auth.get_access_token`](#carbonauthget_access_token)
   * [`Carbon::Auth.get_white_labeling`](#carbonauthget_white_labeling)
@@ -88,15 +89,13 @@ result = Carbon::Auth.get_access_token
 p result
 ```
 
-## Raw HTTP Response <a id="raw-http-response"></a>
+## Raw HTTP Response<a id="raw-http-response"></a>
 
-To access the raw HTTP response, suffix any method with `_with_http_info`
-
-For example:
+To access the raw HTTP response, suffix any method with `_with_http_info`.
 
 ```ruby
 result = Carbon::Auth.get_access_token_with_http_info
-p result.data # [Object] HTTP response data
+p result.data # [TokenResponse] Deserialized data
 p.result.status_code # [Integer] HTTP status code
 p.result.headers # [Hash] HTTP headers
 p.result.response # [Faraday::Response] Raw HTTP response
