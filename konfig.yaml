@@ -30,7 +30,7 @@ securitySchemeOverride:
       in: header
 generators:
   ruby:
-    version: 0.1.0
+    version: 0.1.1
     moduleName: Carbon
     gemName: carbon_ruby_sdk
     outputDirectory: ruby
@@ -39,7 +39,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/ruby
   python:
-    version: 0.1.1
+    version: 0.1.2
     packageName: carbon
     projectName: carbon-python-sdk
     outputDirectory: python
@@ -50,7 +50,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/python
   typescript:
-    version: 0.1.3
+    version: 0.1.4
     npmName: carbon-typescript-sdk
     outputDirectory: typescript
     clientName: Carbon
