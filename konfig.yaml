@@ -29,6 +29,13 @@ securitySchemeOverride:
       name: customer-id
       in: header
 generators:
+  go:
+    version: 1.0.0
+    packageName: carbon
+    outputDirectory: go
+    git:
+      userId: Carbon-for-Developers
+      repoId: carbon-sdks/go
   ruby:
     version: 0.1.2
     moduleName: Carbon
