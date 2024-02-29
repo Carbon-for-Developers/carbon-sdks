@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.0-blue)](https://rubygems.org/gems/carbon/versions/0.1.0)
+[![npm](https://img.shields.io/badge/gem-v0.1.0-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.0)
 
 </div>
 
@@ -75,13 +75,13 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon', '~> 0.1.0'
+gem 'carbon_ruby_sdk', '~> 0.1.0'
 ```
 
 ## Getting Started<a id="getting-started"></a>
 
 ```ruby
-require 'carbon'
+require 'carbon_ruby_sdk'
 
 # 1) Get an access token for a customer
 configuration = Carbon::Configuration.new
@@ -128,7 +128,7 @@ p result
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[TokenResponse](./lib/carbon/models/token_response.rb)
+[TokenResponse](./lib/carbon_ruby_sdk/models/token_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -156,7 +156,7 @@ p result
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[WhiteLabelingResponse](./lib/carbon/models/white_labeling_response.rb)
+[WhiteLabelingResponse](./lib/carbon_ruby_sdk/models/white_labeling_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -190,13 +190,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
-##### order_by: [`OrganizationUserDataSourceOrderByColumns`](./lib/carbon/models/organization_user_data_source_order_by_columns.rb)<a id="order_by-organizationuserdatasourceorderbycolumnslibcarbonmodelsorganization_user_data_source_order_by_columnsrb"></a>
-##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
-##### filters: [`OrganizationUserDataSourceFilters`](./lib/carbon/models/organization_user_data_source_filters.rb)<a id="filters-organizationuserdatasourcefilterslibcarbonmodelsorganization_user_data_source_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`OrganizationUserDataSourceOrderByColumns`](./lib/carbon_ruby_sdk/models/organization_user_data_source_order_by_columns.rb)<a id="order_by-organizationuserdatasourceorderbycolumnslibcarbon_ruby_sdkmodelsorganization_user_data_source_order_by_columnsrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`OrganizationUserDataSourceFilters`](./lib/carbon_ruby_sdk/models/organization_user_data_source_filters.rb)<a id="filters-organizationuserdatasourcefilterslibcarbon_ruby_sdkmodelsorganization_user_data_source_filtersrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[OrganizationUserDataSourceResponse](./lib/carbon/models/organization_user_data_source_response.rb)
+[OrganizationUserDataSourceResponse](./lib/carbon_ruby_sdk/models/organization_user_data_source_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -225,7 +225,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -375,7 +375,7 @@ Query for which to get related chunks and embeddings.
 ##### k: `Integer`<a id="k-integer"></a>
 Number of related chunks to return.
 
-##### tags: Hash<string, [`Tags1`](./lib/carbon/models/tags1.rb)><a id="tags-hash"></a>
+##### tags: Hash<string, [`Tags1`](./lib/carbon_ruby_sdk/models/tags1.rb)><a id="tags-hash"></a>
 A set of tags to limit the search to. Deprecated and may be removed in the
 future.
 
@@ -409,18 +409,18 @@ containing each chunk in the response.
 ##### hybrid_search: `Boolean`<a id="hybrid_search-boolean"></a>
 Flag to control whether or not to perform hybrid search.
 
-##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./lib/carbon/models/hybrid_search_tuning_params_nullable.rb)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablelibcarbonmodelshybrid_search_tuning_params_nullablerb"></a>
-##### media_type: [`FileContentTypesNullable`](./lib/carbon/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbonmodelsfile_content_types_nullablerb"></a>
+##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./lib/carbon_ruby_sdk/models/hybrid_search_tuning_params_nullable.rb)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablelibcarbon_ruby_sdkmodelshybrid_search_tuning_params_nullablerb"></a>
+##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform
 the search. Also plays a role in determining what embedding model is used to
 embed the query. If `IMAGE` is chosen as the media type, then the embedding
 model used will be an embedding model that is not text-only, *regardless* of
 what value is passed for `embedding_model`.
 
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[DocumentResponseList](./lib/carbon/models/document_response_list.rb)
+[DocumentResponseList](./lib/carbon_ruby_sdk/models/document_response_list.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -456,14 +456,14 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`EmbeddingsAndChunksFilters`](./lib/carbon/models/embeddings_and_chunks_filters.rb)<a id="filters-embeddingsandchunksfilterslibcarbonmodelsembeddings_and_chunks_filtersrb"></a>
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
-##### order_by: [`EmbeddingsAndChunksOrderByColumns`](./lib/carbon/models/embeddings_and_chunks_order_by_columns.rb)<a id="order_by-embeddingsandchunksorderbycolumnslibcarbonmodelsembeddings_and_chunks_order_by_columnsrb"></a>
-##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
+##### filters: [`EmbeddingsAndChunksFilters`](./lib/carbon_ruby_sdk/models/embeddings_and_chunks_filters.rb)<a id="filters-embeddingsandchunksfilterslibcarbon_ruby_sdkmodelsembeddings_and_chunks_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`EmbeddingsAndChunksOrderByColumns`](./lib/carbon_ruby_sdk/models/embeddings_and_chunks_order_by_columns.rb)<a id="order_by-embeddingsandchunksorderbycolumnslibcarbon_ruby_sdkmodelsembeddings_and_chunks_order_by_columnsrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
 ##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[EmbeddingsAndChunksResponse](./lib/carbon/models/embeddings_and_chunks_response.rb)
+[EmbeddingsAndChunksResponse](./lib/carbon_ruby_sdk/models/embeddings_and_chunks_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -504,12 +504,12 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
-##### chunks_and_embeddings: Array<[`SingleChunksAndEmbeddingsUploadInput`](./lib/carbon/models/single_chunks_and_embeddings_upload_input.rb)><a id="chunks_and_embeddings-array"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### chunks_and_embeddings: Array<[`SingleChunksAndEmbeddingsUploadInput`](./lib/carbon_ruby_sdk/models/single_chunks_and_embeddings_upload_input.rb)><a id="chunks_and_embeddings-array"></a>
 ##### overwrite_existing: `Boolean`<a id="overwrite_existing-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -548,11 +548,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### tags: Hash<string, [`Tags1`](./lib/carbon/models/tags1.rb)><a id="tags-hash"></a>
+##### tags: Hash<string, [`Tags1`](./lib/carbon_ruby_sdk/models/tags1.rb)><a id="tags-hash"></a>
 ##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -581,7 +581,7 @@ p result
 ##### file_id: `Integer`<a id="file_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -614,7 +614,7 @@ p result
 ##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -648,12 +648,12 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### file_ids: Array<`Integer`><a id="file_ids-array"></a>
-##### sync_statuses: Array<[`ExternalFileSyncStatuses`](./lib/carbon/models/external_file_sync_statuses.rb)><a id="sync_statuses-array"></a>
+##### sync_statuses: Array<[`ExternalFileSyncStatuses`](./lib/carbon_ruby_sdk/models/external_file_sync_statuses.rb)><a id="sync_statuses-array"></a>
 ##### delete_non_synced_only: `Boolean`<a id="delete_non_synced_only-boolean"></a>
 ##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -682,7 +682,7 @@ p result
 ##### file_id: `Integer`<a id="file_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[PresignedURLResponse](./lib/carbon/models/presigned_url_response.rb)
+[PresignedURLResponse](./lib/carbon_ruby_sdk/models/presigned_url_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -711,7 +711,7 @@ p result
 ##### file_id: `Integer`<a id="file_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[PresignedURLResponse](./lib/carbon/models/presigned_url_response.rb)
+[PresignedURLResponse](./lib/carbon_ruby_sdk/models/presigned_url_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -796,16 +796,16 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
-##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbonmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
-##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
-##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbonmodelsorganization_user_files_to_sync_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFilesV2](./lib/carbon/models/user_files_v2.rb)
+[UserFilesV2](./lib/carbon_ruby_sdk/models/user_files_v2.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -841,16 +841,16 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
-##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbonmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
-##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
-##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbonmodelsorganization_user_files_to_sync_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -883,7 +883,7 @@ p result
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -958,7 +958,7 @@ Flag to control whether or not to set the a page's worth of content as the
 maximum amount of content that can appear in a chunk. Only valid for PDFs. See
 description route description for more information.
 
-##### embedding_model: [`TextEmbeddingGenerators`](./lib/carbon/models/text_embedding_generators.rb)<a id="embedding_model-textembeddinggeneratorslibcarbonmodelstext_embedding_generatorsrb"></a>
+##### embedding_model: [`TextEmbeddingGenerators`](./lib/carbon_ruby_sdk/models/text_embedding_generators.rb)<a id="embedding_model-textembeddinggeneratorslibcarbon_ruby_sdkmodelstext_embedding_generatorsrb"></a>
 Embedding model that will be used to embed file chunks.
 
 ##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
@@ -977,7 +977,7 @@ Number of objects per chunk. For json files only.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1019,14 +1019,14 @@ p result
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### use_textract: `Boolean`<a id="use_textract-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1074,11 +1074,11 @@ p result
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 ##### overwrite_file_id: `Integer`<a id="overwrite_file_id-integer"></a>
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserFile](./lib/carbon/models/user_file.rb)
+[UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1142,12 +1142,12 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1181,7 +1181,7 @@ p result
 ##### access_token: `String`<a id="access_token-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1218,7 +1218,7 @@ p result
 ##### access_key_secret: `String`<a id="access_key_secret-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[OrganizationUserDataSourceAPI](./lib/carbon/models/organization_user_data_source_api.rb)
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1257,13 +1257,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`DataSourceType`](./lib/carbon/models/data_source_type.rb)<a id="service-datasourcetypelibcarbonmodelsdata_source_typerb"></a>
+##### service: [`DataSourceType`](./lib/carbon_ruby_sdk/models/data_source_type.rb)<a id="service-datasourcetypelibcarbon_ruby_sdkmodelsdata_source_typerb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### scope: `String`<a id="scope-string"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### zendesk_subdomain: `String`<a id="zendesk_subdomain-string"></a>
 ##### microsoft_tenant: `String`<a id="microsoft_tenant-string"></a>
 ##### sharepoint_site_name: `String`<a id="sharepoint_site_name-string"></a>
@@ -1306,7 +1306,7 @@ p result
 ##### parent_id: `String`<a id="parent_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[ListResponse](./lib/carbon/models/list_response.rb)
+[ListResponse](./lib/carbon_ruby_sdk/models/list_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1339,10 +1339,10 @@ p result
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### parent_id: `String`<a id="parent_id-string"></a>
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[ListDataSourceItemsResponse](./lib/carbon/models/list_data_source_items_response.rb)
+[ListDataSourceItemsResponse](./lib/carbon_ruby_sdk/models/list_data_source_items_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1455,13 +1455,13 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1490,7 +1490,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[OrganizationUserDataSourceAPI](./lib/carbon/models/organization_user_data_source_api.rb)
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1533,13 +1533,13 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbonmodelsembedding_generators_nullablerb"></a>
+##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1582,7 +1582,7 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
@@ -1670,12 +1670,12 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1774,12 +1774,12 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1817,12 +1817,12 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1861,18 +1861,18 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### ids: Array<[`S3GetFileInput`](./lib/carbon/models/s3_get_file_input.rb)><a id="ids-array"></a>
+##### ids: Array<[`S3GetFileInput`](./lib/carbon_ruby_sdk/models/s3_get_file_input.rb)><a id="ids-array"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1896,7 +1896,7 @@ p result
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[OrganizationResponse](./lib/carbon/models/organization_response.rb)
+[OrganizationResponse](./lib/carbon_ruby_sdk/models/organization_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1925,7 +1925,7 @@ p result
 ##### customer_id: `String`<a id="customer_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[UserResponse](./lib/carbon/models/user_response.rb)
+[UserResponse](./lib/carbon_ruby_sdk/models/user_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1956,7 +1956,7 @@ p result
 ##### value: `Object`<a id="value-object"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1991,7 +1991,7 @@ p result
 ##### url: `String`<a id="url-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[FetchURLsResponse](./lib/carbon/models/fetch_urls_response.rb)
+[FetchURLsResponse](./lib/carbon_ruby_sdk/models/fetch_urls_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2029,7 +2029,7 @@ p result
 ##### raw: `Boolean`<a id="raw-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[YoutubeTranscriptResponse](./lib/carbon/models/youtube_transcript_response.rb)
+[YoutubeTranscriptResponse](./lib/carbon_ruby_sdk/models/youtube_transcript_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2107,7 +2107,7 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### url: `String`<a id="url-string"></a>
-##### tags: Hash<string, [`Tags1`](./lib/carbon/models/tags1.rb)><a id="tags-hash"></a>
+##### tags: Hash<string, [`Tags1`](./lib/carbon_ruby_sdk/models/tags1.rb)><a id="tags-hash"></a>
 ##### max_pages_to_scrape: `Integer`<a id="max_pages_to_scrape-integer"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
@@ -2118,7 +2118,7 @@ p result
 ##### html_tags_to_skip: Array<`String`><a id="html_tags_to_skip-array"></a>
 ##### css_classes_to_skip: Array<`String`><a id="css_classes_to_skip-array"></a>
 ##### css_selectors_to_skip: Array<`String`><a id="css_selectors_to_skip-array"></a>
-##### embedding_model: [`EmbeddingGenerators`](./lib/carbon/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbonmodelsembedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -2166,7 +2166,7 @@ p result
 
 #### ⚙️ body<a id="⚙️-body"></a>
 
-Array<[`WebscrapeRequest`](./lib/carbon/models/webscrape_request.rb)>
+Array<[`WebscrapeRequest`](./lib/carbon_ruby_sdk/models/webscrape_request.rb)>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/web_scrape` `POST`
@@ -2212,7 +2212,7 @@ p result
 ##### query: `String`<a id="query-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[FetchURLsResponse](./lib/carbon/models/fetch_urls_response.rb)
+[FetchURLsResponse](./lib/carbon_ruby_sdk/models/fetch_urls_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2241,7 +2241,7 @@ p result
 ##### url: `String`<a id="url-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[Webhook](./lib/carbon/models/webhook.rb)
+[Webhook](./lib/carbon_ruby_sdk/models/webhook.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2270,7 +2270,7 @@ p result
 ##### webhook_id: `Integer`<a id="webhook_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[GenericSuccessResponse](./lib/carbon/models/generic_success_response.rb)
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2304,13 +2304,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./lib/carbon/models/pagination.rb)<a id="pagination-paginationlibcarbonmodelspaginationrb"></a>
-##### order_by: [`WebhookOrderByColumns`](./lib/carbon/models/webhook_order_by_columns.rb)<a id="order_by-webhookorderbycolumnslibcarbonmodelswebhook_order_by_columnsrb"></a>
-##### order_dir: [`OrderDir`](./lib/carbon/models/order_dir.rb)<a id="order_dir-orderdirlibcarbonmodelsorder_dirrb"></a>
-##### filters: [`WebhookFilters`](./lib/carbon/models/webhook_filters.rb)<a id="filters-webhookfilterslibcarbonmodelswebhook_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`WebhookOrderByColumns`](./lib/carbon_ruby_sdk/models/webhook_order_by_columns.rb)<a id="order_by-webhookorderbycolumnslibcarbon_ruby_sdkmodelswebhook_order_by_columnsrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`WebhookFilters`](./lib/carbon_ruby_sdk/models/webhook_filters.rb)<a id="filters-webhookfilterslibcarbon_ruby_sdkmodelswebhook_filtersrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
-[WebhookQueryResponse](./lib/carbon/models/webhook_query_response.rb)
+[WebhookQueryResponse](./lib/carbon_ruby_sdk/models/webhook_query_response.rb)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

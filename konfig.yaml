@@ -32,7 +32,7 @@ generators:
   ruby:
     version: 0.1.0
     moduleName: Carbon
-    gemName: carbon
+    gemName: carbon_ruby_sdk
     outputDirectory: ruby
     readmeSnippet: snippets/rubyReadmeGettingStartedSnippet.rb
     git:

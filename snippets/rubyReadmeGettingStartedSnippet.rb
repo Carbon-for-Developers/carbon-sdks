@@ -1,4 +1,4 @@
-require 'carbon'
+require 'carbon_ruby_sdk'
 
 # 1) Get an access token for a customer
 configuration = Carbon::Configuration.new

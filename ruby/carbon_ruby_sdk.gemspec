@@ -9,10 +9,10 @@ The version of the OpenAPI document: 1.0.0
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "carbon/version"
+require "carbon_ruby_sdk/version"
 
 Gem::Specification.new do |s|
-  s.name        = "carbon"
+  s.name        = "carbon_ruby_sdk"
   s.version     = Carbon::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Konfig"]
