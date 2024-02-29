@@ -9,6 +9,7 @@ export * from './data-source-sync-statuses';
 export * from './data-source-type';
 export * from './data-source-type-nullable';
 export * from './delete-files-query-input';
+export * from './delete-users-input';
 export * from './directory-item';
 export * from './document-response';
 export * from './document-response-list';

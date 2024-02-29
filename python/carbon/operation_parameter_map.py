@@ -716,6 +716,13 @@ operation_parameter_map = {
         'parameters': [
         ]
     },
+    '/delete_users-POST': {
+        'parameters': [
+            {
+                'name': 'customer_ids'
+            },
+        ]
+    },
     '/user-POST': {
         'parameters': [
             {

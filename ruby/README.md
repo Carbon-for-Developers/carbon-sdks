@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.1-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.1)
+[![npm](https://img.shields.io/badge/gem-v0.1.2-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.2)
 
 </div>
 
@@ -57,6 +57,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
@@ -76,7 +77,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.1'
+gem 'carbon_ruby_sdk', '~> 0.1.2'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1935,6 +1936,37 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.delete`<a id="carbonusersdelete"></a>
+
+Delete Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.users.delete(
+  customer_ids: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: Array<`String`><a id="customer_ids-array"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

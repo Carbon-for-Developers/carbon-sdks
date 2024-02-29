@@ -21,6 +21,8 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { DeleteUsersInput } from '../models';
+// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -39,6 +41,54 @@ import { requestBeforeHook } from '../requestBeforeHook';
  */
 export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Delete Users
+         * @param {DeleteUsersInput} deleteUsersInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        delete: async (deleteUsersInput: DeleteUsersInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'deleteUsersInput' is not null or undefined
+            assertParamExists('delete', 'deleteUsersInput', deleteUsersInput)
+            const localVarPath = `/delete_users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: deleteUsersInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/delete_users',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteUsersInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary User Endpoint
@@ -151,6 +201,20 @@ export const UsersApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Delete Users
+         * @param {UsersApiDeleteRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async delete(requestParameters: UsersApiDeleteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const deleteUsersInput: DeleteUsersInput = {
+                customer_ids: requestParameters.customer_ids
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(deleteUsersInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary User Endpoint
          * @param {UsersApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -190,6 +254,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
+         * @summary Delete Users
+         * @param {UsersApiDeleteRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        delete(requestParameters: UsersApiDeleteRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.delete(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary User Endpoint
          * @param {UsersApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -210,6 +284,15 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
     };
 };
+
+/**
+ * Request parameters for delete operation in UsersApi.
+ * @export
+ * @interface UsersApiDeleteRequest
+ */
+export type UsersApiDeleteRequest = {
+    
+} & DeleteUsersInput
 
 /**
  * Request parameters for get operation in UsersApi.
@@ -236,6 +319,18 @@ export type UsersApiToggleUserFeaturesRequest = {
  * @extends {BaseAPI}
  */
 export class UsersApiGenerated extends BaseAPI {
+    /**
+     * 
+     * @summary Delete Users
+     * @param {UsersApiDeleteRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiGenerated
+     */
+    public delete(requestParameters: UsersApiDeleteRequest, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).delete(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary User Endpoint

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.4-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.4)
+[![npm](https://img.shields.io/badge/npm-v0.1.5-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.5)
 
 </div>
 
@@ -56,6 +56,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
   * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
   * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
@@ -1983,6 +1984,35 @@ const getResponse = await carbon.organizations.get();
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.delete`<a id="carbonusersdelete"></a>
+
+Delete Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const deleteResponse = await carbon.users.delete({
+  customer_ids: ["customer_ids_example"],
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: `string`[]<a id="customer_ids-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

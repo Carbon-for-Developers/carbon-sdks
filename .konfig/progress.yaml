@@ -56,6 +56,8 @@ operationIds:
     post: Files_deleteMany
   /delete_user_file_tags:
     post: Files_deleteFileTags
+  /delete_users:
+    post: Users_delete
   /delete_webhook/{webhook_id}:
     delete: Webhooks_deleteUrl
   /deletefile/{file_id}:

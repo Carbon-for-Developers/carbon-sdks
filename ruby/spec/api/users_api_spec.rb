@@ -26,6 +26,17 @@ describe 'UsersApi' do
     end
   end
 
+  # unit tests for delete
+  # Delete Users
+  # @param delete_users_input 
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessResponse]
+  describe 'delete test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get
   # User Endpoint
   # @param user_request_content 

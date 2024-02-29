@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.2-blue)](https://pypi.org/project/carbon-python-sdk/0.1.2)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.3-blue)](https://pypi.org/project/carbon-python-sdk/0.1.3)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -61,6 +61,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
@@ -82,7 +83,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.2
+pip install carbon-python-sdk==0.1.3
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -2148,6 +2149,37 @@ get_response = carbon.organizations.get()
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.users.delete`<a id="carbonusersdelete"></a>
+
+Delete Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+delete_response = carbon.users.delete(
+    customer_ids=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: [`DeleteUsersInputCustomerIds`](./carbon/type/delete_users_input_customer_ids.py)<a id="customer_ids-deleteusersinputcustomeridscarbontypedelete_users_input_customer_idspy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`DeleteUsersInput`](./carbon/type/delete_users_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_users` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
