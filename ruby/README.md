@@ -47,6 +47,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
+  * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -1251,6 +1252,9 @@ result = carbon.integrations.get_oauth_url(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  salesforce_domain: "string_example",
+  sync_files_on_connection: false,
+  set_page_as_boundary: false,
 )
 p result
 ```
@@ -1271,6 +1275,9 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+##### salesforce_domain: `String`<a id="salesforce_domain-string"></a>
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/oauth_url` `POST`
@@ -1420,6 +1427,27 @@ p result
 ---
 
 
+### `carbon.integrations.list_outlook_categories`<a id="carbonintegrationslist_outlook_categories"></a>
+
+After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
+support listing up to 250 categories.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.list_outlook_categories
+p result
+```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/user_categories` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1443,6 +1471,7 @@ result = carbon.integrations.sync_confluence(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  set_page_as_boundary: false,
 )
 p result
 ```
@@ -1459,6 +1488,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1521,6 +1551,7 @@ result = carbon.integrations.sync_files(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  set_page_as_boundary: false,
 )
 p result
 ```
@@ -1537,6 +1568,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1855,6 +1887,7 @@ result = carbon.integrations.sync_s3_files(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  set_page_as_boundary: false,
 )
 p result
 ```
@@ -1870,6 +1903,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

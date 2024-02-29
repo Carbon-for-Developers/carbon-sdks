@@ -82,6 +82,18 @@ export interface OrganizationResponse {
      * @type {string}
      * @memberof OrganizationResponse
      */
+    'period_ends_at': string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OrganizationResponse
+     */
+    'cancel_at_period_end': boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationResponse
+     */
     'created_at': string;
     /**
      * 

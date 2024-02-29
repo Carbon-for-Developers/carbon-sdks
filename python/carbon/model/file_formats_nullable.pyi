@@ -65,6 +65,7 @@ class FileFormatsNullable(
             "FRESHDESK": "FRESHDESK",
             "WEB_SCRAPE": "WEB_SCRAPE",
             "GITBOOK": "GITBOOK",
+            "SALESFORCE": "SALESFORCE",
             "JPG": "JPG",
             "JPG": "JPG",
             "PNG": "PNG",
@@ -192,6 +193,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def GITBOOK(cls):
         return cls("GITBOOK")
+    
+    @schemas.classproperty
+    def SALESFORCE(cls):
+        return cls("SALESFORCE")
     
     @schemas.classproperty
     def JPG(cls):

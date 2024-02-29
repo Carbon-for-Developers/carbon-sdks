@@ -21,6 +21,8 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { EmbeddingGenerators } from '../models';
+// @ts-ignore
 import { FetchURLsResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -81,7 +83,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/fetch_urls',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -135,7 +139,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/fetch_youtube_transcript',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -184,7 +190,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/process_sitemap',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -233,7 +241,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/scrape_sitemap',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(sitemapScrapeRequest, localVarRequestOptions, configuration)
 
@@ -283,7 +293,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/web_scrape',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(webscrapeRequest, localVarRequestOptions, configuration)
 
@@ -333,7 +345,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/search_urls',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -405,7 +419,8 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 html_tags_to_skip: requestParameters.html_tags_to_skip,
                 css_classes_to_skip: requestParameters.css_classes_to_skip,
-                css_selectors_to_skip: requestParameters.css_selectors_to_skip
+                css_selectors_to_skip: requestParameters.css_selectors_to_skip,
+                embedding_model: requestParameters.embedding_model
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(sitemapScrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

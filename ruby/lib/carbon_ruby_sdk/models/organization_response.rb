@@ -31,6 +31,10 @@ module Carbon
 
     attr_accessor :aggregate_num_embeddings
 
+    attr_accessor :period_ends_at
+
+    attr_accessor :cancel_at_period_end
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -48,6 +52,8 @@ module Carbon
         :'aggregate_num_characters' => :'aggregate_num_characters',
         :'aggregate_num_tokens' => :'aggregate_num_tokens',
         :'aggregate_num_embeddings' => :'aggregate_num_embeddings',
+        :'period_ends_at' => :'period_ends_at',
+        :'cancel_at_period_end' => :'cancel_at_period_end',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -71,6 +77,8 @@ module Carbon
         :'aggregate_num_characters' => :'Object',
         :'aggregate_num_tokens' => :'Object',
         :'aggregate_num_embeddings' => :'Object',
+        :'period_ends_at' => :'Time',
+        :'cancel_at_period_end' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -82,6 +90,8 @@ module Carbon
         :'nickname',
         :'custom_branding',
         :'custom_limits',
+        :'period_ends_at',
+        :'cancel_at_period_end',
       ])
     end
 
@@ -138,6 +148,14 @@ module Carbon
 
       if attributes.key?(:'aggregate_num_embeddings')
         self.aggregate_num_embeddings = attributes[:'aggregate_num_embeddings']
+      end
+
+      if attributes.key?(:'period_ends_at')
+        self.period_ends_at = attributes[:'period_ends_at']
+      end
+
+      if attributes.key?(:'cancel_at_period_end')
+        self.cancel_at_period_end = attributes[:'cancel_at_period_end']
       end
 
       if attributes.key?(:'created_at')
@@ -222,6 +240,8 @@ module Carbon
           aggregate_num_characters == o.aggregate_num_characters &&
           aggregate_num_tokens == o.aggregate_num_tokens &&
           aggregate_num_embeddings == o.aggregate_num_embeddings &&
+          period_ends_at == o.period_ends_at &&
+          cancel_at_period_end == o.cancel_at_period_end &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -235,7 +255,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, period_ends_at, cancel_at_period_end, created_at, updated_at].hash
     end
 
     # Builds the object from hash

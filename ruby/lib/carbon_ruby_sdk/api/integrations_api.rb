@@ -392,9 +392,12 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param salesforce_domain [String] 
+    # @param sync_files_on_connection [Boolean] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: false, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -410,6 +413,9 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:salesforce_domain] = salesforce_domain if salesforce_domain != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -431,9 +437,12 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param salesforce_domain [String] 
+    # @param sync_files_on_connection [Boolean] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: false, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -449,6 +458,9 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:salesforce_domain] = salesforce_domain if salesforce_domain != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -978,6 +990,85 @@ module Carbon
     end
 
 
+    # Outlook Categories
+    #
+    # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
+    # support listing up to 250 categories.
+    #
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_outlook_categories(extra: {})
+      api_response = list_outlook_categories_with_http_info_impl(extra)
+      api_response.data
+    end
+
+    # Outlook Categories
+    #
+    # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
+    # support listing up to 250 categories.
+    #
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_outlook_categories_with_http_info(extra: {})
+      list_outlook_categories_with_http_info_impl(extra)
+    end
+
+    # Outlook Categories
+    # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def list_outlook_categories_impl(opts = {})
+      data, _status_code, _headers = list_outlook_categories_with_http_info(opts)
+      data
+    end
+
+    # Outlook Categories
+    # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def list_outlook_categories_with_http_info_impl(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_outlook_categories ...'
+      end
+      # resource path
+      local_var_path = '/integrations/outlook/user_categories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.list_outlook_categories",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#list_outlook_categories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Confluence Sync
     #
     # After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -995,9 +1086,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1009,6 +1101,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       sync_files_request = _body
       api_response = sync_confluence_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1031,9 +1124,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1045,6 +1139,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       sync_files_request = _body
       sync_confluence_with_http_info_impl(sync_files_request, extra)
     end
@@ -1222,9 +1317,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1236,6 +1332,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       sync_files_request = _body
       api_response = sync_files_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1253,9 +1350,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1267,6 +1365,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       sync_files_request = _body
       sync_files_with_http_info_impl(sync_files_request, extra)
     end
@@ -2077,9 +2176,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2090,6 +2190,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       s3_file_sync_input = _body
       api_response = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
       api_response.data
@@ -2110,9 +2211,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
+    # @param set_page_as_boundary [Boolean] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
+    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2123,6 +2225,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       s3_file_sync_input = _body
       sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
     end

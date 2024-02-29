@@ -51,6 +51,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
+  * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -1380,6 +1381,9 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    salesforce_domain="string_example",
+    sync_files_on_connection=False,
+    set_page_as_boundary=False,
 )
 ```
 
@@ -1412,6 +1416,12 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+##### salesforce_domain: `Optional[str]`<a id="salesforce_domain-optionalstr"></a>
+
+##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
+
+##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1567,6 +1577,25 @@ list_labels_response = carbon.integrations.list_labels()
 
 ---
 
+### `carbon.integrations.list_outlook_categories`<a id="carbonintegrationslist_outlook_categories"></a>
+
+After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
+support listing up to 250 categories.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_outlook_categories_response = carbon.integrations.list_outlook_categories()
+```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/user_categories` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1588,6 +1617,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    set_page_as_boundary=False,
 )
 ```
 
@@ -1612,6 +1642,8 @@ sync_confluence_response = carbon.integrations.sync_confluence(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1677,6 +1709,7 @@ sync_files_response = carbon.integrations.sync_files(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    set_page_as_boundary=False,
 )
 ```
 
@@ -1701,6 +1734,8 @@ sync_files_response = carbon.integrations.sync_files(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2055,6 +2090,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    set_page_as_boundary=False,
 )
 ```
 
@@ -2077,6 +2113,8 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

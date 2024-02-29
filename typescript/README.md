@@ -38,15 +38,19 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
   * [`carbon.health.check`](#carbonhealthcheck)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
+  * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
   * [`carbon.integrations.createAwsIamUser`](#carbonintegrationscreateawsiamuser)
   * [`carbon.integrations.getOauthUrl`](#carbonintegrationsgetoauthurl)
   * [`carbon.integrations.listConfluencePages`](#carbonintegrationslistconfluencepages)
   * [`carbon.integrations.listDataSourceItems`](#carbonintegrationslistdatasourceitems)
   * [`carbon.integrations.listFolders`](#carbonintegrationslistfolders)
+  * [`carbon.integrations.listGitbookSpaces`](#carbonintegrationslistgitbookspaces)
   * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
+  * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
   * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
   * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
+  * [`carbon.integrations.syncGitbook`](#carbonintegrationssyncgitbook)
   * [`carbon.integrations.syncGmail`](#carbonintegrationssyncgmail)
   * [`carbon.integrations.syncOutlook`](#carbonintegrationssyncoutlook)
   * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
@@ -186,7 +190,10 @@ User Data Sources
 
 ```typescript
 const queryUserDataSourcesResponse =
-  await carbon.dataSources.queryUserDataSources({});
+  await carbon.dataSources.queryUserDataSources({
+    order_by: "created_at",
+    order_dir: "desc",
+  });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -344,6 +351,8 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const getDocumentsResponse = await carbon.embeddings.getDocuments({
   query: "query_example",
   k: 1,
+  media_type: "TEXT",
+  embedding_model: "OPENAI",
 });
 ```
 
@@ -423,8 +432,11 @@ Retrieve Embeddings And Content
 ```typescript
 const getEmbeddingsAndChunksResponse =
   await carbon.embeddings.getEmbeddingsAndChunks({
+    order_by: "created_at",
+    order_dir: "desc",
     filters: {
       user_file_id: 1,
+      embedding_model: "OPENAI",
     },
     include_vectors: false,
   });
@@ -464,7 +476,7 @@ Upload Chunks And Embeddings
 ```typescript
 const uploadChunksAndEmbeddingsResponse =
   await carbon.embeddings.uploadChunksAndEmbeddings({
-    embedding_model: "string_example",
+    embedding_model: "OPENAI",
     chunks_and_embeddings: [
       {
         file_id: 1,
@@ -616,6 +628,7 @@ Delete Files Endpoint
 ```typescript
 const deleteManyResponse = await carbon.files.deleteMany({
   delete_non_synced_only: false,
+  send_webhook: false,
 });
 ```
 
@@ -626,6 +639,8 @@ const deleteManyResponse = await carbon.files.deleteMany({
 ##### sync_statuses: [`ExternalFileSyncStatuses`](./models/external-file-sync-statuses.ts)[]<a id="sync_statuses-externalfilesyncstatusesmodelsexternal-file-sync-statusests"></a>
 
 ##### delete_non_synced_only: `boolean`<a id="delete_non_synced_only-boolean"></a>
+
+##### send_webhook: `boolean`<a id="send_webhook-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -754,7 +769,10 @@ the resulting query. It is `false` by default.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const queryUserFilesResponse = await carbon.files.queryUserFiles({});
+const queryUserFilesResponse = await carbon.files.queryUserFiles({
+  order_by: "created_at",
+  order_dir: "desc",
+});
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -794,7 +812,10 @@ This route is deprecated. Use `/user_files_v2` instead.
 
 ```typescript
 const queryUserFilesDeprecatedResponse =
-  await carbon.files.queryUserFilesDeprecated({});
+  await carbon.files.queryUserFilesDeprecated({
+    order_by: "created_at",
+    order_dir: "desc",
+  });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -893,6 +914,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const uploadResponse = await carbon.files.upload({
   skipEmbeddingGeneration: false,
   setPageAsBoundary: false,
+  embeddingModel: "OPENAI",
   useOcr: false,
   generateSparseVectors: false,
   prependFilenameToChunks: false,
@@ -964,6 +986,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   url: "url_example",
   skip_embedding_generation: false,
   set_page_as_boundary: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   use_textract: false,
   prepend_filename_to_chunks: false,
@@ -1026,6 +1049,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const uploadTextResponse = await carbon.files.uploadText({
   contents: "contents_example",
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
 });
 ```
@@ -1097,6 +1121,7 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1129,6 +1154,41 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/freshdesk` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.connectGitbook`<a id="carbonintegrationsconnectgitbook"></a>
+
+You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
+generating access token so make sure you have the permission to access spaces you will be syncing. 
+Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
+need to specify the name of organization you will be syncing data from.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const connectGitbookResponse = await carbon.integrations.connectGitbook({
+  organization: "organization_example",
+  access_token: "access_token_example",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### organization: `string`<a id="organization-string"></a>
+
+##### access_token: `string`<a id="access_token-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1181,12 +1241,15 @@ Get Oauth Url
 
 ```typescript
 const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
-  service: "string_example",
+  service: "GOOGLE_DRIVE",
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  sync_files_on_connection: false,
+  set_page_as_boundary: false,
 });
 ```
 
@@ -1194,7 +1257,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ##### service: [`DataSourceType`](./models/data-source-type.ts)<a id="service-datasourcetypemodelsdata-source-typets"></a>
 
-##### tags:<a id="tags"></a>
+##### tags: `any`<a id="tags-any"></a>
 
 ##### scope: `string`<a id="scope-string"></a>
 
@@ -1219,6 +1282,12 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+##### salesforce_domain: `string`<a id="salesforce_domain-string"></a>
+
+##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
+
+##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1321,6 +1390,31 @@ const listFoldersResponse = await carbon.integrations.listFolders();
 ---
 
 
+### `carbon.integrations.listGitbookSpaces`<a id="carbonintegrationslistgitbookspaces"></a>
+
+After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listGitbookSpacesResponse = await carbon.integrations.listGitbookSpaces({
+  dataSourceId: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/spaces` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.listLabels`<a id="carbonintegrationslistlabels"></a>
 
 After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
@@ -1335,6 +1429,27 @@ const listLabelsResponse = await carbon.integrations.listLabels();
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gmail/user_labels` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.listOutlookCategories`<a id="carbonintegrationslistoutlookcategories"></a>
+
+After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
+support listing up to 250 categories.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listOutlookCategoriesResponse =
+  await carbon.integrations.listOutlookCategories();
+```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/outlook/user_categories` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1357,8 +1472,10 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  set_page_as_boundary: false,
 });
 ```
 
@@ -1383,6 +1500,8 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1440,8 +1559,10 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  set_page_as_boundary: false,
 });
 ```
 
@@ -1467,6 +1588,8 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
+##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1474,6 +1597,55 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncGitbook`<a id="carbonintegrationssyncgitbook"></a>
+
+You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
+data with the synced pages or modify the sync behavior.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const syncGitbookResponse = await carbon.integrations.syncGitbook({
+  space_ids: ["space_ids_example"],
+  data_source_id: 1,
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### space_ids: `string`[]<a id="space_ids-string"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### chunk_size: `number`<a id="chunk_size-number"></a>
+
+##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### skip_embedding_generation: `boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/gitbook/sync` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1541,6 +1713,7 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1649,6 +1822,7 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1699,6 +1873,7 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1749,8 +1924,10 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  set_page_as_boundary: false,
 });
 ```
 
@@ -1773,6 +1950,8 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1992,7 +2171,6 @@ Returns:
 ```typescript
 const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   url: "url_example",
-  max_pages_to_scrape: 100,
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -2002,6 +2180,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   html_tags_to_skip: [],
   css_classes_to_skip: [],
   css_selectors_to_skip: [],
+  embedding_model: "OPENAI",
 });
 ```
 
@@ -2030,6 +2209,8 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
 ##### css_classes_to_skip: `string`[]<a id="css_classes_to_skip-string"></a>
 
 ##### css_selectors_to_skip: `string`[]<a id="css_selectors_to_skip-string"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2068,6 +2249,7 @@ const scrapeWebResponse = await carbon.utilities.scrapeWeb([
     html_tags_to_skip: [],
     css_classes_to_skip: [],
     css_selectors_to_skip: [],
+    embedding_model: "OPENAI",
   },
 ]);
 ```
@@ -2197,7 +2379,10 @@ Webhook Urls
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const urlsResponse = await carbon.webhooks.urls({});
+const urlsResponse = await carbon.webhooks.urls({
+  order_by: "created_at",
+  order_dir: "desc",
+});
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>

@@ -31,6 +31,10 @@ import { FreshDeskConnectRequest } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
+import { GitbookConnectRequest } from '../models';
+// @ts-ignore
+import { GitbookSyncRequest } from '../models';
+// @ts-ignore
 import { GmailSyncInput } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -111,9 +115,63 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/freshdesk',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(freshDeskConnectRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+         * @summary Gitbook Connect
+         * @param {GitbookConnectRequest} gitbookConnectRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectGitbook: async (gitbookConnectRequest: GitbookConnectRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gitbookConnectRequest' is not null or undefined
+            assertParamExists('connectGitbook', 'gitbookConnectRequest', gitbookConnectRequest)
+            const localVarPath = `/integrations/gitbook`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: gitbookConnectRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/gitbook',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(gitbookConnectRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -161,7 +219,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/s3',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(s3AuthRequest, localVarRequestOptions, configuration)
 
@@ -211,7 +271,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/oauth_url',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(oAuthURLRequest, localVarRequestOptions, configuration)
 
@@ -261,7 +323,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/confluence/list',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listRequest, localVarRequestOptions, configuration)
 
@@ -311,7 +375,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/items/list',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listDataSourceItemsRequest, localVarRequestOptions, configuration)
 
@@ -354,7 +420,60 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/outlook/user_folders',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+         * @summary Gitbook Spaces
+         * @param {number} dataSourceId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listGitbookSpaces: async (dataSourceId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'dataSourceId' is not null or undefined
+            assertParamExists('listGitbookSpaces', 'dataSourceId', dataSourceId)
+            const localVarPath = `/integrations/gitbook/spaces`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/gitbook/spaces',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -396,7 +515,53 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/gmail/user_labels',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+         * @summary Outlook Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listOutlookCategories: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/outlook/user_categories`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/outlook/user_categories',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -445,7 +610,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/confluence/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncFilesRequest, localVarRequestOptions, configuration)
 
@@ -495,7 +662,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/items/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncDirectoryRequest, localVarRequestOptions, configuration)
 
@@ -545,9 +714,63 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/files/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncFilesRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+         * @summary Gitbook Sync
+         * @param {GitbookSyncRequest} gitbookSyncRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncGitbook: async (gitbookSyncRequest: GitbookSyncRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gitbookSyncRequest' is not null or undefined
+            assertParamExists('syncGitbook', 'gitbookSyncRequest', gitbookSyncRequest)
+            const localVarPath = `/integrations/gitbook/sync`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: gitbookSyncRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/gitbook/sync',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(gitbookSyncRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -595,7 +818,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/gmail/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(gmailSyncInput, localVarRequestOptions, configuration)
 
@@ -645,7 +870,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/outlook/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(outlookSyncInput, localVarRequestOptions, configuration)
 
@@ -695,7 +922,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/rss_feed',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(rSSFeedInput, localVarRequestOptions, configuration)
 
@@ -745,7 +974,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/s3/files',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(s3FileSyncInput, localVarRequestOptions, configuration)
 
@@ -788,6 +1019,21 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+         * @summary Gitbook Connect
+         * @param {IntegrationsApiConnectGitbookRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async connectGitbook(requestParameters: IntegrationsApiConnectGitbookRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const gitbookConnectRequest: GitbookConnectRequest = {
+                organization: requestParameters.organization,
+                access_token: requestParameters.access_token
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
          * @summary S3 Auth
          * @param {IntegrationsApiCreateAwsIamUserRequest} requestParameters Request parameters.
@@ -824,7 +1070,10 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 confluence_subdomain: requestParameters.confluence_subdomain,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                max_items_per_chunk: requestParameters.max_items_per_chunk
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                salesforce_domain: requestParameters.salesforce_domain,
+                sync_files_on_connection: requestParameters.sync_files_on_connection,
+                set_page_as_boundary: requestParameters.set_page_as_boundary
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -871,6 +1120,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+         * @summary Gitbook Spaces
+         * @param {IntegrationsApiListGitbookSpacesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listGitbookSpaces(requestParameters: IntegrationsApiListGitbookSpacesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listGitbookSpaces(requestParameters.dataSourceId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
          * @summary Gmail Labels
          * @param {*} [options] Override http request option.
@@ -878,6 +1138,16 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          */
         async listLabels(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listLabels(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+         * @summary Outlook Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listOutlookCategories(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listOutlookCategories(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -898,7 +1168,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                max_items_per_chunk: requestParameters.max_items_per_chunk
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                set_page_as_boundary: requestParameters.set_page_as_boundary
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -935,9 +1206,32 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                max_items_per_chunk: requestParameters.max_items_per_chunk
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                set_page_as_boundary: requestParameters.set_page_as_boundary
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(syncFilesRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+         * @summary Gitbook Sync
+         * @param {IntegrationsApiSyncGitbookRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncGitbook(requestParameters: IntegrationsApiSyncGitbookRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const gitbookSyncRequest: GitbookSyncRequest = {
+                tags: requestParameters.tags,
+                space_ids: requestParameters.space_ids,
+                data_source_id: requestParameters.data_source_id,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitbook(gitbookSyncRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1021,7 +1315,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                max_items_per_chunk: requestParameters.max_items_per_chunk
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                set_page_as_boundary: requestParameters.set_page_as_boundary
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1045,6 +1340,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         connectFreshdesk(requestParameters: IntegrationsApiConnectFreshdeskRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.connectFreshdesk(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+         * @summary Gitbook Connect
+         * @param {IntegrationsApiConnectGitbookRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectGitbook(requestParameters: IntegrationsApiConnectGitbookRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.connectGitbook(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * Create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
@@ -1096,6 +1401,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.listFolders(options).then((request) => request(axios, basePath));
         },
         /**
+         * After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+         * @summary Gitbook Spaces
+         * @param {IntegrationsApiListGitbookSpacesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listGitbookSpaces(requestParameters: IntegrationsApiListGitbookSpacesRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listGitbookSpaces(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
          * @summary Gmail Labels
          * @param {*} [options] Override http request option.
@@ -1103,6 +1418,15 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         listLabels(options?: AxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.listLabels(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+         * @summary Outlook Categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listOutlookCategories(options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listOutlookCategories(options).then((request) => request(axios, basePath));
         },
         /**
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
@@ -1133,6 +1457,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         syncFiles(requestParameters: IntegrationsApiSyncFilesRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.syncFiles(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+         * @summary Gitbook Sync
+         * @param {IntegrationsApiSyncGitbookRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncGitbook(requestParameters: IntegrationsApiSyncGitbookRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.syncGitbook(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
@@ -1187,6 +1521,15 @@ export type IntegrationsApiConnectFreshdeskRequest = {
 } & FreshDeskConnectRequest
 
 /**
+ * Request parameters for connectGitbook operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiConnectGitbookRequest
+ */
+export type IntegrationsApiConnectGitbookRequest = {
+    
+} & GitbookConnectRequest
+
+/**
  * Request parameters for createAwsIamUser operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiCreateAwsIamUserRequest
@@ -1223,6 +1566,22 @@ export type IntegrationsApiListDataSourceItemsRequest = {
 } & ListDataSourceItemsRequest
 
 /**
+ * Request parameters for listGitbookSpaces operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListGitbookSpacesRequest
+ */
+export type IntegrationsApiListGitbookSpacesRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListGitbookSpaces
+    */
+    readonly dataSourceId: number
+    
+}
+
+/**
  * Request parameters for syncConfluence operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiSyncConfluenceRequest
@@ -1248,6 +1607,15 @@ export type IntegrationsApiSyncDataSourceItemsRequest = {
 export type IntegrationsApiSyncFilesRequest = {
     
 } & SyncFilesRequest
+
+/**
+ * Request parameters for syncGitbook operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncGitbookRequest
+ */
+export type IntegrationsApiSyncGitbookRequest = {
+    
+} & GitbookSyncRequest
 
 /**
  * Request parameters for syncGmail operation in IntegrationsApi.
@@ -1302,6 +1670,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public connectFreshdesk(requestParameters: IntegrationsApiConnectFreshdeskRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).connectFreshdesk(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user  generating access token so make sure you have the permission to access spaces you will be syncing.  Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you need to specify the name of organization you will be syncing data from.
+     * @summary Gitbook Connect
+     * @param {IntegrationsApiConnectGitbookRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public connectGitbook(requestParameters: IntegrationsApiConnectGitbookRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).connectGitbook(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1364,6 +1744,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
+     * After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
+     * @summary Gitbook Spaces
+     * @param {IntegrationsApiListGitbookSpacesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listGitbookSpaces(requestParameters: IntegrationsApiListGitbookSpacesRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listGitbookSpaces(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
      * @summary Gmail Labels
      * @param {*} [options] Override http request option.
@@ -1372,6 +1764,17 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public listLabels(options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).listLabels(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+     * @summary Outlook Categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listOutlookCategories(options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listOutlookCategories(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1408,6 +1811,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public syncFiles(requestParameters: IntegrationsApiSyncFilesRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).syncFiles(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
+     * @summary Gitbook Sync
+     * @param {IntegrationsApiSyncGitbookRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncGitbook(requestParameters: IntegrationsApiSyncGitbookRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncGitbook(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

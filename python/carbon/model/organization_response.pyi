@@ -35,15 +35,17 @@ class OrganizationResponse(
         required = {
             "aggregate_file_size",
             "aggregate_num_characters",
+            "cancel_at_period_end",
             "custom_limits",
+            "created_at",
+            "custom_branding",
             "updated_at",
             "aggregate_num_embeddings",
             "name",
             "nickname",
-            "created_at",
             "remove_branding",
-            "custom_branding",
             "id",
+            "period_ends_at",
             "aggregate_num_tokens",
         }
         
@@ -119,6 +121,51 @@ class OrganizationResponse(
             aggregate_num_characters = schemas.DictSchema
             aggregate_num_tokens = schemas.DictSchema
             aggregate_num_embeddings = schemas.DictSchema
+            
+            
+            class period_ends_at(
+                schemas.DateTimeBase,
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                class MetaOapg:
+                    format = 'date-time'
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, datetime, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'period_ends_at':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class cancel_at_period_end(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'cancel_at_period_end':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -132,21 +179,25 @@ class OrganizationResponse(
                 "aggregate_num_characters": aggregate_num_characters,
                 "aggregate_num_tokens": aggregate_num_tokens,
                 "aggregate_num_embeddings": aggregate_num_embeddings,
+                "period_ends_at": period_ends_at,
+                "cancel_at_period_end": cancel_at_period_end,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
     
     aggregate_file_size: MetaOapg.properties.aggregate_file_size
     aggregate_num_characters: MetaOapg.properties.aggregate_num_characters
+    cancel_at_period_end: MetaOapg.properties.cancel_at_period_end
     custom_limits: MetaOapg.properties.custom_limits
+    created_at: MetaOapg.properties.created_at
+    custom_branding: MetaOapg.properties.custom_branding
     updated_at: MetaOapg.properties.updated_at
     aggregate_num_embeddings: MetaOapg.properties.aggregate_num_embeddings
     name: MetaOapg.properties.name
     nickname: MetaOapg.properties.nickname
-    created_at: MetaOapg.properties.created_at
     remove_branding: MetaOapg.properties.remove_branding
-    custom_branding: MetaOapg.properties.custom_branding
     id: MetaOapg.properties.id
+    period_ends_at: MetaOapg.properties.period_ends_at
     aggregate_num_tokens: MetaOapg.properties.aggregate_num_tokens
     
     @typing.overload
@@ -180,6 +231,12 @@ class OrganizationResponse(
     def __getitem__(self, name: typing_extensions.Literal["aggregate_num_embeddings"]) -> MetaOapg.properties.aggregate_num_embeddings: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["period_ends_at"]) -> MetaOapg.properties.period_ends_at: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -188,7 +245,7 @@ class OrganizationResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -224,6 +281,12 @@ class OrganizationResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["aggregate_num_embeddings"]) -> MetaOapg.properties.aggregate_num_embeddings: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["period_ends_at"]) -> MetaOapg.properties.period_ends_at: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -232,7 +295,7 @@ class OrganizationResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -241,15 +304,17 @@ class OrganizationResponse(
         *args: typing.Union[dict, frozendict.frozendict, ],
         aggregate_file_size: typing.Union[MetaOapg.properties.aggregate_file_size, dict, frozendict.frozendict, ],
         aggregate_num_characters: typing.Union[MetaOapg.properties.aggregate_num_characters, dict, frozendict.frozendict, ],
+        cancel_at_period_end: typing.Union[MetaOapg.properties.cancel_at_period_end, None, bool, ],
         custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, None, ],
+        created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
+        custom_branding: typing.Union[MetaOapg.properties.custom_branding, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         aggregate_num_embeddings: typing.Union[MetaOapg.properties.aggregate_num_embeddings, dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         nickname: typing.Union[MetaOapg.properties.nickname, None, str, ],
-        created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         remove_branding: typing.Union[MetaOapg.properties.remove_branding, bool, ],
-        custom_branding: typing.Union[MetaOapg.properties.custom_branding, dict, frozendict.frozendict, None, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
+        period_ends_at: typing.Union[MetaOapg.properties.period_ends_at, None, str, datetime, ],
         aggregate_num_tokens: typing.Union[MetaOapg.properties.aggregate_num_tokens, dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -259,15 +324,17 @@ class OrganizationResponse(
             *args,
             aggregate_file_size=aggregate_file_size,
             aggregate_num_characters=aggregate_num_characters,
+            cancel_at_period_end=cancel_at_period_end,
             custom_limits=custom_limits,
+            created_at=created_at,
+            custom_branding=custom_branding,
             updated_at=updated_at,
             aggregate_num_embeddings=aggregate_num_embeddings,
             name=name,
             nickname=nickname,
-            created_at=created_at,
             remove_branding=remove_branding,
-            custom_branding=custom_branding,
             id=id,
+            period_ends_at=period_ends_at,
             aggregate_num_tokens=aggregate_num_tokens,
             _configuration=_configuration,
             **kwargs,

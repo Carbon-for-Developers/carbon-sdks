@@ -29,6 +29,8 @@ module Carbon
 
     attr_accessor :max_items_per_chunk
 
+    attr_accessor :set_page_as_boundary
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +42,8 @@ module Carbon
         :'embedding_model' => :'embedding_model',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
-        :'max_items_per_chunk' => :'max_items_per_chunk'
+        :'max_items_per_chunk' => :'max_items_per_chunk',
+        :'set_page_as_boundary' => :'set_page_as_boundary'
       }
     end
 
@@ -60,7 +63,8 @@ module Carbon
         :'embedding_model' => :'EmbeddingGenerators',
         :'generate_sparse_vectors' => :'Boolean',
         :'prepend_filename_to_chunks' => :'Boolean',
-        :'max_items_per_chunk' => :'Integer'
+        :'max_items_per_chunk' => :'Integer',
+        :'set_page_as_boundary' => :'Boolean'
       }
     end
 
@@ -73,7 +77,7 @@ module Carbon
         :'skip_embedding_generation',
         :'generate_sparse_vectors',
         :'prepend_filename_to_chunks',
-        :'max_items_per_chunk'
+        :'max_items_per_chunk',
       ])
     end
 
@@ -141,6 +145,12 @@ module Carbon
       if attributes.key?(:'max_items_per_chunk')
         self.max_items_per_chunk = attributes[:'max_items_per_chunk']
       end
+
+      if attributes.key?(:'set_page_as_boundary')
+        self.set_page_as_boundary = attributes[:'set_page_as_boundary']
+      else
+        self.set_page_as_boundary = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -174,7 +184,8 @@ module Carbon
           embedding_model == o.embedding_model &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
-          max_items_per_chunk == o.max_items_per_chunk
+          max_items_per_chunk == o.max_items_per_chunk &&
+          set_page_as_boundary == o.set_page_as_boundary
     end
 
     # @see the `==` method
@@ -186,7 +197,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk].hash
+      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary].hash
     end
 
     # Builds the object from hash

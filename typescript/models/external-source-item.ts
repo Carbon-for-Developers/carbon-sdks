@@ -107,6 +107,12 @@ export interface ExternalSourceItem {
      * @type {string}
      * @memberof ExternalSourceItem
      */
+    'root_external_id': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExternalSourceItem
+     */
     'created_at': string;
     /**
      * 

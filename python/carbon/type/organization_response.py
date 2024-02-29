@@ -36,6 +36,10 @@ class RequiredOrganizationResponse(TypedDict):
 
     aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    period_ends_at: typing.Optional[datetime]
+
+    cancel_at_period_end: typing.Optional[bool]
+
     created_at: datetime
 
     updated_at: datetime

@@ -37,5 +37,7 @@ class OptionalS3FileSyncInput(TypedDict, total=False):
 
     max_items_per_chunk: typing.Optional[int]
 
+    set_page_as_boundary: bool
+
 class S3FileSyncInput(RequiredS3FileSyncInput, OptionalS3FileSyncInput):
     pass

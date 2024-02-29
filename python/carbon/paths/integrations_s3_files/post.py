@@ -133,6 +133,7 @@ class BaseApi(api_client.Api):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -154,6 +155,8 @@ class BaseApi(api_client.Api):
             _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
         if max_items_per_chunk is not None:
             _body["max_items_per_chunk"] = max_items_per_chunk
+        if set_page_as_boundary is not None:
+            _body["set_page_as_boundary"] = set_page_as_boundary
         args.body = _body
         return args
 
@@ -196,6 +199,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            path_template='/integrations/s3/files',
             body=body,
             auth_settings=_auth,
             headers=_headers,
@@ -309,6 +313,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            path_template='/integrations/s3/files',
             body=body,
             auth_settings=_auth,
             headers=_headers,
@@ -368,6 +373,7 @@ class SyncS3FilesRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -384,6 +390,7 @@ class SyncS3FilesRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -401,6 +408,7 @@ class SyncS3FilesRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -415,6 +423,7 @@ class SyncS3FilesRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
         )
         return self._sync_s3_files_oapg(
             body=args.body,
@@ -433,6 +442,7 @@ class SyncS3Files(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -446,6 +456,7 @@ class SyncS3Files(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
             **kwargs,
         )
         if validate:
@@ -464,6 +475,7 @@ class SyncS3Files(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_s3_files(
@@ -476,6 +488,7 @@ class SyncS3Files(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -496,6 +509,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -512,6 +526,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -529,6 +544,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        set_page_as_boundary: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -543,6 +559,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
         )
         return self._sync_s3_files_oapg(
             body=args.body,

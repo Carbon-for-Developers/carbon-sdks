@@ -73,5 +73,11 @@ export interface S3FileSyncInput {
      * @memberof S3FileSyncInput
      */
     'max_items_per_chunk'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof S3FileSyncInput
+     */
+    'set_page_as_boundary'?: boolean;
 }
 

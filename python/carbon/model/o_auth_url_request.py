@@ -266,6 +266,47 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class salesforce_domain(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'salesforce_domain':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class sync_files_on_connection(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'sync_files_on_connection':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            set_page_as_boundary = schemas.BoolSchema
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -281,6 +322,9 @@ class OAuthURLRequest(
                 "generate_sparse_vectors": generate_sparse_vectors,
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
                 "max_items_per_chunk": max_items_per_chunk,
+                "salesforce_domain": salesforce_domain,
+                "sync_files_on_connection": sync_files_on_connection,
+                "set_page_as_boundary": set_page_as_boundary,
             }
     
     service: 'DataSourceType'
@@ -328,9 +372,18 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> MetaOapg.properties.max_items_per_chunk: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["salesforce_domain"]) -> MetaOapg.properties.salesforce_domain: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_files_on_connection"]) -> MetaOapg.properties.sync_files_on_connection: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -378,9 +431,18 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> typing.Union[MetaOapg.properties.max_items_per_chunk, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["salesforce_domain"]) -> typing.Union[MetaOapg.properties.salesforce_domain, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_files_on_connection"]) -> typing.Union[MetaOapg.properties.sync_files_on_connection, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> typing.Union[MetaOapg.properties.set_page_as_boundary, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -401,6 +463,9 @@ class OAuthURLRequest(
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, schemas.Unset] = schemas.unset,
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        salesforce_domain: typing.Union[MetaOapg.properties.salesforce_domain, None, str, schemas.Unset] = schemas.unset,
+        sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
+        set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -421,6 +486,9 @@ class OAuthURLRequest(
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            salesforce_domain=salesforce_domain,
+            sync_files_on_connection=sync_files_on_connection,
+            set_page_as_boundary=set_page_as_boundary,
             _configuration=_configuration,
             **kwargs,
         )

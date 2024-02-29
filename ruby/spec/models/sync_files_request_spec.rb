@@ -79,4 +79,10 @@ describe Carbon::SyncFilesRequest do
     end
   end
 
+  describe 'test attribute "set_page_as_boundary"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

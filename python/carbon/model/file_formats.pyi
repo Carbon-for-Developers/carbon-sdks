@@ -144,6 +144,10 @@ class FileFormats(
         return cls("GITBOOK")
     
     @schemas.classproperty
+    def SALESFORCE(cls):
+        return cls("SALESFORCE")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

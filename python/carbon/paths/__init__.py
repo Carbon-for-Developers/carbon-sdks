@@ -19,6 +19,7 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_OUTLOOK_SYNC = "/integrations/outlook/sync"
     INTEGRATIONS_FRESHDESK = "/integrations/freshdesk"
     INTEGRATIONS_OUTLOOK_USER_FOLDERS = "/integrations/outlook/user_folders"
+    INTEGRATIONS_OUTLOOK_USER_CATEGORIES = "/integrations/outlook/user_categories"
     INTEGRATIONS_GMAIL_USER_LABELS = "/integrations/gmail/user_labels"
     INTEGRATIONS_GITBOOK = "/integrations/gitbook"
     INTEGRATIONS_GITBOOK_SPACES = "/integrations/gitbook/spaces"

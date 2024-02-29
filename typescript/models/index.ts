@@ -32,6 +32,8 @@ export * from './file-statistics-nullable';
 export * from './fresh-desk-connect-request';
 export * from './generic-success-response';
 export * from './get-embedding-documents-body';
+export * from './gitbook-connect-request';
+export * from './gitbook-sync-request';
 export * from './gmail-sync-input';
 export * from './httpvalidation-error';
 export * from './hybrid-search-tuning-params';

@@ -37,6 +37,10 @@ class OrganizationResponse(BaseModel):
 
     aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_embeddings')
 
+    period_ends_at: typing.Optional[datetime] = Field(alias='period_ends_at')
+
+    cancel_at_period_end: typing.Optional[bool] = Field(alias='cancel_at_period_end')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

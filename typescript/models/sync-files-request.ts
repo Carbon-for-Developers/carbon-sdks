@@ -78,5 +78,11 @@ export interface SyncFilesRequest {
      * @memberof SyncFilesRequest
      */
     'max_items_per_chunk'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SyncFilesRequest
+     */
+    'set_page_as_boundary'?: boolean;
 }
 

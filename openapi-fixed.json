@@ -757,6 +757,50 @@
         }
       }
     },
+    "/integrations/outlook/user_categories": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Outlook Categories",
+        "operationId": "Integrations_listOutlookCategories",
+        "security": [
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
+            ]
+          }
+        ],
+        "description": "After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently\nsupport listing up to 250 categories.",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationsListOutlookCategoriesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/integrations/gmail/user_labels": {
       "get": {
         "tags": [
@@ -2871,6 +2915,7 @@
           "RSS_FEED",
           "FRESHDESK",
           "GITBOOK",
+          "SALESFORCE",
           "JPG",
           "PNG",
           "MP3",
@@ -3415,6 +3460,7 @@
           "FRESHDESK",
           "WEB_SCRAPE",
           "GITBOOK",
+          "SALESFORCE",
           "JPG",
           "JPG",
           "PNG",
@@ -4078,6 +4124,22 @@
             "title": "Max Items Per Chunk",
             "type": "integer",
             "nullable": true
+          },
+          "salesforce_domain": {
+            "title": "Salesforce Domain",
+            "type": "string",
+            "nullable": true
+          },
+          "sync_files_on_connection": {
+            "title": "Sync Files On Connection",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "set_page_as_boundary": {
+            "title": "Set Page As Boundary",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -4139,6 +4201,17 @@
             "title": "Aggregate Num Embeddings",
             "type": "object"
           },
+          "period_ends_at": {
+            "title": "Period Ends At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "cancel_at_period_end": {
+            "title": "Cancel At Period End",
+            "type": "boolean",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -4162,6 +4235,8 @@
           "aggregate_num_characters",
           "aggregate_num_tokens",
           "aggregate_num_embeddings",
+          "period_ends_at",
+          "cancel_at_period_end",
           "created_at",
           "updated_at"
         ]
@@ -4887,6 +4962,11 @@
             "title": "Max Items Per Chunk",
             "type": "integer",
             "nullable": true
+          },
+          "set_page_as_boundary": {
+            "title": "Set Page As Boundary",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -5147,6 +5227,11 @@
             "title": "Max Items Per Chunk",
             "type": "integer",
             "nullable": true
+          },
+          "set_page_as_boundary": {
+            "title": "Set Page As Boundary",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -5949,6 +6034,7 @@
           "RSS_FEED",
           "FRESHDESK",
           "GITBOOK",
+          "SALESFORCE",
           "JPG",
           "PNG",
           "MP3",
@@ -6014,6 +6100,7 @@
           "FRESHDESK",
           "WEB_SCRAPE",
           "GITBOOK",
+          "SALESFORCE",
           "JPG",
           "JPG",
           "PNG",
@@ -6155,6 +6242,13 @@
         }
       },
       "IntegrationsListFoldersResponse": {
+        "type": "object",
+        "properties": {
+        },
+        "example": {
+        }
+      },
+      "IntegrationsListOutlookCategoriesResponse": {
         "type": "object",
         "properties": {
         },

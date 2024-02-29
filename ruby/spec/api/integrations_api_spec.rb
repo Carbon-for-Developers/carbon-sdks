@@ -130,6 +130,17 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for list_outlook_categories
+  # Outlook Categories
+  # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'list_outlook_categories test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for sync_confluence
   # Confluence Sync
   # After listing pages in a user&#39;s Confluence account, the set of selected page &#x60;ids&#x60; and the connected account&#39;s &#x60;data_source_id&#x60; can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.

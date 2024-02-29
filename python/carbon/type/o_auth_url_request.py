@@ -47,5 +47,11 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     max_items_per_chunk: typing.Optional[int]
 
+    salesforce_domain: typing.Optional[str]
+
+    sync_files_on_connection: typing.Optional[bool]
+
+    set_page_as_boundary: bool
+
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

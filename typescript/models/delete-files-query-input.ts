@@ -36,5 +36,11 @@ export interface DeleteFilesQueryInput {
      * @memberof DeleteFilesQueryInput
      */
     'delete_non_synced_only'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof DeleteFilesQueryInput
+     */
+    'send_webhook'?: boolean;
 }
 

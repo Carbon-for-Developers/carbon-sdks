@@ -14,6 +14,7 @@ from carbon.apis.paths.integrations_rss_feed import IntegrationsRssFeed
 from carbon.apis.paths.integrations_outlook_sync import IntegrationsOutlookSync
 from carbon.apis.paths.integrations_freshdesk import IntegrationsFreshdesk
 from carbon.apis.paths.integrations_outlook_user_folders import IntegrationsOutlookUserFolders
+from carbon.apis.paths.integrations_outlook_user_categories import IntegrationsOutlookUserCategories
 from carbon.apis.paths.integrations_gmail_user_labels import IntegrationsGmailUserLabels
 from carbon.apis.paths.integrations_gitbook import IntegrationsGitbook
 from carbon.apis.paths.integrations_gitbook_spaces import IntegrationsGitbookSpaces
@@ -67,6 +68,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_OUTLOOK_SYNC: IntegrationsOutlookSync,
         PathValues.INTEGRATIONS_FRESHDESK: IntegrationsFreshdesk,
         PathValues.INTEGRATIONS_OUTLOOK_USER_FOLDERS: IntegrationsOutlookUserFolders,
+        PathValues.INTEGRATIONS_OUTLOOK_USER_CATEGORIES: IntegrationsOutlookUserCategories,
         PathValues.INTEGRATIONS_GMAIL_USER_LABELS: IntegrationsGmailUserLabels,
         PathValues.INTEGRATIONS_GITBOOK: IntegrationsGitbook,
         PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,
@@ -121,6 +123,7 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_OUTLOOK_SYNC: IntegrationsOutlookSync,
         PathValues.INTEGRATIONS_FRESHDESK: IntegrationsFreshdesk,
         PathValues.INTEGRATIONS_OUTLOOK_USER_FOLDERS: IntegrationsOutlookUserFolders,
+        PathValues.INTEGRATIONS_OUTLOOK_USER_CATEGORIES: IntegrationsOutlookUserCategories,
         PathValues.INTEGRATIONS_GMAIL_USER_LABELS: IntegrationsGmailUserLabels,
         PathValues.INTEGRATIONS_GITBOOK: IntegrationsGitbook,
         PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,

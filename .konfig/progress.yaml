@@ -22,6 +22,10 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /integrations/outlook/user_categories:
+    get:
+      '200':
+        application/json: {}
   /integrations/outlook/user_folders:
     get:
       '200':
@@ -90,6 +94,8 @@ operationIds:
     post: Integrations_getOauthUrl
   /integrations/outlook/sync:
     post: Integrations_syncOutlook
+  /integrations/outlook/user_categories:
+    get: Integrations_listOutlookCategories
   /integrations/outlook/user_folders:
     get: Integrations_listFolders
   /integrations/rss_feed:
@@ -166,6 +172,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: IntegrationsGetOauthUrlResponse
+  /integrations/outlook/user_categories:
+    get:
+      '200':
+        application/json: IntegrationsListOutlookCategoriesResponse
   /integrations/outlook/user_folders:
     get:
       '200':

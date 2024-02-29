@@ -103,5 +103,23 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'max_items_per_chunk'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof OAuthURLRequest
+     */
+    'salesforce_domain'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'sync_files_on_connection'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'set_page_as_boundary'?: boolean;
 }
 

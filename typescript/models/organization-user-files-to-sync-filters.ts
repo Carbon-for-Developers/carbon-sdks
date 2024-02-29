@@ -81,5 +81,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'embedding_generators'?: Array<EmbeddingGenerators> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'root_files_only'?: boolean | null;
 }
 

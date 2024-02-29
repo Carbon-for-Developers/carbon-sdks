@@ -18,6 +18,7 @@ from carbon.paths.integrations_items_list.post import ListDataSourceItems
 from carbon.paths.integrations_outlook_user_folders.get import ListFolders
 from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpaces
 from carbon.paths.integrations_gmail_user_labels.get import ListLabels
+from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCategories
 from carbon.paths.integrations_confluence_sync.post import SyncConfluence
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItems
 from carbon.paths.integrations_files_sync.post import SyncFiles
@@ -39,6 +40,7 @@ class IntegrationsApi(
     ListFolders,
     ListGitbookSpaces,
     ListLabels,
+    ListOutlookCategories,
     SyncConfluence,
     SyncDataSourceItems,
     SyncFiles,

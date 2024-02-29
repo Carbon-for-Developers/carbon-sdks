@@ -39,6 +39,12 @@ module Carbon
 
     attr_accessor :max_items_per_chunk
 
+    attr_accessor :salesforce_domain
+
+    attr_accessor :sync_files_on_connection
+
+    attr_accessor :set_page_as_boundary
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -55,7 +61,10 @@ module Carbon
         :'confluence_subdomain' => :'confluence_subdomain',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
-        :'max_items_per_chunk' => :'max_items_per_chunk'
+        :'max_items_per_chunk' => :'max_items_per_chunk',
+        :'salesforce_domain' => :'salesforce_domain',
+        :'sync_files_on_connection' => :'sync_files_on_connection',
+        :'set_page_as_boundary' => :'set_page_as_boundary'
       }
     end
 
@@ -80,7 +89,10 @@ module Carbon
         :'confluence_subdomain' => :'String',
         :'generate_sparse_vectors' => :'Boolean',
         :'prepend_filename_to_chunks' => :'Boolean',
-        :'max_items_per_chunk' => :'Integer'
+        :'max_items_per_chunk' => :'Integer',
+        :'salesforce_domain' => :'String',
+        :'sync_files_on_connection' => :'Boolean',
+        :'set_page_as_boundary' => :'Boolean'
       }
     end
 
@@ -99,7 +111,9 @@ module Carbon
         :'confluence_subdomain',
         :'generate_sparse_vectors',
         :'prepend_filename_to_chunks',
-        :'max_items_per_chunk'
+        :'max_items_per_chunk',
+        :'salesforce_domain',
+        :'sync_files_on_connection',
       ])
     end
 
@@ -185,6 +199,22 @@ module Carbon
       if attributes.key?(:'max_items_per_chunk')
         self.max_items_per_chunk = attributes[:'max_items_per_chunk']
       end
+
+      if attributes.key?(:'salesforce_domain')
+        self.salesforce_domain = attributes[:'salesforce_domain']
+      end
+
+      if attributes.key?(:'sync_files_on_connection')
+        self.sync_files_on_connection = attributes[:'sync_files_on_connection']
+      else
+        self.sync_files_on_connection = false
+      end
+
+      if attributes.key?(:'set_page_as_boundary')
+        self.set_page_as_boundary = attributes[:'set_page_as_boundary']
+      else
+        self.set_page_as_boundary = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -223,7 +253,10 @@ module Carbon
           confluence_subdomain == o.confluence_subdomain &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
-          max_items_per_chunk == o.max_items_per_chunk
+          max_items_per_chunk == o.max_items_per_chunk &&
+          salesforce_domain == o.salesforce_domain &&
+          sync_files_on_connection == o.sync_files_on_connection &&
+          set_page_as_boundary == o.set_page_as_boundary
     end
 
     # @see the `==` method
@@ -235,7 +268,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary].hash
     end
 
     # Builds the object from hash

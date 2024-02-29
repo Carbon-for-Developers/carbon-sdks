@@ -189,6 +189,7 @@ class SyncFilesRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            set_page_as_boundary = schemas.BoolSchema
             __annotations__ = {
                 "data_source_id": data_source_id,
                 "ids": ids,
@@ -200,6 +201,7 @@ class SyncFilesRequest(
                 "generate_sparse_vectors": generate_sparse_vectors,
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
                 "max_items_per_chunk": max_items_per_chunk,
+                "set_page_as_boundary": set_page_as_boundary,
             }
     
     ids: 'SyncFilesRequestIds'
@@ -236,9 +238,12 @@ class SyncFilesRequest(
     def __getitem__(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> MetaOapg.properties.max_items_per_chunk: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -274,9 +279,12 @@ class SyncFilesRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> typing.Union[MetaOapg.properties.max_items_per_chunk, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> typing.Union[MetaOapg.properties.set_page_as_boundary, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -293,6 +301,7 @@ class SyncFilesRequest(
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, schemas.Unset] = schemas.unset,
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncFilesRequest':
@@ -309,6 +318,7 @@ class SyncFilesRequest(
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            set_page_as_boundary=set_page_as_boundary,
             _configuration=_configuration,
             **kwargs,
         )

@@ -39,5 +39,7 @@ class OptionalSyncFilesRequest(TypedDict, total=False):
 
     max_items_per_chunk: typing.Optional[int]
 
+    set_page_as_boundary: bool
+
 class SyncFilesRequest(RequiredSyncFilesRequest, OptionalSyncFilesRequest):
     pass
