@@ -152,11 +152,11 @@ func (c *Configuration) SetHost(host string) {
 }
 
 func (c *Configuration) SetAccessToken(accessToken string) {
-	c.AddAPIKey("apiKey", APIKey{Key: accessToken})
+	c.AddAPIKey("accessToken", APIKey{Key: accessToken})
 }
 
 func (c *Configuration) SetApiKey(apiKey string) {
-	c.AddAPIKey("accessToken", APIKey{Key: apiKey})
+	c.AddAPIKey("apiKey", APIKey{Key: apiKey})
 }
 
 func (c *Configuration) SetCustomerId(customerId string) {
