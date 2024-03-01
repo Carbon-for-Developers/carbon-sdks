@@ -68,3 +68,12 @@ generators:
     git:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/typescript
+  php:
+    version: 0.1.1
+    outputDirectory: php
+    packageName: carbon-php-sdk
+    invokerPackage: Carbon
+    readmeSnippet: snippets/phpReadmeGettingStartedSnippet.php
+    git:
+      userId: Carbon-for-Developers
+      repoId: carbon-php-sdk
