@@ -88,7 +88,7 @@ func (a *AuthApiService) GetAccessTokenExecute(r AuthApiGetAccessTokenRequest) (
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -102,7 +102,7 @@ func (a *AuthApiService) GetAccessTokenExecute(r AuthApiGetAccessTokenRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -116,7 +116,7 @@ func (a *AuthApiService) GetAccessTokenExecute(r AuthApiGetAccessTokenRequest) (
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -243,7 +243,7 @@ func (a *AuthApiService) GetWhiteLabelingExecute(r AuthApiGetWhiteLabelingReques
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

@@ -188,7 +188,7 @@ func (a *EmbeddingsApiService) GetDocumentsExecute(r EmbeddingsApiGetDocumentsRe
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -202,7 +202,7 @@ func (a *EmbeddingsApiService) GetDocumentsExecute(r EmbeddingsApiGetDocumentsRe
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -216,7 +216,7 @@ func (a *EmbeddingsApiService) GetDocumentsExecute(r EmbeddingsApiGetDocumentsRe
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -342,7 +342,7 @@ func (a *EmbeddingsApiService) GetEmbeddingsAndChunksExecute(r EmbeddingsApiGetE
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -356,7 +356,7 @@ func (a *EmbeddingsApiService) GetEmbeddingsAndChunksExecute(r EmbeddingsApiGetE
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -370,7 +370,7 @@ func (a *EmbeddingsApiService) GetEmbeddingsAndChunksExecute(r EmbeddingsApiGetE
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -496,7 +496,7 @@ func (a *EmbeddingsApiService) UploadChunksAndEmbeddingsExecute(r EmbeddingsApiU
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -510,7 +510,7 @@ func (a *EmbeddingsApiService) UploadChunksAndEmbeddingsExecute(r EmbeddingsApiU
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -524,7 +524,7 @@ func (a *EmbeddingsApiService) UploadChunksAndEmbeddingsExecute(r EmbeddingsApiU
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

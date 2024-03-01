@@ -93,7 +93,7 @@ func (a *UsersApiService) DeleteExecute(r UsersApiDeleteRequest) (*GenericSucces
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -219,7 +219,7 @@ func (a *UsersApiService) GetExecute(r UsersApiGetRequest) (*UserResponse, *http
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -345,7 +345,7 @@ func (a *UsersApiService) ToggleUserFeaturesExecute(r UsersApiToggleUserFeatures
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -359,7 +359,7 @@ func (a *UsersApiService) ToggleUserFeaturesExecute(r UsersApiToggleUserFeatures
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -373,7 +373,7 @@ func (a *UsersApiService) ToggleUserFeaturesExecute(r UsersApiToggleUserFeatures
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

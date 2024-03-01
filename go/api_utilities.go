@@ -100,7 +100,7 @@ func (a *UtilitiesApiService) FetchUrlsExecute(r UtilitiesApiFetchUrlsRequest) (
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -114,7 +114,7 @@ func (a *UtilitiesApiService) FetchUrlsExecute(r UtilitiesApiFetchUrlsRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -128,7 +128,7 @@ func (a *UtilitiesApiService) FetchUrlsExecute(r UtilitiesApiFetchUrlsRequest) (
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -271,7 +271,7 @@ func (a *UtilitiesApiService) FetchYoutubeTranscriptsExecute(r UtilitiesApiFetch
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -285,7 +285,7 @@ func (a *UtilitiesApiService) FetchYoutubeTranscriptsExecute(r UtilitiesApiFetch
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -299,7 +299,7 @@ func (a *UtilitiesApiService) FetchYoutubeTranscriptsExecute(r UtilitiesApiFetch
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -432,7 +432,7 @@ func (a *UtilitiesApiService) ProcessSitemapExecute(r UtilitiesApiProcessSitemap
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -446,7 +446,7 @@ func (a *UtilitiesApiService) ProcessSitemapExecute(r UtilitiesApiProcessSitemap
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -460,7 +460,7 @@ func (a *UtilitiesApiService) ProcessSitemapExecute(r UtilitiesApiProcessSitemap
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -594,7 +594,7 @@ func (a *UtilitiesApiService) ScrapeSitemapExecute(r UtilitiesApiScrapeSitemapRe
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -608,7 +608,7 @@ func (a *UtilitiesApiService) ScrapeSitemapExecute(r UtilitiesApiScrapeSitemapRe
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -622,7 +622,7 @@ func (a *UtilitiesApiService) ScrapeSitemapExecute(r UtilitiesApiScrapeSitemapRe
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -757,7 +757,7 @@ func (a *UtilitiesApiService) ScrapeWebExecute(r UtilitiesApiScrapeWebRequest) (
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -771,7 +771,7 @@ func (a *UtilitiesApiService) ScrapeWebExecute(r UtilitiesApiScrapeWebRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -785,7 +785,7 @@ func (a *UtilitiesApiService) ScrapeWebExecute(r UtilitiesApiScrapeWebRequest) (
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -930,7 +930,7 @@ func (a *UtilitiesApiService) SearchUrlsExecute(r UtilitiesApiSearchUrlsRequest)
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -944,7 +944,7 @@ func (a *UtilitiesApiService) SearchUrlsExecute(r UtilitiesApiSearchUrlsRequest)
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -958,7 +958,7 @@ func (a *UtilitiesApiService) SearchUrlsExecute(r UtilitiesApiSearchUrlsRequest)
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

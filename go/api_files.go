@@ -107,7 +107,7 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -121,7 +121,7 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -135,7 +135,7 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -260,7 +260,7 @@ func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSucces
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -274,7 +274,7 @@ func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSucces
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -288,7 +288,7 @@ func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSucces
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -414,7 +414,7 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -428,7 +428,7 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -442,7 +442,7 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -568,7 +568,7 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -582,7 +582,7 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -596,7 +596,7 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -726,7 +726,7 @@ func (a *FilesApiService) GetParsedFileExecute(r FilesApiGetParsedFileRequest) (
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -740,7 +740,7 @@ func (a *FilesApiService) GetParsedFileExecute(r FilesApiGetParsedFileRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -754,7 +754,7 @@ func (a *FilesApiService) GetParsedFileExecute(r FilesApiGetParsedFileRequest) (
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -884,7 +884,7 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -898,7 +898,7 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -912,7 +912,7 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1089,7 +1089,7 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1103,7 +1103,7 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1117,7 +1117,7 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1248,7 +1248,7 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1262,7 +1262,7 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1276,7 +1276,7 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1402,7 +1402,7 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1416,7 +1416,7 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1430,7 +1430,7 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1689,7 +1689,7 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1703,7 +1703,7 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1717,7 +1717,7 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1843,7 +1843,7 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1857,7 +1857,7 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -1871,7 +1871,7 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -2008,7 +2008,7 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -2022,7 +2022,7 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -2036,7 +2036,7 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 			if apiKey, ok := auth["customerId"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

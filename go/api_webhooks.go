@@ -94,7 +94,7 @@ func (a *WebhooksApiService) AddUrlExecute(r WebhooksApiAddUrlRequest) (*Webhook
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -219,7 +219,7 @@ func (a *WebhooksApiService) DeleteUrlExecute(r WebhooksApiDeleteUrlRequest) (*G
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -345,7 +345,7 @@ func (a *WebhooksApiService) UrlsExecute(r WebhooksApiUrlsRequest) (*WebhookQuer
 			if apiKey, ok := auth["accessToken"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
