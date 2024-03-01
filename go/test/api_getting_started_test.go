@@ -19,7 +19,6 @@ func Test_carbon_(t *testing.T) {
 
 	t.Run("Test GettingStarted GetAccessToken", func(t *testing.T) {
 		request := client.AuthApi.GetAccessToken()
-		client.AuthApi.GetAccessToken().Execute()
 
 		resp, httpRes, err := request.Execute()
 
