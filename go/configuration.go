@@ -152,15 +152,15 @@ func (c *Configuration) SetHost(host string) {
 }
 
 func (c *Configuration) SetAccessToken(accessToken string) {
-	c.AddAPIKey("authorization", APIKey{Key: accessToken})
+	c.AddAPIKey("apiKey", APIKey{Key: accessToken})
 }
 
 func (c *Configuration) SetApiKey(apiKey string) {
-	c.AddAPIKey("authorization", APIKey{Key: apiKey})
+	c.AddAPIKey("accessToken", APIKey{Key: apiKey})
 }
 
 func (c *Configuration) SetCustomerId(customerId string) {
-	c.AddAPIKey("customer-id", APIKey{Key: customerId})
+	c.AddAPIKey("customerId", APIKey{Key: customerId})
 }
 
 // Setup OAuth Client Credentials Flow for all requests
