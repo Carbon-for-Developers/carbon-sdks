@@ -152,10 +152,6 @@ class FileFormats(
         return cls("JPG")
     
     @schemas.classproperty
-    def JPG(cls):
-        return cls("JPG")
-    
-    @schemas.classproperty
     def PNG(cls):
         return cls("PNG")
     
