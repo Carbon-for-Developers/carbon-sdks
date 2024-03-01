@@ -17,31 +17,30 @@ go get github.com/Carbon-for-Developers/carbon-sdks/go
 package main
 
 import (
-    "fmt"
-    "os"
-    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+	"fmt"
+
+	carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
 )
 
 func main() {
-    configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
-    configuration.SetApiKey("AUTHORIZATION")
-    configuration.SetCustomerId("CUSTOMER_ID")
-    client := carbon.NewAPIClient(configuration)
+	// 1) Get an access token
+	configuration := carbon.NewConfiguration()
+	configuration.SetApiKey("API_KEY")
+	configuration.SetCustomerId("CUSTOMER_ID")
+	client := carbon.NewAPIClient(configuration)
+	accessTokenRequest := client.AuthApi.GetAccessToken()
+	accessTokenResponse, _, _ := accessTokenRequest.Execute()
+	accessToken := accessTokenResponse.GetAccessToken()
 
-    request := client.AuthApi.GetAccessToken(
-    )
-    
-    resp, httpRes, err := request.Execute()
+	// 2) Use the access token to make requests
+	configuration = carbon.NewConfiguration()
+	configuration.SetAccessToken(accessToken)
+	client = carbon.NewAPIClient(configuration)
 
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthApi.GetAccessToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
-    }
-    // response from `GetAccessToken`: TokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthApi.GetAccessToken`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `TokenResponse.GetAccessToken.AccessToken`: %v\n", resp.AccessToken)
-    fmt.Fprintf(os.Stdout, "Response from `TokenResponse.GetAccessToken.RefreshToken`: %v\n", resp.RefreshToken)
+	whiteLabelingRequest := client.AuthApi.GetWhiteLabeling()
+	whiteLabelingResponse, _, _ := whiteLabelingRequest.Execute()
+	integrations := whiteLabelingResponse.GetIntegrations()
+	fmt.Println(integrations)
 }
 
 ```
