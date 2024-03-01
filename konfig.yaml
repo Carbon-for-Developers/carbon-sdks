@@ -33,6 +33,7 @@ generators:
     version: 1.0.0
     packageName: carbon
     outputDirectory: go
+    readmeSnippet: snippets/goReadmeGettingStartedSnippet.go
     git:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/go
