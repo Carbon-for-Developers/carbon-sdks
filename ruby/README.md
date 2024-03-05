@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.2-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.2)
+[![npm](https://img.shields.io/badge/gem-v0.1.3-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.3)
 
 </div>
 
@@ -77,7 +77,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.2'
+gem 'carbon_ruby_sdk', '~> 0.1.3'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1132,6 +1132,7 @@ result = carbon.integrations.connect_freshdesk(
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
 )
 p result
 ```
@@ -1147,6 +1148,7 @@ p result
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1173,6 +1175,14 @@ need to specify the name of organization you will be syncing data from.
 result = carbon.integrations.connect_gitbook(
   organization: "string_example",
   access_token: "string_example",
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
 )
 p result
 ```
@@ -1181,6 +1191,14 @@ p result
 
 ##### organization: `String`<a id="organization-string"></a>
 ##### access_token: `String`<a id="access_token-string"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1254,7 +1272,7 @@ result = carbon.integrations.get_oauth_url(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   salesforce_domain: "string_example",
-  sync_files_on_connection: false,
+  sync_files_on_connection: true,
   set_page_as_boundary: false,
 )
 p result

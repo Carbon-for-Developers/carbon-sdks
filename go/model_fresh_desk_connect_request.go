@@ -25,6 +25,7 @@ type FreshDeskConnectRequest struct {
 	EmbeddingModel NullableEmbeddingGeneratorsNullable `json:"embedding_model,omitempty"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
+	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
 }
 
 // NewFreshDeskConnectRequest instantiates a new FreshDeskConnectRequest object
@@ -47,6 +48,8 @@ func NewFreshDeskConnectRequest(domain string, apiKey string) *FreshDeskConnectR
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var syncFilesOnConnection bool = true
+	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	return &this
 }
 
@@ -67,6 +70,8 @@ func NewFreshDeskConnectRequestWithDefaults() *FreshDeskConnectRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var syncFilesOnConnection bool = true
+	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	return &this
 }
 
@@ -403,6 +408,48 @@ func (o *FreshDeskConnectRequest) UnsetPrependFilenameToChunks() {
 	o.PrependFilenameToChunks.Unset()
 }
 
+// GetSyncFilesOnConnection returns the SyncFilesOnConnection field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FreshDeskConnectRequest) GetSyncFilesOnConnection() bool {
+	if o == nil || isNil(o.SyncFilesOnConnection.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncFilesOnConnection.Get()
+}
+
+// GetSyncFilesOnConnectionOk returns a tuple with the SyncFilesOnConnection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FreshDeskConnectRequest) GetSyncFilesOnConnectionOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.SyncFilesOnConnection.Get(), o.SyncFilesOnConnection.IsSet()
+}
+
+// HasSyncFilesOnConnection returns a boolean if a field has been set.
+func (o *FreshDeskConnectRequest) HasSyncFilesOnConnection() bool {
+	if o != nil && o.SyncFilesOnConnection.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncFilesOnConnection gets a reference to the given NullableBool and assigns it to the SyncFilesOnConnection field.
+func (o *FreshDeskConnectRequest) SetSyncFilesOnConnection(v bool) {
+	o.SyncFilesOnConnection.Set(&v)
+}
+// SetSyncFilesOnConnectionNil sets the value for SyncFilesOnConnection to be an explicit nil
+func (o *FreshDeskConnectRequest) SetSyncFilesOnConnectionNil() {
+	o.SyncFilesOnConnection.Set(nil)
+}
+
+// UnsetSyncFilesOnConnection ensures that no value is present for SyncFilesOnConnection, not even an explicit nil
+func (o *FreshDeskConnectRequest) UnsetSyncFilesOnConnection() {
+	o.SyncFilesOnConnection.Unset()
+}
+
 func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -431,6 +478,9 @@ func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrependFilenameToChunks.IsSet() {
 		toSerialize["prepend_filename_to_chunks"] = o.PrependFilenameToChunks.Get()
+	}
+	if o.SyncFilesOnConnection.IsSet() {
+		toSerialize["sync_files_on_connection"] = o.SyncFilesOnConnection.Get()
 	}
 	return json.Marshal(toSerialize)
 }

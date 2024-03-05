@@ -36,5 +36,7 @@ class OptionalFreshDeskConnectRequest(TypedDict, total=False):
 
     prepend_filename_to_chunks: typing.Optional[bool]
 
+    sync_files_on_connection: typing.Optional[bool]
+
 class FreshDeskConnectRequest(RequiredFreshDeskConnectRequest, OptionalFreshDeskConnectRequest):
     pass

@@ -1013,7 +1013,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                sync_files_on_connection: requestParameters.sync_files_on_connection
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1027,8 +1028,16 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          */
         async connectGitbook(requestParameters: IntegrationsApiConnectGitbookRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const gitbookConnectRequest: GitbookConnectRequest = {
+                tags: requestParameters.tags,
                 organization: requestParameters.organization,
-                access_token: requestParameters.access_token
+                access_token: requestParameters.access_token,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                sync_files_on_connection: requestParameters.sync_files_on_connection
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

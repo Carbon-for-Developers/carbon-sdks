@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
 **SalesforceDomain** | Pointer to **NullableString** |  | [optional] 
-**SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to false]
+**SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods

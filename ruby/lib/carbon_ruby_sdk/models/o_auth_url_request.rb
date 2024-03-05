@@ -207,7 +207,7 @@ module Carbon
       if attributes.key?(:'sync_files_on_connection')
         self.sync_files_on_connection = attributes[:'sync_files_on_connection']
       else
-        self.sync_files_on_connection = false
+        self.sync_files_on_connection = true
       end
 
       if attributes.key?(:'set_page_as_boundary')

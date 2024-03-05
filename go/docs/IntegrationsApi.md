@@ -61,6 +61,7 @@ func main() {
     freshDeskConnectRequest.SetEmbeddingModel(null)
     freshDeskConnectRequest.SetGenerateSparseVectors(false)
     freshDeskConnectRequest.SetPrependFilenameToChunks(false)
+    freshDeskConnectRequest.SetSyncFilesOnConnection(true)
     
     request := client.IntegrationsApi.ConnectFreshdesk(
         freshDeskConnectRequest,
@@ -112,6 +113,14 @@ func main() {
         "null",
         "null",
     )
+    gitbookConnectRequest.SetTags({})
+    gitbookConnectRequest.SetChunkSize(1500)
+    gitbookConnectRequest.SetChunkOverlap(20)
+    gitbookConnectRequest.SetSkipEmbeddingGeneration(false)
+    gitbookConnectRequest.SetEmbeddingModel(null)
+    gitbookConnectRequest.SetGenerateSparseVectors(false)
+    gitbookConnectRequest.SetPrependFilenameToChunks(false)
+    gitbookConnectRequest.SetSyncFilesOnConnection(true)
     
     request := client.IntegrationsApi.ConnectGitbook(
         gitbookConnectRequest,
@@ -237,7 +246,7 @@ func main() {
     oAuthURLRequest.SetPrependFilenameToChunks(false)
     oAuthURLRequest.SetMaxItemsPerChunk(null)
     oAuthURLRequest.SetSalesforceDomain("null")
-    oAuthURLRequest.SetSyncFilesOnConnection(false)
+    oAuthURLRequest.SetSyncFilesOnConnection(true)
     oAuthURLRequest.SetSetPageAsBoundary(false)
     
     request := client.IntegrationsApi.GetOauthUrl(

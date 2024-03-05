@@ -29,6 +29,8 @@ module Carbon
 
     attr_accessor :prepend_filename_to_chunks
 
+    attr_accessor :sync_files_on_connection
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +42,8 @@ module Carbon
         :'skip_embedding_generation' => :'skip_embedding_generation',
         :'embedding_model' => :'embedding_model',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks'
+        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
+        :'sync_files_on_connection' => :'sync_files_on_connection'
       }
     end
 
@@ -60,7 +63,8 @@ module Carbon
         :'skip_embedding_generation' => :'Boolean',
         :'embedding_model' => :'EmbeddingGeneratorsNullable',
         :'generate_sparse_vectors' => :'Boolean',
-        :'prepend_filename_to_chunks' => :'Boolean'
+        :'prepend_filename_to_chunks' => :'Boolean',
+        :'sync_files_on_connection' => :'Boolean'
       }
     end
 
@@ -73,7 +77,8 @@ module Carbon
         :'skip_embedding_generation',
         :'embedding_model',
         :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks'
+        :'prepend_filename_to_chunks',
+        :'sync_files_on_connection'
       ])
     end
 
@@ -139,6 +144,12 @@ module Carbon
       else
         self.prepend_filename_to_chunks = false
       end
+
+      if attributes.key?(:'sync_files_on_connection')
+        self.sync_files_on_connection = attributes[:'sync_files_on_connection']
+      else
+        self.sync_files_on_connection = true
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -177,7 +188,8 @@ module Carbon
           skip_embedding_generation == o.skip_embedding_generation &&
           embedding_model == o.embedding_model &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
-          prepend_filename_to_chunks == o.prepend_filename_to_chunks
+          prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
+          sync_files_on_connection == o.sync_files_on_connection
     end
 
     # @see the `==` method
@@ -189,7 +201,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, domain, api_key, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks].hash
+      [tags, domain, api_key, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, sync_files_on_connection].hash
     end
 
     # Builds the object from hash

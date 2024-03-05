@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.embedding_generators import EmbeddingGenerators
 
 class RequiredGitbookConnectRequest(TypedDict):
     organization: str
@@ -21,7 +22,21 @@ class RequiredGitbookConnectRequest(TypedDict):
     access_token: str
 
 class OptionalGitbookConnectRequest(TypedDict, total=False):
-    pass
+    tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
+    chunk_size: typing.Optional[int]
+
+    chunk_overlap: typing.Optional[int]
+
+    skip_embedding_generation: typing.Optional[bool]
+
+    embedding_model: EmbeddingGenerators
+
+    generate_sparse_vectors: typing.Optional[bool]
+
+    prepend_filename_to_chunks: typing.Optional[bool]
+
+    sync_files_on_connection: typing.Optional[bool]
 
 class GitbookConnectRequest(RequiredGitbookConnectRequest, OptionalGitbookConnectRequest):
     pass

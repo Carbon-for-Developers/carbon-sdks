@@ -11,15 +11,39 @@ require 'time'
 
 module Carbon
   class GitbookConnectRequest
+    attr_accessor :tags
+
     attr_accessor :organization
 
     attr_accessor :access_token
 
+    attr_accessor :chunk_size
+
+    attr_accessor :chunk_overlap
+
+    attr_accessor :skip_embedding_generation
+
+    attr_accessor :embedding_model
+
+    attr_accessor :generate_sparse_vectors
+
+    attr_accessor :prepend_filename_to_chunks
+
+    attr_accessor :sync_files_on_connection
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'tags' => :'tags',
         :'organization' => :'organization',
-        :'access_token' => :'access_token'
+        :'access_token' => :'access_token',
+        :'chunk_size' => :'chunk_size',
+        :'chunk_overlap' => :'chunk_overlap',
+        :'skip_embedding_generation' => :'skip_embedding_generation',
+        :'embedding_model' => :'embedding_model',
+        :'generate_sparse_vectors' => :'generate_sparse_vectors',
+        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
+        :'sync_files_on_connection' => :'sync_files_on_connection'
       }
     end
 
@@ -31,14 +55,29 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'tags' => :'Object',
         :'organization' => :'String',
-        :'access_token' => :'String'
+        :'access_token' => :'String',
+        :'chunk_size' => :'Integer',
+        :'chunk_overlap' => :'Integer',
+        :'skip_embedding_generation' => :'Boolean',
+        :'embedding_model' => :'EmbeddingGenerators',
+        :'generate_sparse_vectors' => :'Boolean',
+        :'prepend_filename_to_chunks' => :'Boolean',
+        :'sync_files_on_connection' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'tags',
+        :'chunk_size',
+        :'chunk_overlap',
+        :'skip_embedding_generation',
+        :'generate_sparse_vectors',
+        :'prepend_filename_to_chunks',
+        :'sync_files_on_connection'
       ])
     end
 
@@ -57,12 +96,58 @@ module Carbon
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'tags')
+        self.tags = attributes[:'tags']
+      end
+
       if attributes.key?(:'organization')
         self.organization = attributes[:'organization']
       end
 
       if attributes.key?(:'access_token')
         self.access_token = attributes[:'access_token']
+      end
+
+      if attributes.key?(:'chunk_size')
+        self.chunk_size = attributes[:'chunk_size']
+      else
+        self.chunk_size = 1500
+      end
+
+      if attributes.key?(:'chunk_overlap')
+        self.chunk_overlap = attributes[:'chunk_overlap']
+      else
+        self.chunk_overlap = 20
+      end
+
+      if attributes.key?(:'skip_embedding_generation')
+        self.skip_embedding_generation = attributes[:'skip_embedding_generation']
+      else
+        self.skip_embedding_generation = false
+      end
+
+      if attributes.key?(:'embedding_model')
+        self.embedding_model = attributes[:'embedding_model']
+      else
+        self.embedding_model = 'OPENAI'
+      end
+
+      if attributes.key?(:'generate_sparse_vectors')
+        self.generate_sparse_vectors = attributes[:'generate_sparse_vectors']
+      else
+        self.generate_sparse_vectors = false
+      end
+
+      if attributes.key?(:'prepend_filename_to_chunks')
+        self.prepend_filename_to_chunks = attributes[:'prepend_filename_to_chunks']
+      else
+        self.prepend_filename_to_chunks = false
+      end
+
+      if attributes.key?(:'sync_files_on_connection')
+        self.sync_files_on_connection = attributes[:'sync_files_on_connection']
+      else
+        self.sync_files_on_connection = true
       end
     end
 
@@ -94,8 +179,16 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          tags == o.tags &&
           organization == o.organization &&
-          access_token == o.access_token
+          access_token == o.access_token &&
+          chunk_size == o.chunk_size &&
+          chunk_overlap == o.chunk_overlap &&
+          skip_embedding_generation == o.skip_embedding_generation &&
+          embedding_model == o.embedding_model &&
+          generate_sparse_vectors == o.generate_sparse_vectors &&
+          prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
+          sync_files_on_connection == o.sync_files_on_connection
     end
 
     # @see the `==` method
@@ -107,7 +200,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [organization, access_token].hash
+      [tags, organization, access_token, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, sync_files_on_connection].hash
     end
 
     # Builds the object from hash

@@ -72,5 +72,11 @@ export interface FreshDeskConnectRequest {
      * @memberof FreshDeskConnectRequest
      */
     'prepend_filename_to_chunks'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FreshDeskConnectRequest
+     */
+    'sync_files_on_connection'?: boolean | null;
 }
 

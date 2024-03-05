@@ -4074,6 +4074,7 @@ components:
         api_key: api_key
         generate_sparse_vectors: false
         domain: domain
+        sync_files_on_connection: true
         embedding_model: OPENAI
         chunk_overlap: 20
         skip_embedding_generation: false
@@ -4135,6 +4136,14 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_files_on_connection
       required:
       - api_key
       - domain
@@ -4337,19 +4346,88 @@ components:
     GitbookConnectRequest:
       example:
         access_token: access_token
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        generate_sparse_vectors: false
         organization: organization
+        sync_files_on_connection: true
+        embedding_model: null
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        tags: {}
       properties:
+        tags:
+          default: {}
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-tags
         organization:
           title: Organization
           type: string
         access_token:
           title: Access Token
           type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_files_on_connection
       required:
       - access_token
       - organization
       title: GitbookConnectRequest
       type: object
+      x-konfig-properties:
+        embedding_model:
+          default: OPENAI
     GitbookSyncRequest:
       example:
         chunk_size: 1500
@@ -4670,7 +4748,7 @@ components:
         service: null
         generate_sparse_vectors: false
         scope: scope
-        sync_files_on_connection: false
+        sync_files_on_connection: true
         set_page_as_boundary: false
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
@@ -4754,12 +4832,12 @@ components:
           title: Salesforce Domain
           type: string
         sync_files_on_connection:
-          default: false
-          example: false
+          default: true
+          example: true
           nullable: true
           title: Sync Files On Connection
           type: boolean
-          x-konfig-original-example: false
+          x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_files_on_connection
         set_page_as_boundary:
           default: false
@@ -7083,6 +7161,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_files_on_connection:
+      example: true
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-tags_v2:
       example:
         OR:
@@ -7132,6 +7214,35 @@ components:
             type: object
           type: array
       type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-tags:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_files_on_connection:
+      example: true
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-GitbookSyncRequest-properties-tags:
       example: {}
@@ -7204,7 +7315,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_files_on_connection:
-      example: false
+      example: true
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-set_page_as_boundary:
@@ -7625,12 +7736,12 @@ components:
           title: Salesforce Domain
           type: string
         sync_files_on_connection:
-          default: false
-          example: false
+          default: true
+          example: true
           nullable: true
           title: Sync Files On Connection
           type: boolean
-          x-konfig-original-example: false
+          x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_files_on_connection
         set_page_as_boundary:
           default: false
@@ -8171,6 +8282,14 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_files_on_connection
       required:
       - api_key
       - domain
@@ -8194,12 +8313,70 @@ components:
       x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--integrations-gitbook:
       properties:
+        tags:
+          default: {}
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-tags
         organization:
           title: Organization
           type: string
         access_token:
           title: Access Token
           type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_files_on_connection
       required:
       - access_token
       - organization

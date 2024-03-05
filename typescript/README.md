@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.5-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.5)
+[![npm](https://img.shields.io/badge/npm-v0.1.6-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.6)
 
 </div>
 
@@ -1125,6 +1125,7 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
 });
 ```
 
@@ -1147,6 +1148,8 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1174,6 +1177,13 @@ need to specify the name of organization you will be syncing data from.
 const connectGitbookResponse = await carbon.integrations.connectGitbook({
   organization: "organization_example",
   access_token: "access_token_example",
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
 });
 ```
 
@@ -1182,6 +1192,22 @@ const connectGitbookResponse = await carbon.integrations.connectGitbook({
 ##### organization: `string`<a id="organization-string"></a>
 
 ##### access_token: `string`<a id="access_token-string"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### chunk_size: `number`<a id="chunk_size-number"></a>
+
+##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### skip_embedding_generation: `boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1249,7 +1275,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
-  sync_files_on_connection: false,
+  sync_files_on_connection: true,
   set_page_as_boundary: false,
 });
 ```
