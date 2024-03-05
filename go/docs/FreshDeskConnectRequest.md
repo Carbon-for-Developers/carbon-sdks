@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **EmbeddingModel** | Pointer to [**NullableEmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional] [default to EMBEDDINGGENERATORSNULLABLE_OPENAI]
 **GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] [default to false]
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
+**SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 
 ## Methods
 
@@ -318,6 +319,41 @@ HasPrependFilenameToChunks returns a boolean if a field has been set.
 `func (o *FreshDeskConnectRequest) UnsetPrependFilenameToChunks()`
 
 UnsetPrependFilenameToChunks ensures that no value is present for PrependFilenameToChunks, not even an explicit nil
+### GetSyncFilesOnConnection
+
+`func (o *FreshDeskConnectRequest) GetSyncFilesOnConnection() bool`
+
+GetSyncFilesOnConnection returns the SyncFilesOnConnection field if non-nil, zero value otherwise.
+
+### GetSyncFilesOnConnectionOk
+
+`func (o *FreshDeskConnectRequest) GetSyncFilesOnConnectionOk() (*bool, bool)`
+
+GetSyncFilesOnConnectionOk returns a tuple with the SyncFilesOnConnection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncFilesOnConnection
+
+`func (o *FreshDeskConnectRequest) SetSyncFilesOnConnection(v bool)`
+
+SetSyncFilesOnConnection sets SyncFilesOnConnection field to given value.
+
+### HasSyncFilesOnConnection
+
+`func (o *FreshDeskConnectRequest) HasSyncFilesOnConnection() bool`
+
+HasSyncFilesOnConnection returns a boolean if a field has been set.
+
+### SetSyncFilesOnConnectionNil
+
+`func (o *FreshDeskConnectRequest) SetSyncFilesOnConnectionNil(b bool)`
+
+ SetSyncFilesOnConnectionNil sets the value for SyncFilesOnConnection to be an explicit nil
+
+### UnsetSyncFilesOnConnection
+`func (o *FreshDeskConnectRequest) UnsetSyncFilesOnConnection()`
+
+UnsetSyncFilesOnConnection ensures that no value is present for SyncFilesOnConnection, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

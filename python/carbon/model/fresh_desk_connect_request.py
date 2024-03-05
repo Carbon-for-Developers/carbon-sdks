@@ -166,6 +166,26 @@ class FreshDeskConnectRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class sync_files_on_connection(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'sync_files_on_connection':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "domain": domain,
                 "api_key": api_key,
@@ -176,6 +196,7 @@ class FreshDeskConnectRequest(
                 "embedding_model": embedding_model,
                 "generate_sparse_vectors": generate_sparse_vectors,
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
+                "sync_files_on_connection": sync_files_on_connection,
             }
     
     api_key: MetaOapg.properties.api_key
@@ -209,9 +230,12 @@ class FreshDeskConnectRequest(
     def __getitem__(self, name: typing_extensions.Literal["prepend_filename_to_chunks"]) -> MetaOapg.properties.prepend_filename_to_chunks: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_files_on_connection"]) -> MetaOapg.properties.sync_files_on_connection: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -244,9 +268,12 @@ class FreshDeskConnectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["prepend_filename_to_chunks"]) -> typing.Union[MetaOapg.properties.prepend_filename_to_chunks, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_files_on_connection"]) -> typing.Union[MetaOapg.properties.sync_files_on_connection, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -262,6 +289,7 @@ class FreshDeskConnectRequest(
         embedding_model: typing.Union['EmbeddingGeneratorsNullable', schemas.Unset] = schemas.unset,
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, schemas.Unset] = schemas.unset,
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
+        sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FreshDeskConnectRequest':
@@ -277,6 +305,7 @@ class FreshDeskConnectRequest(
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
             _configuration=_configuration,
             **kwargs,
         )

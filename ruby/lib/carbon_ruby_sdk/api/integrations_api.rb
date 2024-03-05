@@ -33,9 +33,10 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -46,6 +47,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       fresh_desk_connect_request = _body
       api_response = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
       api_response.data
@@ -68,9 +70,10 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -81,6 +84,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       fresh_desk_connect_request = _body
       connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
     end
@@ -163,12 +167,28 @@ module Carbon
     #
     # @param organization [String] 
     # @param access_token [String] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook(organization:, access_token:, extra: {})
+    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
       _body = {}
+      _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       gitbook_connect_request = _body
       api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
       api_response.data
@@ -183,12 +203,28 @@ module Carbon
     #
     # @param organization [String] 
     # @param access_token [String] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook_with_http_info(organization:, access_token:, extra: {})
+    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
       _body = {}
+      _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       gitbook_connect_request = _body
       connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
     end
@@ -397,7 +433,7 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: false, set_page_as_boundary: false, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -442,7 +478,7 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: false, set_page_as_boundary: false, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL

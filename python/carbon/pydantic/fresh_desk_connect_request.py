@@ -35,5 +35,7 @@ class FreshDeskConnectRequest(BaseModel):
     generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = Field(None, alias='generate_sparse_vectors')
 
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
+
+    sync_files_on_connection: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_files_on_connection')
     class Config:
         arbitrary_types_allowed = True

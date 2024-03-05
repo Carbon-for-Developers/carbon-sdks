@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.3-blue)](https://pypi.org/project/carbon-python-sdk/0.1.3)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.4-blue)](https://pypi.org/project/carbon-python-sdk/0.1.4)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -83,7 +83,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.3
+pip install carbon-python-sdk==0.1.4
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1245,6 +1245,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
+    sync_files_on_connection=True,
 )
 ```
 
@@ -1267,6 +1268,8 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
 
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1296,6 +1299,14 @@ need to specify the name of organization you will be syncing data from.
 connect_gitbook_response = carbon.integrations.connect_gitbook(
     organization="string_example",
     access_token="string_example",
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+    sync_files_on_connection=True,
 )
 ```
 
@@ -1304,6 +1315,22 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
 ##### organization: `str`<a id="organization-str"></a>
 
 ##### access_token: `str`<a id="access_token-str"></a>
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1383,7 +1410,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     salesforce_domain="string_example",
-    sync_files_on_connection=False,
+    sync_files_on_connection=True,
     set_page_as_boundary=False,
 )
 ```

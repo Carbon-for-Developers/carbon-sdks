@@ -54,7 +54,7 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
-	var syncFilesOnConnection bool = false
+	var syncFilesOnConnection bool = true
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
@@ -78,7 +78,7 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
-	var syncFilesOnConnection bool = false
+	var syncFilesOnConnection bool = true
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary

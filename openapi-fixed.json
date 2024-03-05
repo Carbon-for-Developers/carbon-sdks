@@ -3625,6 +3625,12 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "sync_files_on_connection": {
+            "title": "Sync Files On Connection",
+            "default": true,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -3842,6 +3848,13 @@
       "GitbookConnectRequest": {
         "title": "GitbookConnectRequest",
         "properties": {
+          "tags": {
+            "title": "Tags",
+            "default": {
+            },
+            "type": "object",
+            "nullable": true
+          },
           "organization": {
             "title": "Organization",
             "type": "string"
@@ -3849,13 +3862,57 @@
           "access_token": {
             "title": "Access Token",
             "type": "string"
+          },
+          "chunk_size": {
+            "title": "Chunk Size",
+            "default": 1500,
+            "type": "integer",
+            "nullable": true
+          },
+          "chunk_overlap": {
+            "title": "Chunk Overlap",
+            "default": 20,
+            "type": "integer",
+            "nullable": true
+          },
+          "skip_embedding_generation": {
+            "title": "Skip Embedding Generation",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "embedding_model": {
+            "$ref": "#/components/schemas/EmbeddingGenerators"
+          },
+          "generate_sparse_vectors": {
+            "title": "Generate Sparse Vectors",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "prepend_filename_to_chunks": {
+            "title": "Prepend Filename To Chunks",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "sync_files_on_connection": {
+            "title": "Sync Files On Connection",
+            "default": true,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
         "required": [
           "organization",
           "access_token"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "GitbookSyncRequest": {
         "title": "GitbookSyncRequest",
@@ -4194,7 +4251,7 @@
           },
           "sync_files_on_connection": {
             "title": "Sync Files On Connection",
-            "default": false,
+            "default": true,
             "type": "boolean",
             "nullable": true
           },

@@ -366,6 +366,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'prepend_filename_to_chunks'
             },
+            {
+                name: 'sync_files_on_connection'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -375,6 +378,30 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'access_token'
+            },
+            {
+                name: 'tags'
+            },
+            {
+                name: 'chunk_size'
+            },
+            {
+                name: 'chunk_overlap'
+            },
+            {
+                name: 'skip_embedding_generation'
+            },
+            {
+                name: 'embedding_model'
+            },
+            {
+                name: 'generate_sparse_vectors'
+            },
+            {
+                name: 'prepend_filename_to_chunks'
+            },
+            {
+                name: 'sync_files_on_connection'
             },
         ]
     },

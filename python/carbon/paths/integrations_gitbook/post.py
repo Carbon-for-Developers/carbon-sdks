@@ -33,9 +33,11 @@ import frozendict  # noqa: F401
 from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
+from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.gitbook_connect_request import GitbookConnectRequest as GitbookConnectRequestSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
+from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.gitbook_connect_request import GitbookConnectRequest
@@ -44,6 +46,7 @@ from ...api_client import Dictionary
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.gitbook_connect_request import GitbookConnectRequest as GitbookConnectRequestPydantic
+from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
 
 from . import path
 
@@ -120,13 +123,37 @@ class BaseApi(api_client.Api):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
+        if tags is not None:
+            _body["tags"] = tags
         if organization is not None:
             _body["organization"] = organization
         if access_token is not None:
             _body["access_token"] = access_token
+        if chunk_size is not None:
+            _body["chunk_size"] = chunk_size
+        if chunk_overlap is not None:
+            _body["chunk_overlap"] = chunk_overlap
+        if skip_embedding_generation is not None:
+            _body["skip_embedding_generation"] = skip_embedding_generation
+        if embedding_model is not None:
+            _body["embedding_model"] = embedding_model
+        if generate_sparse_vectors is not None:
+            _body["generate_sparse_vectors"] = generate_sparse_vectors
+        if prepend_filename_to_chunks is not None:
+            _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
+        if sync_files_on_connection is not None:
+            _body["sync_files_on_connection"] = sync_files_on_connection
         args.body = _body
         return args
 
@@ -336,6 +363,14 @@ class ConnectGitbookRaw(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -345,6 +380,14 @@ class ConnectGitbookRaw(BaseApi):
         args = self._connect_gitbook_mapped_args(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
         )
         return await self._aconnect_gitbook_oapg(
             body=args.body,
@@ -355,6 +398,14 @@ class ConnectGitbookRaw(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -362,6 +413,14 @@ class ConnectGitbookRaw(BaseApi):
         args = self._connect_gitbook_mapped_args(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
         )
         return self._connect_gitbook_oapg(
             body=args.body,
@@ -373,12 +432,28 @@ class ConnectGitbook(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
         raw_response = await self.raw.aconnect_gitbook(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
             **kwargs,
         )
         if validate:
@@ -390,11 +465,27 @@ class ConnectGitbook(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.connect_gitbook(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -408,6 +499,14 @@ class ApiForpost(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -417,6 +516,14 @@ class ApiForpost(BaseApi):
         args = self._connect_gitbook_mapped_args(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
         )
         return await self._aconnect_gitbook_oapg(
             body=args.body,
@@ -427,6 +534,14 @@ class ApiForpost(BaseApi):
         self,
         organization: str,
         access_token: str,
+        tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
+        chunk_size: typing.Optional[typing.Optional[int]] = None,
+        chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
+        embedding_model: typing.Optional[EmbeddingGenerators] = None,
+        generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -434,6 +549,14 @@ class ApiForpost(BaseApi):
         args = self._connect_gitbook_mapped_args(
             organization=organization,
             access_token=access_token,
+            tags=tags,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            skip_embedding_generation=skip_embedding_generation,
+            embedding_model=embedding_model,
+            generate_sparse_vectors=generate_sparse_vectors,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            sync_files_on_connection=sync_files_on_connection,
         )
         return self._connect_gitbook_oapg(
             body=args.body,
