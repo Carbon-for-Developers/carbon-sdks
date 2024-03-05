@@ -1,3 +1,0 @@
-[submodule "php"]
-	path = php
-	url = https://github.com/Carbon-for-Developers/carbon-php-sdk.git
