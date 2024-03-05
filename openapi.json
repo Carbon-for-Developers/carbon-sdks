@@ -4160,6 +4160,18 @@
             ],
             "title": "Prepend Filename To Chunks",
             "default": false
+          },
+          "sync_files_on_connection": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sync Files On Connection",
+            "default": true
           }
         },
         "type": "object",
@@ -4440,6 +4452,98 @@
           "access_token": {
             "type": "string",
             "title": "Access Token"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          },
+          "sync_files_on_connection": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sync Files On Connection",
+            "default": true
           }
         },
         "type": "object",
@@ -4960,7 +5064,7 @@
               }
             ],
             "title": "Sync Files On Connection",
-            "default": false
+            "default": true
           },
           "set_page_as_boundary": {
             "type": "boolean",
