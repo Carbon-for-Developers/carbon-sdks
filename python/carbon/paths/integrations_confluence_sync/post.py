@@ -35,12 +35,13 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.sync_files_request import SyncFilesRequest as SyncFilesRequestSchema
+from carbon.model.sync_files_ids import SyncFilesIds as SyncFilesIdsSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.sync_files_request import SyncFilesRequest
-from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
+from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 from ...api_client import Dictionary
@@ -48,6 +49,7 @@ from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNul
 from carbon.pydantic.sync_files_request import SyncFilesRequest as SyncFilesRequestPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
+from carbon.pydantic.sync_files_ids import SyncFilesIds as SyncFilesIdsPydantic
 
 from . import path
 
@@ -182,7 +184,7 @@ class BaseApi(api_client.Api):
             class instances
         """
         used_path = path.value
-
+    
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
         if accept_content_types:
@@ -190,7 +192,7 @@ class BaseApi(api_client.Api):
                 _headers.add('Accept', accept_content_type)
         method = 'post'.upper()
         _headers.add('Content-Type', content_type)
-
+    
         if body is schemas.unset:
             raise exceptions.ApiValueError(
                 'The required body parameter has an invalid value of: unset. Set a valid value instead')
@@ -210,7 +212,7 @@ class BaseApi(api_client.Api):
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
             _body = serialized_data['body']
-
+    
         response = await self.api_client.async_call_api(
             resource_path=used_path,
             method=method,
@@ -222,7 +224,7 @@ class BaseApi(api_client.Api):
             timeout=timeout,
             **kwargs
         )
-
+    
         if stream:
             if not 200 <= response.http_response.status <= 299:
                 body = (await response.http_response.content.read()).decode("utf-8")
@@ -231,7 +233,7 @@ class BaseApi(api_client.Api):
                     reason=response.http_response.reason,
                     body=body,
                 )
-
+    
             async def stream_iterator():
                 """
                 iterates over response.http_response.content and closes connection once iteration has finished
@@ -248,7 +250,7 @@ class BaseApi(api_client.Api):
                 status=response.http_response.status,
                 response=response.http_response
             )
-
+    
         response_for_status = _status_code_to_response.get(str(response.http_response.status))
         if response_for_status:
             api_response = await response_for_status.deserialize_async(
@@ -266,14 +268,14 @@ class BaseApi(api_client.Api):
                 status=response.http_response.status,
                 headers=response.http_response.headers,
             )
-
+    
         if not 200 <= api_response.status <= 299:
             raise exceptions.ApiException(api_response=api_response)
-
+    
         # cleanup session / response
         response.http_response.close()
         await response.session.close()
-
+    
         return api_response
 
 
@@ -296,7 +298,7 @@ class BaseApi(api_client.Api):
             class instances
         """
         used_path = path.value
-
+    
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
         if accept_content_types:
@@ -304,7 +306,7 @@ class BaseApi(api_client.Api):
                 _headers.add('Accept', accept_content_type)
         method = 'post'.upper()
         _headers.add('Content-Type', content_type)
-
+    
         if body is schemas.unset:
             raise exceptions.ApiValueError(
                 'The required body parameter has an invalid value of: unset. Set a valid value instead')
@@ -324,7 +326,7 @@ class BaseApi(api_client.Api):
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
             _body = serialized_data['body']
-
+    
         response = self.api_client.call_api(
             resource_path=used_path,
             method=method,
@@ -335,7 +337,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             timeout=timeout,
         )
-
+    
         response_for_status = _status_code_to_response.get(str(response.http_response.status))
         if response_for_status:
             api_response = response_for_status.deserialize(
@@ -353,10 +355,10 @@ class BaseApi(api_client.Api):
                 status=response.http_response.status,
                 headers=response.http_response.headers,
             )
-
+    
         if not 200 <= api_response.status <= 299:
             raise exceptions.ApiException(api_response=api_response)
-
+    
         return api_response
 
 
@@ -399,7 +401,7 @@ class SyncConfluenceRaw(BaseApi):
             body=args.body,
             **kwargs,
         )
-
+    
     def sync_confluence(
         self,
         data_source_id: int,
@@ -469,8 +471,8 @@ class SyncConfluence(BaseApi):
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
         return api_client.construct_model_instance(GenericSuccessResponsePydantic, raw_response.body)
-
-
+    
+    
     def sync_confluence(
         self,
         data_source_id: int,
@@ -543,7 +545,7 @@ class ApiForpost(BaseApi):
             body=args.body,
             **kwargs,
         )
-
+    
     def post(
         self,
         data_source_id: int,

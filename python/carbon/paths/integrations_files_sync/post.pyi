@@ -35,11 +35,13 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.sync_files_request import SyncFilesRequest as SyncFilesRequestSchema
+from carbon.model.sync_files_ids import SyncFilesIds as SyncFilesIdsSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.sync_files_request import SyncFilesRequest
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
+from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 from ...api_client import Dictionary
@@ -47,6 +49,7 @@ from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNul
 from carbon.pydantic.sync_files_request import SyncFilesRequest as SyncFilesRequestPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
+from carbon.pydantic.sync_files_ids import SyncFilesIds as SyncFilesIdsPydantic
 
 # body param
 SchemaForRequestBodyApplicationJson = SyncFilesRequestSchema
