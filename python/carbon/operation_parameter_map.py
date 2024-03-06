@@ -149,6 +149,9 @@ operation_parameter_map = {
             {
                 'name': 'send_webhook'
             },
+            {
+                'name': 'delete_child_files'
+            },
         ]
     },
     '/parsed_file/{file_id}-GET': {

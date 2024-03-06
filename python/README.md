@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.4-blue)](https://pypi.org/project/carbon-python-sdk/0.1.4)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.5-blue)](https://pypi.org/project/carbon-python-sdk/0.1.5)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -83,7 +83,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.4
+pip install carbon-python-sdk==0.1.5
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -706,6 +706,7 @@ delete_many_response = carbon.files.delete_many(
     sync_statuses=["string_example"],
     delete_non_synced_only=False,
     send_webhook=False,
+    delete_child_files=False,
 )
 ```
 
@@ -718,6 +719,8 @@ delete_many_response = carbon.files.delete_many(
 ##### delete_non_synced_only: `bool`<a id="delete_non_synced_only-bool"></a>
 
 ##### send_webhook: `bool`<a id="send_webhook-bool"></a>
+
+##### delete_child_files: `bool`<a id="delete_child_files-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1653,7 +1656,8 @@ sync_confluence_response = carbon.integrations.sync_confluence(
 
 ##### data_source_id: `int`<a id="data_source_id-int"></a>
 
-##### ids: [`SyncFilesRequestIds`](./carbon/type/sync_files_request_ids.py)<a id="ids-syncfilesrequestidscarbontypesync_files_request_idspy"></a>
+##### ids: Union[`List[str]`, List[`SyncFilesIds`]]<a id="ids-unionliststr-listsyncfilesids"></a>
+
 
 ##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 
@@ -1721,7 +1725,10 @@ sync_data_source_items_response = carbon.integrations.sync_data_source_items(
 
 ### `carbon.integrations.sync_files`<a id="carbonintegrationssync_files"></a>
 
-Sync Files
+After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
+as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
+the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
+tell the sync to assume the item is stored in the default Documents drive.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1745,7 +1752,8 @@ sync_files_response = carbon.integrations.sync_files(
 
 ##### data_source_id: `int`<a id="data_source_id-int"></a>
 
-##### ids: [`SyncFilesRequestIds`](./carbon/type/sync_files_request_ids.py)<a id="ids-syncfilesrequestidscarbontypesync_files_request_idspy"></a>
+##### ids: Union[`List[str]`, List[`SyncFilesIds`]]<a id="ids-unionliststr-listsyncfilesids"></a>
+
 
 ##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 

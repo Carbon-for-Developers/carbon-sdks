@@ -16,12 +16,12 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.pydantic.sync_files_request_ids import SyncFilesRequestIds
+from carbon.pydantic.sync_files_ids import SyncFilesIds
 
 class SyncFilesRequest(BaseModel):
     data_source_id: int = Field(alias='data_source_id')
 
-    ids: SyncFilesRequestIds = Field(alias='ids')
+    ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]] = Field(alias='ids')
 
     tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags')
 

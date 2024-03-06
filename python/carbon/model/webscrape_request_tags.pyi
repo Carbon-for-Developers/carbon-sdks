@@ -43,7 +43,7 @@ class WebscrapeRequestTags(
         
         
             class MetaOapg:
-                any_of_0 = schemas.StrSchema
+                items = schemas.StrSchema
                 any_of_1 = schemas.IntSchema
                 any_of_2 = schemas.BoolSchema
                 
@@ -127,7 +127,7 @@ class WebscrapeRequestTags(
                     # classes don't exist yet because their module has not finished
                     # loading
                     return [
-                        cls.any_of_0,
+                        cls.items,
                         cls.any_of_1,
                         cls.any_of_2,
                         cls.any_of_3,

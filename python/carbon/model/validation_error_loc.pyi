@@ -40,7 +40,7 @@ class ValidationErrorLoc(
         
         
             class MetaOapg:
-                any_of_0 = schemas.StrSchema
+                items = schemas.StrSchema
                 any_of_1 = schemas.IntSchema
                 
                 @classmethod
@@ -54,7 +54,7 @@ class ValidationErrorLoc(
                     # classes don't exist yet because their module has not finished
                     # loading
                     return [
-                        cls.any_of_0,
+                        cls.items,
                         cls.any_of_1,
                     ]
         

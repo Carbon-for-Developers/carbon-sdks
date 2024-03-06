@@ -15,4 +15,13 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-SyncFilesRequestIds = typing.List[str]
+class RequiredSyncFilesIds(TypedDict):
+    id: str
+
+    root_id: str
+
+class OptionalSyncFilesIds(TypedDict, total=False):
+    pass
+
+class SyncFilesIds(RequiredSyncFilesIds, OptionalSyncFilesIds):
+    pass

@@ -109,8 +109,8 @@ from carbon.model.sitemap_scrape_request_css_selectors_to_skip import SitemapScr
 from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
 from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.model.sync_directory_request import SyncDirectoryRequest
+from carbon.model.sync_files_ids import SyncFilesIds
 from carbon.model.sync_files_request import SyncFilesRequest
-from carbon.model.sync_files_request_ids import SyncFilesRequestIds
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
 from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput

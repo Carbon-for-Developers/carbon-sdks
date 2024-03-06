@@ -324,6 +324,7 @@ class BaseApi(api_client.Api):
 class DeleteRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def adelete(
         self,
         file_id: int,
@@ -341,6 +342,7 @@ class DeleteRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def delete(
         self,
         file_id: int,
@@ -357,6 +359,7 @@ class DeleteRaw(BaseApi):
 
 class Delete(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def adelete(
         self,
         file_id: int,
@@ -372,6 +375,7 @@ class Delete(BaseApi):
         return api_client.construct_model_instance(GenericSuccessResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def delete(
         self,
         file_id: int,
@@ -388,6 +392,7 @@ class Delete(BaseApi):
 class ApiFordelete(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def adelete(
         self,
         file_id: int,
@@ -405,6 +410,7 @@ class ApiFordelete(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def delete(
         self,
         file_id: int,

@@ -117,6 +117,7 @@ class BaseApi(api_client.Api):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -128,6 +129,8 @@ class BaseApi(api_client.Api):
             _body["delete_non_synced_only"] = delete_non_synced_only
         if send_webhook is not None:
             _body["send_webhook"] = send_webhook
+        if delete_child_files is not None:
+            _body["delete_child_files"] = delete_child_files
         args.body = _body
         return args
 
@@ -339,6 +342,7 @@ class DeleteManyRaw(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -350,6 +354,7 @@ class DeleteManyRaw(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
         )
         return await self._adelete_many_oapg(
             body=args.body,
@@ -362,6 +367,7 @@ class DeleteManyRaw(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -371,6 +377,7 @@ class DeleteManyRaw(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
         )
         return self._delete_many_oapg(
             body=args.body,
@@ -384,6 +391,7 @@ class DeleteMany(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -392,6 +400,7 @@ class DeleteMany(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
             **kwargs,
         )
         if validate:
@@ -405,6 +414,7 @@ class DeleteMany(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.delete_many(
@@ -412,6 +422,7 @@ class DeleteMany(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -427,6 +438,7 @@ class ApiForpost(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -438,6 +450,7 @@ class ApiForpost(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
         )
         return await self._adelete_many_oapg(
             body=args.body,
@@ -450,6 +463,7 @@ class ApiForpost(BaseApi):
         sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = None,
         delete_non_synced_only: typing.Optional[bool] = None,
         send_webhook: typing.Optional[bool] = None,
+        delete_child_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -459,6 +473,7 @@ class ApiForpost(BaseApi):
             sync_statuses=sync_statuses,
             delete_non_synced_only=delete_non_synced_only,
             send_webhook=send_webhook,
+            delete_child_files=delete_child_files,
         )
         return self._delete_many_oapg(
             body=args.body,
