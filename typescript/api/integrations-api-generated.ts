@@ -39,6 +39,8 @@ import { GmailSyncInput } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
+import { IdsProperty } from '../models';
+// @ts-ignore
 import { ListDataSourceItemsRequest } from '../models';
 // @ts-ignore
 import { ListDataSourceItemsResponse } from '../models';
@@ -675,7 +677,7 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * 
+         * After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items\' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
          * @summary Sync Files
          * @param {SyncFilesRequest} syncFilesRequest 
          * @param {*} [options] Override http request option.
@@ -1198,7 +1200,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 
+         * After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items\' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
          * @summary Sync Files
          * @param {IntegrationsApiSyncFilesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1458,7 +1460,7 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.syncDataSourceItems(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items\' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
          * @summary Sync Files
          * @param {IntegrationsApiSyncFilesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1811,7 +1813,7 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * 
+     * After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items\' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
      * @summary Sync Files
      * @param {IntegrationsApiSyncFilesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

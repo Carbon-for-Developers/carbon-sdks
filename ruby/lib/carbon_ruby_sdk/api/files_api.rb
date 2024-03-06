@@ -319,14 +319,16 @@ module Carbon
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
     # @param delete_non_synced_only [Boolean] 
     # @param send_webhook [Boolean] 
+    # @param delete_child_files [Boolean] 
     # @param body [DeleteFilesQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def delete_many(file_ids: SENTINEL, sync_statuses: SENTINEL, delete_non_synced_only: false, send_webhook: false, extra: {})
+    def delete_many(file_ids: SENTINEL, sync_statuses: SENTINEL, delete_non_synced_only: false, send_webhook: false, delete_child_files: false, extra: {})
       _body = {}
       _body[:file_ids] = file_ids if file_ids != SENTINEL
       _body[:sync_statuses] = sync_statuses if sync_statuses != SENTINEL
       _body[:delete_non_synced_only] = delete_non_synced_only if delete_non_synced_only != SENTINEL
       _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      _body[:delete_child_files] = delete_child_files if delete_child_files != SENTINEL
       delete_files_query_input = _body
       api_response = delete_many_with_http_info_impl(delete_files_query_input, extra)
       api_response.data
@@ -338,14 +340,16 @@ module Carbon
     # @param sync_statuses [Array<ExternalFileSyncStatuses>] 
     # @param delete_non_synced_only [Boolean] 
     # @param send_webhook [Boolean] 
+    # @param delete_child_files [Boolean] 
     # @param body [DeleteFilesQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def delete_many_with_http_info(file_ids: SENTINEL, sync_statuses: SENTINEL, delete_non_synced_only: false, send_webhook: false, extra: {})
+    def delete_many_with_http_info(file_ids: SENTINEL, sync_statuses: SENTINEL, delete_non_synced_only: false, send_webhook: false, delete_child_files: false, extra: {})
       _body = {}
       _body[:file_ids] = file_ids if file_ids != SENTINEL
       _body[:sync_statuses] = sync_statuses if sync_statuses != SENTINEL
       _body[:delete_non_synced_only] = delete_non_synced_only if delete_non_synced_only != SENTINEL
       _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      _body[:delete_child_files] = delete_child_files if delete_child_files != SENTINEL
       delete_files_query_input = _body
       delete_many_with_http_info_impl(delete_files_query_input, extra)
     end

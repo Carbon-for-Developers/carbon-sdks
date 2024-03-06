@@ -1387,6 +1387,13 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-items-list
   /integrations/files/sync:
     post:
+      description: "After listing files and folders via /integrations/items/sync and\
+        \ integrations/items/list, use the selected items' external ids \nas the ids\
+        \ in this endpoint to sync them into Carbon. Sharepoint items take an additional\
+        \ parameter root_id, which identifies\nthe drive the file or folder is in\
+        \ and is stored in root_external_id. That additional paramter is optional\
+        \ and excluding it will\ntell the sync to assume the item is stored in the\
+        \ default Documents drive."
       operationId: Integrations_syncFiles
       requestBody:
         content:
@@ -2534,6 +2541,7 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--upload_text
   /deletefile/{file_id}:
     delete:
+      deprecated: true
       operationId: Files_delete
       parameters:
       - explode: false
@@ -3509,6 +3517,7 @@ components:
         sync_statuses:
         - null
         - null
+        delete_child_files: false
       properties:
         file_ids:
           items:
@@ -3536,6 +3545,13 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-send_webhook
+        delete_child_files:
+          default: false
+          example: false
+          title: Delete Child Files
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files
       title: DeleteFilesQueryInput
       type: object
     DeleteUsersInput:
@@ -5879,6 +5895,19 @@ components:
       - data_source_id
       title: SyncDirectoryRequest
       type: object
+    SyncFilesIds:
+      properties:
+        id:
+          title: Id
+          type: string
+        root_id:
+          title: Root Id
+          type: string
+      required:
+      - id
+      - root_id
+      title: SyncFilesIds
+      type: object
     SyncFilesRequest:
       example:
         chunk_size: 1500
@@ -5887,9 +5916,7 @@ components:
         generate_sparse_vectors: false
         set_page_as_boundary: false
         embedding_model: OPENAI
-        ids:
-        - ids
-        - ids
+        ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
         data_source_id: 0
@@ -5907,10 +5934,7 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          items:
-            type: string
-          title: Ids
-          type: array
+          $ref: '#/components/schemas/Ids_Property'
         chunk_size:
           default: 1500
           example: 1500
@@ -7124,6 +7148,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-DirectoryItem-properties-is_synced:
       example: false
       type: boolean
@@ -7795,10 +7823,14 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          items:
-            type: string
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - items:
+              $ref: '#/components/schemas/SyncFilesIds'
+            type: array
           title: Ids
-          type: array
         chunk_size:
           default: 1500
           example: 1500
@@ -7886,10 +7918,14 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          items:
-            type: string
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - items:
+              $ref: '#/components/schemas/SyncFilesIds'
+            type: array
           title: Ids
-          type: array
         chunk_size:
           default: 1500
           example: 1500
@@ -8942,6 +8978,13 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-send_webhook
+        delete_child_files:
+          default: false
+          example: false
+          title: Delete Child Files
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -9360,6 +9403,15 @@ components:
         type: array
       nullable: true
       title: Source
+    Ids_Property:
+      anyOf:
+      - items:
+          type: string
+        type: array
+      - items:
+          $ref: '#/components/schemas/SyncFilesIds'
+        type: array
+      title: Ids
     Location_Property_inner:
       anyOf:
       - type: string

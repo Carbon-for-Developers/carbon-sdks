@@ -235,10 +235,11 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncConfluence", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        ids := *carbon.NewIdsProperty()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
-            null,
+            ids,
         )
         syncFilesRequest.SetTags({})
         syncFilesRequest.SetChunkSize(1500)
@@ -283,10 +284,11 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncFiles", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        ids := *carbon.NewIdsProperty()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
-            null,
+            ids,
         )
         syncFilesRequest.SetTags({})
         syncFilesRequest.SetChunkSize(1500)

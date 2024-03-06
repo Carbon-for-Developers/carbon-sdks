@@ -130,6 +130,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Delete File Endpoint
          * @param {number} fileId 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         delete: async (fileId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -816,6 +817,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @summary Delete File Endpoint
          * @param {FilesApiDeleteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
@@ -849,7 +851,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 file_ids: requestParameters.file_ids,
                 sync_statuses: requestParameters.sync_statuses,
                 delete_non_synced_only: requestParameters.delete_non_synced_only,
-                send_webhook: requestParameters.send_webhook
+                send_webhook: requestParameters.send_webhook,
+                delete_child_files: requestParameters.delete_child_files
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(deleteFilesQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1019,6 +1022,7 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
          * @summary Delete File Endpoint
          * @param {FilesApiDeleteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
@@ -1353,6 +1357,7 @@ export class FilesApiGenerated extends BaseAPI {
      * @summary Delete File Endpoint
      * @param {FilesApiDeleteRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof FilesApiGenerated
      */

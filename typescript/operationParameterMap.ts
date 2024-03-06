@@ -155,6 +155,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'send_webhook'
             },
+            {
+                name: 'delete_child_files'
+            },
         ]
     },
     '/parsed_file/{file_id}-GET': {

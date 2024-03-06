@@ -248,6 +248,7 @@
             ]
           }
         ],
+        "description": "After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids \nas the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies\nthe drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will\ntell the sync to assume the item is stored in the default Documents drive.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1752,7 +1753,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/delete_files": {
@@ -3004,6 +3006,11 @@
           },
           "send_webhook": {
             "title": "Send Webhook",
+            "type": "boolean",
+            "default": false
+          },
+          "delete_child_files": {
+            "title": "Delete Child Files",
             "type": "boolean",
             "default": false
           }
@@ -5288,6 +5295,24 @@
           "data_source_id"
         ]
       },
+      "SyncFilesIds": {
+        "title": "SyncFilesIds",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "root_id": {
+            "title": "Root Id",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "root_id"
+        ]
+      },
       "SyncFilesRequest": {
         "title": "SyncFilesRequest",
         "properties": {
@@ -5304,10 +5329,20 @@
           },
           "ids": {
             "title": "Ids",
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "items": {
+                  "$ref": "#/components/schemas/SyncFilesIds"
+                },
+                "type": "array"
+              }
+            ]
           },
           "chunk_size": {
             "title": "Chunk Size",
