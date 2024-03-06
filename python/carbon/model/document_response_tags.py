@@ -43,7 +43,7 @@ class DocumentResponseTags(
         
         
             class MetaOapg:
-                any_of_0 = schemas.StrSchema
+                items = schemas.StrSchema
                 any_of_1 = schemas.NumberSchema
                 any_of_2 = schemas.IntSchema
                 any_of_3 = schemas.BoolSchema
@@ -151,7 +151,7 @@ class DocumentResponseTags(
                     # classes don't exist yet because their module has not finished
                     # loading
                     return [
-                        cls.any_of_0,
+                        cls.items,
                         cls.any_of_1,
                         cls.any_of_2,
                         cls.any_of_3,

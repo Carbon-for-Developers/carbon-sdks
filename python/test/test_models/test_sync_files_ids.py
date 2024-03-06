@@ -12,12 +12,12 @@
 import unittest
 
 import carbon
-from carbon.model.sync_files_request_ids import SyncFilesRequestIds
+from carbon.model.sync_files_ids import SyncFilesIds
 from carbon import configuration
 
 
-class TestSyncFilesRequestIds(unittest.TestCase):
-    """SyncFilesRequestIds unit test stubs"""
+class TestSyncFilesIds(unittest.TestCase):
+    """SyncFilesIds unit test stubs"""
     pass
 
 

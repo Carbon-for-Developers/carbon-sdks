@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.1)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.2)
 
 </div>
 
@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
+ - [IdsProperty](docs/IdsProperty.md)
  - [ListDataSourceItemsRequest](docs/ListDataSourceItemsRequest.md)
  - [ListDataSourceItemsResponse](docs/ListDataSourceItemsResponse.md)
  - [ListRequest](docs/ListRequest.md)
@@ -189,6 +190,7 @@ Class | Method | HTTP request | Description
  - [SitemapScrapeRequest](docs/SitemapScrapeRequest.md)
  - [SourceProperty](docs/SourceProperty.md)
  - [SyncDirectoryRequest](docs/SyncDirectoryRequest.md)
+ - [SyncFilesIds](docs/SyncFilesIds.md)
  - [SyncFilesRequest](docs/SyncFilesRequest.md)
  - [Tags](docs/Tags.md)
  - [Tags1](docs/Tags1.md)

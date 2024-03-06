@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.6-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.6)
+[![npm](https://img.shields.io/badge/npm-v0.1.7-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.7)
 
 </div>
 
@@ -630,6 +630,7 @@ Delete Files Endpoint
 const deleteManyResponse = await carbon.files.deleteMany({
   delete_non_synced_only: false,
   send_webhook: false,
+  delete_child_files: false,
 });
 ```
 
@@ -642,6 +643,8 @@ const deleteManyResponse = await carbon.files.deleteMany({
 ##### delete_non_synced_only: `boolean`<a id="delete_non_synced_only-boolean"></a>
 
 ##### send_webhook: `boolean`<a id="send_webhook-boolean"></a>
+
+##### delete_child_files: `boolean`<a id="delete_child_files-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1495,7 +1498,7 @@ pages or alter the behavior of the sync.
 ```typescript
 const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   data_source_id: 1,
-  ids: ["ids_example"],
+  ids: ["string_example"],
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -1510,7 +1513,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
-##### ids: `string`[]<a id="ids-string"></a>
+##### ids: [`IdsProperty`](./models/ids-property.ts)<a id="ids-idspropertymodelsids-propertyts"></a>
 
 ##### tags: `object`<a id="tags-object"></a>
 
@@ -1575,14 +1578,17 @@ const syncDataSourceItemsResponse =
 
 ### `carbon.integrations.syncFiles`<a id="carbonintegrationssyncfiles"></a>
 
-Sync Files
+After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
+as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
+the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
+tell the sync to assume the item is stored in the default Documents drive.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
 const syncFilesResponse = await carbon.integrations.syncFiles({
   data_source_id: 1,
-  ids: ["ids_example"],
+  ids: ["string_example"],
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -1597,7 +1603,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
-##### ids: `string`[]<a id="ids-string"></a>
+##### ids: [`IdsProperty`](./models/ids-property.ts)<a id="ids-idspropertymodelsids-propertyts"></a>
 
 ##### tags: `object`<a id="tags-object"></a>
 

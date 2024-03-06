@@ -18,7 +18,7 @@ import (
 type SyncFilesRequest struct {
 	Tags map[string]interface{} `json:"tags,omitempty"`
 	DataSourceId int32 `json:"data_source_id"`
-	Ids []string `json:"ids"`
+	Ids IdsProperty `json:"ids"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
 	SkipEmbeddingGeneration NullableBool `json:"skip_embedding_generation,omitempty"`
@@ -33,7 +33,7 @@ type SyncFilesRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSyncFilesRequest(dataSourceId int32, ids []string) *SyncFilesRequest {
+func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest {
 	this := SyncFilesRequest{}
 	this.DataSourceId = dataSourceId
 	this.Ids = ids
@@ -134,9 +134,9 @@ func (o *SyncFilesRequest) SetDataSourceId(v int32) {
 }
 
 // GetIds returns the Ids field value
-func (o *SyncFilesRequest) GetIds() []string {
+func (o *SyncFilesRequest) GetIds() IdsProperty {
 	if o == nil {
-		var ret []string
+		var ret IdsProperty
 		return ret
 	}
 
@@ -145,15 +145,15 @@ func (o *SyncFilesRequest) GetIds() []string {
 
 // GetIdsOk returns a tuple with the Ids field value
 // and a boolean to check if the value has been set.
-func (o *SyncFilesRequest) GetIdsOk() ([]string, bool) {
+func (o *SyncFilesRequest) GetIdsOk() (*IdsProperty, bool) {
 	if o == nil {
     return nil, false
 	}
-	return o.Ids, true
+	return &o.Ids, true
 }
 
 // SetIds sets field value
-func (o *SyncFilesRequest) SetIds(v []string) {
+func (o *SyncFilesRequest) SetIds(v IdsProperty) {
 	o.Ids = v
 }
 

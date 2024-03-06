@@ -569,10 +569,11 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    ids := *carbon.NewIdsProperty()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
-        null,
+        ids,
     )
     syncFilesRequest.SetTags({})
     syncFilesRequest.SetChunkSize(1500)
@@ -669,6 +670,8 @@ func main() {
 
 Sync Files
 
+
+
 ### Example
 
 ```go
@@ -687,10 +690,11 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    ids := *carbon.NewIdsProperty()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
-        null,
+        ids,
     )
     syncFilesRequest.SetTags({})
     syncFilesRequest.SetChunkSize(1500)

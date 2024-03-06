@@ -35,21 +35,21 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.sync_files_request import SyncFilesRequest as SyncFilesRequestSchema
-from carbon.model.sync_files_request_ids import SyncFilesRequestIds as SyncFilesRequestIdsSchema
+from carbon.model.sync_files_ids import SyncFilesIds as SyncFilesIdsSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.sync_files_request import SyncFilesRequest
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
-from carbon.type.sync_files_request_ids import SyncFilesRequestIds
+from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
 from carbon.pydantic.sync_files_request import SyncFilesRequest as SyncFilesRequestPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
-from carbon.pydantic.sync_files_request_ids import SyncFilesRequestIds as SyncFilesRequestIdsPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
+from carbon.pydantic.sync_files_ids import SyncFilesIds as SyncFilesIdsPydantic
 
 from . import path
 
@@ -125,7 +125,7 @@ class BaseApi(api_client.Api):
     def _sync_files_mapped_args(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -368,7 +368,7 @@ class SyncFilesRaw(BaseApi):
     async def async_files(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -405,7 +405,7 @@ class SyncFilesRaw(BaseApi):
     def sync_files(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -441,7 +441,7 @@ class SyncFiles(BaseApi):
     async def async_files(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -476,7 +476,7 @@ class SyncFiles(BaseApi):
     def sync_files(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -512,7 +512,7 @@ class ApiForpost(BaseApi):
     async def apost(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
@@ -549,7 +549,7 @@ class ApiForpost(BaseApi):
     def post(
         self,
         data_source_id: int,
-        ids: SyncFilesRequestIds,
+        ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]],
         tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,

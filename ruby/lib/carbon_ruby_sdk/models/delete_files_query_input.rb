@@ -19,13 +19,16 @@ module Carbon
 
     attr_accessor :send_webhook
 
+    attr_accessor :delete_child_files
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'file_ids' => :'file_ids',
         :'sync_statuses' => :'sync_statuses',
         :'delete_non_synced_only' => :'delete_non_synced_only',
-        :'send_webhook' => :'send_webhook'
+        :'send_webhook' => :'send_webhook',
+        :'delete_child_files' => :'delete_child_files'
       }
     end
 
@@ -40,7 +43,8 @@ module Carbon
         :'file_ids' => :'Array<Integer>',
         :'sync_statuses' => :'Array<ExternalFileSyncStatuses>',
         :'delete_non_synced_only' => :'Boolean',
-        :'send_webhook' => :'Boolean'
+        :'send_webhook' => :'Boolean',
+        :'delete_child_files' => :'Boolean'
       }
     end
 
@@ -90,6 +94,12 @@ module Carbon
       else
         self.send_webhook = false
       end
+
+      if attributes.key?(:'delete_child_files')
+        self.delete_child_files = attributes[:'delete_child_files']
+      else
+        self.delete_child_files = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -113,7 +123,8 @@ module Carbon
           file_ids == o.file_ids &&
           sync_statuses == o.sync_statuses &&
           delete_non_synced_only == o.delete_non_synced_only &&
-          send_webhook == o.send_webhook
+          send_webhook == o.send_webhook &&
+          delete_child_files == o.delete_child_files
     end
 
     # @see the `==` method
@@ -125,7 +136,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [file_ids, sync_statuses, delete_non_synced_only, send_webhook].hash
+      [file_ids, sync_statuses, delete_non_synced_only, send_webhook, delete_child_files].hash
     end
 
     # Builds the object from hash

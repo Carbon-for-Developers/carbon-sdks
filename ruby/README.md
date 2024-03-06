@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.3-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.3)
+[![npm](https://img.shields.io/badge/gem-v0.1.4-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.4)
 
 </div>
 
@@ -77,7 +77,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.3'
+gem 'carbon_ruby_sdk', '~> 0.1.4'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -643,6 +643,7 @@ result = carbon.files.delete_many(
     ],
   delete_non_synced_only: false,
   send_webhook: false,
+  delete_child_files: false,
 )
 p result
 ```
@@ -653,6 +654,7 @@ p result
 ##### sync_statuses: Array<[`ExternalFileSyncStatuses`](./lib/carbon_ruby_sdk/models/external_file_sync_statuses.rb)><a id="sync_statuses-array"></a>
 ##### delete_non_synced_only: `Boolean`<a id="delete_non_synced_only-boolean"></a>
 ##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
+##### delete_child_files: `Boolean`<a id="delete_child_files-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1498,7 +1500,7 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
-##### ids: Array<`String`><a id="ids-array"></a>
+##### ids: [`IdsProperty`](./lib/carbon_ruby_sdk/models/ids_property.rb)<a id="ids-idspropertylibcarbon_ruby_sdkmodelsids_propertyrb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
@@ -1552,7 +1554,10 @@ p result
 
 ### `carbon.integrations.sync_files`<a id="carbonintegrationssync_files"></a>
 
-Sync Files
+After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
+as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
+the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
+tell the sync to assume the item is stored in the default Documents drive.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1578,7 +1583,7 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
-##### ids: Array<`String`><a id="ids-array"></a>
+##### ids: [`IdsProperty`](./lib/carbon_ruby_sdk/models/ids_property.rb)<a id="ids-idspropertylibcarbon_ruby_sdkmodelsids_propertyrb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>

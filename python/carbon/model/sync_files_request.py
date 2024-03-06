@@ -39,10 +39,92 @@ class SyncFilesRequest(
         
         class properties:
             data_source_id = schemas.IntSchema
-        
-            @staticmethod
-            def ids() -> typing.Type['SyncFilesRequestIds']:
-                return SyncFilesRequestIds
+            
+            
+            class ids(
+                schemas.ComposedSchema,
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    
+                    class any_of_0(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'any_of_0':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
+                    
+                    
+                    class any_of_1(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            
+                            @staticmethod
+                            def items() -> typing.Type['SyncFilesIds']:
+                                return SyncFilesIds
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple['SyncFilesIds'], typing.List['SyncFilesIds']],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'any_of_1':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> 'SyncFilesIds':
+                            return super().__getitem__(i)
+                    
+                    @classmethod
+                    @functools.lru_cache()
+                    def any_of(cls):
+                        # we need this here to make our import statements work
+                        # we must store _composed_schemas in here so the code is only run
+                        # when we invoke this method. If we kept this at the class
+                        # level we would get an error because the class level
+                        # code would be run when this module is imported, and these composed
+                        # classes don't exist yet because their module has not finished
+                        # loading
+                        return [
+                            cls.any_of_0,
+                            cls.any_of_1,
+                        ]
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'ids':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             
             
             class tags(
@@ -204,14 +286,14 @@ class SyncFilesRequest(
                 "set_page_as_boundary": set_page_as_boundary,
             }
     
-    ids: 'SyncFilesRequestIds'
+    ids: MetaOapg.properties.ids
     data_source_id: MetaOapg.properties.data_source_id
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["data_source_id"]) -> MetaOapg.properties.data_source_id: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["ids"]) -> 'SyncFilesRequestIds': ...
+    def __getitem__(self, name: typing_extensions.Literal["ids"]) -> MetaOapg.properties.ids: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
@@ -252,7 +334,7 @@ class SyncFilesRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["data_source_id"]) -> MetaOapg.properties.data_source_id: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["ids"]) -> 'SyncFilesRequestIds': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["ids"]) -> MetaOapg.properties.ids: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union[MetaOapg.properties.tags, schemas.Unset]: ...
@@ -291,7 +373,7 @@ class SyncFilesRequest(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        ids: 'SyncFilesRequestIds',
+        ids: typing.Union[MetaOapg.properties.ids, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         data_source_id: typing.Union[MetaOapg.properties.data_source_id, decimal.Decimal, int, ],
         tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         chunk_size: typing.Union[MetaOapg.properties.chunk_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -324,4 +406,4 @@ class SyncFilesRequest(
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.model.sync_files_request_ids import SyncFilesRequestIds
+from carbon.model.sync_files_ids import SyncFilesIds

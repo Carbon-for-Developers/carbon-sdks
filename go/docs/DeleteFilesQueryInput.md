@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **SyncStatuses** | Pointer to [**[]ExternalFileSyncStatuses**](ExternalFileSyncStatuses.md) |  | [optional] 
 **DeleteNonSyncedOnly** | Pointer to **bool** |  | [optional] [default to false]
 **SendWebhook** | Pointer to **bool** |  | [optional] [default to false]
+**DeleteChildFiles** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -147,6 +148,31 @@ SetSendWebhook sets SendWebhook field to given value.
 `func (o *DeleteFilesQueryInput) HasSendWebhook() bool`
 
 HasSendWebhook returns a boolean if a field has been set.
+
+### GetDeleteChildFiles
+
+`func (o *DeleteFilesQueryInput) GetDeleteChildFiles() bool`
+
+GetDeleteChildFiles returns the DeleteChildFiles field if non-nil, zero value otherwise.
+
+### GetDeleteChildFilesOk
+
+`func (o *DeleteFilesQueryInput) GetDeleteChildFilesOk() (*bool, bool)`
+
+GetDeleteChildFilesOk returns a tuple with the DeleteChildFiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteChildFiles
+
+`func (o *DeleteFilesQueryInput) SetDeleteChildFiles(v bool)`
+
+SetDeleteChildFiles sets DeleteChildFiles field to given value.
+
+### HasDeleteChildFiles
+
+`func (o *DeleteFilesQueryInput) HasDeleteChildFiles() bool`
+
+HasDeleteChildFiles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

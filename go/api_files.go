@@ -206,6 +206,8 @@ Delete Delete File Endpoint
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fileId
  @return FilesApiDeleteRequest
+
+Deprecated
 */
 func (a *FilesApiService) Delete(fileId int32) FilesApiDeleteRequest {
 	return FilesApiDeleteRequest{
@@ -217,6 +219,7 @@ func (a *FilesApiService) Delete(fileId int32) FilesApiDeleteRequest {
 
 // Execute executes the request
 //  @return GenericSuccessResponse
+// Deprecated
 func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSuccessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete

@@ -10,43 +10,10 @@ require 'date'
 require 'time'
 
 module Carbon
-  class SyncFilesRequest
-    attr_accessor :tags
-
-    attr_accessor :data_source_id
-
-    attr_accessor :ids
-
-    attr_accessor :chunk_size
-
-    attr_accessor :chunk_overlap
-
-    attr_accessor :skip_embedding_generation
-
-    attr_accessor :embedding_model
-
-    attr_accessor :generate_sparse_vectors
-
-    attr_accessor :prepend_filename_to_chunks
-
-    attr_accessor :max_items_per_chunk
-
-    attr_accessor :set_page_as_boundary
-
+  class IdsProperty
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tags' => :'tags',
-        :'data_source_id' => :'data_source_id',
-        :'ids' => :'ids',
-        :'chunk_size' => :'chunk_size',
-        :'chunk_overlap' => :'chunk_overlap',
-        :'skip_embedding_generation' => :'skip_embedding_generation',
-        :'embedding_model' => :'embedding_model',
-        :'generate_sparse_vectors' => :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
-        :'max_items_per_chunk' => :'max_items_per_chunk',
-        :'set_page_as_boundary' => :'set_page_as_boundary'
       }
     end
 
@@ -58,128 +25,61 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'tags' => :'Object',
-        :'data_source_id' => :'Integer',
-        :'ids' => :'IdsProperty',
-        :'chunk_size' => :'Integer',
-        :'chunk_overlap' => :'Integer',
-        :'skip_embedding_generation' => :'Boolean',
-        :'embedding_model' => :'EmbeddingGeneratorsNullable',
-        :'generate_sparse_vectors' => :'Boolean',
-        :'prepend_filename_to_chunks' => :'Boolean',
-        :'max_items_per_chunk' => :'Integer',
-        :'set_page_as_boundary' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'tags',
-        :'chunk_size',
-        :'chunk_overlap',
-        :'skip_embedding_generation',
-        :'embedding_model',
-        :'generate_sparse_vectors',
-        :'prepend_filename_to_chunks',
-        :'max_items_per_chunk',
       ])
+    end
+
+    # List of class defined in anyOf (OpenAPI v3)
+    def self.openapi_any_of
+      [
+      :'Array<String>',
+      :'Array<SyncFilesIds>'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::SyncFilesRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::IdsProperty` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::SyncFilesRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::IdsProperty`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'tags')
-        self.tags = attributes[:'tags']
-      end
-
-      if attributes.key?(:'data_source_id')
-        self.data_source_id = attributes[:'data_source_id']
-      end
-
-      if attributes.key?(:'ids')
-        self.ids = attributes[:'ids']
-      end
-
-      if attributes.key?(:'chunk_size')
-        self.chunk_size = attributes[:'chunk_size']
-      else
-        self.chunk_size = 1500
-      end
-
-      if attributes.key?(:'chunk_overlap')
-        self.chunk_overlap = attributes[:'chunk_overlap']
-      else
-        self.chunk_overlap = 20
-      end
-
-      if attributes.key?(:'skip_embedding_generation')
-        self.skip_embedding_generation = attributes[:'skip_embedding_generation']
-      else
-        self.skip_embedding_generation = false
-      end
-
-      if attributes.key?(:'embedding_model')
-        self.embedding_model = attributes[:'embedding_model']
-      else
-        self.embedding_model = 'OPENAI'
-      end
-
-      if attributes.key?(:'generate_sparse_vectors')
-        self.generate_sparse_vectors = attributes[:'generate_sparse_vectors']
-      else
-        self.generate_sparse_vectors = false
-      end
-
-      if attributes.key?(:'prepend_filename_to_chunks')
-        self.prepend_filename_to_chunks = attributes[:'prepend_filename_to_chunks']
-      else
-        self.prepend_filename_to_chunks = false
-      end
-
-      if attributes.key?(:'max_items_per_chunk')
-        self.max_items_per_chunk = attributes[:'max_items_per_chunk']
-      end
-
-      if attributes.key?(:'set_page_as_boundary')
-        self.set_page_as_boundary = attributes[:'set_page_as_boundary']
-      else
-        self.set_page_as_boundary = false
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @data_source_id.nil?
-        invalid_properties.push('invalid value for "data_source_id", data_source_id cannot be nil.')
-      end
-
-      if @ids.nil?
-        invalid_properties.push('invalid value for "ids", ids cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @data_source_id.nil?
-      return false if @ids.nil?
+      _any_of_found = false
+      self.class.openapi_any_of.each do |_class|
+        _any_of = Carbon.const_get(_class).build_from_hash(self.to_hash)
+        if _any_of.valid?
+          _any_of_found = true
+        end
+      end
+
+      if !_any_of_found
+        return false
+      end
+
       true
     end
 
@@ -187,18 +87,7 @@ module Carbon
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          tags == o.tags &&
-          data_source_id == o.data_source_id &&
-          ids == o.ids &&
-          chunk_size == o.chunk_size &&
-          chunk_overlap == o.chunk_overlap &&
-          skip_embedding_generation == o.skip_embedding_generation &&
-          embedding_model == o.embedding_model &&
-          generate_sparse_vectors == o.generate_sparse_vectors &&
-          prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
-          max_items_per_chunk == o.max_items_per_chunk &&
-          set_page_as_boundary == o.set_page_as_boundary
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -210,7 +99,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, data_source_id, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary].hash
+      [].hash
     end
 
     # Builds the object from hash

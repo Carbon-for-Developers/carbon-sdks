@@ -244,6 +244,7 @@ func main() {
     deleteFilesQueryInput.SetSyncStatuses(null)
     deleteFilesQueryInput.SetDeleteNonSyncedOnly(false)
     deleteFilesQueryInput.SetSendWebhook(false)
+    deleteFilesQueryInput.SetDeleteChildFiles(false)
     
     request := client.FilesApi.DeleteMany(
         deleteFilesQueryInput,

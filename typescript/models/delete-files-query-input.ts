@@ -42,5 +42,11 @@ export interface DeleteFilesQueryInput {
      * @memberof DeleteFilesQueryInput
      */
     'send_webhook'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof DeleteFilesQueryInput
+     */
+    'delete_child_files'?: boolean;
 }
 

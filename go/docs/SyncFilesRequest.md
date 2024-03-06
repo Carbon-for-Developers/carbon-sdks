@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 **DataSourceId** | **int32** |  | 
-**Ids** | **[]string** |  | 
+**Ids** | [**IdsProperty**](IdsProperty.md) |  | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] [default to 1500]
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] [default to 20]
 **SkipEmbeddingGeneration** | Pointer to **NullableBool** |  | [optional] [default to false]
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewSyncFilesRequest
 
-`func NewSyncFilesRequest(dataSourceId int32, ids []string, ) *SyncFilesRequest`
+`func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty, ) *SyncFilesRequest`
 
 NewSyncFilesRequest instantiates a new SyncFilesRequest object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetDataSourceId sets DataSourceId field to given value.
 
 ### GetIds
 
-`func (o *SyncFilesRequest) GetIds() []string`
+`func (o *SyncFilesRequest) GetIds() IdsProperty`
 
 GetIds returns the Ids field if non-nil, zero value otherwise.
 
 ### GetIdsOk
 
-`func (o *SyncFilesRequest) GetIdsOk() (*[]string, bool)`
+`func (o *SyncFilesRequest) GetIdsOk() (*IdsProperty, bool)`
 
 GetIdsOk returns a tuple with the Ids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIds
 
-`func (o *SyncFilesRequest) SetIds(v []string)`
+`func (o *SyncFilesRequest) SetIds(v IdsProperty)`
 
 SetIds sets Ids field to given value.
 

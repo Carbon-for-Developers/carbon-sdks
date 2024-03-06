@@ -16,4 +16,9 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
 
-SyncFilesRequestIds = typing.List[str]
+class SyncFilesIds(BaseModel):
+    id: str = Field(alias='id')
+
+    root_id: str = Field(alias='root_id')
+    class Config:
+        arbitrary_types_allowed = True

@@ -29,5 +29,7 @@ class OptionalDeleteFilesQueryInput(TypedDict, total=False):
 
     send_webhook: bool
 
+    delete_child_files: bool
+
 class DeleteFilesQueryInput(RequiredDeleteFilesQueryInput, OptionalDeleteFilesQueryInput):
     pass

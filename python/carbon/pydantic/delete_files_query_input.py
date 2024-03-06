@@ -26,5 +26,7 @@ class DeleteFilesQueryInput(BaseModel):
     delete_non_synced_only: typing.Optional[bool] = Field(None, alias='delete_non_synced_only')
 
     send_webhook: typing.Optional[bool] = Field(None, alias='send_webhook')
+
+    delete_child_files: typing.Optional[bool] = Field(None, alias='delete_child_files')
     class Config:
         arbitrary_types_allowed = True

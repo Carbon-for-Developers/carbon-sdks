@@ -1113,7 +1113,7 @@ module Carbon
     # pages or alter the behavior of the sync.
     #
     # @param data_source_id [Integer] 
-    # @param ids [Array<String>] 
+    # @param ids [IdsProperty] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -1151,7 +1151,7 @@ module Carbon
     # pages or alter the behavior of the sync.
     #
     # @param data_source_id [Integer] 
-    # @param ids [Array<String>] 
+    # @param ids [IdsProperty] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -1343,8 +1343,13 @@ module Carbon
 
     # Sync Files
     #
+    # After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
+    # as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
+    # the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
+    # tell the sync to assume the item is stored in the default Documents drive.
+    #
     # @param data_source_id [Integer] 
-    # @param ids [Array<String>] 
+    # @param ids [IdsProperty] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -1376,8 +1381,13 @@ module Carbon
 
     # Sync Files
     #
+    # After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
+    # as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
+    # the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
+    # tell the sync to assume the item is stored in the default Documents drive.
+    #
     # @param data_source_id [Integer] 
-    # @param ids [Array<String>] 
+    # @param ids [IdsProperty] 
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -1407,6 +1417,7 @@ module Carbon
     end
 
     # Sync Files
+    # After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GenericSuccessResponse]
@@ -1416,6 +1427,7 @@ module Carbon
     end
 
     # Sync Files
+    # After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items&#39; external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive.
     # @param sync_files_request [SyncFilesRequest] 
     # @param [Hash] opts the optional parameters
     # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response

@@ -20,6 +20,7 @@ type DeleteFilesQueryInput struct {
 	SyncStatuses []ExternalFileSyncStatuses `json:"sync_statuses,omitempty"`
 	DeleteNonSyncedOnly *bool `json:"delete_non_synced_only,omitempty"`
 	SendWebhook *bool `json:"send_webhook,omitempty"`
+	DeleteChildFiles *bool `json:"delete_child_files,omitempty"`
 }
 
 // NewDeleteFilesQueryInput instantiates a new DeleteFilesQueryInput object
@@ -32,6 +33,8 @@ func NewDeleteFilesQueryInput() *DeleteFilesQueryInput {
 	this.DeleteNonSyncedOnly = &deleteNonSyncedOnly
 	var sendWebhook bool = false
 	this.SendWebhook = &sendWebhook
+	var deleteChildFiles bool = false
+	this.DeleteChildFiles = &deleteChildFiles
 	return &this
 }
 
@@ -44,6 +47,8 @@ func NewDeleteFilesQueryInputWithDefaults() *DeleteFilesQueryInput {
 	this.DeleteNonSyncedOnly = &deleteNonSyncedOnly
 	var sendWebhook bool = false
 	this.SendWebhook = &sendWebhook
+	var deleteChildFiles bool = false
+	this.DeleteChildFiles = &deleteChildFiles
 	return &this
 }
 
@@ -177,6 +182,38 @@ func (o *DeleteFilesQueryInput) SetSendWebhook(v bool) {
 	o.SendWebhook = &v
 }
 
+// GetDeleteChildFiles returns the DeleteChildFiles field value if set, zero value otherwise.
+func (o *DeleteFilesQueryInput) GetDeleteChildFiles() bool {
+	if o == nil || isNil(o.DeleteChildFiles) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteChildFiles
+}
+
+// GetDeleteChildFilesOk returns a tuple with the DeleteChildFiles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteFilesQueryInput) GetDeleteChildFilesOk() (*bool, bool) {
+	if o == nil || isNil(o.DeleteChildFiles) {
+    return nil, false
+	}
+	return o.DeleteChildFiles, true
+}
+
+// HasDeleteChildFiles returns a boolean if a field has been set.
+func (o *DeleteFilesQueryInput) HasDeleteChildFiles() bool {
+	if o != nil && !isNil(o.DeleteChildFiles) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteChildFiles gets a reference to the given bool and assigns it to the DeleteChildFiles field.
+func (o *DeleteFilesQueryInput) SetDeleteChildFiles(v bool) {
+	o.DeleteChildFiles = &v
+}
+
 func (o DeleteFilesQueryInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FileIds != nil {
@@ -190,6 +227,9 @@ func (o DeleteFilesQueryInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SendWebhook) {
 		toSerialize["send_webhook"] = o.SendWebhook
+	}
+	if !isNil(o.DeleteChildFiles) {
+		toSerialize["delete_child_files"] = o.DeleteChildFiles
 	}
 	return json.Marshal(toSerialize)
 }

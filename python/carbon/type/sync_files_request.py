@@ -15,12 +15,12 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.type.sync_files_request_ids import SyncFilesRequestIds
+from carbon.type.sync_files_ids import SyncFilesIds
 
 class RequiredSyncFilesRequest(TypedDict):
     data_source_id: int
 
-    ids: SyncFilesRequestIds
+    ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]]
 
 class OptionalSyncFilesRequest(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
