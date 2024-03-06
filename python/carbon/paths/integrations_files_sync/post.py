@@ -38,6 +38,7 @@ from carbon.model.sync_files_request import SyncFilesRequest as SyncFilesRequest
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.sync_files_request import SyncFilesRequest
+from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
