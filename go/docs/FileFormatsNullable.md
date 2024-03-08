@@ -25,8 +25,6 @@
 
 * `NOTION` (value: `"NOTION"`)
 
-* `GOOGLE_DRIVE` (value: `"GOOGLE_DRIVE"`)
-
 * `GOOGLE_DOCS` (value: `"GOOGLE_DOCS"`)
 
 * `GOOGLE_SHEETS` (value: `"GOOGLE_SHEETS"`)
@@ -35,12 +33,6 @@
 
 * `INTERCOM` (value: `"INTERCOM"`)
 
-* `DROPBOX` (value: `"DROPBOX"`)
-
-* `ONEDRIVE` (value: `"ONEDRIVE"`)
-
-* `SHAREPOINT` (value: `"SHAREPOINT"`)
-
 * `CONFLUENCE` (value: `"CONFLUENCE"`)
 
 * `RSS_FEED` (value: `"RSS_FEED"`)
@@ -48,8 +40,6 @@
 * `GMAIL` (value: `"GMAIL"`)
 
 * `OUTLOOK` (value: `"OUTLOOK"`)
-
-* `BOX` (value: `"BOX"`)
 
 * `ZENDESK` (value: `"ZENDESK"`)
 

@@ -48,19 +48,14 @@ class FileFormatsNullable(
             "RTF": "RTF",
             "JSON": "JSON",
             "NOTION": "NOTION",
-            "GOOGLE_DRIVE": "GOOGLE_DRIVE",
             "GOOGLE_DOCS": "GOOGLE_DOCS",
             "GOOGLE_SHEETS": "GOOGLE_SHEETS",
             "GOOGLE_SLIDES": "GOOGLE_SLIDES",
             "INTERCOM": "INTERCOM",
-            "DROPBOX": "DROPBOX",
-            "ONEDRIVE": "ONEDRIVE",
-            "SHAREPOINT": "SHAREPOINT",
             "CONFLUENCE": "CONFLUENCE",
             "RSS_FEED": "RSS_FEED",
             "GMAIL": "GMAIL",
             "OUTLOOK": "OUTLOOK",
-            "BOX": "BOX",
             "ZENDESK": "ZENDESK",
             "FRESHDESK": "FRESHDESK",
             "WEB_SCRAPE": "WEB_SCRAPE",
@@ -126,10 +121,6 @@ class FileFormatsNullable(
         return cls("NOTION")
     
     @schemas.classproperty
-    def GOOGLE_DRIVE(cls):
-        return cls("GOOGLE_DRIVE")
-    
-    @schemas.classproperty
     def GOOGLE_DOCS(cls):
         return cls("GOOGLE_DOCS")
     
@@ -146,18 +137,6 @@ class FileFormatsNullable(
         return cls("INTERCOM")
     
     @schemas.classproperty
-    def DROPBOX(cls):
-        return cls("DROPBOX")
-    
-    @schemas.classproperty
-    def ONEDRIVE(cls):
-        return cls("ONEDRIVE")
-    
-    @schemas.classproperty
-    def SHAREPOINT(cls):
-        return cls("SHAREPOINT")
-    
-    @schemas.classproperty
     def CONFLUENCE(cls):
         return cls("CONFLUENCE")
     
@@ -172,10 +151,6 @@ class FileFormatsNullable(
     @schemas.classproperty
     def OUTLOOK(cls):
         return cls("OUTLOOK")
-    
-    @schemas.classproperty
-    def BOX(cls):
-        return cls("BOX")
     
     @schemas.classproperty
     def ZENDESK(cls):

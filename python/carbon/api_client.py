@@ -120,6 +120,8 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     # if model is scalar value like str, number, etc. just return the value
     elif isinstance(data, (str, float, int, bytes, bool)):
         return data
+    elif data is None:
+        return data
     # if model is list, iterate over list and recursively call
     elif typing_extensions.get_origin(model) is list:
         item_model = typing_extensions.get_args(model)[0]
@@ -1237,7 +1239,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.1.5/python'
+        self.user_agent = 'Konfig/0.1.6/python'
 
     def __enter__(self):
         return self

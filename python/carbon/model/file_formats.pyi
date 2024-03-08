@@ -76,10 +76,6 @@ class FileFormats(
         return cls("NOTION")
     
     @schemas.classproperty
-    def GOOGLE_DRIVE(cls):
-        return cls("GOOGLE_DRIVE")
-    
-    @schemas.classproperty
     def GOOGLE_DOCS(cls):
         return cls("GOOGLE_DOCS")
     
@@ -96,18 +92,6 @@ class FileFormats(
         return cls("INTERCOM")
     
     @schemas.classproperty
-    def DROPBOX(cls):
-        return cls("DROPBOX")
-    
-    @schemas.classproperty
-    def ONEDRIVE(cls):
-        return cls("ONEDRIVE")
-    
-    @schemas.classproperty
-    def SHAREPOINT(cls):
-        return cls("SHAREPOINT")
-    
-    @schemas.classproperty
     def CONFLUENCE(cls):
         return cls("CONFLUENCE")
     
@@ -122,10 +106,6 @@ class FileFormats(
     @schemas.classproperty
     def OUTLOOK(cls):
         return cls("OUTLOOK")
-    
-    @schemas.classproperty
-    def BOX(cls):
-        return cls("BOX")
     
     @schemas.classproperty
     def ZENDESK(cls):
