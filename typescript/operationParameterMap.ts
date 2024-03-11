@@ -112,6 +112,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'overwrite_existing'
             },
+            {
+                name: 'chunks_only'
+            },
+            {
+                name: 'custom_credentials'
+            },
         ]
     },
     '/create_user_file_tags-POST': {
@@ -234,6 +240,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'chunk_overlap'
+            },
+            {
+                name: 'force_embedding_generation'
             },
         ]
     },
@@ -471,6 +480,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'set_page_as_boundary'
             },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'connecting_new_account'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -498,6 +513,9 @@ export const operationParameterMap: Record<string, Entry> = {
     },
     '/integrations/outlook/user_folders-GET': {
         parameters: [
+            {
+                name: 'data_source_id'
+            },
         ]
     },
     '/integrations/gitbook/spaces-GET': {
@@ -509,10 +527,16 @@ export const operationParameterMap: Record<string, Entry> = {
     },
     '/integrations/gmail/user_labels-GET': {
         parameters: [
+            {
+                name: 'data_source_id'
+            },
         ]
     },
     '/integrations/outlook/user_categories-GET': {
         parameters: [
+            {
+                name: 'data_source_id'
+            },
         ]
     },
     '/integrations/confluence/sync-POST': {
@@ -653,6 +677,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'prepend_filename_to_chunks'
             },
+            {
+                name: 'data_source_id'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -683,6 +710,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'prepend_filename_to_chunks'
+            },
+            {
+                name: 'data_source_id'
             },
         ]
     },
@@ -745,6 +775,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'set_page_as_boundary'
+            },
+            {
+                name: 'data_source_id'
             },
         ]
     },

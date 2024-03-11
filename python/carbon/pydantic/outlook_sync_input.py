@@ -35,5 +35,7 @@ class OutlookSyncInput(BaseModel):
     generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = Field(None, alias='generate_sparse_vectors')
 
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
+
+    data_source_id: typing.Optional[typing.Optional[int]] = Field(None, alias='data_source_id')
     class Config:
         arbitrary_types_allowed = True

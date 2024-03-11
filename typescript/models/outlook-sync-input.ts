@@ -72,5 +72,11 @@ export interface OutlookSyncInput {
      * @memberof OutlookSyncInput
      */
     'prepend_filename_to_chunks'?: boolean | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof OutlookSyncInput
+     */
+    'data_source_id'?: number | null;
 }
 

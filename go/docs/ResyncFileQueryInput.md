@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **FileId** | **int32** |  | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] 
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] 
+**ForceEmbeddingGeneration** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -117,6 +118,31 @@ HasChunkOverlap returns a boolean if a field has been set.
 `func (o *ResyncFileQueryInput) UnsetChunkOverlap()`
 
 UnsetChunkOverlap ensures that no value is present for ChunkOverlap, not even an explicit nil
+### GetForceEmbeddingGeneration
+
+`func (o *ResyncFileQueryInput) GetForceEmbeddingGeneration() bool`
+
+GetForceEmbeddingGeneration returns the ForceEmbeddingGeneration field if non-nil, zero value otherwise.
+
+### GetForceEmbeddingGenerationOk
+
+`func (o *ResyncFileQueryInput) GetForceEmbeddingGenerationOk() (*bool, bool)`
+
+GetForceEmbeddingGenerationOk returns a tuple with the ForceEmbeddingGeneration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceEmbeddingGeneration
+
+`func (o *ResyncFileQueryInput) SetForceEmbeddingGeneration(v bool)`
+
+SetForceEmbeddingGeneration sets ForceEmbeddingGeneration field to given value.
+
+### HasForceEmbeddingGeneration
+
+`func (o *ResyncFileQueryInput) HasForceEmbeddingGeneration() bool`
+
+HasForceEmbeddingGeneration returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

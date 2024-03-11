@@ -19,6 +19,7 @@ type ResyncFileQueryInput struct {
 	FileId int32 `json:"file_id"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
+	ForceEmbeddingGeneration *bool `json:"force_embedding_generation,omitempty"`
 }
 
 // NewResyncFileQueryInput instantiates a new ResyncFileQueryInput object
@@ -28,6 +29,8 @@ type ResyncFileQueryInput struct {
 func NewResyncFileQueryInput(fileId int32) *ResyncFileQueryInput {
 	this := ResyncFileQueryInput{}
 	this.FileId = fileId
+	var forceEmbeddingGeneration bool = false
+	this.ForceEmbeddingGeneration = &forceEmbeddingGeneration
 	return &this
 }
 
@@ -36,6 +39,8 @@ func NewResyncFileQueryInput(fileId int32) *ResyncFileQueryInput {
 // but it doesn't guarantee that properties required by API are set
 func NewResyncFileQueryInputWithDefaults() *ResyncFileQueryInput {
 	this := ResyncFileQueryInput{}
+	var forceEmbeddingGeneration bool = false
+	this.ForceEmbeddingGeneration = &forceEmbeddingGeneration
 	return &this
 }
 
@@ -147,6 +152,38 @@ func (o *ResyncFileQueryInput) UnsetChunkOverlap() {
 	o.ChunkOverlap.Unset()
 }
 
+// GetForceEmbeddingGeneration returns the ForceEmbeddingGeneration field value if set, zero value otherwise.
+func (o *ResyncFileQueryInput) GetForceEmbeddingGeneration() bool {
+	if o == nil || isNil(o.ForceEmbeddingGeneration) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceEmbeddingGeneration
+}
+
+// GetForceEmbeddingGenerationOk returns a tuple with the ForceEmbeddingGeneration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResyncFileQueryInput) GetForceEmbeddingGenerationOk() (*bool, bool) {
+	if o == nil || isNil(o.ForceEmbeddingGeneration) {
+    return nil, false
+	}
+	return o.ForceEmbeddingGeneration, true
+}
+
+// HasForceEmbeddingGeneration returns a boolean if a field has been set.
+func (o *ResyncFileQueryInput) HasForceEmbeddingGeneration() bool {
+	if o != nil && !isNil(o.ForceEmbeddingGeneration) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceEmbeddingGeneration gets a reference to the given bool and assigns it to the ForceEmbeddingGeneration field.
+func (o *ResyncFileQueryInput) SetForceEmbeddingGeneration(v bool) {
+	o.ForceEmbeddingGeneration = &v
+}
+
 func (o ResyncFileQueryInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -157,6 +194,9 @@ func (o ResyncFileQueryInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.ChunkOverlap.IsSet() {
 		toSerialize["chunk_overlap"] = o.ChunkOverlap.Get()
+	}
+	if !isNil(o.ForceEmbeddingGeneration) {
+		toSerialize["force_embedding_generation"] = o.ForceEmbeddingGeneration
 	}
 	return json.Marshal(toSerialize)
 }

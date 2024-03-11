@@ -25,5 +25,9 @@ class RequiredChunksAndEmbeddingsUploadInput(TypedDict):
 class OptionalChunksAndEmbeddingsUploadInput(TypedDict, total=False):
     overwrite_existing: bool
 
+    chunks_only: bool
+
+    custom_credentials: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class ChunksAndEmbeddingsUploadInput(RequiredChunksAndEmbeddingsUploadInput, OptionalChunksAndEmbeddingsUploadInput):
     pass

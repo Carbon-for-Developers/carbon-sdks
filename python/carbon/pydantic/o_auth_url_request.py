@@ -49,8 +49,15 @@ class OAuthURLRequest(BaseModel):
 
     salesforce_domain: typing.Optional[typing.Optional[str]] = Field(None, alias='salesforce_domain')
 
+    # Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
     sync_files_on_connection: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_files_on_connection')
 
     set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
+
+    # Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+    data_source_id: typing.Optional[typing.Optional[int]] = Field(None, alias='data_source_id')
+
+    # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+    connecting_new_account: typing.Optional[typing.Optional[bool]] = Field(None, alias='connecting_new_account')
     class Config:
         arbitrary_types_allowed = True

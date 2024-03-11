@@ -110,7 +110,7 @@ export interface OAuthURLRequest {
      */
     'salesforce_domain'?: string | null;
     /**
-     * 
+     * Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
      * @type {boolean}
      * @memberof OAuthURLRequest
      */
@@ -121,5 +121,17 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'set_page_as_boundary'?: boolean;
+    /**
+     * Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+     * @type {number}
+     * @memberof OAuthURLRequest
+     */
+    'data_source_id'?: number | null;
+    /**
+     * Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'connecting_new_account'?: boolean | null;
 }
 

@@ -79,5 +79,11 @@ export interface S3FileSyncInput {
      * @memberof S3FileSyncInput
      */
     'set_page_as_boundary'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof S3FileSyncInput
+     */
+    'data_source_id'?: number | null;
 }
 

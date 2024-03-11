@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel
 
 
-ChunksAndEmbeddingsEmbedding = typing.List[typing.Union[int, float]]
+ChunksAndEmbeddingsEmbedding = typing.Optional[typing.List[typing.Union[int, float]]]

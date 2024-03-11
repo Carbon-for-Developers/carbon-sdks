@@ -66,5 +66,11 @@ export interface GmailSyncInput {
      * @memberof GmailSyncInput
      */
     'prepend_filename_to_chunks'?: boolean | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GmailSyncInput
+     */
+    'data_source_id'?: number | null;
 }
 

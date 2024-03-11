@@ -1294,6 +1294,11 @@ tags:
 paths:
   /integrations/oauth_url:
     post:
+      description: |-
+        This endpoint can be used to generate the following URLs
+        - An OAuth URL for OAuth based connectors
+        - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+        success state.
       operationId: Integrations_getOauthUrl
       requestBody:
         content:
@@ -1306,7 +1311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationsGetOauthUrlResponse'
+                $ref: '#/components/schemas/OuthURLResponse'
           description: Successful Response
         "422":
           content:
@@ -1759,6 +1764,16 @@ paths:
         \ to list all of your folders on outlook. This includes \nboth system folders\
         \ like \"inbox\" and user created folders."
       operationId: Integrations_listFolders
+      parameters:
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -1787,6 +1802,16 @@ paths:
         After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
         support listing up to 250 categories.
       operationId: Integrations_listOutlookCategories
+      parameters:
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -1815,6 +1840,16 @@ paths:
         After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
         will have the type "user" and Gmail's default labels will have the type "system"
       operationId: Integrations_listLabels
+      parameters:
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -3380,12 +3415,12 @@ components:
         embedding:
           items:
             type: number
+          nullable: true
           title: Embedding
           type: array
       required:
       - chunk
       - chunk_number
-      - embedding
       title: ChunksAndEmbeddings
       type: object
     ChunksAndEmbeddingsUploadInput:
@@ -3419,6 +3454,8 @@ components:
           chunk_size: 6
           file_id: 0
           chunk_overlap: 1
+        chunks_only: false
+        custom_credentials: {}
         embedding_model: null
         overwrite_existing: false
       properties:
@@ -3436,6 +3473,20 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-overwrite_existing
+        chunks_only:
+          default: false
+          example: false
+          title: Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-chunks_only
+        custom_credentials:
+          default: {}
+          example: {}
+          title: Custom Credentials
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-custom_credentials
       required:
       - chunks_and_embeddings
       - embedding_model
@@ -4537,6 +4588,7 @@ components:
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
+        data_source_id: 0
         tags: {}
       properties:
         tags:
@@ -4592,6 +4644,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GmailSyncInput-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - filters
       title: GmailSyncInput
@@ -4759,6 +4815,7 @@ components:
         prepend_filename_to_chunks: false
         confluence_subdomain: confluence_subdomain
         max_items_per_chunk: 0
+        connecting_new_account: false
         embedding_model: OPENAI
         tags: ""
         service: null
@@ -4770,6 +4827,7 @@ components:
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
         zendesk_subdomain: zendesk_subdomain
+        data_source_id: 6
         microsoft_tenant: microsoft_tenant
       properties:
         tags:
@@ -4849,6 +4907,10 @@ components:
           type: string
         sync_files_on_connection:
           default: true
+          description: |-
+            Used to specify whether Carbon should attempt to sync all your files automatically when authorization
+                    is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported
+                    connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
           example: true
           nullable: true
           title: Sync Files On Connection
@@ -4862,6 +4924,24 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-set_page_as_boundary
+        data_source_id:
+          description: "Used to specify a data source to sync from if you have multiple\
+            \ connected. It can be skipped if \n        you only have one data source\
+            \ of that type connected or are connecting a new account."
+          nullable: true
+          title: Data Source Id
+          type: integer
+        connecting_new_account:
+          default: false
+          description: |-
+            Used to connect a new data source. If not specified, we will attempt to create a sync URL
+                    for an existing data source based on type and ID.
+          example: false
+          nullable: true
+          title: Connecting New Account
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
       required:
       - service
       title: OAuthURLRequest
@@ -5339,6 +5419,17 @@ components:
           default: asc
         filters:
           default: {}
+    OuthURLResponse:
+      example:
+        oauth_url: oauth_url
+      properties:
+        oauth_url:
+          title: Oauth Url
+          type: string
+      required:
+      - oauth_url
+      title: OuthURLResponse
+      type: object
     OutlookSyncInput:
       example:
         chunk_size: 1500
@@ -5349,6 +5440,7 @@ components:
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
+        data_source_id: 0
         tags: {}
       properties:
         tags:
@@ -5412,6 +5504,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OutlookSyncInput-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - filters
       title: OutlookSyncInput
@@ -5575,6 +5671,7 @@ components:
       type: object
     ResyncFileQueryInput:
       example:
+        force_embedding_generation: false
         chunk_size: 6
         file_id: 0
         chunk_overlap: 1
@@ -5590,6 +5687,13 @@ components:
           nullable: true
           title: Chunk Overlap
           type: integer
+        force_embedding_generation:
+          default: false
+          example: false
+          title: Force Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation
       required:
       - file_id
       title: ResyncFileQueryInput
@@ -5636,6 +5740,7 @@ components:
           id: id
         chunk_overlap: 20
         skip_embedding_generation: false
+        data_source_id: 6
         tags: {}
       properties:
         tags:
@@ -5704,6 +5809,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-set_page_as_boundary
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - ids
       title: S3FileSyncInput
@@ -7039,12 +7148,6 @@ components:
         $ref: '#/components/schemas/WebscrapeRequest'
       title: Scraping Requests
       type: array
-    IntegrationsGetOauthUrlResponse:
-      example: {}
-      properties: {}
-      type: object
-      x-konfig-original-example: {}
-      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsGetOauthUrlResponse
     IntegrationsListFoldersResponse:
       example: {}
       properties: {}
@@ -7139,6 +7242,15 @@ components:
     konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-overwrite_existing:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-custom_credentials:
+      example: {}
+      properties: {}
+      type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_non_synced_only:
       example: false
@@ -7350,6 +7462,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OutlookSyncInput-properties-tags:
       example: {}
       properties: {}
@@ -7417,6 +7533,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-RawTextInput-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -7636,11 +7756,6 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-IntegrationsGetOauthUrlResponse:
-      example: {}
-      properties: {}
-      type: object
-      x-do-not-generate: true
     konfig-generated-schema-components-schemas-IntegrationsListFoldersResponse:
       example: {}
       properties: {}
@@ -7765,6 +7880,10 @@ components:
           type: string
         sync_files_on_connection:
           default: true
+          description: |-
+            Used to specify whether Carbon should attempt to sync all your files automatically when authorization
+                    is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported
+                    connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
           example: true
           nullable: true
           title: Sync Files On Connection
@@ -7778,6 +7897,24 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-set_page_as_boundary
+        data_source_id:
+          description: "Used to specify a data source to sync from if you have multiple\
+            \ connected. It can be skipped if \n        you only have one data source\
+            \ of that type connected or are connecting a new account."
+          nullable: true
+          title: Data Source Id
+          type: integer
+        connecting_new_account:
+          default: false
+          description: |-
+            Used to connect a new data source. If not specified, we will attempt to create a sync URL
+                    for an existing data source based on type and ID.
+          example: false
+          nullable: true
+          title: Connecting New Account
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
       required:
       - service
       type: object
@@ -8067,6 +8204,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-set_page_as_boundary
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - ids
       type: object
@@ -8127,6 +8268,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GmailSyncInput-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - filters
       type: object
@@ -8255,6 +8400,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OutlookSyncInput-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       required:
       - filters
       type: object
@@ -8333,20 +8482,35 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-get--integrations-outlook-user_folders:
-      properties: {}
+      properties:
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       type: object
       x-do-not-generate: true
-      x-konfig-is-parameter: []
+      x-konfig-is-parameter:
+      - data_source_id
     konfig-generated-schema-single-parameter-schema-get--integrations-outlook-user_categories:
-      properties: {}
+      properties:
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       type: object
       x-do-not-generate: true
-      x-konfig-is-parameter: []
+      x-konfig-is-parameter:
+      - data_source_id
     konfig-generated-schema-single-parameter-schema-get--integrations-gmail-user_labels:
-      properties: {}
+      properties:
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
       type: object
       x-do-not-generate: true
-      x-konfig-is-parameter: []
+      x-konfig-is-parameter:
+      - data_source_id
     konfig-generated-schema-single-parameter-schema-post--integrations-gitbook:
       properties:
         tags:
@@ -8700,6 +8864,20 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-overwrite_existing
+        chunks_only:
+          default: false
+          example: false
+          title: Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-chunks_only
+        custom_credentials:
+          default: {}
+          example: {}
+          title: Custom Credentials
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-custom_credentials
       required:
       - chunks_and_embeddings
       - embedding_model
@@ -9070,6 +9248,13 @@ components:
           nullable: true
           title: Chunk Overlap
           type: integer
+        force_embedding_generation:
+          default: false
+          example: false
+          title: Force Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation
       required:
       - file_id
       type: object

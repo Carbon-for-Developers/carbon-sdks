@@ -26,6 +26,7 @@ type S3FileSyncInput struct {
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
 }
 
 // NewS3FileSyncInput instantiates a new S3FileSyncInput object
@@ -443,6 +444,48 @@ func (o *S3FileSyncInput) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
+// GetDataSourceId returns the DataSourceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *S3FileSyncInput) GetDataSourceId() int32 {
+	if o == nil || isNil(o.DataSourceId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DataSourceId.Get()
+}
+
+// GetDataSourceIdOk returns a tuple with the DataSourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *S3FileSyncInput) GetDataSourceIdOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.DataSourceId.Get(), o.DataSourceId.IsSet()
+}
+
+// HasDataSourceId returns a boolean if a field has been set.
+func (o *S3FileSyncInput) HasDataSourceId() bool {
+	if o != nil && o.DataSourceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceId gets a reference to the given NullableInt32 and assigns it to the DataSourceId field.
+func (o *S3FileSyncInput) SetDataSourceId(v int32) {
+	o.DataSourceId.Set(&v)
+}
+// SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+func (o *S3FileSyncInput) SetDataSourceIdNil() {
+	o.DataSourceId.Set(nil)
+}
+
+// UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
+func (o *S3FileSyncInput) UnsetDataSourceId() {
+	o.DataSourceId.Unset()
+}
+
 func (o S3FileSyncInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -474,6 +517,9 @@ func (o S3FileSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
+	}
+	if o.DataSourceId.IsSet() {
+		toSerialize["data_source_id"] = o.DataSourceId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

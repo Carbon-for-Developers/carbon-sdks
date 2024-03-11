@@ -38,5 +38,7 @@ class S3FileSyncInput(BaseModel):
     max_items_per_chunk: typing.Optional[typing.Optional[int]] = Field(None, alias='max_items_per_chunk')
 
     set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
+
+    data_source_id: typing.Optional[typing.Optional[int]] = Field(None, alias='data_source_id')
     class Config:
         arbitrary_types_allowed = True

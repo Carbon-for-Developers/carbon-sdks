@@ -307,6 +307,46 @@ class OAuthURLRequest(
                         _configuration=_configuration,
                     )
             set_page_as_boundary = schemas.BoolSchema
+            
+            
+            class data_source_id(
+                schemas.IntBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, decimal.Decimal, int, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'data_source_id':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class connecting_new_account(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'connecting_new_account':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -325,6 +365,8 @@ class OAuthURLRequest(
                 "salesforce_domain": salesforce_domain,
                 "sync_files_on_connection": sync_files_on_connection,
                 "set_page_as_boundary": set_page_as_boundary,
+                "data_source_id": data_source_id,
+                "connecting_new_account": connecting_new_account,
             }
     
     service: 'DataSourceType'
@@ -381,9 +423,15 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["data_source_id"]) -> MetaOapg.properties.data_source_id: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["connecting_new_account"]) -> MetaOapg.properties.connecting_new_account: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -440,9 +488,15 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> typing.Union[MetaOapg.properties.set_page_as_boundary, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["data_source_id"]) -> typing.Union[MetaOapg.properties.data_source_id, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["connecting_new_account"]) -> typing.Union[MetaOapg.properties.connecting_new_account, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -466,6 +520,8 @@ class OAuthURLRequest(
         salesforce_domain: typing.Union[MetaOapg.properties.salesforce_domain, None, str, schemas.Unset] = schemas.unset,
         sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
+        data_source_id: typing.Union[MetaOapg.properties.data_source_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        connecting_new_account: typing.Union[MetaOapg.properties.connecting_new_account, None, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -489,6 +545,8 @@ class OAuthURLRequest(
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
             _configuration=_configuration,
             **kwargs,
         )

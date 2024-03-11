@@ -64,9 +64,10 @@ describe 'IntegrationsApi' do
 
   # unit tests for get_oauth_url
   # Get Oauth Url
+  # This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
   # @param o_auth_url_request 
   # @param [Hash] opts the optional parameters
-  # @return [Object]
+  # @return [OuthURLResponse]
   describe 'get_oauth_url test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -100,6 +101,7 @@ describe 'IntegrationsApi' do
   # Outlook Folders
   # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \&quot;inbox\&quot; and user created folders.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :data_source_id 
   # @return [Object]
   describe 'list_folders test' do
     it 'should work' do
@@ -123,6 +125,7 @@ describe 'IntegrationsApi' do
   # Gmail Labels
   # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \&quot;user\&quot; and Gmail&#39;s default labels will have the type \&quot;system\&quot;
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :data_source_id 
   # @return [Object]
   describe 'list_labels test' do
     it 'should work' do
@@ -134,6 +137,7 @@ describe 'IntegrationsApi' do
   # Outlook Categories
   # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :data_source_id 
   # @return [Object]
   describe 'list_outlook_categories test' do
     it 'should work' do

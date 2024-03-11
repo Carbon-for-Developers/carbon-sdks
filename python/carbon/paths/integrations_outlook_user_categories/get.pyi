@@ -39,6 +39,51 @@ from carbon.type.http_validation_error import HTTPValidationError
 from ...api_client import Dictionary
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 
+# Query params
+
+
+class DataSourceIdSchema(
+    schemas.IntBase,
+    schemas.NoneBase,
+    schemas.Schema,
+    schemas.NoneDecimalMixin
+):
+
+
+    def __new__(
+        cls,
+        *args: typing.Union[None, decimal.Decimal, int, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'DataSourceIdSchema':
+        return super().__new__(
+            cls,
+            *args,
+            _configuration=_configuration,
+        )
+RequestRequiredQueryParams = typing_extensions.TypedDict(
+    'RequestRequiredQueryParams',
+    {
+    }
+)
+RequestOptionalQueryParams = typing_extensions.TypedDict(
+    'RequestOptionalQueryParams',
+    {
+        'data_source_id': typing.Union[DataSourceIdSchema, None, decimal.Decimal, int, ],
+    },
+    total=False
+)
+
+
+class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams):
+    pass
+
+
+request_query_data_source_id = api_client.QueryParameter(
+    name="data_source_id",
+    style=api_client.ParameterStyle.FORM,
+    schema=DataSourceIdSchema,
+    explode=True,
+)
 SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
@@ -90,12 +135,18 @@ class BaseApi(api_client.Api):
 
     def _list_outlook_categories_mapped_args(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
+        _query_params = {}
+        if data_source_id is not None:
+            _query_params["data_source_id"] = data_source_id
+        args.query = _query_params
         return args
 
     async def _alist_outlook_categories_oapg(
         self,
+            query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -112,7 +163,21 @@ class BaseApi(api_client.Api):
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
+        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         used_path = path.value
+    
+        prefix_separator_iterator = None
+        for parameter in (
+            request_query_data_source_id,
+        ):
+            parameter_data = query_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            if prefix_separator_iterator is None:
+                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
+            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
+            for serialized_value in serialized_data.values():
+                used_path += serialized_value
     
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -134,6 +199,7 @@ class BaseApi(api_client.Api):
             method=method,
             headers=_headers,
             auth_settings=_auth,
+            prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
             **kwargs
         )
@@ -194,6 +260,7 @@ class BaseApi(api_client.Api):
 
     def _list_outlook_categories_oapg(
         self,
+            query_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -208,7 +275,21 @@ class BaseApi(api_client.Api):
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
+        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         used_path = path.value
+    
+        prefix_separator_iterator = None
+        for parameter in (
+            request_query_data_source_id,
+        ):
+            parameter_data = query_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            if prefix_separator_iterator is None:
+                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
+            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
+            for serialized_value in serialized_data.values():
+                used_path += serialized_value
     
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -230,6 +311,7 @@ class BaseApi(api_client.Api):
             method=method,
             headers=_headers,
             auth_settings=_auth,
+            prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
     
@@ -262,6 +344,7 @@ class ListOutlookCategoriesRaw(BaseApi):
 
     async def alist_outlook_categories(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -269,30 +352,37 @@ class ListOutlookCategoriesRaw(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._list_outlook_categories_mapped_args(
+            data_source_id=data_source_id,
         )
         return await self._alist_outlook_categories_oapg(
+            query_params=args.query,
             **kwargs,
         )
     
     def list_outlook_categories(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._list_outlook_categories_mapped_args(
+            data_source_id=data_source_id,
         )
         return self._list_outlook_categories_oapg(
+            query_params=args.query,
         )
 
 class ListOutlookCategories(BaseApi):
 
     async def alist_outlook_categories(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
         raw_response = await self.raw.alist_outlook_categories(
+            data_source_id=data_source_id,
             **kwargs,
         )
         if validate:
@@ -302,9 +392,11 @@ class ListOutlookCategories(BaseApi):
     
     def list_outlook_categories(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.list_outlook_categories(
+            data_source_id=data_source_id,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -316,6 +408,7 @@ class ApiForget(BaseApi):
 
     async def aget(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -323,19 +416,24 @@ class ApiForget(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._list_outlook_categories_mapped_args(
+            data_source_id=data_source_id,
         )
         return await self._alist_outlook_categories_oapg(
+            query_params=args.query,
             **kwargs,
         )
     
     def get(
         self,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._list_outlook_categories_mapped_args(
+            data_source_id=data_source_id,
         )
         return self._list_outlook_categories_oapg(
+            query_params=args.query,
         )
 

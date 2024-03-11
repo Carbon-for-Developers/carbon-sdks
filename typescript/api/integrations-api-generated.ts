@@ -53,6 +53,8 @@ import { OAuthURLRequest } from '../models';
 // @ts-ignore
 import { OrganizationUserDataSourceAPI } from '../models';
 // @ts-ignore
+import { OuthURLResponse } from '../models';
+// @ts-ignore
 import { OutlookSyncInput } from '../models';
 // @ts-ignore
 import { Pagination } from '../models';
@@ -234,7 +236,7 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * 
+         * This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
          * @summary Get Oauth Url
          * @param {OAuthURLRequest} oAuthURLRequest 
          * @param {*} [options] Override http request option.
@@ -392,10 +394,11 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
          * @summary Outlook Folders
+         * @param {number} [dataSourceId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listFolders: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listFolders: async (dataSourceId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/integrations/outlook/user_folders`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -414,6 +417,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
             // authentication customerId required
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -487,10 +494,11 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
         /**
          * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
          * @summary Gmail Labels
+         * @param {number} [dataSourceId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLabels: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listLabels: async (dataSourceId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/integrations/gmail/user_labels`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -509,6 +517,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
             // authentication customerId required
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -531,10 +543,11 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
          * @summary Outlook Categories
+         * @param {number} [dataSourceId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listOutlookCategories: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listOutlookCategories: async (dataSourceId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/integrations/outlook/user_categories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -553,6 +566,10 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
             // authentication customerId required
             await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1060,13 +1077,13 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 
+         * This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
          * @summary Get Oauth Url
          * @param {IntegrationsApiGetOauthUrlRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+        async getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OuthURLResponse>> {
             const oAuthURLRequest: OAuthURLRequest = {
                 tags: requestParameters.tags,
                 scope: requestParameters.scope,
@@ -1084,7 +1101,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 salesforce_domain: requestParameters.salesforce_domain,
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
-                set_page_as_boundary: requestParameters.set_page_as_boundary
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                data_source_id: requestParameters.data_source_id,
+                connecting_new_account: requestParameters.connecting_new_account
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1123,11 +1142,12 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
          * @summary Outlook Folders
+         * @param {IntegrationsApiListFoldersRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listFolders(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listFolders(options);
+        async listFolders(requestParameters: IntegrationsApiListFoldersRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listFolders(requestParameters.dataSourceId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1144,21 +1164,23 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
         /**
          * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
          * @summary Gmail Labels
+         * @param {IntegrationsApiListLabelsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listLabels(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listLabels(options);
+        async listLabels(requestParameters: IntegrationsApiListLabelsRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listLabels(requestParameters.dataSourceId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
          * @summary Outlook Categories
+         * @param {IntegrationsApiListOutlookCategoriesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listOutlookCategories(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listOutlookCategories(options);
+        async listOutlookCategories(requestParameters: IntegrationsApiListOutlookCategoriesRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listOutlookCategories(requestParameters.dataSourceId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1261,7 +1283,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                data_source_id: requestParameters.data_source_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(gmailSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1283,7 +1306,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                data_source_id: requestParameters.data_source_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1327,7 +1351,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
-                set_page_as_boundary: requestParameters.set_page_as_boundary
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                data_source_id: requestParameters.data_source_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1373,13 +1398,13 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.createAwsIamUser(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
          * @summary Get Oauth Url
          * @param {IntegrationsApiGetOauthUrlRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+        getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): AxiosPromise<OuthURLResponse> {
             return localVarFp.getOauthUrl(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1405,11 +1430,12 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
          * @summary Outlook Folders
+         * @param {IntegrationsApiListFoldersRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listFolders(options?: AxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.listFolders(options).then((request) => request(axios, basePath));
+        listFolders(requestParameters: IntegrationsApiListFoldersRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listFolders(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
@@ -1424,20 +1450,22 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
         /**
          * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
          * @summary Gmail Labels
+         * @param {IntegrationsApiListLabelsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLabels(options?: AxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.listLabels(options).then((request) => request(axios, basePath));
+        listLabels(requestParameters: IntegrationsApiListLabelsRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listLabels(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
          * @summary Outlook Categories
+         * @param {IntegrationsApiListOutlookCategoriesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listOutlookCategories(options?: AxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.listOutlookCategories(options).then((request) => request(axios, basePath));
+        listOutlookCategories(requestParameters: IntegrationsApiListOutlookCategoriesRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listOutlookCategories(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
@@ -1577,6 +1605,22 @@ export type IntegrationsApiListDataSourceItemsRequest = {
 } & ListDataSourceItemsRequest
 
 /**
+ * Request parameters for listFolders operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListFoldersRequest
+ */
+export type IntegrationsApiListFoldersRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListFolders
+    */
+    readonly dataSourceId?: number
+    
+}
+
+/**
  * Request parameters for listGitbookSpaces operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiListGitbookSpacesRequest
@@ -1589,6 +1633,38 @@ export type IntegrationsApiListGitbookSpacesRequest = {
     * @memberof IntegrationsApiListGitbookSpaces
     */
     readonly dataSourceId: number
+    
+}
+
+/**
+ * Request parameters for listLabels operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListLabelsRequest
+ */
+export type IntegrationsApiListLabelsRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListLabels
+    */
+    readonly dataSourceId?: number
+    
+}
+
+/**
+ * Request parameters for listOutlookCategories operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListOutlookCategoriesRequest
+ */
+export type IntegrationsApiListOutlookCategoriesRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListOutlookCategories
+    */
+    readonly dataSourceId?: number
     
 }
 
@@ -1708,7 +1784,7 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * 
+     * This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
      * @summary Get Oauth Url
      * @param {IntegrationsApiGetOauthUrlRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1746,12 +1822,13 @@ export class IntegrationsApiGenerated extends BaseAPI {
     /**
      * After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
      * @summary Outlook Folders
+     * @param {IntegrationsApiListFoldersRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IntegrationsApiGenerated
      */
-    public listFolders(options?: AxiosRequestConfig) {
-        return IntegrationsApiFp(this.configuration).listFolders(options).then((request) => request(this.axios, this.basePath));
+    public listFolders(requestParameters: IntegrationsApiListFoldersRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listFolders(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1769,23 +1846,25 @@ export class IntegrationsApiGenerated extends BaseAPI {
     /**
      * After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail\'s default labels will have the type \"system\"
      * @summary Gmail Labels
+     * @param {IntegrationsApiListLabelsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IntegrationsApiGenerated
      */
-    public listLabels(options?: AxiosRequestConfig) {
-        return IntegrationsApiFp(this.configuration).listLabels(options).then((request) => request(this.axios, this.basePath));
+    public listLabels(requestParameters: IntegrationsApiListLabelsRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listLabels(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
      * @summary Outlook Categories
+     * @param {IntegrationsApiListOutlookCategoriesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IntegrationsApiGenerated
      */
-    public listOutlookCategories(options?: AxiosRequestConfig) {
-        return IntegrationsApiFp(this.configuration).listOutlookCategories(options).then((request) => request(this.axios, this.basePath));
+    public listOutlookCategories(requestParameters: IntegrationsApiListOutlookCategoriesRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listOutlookCategories(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

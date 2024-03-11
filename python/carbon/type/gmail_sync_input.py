@@ -34,5 +34,7 @@ class OptionalGmailSyncInput(TypedDict, total=False):
 
     prepend_filename_to_chunks: typing.Optional[bool]
 
+    data_source_id: typing.Optional[int]
+
 class GmailSyncInput(RequiredGmailSyncInput, OptionalGmailSyncInput):
     pass

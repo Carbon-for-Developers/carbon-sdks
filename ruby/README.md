@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.5-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.5)
+[![npm](https://img.shields.io/badge/gem-v0.1.6-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.6)
 
 </div>
 
@@ -77,7 +77,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.5'
+gem 'carbon_ruby_sdk', '~> 0.1.6'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -492,14 +492,13 @@ result = carbon.embeddings.upload_chunks_and_embeddings(
                 {
                     "chunk_number" => 1,
                     "chunk" => "chunk_example",
-                    "embedding" => [
-                        3.14
-                    ],
                 }
             ],
         }
     ],
   overwrite_existing: false,
+  chunks_only: false,
+  custom_credentials: {},
 )
 p result
 ```
@@ -509,6 +508,8 @@ p result
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### chunks_and_embeddings: Array<[`SingleChunksAndEmbeddingsUploadInput`](./lib/carbon_ruby_sdk/models/single_chunks_and_embeddings_upload_input.rb)><a id="chunks_and_embeddings-array"></a>
 ##### overwrite_existing: `Boolean`<a id="overwrite_existing-boolean"></a>
+##### chunks_only: `Boolean`<a id="chunks_only-boolean"></a>
+##### custom_credentials: `Object`<a id="custom_credentials-object"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -876,6 +877,7 @@ result = carbon.files.resync(
   file_id: 1,
   chunk_size: 1,
   chunk_overlap: 1,
+  force_embedding_generation: false,
 )
 p result
 ```
@@ -885,6 +887,7 @@ p result
 ##### file_id: `Integer`<a id="file_id-integer"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### force_embedding_generation: `Boolean`<a id="force_embedding_generation-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1253,7 +1256,10 @@ p result
 
 ### `carbon.integrations.get_oauth_url`<a id="carbonintegrationsget_oauth_url"></a>
 
-Get Oauth Url
+This endpoint can be used to generate the following URLs
+- An OAuth URL for OAuth based connectors
+- A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+success state.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1276,6 +1282,8 @@ result = carbon.integrations.get_oauth_url(
   salesforce_domain: "string_example",
   sync_files_on_connection: true,
   set_page_as_boundary: false,
+  data_source_id: 1,
+  connecting_new_account: false,
 )
 p result
 ```
@@ -1298,7 +1306,25 @@ p result
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 ##### salesforce_domain: `String`<a id="salesforce_domain-string"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+Used to specify whether Carbon should attempt to sync all your files
+automatically when authorization is complete. This is only supported for a
+subset of connectors and will be ignored for the rest. Supported connectors:
+Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
+
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+Used to specify a data source to sync from if you have multiple connected. It
+can be skipped if you only have one data source of that type connected or are
+connecting a new account.
+
+##### connecting_new_account: `Boolean`<a id="connecting_new_account-boolean"></a>
+Used to connect a new data source. If not specified, we will attempt to create a
+sync URL for an existing data source based on type and ID.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/oauth_url` `POST`
@@ -1389,10 +1415,15 @@ both system folders like "inbox" and user created folders.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_folders
+result = carbon.integrations.list_folders(
+  data_source_id: 1,
+)
 p result
 ```
 
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/user_folders` `GET`
@@ -1435,10 +1466,15 @@ will have the type "user" and Gmail's default labels will have the type "system"
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_labels
+result = carbon.integrations.list_labels(
+  data_source_id: 1,
+)
 p result
 ```
 
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gmail/user_labels` `GET`
@@ -1456,10 +1492,15 @@ support listing up to 250 categories.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
-result = carbon.integrations.list_outlook_categories
+result = carbon.integrations.list_outlook_categories(
+  data_source_id: 1,
+)
 p result
 ```
 
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/user_categories` `GET`
@@ -1715,6 +1756,7 @@ result = carbon.integrations.sync_gmail(
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  data_source_id: 1,
 )
 p result
 ```
@@ -1729,6 +1771,7 @@ p result
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1818,6 +1861,7 @@ result = carbon.integrations.sync_outlook(
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  data_source_id: 1,
 )
 p result
 ```
@@ -1833,6 +1877,7 @@ p result
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1912,6 +1957,7 @@ result = carbon.integrations.sync_s3_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
+  data_source_id: 1,
 )
 p result
 ```
@@ -1928,6 +1974,7 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

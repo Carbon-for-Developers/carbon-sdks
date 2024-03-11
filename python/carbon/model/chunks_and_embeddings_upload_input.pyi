@@ -69,10 +69,14 @@ class ChunksAndEmbeddingsUploadInput(
                 def __getitem__(self, i: int) -> 'SingleChunksAndEmbeddingsUploadInput':
                     return super().__getitem__(i)
             overwrite_existing = schemas.BoolSchema
+            chunks_only = schemas.BoolSchema
+            custom_credentials = schemas.DictSchema
             __annotations__ = {
                 "embedding_model": embedding_model,
                 "chunks_and_embeddings": chunks_and_embeddings,
                 "overwrite_existing": overwrite_existing,
+                "chunks_only": chunks_only,
+                "custom_credentials": custom_credentials,
             }
     
     chunks_and_embeddings: MetaOapg.properties.chunks_and_embeddings
@@ -88,9 +92,15 @@ class ChunksAndEmbeddingsUploadInput(
     def __getitem__(self, name: typing_extensions.Literal["overwrite_existing"]) -> MetaOapg.properties.overwrite_existing: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chunks_only"]) -> MetaOapg.properties.chunks_only: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["custom_credentials"]) -> MetaOapg.properties.custom_credentials: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["embedding_model", "chunks_and_embeddings", "overwrite_existing", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["embedding_model", "chunks_and_embeddings", "overwrite_existing", "chunks_only", "custom_credentials", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -105,9 +115,15 @@ class ChunksAndEmbeddingsUploadInput(
     def get_item_oapg(self, name: typing_extensions.Literal["overwrite_existing"]) -> typing.Union[MetaOapg.properties.overwrite_existing, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chunks_only"]) -> typing.Union[MetaOapg.properties.chunks_only, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["custom_credentials"]) -> typing.Union[MetaOapg.properties.custom_credentials, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["embedding_model", "chunks_and_embeddings", "overwrite_existing", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["embedding_model", "chunks_and_embeddings", "overwrite_existing", "chunks_only", "custom_credentials", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -117,6 +133,8 @@ class ChunksAndEmbeddingsUploadInput(
         chunks_and_embeddings: typing.Union[MetaOapg.properties.chunks_and_embeddings, list, tuple, ],
         embedding_model: 'EmbeddingGenerators',
         overwrite_existing: typing.Union[MetaOapg.properties.overwrite_existing, bool, schemas.Unset] = schemas.unset,
+        chunks_only: typing.Union[MetaOapg.properties.chunks_only, bool, schemas.Unset] = schemas.unset,
+        custom_credentials: typing.Union[MetaOapg.properties.custom_credentials, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ChunksAndEmbeddingsUploadInput':
@@ -126,6 +144,8 @@ class ChunksAndEmbeddingsUploadInput(
             chunks_and_embeddings=chunks_and_embeddings,
             embedding_model=embedding_model,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
             _configuration=_configuration,
             **kwargs,
         )

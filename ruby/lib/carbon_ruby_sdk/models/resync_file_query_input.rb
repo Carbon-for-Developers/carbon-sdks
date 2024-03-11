@@ -17,12 +17,15 @@ module Carbon
 
     attr_accessor :chunk_overlap
 
+    attr_accessor :force_embedding_generation
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'file_id' => :'file_id',
         :'chunk_size' => :'chunk_size',
-        :'chunk_overlap' => :'chunk_overlap'
+        :'chunk_overlap' => :'chunk_overlap',
+        :'force_embedding_generation' => :'force_embedding_generation'
       }
     end
 
@@ -36,7 +39,8 @@ module Carbon
       {
         :'file_id' => :'Integer',
         :'chunk_size' => :'Integer',
-        :'chunk_overlap' => :'Integer'
+        :'chunk_overlap' => :'Integer',
+        :'force_embedding_generation' => :'Boolean'
       }
     end
 
@@ -44,7 +48,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'chunk_size',
-        :'chunk_overlap'
+        :'chunk_overlap',
       ])
     end
 
@@ -74,6 +78,12 @@ module Carbon
       if attributes.key?(:'chunk_overlap')
         self.chunk_overlap = attributes[:'chunk_overlap']
       end
+
+      if attributes.key?(:'force_embedding_generation')
+        self.force_embedding_generation = attributes[:'force_embedding_generation']
+      else
+        self.force_embedding_generation = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,7 +111,8 @@ module Carbon
       self.class == o.class &&
           file_id == o.file_id &&
           chunk_size == o.chunk_size &&
-          chunk_overlap == o.chunk_overlap
+          chunk_overlap == o.chunk_overlap &&
+          force_embedding_generation == o.force_embedding_generation
     end
 
     # @see the `==` method
@@ -113,7 +124,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [file_id, chunk_size, chunk_overlap].hash
+      [file_id, chunk_size, chunk_overlap, force_embedding_generation].hash
     end
 
     # Builds the object from hash

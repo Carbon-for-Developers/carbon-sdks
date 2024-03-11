@@ -24,6 +24,7 @@ type GmailSyncInput struct {
 	EmbeddingModel *EmbeddingGenerators `json:"embedding_model,omitempty"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
+	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
 }
 
 // NewGmailSyncInput instantiates a new GmailSyncInput object
@@ -363,6 +364,48 @@ func (o *GmailSyncInput) UnsetPrependFilenameToChunks() {
 	o.PrependFilenameToChunks.Unset()
 }
 
+// GetDataSourceId returns the DataSourceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GmailSyncInput) GetDataSourceId() int32 {
+	if o == nil || isNil(o.DataSourceId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DataSourceId.Get()
+}
+
+// GetDataSourceIdOk returns a tuple with the DataSourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GmailSyncInput) GetDataSourceIdOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.DataSourceId.Get(), o.DataSourceId.IsSet()
+}
+
+// HasDataSourceId returns a boolean if a field has been set.
+func (o *GmailSyncInput) HasDataSourceId() bool {
+	if o != nil && o.DataSourceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceId gets a reference to the given NullableInt32 and assigns it to the DataSourceId field.
+func (o *GmailSyncInput) SetDataSourceId(v int32) {
+	o.DataSourceId.Set(&v)
+}
+// SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+func (o *GmailSyncInput) SetDataSourceIdNil() {
+	o.DataSourceId.Set(nil)
+}
+
+// UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
+func (o *GmailSyncInput) UnsetDataSourceId() {
+	o.DataSourceId.Unset()
+}
+
 func (o GmailSyncInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -388,6 +431,9 @@ func (o GmailSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrependFilenameToChunks.IsSet() {
 		toSerialize["prepend_filename_to_chunks"] = o.PrependFilenameToChunks.Get()
+	}
+	if o.DataSourceId.IsSet() {
+		toSerialize["data_source_id"] = o.DataSourceId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

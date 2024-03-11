@@ -210,6 +210,8 @@ func main() {
 
 Get Oauth Url
 
+
+
 ### Example
 
 ```go
@@ -248,6 +250,8 @@ func main() {
     oAuthURLRequest.SetSalesforceDomain("null")
     oAuthURLRequest.SetSyncFilesOnConnection(true)
     oAuthURLRequest.SetSetPageAsBoundary(false)
+    oAuthURLRequest.SetDataSourceId(null)
+    oAuthURLRequest.SetConnectingNewAccount(false)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,
@@ -259,8 +263,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.GetOauthUrl``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
     }
-    // response from `GetOauthUrl`: map[string]interface{}
+    // response from `GetOauthUrl`: OuthURLResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.GetOauthUrl`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OuthURLResponse.GetOauthUrl.OauthUrl`: %v\n", resp.OauthUrl)
 }
 ```
 
@@ -398,6 +403,7 @@ func main() {
 
     request := client.IntegrationsApi.ListFolders(
     )
+    request.DataSourceId(56)
     
     resp, httpRes, err := request.Execute()
 
@@ -485,6 +491,7 @@ func main() {
 
     request := client.IntegrationsApi.ListLabels(
     )
+    request.DataSourceId(56)
     
     resp, httpRes, err := request.Execute()
 
@@ -528,6 +535,7 @@ func main() {
 
     request := client.IntegrationsApi.ListOutlookCategories(
     )
+    request.DataSourceId(56)
     
     resp, httpRes, err := request.Execute()
 
@@ -819,6 +827,7 @@ func main() {
     gmailSyncInput.SetEmbeddingModel(null)
     gmailSyncInput.SetGenerateSparseVectors(false)
     gmailSyncInput.SetPrependFilenameToChunks(false)
+    gmailSyncInput.SetDataSourceId(null)
     
     request := client.IntegrationsApi.SyncGmail(
         gmailSyncInput,
@@ -877,6 +886,7 @@ func main() {
     outlookSyncInput.SetEmbeddingModel(null)
     outlookSyncInput.SetGenerateSparseVectors(false)
     outlookSyncInput.SetPrependFilenameToChunks(false)
+    outlookSyncInput.SetDataSourceId(null)
     
     request := client.IntegrationsApi.SyncOutlook(
         outlookSyncInput,
@@ -991,6 +1001,7 @@ func main() {
     s3FileSyncInput.SetPrependFilenameToChunks(false)
     s3FileSyncInput.SetMaxItemsPerChunk(null)
     s3FileSyncInput.SetSetPageAsBoundary(false)
+    s3FileSyncInput.SetDataSourceId(null)
     
     request := client.IntegrationsApi.SyncS3Files(
         s3FileSyncInput,

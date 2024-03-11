@@ -23,5 +23,7 @@ class OptionalResyncFileQueryInput(TypedDict, total=False):
 
     chunk_overlap: typing.Optional[int]
 
+    force_embedding_generation: bool
+
 class ResyncFileQueryInput(RequiredResyncFileQueryInput, OptionalResyncFileQueryInput):
     pass

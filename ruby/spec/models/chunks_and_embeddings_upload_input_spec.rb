@@ -37,4 +37,16 @@ describe Carbon::ChunksAndEmbeddingsUploadInput do
     end
   end
 
+  describe 'test attribute "chunks_only"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "custom_credentials"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
