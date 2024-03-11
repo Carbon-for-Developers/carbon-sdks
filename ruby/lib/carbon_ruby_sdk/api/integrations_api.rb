@@ -414,50 +414,10 @@ module Carbon
 
     # Get Oauth Url
     #
-    # @param service [DataSourceType] 
-    # @param tags [Object] 
-    # @param scope [String] 
-    # @param chunk_size [Integer] 
-    # @param chunk_overlap [Integer] 
-    # @param skip_embedding_generation [Boolean] 
-    # @param embedding_model [EmbeddingGeneratorsNullable] 
-    # @param zendesk_subdomain [String] 
-    # @param microsoft_tenant [String] 
-    # @param sharepoint_site_name [String] 
-    # @param confluence_subdomain [String] 
-    # @param generate_sparse_vectors [Boolean] 
-    # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
-    # @param salesforce_domain [String] 
-    # @param sync_files_on_connection [Boolean] 
-    # @param set_page_as_boundary [Boolean] 
-    # @param body [OAuthURLRequest] 
-    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, extra: {})
-      _body = {}
-      _body[:tags] = tags if tags != SENTINEL
-      _body[:scope] = scope if scope != SENTINEL
-      _body[:service] = service if service != SENTINEL
-      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
-      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
-      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
-      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
-      _body[:zendesk_subdomain] = zendesk_subdomain if zendesk_subdomain != SENTINEL
-      _body[:microsoft_tenant] = microsoft_tenant if microsoft_tenant != SENTINEL
-      _body[:sharepoint_site_name] = sharepoint_site_name if sharepoint_site_name != SENTINEL
-      _body[:confluence_subdomain] = confluence_subdomain if confluence_subdomain != SENTINEL
-      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
-      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
-      _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
-      _body[:salesforce_domain] = salesforce_domain if salesforce_domain != SENTINEL
-      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
-      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
-      o_auth_url_request = _body
-      api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
-      api_response.data
-    end
-
-    # Get Oauth Url
+    # This endpoint can be used to generate the following URLs
+    # - An OAuth URL for OAuth based connectors
+    # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+    # success state.
     #
     # @param service [DataSourceType] 
     # @param tags [Object] 
@@ -474,11 +434,13 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
     # @param salesforce_domain [String] 
-    # @param sync_files_on_connection [Boolean] 
+    # @param sync_files_on_connection [Boolean] Used to specify whether Carbon should attempt to sync all your files automatically when authorization is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
     # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
+    # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -497,23 +459,81 @@ module Carbon
       _body[:salesforce_domain] = salesforce_domain if salesforce_domain != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
+      o_auth_url_request = _body
+      api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
+      api_response.data
+    end
+
+    # Get Oauth Url
+    #
+    # This endpoint can be used to generate the following URLs
+    # - An OAuth URL for OAuth based connectors
+    # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+    # success state.
+    #
+    # @param service [DataSourceType] 
+    # @param tags [Object] 
+    # @param scope [String] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGeneratorsNullable] 
+    # @param zendesk_subdomain [String] 
+    # @param microsoft_tenant [String] 
+    # @param sharepoint_site_name [String] 
+    # @param confluence_subdomain [String] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param max_items_per_chunk [Integer] 
+    # @param salesforce_domain [String] 
+    # @param sync_files_on_connection [Boolean] Used to specify whether Carbon should attempt to sync all your files automatically when authorization is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
+    # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
+    # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
+    # @param body [OAuthURLRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:scope] = scope if scope != SENTINEL
+      _body[:service] = service if service != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:zendesk_subdomain] = zendesk_subdomain if zendesk_subdomain != SENTINEL
+      _body[:microsoft_tenant] = microsoft_tenant if microsoft_tenant != SENTINEL
+      _body[:sharepoint_site_name] = sharepoint_site_name if sharepoint_site_name != SENTINEL
+      _body[:confluence_subdomain] = confluence_subdomain if confluence_subdomain != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:salesforce_domain] = salesforce_domain if salesforce_domain != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
 
     # Get Oauth Url
+    # This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
     # @param o_auth_url_request [OAuthURLRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Object]
+    # @return [OuthURLResponse]
     private def get_oauth_url_impl(o_auth_url_request, opts = {})
       data, _status_code, _headers = get_oauth_url_with_http_info(o_auth_url_request, opts)
       data
     end
 
     # Get Oauth Url
+    # This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state.
     # @param o_auth_url_request [OAuthURLRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [APIResponse] data is Object, status code, headers and response
+    # @return [APIResponse] data is OuthURLResponse, status code, headers and response
     private def get_oauth_url_with_http_info_impl(o_auth_url_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationsApi.get_oauth_url ...'
@@ -545,7 +565,7 @@ module Carbon
       post_body = opts[:debug_body] || @api_client.object_to_http_body(o_auth_url_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Object'
+      return_type = opts[:debug_return_type] || 'OuthURLResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
@@ -787,8 +807,10 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
     # both system folders like "inbox" and user created folders.
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_folders(extra: {})
+    def list_folders(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       api_response = list_folders_with_http_info_impl(extra)
       api_response.data
     end
@@ -798,14 +820,17 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
     # both system folders like "inbox" and user created folders.
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_folders_with_http_info(extra: {})
+    def list_folders_with_http_info(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       list_folders_with_http_info_impl(extra)
     end
 
     # Outlook Folders
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [Object]
     private def list_folders_impl(opts = {})
       data, _status_code, _headers = list_folders_with_http_info(opts)
@@ -815,6 +840,7 @@ module Carbon
     # Outlook Folders
     # After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \&quot;inbox\&quot; and user created folders.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [APIResponse] data is Object, status code, headers and response
     private def list_folders_with_http_info_impl(opts = {})
       if @api_client.config.debugging
@@ -825,6 +851,7 @@ module Carbon
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -952,8 +979,10 @@ module Carbon
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
     # will have the type "user" and Gmail's default labels will have the type "system"
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_labels(extra: {})
+    def list_labels(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       api_response = list_labels_with_http_info_impl(extra)
       api_response.data
     end
@@ -963,14 +992,17 @@ module Carbon
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
     # will have the type "user" and Gmail's default labels will have the type "system"
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_labels_with_http_info(extra: {})
+    def list_labels_with_http_info(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       list_labels_with_http_info_impl(extra)
     end
 
     # Gmail Labels
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\"
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [Object]
     private def list_labels_impl(opts = {})
       data, _status_code, _headers = list_labels_with_http_info(opts)
@@ -980,6 +1012,7 @@ module Carbon
     # Gmail Labels
     # After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \&quot;user\&quot; and Gmail&#39;s default labels will have the type \&quot;system\&quot;
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [APIResponse] data is Object, status code, headers and response
     private def list_labels_with_http_info_impl(opts = {})
       if @api_client.config.debugging
@@ -990,6 +1023,7 @@ module Carbon
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1031,8 +1065,10 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
     # support listing up to 250 categories.
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_outlook_categories(extra: {})
+    def list_outlook_categories(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       api_response = list_outlook_categories_with_http_info_impl(extra)
       api_response.data
     end
@@ -1042,14 +1078,17 @@ module Carbon
     # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
     # support listing up to 250 categories.
     #
+    # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_outlook_categories_with_http_info(extra: {})
+    def list_outlook_categories_with_http_info(data_source_id: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
       list_outlook_categories_with_http_info_impl(extra)
     end
 
     # Outlook Categories
     # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [Object]
     private def list_outlook_categories_impl(opts = {})
       data, _status_code, _headers = list_outlook_categories_with_http_info(opts)
@@ -1059,6 +1098,7 @@ module Carbon
     # Outlook Categories
     # After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
     # @return [APIResponse] data is Object, status code, headers and response
     private def list_outlook_categories_with_http_info_impl(opts = {})
       if @api_client.config.debugging
@@ -1069,6 +1109,7 @@ module Carbon
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1678,9 +1719,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1690,6 +1732,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       gmail_sync_input = _body
       api_response = sync_gmail_with_http_info_impl(gmail_sync_input, extra)
       api_response.data
@@ -1756,9 +1799,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1768,6 +1812,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       gmail_sync_input = _body
       sync_gmail_with_http_info_impl(gmail_sync_input, extra)
     end
@@ -1913,9 +1958,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -1926,6 +1972,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       outlook_sync_input = _body
       api_response = sync_outlook_with_http_info_impl(outlook_sync_input, extra)
       api_response.data
@@ -2003,9 +2050,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -2016,6 +2064,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       outlook_sync_input = _body
       sync_outlook_with_http_info_impl(outlook_sync_input, extra)
     end
@@ -2225,9 +2274,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
     # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2239,6 +2289,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       s3_file_sync_input = _body
       api_response = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
       api_response.data
@@ -2260,9 +2311,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] 
     # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2274,6 +2326,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       s3_file_sync_input = _body
       sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
     end

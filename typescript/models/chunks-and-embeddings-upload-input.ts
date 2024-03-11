@@ -37,5 +37,17 @@ export interface ChunksAndEmbeddingsUploadInput {
      * @memberof ChunksAndEmbeddingsUploadInput
      */
     'overwrite_existing'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChunksAndEmbeddingsUploadInput
+     */
+    'chunks_only'?: boolean;
+    /**
+     * 
+     * @type {object}
+     * @memberof ChunksAndEmbeddingsUploadInput
+     */
+    'custom_credentials'?: object;
 }
 

@@ -31,8 +31,13 @@ type OAuthURLRequest struct {
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SalesforceDomain NullableString `json:"salesforce_domain,omitempty"`
+	// Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
 	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	// Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
+	// Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+	ConnectingNewAccount NullableBool `json:"connecting_new_account,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -58,6 +63,8 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var connectingNewAccount bool = false
+	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
 	return &this
 }
 
@@ -82,6 +89,8 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var connectingNewAccount bool = false
+	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
 	return &this
 }
 
@@ -762,6 +771,90 @@ func (o *OAuthURLRequest) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
+// GetDataSourceId returns the DataSourceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetDataSourceId() int32 {
+	if o == nil || isNil(o.DataSourceId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DataSourceId.Get()
+}
+
+// GetDataSourceIdOk returns a tuple with the DataSourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetDataSourceIdOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.DataSourceId.Get(), o.DataSourceId.IsSet()
+}
+
+// HasDataSourceId returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasDataSourceId() bool {
+	if o != nil && o.DataSourceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceId gets a reference to the given NullableInt32 and assigns it to the DataSourceId field.
+func (o *OAuthURLRequest) SetDataSourceId(v int32) {
+	o.DataSourceId.Set(&v)
+}
+// SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+func (o *OAuthURLRequest) SetDataSourceIdNil() {
+	o.DataSourceId.Set(nil)
+}
+
+// UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
+func (o *OAuthURLRequest) UnsetDataSourceId() {
+	o.DataSourceId.Unset()
+}
+
+// GetConnectingNewAccount returns the ConnectingNewAccount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetConnectingNewAccount() bool {
+	if o == nil || isNil(o.ConnectingNewAccount.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.ConnectingNewAccount.Get()
+}
+
+// GetConnectingNewAccountOk returns a tuple with the ConnectingNewAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetConnectingNewAccountOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ConnectingNewAccount.Get(), o.ConnectingNewAccount.IsSet()
+}
+
+// HasConnectingNewAccount returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasConnectingNewAccount() bool {
+	if o != nil && o.ConnectingNewAccount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectingNewAccount gets a reference to the given NullableBool and assigns it to the ConnectingNewAccount field.
+func (o *OAuthURLRequest) SetConnectingNewAccount(v bool) {
+	o.ConnectingNewAccount.Set(&v)
+}
+// SetConnectingNewAccountNil sets the value for ConnectingNewAccount to be an explicit nil
+func (o *OAuthURLRequest) SetConnectingNewAccountNil() {
+	o.ConnectingNewAccount.Set(nil)
+}
+
+// UnsetConnectingNewAccount ensures that no value is present for ConnectingNewAccount, not even an explicit nil
+func (o *OAuthURLRequest) UnsetConnectingNewAccount() {
+	o.ConnectingNewAccount.Unset()
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -814,6 +907,12 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
+	}
+	if o.DataSourceId.IsSet() {
+		toSerialize["data_source_id"] = o.DataSourceId.Get()
+	}
+	if o.ConnectingNewAccount.IsSet() {
+		toSerialize["connecting_new_account"] = o.ConnectingNewAccount.Get()
 	}
 	return json.Marshal(toSerialize)
 }

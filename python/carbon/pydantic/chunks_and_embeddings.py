@@ -22,6 +22,6 @@ class ChunksAndEmbeddings(BaseModel):
 
     chunk: str = Field(alias='chunk')
 
-    embedding: ChunksAndEmbeddingsEmbedding = Field(alias='embedding')
+    embedding: typing.Optional[ChunksAndEmbeddingsEmbedding] = Field(None, alias='embedding')
     class Config:
         arbitrary_types_allowed = True

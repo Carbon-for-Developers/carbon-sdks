@@ -41,9 +41,16 @@ module Carbon
 
     attr_accessor :salesforce_domain
 
+    # Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
     attr_accessor :sync_files_on_connection
 
     attr_accessor :set_page_as_boundary
+
+    # Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+    attr_accessor :data_source_id
+
+    # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+    attr_accessor :connecting_new_account
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -64,7 +71,9 @@ module Carbon
         :'max_items_per_chunk' => :'max_items_per_chunk',
         :'salesforce_domain' => :'salesforce_domain',
         :'sync_files_on_connection' => :'sync_files_on_connection',
-        :'set_page_as_boundary' => :'set_page_as_boundary'
+        :'set_page_as_boundary' => :'set_page_as_boundary',
+        :'data_source_id' => :'data_source_id',
+        :'connecting_new_account' => :'connecting_new_account'
       }
     end
 
@@ -92,7 +101,9 @@ module Carbon
         :'max_items_per_chunk' => :'Integer',
         :'salesforce_domain' => :'String',
         :'sync_files_on_connection' => :'Boolean',
-        :'set_page_as_boundary' => :'Boolean'
+        :'set_page_as_boundary' => :'Boolean',
+        :'data_source_id' => :'Integer',
+        :'connecting_new_account' => :'Boolean'
       }
     end
 
@@ -114,6 +125,8 @@ module Carbon
         :'max_items_per_chunk',
         :'salesforce_domain',
         :'sync_files_on_connection',
+        :'data_source_id',
+        :'connecting_new_account'
       ])
     end
 
@@ -215,6 +228,16 @@ module Carbon
       else
         self.set_page_as_boundary = false
       end
+
+      if attributes.key?(:'data_source_id')
+        self.data_source_id = attributes[:'data_source_id']
+      end
+
+      if attributes.key?(:'connecting_new_account')
+        self.connecting_new_account = attributes[:'connecting_new_account']
+      else
+        self.connecting_new_account = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -256,7 +279,9 @@ module Carbon
           max_items_per_chunk == o.max_items_per_chunk &&
           salesforce_domain == o.salesforce_domain &&
           sync_files_on_connection == o.sync_files_on_connection &&
-          set_page_as_boundary == o.set_page_as_boundary
+          set_page_as_boundary == o.set_page_as_boundary &&
+          data_source_id == o.data_source_id &&
+          connecting_new_account == o.connecting_new_account
     end
 
     # @see the `==` method
@@ -268,7 +293,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account].hash
     end
 
     # Builds the object from hash

@@ -465,13 +465,17 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
+    # @param chunks_only [Boolean] 
+    # @param custom_credentials [Object] 
     # @param body [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_chunks_and_embeddings(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, extra: {})
+    def upload_chunks_and_embeddings(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, chunks_only: false, custom_credentials: SENTINEL, extra: {})
       _body = {}
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:chunks_and_embeddings] = chunks_and_embeddings if chunks_and_embeddings != SENTINEL
       _body[:overwrite_existing] = overwrite_existing if overwrite_existing != SENTINEL
+      _body[:chunks_only] = chunks_only if chunks_only != SENTINEL
+      _body[:custom_credentials] = custom_credentials if custom_credentials != SENTINEL
       chunks_and_embeddings_upload_input = _body
       api_response = upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, extra)
       api_response.data
@@ -482,13 +486,17 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
+    # @param chunks_only [Boolean] 
+    # @param custom_credentials [Object] 
     # @param body [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_chunks_and_embeddings_with_http_info(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, extra: {})
+    def upload_chunks_and_embeddings_with_http_info(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, chunks_only: false, custom_credentials: SENTINEL, extra: {})
       _body = {}
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:chunks_and_embeddings] = chunks_and_embeddings if chunks_and_embeddings != SENTINEL
       _body[:overwrite_existing] = overwrite_existing if overwrite_existing != SENTINEL
+      _body[:chunks_only] = chunks_only if chunks_only != SENTINEL
+      _body[:custom_credentials] = custom_credentials if custom_credentials != SENTINEL
       chunks_and_embeddings_upload_input = _body
       upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, extra)
     end

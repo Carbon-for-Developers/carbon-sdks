@@ -22,5 +22,7 @@ class ResyncFileQueryInput(BaseModel):
     chunk_size: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_size')
 
     chunk_overlap: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_overlap')
+
+    force_embedding_generation: typing.Optional[bool] = Field(None, alias='force_embedding_generation')
     class Config:
         arbitrary_types_allowed = True

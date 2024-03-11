@@ -18,18 +18,17 @@ import (
 type ChunksAndEmbeddings struct {
 	ChunkNumber NullableInt32 `json:"chunk_number"`
 	Chunk string `json:"chunk"`
-	Embedding []float32 `json:"embedding"`
+	Embedding []float32 `json:"embedding,omitempty"`
 }
 
 // NewChunksAndEmbeddings instantiates a new ChunksAndEmbeddings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChunksAndEmbeddings(chunkNumber NullableInt32, chunk string, embedding []float32) *ChunksAndEmbeddings {
+func NewChunksAndEmbeddings(chunkNumber NullableInt32, chunk string) *ChunksAndEmbeddings {
 	this := ChunksAndEmbeddings{}
 	this.ChunkNumber = chunkNumber
 	this.Chunk = chunk
-	this.Embedding = embedding
 	return &this
 }
 
@@ -91,26 +90,35 @@ func (o *ChunksAndEmbeddings) SetChunk(v string) {
 	o.Chunk = v
 }
 
-// GetEmbedding returns the Embedding field value
+// GetEmbedding returns the Embedding field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChunksAndEmbeddings) GetEmbedding() []float32 {
 	if o == nil {
 		var ret []float32
 		return ret
 	}
-
 	return o.Embedding
 }
 
-// GetEmbeddingOk returns a tuple with the Embedding field value
+// GetEmbeddingOk returns a tuple with the Embedding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChunksAndEmbeddings) GetEmbeddingOk() ([]float32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Embedding) {
     return nil, false
 	}
 	return o.Embedding, true
 }
 
-// SetEmbedding sets field value
+// HasEmbedding returns a boolean if a field has been set.
+func (o *ChunksAndEmbeddings) HasEmbedding() bool {
+	if o != nil && isNil(o.Embedding) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbedding gets a reference to the given []float32 and assigns it to the Embedding field.
 func (o *ChunksAndEmbeddings) SetEmbedding(v []float32) {
 	o.Embedding = v
 }
@@ -123,7 +131,7 @@ func (o ChunksAndEmbeddings) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["chunk"] = o.Chunk
 	}
-	if true {
+	if o.Embedding != nil {
 		toSerialize["embedding"] = o.Embedding
 	}
 	return json.Marshal(toSerialize)

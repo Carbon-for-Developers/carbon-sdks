@@ -93,6 +93,8 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
             null,
         )
         chunksAndEmbeddingsUploadInput.SetOverwriteExisting(false)
+        chunksAndEmbeddingsUploadInput.SetChunksOnly(false)
+        chunksAndEmbeddingsUploadInput.SetCustomCredentials({})
         
         request := client.EmbeddingsApi.UploadChunksAndEmbeddings(
             chunksAndEmbeddingsUploadInput,

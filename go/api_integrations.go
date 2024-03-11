@@ -509,12 +509,17 @@ type IntegrationsApiGetOauthUrlRequest struct {
 	oAuthURLRequest OAuthURLRequest
 }
 
-func (r IntegrationsApiGetOauthUrlRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r IntegrationsApiGetOauthUrlRequest) Execute() (*OuthURLResponse, *http.Response, error) {
 	return r.ApiService.GetOauthUrlExecute(r)
 }
 
 /*
 GetOauthUrl Get Oauth Url
+
+This endpoint can be used to generate the following URLs
+- An OAuth URL for OAuth based connectors
+- A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+success state.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param oAuthURLRequest
@@ -529,13 +534,13 @@ func (a *IntegrationsApiService) GetOauthUrl(oAuthURLRequest OAuthURLRequest) In
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *IntegrationsApiService) GetOauthUrlExecute(r IntegrationsApiGetOauthUrlRequest) (map[string]interface{}, *http.Response, error) {
+//  @return OuthURLResponse
+func (a *IntegrationsApiService) GetOauthUrlExecute(r IntegrationsApiGetOauthUrlRequest) (*OuthURLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *OuthURLResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationsApiService.GetOauthUrl")
@@ -976,6 +981,12 @@ func (a *IntegrationsApiService) ListDataSourceItemsExecute(r IntegrationsApiLis
 type IntegrationsApiListFoldersRequest struct {
 	ctx context.Context
 	ApiService *IntegrationsApiService
+	dataSourceId *int32
+}
+
+func (r *IntegrationsApiListFoldersRequest) DataSourceId(dataSourceId int32) *IntegrationsApiListFoldersRequest {
+	r.dataSourceId = &dataSourceId
+	return r
 }
 
 func (r IntegrationsApiListFoldersRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1019,6 +1030,9 @@ func (a *IntegrationsApiService) ListFoldersExecute(r IntegrationsApiListFolders
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dataSourceId != nil {
+		localVarQueryParams.Add("data_source_id", parameterToString(*r.dataSourceId, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1283,6 +1297,12 @@ func (a *IntegrationsApiService) ListGitbookSpacesExecute(r IntegrationsApiListG
 type IntegrationsApiListLabelsRequest struct {
 	ctx context.Context
 	ApiService *IntegrationsApiService
+	dataSourceId *int32
+}
+
+func (r *IntegrationsApiListLabelsRequest) DataSourceId(dataSourceId int32) *IntegrationsApiListLabelsRequest {
+	r.dataSourceId = &dataSourceId
+	return r
 }
 
 func (r IntegrationsApiListLabelsRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1326,6 +1346,9 @@ func (a *IntegrationsApiService) ListLabelsExecute(r IntegrationsApiListLabelsRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dataSourceId != nil {
+		localVarQueryParams.Add("data_source_id", parameterToString(*r.dataSourceId, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1435,6 +1458,12 @@ func (a *IntegrationsApiService) ListLabelsExecute(r IntegrationsApiListLabelsRe
 type IntegrationsApiListOutlookCategoriesRequest struct {
 	ctx context.Context
 	ApiService *IntegrationsApiService
+	dataSourceId *int32
+}
+
+func (r *IntegrationsApiListOutlookCategoriesRequest) DataSourceId(dataSourceId int32) *IntegrationsApiListOutlookCategoriesRequest {
+	r.dataSourceId = &dataSourceId
+	return r
 }
 
 func (r IntegrationsApiListOutlookCategoriesRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1478,6 +1507,9 @@ func (a *IntegrationsApiService) ListOutlookCategoriesExecute(r IntegrationsApiL
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dataSourceId != nil {
+		localVarQueryParams.Add("data_source_id", parameterToString(*r.dataSourceId, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

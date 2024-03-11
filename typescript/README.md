@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.8-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.8)
+[![npm](https://img.shields.io/badge/npm-v0.1.9-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.9)
 
 </div>
 
@@ -485,12 +485,12 @@ const uploadChunksAndEmbeddingsResponse =
           {
             chunk_number: 1,
             chunk: "chunk_example",
-            embedding: [3.14],
           },
         ],
       },
     ],
     overwrite_existing: false,
+    chunks_only: false,
   });
 ```
 
@@ -501,6 +501,10 @@ const uploadChunksAndEmbeddingsResponse =
 ##### chunks_and_embeddings: [`SingleChunksAndEmbeddingsUploadInput`](./models/single-chunks-and-embeddings-upload-input.ts)[]<a id="chunks_and_embeddings-singlechunksandembeddingsuploadinputmodelssingle-chunks-and-embeddings-upload-inputts"></a>
 
 ##### overwrite_existing: `boolean`<a id="overwrite_existing-boolean"></a>
+
+##### chunks_only: `boolean`<a id="chunks_only-boolean"></a>
+
+##### custom_credentials: `object`<a id="custom_credentials-object"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -860,6 +864,7 @@ Resync File
 ```typescript
 const resyncResponse = await carbon.files.resync({
   file_id: 1,
+  force_embedding_generation: false,
 });
 ```
 
@@ -870,6 +875,8 @@ const resyncResponse = await carbon.files.resync({
 ##### chunk_size: `number`<a id="chunk_size-number"></a>
 
 ##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### force_embedding_generation: `boolean`<a id="force_embedding_generation-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1265,7 +1272,10 @@ const createAwsIamUserResponse = await carbon.integrations.createAwsIamUser({
 
 ### `carbon.integrations.getOauthUrl`<a id="carbonintegrationsgetoauthurl"></a>
 
-Get Oauth Url
+This endpoint can be used to generate the following URLs
+- An OAuth URL for OAuth based connectors
+- A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+success state.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1280,6 +1290,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
   set_page_as_boundary: false,
+  connecting_new_account: false,
 });
 ```
 
@@ -1317,7 +1328,21 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
+Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
+
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+
+##### connecting_new_account: `boolean`<a id="connecting_new_account-boolean"></a>
+
+Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OuthURLResponse](./models/outh-urlresponse.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1408,8 +1433,12 @@ both system folders like "inbox" and user created folders.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const listFoldersResponse = await carbon.integrations.listFolders();
+const listFoldersResponse = await carbon.integrations.listFolders({});
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1453,8 +1482,12 @@ will have the type "user" and Gmail's default labels will have the type "system"
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const listLabelsResponse = await carbon.integrations.listLabels();
+const listLabelsResponse = await carbon.integrations.listLabels({});
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1474,8 +1507,12 @@ support listing up to 250 categories.
 
 ```typescript
 const listOutlookCategoriesResponse =
-  await carbon.integrations.listOutlookCategories();
+  await carbon.integrations.listOutlookCategories({});
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1770,6 +1807,8 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1881,6 +1920,8 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1985,6 +2026,8 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

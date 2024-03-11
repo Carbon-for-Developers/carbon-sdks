@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **EmbeddingModel** | [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | 
 **ChunksAndEmbeddings** | [**[]SingleChunksAndEmbeddingsUploadInput**](SingleChunksAndEmbeddingsUploadInput.md) |  | 
 **OverwriteExisting** | Pointer to **bool** |  | [optional] [default to false]
+**ChunksOnly** | Pointer to **bool** |  | [optional] [default to false]
+**CustomCredentials** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 
 ## Methods
 
@@ -91,6 +93,56 @@ SetOverwriteExisting sets OverwriteExisting field to given value.
 `func (o *ChunksAndEmbeddingsUploadInput) HasOverwriteExisting() bool`
 
 HasOverwriteExisting returns a boolean if a field has been set.
+
+### GetChunksOnly
+
+`func (o *ChunksAndEmbeddingsUploadInput) GetChunksOnly() bool`
+
+GetChunksOnly returns the ChunksOnly field if non-nil, zero value otherwise.
+
+### GetChunksOnlyOk
+
+`func (o *ChunksAndEmbeddingsUploadInput) GetChunksOnlyOk() (*bool, bool)`
+
+GetChunksOnlyOk returns a tuple with the ChunksOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChunksOnly
+
+`func (o *ChunksAndEmbeddingsUploadInput) SetChunksOnly(v bool)`
+
+SetChunksOnly sets ChunksOnly field to given value.
+
+### HasChunksOnly
+
+`func (o *ChunksAndEmbeddingsUploadInput) HasChunksOnly() bool`
+
+HasChunksOnly returns a boolean if a field has been set.
+
+### GetCustomCredentials
+
+`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]interface{}`
+
+GetCustomCredentials returns the CustomCredentials field if non-nil, zero value otherwise.
+
+### GetCustomCredentialsOk
+
+`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (*map[string]interface{}, bool)`
+
+GetCustomCredentialsOk returns a tuple with the CustomCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomCredentials
+
+`func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]interface{})`
+
+SetCustomCredentials sets CustomCredentials field to given value.
+
+### HasCustomCredentials
+
+`func (o *ChunksAndEmbeddingsUploadInput) HasCustomCredentials() bool`
+
+HasCustomCredentials returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -36,7 +36,9 @@ from carbon.model.http_validation_error import HTTPValidationError as HTTPValida
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.data_source_type import DataSourceType as DataSourceTypeSchema
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
+from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
 
+from carbon.type.outh_url_response import OuthURLResponse
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.data_source_type import DataSourceType
@@ -47,6 +49,7 @@ from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNul
 from carbon.pydantic.data_source_type import DataSourceType as DataSourceTypePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest as OAuthURLRequestPydantic
+from carbon.pydantic.outh_url_response import OuthURLResponse as OuthURLResponsePydantic
 
 from . import path
 
@@ -66,17 +69,17 @@ _auth = [
     'apiKey',
     'customerId',
 ]
-SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
+SchemaFor200ResponseBodyApplicationJson = OuthURLResponseSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: OuthURLResponse
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: OuthURLResponse
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -138,6 +141,8 @@ class BaseApi(api_client.Api):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -175,6 +180,10 @@ class BaseApi(api_client.Api):
             _body["sync_files_on_connection"] = sync_files_on_connection
         if set_page_as_boundary is not None:
             _body["set_page_as_boundary"] = set_page_as_boundary
+        if data_source_id is not None:
+            _body["data_source_id"] = data_source_id
+        if connecting_new_account is not None:
+            _body["connecting_new_account"] = connecting_new_account
         args.body = _body
         return args
 
@@ -399,6 +408,8 @@ class GetOauthUrlRaw(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -423,6 +434,8 @@ class GetOauthUrlRaw(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -448,6 +461,8 @@ class GetOauthUrlRaw(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -470,6 +485,8 @@ class GetOauthUrlRaw(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -496,9 +513,11 @@ class GetOauthUrl(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
-    ) -> Dictionary:
+    ) -> OuthURLResponsePydantic:
         raw_response = await self.raw.aget_oauth_url(
             service=service,
             tags=tags,
@@ -517,11 +536,13 @@ class GetOauthUrl(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
             **kwargs,
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return OuthURLResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(OuthURLResponsePydantic, raw_response.body)
     
     
     def get_oauth_url(
@@ -543,8 +564,10 @@ class GetOauthUrl(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
-    ) -> Dictionary:
+    ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
             service=service,
             tags=tags,
@@ -563,10 +586,12 @@ class GetOauthUrl(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return OuthURLResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(OuthURLResponsePydantic, raw_response.body)
 
 
 class ApiForpost(BaseApi):
@@ -591,6 +616,8 @@ class ApiForpost(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -615,6 +642,8 @@ class ApiForpost(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -640,6 +669,8 @@ class ApiForpost(BaseApi):
         salesforce_domain: typing.Optional[typing.Optional[str]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
+        connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -662,6 +693,8 @@ class ApiForpost(BaseApi):
             salesforce_domain=salesforce_domain,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            data_source_id=data_source_id,
+            connecting_new_account=connecting_new_account,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

@@ -59,6 +59,7 @@ export * from './organization-user-file-tags-remove';
 export * from './organization-user-files-to-sync-filters';
 export * from './organization-user-files-to-sync-order-by-types';
 export * from './organization-user-files-to-sync-query-input';
+export * from './outh-urlresponse';
 export * from './outlook-sync-input';
 export * from './pagination';
 export * from './presigned-urlresponse';

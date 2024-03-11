@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-ChunksAndEmbeddingsEmbedding = typing.List[typing.Union[int, float]]
+ChunksAndEmbeddingsEmbedding = typing.Optional[typing.List[typing.Union[int, float]]]

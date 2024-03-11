@@ -34,6 +34,6 @@ export interface ChunksAndEmbeddings {
      * @type {Array<number>}
      * @memberof ChunksAndEmbeddings
      */
-    'embedding': Array<number>;
+    'embedding'?: Array<number> | null;
 }
 

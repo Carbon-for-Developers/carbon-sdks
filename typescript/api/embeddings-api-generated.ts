@@ -285,7 +285,9 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
             const chunksAndEmbeddingsUploadInput: ChunksAndEmbeddingsUploadInput = {
                 embedding_model: requestParameters.embedding_model,
                 chunks_and_embeddings: requestParameters.chunks_and_embeddings,
-                overwrite_existing: requestParameters.overwrite_existing
+                overwrite_existing: requestParameters.overwrite_existing,
+                chunks_only: requestParameters.chunks_only,
+                custom_credentials: requestParameters.custom_credentials
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadChunksAndEmbeddings(chunksAndEmbeddingsUploadInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

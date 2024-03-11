@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.6-blue)](https://pypi.org/project/carbon-python-sdk/0.1.6)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.7-blue)](https://pypi.org/project/carbon-python-sdk/0.1.7)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -83,7 +83,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.6
+pip install carbon-python-sdk==0.1.7
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -554,12 +554,13 @@ upload_chunks_and_embeddings_response = carbon.embeddings.upload_chunks_and_embe
                 {
                     "chunk_number": 1,
                     "chunk": "chunk_example",
-                    "embedding": [3.14],
                 }
             ],
         }
     ],
     overwrite_existing=False,
+    chunks_only=False,
+    custom_credentials={},
 )
 ```
 
@@ -570,6 +571,10 @@ upload_chunks_and_embeddings_response = carbon.embeddings.upload_chunks_and_embe
 ##### chunks_and_embeddings: List[`SingleChunksAndEmbeddingsUploadInput`]<a id="chunks_and_embeddings-listsinglechunksandembeddingsuploadinput"></a>
 
 ##### overwrite_existing: `bool`<a id="overwrite_existing-bool"></a>
+
+##### chunks_only: `bool`<a id="chunks_only-bool"></a>
+
+##### custom_credentials: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="custom_credentials-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -961,6 +966,7 @@ resync_response = carbon.files.resync(
     file_id=1,
     chunk_size=1,
     chunk_overlap=1,
+    force_embedding_generation=False,
 )
 ```
 
@@ -971,6 +977,8 @@ resync_response = carbon.files.resync(
 ##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
 
 ##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### force_embedding_generation: `bool`<a id="force_embedding_generation-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1392,7 +1400,10 @@ create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
 
 ### `carbon.integrations.get_oauth_url`<a id="carbonintegrationsget_oauth_url"></a>
 
-Get Oauth Url
+This endpoint can be used to generate the following URLs
+- An OAuth URL for OAuth based connectors
+- A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
+success state.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1415,6 +1426,8 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     salesforce_domain="string_example",
     sync_files_on_connection=True,
     set_page_as_boundary=False,
+    data_source_id=1,
+    connecting_new_account=False,
 )
 ```
 
@@ -1452,11 +1465,25 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
 
+Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
+
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
+
+##### connecting_new_account: `Optional[bool]`<a id="connecting_new_account-optionalbool"></a>
+
+Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`OAuthURLRequest`](./carbon/type/o_auth_url_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OuthURLResponse`](./carbon/pydantic/outh_url_response.py)
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/oauth_url` `post`
@@ -1554,8 +1581,14 @@ both system folders like "inbox" and user created folders.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_folders_response = carbon.integrations.list_folders()
+list_folders_response = carbon.integrations.list_folders(
+    data_source_id=1,
+)
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1597,8 +1630,14 @@ will have the type "user" and Gmail's default labels will have the type "system"
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_labels_response = carbon.integrations.list_labels()
+list_labels_response = carbon.integrations.list_labels(
+    data_source_id=1,
+)
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1616,8 +1655,14 @@ support listing up to 250 categories.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-list_outlook_categories_response = carbon.integrations.list_outlook_categories()
+list_outlook_categories_response = carbon.integrations.list_outlook_categories(
+    data_source_id=1,
+)
 ```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1905,6 +1950,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
+    data_source_id=1,
 )
 ```
 
@@ -1925,6 +1971,8 @@ sync_gmail_response = carbon.integrations.sync_gmail(
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
 
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2017,6 +2065,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
+    data_source_id=1,
 )
 ```
 
@@ -2039,6 +2088,8 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
 
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2127,6 +2178,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
+    data_source_id=1,
 )
 ```
 
@@ -2151,6 +2203,8 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

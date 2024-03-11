@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
 **GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] [default to false]
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
+**DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
@@ -287,6 +288,41 @@ HasPrependFilenameToChunks returns a boolean if a field has been set.
 `func (o *GmailSyncInput) UnsetPrependFilenameToChunks()`
 
 UnsetPrependFilenameToChunks ensures that no value is present for PrependFilenameToChunks, not even an explicit nil
+### GetDataSourceId
+
+`func (o *GmailSyncInput) GetDataSourceId() int32`
+
+GetDataSourceId returns the DataSourceId field if non-nil, zero value otherwise.
+
+### GetDataSourceIdOk
+
+`func (o *GmailSyncInput) GetDataSourceIdOk() (*int32, bool)`
+
+GetDataSourceIdOk returns a tuple with the DataSourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceId
+
+`func (o *GmailSyncInput) SetDataSourceId(v int32)`
+
+SetDataSourceId sets DataSourceId field to given value.
+
+### HasDataSourceId
+
+`func (o *GmailSyncInput) HasDataSourceId() bool`
+
+HasDataSourceId returns a boolean if a field has been set.
+
+### SetDataSourceIdNil
+
+`func (o *GmailSyncInput) SetDataSourceIdNil(b bool)`
+
+ SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+
+### UnsetDataSourceId
+`func (o *GmailSyncInput) UnsetDataSourceId()`
+
+UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

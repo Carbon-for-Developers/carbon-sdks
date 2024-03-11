@@ -121,6 +121,7 @@ class BaseApi(api_client.Api):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -130,6 +131,8 @@ class BaseApi(api_client.Api):
             _body["chunk_size"] = chunk_size
         if chunk_overlap is not None:
             _body["chunk_overlap"] = chunk_overlap
+        if force_embedding_generation is not None:
+            _body["force_embedding_generation"] = force_embedding_generation
         args.body = _body
         return args
 
@@ -340,6 +343,7 @@ class ResyncRaw(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -350,6 +354,7 @@ class ResyncRaw(BaseApi):
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
         )
         return await self._aresync_oapg(
             body=args.body,
@@ -361,6 +366,7 @@ class ResyncRaw(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -369,6 +375,7 @@ class ResyncRaw(BaseApi):
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
         )
         return self._resync_oapg(
             body=args.body,
@@ -381,6 +388,7 @@ class Resync(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -388,6 +396,7 @@ class Resync(BaseApi):
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
             **kwargs,
         )
         if validate:
@@ -400,12 +409,14 @@ class Resync(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.resync(
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -420,6 +431,7 @@ class ApiForpost(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -430,6 +442,7 @@ class ApiForpost(BaseApi):
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
         )
         return await self._aresync_oapg(
             body=args.body,
@@ -441,6 +454,7 @@ class ApiForpost(BaseApi):
         file_id: int,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
+        force_embedding_generation: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -449,6 +463,7 @@ class ApiForpost(BaseApi):
             file_id=file_id,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            force_embedding_generation=force_embedding_generation,
         )
         return self._resync_oapg(
             body=args.body,

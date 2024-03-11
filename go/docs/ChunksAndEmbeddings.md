@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChunkNumber** | **NullableInt32** |  | 
 **Chunk** | **string** |  | 
-**Embedding** | **[]float32** |  | 
+**Embedding** | Pointer to **[]float32** |  | [optional] 
 
 ## Methods
 
 ### NewChunksAndEmbeddings
 
-`func NewChunksAndEmbeddings(chunkNumber NullableInt32, chunk string, embedding []float32, ) *ChunksAndEmbeddings`
+`func NewChunksAndEmbeddings(chunkNumber NullableInt32, chunk string, ) *ChunksAndEmbeddings`
 
 NewChunksAndEmbeddings instantiates a new ChunksAndEmbeddings object
 This constructor will assign default values to properties that have it defined,
@@ -96,7 +96,22 @@ and a boolean to check if the value has been set.
 
 SetEmbedding sets Embedding field to given value.
 
+### HasEmbedding
 
+`func (o *ChunksAndEmbeddings) HasEmbedding() bool`
+
+HasEmbedding returns a boolean if a field has been set.
+
+### SetEmbeddingNil
+
+`func (o *ChunksAndEmbeddings) SetEmbeddingNil(b bool)`
+
+ SetEmbeddingNil sets the value for Embedding to be an explicit nil
+
+### UnsetEmbedding
+`func (o *ChunksAndEmbeddings) UnsetEmbedding()`
+
+UnsetEmbedding ensures that no value is present for Embedding, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

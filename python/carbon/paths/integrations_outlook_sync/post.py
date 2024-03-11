@@ -130,6 +130,7 @@ class BaseApi(api_client.Api):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -151,6 +152,8 @@ class BaseApi(api_client.Api):
             _body["generate_sparse_vectors"] = generate_sparse_vectors
         if prepend_filename_to_chunks is not None:
             _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
+        if data_source_id is not None:
+            _body["data_source_id"] = data_source_id
         args.body = _body
         return args
 
@@ -367,6 +370,7 @@ class SyncOutlookRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -383,6 +387,7 @@ class SyncOutlookRaw(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
         )
         return await self._async_outlook_oapg(
             body=args.body,
@@ -400,6 +405,7 @@ class SyncOutlookRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -414,6 +420,7 @@ class SyncOutlookRaw(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
         )
         return self._sync_outlook_oapg(
             body=args.body,
@@ -432,6 +439,7 @@ class SyncOutlook(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -445,6 +453,7 @@ class SyncOutlook(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
             **kwargs,
         )
         if validate:
@@ -463,6 +472,7 @@ class SyncOutlook(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_outlook(
@@ -475,6 +485,7 @@ class SyncOutlook(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -495,6 +506,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -511,6 +523,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
         )
         return await self._async_outlook_oapg(
             body=args.body,
@@ -528,6 +541,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        data_source_id: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -542,6 +556,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            data_source_id=data_source_id,
         )
         return self._sync_outlook_oapg(
             body=args.body,

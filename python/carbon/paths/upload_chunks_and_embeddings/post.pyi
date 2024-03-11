@@ -116,6 +116,8 @@ class BaseApi(api_client.Api):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -125,6 +127,10 @@ class BaseApi(api_client.Api):
             _body["chunks_and_embeddings"] = chunks_and_embeddings
         if overwrite_existing is not None:
             _body["overwrite_existing"] = overwrite_existing
+        if chunks_only is not None:
+            _body["chunks_only"] = chunks_only
+        if custom_credentials is not None:
+            _body["custom_credentials"] = custom_credentials
         args.body = _body
         return args
 
@@ -335,6 +341,8 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -345,6 +353,8 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
         )
         return await self._aupload_chunks_and_embeddings_oapg(
             body=args.body,
@@ -356,6 +366,8 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -364,6 +376,8 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
         )
         return self._upload_chunks_and_embeddings_oapg(
             body=args.body,
@@ -376,6 +390,8 @@ class UploadChunksAndEmbeddings(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -383,6 +399,8 @@ class UploadChunksAndEmbeddings(BaseApi):
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
             **kwargs,
         )
         if validate:
@@ -395,12 +413,16 @@ class UploadChunksAndEmbeddings(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.upload_chunks_and_embeddings(
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -415,6 +437,8 @@ class ApiForpost(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -425,6 +449,8 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
         )
         return await self._aupload_chunks_and_embeddings_oapg(
             body=args.body,
@@ -436,6 +462,8 @@ class ApiForpost(BaseApi):
         embedding_model: EmbeddingGenerators,
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
+        chunks_only: typing.Optional[bool] = None,
+        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -444,6 +472,8 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             chunks_and_embeddings=chunks_and_embeddings,
             overwrite_existing=overwrite_existing,
+            chunks_only=chunks_only,
+            custom_credentials=custom_credentials,
         )
         return self._upload_chunks_and_embeddings_oapg(
             body=args.body,

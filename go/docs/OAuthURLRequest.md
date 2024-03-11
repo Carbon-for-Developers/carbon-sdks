@@ -19,8 +19,10 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
 **SalesforceDomain** | Pointer to **NullableString** |  | [optional] 
-**SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
+**SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
+**ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
 
 ## Methods
 
@@ -611,6 +613,76 @@ SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 
 HasSetPageAsBoundary returns a boolean if a field has been set.
 
+### GetDataSourceId
+
+`func (o *OAuthURLRequest) GetDataSourceId() int32`
+
+GetDataSourceId returns the DataSourceId field if non-nil, zero value otherwise.
+
+### GetDataSourceIdOk
+
+`func (o *OAuthURLRequest) GetDataSourceIdOk() (*int32, bool)`
+
+GetDataSourceIdOk returns a tuple with the DataSourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceId
+
+`func (o *OAuthURLRequest) SetDataSourceId(v int32)`
+
+SetDataSourceId sets DataSourceId field to given value.
+
+### HasDataSourceId
+
+`func (o *OAuthURLRequest) HasDataSourceId() bool`
+
+HasDataSourceId returns a boolean if a field has been set.
+
+### SetDataSourceIdNil
+
+`func (o *OAuthURLRequest) SetDataSourceIdNil(b bool)`
+
+ SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+
+### UnsetDataSourceId
+`func (o *OAuthURLRequest) UnsetDataSourceId()`
+
+UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
+### GetConnectingNewAccount
+
+`func (o *OAuthURLRequest) GetConnectingNewAccount() bool`
+
+GetConnectingNewAccount returns the ConnectingNewAccount field if non-nil, zero value otherwise.
+
+### GetConnectingNewAccountOk
+
+`func (o *OAuthURLRequest) GetConnectingNewAccountOk() (*bool, bool)`
+
+GetConnectingNewAccountOk returns a tuple with the ConnectingNewAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectingNewAccount
+
+`func (o *OAuthURLRequest) SetConnectingNewAccount(v bool)`
+
+SetConnectingNewAccount sets ConnectingNewAccount field to given value.
+
+### HasConnectingNewAccount
+
+`func (o *OAuthURLRequest) HasConnectingNewAccount() bool`
+
+HasConnectingNewAccount returns a boolean if a field has been set.
+
+### SetConnectingNewAccountNil
+
+`func (o *OAuthURLRequest) SetConnectingNewAccountNil(b bool)`
+
+ SetConnectingNewAccountNil sets the value for ConnectingNewAccount to be an explicit nil
+
+### UnsetConnectingNewAccount
+`func (o *OAuthURLRequest) UnsetConnectingNewAccount()`
+
+UnsetConnectingNewAccount ensures that no value is present for ConnectingNewAccount, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

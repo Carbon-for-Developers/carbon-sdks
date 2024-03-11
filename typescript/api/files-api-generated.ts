@@ -933,7 +933,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const resyncFileQueryInput: ResyncFileQueryInput = {
                 file_id: requestParameters.file_id,
                 chunk_size: requestParameters.chunk_size,
-                chunk_overlap: requestParameters.chunk_overlap
+                chunk_overlap: requestParameters.chunk_overlap,
+                force_embedding_generation: requestParameters.force_embedding_generation
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.resync(resyncFileQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

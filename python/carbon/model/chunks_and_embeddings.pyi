@@ -35,7 +35,6 @@ class ChunksAndEmbeddings(
         required = {
             "chunk_number",
             "chunk",
-            "embedding",
         }
         
         class properties:
@@ -72,7 +71,6 @@ class ChunksAndEmbeddings(
     
     chunk_number: MetaOapg.properties.chunk_number
     chunk: MetaOapg.properties.chunk
-    embedding: 'ChunksAndEmbeddingsEmbedding'
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["chunk_number"]) -> MetaOapg.properties.chunk_number: ...
@@ -98,7 +96,7 @@ class ChunksAndEmbeddings(
     def get_item_oapg(self, name: typing_extensions.Literal["chunk"]) -> MetaOapg.properties.chunk: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["embedding"]) -> 'ChunksAndEmbeddingsEmbedding': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["embedding"]) -> typing.Union['ChunksAndEmbeddingsEmbedding', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -112,7 +110,7 @@ class ChunksAndEmbeddings(
         *args: typing.Union[dict, frozendict.frozendict, ],
         chunk_number: typing.Union[MetaOapg.properties.chunk_number, None, decimal.Decimal, int, ],
         chunk: typing.Union[MetaOapg.properties.chunk, str, ],
-        embedding: 'ChunksAndEmbeddingsEmbedding',
+        embedding: typing.Union['ChunksAndEmbeddingsEmbedding', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ChunksAndEmbeddings':

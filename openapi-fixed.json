@@ -89,6 +89,7 @@
             ]
           }
         ],
+        "description": "This endpoint can be used to generate the following URLs\n- An OAuth URL for OAuth based connectors\n- A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the\nsuccess state.",
         "requestBody": {
           "required": true,
           "content": {
@@ -105,7 +106,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IntegrationsGetOauthUrlResponse"
+                  "$ref": "#/components/schemas/OuthURLResponse"
                 }
               }
             }
@@ -734,6 +735,18 @@
           }
         ],
         "description": "After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes \nboth system folders like \"inbox\" and user created folders.",
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer",
+              "nullable": true
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -778,6 +791,18 @@
           }
         ],
         "description": "After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently\nsupport listing up to 250 categories.",
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer",
+              "nullable": true
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -822,6 +847,18 @@
           }
         ],
         "description": "After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels\nwill have the type \"user\" and Gmail's default labels will have the type \"system\"",
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer",
+              "nullable": true
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2871,14 +2908,14 @@
             "items": {
               "type": "number"
             },
-            "type": "array"
+            "type": "array",
+            "nullable": true
           }
         },
         "type": "object",
         "required": [
           "chunk_number",
-          "chunk",
-          "embedding"
+          "chunk"
         ]
       },
       "ChunksAndEmbeddingsUploadInput": {
@@ -2898,6 +2935,17 @@
             "title": "Overwrite Existing",
             "type": "boolean",
             "default": false
+          },
+          "chunks_only": {
+            "title": "Chunks Only",
+            "type": "boolean",
+            "default": false
+          },
+          "custom_credentials": {
+            "title": "Custom Credentials",
+            "type": "object",
+            "default": {
+            }
           }
         },
         "type": "object",
@@ -4034,6 +4082,11 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4258,6 +4311,7 @@
           },
           "sync_files_on_connection": {
             "title": "Sync Files On Connection",
+            "description": "Used to specify whether Carbon should attempt to sync all your files automatically when authorization\n        is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported\n        connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk",
             "default": true,
             "type": "boolean",
             "nullable": true
@@ -4266,6 +4320,19 @@
             "title": "Set Page As Boundary",
             "type": "boolean",
             "default": false
+          },
+          "data_source_id": {
+            "title": "Data Source Id",
+            "description": "Used to specify a data source to sync from if you have multiple connected. It can be skipped if \n        you only have one data source of that type connected or are connecting a new account.",
+            "type": "integer",
+            "nullable": true
+          },
+          "connecting_new_account": {
+            "title": "Connecting New Account",
+            "description": "Used to connect a new data source. If not specified, we will attempt to create a sync URL\n        for an existing data source based on type and ID.",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4782,6 +4849,19 @@
           }
         }
       },
+      "OuthURLResponse": {
+        "title": "OuthURLResponse",
+        "properties": {
+          "oauth_url": {
+            "title": "Oauth Url",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "oauth_url"
+        ]
+      },
       "OutlookSyncInput": {
         "title": "OutlookSyncInput",
         "properties": {
@@ -4833,6 +4913,11 @@
             "title": "Prepend Filename To Chunks",
             "default": false,
             "type": "boolean",
+            "nullable": true
+          },
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer",
             "nullable": true
           }
         },
@@ -4996,6 +5081,11 @@
             "title": "Chunk Overlap",
             "type": "integer",
             "nullable": true
+          },
+          "force_embedding_generation": {
+            "title": "Force Embedding Generation",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -5093,6 +5183,11 @@
             "title": "Set Page As Boundary",
             "type": "boolean",
             "default": false
+          },
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer",
+            "nullable": true
           }
         },
         "type": "object",
@@ -6385,13 +6480,6 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/WebscrapeRequest"
-        }
-      },
-      "IntegrationsGetOauthUrlResponse": {
-        "type": "object",
-        "properties": {
-        },
-        "example": {
         }
       },
       "IntegrationsListFoldersResponse": {

@@ -44,6 +44,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'chunk_number',
+        :'embedding'
       ])
     end
 
@@ -85,10 +86,6 @@ module Carbon
         invalid_properties.push('invalid value for "chunk", chunk cannot be nil.')
       end
 
-      if @embedding.nil?
-        invalid_properties.push('invalid value for "embedding", embedding cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -96,7 +93,6 @@ module Carbon
     # @return true if the model is valid
     def valid?
       return false if @chunk.nil?
-      return false if @embedding.nil?
       true
     end
 

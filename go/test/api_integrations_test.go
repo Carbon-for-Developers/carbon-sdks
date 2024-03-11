@@ -125,6 +125,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSalesforceDomain("null")
         oAuthURLRequest.SetSyncFilesOnConnection(true)
         oAuthURLRequest.SetSetPageAsBoundary(false)
+        oAuthURLRequest.SetDataSourceId(null)
+        oAuthURLRequest.SetConnectingNewAccount(false)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -184,6 +186,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.IntegrationsApi.ListFolders(
         )
+        request.DataSourceId(56)
         
         resp, httpRes, err := request.Execute()
 
@@ -211,6 +214,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.IntegrationsApi.ListLabels(
         )
+        request.DataSourceId(56)
         
         resp, httpRes, err := request.Execute()
 
@@ -224,6 +228,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.IntegrationsApi.ListOutlookCategories(
         )
+        request.DataSourceId(56)
         
         resp, httpRes, err := request.Execute()
 
@@ -352,6 +357,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gmailSyncInput.SetEmbeddingModel(null)
         gmailSyncInput.SetGenerateSparseVectors(false)
         gmailSyncInput.SetPrependFilenameToChunks(false)
+        gmailSyncInput.SetDataSourceId(null)
         
         request := client.IntegrationsApi.SyncGmail(
             gmailSyncInput,
@@ -379,6 +385,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         outlookSyncInput.SetEmbeddingModel(null)
         outlookSyncInput.SetGenerateSparseVectors(false)
         outlookSyncInput.SetPrependFilenameToChunks(false)
+        outlookSyncInput.SetDataSourceId(null)
         
         request := client.IntegrationsApi.SyncOutlook(
             outlookSyncInput,
@@ -433,6 +440,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         s3FileSyncInput.SetPrependFilenameToChunks(false)
         s3FileSyncInput.SetMaxItemsPerChunk(null)
         s3FileSyncInput.SetSetPageAsBoundary(false)
+        s3FileSyncInput.SetDataSourceId(null)
         
         request := client.IntegrationsApi.SyncS3Files(
             s3FileSyncInput,

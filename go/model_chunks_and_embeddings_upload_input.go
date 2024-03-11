@@ -19,6 +19,8 @@ type ChunksAndEmbeddingsUploadInput struct {
 	EmbeddingModel EmbeddingGenerators `json:"embedding_model"`
 	ChunksAndEmbeddings []SingleChunksAndEmbeddingsUploadInput `json:"chunks_and_embeddings"`
 	OverwriteExisting *bool `json:"overwrite_existing,omitempty"`
+	ChunksOnly *bool `json:"chunks_only,omitempty"`
+	CustomCredentials map[string]interface{} `json:"custom_credentials,omitempty"`
 }
 
 // NewChunksAndEmbeddingsUploadInput instantiates a new ChunksAndEmbeddingsUploadInput object
@@ -31,6 +33,8 @@ func NewChunksAndEmbeddingsUploadInput(embeddingModel EmbeddingGenerators, chunk
 	this.ChunksAndEmbeddings = chunksAndEmbeddings
 	var overwriteExisting bool = false
 	this.OverwriteExisting = &overwriteExisting
+	var chunksOnly bool = false
+	this.ChunksOnly = &chunksOnly
 	return &this
 }
 
@@ -41,6 +45,8 @@ func NewChunksAndEmbeddingsUploadInputWithDefaults() *ChunksAndEmbeddingsUploadI
 	this := ChunksAndEmbeddingsUploadInput{}
 	var overwriteExisting bool = false
 	this.OverwriteExisting = &overwriteExisting
+	var chunksOnly bool = false
+	this.ChunksOnly = &chunksOnly
 	return &this
 }
 
@@ -124,6 +130,70 @@ func (o *ChunksAndEmbeddingsUploadInput) SetOverwriteExisting(v bool) {
 	o.OverwriteExisting = &v
 }
 
+// GetChunksOnly returns the ChunksOnly field value if set, zero value otherwise.
+func (o *ChunksAndEmbeddingsUploadInput) GetChunksOnly() bool {
+	if o == nil || isNil(o.ChunksOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.ChunksOnly
+}
+
+// GetChunksOnlyOk returns a tuple with the ChunksOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChunksAndEmbeddingsUploadInput) GetChunksOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.ChunksOnly) {
+    return nil, false
+	}
+	return o.ChunksOnly, true
+}
+
+// HasChunksOnly returns a boolean if a field has been set.
+func (o *ChunksAndEmbeddingsUploadInput) HasChunksOnly() bool {
+	if o != nil && !isNil(o.ChunksOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetChunksOnly gets a reference to the given bool and assigns it to the ChunksOnly field.
+func (o *ChunksAndEmbeddingsUploadInput) SetChunksOnly(v bool) {
+	o.ChunksOnly = &v
+}
+
+// GetCustomCredentials returns the CustomCredentials field value if set, zero value otherwise.
+func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]interface{} {
+	if o == nil || isNil(o.CustomCredentials) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.CustomCredentials
+}
+
+// GetCustomCredentialsOk returns a tuple with the CustomCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.CustomCredentials) {
+    return map[string]interface{}{}, false
+	}
+	return o.CustomCredentials, true
+}
+
+// HasCustomCredentials returns a boolean if a field has been set.
+func (o *ChunksAndEmbeddingsUploadInput) HasCustomCredentials() bool {
+	if o != nil && !isNil(o.CustomCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomCredentials gets a reference to the given map[string]interface{} and assigns it to the CustomCredentials field.
+func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]interface{}) {
+	o.CustomCredentials = v
+}
+
 func (o ChunksAndEmbeddingsUploadInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -134,6 +204,12 @@ func (o ChunksAndEmbeddingsUploadInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.OverwriteExisting) {
 		toSerialize["overwrite_existing"] = o.OverwriteExisting
+	}
+	if !isNil(o.ChunksOnly) {
+		toSerialize["chunks_only"] = o.ChunksOnly
+	}
+	if !isNil(o.CustomCredentials) {
+		toSerialize["custom_credentials"] = o.CustomCredentials
 	}
 	return json.Marshal(toSerialize)
 }

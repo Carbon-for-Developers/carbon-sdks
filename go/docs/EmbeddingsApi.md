@@ -157,6 +157,8 @@ func main() {
         null,
     )
     chunksAndEmbeddingsUploadInput.SetOverwriteExisting(false)
+    chunksAndEmbeddingsUploadInput.SetChunksOnly(false)
+    chunksAndEmbeddingsUploadInput.SetCustomCredentials({})
     
     request := client.EmbeddingsApi.UploadChunksAndEmbeddings(
         chunksAndEmbeddingsUploadInput,

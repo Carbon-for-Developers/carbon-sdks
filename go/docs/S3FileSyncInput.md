@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
@@ -349,6 +350,41 @@ SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 
 HasSetPageAsBoundary returns a boolean if a field has been set.
 
+### GetDataSourceId
+
+`func (o *S3FileSyncInput) GetDataSourceId() int32`
+
+GetDataSourceId returns the DataSourceId field if non-nil, zero value otherwise.
+
+### GetDataSourceIdOk
+
+`func (o *S3FileSyncInput) GetDataSourceIdOk() (*int32, bool)`
+
+GetDataSourceIdOk returns a tuple with the DataSourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceId
+
+`func (o *S3FileSyncInput) SetDataSourceId(v int32)`
+
+SetDataSourceId sets DataSourceId field to given value.
+
+### HasDataSourceId
+
+`func (o *S3FileSyncInput) HasDataSourceId() bool`
+
+HasDataSourceId returns a boolean if a field has been set.
+
+### SetDataSourceIdNil
+
+`func (o *S3FileSyncInput) SetDataSourceIdNil(b bool)`
+
+ SetDataSourceIdNil sets the value for DataSourceId to be an explicit nil
+
+### UnsetDataSourceId
+`func (o *S3FileSyncInput) UnsetDataSourceId()`
+
+UnsetDataSourceId ensures that no value is present for DataSourceId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

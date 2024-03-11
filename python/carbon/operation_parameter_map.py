@@ -106,6 +106,12 @@ operation_parameter_map = {
             {
                 'name': 'overwrite_existing'
             },
+            {
+                'name': 'chunks_only'
+            },
+            {
+                'name': 'custom_credentials'
+            },
         ]
     },
     '/create_user_file_tags-POST': {
@@ -228,6 +234,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'chunk_overlap'
+            },
+            {
+                'name': 'force_embedding_generation'
             },
         ]
     },
@@ -465,6 +474,12 @@ operation_parameter_map = {
             {
                 'name': 'set_page_as_boundary'
             },
+            {
+                'name': 'data_source_id'
+            },
+            {
+                'name': 'connecting_new_account'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -492,6 +507,9 @@ operation_parameter_map = {
     },
     '/integrations/outlook/user_folders-GET': {
         'parameters': [
+            {
+                'name': 'data_source_id'
+            },
         ]
     },
     '/integrations/gitbook/spaces-GET': {
@@ -503,10 +521,16 @@ operation_parameter_map = {
     },
     '/integrations/gmail/user_labels-GET': {
         'parameters': [
+            {
+                'name': 'data_source_id'
+            },
         ]
     },
     '/integrations/outlook/user_categories-GET': {
         'parameters': [
+            {
+                'name': 'data_source_id'
+            },
         ]
     },
     '/integrations/confluence/sync-POST': {
@@ -647,6 +671,9 @@ operation_parameter_map = {
             {
                 'name': 'prepend_filename_to_chunks'
             },
+            {
+                'name': 'data_source_id'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -677,6 +704,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'prepend_filename_to_chunks'
+            },
+            {
+                'name': 'data_source_id'
             },
         ]
     },
@@ -739,6 +769,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'set_page_as_boundary'
+            },
+            {
+                'name': 'data_source_id'
             },
         ]
     },

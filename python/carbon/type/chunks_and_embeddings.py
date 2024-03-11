@@ -21,10 +21,8 @@ class RequiredChunksAndEmbeddings(TypedDict):
 
     chunk: str
 
-    embedding: ChunksAndEmbeddingsEmbedding
-
 class OptionalChunksAndEmbeddings(TypedDict, total=False):
-    pass
+    embedding: ChunksAndEmbeddingsEmbedding
 
 class ChunksAndEmbeddings(RequiredChunksAndEmbeddings, OptionalChunksAndEmbeddings):
     pass

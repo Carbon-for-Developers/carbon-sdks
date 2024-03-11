@@ -17,12 +17,18 @@ module Carbon
 
     attr_accessor :overwrite_existing
 
+    attr_accessor :chunks_only
+
+    attr_accessor :custom_credentials
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'embedding_model' => :'embedding_model',
         :'chunks_and_embeddings' => :'chunks_and_embeddings',
-        :'overwrite_existing' => :'overwrite_existing'
+        :'overwrite_existing' => :'overwrite_existing',
+        :'chunks_only' => :'chunks_only',
+        :'custom_credentials' => :'custom_credentials'
       }
     end
 
@@ -36,7 +42,9 @@ module Carbon
       {
         :'embedding_model' => :'EmbeddingGenerators',
         :'chunks_and_embeddings' => :'Array<SingleChunksAndEmbeddingsUploadInput>',
-        :'overwrite_existing' => :'Boolean'
+        :'overwrite_existing' => :'Boolean',
+        :'chunks_only' => :'Boolean',
+        :'custom_credentials' => :'Object'
       }
     end
 
@@ -76,6 +84,16 @@ module Carbon
       else
         self.overwrite_existing = false
       end
+
+      if attributes.key?(:'chunks_only')
+        self.chunks_only = attributes[:'chunks_only']
+      else
+        self.chunks_only = false
+      end
+
+      if attributes.key?(:'custom_credentials')
+        self.custom_credentials = attributes[:'custom_credentials']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -108,7 +126,9 @@ module Carbon
       self.class == o.class &&
           embedding_model == o.embedding_model &&
           chunks_and_embeddings == o.chunks_and_embeddings &&
-          overwrite_existing == o.overwrite_existing
+          overwrite_existing == o.overwrite_existing &&
+          chunks_only == o.chunks_only &&
+          custom_credentials == o.custom_credentials
     end
 
     # @see the `==` method
@@ -120,7 +140,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [embedding_model, chunks_and_embeddings, overwrite_existing].hash
+      [embedding_model, chunks_and_embeddings, overwrite_existing, chunks_only, custom_credentials].hash
     end
 
     # Builds the object from hash

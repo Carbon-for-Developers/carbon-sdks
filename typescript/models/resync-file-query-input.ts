@@ -35,5 +35,11 @@ export interface ResyncFileQueryInput {
      * @memberof ResyncFileQueryInput
      */
     'chunk_overlap'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ResyncFileQueryInput
+     */
+    'force_embedding_generation'?: boolean;
 }
 

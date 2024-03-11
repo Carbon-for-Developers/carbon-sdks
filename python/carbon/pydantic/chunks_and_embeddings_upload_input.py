@@ -24,5 +24,9 @@ class ChunksAndEmbeddingsUploadInput(BaseModel):
     chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput] = Field(alias='chunks_and_embeddings')
 
     overwrite_existing: typing.Optional[bool] = Field(None, alias='overwrite_existing')
+
+    chunks_only: typing.Optional[bool] = Field(None, alias='chunks_only')
+
+    custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='custom_credentials')
     class Config:
         arbitrary_types_allowed = True
