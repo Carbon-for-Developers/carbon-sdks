@@ -27,6 +27,28 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     client := carbon.NewAPIClient(configuration)
     */
 
+    t.Run("Test IntegrationsApiService ConnectDataSource", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        authentication := *carbon.NewAuthenticationProperty()
+        syncOptions := *carbon.NewSyncOptions()
+        
+        connectDataSourceInput := *carbon.NewConnectDataSourceInput(
+            authentication,
+        )
+        connectDataSourceInput.SetSyncOptions(syncOptions)
+        
+        request := client.IntegrationsApi.ConnectDataSource(
+            connectDataSourceInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService ConnectFreshdesk", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

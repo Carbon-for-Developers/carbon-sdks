@@ -2,6 +2,7 @@ import typing_extensions
 
 from carbon.paths import PathValues
 from carbon.apis.paths.integrations_oauth_url import IntegrationsOauthUrl
+from carbon.apis.paths.integrations_connect import IntegrationsConnect
 from carbon.apis.paths.integrations_items_sync import IntegrationsItemsSync
 from carbon.apis.paths.integrations_items_list import IntegrationsItemsList
 from carbon.apis.paths.integrations_files_sync import IntegrationsFilesSync
@@ -57,6 +58,7 @@ PathToApi = typing_extensions.TypedDict(
     'PathToApi',
     {
         PathValues.INTEGRATIONS_OAUTH_URL: IntegrationsOauthUrl,
+        PathValues.INTEGRATIONS_CONNECT: IntegrationsConnect,
         PathValues.INTEGRATIONS_ITEMS_SYNC: IntegrationsItemsSync,
         PathValues.INTEGRATIONS_ITEMS_LIST: IntegrationsItemsList,
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,
@@ -113,6 +115,7 @@ PathToApi = typing_extensions.TypedDict(
 path_to_api = PathToApi(
     {
         PathValues.INTEGRATIONS_OAUTH_URL: IntegrationsOauthUrl,
+        PathValues.INTEGRATIONS_CONNECT: IntegrationsConnect,
         PathValues.INTEGRATIONS_ITEMS_SYNC: IntegrationsItemsSync,
         PathValues.INTEGRATIONS_ITEMS_LIST: IntegrationsItemsList,
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,

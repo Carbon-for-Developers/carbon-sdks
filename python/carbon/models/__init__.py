@@ -19,6 +19,9 @@ from carbon.model.chunks_and_embeddings import ChunksAndEmbeddings
 from carbon.model.chunks_and_embeddings_embedding import ChunksAndEmbeddingsEmbedding
 from carbon.model.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput
 from carbon.model.configuration_keys import ConfigurationKeys
+from carbon.model.confluence_authentication import ConfluenceAuthentication
+from carbon.model.connect_data_source_input import ConnectDataSourceInput
+from carbon.model.connect_data_source_response import ConnectDataSourceResponse
 from carbon.model.data_source_last_sync_actions import DataSourceLastSyncActions
 from carbon.model.data_source_sync_statuses import DataSourceSyncStatuses
 from carbon.model.data_source_type import DataSourceType
@@ -53,12 +56,14 @@ from carbon.model.file_statistics import FileStatistics
 from carbon.model.file_statistics_nullable import FileStatisticsNullable
 from carbon.model.files_query_user_files_deprecated_response import FilesQueryUserFilesDeprecatedResponse
 from carbon.model.fresh_desk_connect_request import FreshDeskConnectRequest
+from carbon.model.freskdesk_authentication import FreskdeskAuthentication
 from carbon.model.generic_success_response import GenericSuccessResponse
 from carbon.model.get_embedding_documents_body import GetEmbeddingDocumentsBody
 from carbon.model.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
 from carbon.model.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.model.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.model.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.model.gitbook_authetication import GitbookAuthetication
 from carbon.model.gitbook_connect_request import GitbookConnectRequest
 from carbon.model.gitbook_sync_request import GitbookSyncRequest
 from carbon.model.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
@@ -71,6 +76,8 @@ from carbon.model.list_data_source_items_response import ListDataSourceItemsResp
 from carbon.model.list_request import ListRequest
 from carbon.model.list_response import ListResponse
 from carbon.model.modify_user_configuration_input import ModifyUserConfigurationInput
+from carbon.model.notion_authentication import NotionAuthentication
+from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
 from carbon.model.order_dir import OrderDir
 from carbon.model.organization_response import OrganizationResponse
@@ -101,8 +108,12 @@ from carbon.model.raw_text_input import RawTextInput
 from carbon.model.resync_file_query_input import ResyncFileQueryInput
 from carbon.model.revoke_access_token_input import RevokeAccessTokenInput
 from carbon.model.s3_auth_request import S3AuthRequest
+from carbon.model.s3_authentication import S3Authentication
 from carbon.model.s3_file_sync_input import S3FileSyncInput
 from carbon.model.s3_get_file_input import S3GetFileInput
+from carbon.model.salesforce_authentication import SalesforceAuthentication
+from carbon.model.sharepoint_authentication import SharepointAuthentication
+from carbon.model.simple_o_auth_data_sources import SimpleOAuthDataSources
 from carbon.model.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
 from carbon.model.sitemap_scrape_request import SitemapScrapeRequest
 from carbon.model.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
@@ -112,6 +123,7 @@ from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.model.sync_directory_request import SyncDirectoryRequest
 from carbon.model.sync_files_ids import SyncFilesIds
 from carbon.model.sync_files_request import SyncFilesRequest
+from carbon.model.sync_options import SyncOptions
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
 from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput
@@ -140,3 +152,5 @@ from carbon.model.white_labeling_response import WhiteLabelingResponse
 from carbon.model.youtube_transcript_response import YoutubeTranscriptResponse
 from carbon.model.youtube_transcript_response_raw_transcript import YoutubeTranscriptResponseRawTranscript
 from carbon.model.youtube_transcript_response_raw_transcript_item import YoutubeTranscriptResponseRawTranscriptItem
+from carbon.model.zendesk_authentication import ZendeskAuthentication
+from carbon.model.zotero_authentication import ZoteroAuthentication

@@ -26,6 +26,8 @@ class OrganizationUserDataSourceAPI(BaseModel):
 
     data_source_type: DataSourceType = Field(alias='data_source_type')
 
+    token: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='token')
+
     sync_status: DataSourceSyncStatuses = Field(alias='sync_status')
 
     source_items_synced_at: typing.Optional[datetime] = Field(alias='source_items_synced_at')

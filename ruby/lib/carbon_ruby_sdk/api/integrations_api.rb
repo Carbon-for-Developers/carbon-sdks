@@ -16,6 +16,102 @@ module Carbon
       @api_client = api_client
     end
 
+    # Connect Data Source
+    #
+    # @param authentication [AuthenticationProperty] 
+    # @param sync_options [SyncOptions] 
+    # @param body [ConnectDataSourceInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_data_source(authentication:, sync_options: SENTINEL, extra: {})
+      _body = {}
+      _body[:authentication] = authentication if authentication != SENTINEL
+      _body[:sync_options] = sync_options if sync_options != SENTINEL
+      connect_data_source_input = _body
+      api_response = connect_data_source_with_http_info_impl(connect_data_source_input, extra)
+      api_response.data
+    end
+
+    # Connect Data Source
+    #
+    # @param authentication [AuthenticationProperty] 
+    # @param sync_options [SyncOptions] 
+    # @param body [ConnectDataSourceInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_data_source_with_http_info(authentication:, sync_options: SENTINEL, extra: {})
+      _body = {}
+      _body[:authentication] = authentication if authentication != SENTINEL
+      _body[:sync_options] = sync_options if sync_options != SENTINEL
+      connect_data_source_input = _body
+      connect_data_source_with_http_info_impl(connect_data_source_input, extra)
+    end
+
+    # Connect Data Source
+    # @param connect_data_source_input [ConnectDataSourceInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConnectDataSourceResponse]
+    private def connect_data_source_impl(connect_data_source_input, opts = {})
+      data, _status_code, _headers = connect_data_source_with_http_info(connect_data_source_input, opts)
+      data
+    end
+
+    # Connect Data Source
+    # @param connect_data_source_input [ConnectDataSourceInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is ConnectDataSourceResponse, status code, headers and response
+    private def connect_data_source_with_http_info_impl(connect_data_source_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.connect_data_source ...'
+      end
+      # verify the required parameter 'connect_data_source_input' is set
+      if @api_client.config.client_side_validation && connect_data_source_input.nil?
+        fail ArgumentError, "Missing the required parameter 'connect_data_source_input' when calling IntegrationsApi.connect_data_source"
+      end
+      # resource path
+      local_var_path = '/integrations/connect'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(connect_data_source_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConnectDataSourceResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.connect_data_source",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#connect_data_source\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Freshdesk Connect
     #
     # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.

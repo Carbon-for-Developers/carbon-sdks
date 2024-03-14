@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.9-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.9)
+[![npm](https://img.shields.io/badge/npm-v0.1.10-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.10)
 
 </div>
 
@@ -37,6 +37,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
   * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
   * [`carbon.integrations.createAwsIamUser`](#carbonintegrationscreateawsiamuser)
@@ -1109,6 +1110,40 @@ const checkResponse = await carbon.health.check();
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/health` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.connectDataSource`<a id="carbonintegrationsconnectdatasource"></a>
+
+Connect Data Source
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const connectDataSourceResponse = await carbon.integrations.connectDataSource({
+  authentication: {
+    source: "GOOGLE_DRIVE",
+    access_token: "access_token_example",
+  },
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authentication: [`AuthenticationProperty`](./models/authentication-property.ts)<a id="authentication-authenticationpropertymodelsauthentication-propertyts"></a>
+
+##### sync_options: [`SyncOptions`](./models/sync-options.ts)<a id="sync_options-syncoptionsmodelssync-optionsts"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ConnectDataSourceResponse](./models/connect-data-source-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/connect` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

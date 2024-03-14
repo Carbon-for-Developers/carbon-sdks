@@ -74,6 +74,8 @@ operationIds:
     post: Integrations_listConfluencePages
   /integrations/confluence/sync:
     post: Integrations_syncConfluence
+  /integrations/connect:
+    post: Integrations_connectDataSource
   /integrations/files/sync:
     post: Integrations_syncFiles
   /integrations/freshdesk:

@@ -20,6 +20,7 @@ type OrganizationUserDataSourceAPI struct {
 	Id int32 `json:"id"`
 	DataSourceExternalId NullableString `json:"data_source_external_id"`
 	DataSourceType DataSourceType `json:"data_source_type"`
+	Token map[string]interface{} `json:"token"`
 	SyncStatus DataSourceSyncStatuses `json:"sync_status"`
 	SourceItemsSyncedAt NullableTime `json:"source_items_synced_at"`
 	OrganizationUserId int32 `json:"organization_user_id"`
@@ -36,11 +37,12 @@ type OrganizationUserDataSourceAPI struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time) *OrganizationUserDataSourceAPI {
+func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time) *OrganizationUserDataSourceAPI {
 	this := OrganizationUserDataSourceAPI{}
 	this.Id = id
 	this.DataSourceExternalId = dataSourceExternalId
 	this.DataSourceType = dataSourceType
+	this.Token = token
 	this.SyncStatus = syncStatus
 	this.SourceItemsSyncedAt = sourceItemsSyncedAt
 	this.OrganizationUserId = organizationUserId
@@ -134,6 +136,32 @@ func (o *OrganizationUserDataSourceAPI) GetDataSourceTypeOk() (*DataSourceType, 
 // SetDataSourceType sets field value
 func (o *OrganizationUserDataSourceAPI) SetDataSourceType(v DataSourceType) {
 	o.DataSourceType = v
+}
+
+// GetToken returns the Token field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *OrganizationUserDataSourceAPI) GetToken() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserDataSourceAPI) GetTokenOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.Token) {
+    return map[string]interface{}{}, false
+	}
+	return o.Token, true
+}
+
+// SetToken sets field value
+func (o *OrganizationUserDataSourceAPI) SetToken(v map[string]interface{}) {
+	o.Token = v
 }
 
 // GetSyncStatus returns the SyncStatus field value
@@ -388,6 +416,9 @@ func (o OrganizationUserDataSourceAPI) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["data_source_type"] = o.DataSourceType
+	}
+	if o.Token != nil {
+		toSerialize["token"] = o.Token
 	}
 	if true {
 		toSerialize["sync_status"] = o.SyncStatus

@@ -40,6 +40,12 @@ export interface OrganizationUserDataSourceAPI {
     'data_source_type': DataSourceType;
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationUserDataSourceAPI
+     */
+    'token': object | null;
+    /**
+     * 
      * @type {DataSourceSyncStatuses}
      * @memberof OrganizationUserDataSourceAPI
      */

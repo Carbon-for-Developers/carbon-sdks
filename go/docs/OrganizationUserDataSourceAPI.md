@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **int32** |  | 
 **DataSourceExternalId** | **NullableString** |  | 
 **DataSourceType** | [**DataSourceType**](DataSourceType.md) |  | 
+**Token** | **map[string]interface{}** |  | 
 **SyncStatus** | [**DataSourceSyncStatuses**](DataSourceSyncStatuses.md) |  | 
 **SourceItemsSyncedAt** | **NullableTime** |  | 
 **OrganizationUserId** | **int32** |  | 
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +108,36 @@ and a boolean to check if the value has been set.
 SetDataSourceType sets DataSourceType field to given value.
 
 
+### GetToken
+
+`func (o *OrganizationUserDataSourceAPI) GetToken() map[string]interface{}`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *OrganizationUserDataSourceAPI) GetTokenOk() (*map[string]interface{}, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *OrganizationUserDataSourceAPI) SetToken(v map[string]interface{})`
+
+SetToken sets Token field to given value.
+
+
+### SetTokenNil
+
+`func (o *OrganizationUserDataSourceAPI) SetTokenNil(b bool)`
+
+ SetTokenNil sets the value for Token to be an explicit nil
+
+### UnsetToken
+`func (o *OrganizationUserDataSourceAPI) UnsetToken()`
+
+UnsetToken ensures that no value is present for Token, not even an explicit nil
 ### GetSyncStatus
 
 `func (o *OrganizationUserDataSourceAPI) GetSyncStatus() DataSourceSyncStatuses`

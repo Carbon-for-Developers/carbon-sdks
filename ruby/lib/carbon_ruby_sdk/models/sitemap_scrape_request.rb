@@ -195,6 +195,10 @@ module Carbon
         invalid_properties.push('invalid value for "url", url cannot be nil.')
       end
 
+      if !@max_pages_to_scrape.nil? && @max_pages_to_scrape < 1
+        invalid_properties.push('invalid value for "max_pages_to_scrape", must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -202,7 +206,18 @@ module Carbon
     # @return true if the model is valid
     def valid?
       return false if @url.nil?
+      return false if !@max_pages_to_scrape.nil? && @max_pages_to_scrape < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_pages_to_scrape Value to be assigned
+    def max_pages_to_scrape=(max_pages_to_scrape)
+      if !max_pages_to_scrape.nil? && max_pages_to_scrape < 1
+        fail ArgumentError, 'invalid value for "max_pages_to_scrape", must be greater than or equal to 1.'
+      end
+
+      @max_pages_to_scrape = max_pages_to_scrape
     end
 
     # Checks equality by comparing each attribute.

@@ -52,6 +52,9 @@ class WebscrapeRequest(
             ):
             
             
+                class MetaOapg:
+            
+            
                 def __new__(
                     cls,
                     *args: typing.Union[None, decimal.Decimal, int, ],
@@ -70,6 +73,9 @@ class WebscrapeRequest(
                 schemas.Schema,
                 schemas.NoneDecimalMixin
             ):
+            
+            
+                class MetaOapg:
             
             
                 def __new__(

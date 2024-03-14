@@ -38,6 +38,7 @@ class OrganizationUserDataSourceAPI(
             "created_at",
             "data_source_type",
             "organization_supplied_user_id",
+            "token",
             "updated_at",
             "source_items_synced_at",
             "organization_id",
@@ -74,6 +75,28 @@ class OrganizationUserDataSourceAPI(
             @staticmethod
             def data_source_type() -> typing.Type['DataSourceType']:
                 return DataSourceType
+            
+            
+            class token(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'token':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
         
             @staticmethod
             def sync_status() -> typing.Type['DataSourceSyncStatuses']:
@@ -118,6 +141,7 @@ class OrganizationUserDataSourceAPI(
                 "id": id,
                 "data_source_external_id": data_source_external_id,
                 "data_source_type": data_source_type,
+                "token": token,
                 "sync_status": sync_status,
                 "source_items_synced_at": source_items_synced_at,
                 "organization_user_id": organization_user_id,
@@ -135,6 +159,7 @@ class OrganizationUserDataSourceAPI(
     created_at: MetaOapg.properties.created_at
     data_source_type: 'DataSourceType'
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
+    token: MetaOapg.properties.token
     updated_at: MetaOapg.properties.updated_at
     source_items_synced_at: MetaOapg.properties.source_items_synced_at
     organization_id: MetaOapg.properties.organization_id
@@ -152,6 +177,9 @@ class OrganizationUserDataSourceAPI(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["data_source_type"]) -> 'DataSourceType': ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["token"]) -> MetaOapg.properties.token: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["sync_status"]) -> 'DataSourceSyncStatuses': ...
@@ -186,7 +214,7 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -199,6 +227,9 @@ class OrganizationUserDataSourceAPI(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["data_source_type"]) -> 'DataSourceType': ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["token"]) -> MetaOapg.properties.token: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["sync_status"]) -> 'DataSourceSyncStatuses': ...
@@ -233,7 +264,7 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -245,6 +276,7 @@ class OrganizationUserDataSourceAPI(
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         data_source_type: 'DataSourceType',
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
+        token: typing.Union[MetaOapg.properties.token, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         source_items_synced_at: typing.Union[MetaOapg.properties.source_items_synced_at, None, str, datetime, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
@@ -264,6 +296,7 @@ class OrganizationUserDataSourceAPI(
             created_at=created_at,
             data_source_type=data_source_type,
             organization_supplied_user_id=organization_supplied_user_id,
+            token=token,
             updated_at=updated_at,
             source_items_synced_at=source_items_synced_at,
             organization_id=organization_id,

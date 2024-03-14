@@ -17,6 +17,8 @@ module Carbon
 
     attr_accessor :data_source_type
 
+    attr_accessor :token
+
     attr_accessor :sync_status
 
     attr_accessor :source_items_synced_at
@@ -43,6 +45,7 @@ module Carbon
         :'id' => :'id',
         :'data_source_external_id' => :'data_source_external_id',
         :'data_source_type' => :'data_source_type',
+        :'token' => :'token',
         :'sync_status' => :'sync_status',
         :'source_items_synced_at' => :'source_items_synced_at',
         :'organization_user_id' => :'organization_user_id',
@@ -67,6 +70,7 @@ module Carbon
         :'id' => :'Integer',
         :'data_source_external_id' => :'String',
         :'data_source_type' => :'DataSourceType',
+        :'token' => :'Object',
         :'sync_status' => :'DataSourceSyncStatuses',
         :'source_items_synced_at' => :'Time',
         :'organization_user_id' => :'Integer',
@@ -84,6 +88,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'data_source_external_id',
+        :'token',
         :'source_items_synced_at',
       ])
     end
@@ -113,6 +118,10 @@ module Carbon
 
       if attributes.key?(:'data_source_type')
         self.data_source_type = attributes[:'data_source_type']
+      end
+
+      if attributes.key?(:'token')
+        self.token = attributes[:'token']
       end
 
       if attributes.key?(:'sync_status')
@@ -232,6 +241,7 @@ module Carbon
           id == o.id &&
           data_source_external_id == o.data_source_external_id &&
           data_source_type == o.data_source_type &&
+          token == o.token &&
           sync_status == o.sync_status &&
           source_items_synced_at == o.source_items_synced_at &&
           organization_user_id == o.organization_user_id &&
@@ -253,7 +263,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, data_source_external_id, data_source_type, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, created_at, updated_at].hash
+      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, created_at, updated_at].hash
     end
 
     # Builds the object from hash
