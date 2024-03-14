@@ -124,6 +124,59 @@
         }
       }
     },
+    "/integrations/connect": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Connect Data Source",
+        "operationId": "Integrations_connectDataSource",
+        "security": [
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          },
+          {
+            "accessToken": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectDataSourceInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectDataSourceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/integrations/items/sync": {
       "post": {
         "tags": [
@@ -2959,6 +3012,113 @@
         "type": "string",
         "const": "sparse_vectors"
       },
+      "ConfluenceAuthentication": {
+        "title": "ConfluenceAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "CONFLUENCE"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string",
+            "nullable": true
+          },
+          "subdomain": {
+            "title": "Subdomain",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "subdomain"
+        ]
+      },
+      "ConnectDataSourceInput": {
+        "title": "ConnectDataSourceInput",
+        "properties": {
+          "authentication": {
+            "title": "Authentication",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OAuthAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/NotionAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/SharepointAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/ConfluenceAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/ZendeskAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/ZoteroAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/GitbookAuthetication"
+              },
+              {
+                "$ref": "#/components/schemas/SalesforceAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/FreskdeskAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/S3Authentication"
+              }
+            ]
+          },
+          "sync_options": {
+            "$ref": "#/components/schemas/SyncOptions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "authentication"
+        ],
+        "x-konfig-properties": {
+          "sync_options": {
+            "default": {
+              "chunk_overlap": 20,
+              "chunk_size": 1500,
+              "embedding_model": "OPENAI",
+              "generate_sparse_vectors": false,
+              "prepend_filename_to_chunks": false,
+              "set_page_as_boundary": false,
+              "skip_embedding_generation": false,
+              "sync_files_on_connection": true
+            }
+          }
+        }
+      },
+      "ConnectDataSourceResponse": {
+        "title": "ConnectDataSourceResponse",
+        "properties": {
+          "data_source": {
+            "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
+          },
+          "sync_url": {
+            "title": "Sync Url",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source",
+          "sync_url"
+        ]
+      },
       "DataSourceLastSyncActions": {
         "title": "DataSourceLastSyncActions",
         "type": "string",
@@ -3694,6 +3854,29 @@
           "api_key"
         ]
       },
+      "FreskdeskAuthentication": {
+        "title": "FreskdeskAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "FRESHDESK"
+          },
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          },
+          "api_key": {
+            "title": "Api Key",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "domain",
+          "api_key"
+        ]
+      },
       "GenericSuccessResponse": {
         "title": "GenericSuccessResponse",
         "properties": {
@@ -3898,6 +4081,29 @@
         "required": [
           "query",
           "k"
+        ]
+      },
+      "GitbookAuthetication": {
+        "title": "GitbookAuthetication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "GITBOOK"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "organization_name": {
+            "title": "Organization Name",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "organization_name"
         ]
       },
       "GitbookConnectRequest": {
@@ -4231,6 +4437,51 @@
           "value"
         ]
       },
+      "NotionAuthentication": {
+        "title": "NotionAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "NOTION"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "workspace_id": {
+            "title": "Workspace Id",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "workspace_id"
+        ]
+      },
+      "OAuthAuthentication": {
+        "title": "OAuthAuthentication",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/SimpleOAuthDataSources"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token"
+        ]
+      },
       "OAuthURLRequest": {
         "title": "OAuthURLRequest",
         "properties": {
@@ -4449,6 +4700,11 @@
           "data_source_type": {
             "$ref": "#/components/schemas/DataSourceType"
           },
+          "token": {
+            "title": "Token",
+            "type": "object",
+            "nullable": true
+          },
           "sync_status": {
             "$ref": "#/components/schemas/DataSourceSyncStatuses"
           },
@@ -4498,6 +4754,7 @@
           "id",
           "data_source_external_id",
           "data_source_type",
+          "token",
           "sync_status",
           "source_items_synced_at",
           "organization_user_id",
@@ -5124,6 +5381,29 @@
           "access_key_secret"
         ]
       },
+      "S3Authentication": {
+        "title": "S3Authentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "S3"
+          },
+          "access_key": {
+            "title": "Access Key",
+            "type": "string"
+          },
+          "access_key_secret": {
+            "title": "Access Key Secret",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_key",
+          "access_key_secret"
+        ]
+      },
       "S3FileSyncInput": {
         "title": "S3FileSyncInput",
         "properties": {
@@ -5216,6 +5496,80 @@
         },
         "type": "object"
       },
+      "SalesforceAuthentication": {
+        "title": "SalesforceAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "SALESFORCE"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string",
+            "nullable": true
+          },
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "domain"
+        ]
+      },
+      "SharepointAuthentication": {
+        "title": "SharepointAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "SHAREPOINT"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string",
+            "nullable": true
+          },
+          "tenant_name": {
+            "title": "Tenant Name",
+            "type": "string"
+          },
+          "site_name": {
+            "title": "Site Name",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "tenant_name",
+          "site_name"
+        ]
+      },
+      "SimpleOAuthDataSources": {
+        "title": "SimpleOAuthDataSources",
+        "type": "string",
+        "enum": [
+          "GOOGLE_DRIVE",
+          "INTERCOM",
+          "DROPBOX",
+          "ONEDRIVE",
+          "BOX",
+          "GMAIL",
+          "OUTLOOK"
+        ]
+      },
       "SingleChunksAndEmbeddingsUploadInput": {
         "title": "SingleChunksAndEmbeddingsUploadInput",
         "properties": {
@@ -5295,6 +5649,7 @@
           "max_pages_to_scrape": {
             "title": "Max Pages To Scrape",
             "type": "integer",
+            "minimum": 1,
             "nullable": true
           },
           "chunk_size": {
@@ -5488,6 +5843,66 @@
           "data_source_id",
           "ids"
         ]
+      },
+      "SyncOptions": {
+        "title": "SyncOptions",
+        "properties": {
+          "tags": {
+            "title": "Tags",
+            "nullable": true
+          },
+          "chunk_size": {
+            "title": "Chunk Size",
+            "default": 1500,
+            "type": "integer",
+            "nullable": true
+          },
+          "chunk_overlap": {
+            "title": "Chunk Overlap",
+            "default": 20,
+            "type": "integer",
+            "nullable": true
+          },
+          "skip_embedding_generation": {
+            "title": "Skip Embedding Generation",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "embedding_model": {
+            "$ref": "#/components/schemas/EmbeddingGeneratorsNullable"
+          },
+          "generate_sparse_vectors": {
+            "title": "Generate Sparse Vectors",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "prepend_filename_to_chunks": {
+            "title": "Prepend Filename To Chunks",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "max_items_per_chunk": {
+            "title": "Max Items Per Chunk",
+            "type": "integer",
+            "nullable": true
+          },
+          "sync_files_on_connection": {
+            "title": "Sync Files On Connection",
+            "description": "Used to specify whether Carbon should attempt to sync all your files automatically when authorization\n        is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported\n        connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk",
+            "default": true,
+            "type": "boolean",
+            "nullable": true
+          },
+          "set_page_as_boundary": {
+            "title": "Set Page As Boundary",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object"
       },
       "TextEmbeddingGenerators": {
         "title": "TextEmbeddingGenerators",
@@ -6100,12 +6515,14 @@
             "title": "Recursion Depth",
             "default": 3,
             "type": "integer",
+            "minimum": 0,
             "nullable": true
           },
           "max_pages_to_scrape": {
             "title": "Max Pages To Scrape",
             "default": 100,
             "type": "integer",
+            "minimum": 1,
             "nullable": true
           },
           "chunk_size": {
@@ -6248,6 +6665,62 @@
           "error",
           "data",
           "raw_transcript"
+        ]
+      },
+      "ZendeskAuthentication": {
+        "title": "ZendeskAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "ZENDESK"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "subdomain": {
+            "title": "Subdomain",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "subdomain"
+        ]
+      },
+      "ZoteroAuthentication": {
+        "title": "ZoteroAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "ZOTERO"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "access_token_secret": {
+            "title": "Access Token Secret",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "zotero_id": {
+            "title": "Zotero Id",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "access_token_secret",
+          "username",
+          "zotero_id"
         ]
       },
       "DataSourceTypeNullable": {

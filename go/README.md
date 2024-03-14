@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.4)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.5)
 
 </div>
 
@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**UploadFromUrl**](docs/FilesApi.md#uploadfromurl) | **Post** /upload_file_from_url | Create Upload File From Url
 *FilesApi* | [**UploadText**](docs/FilesApi.md#uploadtext) | **Post** /upload_text | Create Raw Text
 *HealthApi* | [**Check**](docs/HealthApi.md#check) | **Get** /health | Health
+*IntegrationsApi* | [**ConnectDataSource**](docs/IntegrationsApi.md#connectdatasource) | **Post** /integrations/connect | Connect Data Source
 *IntegrationsApi* | [**ConnectFreshdesk**](docs/IntegrationsApi.md#connectfreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 *IntegrationsApi* | [**ConnectGitbook**](docs/IntegrationsApi.md#connectgitbook) | **Post** /integrations/gitbook | Gitbook Connect
 *IntegrationsApi* | [**CreateAwsIamUser**](docs/IntegrationsApi.md#createawsiamuser) | **Post** /integrations/s3 | S3 Auth
@@ -114,11 +115,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AddWebhookProps](docs/AddWebhookProps.md)
+ - [AuthenticationProperty](docs/AuthenticationProperty.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
  - [ChunksAndEmbeddings](docs/ChunksAndEmbeddings.md)
  - [ChunksAndEmbeddingsUploadInput](docs/ChunksAndEmbeddingsUploadInput.md)
+ - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
+ - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
+ - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
  - [DataSourceLastSyncActions](docs/DataSourceLastSyncActions.md)
  - [DataSourceSyncStatuses](docs/DataSourceSyncStatuses.md)
  - [DataSourceType](docs/DataSourceType.md)
@@ -146,8 +151,10 @@ Class | Method | HTTP request | Description
  - [FileStatistics](docs/FileStatistics.md)
  - [FileStatisticsNullable](docs/FileStatisticsNullable.md)
  - [FreshDeskConnectRequest](docs/FreshDeskConnectRequest.md)
+ - [FreskdeskAuthentication](docs/FreskdeskAuthentication.md)
  - [GenericSuccessResponse](docs/GenericSuccessResponse.md)
  - [GetEmbeddingDocumentsBody](docs/GetEmbeddingDocumentsBody.md)
+ - [GitbookAuthetication](docs/GitbookAuthetication.md)
  - [GitbookConnectRequest](docs/GitbookConnectRequest.md)
  - [GitbookSyncRequest](docs/GitbookSyncRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
@@ -161,6 +168,8 @@ Class | Method | HTTP request | Description
  - [ListResponse](docs/ListResponse.md)
  - [LocationPropertyInner](docs/LocationPropertyInner.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
+ - [NotionAuthentication](docs/NotionAuthentication.md)
+ - [OAuthAuthentication](docs/OAuthAuthentication.md)
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OrderDir](docs/OrderDir.md)
  - [OrganizationResponse](docs/OrganizationResponse.md)
@@ -185,14 +194,19 @@ Class | Method | HTTP request | Description
  - [ResyncFileQueryInput](docs/ResyncFileQueryInput.md)
  - [RevokeAccessTokenInput](docs/RevokeAccessTokenInput.md)
  - [S3AuthRequest](docs/S3AuthRequest.md)
+ - [S3Authentication](docs/S3Authentication.md)
  - [S3FileSyncInput](docs/S3FileSyncInput.md)
  - [S3GetFileInput](docs/S3GetFileInput.md)
+ - [SalesforceAuthentication](docs/SalesforceAuthentication.md)
+ - [SharepointAuthentication](docs/SharepointAuthentication.md)
+ - [SimpleOAuthDataSources](docs/SimpleOAuthDataSources.md)
  - [SingleChunksAndEmbeddingsUploadInput](docs/SingleChunksAndEmbeddingsUploadInput.md)
  - [SitemapScrapeRequest](docs/SitemapScrapeRequest.md)
  - [SourceProperty](docs/SourceProperty.md)
  - [SyncDirectoryRequest](docs/SyncDirectoryRequest.md)
  - [SyncFilesIds](docs/SyncFilesIds.md)
  - [SyncFilesRequest](docs/SyncFilesRequest.md)
+ - [SyncOptions](docs/SyncOptions.md)
  - [Tags](docs/Tags.md)
  - [Tags1](docs/Tags1.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
@@ -212,3 +226,5 @@ Class | Method | HTTP request | Description
  - [WebscrapeRequest](docs/WebscrapeRequest.md)
  - [WhiteLabelingResponse](docs/WhiteLabelingResponse.md)
  - [YoutubeTranscriptResponse](docs/YoutubeTranscriptResponse.md)
+ - [ZendeskAuthentication](docs/ZendeskAuthentication.md)
+ - [ZoteroAuthentication](docs/ZoteroAuthentication.md)

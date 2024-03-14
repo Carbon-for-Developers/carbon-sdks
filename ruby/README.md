@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.6-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.6)
+[![npm](https://img.shields.io/badge/gem-v0.1.7-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.7)
 
 </div>
 
@@ -38,6 +38,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
@@ -77,7 +78,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.6'
+gem 'carbon_ruby_sdk', '~> 0.1.7'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1110,6 +1111,49 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/health` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.connect_data_source`<a id="carbonintegrationsconnect_data_source"></a>
+
+Connect Data Source
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.connect_data_source(
+  authentication: {
+        "source" => "GOOGLE_DRIVE",
+        "access_token" => "access_token_example",
+    },
+  sync_options: {
+        "chunk_size" => 1500,
+        "chunk_overlap" => 20,
+        "skip_embedding_generation" => false,
+        "embedding_model" => "OPENAI",
+        "generate_sparse_vectors" => false,
+        "prepend_filename_to_chunks" => false,
+        "sync_files_on_connection" => true,
+        "set_page_as_boundary" => false,
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authentication: [`AuthenticationProperty`](./lib/carbon_ruby_sdk/models/authentication_property.rb)<a id="authentication-authenticationpropertylibcarbon_ruby_sdkmodelsauthentication_propertyrb"></a>
+##### sync_options: [`SyncOptions`](./lib/carbon_ruby_sdk/models/sync_options.rb)<a id="sync_options-syncoptionslibcarbon_ruby_sdkmodelssync_optionsrb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ConnectDataSourceResponse](./lib/carbon_ruby_sdk/models/connect_data_source_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/connect` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

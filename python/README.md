@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.8-blue)](https://pypi.org/project/carbon-python-sdk/0.1.8)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.9-blue)](https://pypi.org/project/carbon-python-sdk/0.1.9)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -42,6 +42,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
@@ -83,7 +84,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.8
+pip install carbon-python-sdk==0.1.9
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1230,6 +1231,54 @@ check_response = carbon.health.check()
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/health` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.connect_data_source`<a id="carbonintegrationsconnect_data_source"></a>
+
+Connect Data Source
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+connect_data_source_response = carbon.integrations.connect_data_source(
+    authentication={
+        "source": "GOOGLE_DRIVE",
+        "access_token": "access_token_example",
+    },
+    sync_options={
+        "chunk_size": 1500,
+        "chunk_overlap": 20,
+        "skip_embedding_generation": False,
+        "embedding_model": "OPENAI",
+        "generate_sparse_vectors": False,
+        "prepend_filename_to_chunks": False,
+        "sync_files_on_connection": True,
+        "set_page_as_boundary": False,
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication"></a>
+
+
+##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`ConnectDataSourceInput`](./carbon/type/connect_data_source_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`ConnectDataSourceResponse`](./carbon/pydantic/connect_data_source_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/connect` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

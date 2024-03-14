@@ -52,6 +52,9 @@ class SitemapScrapeRequest(
             ):
             
             
+                class MetaOapg:
+            
+            
                 def __new__(
                     cls,
                     *args: typing.Union[None, decimal.Decimal, int, ],

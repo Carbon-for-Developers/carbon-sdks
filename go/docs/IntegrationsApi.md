@@ -4,6 +4,7 @@ All URIs are relative to *https://api.carbon.ai*
 
 Method | Path | Description
 ------------- | ------------- | -------------
+[**ConnectDataSource**](IntegrationsApi.md#ConnectDataSource) | **Post** /integrations/connect | Connect Data Source
 [**ConnectFreshdesk**](IntegrationsApi.md#ConnectFreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 [**ConnectGitbook**](IntegrationsApi.md#ConnectGitbook) | **Post** /integrations/gitbook | Gitbook Connect
 [**CreateAwsIamUser**](IntegrationsApi.md#CreateAwsIamUser) | **Post** /integrations/s3 | S3 Auth
@@ -23,6 +24,58 @@ Method | Path | Description
 [**SyncRssFeed**](IntegrationsApi.md#SyncRssFeed) | **Post** /integrations/rss_feed | Rss Feed
 [**SyncS3Files**](IntegrationsApi.md#SyncS3Files) | **Post** /integrations/s3/files | S3 Files
 
+
+
+## ConnectDataSource
+
+Connect Data Source
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    authentication := *carbon.NewAuthenticationProperty()
+    syncOptions := *carbon.NewSyncOptions()
+    
+    connectDataSourceInput := *carbon.NewConnectDataSourceInput(
+        authentication,
+    )
+    connectDataSourceInput.SetSyncOptions(syncOptions)
+    
+    request := client.IntegrationsApi.ConnectDataSource(
+        connectDataSourceInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ConnectDataSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ConnectDataSource`: ConnectDataSourceResponse
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectDataSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.DataSource`: %v\n", resp.DataSource)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.SyncUrl`: %v\n", resp.SyncUrl)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ConnectFreshdesk
@@ -188,6 +241,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.DataSourceType`: %v\n", resp.DataSourceType)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.Token`: %v\n", resp.Token)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.SyncStatus`: %v\n", resp.SyncStatus)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.SourceItemsSyncedAt`: %v\n", resp.SourceItemsSyncedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.OrganizationUserId`: %v\n", resp.OrganizationUserId)
@@ -656,6 +710,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.DataSourceType`: %v\n", resp.DataSourceType)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.Token`: %v\n", resp.Token)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.SyncStatus`: %v\n", resp.SyncStatus)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.SourceItemsSyncedAt`: %v\n", resp.SourceItemsSyncedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.OrganizationUserId`: %v\n", resp.OrganizationUserId)

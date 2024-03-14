@@ -343,6 +343,16 @@ operation_parameter_map = {
         'parameters': [
         ]
     },
+    '/integrations/connect-POST': {
+        'parameters': [
+            {
+                'name': 'authentication'
+            },
+            {
+                'name': 'sync_options'
+            },
+        ]
+    },
     '/integrations/freshdesk-POST': {
         'parameters': [
             {

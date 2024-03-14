@@ -349,6 +349,16 @@ export const operationParameterMap: Record<string, Entry> = {
         parameters: [
         ]
     },
+    '/integrations/connect-POST': {
+        parameters: [
+            {
+                name: 'authentication'
+            },
+            {
+                name: 'sync_options'
+            },
+        ]
+    },
     '/integrations/freshdesk-POST': {
         parameters: [
             {

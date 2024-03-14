@@ -21,6 +21,12 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { AuthenticationProperty } from '../models';
+// @ts-ignore
+import { ConnectDataSourceInput } from '../models';
+// @ts-ignore
+import { ConnectDataSourceResponse } from '../models';
+// @ts-ignore
 import { DataSourceType } from '../models';
 // @ts-ignore
 import { EmbeddingGenerators } from '../models';
@@ -70,6 +76,8 @@ import { S3GetFileInput } from '../models';
 import { SyncDirectoryRequest } from '../models';
 // @ts-ignore
 import { SyncFilesRequest } from '../models';
+// @ts-ignore
+import { SyncOptions } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
@@ -79,6 +87,58 @@ import { requestBeforeHook } from '../requestBeforeHook';
  */
 export const IntegrationsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Connect Data Source
+         * @param {ConnectDataSourceInput} connectDataSourceInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectDataSource: async (connectDataSourceInput: ConnectDataSourceInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'connectDataSourceInput' is not null or undefined
+            assertParamExists('connectDataSource', 'connectDataSourceInput', connectDataSourceInput)
+            const localVarPath = `/integrations/connect`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: connectDataSourceInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/connect',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(connectDataSourceInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
@@ -1016,6 +1076,21 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = IntegrationsApiAxiosParamCreator(configuration)
     return {
         /**
+         * 
+         * @summary Connect Data Source
+         * @param {IntegrationsApiConnectDataSourceRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async connectDataSource(requestParameters: IntegrationsApiConnectDataSourceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectDataSourceResponse>> {
+            const connectDataSourceInput: ConnectDataSourceInput = {
+                authentication: requestParameters.authentication,
+                sync_options: requestParameters.sync_options
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectDataSource(connectDataSourceInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
@@ -1368,6 +1443,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
     const localVarFp = IntegrationsApiFp(configuration)
     return {
         /**
+         * 
+         * @summary Connect Data Source
+         * @param {IntegrationsApiConnectDataSourceRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectDataSource(requestParameters: IntegrationsApiConnectDataSourceRequest, options?: AxiosRequestConfig): AxiosPromise<ConnectDataSourceResponse> {
+            return localVarFp.connectDataSource(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
@@ -1549,6 +1634,15 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
         },
     };
 };
+
+/**
+ * Request parameters for connectDataSource operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiConnectDataSourceRequest
+ */
+export type IntegrationsApiConnectDataSourceRequest = {
+    
+} & ConnectDataSourceInput
 
 /**
  * Request parameters for connectFreshdesk operation in IntegrationsApi.
@@ -1747,6 +1841,18 @@ export type IntegrationsApiSyncS3FilesRequest = {
  * @extends {BaseAPI}
  */
 export class IntegrationsApiGenerated extends BaseAPI {
+    /**
+     * 
+     * @summary Connect Data Source
+     * @param {IntegrationsApiConnectDataSourceRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public connectDataSource(requestParameters: IntegrationsApiConnectDataSourceRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).connectDataSource(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
      * @summary Freshdesk Connect

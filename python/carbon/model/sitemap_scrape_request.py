@@ -52,6 +52,10 @@ class SitemapScrapeRequest(
             ):
             
             
+                class MetaOapg:
+                    inclusive_minimum = 1
+            
+            
                 def __new__(
                     cls,
                     *args: typing.Union[None, decimal.Decimal, int, ],

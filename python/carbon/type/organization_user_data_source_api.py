@@ -25,6 +25,8 @@ class RequiredOrganizationUserDataSourceAPI(TypedDict):
 
     data_source_type: DataSourceType
 
+    token: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
     sync_status: DataSourceSyncStatuses
 
     source_items_synced_at: typing.Optional[datetime]

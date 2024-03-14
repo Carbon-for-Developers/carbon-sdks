@@ -1328,6 +1328,37 @@ paths:
       - Integrations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-oauth_url
+  /integrations/connect:
+    post:
+      operationId: Integrations_connectDataSource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectDataSourceInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectDataSourceResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+        customerId: []
+      - accessToken: []
+      summary: Connect Data Source
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-connect
   /integrations/items/sync:
     post:
       operationId: Integrations_syncDataSourceItems
@@ -3495,6 +3526,90 @@ components:
     ConfigurationKeys:
       title: ConfigurationKeys
       type: string
+    ConfluenceAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        subdomain:
+          title: Subdomain
+          type: string
+      required:
+      - access_token
+      - source
+      - subdomain
+      title: ConfluenceAuthentication
+      type: object
+    ConnectDataSourceInput:
+      example:
+        sync_options:
+          chunk_size: 1500
+          prepend_filename_to_chunks: false
+          max_items_per_chunk: 0
+          generate_sparse_vectors: false
+          sync_files_on_connection: true
+          set_page_as_boundary: false
+          embedding_model: OPENAI
+          chunk_overlap: 20
+          skip_embedding_generation: false
+          tags: ""
+        authentication: null
+      properties:
+        authentication:
+          $ref: '#/components/schemas/Authentication_Property'
+        sync_options:
+          $ref: '#/components/schemas/SyncOptions'
+      required:
+      - authentication
+      title: ConnectDataSourceInput
+      type: object
+      x-konfig-properties:
+        sync_options:
+          default:
+            chunk_overlap: 20
+            chunk_size: 1500
+            embedding_model: OPENAI
+            generate_sparse_vectors: false
+            prepend_filename_to_chunks: false
+            set_page_as_boundary: false
+            skip_embedding_generation: false
+            sync_files_on_connection: true
+    ConnectDataSourceResponse:
+      example:
+        sync_url: sync_url
+        data_source:
+          last_synced_at: 2000-01-23T04:56:07.000+00:00
+          revoked_access: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          data_source_type: null
+          organization_supplied_user_id: organization_supplied_user_id
+          token: "{}"
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          source_items_synced_at: 2000-01-23T04:56:07.000+00:00
+          organization_user_id: 6
+          organization_id: 1
+          last_sync_action: null
+          sync_status: null
+          id: 0
+          data_source_external_id: data_source_external_id
+      properties:
+        data_source:
+          $ref: '#/components/schemas/OrganizationUserDataSourceAPI'
+        sync_url:
+          nullable: true
+          title: Sync Url
+          type: string
+      required:
+      - data_source
+      - sync_url
+      title: ConnectDataSourceResponse
+      type: object
     DataSourceLastSyncActions:
       enum:
       - ADD
@@ -4216,6 +4331,22 @@ components:
       - domain
       title: FreshDeskConnectRequest
       type: object
+    FreskdeskAuthentication:
+      properties:
+        source:
+          title: Source
+        domain:
+          title: Domain
+          type: string
+        api_key:
+          title: Api Key
+          type: string
+      required:
+      - api_key
+      - domain
+      - source
+      title: FreskdeskAuthentication
+      type: object
     GenericSuccessResponse:
       example:
         success: true
@@ -4409,6 +4540,22 @@ components:
       - k
       - query
       title: GetEmbeddingDocumentsBody
+      type: object
+    GitbookAuthetication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        organization_name:
+          title: Organization Name
+          type: string
+      required:
+      - access_token
+      - organization_name
+      - source
+      title: GitbookAuthetication
       type: object
     GitbookConnectRequest:
       example:
@@ -4808,6 +4955,38 @@ components:
       - value
       title: ModifyUserConfigurationInput
       type: object
+    NotionAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        workspace_id:
+          title: Workspace Id
+          type: string
+      required:
+      - access_token
+      - source
+      - workspace_id
+      title: NotionAuthentication
+      type: object
+    OAuthAuthentication:
+      properties:
+        source:
+          $ref: '#/components/schemas/SimpleOAuthDataSources'
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+      required:
+      - access_token
+      - source
+      title: OAuthAuthentication
+      type: object
     OAuthURLRequest:
       example:
         sharepoint_site_name: sharepoint_site_name
@@ -5043,6 +5222,7 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         data_source_type: null
         organization_supplied_user_id: organization_supplied_user_id
+        token: "{}"
         updated_at: 2000-01-23T04:56:07.000+00:00
         source_items_synced_at: 2000-01-23T04:56:07.000+00:00
         organization_user_id: 6
@@ -5061,6 +5241,10 @@ components:
           type: string
         data_source_type:
           $ref: '#/components/schemas/DataSourceType'
+        token:
+          nullable: true
+          title: Token
+          type: object
         sync_status:
           $ref: '#/components/schemas/DataSourceSyncStatuses'
         source_items_synced_at:
@@ -5107,6 +5291,7 @@ components:
       - revoked_access
       - source_items_synced_at
       - sync_status
+      - token
       - updated_at
       title: OrganizationUserDataSourceAPI
       type: object
@@ -5182,6 +5367,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           data_source_type: null
           organization_supplied_user_id: organization_supplied_user_id
+          token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
@@ -5195,6 +5381,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           data_source_type: null
           organization_supplied_user_id: organization_supplied_user_id
+          token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
@@ -5725,6 +5912,22 @@ components:
       - access_key_secret
       title: S3AuthRequest
       type: object
+    S3Authentication:
+      properties:
+        source:
+          title: Source
+        access_key:
+          title: Access Key
+          type: string
+        access_key_secret:
+          title: Access Key Secret
+          type: string
+      required:
+      - access_key
+      - access_key_secret
+      - source
+      title: S3Authentication
+      type: object
     S3FileSyncInput:
       example:
         chunk_size: 1500
@@ -5835,6 +6038,61 @@ components:
           type: string
       title: S3GetFileInput
       type: object
+    SalesforceAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        domain:
+          title: Domain
+          type: string
+      required:
+      - access_token
+      - domain
+      - source
+      title: SalesforceAuthentication
+      type: object
+    SharepointAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        tenant_name:
+          title: Tenant Name
+          type: string
+        site_name:
+          title: Site Name
+          type: string
+      required:
+      - access_token
+      - site_name
+      - source
+      - tenant_name
+      title: SharepointAuthentication
+      type: object
+    SimpleOAuthDataSources:
+      enum:
+      - GOOGLE_DRIVE
+      - INTERCOM
+      - DROPBOX
+      - ONEDRIVE
+      - BOX
+      - GMAIL
+      - OUTLOOK
+      title: SimpleOAuthDataSources
+      type: string
     SingleChunksAndEmbeddingsUploadInput:
       example:
         chunks_and_embeddings:
@@ -5877,7 +6135,7 @@ components:
       example:
         chunk_size: 1500
         prepend_filename_to_chunks: false
-        max_pages_to_scrape: 0
+        max_pages_to_scrape: 1
         css_classes_to_skip: []
         embedding_model: null
         css_selectors_to_skip: []
@@ -5903,6 +6161,7 @@ components:
           title: Url
           type: string
         max_pages_to_scrape:
+          minimum: 1
           nullable: true
           title: Max Pages To Scrape
           type: integer
@@ -6101,6 +6360,89 @@ components:
       - data_source_id
       - ids
       title: SyncFilesRequest
+      type: object
+    SyncOptions:
+      example:
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        max_items_per_chunk: 0
+        generate_sparse_vectors: false
+        sync_files_on_connection: true
+        set_page_as_boundary: false
+        embedding_model: OPENAI
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        tags: ""
+      properties:
+        tags:
+          nullable: true
+          title: Tags
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGeneratorsNullable'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-prepend_filename_to_chunks
+        max_items_per_chunk:
+          nullable: true
+          title: Max Items Per Chunk
+          type: integer
+        sync_files_on_connection:
+          default: true
+          description: |-
+            Used to specify whether Carbon should attempt to sync all your files automatically when authorization
+                    is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported
+                    connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-sync_files_on_connection
+        set_page_as_boundary:
+          default: false
+          example: false
+          title: Set Page As Boundary
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
+      title: SyncOptions
       type: object
     TextEmbeddingGenerators:
       enum:
@@ -6765,6 +7107,7 @@ components:
         recursion_depth:
           default: 3
           example: 3
+          minimum: 0
           nullable: true
           title: Recursion Depth
           type: integer
@@ -6773,6 +7116,7 @@ components:
         max_pages_to_scrape:
           default: 100
           example: 100
+          minimum: 1
           nullable: true
           title: Max Pages To Scrape
           type: integer
@@ -6915,6 +7259,46 @@ components:
       - raw_transcript
       - status
       title: YoutubeTranscriptResponse
+      type: object
+    ZendeskAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        subdomain:
+          title: Subdomain
+          type: string
+      required:
+      - access_token
+      - source
+      - subdomain
+      title: ZendeskAuthentication
+      type: object
+    ZoteroAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        access_token_secret:
+          title: Access Token Secret
+          type: string
+        username:
+          title: Username
+          type: string
+        zotero_id:
+          title: Zotero Id
+          type: string
+      required:
+      - access_token
+      - access_token_secret
+      - source
+      - username
+      - zotero_id
+      title: ZoteroAuthentication
       type: object
     DataSourceTypeNullable:
       enum:
@@ -7642,6 +8026,34 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-sync_files_on_connection:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-skip_embedding_generation:
       example: false
       type: boolean
@@ -7917,6 +8329,28 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
       required:
       - service
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-connect:
+      properties:
+        authentication:
+          anyOf:
+          - $ref: '#/components/schemas/OAuthAuthentication'
+          - $ref: '#/components/schemas/NotionAuthentication'
+          - $ref: '#/components/schemas/SharepointAuthentication'
+          - $ref: '#/components/schemas/ConfluenceAuthentication'
+          - $ref: '#/components/schemas/ZendeskAuthentication'
+          - $ref: '#/components/schemas/ZoteroAuthentication'
+          - $ref: '#/components/schemas/GitbookAuthetication'
+          - $ref: '#/components/schemas/SalesforceAuthentication'
+          - $ref: '#/components/schemas/FreskdeskAuthentication'
+          - $ref: '#/components/schemas/S3Authentication'
+          title: Authentication
+        sync_options:
+          $ref: '#/components/schemas/SyncOptions'
+      required:
+      - authentication
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -9408,6 +9842,7 @@ components:
           title: Url
           type: string
         max_pages_to_scrape:
+          minimum: 1
           nullable: true
           title: Max Pages To Scrape
           type: integer
@@ -9542,6 +9977,19 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    Authentication_Property:
+      anyOf:
+      - $ref: '#/components/schemas/OAuthAuthentication'
+      - $ref: '#/components/schemas/NotionAuthentication'
+      - $ref: '#/components/schemas/SharepointAuthentication'
+      - $ref: '#/components/schemas/ConfluenceAuthentication'
+      - $ref: '#/components/schemas/ZendeskAuthentication'
+      - $ref: '#/components/schemas/ZoteroAuthentication'
+      - $ref: '#/components/schemas/GitbookAuthetication'
+      - $ref: '#/components/schemas/SalesforceAuthentication'
+      - $ref: '#/components/schemas/FreskdeskAuthentication'
+      - $ref: '#/components/schemas/S3Authentication'
+      title: Authentication
     Tags:
       anyOf:
       - type: string

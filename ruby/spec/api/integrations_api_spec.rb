@@ -26,6 +26,17 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for connect_data_source
+  # Connect Data Source
+  # @param connect_data_source_input 
+  # @param [Hash] opts the optional parameters
+  # @return [ConnectDataSourceResponse]
+  describe 'connect_data_source test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for connect_freshdesk
   # Freshdesk Connect
   # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a &lt;b&gt;paid&lt;/b&gt; plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \&quot;solutions\&quot; tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
