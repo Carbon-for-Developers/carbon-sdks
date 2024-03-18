@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.7-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.7)
+[![npm](https://img.shields.io/badge/gem-v0.1.8-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.8)
 
 </div>
 
@@ -78,7 +78,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.7'
+gem 'carbon_ruby_sdk', '~> 0.1.8'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -981,7 +981,7 @@ the file to be a candidate for hybrid search.
 Whether or not to prepend the file's name to chunks.
 
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
-Number of objects per chunk. For json files only.
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1032,6 +1032,8 @@ p result
 ##### use_textract: `Boolean`<a id="use_textract-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1348,6 +1350,8 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### salesforce_domain: `String`<a id="salesforce_domain-string"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 Used to specify whether Carbon should attempt to sync all your files
@@ -1594,6 +1598,8 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1677,6 +1683,8 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2017,6 +2025,8 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 #### 🔄 Return<a id="🔄-return"></a>

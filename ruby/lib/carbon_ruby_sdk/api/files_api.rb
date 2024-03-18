@@ -1074,7 +1074,7 @@ module Carbon
     # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
     # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
-    # @param max_items_per_chunk [Integer] Number of objects per chunk. For json files only.
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
@@ -1131,7 +1131,7 @@ module Carbon
     # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
     # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
-    # @param max_items_per_chunk [Integer] Number of objects per chunk. For json files only.
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
@@ -1163,7 +1163,7 @@ module Carbon
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
-    # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
+    # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @return [UserFile]
     private def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       data, _status_code, _headers = upload_with_http_info(file, body_create_upload_file_uploadfile_post, opts)
@@ -1183,7 +1183,7 @@ module Carbon
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
-    # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
+    # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
@@ -1265,7 +1265,7 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param use_textract [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})
@@ -1298,7 +1298,7 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param use_textract [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, extra: {})

@@ -27,6 +27,7 @@ module Carbon
 
     attr_accessor :prepend_filename_to_chunks
 
+    # Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     attr_accessor :max_items_per_chunk
 
     attr_accessor :set_page_as_boundary

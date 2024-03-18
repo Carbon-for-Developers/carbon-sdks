@@ -546,7 +546,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [useOcr] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
          * @param {boolean} [generateSparseVectors] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
          * @param {boolean} [prependFilenameToChunks] Whether or not to prepend the file\&#39;s name to chunks.
-         * @param {number} [maxItemsPerChunk] Number of objects per chunk. For json files only.
+         * @param {number} [maxItemsPerChunk] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1308,7 +1308,7 @@ export type FilesApiUploadRequest = {
     readonly prependFilenameToChunks?: boolean
     
     /**
-    * Number of objects per chunk. For json files only.
+    * Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     * @type {number}
     * @memberof FilesApiUpload
     */

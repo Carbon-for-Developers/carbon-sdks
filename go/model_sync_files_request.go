@@ -25,6 +25,7 @@ type SyncFilesRequest struct {
 	EmbeddingModel NullableEmbeddingGeneratorsNullable `json:"embedding_model,omitempty"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
+	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
 }

@@ -26,6 +26,7 @@ type UploadFileFromUrlInput struct {
 	GenerateSparseVectors *bool `json:"generate_sparse_vectors,omitempty"`
 	UseTextract *bool `json:"use_textract,omitempty"`
 	PrependFilenameToChunks *bool `json:"prepend_filename_to_chunks,omitempty"`
+	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 }
 

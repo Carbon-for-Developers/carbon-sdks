@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.9-blue)](https://pypi.org/project/carbon-python-sdk/0.1.9)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.10-blue)](https://pypi.org/project/carbon-python-sdk/0.1.10)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -84,7 +84,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.9
+pip install carbon-python-sdk==0.1.10
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1079,7 +1079,7 @@ Whether or not to prepend the file's name to chunks.
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
 
-Number of objects per chunk. For json files only.
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1141,6 +1141,8 @@ upload_from_url_response = carbon.files.upload_from_url(
 ##### prepend_filename_to_chunks: `bool`<a id="prepend_filename_to_chunks-bool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1510,6 +1512,8 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
 
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### salesforce_domain: `Optional[str]`<a id="salesforce_domain-optionalstr"></a>
 
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
@@ -1769,6 +1773,8 @@ sync_confluence_response = carbon.integrations.sync_confluence(
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
 
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
@@ -1864,6 +1870,8 @@ sync_files_response = carbon.integrations.sync_files(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
@@ -2250,6 +2258,8 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 

@@ -528,7 +528,7 @@ module Carbon
     # @param confluence_subdomain [String] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param salesforce_domain [String] 
     # @param sync_files_on_connection [Boolean] Used to specify whether Carbon should attempt to sync all your files automatically when authorization is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
     # @param set_page_as_boundary [Boolean] 
@@ -582,7 +582,7 @@ module Carbon
     # @param confluence_subdomain [String] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param salesforce_domain [String] 
     # @param sync_files_on_connection [Boolean] Used to specify whether Carbon should attempt to sync all your files automatically when authorization is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
     # @param set_page_as_boundary [Boolean] 
@@ -1258,7 +1258,7 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -1296,7 +1296,7 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -1494,7 +1494,7 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -1532,7 +1532,7 @@ module Carbon
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -2368,7 +2368,7 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
     # @param body [S3FileSyncInput] 
@@ -2405,7 +2405,7 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
-    # @param max_items_per_chunk [Integer] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
     # @param body [S3FileSyncInput] 

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.10-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.10)
+[![npm](https://img.shields.io/badge/npm-v0.1.11-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.11)
 
 </div>
 
@@ -972,7 +972,7 @@ Whether or not to prepend the file\'s name to chunks.
 
 ##### maxItemsPerChunk: `number`<a id="maxitemsperchunk-number"></a>
 
-Number of objects per chunk. For json files only.
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1028,6 +1028,8 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1359,6 +1361,8 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### salesforce_domain: `string`<a id="salesforce_domain-string"></a>
 
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
@@ -1603,6 +1607,8 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1692,6 +1698,8 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
@@ -2059,6 +2067,8 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 

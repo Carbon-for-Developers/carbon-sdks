@@ -1639,14 +1639,15 @@
             }
           },
           {
-            "description": "Number of objects per chunk. For json files only.",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "name": "max_items_per_chunk",
             "in": "query",
             "required": false,
             "schema": {
               "title": "Max Items Per Chunk",
-              "description": "Number of objects per chunk. For json files only.",
+              "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
               "type": "integer",
+              "exclusiveMinimum": 0,
               "nullable": true
             }
           }
@@ -4552,7 +4553,9 @@
           },
           "max_items_per_chunk": {
             "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "type": "integer",
+            "exclusiveMinimum": 0,
             "nullable": true
           },
           "salesforce_domain": {
@@ -5456,7 +5459,9 @@
           },
           "max_items_per_chunk": {
             "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "type": "integer",
+            "exclusiveMinimum": 0,
             "nullable": true
           },
           "set_page_as_boundary": {
@@ -5829,7 +5834,9 @@
           },
           "max_items_per_chunk": {
             "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "type": "integer",
+            "exclusiveMinimum": 0,
             "nullable": true
           },
           "set_page_as_boundary": {
@@ -5886,7 +5893,9 @@
           },
           "max_items_per_chunk": {
             "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "type": "integer",
+            "exclusiveMinimum": 0,
             "nullable": true
           },
           "sync_files_on_connection": {
@@ -5988,7 +5997,9 @@
           },
           "max_items_per_chunk": {
             "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
             "type": "integer",
+            "exclusiveMinimum": 0,
             "nullable": true
           }
         },

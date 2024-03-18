@@ -74,7 +74,7 @@ export interface SyncFilesRequest {
      */
     'prepend_filename_to_chunks'?: boolean | null;
     /**
-     * 
+     * Number of objects per chunk. For csv, tsv, xlsx, and json files only.
      * @type {number}
      * @memberof SyncFilesRequest
      */

@@ -29,6 +29,7 @@ type OAuthURLRequest struct {
 	ConfluenceSubdomain NullableString `json:"confluence_subdomain,omitempty"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
+	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SalesforceDomain NullableString `json:"salesforce_domain,omitempty"`
 	// Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk

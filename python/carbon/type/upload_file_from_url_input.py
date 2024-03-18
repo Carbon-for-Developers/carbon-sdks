@@ -38,6 +38,7 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
 
     prepend_filename_to_chunks: bool
 
+    # Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     max_items_per_chunk: typing.Optional[int]
 
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):

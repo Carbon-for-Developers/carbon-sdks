@@ -2488,13 +2488,15 @@ paths:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-7-schema
         style: form
-      - description: Number of objects per chunk. For json files only.
+      - description: "Number of objects per chunk. For csv, tsv, xlsx, and json files\
+          \ only."
         explode: true
         in: query
         name: max_items_per_chunk
         required: false
         schema:
-          description: Number of objects per chunk. For json files only.
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -5077,6 +5079,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -6002,6 +6006,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -6346,6 +6352,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -6420,6 +6428,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -6539,6 +6549,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -8283,6 +8295,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -8445,6 +8459,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -8540,6 +8556,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -8628,6 +8646,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -9423,7 +9443,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-7-schema
         max_items_per_chunk:
-          description: Number of objects per chunk. For json files only.
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer
@@ -9500,6 +9521,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-prepend_filename_to_chunks
         max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
           nullable: true
           title: Max Items Per Chunk
           type: integer

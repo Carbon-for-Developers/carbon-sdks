@@ -144,7 +144,7 @@ describe 'FilesApi' do
   # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
   # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
   # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file&#39;s name to chunks.
-  # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For json files only.
+  # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
   # @return [UserFile]
   describe 'upload test' do
     it 'should work' do

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **GenerateSparseVectors** | Pointer to **bool** |  | [optional] [default to false]
 **UseTextract** | Pointer to **bool** |  | [optional] [default to false]
 **PrependFilenameToChunks** | Pointer to **bool** |  | [optional] [default to false]
-**MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
+**MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 
 ## Methods
 

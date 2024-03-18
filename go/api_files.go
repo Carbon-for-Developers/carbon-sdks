@@ -1552,7 +1552,7 @@ func (r *FilesApiUploadRequest) PrependFilenameToChunks(prependFilenameToChunks 
 	return r
 }
 
-// Number of objects per chunk. For json files only.
+// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 func (r *FilesApiUploadRequest) MaxItemsPerChunk(maxItemsPerChunk int32) *FilesApiUploadRequest {
 	r.maxItemsPerChunk = &maxItemsPerChunk
 	return r

@@ -25,6 +25,7 @@ module Carbon
 
     attr_accessor :prepend_filename_to_chunks
 
+    # Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     attr_accessor :max_items_per_chunk
 
     # Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **ConfluenceSubdomain** | Pointer to **NullableString** |  | [optional] 
 **GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] [default to false]
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
-**MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
+**MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SalesforceDomain** | Pointer to **NullableString** |  | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]

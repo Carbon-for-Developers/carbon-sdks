@@ -45,6 +45,7 @@ class OAuthURLRequest(BaseModel):
 
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
 
+    # Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     max_items_per_chunk: typing.Optional[typing.Optional[int]] = Field(None, alias='max_items_per_chunk')
 
     salesforce_domain: typing.Optional[typing.Optional[str]] = Field(None, alias='salesforce_domain')

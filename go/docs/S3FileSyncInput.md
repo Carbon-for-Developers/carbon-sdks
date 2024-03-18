@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
 **GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] [default to false]
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
-**MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
+**MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 
