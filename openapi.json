@@ -1920,6 +1920,18 @@
             "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only."
           },
           {
+            "name": "parse_pdf_tables_with_ocr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to use rich table parsing when `use_ocr` is enabled.",
+              "default": false,
+              "title": "Parse Pdf Tables With Ocr"
+            },
+            "description": "Whether to use rich table parsing when `use_ocr` is enabled."
+          },
+          {
             "name": "authorization",
             "in": "header",
             "required": true,
@@ -7627,6 +7639,11 @@
             ],
             "title": "Max Items Per Chunk",
             "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only."
+          },
+          "parse_pdf_tables_with_ocr": {
+            "type": "boolean",
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false
           }
         },
         "type": "object",
