@@ -127,6 +127,7 @@ class UploadFileFromUrlInput(
                         *args,
                         _configuration=_configuration,
                     )
+            parse_pdf_tables_with_ocr = schemas.BoolSchema
             __annotations__ = {
                 "url": url,
                 "file_name": file_name,
@@ -139,6 +140,7 @@ class UploadFileFromUrlInput(
                 "use_textract": use_textract,
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
                 "max_items_per_chunk": max_items_per_chunk,
+                "parse_pdf_tables_with_ocr": parse_pdf_tables_with_ocr,
             }
     
     url: MetaOapg.properties.url
@@ -177,9 +179,12 @@ class UploadFileFromUrlInput(
     def __getitem__(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> MetaOapg.properties.max_items_per_chunk: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["parse_pdf_tables_with_ocr"]) -> MetaOapg.properties.parse_pdf_tables_with_ocr: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -218,9 +223,12 @@ class UploadFileFromUrlInput(
     def get_item_oapg(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> typing.Union[MetaOapg.properties.max_items_per_chunk, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["parse_pdf_tables_with_ocr"]) -> typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -238,6 +246,7 @@ class UploadFileFromUrlInput(
         use_textract: typing.Union[MetaOapg.properties.use_textract, bool, schemas.Unset] = schemas.unset,
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, bool, schemas.Unset] = schemas.unset,
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UploadFileFromUrlInput':
@@ -255,6 +264,7 @@ class UploadFileFromUrlInput(
             use_textract=use_textract,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             _configuration=_configuration,
             **kwargs,
         )

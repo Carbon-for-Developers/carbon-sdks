@@ -20,7 +20,7 @@ class RequiredWebhookFilters(TypedDict):
     pass
 
 class OptionalWebhookFilters(TypedDict, total=False):
-    ids: WebhookFiltersIds
+    ids: typing.Optional[WebhookFiltersIds]
 
 class WebhookFilters(RequiredWebhookFilters, OptionalWebhookFilters):
     pass

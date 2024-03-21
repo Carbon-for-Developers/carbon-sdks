@@ -117,6 +117,7 @@ class MaxItemsPerChunkSchema(
             *args,
             _configuration=_configuration,
         )
+ParsePdfTablesWithOcrSchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -134,6 +135,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'generate_sparse_vectors': typing.Union[GenerateSparseVectorsSchema, bool, ],
         'prepend_filename_to_chunks': typing.Union[PrependFilenameToChunksSchema, bool, ],
         'max_items_per_chunk': typing.Union[MaxItemsPerChunkSchema, None, decimal.Decimal, int, ],
+        'parse_pdf_tables_with_ocr': typing.Union[ParsePdfTablesWithOcrSchema, bool, ],
     },
     total=False
 )
@@ -195,6 +197,12 @@ request_query_max_items_per_chunk = api_client.QueryParameter(
     name="max_items_per_chunk",
     style=api_client.ParameterStyle.FORM,
     schema=MaxItemsPerChunkSchema,
+    explode=True,
+)
+request_query_parse_pdf_tables_with_ocr = api_client.QueryParameter(
+    name="parse_pdf_tables_with_ocr",
+    style=api_client.ParameterStyle.FORM,
+    schema=ParsePdfTablesWithOcrSchema,
     explode=True,
 )
 # body param
@@ -278,6 +286,7 @@ class BaseApi(api_client.Api):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _query_params = {}
@@ -303,6 +312,8 @@ class BaseApi(api_client.Api):
             _query_params["prepend_filename_to_chunks"] = prepend_filename_to_chunks
         if max_items_per_chunk is not None:
             _query_params["max_items_per_chunk"] = max_items_per_chunk
+        if parse_pdf_tables_with_ocr is not None:
+            _query_params["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
         args.query = _query_params
         return args
 
@@ -341,6 +352,7 @@ class BaseApi(api_client.Api):
             request_query_generate_sparse_vectors,
             request_query_prepend_filename_to_chunks,
             request_query_max_items_per_chunk,
+            request_query_parse_pdf_tables_with_ocr,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -479,6 +491,7 @@ class BaseApi(api_client.Api):
             request_query_generate_sparse_vectors,
             request_query_prepend_filename_to_chunks,
             request_query_max_items_per_chunk,
+            request_query_parse_pdf_tables_with_ocr,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -568,6 +581,7 @@ class UploadRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -585,6 +599,7 @@ class UploadRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -604,6 +619,7 @@ class UploadRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -619,6 +635,7 @@ class UploadRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return self._upload_oapg(
             body=args.body,
@@ -639,6 +656,7 @@ class Upload(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -653,6 +671,7 @@ class Upload(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             **kwargs,
         )
         if validate:
@@ -672,6 +691,7 @@ class Upload(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload(
@@ -685,6 +705,7 @@ class Upload(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -706,6 +727,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -723,6 +745,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -742,6 +765,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -757,6 +781,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return self._upload_oapg(
             body=args.body,

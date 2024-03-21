@@ -272,6 +272,9 @@ operation_parameter_map = {
             {
                 'name': 'max_items_per_chunk'
             },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -308,6 +311,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'max_items_per_chunk'
+            },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
             },
         ]
     },
@@ -810,6 +816,16 @@ operation_parameter_map = {
             },
             {
                 'name': 'value'
+            },
+        ]
+    },
+    '/update_users-POST': {
+        'parameters': [
+            {
+                'name': 'customer_ids'
+            },
+            {
+                'name': 'auto_sync_enabled_sources'
             },
         ]
     },

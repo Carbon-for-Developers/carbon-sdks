@@ -28,6 +28,7 @@ type UploadFileFromUrlInput struct {
 	PrependFilenameToChunks *bool `json:"prepend_filename_to_chunks,omitempty"`
 	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
+	ParsePdfTablesWithOcr *bool `json:"parse_pdf_tables_with_ocr,omitempty"`
 }
 
 // NewUploadFileFromUrlInput instantiates a new UploadFileFromUrlInput object
@@ -47,6 +48,8 @@ func NewUploadFileFromUrlInput(url string) *UploadFileFromUrlInput {
 	this.UseTextract = &useTextract
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = &prependFilenameToChunks
+	var parsePdfTablesWithOcr bool = false
+	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
 	return &this
 }
 
@@ -65,6 +68,8 @@ func NewUploadFileFromUrlInputWithDefaults() *UploadFileFromUrlInput {
 	this.UseTextract = &useTextract
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = &prependFilenameToChunks
+	var parsePdfTablesWithOcr bool = false
+	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
 	return &this
 }
 
@@ -452,6 +457,38 @@ func (o *UploadFileFromUrlInput) UnsetMaxItemsPerChunk() {
 	o.MaxItemsPerChunk.Unset()
 }
 
+// GetParsePdfTablesWithOcr returns the ParsePdfTablesWithOcr field value if set, zero value otherwise.
+func (o *UploadFileFromUrlInput) GetParsePdfTablesWithOcr() bool {
+	if o == nil || isNil(o.ParsePdfTablesWithOcr) {
+		var ret bool
+		return ret
+	}
+	return *o.ParsePdfTablesWithOcr
+}
+
+// GetParsePdfTablesWithOcrOk returns a tuple with the ParsePdfTablesWithOcr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadFileFromUrlInput) GetParsePdfTablesWithOcrOk() (*bool, bool) {
+	if o == nil || isNil(o.ParsePdfTablesWithOcr) {
+    return nil, false
+	}
+	return o.ParsePdfTablesWithOcr, true
+}
+
+// HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasParsePdfTablesWithOcr() bool {
+	if o != nil && !isNil(o.ParsePdfTablesWithOcr) {
+		return true
+	}
+
+	return false
+}
+
+// SetParsePdfTablesWithOcr gets a reference to the given bool and assigns it to the ParsePdfTablesWithOcr field.
+func (o *UploadFileFromUrlInput) SetParsePdfTablesWithOcr(v bool) {
+	o.ParsePdfTablesWithOcr = &v
+}
+
 func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -486,6 +523,9 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxItemsPerChunk.IsSet() {
 		toSerialize["max_items_per_chunk"] = o.MaxItemsPerChunk.Get()
+	}
+	if !isNil(o.ParsePdfTablesWithOcr) {
+		toSerialize["parse_pdf_tables_with_ocr"] = o.ParsePdfTablesWithOcr
 	}
 	return json.Marshal(toSerialize)
 }

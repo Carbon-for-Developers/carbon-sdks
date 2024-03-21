@@ -1524,6 +1524,53 @@
         }
       }
     },
+    "/update_users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update Users",
+        "operationId": "Users_updateUsers",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsersInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/uploadfile": {
       "post": {
         "tags": [
@@ -1649,6 +1696,18 @@
               "type": "integer",
               "exclusiveMinimum": 0,
               "nullable": true
+            }
+          },
+          {
+            "description": "Whether to use rich table parsing when `use_ocr` is enabled.",
+            "name": "parse_pdf_tables_with_ocr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Parse Pdf Tables With Ocr",
+              "description": "Whether to use rich table parsing when `use_ocr` is enabled.",
+              "type": "boolean",
+              "default": false
             }
           }
         ],
@@ -3119,6 +3178,11 @@
           "data_source",
           "sync_url"
         ]
+      },
+      "DataSourceExtendedInput": {
+        "title": "DataSourceExtendedInput",
+        "type": "string",
+        "const": "ALL"
       },
       "DataSourceLastSyncActions": {
         "title": "DataSourceLastSyncActions",
@@ -5945,6 +6009,40 @@
           "refresh_token"
         ]
       },
+      "UpdateUsersInput": {
+        "title": "UpdateUsersInput",
+        "properties": {
+          "customer_ids": {
+            "title": "Customer Ids",
+            "description": "List of organization supplied user IDs",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100
+          },
+          "auto_sync_enabled_sources": {
+            "title": "Auto Sync Enabled Sources",
+            "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources",
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DataSourceType"
+                },
+                "type": "array"
+              },
+              {
+                "$ref": "#/components/schemas/DataSourceExtendedInput"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "customer_ids"
+        ]
+      },
       "UploadFileFromUrlInput": {
         "title": "UploadFileFromUrlInput",
         "properties": {
@@ -6001,6 +6099,11 @@
             "type": "integer",
             "exclusiveMinimum": 0,
             "nullable": true
+          },
+          "parse_pdf_tables_with_ocr": {
+            "title": "Parse Pdf Tables With Ocr",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",

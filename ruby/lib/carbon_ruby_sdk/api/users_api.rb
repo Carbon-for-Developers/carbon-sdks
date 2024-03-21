@@ -294,6 +294,102 @@ module Carbon
       end
       APIResponse::new(data, status_code, headers, response)
     end
+
+
+    # Update Users
+    #
+    # @param customer_ids [Array<String>] List of organization supplied user IDs
+    # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
+    # @param body [UpdateUsersInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, extra: {})
+      _body = {}
+      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
+      _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
+      update_users_input = _body
+      api_response = update_users_with_http_info_impl(update_users_input, extra)
+      api_response.data
+    end
+
+    # Update Users
+    #
+    # @param customer_ids [Array<String>] List of organization supplied user IDs
+    # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
+    # @param body [UpdateUsersInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, extra: {})
+      _body = {}
+      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
+      _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
+      update_users_input = _body
+      update_users_with_http_info_impl(update_users_input, extra)
+    end
+
+    # Update Users
+    # @param update_users_input [UpdateUsersInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def update_users_impl(update_users_input, opts = {})
+      data, _status_code, _headers = update_users_with_http_info(update_users_input, opts)
+      data
+    end
+
+    # Update Users
+    # @param update_users_input [UpdateUsersInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def update_users_with_http_info_impl(update_users_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: UsersApi.update_users ...'
+      end
+      # verify the required parameter 'update_users_input' is set
+      if @api_client.config.client_side_validation && update_users_input.nil?
+        fail ArgumentError, "Missing the required parameter 'update_users_input' when calling UsersApi.update_users"
+      end
+      # resource path
+      local_var_path = '/update_users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_users_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken']
+
+      new_options = opts.merge(
+        :operation => :"UsersApi.update_users",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: UsersApi#update_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
   end
 
   # top-level client access to avoid having the user to insantiate their own API instances

@@ -43,17 +43,17 @@ class RequiredUserFile(TypedDict):
 
     last_sync: typing.Optional[datetime]
 
-    file_statistics: FileStatisticsNullable
+    file_statistics: typing.Optional[FileStatisticsNullable]
 
     file_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
-    embedding_properties: UserFileEmbeddingProperties
+    embedding_properties: typing.Optional[UserFileEmbeddingProperties]
 
     chunk_size: typing.Optional[int]
 
     chunk_overlap: typing.Optional[int]
 
-    chunk_properties: ChunkPropertiesNullable
+    chunk_properties: typing.Optional[ChunkPropertiesNullable]
 
     name: typing.Optional[str]
 

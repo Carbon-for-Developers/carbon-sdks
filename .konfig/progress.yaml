@@ -128,6 +128,8 @@ operationIds:
     get: Utilities_searchUrls
   /text_chunks:
     post: Embeddings_getEmbeddingsAndChunks
+  /update_users:
+    post: Users_updateUsers
   /upload_chunks_and_embeddings:
     post: Embeddings_uploadChunksAndEmbeddings
   /upload_file_from_url:
@@ -214,6 +216,8 @@ securityParameters:
   id:
     query: false
   max_items_per_chunk:
+    query: false
+  parse_pdf_tables_with_ocr:
     query: false
   prepend_filename_to_chunks:
     query: false

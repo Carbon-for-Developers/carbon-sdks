@@ -24,7 +24,7 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel, RootModel, ValidationError
+from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
@@ -150,8 +150,9 @@ class Dictionary(BaseModel):
     For free-form objects that can have any keys and values
     (i.e. "type: object" with no properties)
     """
-    class Config:
-        extra = 'allow'
+    model_config = ConfigDict(
+        extra="allow"
+    )
 
 
 def DeprecationWarningOnce(func=None, *, prefix=None):
@@ -1239,7 +1240,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.1.10/python'
+        self.user_agent = 'Konfig/0.1.11/python'
 
     def __enter__(self):
         return self

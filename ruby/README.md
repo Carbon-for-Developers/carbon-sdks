@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.8-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.8)
+[![npm](https://img.shields.io/badge/gem-v0.1.9-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.9)
 
 </div>
 
@@ -61,6 +61,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
+  * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
   * [`carbon.utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
@@ -78,7 +79,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.8'
+gem 'carbon_ruby_sdk', '~> 0.1.9'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -944,6 +945,7 @@ result = carbon.files.upload(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -983,6 +985,9 @@ Whether or not to prepend the file's name to chunks.
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+Whether to use rich table parsing when `use_ocr` is enabled.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1015,6 +1020,7 @@ result = carbon.files.upload_from_url(
   use_textract: false,
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -1034,6 +1040,7 @@ p result
 ##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -2151,6 +2158,43 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/modify_user_configuration` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.update_users`<a id="carbonusersupdate_users"></a>
+
+Update Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.users.update_users(
+  customer_ids: [
+        "string_example"
+    ],
+  auto_sync_enabled_sources: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: Array<`String`><a id="customer_ids-array"></a>
+List of organization supplied user IDs
+
+##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./lib/carbon_ruby_sdk/models/auto_sync_enabled_sources_property.rb)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertylibcarbon_ruby_sdkmodelsauto_sync_enabled_sources_propertyrb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/update_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

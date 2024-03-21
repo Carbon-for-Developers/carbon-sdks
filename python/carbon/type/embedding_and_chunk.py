@@ -23,7 +23,7 @@ class RequiredEmbeddingAndChunk(TypedDict):
 
     source_content: str
 
-    embedding: EmbeddingAndChunkEmbedding
+    embedding: typing.Optional[EmbeddingAndChunkEmbedding]
 
 class OptionalEmbeddingAndChunk(TypedDict, total=False):
     pass

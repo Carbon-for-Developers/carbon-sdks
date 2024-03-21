@@ -30,13 +30,13 @@ class RequiredGetEmbeddingDocumentsBody(TypedDict):
     k: int
 
 class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
-    tags: GetEmbeddingDocumentsBodyTags
+    tags: typing.Optional[GetEmbeddingDocumentsBodyTags]
 
-    query_vector: GetEmbeddingDocumentsBodyQueryVector
+    query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector]
 
-    file_ids: GetEmbeddingDocumentsBodyFileIds
+    file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds]
 
-    parent_file_ids: GetEmbeddingDocumentsBodyParentFileIds
+    parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds]
 
     # A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
     tags_v2: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
@@ -53,11 +53,11 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
     # Flag to control whether or not to perform hybrid search.
     hybrid_search: typing.Optional[bool]
 
-    hybrid_search_tuning_parameters: HybridSearchTuningParamsNullable
+    hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable]
 
-    media_type: FileContentTypesNullable
+    media_type: typing.Optional[FileContentTypesNullable]
 
-    embedding_model: EmbeddingGeneratorsNullable
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

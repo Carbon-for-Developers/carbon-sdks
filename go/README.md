@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.6)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.7)
 
 </div>
 
@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**Delete**](docs/UsersApi.md#delete) | **Post** /delete_users | Delete Users
 *UsersApi* | [**Get**](docs/UsersApi.md#get) | **Post** /user | User Endpoint
 *UsersApi* | [**ToggleUserFeatures**](docs/UsersApi.md#toggleuserfeatures) | **Post** /modify_user_configuration | Toggle User Features
+*UsersApi* | [**UpdateUsers**](docs/UsersApi.md#updateusers) | **Post** /update_users | Update Users
 *UtilitiesApi* | [**FetchUrls**](docs/UtilitiesApi.md#fetchurls) | **Get** /fetch_urls | Fetch Urls
 *UtilitiesApi* | [**FetchYoutubeTranscripts**](docs/UtilitiesApi.md#fetchyoutubetranscripts) | **Get** /fetch_youtube_transcript | Fetch Youtube Transcripts
 *UtilitiesApi* | [**ProcessSitemap**](docs/UtilitiesApi.md#processsitemap) | **Get** /process_sitemap | Sitemap
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
 
  - [AddWebhookProps](docs/AddWebhookProps.md)
  - [AuthenticationProperty](docs/AuthenticationProperty.md)
+ - [AutoSyncEnabledSourcesProperty](docs/AutoSyncEnabledSourcesProperty.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
@@ -211,6 +213,7 @@ Class | Method | HTTP request | Description
  - [Tags1](docs/Tags1.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
  - [TokenResponse](docs/TokenResponse.md)
+ - [UpdateUsersInput](docs/UpdateUsersInput.md)
  - [UploadFileFromUrlInput](docs/UploadFileFromUrlInput.md)
  - [UserFile](docs/UserFile.md)
  - [UserFilesV2](docs/UserFilesV2.md)

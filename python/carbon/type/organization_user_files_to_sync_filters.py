@@ -27,7 +27,7 @@ class RequiredOrganizationUserFilesToSyncFilters(TypedDict):
     pass
 
 class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
-    tags: OrganizationUserFilesToSyncFiltersTags
+    tags: typing.Optional[OrganizationUserFilesToSyncFiltersTags]
 
     source: typing.Union[DataSourceType, typing.List[DataSourceType]]
 
@@ -35,15 +35,15 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
 
     tags_v2: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
-    ids: OrganizationUserFilesToSyncFiltersIds
+    ids: typing.Optional[OrganizationUserFilesToSyncFiltersIds]
 
-    external_file_ids: OrganizationUserFilesToSyncFiltersExternalFileIds
+    external_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersExternalFileIds]
 
     sync_statuses: typing.Optional[typing.List[ExternalFileSyncStatuses]]
 
-    parent_file_ids: OrganizationUserFilesToSyncFiltersParentFileIds
+    parent_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersParentFileIds]
 
-    organization_user_data_source_id: OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
+    organization_user_data_source_id: typing.Optional[OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId]
 
     embedding_generators: typing.Optional[typing.List[EmbeddingGenerators]]
 

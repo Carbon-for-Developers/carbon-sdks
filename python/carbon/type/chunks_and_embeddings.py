@@ -22,7 +22,7 @@ class RequiredChunksAndEmbeddings(TypedDict):
     chunk: str
 
 class OptionalChunksAndEmbeddings(TypedDict, total=False):
-    embedding: ChunksAndEmbeddingsEmbedding
+    embedding: typing.Optional[ChunksAndEmbeddingsEmbedding]
 
 class ChunksAndEmbeddings(RequiredChunksAndEmbeddings, OptionalChunksAndEmbeddings):
     pass

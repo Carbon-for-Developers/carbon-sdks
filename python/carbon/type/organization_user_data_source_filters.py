@@ -21,9 +21,9 @@ class RequiredOrganizationUserDataSourceFilters(TypedDict):
     pass
 
 class OptionalOrganizationUserDataSourceFilters(TypedDict, total=False):
-    source: DataSourceTypeNullable
+    source: typing.Optional[DataSourceTypeNullable]
 
-    ids: OrganizationUserDataSourceFiltersIds
+    ids: typing.Optional[OrganizationUserDataSourceFiltersIds]
 
     revoked_access: typing.Optional[bool]
 

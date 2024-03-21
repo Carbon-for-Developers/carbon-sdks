@@ -21,6 +21,8 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { AutoSyncEnabledSourcesProperty } from '../models';
+// @ts-ignore
 import { DeleteUsersInput } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -28,6 +30,8 @@ import { GenericSuccessResponse } from '../models';
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { ModifyUserConfigurationInput } from '../models';
+// @ts-ignore
+import { UpdateUsersInput } from '../models';
 // @ts-ignore
 import { UserRequestContent } from '../models';
 // @ts-ignore
@@ -189,6 +193,54 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update Users
+         * @param {UpdateUsersInput} updateUsersInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUsers: async (updateUsersInput: UpdateUsersInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateUsersInput' is not null or undefined
+            assertParamExists('updateUsers', 'updateUsersInput', updateUsersInput)
+            const localVarPath = `/update_users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: updateUsersInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/update_users',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(updateUsersInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -242,6 +294,21 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.toggleUserFeatures(modifyUserConfigurationInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary Update Users
+         * @param {UsersApiUpdateUsersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const updateUsersInput: UpdateUsersInput = {
+                customer_ids: requestParameters.customer_ids,
+                auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -282,6 +349,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.toggleUserFeatures(requestParameters, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Update Users
+         * @param {UsersApiUpdateUsersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.updateUsers(requestParameters, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -311,6 +388,15 @@ export type UsersApiGetRequest = {
 export type UsersApiToggleUserFeaturesRequest = {
     
 } & ModifyUserConfigurationInput
+
+/**
+ * Request parameters for updateUsers operation in UsersApi.
+ * @export
+ * @interface UsersApiUpdateUsersRequest
+ */
+export type UsersApiUpdateUsersRequest = {
+    
+} & UpdateUsersInput
 
 /**
  * UsersApiGenerated - object-oriented interface
@@ -353,5 +439,17 @@ export class UsersApiGenerated extends BaseAPI {
      */
     public toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).toggleUserFeatures(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Users
+     * @param {UsersApiUpdateUsersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiGenerated
+     */
+    public updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).updateUsers(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

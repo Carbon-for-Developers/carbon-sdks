@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.10-blue)](https://pypi.org/project/carbon-python-sdk/0.1.10)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.11-blue)](https://pypi.org/project/carbon-python-sdk/0.1.11)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -65,6 +65,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
+  * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
   * [`carbon.utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
@@ -84,7 +85,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.10
+pip install carbon-python-sdk==0.1.11
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1038,6 +1039,7 @@ upload_response = carbon.files.upload(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -1081,6 +1083,10 @@ Whether or not to prepend the file's name to chunks.
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
+##### parse_pdf_tables_with_ocr: `bool`<a id="parse_pdf_tables_with_ocr-bool"></a>
+
+Whether to use rich table parsing when `use_ocr` is enabled.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`BodyCreateUploadFileUploadfilePost`](./carbon/type/body_create_upload_file_uploadfile_post.py)
@@ -1115,6 +1121,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     use_textract=False,
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -1143,6 +1150,8 @@ upload_from_url_response = carbon.files.upload_from_url(
 ##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### parse_pdf_tables_with_ocr: `bool`<a id="parse_pdf_tables_with_ocr-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2393,6 +2402,43 @@ toggle_user_features_response = carbon.users.toggle_user_features(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/modify_user_configuration` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.users.update_users`<a id="carbonusersupdate_users"></a>
+
+Update Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+update_users_response = carbon.users.update_users(
+    customer_ids=["string_example"],
+    auto_sync_enabled_sources=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: [`UpdateUsersInputCustomerIds`](./carbon/type/update_users_input_customer_ids.py)<a id="customer_ids-updateusersinputcustomeridscarbontypeupdate_users_input_customer_idspy"></a>
+
+##### auto_sync_enabled_sources: Union[List[[`DataSourceType`](./carbon/type/data_source_type.py)], `str`]<a id="auto_sync_enabled_sources-unionlistdatasourcetypecarbontypedata_source_typepy-str"></a>
+
+
+List of data source types to enable auto sync for. Empty array will remove all sources          and the string \\\"ALL\\\" will enable it for all data sources
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`UpdateUsersInput`](./carbon/type/update_users_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/update_users` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

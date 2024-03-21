@@ -7,6 +7,7 @@ Method | Path | Description
 [**Delete**](UsersApi.md#Delete) | **Post** /delete_users | Delete Users
 [**Get**](UsersApi.md#Get) | **Post** /user | User Endpoint
 [**ToggleUserFeatures**](UsersApi.md#ToggleUserFeatures) | **Post** /modify_user_configuration | Toggle User Features
+[**UpdateUsers**](UsersApi.md#UpdateUsers) | **Post** /update_users | Update Users
 
 
 
@@ -153,6 +154,54 @@ func main() {
     // response from `ToggleUserFeatures`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `UsersApi.ToggleUserFeatures`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.ToggleUserFeatures.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateUsers
+
+Update Users
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    client := carbon.NewAPIClient(configuration)
+
+    autoSyncEnabledSources := *carbon.NewAutoSyncEnabledSourcesProperty()
+    
+    updateUsersInput := *carbon.NewUpdateUsersInput(
+        null,
+    )
+    updateUsersInput.SetAutoSyncEnabledSources(autoSyncEnabledSources)
+    
+    request := client.UsersApi.UpdateUsers(
+        updateUsersInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UpdateUsers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `UpdateUsers`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UpdateUsers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.UpdateUsers.Success`: %v\n", resp.Success)
 }
 ```
 

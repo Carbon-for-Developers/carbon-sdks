@@ -20,7 +20,7 @@ class RequiredEmbeddingsAndChunksFilters(TypedDict):
     user_file_id: int
 
 class OptionalEmbeddingsAndChunksFilters(TypedDict, total=False):
-    embedding_model: EmbeddingGeneratorsNullable
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 
 class EmbeddingsAndChunksFilters(RequiredEmbeddingsAndChunksFilters, OptionalEmbeddingsAndChunksFilters):
     pass

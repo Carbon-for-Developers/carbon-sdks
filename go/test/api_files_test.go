@@ -225,6 +225,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.GenerateSparseVectors(false)
         request.PrependFilenameToChunks(false)
         request.MaxItemsPerChunk(56)
+        request.ParsePdfTablesWithOcr(false)
         
         resp, httpRes, err := request.Execute()
 
@@ -250,6 +251,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         uploadFileFromUrlInput.SetUseTextract(false)
         uploadFileFromUrlInput.SetPrependFilenameToChunks(false)
         uploadFileFromUrlInput.SetMaxItemsPerChunk(null)
+        uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
         
         request := client.FilesApi.UploadFromUrl(
             uploadFileFromUrlInput,

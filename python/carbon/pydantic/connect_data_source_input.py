@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
 from carbon.pydantic.freskdesk_authentication import FreskdeskAuthentication
@@ -31,5 +31,8 @@ class ConnectDataSourceInput(BaseModel):
     authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication] = Field(alias='authentication')
 
     sync_options: typing.Optional[SyncOptions] = Field(None, alias='sync_options')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

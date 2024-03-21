@@ -24,7 +24,7 @@ class RequiredWebscrapeRequest(TypedDict):
     url: str
 
 class OptionalWebscrapeRequest(TypedDict, total=False):
-    tags: WebscrapeRequestTags
+    tags: typing.Optional[WebscrapeRequestTags]
 
     recursion_depth: typing.Optional[int]
 
@@ -42,11 +42,11 @@ class OptionalWebscrapeRequest(TypedDict, total=False):
 
     prepend_filename_to_chunks: typing.Optional[bool]
 
-    html_tags_to_skip: WebscrapeRequestHtmlTagsToSkip
+    html_tags_to_skip: typing.Optional[WebscrapeRequestHtmlTagsToSkip]
 
-    css_classes_to_skip: WebscrapeRequestCssClassesToSkip
+    css_classes_to_skip: typing.Optional[WebscrapeRequestCssClassesToSkip]
 
-    css_selectors_to_skip: WebscrapeRequestCssSelectorsToSkip
+    css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip]
 
     embedding_model: EmbeddingGenerators
 

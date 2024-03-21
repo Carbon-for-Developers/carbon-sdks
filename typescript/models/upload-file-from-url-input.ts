@@ -84,5 +84,11 @@ export interface UploadFileFromUrlInput {
      * @memberof UploadFileFromUrlInput
      */
     'max_items_per_chunk'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UploadFileFromUrlInput
+     */
+    'parse_pdf_tables_with_ocr'?: boolean;
 }
 

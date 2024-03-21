@@ -23,7 +23,7 @@ class RequiredYoutubeTranscriptResponse(TypedDict):
 
     data: typing.Optional[str]
 
-    raw_transcript: YoutubeTranscriptResponseRawTranscript
+    raw_transcript: typing.Optional[YoutubeTranscriptResponseRawTranscript]
 
 class OptionalYoutubeTranscriptResponse(TypedDict, total=False):
     pass

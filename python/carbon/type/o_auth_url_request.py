@@ -31,7 +31,7 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     skip_embedding_generation: typing.Optional[bool]
 
-    embedding_model: EmbeddingGeneratorsNullable
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 
     zendesk_subdomain: typing.Optional[str]
 

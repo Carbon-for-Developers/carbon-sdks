@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class ResyncFileQueryInput(BaseModel):
@@ -24,5 +24,8 @@ class ResyncFileQueryInput(BaseModel):
     chunk_overlap: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_overlap')
 
     force_embedding_generation: typing.Optional[bool] = Field(None, alias='force_embedding_generation')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

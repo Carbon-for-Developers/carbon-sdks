@@ -547,10 +547,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [generateSparseVectors] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
          * @param {boolean} [prependFilenameToChunks] Whether or not to prepend the file\&#39;s name to chunks.
          * @param {number} [maxItemsPerChunk] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+         * @param {boolean} [parsePdfTablesWithOcr] Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -652,6 +653,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (maxItemsPerChunk !== undefined) {
                 localVarQueryParameter['max_items_per_chunk'] = maxItemsPerChunk;
+            }
+
+            if (parsePdfTablesWithOcr !== undefined) {
+                localVarQueryParameter['parse_pdf_tables_with_ocr'] = parsePdfTablesWithOcr;
             }
 
 
@@ -950,7 +955,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
                 file: requestParameters.file
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -972,7 +977,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 use_textract: requestParameters.use_textract,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                max_items_per_chunk: requestParameters.max_items_per_chunk
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1313,6 +1319,13 @@ export type FilesApiUploadRequest = {
     * @memberof FilesApiUpload
     */
     readonly maxItemsPerChunk?: number
+    
+    /**
+    * Whether to use rich table parsing when `use_ocr` is enabled.
+    * @type {boolean}
+    * @memberof FilesApiUpload
+    */
+    readonly parsePdfTablesWithOcr?: boolean
     
 } & BodyCreateUploadFileUploadfilePost
 

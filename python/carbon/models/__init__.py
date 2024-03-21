@@ -22,6 +22,7 @@ from carbon.model.configuration_keys import ConfigurationKeys
 from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.connect_data_source_input import ConnectDataSourceInput
 from carbon.model.connect_data_source_response import ConnectDataSourceResponse
+from carbon.model.data_source_extended_input import DataSourceExtendedInput
 from carbon.model.data_source_last_sync_actions import DataSourceLastSyncActions
 from carbon.model.data_source_sync_statuses import DataSourceSyncStatuses
 from carbon.model.data_source_type import DataSourceType
@@ -126,6 +127,8 @@ from carbon.model.sync_files_request import SyncFilesRequest
 from carbon.model.sync_options import SyncOptions
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
+from carbon.model.update_users_input import UpdateUsersInput
+from carbon.model.update_users_input_customer_ids import UpdateUsersInputCustomerIds
 from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput
 from carbon.model.user_file import UserFile
 from carbon.model.user_file_embedding_properties import UserFileEmbeddingProperties

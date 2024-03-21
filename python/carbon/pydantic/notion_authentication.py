@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class NotionAuthentication(BaseModel):
@@ -22,5 +22,8 @@ class NotionAuthentication(BaseModel):
     access_token: str = Field(alias='access_token')
 
     workspace_id: str = Field(alias='workspace_id')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

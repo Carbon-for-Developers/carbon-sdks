@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class S3Authentication(BaseModel):
@@ -22,5 +22,8 @@ class S3Authentication(BaseModel):
     access_key: str = Field(alias='access_key')
 
     access_key_secret: str = Field(alias='access_key_secret')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

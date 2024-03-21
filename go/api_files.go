@@ -1502,6 +1502,7 @@ type FilesApiUploadRequest struct {
 	generateSparseVectors *bool
 	prependFilenameToChunks *bool
 	maxItemsPerChunk *int32
+	parsePdfTablesWithOcr *bool
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -1555,6 +1556,12 @@ func (r *FilesApiUploadRequest) PrependFilenameToChunks(prependFilenameToChunks 
 // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 func (r *FilesApiUploadRequest) MaxItemsPerChunk(maxItemsPerChunk int32) *FilesApiUploadRequest {
 	r.maxItemsPerChunk = &maxItemsPerChunk
+	return r
+}
+
+// Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
+func (r *FilesApiUploadRequest) ParsePdfTablesWithOcr(parsePdfTablesWithOcr bool) *FilesApiUploadRequest {
+	r.parsePdfTablesWithOcr = &parsePdfTablesWithOcr
 	return r
 }
 
@@ -1652,6 +1659,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.maxItemsPerChunk != nil {
 		localVarQueryParams.Add("max_items_per_chunk", parameterToString(*r.maxItemsPerChunk, ""))
+	}
+	if r.parsePdfTablesWithOcr != nil {
+		localVarQueryParams.Add("parse_pdf_tables_with_ocr", parameterToString(*r.parsePdfTablesWithOcr, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

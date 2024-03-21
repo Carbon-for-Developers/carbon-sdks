@@ -41,5 +41,7 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
     # Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     max_items_per_chunk: typing.Optional[int]
 
+    parse_pdf_tables_with_ocr: bool
+
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass

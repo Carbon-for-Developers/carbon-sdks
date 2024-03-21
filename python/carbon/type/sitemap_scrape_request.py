@@ -24,7 +24,7 @@ class RequiredSitemapScrapeRequest(TypedDict):
     url: str
 
 class OptionalSitemapScrapeRequest(TypedDict, total=False):
-    tags: SitemapScrapeRequestTags
+    tags: typing.Optional[SitemapScrapeRequestTags]
 
     max_pages_to_scrape: typing.Optional[int]
 
@@ -40,11 +40,11 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
 
     prepend_filename_to_chunks: typing.Optional[bool]
 
-    html_tags_to_skip: SitemapScrapeRequestHtmlTagsToSkip
+    html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip]
 
-    css_classes_to_skip: SitemapScrapeRequestCssClassesToSkip
+    css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip]
 
-    css_selectors_to_skip: SitemapScrapeRequestCssSelectorsToSkip
+    css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip]
 
     embedding_model: EmbeddingGenerators
 

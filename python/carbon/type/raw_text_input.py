@@ -30,7 +30,7 @@ class OptionalRawTextInput(TypedDict, total=False):
 
     overwrite_file_id: typing.Optional[int]
 
-    embedding_model: EmbeddingGeneratorsNullable
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 
     generate_sparse_vectors: typing.Optional[bool]
 

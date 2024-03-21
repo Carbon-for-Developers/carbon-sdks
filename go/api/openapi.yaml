@@ -2334,6 +2334,35 @@ paths:
       - Users
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--delete_users
+  /update_users:
+    post:
+      operationId: Users_updateUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUsersInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      summary: Update Users
+      tags:
+      - Users
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--update_users
   /uploadfile:
     post:
       description: "This endpoint is used to directly upload local files to Carbon.\
@@ -2500,6 +2529,20 @@ paths:
           nullable: true
           title: Max Items Per Chunk
           type: integer
+        style: form
+      - description: Whether to use rich table parsing when `use_ocr` is enabled.
+        explode: true
+        in: query
+        name: parse_pdf_tables_with_ocr
+        required: false
+        schema:
+          default: false
+          description: Whether to use rich table parsing when `use_ocr` is enabled.
+          example: false
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-9-schema
         style: form
       requestBody:
         content:
@@ -3612,6 +3655,9 @@ components:
       - sync_url
       title: ConnectDataSourceResponse
       type: object
+    DataSourceExtendedInput:
+      title: DataSourceExtendedInput
+      type: string
     DataSourceLastSyncActions:
       enum:
       - ADD
@@ -6482,6 +6528,29 @@ components:
       - refresh_token
       title: TokenResponse
       type: object
+    UpdateUsersInput:
+      example:
+        customer_ids:
+        - customer_ids
+        - customer_ids
+        - customer_ids
+        - customer_ids
+        - customer_ids
+        auto_sync_enabled_sources: null
+      properties:
+        customer_ids:
+          description: List of organization supplied user IDs
+          items:
+            type: string
+          maxItems: 100
+          title: Customer Ids
+          type: array
+        auto_sync_enabled_sources:
+          $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
+      required:
+      - customer_ids
+      title: UpdateUsersInput
+      type: object
     UploadFileFromUrlInput:
       example:
         chunk_size: 0
@@ -6490,6 +6559,7 @@ components:
         max_items_per_chunk: 1
         file_name: file_name
         generate_sparse_vectors: false
+        parse_pdf_tables_with_ocr: false
         set_page_as_boundary: false
         embedding_model: null
         chunk_overlap: 6
@@ -6554,6 +6624,13 @@ components:
           nullable: true
           title: Max Items Per Chunk
           type: integer
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr
       required:
       - url
       title: UploadFileFromUrlInput
@@ -7623,6 +7700,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-9-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-paths--fetch_youtube_transcript-get-parameters-1-schema:
       example: false
       type: boolean
@@ -8083,6 +8164,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -9378,6 +9463,31 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--update_users:
+      properties:
+        customer_ids:
+          description: List of organization supplied user IDs
+          items:
+            type: string
+          maxItems: 100
+          title: Customer Ids
+          type: array
+        auto_sync_enabled_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataSourceType'
+            type: array
+          - $ref: '#/components/schemas/DataSourceExtendedInput'
+          description: "List of data source types to enable auto sync for. Empty array\
+            \ will remove all sources \n        and the string \"ALL\" will enable\
+            \ it for all data sources"
+          nullable: true
+          title: Auto Sync Enabled Sources
+      required:
+      - customer_ids
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--uploadfile:
       properties:
         chunk_size:
@@ -9448,6 +9558,14 @@ components:
           nullable: true
           title: Max Items Per Chunk
           type: integer
+        parse_pdf_tables_with_ocr:
+          default: false
+          description: Whether to use rich table parsing when `use_ocr` is enabled.
+          example: false
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-9-schema
         file:
           format: binary
           title: File
@@ -9466,6 +9584,7 @@ components:
       - generate_sparse_vectors
       - prepend_filename_to_chunks
       - max_items_per_chunk
+      - parse_pdf_tables_with_ocr
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:
@@ -9526,6 +9645,13 @@ components:
           nullable: true
           title: Max Items Per Chunk
           type: integer
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr
       required:
       - url
       type: object
@@ -10068,6 +10194,17 @@ components:
           $ref: '#/components/schemas/SyncFilesIds'
         type: array
       title: Ids
+    Auto_Sync_Enabled_Sources_Property:
+      anyOf:
+      - items:
+          $ref: '#/components/schemas/DataSourceType'
+        type: array
+      - $ref: '#/components/schemas/DataSourceExtendedInput'
+      description: "List of data source types to enable auto sync for. Empty array\
+        \ will remove all sources \n        and the string \"ALL\" will enable it\
+        \ for all data sources"
+      nullable: true
+      title: Auto Sync Enabled Sources
     Location_Property_inner:
       anyOf:
       - type: string

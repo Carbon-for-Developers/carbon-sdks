@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.11-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.11)
+[![npm](https://img.shields.io/badge/npm-v0.1.12-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.12)
 
 </div>
 
@@ -60,6 +60,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
+  * [`carbon.users.updateUsers`](#carbonusersupdateusers)
   * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
   * [`carbon.utilities.fetchYoutubeTranscripts`](#carbonutilitiesfetchyoutubetranscripts)
   * [`carbon.utilities.processSitemap`](#carbonutilitiesprocesssitemap)
@@ -930,6 +931,7 @@ const uploadResponse = await carbon.files.upload({
   useOcr: false,
   generateSparseVectors: false,
   prependFilenameToChunks: false,
+  parsePdfTablesWithOcr: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -974,6 +976,10 @@ Whether or not to prepend the file\'s name to chunks.
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
+##### parsePdfTablesWithOcr: `boolean`<a id="parsepdftableswithocr-boolean"></a>
+
+Whether to use rich table parsing when `use_ocr` is enabled.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1002,6 +1008,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   generate_sparse_vectors: false,
   use_textract: false,
   prepend_filename_to_chunks: false,
+  parse_pdf_tables_with_ocr: false,
 });
 ```
 
@@ -1030,6 +1037,8 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
 ##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2194,6 +2203,39 @@ const toggleUserFeaturesResponse = await carbon.users.toggleUserFeatures({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/modify_user_configuration` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.updateUsers`<a id="carbonusersupdateusers"></a>
+
+Update Users
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const updateUsersResponse = await carbon.users.updateUsers({
+  customer_ids: ["customer_ids_example"],
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### customer_ids: `string`[]<a id="customer_ids-string"></a>
+
+List of organization supplied user IDs
+
+##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./models/auto-sync-enabled-sources-property.ts)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertymodelsauto-sync-enabled-sources-propertyts"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/update_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

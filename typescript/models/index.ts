@@ -1,5 +1,6 @@
 export * from './add-webhook-props';
 export * from './authentication-property';
+export * from './auto-sync-enabled-sources-property';
 export * from './body-create-upload-file-uploadfile-post';
 export * from './chunk-properties';
 export * from './chunk-properties-nullable';
@@ -95,6 +96,7 @@ export * from './tags';
 export * from './tags1';
 export * from './text-embedding-generators';
 export * from './token-response';
+export * from './update-users-input';
 export * from './upload-file-from-url-input';
 export * from './user-file';
 export * from './user-files-v2';

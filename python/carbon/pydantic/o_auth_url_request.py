@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.data_source_type import DataSourceType
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
@@ -60,5 +60,8 @@ class OAuthURLRequest(BaseModel):
 
     # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
     connecting_new_account: typing.Optional[typing.Optional[bool]] = Field(None, alias='connecting_new_account')
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )
