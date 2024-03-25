@@ -1737,70 +1737,18 @@
         ]
       }
     },
-    "/deletefile/{file_id}": {
-      "delete": {
-        "tags": [
-          "Files"
-        ],
-        "summary": "Delete File Endpoint",
-        "operationId": "delete_file_endpoint_deletefile__file_id__delete",
-        "deprecated": true,
-        "security": [
-          {
-            "accessToken": []
-          },
-          {
-            "apiKey": [],
-            "customerId": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "file_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "File Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenericSuccessResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/delete_files": {
+    "/delete_files_v2": {
       "post": {
         "tags": [
           "Files"
         ],
-        "summary": "Delete Files Endpoint",
-        "operationId": "delete_files_endpoint_delete_files_post",
+        "summary": "Delete Files V2 Endpoint",
+        "operationId": "delete_files_v2_endpoint_delete_files_v2_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeleteFilesQueryInput"
+                "$ref": "#/components/schemas/DeleteFilesV2QueryInput"
               }
             }
           },
@@ -2176,6 +2124,109 @@
                   },
                   "type": "array",
                   "title": "Response User Files User Files Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/deletefile/{file_id}": {
+      "delete": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Delete File Endpoint",
+        "operationId": "delete_file_endpoint_deletefile__file_id__delete",
+        "deprecated": true,
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "file_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "File Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete_files": {
+      "post": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Delete Files Endpoint",
+        "operationId": "delete_files_endpoint_delete_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteFilesQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
                 }
               }
             }
@@ -3161,6 +3212,28 @@
         },
         "type": "object",
         "title": "DeleteFilesQueryInput"
+      },
+      "DeleteFilesV2QueryInput": {
+        "properties": {
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+              }
+            ],
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
+          },
+          "send_webhook": {
+            "type": "boolean",
+            "title": "Send Webhook",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "DeleteFilesV2QueryInput"
       },
       "DeleteUsersInput": {
         "properties": {
@@ -5449,7 +5522,8 @@
                 "type": "null"
               }
             ],
-            "title": "Source"
+            "title": "Source",
+            "description": "The source of the file. If a list is provided, the query will return files from any of the sources in the list."
           },
           "name": {
             "anyOf": [
@@ -5460,7 +5534,8 @@
                 "type": "null"
               }
             ],
-            "title": "Name"
+            "title": "Name",
+            "description": "The name of the file. The query will return files with names that contain this string."
           },
           "tags": {
             "anyOf": [
@@ -5502,7 +5577,8 @@
                 "type": "null"
               }
             ],
-            "title": "Tags"
+            "title": "Tags",
+            "deprecated": true
           },
           "tags_v2": {
             "anyOf": [
@@ -5513,7 +5589,8 @@
                 "type": "null"
               }
             ],
-            "title": "Tags V2"
+            "title": "Tags V2",
+            "description": "\n        Tags to filter by. Supports logical AND and OR operations. Input should be like below:\n        {\n            \"OR\": [\n                {\n                \"key\": \"subject\",\n                \"value\": \"holy-bible\",\n                \"negate\": false\n                },\n                {\n                    \"key\": \"person-of-interest\",\n                    \"value\": \"jesus christ\",\n                    \"negate\": false\n                },\n                {\n                    \"key\": \"genre\",\n                    \"value\": \"fiction\",\n                    \"negate\": true\n                }\n                {\n                    \"AND\": [\n                        {\n                            \"key\": \"subject\",\n                            \"value\": \"tao-te-ching\",\n                            \"negate\": true\n                        },\n                        {\n                            \"key\": \"author\",\n                            \"value\": \"lao-tzu\",\n                            \"negate\": false\n                        }\n                    ]\n                }\n            ]\n        }\n        For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.\n        "
           },
           "ids": {
             "anyOf": [
@@ -5527,7 +5604,8 @@
                 "type": "null"
               }
             ],
-            "title": "Ids"
+            "title": "Ids",
+            "description": "The IDs of the files. The query will return files with these IDs."
           },
           "external_file_ids": {
             "anyOf": [
@@ -5541,7 +5619,8 @@
                 "type": "null"
               }
             ],
-            "title": "External File Ids"
+            "title": "External File Ids",
+            "description": "The external file IDs of the files. The query will return files with these external file IDs."
           },
           "sync_statuses": {
             "anyOf": [
@@ -5555,7 +5634,8 @@
                 "type": "null"
               }
             ],
-            "title": "Sync Statuses"
+            "title": "Sync Statuses",
+            "description": "The sync statuses of the files. The query will return files with these sync statuses."
           },
           "parent_file_ids": {
             "anyOf": [
@@ -5569,7 +5649,8 @@
                 "type": "null"
               }
             ],
-            "title": "Parent File Ids"
+            "title": "Parent File Ids",
+            "deprecated": true
           },
           "organization_user_data_source_id": {
             "anyOf": [
@@ -5583,7 +5664,8 @@
                 "type": "null"
               }
             ],
-            "title": "Organization User Data Source Id"
+            "title": "Organization User Data Source Id",
+            "description": "The organization user data source IDs of the files. The query will return files with these organization user data source IDs."
           },
           "embedding_generators": {
             "anyOf": [
@@ -5597,7 +5679,8 @@
                 "type": "null"
               }
             ],
-            "title": "Embedding Generators"
+            "title": "Embedding Generators",
+            "description": "The embedding generators of the files. The query will return files with these embedding generators."
           },
           "root_files_only": {
             "anyOf": [
@@ -5608,7 +5691,20 @@
                 "type": "null"
               }
             ],
-            "title": "Root Files Only"
+            "title": "Root Files Only",
+            "description": "If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified."
+          },
+          "include_all_children": {
+            "type": "boolean",
+            "title": "Include All Children",
+            "description": "If true, the query will return all descendents of the specified parent_file_ids.",
+            "default": false
+          },
+          "non_synced_only": {
+            "type": "boolean",
+            "title": "Non Synced Only",
+            "description": "If true, the query will return only files that have not been synced yet.",
+            "default": false
           }
         },
         "type": "object",
@@ -5621,7 +5717,8 @@
           "updated_at",
           "name",
           "last_sync",
-          "file_size"
+          "file_size",
+          "id"
         ],
         "title": "OrganizationUserFilesToSyncOrderByTypes"
       },
@@ -5660,7 +5757,10 @@
                 "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
               }
             ],
-            "default": {}
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
           },
           "include_raw_file": {
             "anyOf": [
