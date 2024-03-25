@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
-OrganizationUserFilesToSyncOrderByTypes = Literal["created_at", "updated_at", "name", "last_sync", "file_size"]
+OrganizationUserFilesToSyncOrderByTypes = Literal["created_at", "updated_at", "name", "last_sync", "file_size", "id"]

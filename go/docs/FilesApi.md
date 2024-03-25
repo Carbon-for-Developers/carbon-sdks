@@ -8,6 +8,7 @@ Method | Path | Description
 [**Delete**](FilesApi.md#Delete) | **Delete** /deletefile/{file_id} | Delete File Endpoint
 [**DeleteFileTags**](FilesApi.md#DeleteFileTags) | **Post** /delete_user_file_tags | Delete File Tags
 [**DeleteMany**](FilesApi.md#DeleteMany) | **Post** /delete_files | Delete Files Endpoint
+[**DeleteV2**](FilesApi.md#DeleteV2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint
 [**GetParsedFile**](FilesApi.md#GetParsedFile) | **Get** /parsed_file/{file_id} | Parsed File
 [**GetRawFile**](FilesApi.md#GetRawFile) | **Get** /raw_file/{file_id} | Raw File
 [**QueryUserFiles**](FilesApi.md#QueryUserFiles) | **Post** /user_files_v2 | User Files V2
@@ -259,6 +260,55 @@ func main() {
     // response from `DeleteMany`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `FilesApi.DeleteMany`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.DeleteMany.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteV2
+
+Delete Files V2 Endpoint
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+    
+    deleteFilesV2QueryInput := *carbon.NewDeleteFilesV2QueryInput()
+    deleteFilesV2QueryInput.SetFilters(filters)
+    deleteFilesV2QueryInput.SetSendWebhook(false)
+    
+    request := client.FilesApi.DeleteV2(
+        deleteFilesV2QueryInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FilesApi.DeleteV2``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `DeleteV2`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `FilesApi.DeleteV2`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.DeleteV2.Success`: %v\n", resp.Success)
 }
 ```
 

@@ -25,6 +25,8 @@ import { BodyCreateUploadFileUploadfilePost } from '../models';
 // @ts-ignore
 import { DeleteFilesQueryInput } from '../models';
 // @ts-ignore
+import { DeleteFilesV2QueryInput } from '../models';
+// @ts-ignore
 import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
@@ -231,6 +233,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Delete Files Endpoint
          * @param {DeleteFilesQueryInput} deleteFilesQueryInput 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteMany: async (deleteFilesQueryInput: DeleteFilesQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -271,6 +274,58 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(deleteFilesQueryInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete Files V2 Endpoint
+         * @param {DeleteFilesV2QueryInput} deleteFilesV2QueryInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteV2: async (deleteFilesV2QueryInput: DeleteFilesV2QueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'deleteFilesV2QueryInput' is not null or undefined
+            assertParamExists('deleteV2', 'deleteFilesV2QueryInput', deleteFilesV2QueryInput)
+            const localVarPath = `/delete_files_v2`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: deleteFilesV2QueryInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/delete_files_v2',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteFilesV2QueryInput, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -849,6 +904,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @summary Delete Files Endpoint
          * @param {FilesApiDeleteManyRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async deleteMany(requestParameters: FilesApiDeleteManyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
@@ -860,6 +916,21 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 delete_child_files: requestParameters.delete_child_files
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(deleteFilesQueryInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete Files V2 Endpoint
+         * @param {FilesApiDeleteV2Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteV2(requestParameters: FilesApiDeleteV2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const deleteFilesV2QueryInput: DeleteFilesV2QueryInput = {
+                filters: requestParameters.filters,
+                send_webhook: requestParameters.send_webhook
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteV2(deleteFilesV2QueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1050,10 +1121,21 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
          * @summary Delete Files Endpoint
          * @param {FilesApiDeleteManyRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         deleteMany(requestParameters: FilesApiDeleteManyRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.deleteMany(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete Files V2 Endpoint
+         * @param {FilesApiDeleteV2Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteV2(requestParameters: FilesApiDeleteV2Request, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.deleteV2(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * This route is deprecated. Use `/user_files_v2` instead.
@@ -1183,6 +1265,15 @@ export type FilesApiDeleteFileTagsRequest = {
 export type FilesApiDeleteManyRequest = {
     
 } & DeleteFilesQueryInput
+
+/**
+ * Request parameters for deleteV2 operation in FilesApi.
+ * @export
+ * @interface FilesApiDeleteV2Request
+ */
+export type FilesApiDeleteV2Request = {
+    
+} & DeleteFilesV2QueryInput
 
 /**
  * Request parameters for getParsedFile operation in FilesApi.
@@ -1396,11 +1487,24 @@ export class FilesApiGenerated extends BaseAPI {
      * @summary Delete Files Endpoint
      * @param {FilesApiDeleteManyRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof FilesApiGenerated
      */
     public deleteMany(requestParameters: FilesApiDeleteManyRequest, options?: AxiosRequestConfig) {
         return FilesApiFp(this.configuration).deleteMany(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete Files V2 Endpoint
+     * @param {FilesApiDeleteV2Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FilesApiGenerated
+     */
+    public deleteV2(requestParameters: FilesApiDeleteV2Request, options?: AxiosRequestConfig) {
+        return FilesApiFp(this.configuration).deleteV2(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -25,6 +25,7 @@ const (
 	ORGANIZATIONUSERFILESTOSYNCORDERBYTYPES_NAME OrganizationUserFilesToSyncOrderByTypes = "name"
 	ORGANIZATIONUSERFILESTOSYNCORDERBYTYPES_LAST_SYNC OrganizationUserFilesToSyncOrderByTypes = "last_sync"
 	ORGANIZATIONUSERFILESTOSYNCORDERBYTYPES_FILE_SIZE OrganizationUserFilesToSyncOrderByTypes = "file_size"
+	ORGANIZATIONUSERFILESTOSYNCORDERBYTYPES_ID OrganizationUserFilesToSyncOrderByTypes = "id"
 )
 
 // All allowed values of OrganizationUserFilesToSyncOrderByTypes enum
@@ -34,6 +35,7 @@ var AllowedOrganizationUserFilesToSyncOrderByTypesEnumValues = []OrganizationUse
 	"name",
 	"last_sync",
 	"file_size",
+	"id",
 }
 
 func (v *OrganizationUserFilesToSyncOrderByTypes) UnmarshalJSON(src []byte) error {

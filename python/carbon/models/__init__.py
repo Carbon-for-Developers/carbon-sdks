@@ -29,6 +29,7 @@ from carbon.model.data_source_type import DataSourceType
 from carbon.model.data_source_type_nullable import DataSourceTypeNullable
 from carbon.model.delete_files_query_input import DeleteFilesQueryInput
 from carbon.model.delete_files_query_input_file_ids import DeleteFilesQueryInputFileIds
+from carbon.model.delete_files_v2_query_input import DeleteFilesV2QueryInput
 from carbon.model.delete_users_input import DeleteUsersInput
 from carbon.model.delete_users_input_customer_ids import DeleteUsersInputCustomerIds
 from carbon.model.directory_item import DirectoryItem

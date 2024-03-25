@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.13-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.13)
+[![npm](https://img.shields.io/badge/npm-v0.1.14-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.14)
 
 </div>
 
@@ -28,6 +28,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.deleteFileTags`](#carbonfilesdeletefiletags)
   * [`carbon.files.deleteMany`](#carbonfilesdeletemany)
+  * [`carbon.files.deleteV2`](#carbonfilesdeletev2)
   * [`carbon.files.getParsedFile`](#carbonfilesgetparsedfile)
   * [`carbon.files.getRawFile`](#carbonfilesgetrawfile)
   * [`carbon.files.queryUserFiles`](#carbonfilesqueryuserfiles)
@@ -659,6 +660,37 @@ const deleteManyResponse = await carbon.files.deleteMany({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.files.deleteV2`<a id="carbonfilesdeletev2"></a>
+
+Delete Files V2 Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const deleteV2Response = await carbon.files.deleteV2({
+  send_webhook: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+##### send_webhook: `boolean`<a id="send_webhook-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_files_v2` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

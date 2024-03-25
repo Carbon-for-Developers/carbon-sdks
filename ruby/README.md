@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.10-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.10)
+[![npm](https://img.shields.io/badge/gem-v0.1.11-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.11)
 
 </div>
 
@@ -29,6 +29,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.delete_file_tags`](#carbonfilesdelete_file_tags)
   * [`carbon.files.delete_many`](#carbonfilesdelete_many)
+  * [`carbon.files.delete_v2`](#carbonfilesdelete_v2)
   * [`carbon.files.get_parsed_file`](#carbonfilesget_parsed_file)
   * [`carbon.files.get_raw_file`](#carbonfilesget_raw_file)
   * [`carbon.files.query_user_files`](#carbonfilesquery_user_files)
@@ -79,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.10'
+gem 'carbon_ruby_sdk', '~> 0.1.11'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -671,6 +672,40 @@ p result
 ---
 
 
+### `carbon.files.delete_v2`<a id="carbonfilesdelete_v2"></a>
+
+Delete Files V2 Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.files.delete_v2(
+  filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
+    },
+  send_webhook: false,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_files_v2` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
 
 This route is deprecated. Use `/user_files_v2` instead.
@@ -793,6 +828,8 @@ result = carbon.files.query_user_files(
   order_by: "created_at",
   order_dir: "desc",
   filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
     },
   include_raw_file: true,
   include_parsed_text_file: true,
@@ -838,6 +875,8 @@ result = carbon.files.query_user_files_deprecated(
   order_by: "created_at",
   order_dir: "desc",
   filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
     },
   include_raw_file: true,
   include_parsed_text_file: true,

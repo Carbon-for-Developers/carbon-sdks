@@ -33,8 +33,7 @@ from carbon.apis.paths.update_users import UpdateUsers
 from carbon.apis.paths.uploadfile import Uploadfile
 from carbon.apis.paths.upload_file_from_url import UploadFileFromUrl
 from carbon.apis.paths.upload_text import UploadText
-from carbon.apis.paths.deletefile_file_id import DeletefileFileId
-from carbon.apis.paths.delete_files import DeleteFiles
+from carbon.apis.paths.delete_files_v2 import DeleteFilesV2
 from carbon.apis.paths.user_files_v2 import UserFilesV2
 from carbon.apis.paths.create_user_file_tags import CreateUserFileTags
 from carbon.apis.paths.delete_user_file_tags import DeleteUserFileTags
@@ -42,6 +41,8 @@ from carbon.apis.paths.resync_file import ResyncFile
 from carbon.apis.paths.raw_file_file_id import RawFileFileId
 from carbon.apis.paths.parsed_file_file_id import ParsedFileFileId
 from carbon.apis.paths.user_files import UserFiles
+from carbon.apis.paths.deletefile_file_id import DeletefileFileId
+from carbon.apis.paths.delete_files import DeleteFiles
 from carbon.apis.paths.webhooks import Webhooks
 from carbon.apis.paths.add_webhook import AddWebhook
 from carbon.apis.paths.delete_webhook_webhook_id import DeleteWebhookWebhookId
@@ -90,8 +91,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.UPLOADFILE: Uploadfile,
         PathValues.UPLOAD_FILE_FROM_URL: UploadFileFromUrl,
         PathValues.UPLOAD_TEXT: UploadText,
-        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
-        PathValues.DELETE_FILES: DeleteFiles,
+        PathValues.DELETE_FILES_V2: DeleteFilesV2,
         PathValues.USER_FILES_V2: UserFilesV2,
         PathValues.CREATE_USER_FILE_TAGS: CreateUserFileTags,
         PathValues.DELETE_USER_FILE_TAGS: DeleteUserFileTags,
@@ -99,6 +99,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,
+        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
+        PathValues.DELETE_FILES: DeleteFiles,
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,
@@ -148,8 +150,7 @@ path_to_api = PathToApi(
         PathValues.UPLOADFILE: Uploadfile,
         PathValues.UPLOAD_FILE_FROM_URL: UploadFileFromUrl,
         PathValues.UPLOAD_TEXT: UploadText,
-        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
-        PathValues.DELETE_FILES: DeleteFiles,
+        PathValues.DELETE_FILES_V2: DeleteFilesV2,
         PathValues.USER_FILES_V2: UserFilesV2,
         PathValues.CREATE_USER_FILE_TAGS: CreateUserFileTags,
         PathValues.DELETE_USER_FILE_TAGS: DeleteUserFileTags,
@@ -157,6 +158,8 @@ path_to_api = PathToApi(
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,
+        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
+        PathValues.DELETE_FILES: DeleteFiles,
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,

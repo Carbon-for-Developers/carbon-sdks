@@ -39,6 +39,7 @@ class OrganizationUserFilesToSyncOrderByTypes(
             "name": "NAME",
             "last_sync": "LAST_SYNC",
             "file_size": "FILE_SIZE",
+            "id": "ID",
         }
     
     @schemas.classproperty
@@ -60,3 +61,7 @@ class OrganizationUserFilesToSyncOrderByTypes(
     @schemas.classproperty
     def FILE_SIZE(cls):
         return cls("file_size")
+    
+    @schemas.classproperty
+    def ID(cls):
+        return cls("id")

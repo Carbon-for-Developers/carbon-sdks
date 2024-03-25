@@ -25,6 +25,7 @@ export interface OrganizationUserFilesToSyncFilters {
      * 
      * @type {{ [key: string]: Tags1; }}
      * @memberof OrganizationUserFilesToSyncFilters
+     * @deprecated
      */
     'tags'?: { [key: string]: Tags1; } | null;
     /**
@@ -34,31 +35,31 @@ export interface OrganizationUserFilesToSyncFilters {
      */
     'source'?: SourceProperty | null;
     /**
-     * 
+     * The name of the file. The query will return files with names that contain this string.
      * @type {string}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'name'?: string | null;
     /**
-     * 
+     *          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
      * @type {object}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'tags_v2'?: object | null;
     /**
-     * 
+     * The IDs of the files. The query will return files with these IDs.
      * @type {Array<number>}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'ids'?: Array<number> | null;
     /**
-     * 
+     * The external file IDs of the files. The query will return files with these external file IDs.
      * @type {Array<string>}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'external_file_ids'?: Array<string> | null;
     /**
-     * 
+     * The sync statuses of the files. The query will return files with these sync statuses.
      * @type {Array<ExternalFileSyncStatuses>}
      * @memberof OrganizationUserFilesToSyncFilters
      */
@@ -67,25 +68,38 @@ export interface OrganizationUserFilesToSyncFilters {
      * 
      * @type {Array<number>}
      * @memberof OrganizationUserFilesToSyncFilters
+     * @deprecated
      */
     'parent_file_ids'?: Array<number> | null;
     /**
-     * 
+     * The organization user data source IDs of the files. The query will return files with these organization user data source IDs.
      * @type {Array<number>}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'organization_user_data_source_id'?: Array<number> | null;
     /**
-     * 
+     * The embedding generators of the files. The query will return files with these embedding generators.
      * @type {Array<EmbeddingGenerators>}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'embedding_generators'?: Array<EmbeddingGenerators> | null;
     /**
-     * 
+     * If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified.
      * @type {boolean}
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'root_files_only'?: boolean | null;
+    /**
+     * If true, the query will return all descendents of the specified parent_file_ids.
+     * @type {boolean}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'include_all_children'?: boolean;
+    /**
+     * If true, the query will return only files that have not been synced yet.
+     * @type {boolean}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'non_synced_only'?: boolean;
 }
 

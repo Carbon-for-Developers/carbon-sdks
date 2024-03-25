@@ -16,9 +16,10 @@ module Carbon
     NAME = "name".freeze
     LAST_SYNC = "last_sync".freeze
     FILE_SIZE = "file_size".freeze
+    ID = "id".freeze
 
     def self.all_vars
-      @all_vars ||= [CREATED_AT, UPDATED_AT, NAME, LAST_SYNC, FILE_SIZE].freeze
+      @all_vars ||= [CREATED_AT, UPDATED_AT, NAME, LAST_SYNC, FILE_SIZE, ID].freeze
     end
 
     # Builds the enum from string

@@ -85,4 +85,16 @@ describe Carbon::OrganizationUserFilesToSyncFilters do
     end
   end
 
+  describe 'test attribute "include_all_children"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "non_synced_only"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

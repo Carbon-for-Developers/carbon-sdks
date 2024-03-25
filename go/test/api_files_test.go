@@ -103,6 +103,26 @@ func Test_carbon_FilesApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test FilesApiService DeleteV2", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+        
+        deleteFilesV2QueryInput := *carbon.NewDeleteFilesV2QueryInput()
+        deleteFilesV2QueryInput.SetFilters(filters)
+        deleteFilesV2QueryInput.SetSendWebhook(false)
+        
+        request := client.FilesApi.DeleteV2(
+            deleteFilesV2QueryInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test FilesApiService GetParsedFile", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.FilesApi.GetParsedFile(

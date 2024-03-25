@@ -14,6 +14,7 @@ import { DataSourceType } from './data-source-type';
 
 /**
  * @type SourceProperty
+ * The source of the file. If a list is provided, the query will return files from any of the sources in the list.
  * @export
  */
 export type SourceProperty = DataSourceType | Array<DataSourceType>;

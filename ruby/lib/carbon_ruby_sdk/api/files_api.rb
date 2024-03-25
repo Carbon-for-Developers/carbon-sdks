@@ -421,6 +421,102 @@ module Carbon
     end
 
 
+    # Delete Files V2 Endpoint
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param send_webhook [Boolean] 
+    # @param body [DeleteFilesV2QueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def delete_v2(filters: SENTINEL, send_webhook: false, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      delete_files_v2_query_input = _body
+      api_response = delete_v2_with_http_info_impl(delete_files_v2_query_input, extra)
+      api_response.data
+    end
+
+    # Delete Files V2 Endpoint
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param send_webhook [Boolean] 
+    # @param body [DeleteFilesV2QueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def delete_v2_with_http_info(filters: SENTINEL, send_webhook: false, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      delete_files_v2_query_input = _body
+      delete_v2_with_http_info_impl(delete_files_v2_query_input, extra)
+    end
+
+    # Delete Files V2 Endpoint
+    # @param delete_files_v2_query_input [DeleteFilesV2QueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def delete_v2_impl(delete_files_v2_query_input, opts = {})
+      data, _status_code, _headers = delete_v2_with_http_info(delete_files_v2_query_input, opts)
+      data
+    end
+
+    # Delete Files V2 Endpoint
+    # @param delete_files_v2_query_input [DeleteFilesV2QueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def delete_v2_with_http_info_impl(delete_files_v2_query_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FilesApi.delete_v2 ...'
+      end
+      # verify the required parameter 'delete_files_v2_query_input' is set
+      if @api_client.config.client_side_validation && delete_files_v2_query_input.nil?
+        fail ArgumentError, "Missing the required parameter 'delete_files_v2_query_input' when calling FilesApi.delete_v2"
+      end
+      # resource path
+      local_var_path = '/delete_files_v2'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(delete_files_v2_query_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"FilesApi.delete_v2",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FilesApi#delete_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Parsed File
     #
     # This route is deprecated. Use `/user_files_v2` instead.

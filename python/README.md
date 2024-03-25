@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.12-blue)](https://pypi.org/project/carbon-python-sdk/0.1.12)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.13-blue)](https://pypi.org/project/carbon-python-sdk/0.1.13)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -33,6 +33,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.delete_file_tags`](#carbonfilesdelete_file_tags)
   * [`carbon.files.delete_many`](#carbonfilesdelete_many)
+  * [`carbon.files.delete_v2`](#carbonfilesdelete_v2)
   * [`carbon.files.get_parsed_file`](#carbonfilesget_parsed_file)
   * [`carbon.files.get_raw_file`](#carbonfilesget_raw_file)
   * [`carbon.files.query_user_files`](#carbonfilesquery_user_files)
@@ -85,7 +86,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.12
+pip install carbon-python-sdk==0.1.13
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -744,6 +745,44 @@ delete_many_response = carbon.files.delete_many(
 
 ---
 
+### `carbon.files.delete_v2`<a id="carbonfilesdelete_v2"></a>
+
+Delete Files V2 Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+delete_v2_response = carbon.files.delete_v2(
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
+    send_webhook=False,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
+
+
+##### send_webhook: `bool`<a id="send_webhook-bool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`DeleteFilesV2QueryInput`](./carbon/type/delete_files_v2_query_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/delete_files_v2` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
 
 This route is deprecated. Use `/user_files_v2` instead.
@@ -863,7 +902,10 @@ query_user_files_response = carbon.files.query_user_files(
     },
     order_by="created_at",
     order_dir="desc",
-    filters={},
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
     include_raw_file=True,
     include_parsed_text_file=True,
     include_additional_files=True,
@@ -917,7 +959,10 @@ query_user_files_deprecated_response = carbon.files.query_user_files_deprecated(
     },
     order_by="created_at",
     order_dir="desc",
-    filters={},
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
     include_raw_file=True,
     include_parsed_text_file=True,
     include_additional_files=True,

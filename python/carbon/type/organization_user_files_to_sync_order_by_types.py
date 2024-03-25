@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-OrganizationUserFilesToSyncOrderByTypes = Literal["created_at", "updated_at", "name", "last_sync", "file_size"]
+OrganizationUserFilesToSyncOrderByTypes = Literal["created_at", "updated_at", "name", "last_sync", "file_size", "id"]

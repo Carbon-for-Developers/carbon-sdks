@@ -54,6 +54,8 @@ operationIds:
     post: Files_createUserFileTags
   /delete_files:
     post: Files_deleteMany
+  /delete_files_v2:
+    post: Files_deleteV2
   /delete_user_file_tags:
     post: Files_deleteFileTags
   /delete_users:

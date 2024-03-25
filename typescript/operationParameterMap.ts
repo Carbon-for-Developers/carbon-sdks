@@ -166,6 +166,16 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/delete_files_v2-POST': {
+        parameters: [
+            {
+                name: 'filters'
+            },
+            {
+                name: 'send_webhook'
+            },
+        ]
+    },
     '/parsed_file/{file_id}-GET': {
         parameters: [
             {

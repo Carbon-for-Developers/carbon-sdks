@@ -71,6 +71,17 @@ describe 'FilesApi' do
     end
   end
 
+  # unit tests for delete_v2
+  # Delete Files V2 Endpoint
+  # @param delete_files_v2_query_input 
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessResponse]
+  describe 'delete_v2 test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_parsed_file
   # Parsed File
   # This route is deprecated. Use &#x60;/user_files_v2&#x60; instead.

@@ -25,27 +25,41 @@ from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids imp
 from carbon.pydantic.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
 
 class OrganizationUserFilesToSyncFilters(BaseModel):
+    # WARNING: This property is deprecated
     tags: typing.Optional[OrganizationUserFilesToSyncFiltersTags] = Field(None, alias='tags')
 
+    # The source of the file. If a list is provided, the query will return files from any of the sources in the list.
     source: typing.Optional[typing.Union[DataSourceType, typing.List[DataSourceType]]] = Field(None, alias='source')
 
+    # The name of the file. The query will return files with names that contain this string.
     name: typing.Optional[typing.Optional[str]] = Field(None, alias='name')
 
+    #          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
     tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags_v2')
 
     ids: typing.Optional[OrganizationUserFilesToSyncFiltersIds] = Field(None, alias='ids')
 
     external_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersExternalFileIds] = Field(None, alias='external_file_ids')
 
+    # The sync statuses of the files. The query will return files with these sync statuses.
     sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = Field(None, alias='sync_statuses')
 
+    # WARNING: This property is deprecated
     parent_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersParentFileIds] = Field(None, alias='parent_file_ids')
 
     organization_user_data_source_id: typing.Optional[OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId] = Field(None, alias='organization_user_data_source_id')
 
+    # The embedding generators of the files. The query will return files with these embedding generators.
     embedding_generators: typing.Optional[typing.Optional[typing.List[EmbeddingGenerators]]] = Field(None, alias='embedding_generators')
 
+    # If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified.
     root_files_only: typing.Optional[typing.Optional[bool]] = Field(None, alias='root_files_only')
+
+    # If true, the query will return all descendents of the specified parent_file_ids.
+    include_all_children: typing.Optional[bool] = Field(None, alias='include_all_children')
+
+    # If true, the query will return only files that have not been synced yet.
+    non_synced_only: typing.Optional[bool] = Field(None, alias='non_synced_only')
 
     model_config = ConfigDict(
         protected_namespaces=(),

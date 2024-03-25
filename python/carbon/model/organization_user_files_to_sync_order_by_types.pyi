@@ -50,3 +50,7 @@ class OrganizationUserFilesToSyncOrderByTypes(
     @schemas.classproperty
     def FILE_SIZE(cls):
         return cls("file_size")
+    
+    @schemas.classproperty
+    def ID(cls):
+        return cls("id")

@@ -233,6 +233,8 @@ class OrganizationUserFilesToSyncFilters(
                         *args,
                         _configuration=_configuration,
                     )
+            include_all_children = schemas.BoolSchema
+            non_synced_only = schemas.BoolSchema
             __annotations__ = {
                 "tags": tags,
                 "source": source,
@@ -245,6 +247,8 @@ class OrganizationUserFilesToSyncFilters(
                 "organization_user_data_source_id": organization_user_data_source_id,
                 "embedding_generators": embedding_generators,
                 "root_files_only": root_files_only,
+                "include_all_children": include_all_children,
+                "non_synced_only": non_synced_only,
             }
     
     @typing.overload
@@ -281,9 +285,15 @@ class OrganizationUserFilesToSyncFilters(
     def __getitem__(self, name: typing_extensions.Literal["root_files_only"]) -> MetaOapg.properties.root_files_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["include_all_children"]) -> MetaOapg.properties.include_all_children: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["non_synced_only"]) -> MetaOapg.properties.non_synced_only: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -322,9 +332,15 @@ class OrganizationUserFilesToSyncFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["root_files_only"]) -> typing.Union[MetaOapg.properties.root_files_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["include_all_children"]) -> typing.Union[MetaOapg.properties.include_all_children, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["non_synced_only"]) -> typing.Union[MetaOapg.properties.non_synced_only, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -342,6 +358,8 @@ class OrganizationUserFilesToSyncFilters(
         organization_user_data_source_id: typing.Union['OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId', schemas.Unset] = schemas.unset,
         embedding_generators: typing.Union[MetaOapg.properties.embedding_generators, list, tuple, None, schemas.Unset] = schemas.unset,
         root_files_only: typing.Union[MetaOapg.properties.root_files_only, None, bool, schemas.Unset] = schemas.unset,
+        include_all_children: typing.Union[MetaOapg.properties.include_all_children, bool, schemas.Unset] = schemas.unset,
+        non_synced_only: typing.Union[MetaOapg.properties.non_synced_only, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OrganizationUserFilesToSyncFilters':
@@ -359,6 +377,8 @@ class OrganizationUserFilesToSyncFilters(
             organization_user_data_source_id=organization_user_data_source_id,
             embedding_generators=embedding_generators,
             root_files_only=root_files_only,
+            include_all_children=include_all_children,
+            non_synced_only=non_synced_only,
             _configuration=_configuration,
             **kwargs,
         )

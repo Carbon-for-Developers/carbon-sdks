@@ -16,17 +16,31 @@ import (
 
 // OrganizationUserFilesToSyncFilters struct for OrganizationUserFilesToSyncFilters
 type OrganizationUserFilesToSyncFilters struct {
+	// Deprecated
 	Tags map[string]Tags1 `json:"tags,omitempty"`
 	Source NullableSourceProperty `json:"source,omitempty"`
+	// The name of the file. The query will return files with names that contain this string.
 	Name NullableString `json:"name,omitempty"`
+	//          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
 	TagsV2 map[string]interface{} `json:"tags_v2,omitempty"`
+	// The IDs of the files. The query will return files with these IDs.
 	Ids []int32 `json:"ids,omitempty"`
+	// The external file IDs of the files. The query will return files with these external file IDs.
 	ExternalFileIds []string `json:"external_file_ids,omitempty"`
+	// The sync statuses of the files. The query will return files with these sync statuses.
 	SyncStatuses []ExternalFileSyncStatuses `json:"sync_statuses,omitempty"`
+	// Deprecated
 	ParentFileIds []int32 `json:"parent_file_ids,omitempty"`
+	// The organization user data source IDs of the files. The query will return files with these organization user data source IDs.
 	OrganizationUserDataSourceId []int32 `json:"organization_user_data_source_id,omitempty"`
+	// The embedding generators of the files. The query will return files with these embedding generators.
 	EmbeddingGenerators []EmbeddingGenerators `json:"embedding_generators,omitempty"`
+	// If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified.
 	RootFilesOnly NullableBool `json:"root_files_only,omitempty"`
+	// If true, the query will return all descendents of the specified parent_file_ids.
+	IncludeAllChildren *bool `json:"include_all_children,omitempty"`
+	// If true, the query will return only files that have not been synced yet.
+	NonSyncedOnly *bool `json:"non_synced_only,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -35,6 +49,10 @@ type OrganizationUserFilesToSyncFilters struct {
 // will change when the set of required properties is changed
 func NewOrganizationUserFilesToSyncFilters() *OrganizationUserFilesToSyncFilters {
 	this := OrganizationUserFilesToSyncFilters{}
+	var includeAllChildren bool = false
+	this.IncludeAllChildren = &includeAllChildren
+	var nonSyncedOnly bool = false
+	this.NonSyncedOnly = &nonSyncedOnly
 	return &this
 }
 
@@ -43,10 +61,15 @@ func NewOrganizationUserFilesToSyncFilters() *OrganizationUserFilesToSyncFilters
 // but it doesn't guarantee that properties required by API are set
 func NewOrganizationUserFilesToSyncFiltersWithDefaults() *OrganizationUserFilesToSyncFilters {
 	this := OrganizationUserFilesToSyncFilters{}
+	var includeAllChildren bool = false
+	this.IncludeAllChildren = &includeAllChildren
+	var nonSyncedOnly bool = false
+	this.NonSyncedOnly = &nonSyncedOnly
 	return &this
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) GetTags() map[string]Tags1 {
 	if o == nil {
 		var ret map[string]Tags1
@@ -58,6 +81,7 @@ func (o *OrganizationUserFilesToSyncFilters) GetTags() map[string]Tags1 {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) GetTagsOk() (*map[string]Tags1, bool) {
 	if o == nil || isNil(o.Tags) {
     return nil, false
@@ -75,6 +99,7 @@ func (o *OrganizationUserFilesToSyncFilters) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]Tags1 and assigns it to the Tags field.
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) SetTags(v map[string]Tags1) {
 	o.Tags = v
 }
@@ -296,6 +321,7 @@ func (o *OrganizationUserFilesToSyncFilters) SetSyncStatuses(v []ExternalFileSyn
 }
 
 // GetParentFileIds returns the ParentFileIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) GetParentFileIds() []int32 {
 	if o == nil {
 		var ret []int32
@@ -307,6 +333,7 @@ func (o *OrganizationUserFilesToSyncFilters) GetParentFileIds() []int32 {
 // GetParentFileIdsOk returns a tuple with the ParentFileIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) GetParentFileIdsOk() ([]int32, bool) {
 	if o == nil || isNil(o.ParentFileIds) {
     return nil, false
@@ -324,6 +351,7 @@ func (o *OrganizationUserFilesToSyncFilters) HasParentFileIds() bool {
 }
 
 // SetParentFileIds gets a reference to the given []int32 and assigns it to the ParentFileIds field.
+// Deprecated
 func (o *OrganizationUserFilesToSyncFilters) SetParentFileIds(v []int32) {
 	o.ParentFileIds = v
 }
@@ -436,6 +464,70 @@ func (o *OrganizationUserFilesToSyncFilters) UnsetRootFilesOnly() {
 	o.RootFilesOnly.Unset()
 }
 
+// GetIncludeAllChildren returns the IncludeAllChildren field value if set, zero value otherwise.
+func (o *OrganizationUserFilesToSyncFilters) GetIncludeAllChildren() bool {
+	if o == nil || isNil(o.IncludeAllChildren) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeAllChildren
+}
+
+// GetIncludeAllChildrenOk returns a tuple with the IncludeAllChildren field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationUserFilesToSyncFilters) GetIncludeAllChildrenOk() (*bool, bool) {
+	if o == nil || isNil(o.IncludeAllChildren) {
+    return nil, false
+	}
+	return o.IncludeAllChildren, true
+}
+
+// HasIncludeAllChildren returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasIncludeAllChildren() bool {
+	if o != nil && !isNil(o.IncludeAllChildren) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeAllChildren gets a reference to the given bool and assigns it to the IncludeAllChildren field.
+func (o *OrganizationUserFilesToSyncFilters) SetIncludeAllChildren(v bool) {
+	o.IncludeAllChildren = &v
+}
+
+// GetNonSyncedOnly returns the NonSyncedOnly field value if set, zero value otherwise.
+func (o *OrganizationUserFilesToSyncFilters) GetNonSyncedOnly() bool {
+	if o == nil || isNil(o.NonSyncedOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.NonSyncedOnly
+}
+
+// GetNonSyncedOnlyOk returns a tuple with the NonSyncedOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationUserFilesToSyncFilters) GetNonSyncedOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.NonSyncedOnly) {
+    return nil, false
+	}
+	return o.NonSyncedOnly, true
+}
+
+// HasNonSyncedOnly returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasNonSyncedOnly() bool {
+	if o != nil && !isNil(o.NonSyncedOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetNonSyncedOnly gets a reference to the given bool and assigns it to the NonSyncedOnly field.
+func (o *OrganizationUserFilesToSyncFilters) SetNonSyncedOnly(v bool) {
+	o.NonSyncedOnly = &v
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -470,6 +562,12 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.RootFilesOnly.IsSet() {
 		toSerialize["root_files_only"] = o.RootFilesOnly.Get()
+	}
+	if !isNil(o.IncludeAllChildren) {
+		toSerialize["include_all_children"] = o.IncludeAllChildren
+	}
+	if !isNil(o.NonSyncedOnly) {
+		toSerialize["non_synced_only"] = o.NonSyncedOnly
 	}
 	return json.Marshal(toSerialize)
 }

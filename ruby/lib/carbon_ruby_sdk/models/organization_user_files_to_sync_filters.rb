@@ -15,23 +15,37 @@ module Carbon
 
     attr_accessor :source
 
+    # The name of the file. The query will return files with names that contain this string.
     attr_accessor :name
 
+    #          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
     attr_accessor :tags_v2
 
+    # The IDs of the files. The query will return files with these IDs.
     attr_accessor :ids
 
+    # The external file IDs of the files. The query will return files with these external file IDs.
     attr_accessor :external_file_ids
 
+    # The sync statuses of the files. The query will return files with these sync statuses.
     attr_accessor :sync_statuses
 
     attr_accessor :parent_file_ids
 
+    # The organization user data source IDs of the files. The query will return files with these organization user data source IDs.
     attr_accessor :organization_user_data_source_id
 
+    # The embedding generators of the files. The query will return files with these embedding generators.
     attr_accessor :embedding_generators
 
+    # If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified.
     attr_accessor :root_files_only
+
+    # If true, the query will return all descendents of the specified parent_file_ids.
+    attr_accessor :include_all_children
+
+    # If true, the query will return only files that have not been synced yet.
+    attr_accessor :non_synced_only
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -46,7 +60,9 @@ module Carbon
         :'parent_file_ids' => :'parent_file_ids',
         :'organization_user_data_source_id' => :'organization_user_data_source_id',
         :'embedding_generators' => :'embedding_generators',
-        :'root_files_only' => :'root_files_only'
+        :'root_files_only' => :'root_files_only',
+        :'include_all_children' => :'include_all_children',
+        :'non_synced_only' => :'non_synced_only'
       }
     end
 
@@ -68,7 +84,9 @@ module Carbon
         :'parent_file_ids' => :'Array<Integer>',
         :'organization_user_data_source_id' => :'Array<Integer>',
         :'embedding_generators' => :'Array<EmbeddingGenerators>',
-        :'root_files_only' => :'Boolean'
+        :'root_files_only' => :'Boolean',
+        :'include_all_children' => :'Boolean',
+        :'non_synced_only' => :'Boolean'
       }
     end
 
@@ -85,7 +103,7 @@ module Carbon
         :'parent_file_ids',
         :'organization_user_data_source_id',
         :'embedding_generators',
-        :'root_files_only'
+        :'root_files_only',
       ])
     end
 
@@ -161,6 +179,18 @@ module Carbon
       if attributes.key?(:'root_files_only')
         self.root_files_only = attributes[:'root_files_only']
       end
+
+      if attributes.key?(:'include_all_children')
+        self.include_all_children = attributes[:'include_all_children']
+      else
+        self.include_all_children = false
+      end
+
+      if attributes.key?(:'non_synced_only')
+        self.non_synced_only = attributes[:'non_synced_only']
+      else
+        self.non_synced_only = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -191,7 +221,9 @@ module Carbon
           parent_file_ids == o.parent_file_ids &&
           organization_user_data_source_id == o.organization_user_data_source_id &&
           embedding_generators == o.embedding_generators &&
-          root_files_only == o.root_files_only
+          root_files_only == o.root_files_only &&
+          include_all_children == o.include_all_children &&
+          non_synced_only == o.non_synced_only
     end
 
     # @see the `==` method
@@ -203,7 +235,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only].hash
+      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only].hash
     end
 
     # Builds the object from hash

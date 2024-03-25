@@ -27,27 +27,41 @@ class RequiredOrganizationUserFilesToSyncFilters(TypedDict):
     pass
 
 class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
+    # WARNING: This property is deprecated
     tags: typing.Optional[OrganizationUserFilesToSyncFiltersTags]
 
+    # The source of the file. If a list is provided, the query will return files from any of the sources in the list.
     source: typing.Union[DataSourceType, typing.List[DataSourceType]]
 
+    # The name of the file. The query will return files with names that contain this string.
     name: typing.Optional[str]
 
+    #          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
     tags_v2: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
     ids: typing.Optional[OrganizationUserFilesToSyncFiltersIds]
 
     external_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersExternalFileIds]
 
+    # The sync statuses of the files. The query will return files with these sync statuses.
     sync_statuses: typing.Optional[typing.List[ExternalFileSyncStatuses]]
 
+    # WARNING: This property is deprecated
     parent_file_ids: typing.Optional[OrganizationUserFilesToSyncFiltersParentFileIds]
 
     organization_user_data_source_id: typing.Optional[OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId]
 
+    # The embedding generators of the files. The query will return files with these embedding generators.
     embedding_generators: typing.Optional[typing.List[EmbeddingGenerators]]
 
+    # If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified.
     root_files_only: typing.Optional[bool]
+
+    # If true, the query will return all descendents of the specified parent_file_ids.
+    include_all_children: bool
+
+    # If true, the query will return only files that have not been synced yet.
+    non_synced_only: bool
 
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

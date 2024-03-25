@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.8)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.9)
 
 </div>
 
@@ -69,6 +69,7 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**Delete**](docs/FilesApi.md#delete) | **Delete** /deletefile/{file_id} | Delete File Endpoint
 *FilesApi* | [**DeleteFileTags**](docs/FilesApi.md#deletefiletags) | **Post** /delete_user_file_tags | Delete File Tags
 *FilesApi* | [**DeleteMany**](docs/FilesApi.md#deletemany) | **Post** /delete_files | Delete Files Endpoint
+*FilesApi* | [**DeleteV2**](docs/FilesApi.md#deletev2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint
 *FilesApi* | [**GetParsedFile**](docs/FilesApi.md#getparsedfile) | **Get** /parsed_file/{file_id} | Parsed File
 *FilesApi* | [**GetRawFile**](docs/FilesApi.md#getrawfile) | **Get** /raw_file/{file_id} | Raw File
 *FilesApi* | [**QueryUserFiles**](docs/FilesApi.md#queryuserfiles) | **Post** /user_files_v2 | User Files V2
@@ -131,6 +132,7 @@ Class | Method | HTTP request | Description
  - [DataSourceType](docs/DataSourceType.md)
  - [DataSourceTypeNullable](docs/DataSourceTypeNullable.md)
  - [DeleteFilesQueryInput](docs/DeleteFilesQueryInput.md)
+ - [DeleteFilesV2QueryInput](docs/DeleteFilesV2QueryInput.md)
  - [DeleteUsersInput](docs/DeleteUsersInput.md)
  - [DirectoryItem](docs/DirectoryItem.md)
  - [DocumentResponse](docs/DocumentResponse.md)

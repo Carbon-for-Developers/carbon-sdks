@@ -13,6 +13,7 @@ from carbon.paths.create_user_file_tags.post import CreateUserFileTags
 from carbon.paths.deletefile_file_id.delete import Delete
 from carbon.paths.delete_user_file_tags.post import DeleteFileTags
 from carbon.paths.delete_files.post import DeleteMany
+from carbon.paths.delete_files_v2.post import DeleteV2
 from carbon.paths.parsed_file_file_id.get import GetParsedFile
 from carbon.paths.raw_file_file_id.get import GetRawFile
 from carbon.paths.user_files_v2.post import QueryUserFiles
@@ -29,6 +30,7 @@ class FilesApi(
     Delete,
     DeleteFileTags,
     DeleteMany,
+    DeleteV2,
     GetParsedFile,
     GetRawFile,
     QueryUserFiles,

@@ -6,15 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to [**map[string]Tags1**](Tags1.md) |  | [optional] 
 **Source** | Pointer to [**NullableSourceProperty**](SourceProperty.md) |  | [optional] 
-**Name** | Pointer to **NullableString** |  | [optional] 
-**TagsV2** | Pointer to **map[string]interface{}** |  | [optional] 
-**Ids** | Pointer to **[]int32** |  | [optional] 
-**ExternalFileIds** | Pointer to **[]string** |  | [optional] 
-**SyncStatuses** | Pointer to [**[]ExternalFileSyncStatuses**](ExternalFileSyncStatuses.md) |  | [optional] 
+**Name** | Pointer to **NullableString** | The name of the file. The query will return files with names that contain this string. | [optional] 
+**TagsV2** | Pointer to **map[string]interface{}** |          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \&quot;OR\&quot;: [                 {                 \&quot;key\&quot;: \&quot;subject\&quot;,                 \&quot;value\&quot;: \&quot;holy-bible\&quot;,                 \&quot;negate\&quot;: false                 },                 {                     \&quot;key\&quot;: \&quot;person-of-interest\&quot;,                     \&quot;value\&quot;: \&quot;jesus christ\&quot;,                     \&quot;negate\&quot;: false                 },                 {                     \&quot;key\&quot;: \&quot;genre\&quot;,                     \&quot;value\&quot;: \&quot;fiction\&quot;,                     \&quot;negate\&quot;: true                 }                 {                     \&quot;AND\&quot;: [                         {                             \&quot;key\&quot;: \&quot;subject\&quot;,                             \&quot;value\&quot;: \&quot;tao-te-ching\&quot;,                             \&quot;negate\&quot;: true                         },                         {                             \&quot;key\&quot;: \&quot;author\&quot;,                             \&quot;value\&quot;: \&quot;lao-tzu\&quot;,                             \&quot;negate\&quot;: false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \&quot;AND\&quot; or \&quot;OR\&quot; block.          | [optional] 
+**Ids** | Pointer to **[]int32** | The IDs of the files. The query will return files with these IDs. | [optional] 
+**ExternalFileIds** | Pointer to **[]string** | The external file IDs of the files. The query will return files with these external file IDs. | [optional] 
+**SyncStatuses** | Pointer to [**[]ExternalFileSyncStatuses**](ExternalFileSyncStatuses.md) | The sync statuses of the files. The query will return files with these sync statuses. | [optional] 
 **ParentFileIds** | Pointer to **[]int32** |  | [optional] 
-**OrganizationUserDataSourceId** | Pointer to **[]int32** |  | [optional] 
-**EmbeddingGenerators** | Pointer to [**[]EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
-**RootFilesOnly** | Pointer to **NullableBool** |  | [optional] 
+**OrganizationUserDataSourceId** | Pointer to **[]int32** | The organization user data source IDs of the files. The query will return files with these organization user data source IDs. | [optional] 
+**EmbeddingGenerators** | Pointer to [**[]EmbeddingGenerators**](EmbeddingGenerators.md) | The embedding generators of the files. The query will return files with these embedding generators. | [optional] 
+**RootFilesOnly** | Pointer to **NullableBool** | If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified. | [optional] 
+**IncludeAllChildren** | Pointer to **bool** | If true, the query will return all descendents of the specified parent_file_ids. | [optional] [default to false]
+**NonSyncedOnly** | Pointer to **bool** | If true, the query will return only files that have not been synced yet. | [optional] [default to false]
 
 ## Methods
 
@@ -420,6 +422,56 @@ HasRootFilesOnly returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetRootFilesOnly()`
 
 UnsetRootFilesOnly ensures that no value is present for RootFilesOnly, not even an explicit nil
+### GetIncludeAllChildren
+
+`func (o *OrganizationUserFilesToSyncFilters) GetIncludeAllChildren() bool`
+
+GetIncludeAllChildren returns the IncludeAllChildren field if non-nil, zero value otherwise.
+
+### GetIncludeAllChildrenOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetIncludeAllChildrenOk() (*bool, bool)`
+
+GetIncludeAllChildrenOk returns a tuple with the IncludeAllChildren field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeAllChildren
+
+`func (o *OrganizationUserFilesToSyncFilters) SetIncludeAllChildren(v bool)`
+
+SetIncludeAllChildren sets IncludeAllChildren field to given value.
+
+### HasIncludeAllChildren
+
+`func (o *OrganizationUserFilesToSyncFilters) HasIncludeAllChildren() bool`
+
+HasIncludeAllChildren returns a boolean if a field has been set.
+
+### GetNonSyncedOnly
+
+`func (o *OrganizationUserFilesToSyncFilters) GetNonSyncedOnly() bool`
+
+GetNonSyncedOnly returns the NonSyncedOnly field if non-nil, zero value otherwise.
+
+### GetNonSyncedOnlyOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetNonSyncedOnlyOk() (*bool, bool)`
+
+GetNonSyncedOnlyOk returns a tuple with the NonSyncedOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNonSyncedOnly
+
+`func (o *OrganizationUserFilesToSyncFilters) SetNonSyncedOnly(v bool)`
+
+SetNonSyncedOnly sets NonSyncedOnly field to given value.
+
+### HasNonSyncedOnly
+
+`func (o *OrganizationUserFilesToSyncFilters) HasNonSyncedOnly() bool`
+
+HasNonSyncedOnly returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

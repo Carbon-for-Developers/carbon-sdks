@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// SourceProperty struct for SourceProperty
+// SourceProperty The source of the file. If a list is provided, the query will return files from any of the sources in the list.
 type SourceProperty struct {
 	DataSourceType *DataSourceType
 	DataSourceTypeArray *[]DataSourceType

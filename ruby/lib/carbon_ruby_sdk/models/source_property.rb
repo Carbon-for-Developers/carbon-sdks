@@ -10,6 +10,7 @@ require 'date'
 require 'time'
 
 module Carbon
+  # The source of the file. If a list is provided, the query will return files from any of the sources in the list.
   class SourceProperty
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map

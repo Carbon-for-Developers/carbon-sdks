@@ -2640,49 +2640,14 @@ paths:
       - Files
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--upload_text
-  /deletefile/{file_id}:
-    delete:
-      deprecated: true
-      operationId: Files_delete
-      parameters:
-      - explode: false
-        in: path
-        name: file_id
-        required: true
-        schema:
-          title: File Id
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericSuccessResponse'
-          description: Successful Response
-        "422":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-          description: Validation Error
-      security:
-      - accessToken: []
-      - apiKey: []
-        customerId: []
-      summary: Delete File Endpoint
-      tags:
-      - Files
-      x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id
-  /delete_files:
+  /delete_files_v2:
     post:
-      operationId: Files_deleteMany
+      operationId: Files_deleteV2
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteFilesQueryInput'
+              $ref: '#/components/schemas/DeleteFilesV2QueryInput'
         required: true
       responses:
         "200":
@@ -2701,11 +2666,11 @@ paths:
       - accessToken: []
       - apiKey: []
         customerId: []
-      summary: Delete Files Endpoint
+      summary: Delete Files V2 Endpoint
       tags:
       - Files
       x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--delete_files
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--delete_files_v2
   /user_files_v2:
     post:
       description: |-
@@ -2998,6 +2963,73 @@ paths:
       - Files
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--user_files
+  /deletefile/{file_id}:
+    delete:
+      deprecated: true
+      operationId: Files_delete
+      parameters:
+      - explode: false
+        in: path
+        name: file_id
+        required: true
+        schema:
+          title: File Id
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Delete File Endpoint
+      tags:
+      - Files
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id
+  /delete_files:
+    post:
+      deprecated: true
+      operationId: Files_deleteMany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteFilesQueryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Delete Files Endpoint
+      tags:
+      - Files
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--delete_files
   /webhooks:
     post:
       operationId: Webhooks_urls
@@ -3758,6 +3790,53 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files
       title: DeleteFilesQueryInput
       type: object
+    DeleteFilesV2QueryInput:
+      example:
+        send_webhook: false
+        filters:
+          organization_user_data_source_id:
+          - 1
+          - 1
+          source: null
+          tags:
+            key: null
+          embedding_generators:
+          - null
+          - null
+          root_files_only: true
+          include_all_children: false
+          name: name
+          tags_v2: "{}"
+          ids:
+          - 0
+          - 0
+          sync_statuses:
+          - null
+          - null
+          external_file_ids:
+          - external_file_ids
+          - external_file_ids
+          non_synced_only: false
+          parent_file_ids:
+          - 6
+          - 6
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+        send_webhook:
+          default: false
+          example: false
+          title: Send Webhook
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-send_webhook
+      title: DeleteFilesV2QueryInput
+      type: object
+      x-konfig-properties:
+        filters:
+          default:
+            include_all_children: false
+            non_synced_only: false
     DeleteUsersInput:
       example:
         customer_ids:
@@ -5485,10 +5564,17 @@ components:
       type: object
     OrganizationUserFilesToSyncFilters:
       example:
-        root_files_only: true
         organization_user_data_source_id:
         - 1
         - 1
+        source: null
+        tags:
+          key: null
+        embedding_generators:
+        - null
+        - null
+        root_files_only: true
+        include_all_children: false
         name: name
         tags_v2: "{}"
         ids:
@@ -5497,75 +5583,123 @@ components:
         sync_statuses:
         - null
         - null
-        source: null
         external_file_ids:
         - external_file_ids
         - external_file_ids
-        tags:
-          key: null
+        non_synced_only: false
         parent_file_ids:
         - 6
         - 6
-        embedding_generators:
-        - null
-        - null
       properties:
         tags:
           additionalProperties:
             $ref: '#/components/schemas/Tags_1'
+          deprecated: true
           nullable: true
           title: Tags
           type: object
         source:
           $ref: '#/components/schemas/Source_Property'
         name:
+          description: The name of the file. The query will return files with names
+            that contain this string.
           nullable: true
           title: Name
           type: string
         tags_v2:
+          description: "\n        Tags to filter by. Supports logical AND and OR operations.\
+            \ Input should be like below:\n        {\n            \"OR\": [\n    \
+            \            {\n                \"key\": \"subject\",\n              \
+            \  \"value\": \"holy-bible\",\n                \"negate\": false\n   \
+            \             },\n                {\n                    \"key\": \"person-of-interest\"\
+            ,\n                    \"value\": \"jesus christ\",\n                \
+            \    \"negate\": false\n                },\n                {\n      \
+            \              \"key\": \"genre\",\n                    \"value\": \"\
+            fiction\",\n                    \"negate\": true\n                }\n\
+            \                {\n                    \"AND\": [\n                 \
+            \       {\n                            \"key\": \"subject\",\n       \
+            \                     \"value\": \"tao-te-ching\",\n                 \
+            \           \"negate\": true\n                        },\n           \
+            \             {\n                            \"key\": \"author\",\n  \
+            \                          \"value\": \"lao-tzu\",\n                 \
+            \           \"negate\": false\n                        }\n           \
+            \         ]\n                }\n            ]\n        }\n        For\
+            \ a single filter, the filter block can be placed within either an \"\
+            AND\" or \"OR\" block.\n        "
           nullable: true
           title: Tags V2
           type: object
         ids:
+          description: The IDs of the files. The query will return files with these
+            IDs.
           items:
             type: integer
           nullable: true
           title: Ids
           type: array
         external_file_ids:
+          description: The external file IDs of the files. The query will return files
+            with these external file IDs.
           items:
             type: string
           nullable: true
           title: External File Ids
           type: array
         sync_statuses:
+          description: The sync statuses of the files. The query will return files
+            with these sync statuses.
           items:
             $ref: '#/components/schemas/ExternalFileSyncStatuses'
           nullable: true
           title: Sync Statuses
           type: array
         parent_file_ids:
+          deprecated: true
           items:
             type: integer
           nullable: true
           title: Parent File Ids
           type: array
         organization_user_data_source_id:
+          description: The organization user data source IDs of the files. The query
+            will return files with these organization user data source IDs.
           items:
             type: integer
           nullable: true
           title: Organization User Data Source Id
           type: array
         embedding_generators:
+          description: The embedding generators of the files. The query will return
+            files with these embedding generators.
           items:
             $ref: '#/components/schemas/EmbeddingGenerators'
           nullable: true
           title: Embedding Generators
           type: array
         root_files_only:
+          description: "If true, the query will return only root files. Cannot be\
+            \ true if parent_file_ids or include_all_children is specified."
           nullable: true
           title: Root Files Only
           type: boolean
+        include_all_children:
+          default: false
+          description: "If true, the query will return all descendents of the specified\
+            \ parent_file_ids."
+          example: false
+          title: Include All Children
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-include_all_children
+        non_synced_only:
+          default: false
+          description: "If true, the query will return only files that have not been\
+            \ synced yet."
+          example: false
+          title: Non Synced Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-non_synced_only
       title: OrganizationUserFilesToSyncFilters
       type: object
     OrganizationUserFilesToSyncOrderByTypes:
@@ -5575,6 +5709,7 @@ components:
       - name
       - last_sync
       - file_size
+      - id
       title: OrganizationUserFilesToSyncOrderByTypes
       type: string
     OrganizationUserFilesToSyncQueryInput:
@@ -5588,10 +5723,17 @@ components:
         include_parsed_text_file: true
         order_by: null
         filters:
-          root_files_only: true
           organization_user_data_source_id:
           - 1
           - 1
+          source: null
+          tags:
+            key: null
+          embedding_generators:
+          - null
+          - null
+          root_files_only: true
+          include_all_children: false
           name: name
           tags_v2: "{}"
           ids:
@@ -5600,18 +5742,13 @@ components:
           sync_statuses:
           - null
           - null
-          source: null
           external_file_ids:
           - external_file_ids
           - external_file_ids
-          tags:
-            key: null
+          non_synced_only: false
           parent_file_ids:
           - 6
           - 6
-          embedding_generators:
-          - null
-          - null
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -5645,7 +5782,9 @@ components:
         order_dir:
           default: asc
         filters:
-          default: {}
+          default:
+            include_all_children: false
+            non_synced_only: false
     OuthURLResponse:
       example:
         oauth_url: oauth_url
@@ -7731,6 +7870,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-send_webhook:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-DirectoryItem-properties-is_synced:
       example: false
       type: boolean
@@ -7930,6 +8073,14 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-include_all_children:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-non_synced_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -9690,52 +9841,17 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
-    konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id:
+    konfig-generated-schema-single-parameter-schema-post--delete_files_v2:
       properties:
-        file_id:
-          title: File Id
-          type: integer
-      required:
-      - file_id
-      type: object
-      x-do-not-generate: true
-      x-konfig-is-parameter:
-      - file_id
-    konfig-generated-schema-single-parameter-schema-post--delete_files:
-      properties:
-        file_ids:
-          items:
-            type: integer
-          nullable: true
-          title: File Ids
-          type: array
-        sync_statuses:
-          items:
-            $ref: '#/components/schemas/ExternalFileSyncStatuses'
-          nullable: true
-          title: Sync Statuses
-          type: array
-        delete_non_synced_only:
-          default: false
-          example: false
-          title: Delete Non Synced Only
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_non_synced_only
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
         send_webhook:
           default: false
           example: false
           title: Send Webhook
           type: boolean
           x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-send_webhook
-        delete_child_files:
-          default: false
-          example: false
-          title: Delete Child Files
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-send_webhook
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -9877,6 +9993,55 @@ components:
           nullable: true
           title: Include Additional Files
           type: boolean
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id:
+      properties:
+        file_id:
+          title: File Id
+          type: integer
+      required:
+      - file_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - file_id
+    konfig-generated-schema-single-parameter-schema-post--delete_files:
+      properties:
+        file_ids:
+          items:
+            type: integer
+          nullable: true
+          title: File Ids
+          type: array
+        sync_statuses:
+          items:
+            $ref: '#/components/schemas/ExternalFileSyncStatuses'
+          nullable: true
+          title: Sync Statuses
+          type: array
+        delete_non_synced_only:
+          default: false
+          example: false
+          title: Delete Non Synced Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_non_synced_only
+        send_webhook:
+          default: false
+          example: false
+          title: Send Webhook
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-send_webhook
+        delete_child_files:
+          default: false
+          example: false
+          title: Delete Child Files
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_child_files
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -10173,6 +10338,8 @@ components:
       - items:
           $ref: '#/components/schemas/DataSourceType'
         type: array
+      description: "The source of the file. If a list is provided, the query will\
+        \ return files from any of the sources in the list."
       nullable: true
       title: Source
     Ids_Property:

@@ -336,6 +336,7 @@ class BaseApi(api_client.Api):
 class DeleteManyRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def adelete_many(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
@@ -361,6 +362,7 @@ class DeleteManyRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def delete_many(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
@@ -385,6 +387,7 @@ class DeleteManyRaw(BaseApi):
 
 class DeleteMany(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def adelete_many(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
@@ -408,6 +411,7 @@ class DeleteMany(BaseApi):
         return api_client.construct_model_instance(GenericSuccessResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def delete_many(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
@@ -432,6 +436,7 @@ class DeleteMany(BaseApi):
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="files")
     async def apost(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
@@ -457,6 +462,7 @@ class ApiForpost(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="files")
     def post(
         self,
         file_ids: typing.Optional[DeleteFilesQueryInputFileIds] = None,
