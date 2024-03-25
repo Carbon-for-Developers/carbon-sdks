@@ -88,7 +88,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"UsersApi.delete",
@@ -180,7 +180,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'UserResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"UsersApi.get",
@@ -372,7 +372,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"UsersApi.update_users",

@@ -28,7 +28,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     
@@ -74,7 +74,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     
@@ -179,7 +179,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     autoSyncEnabledSources := *carbon.NewAutoSyncEnabledSourcesProperty()

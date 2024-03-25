@@ -59,7 +59,7 @@ request_body_add_webhook_props = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = WebhookSchema
 

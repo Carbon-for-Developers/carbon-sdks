@@ -32,20 +32,19 @@ import frozendict  # noqa: F401
 
 from carbon import schemas  # noqa: F401
 
-from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.white_labeling_response import WhiteLabelingResponse as WhiteLabelingResponseSchema
 
-from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.white_labeling_response import WhiteLabelingResponse
 
 from ...api_client import Dictionary
-from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.white_labeling_response import WhiteLabelingResponse as WhiteLabelingResponsePydantic
 
 from . import path
 
 _auth = [
     'accessToken',
+    'apiKey',
+    'customerId',
 ]
 SchemaFor200ResponseBodyApplicationJson = WhiteLabelingResponseSchema
 
@@ -68,30 +67,8 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
-SchemaFor422ResponseBodyApplicationJson = HTTPValidationErrorSchema
-
-
-@dataclass
-class ApiResponseFor422(api_client.ApiResponse):
-    body: HTTPValidationError
-
-
-@dataclass
-class ApiResponseFor422Async(api_client.AsyncApiResponse):
-    body: HTTPValidationError
-
-
-_response_for_422 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor422,
-    response_cls_async=ApiResponseFor422Async,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor422ResponseBodyApplicationJson),
-    },
-)
 _status_code_to_response = {
     '200': _response_for_200,
-    '422': _response_for_422,
 }
 _all_accept_content_types = (
     'application/json',

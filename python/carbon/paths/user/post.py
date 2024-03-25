@@ -59,7 +59,7 @@ request_body_user_request_content = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = UserResponseSchema
 

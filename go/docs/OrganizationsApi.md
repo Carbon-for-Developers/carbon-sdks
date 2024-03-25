@@ -25,7 +25,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     request := client.OrganizationsApi.Get(

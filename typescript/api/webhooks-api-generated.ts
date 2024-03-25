@@ -71,8 +71,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -120,8 +120,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -163,8 +163,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

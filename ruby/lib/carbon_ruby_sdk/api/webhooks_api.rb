@@ -88,7 +88,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'Webhook'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"WebhooksApi.add_url",
@@ -167,7 +167,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"WebhooksApi.delete_url",
@@ -271,7 +271,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'WebhookQueryResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"WebhooksApi.urls",

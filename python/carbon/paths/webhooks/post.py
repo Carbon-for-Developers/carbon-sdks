@@ -71,7 +71,7 @@ request_body_webhook_query_input = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = WebhookQueryResponseSchema
 

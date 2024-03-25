@@ -251,6 +251,34 @@ func (a *AuthApiService) GetWhiteLabelingExecute(r AuthApiGetWhiteLabelingReques
 			}
 		}
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -272,16 +300,6 @@ func (a *AuthApiService) GetWhiteLabelingExecute(r AuthApiGetWhiteLabelingReques
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 422 {
-			var v HTTPValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

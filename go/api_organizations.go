@@ -85,7 +85,7 @@ func (a *OrganizationsApiService) GetExecute(r OrganizationsApiGetRequest) (*Org
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["accessToken"]; ok {
+			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + apiKey.Key
@@ -117,16 +117,6 @@ func (a *OrganizationsApiService) GetExecute(r OrganizationsApiGetRequest) (*Org
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 422 {
-			var v HTTPValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

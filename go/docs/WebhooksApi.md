@@ -27,7 +27,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     
@@ -78,7 +78,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     request := client.WebhooksApi.DeleteUrl(
@@ -119,7 +119,7 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
     client := carbon.NewAPIClient(configuration)
 
     pagination := *carbon.NewPagination()

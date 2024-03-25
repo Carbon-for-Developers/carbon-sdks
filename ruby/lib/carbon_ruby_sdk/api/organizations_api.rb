@@ -67,7 +67,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'OrganizationResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['apiKey']
 
       new_options = opts.merge(
         :operation => :"OrganizationsApi.get",

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.12-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.12)
+[![npm](https://img.shields.io/badge/npm-v0.1.13-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.13)
 
 </div>
 

@@ -62,7 +62,7 @@ request_body_delete_users_input = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = GenericSuccessResponseSchema
 

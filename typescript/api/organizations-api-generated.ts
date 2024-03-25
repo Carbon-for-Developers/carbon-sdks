@@ -21,8 +21,6 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
-// @ts-ignore
 import { OrganizationResponse } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
@@ -52,8 +50,8 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};

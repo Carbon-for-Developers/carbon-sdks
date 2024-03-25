@@ -90,7 +90,7 @@ func (a *UsersApiService) DeleteExecute(r UsersApiDeleteRequest) (*GenericSucces
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["accessToken"]; ok {
+			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + apiKey.Key
@@ -216,7 +216,7 @@ func (a *UsersApiService) GetExecute(r UsersApiGetRequest) (*UserResponse, *http
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["accessToken"]; ok {
+			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + apiKey.Key
@@ -496,7 +496,7 @@ func (a *UsersApiService) UpdateUsersExecute(r UsersApiUpdateUsersRequest) (*Gen
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["accessToken"]; ok {
+			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
 					key = apiKey.Prefix + apiKey.Key

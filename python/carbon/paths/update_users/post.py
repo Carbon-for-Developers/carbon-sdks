@@ -65,7 +65,7 @@ request_body_update_users_input = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = GenericSuccessResponseSchema
 

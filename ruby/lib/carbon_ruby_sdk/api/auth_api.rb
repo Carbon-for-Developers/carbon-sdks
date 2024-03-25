@@ -152,7 +152,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'WhiteLabelingResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['accessToken']
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
 
       new_options = opts.merge(
         :operation => :"AuthApi.get_white_labeling",

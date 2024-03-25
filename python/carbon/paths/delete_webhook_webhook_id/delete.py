@@ -71,7 +71,7 @@ request_path_webhook_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'accessToken',
+    'apiKey',
 ]
 SchemaFor200ResponseBodyApplicationJson = GenericSuccessResponseSchema
 
