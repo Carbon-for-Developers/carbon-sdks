@@ -113,6 +113,12 @@ export interface ExternalSourceItem {
      * @type {string}
      * @memberof ExternalSourceItem
      */
+    'external_url': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExternalSourceItem
+     */
     'created_at': string;
     /**
      * 

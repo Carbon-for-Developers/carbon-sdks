@@ -51,6 +51,8 @@ import { ListDataSourceItemsRequest } from '../models';
 // @ts-ignore
 import { ListDataSourceItemsResponse } from '../models';
 // @ts-ignore
+import { ListItemsFiltersNullable } from '../models';
+// @ts-ignore
 import { ListRequest } from '../models';
 // @ts-ignore
 import { ListResponse } from '../models';
@@ -1209,6 +1211,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             const listDataSourceItemsRequest: ListDataSourceItemsRequest = {
                 data_source_id: requestParameters.data_source_id,
                 parent_id: requestParameters.parent_id,
+                filters: requestParameters.filters,
                 pagination: requestParameters.pagination
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(listDataSourceItemsRequest, options);

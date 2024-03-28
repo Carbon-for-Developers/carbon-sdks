@@ -41,6 +41,8 @@ module Carbon
 
     attr_accessor :root_external_id
 
+    attr_accessor :external_url
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -63,6 +65,7 @@ module Carbon
         :'parent_external_id' => :'parent_external_id',
         :'item_type' => :'item_type',
         :'root_external_id' => :'root_external_id',
+        :'external_url' => :'external_url',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -91,6 +94,7 @@ module Carbon
         :'parent_external_id' => :'String',
         :'item_type' => :'String',
         :'root_external_id' => :'String',
+        :'external_url' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -105,6 +109,7 @@ module Carbon
         :'parent_external_id',
         :'item_type',
         :'root_external_id',
+        :'external_url',
       ])
     end
 
@@ -181,6 +186,10 @@ module Carbon
 
       if attributes.key?(:'root_external_id')
         self.root_external_id = attributes[:'root_external_id']
+      end
+
+      if attributes.key?(:'external_url')
+        self.external_url = attributes[:'external_url']
       end
 
       if attributes.key?(:'created_at')
@@ -280,6 +289,7 @@ module Carbon
           parent_external_id == o.parent_external_id &&
           item_type == o.item_type &&
           root_external_id == o.root_external_id &&
+          external_url == o.external_url &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -293,7 +303,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, external_id, source, name, synced_at, is_selectable, is_expandable, organization_id, organization_supplied_user_id, organization_user_id, organization_user_data_source_id, organization_user_file_to_sync_id, parent_external_id, item_type, root_external_id, created_at, updated_at].hash
+      [id, external_id, source, name, synced_at, is_selectable, is_expandable, organization_id, organization_supplied_user_id, organization_user_id, organization_user_data_source_id, organization_user_file_to_sync_id, parent_external_id, item_type, root_external_id, external_url, created_at, updated_at].hash
     end
 
     # Builds the object from hash

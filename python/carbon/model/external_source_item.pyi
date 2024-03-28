@@ -42,6 +42,7 @@ class ExternalSourceItem(
             "source",
             "organization_supplied_user_id",
             "is_selectable",
+            "external_url",
             "is_expandable",
             "updated_at",
             "organization_user_file_to_sync_id",
@@ -185,6 +186,26 @@ class ExternalSourceItem(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class external_url(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'external_url':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -203,6 +224,7 @@ class ExternalSourceItem(
                 "parent_external_id": parent_external_id,
                 "item_type": item_type,
                 "root_external_id": root_external_id,
+                "external_url": external_url,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -216,6 +238,7 @@ class ExternalSourceItem(
     source: 'DataSourceType'
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
     is_selectable: MetaOapg.properties.is_selectable
+    external_url: MetaOapg.properties.external_url
     is_expandable: MetaOapg.properties.is_expandable
     updated_at: MetaOapg.properties.updated_at
     organization_user_file_to_sync_id: MetaOapg.properties.organization_user_file_to_sync_id
@@ -271,6 +294,9 @@ class ExternalSourceItem(
     def __getitem__(self, name: typing_extensions.Literal["root_external_id"]) -> MetaOapg.properties.root_external_id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["external_url"]) -> MetaOapg.properties.external_url: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -279,7 +305,7 @@ class ExternalSourceItem(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "external_url", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -330,6 +356,9 @@ class ExternalSourceItem(
     def get_item_oapg(self, name: typing_extensions.Literal["root_external_id"]) -> MetaOapg.properties.root_external_id: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["external_url"]) -> MetaOapg.properties.external_url: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -338,7 +367,7 @@ class ExternalSourceItem(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "external_id", "source", "name", "synced_at", "is_selectable", "is_expandable", "organization_id", "organization_supplied_user_id", "organization_user_id", "organization_user_data_source_id", "organization_user_file_to_sync_id", "parent_external_id", "item_type", "root_external_id", "external_url", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -354,6 +383,7 @@ class ExternalSourceItem(
         source: 'DataSourceType',
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
         is_selectable: typing.Union[MetaOapg.properties.is_selectable, None, bool, ],
+        external_url: typing.Union[MetaOapg.properties.external_url, None, str, ],
         is_expandable: typing.Union[MetaOapg.properties.is_expandable, None, bool, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         organization_user_file_to_sync_id: typing.Union[MetaOapg.properties.organization_user_file_to_sync_id, None, decimal.Decimal, int, ],
@@ -377,6 +407,7 @@ class ExternalSourceItem(
             source=source,
             organization_supplied_user_id=organization_supplied_user_id,
             is_selectable=is_selectable,
+            external_url=external_url,
             is_expandable=is_expandable,
             updated_at=updated_at,
             organization_user_file_to_sync_id=organization_user_file_to_sync_id,

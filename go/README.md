@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.9)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.10)
 
 </div>
 
@@ -168,6 +168,8 @@ Class | Method | HTTP request | Description
  - [IdsProperty](docs/IdsProperty.md)
  - [ListDataSourceItemsRequest](docs/ListDataSourceItemsRequest.md)
  - [ListDataSourceItemsResponse](docs/ListDataSourceItemsResponse.md)
+ - [ListItemsFilters](docs/ListItemsFilters.md)
+ - [ListItemsFiltersNullable](docs/ListItemsFiltersNullable.md)
  - [ListRequest](docs/ListRequest.md)
  - [ListResponse](docs/ListResponse.md)
  - [LocationPropertyInner](docs/LocationPropertyInner.md)

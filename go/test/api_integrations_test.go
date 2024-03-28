@@ -184,12 +184,14 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService ListDataSourceItems", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewListItemsFiltersNullable()
         pagination := *carbon.NewPagination()
         
         listDataSourceItemsRequest := *carbon.NewListDataSourceItemsRequest(
             null,
         )
         listDataSourceItemsRequest.SetParentId("null")
+        listDataSourceItemsRequest.SetFilters(filters)
         listDataSourceItemsRequest.SetPagination(pagination)
         
         request := client.IntegrationsApi.ListDataSourceItems(

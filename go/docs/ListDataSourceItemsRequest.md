@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataSourceId** | **int32** |  | 
 **ParentId** | Pointer to **NullableString** |  | [optional] 
+**Filters** | Pointer to [**NullableListItemsFiltersNullable**](ListItemsFiltersNullable.md) |  | [optional] 
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
 
 ## Methods
@@ -82,6 +83,41 @@ HasParentId returns a boolean if a field has been set.
 `func (o *ListDataSourceItemsRequest) UnsetParentId()`
 
 UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
+### GetFilters
+
+`func (o *ListDataSourceItemsRequest) GetFilters() ListItemsFiltersNullable`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *ListDataSourceItemsRequest) GetFiltersOk() (*ListItemsFiltersNullable, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *ListDataSourceItemsRequest) SetFilters(v ListItemsFiltersNullable)`
+
+SetFilters sets Filters field to given value.
+
+### HasFilters
+
+`func (o *ListDataSourceItemsRequest) HasFilters() bool`
+
+HasFilters returns a boolean if a field has been set.
+
+### SetFiltersNil
+
+`func (o *ListDataSourceItemsRequest) SetFiltersNil(b bool)`
+
+ SetFiltersNil sets the value for Filters to be an explicit nil
+
+### UnsetFilters
+`func (o *ListDataSourceItemsRequest) UnsetFilters()`
+
+UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 ### GetPagination
 
 `func (o *ListDataSourceItemsRequest) GetPagination() Pagination`

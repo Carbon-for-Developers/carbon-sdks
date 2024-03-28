@@ -18,6 +18,7 @@ import (
 type ListDataSourceItemsRequest struct {
 	DataSourceId int32 `json:"data_source_id"`
 	ParentId NullableString `json:"parent_id,omitempty"`
+	Filters NullableListItemsFiltersNullable `json:"filters,omitempty"`
 	Pagination *Pagination `json:"pagination,omitempty"`
 }
 
@@ -105,6 +106,48 @@ func (o *ListDataSourceItemsRequest) UnsetParentId() {
 	o.ParentId.Unset()
 }
 
+// GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListDataSourceItemsRequest) GetFilters() ListItemsFiltersNullable {
+	if o == nil || isNil(o.Filters.Get()) {
+		var ret ListItemsFiltersNullable
+		return ret
+	}
+	return *o.Filters.Get()
+}
+
+// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListDataSourceItemsRequest) GetFiltersOk() (*ListItemsFiltersNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.Filters.Get(), o.Filters.IsSet()
+}
+
+// HasFilters returns a boolean if a field has been set.
+func (o *ListDataSourceItemsRequest) HasFilters() bool {
+	if o != nil && o.Filters.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFilters gets a reference to the given NullableListItemsFiltersNullable and assigns it to the Filters field.
+func (o *ListDataSourceItemsRequest) SetFilters(v ListItemsFiltersNullable) {
+	o.Filters.Set(&v)
+}
+// SetFiltersNil sets the value for Filters to be an explicit nil
+func (o *ListDataSourceItemsRequest) SetFiltersNil() {
+	o.Filters.Set(nil)
+}
+
+// UnsetFilters ensures that no value is present for Filters, not even an explicit nil
+func (o *ListDataSourceItemsRequest) UnsetFilters() {
+	o.Filters.Unset()
+}
+
 // GetPagination returns the Pagination field value if set, zero value otherwise.
 func (o *ListDataSourceItemsRequest) GetPagination() Pagination {
 	if o == nil || isNil(o.Pagination) {
@@ -144,6 +187,9 @@ func (o ListDataSourceItemsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ParentId.IsSet() {
 		toSerialize["parent_id"] = o.ParentId.Get()
+	}
+	if o.Filters.IsSet() {
+		toSerialize["filters"] = o.Filters.Get()
 	}
 	if !isNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination

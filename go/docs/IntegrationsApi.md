@@ -401,12 +401,14 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    filters := *carbon.NewListItemsFiltersNullable()
     pagination := *carbon.NewPagination()
     
     listDataSourceItemsRequest := *carbon.NewListDataSourceItemsRequest(
         null,
     )
     listDataSourceItemsRequest.SetParentId("null")
+    listDataSourceItemsRequest.SetFilters(filters)
     listDataSourceItemsRequest.SetPagination(pagination)
     
     request := client.IntegrationsApi.ListDataSourceItems(

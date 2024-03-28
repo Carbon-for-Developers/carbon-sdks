@@ -3777,6 +3777,11 @@
             "type": "string",
             "nullable": true
           },
+          "external_url": {
+            "title": "External Url",
+            "type": "string",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -3805,6 +3810,7 @@
           "parent_external_id",
           "item_type",
           "root_external_id",
+          "external_url",
           "created_at",
           "updated_at"
         ]
@@ -4475,6 +4481,9 @@
             "type": "string",
             "nullable": true
           },
+          "filters": {
+            "$ref": "#/components/schemas/ListItemsFiltersNullable"
+          },
           "pagination": {
             "$ref": "#/components/schemas/Pagination"
           }
@@ -4512,6 +4521,38 @@
           "items",
           "count"
         ]
+      },
+      "ListItemsFilters": {
+        "title": "ListItemsFilters",
+        "properties": {
+          "external_ids": {
+            "title": "External Ids",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "ids": {
+            "title": "Ids",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "root_files_only": {
+            "title": "Root Files Only",
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object"
       },
       "ListRequest": {
         "title": "ListRequest",
@@ -7084,6 +7125,39 @@
           "IMAGE"
         ],
         "default": "TEXT",
+        "nullable": true
+      },
+      "ListItemsFiltersNullable": {
+        "title": "ListItemsFilters",
+        "properties": {
+          "external_ids": {
+            "title": "External Ids",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "ids": {
+            "title": "Ids",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "root_files_only": {
+            "title": "Root Files Only",
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object",
         "nullable": true
       },
       "FileStatisticsNullable": {

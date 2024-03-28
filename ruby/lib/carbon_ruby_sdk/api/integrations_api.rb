@@ -802,13 +802,15 @@ module Carbon
     #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
+    # @param filters [ListItemsFiltersNullable] 
     # @param pagination [Pagination] 
     # @param body [ListDataSourceItemsRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_data_source_items(data_source_id:, parent_id: SENTINEL, pagination: SENTINEL, extra: {})
+    def list_data_source_items(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:parent_id] = parent_id if parent_id != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
       list_data_source_items_request = _body
       api_response = list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)
@@ -819,13 +821,15 @@ module Carbon
     #
     # @param data_source_id [Integer] 
     # @param parent_id [String] 
+    # @param filters [ListItemsFiltersNullable] 
     # @param pagination [Pagination] 
     # @param body [ListDataSourceItemsRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_data_source_items_with_http_info(data_source_id:, parent_id: SENTINEL, pagination: SENTINEL, extra: {})
+    def list_data_source_items_with_http_info(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:parent_id] = parent_id if parent_id != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
       list_data_source_items_request = _body
       list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)

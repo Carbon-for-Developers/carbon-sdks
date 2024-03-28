@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.14-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.14)
+[![npm](https://img.shields.io/badge/npm-v0.1.15-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.15)
 
 </div>
 
@@ -1489,6 +1489,8 @@ const listDataSourceItemsResponse =
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
 ##### parent_id: `string`<a id="parent_id-string"></a>
+
+##### filters: [`ListItemsFiltersNullable`](./models/list-items-filters-nullable.ts)<a id="filters-listitemsfiltersnullablemodelslist-items-filters-nullablets"></a>
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
 

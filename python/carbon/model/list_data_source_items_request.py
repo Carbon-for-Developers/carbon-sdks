@@ -60,11 +60,16 @@ class ListDataSourceItemsRequest(
                     )
         
             @staticmethod
+            def filters() -> typing.Type['ListItemsFiltersNullable']:
+                return ListItemsFiltersNullable
+        
+            @staticmethod
             def pagination() -> typing.Type['Pagination']:
                 return Pagination
             __annotations__ = {
                 "data_source_id": data_source_id,
                 "parent_id": parent_id,
+                "filters": filters,
                 "pagination": pagination,
             }
     
@@ -77,12 +82,15 @@ class ListDataSourceItemsRequest(
     def __getitem__(self, name: typing_extensions.Literal["parent_id"]) -> MetaOapg.properties.parent_id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["filters"]) -> 'ListItemsFiltersNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["pagination"]) -> 'Pagination': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "pagination", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -94,12 +102,15 @@ class ListDataSourceItemsRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["parent_id"]) -> typing.Union[MetaOapg.properties.parent_id, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["filters"]) -> typing.Union['ListItemsFiltersNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["pagination"]) -> typing.Union['Pagination', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "pagination", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -108,6 +119,7 @@ class ListDataSourceItemsRequest(
         *args: typing.Union[dict, frozendict.frozendict, ],
         data_source_id: typing.Union[MetaOapg.properties.data_source_id, decimal.Decimal, int, ],
         parent_id: typing.Union[MetaOapg.properties.parent_id, None, str, schemas.Unset] = schemas.unset,
+        filters: typing.Union['ListItemsFiltersNullable', schemas.Unset] = schemas.unset,
         pagination: typing.Union['Pagination', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -117,9 +129,11 @@ class ListDataSourceItemsRequest(
             *args,
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.model.pagination import Pagination

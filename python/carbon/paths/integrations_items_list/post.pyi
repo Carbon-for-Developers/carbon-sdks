@@ -36,13 +36,16 @@ from carbon.model.pagination import Pagination as PaginationSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.list_data_source_items_request import ListDataSourceItemsRequest as ListDataSourceItemsRequestSchema
 from carbon.model.list_data_source_items_response import ListDataSourceItemsResponse as ListDataSourceItemsResponseSchema
+from carbon.model.list_items_filters_nullable import ListItemsFiltersNullable as ListItemsFiltersNullableSchema
 
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.pagination import Pagination
+from carbon.type.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.type.list_data_source_items_request import ListDataSourceItemsRequest
 from carbon.type.list_data_source_items_response import ListDataSourceItemsResponse
 
 from ...api_client import Dictionary
+from carbon.pydantic.list_items_filters_nullable import ListItemsFiltersNullable as ListItemsFiltersNullablePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.list_data_source_items_response import ListDataSourceItemsResponse as ListDataSourceItemsResponsePydantic
 from carbon.pydantic.list_data_source_items_request import ListDataSourceItemsRequest as ListDataSourceItemsRequestPydantic
@@ -112,6 +115,7 @@ class BaseApi(api_client.Api):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -120,6 +124,8 @@ class BaseApi(api_client.Api):
             _body["data_source_id"] = data_source_id
         if parent_id is not None:
             _body["parent_id"] = parent_id
+        if filters is not None:
+            _body["filters"] = filters
         if pagination is not None:
             _body["pagination"] = pagination
         args.body = _body
@@ -331,6 +337,7 @@ class ListDataSourceItemsRaw(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
         **kwargs,
     ) -> typing.Union[
@@ -341,6 +348,7 @@ class ListDataSourceItemsRaw(BaseApi):
         args = self._list_data_source_items_mapped_args(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
         )
         return await self._alist_data_source_items_oapg(
@@ -352,6 +360,7 @@ class ListDataSourceItemsRaw(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -360,6 +369,7 @@ class ListDataSourceItemsRaw(BaseApi):
         args = self._list_data_source_items_mapped_args(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
         )
         return self._list_data_source_items_oapg(
@@ -372,6 +382,7 @@ class ListDataSourceItems(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
         validate: bool = False,
         **kwargs,
@@ -379,6 +390,7 @@ class ListDataSourceItems(BaseApi):
         raw_response = await self.raw.alist_data_source_items(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
             **kwargs,
         )
@@ -391,12 +403,14 @@ class ListDataSourceItems(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
         validate: bool = False,
     ) -> ListDataSourceItemsResponsePydantic:
         raw_response = self.raw.list_data_source_items(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
         )
         if validate:
@@ -411,6 +425,7 @@ class ApiForpost(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
         **kwargs,
     ) -> typing.Union[
@@ -421,6 +436,7 @@ class ApiForpost(BaseApi):
         args = self._list_data_source_items_mapped_args(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
         )
         return await self._alist_data_source_items_oapg(
@@ -432,6 +448,7 @@ class ApiForpost(BaseApi):
         self,
         data_source_id: int,
         parent_id: typing.Optional[typing.Optional[str]] = None,
+        filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -440,6 +457,7 @@ class ApiForpost(BaseApi):
         args = self._list_data_source_items_mapped_args(
             data_source_id=data_source_id,
             parent_id=parent_id,
+            filters=filters,
             pagination=pagination,
         )
         return self._list_data_source_items_oapg(

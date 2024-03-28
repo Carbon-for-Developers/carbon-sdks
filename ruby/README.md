@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.11-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.11)
+[![npm](https://img.shields.io/badge/gem-v0.1.12-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.12)
 
 </div>
 
@@ -80,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.11'
+gem 'carbon_ruby_sdk', '~> 0.1.12'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1475,6 +1475,8 @@ List Data Source Items
 result = carbon.integrations.list_data_source_items(
   data_source_id: 1,
   parent_id: "string_example",
+  filters: {
+    },
   pagination: {
         "limit" => 10,
         "offset" => 0,
@@ -1487,6 +1489,7 @@ p result
 
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### parent_id: `String`<a id="parent_id-string"></a>
+##### filters: [`ListItemsFiltersNullable`](./lib/carbon_ruby_sdk/models/list_items_filters_nullable.rb)<a id="filters-listitemsfiltersnullablelibcarbon_ruby_sdkmodelslist_items_filters_nullablerb"></a>
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 

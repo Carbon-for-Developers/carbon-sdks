@@ -50,6 +50,8 @@ export * from './hybrid-search-tuning-params-nullable';
 export * from './ids-property';
 export * from './list-data-source-items-request';
 export * from './list-data-source-items-response';
+export * from './list-items-filters';
+export * from './list-items-filters-nullable';
 export * from './list-request';
 export * from './list-response';
 export * from './location-property-inner';

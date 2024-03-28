@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.type.pagination import Pagination
 
 class RequiredListDataSourceItemsRequest(TypedDict):
@@ -21,6 +22,8 @@ class RequiredListDataSourceItemsRequest(TypedDict):
 
 class OptionalListDataSourceItemsRequest(TypedDict, total=False):
     parent_id: typing.Optional[str]
+
+    filters: typing.Optional[ListItemsFiltersNullable]
 
     pagination: Pagination
 

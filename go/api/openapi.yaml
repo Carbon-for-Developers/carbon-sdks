@@ -4183,6 +4183,7 @@ components:
         source: null
         organization_supplied_user_id: organization_supplied_user_id
         is_selectable: true
+        external_url: external_url
         is_expandable: true
         updated_at: 2000-01-23T04:56:07.000+00:00
         organization_user_file_to_sync_id: 5
@@ -4243,6 +4244,10 @@ components:
           nullable: true
           title: Root External Id
           type: string
+        external_url:
+          nullable: true
+          title: External Url
+          type: string
         created_at:
           format: date-time
           title: Created At
@@ -4254,6 +4259,7 @@ components:
       required:
       - created_at
       - external_id
+      - external_url
       - id
       - is_expandable
       - is_selectable
@@ -4947,6 +4953,15 @@ components:
           offset: 0
           limit: 10
         parent_id: parent_id
+        filters:
+          root_files_only: true
+          name: name
+          ids:
+          - 6
+          - 6
+          external_ids:
+          - external_ids
+          - external_ids
         data_source_id: 0
       properties:
         data_source_id:
@@ -4956,6 +4971,8 @@ components:
           nullable: true
           title: Parent Id
           type: string
+        filters:
+          $ref: '#/components/schemas/ListItemsFiltersNullable'
         pagination:
           $ref: '#/components/schemas/Pagination'
       required:
@@ -4980,6 +4997,7 @@ components:
           source: null
           organization_supplied_user_id: organization_supplied_user_id
           is_selectable: true
+          external_url: external_url
           is_expandable: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_user_file_to_sync_id: 5
@@ -4997,6 +5015,7 @@ components:
           source: null
           organization_supplied_user_id: organization_supplied_user_id
           is_selectable: true
+          external_url: external_url
           is_expandable: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_user_file_to_sync_id: 5
@@ -5018,6 +5037,30 @@ components:
       - count
       - items
       title: ListDataSourceItemsResponse
+      type: object
+    ListItemsFilters:
+      properties:
+        external_ids:
+          items:
+            type: string
+          nullable: true
+          title: External Ids
+          type: array
+        ids:
+          items:
+            type: integer
+          nullable: true
+          title: Ids
+          type: array
+        name:
+          nullable: true
+          title: Name
+          type: string
+        root_files_only:
+          nullable: true
+          title: Root Files Only
+          type: boolean
+      title: ListItemsFilters
       type: object
     ListRequest:
       example:
@@ -7679,6 +7722,40 @@ components:
       type: string
       x-konfig-original-example: TEXT
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileContentTypesNullable
+    ListItemsFiltersNullable:
+      example:
+        root_files_only: true
+        name: name
+        ids:
+        - 6
+        - 6
+        external_ids:
+        - external_ids
+        - external_ids
+      nullable: true
+      properties:
+        external_ids:
+          items:
+            type: string
+          nullable: true
+          title: External Ids
+          type: array
+        ids:
+          items:
+            type: integer
+          nullable: true
+          title: Ids
+          type: array
+        name:
+          nullable: true
+          title: Name
+          type: string
+        root_files_only:
+          nullable: true
+          title: Root Files Only
+          type: boolean
+      title: ListItemsFilters
+      type: object
     FileStatisticsNullable:
       example:
         num_tokens: 2
@@ -8613,6 +8690,8 @@ components:
           nullable: true
           title: Parent Id
           type: string
+        filters:
+          $ref: '#/components/schemas/ListItemsFiltersNullable'
         pagination:
           $ref: '#/components/schemas/Pagination'
       required:

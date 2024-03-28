@@ -533,6 +533,9 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'parent_id'
             },
             {
+                name: 'filters'
+            },
+            {
                 name: 'pagination'
             },
         ]

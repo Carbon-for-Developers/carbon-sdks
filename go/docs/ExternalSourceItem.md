@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ParentExternalId** | **NullableString** |  | 
 **ItemType** | **NullableString** |  | 
 **RootExternalId** | **NullableString** |  | 
+**ExternalUrl** | **NullableString** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewExternalSourceItem
 
-`func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, createdAt time.Time, updatedAt time.Time, ) *ExternalSourceItem`
+`func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, externalUrl NullableString, createdAt time.Time, updatedAt time.Time, ) *ExternalSourceItem`
 
 NewExternalSourceItem instantiates a new ExternalSourceItem object
 This constructor will assign default values to properties that have it defined,
@@ -401,6 +402,36 @@ SetRootExternalId sets RootExternalId field to given value.
 `func (o *ExternalSourceItem) UnsetRootExternalId()`
 
 UnsetRootExternalId ensures that no value is present for RootExternalId, not even an explicit nil
+### GetExternalUrl
+
+`func (o *ExternalSourceItem) GetExternalUrl() string`
+
+GetExternalUrl returns the ExternalUrl field if non-nil, zero value otherwise.
+
+### GetExternalUrlOk
+
+`func (o *ExternalSourceItem) GetExternalUrlOk() (*string, bool)`
+
+GetExternalUrlOk returns a tuple with the ExternalUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalUrl
+
+`func (o *ExternalSourceItem) SetExternalUrl(v string)`
+
+SetExternalUrl sets ExternalUrl field to given value.
+
+
+### SetExternalUrlNil
+
+`func (o *ExternalSourceItem) SetExternalUrlNil(b bool)`
+
+ SetExternalUrlNil sets the value for ExternalUrl to be an explicit nil
+
+### UnsetExternalUrl
+`func (o *ExternalSourceItem) UnsetExternalUrl()`
+
+UnsetExternalUrl ensures that no value is present for ExternalUrl, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *ExternalSourceItem) GetCreatedAt() time.Time`

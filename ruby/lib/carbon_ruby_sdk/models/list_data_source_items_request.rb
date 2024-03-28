@@ -15,6 +15,8 @@ module Carbon
 
     attr_accessor :parent_id
 
+    attr_accessor :filters
+
     attr_accessor :pagination
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -22,6 +24,7 @@ module Carbon
       {
         :'data_source_id' => :'data_source_id',
         :'parent_id' => :'parent_id',
+        :'filters' => :'filters',
         :'pagination' => :'pagination'
       }
     end
@@ -36,6 +39,7 @@ module Carbon
       {
         :'data_source_id' => :'Integer',
         :'parent_id' => :'String',
+        :'filters' => :'ListItemsFiltersNullable',
         :'pagination' => :'Pagination'
       }
     end
@@ -44,6 +48,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'parent_id',
+        :'filters',
       ])
     end
 
@@ -68,6 +73,10 @@ module Carbon
 
       if attributes.key?(:'parent_id')
         self.parent_id = attributes[:'parent_id']
+      end
+
+      if attributes.key?(:'filters')
+        self.filters = attributes[:'filters']
       end
 
       if attributes.key?(:'pagination')
@@ -100,6 +109,7 @@ module Carbon
       self.class == o.class &&
           data_source_id == o.data_source_id &&
           parent_id == o.parent_id &&
+          filters == o.filters &&
           pagination == o.pagination
     end
 
@@ -112,7 +122,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_source_id, parent_id, pagination].hash
+      [data_source_id, parent_id, filters, pagination].hash
     end
 
     # Builds the object from hash

@@ -527,6 +527,9 @@ operation_parameter_map = {
                 'name': 'parent_id'
             },
             {
+                'name': 'filters'
+            },
+            {
                 'name': 'pagination'
             },
         ]

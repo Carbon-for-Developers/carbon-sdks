@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.13-blue)](https://pypi.org/project/carbon-python-sdk/0.1.13)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.14-blue)](https://pypi.org/project/carbon-python-sdk/0.1.14)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -86,7 +86,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.13
+pip install carbon-python-sdk==0.1.14
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1649,6 +1649,7 @@ List Data Source Items
 list_data_source_items_response = carbon.integrations.list_data_source_items(
     data_source_id=1,
     parent_id="string_example",
+    filters={},
     pagination={
         "limit": 10,
         "offset": 0,
@@ -1661,6 +1662,9 @@ list_data_source_items_response = carbon.integrations.list_data_source_items(
 ##### data_source_id: `int`<a id="data_source_id-int"></a>
 
 ##### parent_id: `Optional[str]`<a id="parent_id-optionalstr"></a>
+
+##### filters: [`ListItemsFiltersNullable`](./carbon/type/list_items_filters_nullable.py)<a id="filters-listitemsfiltersnullablecarbontypelist_items_filters_nullablepy"></a>
+
 
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 

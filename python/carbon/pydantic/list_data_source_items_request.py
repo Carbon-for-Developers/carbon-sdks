@@ -15,12 +15,15 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.pydantic.pagination import Pagination
 
 class ListDataSourceItemsRequest(BaseModel):
     data_source_id: int = Field(alias='data_source_id')
 
     parent_id: typing.Optional[typing.Optional[str]] = Field(None, alias='parent_id')
+
+    filters: typing.Optional[ListItemsFiltersNullable] = Field(None, alias='filters')
 
     pagination: typing.Optional[Pagination] = Field(None, alias='pagination')
 
