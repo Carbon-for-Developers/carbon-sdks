@@ -3781,6 +3781,17 @@
             ],
             "title": "Root External Id"
           },
+          "external_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Url"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -3809,6 +3820,7 @@
           "parent_external_id",
           "item_type",
           "root_external_id",
+          "external_url",
           "created_at",
           "updated_at"
         ],
@@ -4739,6 +4751,16 @@
             ],
             "title": "Parent Id"
           },
+          "filters": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ListItemsFilters"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "pagination": {
             "allOf": [
               {
@@ -4777,6 +4799,62 @@
           "count"
         ],
         "title": "ListDataSourceItemsResponse"
+      },
+      "ListItemsFilters": {
+        "properties": {
+          "external_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Ids"
+          },
+          "ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ids"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "root_files_only": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Root Files Only"
+          }
+        },
+        "type": "object",
+        "title": "ListItemsFilters"
       },
       "ListRequest": {
         "properties": {
