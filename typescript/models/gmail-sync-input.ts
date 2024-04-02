@@ -72,5 +72,11 @@ export interface GmailSyncInput {
      * @memberof GmailSyncInput
      */
     'data_source_id'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GmailSyncInput
+     */
+    'request_id'?: string | null;
 }
 

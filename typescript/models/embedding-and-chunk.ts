@@ -41,5 +41,11 @@ export interface EmbeddingAndChunk {
      * @memberof EmbeddingAndChunk
      */
     'embedding': Array<number> | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof EmbeddingAndChunk
+     */
+    'content_metadata': object | null;
 }
 

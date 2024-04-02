@@ -73,6 +73,8 @@ class RequiredUserFile(TypedDict):
 
     generate_sparse_vectors: typing.Optional[bool]
 
+    request_id: typing.Optional[str]
+
     created_at: datetime
 
     updated_at: datetime

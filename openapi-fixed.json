@@ -3557,6 +3557,11 @@
             },
             "type": "array",
             "nullable": true
+          },
+          "content_metadata": {
+            "title": "Content Metadata",
+            "type": "object",
+            "nullable": true
           }
         },
         "type": "object",
@@ -3564,7 +3569,8 @@
           "user_file_id",
           "chunk_index",
           "source_content",
-          "embedding"
+          "embedding",
+          "content_metadata"
         ]
       },
       "EmbeddingGenerators": {
@@ -3979,6 +3985,11 @@
             "default": true,
             "type": "boolean",
             "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4295,6 +4306,11 @@
             "default": true,
             "type": "boolean",
             "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4362,6 +4378,11 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4425,6 +4446,11 @@
           "data_source_id": {
             "title": "Data Source Id",
             "type": "integer",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
             "nullable": true
           }
         },
@@ -4753,6 +4779,12 @@
             "description": "Used to connect a new data source. If not specified, we will attempt to create a sync URL\n        for an existing data source based on type and ID.",
             "default": false,
             "type": "boolean",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "description": "This request id will be added to all files that get synced using the generated OAuth URL",
+            "type": "string",
             "nullable": true
           }
         },
@@ -5233,6 +5265,16 @@
             "description": "If true, the query will return only files that have not been synced yet.",
             "type": "boolean",
             "default": false
+          },
+          "request_ids": {
+            "title": "Request Ids",
+            "description": "Filter by request ID(s) which were used to sync the files",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "nullable": true
           }
         },
         "type": "object"
@@ -5372,6 +5414,11 @@
             "title": "Data Source Id",
             "type": "integer",
             "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -5458,6 +5505,11 @@
             "title": "Prepend Filename To Chunks",
             "default": false,
             "type": "boolean",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
             "nullable": true
           }
         },
@@ -5665,6 +5717,11 @@
           "data_source_id": {
             "title": "Data Source Id",
             "type": "integer",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
             "nullable": true
           }
         },
@@ -6036,6 +6093,11 @@
             "title": "Set Page As Boundary",
             "type": "boolean",
             "default": false
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -6370,6 +6432,11 @@
             "type": "boolean",
             "nullable": true
           },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -6409,6 +6476,7 @@
           "skip_embedding_generation",
           "source_created_at",
           "generate_sparse_vectors",
+          "request_id",
           "created_at",
           "updated_at"
         ]

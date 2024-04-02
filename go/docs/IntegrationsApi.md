@@ -115,6 +115,7 @@ func main() {
     freshDeskConnectRequest.SetGenerateSparseVectors(false)
     freshDeskConnectRequest.SetPrependFilenameToChunks(false)
     freshDeskConnectRequest.SetSyncFilesOnConnection(true)
+    freshDeskConnectRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.ConnectFreshdesk(
         freshDeskConnectRequest,
@@ -174,6 +175,7 @@ func main() {
     gitbookConnectRequest.SetGenerateSparseVectors(false)
     gitbookConnectRequest.SetPrependFilenameToChunks(false)
     gitbookConnectRequest.SetSyncFilesOnConnection(true)
+    gitbookConnectRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.ConnectGitbook(
         gitbookConnectRequest,
@@ -306,6 +308,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
+    oAuthURLRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,
@@ -648,6 +651,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
+    syncFilesRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncConfluence(
         syncFilesRequest,
@@ -770,6 +774,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
+    syncFilesRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncFiles(
         syncFilesRequest,
@@ -828,6 +833,7 @@ func main() {
     gitbookSyncRequest.SetEmbeddingModel(null)
     gitbookSyncRequest.SetGenerateSparseVectors(false)
     gitbookSyncRequest.SetPrependFilenameToChunks(false)
+    gitbookSyncRequest.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncGitbook(
         gitbookSyncRequest,
@@ -885,6 +891,7 @@ func main() {
     gmailSyncInput.SetGenerateSparseVectors(false)
     gmailSyncInput.SetPrependFilenameToChunks(false)
     gmailSyncInput.SetDataSourceId(null)
+    gmailSyncInput.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncGmail(
         gmailSyncInput,
@@ -944,6 +951,7 @@ func main() {
     outlookSyncInput.SetGenerateSparseVectors(false)
     outlookSyncInput.SetPrependFilenameToChunks(false)
     outlookSyncInput.SetDataSourceId(null)
+    outlookSyncInput.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncOutlook(
         outlookSyncInput,
@@ -999,6 +1007,7 @@ func main() {
     rSSFeedInput.SetEmbeddingModel(null)
     rSSFeedInput.SetGenerateSparseVectors(false)
     rSSFeedInput.SetPrependFilenameToChunks(false)
+    rSSFeedInput.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncRssFeed(
         rSSFeedInput,
@@ -1059,6 +1068,7 @@ func main() {
     s3FileSyncInput.SetMaxItemsPerChunk(null)
     s3FileSyncInput.SetSetPageAsBoundary(false)
     s3FileSyncInput.SetDataSourceId(null)
+    s3FileSyncInput.SetRequestId("null")
     
     request := client.IntegrationsApi.SyncS3Files(
         s3FileSyncInput,

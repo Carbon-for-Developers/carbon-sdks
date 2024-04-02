@@ -26,6 +26,7 @@ type FreshDeskConnectRequest struct {
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
 }
 
 // NewFreshDeskConnectRequest instantiates a new FreshDeskConnectRequest object
@@ -450,6 +451,48 @@ func (o *FreshDeskConnectRequest) UnsetSyncFilesOnConnection() {
 	o.SyncFilesOnConnection.Unset()
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FreshDeskConnectRequest) GetRequestId() string {
+	if o == nil || isNil(o.RequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId.Get()
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FreshDeskConnectRequest) GetRequestIdOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.RequestId.Get(), o.RequestId.IsSet()
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *FreshDeskConnectRequest) HasRequestId() bool {
+	if o != nil && o.RequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
+func (o *FreshDeskConnectRequest) SetRequestId(v string) {
+	o.RequestId.Set(&v)
+}
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *FreshDeskConnectRequest) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
+
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *FreshDeskConnectRequest) UnsetRequestId() {
+	o.RequestId.Unset()
+}
+
 func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -481,6 +524,9 @@ func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncFilesOnConnection.IsSet() {
 		toSerialize["sync_files_on_connection"] = o.SyncFilesOnConnection.Get()
+	}
+	if o.RequestId.IsSet() {
+		toSerialize["request_id"] = o.RequestId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

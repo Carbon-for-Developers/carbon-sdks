@@ -61,5 +61,8 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
     connecting_new_account: typing.Optional[bool]
 
+    # This request id will be added to all files that get synced using the generated OAuth URL
+    request_id: typing.Optional[str]
+
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

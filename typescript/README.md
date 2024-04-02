@@ -1239,6 +1239,8 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
+##### request_id: `string`<a id="request_id-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1296,6 +1298,8 @@ const connectGitbookResponse = await carbon.integrations.connectGitbook({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1419,6 +1423,10 @@ Used to specify a data source to sync from if you have multiple connected. It ca
 ##### connecting_new_account: `boolean`<a id="connecting_new_account-boolean"></a>
 
 Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+
+##### request_id: `string`<a id="request_id-string"></a>
+
+This request id will be added to all files that get synced using the generated OAuth URL
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1654,6 +1662,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
+##### request_id: `string`<a id="request_id-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1746,6 +1756,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
+##### request_id: `string`<a id="request_id-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1798,6 +1810,8 @@ const syncGitbookResponse = await carbon.integrations.syncGitbook({
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -1894,6 +1908,8 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2008,6 +2024,8 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
+##### request_id: `string`<a id="request_id-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -2056,6 +2074,8 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2116,6 +2136,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

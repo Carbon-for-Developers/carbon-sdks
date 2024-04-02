@@ -25,6 +25,8 @@ class RequiredEmbeddingAndChunk(TypedDict):
 
     embedding: typing.Optional[EmbeddingAndChunkEmbedding]
 
+    content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
 class OptionalEmbeddingAndChunk(TypedDict, total=False):
     pass
 

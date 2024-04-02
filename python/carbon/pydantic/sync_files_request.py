@@ -42,6 +42,8 @@ class SyncFilesRequest(BaseModel):
 
     set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
 
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

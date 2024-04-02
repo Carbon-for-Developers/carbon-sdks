@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
 **ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
+**RequestId** | Pointer to **NullableString** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] 
 
 ## Methods
 
@@ -683,6 +684,41 @@ HasConnectingNewAccount returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetConnectingNewAccount()`
 
 UnsetConnectingNewAccount ensures that no value is present for ConnectingNewAccount, not even an explicit nil
+### GetRequestId
+
+`func (o *OAuthURLRequest) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *OAuthURLRequest) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *OAuthURLRequest) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *OAuthURLRequest) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
+
+### SetRequestIdNil
+
+`func (o *OAuthURLRequest) SetRequestIdNil(b bool)`
+
+ SetRequestIdNil sets the value for RequestId to be an explicit nil
+
+### UnsetRequestId
+`func (o *OAuthURLRequest) UnsetRequestId()`
+
+UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

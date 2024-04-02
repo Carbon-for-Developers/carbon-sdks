@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **RootFilesOnly** | Pointer to **NullableBool** | If true, the query will return only root files. Cannot be true if parent_file_ids or include_all_children is specified. | [optional] 
 **IncludeAllChildren** | Pointer to **bool** | If true, the query will return all descendents of the specified parent_file_ids. | [optional] [default to false]
 **NonSyncedOnly** | Pointer to **bool** | If true, the query will return only files that have not been synced yet. | [optional] [default to false]
+**RequestIds** | Pointer to **[]string** | Filter by request ID(s) which were used to sync the files | [optional] 
 
 ## Methods
 
@@ -472,6 +473,41 @@ SetNonSyncedOnly sets NonSyncedOnly field to given value.
 
 HasNonSyncedOnly returns a boolean if a field has been set.
 
+### GetRequestIds
+
+`func (o *OrganizationUserFilesToSyncFilters) GetRequestIds() []string`
+
+GetRequestIds returns the RequestIds field if non-nil, zero value otherwise.
+
+### GetRequestIdsOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetRequestIdsOk() (*[]string, bool)`
+
+GetRequestIdsOk returns a tuple with the RequestIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestIds
+
+`func (o *OrganizationUserFilesToSyncFilters) SetRequestIds(v []string)`
+
+SetRequestIds sets RequestIds field to given value.
+
+### HasRequestIds
+
+`func (o *OrganizationUserFilesToSyncFilters) HasRequestIds() bool`
+
+HasRequestIds returns a boolean if a field has been set.
+
+### SetRequestIdsNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetRequestIdsNil(b bool)`
+
+ SetRequestIdsNil sets the value for RequestIds to be an explicit nil
+
+### UnsetRequestIds
+`func (o *OrganizationUserFilesToSyncFilters) UnsetRequestIds()`
+
+UnsetRequestIds ensures that no value is present for RequestIds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

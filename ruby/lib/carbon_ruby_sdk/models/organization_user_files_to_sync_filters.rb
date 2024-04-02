@@ -47,6 +47,9 @@ module Carbon
     # If true, the query will return only files that have not been synced yet.
     attr_accessor :non_synced_only
 
+    # Filter by request ID(s) which were used to sync the files
+    attr_accessor :request_ids
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -62,7 +65,8 @@ module Carbon
         :'embedding_generators' => :'embedding_generators',
         :'root_files_only' => :'root_files_only',
         :'include_all_children' => :'include_all_children',
-        :'non_synced_only' => :'non_synced_only'
+        :'non_synced_only' => :'non_synced_only',
+        :'request_ids' => :'request_ids'
       }
     end
 
@@ -86,7 +90,8 @@ module Carbon
         :'embedding_generators' => :'Array<EmbeddingGenerators>',
         :'root_files_only' => :'Boolean',
         :'include_all_children' => :'Boolean',
-        :'non_synced_only' => :'Boolean'
+        :'non_synced_only' => :'Boolean',
+        :'request_ids' => :'Array<String>'
       }
     end
 
@@ -104,6 +109,7 @@ module Carbon
         :'organization_user_data_source_id',
         :'embedding_generators',
         :'root_files_only',
+        :'request_ids'
       ])
     end
 
@@ -191,19 +197,40 @@ module Carbon
       else
         self.non_synced_only = false
       end
+
+      if attributes.key?(:'request_ids')
+        if (value = attributes[:'request_ids']).is_a?(Array)
+          self.request_ids = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@request_ids.nil? && @request_ids.length > 100
+        invalid_properties.push('invalid value for "request_ids", number of items must be less than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@request_ids.nil? && @request_ids.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] request_ids Value to be assigned
+    def request_ids=(request_ids)
+      if !request_ids.nil? && request_ids.length > 100
+        fail ArgumentError, 'invalid value for "request_ids", number of items must be less than or equal to 100.'
+      end
+
+      @request_ids = request_ids
     end
 
     # Checks equality by comparing each attribute.
@@ -223,7 +250,8 @@ module Carbon
           embedding_generators == o.embedding_generators &&
           root_files_only == o.root_files_only &&
           include_all_children == o.include_all_children &&
-          non_synced_only == o.non_synced_only
+          non_synced_only == o.non_synced_only &&
+          request_ids == o.request_ids
     end
 
     # @see the `==` method
@@ -235,7 +263,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only].hash
+      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids].hash
     end
 
     # Builds the object from hash

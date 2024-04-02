@@ -1110,7 +1110,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                sync_files_on_connection: requestParameters.sync_files_on_connection
+                sync_files_on_connection: requestParameters.sync_files_on_connection,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1133,7 +1134,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                sync_files_on_connection: requestParameters.sync_files_on_connection
+                sync_files_on_connection: requestParameters.sync_files_on_connection,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1180,7 +1182,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
                 data_source_id: requestParameters.data_source_id,
-                connecting_new_account: requestParameters.connecting_new_account
+                connecting_new_account: requestParameters.connecting_new_account,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1280,7 +1283,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
-                set_page_as_boundary: requestParameters.set_page_as_boundary
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1318,7 +1322,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
-                set_page_as_boundary: requestParameters.set_page_as_boundary
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1340,7 +1345,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitbook(gitbookSyncRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1362,7 +1368,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                data_source_id: requestParameters.data_source_id
+                data_source_id: requestParameters.data_source_id,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(gmailSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1385,7 +1392,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                data_source_id: requestParameters.data_source_id
+                data_source_id: requestParameters.data_source_id,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1406,7 +1414,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(rSSFeedInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1430,7 +1439,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
-                data_source_id: requestParameters.data_source_id
+                data_source_id: requestParameters.data_source_id,
+                request_id: requestParameters.request_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

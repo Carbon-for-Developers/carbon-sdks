@@ -28,6 +28,7 @@ type SyncFilesRequest struct {
 	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
 }
 
 // NewSyncFilesRequest instantiates a new SyncFilesRequest object
@@ -484,6 +485,48 @@ func (o *SyncFilesRequest) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncFilesRequest) GetRequestId() string {
+	if o == nil || isNil(o.RequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId.Get()
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncFilesRequest) GetRequestIdOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.RequestId.Get(), o.RequestId.IsSet()
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *SyncFilesRequest) HasRequestId() bool {
+	if o != nil && o.RequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
+func (o *SyncFilesRequest) SetRequestId(v string) {
+	o.RequestId.Set(&v)
+}
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *SyncFilesRequest) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
+
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *SyncFilesRequest) UnsetRequestId() {
+	o.RequestId.Unset()
+}
+
 func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -518,6 +561,9 @@ func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
+	}
+	if o.RequestId.IsSet() {
+		toSerialize["request_id"] = o.RequestId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

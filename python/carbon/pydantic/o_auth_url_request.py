@@ -61,6 +61,9 @@ class OAuthURLRequest(BaseModel):
     # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
     connecting_new_account: typing.Optional[typing.Optional[bool]] = Field(None, alias='connecting_new_account')
 
+    # This request id will be added to all files that get synced using the generated OAuth URL
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -133,5 +133,11 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'connecting_new_account'?: boolean | null;
+    /**
+     * This request id will be added to all files that get synced using the generated OAuth URL
+     * @type {string}
+     * @memberof OAuthURLRequest
+     */
+    'request_id'?: string | null;
 }
 

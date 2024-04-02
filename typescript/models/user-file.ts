@@ -183,6 +183,12 @@ export interface UserFile {
      * @type {string}
      * @memberof UserFile
      */
+    'request_id': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserFile
+     */
     'created_at': string;
     /**
      * 

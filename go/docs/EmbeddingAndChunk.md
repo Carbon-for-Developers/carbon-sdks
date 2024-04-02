@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **ChunkIndex** | **NullableInt32** |  | 
 **SourceContent** | **string** |  | 
 **Embedding** | **[]float32** |  | 
+**ContentMetadata** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewEmbeddingAndChunk
 
-`func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32, ) *EmbeddingAndChunk`
+`func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32, contentMetadata map[string]interface{}, ) *EmbeddingAndChunk`
 
 NewEmbeddingAndChunk instantiates a new EmbeddingAndChunk object
 This constructor will assign default values to properties that have it defined,
@@ -128,6 +129,36 @@ SetEmbedding sets Embedding field to given value.
 `func (o *EmbeddingAndChunk) UnsetEmbedding()`
 
 UnsetEmbedding ensures that no value is present for Embedding, not even an explicit nil
+### GetContentMetadata
+
+`func (o *EmbeddingAndChunk) GetContentMetadata() map[string]interface{}`
+
+GetContentMetadata returns the ContentMetadata field if non-nil, zero value otherwise.
+
+### GetContentMetadataOk
+
+`func (o *EmbeddingAndChunk) GetContentMetadataOk() (*map[string]interface{}, bool)`
+
+GetContentMetadataOk returns a tuple with the ContentMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContentMetadata
+
+`func (o *EmbeddingAndChunk) SetContentMetadata(v map[string]interface{})`
+
+SetContentMetadata sets ContentMetadata field to given value.
+
+
+### SetContentMetadataNil
+
+`func (o *EmbeddingAndChunk) SetContentMetadataNil(b bool)`
+
+ SetContentMetadataNil sets the value for ContentMetadata to be an explicit nil
+
+### UnsetContentMetadata
+`func (o *EmbeddingAndChunk) UnsetContentMetadata()`
+
+UnsetContentMetadata ensures that no value is present for ContentMetadata, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

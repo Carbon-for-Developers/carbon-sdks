@@ -74,6 +74,8 @@ class UserFile(BaseModel):
 
     generate_sparse_vectors: typing.Optional[bool] = Field(alias='generate_sparse_vectors')
 
+    request_id: typing.Optional[str] = Field(alias='request_id')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

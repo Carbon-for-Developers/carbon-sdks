@@ -130,9 +130,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
+    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -144,6 +145,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       fresh_desk_connect_request = _body
       api_response = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
       api_response.data
@@ -167,9 +169,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
+    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -181,6 +184,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       fresh_desk_connect_request = _body
       connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
     end
@@ -271,9 +275,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
+    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -285,6 +290,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gitbook_connect_request = _body
       api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
       api_response.data
@@ -307,9 +313,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, extra: {})
+    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -321,6 +328,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gitbook_connect_request = _body
       connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
     end
@@ -534,9 +542,10 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
+    # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -557,6 +566,7 @@ module Carbon
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -588,9 +598,10 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
+    # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -611,6 +622,7 @@ module Carbon
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -1264,9 +1276,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
+    # @param request_id [String] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1279,6 +1292,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       sync_files_request = _body
       api_response = sync_confluence_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1302,9 +1316,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
+    # @param request_id [String] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1317,6 +1332,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       sync_files_request = _body
       sync_confluence_with_http_info_impl(sync_files_request, extra)
     end
@@ -1500,9 +1516,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
+    # @param request_id [String] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1515,6 +1532,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       sync_files_request = _body
       api_response = sync_files_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1538,9 +1556,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
+    # @param request_id [String] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1553,6 +1572,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       sync_files_request = _body
       sync_files_with_http_info_impl(sync_files_request, extra)
     end
@@ -1640,9 +1660,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param request_id [String] 
     # @param body [GitbookSyncRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gitbook(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gitbook(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:space_ids] = space_ids if space_ids != SENTINEL
@@ -1653,6 +1674,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gitbook_sync_request = _body
       api_response = sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
       api_response.data
@@ -1672,9 +1694,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param request_id [String] 
     # @param body [GitbookSyncRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gitbook_with_http_info(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_gitbook_with_http_info(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:space_ids] = space_ids if space_ids != SENTINEL
@@ -1685,6 +1708,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gitbook_sync_request = _body
       sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
     end
@@ -1820,9 +1844,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
+    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1833,6 +1858,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gmail_sync_input = _body
       api_response = sync_gmail_with_http_info_impl(gmail_sync_input, extra)
       api_response.data
@@ -1900,9 +1926,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
+    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1913,6 +1940,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       gmail_sync_input = _body
       sync_gmail_with_http_info_impl(gmail_sync_input, extra)
     end
@@ -2059,9 +2087,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
+    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -2073,6 +2102,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       outlook_sync_input = _body
       api_response = sync_outlook_with_http_info_impl(outlook_sync_input, extra)
       api_response.data
@@ -2151,9 +2181,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, extra: {})
+    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -2165,6 +2196,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       outlook_sync_input = _body
       sync_outlook_with_http_info_impl(outlook_sync_input, extra)
     end
@@ -2248,9 +2280,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param request_id [String] 
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -2260,6 +2293,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       rss_feed_input = _body
       api_response = sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
       api_response.data
@@ -2275,9 +2309,10 @@ module Carbon
     # @param embedding_model [EmbeddingGenerators] 
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
+    # @param request_id [String] 
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, extra: {})
+    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -2287,6 +2322,7 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       rss_feed_input = _body
       sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
     end
@@ -2375,9 +2411,10 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, extra: {})
+    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2390,6 +2427,7 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       s3_file_sync_input = _body
       api_response = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
       api_response.data
@@ -2412,9 +2450,10 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
+    # @param request_id [String] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, extra: {})
+    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2427,6 +2466,7 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
       s3_file_sync_input = _body
       sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
     end

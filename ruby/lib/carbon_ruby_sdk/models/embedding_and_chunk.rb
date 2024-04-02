@@ -19,13 +19,16 @@ module Carbon
 
     attr_accessor :embedding
 
+    attr_accessor :content_metadata
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user_file_id' => :'user_file_id',
         :'chunk_index' => :'chunk_index',
         :'source_content' => :'source_content',
-        :'embedding' => :'embedding'
+        :'embedding' => :'embedding',
+        :'content_metadata' => :'content_metadata'
       }
     end
 
@@ -40,7 +43,8 @@ module Carbon
         :'user_file_id' => :'Integer',
         :'chunk_index' => :'Integer',
         :'source_content' => :'String',
-        :'embedding' => :'Array<Float>'
+        :'embedding' => :'Array<Float>',
+        :'content_metadata' => :'Object'
       }
     end
 
@@ -48,7 +52,8 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'chunk_index',
-        :'embedding'
+        :'embedding',
+        :'content_metadata'
       ])
     end
 
@@ -84,6 +89,10 @@ module Carbon
           self.embedding = value
         end
       end
+
+      if attributes.key?(:'content_metadata')
+        self.content_metadata = attributes[:'content_metadata']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -117,7 +126,8 @@ module Carbon
           user_file_id == o.user_file_id &&
           chunk_index == o.chunk_index &&
           source_content == o.source_content &&
-          embedding == o.embedding
+          embedding == o.embedding &&
+          content_metadata == o.content_metadata
     end
 
     # @see the `==` method
@@ -129,7 +139,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user_file_id, chunk_index, source_content, embedding].hash
+      [user_file_id, chunk_index, source_content, embedding, content_metadata].hash
     end
 
     # Builds the object from hash

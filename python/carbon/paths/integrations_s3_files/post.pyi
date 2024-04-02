@@ -124,6 +124,7 @@ class BaseApi(api_client.Api):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -149,6 +150,8 @@ class BaseApi(api_client.Api):
             _body["set_page_as_boundary"] = set_page_as_boundary
         if data_source_id is not None:
             _body["data_source_id"] = data_source_id
+        if request_id is not None:
+            _body["request_id"] = request_id
         args.body = _body
         return args
 
@@ -367,6 +370,7 @@ class SyncS3FilesRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -385,6 +389,7 @@ class SyncS3FilesRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -404,6 +409,7 @@ class SyncS3FilesRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -420,6 +426,7 @@ class SyncS3FilesRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
         )
         return self._sync_s3_files_oapg(
             body=args.body,
@@ -440,6 +447,7 @@ class SyncS3Files(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -455,6 +463,7 @@ class SyncS3Files(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
             **kwargs,
         )
         if validate:
@@ -475,6 +484,7 @@ class SyncS3Files(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_s3_files(
@@ -489,6 +499,7 @@ class SyncS3Files(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -511,6 +522,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -529,6 +541,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -548,6 +561,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -564,6 +578,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
+            request_id=request_id,
         )
         return self._sync_s3_files_oapg(
             body=args.body,

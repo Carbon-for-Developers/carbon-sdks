@@ -26,6 +26,7 @@ type OutlookSyncInput struct {
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
 }
 
 // NewOutlookSyncInput instantiates a new OutlookSyncInput object
@@ -453,6 +454,48 @@ func (o *OutlookSyncInput) UnsetDataSourceId() {
 	o.DataSourceId.Unset()
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OutlookSyncInput) GetRequestId() string {
+	if o == nil || isNil(o.RequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId.Get()
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OutlookSyncInput) GetRequestIdOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.RequestId.Get(), o.RequestId.IsSet()
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *OutlookSyncInput) HasRequestId() bool {
+	if o != nil && o.RequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
+func (o *OutlookSyncInput) SetRequestId(v string) {
+	o.RequestId.Set(&v)
+}
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *OutlookSyncInput) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
+
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *OutlookSyncInput) UnsetRequestId() {
+	o.RequestId.Unset()
+}
+
 func (o OutlookSyncInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -484,6 +527,9 @@ func (o OutlookSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.DataSourceId.IsSet() {
 		toSerialize["data_source_id"] = o.DataSourceId.Get()
+	}
+	if o.RequestId.IsSet() {
+		toSerialize["request_id"] = o.RequestId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

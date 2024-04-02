@@ -38,6 +38,8 @@ class FreshDeskConnectRequest(BaseModel):
 
     sync_files_on_connection: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_files_on_connection')
 
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

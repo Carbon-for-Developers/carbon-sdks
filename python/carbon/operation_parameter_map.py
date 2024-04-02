@@ -401,6 +401,9 @@ operation_parameter_map = {
             {
                 'name': 'sync_files_on_connection'
             },
+            {
+                'name': 'request_id'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -434,6 +437,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_files_on_connection'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },
@@ -505,6 +511,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'connecting_new_account'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },
@@ -597,6 +606,9 @@ operation_parameter_map = {
             {
                 'name': 'set_page_as_boundary'
             },
+            {
+                'name': 'request_id'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -641,6 +653,9 @@ operation_parameter_map = {
             {
                 'name': 'set_page_as_boundary'
             },
+            {
+                'name': 'request_id'
+            },
         ]
     },
     '/integrations/gitbook/sync-POST': {
@@ -672,6 +687,9 @@ operation_parameter_map = {
             {
                 'name': 'prepend_filename_to_chunks'
             },
+            {
+                'name': 'request_id'
+            },
         ]
     },
     '/integrations/gmail/sync-POST': {
@@ -702,6 +720,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'data_source_id'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },
@@ -737,6 +758,9 @@ operation_parameter_map = {
             {
                 'name': 'data_source_id'
             },
+            {
+                'name': 'request_id'
+            },
         ]
     },
     '/integrations/rss_feed-POST': {
@@ -764,6 +788,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'prepend_filename_to_chunks'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },
@@ -801,6 +828,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'data_source_id'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },

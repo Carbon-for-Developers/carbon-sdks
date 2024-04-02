@@ -235,6 +235,10 @@ class OrganizationUserFilesToSyncFilters(
                     )
             include_all_children = schemas.BoolSchema
             non_synced_only = schemas.BoolSchema
+        
+            @staticmethod
+            def request_ids() -> typing.Type['OrganizationUserFilesToSyncFiltersRequestIds']:
+                return OrganizationUserFilesToSyncFiltersRequestIds
             __annotations__ = {
                 "tags": tags,
                 "source": source,
@@ -249,6 +253,7 @@ class OrganizationUserFilesToSyncFilters(
                 "root_files_only": root_files_only,
                 "include_all_children": include_all_children,
                 "non_synced_only": non_synced_only,
+                "request_ids": request_ids,
             }
     
     @typing.overload
@@ -291,9 +296,12 @@ class OrganizationUserFilesToSyncFilters(
     def __getitem__(self, name: typing_extensions.Literal["non_synced_only"]) -> MetaOapg.properties.non_synced_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["request_ids"]) -> 'OrganizationUserFilesToSyncFiltersRequestIds': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -338,9 +346,12 @@ class OrganizationUserFilesToSyncFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["non_synced_only"]) -> typing.Union[MetaOapg.properties.non_synced_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["request_ids"]) -> typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -360,6 +371,7 @@ class OrganizationUserFilesToSyncFilters(
         root_files_only: typing.Union[MetaOapg.properties.root_files_only, None, bool, schemas.Unset] = schemas.unset,
         include_all_children: typing.Union[MetaOapg.properties.include_all_children, bool, schemas.Unset] = schemas.unset,
         non_synced_only: typing.Union[MetaOapg.properties.non_synced_only, bool, schemas.Unset] = schemas.unset,
+        request_ids: typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OrganizationUserFilesToSyncFilters':
@@ -379,6 +391,7 @@ class OrganizationUserFilesToSyncFilters(
             root_files_only=root_files_only,
             include_all_children=include_all_children,
             non_synced_only=non_synced_only,
+            request_ids=request_ids,
             _configuration=_configuration,
             **kwargs,
         )
@@ -390,4 +403,5 @@ from carbon.model.organization_user_files_to_sync_filters_external_file_ids impo
 from carbon.model.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.model.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.model.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
+from carbon.model.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.model.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags

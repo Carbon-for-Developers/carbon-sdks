@@ -119,6 +119,7 @@ class BaseApi(api_client.Api):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -140,6 +141,8 @@ class BaseApi(api_client.Api):
             _body["generate_sparse_vectors"] = generate_sparse_vectors
         if prepend_filename_to_chunks is not None:
             _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
+        if request_id is not None:
+            _body["request_id"] = request_id
         args.body = _body
         return args
 
@@ -356,6 +359,7 @@ class SyncGitbookRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -372,6 +376,7 @@ class SyncGitbookRaw(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
         )
         return await self._async_gitbook_oapg(
             body=args.body,
@@ -389,6 +394,7 @@ class SyncGitbookRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -403,6 +409,7 @@ class SyncGitbookRaw(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
         )
         return self._sync_gitbook_oapg(
             body=args.body,
@@ -421,6 +428,7 @@ class SyncGitbook(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -434,6 +442,7 @@ class SyncGitbook(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
             **kwargs,
         )
         if validate:
@@ -452,6 +461,7 @@ class SyncGitbook(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.sync_gitbook(
@@ -464,6 +474,7 @@ class SyncGitbook(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -484,6 +495,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -500,6 +512,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
         )
         return await self._async_gitbook_oapg(
             body=args.body,
@@ -517,6 +530,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -531,6 +545,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
+            request_id=request_id,
         )
         return self._sync_gitbook_oapg(
             body=args.body,

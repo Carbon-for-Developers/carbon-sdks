@@ -85,5 +85,11 @@ export interface SyncFilesRequest {
      * @memberof SyncFilesRequest
      */
     'set_page_as_boundary'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SyncFilesRequest
+     */
+    'request_id'?: string | null;
 }
 

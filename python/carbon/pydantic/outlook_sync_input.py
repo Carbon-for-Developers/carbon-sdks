@@ -38,6 +38,8 @@ class OutlookSyncInput(BaseModel):
 
     data_source_id: typing.Optional[typing.Optional[int]] = Field(None, alias='data_source_id')
 
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

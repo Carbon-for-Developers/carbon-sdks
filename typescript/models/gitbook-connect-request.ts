@@ -78,5 +78,11 @@ export interface GitbookConnectRequest {
      * @memberof GitbookConnectRequest
      */
     'sync_files_on_connection'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GitbookConnectRequest
+     */
+    'request_id'?: string | null;
 }
 

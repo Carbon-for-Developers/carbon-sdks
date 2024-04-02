@@ -20,18 +20,20 @@ type EmbeddingAndChunk struct {
 	ChunkIndex NullableInt32 `json:"chunk_index"`
 	SourceContent string `json:"source_content"`
 	Embedding []float32 `json:"embedding"`
+	ContentMetadata map[string]interface{} `json:"content_metadata"`
 }
 
 // NewEmbeddingAndChunk instantiates a new EmbeddingAndChunk object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32) *EmbeddingAndChunk {
+func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32, contentMetadata map[string]interface{}) *EmbeddingAndChunk {
 	this := EmbeddingAndChunk{}
 	this.UserFileId = userFileId
 	this.ChunkIndex = chunkIndex
 	this.SourceContent = sourceContent
 	this.Embedding = embedding
+	this.ContentMetadata = contentMetadata
 	return &this
 }
 
@@ -143,6 +145,32 @@ func (o *EmbeddingAndChunk) SetEmbedding(v []float32) {
 	o.Embedding = v
 }
 
+// GetContentMetadata returns the ContentMetadata field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *EmbeddingAndChunk) GetContentMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.ContentMetadata
+}
+
+// GetContentMetadataOk returns a tuple with the ContentMetadata field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EmbeddingAndChunk) GetContentMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.ContentMetadata) {
+    return map[string]interface{}{}, false
+	}
+	return o.ContentMetadata, true
+}
+
+// SetContentMetadata sets field value
+func (o *EmbeddingAndChunk) SetContentMetadata(v map[string]interface{}) {
+	o.ContentMetadata = v
+}
+
 func (o EmbeddingAndChunk) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -156,6 +184,9 @@ func (o EmbeddingAndChunk) MarshalJSON() ([]byte, error) {
 	}
 	if o.Embedding != nil {
 		toSerialize["embedding"] = o.Embedding
+	}
+	if o.ContentMetadata != nil {
+		toSerialize["content_metadata"] = o.ContentMetadata
 	}
 	return json.Marshal(toSerialize)
 }

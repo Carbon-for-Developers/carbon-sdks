@@ -34,6 +34,8 @@ class RSSFeedInput(BaseModel):
 
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
 
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

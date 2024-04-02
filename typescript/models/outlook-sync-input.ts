@@ -78,5 +78,11 @@ export interface OutlookSyncInput {
      * @memberof OutlookSyncInput
      */
     'data_source_id'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof OutlookSyncInput
+     */
+    'request_id'?: string | null;
 }
 
