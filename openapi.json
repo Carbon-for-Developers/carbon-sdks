@@ -3502,6 +3502,17 @@
               }
             ],
             "title": "Embedding"
+          },
+          "content_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Metadata"
           }
         },
         "type": "object",
@@ -3509,7 +3520,8 @@
           "user_file_id",
           "chunk_index",
           "source_content",
-          "embedding"
+          "embedding",
+          "content_metadata"
         ],
         "title": "EmbeddingAndChunk"
       },
@@ -4070,6 +4082,17 @@
             ],
             "title": "Sync Files On Connection",
             "default": true
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -4488,6 +4511,17 @@
             ],
             "title": "Sync Files On Connection",
             "default": true
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -4590,6 +4624,17 @@
             ],
             "title": "Prepend Filename To Chunks",
             "default": false
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -4695,6 +4740,17 @@
               }
             ],
             "title": "Data Source Id"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -5170,6 +5226,18 @@
             "title": "Connecting New Account",
             "description": "Used to connect a new data source. If not specified, we will attempt to create a sync URL\n        for an existing data source based on type and ID.",
             "default": false
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id",
+            "description": "This request id will be added to all files that get synced using the generated OAuth URL"
           }
         },
         "type": "object",
@@ -5783,6 +5851,22 @@
             "title": "Non Synced Only",
             "description": "If true, the query will return only files that have not been synced yet.",
             "default": false
+          },
+          "request_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "maxItems": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Ids",
+            "description": "Filter by request ID(s) which were used to sync the files"
           }
         },
         "type": "object",
@@ -5998,6 +6082,17 @@
               }
             ],
             "title": "Data Source Id"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -6120,6 +6215,17 @@
             ],
             "title": "Prepend Filename To Chunks",
             "default": false
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -6423,6 +6529,17 @@
               }
             ],
             "title": "Data Source Id"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -6935,6 +7052,17 @@
             "type": "boolean",
             "title": "Set Page As Boundary",
             "default": false
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           }
         },
         "type": "object",
@@ -7466,6 +7594,17 @@
             ],
             "title": "Generate Sparse Vectors"
           },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -7505,6 +7644,7 @@
           "skip_embedding_generation",
           "source_created_at",
           "generate_sparse_vectors",
+          "request_id",
           "created_at",
           "updated_at"
         ],
