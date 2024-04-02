@@ -3502,6 +3502,17 @@
               }
             ],
             "title": "Embedding"
+          },
+          "content_metadata": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Metadata"
           }
         },
         "type": "object",
@@ -3509,7 +3520,8 @@
           "user_file_id",
           "chunk_index",
           "source_content",
-          "embedding"
+          "embedding",
+          "content_metadata"
         ],
         "title": "EmbeddingAndChunk"
       },
