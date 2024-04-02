@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**RequestId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -380,6 +381,41 @@ SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 
 HasSetPageAsBoundary returns a boolean if a field has been set.
 
+### GetRequestId
+
+`func (o *SyncFilesRequest) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *SyncFilesRequest) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *SyncFilesRequest) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *SyncFilesRequest) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
+
+### SetRequestIdNil
+
+`func (o *SyncFilesRequest) SetRequestIdNil(b bool)`
+
+ SetRequestIdNil sets the value for RequestId to be an explicit nil
+
+### UnsetRequestId
+`func (o *SyncFilesRequest) UnsetRequestId()`
+
+UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

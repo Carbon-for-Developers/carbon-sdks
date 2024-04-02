@@ -38,5 +38,7 @@ class OptionalOutlookSyncInput(TypedDict, total=False):
 
     data_source_id: typing.Optional[int]
 
+    request_id: typing.Optional[str]
+
 class OutlookSyncInput(RequiredOutlookSyncInput, OptionalOutlookSyncInput):
     pass

@@ -66,5 +66,11 @@ export interface RSSFeedInput {
      * @memberof RSSFeedInput
      */
     'prepend_filename_to_chunks'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof RSSFeedInput
+     */
+    'request_id'?: string | null;
 }
 

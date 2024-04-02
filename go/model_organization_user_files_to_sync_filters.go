@@ -41,6 +41,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	IncludeAllChildren *bool `json:"include_all_children,omitempty"`
 	// If true, the query will return only files that have not been synced yet.
 	NonSyncedOnly *bool `json:"non_synced_only,omitempty"`
+	// Filter by request ID(s) which were used to sync the files
+	RequestIds []string `json:"request_ids,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -528,6 +530,39 @@ func (o *OrganizationUserFilesToSyncFilters) SetNonSyncedOnly(v bool) {
 	o.NonSyncedOnly = &v
 }
 
+// GetRequestIds returns the RequestIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetRequestIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.RequestIds
+}
+
+// GetRequestIdsOk returns a tuple with the RequestIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetRequestIdsOk() ([]string, bool) {
+	if o == nil || isNil(o.RequestIds) {
+    return nil, false
+	}
+	return o.RequestIds, true
+}
+
+// HasRequestIds returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasRequestIds() bool {
+	if o != nil && isNil(o.RequestIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestIds gets a reference to the given []string and assigns it to the RequestIds field.
+func (o *OrganizationUserFilesToSyncFilters) SetRequestIds(v []string) {
+	o.RequestIds = v
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -568,6 +603,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.NonSyncedOnly) {
 		toSerialize["non_synced_only"] = o.NonSyncedOnly
+	}
+	if o.RequestIds != nil {
+		toSerialize["request_ids"] = o.RequestIds
 	}
 	return json.Marshal(toSerialize)
 }

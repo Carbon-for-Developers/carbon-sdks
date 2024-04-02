@@ -347,6 +347,26 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class request_id(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'request_id':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -367,6 +387,7 @@ class OAuthURLRequest(
                 "set_page_as_boundary": set_page_as_boundary,
                 "data_source_id": data_source_id,
                 "connecting_new_account": connecting_new_account,
+                "request_id": request_id,
             }
     
     service: 'DataSourceType'
@@ -429,9 +450,12 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["connecting_new_account"]) -> MetaOapg.properties.connecting_new_account: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -494,9 +518,12 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["connecting_new_account"]) -> typing.Union[MetaOapg.properties.connecting_new_account, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["request_id"]) -> typing.Union[MetaOapg.properties.request_id, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -522,6 +549,7 @@ class OAuthURLRequest(
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
         data_source_id: typing.Union[MetaOapg.properties.data_source_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         connecting_new_account: typing.Union[MetaOapg.properties.connecting_new_account, None, bool, schemas.Unset] = schemas.unset,
+        request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -547,6 +575,7 @@ class OAuthURLRequest(
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
             _configuration=_configuration,
             **kwargs,
         )

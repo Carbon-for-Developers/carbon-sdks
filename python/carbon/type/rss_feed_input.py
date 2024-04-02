@@ -34,5 +34,7 @@ class OptionalRSSFeedInput(TypedDict, total=False):
 
     prepend_filename_to_chunks: typing.Optional[bool]
 
+    request_id: typing.Optional[str]
+
 class RSSFeedInput(RequiredRSSFeedInput, OptionalRSSFeedInput):
     pass

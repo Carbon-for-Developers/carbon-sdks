@@ -36,6 +36,7 @@ class EmbeddingAndChunk(
             "chunk_index",
             "source_content",
             "user_file_id",
+            "content_metadata",
             "embedding",
         }
         
@@ -66,16 +67,40 @@ class EmbeddingAndChunk(
             @staticmethod
             def embedding() -> typing.Type['EmbeddingAndChunkEmbedding']:
                 return EmbeddingAndChunkEmbedding
+            
+            
+            class content_metadata(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'content_metadata':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             __annotations__ = {
                 "user_file_id": user_file_id,
                 "chunk_index": chunk_index,
                 "source_content": source_content,
                 "embedding": embedding,
+                "content_metadata": content_metadata,
             }
     
     chunk_index: MetaOapg.properties.chunk_index
     source_content: MetaOapg.properties.source_content
     user_file_id: MetaOapg.properties.user_file_id
+    content_metadata: MetaOapg.properties.content_metadata
     embedding: 'EmbeddingAndChunkEmbedding'
     
     @typing.overload
@@ -91,9 +116,12 @@ class EmbeddingAndChunk(
     def __getitem__(self, name: typing_extensions.Literal["embedding"]) -> 'EmbeddingAndChunkEmbedding': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", "content_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -111,9 +139,12 @@ class EmbeddingAndChunk(
     def get_item_oapg(self, name: typing_extensions.Literal["embedding"]) -> 'EmbeddingAndChunkEmbedding': ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", "content_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -123,6 +154,7 @@ class EmbeddingAndChunk(
         chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, ],
         source_content: typing.Union[MetaOapg.properties.source_content, str, ],
         user_file_id: typing.Union[MetaOapg.properties.user_file_id, decimal.Decimal, int, ],
+        content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, ],
         embedding: 'EmbeddingAndChunkEmbedding',
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -133,6 +165,7 @@ class EmbeddingAndChunk(
             chunk_index=chunk_index,
             source_content=source_content,
             user_file_id=user_file_id,
+            content_metadata=content_metadata,
             embedding=embedding,
             _configuration=_configuration,
             **kwargs,

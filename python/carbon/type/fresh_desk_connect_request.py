@@ -38,5 +38,7 @@ class OptionalFreshDeskConnectRequest(TypedDict, total=False):
 
     sync_files_on_connection: typing.Optional[bool]
 
+    request_id: typing.Optional[str]
+
 class FreshDeskConnectRequest(RequiredFreshDeskConnectRequest, OptionalFreshDeskConnectRequest):
     pass

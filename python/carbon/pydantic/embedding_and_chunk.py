@@ -26,6 +26,8 @@ class EmbeddingAndChunk(BaseModel):
 
     embedding: EmbeddingAndChunkEmbedding = Field(alias='embedding')
 
+    content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

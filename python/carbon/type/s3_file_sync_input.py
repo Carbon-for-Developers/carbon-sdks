@@ -42,5 +42,7 @@ class OptionalS3FileSyncInput(TypedDict, total=False):
 
     data_source_id: typing.Optional[int]
 
+    request_id: typing.Optional[str]
+
 class S3FileSyncInput(RequiredS3FileSyncInput, OptionalS3FileSyncInput):
     pass

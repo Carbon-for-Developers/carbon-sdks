@@ -85,5 +85,11 @@ export interface S3FileSyncInput {
      * @memberof S3FileSyncInput
      */
     'data_source_id'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof S3FileSyncInput
+     */
+    'request_id'?: string | null;
 }
 

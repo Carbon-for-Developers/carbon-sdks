@@ -42,5 +42,7 @@ class OptionalSyncFilesRequest(TypedDict, total=False):
 
     set_page_as_boundary: bool
 
+    request_id: typing.Optional[str]
+
 class SyncFilesRequest(RequiredSyncFilesRequest, OptionalSyncFilesRequest):
     pass

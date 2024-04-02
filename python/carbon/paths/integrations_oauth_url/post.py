@@ -143,6 +143,7 @@ class BaseApi(api_client.Api):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -184,6 +185,8 @@ class BaseApi(api_client.Api):
             _body["data_source_id"] = data_source_id
         if connecting_new_account is not None:
             _body["connecting_new_account"] = connecting_new_account
+        if request_id is not None:
+            _body["request_id"] = request_id
         args.body = _body
         return args
 
@@ -410,6 +413,7 @@ class GetOauthUrlRaw(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -436,6 +440,7 @@ class GetOauthUrlRaw(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -463,6 +468,7 @@ class GetOauthUrlRaw(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -487,6 +493,7 @@ class GetOauthUrlRaw(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -515,6 +522,7 @@ class GetOauthUrl(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -538,6 +546,7 @@ class GetOauthUrl(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
             **kwargs,
         )
         if validate:
@@ -566,6 +575,7 @@ class GetOauthUrl(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -588,6 +598,7 @@ class GetOauthUrl(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -618,6 +629,7 @@ class ApiForpost(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -644,6 +656,7 @@ class ApiForpost(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -671,6 +684,7 @@ class ApiForpost(BaseApi):
         set_page_as_boundary: typing.Optional[bool] = None,
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -695,6 +709,7 @@ class ApiForpost(BaseApi):
             set_page_as_boundary=set_page_as_boundary,
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
+            request_id=request_id,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

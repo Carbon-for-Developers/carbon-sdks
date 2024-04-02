@@ -36,5 +36,7 @@ class OptionalGmailSyncInput(TypedDict, total=False):
 
     data_source_id: typing.Optional[int]
 
+    request_id: typing.Optional[str]
+
 class GmailSyncInput(RequiredGmailSyncInput, OptionalGmailSyncInput):
     pass

@@ -72,5 +72,11 @@ export interface GitbookSyncRequest {
      * @memberof GitbookSyncRequest
      */
     'prepend_filename_to_chunks'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GitbookSyncRequest
+     */
+    'request_id'?: string | null;
 }
 

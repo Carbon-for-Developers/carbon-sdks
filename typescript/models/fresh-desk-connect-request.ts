@@ -78,5 +78,11 @@ export interface FreshDeskConnectRequest {
      * @memberof FreshDeskConnectRequest
      */
     'sync_files_on_connection'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FreshDeskConnectRequest
+     */
+    'request_id'?: string | null;
 }
 

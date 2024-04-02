@@ -53,6 +53,9 @@ module Carbon
     # Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
     attr_accessor :connecting_new_account
 
+    # This request id will be added to all files that get synced using the generated OAuth URL
+    attr_accessor :request_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -74,7 +77,8 @@ module Carbon
         :'sync_files_on_connection' => :'sync_files_on_connection',
         :'set_page_as_boundary' => :'set_page_as_boundary',
         :'data_source_id' => :'data_source_id',
-        :'connecting_new_account' => :'connecting_new_account'
+        :'connecting_new_account' => :'connecting_new_account',
+        :'request_id' => :'request_id'
       }
     end
 
@@ -104,7 +108,8 @@ module Carbon
         :'sync_files_on_connection' => :'Boolean',
         :'set_page_as_boundary' => :'Boolean',
         :'data_source_id' => :'Integer',
-        :'connecting_new_account' => :'Boolean'
+        :'connecting_new_account' => :'Boolean',
+        :'request_id' => :'String'
       }
     end
 
@@ -127,7 +132,8 @@ module Carbon
         :'salesforce_domain',
         :'sync_files_on_connection',
         :'data_source_id',
-        :'connecting_new_account'
+        :'connecting_new_account',
+        :'request_id'
       ])
     end
 
@@ -239,6 +245,10 @@ module Carbon
       else
         self.connecting_new_account = false
       end
+
+      if attributes.key?(:'request_id')
+        self.request_id = attributes[:'request_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -282,7 +292,8 @@ module Carbon
           sync_files_on_connection == o.sync_files_on_connection &&
           set_page_as_boundary == o.set_page_as_boundary &&
           data_source_id == o.data_source_id &&
-          connecting_new_account == o.connecting_new_account
+          connecting_new_account == o.connecting_new_account &&
+          request_id == o.request_id
     end
 
     # @see the `==` method
@@ -294,7 +305,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id].hash
     end
 
     # Builds the object from hash

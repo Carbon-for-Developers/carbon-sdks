@@ -64,6 +64,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         freshDeskConnectRequest.SetGenerateSparseVectors(false)
         freshDeskConnectRequest.SetPrependFilenameToChunks(false)
         freshDeskConnectRequest.SetSyncFilesOnConnection(true)
+        freshDeskConnectRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.ConnectFreshdesk(
             freshDeskConnectRequest,
@@ -92,6 +93,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookConnectRequest.SetGenerateSparseVectors(false)
         gitbookConnectRequest.SetPrependFilenameToChunks(false)
         gitbookConnectRequest.SetSyncFilesOnConnection(true)
+        gitbookConnectRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.ConnectGitbook(
             gitbookConnectRequest,
@@ -149,6 +151,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
+        oAuthURLRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -279,6 +282,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
+        syncFilesRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncConfluence(
             syncFilesRequest,
@@ -328,6 +332,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
+        syncFilesRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncFiles(
             syncFilesRequest,
@@ -355,6 +360,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookSyncRequest.SetEmbeddingModel(null)
         gitbookSyncRequest.SetGenerateSparseVectors(false)
         gitbookSyncRequest.SetPrependFilenameToChunks(false)
+        gitbookSyncRequest.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncGitbook(
             gitbookSyncRequest,
@@ -382,6 +388,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gmailSyncInput.SetGenerateSparseVectors(false)
         gmailSyncInput.SetPrependFilenameToChunks(false)
         gmailSyncInput.SetDataSourceId(null)
+        gmailSyncInput.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncGmail(
             gmailSyncInput,
@@ -410,6 +417,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         outlookSyncInput.SetGenerateSparseVectors(false)
         outlookSyncInput.SetPrependFilenameToChunks(false)
         outlookSyncInput.SetDataSourceId(null)
+        outlookSyncInput.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncOutlook(
             outlookSyncInput,
@@ -436,6 +444,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         rSSFeedInput.SetEmbeddingModel(null)
         rSSFeedInput.SetGenerateSparseVectors(false)
         rSSFeedInput.SetPrependFilenameToChunks(false)
+        rSSFeedInput.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncRssFeed(
             rSSFeedInput,
@@ -465,6 +474,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         s3FileSyncInput.SetMaxItemsPerChunk(null)
         s3FileSyncInput.SetSetPageAsBoundary(false)
         s3FileSyncInput.SetDataSourceId(null)
+        s3FileSyncInput.SetRequestId("null")
         
         request := client.IntegrationsApi.SyncS3Files(
             s3FileSyncInput,

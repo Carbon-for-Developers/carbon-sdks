@@ -407,6 +407,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'sync_files_on_connection'
             },
+            {
+                name: 'request_id'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -440,6 +443,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'sync_files_on_connection'
+            },
+            {
+                name: 'request_id'
             },
         ]
     },
@@ -511,6 +517,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'connecting_new_account'
+            },
+            {
+                name: 'request_id'
             },
         ]
     },
@@ -603,6 +612,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'set_page_as_boundary'
             },
+            {
+                name: 'request_id'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -647,6 +659,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'set_page_as_boundary'
             },
+            {
+                name: 'request_id'
+            },
         ]
     },
     '/integrations/gitbook/sync-POST': {
@@ -678,6 +693,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'prepend_filename_to_chunks'
             },
+            {
+                name: 'request_id'
+            },
         ]
     },
     '/integrations/gmail/sync-POST': {
@@ -708,6 +726,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'data_source_id'
+            },
+            {
+                name: 'request_id'
             },
         ]
     },
@@ -743,6 +764,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'data_source_id'
             },
+            {
+                name: 'request_id'
+            },
         ]
     },
     '/integrations/rss_feed-POST': {
@@ -770,6 +794,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'prepend_filename_to_chunks'
+            },
+            {
+                name: 'request_id'
             },
         ]
     },
@@ -807,6 +834,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'data_source_id'
+            },
+            {
+                name: 'request_id'
             },
         ]
     },

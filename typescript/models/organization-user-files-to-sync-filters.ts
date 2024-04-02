@@ -101,5 +101,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'non_synced_only'?: boolean;
+    /**
+     * Filter by request ID(s) which were used to sync the files
+     * @type {Array<string>}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'request_ids'?: Array<string> | null;
 }
 

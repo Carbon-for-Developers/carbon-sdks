@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.14-blue)](https://pypi.org/project/carbon-python-sdk/0.1.14)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.15-blue)](https://pypi.org/project/carbon-python-sdk/0.1.15)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -86,7 +86,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.14
+pip install carbon-python-sdk==0.1.15
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1362,6 +1362,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     sync_files_on_connection=True,
+    request_id="string_example",
 )
 ```
 
@@ -1386,6 +1387,8 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1423,6 +1426,7 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     sync_files_on_connection=True,
+    request_id="string_example",
 )
 ```
 
@@ -1447,6 +1451,8 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1533,6 +1539,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
+    request_id="string_example",
 )
 ```
 
@@ -1583,6 +1590,10 @@ Used to specify a data source to sync from if you have multiple connected. It ca
 ##### connecting_new_account: `Optional[bool]`<a id="connecting_new_account-optionalbool"></a>
 
 Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+This request id will be added to all files that get synced using the generated OAuth URL
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1805,6 +1816,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
+    request_id="string_example",
 )
 ```
 
@@ -1834,6 +1846,8 @@ sync_confluence_response = carbon.integrations.sync_confluence(
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1903,6 +1917,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
+    request_id="string_example",
 )
 ```
 
@@ -1932,6 +1947,8 @@ sync_files_response = carbon.integrations.sync_files(
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1966,6 +1983,7 @@ sync_gitbook_response = carbon.integrations.sync_gitbook(
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
+    request_id="string_example",
 )
 ```
 
@@ -1988,6 +2006,8 @@ sync_gitbook_response = carbon.integrations.sync_gitbook(
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
 
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2066,6 +2086,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     data_source_id=1,
+    request_id="string_example",
 )
 ```
 
@@ -2088,6 +2109,8 @@ sync_gmail_response = carbon.integrations.sync_gmail(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2181,6 +2204,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     data_source_id=1,
+    request_id="string_example",
 )
 ```
 
@@ -2205,6 +2229,8 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2237,6 +2263,7 @@ sync_rss_feed_response = carbon.integrations.sync_rss_feed(
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
+    request_id="string_example",
 )
 ```
 
@@ -2257,6 +2284,8 @@ sync_rss_feed_response = carbon.integrations.sync_rss_feed(
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
 
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2294,6 +2323,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
     max_items_per_chunk=1,
     set_page_as_boundary=False,
     data_source_id=1,
+    request_id="string_example",
 )
 ```
 
@@ -2322,6 +2352,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

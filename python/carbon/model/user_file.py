@@ -60,6 +60,7 @@ class UserFile(
             "sync_status",
             "parsed_text_url",
             "chunk_overlap",
+            "request_id",
             "skip_embedding_generation",
         }
         
@@ -425,6 +426,26 @@ class UserFile(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class request_id(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'request_id':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -454,6 +475,7 @@ class UserFile(
                 "skip_embedding_generation": skip_embedding_generation,
                 "source_created_at": source_created_at,
                 "generate_sparse_vectors": generate_sparse_vectors,
+                "request_id": request_id,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -485,6 +507,7 @@ class UserFile(
     sync_status: 'ExternalFileSyncStatuses'
     parsed_text_url: MetaOapg.properties.parsed_text_url
     chunk_overlap: MetaOapg.properties.chunk_overlap
+    request_id: MetaOapg.properties.request_id
     skip_embedding_generation: MetaOapg.properties.skip_embedding_generation
     
     @typing.overload
@@ -566,6 +589,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> MetaOapg.properties.generate_sparse_vectors: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -574,7 +600,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -658,6 +684,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> MetaOapg.properties.generate_sparse_vectors: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -666,7 +695,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -700,6 +729,7 @@ class UserFile(
         sync_status: 'ExternalFileSyncStatuses',
         parsed_text_url: typing.Union[MetaOapg.properties.parsed_text_url, None, str, ],
         chunk_overlap: typing.Union[MetaOapg.properties.chunk_overlap, None, decimal.Decimal, int, ],
+        request_id: typing.Union[MetaOapg.properties.request_id, None, str, ],
         skip_embedding_generation: typing.Union[MetaOapg.properties.skip_embedding_generation, bool, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -734,6 +764,7 @@ class UserFile(
             sync_status=sync_status,
             parsed_text_url=parsed_text_url,
             chunk_overlap=chunk_overlap,
+            request_id=request_id,
             skip_embedding_generation=skip_embedding_generation,
             _configuration=_configuration,
             **kwargs,

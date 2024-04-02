@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.12-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.12)
+[![npm](https://img.shields.io/badge/gem-v0.1.13-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.13)
 
 </div>
 
@@ -80,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.12'
+gem 'carbon_ruby_sdk', '~> 0.1.13'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1230,6 +1230,7 @@ result = carbon.integrations.connect_freshdesk(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1246,6 +1247,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1280,6 +1282,7 @@ result = carbon.integrations.connect_gitbook(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1296,6 +1299,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1376,6 +1380,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1414,6 +1419,10 @@ connecting a new account.
 ##### connecting_new_account: `Boolean`<a id="connecting_new_account-boolean"></a>
 Used to connect a new data source. If not specified, we will attempt to create a
 sync URL for an existing data source based on type and ID.
+
+##### request_id: `String`<a id="request_id-string"></a>
+This request id will be added to all files that get synced using the generated
+OAuth URL
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1631,6 +1640,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1650,6 +1660,7 @@ p result
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1716,6 +1727,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1735,6 +1747,7 @@ p result
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1768,6 +1781,7 @@ result = carbon.integrations.sync_gitbook(
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1783,6 +1797,7 @@ p result
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook/sync` `POST`
@@ -1858,6 +1873,7 @@ result = carbon.integrations.sync_gmail(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   data_source_id: 1,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1873,6 +1889,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1963,6 +1980,7 @@ result = carbon.integrations.sync_outlook(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   data_source_id: 1,
+  request_id: "string_example",
 )
 p result
 ```
@@ -1979,6 +1997,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2008,6 +2027,7 @@ result = carbon.integrations.sync_rss_feed(
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  request_id: "string_example",
 )
 p result
 ```
@@ -2022,6 +2042,7 @@ p result
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2059,6 +2080,7 @@ result = carbon.integrations.sync_s3_files(
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
   data_source_id: 1,
+  request_id: "string_example",
 )
 p result
 ```
@@ -2078,6 +2100,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### request_id: `String`<a id="request_id-string"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

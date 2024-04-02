@@ -3813,6 +3813,12 @@ components:
           sync_statuses:
           - null
           - null
+          request_ids:
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
           external_file_ids:
           - external_file_ids
           - external_file_ids
@@ -4005,6 +4011,7 @@ components:
         chunk_index: 6
         user_file_id: 0
         source_content: source_content
+        content_metadata: "{}"
         embedding:
         - 1.4658129805029452
         - 1.4658129805029452
@@ -4025,8 +4032,13 @@ components:
           nullable: true
           title: Embedding
           type: array
+        content_metadata:
+          nullable: true
+          title: Content Metadata
+          type: object
       required:
       - chunk_index
+      - content_metadata
       - embedding
       - source_content
       - user_file_id
@@ -4136,12 +4148,14 @@ components:
         - chunk_index: 6
           user_file_id: 0
           source_content: source_content
+          content_metadata: "{}"
           embedding:
           - 1.4658129805029452
           - 1.4658129805029452
         - chunk_index: 6
           user_file_id: 0
           source_content: source_content
+          content_metadata: "{}"
           embedding:
           - 1.4658129805029452
           - 1.4658129805029452
@@ -4383,6 +4397,7 @@ components:
         embedding_model: OPENAI
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         tags: {}
       properties:
         tags:
@@ -4449,6 +4464,10 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - api_key
       - domain
@@ -4691,6 +4710,7 @@ components:
         embedding_model: null
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         tags: {}
       properties:
         tags:
@@ -4757,6 +4777,10 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - access_token
       - organization
@@ -4779,6 +4803,7 @@ components:
         embedding_model: null
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         data_source_id: 0
         tags: {}
       properties:
@@ -4841,6 +4866,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookSyncRequest-properties-prepend_filename_to_chunks
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - data_source_id
       - space_ids
@@ -4858,6 +4887,7 @@ components:
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         data_source_id: 0
         tags: {}
       properties:
@@ -4918,6 +4948,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - filters
       title: GmailSyncInput
@@ -5165,6 +5199,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
+        request_id: request_id
         zendesk_subdomain: zendesk_subdomain
         data_source_id: 6
         microsoft_tenant: microsoft_tenant
@@ -5283,6 +5318,12 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
+        request_id:
+          description: This request id will be added to all files that get synced
+            using the generated OAuth URL
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - service
       title: OAuthURLRequest
@@ -5626,6 +5667,12 @@ components:
         sync_statuses:
         - null
         - null
+        request_ids:
+        - request_ids
+        - request_ids
+        - request_ids
+        - request_ids
+        - request_ids
         external_file_ids:
         - external_file_ids
         - external_file_ids
@@ -5743,6 +5790,14 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-non_synced_only
+        request_ids:
+          description: Filter by request ID(s) which were used to sync the files
+          items:
+            type: string
+          maxItems: 100
+          nullable: true
+          title: Request Ids
+          type: array
       title: OrganizationUserFilesToSyncFilters
       type: object
     OrganizationUserFilesToSyncOrderByTypes:
@@ -5785,6 +5840,12 @@ components:
           sync_statuses:
           - null
           - null
+          request_ids:
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
           external_file_ids:
           - external_file_ids
           - external_file_ids
@@ -5849,6 +5910,7 @@ components:
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         data_source_id: 0
         tags: {}
       properties:
@@ -5917,6 +5979,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - filters
       title: OutlookSyncInput
@@ -5964,6 +6030,7 @@ components:
         embedding_model: null
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         url: url
         tags: {}
       properties:
@@ -6020,6 +6087,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RSSFeedInput-properties-prepend_filename_to_chunks
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - url
       title: RSSFeedInput
@@ -6165,6 +6236,7 @@ components:
           id: id
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         data_source_id: 6
         tags: {}
       properties:
@@ -6240,6 +6312,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - ids
       title: S3FileSyncInput
@@ -6511,6 +6587,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
+        request_id: request_id
         data_source_id: 0
         tags: {}
       properties:
@@ -6582,6 +6659,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - data_source_id
       - ids
@@ -6851,6 +6932,7 @@ components:
         parsed_text_url: parsed_text_url
         chunk_overlap: 4
         skip_embedding_generation: true
+        request_id: request_id
       properties:
         tags:
           nullable: true
@@ -6947,6 +7029,10 @@ components:
           nullable: true
           title: Generate Sparse Vectors
           type: boolean
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
         created_at:
           format: date-time
           title: Created At
@@ -6977,6 +7063,7 @@ components:
       - parent_id
       - parsed_text_url
       - presigned_url
+      - request_id
       - skip_embedding_generation
       - source
       - source_created_at
@@ -7029,6 +7116,7 @@ components:
           parsed_text_url: parsed_text_url
           chunk_overlap: 4
           skip_embedding_generation: true
+          request_id: request_id
         - additional_presigned_urls: "{}"
           chunk_size: 2
           organization_user_data_source_id: 1
@@ -7068,6 +7156,7 @@ components:
           parsed_text_url: parsed_text_url
           chunk_overlap: 4
           skip_embedding_generation: true
+          request_id: request_id
       properties:
         results:
           items:
@@ -8644,6 +8733,12 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
+        request_id:
+          description: This request id will be added to all files that get synced
+            using the generated OAuth URL
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - service
       type: object
@@ -8776,6 +8871,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - data_source_id
       - ids
@@ -8873,6 +8972,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - data_source_id
       - ids
@@ -8967,6 +9070,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - ids
       type: object
@@ -9031,6 +9138,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - filters
       type: object
@@ -9091,6 +9202,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RSSFeedInput-properties-prepend_filename_to_chunks
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - url
       type: object
@@ -9163,6 +9278,10 @@ components:
           nullable: true
           title: Data Source Id
           type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - filters
       type: object
@@ -9234,6 +9353,10 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - api_key
       - domain
@@ -9336,6 +9459,10 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - access_token
       - organization
@@ -9414,6 +9541,10 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookSyncRequest-properties-prepend_filename_to_chunks
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
       required:
       - data_source_id
       - space_ids

@@ -22,6 +22,7 @@ from carbon.pydantic.organization_user_files_to_sync_filters_external_file_ids i
 from carbon.pydantic.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
+from carbon.pydantic.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.pydantic.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
 
 class OrganizationUserFilesToSyncFilters(BaseModel):
@@ -60,6 +61,8 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
 
     # If true, the query will return only files that have not been synced yet.
     non_synced_only: typing.Optional[bool] = Field(None, alias='non_synced_only')
+
+    request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds] = Field(None, alias='request_ids')
 
     model_config = ConfigDict(
         protected_namespaces=(),

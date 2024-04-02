@@ -21,6 +21,7 @@ from carbon.type.organization_user_files_to_sync_filters_external_file_ids impor
 from carbon.type.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.type.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.type.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
+from carbon.type.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.type.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
 
 class RequiredOrganizationUserFilesToSyncFilters(TypedDict):
@@ -62,6 +63,8 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
 
     # If true, the query will return only files that have not been synced yet.
     non_synced_only: bool
+
+    request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds]
 
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

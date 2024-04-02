@@ -135,6 +135,7 @@ class BaseApi(api_client.Api):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -160,6 +161,8 @@ class BaseApi(api_client.Api):
             _body["max_items_per_chunk"] = max_items_per_chunk
         if set_page_as_boundary is not None:
             _body["set_page_as_boundary"] = set_page_as_boundary
+        if request_id is not None:
+            _body["request_id"] = request_id
         args.body = _body
         return args
 
@@ -378,6 +381,7 @@ class SyncConfluenceRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -396,6 +400,7 @@ class SyncConfluenceRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
         )
         return await self._async_confluence_oapg(
             body=args.body,
@@ -415,6 +420,7 @@ class SyncConfluenceRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -431,6 +437,7 @@ class SyncConfluenceRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
         )
         return self._sync_confluence_oapg(
             body=args.body,
@@ -451,6 +458,7 @@ class SyncConfluence(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -466,6 +474,7 @@ class SyncConfluence(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
             **kwargs,
         )
         if validate:
@@ -486,6 +495,7 @@ class SyncConfluence(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_confluence(
@@ -500,6 +510,7 @@ class SyncConfluence(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -522,6 +533,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -540,6 +552,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
         )
         return await self._async_confluence_oapg(
             body=args.body,
@@ -559,6 +572,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
+        request_id: typing.Optional[typing.Optional[str]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -575,6 +589,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             set_page_as_boundary=set_page_as_boundary,
+            request_id=request_id,
         )
         return self._sync_confluence_oapg(
             body=args.body,
