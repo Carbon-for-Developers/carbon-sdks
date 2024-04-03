@@ -85,4 +85,4 @@ generators:
     readmeSnippet: snippets/swiftReadmeGettingStartedSnippet.swift
     git:
       userId: Carbon-for-Developers
-      repoId: carbon-sdks/tree/main/swift
+      repoId: carbon-swift-sdk
