@@ -1,7 +1,7 @@
-import Carbon
+import CarbonAI
 
 // 1) Get an access token for a customer
-let carbon = CarbonClient(
+let carbon = CarbonAIClient(
 	accessToken: nil,
     apiKey: "API_KEY",
     customerId: "CUSTOMER_ID"
@@ -10,7 +10,7 @@ let carbon = CarbonClient(
 let token = try await carbon.auth.getAccessToken()
 
 // 2) Use the access token to authenticate moving forward
-let carbonWithToken = CarbonClient(
+let carbonWithToken = CarbonAIClient(
 	accessToken: token!.accessToken,
 	apiKey: nil,
 	customerId: nil
