@@ -78,7 +78,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-php-sdk
   swift:
-    version: 0.1.0
+    version: 0.2.0
     projectName: Carbon
     podAuthors: carbon.ai
     outputDirectory: swift
