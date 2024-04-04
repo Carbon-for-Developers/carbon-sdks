@@ -3434,6 +3434,17 @@
               }
             ],
             "title": "Content Metadata"
+          },
+          "chunk_index": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Index"
           }
         },
         "type": "object",
@@ -3448,7 +3459,8 @@
           "vector",
           "score",
           "rank",
-          "content_metadata"
+          "content_metadata",
+          "chunk_index"
         ],
         "title": "DocumentResponse"
       },
@@ -5238,6 +5250,31 @@
             ],
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL"
+          },
+          "use_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Use Ocr",
+            "description": "Enable OCR for files that support it. Supported formats: pdf",
+            "default": false
+          },
+          "parse_pdf_tables_with_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false
           }
         },
         "type": "object",
@@ -5440,6 +5477,17 @@
           "last_sync_action": {
             "$ref": "#/components/schemas/DataSourceLastSyncActions"
           },
+          "enable_auto_sync": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Enable Auto Sync"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -5465,6 +5513,7 @@
           "revoked_access",
           "last_synced_at",
           "last_sync_action",
+          "enable_auto_sync",
           "created_at",
           "updated_at"
         ],
@@ -6540,6 +6589,30 @@
               }
             ],
             "title": "Request Id"
+          },
+          "use_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Use Ocr",
+            "default": false
+          },
+          "parse_pdf_tables_with_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false
           }
         },
         "type": "object",
@@ -7063,6 +7136,30 @@
               }
             ],
             "title": "Request Id"
+          },
+          "use_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Use Ocr",
+            "default": false
+          },
+          "parse_pdf_tables_with_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false
           }
         },
         "type": "object",
