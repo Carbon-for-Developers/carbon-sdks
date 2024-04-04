@@ -91,5 +91,17 @@ export interface S3FileSyncInput {
      * @memberof S3FileSyncInput
      */
     'request_id'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof S3FileSyncInput
+     */
+    'use_ocr'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof S3FileSyncInput
+     */
+    'parse_pdf_tables_with_ocr'?: boolean | null;
 }
 

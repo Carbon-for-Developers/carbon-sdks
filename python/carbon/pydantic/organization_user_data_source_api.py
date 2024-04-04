@@ -44,6 +44,8 @@ class OrganizationUserDataSourceAPI(BaseModel):
 
     last_sync_action: DataSourceLastSyncActions = Field(alias='last_sync_action')
 
+    enable_auto_sync: typing.Optional[bool] = Field(alias='enable_auto_sync')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

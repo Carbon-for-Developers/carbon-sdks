@@ -29,6 +29,8 @@ type SyncFilesRequest struct {
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
 	RequestId NullableString `json:"request_id,omitempty"`
+	UseOcr NullableBool `json:"use_ocr,omitempty"`
+	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
 }
 
 // NewSyncFilesRequest instantiates a new SyncFilesRequest object
@@ -53,6 +55,10 @@ func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest 
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var useOcr bool = false
+	this.UseOcr = *NewNullableBool(&useOcr)
+	var parsePdfTablesWithOcr bool = false
+	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
 	return &this
 }
 
@@ -75,6 +81,10 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var useOcr bool = false
+	this.UseOcr = *NewNullableBool(&useOcr)
+	var parsePdfTablesWithOcr bool = false
+	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
 	return &this
 }
 
@@ -527,6 +537,90 @@ func (o *SyncFilesRequest) UnsetRequestId() {
 	o.RequestId.Unset()
 }
 
+// GetUseOcr returns the UseOcr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncFilesRequest) GetUseOcr() bool {
+	if o == nil || isNil(o.UseOcr.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.UseOcr.Get()
+}
+
+// GetUseOcrOk returns a tuple with the UseOcr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncFilesRequest) GetUseOcrOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.UseOcr.Get(), o.UseOcr.IsSet()
+}
+
+// HasUseOcr returns a boolean if a field has been set.
+func (o *SyncFilesRequest) HasUseOcr() bool {
+	if o != nil && o.UseOcr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUseOcr gets a reference to the given NullableBool and assigns it to the UseOcr field.
+func (o *SyncFilesRequest) SetUseOcr(v bool) {
+	o.UseOcr.Set(&v)
+}
+// SetUseOcrNil sets the value for UseOcr to be an explicit nil
+func (o *SyncFilesRequest) SetUseOcrNil() {
+	o.UseOcr.Set(nil)
+}
+
+// UnsetUseOcr ensures that no value is present for UseOcr, not even an explicit nil
+func (o *SyncFilesRequest) UnsetUseOcr() {
+	o.UseOcr.Unset()
+}
+
+// GetParsePdfTablesWithOcr returns the ParsePdfTablesWithOcr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncFilesRequest) GetParsePdfTablesWithOcr() bool {
+	if o == nil || isNil(o.ParsePdfTablesWithOcr.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.ParsePdfTablesWithOcr.Get()
+}
+
+// GetParsePdfTablesWithOcrOk returns a tuple with the ParsePdfTablesWithOcr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncFilesRequest) GetParsePdfTablesWithOcrOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ParsePdfTablesWithOcr.Get(), o.ParsePdfTablesWithOcr.IsSet()
+}
+
+// HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+func (o *SyncFilesRequest) HasParsePdfTablesWithOcr() bool {
+	if o != nil && o.ParsePdfTablesWithOcr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParsePdfTablesWithOcr gets a reference to the given NullableBool and assigns it to the ParsePdfTablesWithOcr field.
+func (o *SyncFilesRequest) SetParsePdfTablesWithOcr(v bool) {
+	o.ParsePdfTablesWithOcr.Set(&v)
+}
+// SetParsePdfTablesWithOcrNil sets the value for ParsePdfTablesWithOcr to be an explicit nil
+func (o *SyncFilesRequest) SetParsePdfTablesWithOcrNil() {
+	o.ParsePdfTablesWithOcr.Set(nil)
+}
+
+// UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
+func (o *SyncFilesRequest) UnsetParsePdfTablesWithOcr() {
+	o.ParsePdfTablesWithOcr.Unset()
+}
+
 func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -564,6 +658,12 @@ func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestId.IsSet() {
 		toSerialize["request_id"] = o.RequestId.Get()
+	}
+	if o.UseOcr.IsSet() {
+		toSerialize["use_ocr"] = o.UseOcr.Get()
+	}
+	if o.ParsePdfTablesWithOcr.IsSet() {
+		toSerialize["parse_pdf_tables_with_ocr"] = o.ParsePdfTablesWithOcr.Get()
 	}
 	return json.Marshal(toSerialize)
 }

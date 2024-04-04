@@ -139,5 +139,17 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'request_id'?: string | null;
+    /**
+     * Enable OCR for files that support it. Supported formats: pdf
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'use_ocr'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'parse_pdf_tables_with_ocr'?: boolean | null;
 }
 

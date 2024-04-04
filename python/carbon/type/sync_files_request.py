@@ -44,5 +44,9 @@ class OptionalSyncFilesRequest(TypedDict, total=False):
 
     request_id: typing.Optional[str]
 
+    use_ocr: typing.Optional[bool]
+
+    parse_pdf_tables_with_ocr: typing.Optional[bool]
+
 class SyncFilesRequest(RequiredSyncFilesRequest, OptionalSyncFilesRequest):
     pass

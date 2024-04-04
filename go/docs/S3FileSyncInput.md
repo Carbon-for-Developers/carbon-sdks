@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 **RequestId** | Pointer to **NullableString** |  | [optional] 
+**UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
+**ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -421,6 +423,76 @@ HasRequestId returns a boolean if a field has been set.
 `func (o *S3FileSyncInput) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetUseOcr
+
+`func (o *S3FileSyncInput) GetUseOcr() bool`
+
+GetUseOcr returns the UseOcr field if non-nil, zero value otherwise.
+
+### GetUseOcrOk
+
+`func (o *S3FileSyncInput) GetUseOcrOk() (*bool, bool)`
+
+GetUseOcrOk returns a tuple with the UseOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseOcr
+
+`func (o *S3FileSyncInput) SetUseOcr(v bool)`
+
+SetUseOcr sets UseOcr field to given value.
+
+### HasUseOcr
+
+`func (o *S3FileSyncInput) HasUseOcr() bool`
+
+HasUseOcr returns a boolean if a field has been set.
+
+### SetUseOcrNil
+
+`func (o *S3FileSyncInput) SetUseOcrNil(b bool)`
+
+ SetUseOcrNil sets the value for UseOcr to be an explicit nil
+
+### UnsetUseOcr
+`func (o *S3FileSyncInput) UnsetUseOcr()`
+
+UnsetUseOcr ensures that no value is present for UseOcr, not even an explicit nil
+### GetParsePdfTablesWithOcr
+
+`func (o *S3FileSyncInput) GetParsePdfTablesWithOcr() bool`
+
+GetParsePdfTablesWithOcr returns the ParsePdfTablesWithOcr field if non-nil, zero value otherwise.
+
+### GetParsePdfTablesWithOcrOk
+
+`func (o *S3FileSyncInput) GetParsePdfTablesWithOcrOk() (*bool, bool)`
+
+GetParsePdfTablesWithOcrOk returns a tuple with the ParsePdfTablesWithOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParsePdfTablesWithOcr
+
+`func (o *S3FileSyncInput) SetParsePdfTablesWithOcr(v bool)`
+
+SetParsePdfTablesWithOcr sets ParsePdfTablesWithOcr field to given value.
+
+### HasParsePdfTablesWithOcr
+
+`func (o *S3FileSyncInput) HasParsePdfTablesWithOcr() bool`
+
+HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+
+### SetParsePdfTablesWithOcrNil
+
+`func (o *S3FileSyncInput) SetParsePdfTablesWithOcrNil(b bool)`
+
+ SetParsePdfTablesWithOcrNil sets the value for ParsePdfTablesWithOcr to be an explicit nil
+
+### UnsetParsePdfTablesWithOcr
+`func (o *S3FileSyncInput) UnsetParsePdfTablesWithOcr()`
+
+UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

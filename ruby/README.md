@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.13-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.13)
+[![npm](https://img.shields.io/badge/gem-v0.1.14-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.14)
 
 </div>
 
@@ -80,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.13'
+gem 'carbon_ruby_sdk', '~> 0.1.14'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1381,6 +1381,8 @@ result = carbon.integrations.get_oauth_url(
   data_source_id: 1,
   connecting_new_account: false,
   request_id: "string_example",
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -1424,6 +1426,10 @@ sync URL for an existing data source based on type and ID.
 This request id will be added to all files that get synced using the generated
 OAuth URL
 
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+Enable OCR for files that support it. Supported formats: pdf
+
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -1641,6 +1647,8 @@ result = carbon.integrations.sync_confluence(
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
   request_id: "string_example",
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -1661,6 +1669,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1728,6 +1738,8 @@ result = carbon.integrations.sync_files(
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
   request_id: "string_example",
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -1748,6 +1760,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2081,6 +2095,8 @@ result = carbon.integrations.sync_s3_files(
   set_page_as_boundary: false,
   data_source_id: 1,
   request_id: "string_example",
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 )
 p result
 ```
@@ -2101,6 +2117,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.16-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.16)
+[![npm](https://img.shields.io/badge/npm-v0.1.17-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.17)
 
 </div>
 
@@ -1373,6 +1373,8 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 });
 ```
 
@@ -1427,6 +1429,12 @@ Used to connect a new data source. If not specified, we will attempt to create a
 ##### request_id: `string`<a id="request_id-string"></a>
 
 This request id will be added to all files that get synced using the generated OAuth URL
+
+##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
+
+Enable OCR for files that support it. Supported formats: pdf
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1633,6 +1641,8 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 });
 ```
 
@@ -1663,6 +1673,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1727,6 +1741,8 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 });
 ```
 
@@ -1757,6 +1773,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2108,6 +2128,8 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
 });
 ```
 
@@ -2138,6 +2160,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

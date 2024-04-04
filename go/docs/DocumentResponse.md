@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **Score** | **NullableFloat32** |  | 
 **Rank** | [**NullableRankProperty**](RankProperty.md) |  | 
 **ContentMetadata** | **map[string]interface{}** |  | 
+**ChunkIndex** | **NullableInt32** |  | 
 
 ## Methods
 
 ### NewDocumentResponse
 
-`func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, ) *DocumentResponse`
+`func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32, ) *DocumentResponse`
 
 NewDocumentResponse instantiates a new DocumentResponse object
 This constructor will assign default values to properties that have it defined,
@@ -345,6 +346,36 @@ SetContentMetadata sets ContentMetadata field to given value.
 `func (o *DocumentResponse) UnsetContentMetadata()`
 
 UnsetContentMetadata ensures that no value is present for ContentMetadata, not even an explicit nil
+### GetChunkIndex
+
+`func (o *DocumentResponse) GetChunkIndex() int32`
+
+GetChunkIndex returns the ChunkIndex field if non-nil, zero value otherwise.
+
+### GetChunkIndexOk
+
+`func (o *DocumentResponse) GetChunkIndexOk() (*int32, bool)`
+
+GetChunkIndexOk returns a tuple with the ChunkIndex field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChunkIndex
+
+`func (o *DocumentResponse) SetChunkIndex(v int32)`
+
+SetChunkIndex sets ChunkIndex field to given value.
+
+
+### SetChunkIndexNil
+
+`func (o *DocumentResponse) SetChunkIndexNil(b bool)`
+
+ SetChunkIndexNil sets the value for ChunkIndex to be an explicit nil
+
+### UnsetChunkIndex
+`func (o *DocumentResponse) UnsetChunkIndex()`
+
+UnsetChunkIndex ensures that no value is present for ChunkIndex, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

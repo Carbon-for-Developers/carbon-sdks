@@ -42,6 +42,8 @@ class DocumentResponse(BaseModel):
 
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
 
+    chunk_index: typing.Optional[int] = Field(alias='chunk_index')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

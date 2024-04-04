@@ -91,5 +91,17 @@ export interface SyncFilesRequest {
      * @memberof SyncFilesRequest
      */
     'request_id'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SyncFilesRequest
+     */
+    'use_ocr'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SyncFilesRequest
+     */
+    'parse_pdf_tables_with_ocr'?: boolean | null;
 }
 

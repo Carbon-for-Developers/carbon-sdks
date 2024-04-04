@@ -41,6 +41,8 @@ class RequiredDocumentResponse(TypedDict):
 
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+    chunk_index: typing.Optional[int]
+
 class OptionalDocumentResponse(TypedDict, total=False):
     pass
 

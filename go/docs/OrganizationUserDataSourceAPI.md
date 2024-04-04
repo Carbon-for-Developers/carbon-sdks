@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **RevokedAccess** | **bool** |  | 
 **LastSyncedAt** | **time.Time** |  | 
 **LastSyncAction** | [**DataSourceLastSyncActions**](DataSourceLastSyncActions.md) |  | 
+**EnableAutoSync** | **NullableBool** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -308,6 +309,36 @@ and a boolean to check if the value has been set.
 SetLastSyncAction sets LastSyncAction field to given value.
 
 
+### GetEnableAutoSync
+
+`func (o *OrganizationUserDataSourceAPI) GetEnableAutoSync() bool`
+
+GetEnableAutoSync returns the EnableAutoSync field if non-nil, zero value otherwise.
+
+### GetEnableAutoSyncOk
+
+`func (o *OrganizationUserDataSourceAPI) GetEnableAutoSyncOk() (*bool, bool)`
+
+GetEnableAutoSyncOk returns a tuple with the EnableAutoSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAutoSync
+
+`func (o *OrganizationUserDataSourceAPI) SetEnableAutoSync(v bool)`
+
+SetEnableAutoSync sets EnableAutoSync field to given value.
+
+
+### SetEnableAutoSyncNil
+
+`func (o *OrganizationUserDataSourceAPI) SetEnableAutoSyncNil(b bool)`
+
+ SetEnableAutoSyncNil sets the value for EnableAutoSync to be an explicit nil
+
+### UnsetEnableAutoSync
+`func (o *OrganizationUserDataSourceAPI) UnsetEnableAutoSync()`
+
+UnsetEnableAutoSync ensures that no value is present for EnableAutoSync, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *OrganizationUserDataSourceAPI) GetCreatedAt() time.Time`

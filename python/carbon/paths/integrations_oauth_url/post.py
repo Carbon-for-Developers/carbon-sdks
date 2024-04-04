@@ -144,6 +144,8 @@ class BaseApi(api_client.Api):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -187,6 +189,10 @@ class BaseApi(api_client.Api):
             _body["connecting_new_account"] = connecting_new_account
         if request_id is not None:
             _body["request_id"] = request_id
+        if use_ocr is not None:
+            _body["use_ocr"] = use_ocr
+        if parse_pdf_tables_with_ocr is not None:
+            _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
         args.body = _body
         return args
 
@@ -414,6 +420,8 @@ class GetOauthUrlRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -441,6 +449,8 @@ class GetOauthUrlRaw(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -469,6 +479,8 @@ class GetOauthUrlRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -494,6 +506,8 @@ class GetOauthUrlRaw(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -523,6 +537,8 @@ class GetOauthUrl(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -547,6 +563,8 @@ class GetOauthUrl(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             **kwargs,
         )
         if validate:
@@ -576,6 +594,8 @@ class GetOauthUrl(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -599,6 +619,8 @@ class GetOauthUrl(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -630,6 +652,8 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -657,6 +681,8 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -685,6 +711,8 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         connecting_new_account: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        use_ocr: typing.Optional[typing.Optional[bool]] = None,
+        parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -710,6 +738,8 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             connecting_new_account=connecting_new_account,
             request_id=request_id,
+            use_ocr=use_ocr,
+            parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

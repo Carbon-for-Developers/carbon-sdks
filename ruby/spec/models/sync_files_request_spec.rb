@@ -91,4 +91,16 @@ describe Carbon::SyncFilesRequest do
     end
   end
 
+  describe 'test attribute "use_ocr"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "parse_pdf_tables_with_ocr"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

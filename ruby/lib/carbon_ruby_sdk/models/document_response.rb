@@ -33,6 +33,8 @@ module Carbon
 
     attr_accessor :content_metadata
 
+    attr_accessor :chunk_index
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -46,7 +48,8 @@ module Carbon
         :'vector' => :'vector',
         :'score' => :'score',
         :'rank' => :'rank',
-        :'content_metadata' => :'content_metadata'
+        :'content_metadata' => :'content_metadata',
+        :'chunk_index' => :'chunk_index'
       }
     end
 
@@ -68,7 +71,8 @@ module Carbon
         :'vector' => :'Array<Float>',
         :'score' => :'Float',
         :'rank' => :'RankProperty',
-        :'content_metadata' => :'Object'
+        :'content_metadata' => :'Object',
+        :'chunk_index' => :'Integer'
       }
     end
 
@@ -83,7 +87,8 @@ module Carbon
         :'vector',
         :'score',
         :'rank',
-        :'content_metadata'
+        :'content_metadata',
+        :'chunk_index'
       ])
     end
 
@@ -149,6 +154,10 @@ module Carbon
       if attributes.key?(:'content_metadata')
         self.content_metadata = attributes[:'content_metadata']
       end
+
+      if attributes.key?(:'chunk_index')
+        self.chunk_index = attributes[:'chunk_index']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -189,7 +198,8 @@ module Carbon
           vector == o.vector &&
           score == o.score &&
           rank == o.rank &&
-          content_metadata == o.content_metadata
+          content_metadata == o.content_metadata &&
+          chunk_index == o.chunk_index
     end
 
     # @see the `==` method
@@ -201,7 +211,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, content, file_id, source, source_url, source_type, presigned_url, vector, score, rank, content_metadata].hash
+      [tags, content, file_id, source, source_url, source_type, presigned_url, vector, score, rank, content_metadata, chunk_index].hash
     end
 
     # Builds the object from hash

@@ -515,6 +515,12 @@ operation_parameter_map = {
             {
                 'name': 'request_id'
             },
+            {
+                'name': 'use_ocr'
+            },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -609,6 +615,12 @@ operation_parameter_map = {
             {
                 'name': 'request_id'
             },
+            {
+                'name': 'use_ocr'
+            },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -655,6 +667,12 @@ operation_parameter_map = {
             },
             {
                 'name': 'request_id'
+            },
+            {
+                'name': 'use_ocr'
+            },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
             },
         ]
     },
@@ -831,6 +849,12 @@ operation_parameter_map = {
             },
             {
                 'name': 'request_id'
+            },
+            {
+                'name': 'use_ocr'
+            },
+            {
+                'name': 'parse_pdf_tables_with_ocr'
             },
         ]
     },

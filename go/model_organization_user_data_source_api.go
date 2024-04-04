@@ -29,6 +29,7 @@ type OrganizationUserDataSourceAPI struct {
 	RevokedAccess bool `json:"revoked_access"`
 	LastSyncedAt time.Time `json:"last_synced_at"`
 	LastSyncAction DataSourceLastSyncActions `json:"last_sync_action"`
+	EnableAutoSync NullableBool `json:"enable_auto_sync"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -37,7 +38,7 @@ type OrganizationUserDataSourceAPI struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, createdAt time.Time, updatedAt time.Time) *OrganizationUserDataSourceAPI {
+func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time) *OrganizationUserDataSourceAPI {
 	this := OrganizationUserDataSourceAPI{}
 	this.Id = id
 	this.DataSourceExternalId = dataSourceExternalId
@@ -51,6 +52,7 @@ func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableStr
 	this.RevokedAccess = revokedAccess
 	this.LastSyncedAt = lastSyncedAt
 	this.LastSyncAction = lastSyncAction
+	this.EnableAutoSync = enableAutoSync
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -358,6 +360,32 @@ func (o *OrganizationUserDataSourceAPI) SetLastSyncAction(v DataSourceLastSyncAc
 	o.LastSyncAction = v
 }
 
+// GetEnableAutoSync returns the EnableAutoSync field value
+// If the value is explicit nil, the zero value for bool will be returned
+func (o *OrganizationUserDataSourceAPI) GetEnableAutoSync() bool {
+	if o == nil || o.EnableAutoSync.Get() == nil {
+		var ret bool
+		return ret
+	}
+
+	return *o.EnableAutoSync.Get()
+}
+
+// GetEnableAutoSyncOk returns a tuple with the EnableAutoSync field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserDataSourceAPI) GetEnableAutoSyncOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.EnableAutoSync.Get(), o.EnableAutoSync.IsSet()
+}
+
+// SetEnableAutoSync sets field value
+func (o *OrganizationUserDataSourceAPI) SetEnableAutoSync(v bool) {
+	o.EnableAutoSync.Set(&v)
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *OrganizationUserDataSourceAPI) GetCreatedAt() time.Time {
 	if o == nil {
@@ -443,6 +471,9 @@ func (o OrganizationUserDataSourceAPI) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["last_sync_action"] = o.LastSyncAction
+	}
+	if true {
+		toSerialize["enable_auto_sync"] = o.EnableAutoSync.Get()
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt
