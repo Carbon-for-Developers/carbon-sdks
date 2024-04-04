@@ -252,6 +252,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.RevokedAccess`: %v\n", resp.RevokedAccess)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.LastSyncedAt`: %v\n", resp.LastSyncedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.LastSyncAction`: %v\n", resp.LastSyncAction)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.EnableAutoSync`: %v\n", resp.EnableAutoSync)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -309,6 +310,8 @@ func main() {
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
     oAuthURLRequest.SetRequestId("null")
+    oAuthURLRequest.SetUseOcr(false)
+    oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,
@@ -652,6 +655,8 @@ func main() {
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
     syncFilesRequest.SetRequestId("null")
+    syncFilesRequest.SetUseOcr(false)
+    syncFilesRequest.SetParsePdfTablesWithOcr(false)
     
     request := client.IntegrationsApi.SyncConfluence(
         syncFilesRequest,
@@ -725,6 +730,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.RevokedAccess`: %v\n", resp.RevokedAccess)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.LastSyncedAt`: %v\n", resp.LastSyncedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.LastSyncAction`: %v\n", resp.LastSyncAction)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.EnableAutoSync`: %v\n", resp.EnableAutoSync)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -775,6 +781,8 @@ func main() {
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
     syncFilesRequest.SetRequestId("null")
+    syncFilesRequest.SetUseOcr(false)
+    syncFilesRequest.SetParsePdfTablesWithOcr(false)
     
     request := client.IntegrationsApi.SyncFiles(
         syncFilesRequest,
@@ -1069,6 +1077,8 @@ func main() {
     s3FileSyncInput.SetSetPageAsBoundary(false)
     s3FileSyncInput.SetDataSourceId(null)
     s3FileSyncInput.SetRequestId("null")
+    s3FileSyncInput.SetUseOcr(false)
+    s3FileSyncInput.SetParsePdfTablesWithOcr(false)
     
     request := client.IntegrationsApi.SyncS3Files(
         s3FileSyncInput,

@@ -36,6 +36,10 @@ module Carbon
 
     attr_accessor :request_id
 
+    attr_accessor :use_ocr
+
+    attr_accessor :parse_pdf_tables_with_ocr
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -50,7 +54,9 @@ module Carbon
         :'max_items_per_chunk' => :'max_items_per_chunk',
         :'set_page_as_boundary' => :'set_page_as_boundary',
         :'data_source_id' => :'data_source_id',
-        :'request_id' => :'request_id'
+        :'request_id' => :'request_id',
+        :'use_ocr' => :'use_ocr',
+        :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr'
       }
     end
 
@@ -73,7 +79,9 @@ module Carbon
         :'max_items_per_chunk' => :'Integer',
         :'set_page_as_boundary' => :'Boolean',
         :'data_source_id' => :'Integer',
-        :'request_id' => :'String'
+        :'request_id' => :'String',
+        :'use_ocr' => :'Boolean',
+        :'parse_pdf_tables_with_ocr' => :'Boolean'
       }
     end
 
@@ -88,7 +96,9 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'max_items_per_chunk',
         :'data_source_id',
-        :'request_id'
+        :'request_id',
+        :'use_ocr',
+        :'parse_pdf_tables_with_ocr'
       ])
     end
 
@@ -170,6 +180,18 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       end
+
+      if attributes.key?(:'use_ocr')
+        self.use_ocr = attributes[:'use_ocr']
+      else
+        self.use_ocr = false
+      end
+
+      if attributes.key?(:'parse_pdf_tables_with_ocr')
+        self.parse_pdf_tables_with_ocr = attributes[:'parse_pdf_tables_with_ocr']
+      else
+        self.parse_pdf_tables_with_ocr = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -206,7 +228,9 @@ module Carbon
           max_items_per_chunk == o.max_items_per_chunk &&
           set_page_as_boundary == o.set_page_as_boundary &&
           data_source_id == o.data_source_id &&
-          request_id == o.request_id
+          request_id == o.request_id &&
+          use_ocr == o.use_ocr &&
+          parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr
     end
 
     # @see the `==` method
@@ -218,7 +242,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, data_source_id, request_id].hash
+      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, data_source_id, request_id, use_ocr, parse_pdf_tables_with_ocr].hash
     end
 
     # Builds the object from hash

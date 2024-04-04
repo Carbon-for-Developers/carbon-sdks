@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **RequestId** | Pointer to **NullableString** |  | [optional] 
+**UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
+**ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -416,6 +418,76 @@ HasRequestId returns a boolean if a field has been set.
 `func (o *SyncFilesRequest) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetUseOcr
+
+`func (o *SyncFilesRequest) GetUseOcr() bool`
+
+GetUseOcr returns the UseOcr field if non-nil, zero value otherwise.
+
+### GetUseOcrOk
+
+`func (o *SyncFilesRequest) GetUseOcrOk() (*bool, bool)`
+
+GetUseOcrOk returns a tuple with the UseOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseOcr
+
+`func (o *SyncFilesRequest) SetUseOcr(v bool)`
+
+SetUseOcr sets UseOcr field to given value.
+
+### HasUseOcr
+
+`func (o *SyncFilesRequest) HasUseOcr() bool`
+
+HasUseOcr returns a boolean if a field has been set.
+
+### SetUseOcrNil
+
+`func (o *SyncFilesRequest) SetUseOcrNil(b bool)`
+
+ SetUseOcrNil sets the value for UseOcr to be an explicit nil
+
+### UnsetUseOcr
+`func (o *SyncFilesRequest) UnsetUseOcr()`
+
+UnsetUseOcr ensures that no value is present for UseOcr, not even an explicit nil
+### GetParsePdfTablesWithOcr
+
+`func (o *SyncFilesRequest) GetParsePdfTablesWithOcr() bool`
+
+GetParsePdfTablesWithOcr returns the ParsePdfTablesWithOcr field if non-nil, zero value otherwise.
+
+### GetParsePdfTablesWithOcrOk
+
+`func (o *SyncFilesRequest) GetParsePdfTablesWithOcrOk() (*bool, bool)`
+
+GetParsePdfTablesWithOcrOk returns a tuple with the ParsePdfTablesWithOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParsePdfTablesWithOcr
+
+`func (o *SyncFilesRequest) SetParsePdfTablesWithOcr(v bool)`
+
+SetParsePdfTablesWithOcr sets ParsePdfTablesWithOcr field to given value.
+
+### HasParsePdfTablesWithOcr
+
+`func (o *SyncFilesRequest) HasParsePdfTablesWithOcr() bool`
+
+HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+
+### SetParsePdfTablesWithOcrNil
+
+`func (o *SyncFilesRequest) SetParsePdfTablesWithOcrNil(b bool)`
+
+ SetParsePdfTablesWithOcrNil sets the value for ParsePdfTablesWithOcr to be an explicit nil
+
+### UnsetParsePdfTablesWithOcr
+`func (o *SyncFilesRequest) UnsetParsePdfTablesWithOcr()`
+
+UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

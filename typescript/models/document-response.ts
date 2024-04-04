@@ -86,5 +86,11 @@ export interface DocumentResponse {
      * @memberof DocumentResponse
      */
     'content_metadata': object | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DocumentResponse
+     */
+    'chunk_index': number | null;
 }
 

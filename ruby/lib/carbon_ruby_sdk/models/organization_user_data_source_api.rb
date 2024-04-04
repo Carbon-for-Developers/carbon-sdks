@@ -35,6 +35,8 @@ module Carbon
 
     attr_accessor :last_sync_action
 
+    attr_accessor :enable_auto_sync
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -54,6 +56,7 @@ module Carbon
         :'revoked_access' => :'revoked_access',
         :'last_synced_at' => :'last_synced_at',
         :'last_sync_action' => :'last_sync_action',
+        :'enable_auto_sync' => :'enable_auto_sync',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -79,6 +82,7 @@ module Carbon
         :'revoked_access' => :'Boolean',
         :'last_synced_at' => :'Time',
         :'last_sync_action' => :'DataSourceLastSyncActions',
+        :'enable_auto_sync' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -90,6 +94,7 @@ module Carbon
         :'data_source_external_id',
         :'token',
         :'source_items_synced_at',
+        :'enable_auto_sync',
       ])
     end
 
@@ -154,6 +159,10 @@ module Carbon
 
       if attributes.key?(:'last_sync_action')
         self.last_sync_action = attributes[:'last_sync_action']
+      end
+
+      if attributes.key?(:'enable_auto_sync')
+        self.enable_auto_sync = attributes[:'enable_auto_sync']
       end
 
       if attributes.key?(:'created_at')
@@ -250,6 +259,7 @@ module Carbon
           revoked_access == o.revoked_access &&
           last_synced_at == o.last_synced_at &&
           last_sync_action == o.last_sync_action &&
+          enable_auto_sync == o.enable_auto_sync &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -263,7 +273,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, created_at, updated_at].hash
+      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, enable_auto_sync, created_at, updated_at].hash
     end
 
     # Builds the object from hash

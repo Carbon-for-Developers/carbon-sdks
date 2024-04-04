@@ -94,6 +94,12 @@ export interface OrganizationUserDataSourceAPI {
     'last_sync_action': DataSourceLastSyncActions;
     /**
      * 
+     * @type {boolean}
+     * @memberof OrganizationUserDataSourceAPI
+     */
+    'enable_auto_sync': boolean | null;
+    /**
+     * 
      * @type {string}
      * @memberof OrganizationUserDataSourceAPI
      */

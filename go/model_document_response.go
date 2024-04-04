@@ -27,13 +27,14 @@ type DocumentResponse struct {
 	Score NullableFloat32 `json:"score"`
 	Rank NullableRankProperty `json:"rank"`
 	ContentMetadata map[string]interface{} `json:"content_metadata"`
+	ChunkIndex NullableInt32 `json:"chunk_index"`
 }
 
 // NewDocumentResponse instantiates a new DocumentResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}) *DocumentResponse {
+func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32) *DocumentResponse {
 	this := DocumentResponse{}
 	this.Tags = tags
 	this.Content = content
@@ -46,6 +47,7 @@ func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, sou
 	this.Score = score
 	this.Rank = rank
 	this.ContentMetadata = contentMetadata
+	this.ChunkIndex = chunkIndex
 	return &this
 }
 
@@ -339,6 +341,32 @@ func (o *DocumentResponse) SetContentMetadata(v map[string]interface{}) {
 	o.ContentMetadata = v
 }
 
+// GetChunkIndex returns the ChunkIndex field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *DocumentResponse) GetChunkIndex() int32 {
+	if o == nil || o.ChunkIndex.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.ChunkIndex.Get()
+}
+
+// GetChunkIndexOk returns a tuple with the ChunkIndex field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentResponse) GetChunkIndexOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ChunkIndex.Get(), o.ChunkIndex.IsSet()
+}
+
+// SetChunkIndex sets field value
+func (o *DocumentResponse) SetChunkIndex(v int32) {
+	o.ChunkIndex.Set(&v)
+}
+
 func (o DocumentResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -373,6 +401,9 @@ func (o DocumentResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.ContentMetadata != nil {
 		toSerialize["content_metadata"] = o.ContentMetadata
+	}
+	if true {
+		toSerialize["chunk_index"] = o.ChunkIndex.Get()
 	}
 	return json.Marshal(toSerialize)
 }

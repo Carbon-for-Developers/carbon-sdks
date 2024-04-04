@@ -43,6 +43,8 @@ class RequiredOrganizationUserDataSourceAPI(TypedDict):
 
     last_sync_action: DataSourceLastSyncActions
 
+    enable_auto_sync: typing.Optional[bool]
+
     created_at: datetime
 
     updated_at: datetime

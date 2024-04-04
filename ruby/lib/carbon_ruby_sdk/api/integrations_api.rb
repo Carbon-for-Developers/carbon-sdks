@@ -543,9 +543,11 @@ module Carbon
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
+    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -567,6 +569,8 @@ module Carbon
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -599,9 +603,11 @@ module Carbon
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
+    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -623,6 +629,8 @@ module Carbon
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:connecting_new_account] = connecting_new_account if connecting_new_account != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -1277,9 +1285,11 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1293,6 +1303,8 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       sync_files_request = _body
       api_response = sync_confluence_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1317,9 +1329,11 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1333,6 +1347,8 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       sync_files_request = _body
       sync_confluence_with_http_info_impl(sync_files_request, extra)
     end
@@ -1517,9 +1533,11 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1533,6 +1551,8 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       sync_files_request = _body
       api_response = sync_files_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1557,9 +1577,11 @@ module Carbon
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param set_page_as_boundary [Boolean] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1573,6 +1595,8 @@ module Carbon
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       sync_files_request = _body
       sync_files_with_http_info_impl(sync_files_request, extra)
     end
@@ -2412,9 +2436,11 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_s3_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2428,6 +2454,8 @@ module Carbon
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       s3_file_sync_input = _body
       api_response = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
       api_response.data
@@ -2451,9 +2479,11 @@ module Carbon
     # @param set_page_as_boundary [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [S3FileSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_s3_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:ids] = ids if ids != SENTINEL
@@ -2467,6 +2497,8 @@ module Carbon
       _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       s3_file_sync_input = _body
       sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
     end

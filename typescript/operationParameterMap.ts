@@ -521,6 +521,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'request_id'
             },
+            {
+                name: 'use_ocr'
+            },
+            {
+                name: 'parse_pdf_tables_with_ocr'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -615,6 +621,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'request_id'
             },
+            {
+                name: 'use_ocr'
+            },
+            {
+                name: 'parse_pdf_tables_with_ocr'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -661,6 +673,12 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'request_id'
+            },
+            {
+                name: 'use_ocr'
+            },
+            {
+                name: 'parse_pdf_tables_with_ocr'
             },
         ]
     },
@@ -837,6 +855,12 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'request_id'
+            },
+            {
+                name: 'use_ocr'
+            },
+            {
+                name: 'parse_pdf_tables_with_ocr'
             },
         ]
     },

@@ -41,6 +41,7 @@ class OrganizationUserDataSourceAPI(
             "token",
             "updated_at",
             "source_items_synced_at",
+            "enable_auto_sync",
             "organization_id",
             "organization_user_id",
             "last_sync_action",
@@ -135,6 +136,26 @@ class OrganizationUserDataSourceAPI(
             @staticmethod
             def last_sync_action() -> typing.Type['DataSourceLastSyncActions']:
                 return DataSourceLastSyncActions
+            
+            
+            class enable_auto_sync(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'enable_auto_sync':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -150,6 +171,7 @@ class OrganizationUserDataSourceAPI(
                 "revoked_access": revoked_access,
                 "last_synced_at": last_synced_at,
                 "last_sync_action": last_sync_action,
+                "enable_auto_sync": enable_auto_sync,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -162,6 +184,7 @@ class OrganizationUserDataSourceAPI(
     token: MetaOapg.properties.token
     updated_at: MetaOapg.properties.updated_at
     source_items_synced_at: MetaOapg.properties.source_items_synced_at
+    enable_auto_sync: MetaOapg.properties.enable_auto_sync
     organization_id: MetaOapg.properties.organization_id
     organization_user_id: MetaOapg.properties.organization_user_id
     last_sync_action: 'DataSourceLastSyncActions'
@@ -206,6 +229,9 @@ class OrganizationUserDataSourceAPI(
     def __getitem__(self, name: typing_extensions.Literal["last_sync_action"]) -> 'DataSourceLastSyncActions': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_auto_sync"]) -> MetaOapg.properties.enable_auto_sync: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -214,7 +240,7 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -256,6 +282,9 @@ class OrganizationUserDataSourceAPI(
     def get_item_oapg(self, name: typing_extensions.Literal["last_sync_action"]) -> 'DataSourceLastSyncActions': ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_auto_sync"]) -> MetaOapg.properties.enable_auto_sync: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -264,7 +293,7 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -279,6 +308,7 @@ class OrganizationUserDataSourceAPI(
         token: typing.Union[MetaOapg.properties.token, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         source_items_synced_at: typing.Union[MetaOapg.properties.source_items_synced_at, None, str, datetime, ],
+        enable_auto_sync: typing.Union[MetaOapg.properties.enable_auto_sync, None, bool, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
         organization_user_id: typing.Union[MetaOapg.properties.organization_user_id, decimal.Decimal, int, ],
         last_sync_action: 'DataSourceLastSyncActions',
@@ -299,6 +329,7 @@ class OrganizationUserDataSourceAPI(
             token=token,
             updated_at=updated_at,
             source_items_synced_at=source_items_synced_at,
+            enable_auto_sync=enable_auto_sync,
             organization_id=organization_id,
             organization_user_id=organization_user_id,
             last_sync_action=last_sync_action,

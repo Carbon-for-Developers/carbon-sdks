@@ -3501,6 +3501,11 @@
             "title": "Content Metadata",
             "type": "object",
             "nullable": true
+          },
+          "chunk_index": {
+            "title": "Chunk Index",
+            "type": "integer",
+            "nullable": true
           }
         },
         "type": "object",
@@ -3515,7 +3520,8 @@
           "vector",
           "score",
           "rank",
-          "content_metadata"
+          "content_metadata",
+          "chunk_index"
         ]
       },
       "DocumentResponseList": {
@@ -4786,6 +4792,19 @@
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
             "nullable": true
+          },
+          "use_ocr": {
+            "title": "Use Ocr",
+            "description": "Enable OCR for files that support it. Supported formats: pdf",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "parse_pdf_tables_with_ocr": {
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4940,6 +4959,11 @@
           "last_sync_action": {
             "$ref": "#/components/schemas/DataSourceLastSyncActions"
           },
+          "enable_auto_sync": {
+            "title": "Enable Auto Sync",
+            "type": "boolean",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -4965,6 +4989,7 @@
           "revoked_access",
           "last_synced_at",
           "last_sync_action",
+          "enable_auto_sync",
           "created_at",
           "updated_at"
         ]
@@ -5723,6 +5748,18 @@
             "title": "Request Id",
             "type": "string",
             "nullable": true
+          },
+          "use_ocr": {
+            "title": "Use Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "parse_pdf_tables_with_ocr": {
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -6097,6 +6134,18 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
+            "nullable": true
+          },
+          "use_ocr": {
+            "title": "Use Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "parse_pdf_tables_with_ocr": {
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false,
+            "type": "boolean",
             "nullable": true
           }
         },

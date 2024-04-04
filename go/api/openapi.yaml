@@ -3661,6 +3661,7 @@ components:
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
+          enable_auto_sync: true
           last_sync_action: null
           sync_status: null
           id: 0
@@ -3895,6 +3896,7 @@ components:
     DocumentResponse:
       example:
         score: 1.4658129805029452
+        chunk_index: 5
         file_id: 0
         presigned_url: presigned_url
         rank: null
@@ -3951,7 +3953,12 @@ components:
           nullable: true
           title: Content Metadata
           type: object
+        chunk_index:
+          nullable: true
+          title: Chunk Index
+          type: integer
       required:
+      - chunk_index
       - content
       - content_metadata
       - file_id
@@ -3969,6 +3976,7 @@ components:
       example:
         documents:
         - score: 1.4658129805029452
+          chunk_index: 5
           file_id: 0
           presigned_url: presigned_url
           rank: null
@@ -3983,6 +3991,7 @@ components:
           tags:
             key: null
         - score: 1.4658129805029452
+          chunk_index: 5
           file_id: 0
           presigned_url: presigned_url
           rank: null
@@ -5189,8 +5198,10 @@ components:
         confluence_subdomain: confluence_subdomain
         max_items_per_chunk: 0
         connecting_new_account: false
+        parse_pdf_tables_with_ocr: false
         embedding_model: OPENAI
         tags: ""
+        use_ocr: false
         service: null
         generate_sparse_vectors: false
         scope: scope
@@ -5324,6 +5335,23 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          description: "Enable OCR for files that support it. Supported formats: pdf"
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-parse_pdf_tables_with_ocr
       required:
       - service
       title: OAuthURLRequest
@@ -5430,6 +5458,7 @@ components:
         source_items_synced_at: 2000-01-23T04:56:07.000+00:00
         organization_user_id: 6
         organization_id: 1
+        enable_auto_sync: true
         last_sync_action: null
         sync_status: null
         id: 0
@@ -5473,6 +5502,10 @@ components:
           type: string
         last_sync_action:
           $ref: '#/components/schemas/DataSourceLastSyncActions'
+        enable_auto_sync:
+          nullable: true
+          title: Enable Auto Sync
+          type: boolean
         created_at:
           format: date-time
           title: Created At
@@ -5485,6 +5518,7 @@ components:
       - created_at
       - data_source_external_id
       - data_source_type
+      - enable_auto_sync
       - id
       - last_sync_action
       - last_synced_at
@@ -5575,6 +5609,7 @@ components:
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
+          enable_auto_sync: true
           last_sync_action: null
           sync_status: null
           id: 0
@@ -5589,6 +5624,7 @@ components:
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
+          enable_auto_sync: true
           last_sync_action: null
           sync_status: null
           id: 0
@@ -6226,9 +6262,12 @@ components:
         chunk_size: 1500
         prepend_filename_to_chunks: false
         max_items_per_chunk: 0
+        parse_pdf_tables_with_ocr: false
+        embedding_model: null
+        tags: {}
+        use_ocr: false
         generate_sparse_vectors: false
         set_page_as_boundary: false
-        embedding_model: null
         ids:
         - bucket: bucket
           id: id
@@ -6238,7 +6277,6 @@ components:
         skip_embedding_generation: false
         request_id: request_id
         data_source_id: 6
-        tags: {}
       properties:
         tags:
           default: {}
@@ -6316,6 +6354,22 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-parse_pdf_tables_with_ocr
       required:
       - ids
       title: S3FileSyncInput
@@ -6581,15 +6635,17 @@ components:
         chunk_size: 1500
         prepend_filename_to_chunks: false
         max_items_per_chunk: 6
+        parse_pdf_tables_with_ocr: false
+        embedding_model: OPENAI
+        tags: {}
+        use_ocr: false
         generate_sparse_vectors: false
         set_page_as_boundary: false
-        embedding_model: OPENAI
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
         request_id: request_id
         data_source_id: 0
-        tags: {}
       properties:
         tags:
           default: {}
@@ -6663,6 +6719,22 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
       required:
       - data_source_id
       - ids
@@ -8242,6 +8314,14 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-parse_pdf_tables_with_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-include_all_children:
       example: false
       type: boolean
@@ -8353,6 +8433,14 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-S3FileSyncInput-properties-use_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-S3FileSyncInput-properties-parse_pdf_tables_with_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-tags:
       example: {}
       properties: {}
@@ -8423,6 +8511,14 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -8739,6 +8835,23 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          description: "Enable OCR for files that support it. Supported formats: pdf"
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-parse_pdf_tables_with_ocr
       required:
       - service
       type: object
@@ -8875,6 +8988,22 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
       required:
       - data_source_id
       - ids
@@ -8976,6 +9105,22 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
       required:
       - data_source_id
       - ids
@@ -9074,6 +9219,22 @@ components:
           nullable: true
           title: Request Id
           type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-parse_pdf_tables_with_ocr
       required:
       - ids
       type: object

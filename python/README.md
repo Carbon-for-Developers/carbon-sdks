@@ -1540,6 +1540,8 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     data_source_id=1,
     connecting_new_account=False,
     request_id="string_example",
+    use_ocr=False,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -1594,6 +1596,12 @@ Used to connect a new data source. If not specified, we will attempt to create a
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 This request id will be added to all files that get synced using the generated OAuth URL
+
+##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
+
+Enable OCR for files that support it. Supported formats: pdf
+
+##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1817,6 +1825,8 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     max_items_per_chunk=1,
     set_page_as_boundary=False,
     request_id="string_example",
+    use_ocr=False,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -1848,6 +1858,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
+
+##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1918,6 +1932,8 @@ sync_files_response = carbon.integrations.sync_files(
     max_items_per_chunk=1,
     set_page_as_boundary=False,
     request_id="string_example",
+    use_ocr=False,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -1949,6 +1965,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
+
+##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2324,6 +2344,8 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
     set_page_as_boundary=False,
     data_source_id=1,
     request_id="string_example",
+    use_ocr=False,
+    parse_pdf_tables_with_ocr=False,
 )
 ```
 
@@ -2354,6 +2376,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
+
+##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

@@ -1183,7 +1183,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
                 data_source_id: requestParameters.data_source_id,
                 connecting_new_account: requestParameters.connecting_new_account,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                use_ocr: requestParameters.use_ocr,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1284,7 +1286,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                use_ocr: requestParameters.use_ocr,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1323,7 +1327,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                use_ocr: requestParameters.use_ocr,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1440,7 +1446,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
                 data_source_id: requestParameters.data_source_id,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                use_ocr: requestParameters.use_ocr,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

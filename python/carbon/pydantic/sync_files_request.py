@@ -44,6 +44,10 @@ class SyncFilesRequest(BaseModel):
 
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
+    use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
+
+    parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -33,6 +33,7 @@ class DocumentResponse(
 
     class MetaOapg:
         required = {
+            "chunk_index",
             "score",
             "file_id",
             "content_metadata",
@@ -202,6 +203,26 @@ class DocumentResponse(
                         _configuration=_configuration,
                         **kwargs,
                     )
+            
+            
+            class chunk_index(
+                schemas.IntBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, decimal.Decimal, int, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'chunk_index':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "tags": tags,
                 "content": content,
@@ -214,8 +235,10 @@ class DocumentResponse(
                 "score": score,
                 "rank": rank,
                 "content_metadata": content_metadata,
+                "chunk_index": chunk_index,
             }
     
+    chunk_index: MetaOapg.properties.chunk_index
     score: MetaOapg.properties.score
     file_id: MetaOapg.properties.file_id
     content_metadata: MetaOapg.properties.content_metadata
@@ -262,9 +285,12 @@ class DocumentResponse(
     def __getitem__(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", "chunk_index", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -303,15 +329,19 @@ class DocumentResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", "chunk_index", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, ],
         score: typing.Union[MetaOapg.properties.score, None, decimal.Decimal, int, float, ],
         file_id: typing.Union[MetaOapg.properties.file_id, decimal.Decimal, int, ],
         content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, ],
@@ -329,6 +359,7 @@ class DocumentResponse(
         return super().__new__(
             cls,
             *args,
+            chunk_index=chunk_index,
             score=score,
             file_id=file_id,
             content_metadata=content_metadata,

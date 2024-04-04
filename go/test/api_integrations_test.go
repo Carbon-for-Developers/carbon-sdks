@@ -152,6 +152,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
         oAuthURLRequest.SetRequestId("null")
+        oAuthURLRequest.SetUseOcr(false)
+        oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -283,6 +285,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
         syncFilesRequest.SetRequestId("null")
+        syncFilesRequest.SetUseOcr(false)
+        syncFilesRequest.SetParsePdfTablesWithOcr(false)
         
         request := client.IntegrationsApi.SyncConfluence(
             syncFilesRequest,
@@ -333,6 +337,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
         syncFilesRequest.SetRequestId("null")
+        syncFilesRequest.SetUseOcr(false)
+        syncFilesRequest.SetParsePdfTablesWithOcr(false)
         
         request := client.IntegrationsApi.SyncFiles(
             syncFilesRequest,
@@ -475,6 +481,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         s3FileSyncInput.SetSetPageAsBoundary(false)
         s3FileSyncInput.SetDataSourceId(null)
         s3FileSyncInput.SetRequestId("null")
+        s3FileSyncInput.SetUseOcr(false)
+        s3FileSyncInput.SetParsePdfTablesWithOcr(false)
         
         request := client.IntegrationsApi.SyncS3Files(
             s3FileSyncInput,

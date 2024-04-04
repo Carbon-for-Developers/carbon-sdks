@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
 **ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
 **RequestId** | Pointer to **NullableString** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] 
+**UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
+**ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -719,6 +721,76 @@ HasRequestId returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetUseOcr
+
+`func (o *OAuthURLRequest) GetUseOcr() bool`
+
+GetUseOcr returns the UseOcr field if non-nil, zero value otherwise.
+
+### GetUseOcrOk
+
+`func (o *OAuthURLRequest) GetUseOcrOk() (*bool, bool)`
+
+GetUseOcrOk returns a tuple with the UseOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseOcr
+
+`func (o *OAuthURLRequest) SetUseOcr(v bool)`
+
+SetUseOcr sets UseOcr field to given value.
+
+### HasUseOcr
+
+`func (o *OAuthURLRequest) HasUseOcr() bool`
+
+HasUseOcr returns a boolean if a field has been set.
+
+### SetUseOcrNil
+
+`func (o *OAuthURLRequest) SetUseOcrNil(b bool)`
+
+ SetUseOcrNil sets the value for UseOcr to be an explicit nil
+
+### UnsetUseOcr
+`func (o *OAuthURLRequest) UnsetUseOcr()`
+
+UnsetUseOcr ensures that no value is present for UseOcr, not even an explicit nil
+### GetParsePdfTablesWithOcr
+
+`func (o *OAuthURLRequest) GetParsePdfTablesWithOcr() bool`
+
+GetParsePdfTablesWithOcr returns the ParsePdfTablesWithOcr field if non-nil, zero value otherwise.
+
+### GetParsePdfTablesWithOcrOk
+
+`func (o *OAuthURLRequest) GetParsePdfTablesWithOcrOk() (*bool, bool)`
+
+GetParsePdfTablesWithOcrOk returns a tuple with the ParsePdfTablesWithOcr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParsePdfTablesWithOcr
+
+`func (o *OAuthURLRequest) SetParsePdfTablesWithOcr(v bool)`
+
+SetParsePdfTablesWithOcr sets ParsePdfTablesWithOcr field to given value.
+
+### HasParsePdfTablesWithOcr
+
+`func (o *OAuthURLRequest) HasParsePdfTablesWithOcr() bool`
+
+HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+
+### SetParsePdfTablesWithOcrNil
+
+`func (o *OAuthURLRequest) SetParsePdfTablesWithOcrNil(b bool)`
+
+ SetParsePdfTablesWithOcrNil sets the value for ParsePdfTablesWithOcr to be an explicit nil
+
+### UnsetParsePdfTablesWithOcr
+`func (o *OAuthURLRequest) UnsetParsePdfTablesWithOcr()`
+
+UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
