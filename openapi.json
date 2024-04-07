@@ -7598,6 +7598,11 @@
               }
             ]
           },
+          "ocr_properties": {
+            "type": "object",
+            "title": "Ocr Properties",
+            "default": {}
+          },
           "name": {
             "anyOf": [
               {
@@ -7732,6 +7737,7 @@
           "chunk_size",
           "chunk_overlap",
           "chunk_properties",
+          "ocr_properties",
           "name",
           "parent_id",
           "enable_auto_sync",
