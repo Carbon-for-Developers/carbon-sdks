@@ -55,6 +55,8 @@ class RequiredUserFile(TypedDict):
 
     chunk_properties: typing.Optional[ChunkPropertiesNullable]
 
+    ocr_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
     name: typing.Optional[str]
 
     parent_id: typing.Optional[int]

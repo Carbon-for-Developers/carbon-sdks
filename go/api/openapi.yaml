@@ -6988,6 +6988,7 @@ components:
           prepend_filename_to_chunks: false
           max_items_per_chunk: 7
           set_page_as_boundary: false
+        ocr_properties: {}
         presigned_url: presigned_url
         tags: "{}"
         sync_error_message: sync_error_message
@@ -7065,6 +7066,13 @@ components:
           type: integer
         chunk_properties:
           $ref: '#/components/schemas/ChunkPropertiesNullable'
+        ocr_properties:
+          default: {}
+          example: {}
+          title: Ocr Properties
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties
         name:
           nullable: true
           title: Name
@@ -7129,6 +7137,7 @@ components:
       - id
       - last_sync
       - name
+      - ocr_properties
       - organization_id
       - organization_supplied_user_id
       - organization_user_data_source_id
@@ -7172,6 +7181,7 @@ components:
             prepend_filename_to_chunks: false
             max_items_per_chunk: 7
             set_page_as_boundary: false
+          ocr_properties: {}
           presigned_url: presigned_url
           tags: "{}"
           sync_error_message: sync_error_message
@@ -7212,6 +7222,7 @@ components:
             prepend_filename_to_chunks: false
             max_items_per_chunk: 7
             set_page_as_boundary: false
+          ocr_properties: {}
           presigned_url: presigned_url
           tags: "{}"
           sync_error_message: sync_error_message
@@ -8573,6 +8584,11 @@ components:
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties:
+      example: {}
+      properties: {}
+      type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-WebhookFilters-properties-ids:
       items:

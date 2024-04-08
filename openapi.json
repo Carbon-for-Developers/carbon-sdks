@@ -7598,6 +7598,11 @@
               }
             ]
           },
+          "ocr_properties": {
+            "type": "object",
+            "title": "Ocr Properties",
+            "default": {}
+          },
           "name": {
             "anyOf": [
               {
@@ -7732,6 +7737,7 @@
           "chunk_size",
           "chunk_overlap",
           "chunk_properties",
+          "ocr_properties",
           "name",
           "parent_id",
           "enable_auto_sync",
@@ -8412,19 +8418,20 @@
     "securitySchemes": {
       "apiKey": {
         "type": "apiKey",
-        "description": "Takes the form of \"Bearer {api key}\" for the \"authorization\" header",
+        "description": "`Bearer <token>`, corresponds to API keys.",
         "in": "header",
         "name": "authorization",
         "x-konfig-prefix": "Bearer "
       },
       "customerId": {
         "type": "apiKey",
+        "description": "\n        Unique ID for user on whose behalf this request is being made.\n        Every user should have one and only one ID. This ID is generated \n        by you, the organization, and not Carbon. Examples include, but\n        are not limited to, a user's email, a user's internal ID, a randomly\n        generated UUID, etc. Carbon partitions user data by this ID.\n        ",
         "in": "header",
         "name": "customer-id"
       },
       "accessToken": {
         "type": "apiKey",
-        "description": "Takes the form of \"token {access token}\" for the \"authorization\" header",
+        "description": "`token <token>`, corresponds to temporary access tokens.",
         "in": "header",
         "name": "authorization",
         "x-konfig-prefix": "Token "

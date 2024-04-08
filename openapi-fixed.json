@@ -6436,6 +6436,12 @@
           "chunk_properties": {
             "$ref": "#/components/schemas/ChunkPropertiesNullable"
           },
+          "ocr_properties": {
+            "title": "Ocr Properties",
+            "type": "object",
+            "default": {
+            }
+          },
           "name": {
             "title": "Name",
             "type": "string",
@@ -6516,6 +6522,7 @@
           "chunk_size",
           "chunk_overlap",
           "chunk_properties",
+          "ocr_properties",
           "name",
           "parent_id",
           "enable_auto_sync",

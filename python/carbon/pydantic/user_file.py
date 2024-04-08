@@ -56,6 +56,8 @@ class UserFile(BaseModel):
 
     chunk_properties: ChunkPropertiesNullable = Field(alias='chunk_properties')
 
+    ocr_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='ocr_properties')
+
     name: typing.Optional[str] = Field(alias='name')
 
     parent_id: typing.Optional[int] = Field(alias='parent_id')

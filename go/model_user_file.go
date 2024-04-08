@@ -34,6 +34,7 @@ type UserFile struct {
 	ChunkSize NullableInt32 `json:"chunk_size"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap"`
 	ChunkProperties NullableChunkPropertiesNullable `json:"chunk_properties"`
+	OcrProperties map[string]interface{} `json:"ocr_properties"`
 	Name NullableString `json:"name"`
 	ParentId NullableInt32 `json:"parent_id"`
 	EnableAutoSync NullableBool `json:"enable_auto_sync"`
@@ -52,7 +53,7 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
@@ -71,6 +72,7 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 	this.ChunkSize = chunkSize
 	this.ChunkOverlap = chunkOverlap
 	this.ChunkProperties = chunkProperties
+	this.OcrProperties = ocrProperties
 	this.Name = name
 	this.ParentId = parentId
 	this.EnableAutoSync = enableAutoSync
@@ -524,6 +526,30 @@ func (o *UserFile) SetChunkProperties(v ChunkPropertiesNullable) {
 	o.ChunkProperties.Set(&v)
 }
 
+// GetOcrProperties returns the OcrProperties field value
+func (o *UserFile) GetOcrProperties() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.OcrProperties
+}
+
+// GetOcrPropertiesOk returns a tuple with the OcrProperties field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetOcrPropertiesOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.OcrProperties, true
+}
+
+// SetOcrProperties sets field value
+func (o *UserFile) SetOcrProperties(v map[string]interface{}) {
+	o.OcrProperties = v
+}
+
 // GetName returns the Name field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *UserFile) GetName() string {
@@ -882,6 +908,9 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["chunk_properties"] = o.ChunkProperties.Get()
+	}
+	if true {
+		toSerialize["ocr_properties"] = o.OcrProperties
 	}
 	if true {
 		toSerialize["name"] = o.Name.Get()
