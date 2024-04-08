@@ -126,6 +126,12 @@ export interface UserFile {
     'chunk_properties': ChunkPropertiesNullable | null;
     /**
      * 
+     * @type {object}
+     * @memberof UserFile
+     */
+    'ocr_properties': object;
+    /**
+     * 
      * @type {string}
      * @memberof UserFile
      */

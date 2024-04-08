@@ -45,6 +45,8 @@ module Carbon
 
     attr_accessor :chunk_properties
 
+    attr_accessor :ocr_properties
+
     attr_accessor :name
 
     attr_accessor :parent_id
@@ -89,6 +91,7 @@ module Carbon
         :'chunk_size' => :'chunk_size',
         :'chunk_overlap' => :'chunk_overlap',
         :'chunk_properties' => :'chunk_properties',
+        :'ocr_properties' => :'ocr_properties',
         :'name' => :'name',
         :'parent_id' => :'parent_id',
         :'enable_auto_sync' => :'enable_auto_sync',
@@ -129,6 +132,7 @@ module Carbon
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
         :'chunk_properties' => :'ChunkPropertiesNullable',
+        :'ocr_properties' => :'Object',
         :'name' => :'String',
         :'parent_id' => :'Integer',
         :'enable_auto_sync' => :'Boolean',
@@ -255,6 +259,10 @@ module Carbon
         self.chunk_properties = attributes[:'chunk_properties']
       end
 
+      if attributes.key?(:'ocr_properties')
+        self.ocr_properties = attributes[:'ocr_properties']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -332,6 +340,10 @@ module Carbon
         invalid_properties.push('invalid value for "sync_status", sync_status cannot be nil.')
       end
 
+      if @ocr_properties.nil?
+        invalid_properties.push('invalid value for "ocr_properties", ocr_properties cannot be nil.')
+      end
+
       if @skip_embedding_generation.nil?
         invalid_properties.push('invalid value for "skip_embedding_generation", skip_embedding_generation cannot be nil.')
       end
@@ -356,6 +368,7 @@ module Carbon
       return false if @organization_supplied_user_id.nil?
       return false if @external_file_id.nil?
       return false if @sync_status.nil?
+      return false if @ocr_properties.nil?
       return false if @skip_embedding_generation.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
@@ -384,6 +397,7 @@ module Carbon
           chunk_size == o.chunk_size &&
           chunk_overlap == o.chunk_overlap &&
           chunk_properties == o.chunk_properties &&
+          ocr_properties == o.ocr_properties &&
           name == o.name &&
           parent_id == o.parent_id &&
           enable_auto_sync == o.enable_auto_sync &&
@@ -407,7 +421,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

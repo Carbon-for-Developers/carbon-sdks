@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ChunkSize** | **NullableInt32** |  | 
 **ChunkOverlap** | **NullableInt32** |  | 
 **ChunkProperties** | [**NullableChunkPropertiesNullable**](ChunkPropertiesNullable.md) |  | 
+**OcrProperties** | **map[string]interface{}** |  | [default to {}]
 **Name** | **NullableString** |  | 
 **ParentId** | **NullableInt32** |  | 
 **EnableAutoSync** | **NullableBool** |  | 
@@ -38,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -503,6 +504,26 @@ SetChunkProperties sets ChunkProperties field to given value.
 `func (o *UserFile) UnsetChunkProperties()`
 
 UnsetChunkProperties ensures that no value is present for ChunkProperties, not even an explicit nil
+### GetOcrProperties
+
+`func (o *UserFile) GetOcrProperties() map[string]interface{}`
+
+GetOcrProperties returns the OcrProperties field if non-nil, zero value otherwise.
+
+### GetOcrPropertiesOk
+
+`func (o *UserFile) GetOcrPropertiesOk() (*map[string]interface{}, bool)`
+
+GetOcrPropertiesOk returns a tuple with the OcrProperties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOcrProperties
+
+`func (o *UserFile) SetOcrProperties(v map[string]interface{})`
+
+SetOcrProperties sets OcrProperties field to given value.
+
+
 ### GetName
 
 `func (o *UserFile) GetName() string`

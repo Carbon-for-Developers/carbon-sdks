@@ -50,6 +50,7 @@ class UserFile(
             "id",
             "chunk_properties",
             "last_sync",
+            "ocr_properties",
             "presigned_url",
             "tags",
             "sync_error_message",
@@ -258,6 +259,7 @@ class UserFile(
             @staticmethod
             def chunk_properties() -> typing.Type['ChunkPropertiesNullable']:
                 return ChunkPropertiesNullable
+            ocr_properties = schemas.DictSchema
             
             
             class name(
@@ -466,6 +468,7 @@ class UserFile(
                 "chunk_size": chunk_size,
                 "chunk_overlap": chunk_overlap,
                 "chunk_properties": chunk_properties,
+                "ocr_properties": ocr_properties,
                 "name": name,
                 "parent_id": parent_id,
                 "enable_auto_sync": enable_auto_sync,
@@ -497,6 +500,7 @@ class UserFile(
     id: MetaOapg.properties.id
     chunk_properties: 'ChunkPropertiesNullable'
     last_sync: MetaOapg.properties.last_sync
+    ocr_properties: MetaOapg.properties.ocr_properties
     presigned_url: MetaOapg.properties.presigned_url
     tags: MetaOapg.properties.tags
     sync_error_message: MetaOapg.properties.sync_error_message
@@ -562,6 +566,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["chunk_properties"]) -> 'ChunkPropertiesNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ocr_properties"]) -> MetaOapg.properties.ocr_properties: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
@@ -600,7 +607,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -657,6 +664,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["chunk_properties"]) -> 'ChunkPropertiesNullable': ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ocr_properties"]) -> MetaOapg.properties.ocr_properties: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
@@ -695,7 +705,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -719,6 +729,7 @@ class UserFile(
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         chunk_properties: 'ChunkPropertiesNullable',
         last_sync: typing.Union[MetaOapg.properties.last_sync, None, str, datetime, ],
+        ocr_properties: typing.Union[MetaOapg.properties.ocr_properties, dict, frozendict.frozendict, ],
         presigned_url: typing.Union[MetaOapg.properties.presigned_url, None, str, ],
         tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, None, ],
         sync_error_message: typing.Union[MetaOapg.properties.sync_error_message, None, str, ],
@@ -754,6 +765,7 @@ class UserFile(
             id=id,
             chunk_properties=chunk_properties,
             last_sync=last_sync,
+            ocr_properties=ocr_properties,
             presigned_url=presigned_url,
             tags=tags,
             sync_error_message=sync_error_message,
