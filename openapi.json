@@ -1337,6 +1337,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "accessToken": []
@@ -7346,6 +7347,18 @@
             ],
             "title": "Auto Sync Enabled Sources",
             "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources"
+          },
+          "file_upload_limit": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Upload Limit",
+            "description": "Custom file upload limit for the user. If set, then the user will not be allowed to \n        upload more files than this limit"
           }
         },
         "type": "object",
@@ -7603,6 +7616,18 @@
             "title": "Ocr Properties",
             "default": {}
           },
+          "ocr_job_started_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Job Started At"
+          },
           "name": {
             "anyOf": [
               {
@@ -7738,6 +7763,7 @@
           "chunk_overlap",
           "chunk_properties",
           "ocr_properties",
+          "ocr_job_started_at",
           "name",
           "parent_id",
           "enable_auto_sync",
