@@ -39,6 +39,8 @@ class RequiredUserResponse(TypedDict):
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+    custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class OptionalUserResponse(TypedDict, total=False):
     pass
 

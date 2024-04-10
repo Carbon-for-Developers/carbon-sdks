@@ -24,5 +24,8 @@ class OptionalUpdateUsersInput(TypedDict, total=False):
     # List of data source types to enable auto sync for. Empty array will remove all sources          and the string \"ALL\" will enable it for all data sources
     auto_sync_enabled_sources: typing.Union[typing.List[DataSourceType], str]
 
+    # Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+    file_upload_limit: typing.Optional[int]
+
 class UpdateUsersInput(RequiredUpdateUsersInput, OptionalUpdateUsersInput):
     pass

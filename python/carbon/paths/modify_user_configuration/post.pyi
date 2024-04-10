@@ -321,6 +321,7 @@ class BaseApi(api_client.Api):
 class ToggleUserFeaturesRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="users")
     async def atoggle_user_features(
         self,
         configuration_key_name: str,
@@ -340,6 +341,7 @@ class ToggleUserFeaturesRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="users")
     def toggle_user_features(
         self,
         configuration_key_name: str,
@@ -358,6 +360,7 @@ class ToggleUserFeaturesRaw(BaseApi):
 
 class ToggleUserFeatures(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="users")
     async def atoggle_user_features(
         self,
         configuration_key_name: str,
@@ -375,6 +378,7 @@ class ToggleUserFeatures(BaseApi):
         return api_client.construct_model_instance(GenericSuccessResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="users")
     def toggle_user_features(
         self,
         configuration_key_name: str,
@@ -393,6 +397,7 @@ class ToggleUserFeatures(BaseApi):
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="users")
     async def apost(
         self,
         configuration_key_name: str,
@@ -412,6 +417,7 @@ class ApiForpost(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="users")
     def post(
         self,
         configuration_key_name: str,

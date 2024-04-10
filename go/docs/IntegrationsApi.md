@@ -900,6 +900,7 @@ func main() {
     gmailSyncInput.SetPrependFilenameToChunks(false)
     gmailSyncInput.SetDataSourceId(null)
     gmailSyncInput.SetRequestId("null")
+    gmailSyncInput.SetSyncAttachments(false)
     
     request := client.IntegrationsApi.SyncGmail(
         gmailSyncInput,
@@ -960,6 +961,7 @@ func main() {
     outlookSyncInput.SetPrependFilenameToChunks(false)
     outlookSyncInput.SetDataSourceId(null)
     outlookSyncInput.SetRequestId("null")
+    outlookSyncInput.SetSyncAttachments(false)
     
     request := client.IntegrationsApi.SyncOutlook(
         outlookSyncInput,

@@ -28,13 +28,14 @@ type UserResponse struct {
 	NumTokensSynced int32 `json:"num_tokens_synced"`
 	UniqueFileTags []map[string]interface{} `json:"unique_file_tags"`
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
+	CustomLimits map[string]interface{} `json:"custom_limits"`
 }
 
 // NewUserResponse instantiates a new UserResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}) *UserResponse {
+func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}) *UserResponse {
 	this := UserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -47,6 +48,7 @@ func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId 
 	this.NumTokensSynced = numTokensSynced
 	this.UniqueFileTags = uniqueFileTags
 	this.EnabledFeatures = enabledFeatures
+	this.CustomLimits = customLimits
 	return &this
 }
 
@@ -326,6 +328,30 @@ func (o *UserResponse) SetEnabledFeatures(v map[string]interface{}) {
 	o.EnabledFeatures = v
 }
 
+// GetCustomLimits returns the CustomLimits field value
+func (o *UserResponse) GetCustomLimits() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.CustomLimits
+}
+
+// GetCustomLimitsOk returns a tuple with the CustomLimits field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetCustomLimitsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.CustomLimits, true
+}
+
+// SetCustomLimits sets field value
+func (o *UserResponse) SetCustomLimits(v map[string]interface{}) {
+	o.CustomLimits = v
+}
+
 func (o UserResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -360,6 +386,9 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnabledFeatures != nil {
 		toSerialize["enabled_features"] = o.EnabledFeatures
+	}
+	if true {
+		toSerialize["custom_limits"] = o.CustomLimits
 	}
 	return json.Marshal(toSerialize)
 }

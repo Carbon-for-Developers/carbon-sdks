@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **NumTokensSynced** | **int32** |  | 
 **UniqueFileTags** | **[]map[string]interface{}** |  | 
 **EnabledFeatures** | **map[string]interface{}** |  | 
+**CustomLimits** | **map[string]interface{}** |  | [default to {}]
 
 ## Methods
 
 ### NewUserResponse
 
-`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, ) *UserResponse`
+`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, ) *UserResponse`
 
 NewUserResponse instantiates a new UserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -275,6 +276,26 @@ SetEnabledFeatures sets EnabledFeatures field to given value.
 `func (o *UserResponse) UnsetEnabledFeatures()`
 
 UnsetEnabledFeatures ensures that no value is present for EnabledFeatures, not even an explicit nil
+### GetCustomLimits
+
+`func (o *UserResponse) GetCustomLimits() map[string]interface{}`
+
+GetCustomLimits returns the CustomLimits field if non-nil, zero value otherwise.
+
+### GetCustomLimitsOk
+
+`func (o *UserResponse) GetCustomLimitsOk() (*map[string]interface{}, bool)`
+
+GetCustomLimitsOk returns a tuple with the CustomLimits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomLimits
+
+`func (o *UserResponse) SetCustomLimits(v map[string]interface{})`
+
+SetCustomLimits sets CustomLimits field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

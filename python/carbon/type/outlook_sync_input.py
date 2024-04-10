@@ -40,5 +40,7 @@ class OptionalOutlookSyncInput(TypedDict, total=False):
 
     request_id: typing.Optional[str]
 
+    sync_attachments: typing.Optional[bool]
+
 class OutlookSyncInput(RequiredOutlookSyncInput, OptionalOutlookSyncInput):
     pass

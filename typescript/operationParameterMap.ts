@@ -748,6 +748,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'request_id'
             },
+            {
+                name: 'sync_attachments'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -784,6 +787,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'request_id'
+            },
+            {
+                name: 'sync_attachments'
             },
         ]
     },
@@ -899,6 +905,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'auto_sync_enabled_sources'
+            },
+            {
+                name: 'file_upload_limit'
             },
         ]
     },

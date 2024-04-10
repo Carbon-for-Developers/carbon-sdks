@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 **RequestId** | Pointer to **NullableString** |  | [optional] 
+**SyncAttachments** | Pointer to **NullableBool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -395,6 +396,41 @@ HasRequestId returns a boolean if a field has been set.
 `func (o *OutlookSyncInput) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetSyncAttachments
+
+`func (o *OutlookSyncInput) GetSyncAttachments() bool`
+
+GetSyncAttachments returns the SyncAttachments field if non-nil, zero value otherwise.
+
+### GetSyncAttachmentsOk
+
+`func (o *OutlookSyncInput) GetSyncAttachmentsOk() (*bool, bool)`
+
+GetSyncAttachmentsOk returns a tuple with the SyncAttachments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncAttachments
+
+`func (o *OutlookSyncInput) SetSyncAttachments(v bool)`
+
+SetSyncAttachments sets SyncAttachments field to given value.
+
+### HasSyncAttachments
+
+`func (o *OutlookSyncInput) HasSyncAttachments() bool`
+
+HasSyncAttachments returns a boolean if a field has been set.
+
+### SetSyncAttachmentsNil
+
+`func (o *OutlookSyncInput) SetSyncAttachmentsNil(b bool)`
+
+ SetSyncAttachmentsNil sets the value for SyncAttachments to be an explicit nil
+
+### UnsetSyncAttachments
+`func (o *OutlookSyncInput) UnsetSyncAttachments()`
+
+UnsetSyncAttachments ensures that no value is present for SyncAttachments, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

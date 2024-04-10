@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.18-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.18)
+[![npm](https://img.shields.io/badge/npm-v0.1.19-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.19)
 
 </div>
 
@@ -1906,6 +1906,7 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  sync_attachments: false,
 });
 ```
 
@@ -1930,6 +1931,8 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2019,6 +2022,7 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
+  sync_attachments: false,
 });
 ```
 
@@ -2045,6 +2049,8 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 ##### data_source_id: `number`<a id="data_source_id-number"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2310,6 +2316,10 @@ const updateUsersResponse = await carbon.users.updateUsers({
 List of organization supplied user IDs
 
 ##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./models/auto-sync-enabled-sources-property.ts)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertymodelsauto-sync-enabled-sources-propertyts"></a>
+
+##### file_upload_limit: `number`<a id="file_upload_limit-number"></a>
+
+Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
 
 #### 🔄 Return<a id="🔄-return"></a>
 

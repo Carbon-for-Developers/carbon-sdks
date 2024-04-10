@@ -135,6 +135,12 @@ export interface UserFile {
      * @type {string}
      * @memberof UserFile
      */
+    'ocr_job_started_at': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserFile
+     */
     'name': string | null;
     /**
      * 

@@ -19,6 +19,8 @@ type UpdateUsersInput struct {
 	// List of organization supplied user IDs
 	CustomerIds []string `json:"customer_ids"`
 	AutoSyncEnabledSources NullableAutoSyncEnabledSourcesProperty `json:"auto_sync_enabled_sources,omitempty"`
+	// Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+	FileUploadLimit NullableInt32 `json:"file_upload_limit,omitempty"`
 }
 
 // NewUpdateUsersInput instantiates a new UpdateUsersInput object
@@ -105,6 +107,48 @@ func (o *UpdateUsersInput) UnsetAutoSyncEnabledSources() {
 	o.AutoSyncEnabledSources.Unset()
 }
 
+// GetFileUploadLimit returns the FileUploadLimit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetFileUploadLimit() int32 {
+	if o == nil || isNil(o.FileUploadLimit.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.FileUploadLimit.Get()
+}
+
+// GetFileUploadLimitOk returns a tuple with the FileUploadLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetFileUploadLimitOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileUploadLimit.Get(), o.FileUploadLimit.IsSet()
+}
+
+// HasFileUploadLimit returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasFileUploadLimit() bool {
+	if o != nil && o.FileUploadLimit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileUploadLimit gets a reference to the given NullableInt32 and assigns it to the FileUploadLimit field.
+func (o *UpdateUsersInput) SetFileUploadLimit(v int32) {
+	o.FileUploadLimit.Set(&v)
+}
+// SetFileUploadLimitNil sets the value for FileUploadLimit to be an explicit nil
+func (o *UpdateUsersInput) SetFileUploadLimitNil() {
+	o.FileUploadLimit.Set(nil)
+}
+
+// UnsetFileUploadLimit ensures that no value is present for FileUploadLimit, not even an explicit nil
+func (o *UpdateUsersInput) UnsetFileUploadLimit() {
+	o.FileUploadLimit.Unset()
+}
+
 func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -112,6 +156,9 @@ func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoSyncEnabledSources.IsSet() {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources.Get()
+	}
+	if o.FileUploadLimit.IsSet() {
+		toSerialize["file_upload_limit"] = o.FileUploadLimit.Get()
 	}
 	return json.Marshal(toSerialize)
 }

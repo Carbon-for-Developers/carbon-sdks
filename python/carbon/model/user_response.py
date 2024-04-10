@@ -34,6 +34,7 @@ class UserResponse(
     class MetaOapg:
         required = {
             "num_characters_synced",
+            "custom_limits",
             "updated_at",
             "num_tokens_synced",
             "organization_id",
@@ -106,6 +107,7 @@ class UserResponse(
                         _configuration=_configuration,
                         **kwargs,
                     )
+            custom_limits = schemas.DictSchema
             __annotations__ = {
                 "id": id,
                 "organization_id": organization_id,
@@ -118,9 +120,11 @@ class UserResponse(
                 "num_tokens_synced": num_tokens_synced,
                 "unique_file_tags": unique_file_tags,
                 "enabled_features": enabled_features,
+                "custom_limits": custom_limits,
             }
     
     num_characters_synced: MetaOapg.properties.num_characters_synced
+    custom_limits: MetaOapg.properties.custom_limits
     updated_at: MetaOapg.properties.updated_at
     num_tokens_synced: MetaOapg.properties.num_tokens_synced
     organization_id: MetaOapg.properties.organization_id
@@ -166,9 +170,12 @@ class UserResponse(
     def __getitem__(self, name: typing_extensions.Literal["enabled_features"]) -> MetaOapg.properties.enabled_features: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -207,9 +214,12 @@ class UserResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["enabled_features"]) -> MetaOapg.properties.enabled_features: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -217,6 +227,7 @@ class UserResponse(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         num_characters_synced: typing.Union[MetaOapg.properties.num_characters_synced, decimal.Decimal, int, ],
+        custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         num_tokens_synced: typing.Union[MetaOapg.properties.num_tokens_synced, decimal.Decimal, int, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
@@ -234,6 +245,7 @@ class UserResponse(
             cls,
             *args,
             num_characters_synced=num_characters_synced,
+            custom_limits=custom_limits,
             updated_at=updated_at,
             num_tokens_synced=num_tokens_synced,
             organization_id=organization_id,

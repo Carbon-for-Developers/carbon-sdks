@@ -30,5 +30,11 @@ export interface UpdateUsersInput {
      * @memberof UpdateUsersInput
      */
     'auto_sync_enabled_sources'?: AutoSyncEnabledSourcesProperty | null;
+    /**
+     * Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+     * @type {number}
+     * @memberof UpdateUsersInput
+     */
+    'file_upload_limit'?: number | null;
 }
 

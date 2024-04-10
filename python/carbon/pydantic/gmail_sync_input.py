@@ -38,6 +38,8 @@ class GmailSyncInput(BaseModel):
 
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
+    sync_attachments: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_attachments')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

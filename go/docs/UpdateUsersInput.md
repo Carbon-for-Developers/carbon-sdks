@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerIds** | **[]string** | List of organization supplied user IDs | 
 **AutoSyncEnabledSources** | Pointer to [**NullableAutoSyncEnabledSourcesProperty**](AutoSyncEnabledSourcesProperty.md) |  | [optional] 
+**FileUploadLimit** | Pointer to **NullableInt32** | Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit | [optional] 
 
 ## Methods
 
@@ -81,6 +82,41 @@ HasAutoSyncEnabledSources returns a boolean if a field has been set.
 `func (o *UpdateUsersInput) UnsetAutoSyncEnabledSources()`
 
 UnsetAutoSyncEnabledSources ensures that no value is present for AutoSyncEnabledSources, not even an explicit nil
+### GetFileUploadLimit
+
+`func (o *UpdateUsersInput) GetFileUploadLimit() int32`
+
+GetFileUploadLimit returns the FileUploadLimit field if non-nil, zero value otherwise.
+
+### GetFileUploadLimitOk
+
+`func (o *UpdateUsersInput) GetFileUploadLimitOk() (*int32, bool)`
+
+GetFileUploadLimitOk returns a tuple with the FileUploadLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileUploadLimit
+
+`func (o *UpdateUsersInput) SetFileUploadLimit(v int32)`
+
+SetFileUploadLimit sets FileUploadLimit field to given value.
+
+### HasFileUploadLimit
+
+`func (o *UpdateUsersInput) HasFileUploadLimit() bool`
+
+HasFileUploadLimit returns a boolean if a field has been set.
+
+### SetFileUploadLimitNil
+
+`func (o *UpdateUsersInput) SetFileUploadLimitNil(b bool)`
+
+ SetFileUploadLimitNil sets the value for FileUploadLimit to be an explicit nil
+
+### UnsetFileUploadLimit
+`func (o *UpdateUsersInput) UnsetFileUploadLimit()`
+
+UnsetFileUploadLimit ensures that no value is present for FileUploadLimit, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

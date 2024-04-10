@@ -27,6 +27,7 @@ type OutlookSyncInput struct {
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
 	RequestId NullableString `json:"request_id,omitempty"`
+	SyncAttachments NullableBool `json:"sync_attachments,omitempty"`
 }
 
 // NewOutlookSyncInput instantiates a new OutlookSyncInput object
@@ -48,6 +49,8 @@ func NewOutlookSyncInput(filters map[string]interface{}) *OutlookSyncInput {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var syncAttachments bool = false
+	this.SyncAttachments = *NewNullableBool(&syncAttachments)
 	return &this
 }
 
@@ -68,6 +71,8 @@ func NewOutlookSyncInputWithDefaults() *OutlookSyncInput {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var syncAttachments bool = false
+	this.SyncAttachments = *NewNullableBool(&syncAttachments)
 	return &this
 }
 
@@ -496,6 +501,48 @@ func (o *OutlookSyncInput) UnsetRequestId() {
 	o.RequestId.Unset()
 }
 
+// GetSyncAttachments returns the SyncAttachments field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OutlookSyncInput) GetSyncAttachments() bool {
+	if o == nil || isNil(o.SyncAttachments.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncAttachments.Get()
+}
+
+// GetSyncAttachmentsOk returns a tuple with the SyncAttachments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OutlookSyncInput) GetSyncAttachmentsOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.SyncAttachments.Get(), o.SyncAttachments.IsSet()
+}
+
+// HasSyncAttachments returns a boolean if a field has been set.
+func (o *OutlookSyncInput) HasSyncAttachments() bool {
+	if o != nil && o.SyncAttachments.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncAttachments gets a reference to the given NullableBool and assigns it to the SyncAttachments field.
+func (o *OutlookSyncInput) SetSyncAttachments(v bool) {
+	o.SyncAttachments.Set(&v)
+}
+// SetSyncAttachmentsNil sets the value for SyncAttachments to be an explicit nil
+func (o *OutlookSyncInput) SetSyncAttachmentsNil() {
+	o.SyncAttachments.Set(nil)
+}
+
+// UnsetSyncAttachments ensures that no value is present for SyncAttachments, not even an explicit nil
+func (o *OutlookSyncInput) UnsetSyncAttachments() {
+	o.SyncAttachments.Unset()
+}
+
 func (o OutlookSyncInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -530,6 +577,9 @@ func (o OutlookSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestId.IsSet() {
 		toSerialize["request_id"] = o.RequestId.Get()
+	}
+	if o.SyncAttachments.IsSet() {
+		toSerialize["sync_attachments"] = o.SyncAttachments.Get()
 	}
 	return json.Marshal(toSerialize)
 }

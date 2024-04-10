@@ -2266,6 +2266,7 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--user
   /modify_user_configuration:
     post:
+      deprecated: true
       operationId: Users_toggleUserFeatures
       requestBody:
         content:
@@ -4893,6 +4894,7 @@ components:
         prepend_filename_to_chunks: false
         generate_sparse_vectors: false
         embedding_model: null
+        sync_attachments: false
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
@@ -4961,6 +4963,14 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_attachments:
+          default: false
+          example: false
+          nullable: true
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GmailSyncInput-properties-sync_attachments
       required:
       - filters
       title: GmailSyncInput
@@ -5943,6 +5953,7 @@ components:
         folder: Inbox
         generate_sparse_vectors: false
         embedding_model: null
+        sync_attachments: false
         filters: "{}"
         chunk_overlap: 20
         skip_embedding_generation: false
@@ -6019,6 +6030,14 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_attachments:
+          default: false
+          example: false
+          nullable: true
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OutlookSyncInput-properties-sync_attachments
       required:
       - filters
       title: OutlookSyncInput
@@ -6861,6 +6880,7 @@ components:
         - customer_ids
         - customer_ids
         - customer_ids
+        file_upload_limit: 0
         auto_sync_enabled_sources: null
       properties:
         customer_ids:
@@ -6872,6 +6892,12 @@ components:
           type: array
         auto_sync_enabled_sources:
           $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
+        file_upload_limit:
+          description: "Custom file upload limit for the user. If set, then the user\
+            \ will not be allowed to \n        upload more files than this limit"
+          nullable: true
+          title: File Upload Limit
+          type: integer
       required:
       - customer_ids
       title: UpdateUsersInput
@@ -6979,6 +7005,7 @@ components:
         organization_supplied_user_id: organization_supplied_user_id
         external_url: external_url
         source_created_at: 2000-01-23T04:56:07.000+00:00
+        ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
         generate_sparse_vectors: true
         enable_auto_sync: true
@@ -7073,6 +7100,11 @@ components:
           type: object
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties
+        ocr_job_started_at:
+          format: date-time
+          nullable: true
+          title: Ocr Job Started At
+          type: string
         name:
           nullable: true
           title: Name
@@ -7137,6 +7169,7 @@ components:
       - id
       - last_sync
       - name
+      - ocr_job_started_at
       - ocr_properties
       - organization_id
       - organization_supplied_user_id
@@ -7172,6 +7205,7 @@ components:
           organization_supplied_user_id: organization_supplied_user_id
           external_url: external_url
           source_created_at: 2000-01-23T04:56:07.000+00:00
+          ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           generate_sparse_vectors: true
           enable_auto_sync: true
@@ -7213,6 +7247,7 @@ components:
           organization_supplied_user_id: organization_supplied_user_id
           external_url: external_url
           source_created_at: 2000-01-23T04:56:07.000+00:00
+          ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           generate_sparse_vectors: true
           enable_auto_sync: true
@@ -7269,6 +7304,7 @@ components:
       example:
         num_characters_synced: 5
         updated_at: 2000-01-23T04:56:07.000+00:00
+        custom_limits: {}
         num_tokens_synced: 5
         organization_id: 6
         unique_file_tags:
@@ -7321,8 +7357,16 @@ components:
           nullable: true
           title: Enabled Features
           type: object
+        custom_limits:
+          default: {}
+          example: {}
+          title: Custom Limits
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserResponse-properties-custom_limits
       required:
       - created_at
+      - custom_limits
       - deleted_at
       - enabled_features
       - id
@@ -8293,6 +8337,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GmailSyncInput-properties-sync_attachments:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-chunk_size:
       example: 1500
       type: number
@@ -8367,6 +8415,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OutlookSyncInput-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OutlookSyncInput-properties-sync_attachments:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -8586,6 +8638,11 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UserResponse-properties-custom_limits:
       example: {}
       properties: {}
       type: object
@@ -9319,6 +9376,14 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_attachments:
+          default: false
+          example: false
+          nullable: true
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GmailSyncInput-properties-sync_attachments
       required:
       - filters
       type: object
@@ -9459,6 +9524,14 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_attachments:
+          default: false
+          example: false
+          nullable: true
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OutlookSyncInput-properties-sync_attachments
       required:
       - filters
       type: object
@@ -10011,6 +10084,12 @@ components:
             \ it for all data sources"
           nullable: true
           title: Auto Sync Enabled Sources
+        file_upload_limit:
+          description: "Custom file upload limit for the user. If set, then the user\
+            \ will not be allowed to \n        upload more files than this limit"
+          nullable: true
+          title: File Upload Limit
+          type: integer
       required:
       - customer_ids
       type: object
