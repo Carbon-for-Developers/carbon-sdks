@@ -31,6 +31,8 @@ module Carbon
 
     attr_accessor :request_id
 
+    attr_accessor :sync_attachments
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +45,8 @@ module Carbon
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
         :'data_source_id' => :'data_source_id',
-        :'request_id' => :'request_id'
+        :'request_id' => :'request_id',
+        :'sync_attachments' => :'sync_attachments'
       }
     end
 
@@ -64,7 +67,8 @@ module Carbon
         :'generate_sparse_vectors' => :'Boolean',
         :'prepend_filename_to_chunks' => :'Boolean',
         :'data_source_id' => :'Integer',
-        :'request_id' => :'String'
+        :'request_id' => :'String',
+        :'sync_attachments' => :'Boolean'
       }
     end
 
@@ -78,7 +82,8 @@ module Carbon
         :'generate_sparse_vectors',
         :'prepend_filename_to_chunks',
         :'data_source_id',
-        :'request_id'
+        :'request_id',
+        :'sync_attachments'
       ])
     end
 
@@ -148,6 +153,12 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       end
+
+      if attributes.key?(:'sync_attachments')
+        self.sync_attachments = attributes[:'sync_attachments']
+      else
+        self.sync_attachments = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -182,7 +193,8 @@ module Carbon
           generate_sparse_vectors == o.generate_sparse_vectors &&
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
           data_source_id == o.data_source_id &&
-          request_id == o.request_id
+          request_id == o.request_id &&
+          sync_attachments == o.sync_attachments
     end
 
     # @see the `==` method
@@ -194,7 +206,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id].hash
+      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id, sync_attachments].hash
     end
 
     # Builds the object from hash

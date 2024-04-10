@@ -83,5 +83,11 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'enabled_features': object | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'custom_limits': object;
 }
 

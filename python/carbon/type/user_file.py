@@ -57,6 +57,8 @@ class RequiredUserFile(TypedDict):
 
     ocr_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    ocr_job_started_at: typing.Optional[datetime]
+
     name: typing.Optional[str]
 
     parent_id: typing.Optional[int]

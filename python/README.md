@@ -2107,6 +2107,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
     prepend_filename_to_chunks=False,
     data_source_id=1,
     request_id="string_example",
+    sync_attachments=False,
 )
 ```
 
@@ -2131,6 +2132,8 @@ sync_gmail_response = carbon.integrations.sync_gmail(
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2225,6 +2228,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
     prepend_filename_to_chunks=False,
     data_source_id=1,
     request_id="string_example",
+    sync_attachments=False,
 )
 ```
 
@@ -2251,6 +2255,8 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 ##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2524,6 +2530,7 @@ Update Users
 update_users_response = carbon.users.update_users(
     customer_ids=["string_example"],
     auto_sync_enabled_sources=["string_example"],
+    file_upload_limit=1,
 )
 ```
 
@@ -2535,6 +2542,10 @@ update_users_response = carbon.users.update_users(
 
 
 List of data source types to enable auto sync for. Empty array will remove all sources          and the string \\\"ALL\\\" will enable it for all data sources
+
+##### file_upload_limit: `Optional[int]`<a id="file_upload_limit-optionalint"></a>
+
+Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

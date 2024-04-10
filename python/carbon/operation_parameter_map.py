@@ -742,6 +742,9 @@ operation_parameter_map = {
             {
                 'name': 'request_id'
             },
+            {
+                'name': 'sync_attachments'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -778,6 +781,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'request_id'
+            },
+            {
+                'name': 'sync_attachments'
             },
         ]
     },
@@ -893,6 +899,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'auto_sync_enabled_sources'
+            },
+            {
+                'name': 'file_upload_limit'
             },
         ]
     },

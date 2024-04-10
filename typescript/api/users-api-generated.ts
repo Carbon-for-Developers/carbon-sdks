@@ -146,6 +146,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Toggle User Features
          * @param {ModifyUserConfigurationInput} modifyUserConfigurationInput 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         toggleUserFeatures: async (modifyUserConfigurationInput: ModifyUserConfigurationInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -284,6 +285,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary Toggle User Features
          * @param {UsersApiToggleUserFeaturesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
@@ -304,7 +306,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
         async updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const updateUsersInput: UpdateUsersInput = {
                 customer_ids: requestParameters.customer_ids,
-                auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources
+                auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources,
+                file_upload_limit: requestParameters.file_upload_limit
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -344,6 +347,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @summary Toggle User Features
          * @param {UsersApiToggleUserFeaturesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
@@ -434,6 +438,7 @@ export class UsersApiGenerated extends BaseAPI {
      * @summary Toggle User Features
      * @param {UsersApiToggleUserFeaturesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof UsersApiGenerated
      */

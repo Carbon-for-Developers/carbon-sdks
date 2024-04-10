@@ -47,6 +47,8 @@ module Carbon
 
     attr_accessor :ocr_properties
 
+    attr_accessor :ocr_job_started_at
+
     attr_accessor :name
 
     attr_accessor :parent_id
@@ -92,6 +94,7 @@ module Carbon
         :'chunk_overlap' => :'chunk_overlap',
         :'chunk_properties' => :'chunk_properties',
         :'ocr_properties' => :'ocr_properties',
+        :'ocr_job_started_at' => :'ocr_job_started_at',
         :'name' => :'name',
         :'parent_id' => :'parent_id',
         :'enable_auto_sync' => :'enable_auto_sync',
@@ -133,6 +136,7 @@ module Carbon
         :'chunk_overlap' => :'Integer',
         :'chunk_properties' => :'ChunkPropertiesNullable',
         :'ocr_properties' => :'Object',
+        :'ocr_job_started_at' => :'Time',
         :'name' => :'String',
         :'parent_id' => :'Integer',
         :'enable_auto_sync' => :'Boolean',
@@ -162,6 +166,7 @@ module Carbon
         :'chunk_size',
         :'chunk_overlap',
         :'chunk_properties',
+        :'ocr_job_started_at',
         :'name',
         :'parent_id',
         :'enable_auto_sync',
@@ -261,6 +266,10 @@ module Carbon
 
       if attributes.key?(:'ocr_properties')
         self.ocr_properties = attributes[:'ocr_properties']
+      end
+
+      if attributes.key?(:'ocr_job_started_at')
+        self.ocr_job_started_at = attributes[:'ocr_job_started_at']
       end
 
       if attributes.key?(:'name')
@@ -398,6 +407,7 @@ module Carbon
           chunk_overlap == o.chunk_overlap &&
           chunk_properties == o.chunk_properties &&
           ocr_properties == o.ocr_properties &&
+          ocr_job_started_at == o.ocr_job_started_at &&
           name == o.name &&
           parent_id == o.parent_id &&
           enable_auto_sync == o.enable_auto_sync &&
@@ -421,7 +431,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

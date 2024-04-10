@@ -290,6 +290,8 @@ ToggleUserFeatures Toggle User Features
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param modifyUserConfigurationInput
  @return UsersApiToggleUserFeaturesRequest
+
+Deprecated
 */
 func (a *UsersApiService) ToggleUserFeatures(modifyUserConfigurationInput ModifyUserConfigurationInput) UsersApiToggleUserFeaturesRequest {
 	return UsersApiToggleUserFeaturesRequest{
@@ -301,6 +303,7 @@ func (a *UsersApiService) ToggleUserFeatures(modifyUserConfigurationInput Modify
 
 // Execute executes the request
 //  @return GenericSuccessResponse
+// Deprecated
 func (a *UsersApiService) ToggleUserFeaturesExecute(r UsersApiToggleUserFeaturesRequest) (*GenericSuccessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

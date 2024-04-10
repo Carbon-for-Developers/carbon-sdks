@@ -300,12 +300,14 @@ module Carbon
     #
     # @param customer_ids [Array<String>] List of organization supplied user IDs
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
+    # @param file_upload_limit [Integer] Custom file upload limit for the user. If set, then the user will not be allowed to upload more files than this limit
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, extra: {})
+    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, file_upload_limit: SENTINEL, extra: {})
       _body = {}
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
+      _body[:file_upload_limit] = file_upload_limit if file_upload_limit != SENTINEL
       update_users_input = _body
       api_response = update_users_with_http_info_impl(update_users_input, extra)
       api_response.data
@@ -315,12 +317,14 @@ module Carbon
     #
     # @param customer_ids [Array<String>] List of organization supplied user IDs
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
+    # @param file_upload_limit [Integer] Custom file upload limit for the user. If set, then the user will not be allowed to upload more files than this limit
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, extra: {})
+    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, file_upload_limit: SENTINEL, extra: {})
       _body = {}
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
+      _body[:file_upload_limit] = file_upload_limit if file_upload_limit != SENTINEL
       update_users_input = _body
       update_users_with_http_info_impl(update_users_input, extra)
     end

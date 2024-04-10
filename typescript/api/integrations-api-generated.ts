@@ -1375,7 +1375,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 data_source_id: requestParameters.data_source_id,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                sync_attachments: requestParameters.sync_attachments
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(gmailSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1399,7 +1400,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 data_source_id: requestParameters.data_source_id,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                sync_attachments: requestParameters.sync_attachments
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

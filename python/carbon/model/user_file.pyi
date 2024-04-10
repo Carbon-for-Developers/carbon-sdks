@@ -44,6 +44,7 @@ class UserFile(
             "organization_supplied_user_id",
             "external_url",
             "source_created_at",
+            "ocr_job_started_at",
             "updated_at",
             "generate_sparse_vectors",
             "enable_auto_sync",
@@ -262,6 +263,31 @@ class UserFile(
             ocr_properties = schemas.DictSchema
             
             
+            class ocr_job_started_at(
+                schemas.DateTimeBase,
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                class MetaOapg:
+                    format = 'date-time'
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, datetime, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'ocr_job_started_at':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
             class name(
                 schemas.StrBase,
                 schemas.NoneBase,
@@ -469,6 +495,7 @@ class UserFile(
                 "chunk_overlap": chunk_overlap,
                 "chunk_properties": chunk_properties,
                 "ocr_properties": ocr_properties,
+                "ocr_job_started_at": ocr_job_started_at,
                 "name": name,
                 "parent_id": parent_id,
                 "enable_auto_sync": enable_auto_sync,
@@ -494,6 +521,7 @@ class UserFile(
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
     external_url: MetaOapg.properties.external_url
     source_created_at: MetaOapg.properties.source_created_at
+    ocr_job_started_at: MetaOapg.properties.ocr_job_started_at
     updated_at: MetaOapg.properties.updated_at
     generate_sparse_vectors: MetaOapg.properties.generate_sparse_vectors
     enable_auto_sync: MetaOapg.properties.enable_auto_sync
@@ -569,6 +597,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["ocr_properties"]) -> MetaOapg.properties.ocr_properties: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ocr_job_started_at"]) -> MetaOapg.properties.ocr_job_started_at: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
@@ -607,7 +638,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -667,6 +698,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["ocr_properties"]) -> MetaOapg.properties.ocr_properties: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ocr_job_started_at"]) -> MetaOapg.properties.ocr_job_started_at: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
@@ -705,7 +739,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -723,6 +757,7 @@ class UserFile(
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
         external_url: typing.Union[MetaOapg.properties.external_url, None, str, ],
         source_created_at: typing.Union[MetaOapg.properties.source_created_at, None, str, datetime, ],
+        ocr_job_started_at: typing.Union[MetaOapg.properties.ocr_job_started_at, None, str, datetime, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, ],
         enable_auto_sync: typing.Union[MetaOapg.properties.enable_auto_sync, None, bool, ],
@@ -759,6 +794,7 @@ class UserFile(
             organization_supplied_user_id=organization_supplied_user_id,
             external_url=external_url,
             source_created_at=source_created_at,
+            ocr_job_started_at=ocr_job_started_at,
             updated_at=updated_at,
             generate_sparse_vectors=generate_sparse_vectors,
             enable_auto_sync=enable_auto_sync,

@@ -1888,6 +1888,7 @@ result = carbon.integrations.sync_gmail(
   prepend_filename_to_chunks: false,
   data_source_id: 1,
   request_id: "string_example",
+  sync_attachments: false,
 )
 p result
 ```
@@ -1904,6 +1905,7 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1995,6 +1997,7 @@ result = carbon.integrations.sync_outlook(
   prepend_filename_to_chunks: false,
   data_source_id: 1,
   request_id: "string_example",
+  sync_attachments: false,
 )
 p result
 ```
@@ -2012,6 +2015,7 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2261,6 +2265,7 @@ result = carbon.users.update_users(
   auto_sync_enabled_sources: [
         "string_example"
     ],
+  file_upload_limit: 1,
 )
 p result
 ```
@@ -2271,6 +2276,10 @@ p result
 List of organization supplied user IDs
 
 ##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./lib/carbon_ruby_sdk/models/auto_sync_enabled_sources_property.rb)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertylibcarbon_ruby_sdkmodelsauto_sync_enabled_sources_propertyrb"></a>
+##### file_upload_limit: `Integer`<a id="file_upload_limit-integer"></a>
+Custom file upload limit for the user. If set, then the user will not be allowed
+to upload more files than this limit
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

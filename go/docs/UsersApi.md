@@ -105,6 +105,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.NumTokensSynced`: %v\n", resp.NumTokensSynced)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.UniqueFileTags`: %v\n", resp.UniqueFileTags)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.EnabledFeatures`: %v\n", resp.EnabledFeatures)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", resp.CustomLimits)
 }
 ```
 
@@ -188,6 +189,7 @@ func main() {
         null,
     )
     updateUsersInput.SetAutoSyncEnabledSources(autoSyncEnabledSources)
+    updateUsersInput.SetFileUploadLimit(null)
     
     request := client.UsersApi.UpdateUsers(
         updateUsersInput,

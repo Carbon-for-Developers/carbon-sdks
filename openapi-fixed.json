@@ -1460,7 +1460,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/delete_users": {
@@ -4458,6 +4459,12 @@
             "title": "Request Id",
             "type": "string",
             "nullable": true
+          },
+          "sync_attachments": {
+            "title": "Sync Attachments",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -5444,6 +5451,12 @@
             "title": "Request Id",
             "type": "string",
             "nullable": true
+          },
+          "sync_attachments": {
+            "title": "Sync Attachments",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -6276,6 +6289,12 @@
               }
             ],
             "nullable": true
+          },
+          "file_upload_limit": {
+            "title": "File Upload Limit",
+            "description": "Custom file upload limit for the user. If set, then the user will not be allowed to \n        upload more files than this limit",
+            "type": "integer",
+            "nullable": true
           }
         },
         "type": "object",
@@ -6442,6 +6461,12 @@
             "default": {
             }
           },
+          "ocr_job_started_at": {
+            "title": "Ocr Job Started At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
           "name": {
             "title": "Name",
             "type": "string",
@@ -6523,6 +6548,7 @@
           "chunk_overlap",
           "chunk_properties",
           "ocr_properties",
+          "ocr_job_started_at",
           "name",
           "parent_id",
           "enable_auto_sync",
@@ -6625,6 +6651,12 @@
             "title": "Enabled Features",
             "type": "object",
             "nullable": true
+          },
+          "custom_limits": {
+            "title": "Custom Limits",
+            "type": "object",
+            "default": {
+            }
           }
         },
         "type": "object",
@@ -6639,7 +6671,8 @@
           "num_characters_synced",
           "num_tokens_synced",
           "unique_file_tags",
-          "enabled_features"
+          "enabled_features",
+          "custom_limits"
         ]
       },
       "ValidationError": {

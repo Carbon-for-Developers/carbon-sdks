@@ -84,5 +84,11 @@ export interface OutlookSyncInput {
      * @memberof OutlookSyncInput
      */
     'request_id'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OutlookSyncInput
+     */
+    'sync_attachments'?: boolean | null;
 }
 

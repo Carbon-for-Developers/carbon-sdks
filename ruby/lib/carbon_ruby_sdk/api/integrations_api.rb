@@ -1869,9 +1869,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param sync_attachments [Boolean] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_gmail(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, sync_attachments: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1883,6 +1884,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_attachments] = sync_attachments if sync_attachments != SENTINEL
       gmail_sync_input = _body
       api_response = sync_gmail_with_http_info_impl(gmail_sync_input, extra)
       api_response.data
@@ -1951,9 +1953,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param sync_attachments [Boolean] 
     # @param body [GmailSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_gmail_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, sync_attachments: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
@@ -1965,6 +1968,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_attachments] = sync_attachments if sync_attachments != SENTINEL
       gmail_sync_input = _body
       sync_gmail_with_http_info_impl(gmail_sync_input, extra)
     end
@@ -2112,9 +2116,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param sync_attachments [Boolean] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_outlook(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, sync_attachments: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -2127,6 +2132,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_attachments] = sync_attachments if sync_attachments != SENTINEL
       outlook_sync_input = _body
       api_response = sync_outlook_with_http_info_impl(outlook_sync_input, extra)
       api_response.data
@@ -2206,9 +2212,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param data_source_id [Integer] 
     # @param request_id [String] 
+    # @param sync_attachments [Boolean] 
     # @param body [OutlookSyncInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+    def sync_outlook_with_http_info(filters:, tags: SENTINEL, folder: 'Inbox', chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, sync_attachments: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:folder] = folder if folder != SENTINEL
@@ -2221,6 +2228,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_attachments] = sync_attachments if sync_attachments != SENTINEL
       outlook_sync_input = _body
       sync_outlook_with_http_info_impl(outlook_sync_input, extra)
     end

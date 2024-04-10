@@ -16,11 +16,15 @@ module Carbon
 
     attr_accessor :auto_sync_enabled_sources
 
+    # Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+    attr_accessor :file_upload_limit
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'customer_ids' => :'customer_ids',
-        :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources'
+        :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources',
+        :'file_upload_limit' => :'file_upload_limit'
       }
     end
 
@@ -33,14 +37,16 @@ module Carbon
     def self.openapi_types
       {
         :'customer_ids' => :'Array<String>',
-        :'auto_sync_enabled_sources' => :'AutoSyncEnabledSourcesProperty'
+        :'auto_sync_enabled_sources' => :'AutoSyncEnabledSourcesProperty',
+        :'file_upload_limit' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'auto_sync_enabled_sources'
+        :'auto_sync_enabled_sources',
+        :'file_upload_limit'
       ])
     end
 
@@ -67,6 +73,10 @@ module Carbon
 
       if attributes.key?(:'auto_sync_enabled_sources')
         self.auto_sync_enabled_sources = attributes[:'auto_sync_enabled_sources']
+      end
+
+      if attributes.key?(:'file_upload_limit')
+        self.file_upload_limit = attributes[:'file_upload_limit']
       end
     end
 
@@ -113,7 +123,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           customer_ids == o.customer_ids &&
-          auto_sync_enabled_sources == o.auto_sync_enabled_sources
+          auto_sync_enabled_sources == o.auto_sync_enabled_sources &&
+          file_upload_limit == o.file_upload_limit
     end
 
     # @see the `==` method
@@ -125,7 +136,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_ids, auto_sync_enabled_sources].hash
+      [customer_ids, auto_sync_enabled_sources, file_upload_limit].hash
     end
 
     # Builds the object from hash

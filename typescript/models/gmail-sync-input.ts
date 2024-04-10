@@ -78,5 +78,11 @@ export interface GmailSyncInput {
      * @memberof GmailSyncInput
      */
     'request_id'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GmailSyncInput
+     */
+    'sync_attachments'?: boolean | null;
 }
 

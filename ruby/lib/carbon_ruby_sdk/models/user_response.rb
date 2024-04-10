@@ -33,6 +33,8 @@ module Carbon
 
     attr_accessor :enabled_features
 
+    attr_accessor :custom_limits
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -46,7 +48,8 @@ module Carbon
         :'num_characters_synced' => :'num_characters_synced',
         :'num_tokens_synced' => :'num_tokens_synced',
         :'unique_file_tags' => :'unique_file_tags',
-        :'enabled_features' => :'enabled_features'
+        :'enabled_features' => :'enabled_features',
+        :'custom_limits' => :'custom_limits'
       }
     end
 
@@ -68,7 +71,8 @@ module Carbon
         :'num_characters_synced' => :'Integer',
         :'num_tokens_synced' => :'Integer',
         :'unique_file_tags' => :'Array<Object>',
-        :'enabled_features' => :'Object'
+        :'enabled_features' => :'Object',
+        :'custom_limits' => :'Object'
       }
     end
 
@@ -76,7 +80,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'deleted_at',
-        :'enabled_features'
+        :'enabled_features',
       ])
     end
 
@@ -140,6 +144,10 @@ module Carbon
       if attributes.key?(:'enabled_features')
         self.enabled_features = attributes[:'enabled_features']
       end
+
+      if attributes.key?(:'custom_limits')
+        self.custom_limits = attributes[:'custom_limits']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -182,6 +190,10 @@ module Carbon
         invalid_properties.push('invalid value for "unique_file_tags", unique_file_tags cannot be nil.')
       end
 
+      if @custom_limits.nil?
+        invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -197,6 +209,7 @@ module Carbon
       return false if @num_characters_synced.nil?
       return false if @num_tokens_synced.nil?
       return false if @unique_file_tags.nil?
+      return false if @custom_limits.nil?
       true
     end
 
@@ -215,7 +228,8 @@ module Carbon
           num_characters_synced == o.num_characters_synced &&
           num_tokens_synced == o.num_tokens_synced &&
           unique_file_tags == o.unique_file_tags &&
-          enabled_features == o.enabled_features
+          enabled_features == o.enabled_features &&
+          custom_limits == o.custom_limits
     end
 
     # @see the `==` method
@@ -227,7 +241,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, unique_file_tags, enabled_features].hash
+      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, unique_file_tags, enabled_features, custom_limits].hash
     end
 
     # Builds the object from hash
