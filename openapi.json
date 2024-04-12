@@ -3053,6 +3053,7 @@
               "chunk_overlap": 20,
               "chunk_size": 1500,
               "embedding_model": "OPENAI",
+              "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
               "set_page_as_boundary": false,
@@ -3151,6 +3152,7 @@
           "SALESFORCE",
           "JPG",
           "PNG",
+          "JPEG",
           "MP3",
           "MP4",
           "MP2",
@@ -5288,6 +5290,12 @@
             ],
             "title": "Parse Pdf Tables With Ocr",
             "default": false
+          },
+          "enable_file_picker": {
+            "type": "boolean",
+            "title": "Enable File Picker",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE",
+            "default": true
           }
         },
         "type": "object",
@@ -7306,6 +7314,11 @@
             "type": "boolean",
             "title": "Set Page As Boundary",
             "default": false
+          },
+          "enable_file_picker": {
+            "type": "boolean",
+            "title": "Enable File Picker",
+            "default": true
           }
         },
         "type": "object",
