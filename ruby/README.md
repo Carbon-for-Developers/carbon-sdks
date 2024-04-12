@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.16-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.16)
+[![npm](https://img.shields.io/badge/gem-v0.1.17-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.17)
 
 </div>
 
@@ -80,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.16'
+gem 'carbon_ruby_sdk', '~> 0.1.17'
 ```
 
 ## Getting Started<a id="getting-started"></a>
