@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.19-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.19)
+[![npm](https://img.shields.io/badge/npm-v0.1.20-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.20)
 
 </div>
 
@@ -1375,6 +1375,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   connecting_new_account: false,
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
+  enable_file_picker: true,
 });
 ```
 
@@ -1435,6 +1436,10 @@ This request id will be added to all files that get synced using the generated O
 Enable OCR for files that support it. Supported formats: pdf
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
+
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2317,9 +2322,13 @@ List of organization supplied user IDs
 
 ##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./models/auto-sync-enabled-sources-property.ts)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertymodelsauto-sync-enabled-sources-propertyts"></a>
 
-##### file_upload_limit: `number`<a id="file_upload_limit-number"></a>
+##### max_files: `number`<a id="max_files-number"></a>
 
-Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+Custom file upload limit for the user over *all* user\\\'s files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
+
+##### max_files_per_upload: `number`<a id="max_files_per_upload-number"></a>
+
+Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

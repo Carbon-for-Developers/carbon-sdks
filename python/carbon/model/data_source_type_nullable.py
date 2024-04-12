@@ -69,6 +69,7 @@ class DataSourceTypeNullable(
             "SALESFORCE": "SALESFORCE",
             "JPG": "JPG",
             "PNG": "PNG",
+            "JPEG": "JPEG",
             "MP3": "MP3",
             "MP4": "MP4",
             "MP2": "MP2",
@@ -209,6 +210,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def PNG(cls):
         return cls("PNG")
+    
+    @schemas.classproperty
+    def JPEG(cls):
+        return cls("JPEG")
     
     @schemas.classproperty
     def MP3(cls):

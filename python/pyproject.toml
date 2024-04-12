@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "carbon-python-sdk"
-version = "0.1.18"
+version = "0.1.19"
 description = "Client for Carbon"
 authors = ["Konfig <engineering@konfigthis.com>"]
 license = "MIT"

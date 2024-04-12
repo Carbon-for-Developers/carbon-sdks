@@ -33,6 +33,8 @@ module Carbon
 
     attr_accessor :set_page_as_boundary
 
+    attr_accessor :enable_file_picker
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -45,7 +47,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
         :'max_items_per_chunk' => :'max_items_per_chunk',
         :'sync_files_on_connection' => :'sync_files_on_connection',
-        :'set_page_as_boundary' => :'set_page_as_boundary'
+        :'set_page_as_boundary' => :'set_page_as_boundary',
+        :'enable_file_picker' => :'enable_file_picker'
       }
     end
 
@@ -66,7 +69,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'Boolean',
         :'max_items_per_chunk' => :'Integer',
         :'sync_files_on_connection' => :'Boolean',
-        :'set_page_as_boundary' => :'Boolean'
+        :'set_page_as_boundary' => :'Boolean',
+        :'enable_file_picker' => :'Boolean'
       }
     end
 
@@ -155,6 +159,12 @@ module Carbon
       else
         self.set_page_as_boundary = false
       end
+
+      if attributes.key?(:'enable_file_picker')
+        self.enable_file_picker = attributes[:'enable_file_picker']
+      else
+        self.enable_file_picker = true
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -184,7 +194,8 @@ module Carbon
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
           max_items_per_chunk == o.max_items_per_chunk &&
           sync_files_on_connection == o.sync_files_on_connection &&
-          set_page_as_boundary == o.set_page_as_boundary
+          set_page_as_boundary == o.set_page_as_boundary &&
+          enable_file_picker == o.enable_file_picker
     end
 
     # @see the `==` method
@@ -196,7 +207,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary].hash
+      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, enable_file_picker].hash
     end
 
     # Builds the object from hash

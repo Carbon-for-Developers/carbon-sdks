@@ -160,6 +160,10 @@ class DataSourceType(
         return cls("PNG")
     
     @schemas.classproperty
+    def JPEG(cls):
+        return cls("JPEG")
+    
+    @schemas.classproperty
     def MP3(cls):
         return cls("MP3")
     

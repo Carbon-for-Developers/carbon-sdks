@@ -1185,7 +1185,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 connecting_new_account: requestParameters.connecting_new_account,
                 request_id: requestParameters.request_id,
                 use_ocr: requestParameters.use_ocr,
-                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
+                enable_file_picker: requestParameters.enable_file_picker
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

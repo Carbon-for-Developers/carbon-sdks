@@ -300,14 +300,16 @@ module Carbon
     #
     # @param customer_ids [Array<String>] List of organization supplied user IDs
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
-    # @param file_upload_limit [Integer] Custom file upload limit for the user. If set, then the user will not be allowed to upload more files than this limit
+    # @param max_files [Integer] Custom file upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_files_per_upload [Integer] Custom file upload limit for the user across a single upload. If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set, or if set to -1, then the user will have no limit.
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, file_upload_limit: SENTINEL, extra: {})
+    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
       _body = {}
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
-      _body[:file_upload_limit] = file_upload_limit if file_upload_limit != SENTINEL
+      _body[:max_files] = max_files if max_files != SENTINEL
+      _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
       update_users_input = _body
       api_response = update_users_with_http_info_impl(update_users_input, extra)
       api_response.data
@@ -317,14 +319,16 @@ module Carbon
     #
     # @param customer_ids [Array<String>] List of organization supplied user IDs
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
-    # @param file_upload_limit [Integer] Custom file upload limit for the user. If set, then the user will not be allowed to upload more files than this limit
+    # @param max_files [Integer] Custom file upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_files_per_upload [Integer] Custom file upload limit for the user across a single upload. If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set, or if set to -1, then the user will have no limit.
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, file_upload_limit: SENTINEL, extra: {})
+    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
       _body = {}
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
-      _body[:file_upload_limit] = file_upload_limit if file_upload_limit != SENTINEL
+      _body[:max_files] = max_files if max_files != SENTINEL
+      _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
       update_users_input = _body
       update_users_with_http_info_impl(update_users_input, extra)
     end

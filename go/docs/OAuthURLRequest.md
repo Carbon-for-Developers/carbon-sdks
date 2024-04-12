@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **NullableString** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] 
 **UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
+**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE | [optional] [default to true]
 
 ## Methods
 
@@ -791,6 +792,31 @@ HasParsePdfTablesWithOcr returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetParsePdfTablesWithOcr()`
 
 UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
+### GetEnableFilePicker
+
+`func (o *OAuthURLRequest) GetEnableFilePicker() bool`
+
+GetEnableFilePicker returns the EnableFilePicker field if non-nil, zero value otherwise.
+
+### GetEnableFilePickerOk
+
+`func (o *OAuthURLRequest) GetEnableFilePickerOk() (*bool, bool)`
+
+GetEnableFilePickerOk returns a tuple with the EnableFilePicker field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableFilePicker
+
+`func (o *OAuthURLRequest) SetEnableFilePicker(v bool)`
+
+SetEnableFilePicker sets EnableFilePicker field to given value.
+
+### HasEnableFilePicker
+
+`func (o *OAuthURLRequest) HasEnableFilePicker() bool`
+
+HasEnableFilePicker returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

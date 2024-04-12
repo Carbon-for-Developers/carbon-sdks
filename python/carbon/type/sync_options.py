@@ -42,5 +42,7 @@ class OptionalSyncOptions(TypedDict, total=False):
 
     set_page_as_boundary: bool
 
+    enable_file_picker: bool
+
 class SyncOptions(RequiredSyncOptions, OptionalSyncOptions):
     pass

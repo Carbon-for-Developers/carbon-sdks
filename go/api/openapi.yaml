@@ -3619,6 +3619,7 @@ components:
         sync_options:
           chunk_size: 1500
           prepend_filename_to_chunks: false
+          enable_file_picker: true
           max_items_per_chunk: 0
           generate_sparse_vectors: false
           sync_files_on_connection: true
@@ -3643,6 +3644,7 @@ components:
             chunk_overlap: 20
             chunk_size: 1500
             embedding_model: OPENAI
+            enable_file_picker: true
             generate_sparse_vectors: false
             prepend_filename_to_chunks: false
             set_page_as_boundary: false
@@ -3732,6 +3734,7 @@ components:
       - SALESFORCE
       - JPG
       - PNG
+      - JPEG
       - MP3
       - MP4
       - MP2
@@ -5205,6 +5208,7 @@ components:
         sharepoint_site_name: sharepoint_site_name
         chunk_size: 1500
         prepend_filename_to_chunks: false
+        enable_file_picker: true
         confluence_subdomain: confluence_subdomain
         max_items_per_chunk: 0
         connecting_new_account: false
@@ -5362,6 +5366,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-parse_pdf_tables_with_ocr
+        enable_file_picker:
+          default: true
+          description: "Enable integration's file picker for sources that support\
+            \ it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE"
+          example: true
+          title: Enable File Picker
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker
       required:
       - service
       title: OAuthURLRequest
@@ -6763,6 +6776,7 @@ components:
       example:
         chunk_size: 1500
         prepend_filename_to_chunks: false
+        enable_file_picker: true
         max_items_per_chunk: 0
         generate_sparse_vectors: false
         sync_files_on_connection: true
@@ -6842,6 +6856,13 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
+        enable_file_picker:
+          default: true
+          example: true
+          title: Enable File Picker
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker
       title: SyncOptions
       type: object
     TextEmbeddingGenerators:
@@ -6874,14 +6895,15 @@ components:
       type: object
     UpdateUsersInput:
       example:
+        max_files: 0
         customer_ids:
         - customer_ids
         - customer_ids
         - customer_ids
         - customer_ids
         - customer_ids
-        file_upload_limit: 0
         auto_sync_enabled_sources: null
+        max_files_per_upload: 0
       properties:
         customer_ids:
           description: List of organization supplied user IDs
@@ -6892,11 +6914,23 @@ components:
           type: array
         auto_sync_enabled_sources:
           $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
-        file_upload_limit:
-          description: "Custom file upload limit for the user. If set, then the user\
-            \ will not be allowed to \n        upload more files than this limit"
+        max_files:
+          description: "Custom file upload limit for the user over *all* user's files\
+            \ across all uploads. \n        If set, then the user will not be allowed\
+            \ to upload more files than this limit. If not set, or if set to -1,\n\
+            \        then the user will have no limit."
+          minimum: -1
           nullable: true
-          title: File Upload Limit
+          title: Max Files
+          type: integer
+        max_files_per_upload:
+          description: |-
+            Custom file upload limit for the user across a single upload.
+                    If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,
+                    or if set to -1, then the user will have no limit.
+          minimum: -1
+          nullable: true
+          title: Max Files Per Upload
           type: integer
       required:
       - customer_ids
@@ -7811,6 +7845,7 @@ components:
       - SALESFORCE
       - JPG
       - PNG
+      - JPEG
       - MP3
       - MP4
       - MP2
@@ -8381,6 +8416,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker:
+      example: true
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-include_all_children:
       example: false
       type: boolean
@@ -8611,6 +8650,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary:
       example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
+      example: true
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-skip_embedding_generation:
@@ -8925,6 +8968,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-parse_pdf_tables_with_ocr
+        enable_file_picker:
+          default: true
+          description: "Enable integration's file picker for sources that support\
+            \ it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE"
+          example: true
+          title: Enable File Picker
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker
       required:
       - service
       type: object
@@ -10084,11 +10136,23 @@ components:
             \ it for all data sources"
           nullable: true
           title: Auto Sync Enabled Sources
-        file_upload_limit:
-          description: "Custom file upload limit for the user. If set, then the user\
-            \ will not be allowed to \n        upload more files than this limit"
+        max_files:
+          description: "Custom file upload limit for the user over *all* user's files\
+            \ across all uploads. \n        If set, then the user will not be allowed\
+            \ to upload more files than this limit. If not set, or if set to -1,\n\
+            \        then the user will have no limit."
+          minimum: -1
           nullable: true
-          title: File Upload Limit
+          title: Max Files
+          type: integer
+        max_files_per_upload:
+          description: |-
+            Custom file upload limit for the user across a single upload.
+                    If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,
+                    or if set to -1, then the user will have no limit.
+          minimum: -1
+          nullable: true
+          title: Max Files Per Upload
           type: integer
       required:
       - customer_ids

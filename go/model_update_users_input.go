@@ -19,8 +19,10 @@ type UpdateUsersInput struct {
 	// List of organization supplied user IDs
 	CustomerIds []string `json:"customer_ids"`
 	AutoSyncEnabledSources NullableAutoSyncEnabledSourcesProperty `json:"auto_sync_enabled_sources,omitempty"`
-	// Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
-	FileUploadLimit NullableInt32 `json:"file_upload_limit,omitempty"`
+	// Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
+	MaxFiles NullableInt32 `json:"max_files,omitempty"`
+	// Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
+	MaxFilesPerUpload NullableInt32 `json:"max_files_per_upload,omitempty"`
 }
 
 // NewUpdateUsersInput instantiates a new UpdateUsersInput object
@@ -107,46 +109,88 @@ func (o *UpdateUsersInput) UnsetAutoSyncEnabledSources() {
 	o.AutoSyncEnabledSources.Unset()
 }
 
-// GetFileUploadLimit returns the FileUploadLimit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UpdateUsersInput) GetFileUploadLimit() int32 {
-	if o == nil || isNil(o.FileUploadLimit.Get()) {
+// GetMaxFiles returns the MaxFiles field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetMaxFiles() int32 {
+	if o == nil || isNil(o.MaxFiles.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.FileUploadLimit.Get()
+	return *o.MaxFiles.Get()
 }
 
-// GetFileUploadLimitOk returns a tuple with the FileUploadLimit field value if set, nil otherwise
+// GetMaxFilesOk returns a tuple with the MaxFiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UpdateUsersInput) GetFileUploadLimitOk() (*int32, bool) {
+func (o *UpdateUsersInput) GetMaxFilesOk() (*int32, bool) {
 	if o == nil {
     return nil, false
 	}
-	return o.FileUploadLimit.Get(), o.FileUploadLimit.IsSet()
+	return o.MaxFiles.Get(), o.MaxFiles.IsSet()
 }
 
-// HasFileUploadLimit returns a boolean if a field has been set.
-func (o *UpdateUsersInput) HasFileUploadLimit() bool {
-	if o != nil && o.FileUploadLimit.IsSet() {
+// HasMaxFiles returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasMaxFiles() bool {
+	if o != nil && o.MaxFiles.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFileUploadLimit gets a reference to the given NullableInt32 and assigns it to the FileUploadLimit field.
-func (o *UpdateUsersInput) SetFileUploadLimit(v int32) {
-	o.FileUploadLimit.Set(&v)
+// SetMaxFiles gets a reference to the given NullableInt32 and assigns it to the MaxFiles field.
+func (o *UpdateUsersInput) SetMaxFiles(v int32) {
+	o.MaxFiles.Set(&v)
 }
-// SetFileUploadLimitNil sets the value for FileUploadLimit to be an explicit nil
-func (o *UpdateUsersInput) SetFileUploadLimitNil() {
-	o.FileUploadLimit.Set(nil)
+// SetMaxFilesNil sets the value for MaxFiles to be an explicit nil
+func (o *UpdateUsersInput) SetMaxFilesNil() {
+	o.MaxFiles.Set(nil)
 }
 
-// UnsetFileUploadLimit ensures that no value is present for FileUploadLimit, not even an explicit nil
-func (o *UpdateUsersInput) UnsetFileUploadLimit() {
-	o.FileUploadLimit.Unset()
+// UnsetMaxFiles ensures that no value is present for MaxFiles, not even an explicit nil
+func (o *UpdateUsersInput) UnsetMaxFiles() {
+	o.MaxFiles.Unset()
+}
+
+// GetMaxFilesPerUpload returns the MaxFilesPerUpload field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetMaxFilesPerUpload() int32 {
+	if o == nil || isNil(o.MaxFilesPerUpload.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MaxFilesPerUpload.Get()
+}
+
+// GetMaxFilesPerUploadOk returns a tuple with the MaxFilesPerUpload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetMaxFilesPerUploadOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MaxFilesPerUpload.Get(), o.MaxFilesPerUpload.IsSet()
+}
+
+// HasMaxFilesPerUpload returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasMaxFilesPerUpload() bool {
+	if o != nil && o.MaxFilesPerUpload.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxFilesPerUpload gets a reference to the given NullableInt32 and assigns it to the MaxFilesPerUpload field.
+func (o *UpdateUsersInput) SetMaxFilesPerUpload(v int32) {
+	o.MaxFilesPerUpload.Set(&v)
+}
+// SetMaxFilesPerUploadNil sets the value for MaxFilesPerUpload to be an explicit nil
+func (o *UpdateUsersInput) SetMaxFilesPerUploadNil() {
+	o.MaxFilesPerUpload.Set(nil)
+}
+
+// UnsetMaxFilesPerUpload ensures that no value is present for MaxFilesPerUpload, not even an explicit nil
+func (o *UpdateUsersInput) UnsetMaxFilesPerUpload() {
+	o.MaxFilesPerUpload.Unset()
 }
 
 func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
@@ -157,8 +201,11 @@ func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	if o.AutoSyncEnabledSources.IsSet() {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources.Get()
 	}
-	if o.FileUploadLimit.IsSet() {
-		toSerialize["file_upload_limit"] = o.FileUploadLimit.Get()
+	if o.MaxFiles.IsSet() {
+		toSerialize["max_files"] = o.MaxFiles.Get()
+	}
+	if o.MaxFilesPerUpload.IsSet() {
+		toSerialize["max_files_per_upload"] = o.MaxFilesPerUpload.Get()
 	}
 	return json.Marshal(toSerialize)
 }

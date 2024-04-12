@@ -16,15 +16,19 @@ module Carbon
 
     attr_accessor :auto_sync_enabled_sources
 
-    # Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
-    attr_accessor :file_upload_limit
+    # Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
+    attr_accessor :max_files
+
+    # Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
+    attr_accessor :max_files_per_upload
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'customer_ids' => :'customer_ids',
         :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources',
-        :'file_upload_limit' => :'file_upload_limit'
+        :'max_files' => :'max_files',
+        :'max_files_per_upload' => :'max_files_per_upload'
       }
     end
 
@@ -38,7 +42,8 @@ module Carbon
       {
         :'customer_ids' => :'Array<String>',
         :'auto_sync_enabled_sources' => :'AutoSyncEnabledSourcesProperty',
-        :'file_upload_limit' => :'Integer'
+        :'max_files' => :'Integer',
+        :'max_files_per_upload' => :'Integer'
       }
     end
 
@@ -46,7 +51,8 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'auto_sync_enabled_sources',
-        :'file_upload_limit'
+        :'max_files',
+        :'max_files_per_upload'
       ])
     end
 
@@ -75,8 +81,12 @@ module Carbon
         self.auto_sync_enabled_sources = attributes[:'auto_sync_enabled_sources']
       end
 
-      if attributes.key?(:'file_upload_limit')
-        self.file_upload_limit = attributes[:'file_upload_limit']
+      if attributes.key?(:'max_files')
+        self.max_files = attributes[:'max_files']
+      end
+
+      if attributes.key?(:'max_files_per_upload')
+        self.max_files_per_upload = attributes[:'max_files_per_upload']
       end
     end
 
@@ -92,6 +102,14 @@ module Carbon
         invalid_properties.push('invalid value for "customer_ids", number of items must be less than or equal to 100.')
       end
 
+      if !@max_files.nil? && @max_files < -1
+        invalid_properties.push('invalid value for "max_files", must be greater than or equal to -1.')
+      end
+
+      if !@max_files_per_upload.nil? && @max_files_per_upload < -1
+        invalid_properties.push('invalid value for "max_files_per_upload", must be greater than or equal to -1.')
+      end
+
       invalid_properties
     end
 
@@ -100,6 +118,8 @@ module Carbon
     def valid?
       return false if @customer_ids.nil?
       return false if @customer_ids.length > 100
+      return false if !@max_files.nil? && @max_files < -1
+      return false if !@max_files_per_upload.nil? && @max_files_per_upload < -1
       true
     end
 
@@ -117,6 +137,26 @@ module Carbon
       @customer_ids = customer_ids
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] max_files Value to be assigned
+    def max_files=(max_files)
+      if !max_files.nil? && max_files < -1
+        fail ArgumentError, 'invalid value for "max_files", must be greater than or equal to -1.'
+      end
+
+      @max_files = max_files
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_files_per_upload Value to be assigned
+    def max_files_per_upload=(max_files_per_upload)
+      if !max_files_per_upload.nil? && max_files_per_upload < -1
+        fail ArgumentError, 'invalid value for "max_files_per_upload", must be greater than or equal to -1.'
+      end
+
+      @max_files_per_upload = max_files_per_upload
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -124,7 +164,8 @@ module Carbon
       self.class == o.class &&
           customer_ids == o.customer_ids &&
           auto_sync_enabled_sources == o.auto_sync_enabled_sources &&
-          file_upload_limit == o.file_upload_limit
+          max_files == o.max_files &&
+          max_files_per_upload == o.max_files_per_upload
     end
 
     # @see the `==` method
@@ -136,7 +177,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_ids, auto_sync_enabled_sources, file_upload_limit].hash
+      [customer_ids, auto_sync_enabled_sources, max_files, max_files_per_upload].hash
     end
 
     # Builds the object from hash

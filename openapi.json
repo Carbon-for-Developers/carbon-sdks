@@ -5294,7 +5294,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE",
             "default": true
           }
         },
@@ -7385,17 +7385,31 @@
             "title": "Auto Sync Enabled Sources",
             "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources"
           },
-          "file_upload_limit": {
+          "max_files": {
             "anyOf": [
               {
-                "type": "integer"
+                "type": "integer",
+                "minimum": -1
               },
               {
                 "type": "null"
               }
             ],
-            "title": "File Upload Limit",
-            "description": "Custom file upload limit for the user. If set, then the user will not be allowed to \n        upload more files than this limit"
+            "title": "Max Files",
+            "description": "Custom file upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,\n        then the user will have no limit."
+          },
+          "max_files_per_upload": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Files Per Upload",
+            "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit."
           }
         },
         "type": "object",
