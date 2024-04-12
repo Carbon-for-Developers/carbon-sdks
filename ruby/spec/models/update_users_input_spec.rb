@@ -31,7 +31,13 @@ describe Carbon::UpdateUsersInput do
     end
   end
 
-  describe 'test attribute "file_upload_limit"' do
+  describe 'test attribute "max_files"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "max_files_per_upload"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

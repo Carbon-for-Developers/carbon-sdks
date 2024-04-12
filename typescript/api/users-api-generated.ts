@@ -307,7 +307,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const updateUsersInput: UpdateUsersInput = {
                 customer_ids: requestParameters.customer_ids,
                 auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources,
-                file_upload_limit: requestParameters.file_upload_limit
+                max_files: requestParameters.max_files,
+                max_files_per_upload: requestParameters.max_files_per_upload
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

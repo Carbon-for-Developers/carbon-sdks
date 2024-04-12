@@ -52,6 +52,7 @@ const (
 	DATASOURCETYPE_SALESFORCE DataSourceType = "SALESFORCE"
 	DATASOURCETYPE_JPG DataSourceType = "JPG"
 	DATASOURCETYPE_PNG DataSourceType = "PNG"
+	DATASOURCETYPE_JPEG DataSourceType = "JPEG"
 	DATASOURCETYPE_MP3 DataSourceType = "MP3"
 	DATASOURCETYPE_MP4 DataSourceType = "MP4"
 	DATASOURCETYPE_MP2 DataSourceType = "MP2"
@@ -99,6 +100,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"SALESFORCE",
 	"JPG",
 	"PNG",
+	"JPEG",
 	"MP3",
 	"MP4",
 	"MP2",

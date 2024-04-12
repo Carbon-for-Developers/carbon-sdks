@@ -28,6 +28,7 @@ type SyncOptions struct {
 	// Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
 	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 }
 
 // NewSyncOptions instantiates a new SyncOptions object
@@ -52,6 +53,8 @@ func NewSyncOptions() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var enableFilePicker bool = true
+	this.EnableFilePicker = &enableFilePicker
 	return &this
 }
 
@@ -76,6 +79,8 @@ func NewSyncOptionsWithDefaults() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var enableFilePicker bool = true
+	this.EnableFilePicker = &enableFilePicker
 	return &this
 }
 
@@ -480,6 +485,38 @@ func (o *SyncOptions) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
+// GetEnableFilePicker returns the EnableFilePicker field value if set, zero value otherwise.
+func (o *SyncOptions) GetEnableFilePicker() bool {
+	if o == nil || isNil(o.EnableFilePicker) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableFilePicker
+}
+
+// GetEnableFilePickerOk returns a tuple with the EnableFilePicker field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyncOptions) GetEnableFilePickerOk() (*bool, bool) {
+	if o == nil || isNil(o.EnableFilePicker) {
+    return nil, false
+	}
+	return o.EnableFilePicker, true
+}
+
+// HasEnableFilePicker returns a boolean if a field has been set.
+func (o *SyncOptions) HasEnableFilePicker() bool {
+	if o != nil && !isNil(o.EnableFilePicker) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableFilePicker gets a reference to the given bool and assigns it to the EnableFilePicker field.
+func (o *SyncOptions) SetEnableFilePicker(v bool) {
+	o.EnableFilePicker = &v
+}
+
 func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -511,6 +548,9 @@ func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
+	}
+	if !isNil(o.EnableFilePicker) {
+		toSerialize["enable_file_picker"] = o.EnableFilePicker
 	}
 	return json.Marshal(toSerialize)
 }

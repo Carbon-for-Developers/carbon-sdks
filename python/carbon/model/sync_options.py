@@ -180,6 +180,7 @@ class SyncOptions(
                         _configuration=_configuration,
                     )
             set_page_as_boundary = schemas.BoolSchema
+            enable_file_picker = schemas.BoolSchema
             __annotations__ = {
                 "tags": tags,
                 "chunk_size": chunk_size,
@@ -191,6 +192,7 @@ class SyncOptions(
                 "max_items_per_chunk": max_items_per_chunk,
                 "sync_files_on_connection": sync_files_on_connection,
                 "set_page_as_boundary": set_page_as_boundary,
+                "enable_file_picker": enable_file_picker,
             }
     
     @typing.overload
@@ -224,9 +226,12 @@ class SyncOptions(
     def __getitem__(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_file_picker"]) -> MetaOapg.properties.enable_file_picker: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "enable_file_picker", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -262,9 +267,12 @@ class SyncOptions(
     def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> typing.Union[MetaOapg.properties.set_page_as_boundary, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_file_picker"]) -> typing.Union[MetaOapg.properties.enable_file_picker, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "enable_file_picker", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -281,6 +289,7 @@ class SyncOptions(
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
+        enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncOptions':
@@ -297,6 +306,7 @@ class SyncOptions(
             max_items_per_chunk=max_items_per_chunk,
             sync_files_on_connection=sync_files_on_connection,
             set_page_as_boundary=set_page_as_boundary,
+            enable_file_picker=enable_file_picker,
             _configuration=_configuration,
             **kwargs,
         )

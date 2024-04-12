@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-DataSourceTypeNullable = Literal["GOOGLE_DRIVE", "NOTION", "NOTION_DATABASE", "INTERCOM", "DROPBOX", "ONEDRIVE", "SHAREPOINT", "CONFLUENCE", "BOX", "ZENDESK", "ZOTERO", "S3", "GMAIL", "OUTLOOK", "TEXT", "CSV", "TSV", "PDF", "DOCX", "PPTX", "XLSX", "MD", "RTF", "JSON", "RAW_TEXT", "WEB_SCRAPE", "RSS_FEED", "FRESHDESK", "GITBOOK", "SALESFORCE", "JPG", "PNG", "MP3", "MP4", "MP2", "AAC", "WAV", "FLAC", "PCM", "M4A", "OGG", "OPUS", "WEBM"]
+DataSourceTypeNullable = Literal["GOOGLE_DRIVE", "NOTION", "NOTION_DATABASE", "INTERCOM", "DROPBOX", "ONEDRIVE", "SHAREPOINT", "CONFLUENCE", "BOX", "ZENDESK", "ZOTERO", "S3", "GMAIL", "OUTLOOK", "TEXT", "CSV", "TSV", "PDF", "DOCX", "PPTX", "XLSX", "MD", "RTF", "JSON", "RAW_TEXT", "WEB_SCRAPE", "RSS_FEED", "FRESHDESK", "GITBOOK", "SALESFORCE", "JPG", "PNG", "JPEG", "MP3", "MP4", "MP2", "AAC", "WAV", "FLAC", "PCM", "M4A", "OGG", "OPUS", "WEBM"]

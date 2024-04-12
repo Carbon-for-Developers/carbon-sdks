@@ -107,7 +107,7 @@ class UpdateUsersInput(
                     )
             
             
-            class file_upload_limit(
+            class max_files(
                 schemas.IntBase,
                 schemas.NoneBase,
                 schemas.Schema,
@@ -115,11 +115,39 @@ class UpdateUsersInput(
             ):
             
             
+                class MetaOapg:
+                    inclusive_minimum = -1
+            
+            
                 def __new__(
                     cls,
                     *args: typing.Union[None, decimal.Decimal, int, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'file_upload_limit':
+                ) -> 'max_files':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class max_files_per_upload(
+                schemas.IntBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                class MetaOapg:
+                    inclusive_minimum = -1
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, decimal.Decimal, int, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'max_files_per_upload':
                     return super().__new__(
                         cls,
                         *args,
@@ -128,7 +156,8 @@ class UpdateUsersInput(
             __annotations__ = {
                 "customer_ids": customer_ids,
                 "auto_sync_enabled_sources": auto_sync_enabled_sources,
-                "file_upload_limit": file_upload_limit,
+                "max_files": max_files,
+                "max_files_per_upload": max_files_per_upload,
             }
     
     customer_ids: 'UpdateUsersInputCustomerIds'
@@ -140,12 +169,15 @@ class UpdateUsersInput(
     def __getitem__(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> MetaOapg.properties.auto_sync_enabled_sources: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_upload_limit"]) -> MetaOapg.properties.file_upload_limit: ...
+    def __getitem__(self, name: typing_extensions.Literal["max_files"]) -> MetaOapg.properties.max_files: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["max_files_per_upload"]) -> MetaOapg.properties.max_files_per_upload: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "file_upload_limit", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -157,12 +189,15 @@ class UpdateUsersInput(
     def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> typing.Union[MetaOapg.properties.auto_sync_enabled_sources, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_upload_limit"]) -> typing.Union[MetaOapg.properties.file_upload_limit, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["max_files"]) -> typing.Union[MetaOapg.properties.max_files, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["max_files_per_upload"]) -> typing.Union[MetaOapg.properties.max_files_per_upload, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "file_upload_limit", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -171,7 +206,8 @@ class UpdateUsersInput(
         *args: typing.Union[dict, frozendict.frozendict, ],
         customer_ids: 'UpdateUsersInputCustomerIds',
         auto_sync_enabled_sources: typing.Union[MetaOapg.properties.auto_sync_enabled_sources, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
-        file_upload_limit: typing.Union[MetaOapg.properties.file_upload_limit, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        max_files: typing.Union[MetaOapg.properties.max_files, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        max_files_per_upload: typing.Union[MetaOapg.properties.max_files_per_upload, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UpdateUsersInput':
@@ -180,7 +216,8 @@ class UpdateUsersInput(
             *args,
             customer_ids=customer_ids,
             auto_sync_enabled_sources=auto_sync_enabled_sources,
-            file_upload_limit=file_upload_limit,
+            max_files=max_files,
+            max_files_per_upload=max_files_per_upload,
             _configuration=_configuration,
             **kwargs,
         )

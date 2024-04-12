@@ -1313,6 +1313,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
+        "enable_file_picker": True,
     },
 )
 ```
@@ -1542,6 +1543,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     request_id="string_example",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
+    enable_file_picker=True,
 )
 ```
 
@@ -1602,6 +1604,10 @@ This request id will be added to all files that get synced using the generated O
 Enable OCR for files that support it. Supported formats: pdf
 
 ##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
+
+##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
+
+Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2530,7 +2536,8 @@ Update Users
 update_users_response = carbon.users.update_users(
     customer_ids=["string_example"],
     auto_sync_enabled_sources=["string_example"],
-    file_upload_limit=1,
+    max_files=-1,
+    max_files_per_upload=-1,
 )
 ```
 
@@ -2543,9 +2550,13 @@ update_users_response = carbon.users.update_users(
 
 List of data source types to enable auto sync for. Empty array will remove all sources          and the string \\\"ALL\\\" will enable it for all data sources
 
-##### file_upload_limit: `Optional[int]`<a id="file_upload_limit-optionalint"></a>
+##### max_files: `Optional[int]`<a id="max_files-optionalint"></a>
 
-Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit
+Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
+
+##### max_files_per_upload: `Optional[int]`<a id="max_files_per_upload-optionalint"></a>
+
+Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

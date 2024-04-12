@@ -93,7 +93,8 @@ func Test_carbon_UsersApiService(t *testing.T) {
             null,
         )
         updateUsersInput.SetAutoSyncEnabledSources(autoSyncEnabledSources)
-        updateUsersInput.SetFileUploadLimit(null)
+        updateUsersInput.SetMaxFiles(null)
+        updateUsersInput.SetMaxFilesPerUpload(null)
         
         request := client.UsersApi.UpdateUsers(
             updateUsersInput,

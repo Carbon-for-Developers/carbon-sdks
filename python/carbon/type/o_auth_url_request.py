@@ -69,5 +69,8 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]
 
+    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+    enable_file_picker: bool
+
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

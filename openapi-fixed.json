@@ -3193,6 +3193,7 @@
               "chunk_overlap": 20,
               "chunk_size": 1500,
               "embedding_model": "OPENAI",
+              "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
               "set_page_as_boundary": false,
@@ -3281,6 +3282,7 @@
           "SALESFORCE",
           "JPG",
           "PNG",
+          "JPEG",
           "MP3",
           "MP4",
           "MP2",
@@ -4812,6 +4814,12 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "enable_file_picker": {
+            "title": "Enable File Picker",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE",
+            "type": "boolean",
+            "default": true
           }
         },
         "type": "object",
@@ -6226,6 +6234,11 @@
             "title": "Set Page As Boundary",
             "type": "boolean",
             "default": false
+          },
+          "enable_file_picker": {
+            "title": "Enable File Picker",
+            "type": "boolean",
+            "default": true
           }
         },
         "type": "object"
@@ -6290,10 +6303,18 @@
             ],
             "nullable": true
           },
-          "file_upload_limit": {
-            "title": "File Upload Limit",
-            "description": "Custom file upload limit for the user. If set, then the user will not be allowed to \n        upload more files than this limit",
+          "max_files": {
+            "title": "Max Files",
+            "description": "Custom file upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
             "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_files_per_upload": {
+            "title": "Max Files Per Upload",
+            "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
             "nullable": true
           }
         },
@@ -7159,6 +7180,7 @@
           "SALESFORCE",
           "JPG",
           "PNG",
+          "JPEG",
           "MP3",
           "MP4",
           "MP2",

@@ -312,6 +312,7 @@ func main() {
     oAuthURLRequest.SetRequestId("null")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
+    oAuthURLRequest.SetEnableFilePicker(true)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,

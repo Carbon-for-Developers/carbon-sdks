@@ -40,6 +40,8 @@ class SyncOptions(BaseModel):
 
     set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
 
+    enable_file_picker: typing.Optional[bool] = Field(None, alias='enable_file_picker')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

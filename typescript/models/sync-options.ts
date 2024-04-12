@@ -78,5 +78,11 @@ export interface SyncOptions {
      * @memberof SyncOptions
      */
     'set_page_as_boundary'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SyncOptions
+     */
+    'enable_file_picker'?: boolean;
 }
 

@@ -407,6 +407,7 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            enable_file_picker = schemas.BoolSchema
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -430,6 +431,7 @@ class OAuthURLRequest(
                 "request_id": request_id,
                 "use_ocr": use_ocr,
                 "parse_pdf_tables_with_ocr": parse_pdf_tables_with_ocr,
+                "enable_file_picker": enable_file_picker,
             }
     
     service: 'DataSourceType'
@@ -501,9 +503,12 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["parse_pdf_tables_with_ocr"]) -> MetaOapg.properties.parse_pdf_tables_with_ocr: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_file_picker"]) -> MetaOapg.properties.enable_file_picker: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -575,9 +580,12 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["parse_pdf_tables_with_ocr"]) -> typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_file_picker"]) -> typing.Union[MetaOapg.properties.enable_file_picker, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -606,6 +614,7 @@ class OAuthURLRequest(
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         use_ocr: typing.Union[MetaOapg.properties.use_ocr, None, bool, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
+        enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -634,6 +643,7 @@ class OAuthURLRequest(
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
             _configuration=_configuration,
             **kwargs,
         )

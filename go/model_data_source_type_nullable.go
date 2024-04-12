@@ -52,6 +52,7 @@ const (
 	DATASOURCETYPENULLABLE_SALESFORCE DataSourceTypeNullable = "SALESFORCE"
 	DATASOURCETYPENULLABLE_JPG DataSourceTypeNullable = "JPG"
 	DATASOURCETYPENULLABLE_PNG DataSourceTypeNullable = "PNG"
+	DATASOURCETYPENULLABLE_JPEG DataSourceTypeNullable = "JPEG"
 	DATASOURCETYPENULLABLE_MP3 DataSourceTypeNullable = "MP3"
 	DATASOURCETYPENULLABLE_MP4 DataSourceTypeNullable = "MP4"
 	DATASOURCETYPENULLABLE_MP2 DataSourceTypeNullable = "MP2"
@@ -99,6 +100,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"SALESFORCE",
 	"JPG",
 	"PNG",
+	"JPEG",
 	"MP3",
 	"MP4",
 	"MP2",

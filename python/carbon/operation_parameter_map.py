@@ -521,6 +521,9 @@ operation_parameter_map = {
             {
                 'name': 'parse_pdf_tables_with_ocr'
             },
+            {
+                'name': 'enable_file_picker'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -901,7 +904,10 @@ operation_parameter_map = {
                 'name': 'auto_sync_enabled_sources'
             },
             {
-                'name': 'file_upload_limit'
+                'name': 'max_files'
+            },
+            {
+                'name': 'max_files_per_upload'
             },
         ]
     },

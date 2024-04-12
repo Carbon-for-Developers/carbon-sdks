@@ -146,6 +146,7 @@ class BaseApi(api_client.Api):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -193,6 +194,8 @@ class BaseApi(api_client.Api):
             _body["use_ocr"] = use_ocr
         if parse_pdf_tables_with_ocr is not None:
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
+        if enable_file_picker is not None:
+            _body["enable_file_picker"] = enable_file_picker
         args.body = _body
         return args
 
@@ -422,6 +425,7 @@ class GetOauthUrlRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -451,6 +455,7 @@ class GetOauthUrlRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -481,6 +486,7 @@ class GetOauthUrlRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -508,6 +514,7 @@ class GetOauthUrlRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -539,6 +546,7 @@ class GetOauthUrl(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -565,6 +573,7 @@ class GetOauthUrl(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
             **kwargs,
         )
         if validate:
@@ -596,6 +605,7 @@ class GetOauthUrl(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -621,6 +631,7 @@ class GetOauthUrl(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -654,6 +665,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -683,6 +695,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -713,6 +726,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        enable_file_picker: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -740,6 +754,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            enable_file_picker=enable_file_picker,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

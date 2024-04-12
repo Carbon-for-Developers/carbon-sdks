@@ -44,6 +44,8 @@ type OAuthURLRequest struct {
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
+	// Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -75,6 +77,8 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
+	var enableFilePicker bool = true
+	this.EnableFilePicker = &enableFilePicker
 	return &this
 }
 
@@ -105,6 +109,8 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
+	var enableFilePicker bool = true
+	this.EnableFilePicker = &enableFilePicker
 	return &this
 }
 
@@ -995,6 +1001,38 @@ func (o *OAuthURLRequest) UnsetParsePdfTablesWithOcr() {
 	o.ParsePdfTablesWithOcr.Unset()
 }
 
+// GetEnableFilePicker returns the EnableFilePicker field value if set, zero value otherwise.
+func (o *OAuthURLRequest) GetEnableFilePicker() bool {
+	if o == nil || isNil(o.EnableFilePicker) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableFilePicker
+}
+
+// GetEnableFilePickerOk returns a tuple with the EnableFilePicker field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthURLRequest) GetEnableFilePickerOk() (*bool, bool) {
+	if o == nil || isNil(o.EnableFilePicker) {
+    return nil, false
+	}
+	return o.EnableFilePicker, true
+}
+
+// HasEnableFilePicker returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasEnableFilePicker() bool {
+	if o != nil && !isNil(o.EnableFilePicker) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableFilePicker gets a reference to the given bool and assigns it to the EnableFilePicker field.
+func (o *OAuthURLRequest) SetEnableFilePicker(v bool) {
+	o.EnableFilePicker = &v
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -1062,6 +1100,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ParsePdfTablesWithOcr.IsSet() {
 		toSerialize["parse_pdf_tables_with_ocr"] = o.ParsePdfTablesWithOcr.Get()
+	}
+	if !isNil(o.EnableFilePicker) {
+		toSerialize["enable_file_picker"] = o.EnableFilePicker
 	}
 	return json.Marshal(toSerialize)
 }

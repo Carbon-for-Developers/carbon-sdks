@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
 
@@ -373,6 +374,31 @@ SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 `func (o *SyncOptions) HasSetPageAsBoundary() bool`
 
 HasSetPageAsBoundary returns a boolean if a field has been set.
+
+### GetEnableFilePicker
+
+`func (o *SyncOptions) GetEnableFilePicker() bool`
+
+GetEnableFilePicker returns the EnableFilePicker field if non-nil, zero value otherwise.
+
+### GetEnableFilePickerOk
+
+`func (o *SyncOptions) GetEnableFilePickerOk() (*bool, bool)`
+
+GetEnableFilePickerOk returns a tuple with the EnableFilePicker field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableFilePicker
+
+`func (o *SyncOptions) SetEnableFilePicker(v bool)`
+
+SetEnableFilePicker sets EnableFilePicker field to given value.
+
+### HasEnableFilePicker
+
+`func (o *SyncOptions) HasEnableFilePicker() bool`
+
+HasEnableFilePicker returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

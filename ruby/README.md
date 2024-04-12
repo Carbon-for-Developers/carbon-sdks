@@ -1186,6 +1186,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
+        "enable_file_picker" => true,
     },
 )
 p result
@@ -1383,6 +1384,7 @@ result = carbon.integrations.get_oauth_url(
   request_id: "string_example",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
+  enable_file_picker: true,
 )
 p result
 ```
@@ -1430,6 +1432,10 @@ OAuth URL
 Enable OCR for files that support it. Supported formats: pdf
 
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
+Enable integration's file picker for sources that support it. Supported sources:
+DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -2265,7 +2271,8 @@ result = carbon.users.update_users(
   auto_sync_enabled_sources: [
         "string_example"
     ],
-  file_upload_limit: 1,
+  max_files: -1,
+  max_files_per_upload: -1,
 )
 p result
 ```
@@ -2276,9 +2283,15 @@ p result
 List of organization supplied user IDs
 
 ##### auto_sync_enabled_sources: [`AutoSyncEnabledSourcesProperty`](./lib/carbon_ruby_sdk/models/auto_sync_enabled_sources_property.rb)<a id="auto_sync_enabled_sources-autosyncenabledsourcespropertylibcarbon_ruby_sdkmodelsauto_sync_enabled_sources_propertyrb"></a>
-##### file_upload_limit: `Integer`<a id="file_upload_limit-integer"></a>
-Custom file upload limit for the user. If set, then the user will not be allowed
-to upload more files than this limit
+##### max_files: `Integer`<a id="max_files-integer"></a>
+Custom file upload limit for the user over *all* user's files across all
+uploads. If set, then the user will not be allowed to upload more files than
+this limit. If not set, or if set to -1, then the user will have no limit.
+
+##### max_files_per_upload: `Integer`<a id="max_files_per_upload-integer"></a>
+Custom file upload limit for the user across a single upload. If set, then the
+user will not be allowed to upload more files than this limit in a single
+upload. If not set, or if set to -1, then the user will have no limit.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

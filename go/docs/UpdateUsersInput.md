@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerIds** | **[]string** | List of organization supplied user IDs | 
 **AutoSyncEnabledSources** | Pointer to [**NullableAutoSyncEnabledSourcesProperty**](AutoSyncEnabledSourcesProperty.md) |  | [optional] 
-**FileUploadLimit** | Pointer to **NullableInt32** | Custom file upload limit for the user. If set, then the user will not be allowed to          upload more files than this limit | [optional] 
+**MaxFiles** | Pointer to **NullableInt32** | Custom file upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit. | [optional] 
+**MaxFilesPerUpload** | Pointer to **NullableInt32** | Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit. | [optional] 
 
 ## Methods
 
@@ -82,41 +83,76 @@ HasAutoSyncEnabledSources returns a boolean if a field has been set.
 `func (o *UpdateUsersInput) UnsetAutoSyncEnabledSources()`
 
 UnsetAutoSyncEnabledSources ensures that no value is present for AutoSyncEnabledSources, not even an explicit nil
-### GetFileUploadLimit
+### GetMaxFiles
 
-`func (o *UpdateUsersInput) GetFileUploadLimit() int32`
+`func (o *UpdateUsersInput) GetMaxFiles() int32`
 
-GetFileUploadLimit returns the FileUploadLimit field if non-nil, zero value otherwise.
+GetMaxFiles returns the MaxFiles field if non-nil, zero value otherwise.
 
-### GetFileUploadLimitOk
+### GetMaxFilesOk
 
-`func (o *UpdateUsersInput) GetFileUploadLimitOk() (*int32, bool)`
+`func (o *UpdateUsersInput) GetMaxFilesOk() (*int32, bool)`
 
-GetFileUploadLimitOk returns a tuple with the FileUploadLimit field if it's non-nil, zero value otherwise
+GetMaxFilesOk returns a tuple with the MaxFiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFileUploadLimit
+### SetMaxFiles
 
-`func (o *UpdateUsersInput) SetFileUploadLimit(v int32)`
+`func (o *UpdateUsersInput) SetMaxFiles(v int32)`
 
-SetFileUploadLimit sets FileUploadLimit field to given value.
+SetMaxFiles sets MaxFiles field to given value.
 
-### HasFileUploadLimit
+### HasMaxFiles
 
-`func (o *UpdateUsersInput) HasFileUploadLimit() bool`
+`func (o *UpdateUsersInput) HasMaxFiles() bool`
 
-HasFileUploadLimit returns a boolean if a field has been set.
+HasMaxFiles returns a boolean if a field has been set.
 
-### SetFileUploadLimitNil
+### SetMaxFilesNil
 
-`func (o *UpdateUsersInput) SetFileUploadLimitNil(b bool)`
+`func (o *UpdateUsersInput) SetMaxFilesNil(b bool)`
 
- SetFileUploadLimitNil sets the value for FileUploadLimit to be an explicit nil
+ SetMaxFilesNil sets the value for MaxFiles to be an explicit nil
 
-### UnsetFileUploadLimit
-`func (o *UpdateUsersInput) UnsetFileUploadLimit()`
+### UnsetMaxFiles
+`func (o *UpdateUsersInput) UnsetMaxFiles()`
 
-UnsetFileUploadLimit ensures that no value is present for FileUploadLimit, not even an explicit nil
+UnsetMaxFiles ensures that no value is present for MaxFiles, not even an explicit nil
+### GetMaxFilesPerUpload
+
+`func (o *UpdateUsersInput) GetMaxFilesPerUpload() int32`
+
+GetMaxFilesPerUpload returns the MaxFilesPerUpload field if non-nil, zero value otherwise.
+
+### GetMaxFilesPerUploadOk
+
+`func (o *UpdateUsersInput) GetMaxFilesPerUploadOk() (*int32, bool)`
+
+GetMaxFilesPerUploadOk returns a tuple with the MaxFilesPerUpload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxFilesPerUpload
+
+`func (o *UpdateUsersInput) SetMaxFilesPerUpload(v int32)`
+
+SetMaxFilesPerUpload sets MaxFilesPerUpload field to given value.
+
+### HasMaxFilesPerUpload
+
+`func (o *UpdateUsersInput) HasMaxFilesPerUpload() bool`
+
+HasMaxFilesPerUpload returns a boolean if a field has been set.
+
+### SetMaxFilesPerUploadNil
+
+`func (o *UpdateUsersInput) SetMaxFilesPerUploadNil(b bool)`
+
+ SetMaxFilesPerUploadNil sets the value for MaxFilesPerUpload to be an explicit nil
+
+### UnsetMaxFilesPerUpload
+`func (o *UpdateUsersInput) UnsetMaxFilesPerUpload()`
+
+UnsetMaxFilesPerUpload ensures that no value is present for MaxFilesPerUpload, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
