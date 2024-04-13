@@ -4210,7 +4210,14 @@
               }
             ],
             "title": "Parent File Ids",
-            "description": "Optional list of parent file IDs to limit the search to. A parent file describes a file to which\n        another file belongs (e.g. a folder)"
+            "description": "Optional list of parent file IDs to limit the search to. A parent file describes a file to which\n        another file belongs (e.g. a folder)",
+            "deprecated": true
+          },
+          "include_all_children": {
+            "type": "boolean",
+            "title": "Include All Children",
+            "description": "Flag to control whether or not to include all children of filtered files in the embedding search.",
+            "default": false
           },
           "tags": {
             "anyOf": [
@@ -5294,7 +5301,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX",
             "default": true
           }
         },
