@@ -44,6 +44,7 @@ func main() {
     getEmbeddingDocumentsBody.SetQueryVector(null)
     getEmbeddingDocumentsBody.SetFileIds(null)
     getEmbeddingDocumentsBody.SetParentFileIds(null)
+    getEmbeddingDocumentsBody.SetIncludeAllChildren(false)
     getEmbeddingDocumentsBody.SetTagsV2({"OR":[{"key":"subject","negate":false,"value":"holy-bible"},{"key":"person-of-interest","negate":false,"value":"jesus christ"},{"key":"genre","negate":true,"value":"fiction"},{"AND":[{"key":"subject","negate":true,"value":"tao-te-ching"},{"key":"author","negate":false,"value":"lao-tzu"}]}]})
     getEmbeddingDocumentsBody.SetIncludeTags(null)
     getEmbeddingDocumentsBody.SetIncludeVectors(null)

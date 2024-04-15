@@ -55,6 +55,12 @@ describe Carbon::GetEmbeddingDocumentsBody do
     end
   end
 
+  describe 'test attribute "include_all_children"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "tags_v2"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

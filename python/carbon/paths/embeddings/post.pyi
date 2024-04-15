@@ -134,6 +134,7 @@ class BaseApi(api_client.Api):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -157,6 +158,8 @@ class BaseApi(api_client.Api):
             _body["file_ids"] = file_ids
         if parent_file_ids is not None:
             _body["parent_file_ids"] = parent_file_ids
+        if include_all_children is not None:
+            _body["include_all_children"] = include_all_children
         if tags_v2 is not None:
             _body["tags_v2"] = tags_v2
         if include_tags is not None:
@@ -386,6 +389,7 @@ class GetDocumentsRaw(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -407,6 +411,7 @@ class GetDocumentsRaw(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,
@@ -429,6 +434,7 @@ class GetDocumentsRaw(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -448,6 +454,7 @@ class GetDocumentsRaw(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,
@@ -471,6 +478,7 @@ class GetDocuments(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -489,6 +497,7 @@ class GetDocuments(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,
@@ -512,6 +521,7 @@ class GetDocuments(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -529,6 +539,7 @@ class GetDocuments(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,
@@ -554,6 +565,7 @@ class ApiForpost(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -575,6 +587,7 @@ class ApiForpost(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,
@@ -597,6 +610,7 @@ class ApiForpost(BaseApi):
         query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector] = None,
         file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = None,
         parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = None,
+        include_all_children: typing.Optional[bool] = None,
         tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = None,
         include_tags: typing.Optional[typing.Optional[bool]] = None,
         include_vectors: typing.Optional[typing.Optional[bool]] = None,
@@ -616,6 +630,7 @@ class ApiForpost(BaseApi):
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,

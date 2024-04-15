@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.17-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.17)
+[![npm](https://img.shields.io/badge/gem-v0.1.18-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.18)
 
 </div>
 
@@ -80,7 +80,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.17'
+gem 'carbon_ruby_sdk', '~> 0.1.18'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -356,6 +356,7 @@ result = carbon.embeddings.get_documents(
   parent_file_ids: [
         1
     ],
+  include_all_children: false,
   tags_v2: {
     },
   include_tags: true,
@@ -396,6 +397,10 @@ Optional list of file IDs to limit the search to
 ##### parent_file_ids: Array<`Integer`><a id="parent_file_ids-array"></a>
 Optional list of parent file IDs to limit the search to. A parent file describes
 a file to which another file belongs (e.g. a folder)
+
+##### include_all_children: `Boolean`<a id="include_all_children-boolean"></a>
+Flag to control whether or not to include all children of filtered files in the
+embedding search.
 
 ##### tags_v2: `Object`<a id="tags_v2-object"></a>
 A set of tags to limit the search to. Use this instead of `tags`, which is
@@ -1434,7 +1439,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
 
 #### 🔄 Return<a id="🔄-return"></a>
 

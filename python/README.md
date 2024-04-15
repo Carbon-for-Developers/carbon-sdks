@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.19-blue)](https://pypi.org/project/carbon-python-sdk/0.1.19)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.20-blue)](https://pypi.org/project/carbon-python-sdk/0.1.20)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -86,7 +86,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.19
+pip install carbon-python-sdk==0.1.20
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -416,6 +416,7 @@ get_documents_response = carbon.embeddings.get_documents(
     query_vector=[3.14],
     file_ids=[1],
     parent_file_ids=[1],
+    include_all_children=False,
     tags_v2={},
     include_tags=True,
     include_vectors=True,
@@ -447,6 +448,10 @@ Number of related chunks to return.
 ##### file_ids: [`GetEmbeddingDocumentsBodyFileIds`](./carbon/type/get_embedding_documents_body_file_ids.py)<a id="file_ids-getembeddingdocumentsbodyfileidscarbontypeget_embedding_documents_body_file_idspy"></a>
 
 ##### parent_file_ids: [`GetEmbeddingDocumentsBodyParentFileIds`](./carbon/type/get_embedding_documents_body_parent_file_ids.py)<a id="parent_file_ids-getembeddingdocumentsbodyparentfileidscarbontypeget_embedding_documents_body_parent_file_idspy"></a>
+
+##### include_all_children: `bool`<a id="include_all_children-bool"></a>
+
+Flag to control whether or not to include all children of filtered files in the embedding search.
 
 ##### tags_v2: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags_v2-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 
@@ -1607,7 +1612,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

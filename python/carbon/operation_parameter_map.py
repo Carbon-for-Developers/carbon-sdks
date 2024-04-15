@@ -51,6 +51,9 @@ operation_parameter_map = {
                 'name': 'parent_file_ids'
             },
             {
+                'name': 'include_all_children'
+            },
+            {
                 'name': 'tags_v2'
             },
             {

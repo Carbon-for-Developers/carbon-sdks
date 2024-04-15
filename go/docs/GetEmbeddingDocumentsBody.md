@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **K** | **int32** | Number of related chunks to return. | 
 **FileIds** | Pointer to **[]int32** | Optional list of file IDs to limit the search to | [optional] 
 **ParentFileIds** | Pointer to **[]int32** | Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder) | [optional] 
+**IncludeAllChildren** | Pointer to **bool** | Flag to control whether or not to include all children of filtered files in the embedding search. | [optional] [default to false]
 **TagsV2** | Pointer to **map[string]interface{}** | A set of tags to limit the search to. Use this instead of &#x60;tags&#x60;, which is deprecated. | [optional] 
 **IncludeTags** | Pointer to **NullableBool** | Flag to control whether or not to include tags for each chunk in the response. | [optional] 
 **IncludeVectors** | Pointer to **NullableBool** | Flag to control whether or not to include embedding vectors in the response. | [optional] 
@@ -218,6 +219,31 @@ HasParentFileIds returns a boolean if a field has been set.
 `func (o *GetEmbeddingDocumentsBody) UnsetParentFileIds()`
 
 UnsetParentFileIds ensures that no value is present for ParentFileIds, not even an explicit nil
+### GetIncludeAllChildren
+
+`func (o *GetEmbeddingDocumentsBody) GetIncludeAllChildren() bool`
+
+GetIncludeAllChildren returns the IncludeAllChildren field if non-nil, zero value otherwise.
+
+### GetIncludeAllChildrenOk
+
+`func (o *GetEmbeddingDocumentsBody) GetIncludeAllChildrenOk() (*bool, bool)`
+
+GetIncludeAllChildrenOk returns a tuple with the IncludeAllChildren field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeAllChildren
+
+`func (o *GetEmbeddingDocumentsBody) SetIncludeAllChildren(v bool)`
+
+SetIncludeAllChildren sets IncludeAllChildren field to given value.
+
+### HasIncludeAllChildren
+
+`func (o *GetEmbeddingDocumentsBody) HasIncludeAllChildren() bool`
+
+HasIncludeAllChildren returns a boolean if a field has been set.
+
 ### GetTagsV2
 
 `func (o *GetEmbeddingDocumentsBody) GetTagsV2() map[string]interface{}`

@@ -27,7 +27,10 @@ type GetEmbeddingDocumentsBody struct {
 	// Optional list of file IDs to limit the search to
 	FileIds []int32 `json:"file_ids,omitempty"`
 	// Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder)
+	// Deprecated
 	ParentFileIds []int32 `json:"parent_file_ids,omitempty"`
+	// Flag to control whether or not to include all children of filtered files in the embedding search.
+	IncludeAllChildren *bool `json:"include_all_children,omitempty"`
 	// A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
 	TagsV2 map[string]interface{} `json:"tags_v2,omitempty"`
 	// Flag to control whether or not to include tags for each chunk in the response.
@@ -51,6 +54,8 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 	this := GetEmbeddingDocumentsBody{}
 	this.Query = query
 	this.K = k
+	var includeAllChildren bool = false
+	this.IncludeAllChildren = &includeAllChildren
 	var mediaType FileContentTypesNullable = FILECONTENTTYPESNULLABLE_TEXT
 	this.MediaType = *NewNullableFileContentTypesNullable(&mediaType)
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
@@ -63,6 +68,8 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 // but it doesn't guarantee that properties required by API are set
 func NewGetEmbeddingDocumentsBodyWithDefaults() *GetEmbeddingDocumentsBody {
 	this := GetEmbeddingDocumentsBody{}
+	var includeAllChildren bool = false
+	this.IncludeAllChildren = &includeAllChildren
 	var mediaType FileContentTypesNullable = FILECONTENTTYPESNULLABLE_TEXT
 	this.MediaType = *NewNullableFileContentTypesNullable(&mediaType)
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
@@ -218,6 +225,7 @@ func (o *GetEmbeddingDocumentsBody) SetFileIds(v []int32) {
 }
 
 // GetParentFileIds returns the ParentFileIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *GetEmbeddingDocumentsBody) GetParentFileIds() []int32 {
 	if o == nil {
 		var ret []int32
@@ -229,6 +237,7 @@ func (o *GetEmbeddingDocumentsBody) GetParentFileIds() []int32 {
 // GetParentFileIdsOk returns a tuple with the ParentFileIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *GetEmbeddingDocumentsBody) GetParentFileIdsOk() ([]int32, bool) {
 	if o == nil || isNil(o.ParentFileIds) {
     return nil, false
@@ -246,8 +255,41 @@ func (o *GetEmbeddingDocumentsBody) HasParentFileIds() bool {
 }
 
 // SetParentFileIds gets a reference to the given []int32 and assigns it to the ParentFileIds field.
+// Deprecated
 func (o *GetEmbeddingDocumentsBody) SetParentFileIds(v []int32) {
 	o.ParentFileIds = v
+}
+
+// GetIncludeAllChildren returns the IncludeAllChildren field value if set, zero value otherwise.
+func (o *GetEmbeddingDocumentsBody) GetIncludeAllChildren() bool {
+	if o == nil || isNil(o.IncludeAllChildren) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeAllChildren
+}
+
+// GetIncludeAllChildrenOk returns a tuple with the IncludeAllChildren field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetEmbeddingDocumentsBody) GetIncludeAllChildrenOk() (*bool, bool) {
+	if o == nil || isNil(o.IncludeAllChildren) {
+    return nil, false
+	}
+	return o.IncludeAllChildren, true
+}
+
+// HasIncludeAllChildren returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasIncludeAllChildren() bool {
+	if o != nil && !isNil(o.IncludeAllChildren) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeAllChildren gets a reference to the given bool and assigns it to the IncludeAllChildren field.
+func (o *GetEmbeddingDocumentsBody) SetIncludeAllChildren(v bool) {
+	o.IncludeAllChildren = &v
 }
 
 // GetTagsV2 returns the TagsV2 field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -596,6 +638,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.ParentFileIds != nil {
 		toSerialize["parent_file_ids"] = o.ParentFileIds
+	}
+	if !isNil(o.IncludeAllChildren) {
+		toSerialize["include_all_children"] = o.IncludeAllChildren
 	}
 	if o.TagsV2 != nil {
 		toSerialize["tags_v2"] = o.TagsV2

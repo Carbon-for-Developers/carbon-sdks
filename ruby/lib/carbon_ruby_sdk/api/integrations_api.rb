@@ -545,7 +545,7 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})
@@ -607,7 +607,7 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})

@@ -4529,6 +4529,7 @@ components:
         tags:
           key: null
         hybrid_search: true
+        include_all_children: false
         media_type: TEXT
         file_ids:
         - 1
@@ -4592,6 +4593,7 @@ components:
           title: File Ids
           type: array
         parent_file_ids:
+          deprecated: true
           description: |-
             Optional list of parent file IDs to limit the search to. A parent file describes a file to which
                     another file belongs (e.g. a folder)
@@ -4600,6 +4602,15 @@ components:
           nullable: true
           title: Parent File Ids
           type: array
+        include_all_children:
+          default: false
+          description: Flag to control whether or not to include all children of filtered
+            files in the embedding search.
+          example: false
+          title: Include All Children
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_all_children
         tags_v2:
           description: "A set of tags to limit the search to. Use this instead of\
             \ `tags`, which is deprecated."
@@ -5369,7 +5380,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE"
+            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -8243,6 +8254,10 @@ components:
       example: true
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_all_children:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-tags_v2:
       example:
         OR:
@@ -8971,7 +8986,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE"
+            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9913,6 +9928,7 @@ components:
           title: File Ids
           type: array
         parent_file_ids:
+          deprecated: true
           description: |-
             Optional list of parent file IDs to limit the search to. A parent file describes a file to which
                     another file belongs (e.g. a folder)
@@ -9921,6 +9937,15 @@ components:
           nullable: true
           title: Parent File Ids
           type: array
+        include_all_children:
+          default: false
+          description: Flag to control whether or not to include all children of filtered
+            files in the embedding search.
+          example: false
+          title: Include All Children
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_all_children
         tags_v2:
           description: "A set of tags to limit the search to. Use this instead of\
             \ `tags`, which is deprecated."

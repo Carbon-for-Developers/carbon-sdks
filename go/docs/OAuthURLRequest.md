@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **NullableString** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] 
 **UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
-**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE | [optional] [default to true]
+**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX | [optional] [default to true]
 
 ## Methods
 

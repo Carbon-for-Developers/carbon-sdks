@@ -244,6 +244,7 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
                 k: requestParameters.k,
                 file_ids: requestParameters.file_ids,
                 parent_file_ids: requestParameters.parent_file_ids,
+                include_all_children: requestParameters.include_all_children,
                 tags_v2: requestParameters.tags_v2,
                 include_tags: requestParameters.include_tags,
                 include_vectors: requestParameters.include_vectors,

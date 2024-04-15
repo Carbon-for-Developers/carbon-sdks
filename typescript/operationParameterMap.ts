@@ -57,6 +57,9 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'parent_file_ids'
             },
             {
+                name: 'include_all_children'
+            },
+            {
                 name: 'tags_v2'
             },
             {

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.20-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.20)
+[![npm](https://img.shields.io/badge/npm-v0.1.21-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.21)
 
 </div>
 
@@ -355,6 +355,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const getDocumentsResponse = await carbon.embeddings.getDocuments({
   query: "query_example",
   k: 1,
+  include_all_children: false,
   media_type: "TEXT",
   embedding_model: "OPENAI",
 });
@@ -385,6 +386,10 @@ Optional list of file IDs to limit the search to
 ##### parent_file_ids: `number`[]<a id="parent_file_ids-number"></a>
 
 Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder)
+
+##### include_all_children: `boolean`<a id="include_all_children-boolean"></a>
+
+Flag to control whether or not to include all children of filtered files in the embedding search.
 
 ##### tags_v2: `object`<a id="tags_v2-object"></a>
 
@@ -1439,7 +1444,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
 
 #### 🔄 Return<a id="🔄-return"></a>
 

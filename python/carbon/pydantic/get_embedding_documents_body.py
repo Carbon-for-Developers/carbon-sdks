@@ -36,7 +36,11 @@ class GetEmbeddingDocumentsBody(BaseModel):
 
     file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds] = Field(None, alias='file_ids')
 
+    # WARNING: This property is deprecated
     parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds] = Field(None, alias='parent_file_ids')
+
+    # Flag to control whether or not to include all children of filtered files in the embedding search.
+    include_all_children: typing.Optional[bool] = Field(None, alias='include_all_children')
 
     # A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
     tags_v2: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags_v2')

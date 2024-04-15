@@ -66,6 +66,7 @@ class GetEmbeddingDocumentsBody(
             @staticmethod
             def parent_file_ids() -> typing.Type['GetEmbeddingDocumentsBodyParentFileIds']:
                 return GetEmbeddingDocumentsBodyParentFileIds
+            include_all_children = schemas.BoolSchema
             
             
             class tags_v2(
@@ -187,6 +188,7 @@ class GetEmbeddingDocumentsBody(
                 "query_vector": query_vector,
                 "file_ids": file_ids,
                 "parent_file_ids": parent_file_ids,
+                "include_all_children": include_all_children,
                 "tags_v2": tags_v2,
                 "include_tags": include_tags,
                 "include_vectors": include_vectors,
@@ -219,6 +221,9 @@ class GetEmbeddingDocumentsBody(
     def __getitem__(self, name: typing_extensions.Literal["parent_file_ids"]) -> 'GetEmbeddingDocumentsBodyParentFileIds': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["include_all_children"]) -> MetaOapg.properties.include_all_children: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tags_v2"]) -> MetaOapg.properties.tags_v2: ...
     
     @typing.overload
@@ -245,7 +250,7 @@ class GetEmbeddingDocumentsBody(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -267,6 +272,9 @@ class GetEmbeddingDocumentsBody(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["parent_file_ids"]) -> typing.Union['GetEmbeddingDocumentsBodyParentFileIds', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["include_all_children"]) -> typing.Union[MetaOapg.properties.include_all_children, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["tags_v2"]) -> typing.Union[MetaOapg.properties.tags_v2, schemas.Unset]: ...
@@ -295,7 +303,7 @@ class GetEmbeddingDocumentsBody(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -308,6 +316,7 @@ class GetEmbeddingDocumentsBody(
         query_vector: typing.Union['GetEmbeddingDocumentsBodyQueryVector', schemas.Unset] = schemas.unset,
         file_ids: typing.Union['GetEmbeddingDocumentsBodyFileIds', schemas.Unset] = schemas.unset,
         parent_file_ids: typing.Union['GetEmbeddingDocumentsBodyParentFileIds', schemas.Unset] = schemas.unset,
+        include_all_children: typing.Union[MetaOapg.properties.include_all_children, bool, schemas.Unset] = schemas.unset,
         tags_v2: typing.Union[MetaOapg.properties.tags_v2, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         include_tags: typing.Union[MetaOapg.properties.include_tags, None, bool, schemas.Unset] = schemas.unset,
         include_vectors: typing.Union[MetaOapg.properties.include_vectors, None, bool, schemas.Unset] = schemas.unset,
@@ -328,6 +337,7 @@ class GetEmbeddingDocumentsBody(
             query_vector=query_vector,
             file_ids=file_ids,
             parent_file_ids=parent_file_ids,
+            include_all_children=include_all_children,
             tags_v2=tags_v2,
             include_tags=include_tags,
             include_vectors=include_vectors,

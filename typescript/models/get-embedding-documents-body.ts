@@ -55,8 +55,15 @@ export interface GetEmbeddingDocumentsBody {
      * Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder)
      * @type {Array<number>}
      * @memberof GetEmbeddingDocumentsBody
+     * @deprecated
      */
     'parent_file_ids'?: Array<number> | null;
+    /**
+     * Flag to control whether or not to include all children of filtered files in the embedding search.
+     * @type {boolean}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'include_all_children'?: boolean;
     /**
      * A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
      * @type {object}

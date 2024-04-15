@@ -29,6 +29,9 @@ module Carbon
     # Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder)
     attr_accessor :parent_file_ids
 
+    # Flag to control whether or not to include all children of filtered files in the embedding search.
+    attr_accessor :include_all_children
+
     # A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
     attr_accessor :tags_v2
 
@@ -60,6 +63,7 @@ module Carbon
         :'k' => :'k',
         :'file_ids' => :'file_ids',
         :'parent_file_ids' => :'parent_file_ids',
+        :'include_all_children' => :'include_all_children',
         :'tags_v2' => :'tags_v2',
         :'include_tags' => :'include_tags',
         :'include_vectors' => :'include_vectors',
@@ -85,6 +89,7 @@ module Carbon
         :'k' => :'Integer',
         :'file_ids' => :'Array<Integer>',
         :'parent_file_ids' => :'Array<Integer>',
+        :'include_all_children' => :'Boolean',
         :'tags_v2' => :'Object',
         :'include_tags' => :'Boolean',
         :'include_vectors' => :'Boolean',
@@ -159,6 +164,12 @@ module Carbon
         if (value = attributes[:'parent_file_ids']).is_a?(Array)
           self.parent_file_ids = value
         end
+      end
+
+      if attributes.key?(:'include_all_children')
+        self.include_all_children = attributes[:'include_all_children']
+      else
+        self.include_all_children = false
       end
 
       if attributes.key?(:'tags_v2')
@@ -270,6 +281,7 @@ module Carbon
           k == o.k &&
           file_ids == o.file_ids &&
           parent_file_ids == o.parent_file_ids &&
+          include_all_children == o.include_all_children &&
           tags_v2 == o.tags_v2 &&
           include_tags == o.include_tags &&
           include_vectors == o.include_vectors &&
@@ -289,7 +301,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, query, query_vector, k, file_ids, parent_file_ids, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model].hash
+      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model].hash
     end
 
     # Builds the object from hash
