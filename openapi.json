@@ -5301,7 +5301,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE",
             "default": true
           }
         },
@@ -7321,6 +7321,17 @@
             "type": "boolean",
             "title": "Set Page As Boundary",
             "default": false
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
           },
           "enable_file_picker": {
             "type": "boolean",
