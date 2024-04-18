@@ -28,6 +28,7 @@ type SyncOptions struct {
 	// Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
 	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 }
 
@@ -485,6 +486,48 @@ func (o *SyncOptions) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncOptions) GetRequestId() string {
+	if o == nil || isNil(o.RequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId.Get()
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncOptions) GetRequestIdOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.RequestId.Get(), o.RequestId.IsSet()
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *SyncOptions) HasRequestId() bool {
+	if o != nil && o.RequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
+func (o *SyncOptions) SetRequestId(v string) {
+	o.RequestId.Set(&v)
+}
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *SyncOptions) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
+
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *SyncOptions) UnsetRequestId() {
+	o.RequestId.Unset()
+}
+
 // GetEnableFilePicker returns the EnableFilePicker field value if set, zero value otherwise.
 func (o *SyncOptions) GetEnableFilePicker() bool {
 	if o == nil || isNil(o.EnableFilePicker) {
@@ -548,6 +591,9 @@ func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
+	}
+	if o.RequestId.IsSet() {
+		toSerialize["request_id"] = o.RequestId.Get()
 	}
 	if !isNil(o.EnableFilePicker) {
 		toSerialize["enable_file_picker"] = o.EnableFilePicker

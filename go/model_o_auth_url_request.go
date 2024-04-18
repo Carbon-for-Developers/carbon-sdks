@@ -44,7 +44,7 @@ type OAuthURLRequest struct {
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
-	// Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
+	// Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 }
 

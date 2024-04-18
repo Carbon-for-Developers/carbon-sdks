@@ -152,7 +152,7 @@ export interface OAuthURLRequest {
      */
     'parse_pdf_tables_with_ocr'?: boolean | null;
     /**
-     * Enable integration\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
+     * Enable integration\'s file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE
      * @type {boolean}
      * @memberof OAuthURLRequest
      */

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**RequestId** | Pointer to **NullableString** |  | [optional] 
 **EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
@@ -375,6 +376,41 @@ SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 
 HasSetPageAsBoundary returns a boolean if a field has been set.
 
+### GetRequestId
+
+`func (o *SyncOptions) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *SyncOptions) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *SyncOptions) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *SyncOptions) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
+
+### SetRequestIdNil
+
+`func (o *SyncOptions) SetRequestIdNil(b bool)`
+
+ SetRequestIdNil sets the value for RequestId to be an explicit nil
+
+### UnsetRequestId
+`func (o *SyncOptions) UnsetRequestId()`
+
+UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 ### GetEnableFilePicker
 
 `func (o *SyncOptions) GetEnableFilePicker() bool`

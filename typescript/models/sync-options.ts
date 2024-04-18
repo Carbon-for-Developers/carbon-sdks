@@ -80,6 +80,12 @@ export interface SyncOptions {
     'set_page_as_boundary'?: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof SyncOptions
+     */
+    'request_id'?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof SyncOptions
      */

@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.20-blue)](https://pypi.org/project/carbon-python-sdk/0.1.20)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.21-blue)](https://pypi.org/project/carbon-python-sdk/0.1.21)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -86,7 +86,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.20
+pip install carbon-python-sdk==0.1.21
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1612,7 +1612,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
+Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
