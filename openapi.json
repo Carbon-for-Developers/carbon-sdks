@@ -5301,7 +5301,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT",
             "default": true
           }
         },
@@ -5525,6 +5525,11 @@
             "type": "string",
             "format": "date-time",
             "title": "Updated At"
+          },
+          "files_synced_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Files Synced At"
           }
         },
         "type": "object",
@@ -5543,7 +5548,8 @@
           "last_sync_action",
           "enable_auto_sync",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "files_synced_at"
         ],
         "title": "OrganizationUserDataSourceAPI"
       },
