@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **EnableAutoSync** | **NullableBool** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
+**FilesSyncedAt** | **time.Time** |  | 
 
 ## Methods
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt time.Time, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -377,6 +378,26 @@ and a boolean to check if the value has been set.
 `func (o *OrganizationUserDataSourceAPI) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
+
+
+### GetFilesSyncedAt
+
+`func (o *OrganizationUserDataSourceAPI) GetFilesSyncedAt() time.Time`
+
+GetFilesSyncedAt returns the FilesSyncedAt field if non-nil, zero value otherwise.
+
+### GetFilesSyncedAtOk
+
+`func (o *OrganizationUserDataSourceAPI) GetFilesSyncedAtOk() (*time.Time, bool)`
+
+GetFilesSyncedAtOk returns a tuple with the FilesSyncedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilesSyncedAt
+
+`func (o *OrganizationUserDataSourceAPI) SetFilesSyncedAt(v time.Time)`
+
+SetFilesSyncedAt sets FilesSyncedAt field to given value.
 
 
 

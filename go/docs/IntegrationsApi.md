@@ -255,6 +255,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.EnableAutoSync`: %v\n", resp.EnableAutoSync)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.UpdatedAt`: %v\n", resp.UpdatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
 }
 ```
 
@@ -734,6 +735,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.EnableAutoSync`: %v\n", resp.EnableAutoSync)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.UpdatedAt`: %v\n", resp.UpdatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
 }
 ```
 

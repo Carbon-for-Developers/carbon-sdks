@@ -69,7 +69,7 @@ class OAuthURLRequest(BaseModel):
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
 
-    # Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE
+    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
     enable_file_picker: typing.Optional[bool] = Field(None, alias='enable_file_picker')
 
     model_config = ConfigDict(
