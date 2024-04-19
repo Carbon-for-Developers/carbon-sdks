@@ -50,6 +50,8 @@ class OrganizationUserDataSourceAPI(BaseModel):
 
     updated_at: datetime = Field(alias='updated_at')
 
+    files_synced_at: datetime = Field(alias='files_synced_at')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

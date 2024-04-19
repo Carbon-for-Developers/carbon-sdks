@@ -3662,6 +3662,7 @@ components:
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
+          files_synced_at: 2000-01-23T04:56:07.000+00:00
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
@@ -5381,7 +5382,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE"
+            \ it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5490,6 +5491,7 @@ components:
         organization_supplied_user_id: organization_supplied_user_id
         token: "{}"
         updated_at: 2000-01-23T04:56:07.000+00:00
+        files_synced_at: 2000-01-23T04:56:07.000+00:00
         source_items_synced_at: 2000-01-23T04:56:07.000+00:00
         organization_user_id: 6
         organization_id: 1
@@ -5549,11 +5551,16 @@ components:
           format: date-time
           title: Updated At
           type: string
+        files_synced_at:
+          format: date-time
+          title: Files Synced At
+          type: string
       required:
       - created_at
       - data_source_external_id
       - data_source_type
       - enable_auto_sync
+      - files_synced_at
       - id
       - last_sync_action
       - last_synced_at
@@ -5641,6 +5648,7 @@ components:
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
+          files_synced_at: 2000-01-23T04:56:07.000+00:00
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
@@ -5656,6 +5664,7 @@ components:
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
+          files_synced_at: 2000-01-23T04:56:07.000+00:00
           source_items_synced_at: 2000-01-23T04:56:07.000+00:00
           organization_user_id: 6
           organization_id: 1
@@ -8992,7 +9001,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE"
+            \ it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean

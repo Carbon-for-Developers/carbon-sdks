@@ -1439,7 +1439,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, DROPBOX, SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE
+DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
 
 #### 🔄 Return<a id="🔄-return"></a>
 
