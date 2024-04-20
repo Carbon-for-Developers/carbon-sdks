@@ -993,6 +993,57 @@
         ]
       }
     },
+    "/integrations/github": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Github Connect",
+        "description": "Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.\nMake sure that your access token has the permission to read content from your desired repos. Note that if your access token\nexpires you will need to manually update it through this endpoint.",
+        "operationId": "github_connect_integrations_github_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GithubConnectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -3039,6 +3090,9 @@
               },
               {
                 "$ref": "#/components/schemas/S3Authentication"
+              },
+              {
+                "$ref": "#/components/schemas/GithubAuthentication"
               }
             ],
             "title": "Authentication"
@@ -3150,6 +3204,7 @@
           "FRESHDESK",
           "GITBOOK",
           "SALESFORCE",
+          "GITHUB",
           "JPG",
           "PNG",
           "JPEG",
@@ -3909,6 +3964,7 @@
           "WEB_SCRAPE",
           "GITBOOK",
           "SALESFORCE",
+          "GITHUB",
           "JPG",
           "JPG",
           "PNG",
@@ -4666,6 +4722,47 @@
         ],
         "title": "GitbookSyncRequest"
       },
+      "GithubAuthentication": {
+        "properties": {
+          "source": {
+            "const": "GITHUB",
+            "title": "Source"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "username"
+        ],
+        "title": "GithubAuthentication"
+      },
+      "GithubConnectRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "access_token"
+        ],
+        "title": "GithubConnectRequest"
+      },
       "GmailSyncInput": {
         "properties": {
           "filters": {
@@ -5301,7 +5398,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX",
             "default": true
           }
         },
@@ -5527,8 +5624,15 @@
             "title": "Updated At"
           },
           "files_synced_at": {
-            "type": "string",
-            "format": "date-time",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Files Synced At"
           }
         },
