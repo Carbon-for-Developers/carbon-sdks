@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.20-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.20)
+[![npm](https://img.shields.io/badge/gem-v0.1.21-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.21)
 
 </div>
 
@@ -53,6 +53,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
+  * [`carbon.integrations.sync_git_hub`](#carbonintegrationssync_git_hub)
   * [`carbon.integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
@@ -80,7 +81,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.20'
+gem 'carbon_ruby_sdk', '~> 0.1.21'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1439,7 +1440,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
+SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1780,6 +1781,39 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.sync_git_hub`<a id="carbonintegrationssync_git_hub"></a>
+
+Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
+Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
+expires you will need to manually update it through this endpoint.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.sync_git_hub(
+  username: "string_example",
+  access_token: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### username: `String`<a id="username-string"></a>
+##### access_token: `String`<a id="access_token-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

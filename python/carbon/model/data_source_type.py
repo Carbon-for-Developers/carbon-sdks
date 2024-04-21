@@ -64,6 +64,7 @@ class DataSourceType(
             "FRESHDESK": "FRESHDESK",
             "GITBOOK": "GITBOOK",
             "SALESFORCE": "SALESFORCE",
+            "GITHUB": "GITHUB",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -199,6 +200,10 @@ class DataSourceType(
     @schemas.classproperty
     def SALESFORCE(cls):
         return cls("SALESFORCE")
+    
+    @schemas.classproperty
+    def GITHUB(cls):
+        return cls("GITHUB")
     
     @schemas.classproperty
     def JPG(cls):

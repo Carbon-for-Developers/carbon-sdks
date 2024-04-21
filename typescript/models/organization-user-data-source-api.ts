@@ -115,6 +115,6 @@ export interface OrganizationUserDataSourceAPI {
      * @type {string}
      * @memberof OrganizationUserDataSourceAPI
      */
-    'files_synced_at': string;
+    'files_synced_at': string | null;
 }
 

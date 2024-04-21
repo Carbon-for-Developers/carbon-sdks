@@ -44,6 +44,7 @@ const (
 	FILEFORMATSNULLABLE_WEB_SCRAPE FileFormatsNullable = "WEB_SCRAPE"
 	FILEFORMATSNULLABLE_GITBOOK FileFormatsNullable = "GITBOOK"
 	FILEFORMATSNULLABLE_SALESFORCE FileFormatsNullable = "SALESFORCE"
+	FILEFORMATSNULLABLE_GITHUB FileFormatsNullable = "GITHUB"
 	FILEFORMATSNULLABLE_JPG FileFormatsNullable = "JPG"
 	FILEFORMATSNULLABLE_PNG FileFormatsNullable = "PNG"
 	FILEFORMATSNULLABLE_MP3 FileFormatsNullable = "MP3"
@@ -85,6 +86,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"WEB_SCRAPE",
 	"GITBOOK",
 	"SALESFORCE",
+	"GITHUB",
 	"JPG",
 	"PNG",
 	"MP3",

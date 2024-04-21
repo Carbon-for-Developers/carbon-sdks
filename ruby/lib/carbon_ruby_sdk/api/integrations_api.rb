@@ -545,7 +545,7 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})
@@ -607,7 +607,7 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})
@@ -1669,6 +1669,112 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Github Connect
+    #
+    # Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
+    # Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
+    # expires you will need to manually update it through this endpoint.
+    #
+    # @param username [String] 
+    # @param access_token [String] 
+    # @param body [GithubConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_git_hub(username:, access_token:, extra: {})
+      _body = {}
+      _body[:username] = username if username != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      github_connect_request = _body
+      api_response = sync_git_hub_with_http_info_impl(github_connect_request, extra)
+      api_response.data
+    end
+
+    # Github Connect
+    #
+    # Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
+    # Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
+    # expires you will need to manually update it through this endpoint.
+    #
+    # @param username [String] 
+    # @param access_token [String] 
+    # @param body [GithubConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_git_hub_with_http_info(username:, access_token:, extra: {})
+      _body = {}
+      _body[:username] = username if username != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      github_connect_request = _body
+      sync_git_hub_with_http_info_impl(github_connect_request, extra)
+    end
+
+    # Github Connect
+    # Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+    # @param github_connect_request [GithubConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def sync_git_hub_impl(github_connect_request, opts = {})
+      data, _status_code, _headers = sync_git_hub_with_http_info(github_connect_request, opts)
+      data
+    end
+
+    # Github Connect
+    # Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+    # @param github_connect_request [GithubConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def sync_git_hub_with_http_info_impl(github_connect_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_git_hub ...'
+      end
+      # verify the required parameter 'github_connect_request' is set
+      if @api_client.config.client_side_validation && github_connect_request.nil?
+        fail ArgumentError, "Missing the required parameter 'github_connect_request' when calling IntegrationsApi.sync_git_hub"
+      end
+      # resource path
+      local_var_path = '/integrations/github'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(github_connect_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_git_hub",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_git_hub\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end

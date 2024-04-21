@@ -23,6 +23,7 @@ from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCat
 from carbon.paths.integrations_confluence_sync.post import SyncConfluence
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItems
 from carbon.paths.integrations_files_sync.post import SyncFiles
+from carbon.paths.integrations_github.post import SyncGitHub
 from carbon.paths.integrations_gitbook_sync.post import SyncGitbook
 from carbon.paths.integrations_gmail_sync.post import SyncGmail
 from carbon.paths.integrations_outlook_sync.post import SyncOutlook
@@ -46,6 +47,7 @@ class IntegrationsApi(
     SyncConfluence,
     SyncDataSourceItems,
     SyncFiles,
+    SyncGitHub,
     SyncGitbook,
     SyncGmail,
     SyncOutlook,

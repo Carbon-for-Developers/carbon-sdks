@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **EnableAutoSync** | **NullableBool** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
-**FilesSyncedAt** | **time.Time** |  | 
+**FilesSyncedAt** | **NullableTime** |  | 
 
 ## Methods
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt time.Time, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -400,6 +400,16 @@ and a boolean to check if the value has been set.
 SetFilesSyncedAt sets FilesSyncedAt field to given value.
 
 
+### SetFilesSyncedAtNil
+
+`func (o *OrganizationUserDataSourceAPI) SetFilesSyncedAtNil(b bool)`
+
+ SetFilesSyncedAtNil sets the value for FilesSyncedAt to be an explicit nil
+
+### UnsetFilesSyncedAt
+`func (o *OrganizationUserDataSourceAPI) UnsetFilesSyncedAt()`
+
+UnsetFilesSyncedAt ensures that no value is present for FilesSyncedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

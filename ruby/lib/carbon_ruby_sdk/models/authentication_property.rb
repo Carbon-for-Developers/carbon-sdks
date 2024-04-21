@@ -102,6 +102,7 @@ module Carbon
       :'ConfluenceAuthentication',
       :'FreskdeskAuthentication',
       :'GitbookAuthetication',
+      :'GithubAuthentication',
       :'NotionAuthentication',
       :'OAuthAuthentication',
       :'S3Authentication',

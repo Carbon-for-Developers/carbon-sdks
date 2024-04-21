@@ -682,6 +682,16 @@ operation_parameter_map = {
             },
         ]
     },
+    '/integrations/github-POST': {
+        'parameters': [
+            {
+                'name': 'username'
+            },
+            {
+                'name': 'access_token'
+            },
+        ]
+    },
     '/integrations/gitbook/sync-POST': {
         'parameters': [
             {

@@ -41,6 +41,8 @@ import { GitbookConnectRequest } from '../models';
 // @ts-ignore
 import { GitbookSyncRequest } from '../models';
 // @ts-ignore
+import { GithubConnectRequest } from '../models';
+// @ts-ignore
 import { GmailSyncInput } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -808,6 +810,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
+         * Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+         * @summary Github Connect
+         * @param {GithubConnectRequest} githubConnectRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncGitHub: async (githubConnectRequest: GithubConnectRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'githubConnectRequest' is not null or undefined
+            assertParamExists('syncGitHub', 'githubConnectRequest', githubConnectRequest)
+            const localVarPath = `/integrations/github`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: githubConnectRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/github',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(githubConnectRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
          * @summary Gitbook Sync
          * @param {GitbookSyncRequest} gitbookSyncRequest 
@@ -1336,6 +1390,21 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+         * @summary Github Connect
+         * @param {IntegrationsApiSyncGitHubRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncGitHub(requestParameters: IntegrationsApiSyncGitHubRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const githubConnectRequest: GithubConnectRequest = {
+                username: requestParameters.username,
+                access_token: requestParameters.access_token
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitHub(githubConnectRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
          * @summary Gitbook Sync
          * @param {IntegrationsApiSyncGitbookRequest} requestParameters Request parameters.
@@ -1607,6 +1676,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.syncFiles(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+         * @summary Github Connect
+         * @param {IntegrationsApiSyncGitHubRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncGitHub(requestParameters: IntegrationsApiSyncGitHubRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.syncGitHub(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.
          * @summary Gitbook Sync
          * @param {IntegrationsApiSyncGitbookRequest} requestParameters Request parameters.
@@ -1812,6 +1891,15 @@ export type IntegrationsApiSyncDataSourceItemsRequest = {
 export type IntegrationsApiSyncFilesRequest = {
     
 } & SyncFilesRequest
+
+/**
+ * Request parameters for syncGitHub operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncGitHubRequest
+ */
+export type IntegrationsApiSyncGitHubRequest = {
+    
+} & GithubConnectRequest
 
 /**
  * Request parameters for syncGitbook operation in IntegrationsApi.
@@ -2031,6 +2119,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public syncFiles(requestParameters: IntegrationsApiSyncFilesRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).syncFiles(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+     * @summary Github Connect
+     * @param {IntegrationsApiSyncGitHubRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncGitHub(requestParameters: IntegrationsApiSyncGitHubRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncGitHub(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

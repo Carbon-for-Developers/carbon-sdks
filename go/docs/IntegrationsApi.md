@@ -18,6 +18,7 @@ Method | Path | Description
 [**SyncConfluence**](IntegrationsApi.md#SyncConfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 [**SyncDataSourceItems**](IntegrationsApi.md#SyncDataSourceItems) | **Post** /integrations/items/sync | Sync Data Source Items
 [**SyncFiles**](IntegrationsApi.md#SyncFiles) | **Post** /integrations/files/sync | Sync Files
+[**SyncGitHub**](IntegrationsApi.md#SyncGitHub) | **Post** /integrations/github | Github Connect
 [**SyncGitbook**](IntegrationsApi.md#SyncGitbook) | **Post** /integrations/gitbook/sync | Gitbook Sync
 [**SyncGmail**](IntegrationsApi.md#SyncGmail) | **Post** /integrations/gmail/sync | Gmail Sync
 [**SyncOutlook**](IntegrationsApi.md#SyncOutlook) | **Post** /integrations/outlook/sync | Outlook Sync
@@ -800,6 +801,57 @@ func main() {
     // response from `SyncFiles`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncFiles`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.SyncFiles.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncGitHub
+
+Github Connect
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    
+    githubConnectRequest := *carbon.NewGithubConnectRequest(
+        "null",
+        "null",
+    )
+    
+    request := client.IntegrationsApi.SyncGitHub(
+        githubConnectRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.SyncGitHub``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `SyncGitHub`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncGitHub`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.SyncGitHub.Success`: %v\n", resp.Success)
 }
 ```
 

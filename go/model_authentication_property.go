@@ -20,6 +20,7 @@ type AuthenticationProperty struct {
 	ConfluenceAuthentication *ConfluenceAuthentication
 	FreskdeskAuthentication *FreskdeskAuthentication
 	GitbookAuthetication *GitbookAuthetication
+	GithubAuthentication *GithubAuthentication
 	NotionAuthentication *NotionAuthentication
 	OAuthAuthentication *OAuthAuthentication
 	S3Authentication *S3Authentication
@@ -69,6 +70,19 @@ func (dst *AuthenticationProperty) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.GitbookAuthetication = nil
+	}
+
+	// try to unmarshal JSON data into GithubAuthentication
+	err = json.Unmarshal(data, &dst.GithubAuthentication);
+	if err == nil {
+		jsonGithubAuthentication, _ := json.Marshal(dst.GithubAuthentication)
+		if string(jsonGithubAuthentication) == "{}" { // empty struct
+			dst.GithubAuthentication = nil
+		} else {
+			return nil // data stored in dst.GithubAuthentication, return on the first match
+		}
+	} else {
+		dst.GithubAuthentication = nil
 	}
 
 	// try to unmarshal JSON data into NotionAuthentication
@@ -177,6 +191,10 @@ func (src *AuthenticationProperty) MarshalJSON() ([]byte, error) {
 
 	if src.GitbookAuthetication != nil {
 		return json.Marshal(&src.GitbookAuthetication)
+	}
+
+	if src.GithubAuthentication != nil {
+		return json.Marshal(&src.GithubAuthentication)
 	}
 
 	if src.NotionAuthentication != nil {

@@ -688,6 +688,16 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/integrations/github-POST': {
+        parameters: [
+            {
+                name: 'username'
+            },
+            {
+                name: 'access_token'
+            },
+        ]
+    },
     '/integrations/gitbook/sync-POST': {
         parameters: [
             {

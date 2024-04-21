@@ -61,6 +61,7 @@ class FileFormatsNullable(
             "WEB_SCRAPE": "WEB_SCRAPE",
             "GITBOOK": "GITBOOK",
             "SALESFORCE": "SALESFORCE",
+            "GITHUB": "GITHUB",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -171,6 +172,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def SALESFORCE(cls):
         return cls("SALESFORCE")
+    
+    @schemas.classproperty
+    def GITHUB(cls):
+        return cls("GITHUB")
     
     @schemas.classproperty
     def JPG(cls):

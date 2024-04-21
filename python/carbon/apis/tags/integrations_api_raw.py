@@ -23,6 +23,7 @@ from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCat
 from carbon.paths.integrations_confluence_sync.post import SyncConfluenceRaw
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItemsRaw
 from carbon.paths.integrations_files_sync.post import SyncFilesRaw
+from carbon.paths.integrations_github.post import SyncGitHubRaw
 from carbon.paths.integrations_gitbook_sync.post import SyncGitbookRaw
 from carbon.paths.integrations_gmail_sync.post import SyncGmailRaw
 from carbon.paths.integrations_outlook_sync.post import SyncOutlookRaw
@@ -45,6 +46,7 @@ class IntegrationsApiRaw(
     SyncConfluenceRaw,
     SyncDataSourceItemsRaw,
     SyncFilesRaw,
+    SyncGitHubRaw,
     SyncGitbookRaw,
     SyncGmailRaw,
     SyncOutlookRaw,

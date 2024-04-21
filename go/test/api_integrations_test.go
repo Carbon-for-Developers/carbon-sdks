@@ -353,6 +353,26 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test IntegrationsApiService SyncGitHub", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        githubConnectRequest := *carbon.NewGithubConnectRequest(
+            "null",
+            "null",
+        )
+        
+        request := client.IntegrationsApi.SyncGitHub(
+            githubConnectRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService SyncGitbook", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

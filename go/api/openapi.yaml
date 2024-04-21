@@ -2010,6 +2010,41 @@ paths:
       - Integrations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-gitbook-sync
+  /integrations/github:
+    post:
+      description: |-
+        Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
+        Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
+        expires you will need to manually update it through this endpoint.
+      operationId: Integrations_syncGitHub
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GithubConnectRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Github Connect
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-github
   /auth/v1/access_token:
     get:
       operationId: Auth_getAccessToken
@@ -3734,6 +3769,7 @@ components:
       - FRESHDESK
       - GITBOOK
       - SALESFORCE
+      - GITHUB
       - JPG
       - PNG
       - JPEG
@@ -4358,6 +4394,7 @@ components:
       - WEB_SCRAPE
       - GITBOOK
       - SALESFORCE
+      - GITHUB
       - JPG
       - PNG
       - MP3
@@ -4904,6 +4941,38 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    GithubAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        username:
+          title: Username
+          type: string
+      required:
+      - access_token
+      - source
+      - username
+      title: GithubAuthentication
+      type: object
+    GithubConnectRequest:
+      example:
+        access_token: access_token
+        username: username
+      properties:
+        username:
+          title: Username
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+      required:
+      - access_token
+      - username
+      title: GithubConnectRequest
+      type: object
     GmailSyncInput:
       example:
         chunk_size: 1500
@@ -5382,7 +5451,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT"
+            \ it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5553,6 +5622,7 @@ components:
           type: string
         files_synced_at:
           format: date-time
+          nullable: true
           title: Files Synced At
           type: string
       required:
@@ -7869,6 +7939,7 @@ components:
       - FRESHDESK
       - GITBOOK
       - SALESFORCE
+      - GITHUB
       - JPG
       - PNG
       - JPEG
@@ -7935,6 +8006,7 @@ components:
       - WEB_SCRAPE
       - GITBOOK
       - SALESFORCE
+      - GITHUB
       - JPG
       - PNG
       - MP3
@@ -9001,7 +9073,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT"
+            \ it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9026,6 +9098,7 @@ components:
           - $ref: '#/components/schemas/SalesforceAuthentication'
           - $ref: '#/components/schemas/FreskdeskAuthentication'
           - $ref: '#/components/schemas/S3Authentication'
+          - $ref: '#/components/schemas/GithubAuthentication'
           title: Authentication
         sync_options:
           $ref: '#/components/schemas/SyncOptions'
@@ -9880,6 +9953,20 @@ components:
       required:
       - data_source_id
       - space_ids
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-github:
+      properties:
+        username:
+          title: Username
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+      required:
+      - access_token
+      - username
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -10863,6 +10950,7 @@ components:
       - $ref: '#/components/schemas/SalesforceAuthentication'
       - $ref: '#/components/schemas/FreskdeskAuthentication'
       - $ref: '#/components/schemas/S3Authentication'
+      - $ref: '#/components/schemas/GithubAuthentication'
       title: Authentication
     Tags:
       anyOf:

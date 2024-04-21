@@ -69,6 +69,8 @@ from carbon.model.gitbook_authetication import GitbookAuthetication
 from carbon.model.gitbook_connect_request import GitbookConnectRequest
 from carbon.model.gitbook_sync_request import GitbookSyncRequest
 from carbon.model.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
+from carbon.model.github_authentication import GithubAuthentication
+from carbon.model.github_connect_request import GithubConnectRequest
 from carbon.model.gmail_sync_input import GmailSyncInput
 from carbon.model.http_validation_error import HTTPValidationError
 from carbon.model.hybrid_search_tuning_params import HybridSearchTuningParams

@@ -50,6 +50,7 @@ const (
 	DATASOURCETYPENULLABLE_FRESHDESK DataSourceTypeNullable = "FRESHDESK"
 	DATASOURCETYPENULLABLE_GITBOOK DataSourceTypeNullable = "GITBOOK"
 	DATASOURCETYPENULLABLE_SALESFORCE DataSourceTypeNullable = "SALESFORCE"
+	DATASOURCETYPENULLABLE_GITHUB DataSourceTypeNullable = "GITHUB"
 	DATASOURCETYPENULLABLE_JPG DataSourceTypeNullable = "JPG"
 	DATASOURCETYPENULLABLE_PNG DataSourceTypeNullable = "PNG"
 	DATASOURCETYPENULLABLE_JPEG DataSourceTypeNullable = "JPEG"
@@ -98,6 +99,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"FRESHDESK",
 	"GITBOOK",
 	"SALESFORCE",
+	"GITHUB",
 	"JPG",
 	"PNG",
 	"JPEG",

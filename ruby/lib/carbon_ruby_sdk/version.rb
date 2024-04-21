@@ -7,5 +7,5 @@ The version of the OpenAPI document: 1.0.0
 =end
 
 module Carbon
-  VERSION = '0.1.20'
+  VERSION = '0.1.21'
 end

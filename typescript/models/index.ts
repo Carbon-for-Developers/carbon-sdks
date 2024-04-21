@@ -43,6 +43,8 @@ export * from './get-embedding-documents-body';
 export * from './gitbook-authetication';
 export * from './gitbook-connect-request';
 export * from './gitbook-sync-request';
+export * from './github-authentication';
+export * from './github-connect-request';
 export * from './gmail-sync-input';
 export * from './httpvalidation-error';
 export * from './hybrid-search-tuning-params';

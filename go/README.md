@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.18)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.19)
 
 </div>
 
@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**SyncConfluence**](docs/IntegrationsApi.md#syncconfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 *IntegrationsApi* | [**SyncDataSourceItems**](docs/IntegrationsApi.md#syncdatasourceitems) | **Post** /integrations/items/sync | Sync Data Source Items
 *IntegrationsApi* | [**SyncFiles**](docs/IntegrationsApi.md#syncfiles) | **Post** /integrations/files/sync | Sync Files
+*IntegrationsApi* | [**SyncGitHub**](docs/IntegrationsApi.md#syncgithub) | **Post** /integrations/github | Github Connect
 *IntegrationsApi* | [**SyncGitbook**](docs/IntegrationsApi.md#syncgitbook) | **Post** /integrations/gitbook/sync | Gitbook Sync
 *IntegrationsApi* | [**SyncGmail**](docs/IntegrationsApi.md#syncgmail) | **Post** /integrations/gmail/sync | Gmail Sync
 *IntegrationsApi* | [**SyncOutlook**](docs/IntegrationsApi.md#syncoutlook) | **Post** /integrations/outlook/sync | Outlook Sync
@@ -161,6 +162,8 @@ Class | Method | HTTP request | Description
  - [GitbookAuthetication](docs/GitbookAuthetication.md)
  - [GitbookConnectRequest](docs/GitbookConnectRequest.md)
  - [GitbookSyncRequest](docs/GitbookSyncRequest.md)
+ - [GithubAuthentication](docs/GithubAuthentication.md)
+ - [GithubConnectRequest](docs/GithubConnectRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)

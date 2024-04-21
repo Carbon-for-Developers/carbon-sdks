@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.22-blue)](https://pypi.org/project/carbon-python-sdk/0.1.22)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.23-blue)](https://pypi.org/project/carbon-python-sdk/0.1.23)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -57,6 +57,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
+  * [`carbon.integrations.sync_git_hub`](#carbonintegrationssync_git_hub)
   * [`carbon.integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
@@ -86,7 +87,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.22
+pip install carbon-python-sdk==0.1.23
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1325,7 +1326,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication"></a>
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication"></a>
 
 
 ##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
@@ -1612,7 +1613,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1991,6 +1992,42 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_git_hub`<a id="carbonintegrationssync_git_hub"></a>
+
+Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
+Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
+expires you will need to manually update it through this endpoint.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_git_hub_response = carbon.integrations.sync_git_hub(
+    username="string_example",
+    access_token="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### username: `str`<a id="username-str"></a>
+
+##### access_token: `str`<a id="access_token-str"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`GithubConnectRequest`](./carbon/type/github_connect_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

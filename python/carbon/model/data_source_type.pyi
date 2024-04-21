@@ -152,6 +152,10 @@ class DataSourceType(
         return cls("SALESFORCE")
     
     @schemas.classproperty
+    def GITHUB(cls):
+        return cls("GITHUB")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

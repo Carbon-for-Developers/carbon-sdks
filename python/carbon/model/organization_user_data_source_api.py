@@ -159,7 +159,31 @@ class OrganizationUserDataSourceAPI(
                     )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
-            files_synced_at = schemas.DateTimeSchema
+            
+            
+            class files_synced_at(
+                schemas.DateTimeBase,
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                class MetaOapg:
+                    format = 'date-time'
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, datetime, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'files_synced_at':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "id": id,
                 "data_source_external_id": data_source_external_id,
@@ -317,7 +341,7 @@ class OrganizationUserDataSourceAPI(
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
         token: typing.Union[MetaOapg.properties.token, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
-        files_synced_at: typing.Union[MetaOapg.properties.files_synced_at, str, datetime, ],
+        files_synced_at: typing.Union[MetaOapg.properties.files_synced_at, None, str, datetime, ],
         source_items_synced_at: typing.Union[MetaOapg.properties.source_items_synced_at, None, str, datetime, ],
         enable_auto_sync: typing.Union[MetaOapg.properties.enable_auto_sync, None, bool, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],

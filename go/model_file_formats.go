@@ -44,6 +44,7 @@ const (
 	FILEFORMATS_WEB_SCRAPE FileFormats = "WEB_SCRAPE"
 	FILEFORMATS_GITBOOK FileFormats = "GITBOOK"
 	FILEFORMATS_SALESFORCE FileFormats = "SALESFORCE"
+	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
@@ -85,6 +86,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"WEB_SCRAPE",
 	"GITBOOK",
 	"SALESFORCE",
+	"GITHUB",
 	"JPG",
 	"PNG",
 	"MP3",

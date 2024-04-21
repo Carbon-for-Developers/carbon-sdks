@@ -67,6 +67,7 @@ class DataSourceTypeNullable(
             "FRESHDESK": "FRESHDESK",
             "GITBOOK": "GITBOOK",
             "SALESFORCE": "SALESFORCE",
+            "GITHUB": "GITHUB",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -202,6 +203,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def SALESFORCE(cls):
         return cls("SALESFORCE")
+    
+    @schemas.classproperty
+    def GITHUB(cls):
+        return cls("GITHUB")
     
     @schemas.classproperty
     def JPG(cls):

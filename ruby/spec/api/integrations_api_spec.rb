@@ -191,6 +191,18 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for sync_git_hub
+  # Github Connect
+  # Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens. Make sure that your access token has the permission to read content from your desired repos. Note that if your access token expires you will need to manually update it through this endpoint.
+  # @param github_connect_request 
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessResponse]
+  describe 'sync_git_hub test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for sync_gitbook
   # Gitbook Sync
   # You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior.

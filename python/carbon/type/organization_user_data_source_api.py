@@ -49,7 +49,7 @@ class RequiredOrganizationUserDataSourceAPI(TypedDict):
 
     updated_at: datetime
 
-    files_synced_at: datetime
+    files_synced_at: typing.Optional[datetime]
 
 class OptionalOrganizationUserDataSourceAPI(TypedDict, total=False):
     pass

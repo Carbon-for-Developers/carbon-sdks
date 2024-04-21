@@ -88,6 +88,8 @@ operationIds:
     get: Integrations_listGitbookSpaces
   /integrations/gitbook/sync:
     post: Integrations_syncGitbook
+  /integrations/github:
+    post: Integrations_syncGitHub
   /integrations/gmail/sync:
     post: Integrations_syncGmail
   /integrations/gmail/user_labels:

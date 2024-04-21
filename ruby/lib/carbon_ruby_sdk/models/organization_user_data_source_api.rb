@@ -99,6 +99,7 @@ module Carbon
         :'token',
         :'source_items_synced_at',
         :'enable_auto_sync',
+        :'files_synced_at'
       ])
     end
 
@@ -230,10 +231,6 @@ module Carbon
         invalid_properties.push('invalid value for "updated_at", updated_at cannot be nil.')
       end
 
-      if @files_synced_at.nil?
-        invalid_properties.push('invalid value for "files_synced_at", files_synced_at cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -251,7 +248,6 @@ module Carbon
       return false if @last_sync_action.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
-      return false if @files_synced_at.nil?
       true
     end
 

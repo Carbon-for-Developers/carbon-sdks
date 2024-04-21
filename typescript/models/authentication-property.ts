@@ -13,6 +13,7 @@ import type * as buffer from "buffer"
 import { ConfluenceAuthentication } from './confluence-authentication';
 import { FreskdeskAuthentication } from './freskdesk-authentication';
 import { GitbookAuthetication } from './gitbook-authetication';
+import { GithubAuthentication } from './github-authentication';
 import { NotionAuthentication } from './notion-authentication';
 import { OAuthAuthentication } from './oauth-authentication';
 import { S3Authentication } from './s3-authentication';
@@ -25,6 +26,6 @@ import { ZoteroAuthentication } from './zotero-authentication';
  * @type AuthenticationProperty
  * @export
  */
-export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication;
+export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication | GithubAuthentication;
 
 

@@ -63,6 +63,8 @@
 
 * `SALESFORCE` (value: `"SALESFORCE"`)
 
+* `GITHUB` (value: `"GITHUB"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)
