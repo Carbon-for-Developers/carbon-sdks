@@ -64,6 +64,9 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
 
     request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds] = Field(None, alias='request_ids')
 
+    # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
+    sync_error_message: typing.Optional[typing.Optional[str]] = Field(None, alias='sync_error_message')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

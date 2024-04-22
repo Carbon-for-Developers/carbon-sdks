@@ -239,6 +239,26 @@ class OrganizationUserFilesToSyncFilters(
             @staticmethod
             def request_ids() -> typing.Type['OrganizationUserFilesToSyncFiltersRequestIds']:
                 return OrganizationUserFilesToSyncFiltersRequestIds
+            
+            
+            class sync_error_message(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'sync_error_message':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "tags": tags,
                 "source": source,
@@ -254,6 +274,7 @@ class OrganizationUserFilesToSyncFilters(
                 "include_all_children": include_all_children,
                 "non_synced_only": non_synced_only,
                 "request_ids": request_ids,
+                "sync_error_message": sync_error_message,
             }
     
     @typing.overload
@@ -299,9 +320,12 @@ class OrganizationUserFilesToSyncFilters(
     def __getitem__(self, name: typing_extensions.Literal["request_ids"]) -> 'OrganizationUserFilesToSyncFiltersRequestIds': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_error_message"]) -> MetaOapg.properties.sync_error_message: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "sync_error_message", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -349,9 +373,12 @@ class OrganizationUserFilesToSyncFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["request_ids"]) -> typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_error_message"]) -> typing.Union[MetaOapg.properties.sync_error_message, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "sync_error_message", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -372,6 +399,7 @@ class OrganizationUserFilesToSyncFilters(
         include_all_children: typing.Union[MetaOapg.properties.include_all_children, bool, schemas.Unset] = schemas.unset,
         non_synced_only: typing.Union[MetaOapg.properties.non_synced_only, bool, schemas.Unset] = schemas.unset,
         request_ids: typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset] = schemas.unset,
+        sync_error_message: typing.Union[MetaOapg.properties.sync_error_message, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OrganizationUserFilesToSyncFilters':
@@ -392,6 +420,7 @@ class OrganizationUserFilesToSyncFilters(
             include_all_children=include_all_children,
             non_synced_only=non_synced_only,
             request_ids=request_ids,
+            sync_error_message=sync_error_message,
             _configuration=_configuration,
             **kwargs,
         )

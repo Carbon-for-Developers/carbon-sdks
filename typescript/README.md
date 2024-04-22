@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.24-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.24)
+[![npm](https://img.shields.io/badge/npm-v0.1.25-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.25)
 
 </div>
 
@@ -1445,7 +1445,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
 
 #### 🔄 Return<a id="🔄-return"></a>
 

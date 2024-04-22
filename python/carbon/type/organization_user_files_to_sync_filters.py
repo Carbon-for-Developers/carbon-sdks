@@ -66,5 +66,8 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
 
     request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds]
 
+    # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
+    sync_error_message: typing.Optional[str]
+
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

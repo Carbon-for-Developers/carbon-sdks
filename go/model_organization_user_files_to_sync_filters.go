@@ -43,6 +43,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	NonSyncedOnly *bool `json:"non_synced_only,omitempty"`
 	// Filter by request ID(s) which were used to sync the files
 	RequestIds []string `json:"request_ids,omitempty"`
+	// The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
+	SyncErrorMessage NullableString `json:"sync_error_message,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -563,6 +565,48 @@ func (o *OrganizationUserFilesToSyncFilters) SetRequestIds(v []string) {
 	o.RequestIds = v
 }
 
+// GetSyncErrorMessage returns the SyncErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessage() string {
+	if o == nil || isNil(o.SyncErrorMessage.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SyncErrorMessage.Get()
+}
+
+// GetSyncErrorMessageOk returns a tuple with the SyncErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessageOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.SyncErrorMessage.Get(), o.SyncErrorMessage.IsSet()
+}
+
+// HasSyncErrorMessage returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasSyncErrorMessage() bool {
+	if o != nil && o.SyncErrorMessage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncErrorMessage gets a reference to the given NullableString and assigns it to the SyncErrorMessage field.
+func (o *OrganizationUserFilesToSyncFilters) SetSyncErrorMessage(v string) {
+	o.SyncErrorMessage.Set(&v)
+}
+// SetSyncErrorMessageNil sets the value for SyncErrorMessage to be an explicit nil
+func (o *OrganizationUserFilesToSyncFilters) SetSyncErrorMessageNil() {
+	o.SyncErrorMessage.Set(nil)
+}
+
+// UnsetSyncErrorMessage ensures that no value is present for SyncErrorMessage, not even an explicit nil
+func (o *OrganizationUserFilesToSyncFilters) UnsetSyncErrorMessage() {
+	o.SyncErrorMessage.Unset()
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -606,6 +650,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestIds != nil {
 		toSerialize["request_ids"] = o.RequestIds
+	}
+	if o.SyncErrorMessage.IsSet() {
+		toSerialize["sync_error_message"] = o.SyncErrorMessage.Get()
 	}
 	return json.Marshal(toSerialize)
 }

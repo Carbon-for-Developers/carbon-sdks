@@ -4924,7 +4924,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT",
             "type": "boolean",
             "default": true
           }
@@ -5428,6 +5428,12 @@
             },
             "type": "array",
             "maxItems": 100,
+            "nullable": true
+          },
+          "sync_error_message": {
+            "title": "Sync Error Message",
+            "description": "The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.",
+            "type": "string",
             "nullable": true
           }
         },

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.21-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.21)
+[![npm](https://img.shields.io/badge/gem-v0.1.22-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.22)
 
 </div>
 
@@ -81,7 +81,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.21'
+gem 'carbon_ruby_sdk', '~> 0.1.22'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1440,7 +1440,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX
+ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
 
 #### 🔄 Return<a id="🔄-return"></a>
 

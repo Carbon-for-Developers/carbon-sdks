@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **IncludeAllChildren** | Pointer to **bool** | If true, the query will return all descendents of the specified parent_file_ids. | [optional] [default to false]
 **NonSyncedOnly** | Pointer to **bool** | If true, the query will return only files that have not been synced yet. | [optional] [default to false]
 **RequestIds** | Pointer to **[]string** | Filter by request ID(s) which were used to sync the files | [optional] 
+**SyncErrorMessage** | Pointer to **NullableString** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. | [optional] 
 
 ## Methods
 
@@ -508,6 +509,41 @@ HasRequestIds returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetRequestIds()`
 
 UnsetRequestIds ensures that no value is present for RequestIds, not even an explicit nil
+### GetSyncErrorMessage
+
+`func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessage() string`
+
+GetSyncErrorMessage returns the SyncErrorMessage field if non-nil, zero value otherwise.
+
+### GetSyncErrorMessageOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessageOk() (*string, bool)`
+
+GetSyncErrorMessageOk returns a tuple with the SyncErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncErrorMessage
+
+`func (o *OrganizationUserFilesToSyncFilters) SetSyncErrorMessage(v string)`
+
+SetSyncErrorMessage sets SyncErrorMessage field to given value.
+
+### HasSyncErrorMessage
+
+`func (o *OrganizationUserFilesToSyncFilters) HasSyncErrorMessage() bool`
+
+HasSyncErrorMessage returns a boolean if a field has been set.
+
+### SetSyncErrorMessageNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetSyncErrorMessageNil(b bool)`
+
+ SetSyncErrorMessageNil sets the value for SyncErrorMessage to be an explicit nil
+
+### UnsetSyncErrorMessage
+`func (o *OrganizationUserFilesToSyncFilters) UnsetSyncErrorMessage()`
+
+UnsetSyncErrorMessage ensures that no value is present for SyncErrorMessage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

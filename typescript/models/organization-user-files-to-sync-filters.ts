@@ -107,5 +107,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'request_ids'?: Array<string> | null;
+    /**
+     * The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
+     * @type {string}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'sync_error_message'?: string | null;
 }
 
