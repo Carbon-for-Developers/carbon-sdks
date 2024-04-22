@@ -50,6 +50,9 @@ module Carbon
     # Filter by request ID(s) which were used to sync the files
     attr_accessor :request_ids
 
+    # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
+    attr_accessor :sync_error_message
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -66,7 +69,8 @@ module Carbon
         :'root_files_only' => :'root_files_only',
         :'include_all_children' => :'include_all_children',
         :'non_synced_only' => :'non_synced_only',
-        :'request_ids' => :'request_ids'
+        :'request_ids' => :'request_ids',
+        :'sync_error_message' => :'sync_error_message'
       }
     end
 
@@ -91,7 +95,8 @@ module Carbon
         :'root_files_only' => :'Boolean',
         :'include_all_children' => :'Boolean',
         :'non_synced_only' => :'Boolean',
-        :'request_ids' => :'Array<String>'
+        :'request_ids' => :'Array<String>',
+        :'sync_error_message' => :'String'
       }
     end
 
@@ -109,7 +114,8 @@ module Carbon
         :'organization_user_data_source_id',
         :'embedding_generators',
         :'root_files_only',
-        :'request_ids'
+        :'request_ids',
+        :'sync_error_message'
       ])
     end
 
@@ -203,6 +209,10 @@ module Carbon
           self.request_ids = value
         end
       end
+
+      if attributes.key?(:'sync_error_message')
+        self.sync_error_message = attributes[:'sync_error_message']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -251,7 +261,8 @@ module Carbon
           root_files_only == o.root_files_only &&
           include_all_children == o.include_all_children &&
           non_synced_only == o.non_synced_only &&
-          request_ids == o.request_ids
+          request_ids == o.request_ids &&
+          sync_error_message == o.sync_error_message
     end
 
     # @see the `==` method
@@ -263,7 +274,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids].hash
+      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids, sync_error_message].hash
     end
 
     # Builds the object from hash

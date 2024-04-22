@@ -3847,6 +3847,7 @@ components:
           - null
           - null
           root_files_only: true
+          sync_error_message: sync_error_message
           include_all_children: false
           name: name
           tags_v2: "{}"
@@ -5451,7 +5452,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5808,6 +5809,7 @@ components:
         - null
         - null
         root_files_only: true
+        sync_error_message: sync_error_message
         include_all_children: false
         name: name
         tags_v2: "{}"
@@ -5948,6 +5950,13 @@ components:
           nullable: true
           title: Request Ids
           type: array
+        sync_error_message:
+          description: "The error message of the file. The query will return files\
+            \ with error messages that contain this string. To search for files with\
+            \ no error message, use an empty string."
+          nullable: true
+          title: Sync Error Message
+          type: string
       title: OrganizationUserFilesToSyncFilters
       type: object
     OrganizationUserFilesToSyncOrderByTypes:
@@ -5981,6 +5990,7 @@ components:
           - null
           - null
           root_files_only: true
+          sync_error_message: sync_error_message
           include_all_children: false
           name: name
           tags_v2: "{}"
@@ -9073,7 +9083,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, BOX, GOOGLE_DRIVE, ONEDRIVE, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
