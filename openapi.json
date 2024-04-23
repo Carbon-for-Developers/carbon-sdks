@@ -5398,7 +5398,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, BOX, ONEDRIVE, DROPBOX",
             "default": true
           }
         },
