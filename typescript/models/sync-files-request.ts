@@ -90,7 +90,7 @@ export interface SyncFilesRequest {
      * @type {string}
      * @memberof SyncFilesRequest
      */
-    'request_id'?: string | null;
+    'request_id'?: string;
     /**
      * 
      * @type {boolean}

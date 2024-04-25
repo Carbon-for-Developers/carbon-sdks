@@ -102,33 +102,36 @@ tags:
     \    - Sent after a file has been fully processed and added to Carbon.\n2. `FILE_ERROR`\n\
     \    - Sent if there was an error during the file processing stage. If an error\
     \ occurred, the file is requeued for reprocessing\n    up to three times.\n3.\
-    \ `FILE_DELETED`\n    - Sent if a file has been successfully deleted.\n4. `RATE_LIMIT_ERROR`\n\
-    \    - Sent if the organization has reached the rate limit for file processing.\
-    \ In this case, the file is requeued for reprocessing\n    up to three times.\n\
-    \nThese are sent *after* a file has been processed.\n\n### Webhooks for Data Sources\n\
-    \nWe currently support the following webhook events for managing user connections\
-    \ to data sources:\n\n1. `ADD` \n    - This event is fired when a user authenticates\
-    \ their account for a specific data source for the first time.\n\n2. `UPDATE`\
-    \ \n    - This event is fired when a user selects one or more files for a particular\
-    \ data source. This event is fired once per file selection confirmation, regardless\
-    \ of how many files are selected.\n\n3. `CANCEL` \n    - This event is fired when\
-    \ a user cancels the authentication flow. It's important to note that this event\
-    \ cannot capture tab-close events, so directly closing a tab is not within our\
-    \ tracking capabilities.\n\n4. `REVOKE`\n    - This event is triggered when a\
-    \ user's data source connection is revoked via the `/revoke_access_token` endpoint.\n\
-    \nAn organization is allowed up to *3* webhook URLs. To delete an existing URL,\
-    \ you can use the `/delete_webhook` endpoint.\nTo view all existing webhooks,\
-    \ use the `/webhooks` endpoint.\n\nAll webhook payloads have the form\n```\n{\n\
-    \    \"payload\": str\n}\n```\nThe value of `payload` (which is a stringified\
-    \ json object) will always have the form\n```\n{\n    \"webhook_type\": WebhookType,\n\
-    \    \"obj\": {\n        \"object_type\": WebhookObjectType,\n        \"object_id\"\
-    : str,\n        \"additional_information\": dict[str, str] | str\n    },\n   \
-    \ \"timestamp\": str\n}\n```\nNote that `WebhookType` is one of the webhook events\
-    \ described above. `WebhookObjectType` is limited to `FILE` currently.\n`additional_information`\
-    \ is always a dictionary of string-string key-value pairs, unless it's empty,\
-    \ in which case it is\nthe string value \"null\". Finally, `timestamp` is an int\
-    \ POSIX timestamp as a string. Note that to use `object_id` in\nsubsequent API\
-    \ requests, you'll likely need to convert it to an int.\n"
+    \ `FILE_DELETED`\n    - Sent if a file has been successfully deleted.\n4. `FILES_CREATED`\n\
+    \    - Sent if files are being synced for the first time.\n5. `UPLOAD_ALL_QUEUED`\n\
+    \    - Sent when all files and folders in a uploaded batch have been queued for\
+    \ processing.\n6. `RATE_LIMIT_ERROR`\n    - Sent if the organization has reached\
+    \ the rate limit for file processing. In this case, the file is requeued for reprocessing\n\
+    \    up to three times.\n\nThese are sent *after* a file has been processed.\n\
+    \n### Webhooks for Data Sources\n\nWe currently support the following webhook\
+    \ events for managing user connections to data sources:\n\n1. `ADD` \n    - This\
+    \ event is fired when a user authenticates their account for a specific data source\
+    \ for the first time.\n\n2. `UPDATE` \n    - This event is fired when a user selects\
+    \ one or more files for a particular data source. This event is fired once per\
+    \ file selection confirmation, regardless of how many files are selected.\n\n\
+    3. `CANCEL` \n    - This event is fired when a user cancels the authentication\
+    \ flow. It's important to note that this event cannot capture tab-close events,\
+    \ so directly closing a tab is not within our tracking capabilities.\n\n4. `REVOKE`\n\
+    \    - This event is triggered when a user's data source connection is revoked\
+    \ via the `/revoke_access_token` endpoint.\n\nAn organization is allowed up to\
+    \ *3* webhook URLs. To delete an existing URL, you can use the `/delete_webhook`\
+    \ endpoint.\nTo view all existing webhooks, use the `/webhooks` endpoint.\n\n\
+    All webhook payloads have the form\n```\n{\n    \"payload\": str\n}\n```\nThe\
+    \ value of `payload` (which is a stringified json object) will always have the\
+    \ form\n```\n{\n    \"webhook_type\": WebhookType,\n    \"obj\": {\n        \"\
+    object_type\": WebhookObjectType,\n        \"object_id\": str,\n        \"additional_information\"\
+    : dict[str, str] | str\n    },\n    \"timestamp\": str\n}\n```\nNote that `WebhookType`\
+    \ is one of the webhook events described above. `WebhookObjectType` is limited\
+    \ to `FILE` currently.\n`additional_information` is always a dictionary of string-string\
+    \ key-value pairs, unless it's empty, in which case it is\nthe string value \"\
+    null\". Finally, `timestamp` is an int POSIX timestamp as a string. Note that\
+    \ to use `object_id` in\nsubsequent API requests, you'll likely need to convert\
+    \ it to an int.\n"
   name: Webhooks
 - description: |2
 
@@ -3662,7 +3665,7 @@ components:
           embedding_model: OPENAI
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: request_id
+          request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
           tags: ""
         authentication: null
       properties:
@@ -3683,6 +3686,7 @@ components:
             enable_file_picker: true
             generate_sparse_vectors: false
             prepend_filename_to_chunks: false
+            request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -5307,7 +5311,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: request_id
+        request_id: 76343a7e-0175-49f8-957c-e1133ae388ac
         zendesk_subdomain: zendesk_subdomain
         data_source_id: 6
         microsoft_tenant: microsoft_tenant
@@ -5427,11 +5431,14 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
+          default: 76343a7e-0175-49f8-957c-e1133ae388ac
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          nullable: true
+          example: 76343a7e-0175-49f8-957c-e1133ae388ac
           title: Request Id
           type: string
+          x-konfig-original-example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf"
@@ -5452,7 +5459,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT"
+            \ it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -6777,7 +6784,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: request_id
+        request_id: 74c95466-42b2-4213-ae36-bfafbaecfcf5
         data_source_id: 0
       properties:
         tags:
@@ -6849,9 +6856,12 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          nullable: true
+          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
           title: Request Id
           type: string
+          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false
@@ -6885,7 +6895,7 @@ components:
         embedding_model: OPENAI
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: request_id
+        request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
         tags: ""
       properties:
         tags:
@@ -6959,9 +6969,12 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          nullable: true
+          default: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+          example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
           title: Request Id
           type: string
+          x-konfig-original-example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
           example: true
@@ -8520,6 +8533,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
+      example: 76343a7e-0175-49f8-957c-e1133ae388ac
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
       example: false
       type: boolean
@@ -8728,6 +8745,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
+      example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
       example: false
       type: boolean
@@ -8763,6 +8784,10 @@ components:
     konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
+      example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
       example: true
@@ -9058,11 +9083,14 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
+          default: 76343a7e-0175-49f8-957c-e1133ae388ac
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          nullable: true
+          example: 76343a7e-0175-49f8-957c-e1133ae388ac
           title: Request Id
           type: string
+          x-konfig-original-example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf"
@@ -9083,7 +9111,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT"
+            \ it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9223,9 +9251,12 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          nullable: true
+          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
           title: Request Id
           type: string
+          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false
@@ -9340,9 +9371,12 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          nullable: true
+          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
           title: Request Id
           type: string
+          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false

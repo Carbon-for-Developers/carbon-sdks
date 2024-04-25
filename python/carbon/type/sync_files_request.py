@@ -42,7 +42,7 @@ class OptionalSyncFilesRequest(TypedDict, total=False):
 
     set_page_as_boundary: bool
 
-    request_id: typing.Optional[str]
+    request_id: str
 
     use_ocr: typing.Optional[bool]
 

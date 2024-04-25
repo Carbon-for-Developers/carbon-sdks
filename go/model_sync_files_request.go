@@ -28,7 +28,7 @@ type SyncFilesRequest struct {
 	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
-	RequestId NullableString `json:"request_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty"`
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
 }
@@ -55,6 +55,8 @@ func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest 
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var requestId string = "74c95466-42b2-4213-ae36-bfafbaecfcf5"
+	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
@@ -81,6 +83,8 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
+	var requestId string = "74c95466-42b2-4213-ae36-bfafbaecfcf5"
+	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
@@ -495,46 +499,36 @@ func (o *SyncFilesRequest) SetSetPageAsBoundary(v bool) {
 	o.SetPageAsBoundary = &v
 }
 
-// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequestId returns the RequestId field value if set, zero value otherwise.
 func (o *SyncFilesRequest) GetRequestId() string {
-	if o == nil || isNil(o.RequestId.Get()) {
+	if o == nil || isNil(o.RequestId) {
 		var ret string
 		return ret
 	}
-	return *o.RequestId.Get()
+	return *o.RequestId
 }
 
 // GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SyncFilesRequest) GetRequestIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.RequestId) {
     return nil, false
 	}
-	return o.RequestId.Get(), o.RequestId.IsSet()
+	return o.RequestId, true
 }
 
 // HasRequestId returns a boolean if a field has been set.
 func (o *SyncFilesRequest) HasRequestId() bool {
-	if o != nil && o.RequestId.IsSet() {
+	if o != nil && !isNil(o.RequestId) {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
+// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
 func (o *SyncFilesRequest) SetRequestId(v string) {
-	o.RequestId.Set(&v)
-}
-// SetRequestIdNil sets the value for RequestId to be an explicit nil
-func (o *SyncFilesRequest) SetRequestIdNil() {
-	o.RequestId.Set(nil)
-}
-
-// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
-func (o *SyncFilesRequest) UnsetRequestId() {
-	o.RequestId.Unset()
+	o.RequestId = &v
 }
 
 // GetUseOcr returns the UseOcr field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -656,8 +650,8 @@ func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
 	}
-	if o.RequestId.IsSet() {
-		toSerialize["request_id"] = o.RequestId.Get()
+	if !isNil(o.RequestId) {
+		toSerialize["request_id"] = o.RequestId
 	}
 	if o.UseOcr.IsSet() {
 		toSerialize["use_ocr"] = o.UseOcr.Get()

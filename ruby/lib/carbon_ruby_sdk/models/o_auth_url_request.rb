@@ -61,7 +61,7 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
     attr_accessor :enable_file_picker
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -147,7 +147,6 @@ module Carbon
         :'sync_files_on_connection',
         :'data_source_id',
         :'connecting_new_account',
-        :'request_id',
         :'use_ocr',
         :'parse_pdf_tables_with_ocr',
       ])
@@ -264,6 +263,8 @@ module Carbon
 
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
+      else
+        self.request_id = '76343a7e-0175-49f8-957c-e1133ae388ac'
       end
 
       if attributes.key?(:'use_ocr')

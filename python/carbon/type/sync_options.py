@@ -42,7 +42,7 @@ class OptionalSyncOptions(TypedDict, total=False):
 
     set_page_as_boundary: bool
 
-    request_id: typing.Optional[str]
+    request_id: str
 
     enable_file_picker: bool
 

@@ -311,7 +311,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("null")
+    oAuthURLRequest.SetRequestId("76343a7e-0175-49f8-957c-e1133ae388ac")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -657,7 +657,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("null")
+    syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     
@@ -784,7 +784,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("null")
+    syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     

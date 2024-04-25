@@ -347,26 +347,7 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
-            
-            
-            class request_id(
-                schemas.StrBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneStrMixin
-            ):
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[None, str, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'request_id':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                    )
+            request_id = schemas.StrSchema
             
             
             class use_ocr(
@@ -611,7 +592,7 @@ class OAuthURLRequest(
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
         data_source_id: typing.Union[MetaOapg.properties.data_source_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         connecting_new_account: typing.Union[MetaOapg.properties.connecting_new_account, None, bool, schemas.Unset] = schemas.unset,
-        request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
+        request_id: typing.Union[MetaOapg.properties.request_id, str, schemas.Unset] = schemas.unset,
         use_ocr: typing.Union[MetaOapg.properties.use_ocr, None, bool, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
         enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,

@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.24-blue)](https://pypi.org/project/carbon-python-sdk/0.1.24)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.25-blue)](https://pypi.org/project/carbon-python-sdk/0.1.25)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -87,7 +87,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.24
+pip install carbon-python-sdk==0.1.25
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1319,6 +1319,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
+        "request_id": "e8fddc9a-4810-48b2-b1b5-b1ec0159625a",
         "enable_file_picker": True,
     },
 )
@@ -1546,7 +1547,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="string_example",
+    request_id="76343a7e-0175-49f8-957c-e1133ae388ac",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1601,7 +1602,7 @@ Used to specify a data source to sync from if you have multiple connected. It ca
 
 Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
 
-##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+##### request_id: `str`<a id="request_id-str"></a>
 
 This request id will be added to all files that get synced using the generated OAuth URL
 
@@ -1613,7 +1614,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1836,7 +1837,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="string_example",
+    request_id="74c95466-42b2-4213-ae36-bfafbaecfcf5",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -1869,7 +1870,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
-##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+##### request_id: `str`<a id="request_id-str"></a>
 
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 
@@ -1943,7 +1944,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="string_example",
+    request_id="74c95466-42b2-4213-ae36-bfafbaecfcf5",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -1976,7 +1977,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
-##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+##### request_id: `str`<a id="request_id-str"></a>
 
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 
