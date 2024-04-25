@@ -90,7 +90,6 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'max_items_per_chunk',
         :'sync_files_on_connection',
-        :'request_id',
       ])
     end
 
@@ -167,6 +166,8 @@ module Carbon
 
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
+      else
+        self.request_id = 'e8fddc9a-4810-48b2-b1b5-b1ec0159625a'
       end
 
       if attributes.key?(:'enable_file_picker')

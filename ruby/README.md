@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.22-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.22)
+[![npm](https://img.shields.io/badge/gem-v0.1.23-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.23)
 
 </div>
 
@@ -81,7 +81,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.22'
+gem 'carbon_ruby_sdk', '~> 0.1.23'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1192,6 +1192,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
+        "request_id" => "e8fddc9a-4810-48b2-b1b5-b1ec0159625a",
         "enable_file_picker" => true,
     },
 )
@@ -1387,7 +1388,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "string_example",
+  request_id: "76343a7e-0175-49f8-957c-e1133ae388ac",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1440,7 +1441,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1658,7 +1659,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "string_example",
+  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 )
@@ -1749,7 +1750,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "string_example",
+  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 )

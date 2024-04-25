@@ -62,14 +62,14 @@ class OAuthURLRequest(BaseModel):
     connecting_new_account: typing.Optional[typing.Optional[bool]] = Field(None, alias='connecting_new_account')
 
     # This request id will be added to all files that get synced using the generated OAuth URL
-    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+    request_id: typing.Optional[str] = Field(None, alias='request_id')
 
     # Enable OCR for files that support it. Supported formats: pdf
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
 
-    # Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
     enable_file_picker: typing.Optional[bool] = Field(None, alias='enable_file_picker')
 
     model_config = ConfigDict(

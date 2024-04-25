@@ -138,7 +138,7 @@ export interface OAuthURLRequest {
      * @type {string}
      * @memberof OAuthURLRequest
      */
-    'request_id'?: string | null;
+    'request_id'?: string;
     /**
      * Enable OCR for files that support it. Supported formats: pdf
      * @type {boolean}
@@ -152,7 +152,7 @@ export interface OAuthURLRequest {
      */
     'parse_pdf_tables_with_ocr'?: boolean | null;
     /**
-     * Enable integration\'s file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+     * Enable integration\'s file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
      * @type {boolean}
      * @memberof OAuthURLRequest
      */

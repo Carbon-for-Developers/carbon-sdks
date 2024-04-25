@@ -23,10 +23,10 @@ Name | Type | Description | Notes
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
 **ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
-**RequestId** | Pointer to **NullableString** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] 
+**RequestId** | Pointer to **string** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] [default to "76343a7e-0175-49f8-957c-e1133ae388ac"]
 **UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
-**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT | [optional] [default to true]
+**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT | [optional] [default to true]
 
 ## Methods
 
@@ -712,16 +712,6 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
-### SetRequestIdNil
-
-`func (o *OAuthURLRequest) SetRequestIdNil(b bool)`
-
- SetRequestIdNil sets the value for RequestId to be an explicit nil
-
-### UnsetRequestId
-`func (o *OAuthURLRequest) UnsetRequestId()`
-
-UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 ### GetUseOcr
 
 `func (o *OAuthURLRequest) GetUseOcr() bool`

@@ -62,14 +62,14 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     connecting_new_account: typing.Optional[bool]
 
     # This request id will be added to all files that get synced using the generated OAuth URL
-    request_id: typing.Optional[str]
+    request_id: str
 
     # Enable OCR for files that support it. Supported formats: pdf
     use_ocr: typing.Optional[bool]
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]
 
-    # Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, DROPBOX, BOX, GOOGLE_DRIVE, SHAREPOINT
+    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
     enable_file_picker: bool
 
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
