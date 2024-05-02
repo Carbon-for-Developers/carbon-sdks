@@ -33,6 +33,8 @@ import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
+import { ExternalSourceItemsOrderBy } from '../models';
+// @ts-ignore
 import { FreshDeskConnectRequest } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -42,6 +44,8 @@ import { GitbookConnectRequest } from '../models';
 import { GitbookSyncRequest } from '../models';
 // @ts-ignore
 import { GithubConnectRequest } from '../models';
+// @ts-ignore
+import { GithubFetchReposRequest } from '../models';
 // @ts-ignore
 import { GmailSyncInput } from '../models';
 // @ts-ignore
@@ -60,6 +64,8 @@ import { ListRequest } from '../models';
 import { ListResponse } from '../models';
 // @ts-ignore
 import { OAuthURLRequest } from '../models';
+// @ts-ignore
+import { OrderDirV2 } from '../models';
 // @ts-ignore
 import { OrganizationUserDataSourceAPI } from '../models';
 // @ts-ignore
@@ -654,6 +660,65 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
+         * Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+         * @summary Github List Repos
+         * @param {number} [perPage] 
+         * @param {number} [page] 
+         * @param {number} [dataSourceId] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRepos: async (perPage?: number, page?: number, dataSourceId?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/github/repos`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/github/repos',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {SyncFilesRequest} syncFilesRequest 
@@ -1018,6 +1083,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
+         * You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+         * @summary Github Sync Repos
+         * @param {GithubFetchReposRequest} githubFetchReposRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncRepos: async (githubFetchReposRequest: GithubFetchReposRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'githubFetchReposRequest' is not null or undefined
+            assertParamExists('syncRepos', 'githubFetchReposRequest', githubFetchReposRequest)
+            const localVarPath = `/integrations/github/sync_repos`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: githubFetchReposRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/github/sync_repos',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(githubFetchReposRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @summary Rss Feed
          * @param {RSSFeedInput} rSSFeedInput 
@@ -1165,7 +1282,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                sync_source_items: requestParameters.sync_source_items
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1189,7 +1307,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                sync_source_items: requestParameters.sync_source_items
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1204,7 +1323,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
         async createAwsIamUser(requestParameters: IntegrationsApiCreateAwsIamUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
             const s3AuthRequest: S3AuthRequest = {
                 access_key: requestParameters.access_key,
-                access_key_secret: requestParameters.access_key_secret
+                access_key_secret: requestParameters.access_key_secret,
+                sync_source_items: requestParameters.sync_source_items
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(s3AuthRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1240,7 +1360,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 request_id: requestParameters.request_id,
                 use_ocr: requestParameters.use_ocr,
                 parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
-                enable_file_picker: requestParameters.enable_file_picker
+                enable_file_picker: requestParameters.enable_file_picker,
+                sync_source_items: requestParameters.sync_source_items
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1272,7 +1393,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 data_source_id: requestParameters.data_source_id,
                 parent_id: requestParameters.parent_id,
                 filters: requestParameters.filters,
-                pagination: requestParameters.pagination
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(listDataSourceItemsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1319,6 +1442,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          */
         async listOutlookCategories(requestParameters: IntegrationsApiListOutlookCategoriesRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listOutlookCategories(requestParameters.dataSourceId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+         * @summary Github List Repos
+         * @param {IntegrationsApiListReposRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listRepos(requestParameters: IntegrationsApiListReposRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listRepos(requestParameters.perPage, requestParameters.page, requestParameters.dataSourceId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1399,7 +1533,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
         async syncGitHub(requestParameters: IntegrationsApiSyncGitHubRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const githubConnectRequest: GithubConnectRequest = {
                 username: requestParameters.username,
-                access_token: requestParameters.access_token
+                access_token: requestParameters.access_token,
+                sync_source_items: requestParameters.sync_source_items
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitHub(githubConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1474,6 +1609,21 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_attachments: requestParameters.sync_attachments
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+         * @summary Github Sync Repos
+         * @param {IntegrationsApiSyncReposRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncRepos(requestParameters: IntegrationsApiSyncReposRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const githubFetchReposRequest: GithubFetchReposRequest = {
+                repos: requestParameters.repos,
+                data_source_id: requestParameters.data_source_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncRepos(githubFetchReposRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1646,6 +1796,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.listOutlookCategories(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+         * @summary Github List Repos
+         * @param {IntegrationsApiListReposRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRepos(requestParameters: IntegrationsApiListReposRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listRepos(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
@@ -1714,6 +1874,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         syncOutlook(requestParameters: IntegrationsApiSyncOutlookRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.syncOutlook(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+         * @summary Github Sync Repos
+         * @param {IntegrationsApiSyncReposRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncRepos(requestParameters: IntegrationsApiSyncReposRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.syncRepos(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1866,6 +2036,36 @@ export type IntegrationsApiListOutlookCategoriesRequest = {
 }
 
 /**
+ * Request parameters for listRepos operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListReposRequest
+ */
+export type IntegrationsApiListReposRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListRepos
+    */
+    readonly perPage?: number
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListRepos
+    */
+    readonly page?: number
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListRepos
+    */
+    readonly dataSourceId?: number
+    
+}
+
+/**
  * Request parameters for syncConfluence operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiSyncConfluenceRequest
@@ -1927,6 +2127,15 @@ export type IntegrationsApiSyncGmailRequest = {
 export type IntegrationsApiSyncOutlookRequest = {
     
 } & OutlookSyncInput
+
+/**
+ * Request parameters for syncRepos operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncReposRequest
+ */
+export type IntegrationsApiSyncReposRequest = {
+    
+} & GithubFetchReposRequest
 
 /**
  * Request parameters for syncRssFeed operation in IntegrationsApi.
@@ -2086,6 +2295,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
+     * Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+     * @summary Github List Repos
+     * @param {IntegrationsApiListReposRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listRepos(requestParameters: IntegrationsApiListReposRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listRepos(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
      * @summary Confluence Sync
      * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
@@ -2167,6 +2388,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public syncOutlook(requestParameters: IntegrationsApiSyncOutlookRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).syncOutlook(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+     * @summary Github Sync Repos
+     * @param {IntegrationsApiSyncReposRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncRepos(requestParameters: IntegrationsApiSyncReposRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncRepos(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

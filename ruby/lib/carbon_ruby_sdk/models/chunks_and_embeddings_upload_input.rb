@@ -44,7 +44,7 @@ module Carbon
         :'chunks_and_embeddings' => :'Array<SingleChunksAndEmbeddingsUploadInput>',
         :'overwrite_existing' => :'Boolean',
         :'chunks_only' => :'Boolean',
-        :'custom_credentials' => :'Object'
+        :'custom_credentials' => :'Hash<String, Object>'
       }
     end
 
@@ -92,7 +92,9 @@ module Carbon
       end
 
       if attributes.key?(:'custom_credentials')
-        self.custom_credentials = attributes[:'custom_credentials']
+        if (value = attributes[:'custom_credentials']).is_a?(Hash)
+          self.custom_credentials = value
+        end
       end
     end
 

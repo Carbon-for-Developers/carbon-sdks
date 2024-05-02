@@ -131,9 +131,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
+    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -146,6 +147,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       fresh_desk_connect_request = _body
       api_response = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
       api_response.data
@@ -170,9 +172,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
+    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -185,6 +188,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       fresh_desk_connect_request = _body
       connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
     end
@@ -276,9 +280,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
+    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -291,6 +296,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       gitbook_connect_request = _body
       api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
       api_response.data
@@ -314,9 +320,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, extra: {})
+    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -329,6 +336,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       gitbook_connect_request = _body
       connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
     end
@@ -414,12 +422,14 @@ module Carbon
     #
     # @param access_key [String] 
     # @param access_key_secret [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [S3AuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def create_aws_iam_user(access_key:, access_key_secret:, extra: {})
+    def create_aws_iam_user(access_key:, access_key_secret:, sync_source_items: true, extra: {})
       _body = {}
       _body[:access_key] = access_key if access_key != SENTINEL
       _body[:access_key_secret] = access_key_secret if access_key_secret != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       s3_auth_request = _body
       api_response = create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
       api_response.data
@@ -437,12 +447,14 @@ module Carbon
     #
     # @param access_key [String] 
     # @param access_key_secret [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [S3AuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def create_aws_iam_user_with_http_info(access_key:, access_key_secret:, extra: {})
+    def create_aws_iam_user_with_http_info(access_key:, access_key_secret:, sync_source_items: true, extra: {})
       _body = {}
       _body[:access_key] = access_key if access_key != SENTINEL
       _body[:access_key_secret] = access_key_secret if access_key_secret != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       s3_auth_request = _body
       create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
     end
@@ -545,10 +557,11 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '76343a7e-0175-49f8-957c-e1133ae388ac', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'ae840422-78ad-45c5-a0bd-019c2b2e8443', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -573,6 +586,7 @@ module Carbon
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:enable_file_picker] = enable_file_picker if enable_file_picker != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -607,10 +621,11 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '76343a7e-0175-49f8-957c-e1133ae388ac', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'ae840422-78ad-45c5-a0bd-019c2b2e8443', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -635,6 +650,7 @@ module Carbon
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:enable_file_picker] = enable_file_picker if enable_file_picker != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -828,14 +844,18 @@ module Carbon
     # @param parent_id [String] 
     # @param filters [ListItemsFiltersNullable] 
     # @param pagination [Pagination] 
+    # @param order_by [ExternalSourceItemsOrderBy] 
+    # @param order_dir [OrderDirV2] 
     # @param body [ListDataSourceItemsRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_data_source_items(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, extra: {})
+    def list_data_source_items(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, order_by: 'name', order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:parent_id] = parent_id if parent_id != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
       list_data_source_items_request = _body
       api_response = list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)
       api_response.data
@@ -847,14 +867,18 @@ module Carbon
     # @param parent_id [String] 
     # @param filters [ListItemsFiltersNullable] 
     # @param pagination [Pagination] 
+    # @param order_by [ExternalSourceItemsOrderBy] 
+    # @param order_dir [OrderDirV2] 
     # @param body [ListDataSourceItemsRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_data_source_items_with_http_info(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, extra: {})
+    def list_data_source_items_with_http_info(data_source_id:, parent_id: SENTINEL, filters: SENTINEL, pagination: SENTINEL, order_by: 'name', order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:parent_id] = parent_id if parent_id != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
       list_data_source_items_request = _body
       list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)
     end
@@ -1270,6 +1294,106 @@ module Carbon
     end
 
 
+    # Github List Repos
+    #
+    # Once you have connected your GitHub account, you can use this endpoint to list the 
+    #     repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+    #
+    # @param per_page [Integer] 
+    # @param page [Integer] 
+    # @param data_source_id [Integer] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_repos(per_page: 30, page: 1, data_source_id: SENTINEL, extra: {})
+      extra[:per_page] = per_page if per_page != SENTINEL
+      extra[:page] = page if page != SENTINEL
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      api_response = list_repos_with_http_info_impl(extra)
+      api_response.data
+    end
+
+    # Github List Repos
+    #
+    # Once you have connected your GitHub account, you can use this endpoint to list the 
+    #     repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+    #
+    # @param per_page [Integer] 
+    # @param page [Integer] 
+    # @param data_source_id [Integer] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_repos_with_http_info(per_page: 30, page: 1, data_source_id: SENTINEL, extra: {})
+      extra[:per_page] = per_page if per_page != SENTINEL
+      extra[:page] = page if page != SENTINEL
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      list_repos_with_http_info_impl(extra)
+    end
+
+    # Github List Repos
+    # Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :per_page  (default to 30)
+    # @option opts [Integer] :page  (default to 1)
+    # @option opts [Integer] :data_source_id 
+    # @return [Object]
+    private def list_repos_impl(opts = {})
+      data, _status_code, _headers = list_repos_with_http_info(opts)
+      data
+    end
+
+    # Github List Repos
+    # Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :per_page  (default to 30)
+    # @option opts [Integer] :page  (default to 1)
+    # @option opts [Integer] :data_source_id 
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def list_repos_with_http_info_impl(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_repos ...'
+      end
+      # resource path
+      local_var_path = '/integrations/github/repos'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.list_repos",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#list_repos\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Confluence Sync
     #
     # After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1293,7 +1417,7 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '74c95466-42b2-4213-ae36-bfafbaecfcf5', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2da50864-4700-4b70-8098-ddcafcc3267d', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1337,7 +1461,7 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '74c95466-42b2-4213-ae36-bfafbaecfcf5', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2da50864-4700-4b70-8098-ddcafcc3267d', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1541,7 +1665,7 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '74c95466-42b2-4213-ae36-bfafbaecfcf5', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2da50864-4700-4b70-8098-ddcafcc3267d', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1585,7 +1709,7 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '74c95466-42b2-4213-ae36-bfafbaecfcf5', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2da50864-4700-4b70-8098-ddcafcc3267d', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1682,12 +1806,14 @@ module Carbon
     #
     # @param username [String] 
     # @param access_token [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [GithubConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_git_hub(username:, access_token:, extra: {})
+    def sync_git_hub(username:, access_token:, sync_source_items: false, extra: {})
       _body = {}
       _body[:username] = username if username != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       github_connect_request = _body
       api_response = sync_git_hub_with_http_info_impl(github_connect_request, extra)
       api_response.data
@@ -1701,12 +1827,14 @@ module Carbon
     #
     # @param username [String] 
     # @param access_token [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param body [GithubConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_git_hub_with_http_info(username:, access_token:, extra: {})
+    def sync_git_hub_with_http_info(username:, access_token:, sync_source_items: false, extra: {})
       _body = {}
       _body[:username] = username if username != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       github_connect_request = _body
       sync_git_hub_with_http_info_impl(github_connect_request, extra)
     end
@@ -2407,6 +2535,112 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_outlook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Github Sync Repos
+    #
+    # You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+    # You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+    # carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+    #
+    # @param repos [Array<String>] 
+    # @param data_source_id [Integer] 
+    # @param body [GithubFetchReposRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_repos(repos:, data_source_id: SENTINEL, extra: {})
+      _body = {}
+      _body[:repos] = repos if repos != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      github_fetch_repos_request = _body
+      api_response = sync_repos_with_http_info_impl(github_fetch_repos_request, extra)
+      api_response.data
+    end
+
+    # Github Sync Repos
+    #
+    # You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+    # You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+    # carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+    #
+    # @param repos [Array<String>] 
+    # @param data_source_id [Integer] 
+    # @param body [GithubFetchReposRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_repos_with_http_info(repos:, data_source_id: SENTINEL, extra: {})
+      _body = {}
+      _body[:repos] = repos if repos != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      github_fetch_repos_request = _body
+      sync_repos_with_http_info_impl(github_fetch_repos_request, extra)
+    end
+
+    # Github Sync Repos
+    # You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+    # @param github_fetch_repos_request [GithubFetchReposRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def sync_repos_impl(github_fetch_repos_request, opts = {})
+      data, _status_code, _headers = sync_repos_with_http_info(github_fetch_repos_request, opts)
+      data
+    end
+
+    # Github Sync Repos
+    # You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+    # @param github_fetch_repos_request [GithubFetchReposRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def sync_repos_with_http_info_impl(github_fetch_repos_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_repos ...'
+      end
+      # verify the required parameter 'github_fetch_repos_request' is set
+      if @api_client.config.client_side_validation && github_fetch_repos_request.nil?
+        fail ArgumentError, "Missing the required parameter 'github_fetch_repos_request' when calling IntegrationsApi.sync_repos"
+      end
+      # resource path
+      local_var_path = '/integrations/github/sync_repos'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(github_fetch_repos_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_repos",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_repos\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end

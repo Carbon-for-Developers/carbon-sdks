@@ -40,5 +40,8 @@ class OptionalGitbookConnectRequest(TypedDict, total=False):
 
     request_id: typing.Optional[str]
 
+    # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    sync_source_items: bool
+
 class GitbookConnectRequest(RequiredGitbookConnectRequest, OptionalGitbookConnectRequest):
     pass

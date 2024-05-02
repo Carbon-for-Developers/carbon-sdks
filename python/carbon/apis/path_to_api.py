@@ -21,6 +21,8 @@ from carbon.apis.paths.integrations_gitbook import IntegrationsGitbook
 from carbon.apis.paths.integrations_gitbook_spaces import IntegrationsGitbookSpaces
 from carbon.apis.paths.integrations_gitbook_sync import IntegrationsGitbookSync
 from carbon.apis.paths.integrations_github import IntegrationsGithub
+from carbon.apis.paths.integrations_github_repos import IntegrationsGithubRepos
+from carbon.apis.paths.integrations_github_sync_repos import IntegrationsGithubSyncRepos
 from carbon.apis.paths.auth_v1_access_token import AuthV1AccessToken
 from carbon.apis.paths.auth_v1_white_labeling import AuthV1WhiteLabeling
 from carbon.apis.paths.embeddings import Embeddings
@@ -80,6 +82,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,
         PathValues.INTEGRATIONS_GITBOOK_SYNC: IntegrationsGitbookSync,
         PathValues.INTEGRATIONS_GITHUB: IntegrationsGithub,
+        PathValues.INTEGRATIONS_GITHUB_REPOS: IntegrationsGithubRepos,
+        PathValues.INTEGRATIONS_GITHUB_SYNC_REPOS: IntegrationsGithubSyncRepos,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
@@ -140,6 +144,8 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_GITBOOK_SPACES: IntegrationsGitbookSpaces,
         PathValues.INTEGRATIONS_GITBOOK_SYNC: IntegrationsGitbookSync,
         PathValues.INTEGRATIONS_GITHUB: IntegrationsGithub,
+        PathValues.INTEGRATIONS_GITHUB_REPOS: IntegrationsGithubRepos,
+        PathValues.INTEGRATIONS_GITHUB_SYNC_REPOS: IntegrationsGithubSyncRepos,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,

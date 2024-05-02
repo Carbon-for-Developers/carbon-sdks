@@ -14,8 +14,9 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "e8fddc9a-4810-48b2-b1b5-b1ec0159625a"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "7f46547c-7585-4463-bdd5-a1f8cde14b89"]
 **EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
+**SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 
 ## Methods
 
@@ -425,6 +426,31 @@ SetEnableFilePicker sets EnableFilePicker field to given value.
 `func (o *SyncOptions) HasEnableFilePicker() bool`
 
 HasEnableFilePicker returns a boolean if a field has been set.
+
+### GetSyncSourceItems
+
+`func (o *SyncOptions) GetSyncSourceItems() bool`
+
+GetSyncSourceItems returns the SyncSourceItems field if non-nil, zero value otherwise.
+
+### GetSyncSourceItemsOk
+
+`func (o *SyncOptions) GetSyncSourceItemsOk() (*bool, bool)`
+
+GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncSourceItems
+
+`func (o *SyncOptions) SetSyncSourceItems(v bool)`
+
+SetSyncSourceItems sets SyncSourceItems field to given value.
+
+### HasSyncSourceItems
+
+`func (o *SyncOptions) HasSyncSourceItems() bool`
+
+HasSyncSourceItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

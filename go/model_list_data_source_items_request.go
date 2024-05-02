@@ -20,6 +20,8 @@ type ListDataSourceItemsRequest struct {
 	ParentId NullableString `json:"parent_id,omitempty"`
 	Filters NullableListItemsFiltersNullable `json:"filters,omitempty"`
 	Pagination *Pagination `json:"pagination,omitempty"`
+	OrderBy *ExternalSourceItemsOrderBy `json:"order_by,omitempty"`
+	OrderDir *OrderDirV2 `json:"order_dir,omitempty"`
 }
 
 // NewListDataSourceItemsRequest instantiates a new ListDataSourceItemsRequest object
@@ -180,6 +182,70 @@ func (o *ListDataSourceItemsRequest) SetPagination(v Pagination) {
 	o.Pagination = &v
 }
 
+// GetOrderBy returns the OrderBy field value if set, zero value otherwise.
+func (o *ListDataSourceItemsRequest) GetOrderBy() ExternalSourceItemsOrderBy {
+	if o == nil || isNil(o.OrderBy) {
+		var ret ExternalSourceItemsOrderBy
+		return ret
+	}
+	return *o.OrderBy
+}
+
+// GetOrderByOk returns a tuple with the OrderBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListDataSourceItemsRequest) GetOrderByOk() (*ExternalSourceItemsOrderBy, bool) {
+	if o == nil || isNil(o.OrderBy) {
+    return nil, false
+	}
+	return o.OrderBy, true
+}
+
+// HasOrderBy returns a boolean if a field has been set.
+func (o *ListDataSourceItemsRequest) HasOrderBy() bool {
+	if o != nil && !isNil(o.OrderBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderBy gets a reference to the given ExternalSourceItemsOrderBy and assigns it to the OrderBy field.
+func (o *ListDataSourceItemsRequest) SetOrderBy(v ExternalSourceItemsOrderBy) {
+	o.OrderBy = &v
+}
+
+// GetOrderDir returns the OrderDir field value if set, zero value otherwise.
+func (o *ListDataSourceItemsRequest) GetOrderDir() OrderDirV2 {
+	if o == nil || isNil(o.OrderDir) {
+		var ret OrderDirV2
+		return ret
+	}
+	return *o.OrderDir
+}
+
+// GetOrderDirOk returns a tuple with the OrderDir field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListDataSourceItemsRequest) GetOrderDirOk() (*OrderDirV2, bool) {
+	if o == nil || isNil(o.OrderDir) {
+    return nil, false
+	}
+	return o.OrderDir, true
+}
+
+// HasOrderDir returns a boolean if a field has been set.
+func (o *ListDataSourceItemsRequest) HasOrderDir() bool {
+	if o != nil && !isNil(o.OrderDir) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderDir gets a reference to the given OrderDirV2 and assigns it to the OrderDir field.
+func (o *ListDataSourceItemsRequest) SetOrderDir(v OrderDirV2) {
+	o.OrderDir = &v
+}
+
 func (o ListDataSourceItemsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -193,6 +259,12 @@ func (o ListDataSourceItemsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Pagination) {
 		toSerialize["pagination"] = o.Pagination
+	}
+	if !isNil(o.OrderBy) {
+		toSerialize["order_by"] = o.OrderBy
+	}
+	if !isNil(o.OrderDir) {
+		toSerialize["order_dir"] = o.OrderDir
 	}
 	return json.Marshal(toSerialize)
 }

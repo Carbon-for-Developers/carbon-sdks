@@ -40,9 +40,11 @@ class S3AuthRequest(
         class properties:
             access_key = schemas.StrSchema
             access_key_secret = schemas.StrSchema
+            sync_source_items = schemas.BoolSchema
             __annotations__ = {
                 "access_key": access_key,
                 "access_key_secret": access_key_secret,
+                "sync_source_items": sync_source_items,
             }
     
     access_key: MetaOapg.properties.access_key
@@ -55,9 +57,12 @@ class S3AuthRequest(
     def __getitem__(self, name: typing_extensions.Literal["access_key_secret"]) -> MetaOapg.properties.access_key_secret: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -69,9 +74,12 @@ class S3AuthRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["access_key_secret"]) -> MetaOapg.properties.access_key_secret: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -80,6 +88,7 @@ class S3AuthRequest(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_key: typing.Union[MetaOapg.properties.access_key, str, ],
         access_key_secret: typing.Union[MetaOapg.properties.access_key_secret, str, ],
+        sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'S3AuthRequest':
@@ -88,6 +97,7 @@ class S3AuthRequest(
             *args,
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
             _configuration=_configuration,
             **kwargs,
         )

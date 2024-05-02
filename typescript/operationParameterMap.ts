@@ -413,6 +413,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'request_id'
             },
+            {
+                name: 'sync_source_items'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -450,6 +453,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'request_id'
             },
+            {
+                name: 'sync_source_items'
+            },
         ]
     },
     '/integrations/s3-POST': {
@@ -459,6 +465,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'access_key_secret'
+            },
+            {
+                name: 'sync_source_items'
             },
         ]
     },
@@ -533,6 +542,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'enable_file_picker'
             },
+            {
+                name: 'sync_source_items'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -559,6 +571,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'pagination'
             },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
         ]
     },
     '/integrations/outlook/user_folders-GET': {
@@ -584,6 +602,19 @@ export const operationParameterMap: Record<string, Entry> = {
     },
     '/integrations/outlook/user_categories-GET': {
         parameters: [
+            {
+                name: 'data_source_id'
+            },
+        ]
+    },
+    '/integrations/github/repos-GET': {
+        parameters: [
+            {
+                name: 'per_page'
+            },
+            {
+                name: 'page'
+            },
             {
                 name: 'data_source_id'
             },
@@ -696,6 +727,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'access_token'
             },
+            {
+                name: 'sync_source_items'
+            },
         ]
     },
     '/integrations/gitbook/sync-POST': {
@@ -806,6 +840,16 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'sync_attachments'
+            },
+        ]
+    },
+    '/integrations/github/sync_repos-POST': {
+        parameters: [
+            {
+                name: 'repos'
+            },
+            {
+                name: 'data_source_id'
             },
         ]
     },

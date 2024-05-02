@@ -20,12 +20,13 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 **FilesSyncedAt** | **NullableTime** |  | 
+**DataSourceMetadata** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -410,6 +411,26 @@ SetFilesSyncedAt sets FilesSyncedAt field to given value.
 `func (o *OrganizationUserDataSourceAPI) UnsetFilesSyncedAt()`
 
 UnsetFilesSyncedAt ensures that no value is present for FilesSyncedAt, not even an explicit nil
+### GetDataSourceMetadata
+
+`func (o *OrganizationUserDataSourceAPI) GetDataSourceMetadata() map[string]interface{}`
+
+GetDataSourceMetadata returns the DataSourceMetadata field if non-nil, zero value otherwise.
+
+### GetDataSourceMetadataOk
+
+`func (o *OrganizationUserDataSourceAPI) GetDataSourceMetadataOk() (*map[string]interface{}, bool)`
+
+GetDataSourceMetadataOk returns a tuple with the DataSourceMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceMetadata
+
+`func (o *OrganizationUserDataSourceAPI) SetDataSourceMetadata(v map[string]interface{})`
+
+SetDataSourceMetadata sets DataSourceMetadata field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

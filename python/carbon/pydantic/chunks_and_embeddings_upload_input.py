@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
 
@@ -27,7 +28,7 @@ class ChunksAndEmbeddingsUploadInput(BaseModel):
 
     chunks_only: typing.Optional[bool] = Field(None, alias='chunks_only')
 
-    custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='custom_credentials')
+    custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = Field(None, alias='custom_credentials')
 
     model_config = ConfigDict(
         protected_namespaces=(),

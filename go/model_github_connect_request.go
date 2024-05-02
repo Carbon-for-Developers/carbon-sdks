@@ -18,6 +18,8 @@ import (
 type GithubConnectRequest struct {
 	Username string `json:"username"`
 	AccessToken string `json:"access_token"`
+	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 }
 
 // NewGithubConnectRequest instantiates a new GithubConnectRequest object
@@ -28,6 +30,8 @@ func NewGithubConnectRequest(username string, accessToken string) *GithubConnect
 	this := GithubConnectRequest{}
 	this.Username = username
 	this.AccessToken = accessToken
+	var syncSourceItems bool = false
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -36,6 +40,8 @@ func NewGithubConnectRequest(username string, accessToken string) *GithubConnect
 // but it doesn't guarantee that properties required by API are set
 func NewGithubConnectRequestWithDefaults() *GithubConnectRequest {
 	this := GithubConnectRequest{}
+	var syncSourceItems bool = false
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -87,6 +93,38 @@ func (o *GithubConnectRequest) SetAccessToken(v string) {
 	o.AccessToken = v
 }
 
+// GetSyncSourceItems returns the SyncSourceItems field value if set, zero value otherwise.
+func (o *GithubConnectRequest) GetSyncSourceItems() bool {
+	if o == nil || isNil(o.SyncSourceItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncSourceItems
+}
+
+// GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubConnectRequest) GetSyncSourceItemsOk() (*bool, bool) {
+	if o == nil || isNil(o.SyncSourceItems) {
+    return nil, false
+	}
+	return o.SyncSourceItems, true
+}
+
+// HasSyncSourceItems returns a boolean if a field has been set.
+func (o *GithubConnectRequest) HasSyncSourceItems() bool {
+	if o != nil && !isNil(o.SyncSourceItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncSourceItems gets a reference to the given bool and assigns it to the SyncSourceItems field.
+func (o *GithubConnectRequest) SetSyncSourceItems(v bool) {
+	o.SyncSourceItems = &v
+}
+
 func (o GithubConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -94,6 +132,9 @@ func (o GithubConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["access_token"] = o.AccessToken
+	}
+	if !isNil(o.SyncSourceItems) {
+		toSerialize["sync_source_items"] = o.SyncSourceItems
 	}
 	return json.Marshal(toSerialize)
 }

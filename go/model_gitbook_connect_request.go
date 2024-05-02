@@ -27,6 +27,8 @@ type GitbookConnectRequest struct {
 	PrependFilenameToChunks NullableBool `json:"prepend_filename_to_chunks,omitempty"`
 	SyncFilesOnConnection NullableBool `json:"sync_files_on_connection,omitempty"`
 	RequestId NullableString `json:"request_id,omitempty"`
+	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 }
 
 // NewGitbookConnectRequest instantiates a new GitbookConnectRequest object
@@ -49,6 +51,8 @@ func NewGitbookConnectRequest(organization string, accessToken string) *GitbookC
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var syncFilesOnConnection bool = true
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -69,6 +73,8 @@ func NewGitbookConnectRequestWithDefaults() *GitbookConnectRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var syncFilesOnConnection bool = true
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -479,6 +485,38 @@ func (o *GitbookConnectRequest) UnsetRequestId() {
 	o.RequestId.Unset()
 }
 
+// GetSyncSourceItems returns the SyncSourceItems field value if set, zero value otherwise.
+func (o *GitbookConnectRequest) GetSyncSourceItems() bool {
+	if o == nil || isNil(o.SyncSourceItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncSourceItems
+}
+
+// GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GitbookConnectRequest) GetSyncSourceItemsOk() (*bool, bool) {
+	if o == nil || isNil(o.SyncSourceItems) {
+    return nil, false
+	}
+	return o.SyncSourceItems, true
+}
+
+// HasSyncSourceItems returns a boolean if a field has been set.
+func (o *GitbookConnectRequest) HasSyncSourceItems() bool {
+	if o != nil && !isNil(o.SyncSourceItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncSourceItems gets a reference to the given bool and assigns it to the SyncSourceItems field.
+func (o *GitbookConnectRequest) SetSyncSourceItems(v bool) {
+	o.SyncSourceItems = &v
+}
+
 func (o GitbookConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -513,6 +551,9 @@ func (o GitbookConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestId.IsSet() {
 		toSerialize["request_id"] = o.RequestId.Get()
+	}
+	if !isNil(o.SyncSourceItems) {
+		toSerialize["sync_source_items"] = o.SyncSourceItems
 	}
 	return json.Marshal(toSerialize)
 }

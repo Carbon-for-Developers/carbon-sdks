@@ -43,6 +43,8 @@ module Carbon
 
     attr_accessor :files_synced_at
 
+    attr_accessor :data_source_metadata
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -61,7 +63,8 @@ module Carbon
         :'enable_auto_sync' => :'enable_auto_sync',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'files_synced_at' => :'files_synced_at'
+        :'files_synced_at' => :'files_synced_at',
+        :'data_source_metadata' => :'data_source_metadata'
       }
     end
 
@@ -88,7 +91,8 @@ module Carbon
         :'enable_auto_sync' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time',
-        :'files_synced_at' => :'Time'
+        :'files_synced_at' => :'Time',
+        :'data_source_metadata' => :'Object'
       }
     end
 
@@ -99,7 +103,7 @@ module Carbon
         :'token',
         :'source_items_synced_at',
         :'enable_auto_sync',
-        :'files_synced_at'
+        :'files_synced_at',
       ])
     end
 
@@ -181,6 +185,10 @@ module Carbon
       if attributes.key?(:'files_synced_at')
         self.files_synced_at = attributes[:'files_synced_at']
       end
+
+      if attributes.key?(:'data_source_metadata')
+        self.data_source_metadata = attributes[:'data_source_metadata']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -231,6 +239,10 @@ module Carbon
         invalid_properties.push('invalid value for "updated_at", updated_at cannot be nil.')
       end
 
+      if @data_source_metadata.nil?
+        invalid_properties.push('invalid value for "data_source_metadata", data_source_metadata cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -248,6 +260,7 @@ module Carbon
       return false if @last_sync_action.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
+      return false if @data_source_metadata.nil?
       true
     end
 
@@ -271,7 +284,8 @@ module Carbon
           enable_auto_sync == o.enable_auto_sync &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          files_synced_at == o.files_synced_at
+          files_synced_at == o.files_synced_at &&
+          data_source_metadata == o.data_source_metadata
     end
 
     # @see the `==` method
@@ -283,7 +297,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, enable_auto_sync, created_at, updated_at, files_synced_at].hash
+      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, enable_auto_sync, created_at, updated_at, files_synced_at, data_source_metadata].hash
     end
 
     # Builds the object from hash

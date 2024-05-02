@@ -156,6 +156,20 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for list_repos
+  # Github List Repos
+  # Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
+  # @option opts [Integer] :data_source_id 
+  # @return [Object]
+  describe 'list_repos test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for sync_confluence
   # Confluence Sync
   # After listing pages in a user&#39;s Confluence account, the set of selected page &#x60;ids&#x60; and the connected account&#39;s &#x60;data_source_id&#x60; can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
@@ -234,6 +248,18 @@ describe 'IntegrationsApi' do
   # @param [Hash] opts the optional parameters
   # @return [GenericSuccessResponse]
   describe 'sync_outlook test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for sync_repos
+  # Github Sync Repos
+  # You can retreive repos your token has access to using /integrations/github/repos and sync their content.  You can also pass full name of any public repository (username/repo-name). This will store the repo content with  carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+  # @param github_fetch_repos_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'sync_repos test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

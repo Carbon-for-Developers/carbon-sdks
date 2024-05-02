@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ChunksAndEmbeddings** | [**[]SingleChunksAndEmbeddingsUploadInput**](SingleChunksAndEmbeddingsUploadInput.md) |  | 
 **OverwriteExisting** | Pointer to **bool** |  | [optional] [default to false]
 **ChunksOnly** | Pointer to **bool** |  | [optional] [default to false]
-**CustomCredentials** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**CustomCredentials** | Pointer to **map[string]map[string]interface{}** |  | [optional] [default to {}]
 
 ## Methods
 
@@ -121,20 +121,20 @@ HasChunksOnly returns a boolean if a field has been set.
 
 ### GetCustomCredentials
 
-`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]interface{}`
+`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]map[string]interface{}`
 
 GetCustomCredentials returns the CustomCredentials field if non-nil, zero value otherwise.
 
 ### GetCustomCredentialsOk
 
-`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (*map[string]interface{}, bool)`
+`func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (*map[string]map[string]interface{}, bool)`
 
 GetCustomCredentialsOk returns a tuple with the CustomCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomCredentials
 
-`func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]interface{})`
+`func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]map[string]interface{})`
 
 SetCustomCredentials sets CustomCredentials field to given value.
 

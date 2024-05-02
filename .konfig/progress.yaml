@@ -14,6 +14,14 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /integrations/github/repos:
+    get:
+      '200':
+        application/json: {}
+  /integrations/github/sync_repos:
+    post:
+      '200':
+        application/json: {}
   /integrations/gmail/user_labels:
     get:
       '200':
@@ -90,6 +98,10 @@ operationIds:
     post: Integrations_syncGitbook
   /integrations/github:
     post: Integrations_syncGitHub
+  /integrations/github/repos:
+    get: Integrations_listRepos
+  /integrations/github/sync_repos:
+    post: Integrations_syncRepos
   /integrations/gmail/sync:
     post: Integrations_syncGmail
   /integrations/gmail/user_labels:
@@ -174,6 +186,14 @@ responseSchemaNames:
     post:
       '200':
         application/json: IntegrationsSyncGitbookResponse
+  /integrations/github/repos:
+    get:
+      '200':
+        application/json: IntegrationsListReposResponse
+  /integrations/github/sync_repos:
+    post:
+      '200':
+        application/json: IntegrationsSyncReposResponse
   /integrations/gmail/user_labels:
     get:
       '200':
@@ -221,7 +241,11 @@ securityParameters:
     query: false
   max_items_per_chunk:
     query: false
+  page:
+    query: false
   parse_pdf_tables_with_ocr:
+    query: false
+  per_page:
     query: false
   prepend_filename_to_chunks:
     query: false

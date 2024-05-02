@@ -18,10 +18,12 @@ from carbon.model.chunk_properties_nullable import ChunkPropertiesNullable
 from carbon.model.chunks_and_embeddings import ChunksAndEmbeddings
 from carbon.model.chunks_and_embeddings_embedding import ChunksAndEmbeddingsEmbedding
 from carbon.model.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput
+from carbon.model.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
 from carbon.model.configuration_keys import ConfigurationKeys
 from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.connect_data_source_input import ConnectDataSourceInput
 from carbon.model.connect_data_source_response import ConnectDataSourceResponse
+from carbon.model.custom_credentials_type import CustomCredentialsType
 from carbon.model.data_source_extended_input import DataSourceExtendedInput
 from carbon.model.data_source_last_sync_actions import DataSourceLastSyncActions
 from carbon.model.data_source_sync_statuses import DataSourceSyncStatuses
@@ -48,6 +50,7 @@ from carbon.model.embeddings_and_chunks_query_input import EmbeddingsAndChunksQu
 from carbon.model.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
 from carbon.model.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.model.external_source_item import ExternalSourceItem
+from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy
 from carbon.model.fetch_urls_response import FetchURLsResponse
 from carbon.model.fetch_urls_response_urls import FetchURLsResponseUrls
 from carbon.model.file_content_types import FileContentTypes
@@ -71,6 +74,8 @@ from carbon.model.gitbook_sync_request import GitbookSyncRequest
 from carbon.model.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
 from carbon.model.github_authentication import GithubAuthentication
 from carbon.model.github_connect_request import GithubConnectRequest
+from carbon.model.github_fetch_repos_request import GithubFetchReposRequest
+from carbon.model.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.model.gmail_sync_input import GmailSyncInput
 from carbon.model.http_validation_error import HTTPValidationError
 from carbon.model.hybrid_search_tuning_params import HybridSearchTuningParams
@@ -90,6 +95,7 @@ from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
 from carbon.model.order_dir import OrderDir
+from carbon.model.order_dir_v2 import OrderDirV2
 from carbon.model.organization_response import OrganizationResponse
 from carbon.model.organization_user_data_source_api import OrganizationUserDataSourceAPI
 from carbon.model.organization_user_data_source_filters import OrganizationUserDataSourceFilters

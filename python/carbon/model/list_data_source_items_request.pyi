@@ -66,11 +66,21 @@ class ListDataSourceItemsRequest(
             @staticmethod
             def pagination() -> typing.Type['Pagination']:
                 return Pagination
+        
+            @staticmethod
+            def order_by() -> typing.Type['ExternalSourceItemsOrderBy']:
+                return ExternalSourceItemsOrderBy
+        
+            @staticmethod
+            def order_dir() -> typing.Type['OrderDirV2']:
+                return OrderDirV2
             __annotations__ = {
                 "data_source_id": data_source_id,
                 "parent_id": parent_id,
                 "filters": filters,
                 "pagination": pagination,
+                "order_by": order_by,
+                "order_dir": order_dir,
             }
     
     data_source_id: MetaOapg.properties.data_source_id
@@ -88,9 +98,15 @@ class ListDataSourceItemsRequest(
     def __getitem__(self, name: typing_extensions.Literal["pagination"]) -> 'Pagination': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["order_by"]) -> 'ExternalSourceItemsOrderBy': ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["order_dir"]) -> 'OrderDirV2': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", "order_by", "order_dir", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -108,9 +124,15 @@ class ListDataSourceItemsRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["pagination"]) -> typing.Union['Pagination', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["order_by"]) -> typing.Union['ExternalSourceItemsOrderBy', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["order_dir"]) -> typing.Union['OrderDirV2', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "parent_id", "filters", "pagination", "order_by", "order_dir", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -121,6 +143,8 @@ class ListDataSourceItemsRequest(
         parent_id: typing.Union[MetaOapg.properties.parent_id, None, str, schemas.Unset] = schemas.unset,
         filters: typing.Union['ListItemsFiltersNullable', schemas.Unset] = schemas.unset,
         pagination: typing.Union['Pagination', schemas.Unset] = schemas.unset,
+        order_by: typing.Union['ExternalSourceItemsOrderBy', schemas.Unset] = schemas.unset,
+        order_dir: typing.Union['OrderDirV2', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ListDataSourceItemsRequest':
@@ -131,9 +155,13 @@ class ListDataSourceItemsRequest(
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy
 from carbon.model.list_items_filters_nullable import ListItemsFiltersNullable
+from carbon.model.order_dir_v2 import OrderDirV2
 from carbon.model.pagination import Pagination

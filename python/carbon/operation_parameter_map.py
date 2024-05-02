@@ -407,6 +407,9 @@ operation_parameter_map = {
             {
                 'name': 'request_id'
             },
+            {
+                'name': 'sync_source_items'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -444,6 +447,9 @@ operation_parameter_map = {
             {
                 'name': 'request_id'
             },
+            {
+                'name': 'sync_source_items'
+            },
         ]
     },
     '/integrations/s3-POST': {
@@ -453,6 +459,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'access_key_secret'
+            },
+            {
+                'name': 'sync_source_items'
             },
         ]
     },
@@ -527,6 +536,9 @@ operation_parameter_map = {
             {
                 'name': 'enable_file_picker'
             },
+            {
+                'name': 'sync_source_items'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -553,6 +565,12 @@ operation_parameter_map = {
             {
                 'name': 'pagination'
             },
+            {
+                'name': 'order_by'
+            },
+            {
+                'name': 'order_dir'
+            },
         ]
     },
     '/integrations/outlook/user_folders-GET': {
@@ -578,6 +596,19 @@ operation_parameter_map = {
     },
     '/integrations/outlook/user_categories-GET': {
         'parameters': [
+            {
+                'name': 'data_source_id'
+            },
+        ]
+    },
+    '/integrations/github/repos-GET': {
+        'parameters': [
+            {
+                'name': 'per_page'
+            },
+            {
+                'name': 'page'
+            },
             {
                 'name': 'data_source_id'
             },
@@ -690,6 +721,9 @@ operation_parameter_map = {
             {
                 'name': 'access_token'
             },
+            {
+                'name': 'sync_source_items'
+            },
         ]
     },
     '/integrations/gitbook/sync-POST': {
@@ -800,6 +834,16 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_attachments'
+            },
+        ]
+    },
+    '/integrations/github/sync_repos-POST': {
+        'parameters': [
+            {
+                'name': 'repos'
+            },
+            {
+                'name': 'data_source_id'
             },
         ]
     },

@@ -21,6 +21,9 @@ class S3AuthRequest(BaseModel):
 
     access_key_secret: str = Field(alias='access_key_secret')
 
+    # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    sync_source_items: typing.Optional[bool] = Field(None, alias='sync_source_items')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

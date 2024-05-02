@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
 
@@ -27,7 +28,7 @@ class OptionalChunksAndEmbeddingsUploadInput(TypedDict, total=False):
 
     chunks_only: bool
 
-    custom_credentials: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    custom_credentials: ChunksAndEmbeddingsUploadInputCustomCredentials
 
 class ChunksAndEmbeddingsUploadInput(RequiredChunksAndEmbeddingsUploadInput, OptionalChunksAndEmbeddingsUploadInput):
     pass

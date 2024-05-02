@@ -18,6 +18,8 @@ import (
 type S3AuthRequest struct {
 	AccessKey string `json:"access_key"`
 	AccessKeySecret string `json:"access_key_secret"`
+	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 }
 
 // NewS3AuthRequest instantiates a new S3AuthRequest object
@@ -28,6 +30,8 @@ func NewS3AuthRequest(accessKey string, accessKeySecret string) *S3AuthRequest {
 	this := S3AuthRequest{}
 	this.AccessKey = accessKey
 	this.AccessKeySecret = accessKeySecret
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -36,6 +40,8 @@ func NewS3AuthRequest(accessKey string, accessKeySecret string) *S3AuthRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewS3AuthRequestWithDefaults() *S3AuthRequest {
 	this := S3AuthRequest{}
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -87,6 +93,38 @@ func (o *S3AuthRequest) SetAccessKeySecret(v string) {
 	o.AccessKeySecret = v
 }
 
+// GetSyncSourceItems returns the SyncSourceItems field value if set, zero value otherwise.
+func (o *S3AuthRequest) GetSyncSourceItems() bool {
+	if o == nil || isNil(o.SyncSourceItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncSourceItems
+}
+
+// GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *S3AuthRequest) GetSyncSourceItemsOk() (*bool, bool) {
+	if o == nil || isNil(o.SyncSourceItems) {
+    return nil, false
+	}
+	return o.SyncSourceItems, true
+}
+
+// HasSyncSourceItems returns a boolean if a field has been set.
+func (o *S3AuthRequest) HasSyncSourceItems() bool {
+	if o != nil && !isNil(o.SyncSourceItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncSourceItems gets a reference to the given bool and assigns it to the SyncSourceItems field.
+func (o *S3AuthRequest) SetSyncSourceItems(v bool) {
+	o.SyncSourceItems = &v
+}
+
 func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -94,6 +132,9 @@ func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["access_key_secret"] = o.AccessKeySecret
+	}
+	if !isNil(o.SyncSourceItems) {
+		toSerialize["sync_source_items"] = o.SyncSourceItems
 	}
 	return json.Marshal(toSerialize)
 }

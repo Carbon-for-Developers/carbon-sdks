@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **ParentId** | Pointer to **NullableString** |  | [optional] 
 **Filters** | Pointer to [**NullableListItemsFiltersNullable**](ListItemsFiltersNullable.md) |  | [optional] 
 **Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
+**OrderBy** | Pointer to [**ExternalSourceItemsOrderBy**](ExternalSourceItemsOrderBy.md) |  | [optional] 
+**OrderDir** | Pointer to [**OrderDirV2**](OrderDirV2.md) |  | [optional] 
 
 ## Methods
 
@@ -142,6 +144,56 @@ SetPagination sets Pagination field to given value.
 `func (o *ListDataSourceItemsRequest) HasPagination() bool`
 
 HasPagination returns a boolean if a field has been set.
+
+### GetOrderBy
+
+`func (o *ListDataSourceItemsRequest) GetOrderBy() ExternalSourceItemsOrderBy`
+
+GetOrderBy returns the OrderBy field if non-nil, zero value otherwise.
+
+### GetOrderByOk
+
+`func (o *ListDataSourceItemsRequest) GetOrderByOk() (*ExternalSourceItemsOrderBy, bool)`
+
+GetOrderByOk returns a tuple with the OrderBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderBy
+
+`func (o *ListDataSourceItemsRequest) SetOrderBy(v ExternalSourceItemsOrderBy)`
+
+SetOrderBy sets OrderBy field to given value.
+
+### HasOrderBy
+
+`func (o *ListDataSourceItemsRequest) HasOrderBy() bool`
+
+HasOrderBy returns a boolean if a field has been set.
+
+### GetOrderDir
+
+`func (o *ListDataSourceItemsRequest) GetOrderDir() OrderDirV2`
+
+GetOrderDir returns the OrderDir field if non-nil, zero value otherwise.
+
+### GetOrderDirOk
+
+`func (o *ListDataSourceItemsRequest) GetOrderDirOk() (*OrderDirV2, bool)`
+
+GetOrderDirOk returns a tuple with the OrderDir field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderDir
+
+`func (o *ListDataSourceItemsRequest) SetOrderDir(v OrderDirV2)`
+
+SetOrderDir sets OrderDir field to given value.
+
+### HasOrderDir
+
+`func (o *ListDataSourceItemsRequest) HasOrderDir() bool`
+
+HasOrderDir returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

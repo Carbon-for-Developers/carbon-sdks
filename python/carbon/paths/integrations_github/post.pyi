@@ -109,6 +109,7 @@ class BaseApi(api_client.Api):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -116,6 +117,8 @@ class BaseApi(api_client.Api):
             _body["username"] = username
         if access_token is not None:
             _body["access_token"] = access_token
+        if sync_source_items is not None:
+            _body["sync_source_items"] = sync_source_items
         args.body = _body
         return args
 
@@ -325,6 +328,7 @@ class SyncGitHubRaw(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -334,6 +338,7 @@ class SyncGitHubRaw(BaseApi):
         args = self._sync_git_hub_mapped_args(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
         )
         return await self._async_git_hub_oapg(
             body=args.body,
@@ -344,6 +349,7 @@ class SyncGitHubRaw(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -351,6 +357,7 @@ class SyncGitHubRaw(BaseApi):
         args = self._sync_git_hub_mapped_args(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
         )
         return self._sync_git_hub_oapg(
             body=args.body,
@@ -362,12 +369,14 @@ class SyncGitHub(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
         raw_response = await self.raw.async_git_hub(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
             **kwargs,
         )
         if validate:
@@ -379,11 +388,13 @@ class SyncGitHub(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_git_hub(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -397,6 +408,7 @@ class ApiForpost(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -406,6 +418,7 @@ class ApiForpost(BaseApi):
         args = self._sync_git_hub_mapped_args(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
         )
         return await self._async_git_hub_oapg(
             body=args.body,
@@ -416,6 +429,7 @@ class ApiForpost(BaseApi):
         self,
         username: str,
         access_token: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -423,6 +437,7 @@ class ApiForpost(BaseApi):
         args = self._sync_git_hub_mapped_args(
             username=username,
             access_token=access_token,
+            sync_source_items=sync_source_items,
         )
         return self._sync_git_hub_oapg(
             body=args.body,

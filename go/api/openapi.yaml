@@ -2048,6 +2048,104 @@ paths:
       - Integrations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-github
+  /integrations/github/repos:
+    get:
+      description: "Once you have connected your GitHub account, you can use this\
+        \ endpoint to list the \n    repositories your account has access to. You\
+        \ can use a data source ID or username to fetch from a specific account."
+      operationId: Integrations_listRepos
+      parameters:
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          default: 30
+          example: 30
+          title: Per Page
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-github-repos-get-parameters-0-schema
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-github-repos-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsListReposResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Github List Repos
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-github-repos
+  /integrations/github/sync_repos:
+    post:
+      description: "You can retreive repos your token has access to using /integrations/github/repos\
+        \ and sync their content. \nYou can also pass full name of any public repository\
+        \ (username/repo-name). This will store the repo content with \ncarbon which\
+        \ can be accessed through /integrations/items/list endpoint. Maximum of 25\
+        \ repositories are accepted per request."
+      operationId: Integrations_syncRepos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GithubFetchReposRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsSyncReposResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Github Sync Repos
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-github-sync_repos
   /auth/v1/access_token:
     get:
       operationId: Auth_getAccessToken
@@ -3618,6 +3716,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-chunks_only
         custom_credentials:
+          additionalProperties:
+            type: object
           default: {}
           example: {}
           title: Custom Credentials
@@ -3659,14 +3759,15 @@ components:
           prepend_filename_to_chunks: false
           enable_file_picker: true
           max_items_per_chunk: 0
+          embedding_model: OPENAI
+          tags: ""
+          sync_source_items: true
           generate_sparse_vectors: false
           sync_files_on_connection: true
           set_page_as_boundary: false
-          embedding_model: OPENAI
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
-          tags: ""
+          request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
         authentication: null
       properties:
         authentication:
@@ -3686,10 +3787,11 @@ components:
             enable_file_picker: true
             generate_sparse_vectors: false
             prepend_filename_to_chunks: false
-            request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+            request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
+            sync_source_items: true
     ConnectDataSourceResponse:
       example:
         sync_url: sync_url
@@ -3698,6 +3800,7 @@ components:
           revoked_access: true
           created_at: 2000-01-23T04:56:07.000+00:00
           data_source_type: null
+          data_source_metadata: "{}"
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -3722,6 +3825,15 @@ components:
       - sync_url
       title: ConnectDataSourceResponse
       type: object
+    CustomCredentialsType:
+      enum:
+      - OPENAI
+      - COHERE
+      - AZURE_OPENAI
+      - AZURE_OPENAI_V3
+      - UPSTAGE
+      title: CustomCredentialsType
+      type: string
     DataSourceExtendedInput:
       title: DataSourceExtendedInput
       type: string
@@ -4116,6 +4228,7 @@ components:
       - OPENAI_ADA_LARGE_3072
       - OPENAI_ADA_SMALL_512
       - OPENAI_ADA_SMALL_1536
+      - SOLAR_1_MINI
       title: EmbeddingGenerators
       type: string
     EmbeddingProperties:
@@ -4347,6 +4460,13 @@ components:
       - updated_at
       title: ExternalSourceItem
       type: object
+    ExternalSourceItemsOrderBy:
+      enum:
+      - name
+      - id
+      - directories_first
+      title: ExternalSourceItemsOrderBy
+      type: string
     FetchURLsResponse:
       example:
         urls:
@@ -4445,6 +4565,7 @@ components:
       type: object
     FreshDeskConnectRequest:
       example:
+        sync_source_items: true
         chunk_size: 1500
         prepend_filename_to_chunks: false
         api_key: api_key
@@ -4525,6 +4646,15 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_source_items
       required:
       - api_key
       - domain
@@ -4770,6 +4900,7 @@ components:
     GitbookConnectRequest:
       example:
         access_token: access_token
+        sync_source_items: true
         chunk_size: 1500
         prepend_filename_to_chunks: false
         generate_sparse_vectors: false
@@ -4849,6 +4980,15 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_source_items
       required:
       - access_token
       - organization
@@ -4965,6 +5105,7 @@ components:
     GithubConnectRequest:
       example:
         access_token: access_token
+        sync_source_items: false
         username: username
       properties:
         username:
@@ -4973,10 +5114,44 @@ components:
         access_token:
           title: Access Token
           type: string
+        sync_source_items:
+          default: false
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: false
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GithubConnectRequest-properties-sync_source_items
       required:
       - access_token
       - username
       title: GithubConnectRequest
+      type: object
+    GithubFetchReposRequest:
+      example:
+        repos:
+        - repos
+        - repos
+        - repos
+        - repos
+        - repos
+        data_source_id: 0
+      properties:
+        repos:
+          items:
+            type: string
+          maxItems: 25
+          minItems: 1
+          title: Repos
+          type: array
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+      required:
+      - repos
+      title: GithubFetchReposRequest
       type: object
     GmailSyncInput:
       example:
@@ -5092,10 +5267,12 @@ components:
       type: object
     ListDataSourceItemsRequest:
       example:
+        order_dir: null
         pagination:
           offset: 0
           limit: 10
         parent_id: parent_id
+        order_by: null
         filters:
           root_files_only: true
           name: name
@@ -5118,6 +5295,10 @@ components:
           $ref: '#/components/schemas/ListItemsFiltersNullable'
         pagination:
           $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/ExternalSourceItemsOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
       required:
       - data_source_id
       title: ListDataSourceItemsRequest
@@ -5127,6 +5308,10 @@ components:
           default:
             limit: 10
             offset: 0
+        order_by:
+          default: name
+        order_dir:
+          default: asc
     ListDataSourceItemsResponse:
       example:
         count: 2
@@ -5302,6 +5487,7 @@ components:
         parse_pdf_tables_with_ocr: false
         embedding_model: OPENAI
         tags: ""
+        sync_source_items: true
         use_ocr: false
         service: null
         generate_sparse_vectors: false
@@ -5311,7 +5497,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 76343a7e-0175-49f8-957c-e1133ae388ac
+        request_id: ae840422-78ad-45c5-a0bd-019c2b2e8443
         zendesk_subdomain: zendesk_subdomain
         data_source_id: 6
         microsoft_tenant: microsoft_tenant
@@ -5431,13 +5617,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 76343a7e-0175-49f8-957c-e1133ae388ac
+          default: ae840422-78ad-45c5-a0bd-019c2b2e8443
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          example: ae840422-78ad-45c5-a0bd-019c2b2e8443
           title: Request Id
           type: string
-          x-konfig-original-example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          x-konfig-original-example: ae840422-78ad-45c5-a0bd-019c2b2e8443
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5459,12 +5645,21 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT"
+            \ it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items
       required:
       - service
       title: OAuthURLRequest
@@ -5474,6 +5669,12 @@ components:
       - desc
       - asc
       title: OrderDir
+      type: string
+    OrderDirV2:
+      enum:
+      - asc
+      - desc
+      title: OrderDirV2
       type: string
     OrganizationResponse:
       example:
@@ -5565,6 +5766,7 @@ components:
         revoked_access: true
         created_at: 2000-01-23T04:56:07.000+00:00
         data_source_type: null
+        data_source_metadata: "{}"
         organization_supplied_user_id: organization_supplied_user_id
         token: "{}"
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -5633,9 +5835,13 @@ components:
           nullable: true
           title: Files Synced At
           type: string
+        data_source_metadata:
+          title: Data Source Metadata
+          type: object
       required:
       - created_at
       - data_source_external_id
+      - data_source_metadata
       - data_source_type
       - enable_auto_sync
       - files_synced_at
@@ -5723,6 +5929,7 @@ components:
           revoked_access: true
           created_at: 2000-01-23T04:56:07.000+00:00
           data_source_type: null
+          data_source_metadata: "{}"
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -5739,6 +5946,7 @@ components:
           revoked_access: true
           created_at: 2000-01-23T04:56:07.000+00:00
           data_source_type: null
+          data_source_metadata: "{}"
           organization_supplied_user_id: organization_supplied_user_id
           token: "{}"
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -6367,6 +6575,7 @@ components:
       type: object
     S3AuthRequest:
       example:
+        sync_source_items: true
         access_key: access_key
         access_key_secret: access_key_secret
       properties:
@@ -6376,6 +6585,15 @@ components:
         access_key_secret:
           title: Access Key Secret
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items
       required:
       - access_key
       - access_key_secret
@@ -6784,7 +7002,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+        request_id: 2da50864-4700-4b70-8098-ddcafcc3267d
         data_source_id: 0
       properties:
         tags:
@@ -6856,11 +7074,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
-          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          default: 2da50864-4700-4b70-8098-ddcafcc3267d
+          example: 2da50864-4700-4b70-8098-ddcafcc3267d
           title: Request Id
           type: string
-          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -6889,14 +7107,15 @@ components:
         prepend_filename_to_chunks: false
         enable_file_picker: true
         max_items_per_chunk: 0
+        embedding_model: OPENAI
+        tags: ""
+        sync_source_items: true
         generate_sparse_vectors: false
         sync_files_on_connection: true
         set_page_as_boundary: false
-        embedding_model: OPENAI
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
-        tags: ""
+        request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
       properties:
         tags:
           nullable: true
@@ -6969,11 +7188,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
-          example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+          default: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+          example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
           title: Request Id
           type: string
-          x-konfig-original-example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+          x-konfig-original-example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -6982,6 +7201,15 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-sync_source_items
       title: SyncOptions
       type: object
     TextEmbeddingGenerators:
@@ -6994,6 +7222,12 @@ components:
       - OPENAI_ADA_LARGE_3072
       - OPENAI_ADA_SMALL_512
       - OPENAI_ADA_SMALL_1536
+      - AZURE_ADA_LARGE_256
+      - AZURE_ADA_LARGE_1024
+      - AZURE_ADA_LARGE_3072
+      - AZURE_ADA_SMALL_512
+      - AZURE_ADA_SMALL_1536
+      - SOLAR_1_MINI
       title: TextEmbeddingGenerators
       type: string
     TokenResponse:
@@ -7997,6 +8231,7 @@ components:
       - OPENAI_ADA_LARGE_3072
       - OPENAI_ADA_SMALL_512
       - OPENAI_ADA_SMALL_1536
+      - SOLAR_1_MINI
       example: OPENAI
       nullable: true
       title: EmbeddingGenerators
@@ -8229,6 +8464,18 @@ components:
       type: object
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncGitbookResponse
+    IntegrationsListReposResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsListReposResponse
+    IntegrationsSyncReposResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncReposResponse
     FilesQueryUserFilesDeprecatedResponse:
       items:
         $ref: '#/components/schemas/UserFile'
@@ -8258,6 +8505,14 @@ components:
       type: object
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-HealthCheckResponse
+    konfig-generated-schema-paths--integrations-github-repos-get-parameters-0-schema:
+      example: 30
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-github-repos-get-parameters-1-schema:
+      example: 1
+      type: number
+      x-do-not-generate: true
     konfig-generated-schema-paths--uploadfile-post-parameters-2-schema:
       example: false
       type: boolean
@@ -8364,6 +8619,10 @@ components:
       example: true
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_source_items:
+      example: true
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_all_children:
       example: false
       type: boolean
@@ -8447,6 +8706,10 @@ components:
       example: true
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_source_items:
+      example: true
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-GitbookSyncRequest-properties-tags:
       example: {}
       properties: {}
@@ -8469,6 +8732,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-GitbookSyncRequest-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GithubConnectRequest-properties-sync_source_items:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -8534,7 +8801,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 76343a7e-0175-49f8-957c-e1133ae388ac
+      example: ae840422-78ad-45c5-a0bd-019c2b2e8443
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -8546,6 +8813,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items:
       example: true
       type: boolean
       x-do-not-generate: true
@@ -8633,6 +8904,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation:
       example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items:
+      example: true
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-S3FileSyncInput-properties-tags:
@@ -8746,7 +9021,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+      example: 2da50864-4700-4b70-8098-ddcafcc3267d
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -8786,10 +9061,14 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: e8fddc9a-4810-48b2-b1b5-b1ec0159625a
+      example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-sync_source_items:
       example: true
       type: boolean
       x-do-not-generate: true
@@ -8946,6 +9225,16 @@ components:
       properties: {}
       type: object
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IntegrationsListReposResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IntegrationsSyncReposResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UtilitiesScrapeWebResponse:
       example: {}
       properties: {}
@@ -9083,13 +9372,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 76343a7e-0175-49f8-957c-e1133ae388ac
+          default: ae840422-78ad-45c5-a0bd-019c2b2e8443
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          example: ae840422-78ad-45c5-a0bd-019c2b2e8443
           title: Request Id
           type: string
-          x-konfig-original-example: 76343a7e-0175-49f8-957c-e1133ae388ac
+          x-konfig-original-example: ae840422-78ad-45c5-a0bd-019c2b2e8443
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9111,12 +9400,21 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT"
+            \ it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-enable_file_picker
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items
       required:
       - service
       type: object
@@ -9168,6 +9466,10 @@ components:
           $ref: '#/components/schemas/ListItemsFiltersNullable'
         pagination:
           $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/ExternalSourceItemsOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
       required:
       - data_source_id
       type: object
@@ -9251,11 +9553,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
-          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          default: 2da50864-4700-4b70-8098-ddcafcc3267d
+          example: 2da50864-4700-4b70-8098-ddcafcc3267d
           title: Request Id
           type: string
-          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -9371,11 +9673,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 74c95466-42b2-4213-ae36-bfafbaecfcf5
-          example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          default: 2da50864-4700-4b70-8098-ddcafcc3267d
+          example: 2da50864-4700-4b70-8098-ddcafcc3267d
           title: Request Id
           type: string
-          x-konfig-original-example: 74c95466-42b2-4213-ae36-bfafbaecfcf5
+          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -9407,6 +9709,15 @@ components:
         access_key_secret:
           title: Access Key Secret
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items
       required:
       - access_key
       - access_key_secret
@@ -9806,6 +10117,15 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_source_items
       required:
       - api_key
       - domain
@@ -9912,6 +10232,15 @@ components:
           nullable: true
           title: Request Id
           type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_source_items
       required:
       - access_token
       - organization
@@ -10008,9 +10337,62 @@ components:
         access_token:
           title: Access Token
           type: string
+        sync_source_items:
+          default: false
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: false
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GithubConnectRequest-properties-sync_source_items
       required:
       - access_token
       - username
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-github-repos:
+      properties:
+        per_page:
+          default: 30
+          example: 30
+          title: Per Page
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-github-repos-get-parameters-0-schema
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-github-repos-get-parameters-1-schema
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - per_page
+      - page
+      - data_source_id
+    konfig-generated-schema-single-parameter-schema-post--integrations-github-sync_repos:
+      properties:
+        repos:
+          items:
+            type: string
+          maxItems: 25
+          minItems: 1
+          title: Repos
+          type: array
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+      required:
+      - repos
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -10235,6 +10617,8 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ChunksAndEmbeddingsUploadInput-properties-chunks_only
         custom_credentials:
+          additionalProperties:
+            type: object
           default: {}
           example: {}
           title: Custom Credentials

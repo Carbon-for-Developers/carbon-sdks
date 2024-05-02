@@ -29,5 +29,11 @@ export interface GithubConnectRequest {
      * @memberof GithubConnectRequest
      */
     'access_token': string;
+    /**
+     * Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+     * @type {boolean}
+     * @memberof GithubConnectRequest
+     */
+    'sync_source_items'?: boolean;
 }
 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 **RequestId** | Pointer to **NullableString** |  | [optional] 
+**SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 
 ## Methods
 
@@ -390,6 +391,31 @@ HasRequestId returns a boolean if a field has been set.
 `func (o *FreshDeskConnectRequest) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetSyncSourceItems
+
+`func (o *FreshDeskConnectRequest) GetSyncSourceItems() bool`
+
+GetSyncSourceItems returns the SyncSourceItems field if non-nil, zero value otherwise.
+
+### GetSyncSourceItemsOk
+
+`func (o *FreshDeskConnectRequest) GetSyncSourceItemsOk() (*bool, bool)`
+
+GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncSourceItems
+
+`func (o *FreshDeskConnectRequest) SetSyncSourceItems(v bool)`
+
+SetSyncSourceItems sets SyncSourceItems field to given value.
+
+### HasSyncSourceItems
+
+`func (o *FreshDeskConnectRequest) HasSyncSourceItems() bool`
+
+HasSyncSourceItems returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

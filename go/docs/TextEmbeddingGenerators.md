@@ -19,6 +19,18 @@
 
 * `OPENAI_ADA_SMALL_1536` (value: `"OPENAI_ADA_SMALL_1536"`)
 
+* `AZURE_ADA_LARGE_256` (value: `"AZURE_ADA_LARGE_256"`)
+
+* `AZURE_ADA_LARGE_1024` (value: `"AZURE_ADA_LARGE_1024"`)
+
+* `AZURE_ADA_LARGE_3072` (value: `"AZURE_ADA_LARGE_3072"`)
+
+* `AZURE_ADA_SMALL_512` (value: `"AZURE_ADA_SMALL_512"`)
+
+* `AZURE_ADA_SMALL_1536` (value: `"AZURE_ADA_SMALL_1536"`)
+
+* `SOLAR_1_MINI` (value: `"SOLAR_1_MINI"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

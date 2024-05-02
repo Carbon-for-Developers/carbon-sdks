@@ -33,13 +33,14 @@ type OrganizationUserDataSourceAPI struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	FilesSyncedAt NullableTime `json:"files_synced_at"`
+	DataSourceMetadata map[string]interface{} `json:"data_source_metadata"`
 }
 
 // NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime) *OrganizationUserDataSourceAPI {
+func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}) *OrganizationUserDataSourceAPI {
 	this := OrganizationUserDataSourceAPI{}
 	this.Id = id
 	this.DataSourceExternalId = dataSourceExternalId
@@ -57,6 +58,7 @@ func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableStr
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	this.FilesSyncedAt = filesSyncedAt
+	this.DataSourceMetadata = dataSourceMetadata
 	return &this
 }
 
@@ -462,6 +464,30 @@ func (o *OrganizationUserDataSourceAPI) SetFilesSyncedAt(v time.Time) {
 	o.FilesSyncedAt.Set(&v)
 }
 
+// GetDataSourceMetadata returns the DataSourceMetadata field value
+func (o *OrganizationUserDataSourceAPI) GetDataSourceMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.DataSourceMetadata
+}
+
+// GetDataSourceMetadataOk returns a tuple with the DataSourceMetadata field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationUserDataSourceAPI) GetDataSourceMetadataOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceMetadata, true
+}
+
+// SetDataSourceMetadata sets field value
+func (o *OrganizationUserDataSourceAPI) SetDataSourceMetadata(v map[string]interface{}) {
+	o.DataSourceMetadata = v
+}
+
 func (o OrganizationUserDataSourceAPI) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -511,6 +537,9 @@ func (o OrganizationUserDataSourceAPI) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["files_synced_at"] = o.FilesSyncedAt.Get()
+	}
+	if true {
+		toSerialize["data_source_metadata"] = o.DataSourceMetadata
 	}
 	return json.Marshal(toSerialize)
 }

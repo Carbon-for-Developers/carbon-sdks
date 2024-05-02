@@ -20,6 +20,7 @@ from carbon.paths.integrations_outlook_user_folders.get import ListFolders
 from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpaces
 from carbon.paths.integrations_gmail_user_labels.get import ListLabels
 from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCategories
+from carbon.paths.integrations_github_repos.get import ListRepos
 from carbon.paths.integrations_confluence_sync.post import SyncConfluence
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItems
 from carbon.paths.integrations_files_sync.post import SyncFiles
@@ -27,6 +28,7 @@ from carbon.paths.integrations_github.post import SyncGitHub
 from carbon.paths.integrations_gitbook_sync.post import SyncGitbook
 from carbon.paths.integrations_gmail_sync.post import SyncGmail
 from carbon.paths.integrations_outlook_sync.post import SyncOutlook
+from carbon.paths.integrations_github_sync_repos.post import SyncRepos
 from carbon.paths.integrations_rss_feed.post import SyncRssFeed
 from carbon.paths.integrations_s3_files.post import SyncS3Files
 from carbon.apis.tags.integrations_api_raw import IntegrationsApiRaw
@@ -44,6 +46,7 @@ class IntegrationsApi(
     ListGitbookSpaces,
     ListLabels,
     ListOutlookCategories,
+    ListRepos,
     SyncConfluence,
     SyncDataSourceItems,
     SyncFiles,
@@ -51,6 +54,7 @@ class IntegrationsApi(
     SyncGitbook,
     SyncGmail,
     SyncOutlook,
+    SyncRepos,
     SyncRssFeed,
     SyncS3Files,
 ):

@@ -20,6 +20,7 @@ from carbon.paths.integrations_outlook_user_folders.get import ListFoldersRaw
 from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpacesRaw
 from carbon.paths.integrations_gmail_user_labels.get import ListLabelsRaw
 from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCategoriesRaw
+from carbon.paths.integrations_github_repos.get import ListReposRaw
 from carbon.paths.integrations_confluence_sync.post import SyncConfluenceRaw
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItemsRaw
 from carbon.paths.integrations_files_sync.post import SyncFilesRaw
@@ -27,6 +28,7 @@ from carbon.paths.integrations_github.post import SyncGitHubRaw
 from carbon.paths.integrations_gitbook_sync.post import SyncGitbookRaw
 from carbon.paths.integrations_gmail_sync.post import SyncGmailRaw
 from carbon.paths.integrations_outlook_sync.post import SyncOutlookRaw
+from carbon.paths.integrations_github_sync_repos.post import SyncReposRaw
 from carbon.paths.integrations_rss_feed.post import SyncRssFeedRaw
 from carbon.paths.integrations_s3_files.post import SyncS3FilesRaw
 
@@ -43,6 +45,7 @@ class IntegrationsApiRaw(
     ListGitbookSpacesRaw,
     ListLabelsRaw,
     ListOutlookCategoriesRaw,
+    ListReposRaw,
     SyncConfluenceRaw,
     SyncDataSourceItemsRaw,
     SyncFilesRaw,
@@ -50,6 +53,7 @@ class IntegrationsApiRaw(
     SyncGitbookRaw,
     SyncGmailRaw,
     SyncOutlookRaw,
+    SyncReposRaw,
     SyncRssFeedRaw,
     SyncS3FilesRaw,
 ):

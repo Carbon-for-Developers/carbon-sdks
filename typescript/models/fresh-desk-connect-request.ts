@@ -84,5 +84,11 @@ export interface FreshDeskConnectRequest {
      * @memberof FreshDeskConnectRequest
      */
     'request_id'?: string | null;
+    /**
+     * Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+     * @type {boolean}
+     * @memberof FreshDeskConnectRequest
+     */
+    'sync_source_items'?: boolean;
 }
 

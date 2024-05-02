@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessKey** | **string** |  | 
 **AccessKeySecret** | **string** |  | 
+**SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetAccessKeySecret sets AccessKeySecret field to given value.
 
+
+### GetSyncSourceItems
+
+`func (o *S3AuthRequest) GetSyncSourceItems() bool`
+
+GetSyncSourceItems returns the SyncSourceItems field if non-nil, zero value otherwise.
+
+### GetSyncSourceItemsOk
+
+`func (o *S3AuthRequest) GetSyncSourceItemsOk() (*bool, bool)`
+
+GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncSourceItems
+
+`func (o *S3AuthRequest) SetSyncSourceItems(v bool)`
+
+SetSyncSourceItems sets SyncSourceItems field to given value.
+
+### HasSyncSourceItems
+
+`func (o *S3AuthRequest) HasSyncSourceItems() bool`
+
+HasSyncSourceItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

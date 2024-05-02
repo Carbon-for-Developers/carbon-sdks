@@ -65,6 +65,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         freshDeskConnectRequest.SetPrependFilenameToChunks(false)
         freshDeskConnectRequest.SetSyncFilesOnConnection(true)
         freshDeskConnectRequest.SetRequestId("null")
+        freshDeskConnectRequest.SetSyncSourceItems(true)
         
         request := client.IntegrationsApi.ConnectFreshdesk(
             freshDeskConnectRequest,
@@ -94,6 +95,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookConnectRequest.SetPrependFilenameToChunks(false)
         gitbookConnectRequest.SetSyncFilesOnConnection(true)
         gitbookConnectRequest.SetRequestId("null")
+        gitbookConnectRequest.SetSyncSourceItems(true)
         
         request := client.IntegrationsApi.ConnectGitbook(
             gitbookConnectRequest,
@@ -114,6 +116,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
             "null",
             "null",
         )
+        s3AuthRequest.SetSyncSourceItems(true)
         
         request := client.IntegrationsApi.CreateAwsIamUser(
             s3AuthRequest,
@@ -151,10 +154,11 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("76343a7e-0175-49f8-957c-e1133ae388ac")
+        oAuthURLRequest.SetRequestId("ae840422-78ad-45c5-a0bd-019c2b2e8443")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
+        oAuthURLRequest.SetSyncSourceItems(true)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -199,6 +203,8 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         listDataSourceItemsRequest.SetParentId("null")
         listDataSourceItemsRequest.SetFilters(filters)
         listDataSourceItemsRequest.SetPagination(pagination)
+        listDataSourceItemsRequest.SetOrderBy(null)
+        listDataSourceItemsRequest.SetOrderDir(null)
         
         request := client.IntegrationsApi.ListDataSourceItems(
             listDataSourceItemsRequest,
@@ -268,6 +274,22 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test IntegrationsApiService ListRepos", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        request := client.IntegrationsApi.ListRepos(
+        )
+        request.PerPage(30)
+        request.Page(1)
+        request.DataSourceId(56)
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService SyncConfluence", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         ids := *carbon.NewIdsProperty()
@@ -285,7 +307,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
+        syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         
@@ -337,7 +359,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
+        syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         
@@ -360,6 +382,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
             "null",
             "null",
         )
+        githubConnectRequest.SetSyncSourceItems(false)
         
         request := client.IntegrationsApi.SyncGitHub(
             githubConnectRequest,
@@ -450,6 +473,26 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         
         request := client.IntegrationsApi.SyncOutlook(
             outlookSyncInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test IntegrationsApiService SyncRepos", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        githubFetchReposRequest := *carbon.NewGithubFetchReposRequest(
+            null,
+        )
+        githubFetchReposRequest.SetDataSourceId(null)
+        
+        request := client.IntegrationsApi.SyncRepos(
+            githubFetchReposRequest,
         )
         
         resp, httpRes, err := request.Execute()
