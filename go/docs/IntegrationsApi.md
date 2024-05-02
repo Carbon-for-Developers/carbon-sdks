@@ -15,6 +15,7 @@ Method | Path | Description
 [**ListGitbookSpaces**](IntegrationsApi.md#ListGitbookSpaces) | **Get** /integrations/gitbook/spaces | Gitbook Spaces
 [**ListLabels**](IntegrationsApi.md#ListLabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 [**ListOutlookCategories**](IntegrationsApi.md#ListOutlookCategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
+[**ListRepos**](IntegrationsApi.md#ListRepos) | **Get** /integrations/github/repos | Github List Repos
 [**SyncConfluence**](IntegrationsApi.md#SyncConfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 [**SyncDataSourceItems**](IntegrationsApi.md#SyncDataSourceItems) | **Post** /integrations/items/sync | Sync Data Source Items
 [**SyncFiles**](IntegrationsApi.md#SyncFiles) | **Post** /integrations/files/sync | Sync Files
@@ -22,6 +23,7 @@ Method | Path | Description
 [**SyncGitbook**](IntegrationsApi.md#SyncGitbook) | **Post** /integrations/gitbook/sync | Gitbook Sync
 [**SyncGmail**](IntegrationsApi.md#SyncGmail) | **Post** /integrations/gmail/sync | Gmail Sync
 [**SyncOutlook**](IntegrationsApi.md#SyncOutlook) | **Post** /integrations/outlook/sync | Outlook Sync
+[**SyncRepos**](IntegrationsApi.md#SyncRepos) | **Post** /integrations/github/sync_repos | Github Sync Repos
 [**SyncRssFeed**](IntegrationsApi.md#SyncRssFeed) | **Post** /integrations/rss_feed | Rss Feed
 [**SyncS3Files**](IntegrationsApi.md#SyncS3Files) | **Post** /integrations/s3/files | S3 Files
 
@@ -117,6 +119,7 @@ func main() {
     freshDeskConnectRequest.SetPrependFilenameToChunks(false)
     freshDeskConnectRequest.SetSyncFilesOnConnection(true)
     freshDeskConnectRequest.SetRequestId("null")
+    freshDeskConnectRequest.SetSyncSourceItems(true)
     
     request := client.IntegrationsApi.ConnectFreshdesk(
         freshDeskConnectRequest,
@@ -177,6 +180,7 @@ func main() {
     gitbookConnectRequest.SetPrependFilenameToChunks(false)
     gitbookConnectRequest.SetSyncFilesOnConnection(true)
     gitbookConnectRequest.SetRequestId("null")
+    gitbookConnectRequest.SetSyncSourceItems(true)
     
     request := client.IntegrationsApi.ConnectGitbook(
         gitbookConnectRequest,
@@ -228,6 +232,7 @@ func main() {
         "null",
         "null",
     )
+    s3AuthRequest.SetSyncSourceItems(true)
     
     request := client.IntegrationsApi.CreateAwsIamUser(
         s3AuthRequest,
@@ -257,6 +262,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.DataSourceMetadata`: %v\n", resp.DataSourceMetadata)
 }
 ```
 
@@ -311,10 +317,11 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("76343a7e-0175-49f8-957c-e1133ae388ac")
+    oAuthURLRequest.SetRequestId("ae840422-78ad-45c5-a0bd-019c2b2e8443")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
+    oAuthURLRequest.SetSyncSourceItems(true)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,
@@ -419,6 +426,8 @@ func main() {
     listDataSourceItemsRequest.SetParentId("null")
     listDataSourceItemsRequest.SetFilters(filters)
     listDataSourceItemsRequest.SetPagination(pagination)
+    listDataSourceItemsRequest.SetOrderBy(null)
+    listDataSourceItemsRequest.SetOrderDir(null)
     
     request := client.IntegrationsApi.ListDataSourceItems(
         listDataSourceItemsRequest,
@@ -618,6 +627,52 @@ func main() {
 [[Back to README]](../README.md)
 
 
+## ListRepos
+
+Github List Repos
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    request := client.IntegrationsApi.ListRepos(
+    )
+    request.PerPage(30)
+    request.Page(1)
+    request.DataSourceId(56)
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ListRepos``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ListRepos`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListRepos`: %v\n", resp)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SyncConfluence
 
 Confluence Sync
@@ -657,7 +712,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
+    syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     
@@ -737,6 +792,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.DataSourceMetadata`: %v\n", resp.DataSourceMetadata)
 }
 ```
 
@@ -784,7 +840,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("74c95466-42b2-4213-ae36-bfafbaecfcf5")
+    syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     
@@ -838,6 +894,7 @@ func main() {
         "null",
         "null",
     )
+    githubConnectRequest.SetSyncSourceItems(false)
     
     request := client.IntegrationsApi.SyncGitHub(
         githubConnectRequest,
@@ -1031,6 +1088,56 @@ func main() {
     // response from `SyncOutlook`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncOutlook`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.SyncOutlook.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncRepos
+
+Github Sync Repos
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    
+    githubFetchReposRequest := *carbon.NewGithubFetchReposRequest(
+        null,
+    )
+    githubFetchReposRequest.SetDataSourceId(null)
+    
+    request := client.IntegrationsApi.SyncRepos(
+        githubFetchReposRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.SyncRepos``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `SyncRepos`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncRepos`: %v\n", resp)
 }
 ```
 

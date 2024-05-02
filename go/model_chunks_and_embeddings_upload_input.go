@@ -20,7 +20,7 @@ type ChunksAndEmbeddingsUploadInput struct {
 	ChunksAndEmbeddings []SingleChunksAndEmbeddingsUploadInput `json:"chunks_and_embeddings"`
 	OverwriteExisting *bool `json:"overwrite_existing,omitempty"`
 	ChunksOnly *bool `json:"chunks_only,omitempty"`
-	CustomCredentials map[string]interface{} `json:"custom_credentials,omitempty"`
+	CustomCredentials map[string]map[string]interface{} `json:"custom_credentials,omitempty"`
 }
 
 // NewChunksAndEmbeddingsUploadInput instantiates a new ChunksAndEmbeddingsUploadInput object
@@ -163,9 +163,9 @@ func (o *ChunksAndEmbeddingsUploadInput) SetChunksOnly(v bool) {
 }
 
 // GetCustomCredentials returns the CustomCredentials field value if set, zero value otherwise.
-func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]interface{} {
+func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]map[string]interface{} {
 	if o == nil || isNil(o.CustomCredentials) {
-		var ret map[string]interface{}
+		var ret map[string]map[string]interface{}
 		return ret
 	}
 	return o.CustomCredentials
@@ -173,9 +173,9 @@ func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentials() map[string]inter
 
 // GetCustomCredentialsOk returns a tuple with the CustomCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (map[string]interface{}, bool) {
+func (o *ChunksAndEmbeddingsUploadInput) GetCustomCredentialsOk() (map[string]map[string]interface{}, bool) {
 	if o == nil || isNil(o.CustomCredentials) {
-    return map[string]interface{}{}, false
+    return map[string]map[string]interface{}{}, false
 	}
 	return o.CustomCredentials, true
 }
@@ -189,8 +189,8 @@ func (o *ChunksAndEmbeddingsUploadInput) HasCustomCredentials() bool {
 	return false
 }
 
-// SetCustomCredentials gets a reference to the given map[string]interface{} and assigns it to the CustomCredentials field.
-func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]interface{}) {
+// SetCustomCredentials gets a reference to the given map[string]map[string]interface{} and assigns it to the CustomCredentials field.
+func (o *ChunksAndEmbeddingsUploadInput) SetCustomCredentials(v map[string]map[string]interface{}) {
 	o.CustomCredentials = v
 }
 

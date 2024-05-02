@@ -54,6 +54,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
   * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
+  * [`carbon.integrations.list_repos`](#carbonintegrationslist_repos)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -61,6 +62,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
+  * [`carbon.integrations.sync_repos`](#carbonintegrationssync_repos)
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
@@ -569,7 +571,9 @@ upload_chunks_and_embeddings_response = carbon.embeddings.upload_chunks_and_embe
     ],
     overwrite_existing=False,
     chunks_only=False,
-    custom_credentials={},
+    custom_credentials={
+        "key": {},
+    },
 )
 ```
 
@@ -583,7 +587,7 @@ upload_chunks_and_embeddings_response = carbon.embeddings.upload_chunks_and_embe
 
 ##### chunks_only: `bool`<a id="chunks_only-bool"></a>
 
-##### custom_credentials: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="custom_credentials-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+##### custom_credentials: [`ChunksAndEmbeddingsUploadInputCustomCredentials`](./carbon/type/chunks_and_embeddings_upload_input_custom_credentials.py)<a id="custom_credentials-chunksandembeddingsuploadinputcustomcredentialscarbontypechunks_and_embeddings_upload_input_custom_credentialspy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1319,8 +1323,9 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "e8fddc9a-4810-48b2-b1b5-b1ec0159625a",
+        "request_id": "7f46547c-7585-4463-bdd5-a1f8cde14b89",
         "enable_file_picker": True,
+        "sync_source_items": True,
     },
 )
 ```
@@ -1371,6 +1376,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
     prepend_filename_to_chunks=False,
     sync_files_on_connection=True,
     request_id="string_example",
+    sync_source_items=True,
 )
 ```
 
@@ -1397,6 +1403,10 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1435,6 +1445,7 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
     prepend_filename_to_chunks=False,
     sync_files_on_connection=True,
     request_id="string_example",
+    sync_source_items=True,
 )
 ```
 
@@ -1461,6 +1472,10 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
 ##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1493,6 +1508,7 @@ Once created, generate an access key for this user and share the credentials wit
 create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
     access_key="string_example",
     access_key_secret="string_example",
+    sync_source_items=True,
 )
 ```
 
@@ -1501,6 +1517,10 @@ create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
 ##### access_key: `str`<a id="access_key-str"></a>
 
 ##### access_key_secret: `str`<a id="access_key_secret-str"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1547,10 +1567,11 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="76343a7e-0175-49f8-957c-e1133ae388ac",
+    request_id="ae840422-78ad-45c5-a0bd-019c2b2e8443",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
+    sync_source_items=True,
 )
 ```
 
@@ -1614,7 +1635,11 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1686,6 +1711,8 @@ list_data_source_items_response = carbon.integrations.list_data_source_items(
         "limit": 10,
         "offset": 0,
     },
+    order_by="name",
+    order_dir="asc",
 )
 ```
 
@@ -1700,6 +1727,10 @@ list_data_source_items_response = carbon.integrations.list_data_source_items(
 
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 
+
+##### order_by: [`ExternalSourceItemsOrderBy`](./carbon/type/external_source_items_order_by.py)<a id="order_by-externalsourceitemsorderbycarbontypeexternal_source_items_order_bypy"></a>
+
+##### order_dir: [`OrderDirV2`](./carbon/type/order_dir_v2.py)<a id="order_dir-orderdirv2carbontypeorder_dir_v2py"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1815,6 +1846,37 @@ list_outlook_categories_response = carbon.integrations.list_outlook_categories(
 
 ---
 
+### `carbon.integrations.list_repos`<a id="carbonintegrationslist_repos"></a>
+
+Once you have connected your GitHub account, you can use this endpoint to list the 
+    repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_repos_response = carbon.integrations.list_repos(
+    per_page=30,
+    page=1,
+    data_source_id=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### per_page: `int`<a id="per_page-int"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/repos` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1837,7 +1899,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="74c95466-42b2-4213-ae36-bfafbaecfcf5",
+    request_id="2da50864-4700-4b70-8098-ddcafcc3267d",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -1944,7 +2006,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="74c95466-42b2-4213-ae36-bfafbaecfcf5",
+    request_id="2da50864-4700-4b70-8098-ddcafcc3267d",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -2010,6 +2072,7 @@ expires you will need to manually update it through this endpoint.
 sync_git_hub_response = carbon.integrations.sync_git_hub(
     username="string_example",
     access_token="string_example",
+    sync_source_items=False,
 )
 ```
 
@@ -2018,6 +2081,10 @@ sync_git_hub_response = carbon.integrations.sync_git_hub(
 ##### username: `str`<a id="username-str"></a>
 
 ##### access_token: `str`<a id="access_token-str"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2317,6 +2384,38 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/sync` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_repos`<a id="carbonintegrationssync_repos"></a>
+
+You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_repos_response = carbon.integrations.sync_repos(
+    repos=["string_example"],
+    data_source_id=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### repos: [`GithubFetchReposRequestRepos`](./carbon/type/github_fetch_repos_request_repos.py)<a id="repos-githubfetchreposrequestreposcarbontypegithub_fetch_repos_request_repospy"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`GithubFetchReposRequest`](./carbon/type/github_fetch_repos_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/sync_repos` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

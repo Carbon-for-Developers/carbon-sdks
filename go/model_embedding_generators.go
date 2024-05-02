@@ -34,6 +34,7 @@ const (
 	EMBEDDINGGENERATORS_OPENAI_ADA_LARGE_3072 EmbeddingGenerators = "OPENAI_ADA_LARGE_3072"
 	EMBEDDINGGENERATORS_OPENAI_ADA_SMALL_512 EmbeddingGenerators = "OPENAI_ADA_SMALL_512"
 	EMBEDDINGGENERATORS_OPENAI_ADA_SMALL_1536 EmbeddingGenerators = "OPENAI_ADA_SMALL_1536"
+	EMBEDDINGGENERATORS_SOLAR_1_MINI EmbeddingGenerators = "SOLAR_1_MINI"
 )
 
 // All allowed values of EmbeddingGenerators enum
@@ -52,6 +53,7 @@ var AllowedEmbeddingGeneratorsEnumValues = []EmbeddingGenerators{
 	"OPENAI_ADA_LARGE_3072",
 	"OPENAI_ADA_SMALL_512",
 	"OPENAI_ADA_SMALL_1536",
+	"SOLAR_1_MINI",
 }
 
 func (v *EmbeddingGenerators) UnmarshalJSON(src []byte) error {

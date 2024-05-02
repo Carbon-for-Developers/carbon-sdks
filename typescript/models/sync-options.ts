@@ -90,5 +90,11 @@ export interface SyncOptions {
      * @memberof SyncOptions
      */
     'enable_file_picker'?: boolean;
+    /**
+     * Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+     * @type {boolean}
+     * @memberof SyncOptions
+     */
+    'sync_source_items'?: boolean;
 }
 

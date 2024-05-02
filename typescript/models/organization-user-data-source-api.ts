@@ -116,5 +116,11 @@ export interface OrganizationUserDataSourceAPI {
      * @memberof OrganizationUserDataSourceAPI
      */
     'files_synced_at': string | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof OrganizationUserDataSourceAPI
+     */
+    'data_source_metadata': object;
 }
 

@@ -121,6 +121,7 @@ class BaseApi(api_client.Api):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -146,6 +147,8 @@ class BaseApi(api_client.Api):
             _body["sync_files_on_connection"] = sync_files_on_connection
         if request_id is not None:
             _body["request_id"] = request_id
+        if sync_source_items is not None:
+            _body["sync_source_items"] = sync_source_items
         args.body = _body
         return args
 
@@ -364,6 +367,7 @@ class ConnectFreshdeskRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -382,6 +386,7 @@ class ConnectFreshdeskRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
         )
         return await self._aconnect_freshdesk_oapg(
             body=args.body,
@@ -401,6 +406,7 @@ class ConnectFreshdeskRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -417,6 +423,7 @@ class ConnectFreshdeskRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
         )
         return self._connect_freshdesk_oapg(
             body=args.body,
@@ -437,6 +444,7 @@ class ConnectFreshdesk(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -452,6 +460,7 @@ class ConnectFreshdesk(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
             **kwargs,
         )
         if validate:
@@ -472,6 +481,7 @@ class ConnectFreshdesk(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.connect_freshdesk(
@@ -486,6 +496,7 @@ class ConnectFreshdesk(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -508,6 +519,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -526,6 +538,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
         )
         return await self._aconnect_freshdesk_oapg(
             body=args.body,
@@ -545,6 +558,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -561,6 +575,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
         )
         return self._connect_freshdesk_oapg(
             body=args.body,

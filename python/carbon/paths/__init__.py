@@ -26,6 +26,8 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_GITBOOK_SPACES = "/integrations/gitbook/spaces"
     INTEGRATIONS_GITBOOK_SYNC = "/integrations/gitbook/sync"
     INTEGRATIONS_GITHUB = "/integrations/github"
+    INTEGRATIONS_GITHUB_REPOS = "/integrations/github/repos"
+    INTEGRATIONS_GITHUB_SYNC_REPOS = "/integrations/github/sync_repos"
     AUTH_V1_ACCESS_TOKEN = "/auth/v1/access_token"
     AUTH_V1_WHITE_LABELING = "/auth/v1/white_labeling"
     EMBEDDINGS = "/embeddings"

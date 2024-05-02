@@ -45,9 +45,9 @@ export interface ChunksAndEmbeddingsUploadInput {
     'chunks_only'?: boolean;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: object; }}
      * @memberof ChunksAndEmbeddingsUploadInput
      */
-    'custom_credentials'?: object;
+    'custom_credentials'?: { [key: string]: object; };
 }
 

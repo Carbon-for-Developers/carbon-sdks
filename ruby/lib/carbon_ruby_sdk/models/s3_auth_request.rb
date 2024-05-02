@@ -15,11 +15,15 @@ module Carbon
 
     attr_accessor :access_key_secret
 
+    # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    attr_accessor :sync_source_items
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'access_key' => :'access_key',
-        :'access_key_secret' => :'access_key_secret'
+        :'access_key_secret' => :'access_key_secret',
+        :'sync_source_items' => :'sync_source_items'
       }
     end
 
@@ -32,7 +36,8 @@ module Carbon
     def self.openapi_types
       {
         :'access_key' => :'String',
-        :'access_key_secret' => :'String'
+        :'access_key_secret' => :'String',
+        :'sync_source_items' => :'Boolean'
       }
     end
 
@@ -63,6 +68,12 @@ module Carbon
 
       if attributes.key?(:'access_key_secret')
         self.access_key_secret = attributes[:'access_key_secret']
+      end
+
+      if attributes.key?(:'sync_source_items')
+        self.sync_source_items = attributes[:'sync_source_items']
+      else
+        self.sync_source_items = true
       end
     end
 
@@ -95,7 +106,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           access_key == o.access_key &&
-          access_key_secret == o.access_key_secret
+          access_key_secret == o.access_key_secret &&
+          sync_source_items == o.sync_source_items
     end
 
     # @see the `==` method
@@ -107,7 +119,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_key, access_key_secret].hash
+      [access_key, access_key_secret, sync_source_items].hash
     end
 
     # Builds the object from hash

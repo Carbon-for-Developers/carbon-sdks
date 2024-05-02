@@ -470,7 +470,7 @@ module Carbon
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
     # @param chunks_only [Boolean] 
-    # @param custom_credentials [Object] 
+    # @param custom_credentials [Hash<String, Object>] 
     # @param body [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload_chunks_and_embeddings(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, chunks_only: false, custom_credentials: SENTINEL, extra: {})
@@ -491,7 +491,7 @@ module Carbon
     # @param chunks_and_embeddings [Array<SingleChunksAndEmbeddingsUploadInput>] 
     # @param overwrite_existing [Boolean] 
     # @param chunks_only [Boolean] 
-    # @param custom_credentials [Object] 
+    # @param custom_credentials [Hash<String, Object>] 
     # @param body [ChunksAndEmbeddingsUploadInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def upload_chunks_and_embeddings_with_http_info(embedding_model:, chunks_and_embeddings:, overwrite_existing: false, chunks_only: false, custom_credentials: SENTINEL, extra: {})

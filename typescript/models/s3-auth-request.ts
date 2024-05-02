@@ -29,5 +29,11 @@ export interface S3AuthRequest {
      * @memberof S3AuthRequest
      */
     'access_key_secret': string;
+    /**
+     * Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+     * @type {boolean}
+     * @memberof S3AuthRequest
+     */
+    'sync_source_items'?: boolean;
 }
 

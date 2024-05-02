@@ -42,6 +42,12 @@ class TextEmbeddingGenerators(
             "OPENAI_ADA_LARGE_3072": "OPENAI_ADA_LARGE_3072",
             "OPENAI_ADA_SMALL_512": "OPENAI_ADA_SMALL_512",
             "OPENAI_ADA_SMALL_1536": "OPENAI_ADA_SMALL_1536",
+            "AZURE_ADA_LARGE_256": "AZURE_ADA_LARGE_256",
+            "AZURE_ADA_LARGE_1024": "AZURE_ADA_LARGE_1024",
+            "AZURE_ADA_LARGE_3072": "AZURE_ADA_LARGE_3072",
+            "AZURE_ADA_SMALL_512": "AZURE_ADA_SMALL_512",
+            "AZURE_ADA_SMALL_1536": "AZURE_ADA_SMALL_1536",
+            "SOLAR_1_MINI": "SOLAR_1_MINI",
         }
     
     @schemas.classproperty
@@ -75,3 +81,27 @@ class TextEmbeddingGenerators(
     @schemas.classproperty
     def OPENAI_ADA_SMALL_1536(cls):
         return cls("OPENAI_ADA_SMALL_1536")
+    
+    @schemas.classproperty
+    def AZURE_ADA_LARGE_256(cls):
+        return cls("AZURE_ADA_LARGE_256")
+    
+    @schemas.classproperty
+    def AZURE_ADA_LARGE_1024(cls):
+        return cls("AZURE_ADA_LARGE_1024")
+    
+    @schemas.classproperty
+    def AZURE_ADA_LARGE_3072(cls):
+        return cls("AZURE_ADA_LARGE_3072")
+    
+    @schemas.classproperty
+    def AZURE_ADA_SMALL_512(cls):
+        return cls("AZURE_ADA_SMALL_512")
+    
+    @schemas.classproperty
+    def AZURE_ADA_SMALL_1536(cls):
+        return cls("AZURE_ADA_SMALL_1536")
+    
+    @schemas.classproperty
+    def SOLAR_1_MINI(cls):
+        return cls("SOLAR_1_MINI")

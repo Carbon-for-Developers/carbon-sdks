@@ -70,7 +70,10 @@ class ChunksAndEmbeddingsUploadInput(
                     return super().__getitem__(i)
             overwrite_existing = schemas.BoolSchema
             chunks_only = schemas.BoolSchema
-            custom_credentials = schemas.DictSchema
+        
+            @staticmethod
+            def custom_credentials() -> typing.Type['ChunksAndEmbeddingsUploadInputCustomCredentials']:
+                return ChunksAndEmbeddingsUploadInputCustomCredentials
             __annotations__ = {
                 "embedding_model": embedding_model,
                 "chunks_and_embeddings": chunks_and_embeddings,
@@ -95,7 +98,7 @@ class ChunksAndEmbeddingsUploadInput(
     def __getitem__(self, name: typing_extensions.Literal["chunks_only"]) -> MetaOapg.properties.chunks_only: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["custom_credentials"]) -> MetaOapg.properties.custom_credentials: ...
+    def __getitem__(self, name: typing_extensions.Literal["custom_credentials"]) -> 'ChunksAndEmbeddingsUploadInputCustomCredentials': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -118,7 +121,7 @@ class ChunksAndEmbeddingsUploadInput(
     def get_item_oapg(self, name: typing_extensions.Literal["chunks_only"]) -> typing.Union[MetaOapg.properties.chunks_only, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["custom_credentials"]) -> typing.Union[MetaOapg.properties.custom_credentials, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["custom_credentials"]) -> typing.Union['ChunksAndEmbeddingsUploadInputCustomCredentials', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -134,7 +137,7 @@ class ChunksAndEmbeddingsUploadInput(
         embedding_model: 'EmbeddingGenerators',
         overwrite_existing: typing.Union[MetaOapg.properties.overwrite_existing, bool, schemas.Unset] = schemas.unset,
         chunks_only: typing.Union[MetaOapg.properties.chunks_only, bool, schemas.Unset] = schemas.unset,
-        custom_credentials: typing.Union[MetaOapg.properties.custom_credentials, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        custom_credentials: typing.Union['ChunksAndEmbeddingsUploadInputCustomCredentials', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ChunksAndEmbeddingsUploadInput':
@@ -150,5 +153,6 @@ class ChunksAndEmbeddingsUploadInput(
             **kwargs,
         )
 
+from carbon.model.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
 from carbon.model.embedding_generators import EmbeddingGenerators
 from carbon.model.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput

@@ -37,6 +37,9 @@ module Carbon
 
     attr_accessor :enable_file_picker
 
+    # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    attr_accessor :sync_source_items
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -51,7 +54,8 @@ module Carbon
         :'sync_files_on_connection' => :'sync_files_on_connection',
         :'set_page_as_boundary' => :'set_page_as_boundary',
         :'request_id' => :'request_id',
-        :'enable_file_picker' => :'enable_file_picker'
+        :'enable_file_picker' => :'enable_file_picker',
+        :'sync_source_items' => :'sync_source_items'
       }
     end
 
@@ -74,7 +78,8 @@ module Carbon
         :'sync_files_on_connection' => :'Boolean',
         :'set_page_as_boundary' => :'Boolean',
         :'request_id' => :'String',
-        :'enable_file_picker' => :'Boolean'
+        :'enable_file_picker' => :'Boolean',
+        :'sync_source_items' => :'Boolean'
       }
     end
 
@@ -167,13 +172,19 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = 'e8fddc9a-4810-48b2-b1b5-b1ec0159625a'
+        self.request_id = '7f46547c-7585-4463-bdd5-a1f8cde14b89'
       end
 
       if attributes.key?(:'enable_file_picker')
         self.enable_file_picker = attributes[:'enable_file_picker']
       else
         self.enable_file_picker = true
+      end
+
+      if attributes.key?(:'sync_source_items')
+        self.sync_source_items = attributes[:'sync_source_items']
+      else
+        self.sync_source_items = true
       end
     end
 
@@ -206,7 +217,8 @@ module Carbon
           sync_files_on_connection == o.sync_files_on_connection &&
           set_page_as_boundary == o.set_page_as_boundary &&
           request_id == o.request_id &&
-          enable_file_picker == o.enable_file_picker
+          enable_file_picker == o.enable_file_picker &&
+          sync_source_items == o.sync_source_items
     end
 
     # @see the `==` method
@@ -218,7 +230,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker].hash
+      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker, sync_source_items].hash
     end
 
     # Builds the object from hash

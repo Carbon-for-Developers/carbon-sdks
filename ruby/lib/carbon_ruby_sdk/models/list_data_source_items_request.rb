@@ -19,13 +19,19 @@ module Carbon
 
     attr_accessor :pagination
 
+    attr_accessor :order_by
+
+    attr_accessor :order_dir
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'data_source_id' => :'data_source_id',
         :'parent_id' => :'parent_id',
         :'filters' => :'filters',
-        :'pagination' => :'pagination'
+        :'pagination' => :'pagination',
+        :'order_by' => :'order_by',
+        :'order_dir' => :'order_dir'
       }
     end
 
@@ -40,7 +46,9 @@ module Carbon
         :'data_source_id' => :'Integer',
         :'parent_id' => :'String',
         :'filters' => :'ListItemsFiltersNullable',
-        :'pagination' => :'Pagination'
+        :'pagination' => :'Pagination',
+        :'order_by' => :'ExternalSourceItemsOrderBy',
+        :'order_dir' => :'OrderDirV2'
       }
     end
 
@@ -82,6 +90,18 @@ module Carbon
       if attributes.key?(:'pagination')
         self.pagination = attributes[:'pagination']
       end
+
+      if attributes.key?(:'order_by')
+        self.order_by = attributes[:'order_by']
+      else
+        self.order_by = 'name'
+      end
+
+      if attributes.key?(:'order_dir')
+        self.order_dir = attributes[:'order_dir']
+      else
+        self.order_dir = 'asc'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -110,7 +130,9 @@ module Carbon
           data_source_id == o.data_source_id &&
           parent_id == o.parent_id &&
           filters == o.filters &&
-          pagination == o.pagination
+          pagination == o.pagination &&
+          order_by == o.order_by &&
+          order_dir == o.order_dir
     end
 
     # @see the `==` method
@@ -122,7 +144,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_source_id, parent_id, filters, pagination].hash
+      [data_source_id, parent_id, filters, pagination, order_by, order_dir].hash
     end
 
     # Builds the object from hash

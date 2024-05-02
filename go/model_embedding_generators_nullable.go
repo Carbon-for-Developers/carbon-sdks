@@ -34,6 +34,7 @@ const (
 	EMBEDDINGGENERATORSNULLABLE_OPENAI_ADA_LARGE_3072 EmbeddingGeneratorsNullable = "OPENAI_ADA_LARGE_3072"
 	EMBEDDINGGENERATORSNULLABLE_OPENAI_ADA_SMALL_512 EmbeddingGeneratorsNullable = "OPENAI_ADA_SMALL_512"
 	EMBEDDINGGENERATORSNULLABLE_OPENAI_ADA_SMALL_1536 EmbeddingGeneratorsNullable = "OPENAI_ADA_SMALL_1536"
+	EMBEDDINGGENERATORSNULLABLE_SOLAR_1_MINI EmbeddingGeneratorsNullable = "SOLAR_1_MINI"
 )
 
 // All allowed values of EmbeddingGeneratorsNullable enum
@@ -52,6 +53,7 @@ var AllowedEmbeddingGeneratorsNullableEnumValues = []EmbeddingGeneratorsNullable
 	"OPENAI_ADA_LARGE_3072",
 	"OPENAI_ADA_SMALL_512",
 	"OPENAI_ADA_SMALL_1536",
+	"SOLAR_1_MINI",
 }
 
 func (v *EmbeddingGeneratorsNullable) UnmarshalJSON(src []byte) error {

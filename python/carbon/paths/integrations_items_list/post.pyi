@@ -35,16 +35,22 @@ from carbon import schemas  # noqa: F401
 from carbon.model.pagination import Pagination as PaginationSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.list_data_source_items_request import ListDataSourceItemsRequest as ListDataSourceItemsRequestSchema
+from carbon.model.order_dir_v2 import OrderDirV2 as OrderDirV2Schema
+from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy as ExternalSourceItemsOrderBySchema
 from carbon.model.list_data_source_items_response import ListDataSourceItemsResponse as ListDataSourceItemsResponseSchema
 from carbon.model.list_items_filters_nullable import ListItemsFiltersNullable as ListItemsFiltersNullableSchema
 
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.order_dir_v2 import OrderDirV2
 from carbon.type.pagination import Pagination
 from carbon.type.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.type.list_data_source_items_request import ListDataSourceItemsRequest
+from carbon.type.external_source_items_order_by import ExternalSourceItemsOrderBy
 from carbon.type.list_data_source_items_response import ListDataSourceItemsResponse
 
 from ...api_client import Dictionary
+from carbon.pydantic.order_dir_v2 import OrderDirV2 as OrderDirV2Pydantic
+from carbon.pydantic.external_source_items_order_by import ExternalSourceItemsOrderBy as ExternalSourceItemsOrderByPydantic
 from carbon.pydantic.list_items_filters_nullable import ListItemsFiltersNullable as ListItemsFiltersNullablePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.list_data_source_items_response import ListDataSourceItemsResponse as ListDataSourceItemsResponsePydantic
@@ -117,6 +123,8 @@ class BaseApi(api_client.Api):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -128,6 +136,10 @@ class BaseApi(api_client.Api):
             _body["filters"] = filters
         if pagination is not None:
             _body["pagination"] = pagination
+        if order_by is not None:
+            _body["order_by"] = order_by
+        if order_dir is not None:
+            _body["order_dir"] = order_dir
         args.body = _body
         return args
 
@@ -339,6 +351,8 @@ class ListDataSourceItemsRaw(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -350,6 +364,8 @@ class ListDataSourceItemsRaw(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
         )
         return await self._alist_data_source_items_oapg(
             body=args.body,
@@ -362,6 +378,8 @@ class ListDataSourceItemsRaw(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -371,6 +389,8 @@ class ListDataSourceItemsRaw(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
         )
         return self._list_data_source_items_oapg(
             body=args.body,
@@ -384,6 +404,8 @@ class ListDataSourceItems(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
         validate: bool = False,
         **kwargs,
     ) -> ListDataSourceItemsResponsePydantic:
@@ -392,6 +414,8 @@ class ListDataSourceItems(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
             **kwargs,
         )
         if validate:
@@ -405,6 +429,8 @@ class ListDataSourceItems(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
         validate: bool = False,
     ) -> ListDataSourceItemsResponsePydantic:
         raw_response = self.raw.list_data_source_items(
@@ -412,6 +438,8 @@ class ListDataSourceItems(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
         )
         if validate:
             return ListDataSourceItemsResponsePydantic(**raw_response.body)
@@ -427,6 +455,8 @@ class ApiForpost(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -438,6 +468,8 @@ class ApiForpost(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
         )
         return await self._alist_data_source_items_oapg(
             body=args.body,
@@ -450,6 +482,8 @@ class ApiForpost(BaseApi):
         parent_id: typing.Optional[typing.Optional[str]] = None,
         filters: typing.Optional[ListItemsFiltersNullable] = None,
         pagination: typing.Optional[Pagination] = None,
+        order_by: typing.Optional[ExternalSourceItemsOrderBy] = None,
+        order_dir: typing.Optional[OrderDirV2] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -459,6 +493,8 @@ class ApiForpost(BaseApi):
             parent_id=parent_id,
             filters=filters,
             pagination=pagination,
+            order_by=order_by,
+            order_dir=order_dir,
         )
         return self._list_data_source_items_oapg(
             body=args.body,

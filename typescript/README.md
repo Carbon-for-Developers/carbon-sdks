@@ -49,6 +49,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.listGitbookSpaces`](#carbonintegrationslistgitbookspaces)
   * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
   * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
+  * [`carbon.integrations.listRepos`](#carbonintegrationslistrepos)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
   * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
   * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
@@ -56,6 +57,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.syncGitbook`](#carbonintegrationssyncgitbook)
   * [`carbon.integrations.syncGmail`](#carbonintegrationssyncgmail)
   * [`carbon.integrations.syncOutlook`](#carbonintegrationssyncoutlook)
+  * [`carbon.integrations.syncRepos`](#carbonintegrationssyncrepos)
   * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
   * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
@@ -513,7 +515,7 @@ const uploadChunksAndEmbeddingsResponse =
 
 ##### chunks_only: `boolean`<a id="chunks_only-boolean"></a>
 
-##### custom_credentials: `object`<a id="custom_credentials-object"></a>
+##### custom_credentials: `{ [key: string]: object; }`<a id="custom_credentials--key-string-object-"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1220,6 +1222,7 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
+  sync_source_items: true,
 });
 ```
 
@@ -1246,6 +1249,10 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1280,6 +1287,7 @@ const connectGitbookResponse = await carbon.integrations.connectGitbook({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
+  sync_source_items: true,
 });
 ```
 
@@ -1306,6 +1314,10 @@ const connectGitbookResponse = await carbon.integrations.connectGitbook({
 ##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1336,6 +1348,7 @@ Once created, generate an access key for this user and share the credentials wit
 const createAwsIamUserResponse = await carbon.integrations.createAwsIamUser({
   access_key: "access_key_example",
   access_key_secret: "access_key_secret_example",
+  sync_source_items: true,
 });
 ```
 
@@ -1344,6 +1357,10 @@ const createAwsIamUserResponse = await carbon.integrations.createAwsIamUser({
 ##### access_key: `string`<a id="access_key-string"></a>
 
 ##### access_key_secret: `string`<a id="access_key_secret-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1379,10 +1396,11 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "76343a7e-0175-49f8-957c-e1133ae388ac",
+  request_id: "ae840422-78ad-45c5-a0bd-019c2b2e8443",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
+  sync_source_items: true,
 });
 ```
 
@@ -1446,7 +1464,11 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1509,6 +1531,8 @@ List Data Source Items
 const listDataSourceItemsResponse =
   await carbon.integrations.listDataSourceItems({
     data_source_id: 1,
+    order_by: "name",
+    order_dir: "asc",
   });
 ```
 
@@ -1521,6 +1545,10 @@ const listDataSourceItemsResponse =
 ##### filters: [`ListItemsFiltersNullable`](./models/list-items-filters-nullable.ts)<a id="filters-listitemsfiltersnullablemodelslist-items-filters-nullablets"></a>
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### order_by: [`ExternalSourceItemsOrderBy`](./models/external-source-items-order-by.ts)<a id="order_by-externalsourceitemsorderbymodelsexternal-source-items-order-byts"></a>
+
+##### order_dir: [`OrderDirV2`](./models/order-dir-v2.ts)<a id="order_dir-orderdirv2modelsorder-dir-v2ts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1633,6 +1661,37 @@ const listOutlookCategoriesResponse =
 ---
 
 
+### `carbon.integrations.listRepos`<a id="carbonintegrationslistrepos"></a>
+
+Once you have connected your GitHub account, you can use this endpoint to list the 
+    repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listReposResponse = await carbon.integrations.listRepos({
+  perPage: 30,
+  page: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### perPage: `number`<a id="perpage-number"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.syncConfluence`<a id="carbonintegrationssyncconfluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1653,7 +1712,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
+  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 });
@@ -1754,7 +1813,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
+  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 });
@@ -1817,6 +1876,7 @@ expires you will need to manually update it through this endpoint.
 const syncGitHubResponse = await carbon.integrations.syncGitHub({
   username: "username_example",
   access_token: "access_token_example",
+  sync_source_items: false,
 });
 ```
 
@@ -1825,6 +1885,10 @@ const syncGitHubResponse = await carbon.integrations.syncGitHub({
 ##### username: `string`<a id="username-string"></a>
 
 ##### access_token: `string`<a id="access_token-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2107,6 +2171,35 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncRepos`<a id="carbonintegrationssyncrepos"></a>
+
+You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const syncReposResponse = await carbon.integrations.syncRepos({
+  repos: ["repos_example"],
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### repos: `string`[]<a id="repos-string"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/sync_repos` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

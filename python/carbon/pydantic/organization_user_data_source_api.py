@@ -52,6 +52,8 @@ class OrganizationUserDataSourceAPI(BaseModel):
 
     files_synced_at: typing.Optional[datetime] = Field(alias='files_synced_at')
 
+    data_source_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='data_source_metadata')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

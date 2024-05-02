@@ -206,6 +206,7 @@ class GitbookConnectRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            sync_source_items = schemas.BoolSchema
             __annotations__ = {
                 "organization": organization,
                 "access_token": access_token,
@@ -218,6 +219,7 @@ class GitbookConnectRequest(
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
                 "sync_files_on_connection": sync_files_on_connection,
                 "request_id": request_id,
+                "sync_source_items": sync_source_items,
             }
     
     access_token: MetaOapg.properties.access_token
@@ -257,9 +259,12 @@ class GitbookConnectRequest(
     def __getitem__(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["organization", "access_token", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["organization", "access_token", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -298,9 +303,12 @@ class GitbookConnectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["request_id"]) -> typing.Union[MetaOapg.properties.request_id, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["organization", "access_token", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["organization", "access_token", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -318,6 +326,7 @@ class GitbookConnectRequest(
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
         sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
+        sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GitbookConnectRequest':
@@ -335,6 +344,7 @@ class GitbookConnectRequest(
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
+            sync_source_items=sync_source_items,
             _configuration=_configuration,
             **kwargs,
         )

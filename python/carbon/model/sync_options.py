@@ -182,6 +182,7 @@ class SyncOptions(
             set_page_as_boundary = schemas.BoolSchema
             request_id = schemas.StrSchema
             enable_file_picker = schemas.BoolSchema
+            sync_source_items = schemas.BoolSchema
             __annotations__ = {
                 "tags": tags,
                 "chunk_size": chunk_size,
@@ -195,6 +196,7 @@ class SyncOptions(
                 "set_page_as_boundary": set_page_as_boundary,
                 "request_id": request_id,
                 "enable_file_picker": enable_file_picker,
+                "sync_source_items": sync_source_items,
             }
     
     @typing.overload
@@ -234,9 +236,12 @@ class SyncOptions(
     def __getitem__(self, name: typing_extensions.Literal["enable_file_picker"]) -> MetaOapg.properties.enable_file_picker: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -278,9 +283,12 @@ class SyncOptions(
     def get_item_oapg(self, name: typing_extensions.Literal["enable_file_picker"]) -> typing.Union[MetaOapg.properties.enable_file_picker, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -299,6 +307,7 @@ class SyncOptions(
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
         request_id: typing.Union[MetaOapg.properties.request_id, str, schemas.Unset] = schemas.unset,
         enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
+        sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncOptions':
@@ -317,6 +326,7 @@ class SyncOptions(
             set_page_as_boundary=set_page_as_boundary,
             request_id=request_id,
             enable_file_picker=enable_file_picker,
+            sync_source_items=sync_source_items,
             _configuration=_configuration,
             **kwargs,
         )

@@ -51,6 +51,8 @@ class RequiredOrganizationUserDataSourceAPI(TypedDict):
 
     files_synced_at: typing.Optional[datetime]
 
+    data_source_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class OptionalOrganizationUserDataSourceAPI(TypedDict, total=False):
     pass
 

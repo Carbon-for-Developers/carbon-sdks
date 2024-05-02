@@ -34,12 +34,14 @@ from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput as ChunksAndEmbeddingsUploadInputSchema
+from carbon.model.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials as ChunksAndEmbeddingsUploadInputCustomCredentialsSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput as SingleChunksAndEmbeddingsUploadInputSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
 from carbon.type.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput
@@ -48,6 +50,7 @@ from ...api_client import Dictionary
 from carbon.pydantic.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput as ChunksAndEmbeddingsUploadInputPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput as SingleChunksAndEmbeddingsUploadInputPydantic
+from carbon.pydantic.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials as ChunksAndEmbeddingsUploadInputCustomCredentialsPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
 
@@ -117,7 +120,7 @@ class BaseApi(api_client.Api):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -342,7 +345,7 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -367,7 +370,7 @@ class UploadChunksAndEmbeddingsRaw(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -391,7 +394,7 @@ class UploadChunksAndEmbeddings(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -414,7 +417,7 @@ class UploadChunksAndEmbeddings(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.upload_chunks_and_embeddings(
@@ -438,7 +441,7 @@ class ApiForpost(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -463,7 +466,7 @@ class ApiForpost(BaseApi):
         chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput],
         overwrite_existing: typing.Optional[bool] = None,
         chunks_only: typing.Optional[bool] = None,
-        custom_credentials: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
+        custom_credentials: typing.Optional[ChunksAndEmbeddingsUploadInputCustomCredentials] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,

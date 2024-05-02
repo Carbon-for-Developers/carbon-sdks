@@ -44,8 +44,10 @@ type OAuthURLRequest struct {
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
-	// Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+	// Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
+	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -73,7 +75,7 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "76343a7e-0175-49f8-957c-e1133ae388ac"
+	var requestId string = "ae840422-78ad-45c5-a0bd-019c2b2e8443"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -81,6 +83,8 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -107,7 +111,7 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "76343a7e-0175-49f8-957c-e1133ae388ac"
+	var requestId string = "ae840422-78ad-45c5-a0bd-019c2b2e8443"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -115,6 +119,8 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -1027,6 +1033,38 @@ func (o *OAuthURLRequest) SetEnableFilePicker(v bool) {
 	o.EnableFilePicker = &v
 }
 
+// GetSyncSourceItems returns the SyncSourceItems field value if set, zero value otherwise.
+func (o *OAuthURLRequest) GetSyncSourceItems() bool {
+	if o == nil || isNil(o.SyncSourceItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncSourceItems
+}
+
+// GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthURLRequest) GetSyncSourceItemsOk() (*bool, bool) {
+	if o == nil || isNil(o.SyncSourceItems) {
+    return nil, false
+	}
+	return o.SyncSourceItems, true
+}
+
+// HasSyncSourceItems returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasSyncSourceItems() bool {
+	if o != nil && !isNil(o.SyncSourceItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncSourceItems gets a reference to the given bool and assigns it to the SyncSourceItems field.
+func (o *OAuthURLRequest) SetSyncSourceItems(v bool) {
+	o.SyncSourceItems = &v
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -1097,6 +1135,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.EnableFilePicker) {
 		toSerialize["enable_file_picker"] = o.EnableFilePicker
+	}
+	if !isNil(o.SyncSourceItems) {
+		toSerialize["sync_source_items"] = o.SyncSourceItems
 	}
 	return json.Marshal(toSerialize)
 }

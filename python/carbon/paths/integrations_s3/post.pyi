@@ -109,6 +109,7 @@ class BaseApi(api_client.Api):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -116,6 +117,8 @@ class BaseApi(api_client.Api):
             _body["access_key"] = access_key
         if access_key_secret is not None:
             _body["access_key_secret"] = access_key_secret
+        if sync_source_items is not None:
+            _body["sync_source_items"] = sync_source_items
         args.body = _body
         return args
 
@@ -325,6 +328,7 @@ class CreateAwsIamUserRaw(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -334,6 +338,7 @@ class CreateAwsIamUserRaw(BaseApi):
         args = self._create_aws_iam_user_mapped_args(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
         )
         return await self._acreate_aws_iam_user_oapg(
             body=args.body,
@@ -344,6 +349,7 @@ class CreateAwsIamUserRaw(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -351,6 +357,7 @@ class CreateAwsIamUserRaw(BaseApi):
         args = self._create_aws_iam_user_mapped_args(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
         )
         return self._create_aws_iam_user_oapg(
             body=args.body,
@@ -362,12 +369,14 @@ class CreateAwsIamUser(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> OrganizationUserDataSourceAPIPydantic:
         raw_response = await self.raw.acreate_aws_iam_user(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
             **kwargs,
         )
         if validate:
@@ -379,11 +388,13 @@ class CreateAwsIamUser(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> OrganizationUserDataSourceAPIPydantic:
         raw_response = self.raw.create_aws_iam_user(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
         )
         if validate:
             return OrganizationUserDataSourceAPIPydantic(**raw_response.body)
@@ -397,6 +408,7 @@ class ApiForpost(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -406,6 +418,7 @@ class ApiForpost(BaseApi):
         args = self._create_aws_iam_user_mapped_args(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
         )
         return await self._acreate_aws_iam_user_oapg(
             body=args.body,
@@ -416,6 +429,7 @@ class ApiForpost(BaseApi):
         self,
         access_key: str,
         access_key_secret: str,
+        sync_source_items: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -423,6 +437,7 @@ class ApiForpost(BaseApi):
         args = self._create_aws_iam_user_mapped_args(
             access_key=access_key,
             access_key_secret=access_key_secret,
+            sync_source_items=sync_source_items,
         )
         return self._create_aws_iam_user_oapg(
             body=args.body,

@@ -1770,6 +1770,185 @@ func (a *IntegrationsApiService) ListOutlookCategoriesExecute(r IntegrationsApiL
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type IntegrationsApiListReposRequest struct {
+	ctx context.Context
+	ApiService *IntegrationsApiService
+	perPage *int32
+	page *int32
+	dataSourceId *int32
+}
+
+func (r *IntegrationsApiListReposRequest) PerPage(perPage int32) *IntegrationsApiListReposRequest {
+	r.perPage = &perPage
+	return r
+}
+
+func (r *IntegrationsApiListReposRequest) Page(page int32) *IntegrationsApiListReposRequest {
+	r.page = &page
+	return r
+}
+
+func (r *IntegrationsApiListReposRequest) DataSourceId(dataSourceId int32) *IntegrationsApiListReposRequest {
+	r.dataSourceId = &dataSourceId
+	return r
+}
+
+func (r IntegrationsApiListReposRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ListReposExecute(r)
+}
+
+/*
+ListRepos Github List Repos
+
+Once you have connected your GitHub account, you can use this endpoint to list the 
+    repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return IntegrationsApiListReposRequest
+*/
+func (a *IntegrationsApiService) ListRepos() IntegrationsApiListReposRequest {
+	return IntegrationsApiListReposRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *IntegrationsApiService) ListReposExecute(r IntegrationsApiListReposRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationsApiService.ListRepos")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/integrations/github/repos"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.perPage != nil {
+		localVarQueryParams.Add("per_page", parameterToString(*r.perPage, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.dataSourceId != nil {
+		localVarQueryParams.Add("data_source_id", parameterToString(*r.dataSourceId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["accessToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type IntegrationsApiSyncConfluenceRequest struct {
 	ctx context.Context
 	ApiService *IntegrationsApiService
@@ -2888,6 +3067,164 @@ func (a *IntegrationsApiService) SyncOutlookExecute(r IntegrationsApiSyncOutlook
 	}
 	// body params
 	localVarPostBody = r.outlookSyncInput
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["accessToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type IntegrationsApiSyncReposRequest struct {
+	ctx context.Context
+	ApiService *IntegrationsApiService
+	githubFetchReposRequest GithubFetchReposRequest
+}
+
+func (r IntegrationsApiSyncReposRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.SyncReposExecute(r)
+}
+
+/*
+SyncRepos Github Sync Repos
+
+You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param githubFetchReposRequest
+ @return IntegrationsApiSyncReposRequest
+*/
+func (a *IntegrationsApiService) SyncRepos(githubFetchReposRequest GithubFetchReposRequest) IntegrationsApiSyncReposRequest {
+	return IntegrationsApiSyncReposRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+		githubFetchReposRequest: githubFetchReposRequest,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *IntegrationsApiService) SyncReposExecute(r IntegrationsApiSyncReposRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationsApiService.SyncRepos")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/integrations/github/sync_repos"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.githubFetchReposRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

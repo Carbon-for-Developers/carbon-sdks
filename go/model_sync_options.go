@@ -30,6 +30,8 @@ type SyncOptions struct {
 	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
 	RequestId *string `json:"request_id,omitempty"`
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
+	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 }
 
 // NewSyncOptions instantiates a new SyncOptions object
@@ -54,10 +56,12 @@ func NewSyncOptions() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "e8fddc9a-4810-48b2-b1b5-b1ec0159625a"
+	var requestId string = "7f46547c-7585-4463-bdd5-a1f8cde14b89"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -82,10 +86,12 @@ func NewSyncOptionsWithDefaults() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "e8fddc9a-4810-48b2-b1b5-b1ec0159625a"
+	var requestId string = "7f46547c-7585-4463-bdd5-a1f8cde14b89"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
+	var syncSourceItems bool = true
+	this.SyncSourceItems = &syncSourceItems
 	return &this
 }
 
@@ -554,6 +560,38 @@ func (o *SyncOptions) SetEnableFilePicker(v bool) {
 	o.EnableFilePicker = &v
 }
 
+// GetSyncSourceItems returns the SyncSourceItems field value if set, zero value otherwise.
+func (o *SyncOptions) GetSyncSourceItems() bool {
+	if o == nil || isNil(o.SyncSourceItems) {
+		var ret bool
+		return ret
+	}
+	return *o.SyncSourceItems
+}
+
+// GetSyncSourceItemsOk returns a tuple with the SyncSourceItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyncOptions) GetSyncSourceItemsOk() (*bool, bool) {
+	if o == nil || isNil(o.SyncSourceItems) {
+    return nil, false
+	}
+	return o.SyncSourceItems, true
+}
+
+// HasSyncSourceItems returns a boolean if a field has been set.
+func (o *SyncOptions) HasSyncSourceItems() bool {
+	if o != nil && !isNil(o.SyncSourceItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncSourceItems gets a reference to the given bool and assigns it to the SyncSourceItems field.
+func (o *SyncOptions) SetSyncSourceItems(v bool) {
+	o.SyncSourceItems = &v
+}
+
 func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -591,6 +629,9 @@ func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.EnableFilePicker) {
 		toSerialize["enable_file_picker"] = o.EnableFilePicker
+	}
+	if !isNil(o.SyncSourceItems) {
+		toSerialize["sync_source_items"] = o.SyncSourceItems
 	}
 	return json.Marshal(toSerialize)
 }

@@ -61,8 +61,11 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+    # Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
     attr_accessor :enable_file_picker
+
+    # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    attr_accessor :sync_source_items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -89,7 +92,8 @@ module Carbon
         :'request_id' => :'request_id',
         :'use_ocr' => :'use_ocr',
         :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
-        :'enable_file_picker' => :'enable_file_picker'
+        :'enable_file_picker' => :'enable_file_picker',
+        :'sync_source_items' => :'sync_source_items'
       }
     end
 
@@ -123,7 +127,8 @@ module Carbon
         :'request_id' => :'String',
         :'use_ocr' => :'Boolean',
         :'parse_pdf_tables_with_ocr' => :'Boolean',
-        :'enable_file_picker' => :'Boolean'
+        :'enable_file_picker' => :'Boolean',
+        :'sync_source_items' => :'Boolean'
       }
     end
 
@@ -264,7 +269,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '76343a7e-0175-49f8-957c-e1133ae388ac'
+        self.request_id = 'ae840422-78ad-45c5-a0bd-019c2b2e8443'
       end
 
       if attributes.key?(:'use_ocr')
@@ -283,6 +288,12 @@ module Carbon
         self.enable_file_picker = attributes[:'enable_file_picker']
       else
         self.enable_file_picker = true
+      end
+
+      if attributes.key?(:'sync_source_items')
+        self.sync_source_items = attributes[:'sync_source_items']
+      else
+        self.sync_source_items = true
       end
     end
 
@@ -331,7 +342,8 @@ module Carbon
           request_id == o.request_id &&
           use_ocr == o.use_ocr &&
           parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
-          enable_file_picker == o.enable_file_picker
+          enable_file_picker == o.enable_file_picker &&
+          sync_source_items == o.sync_source_items
     end
 
     # @see the `==` method
@@ -343,7 +355,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items].hash
     end
 
     # Builds the object from hash

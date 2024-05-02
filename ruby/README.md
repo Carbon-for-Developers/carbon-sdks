@@ -50,6 +50,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
   * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
+  * [`carbon.integrations.list_repos`](#carbonintegrationslist_repos)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -57,6 +58,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_gitbook`](#carbonintegrationssync_gitbook)
   * [`carbon.integrations.sync_gmail`](#carbonintegrationssync_gmail)
   * [`carbon.integrations.sync_outlook`](#carbonintegrationssync_outlook)
+  * [`carbon.integrations.sync_repos`](#carbonintegrationssync_repos)
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
@@ -507,7 +509,9 @@ result = carbon.embeddings.upload_chunks_and_embeddings(
     ],
   overwrite_existing: false,
   chunks_only: false,
-  custom_credentials: {},
+  custom_credentials: {
+        "key": {},
+    },
 )
 p result
 ```
@@ -518,7 +522,7 @@ p result
 ##### chunks_and_embeddings: Array<[`SingleChunksAndEmbeddingsUploadInput`](./lib/carbon_ruby_sdk/models/single_chunks_and_embeddings_upload_input.rb)><a id="chunks_and_embeddings-array"></a>
 ##### overwrite_existing: `Boolean`<a id="overwrite_existing-boolean"></a>
 ##### chunks_only: `Boolean`<a id="chunks_only-boolean"></a>
-##### custom_credentials: `Object`<a id="custom_credentials-object"></a>
+##### custom_credentials: `Hash<String, Object>`<a id="custom_credentials-hash"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1192,8 +1196,9 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "e8fddc9a-4810-48b2-b1b5-b1ec0159625a",
+        "request_id" => "7f46547c-7585-4463-bdd5-a1f8cde14b89",
         "enable_file_picker" => true,
+        "sync_source_items" => true,
     },
 )
 p result
@@ -1239,6 +1244,7 @@ result = carbon.integrations.connect_freshdesk(
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
   request_id: "string_example",
+  sync_source_items: true,
 )
 p result
 ```
@@ -1256,6 +1262,10 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1291,6 +1301,7 @@ result = carbon.integrations.connect_gitbook(
   prepend_filename_to_chunks: false,
   sync_files_on_connection: true,
   request_id: "string_example",
+  sync_source_items: true,
 )
 p result
 ```
@@ -1308,6 +1319,10 @@ p result
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1337,6 +1352,7 @@ Once created, generate an access key for this user and share the credentials wit
 result = carbon.integrations.create_aws_iam_user(
   access_key: "string_example",
   access_key_secret: "string_example",
+  sync_source_items: true,
 )
 p result
 ```
@@ -1345,6 +1361,10 @@ p result
 
 ##### access_key: `String`<a id="access_key-string"></a>
 ##### access_key_secret: `String`<a id="access_key_secret-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
@@ -1388,10 +1408,11 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "76343a7e-0175-49f8-957c-e1133ae388ac",
+  request_id: "ae840422-78ad-45c5-a0bd-019c2b2e8443",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
+  sync_source_items: true,
 )
 p result
 ```
@@ -1441,7 +1462,11 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT
+GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1509,6 +1534,8 @@ result = carbon.integrations.list_data_source_items(
         "limit" => 10,
         "offset" => 0,
     },
+  order_by: "name",
+  order_dir: "asc",
 )
 p result
 ```
@@ -1519,6 +1546,8 @@ p result
 ##### parent_id: `String`<a id="parent_id-string"></a>
 ##### filters: [`ListItemsFiltersNullable`](./lib/carbon_ruby_sdk/models/list_items_filters_nullable.rb)<a id="filters-listitemsfiltersnullablelibcarbon_ruby_sdkmodelslist_items_filters_nullablerb"></a>
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`ExternalSourceItemsOrderBy`](./lib/carbon_ruby_sdk/models/external_source_items_order_by.rb)<a id="order_by-externalsourceitemsorderbylibcarbon_ruby_sdkmodelsexternal_source_items_order_byrb"></a>
+##### order_dir: [`OrderDirV2`](./lib/carbon_ruby_sdk/models/order_dir_v2.rb)<a id="order_dir-orderdirv2libcarbon_ruby_sdkmodelsorder_dir_v2rb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [ListDataSourceItemsResponse](./lib/carbon_ruby_sdk/models/list_data_source_items_response.rb)
@@ -1635,6 +1664,36 @@ p result
 ---
 
 
+### `carbon.integrations.list_repos`<a id="carbonintegrationslist_repos"></a>
+
+Once you have connected your GitHub account, you can use this endpoint to list the 
+    repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.list_repos(
+  per_page: 30,
+  page: 1,
+  data_source_id: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### per_page: `Integer`<a id="per_page-integer"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
@@ -1659,7 +1718,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
+  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 )
@@ -1750,7 +1809,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "74c95466-42b2-4213-ae36-bfafbaecfcf5",
+  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 )
@@ -1800,6 +1859,7 @@ expires you will need to manually update it through this endpoint.
 result = carbon.integrations.sync_git_hub(
   username: "string_example",
   access_token: "string_example",
+  sync_source_items: false,
 )
 p result
 ```
@@ -1808,6 +1868,10 @@ p result
 
 ##### username: `String`<a id="username-string"></a>
 ##### access_token: `String`<a id="access_token-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2069,6 +2133,37 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/sync` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.sync_repos`<a id="carbonintegrationssync_repos"></a>
+
+You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
+You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
+carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.sync_repos(
+  repos: [
+        "string_example"
+    ],
+  data_source_id: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### repos: Array<`String`><a id="repos-array"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/github/sync_repos` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

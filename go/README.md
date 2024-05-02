@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**ListGitbookSpaces**](docs/IntegrationsApi.md#listgitbookspaces) | **Get** /integrations/gitbook/spaces | Gitbook Spaces
 *IntegrationsApi* | [**ListLabels**](docs/IntegrationsApi.md#listlabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 *IntegrationsApi* | [**ListOutlookCategories**](docs/IntegrationsApi.md#listoutlookcategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
+*IntegrationsApi* | [**ListRepos**](docs/IntegrationsApi.md#listrepos) | **Get** /integrations/github/repos | Github List Repos
 *IntegrationsApi* | [**SyncConfluence**](docs/IntegrationsApi.md#syncconfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 *IntegrationsApi* | [**SyncDataSourceItems**](docs/IntegrationsApi.md#syncdatasourceitems) | **Post** /integrations/items/sync | Sync Data Source Items
 *IntegrationsApi* | [**SyncFiles**](docs/IntegrationsApi.md#syncfiles) | **Post** /integrations/files/sync | Sync Files
@@ -97,6 +98,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**SyncGitbook**](docs/IntegrationsApi.md#syncgitbook) | **Post** /integrations/gitbook/sync | Gitbook Sync
 *IntegrationsApi* | [**SyncGmail**](docs/IntegrationsApi.md#syncgmail) | **Post** /integrations/gmail/sync | Gmail Sync
 *IntegrationsApi* | [**SyncOutlook**](docs/IntegrationsApi.md#syncoutlook) | **Post** /integrations/outlook/sync | Outlook Sync
+*IntegrationsApi* | [**SyncRepos**](docs/IntegrationsApi.md#syncrepos) | **Post** /integrations/github/sync_repos | Github Sync Repos
 *IntegrationsApi* | [**SyncRssFeed**](docs/IntegrationsApi.md#syncrssfeed) | **Post** /integrations/rss_feed | Rss Feed
 *IntegrationsApi* | [**SyncS3Files**](docs/IntegrationsApi.md#syncs3files) | **Post** /integrations/s3/files | S3 Files
 *OrganizationsApi* | [**Get**](docs/OrganizationsApi.md#get) | **Get** /organization | Get Organization
@@ -128,6 +130,7 @@ Class | Method | HTTP request | Description
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
  - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
+ - [CustomCredentialsType](docs/CustomCredentialsType.md)
  - [DataSourceLastSyncActions](docs/DataSourceLastSyncActions.md)
  - [DataSourceSyncStatuses](docs/DataSourceSyncStatuses.md)
  - [DataSourceType](docs/DataSourceType.md)
@@ -148,6 +151,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingsAndChunksResponse](docs/EmbeddingsAndChunksResponse.md)
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)
+ - [ExternalSourceItemsOrderBy](docs/ExternalSourceItemsOrderBy.md)
  - [FetchURLsResponse](docs/FetchURLsResponse.md)
  - [FileContentTypes](docs/FileContentTypes.md)
  - [FileContentTypesNullable](docs/FileContentTypesNullable.md)
@@ -164,6 +168,7 @@ Class | Method | HTTP request | Description
  - [GitbookSyncRequest](docs/GitbookSyncRequest.md)
  - [GithubAuthentication](docs/GithubAuthentication.md)
  - [GithubConnectRequest](docs/GithubConnectRequest.md)
+ - [GithubFetchReposRequest](docs/GithubFetchReposRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
@@ -181,6 +186,7 @@ Class | Method | HTTP request | Description
  - [OAuthAuthentication](docs/OAuthAuthentication.md)
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OrderDir](docs/OrderDir.md)
+ - [OrderDirV2](docs/OrderDirV2.md)
  - [OrganizationResponse](docs/OrganizationResponse.md)
  - [OrganizationUserDataSourceAPI](docs/OrganizationUserDataSourceAPI.md)
  - [OrganizationUserDataSourceFilters](docs/OrganizationUserDataSourceFilters.md)
