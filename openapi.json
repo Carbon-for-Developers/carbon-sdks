@@ -1044,6 +1044,132 @@
         ]
       }
     },
+    "/integrations/github/repos": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Github List Repos",
+        "description": "Once you have connected your GitHub account, you can use this endpoint to list the \n    repositories your account has access to. You can use a data source ID or username to fetch from a specific account.",
+        "operationId": "github_list_repos_integrations_github_repos_get",
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "title": "Per Page"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Data Source Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/github/sync_repos": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Github Sync Repos",
+        "description": "You can retreive repos your token has access to using /integrations/github/repos and sync their content. \nYou can also pass full name of any public repository (username/repo-name). This will store the repo content with \ncarbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.",
+        "operationId": "github_sync_repos_integrations_github_sync_repos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GithubFetchReposRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -3006,6 +3132,9 @@
             "default": false
           },
           "custom_credentials": {
+            "additionalProperties": {
+              "type": "object"
+            },
             "type": "object",
             "title": "Custom Credentials",
             "default": {}
@@ -3110,10 +3239,11 @@
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "e8fddc9a-4810-48b2-b1b5-b1ec0159625a",
+              "request_id": "7f46547c-7585-4463-bdd5-a1f8cde14b89",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
-              "sync_files_on_connection": true
+              "sync_files_on_connection": true,
+              "sync_source_items": true
             }
           }
         },
@@ -3146,6 +3276,17 @@
           "sync_url"
         ],
         "title": "ConnectDataSourceResponse"
+      },
+      "CustomCredentialsType": {
+        "type": "string",
+        "enum": [
+          "OPENAI",
+          "COHERE",
+          "AZURE_OPENAI",
+          "AZURE_OPENAI_V3",
+          "UPSTAGE"
+        ],
+        "title": "CustomCredentialsType"
       },
       "DataSourceExtendedInput": {
         "type": "string",
@@ -3612,7 +3753,8 @@
           "OPENAI_ADA_LARGE_1024",
           "OPENAI_ADA_LARGE_3072",
           "OPENAI_ADA_SMALL_512",
-          "OPENAI_ADA_SMALL_1536"
+          "OPENAI_ADA_SMALL_1536",
+          "SOLAR_1_MINI"
         ],
         "title": "EmbeddingGenerators"
       },
@@ -3909,6 +4051,15 @@
         ],
         "title": "ExternalSourceItem"
       },
+      "ExternalSourceItemsOrderBy": {
+        "type": "string",
+        "enum": [
+          "name",
+          "id",
+          "directories_first"
+        ],
+        "title": "ExternalSourceItemsOrderBy"
+      },
       "FetchURLsResponse": {
         "properties": {
           "urls": {
@@ -4165,6 +4316,12 @@
               }
             ],
             "title": "Request Id"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": true
           }
         },
         "type": "object",
@@ -4601,6 +4758,12 @@
               }
             ],
             "title": "Request Id"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": true
           }
         },
         "type": "object",
@@ -4755,6 +4918,12 @@
           "access_token": {
             "type": "string",
             "title": "Access Token"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": false
           }
         },
         "type": "object",
@@ -4763,6 +4932,35 @@
           "access_token"
         ],
         "title": "GithubConnectRequest"
+      },
+      "GithubFetchReposRequest": {
+        "properties": {
+          "repos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 25,
+            "minItems": 1,
+            "title": "Repos"
+          },
+          "data_source_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repos"
+        ],
+        "title": "GithubFetchReposRequest"
       },
       "GmailSyncInput": {
         "properties": {
@@ -4959,6 +5157,22 @@
               "limit": 10,
               "offset": 0
             }
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExternalSourceItemsOrderBy"
+              }
+            ],
+            "default": "name"
+          },
+          "order_dir": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrderDirV2"
+              }
+            ],
+            "default": "asc"
           }
         },
         "type": "object",
@@ -5363,7 +5577,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "76343a7e-0175-49f8-957c-e1133ae388ac"
+            "default": "ae840422-78ad-45c5-a0bd-019c2b2e8443"
           },
           "use_ocr": {
             "anyOf": [
@@ -5393,7 +5607,13 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT",
+            "default": true
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": true
           }
         },
@@ -5410,6 +5630,14 @@
           "asc"
         ],
         "title": "OrderDir"
+      },
+      "OrderDirV2": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "title": "OrderDirV2"
       },
       "OrganizationResponse": {
         "properties": {
@@ -5629,6 +5857,10 @@
               }
             ],
             "title": "Files Synced At"
+          },
+          "data_source_metadata": {
+            "type": "object",
+            "title": "Data Source Metadata"
           }
         },
         "type": "object",
@@ -5648,7 +5880,8 @@
           "enable_auto_sync",
           "created_at",
           "updated_at",
-          "files_synced_at"
+          "files_synced_at",
+          "data_source_metadata"
         ],
         "title": "OrganizationUserDataSourceAPI"
       },
@@ -6586,6 +6819,12 @@
           "access_key_secret": {
             "type": "string",
             "title": "Access Key Secret"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": true
           }
         },
         "type": "object",
@@ -7286,7 +7525,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "74c95466-42b2-4213-ae36-bfafbaecfcf5"
+            "default": "2da50864-4700-4b70-8098-ddcafcc3267d"
           },
           "use_ocr": {
             "anyOf": [
@@ -7436,11 +7675,17 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "e8fddc9a-4810-48b2-b1b5-b1ec0159625a"
+            "default": "7f46547c-7585-4463-bdd5-a1f8cde14b89"
           },
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
+            "default": true
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": true
           }
         },
@@ -7457,7 +7702,13 @@
           "OPENAI_ADA_LARGE_1024",
           "OPENAI_ADA_LARGE_3072",
           "OPENAI_ADA_SMALL_512",
-          "OPENAI_ADA_SMALL_1536"
+          "OPENAI_ADA_SMALL_1536",
+          "AZURE_ADA_LARGE_256",
+          "AZURE_ADA_LARGE_1024",
+          "AZURE_ADA_LARGE_3072",
+          "AZURE_ADA_SMALL_512",
+          "AZURE_ADA_SMALL_1536",
+          "SOLAR_1_MINI"
         ],
         "title": "TextEmbeddingGenerators"
       },
