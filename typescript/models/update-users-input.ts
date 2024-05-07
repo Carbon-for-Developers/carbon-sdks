@@ -19,12 +19,6 @@ import { AutoSyncEnabledSourcesProperty } from './auto-sync-enabled-sources-prop
  */
 export interface UpdateUsersInput {
     /**
-     * List of organization supplied user IDs
-     * @type {Array<string>}
-     * @memberof UpdateUsersInput
-     */
-    'customer_ids': Array<string>;
-    /**
      * 
      * @type {AutoSyncEnabledSourcesProperty}
      * @memberof UpdateUsersInput
@@ -42,5 +36,11 @@ export interface UpdateUsersInput {
      * @memberof UpdateUsersInput
      */
     'max_files_per_upload'?: number | null;
+    /**
+     * List of organization supplied user IDs
+     * @type {Array<string>}
+     * @memberof UpdateUsersInput
+     */
+    'customer_ids': Array<string>;
 }
 

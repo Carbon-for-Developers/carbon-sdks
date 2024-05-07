@@ -27,6 +27,8 @@ class RequiredFileStatistics(TypedDict):
 
     num_embeddings: typing.Optional[int]
 
+    mime_type: typing.Optional[str]
+
 class OptionalFileStatistics(TypedDict, total=False):
     pass
 

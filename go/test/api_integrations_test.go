@@ -154,7 +154,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("ae840422-78ad-45c5-a0bd-019c2b2e8443")
+        oAuthURLRequest.SetRequestId("1975f217-47e4-4867-8acd-5bdb2858049b")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
@@ -307,7 +307,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
+        syncFilesRequest.SetRequestId("a7c990f4-5923-47b5-a9f8-6ef5416fe5c3")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         
@@ -359,7 +359,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("2da50864-4700-4b70-8098-ddcafcc3267d")
+        syncFilesRequest.SetRequestId("a7c990f4-5923-47b5-a9f8-6ef5416fe5c3")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         

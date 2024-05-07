@@ -40,4 +40,23 @@ func Test_carbon_OrganizationsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test OrganizationsApiService Update", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        globalUserConfig := *carbon.NewUserConfigurationNullable()
+        
+        updateOrganizationInput := *carbon.NewUpdateOrganizationInput()
+        updateOrganizationInput.SetGlobalUserConfig(globalUserConfig)
+        
+        request := client.OrganizationsApi.Update(
+            updateOrganizationInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
 }

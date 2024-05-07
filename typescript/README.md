@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.27-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.27)
+[![npm](https://img.shields.io/badge/npm-v0.1.28-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.28)
 
 </div>
 
@@ -61,6 +61,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
   * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.organizations.update`](#carbonorganizationsupdate)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
@@ -1396,7 +1397,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "ae840422-78ad-45c5-a0bd-019c2b2e8443",
+  request_id: "1975f217-47e4-4867-8acd-5bdb2858049b",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1464,7 +1465,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1712,7 +1713,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
+  request_id: "a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 });
@@ -1813,7 +1814,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2da50864-4700-4b70-8098-ddcafcc3267d",
+  request_id: "a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
 });
@@ -2342,6 +2343,33 @@ const getResponse = await carbon.organizations.get();
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.organizations.update`<a id="carbonorganizationsupdate"></a>
+
+Update Organization
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const updateResponse = await carbon.organizations.update({});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### global_user_config: [`UserConfigurationNullable`](./models/user-configuration-nullable.ts)<a id="global_user_config-userconfigurationnullablemodelsuser-configuration-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization/update` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

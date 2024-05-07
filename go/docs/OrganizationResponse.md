@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **AggregateNumEmbeddings** | **map[string]interface{}** |  | 
 **PeriodEndsAt** | **NullableTime** |  | 
 **CancelAtPeriodEnd** | **NullableBool** |  | 
+**GlobalUserConfig** | **map[string]interface{}** |  | [default to {}]
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
+`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -328,6 +329,26 @@ SetCancelAtPeriodEnd sets CancelAtPeriodEnd field to given value.
 `func (o *OrganizationResponse) UnsetCancelAtPeriodEnd()`
 
 UnsetCancelAtPeriodEnd ensures that no value is present for CancelAtPeriodEnd, not even an explicit nil
+### GetGlobalUserConfig
+
+`func (o *OrganizationResponse) GetGlobalUserConfig() map[string]interface{}`
+
+GetGlobalUserConfig returns the GlobalUserConfig field if non-nil, zero value otherwise.
+
+### GetGlobalUserConfigOk
+
+`func (o *OrganizationResponse) GetGlobalUserConfigOk() (*map[string]interface{}, bool)`
+
+GetGlobalUserConfigOk returns a tuple with the GlobalUserConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGlobalUserConfig
+
+`func (o *OrganizationResponse) SetGlobalUserConfig(v map[string]interface{})`
+
+SetGlobalUserConfig sets GlobalUserConfig field to given value.
+
+
 ### GetCreatedAt
 
 `func (o *OrganizationResponse) GetCreatedAt() time.Time`

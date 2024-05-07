@@ -50,11 +50,11 @@
       "name": "Data Sources"
     },
     {
-      "description": "\n---\nUse this endpoint to check the status of the API. A `200` response indicates that the Carbon API is up.\n\nYou can also check for the health of our services on our [Status Page](https://status.carbon.ai/).\n",
-      "name": "Health"
+      "name": "Organizations"
     },
     {
-      "name": "Organizations"
+      "description": "\n---\nUse this endpoint to check the status of the API. A `200` response indicates that the Carbon API is up.\n\nYou can also check for the health of our services on our [Status Page](https://status.carbon.ai/).\n",
+      "name": "Health"
     },
     {
       "description": "\n---\n\n![](http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png)\n\n## What is Carbon?\n\nCarbon provides a comprehensive framework designed to streamline the process of connecting external data sources to Large Language Models (LLMs). \n\nThe Carbon search model is purpose-built for Large Language Models (LLMs) because of its fully neural architecture, enabling natural language querying across indexed documents from external data sources. In cases where vector (or neural) search isn't optimal, Carbon also supports keyword-based searches.\n\nCarbon simplifies the process of **retrieval augmented generation** (RAG), allowing you to spend more time using your data, and less time trying to ingest it.\n\n## How Carbon Works\n\nUse **[Carbon Connect](https://api.carbon.ai/redoc#tag/Carbon-Connect)** to connect to your users' data sources and then our **Universal API** to retrieve the data to use with LLMs. Carbon has native integrations with 10+ data sources and supports more than 20+ file formats, encompassing text, audio, and visual data.\n\nDepending on your use case and in-house infrastructure, you can retrieve user data from Carbon in several formats: \n\n- Parsed plaintext files\n- Embeddings (and chunks) to store in your vector store\n- Direct semantic and keyword search against Carbon's managed vector database\n\n## Products\n\n### 🔗 Connect\n\nA client-side component for users to connect data sources such as Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Available as a React component, JavaScript SDK, and soon as a magic link. \n\nCarbon handles OAuth flows for 10+ sources, transforms the source data, and automates data synchronization.\n\n### 🗄️ Store\n\nChoose between Carbon's managed vector database (hosted on Qdrant Cloud) or your storage solution. The database updates as users modify connected sources and manage chunks alongside embeddings.\n\n### 🔌 Universal API\n\nAccess and manage data (documents, chunks, vectors, etc.) from any source using our flexible API suite. Apply custom metadata filters to objects for tailored data retrieval.\n\n## Setup\n\n---\n\n### 🔑 Getting a Carbon API Key\n\nCarbon is free to use up to the first 20 million characters. \nBook a 15 minute onboarding to get an API key [here](https://cal.com/carbon-ai/15min).\n\n### 🔗 Helpful Links\nTo get started with Carbon, follow our guides:\n\n- [Installing Carbon Connect](https://api.carbon.ai/redoc#tag/Carbon-Connect)\n- [Integrating Data Sources](https://api.carbon.ai/redoc#tag/Data-Sources)\n\n",
@@ -1540,6 +1540,53 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/OrganizationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organization/update": {
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Update Organization",
+        "operationId": "Organizations_update",
+        "security": [
+          {
+            "apiKey": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrganizationInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -3386,7 +3433,7 @@
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "7f46547c-7585-4463-bdd5-a1f8cde14b89",
+              "request_id": "18492fc0-bd2f-48d4-a035-8d12f762cc76",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4142,6 +4189,11 @@
             "title": "Num Embeddings",
             "type": "integer",
             "nullable": true
+          },
+          "mime_type": {
+            "title": "Mime Type",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -4150,7 +4202,8 @@
           "file_size",
           "num_characters",
           "num_tokens",
-          "num_embeddings"
+          "num_embeddings",
+          "mime_type"
         ]
       },
       "FreshDeskConnectRequest": {
@@ -5116,7 +5169,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "ae840422-78ad-45c5-a0bd-019c2b2e8443"
+            "default": "1975f217-47e4-4867-8acd-5bdb2858049b"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5133,7 +5186,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE",
             "type": "boolean",
             "default": true
           },
@@ -5222,6 +5275,12 @@
             "type": "boolean",
             "nullable": true
           },
+          "global_user_config": {
+            "title": "Global User Config",
+            "type": "object",
+            "default": {
+            }
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -5247,6 +5306,7 @@
           "aggregate_num_embeddings",
           "period_ends_at",
           "cancel_at_period_end",
+          "global_user_config",
           "created_at",
           "updated_at"
         ]
@@ -6509,7 +6569,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "2da50864-4700-4b70-8098-ddcafcc3267d"
+            "default": "a7c990f4-5923-47b5-a9f8-6ef5416fe5c3"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6592,7 +6652,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "7f46547c-7585-4463-bdd5-a1f8cde14b89"
+            "default": "18492fc0-bd2f-48d4-a035-8d12f762cc76"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -6646,18 +6706,18 @@
           "refresh_token"
         ]
       },
+      "UpdateOrganizationInput": {
+        "title": "UpdateOrganizationInput",
+        "properties": {
+          "global_user_config": {
+            "$ref": "#/components/schemas/UserConfigurationNullable"
+          }
+        },
+        "type": "object"
+      },
       "UpdateUsersInput": {
         "title": "UpdateUsersInput",
         "properties": {
-          "customer_ids": {
-            "title": "Customer Ids",
-            "description": "List of organization supplied user IDs",
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "maxItems": 100
-          },
           "auto_sync_enabled_sources": {
             "title": "Auto Sync Enabled Sources",
             "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources",
@@ -6687,6 +6747,15 @@
             "type": "integer",
             "minimum": -1,
             "nullable": true
+          },
+          "customer_ids": {
+            "title": "Customer Ids",
+            "description": "List of organization supplied user IDs",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100
           }
         },
         "type": "object",
@@ -6766,6 +6835,42 @@
             "default": "OPENAI"
           }
         }
+      },
+      "UserConfiguration": {
+        "title": "UserConfiguration",
+        "properties": {
+          "auto_sync_enabled_sources": {
+            "title": "Auto Sync Enabled Sources",
+            "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources",
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DataSourceType"
+                },
+                "type": "array"
+              },
+              {
+                "$ref": "#/components/schemas/DataSourceExtendedInput"
+              }
+            ],
+            "nullable": true
+          },
+          "max_files": {
+            "title": "Max Files",
+            "description": "Custom file upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_files_per_upload": {
+            "title": "Max Files Per Upload",
+            "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          }
+        },
+        "type": "object"
       },
       "UserFile": {
         "title": "UserFile",
@@ -7713,6 +7818,44 @@
         "type": "object",
         "nullable": true
       },
+      "UserConfigurationNullable": {
+        "title": "UserConfiguration",
+        "description": "Used to set organization level defaults for user settings. These settings will apply to all users under\n        the organization that don't have them defined.",
+        "properties": {
+          "auto_sync_enabled_sources": {
+            "title": "Auto Sync Enabled Sources",
+            "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources",
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DataSourceType"
+                },
+                "type": "array"
+              },
+              {
+                "$ref": "#/components/schemas/DataSourceExtendedInput"
+              }
+            ],
+            "nullable": true
+          },
+          "max_files": {
+            "title": "Max Files",
+            "description": "Custom file upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_files_per_upload": {
+            "title": "Max Files Per Upload",
+            "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "nullable": true
+      },
       "FileStatisticsNullable": {
         "title": "FileStatistics",
         "properties": {
@@ -7738,6 +7881,11 @@
             "title": "Num Embeddings",
             "type": "integer",
             "nullable": true
+          },
+          "mime_type": {
+            "title": "Mime Type",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
@@ -7746,7 +7894,8 @@
           "file_size",
           "num_characters",
           "num_tokens",
-          "num_embeddings"
+          "num_embeddings",
+          "mime_type"
         ],
         "nullable": true
       },

@@ -48,5 +48,11 @@ export interface FileStatisticsNullable {
      * @memberof FileStatisticsNullable
      */
     'num_embeddings': number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FileStatisticsNullable
+     */
+    'mime_type': string | null;
 }
 

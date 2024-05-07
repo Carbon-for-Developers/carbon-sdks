@@ -5,6 +5,7 @@ All URIs are relative to *https://api.carbon.ai*
 Method | Path | Description
 ------------- | ------------- | -------------
 [**Get**](OrganizationsApi.md#Get) | **Get** /organization | Get Organization
+[**Update**](OrganizationsApi.md#Update) | **Post** /organization/update | Update Organization
 
 
 
@@ -51,8 +52,55 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumEmbeddings`: %v\n", resp.AggregateNumEmbeddings)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.PeriodEndsAt`: %v\n", resp.PeriodEndsAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CancelAtPeriodEnd`: %v\n", resp.CancelAtPeriodEnd)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.GlobalUserConfig`: %v\n", resp.GlobalUserConfig)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.UpdatedAt`: %v\n", resp.UpdatedAt)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Update
+
+Update Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetApiKey("AUTHORIZATION")
+    client := carbon.NewAPIClient(configuration)
+
+    globalUserConfig := *carbon.NewUserConfigurationNullable()
+    
+    updateOrganizationInput := *carbon.NewUpdateOrganizationInput()
+    updateOrganizationInput.SetGlobalUserConfig(globalUserConfig)
+    
+    request := client.OrganizationsApi.Update(
+        updateOrganizationInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.Update``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `Update`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.Update`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.Update.Success`: %v\n", resp.Success)
 }
 ```
 

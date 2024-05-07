@@ -29,6 +29,7 @@ from carbon.apis.paths.embeddings import Embeddings
 from carbon.apis.paths.text_chunks import TextChunks
 from carbon.apis.paths.upload_chunks_and_embeddings import UploadChunksAndEmbeddings
 from carbon.apis.paths.organization import Organization
+from carbon.apis.paths.organization_update import OrganizationUpdate
 from carbon.apis.paths.user import User
 from carbon.apis.paths.modify_user_configuration import ModifyUserConfiguration
 from carbon.apis.paths.delete_users import DeleteUsers
@@ -90,6 +91,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.TEXT_CHUNKS: TextChunks,
         PathValues.UPLOAD_CHUNKS_AND_EMBEDDINGS: UploadChunksAndEmbeddings,
         PathValues.ORGANIZATION: Organization,
+        PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,
         PathValues.USER: User,
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,
@@ -152,6 +154,7 @@ path_to_api = PathToApi(
         PathValues.TEXT_CHUNKS: TextChunks,
         PathValues.UPLOAD_CHUNKS_AND_EMBEDDINGS: UploadChunksAndEmbeddings,
         PathValues.ORGANIZATION: Organization,
+        PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,
         PathValues.USER: User,
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,

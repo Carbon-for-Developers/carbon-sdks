@@ -16,13 +16,13 @@ import (
 
 // UpdateUsersInput struct for UpdateUsersInput
 type UpdateUsersInput struct {
-	// List of organization supplied user IDs
-	CustomerIds []string `json:"customer_ids"`
 	AutoSyncEnabledSources NullableAutoSyncEnabledSourcesProperty `json:"auto_sync_enabled_sources,omitempty"`
 	// Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
 	MaxFiles NullableInt32 `json:"max_files,omitempty"`
 	// Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
 	MaxFilesPerUpload NullableInt32 `json:"max_files_per_upload,omitempty"`
+	// List of organization supplied user IDs
+	CustomerIds []string `json:"customer_ids"`
 }
 
 // NewUpdateUsersInput instantiates a new UpdateUsersInput object
@@ -41,30 +41,6 @@ func NewUpdateUsersInput(customerIds []string) *UpdateUsersInput {
 func NewUpdateUsersInputWithDefaults() *UpdateUsersInput {
 	this := UpdateUsersInput{}
 	return &this
-}
-
-// GetCustomerIds returns the CustomerIds field value
-func (o *UpdateUsersInput) GetCustomerIds() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.CustomerIds
-}
-
-// GetCustomerIdsOk returns a tuple with the CustomerIds field value
-// and a boolean to check if the value has been set.
-func (o *UpdateUsersInput) GetCustomerIdsOk() ([]string, bool) {
-	if o == nil {
-    return nil, false
-	}
-	return o.CustomerIds, true
-}
-
-// SetCustomerIds sets field value
-func (o *UpdateUsersInput) SetCustomerIds(v []string) {
-	o.CustomerIds = v
 }
 
 // GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -193,11 +169,32 @@ func (o *UpdateUsersInput) UnsetMaxFilesPerUpload() {
 	o.MaxFilesPerUpload.Unset()
 }
 
+// GetCustomerIds returns the CustomerIds field value
+func (o *UpdateUsersInput) GetCustomerIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.CustomerIds
+}
+
+// GetCustomerIdsOk returns a tuple with the CustomerIds field value
+// and a boolean to check if the value has been set.
+func (o *UpdateUsersInput) GetCustomerIdsOk() ([]string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.CustomerIds, true
+}
+
+// SetCustomerIds sets field value
+func (o *UpdateUsersInput) SetCustomerIds(v []string) {
+	o.CustomerIds = v
+}
+
 func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["customer_ids"] = o.CustomerIds
-	}
 	if o.AutoSyncEnabledSources.IsSet() {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources.Get()
 	}
@@ -206,6 +203,9 @@ func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxFilesPerUpload.IsSet() {
 		toSerialize["max_files_per_upload"] = o.MaxFilesPerUpload.Get()
+	}
+	if true {
+		toSerialize["customer_ids"] = o.CustomerIds
 	}
 	return json.Marshal(toSerialize)
 }

@@ -11,9 +11,6 @@ require 'time'
 
 module Carbon
   class UpdateUsersInput
-    # List of organization supplied user IDs
-    attr_accessor :customer_ids
-
     attr_accessor :auto_sync_enabled_sources
 
     # Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
@@ -22,13 +19,16 @@ module Carbon
     # Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
     attr_accessor :max_files_per_upload
 
+    # List of organization supplied user IDs
+    attr_accessor :customer_ids
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'customer_ids' => :'customer_ids',
         :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources',
         :'max_files' => :'max_files',
-        :'max_files_per_upload' => :'max_files_per_upload'
+        :'max_files_per_upload' => :'max_files_per_upload',
+        :'customer_ids' => :'customer_ids'
       }
     end
 
@@ -40,10 +40,10 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'customer_ids' => :'Array<String>',
         :'auto_sync_enabled_sources' => :'AutoSyncEnabledSourcesProperty',
         :'max_files' => :'Integer',
-        :'max_files_per_upload' => :'Integer'
+        :'max_files_per_upload' => :'Integer',
+        :'customer_ids' => :'Array<String>'
       }
     end
 
@@ -52,7 +52,7 @@ module Carbon
       Set.new([
         :'auto_sync_enabled_sources',
         :'max_files',
-        :'max_files_per_upload'
+        :'max_files_per_upload',
       ])
     end
 
@@ -71,12 +71,6 @@ module Carbon
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'customer_ids')
-        if (value = attributes[:'customer_ids']).is_a?(Array)
-          self.customer_ids = value
-        end
-      end
-
       if attributes.key?(:'auto_sync_enabled_sources')
         self.auto_sync_enabled_sources = attributes[:'auto_sync_enabled_sources']
       end
@@ -88,20 +82,18 @@ module Carbon
       if attributes.key?(:'max_files_per_upload')
         self.max_files_per_upload = attributes[:'max_files_per_upload']
       end
+
+      if attributes.key?(:'customer_ids')
+        if (value = attributes[:'customer_ids']).is_a?(Array)
+          self.customer_ids = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @customer_ids.nil?
-        invalid_properties.push('invalid value for "customer_ids", customer_ids cannot be nil.')
-      end
-
-      if @customer_ids.length > 100
-        invalid_properties.push('invalid value for "customer_ids", number of items must be less than or equal to 100.')
-      end
-
       if !@max_files.nil? && @max_files < -1
         invalid_properties.push('invalid value for "max_files", must be greater than or equal to -1.')
       end
@@ -110,31 +102,25 @@ module Carbon
         invalid_properties.push('invalid value for "max_files_per_upload", must be greater than or equal to -1.')
       end
 
+      if @customer_ids.nil?
+        invalid_properties.push('invalid value for "customer_ids", customer_ids cannot be nil.')
+      end
+
+      if @customer_ids.length > 100
+        invalid_properties.push('invalid value for "customer_ids", number of items must be less than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @customer_ids.nil?
-      return false if @customer_ids.length > 100
       return false if !@max_files.nil? && @max_files < -1
       return false if !@max_files_per_upload.nil? && @max_files_per_upload < -1
+      return false if @customer_ids.nil?
+      return false if @customer_ids.length > 100
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] customer_ids Value to be assigned
-    def customer_ids=(customer_ids)
-      if customer_ids.nil?
-        fail ArgumentError, 'customer_ids cannot be nil'
-      end
-
-      if customer_ids.length > 100
-        fail ArgumentError, 'invalid value for "customer_ids", number of items must be less than or equal to 100.'
-      end
-
-      @customer_ids = customer_ids
     end
 
     # Custom attribute writer method with validation
@@ -157,15 +143,29 @@ module Carbon
       @max_files_per_upload = max_files_per_upload
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] customer_ids Value to be assigned
+    def customer_ids=(customer_ids)
+      if customer_ids.nil?
+        fail ArgumentError, 'customer_ids cannot be nil'
+      end
+
+      if customer_ids.length > 100
+        fail ArgumentError, 'invalid value for "customer_ids", number of items must be less than or equal to 100.'
+      end
+
+      @customer_ids = customer_ids
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          customer_ids == o.customer_ids &&
           auto_sync_enabled_sources == o.auto_sync_enabled_sources &&
           max_files == o.max_files &&
-          max_files_per_upload == o.max_files_per_upload
+          max_files_per_upload == o.max_files_per_upload &&
+          customer_ids == o.customer_ids
     end
 
     # @see the `==` method
@@ -177,7 +177,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_ids, auto_sync_enabled_sources, max_files, max_files_per_upload].hash
+      [auto_sync_enabled_sources, max_files, max_files_per_upload, customer_ids].hash
     end
 
     # Builds the object from hash

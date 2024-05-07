@@ -143,9 +143,12 @@ from carbon.model.sync_files_request import SyncFilesRequest
 from carbon.model.sync_options import SyncOptions
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
+from carbon.model.update_organization_input import UpdateOrganizationInput
 from carbon.model.update_users_input import UpdateUsersInput
 from carbon.model.update_users_input_customer_ids import UpdateUsersInputCustomerIds
 from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput
+from carbon.model.user_configuration import UserConfiguration
+from carbon.model.user_configuration_nullable import UserConfigurationNullable
 from carbon.model.user_file import UserFile
 from carbon.model.user_file_embedding_properties import UserFileEmbeddingProperties
 from carbon.model.user_files_v2 import UserFilesV2

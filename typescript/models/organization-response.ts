@@ -91,6 +91,12 @@ export interface OrganizationResponse {
     'cancel_at_period_end': boolean | null;
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
+    'global_user_config': object;
+    /**
+     * 
      * @type {string}
      * @memberof OrganizationResponse
      */

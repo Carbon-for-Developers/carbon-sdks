@@ -928,6 +928,13 @@ operation_parameter_map = {
         'parameters': [
         ]
     },
+    '/organization/update-POST': {
+        'parameters': [
+            {
+                'name': 'global_user_config'
+            },
+        ]
+    },
     '/delete_users-POST': {
         'parameters': [
             {

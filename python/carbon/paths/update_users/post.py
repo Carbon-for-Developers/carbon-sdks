@@ -129,14 +129,14 @@ class BaseApi(api_client.Api):
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
-        if customer_ids is not None:
-            _body["customer_ids"] = customer_ids
         if auto_sync_enabled_sources is not None:
             _body["auto_sync_enabled_sources"] = auto_sync_enabled_sources
         if max_files is not None:
             _body["max_files"] = max_files
         if max_files_per_upload is not None:
             _body["max_files_per_upload"] = max_files_per_upload
+        if customer_ids is not None:
+            _body["customer_ids"] = customer_ids
         args.body = _body
         return args
 

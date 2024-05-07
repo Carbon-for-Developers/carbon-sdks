@@ -306,10 +306,10 @@ module Carbon
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
       _body = {}
-      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
       _body[:max_files] = max_files if max_files != SENTINEL
       _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
+      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       update_users_input = _body
       api_response = update_users_with_http_info_impl(update_users_input, extra)
       api_response.data
@@ -325,10 +325,10 @@ module Carbon
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
       _body = {}
-      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
       _body[:max_files] = max_files if max_files != SENTINEL
       _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
+      _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       update_users_input = _body
       update_users_with_http_info_impl(update_users_input, extra)
     end

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.22)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.23)
 
 </div>
 
@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**SyncRssFeed**](docs/IntegrationsApi.md#syncrssfeed) | **Post** /integrations/rss_feed | Rss Feed
 *IntegrationsApi* | [**SyncS3Files**](docs/IntegrationsApi.md#syncs3files) | **Post** /integrations/s3/files | S3 Files
 *OrganizationsApi* | [**Get**](docs/OrganizationsApi.md#get) | **Get** /organization | Get Organization
+*OrganizationsApi* | [**Update**](docs/OrganizationsApi.md#update) | **Post** /organization/update | Update Organization
 *UsersApi* | [**Delete**](docs/UsersApi.md#delete) | **Post** /delete_users | Delete Users
 *UsersApi* | [**Get**](docs/UsersApi.md#get) | **Post** /user | User Endpoint
 *UsersApi* | [**ToggleUserFeatures**](docs/UsersApi.md#toggleuserfeatures) | **Post** /modify_user_configuration | Toggle User Features
@@ -226,8 +227,11 @@ Class | Method | HTTP request | Description
  - [Tags1](docs/Tags1.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
  - [TokenResponse](docs/TokenResponse.md)
+ - [UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
  - [UpdateUsersInput](docs/UpdateUsersInput.md)
  - [UploadFileFromUrlInput](docs/UploadFileFromUrlInput.md)
+ - [UserConfiguration](docs/UserConfiguration.md)
+ - [UserConfigurationNullable](docs/UserConfigurationNullable.md)
  - [UserFile](docs/UserFile.md)
  - [UserFilesV2](docs/UserFilesV2.md)
  - [UserRequestContent](docs/UserRequestContent.md)

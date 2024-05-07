@@ -305,10 +305,10 @@ export const UsersApiFp = function(configuration?: Configuration) {
          */
         async updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const updateUsersInput: UpdateUsersInput = {
-                customer_ids: requestParameters.customer_ids,
                 auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources,
                 max_files: requestParameters.max_files,
-                max_files_per_upload: requestParameters.max_files_per_upload
+                max_files_per_upload: requestParameters.max_files_per_upload,
+                customer_ids: requestParameters.customer_ids
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

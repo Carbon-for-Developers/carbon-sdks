@@ -35,6 +35,8 @@ module Carbon
 
     attr_accessor :cancel_at_period_end
 
+    attr_accessor :global_user_config
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -54,6 +56,7 @@ module Carbon
         :'aggregate_num_embeddings' => :'aggregate_num_embeddings',
         :'period_ends_at' => :'period_ends_at',
         :'cancel_at_period_end' => :'cancel_at_period_end',
+        :'global_user_config' => :'global_user_config',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -79,6 +82,7 @@ module Carbon
         :'aggregate_num_embeddings' => :'Object',
         :'period_ends_at' => :'Time',
         :'cancel_at_period_end' => :'Boolean',
+        :'global_user_config' => :'Object',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -158,6 +162,10 @@ module Carbon
         self.cancel_at_period_end = attributes[:'cancel_at_period_end']
       end
 
+      if attributes.key?(:'global_user_config')
+        self.global_user_config = attributes[:'global_user_config']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -199,6 +207,10 @@ module Carbon
         invalid_properties.push('invalid value for "aggregate_num_embeddings", aggregate_num_embeddings cannot be nil.')
       end
 
+      if @global_user_config.nil?
+        invalid_properties.push('invalid value for "global_user_config", global_user_config cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -220,6 +232,7 @@ module Carbon
       return false if @aggregate_num_characters.nil?
       return false if @aggregate_num_tokens.nil?
       return false if @aggregate_num_embeddings.nil?
+      return false if @global_user_config.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -242,6 +255,7 @@ module Carbon
           aggregate_num_embeddings == o.aggregate_num_embeddings &&
           period_ends_at == o.period_ends_at &&
           cancel_at_period_end == o.cancel_at_period_end &&
+          global_user_config == o.global_user_config &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -255,7 +269,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, period_ends_at, cancel_at_period_end, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, period_ends_at, cancel_at_period_end, global_user_config, created_at, updated_at].hash
     end
 
     # Builds the object from hash
