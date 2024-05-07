@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.26-blue)](https://pypi.org/project/carbon-python-sdk/0.1.26)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.27-blue)](https://pypi.org/project/carbon-python-sdk/0.1.27)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -90,7 +90,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.26
+pip install carbon-python-sdk==0.1.27
 ```
 
 ## Getting Started<a id="getting-started"></a>
