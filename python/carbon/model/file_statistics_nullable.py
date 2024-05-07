@@ -36,6 +36,7 @@ class FileStatisticsNullable(
 
     class MetaOapg:
         required = {
+            "mime_type",
             "num_tokens",
             "num_embeddings",
             "file_format",
@@ -128,15 +129,37 @@ class FileStatisticsNullable(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class mime_type(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'mime_type':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "file_format": file_format,
                 "file_size": file_size,
                 "num_characters": num_characters,
                 "num_tokens": num_tokens,
                 "num_embeddings": num_embeddings,
+                "mime_type": mime_type,
             }
 
     
+    mime_type: MetaOapg.properties.mime_type
     num_tokens: MetaOapg.properties.num_tokens
     num_embeddings: MetaOapg.properties.num_embeddings
     file_format: 'FileFormatsNullable'
@@ -159,9 +182,12 @@ class FileStatisticsNullable(
     def __getitem__(self, name: typing_extensions.Literal["num_embeddings"]) -> MetaOapg.properties.num_embeddings: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["mime_type"]) -> MetaOapg.properties.mime_type: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_format", "file_size", "num_characters", "num_tokens", "num_embeddings", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_format", "file_size", "num_characters", "num_tokens", "num_embeddings", "mime_type", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -182,9 +208,12 @@ class FileStatisticsNullable(
     def get_item_oapg(self, name: typing_extensions.Literal["num_embeddings"]) -> MetaOapg.properties.num_embeddings: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["mime_type"]) -> MetaOapg.properties.mime_type: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_format", "file_size", "num_characters", "num_tokens", "num_embeddings", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_format", "file_size", "num_characters", "num_tokens", "num_embeddings", "mime_type", ], str]):
         return super().get_item_oapg(name)
     
 

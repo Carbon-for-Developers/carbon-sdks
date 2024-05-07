@@ -39,6 +39,7 @@ class OrganizationResponse(
             "custom_limits",
             "created_at",
             "custom_branding",
+            "global_user_config",
             "updated_at",
             "aggregate_num_embeddings",
             "name",
@@ -166,6 +167,7 @@ class OrganizationResponse(
                         *args,
                         _configuration=_configuration,
                     )
+            global_user_config = schemas.DictSchema
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -181,6 +183,7 @@ class OrganizationResponse(
                 "aggregate_num_embeddings": aggregate_num_embeddings,
                 "period_ends_at": period_ends_at,
                 "cancel_at_period_end": cancel_at_period_end,
+                "global_user_config": global_user_config,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -191,6 +194,7 @@ class OrganizationResponse(
     custom_limits: MetaOapg.properties.custom_limits
     created_at: MetaOapg.properties.created_at
     custom_branding: MetaOapg.properties.custom_branding
+    global_user_config: MetaOapg.properties.global_user_config
     updated_at: MetaOapg.properties.updated_at
     aggregate_num_embeddings: MetaOapg.properties.aggregate_num_embeddings
     name: MetaOapg.properties.name
@@ -237,6 +241,9 @@ class OrganizationResponse(
     def __getitem__(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["global_user_config"]) -> MetaOapg.properties.global_user_config: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -245,7 +252,7 @@ class OrganizationResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "global_user_config", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -287,6 +294,9 @@ class OrganizationResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["global_user_config"]) -> MetaOapg.properties.global_user_config: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -295,7 +305,7 @@ class OrganizationResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "period_ends_at", "cancel_at_period_end", "global_user_config", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -308,6 +318,7 @@ class OrganizationResponse(
         custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, None, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         custom_branding: typing.Union[MetaOapg.properties.custom_branding, dict, frozendict.frozendict, None, ],
+        global_user_config: typing.Union[MetaOapg.properties.global_user_config, dict, frozendict.frozendict, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         aggregate_num_embeddings: typing.Union[MetaOapg.properties.aggregate_num_embeddings, dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
@@ -328,6 +339,7 @@ class OrganizationResponse(
             custom_limits=custom_limits,
             created_at=created_at,
             custom_branding=custom_branding,
+            global_user_config=global_user_config,
             updated_at=updated_at,
             aggregate_num_embeddings=aggregate_num_embeddings,
             name=name,

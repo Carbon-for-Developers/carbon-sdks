@@ -85,6 +85,98 @@ module Carbon
       end
       APIResponse::new(data, status_code, headers, response)
     end
+
+
+    # Update Organization
+    #
+    # @param global_user_config [UserConfigurationNullable] 
+    # @param body [UpdateOrganizationInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update(global_user_config: SENTINEL, extra: {})
+      _body = {}
+      _body[:global_user_config] = global_user_config if global_user_config != SENTINEL
+      update_organization_input = _body
+      api_response = update_with_http_info_impl(update_organization_input, extra)
+      api_response.data
+    end
+
+    # Update Organization
+    #
+    # @param global_user_config [UserConfigurationNullable] 
+    # @param body [UpdateOrganizationInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update_with_http_info(global_user_config: SENTINEL, extra: {})
+      _body = {}
+      _body[:global_user_config] = global_user_config if global_user_config != SENTINEL
+      update_organization_input = _body
+      update_with_http_info_impl(update_organization_input, extra)
+    end
+
+    # Update Organization
+    # @param update_organization_input [UpdateOrganizationInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def update_impl(update_organization_input, opts = {})
+      data, _status_code, _headers = update_with_http_info(update_organization_input, opts)
+      data
+    end
+
+    # Update Organization
+    # @param update_organization_input [UpdateOrganizationInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def update_with_http_info_impl(update_organization_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrganizationsApi.update ...'
+      end
+      # verify the required parameter 'update_organization_input' is set
+      if @api_client.config.client_side_validation && update_organization_input.nil?
+        fail ArgumentError, "Missing the required parameter 'update_organization_input' when calling OrganizationsApi.update"
+      end
+      # resource path
+      local_var_path = '/organization/update'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_organization_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['apiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrganizationsApi.update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrganizationsApi#update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
   end
 
   # top-level client access to avoid having the user to insantiate their own API instances

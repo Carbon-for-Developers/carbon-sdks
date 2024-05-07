@@ -29,6 +29,7 @@ type OrganizationResponse struct {
 	AggregateNumEmbeddings map[string]interface{} `json:"aggregate_num_embeddings"`
 	PeriodEndsAt NullableTime `json:"period_ends_at"`
 	CancelAtPeriodEnd NullableBool `json:"cancel_at_period_end"`
+	GlobalUserConfig map[string]interface{} `json:"global_user_config"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -37,7 +38,7 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
+func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.Name = name
@@ -51,6 +52,7 @@ func NewOrganizationResponse(id int32, name string, nickname NullableString, rem
 	this.AggregateNumEmbeddings = aggregateNumEmbeddings
 	this.PeriodEndsAt = periodEndsAt
 	this.CancelAtPeriodEnd = cancelAtPeriodEnd
+	this.GlobalUserConfig = globalUserConfig
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -362,6 +364,30 @@ func (o *OrganizationResponse) SetCancelAtPeriodEnd(v bool) {
 	o.CancelAtPeriodEnd.Set(&v)
 }
 
+// GetGlobalUserConfig returns the GlobalUserConfig field value
+func (o *OrganizationResponse) GetGlobalUserConfig() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.GlobalUserConfig
+}
+
+// GetGlobalUserConfigOk returns a tuple with the GlobalUserConfig field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetGlobalUserConfigOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.GlobalUserConfig, true
+}
+
+// SetGlobalUserConfig sets field value
+func (o *OrganizationResponse) SetGlobalUserConfig(v map[string]interface{}) {
+	o.GlobalUserConfig = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *OrganizationResponse) GetCreatedAt() time.Time {
 	if o == nil {
@@ -447,6 +473,9 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cancel_at_period_end"] = o.CancelAtPeriodEnd.Get()
+	}
+	if true {
+		toSerialize["global_user_config"] = o.GlobalUserConfig
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

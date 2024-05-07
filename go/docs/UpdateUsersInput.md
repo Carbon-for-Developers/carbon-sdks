@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerIds** | **[]string** | List of organization supplied user IDs | 
 **AutoSyncEnabledSources** | Pointer to [**NullableAutoSyncEnabledSourcesProperty**](AutoSyncEnabledSourcesProperty.md) |  | [optional] 
 **MaxFiles** | Pointer to **NullableInt32** | Custom file upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit. | [optional] 
 **MaxFilesPerUpload** | Pointer to **NullableInt32** | Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit. | [optional] 
+**CustomerIds** | **[]string** | List of organization supplied user IDs | 
 
 ## Methods
 
@@ -27,26 +27,6 @@ will change when the set of required properties is changed
 NewUpdateUsersInputWithDefaults instantiates a new UpdateUsersInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCustomerIds
-
-`func (o *UpdateUsersInput) GetCustomerIds() []string`
-
-GetCustomerIds returns the CustomerIds field if non-nil, zero value otherwise.
-
-### GetCustomerIdsOk
-
-`func (o *UpdateUsersInput) GetCustomerIdsOk() (*[]string, bool)`
-
-GetCustomerIdsOk returns a tuple with the CustomerIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomerIds
-
-`func (o *UpdateUsersInput) SetCustomerIds(v []string)`
-
-SetCustomerIds sets CustomerIds field to given value.
-
 
 ### GetAutoSyncEnabledSources
 
@@ -153,6 +133,26 @@ HasMaxFilesPerUpload returns a boolean if a field has been set.
 `func (o *UpdateUsersInput) UnsetMaxFilesPerUpload()`
 
 UnsetMaxFilesPerUpload ensures that no value is present for MaxFilesPerUpload, not even an explicit nil
+### GetCustomerIds
+
+`func (o *UpdateUsersInput) GetCustomerIds() []string`
+
+GetCustomerIds returns the CustomerIds field if non-nil, zero value otherwise.
+
+### GetCustomerIdsOk
+
+`func (o *UpdateUsersInput) GetCustomerIdsOk() (*[]string, bool)`
+
+GetCustomerIdsOk returns a tuple with the CustomerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerIds
+
+`func (o *UpdateUsersInput) SetCustomerIds(v []string)`
+
+SetCustomerIds sets CustomerIds field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,12 +19,6 @@ describe Carbon::UpdateUsersInput do
       expect(instance).to be_instance_of(Carbon::UpdateUsersInput)
     end
   end
-  describe 'test attribute "customer_ids"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   describe 'test attribute "auto_sync_enabled_sources"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -38,6 +32,12 @@ describe Carbon::UpdateUsersInput do
   end
 
   describe 'test attribute "max_files_per_upload"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "customer_ids"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

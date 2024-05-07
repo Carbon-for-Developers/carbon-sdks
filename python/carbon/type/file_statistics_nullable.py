@@ -27,6 +27,8 @@ class RequiredFileStatisticsNullable(TypedDict):
 
     num_embeddings: typing.Optional[int]
 
+    mime_type: typing.Optional[str]
+
 class OptionalFileStatisticsNullable(TypedDict, total=False):
     pass
 

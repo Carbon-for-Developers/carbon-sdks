@@ -66,6 +66,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.organizations.update`](#carbonorganizationsupdate)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
@@ -1323,7 +1324,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "7f46547c-7585-4463-bdd5-a1f8cde14b89",
+        "request_id": "18492fc0-bd2f-48d4-a035-8d12f762cc76",
         "enable_file_picker": True,
         "sync_source_items": True,
     },
@@ -1567,7 +1568,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="ae840422-78ad-45c5-a0bd-019c2b2e8443",
+    request_id="1975f217-47e4-4867-8acd-5bdb2858049b",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1635,7 +1636,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT
+Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1899,7 +1900,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="2da50864-4700-4b70-8098-ddcafcc3267d",
+    request_id="a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -2006,7 +2007,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="2da50864-4700-4b70-8098-ddcafcc3267d",
+    request_id="a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -2567,6 +2568,38 @@ get_response = carbon.organizations.get()
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.organizations.update`<a id="carbonorganizationsupdate"></a>
+
+Update Organization
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+update_response = carbon.organizations.update(
+    global_user_config={},
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### global_user_config: [`UserConfigurationNullable`](./carbon/type/user_configuration_nullable.py)<a id="global_user_config-userconfigurationnullablecarbontypeuser_configuration_nullablepy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`UpdateOrganizationInput`](./carbon/type/update_organization_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization/update` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

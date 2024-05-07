@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **NumCharacters** | **NullableInt32** |  | 
 **NumTokens** | **NullableInt32** |  | 
 **NumEmbeddings** | **NullableInt32** |  | 
+**MimeType** | **NullableString** |  | 
 
 ## Methods
 
 ### NewFileStatisticsNullable
 
-`func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32, ) *FileStatisticsNullable`
+`func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32, mimeType NullableString, ) *FileStatisticsNullable`
 
 NewFileStatisticsNullable instantiates a new FileStatisticsNullable object
 This constructor will assign default values to properties that have it defined,
@@ -179,6 +180,36 @@ SetNumEmbeddings sets NumEmbeddings field to given value.
 `func (o *FileStatisticsNullable) UnsetNumEmbeddings()`
 
 UnsetNumEmbeddings ensures that no value is present for NumEmbeddings, not even an explicit nil
+### GetMimeType
+
+`func (o *FileStatisticsNullable) GetMimeType() string`
+
+GetMimeType returns the MimeType field if non-nil, zero value otherwise.
+
+### GetMimeTypeOk
+
+`func (o *FileStatisticsNullable) GetMimeTypeOk() (*string, bool)`
+
+GetMimeTypeOk returns a tuple with the MimeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMimeType
+
+`func (o *FileStatisticsNullable) SetMimeType(v string)`
+
+SetMimeType sets MimeType field to given value.
+
+
+### SetMimeTypeNil
+
+`func (o *FileStatisticsNullable) SetMimeTypeNil(b bool)`
+
+ SetMimeTypeNil sets the value for MimeType to be an explicit nil
+
+### UnsetMimeType
+`func (o *FileStatisticsNullable) UnsetMimeType()`
+
+UnsetMimeType ensures that no value is present for MimeType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

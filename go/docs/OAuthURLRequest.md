@@ -23,10 +23,10 @@ Name | Type | Description | Notes
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
 **ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
-**RequestId** | Pointer to **string** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] [default to "ae840422-78ad-45c5-a0bd-019c2b2e8443"]
+**RequestId** | Pointer to **string** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] [default to "1975f217-47e4-4867-8acd-5bdb2858049b"]
 **UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
-**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT | [optional] [default to true]
+**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE | [optional] [default to true]
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 
 ## Methods

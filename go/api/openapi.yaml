@@ -469,6 +469,7 @@ tags:
     \ 24-hour batch sync running in the background. You can request us via Slack to\
     \ run more frequent batch syncs.\n\n# Slack\n# Confluence\n"
   name: Data Sources
+- name: Organizations
 - description: |2
 
     ---
@@ -476,7 +477,6 @@ tags:
 
     You can also check for the health of our services on our [Status Page](https://status.carbon.ai/).
   name: Health
-- name: Organizations
 - description: "\n---\n\n![](http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png)\n\
     \n## What is Carbon?\n\nCarbon provides a comprehensive framework designed to\
     \ streamline the process of connecting external data sources to Large Language\
@@ -2371,6 +2371,35 @@ paths:
       - Organizations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--organization
+  /organization/update:
+    post:
+      operationId: Organizations_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrganizationInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: Update Organization
+      tags:
+      - Organizations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--organization-update
   /user:
     post:
       operationId: Users_get
@@ -3767,7 +3796,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+          request_id: 18492fc0-bd2f-48d4-a035-8d12f762cc76
         authentication: null
       properties:
         authentication:
@@ -3787,7 +3816,7 @@ components:
             enable_file_picker: true
             generate_sparse_vectors: false
             prepend_filename_to_chunks: false
-            request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+            request_id: 18492fc0-bd2f-48d4-a035-8d12f762cc76
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4555,9 +4584,14 @@ components:
           nullable: true
           title: Num Embeddings
           type: integer
+        mime_type:
+          nullable: true
+          title: Mime Type
+          type: string
       required:
       - file_format
       - file_size
+      - mime_type
       - num_characters
       - num_embeddings
       - num_tokens
@@ -5497,7 +5531,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: ae840422-78ad-45c5-a0bd-019c2b2e8443
+        request_id: 1975f217-47e4-4867-8acd-5bdb2858049b
         zendesk_subdomain: zendesk_subdomain
         data_source_id: 6
         microsoft_tenant: microsoft_tenant
@@ -5617,13 +5651,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          default: 1975f217-47e4-4867-8acd-5bdb2858049b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          example: 1975f217-47e4-4867-8acd-5bdb2858049b
           title: Request Id
           type: string
-          x-konfig-original-example: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          x-konfig-original-example: 1975f217-47e4-4867-8acd-5bdb2858049b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5645,7 +5679,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT"
+            \ it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5684,6 +5718,7 @@ components:
         cancel_at_period_end: true
         created_at: 2000-01-23T04:56:07.000+00:00
         custom_branding: "{}"
+        global_user_config: {}
         updated_at: 2000-01-23T04:56:07.000+00:00
         aggregate_num_embeddings: "{}"
         name: name
@@ -5735,6 +5770,13 @@ components:
           nullable: true
           title: Cancel At Period End
           type: boolean
+        global_user_config:
+          default: {}
+          example: {}
+          title: Global User Config
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationResponse-properties-global_user_config
         created_at:
           format: date-time
           title: Created At
@@ -5752,6 +5794,7 @@ components:
       - created_at
       - custom_branding
       - custom_limits
+      - global_user_config
       - id
       - name
       - nickname
@@ -7002,7 +7045,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 2da50864-4700-4b70-8098-ddcafcc3267d
+        request_id: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
         data_source_id: 0
       properties:
         tags:
@@ -7074,11 +7117,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2da50864-4700-4b70-8098-ddcafcc3267d
-          example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          default: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
+          example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           title: Request Id
           type: string
-          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          x-konfig-original-example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7115,7 +7158,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+        request_id: 18492fc0-bd2f-48d4-a035-8d12f762cc76
       properties:
         tags:
           nullable: true
@@ -7188,11 +7231,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 7f46547c-7585-4463-bdd5-a1f8cde14b89
-          example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+          default: 18492fc0-bd2f-48d4-a035-8d12f762cc76
+          example: 18492fc0-bd2f-48d4-a035-8d12f762cc76
           title: Request Id
           type: string
-          x-konfig-original-example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+          x-konfig-original-example: 18492fc0-bd2f-48d4-a035-8d12f762cc76
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7246,6 +7289,17 @@ components:
       - refresh_token
       title: TokenResponse
       type: object
+    UpdateOrganizationInput:
+      example:
+        global_user_config:
+          max_files: 0
+          auto_sync_enabled_sources: null
+          max_files_per_upload: 0
+      properties:
+        global_user_config:
+          $ref: '#/components/schemas/UserConfigurationNullable'
+      title: UpdateOrganizationInput
+      type: object
     UpdateUsersInput:
       example:
         max_files: 0
@@ -7258,13 +7312,6 @@ components:
         auto_sync_enabled_sources: null
         max_files_per_upload: 0
       properties:
-        customer_ids:
-          description: List of organization supplied user IDs
-          items:
-            type: string
-          maxItems: 100
-          title: Customer Ids
-          type: array
         auto_sync_enabled_sources:
           $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
         max_files:
@@ -7285,6 +7332,13 @@ components:
           nullable: true
           title: Max Files Per Upload
           type: integer
+        customer_ids:
+          description: List of organization supplied user IDs
+          items:
+            type: string
+          maxItems: 100
+          title: Customer Ids
+          type: array
       required:
       - customer_ids
       title: UpdateUsersInput
@@ -7376,6 +7430,30 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    UserConfiguration:
+      properties:
+        auto_sync_enabled_sources:
+          $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
+        max_files:
+          description: "Custom file upload limit for the user over *all* user's files\
+            \ across all uploads. \n        If set, then the user will not be allowed\
+            \ to upload more files than this limit. If not set, or if set to -1,\n\
+            \        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Files
+          type: integer
+        max_files_per_upload:
+          description: |-
+            Custom file upload limit for the user across a single upload.
+                    If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,
+                    or if set to -1, then the user will have no limit.
+          minimum: -1
+          nullable: true
+          title: Max Files Per Upload
+          type: integer
+      title: UserConfiguration
+      type: object
     UserFile:
       example:
         additional_presigned_urls: "{}"
@@ -7411,6 +7489,7 @@ components:
         name: name
         sync_status: null
         file_statistics:
+          mime_type: mime_type
           num_tokens: 2
           num_embeddings: 7
           file_format: null
@@ -7611,6 +7690,7 @@ components:
           name: name
           sync_status: null
           file_statistics:
+            mime_type: mime_type
             num_tokens: 2
             num_embeddings: 7
             file_format: null
@@ -7653,6 +7733,7 @@ components:
           name: name
           sync_status: null
           file_statistics:
+            mime_type: mime_type
             num_tokens: 2
             num_embeddings: 7
             file_format: null
@@ -8363,8 +8444,41 @@ components:
           type: boolean
       title: ListItemsFilters
       type: object
+    UserConfigurationNullable:
+      description: |-
+        Used to set organization level defaults for user settings. These settings will apply to all users under
+                the organization that don't have them defined.
+      example:
+        max_files: 0
+        auto_sync_enabled_sources: null
+        max_files_per_upload: 0
+      nullable: true
+      properties:
+        auto_sync_enabled_sources:
+          $ref: '#/components/schemas/Auto_Sync_Enabled_Sources_Property'
+        max_files:
+          description: "Custom file upload limit for the user over *all* user's files\
+            \ across all uploads. \n        If set, then the user will not be allowed\
+            \ to upload more files than this limit. If not set, or if set to -1,\n\
+            \        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Files
+          type: integer
+        max_files_per_upload:
+          description: |-
+            Custom file upload limit for the user across a single upload.
+                    If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,
+                    or if set to -1, then the user will have no limit.
+          minimum: -1
+          nullable: true
+          title: Max Files Per Upload
+          type: integer
+      title: UserConfiguration
+      type: object
     FileStatisticsNullable:
       example:
+        mime_type: mime_type
         num_tokens: 2
         num_embeddings: 7
         file_format: null
@@ -8390,9 +8504,14 @@ components:
           nullable: true
           title: Num Embeddings
           type: integer
+        mime_type:
+          nullable: true
+          title: Mime Type
+          type: string
       required:
       - file_format
       - file_size
+      - mime_type
       - num_characters
       - num_embeddings
       - num_tokens
@@ -8801,7 +8920,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: ae840422-78ad-45c5-a0bd-019c2b2e8443
+      example: 1975f217-47e4-4867-8acd-5bdb2858049b
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -8819,6 +8938,11 @@ components:
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items:
       example: true
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationResponse-properties-global_user_config:
+      example: {}
+      properties: {}
+      type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-include_all_children:
       example: false
@@ -9021,7 +9145,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 2da50864-4700-4b70-8098-ddcafcc3267d
+      example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9061,7 +9185,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 7f46547c-7585-4463-bdd5-a1f8cde14b89
+      example: 18492fc0-bd2f-48d4-a035-8d12f762cc76
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9372,13 +9496,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          default: 1975f217-47e4-4867-8acd-5bdb2858049b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          example: 1975f217-47e4-4867-8acd-5bdb2858049b
           title: Request Id
           type: string
-          x-konfig-original-example: ae840422-78ad-45c5-a0bd-019c2b2e8443
+          x-konfig-original-example: 1975f217-47e4-4867-8acd-5bdb2858049b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9400,7 +9524,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT"
+            \ it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9553,11 +9677,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2da50864-4700-4b70-8098-ddcafcc3267d
-          example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          default: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
+          example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           title: Request Id
           type: string
-          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          x-konfig-original-example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -9673,11 +9797,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2da50864-4700-4b70-8098-ddcafcc3267d
-          example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          default: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
+          example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           title: Request Id
           type: string
-          x-konfig-original-example: 2da50864-4700-4b70-8098-ddcafcc3267d
+          x-konfig-original-example: a7c990f4-5923-47b5-a9f8-6ef5416fe5c3
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10636,6 +10760,13 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--organization-update:
+      properties:
+        global_user_config:
+          $ref: '#/components/schemas/UserConfigurationNullable'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--user:
       properties:
         customer_id:
@@ -10673,13 +10804,6 @@ components:
       x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--update_users:
       properties:
-        customer_ids:
-          description: List of organization supplied user IDs
-          items:
-            type: string
-          maxItems: 100
-          title: Customer Ids
-          type: array
         auto_sync_enabled_sources:
           anyOf:
           - items:
@@ -10709,6 +10833,13 @@ components:
           nullable: true
           title: Max Files Per Upload
           type: integer
+        customer_ids:
+          description: List of organization supplied user IDs
+          items:
+            type: string
+          maxItems: 100
+          title: Customer Ids
+          type: array
       required:
       - customer_ids
       type: object

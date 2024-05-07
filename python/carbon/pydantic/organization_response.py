@@ -41,6 +41,8 @@ class OrganizationResponse(BaseModel):
 
     cancel_at_period_end: typing.Optional[bool] = Field(alias='cancel_at_period_end')
 
+    global_user_config: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='global_user_config')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

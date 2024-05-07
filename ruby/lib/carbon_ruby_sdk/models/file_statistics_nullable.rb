@@ -21,6 +21,8 @@ module Carbon
 
     attr_accessor :num_embeddings
 
+    attr_accessor :mime_type
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -28,7 +30,8 @@ module Carbon
         :'file_size' => :'file_size',
         :'num_characters' => :'num_characters',
         :'num_tokens' => :'num_tokens',
-        :'num_embeddings' => :'num_embeddings'
+        :'num_embeddings' => :'num_embeddings',
+        :'mime_type' => :'mime_type'
       }
     end
 
@@ -44,7 +47,8 @@ module Carbon
         :'file_size' => :'Integer',
         :'num_characters' => :'Integer',
         :'num_tokens' => :'Integer',
-        :'num_embeddings' => :'Integer'
+        :'num_embeddings' => :'Integer',
+        :'mime_type' => :'String'
       }
     end
 
@@ -55,7 +59,8 @@ module Carbon
         :'file_size',
         :'num_characters',
         :'num_tokens',
-        :'num_embeddings'
+        :'num_embeddings',
+        :'mime_type'
       ])
     end
 
@@ -93,6 +98,10 @@ module Carbon
       if attributes.key?(:'num_embeddings')
         self.num_embeddings = attributes[:'num_embeddings']
       end
+
+      if attributes.key?(:'mime_type')
+        self.mime_type = attributes[:'mime_type']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -117,7 +126,8 @@ module Carbon
           file_size == o.file_size &&
           num_characters == o.num_characters &&
           num_tokens == o.num_tokens &&
-          num_embeddings == o.num_embeddings
+          num_embeddings == o.num_embeddings &&
+          mime_type == o.mime_type
     end
 
     # @see the `==` method
@@ -129,7 +139,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [file_format, file_size, num_characters, num_tokens, num_embeddings].hash
+      [file_format, file_size, num_characters, num_tokens, num_embeddings, mime_type].hash
     end
 
     # Builds the object from hash

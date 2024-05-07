@@ -28,6 +28,8 @@ class FileStatistics(BaseModel):
 
     num_embeddings: typing.Optional[int] = Field(alias='num_embeddings')
 
+    mime_type: typing.Optional[str] = Field(alias='mime_type')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

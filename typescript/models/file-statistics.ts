@@ -48,5 +48,11 @@ export interface FileStatistics {
      * @memberof FileStatistics
      */
     'num_embeddings': number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FileStatistics
+     */
+    'mime_type': string | null;
 }
 

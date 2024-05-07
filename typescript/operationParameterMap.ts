@@ -934,6 +934,13 @@ export const operationParameterMap: Record<string, Entry> = {
         parameters: [
         ]
     },
+    '/organization/update-POST': {
+        parameters: [
+            {
+                name: 'global_user_config'
+            },
+        ]
+    },
     '/delete_users-POST': {
         parameters: [
             {

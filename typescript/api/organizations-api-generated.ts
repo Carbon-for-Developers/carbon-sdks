@@ -21,7 +21,15 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { GenericSuccessResponse } from '../models';
+// @ts-ignore
+import { HTTPValidationError } from '../models';
+// @ts-ignore
 import { OrganizationResponse } from '../models';
+// @ts-ignore
+import { UpdateOrganizationInput } from '../models';
+// @ts-ignore
+import { UserConfigurationNullable } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
@@ -71,6 +79,54 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update Organization
+         * @param {UpdateOrganizationInput} updateOrganizationInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        update: async (updateOrganizationInput: UpdateOrganizationInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateOrganizationInput' is not null or undefined
+            assertParamExists('update', 'updateOrganizationInput', updateOrganizationInput)
+            const localVarPath = `/organization/update`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: updateOrganizationInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/organization/update',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(updateOrganizationInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -89,6 +145,20 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          */
         async get(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.get(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update Organization
+         * @param {OrganizationsApiUpdateRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async update(requestParameters: OrganizationsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const updateOrganizationInput: UpdateOrganizationInput = {
+                global_user_config: requestParameters.global_user_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(updateOrganizationInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -110,8 +180,27 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
         get(options?: AxiosRequestConfig): AxiosPromise<OrganizationResponse> {
             return localVarFp.get(options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Update Organization
+         * @param {OrganizationsApiUpdateRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        update(requestParameters: OrganizationsApiUpdateRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.update(requestParameters, options).then((request) => request(axios, basePath));
+        },
     };
 };
+
+/**
+ * Request parameters for update operation in OrganizationsApi.
+ * @export
+ * @interface OrganizationsApiUpdateRequest
+ */
+export type OrganizationsApiUpdateRequest = {
+    
+} & UpdateOrganizationInput
 
 /**
  * OrganizationsApiGenerated - object-oriented interface
@@ -129,5 +218,17 @@ export class OrganizationsApiGenerated extends BaseAPI {
      */
     public get(options?: AxiosRequestConfig) {
         return OrganizationsApiFp(this.configuration).get(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Organization
+     * @param {OrganizationsApiUpdateRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApiGenerated
+     */
+    public update(requestParameters: OrganizationsApiUpdateRequest, options?: AxiosRequestConfig) {
+        return OrganizationsApiFp(this.configuration).update(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

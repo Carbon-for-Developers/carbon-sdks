@@ -21,19 +21,21 @@ type FileStatisticsNullable struct {
 	NumCharacters NullableInt32 `json:"num_characters"`
 	NumTokens NullableInt32 `json:"num_tokens"`
 	NumEmbeddings NullableInt32 `json:"num_embeddings"`
+	MimeType NullableString `json:"mime_type"`
 }
 
 // NewFileStatisticsNullable instantiates a new FileStatisticsNullable object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32) *FileStatisticsNullable {
+func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32, mimeType NullableString) *FileStatisticsNullable {
 	this := FileStatisticsNullable{}
 	this.FileFormat = fileFormat
 	this.FileSize = fileSize
 	this.NumCharacters = numCharacters
 	this.NumTokens = numTokens
 	this.NumEmbeddings = numEmbeddings
+	this.MimeType = mimeType
 	return &this
 }
 
@@ -175,6 +177,32 @@ func (o *FileStatisticsNullable) SetNumEmbeddings(v int32) {
 	o.NumEmbeddings.Set(&v)
 }
 
+// GetMimeType returns the MimeType field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *FileStatisticsNullable) GetMimeType() string {
+	if o == nil || o.MimeType.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.MimeType.Get()
+}
+
+// GetMimeTypeOk returns a tuple with the MimeType field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FileStatisticsNullable) GetMimeTypeOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MimeType.Get(), o.MimeType.IsSet()
+}
+
+// SetMimeType sets field value
+func (o *FileStatisticsNullable) SetMimeType(v string) {
+	o.MimeType.Set(&v)
+}
+
 func (o FileStatisticsNullable) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -191,6 +219,9 @@ func (o FileStatisticsNullable) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["num_embeddings"] = o.NumEmbeddings.Get()
+	}
+	if true {
+		toSerialize["mime_type"] = o.MimeType.Get()
 	}
 	return json.Marshal(toSerialize)
 }
