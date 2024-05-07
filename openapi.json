@@ -1429,6 +1429,52 @@
         ]
       }
     },
+    "/organization/update": {
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Update Organization",
+        "operationId": "update_organization_organization_update_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrganizationInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/user": {
       "post": {
         "tags": [
@@ -3239,7 +3285,7 @@
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "7f46547c-7585-4463-bdd5-a1f8cde14b89",
+              "request_id": "18492fc0-bd2f-48d4-a035-8d12f762cc76",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4189,6 +4235,17 @@
               }
             ],
             "title": "Num Embeddings"
+          },
+          "mime_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mime Type"
           }
         },
         "type": "object",
@@ -4197,7 +4254,8 @@
           "file_size",
           "num_characters",
           "num_tokens",
-          "num_embeddings"
+          "num_embeddings",
+          "mime_type"
         ],
         "title": "FileStatistics"
       },
@@ -5577,7 +5635,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "ae840422-78ad-45c5-a0bd-019c2b2e8443"
+            "default": "1975f217-47e4-4867-8acd-5bdb2858049b"
           },
           "use_ocr": {
             "anyOf": [
@@ -5607,7 +5665,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, BOX, ONEDRIVE, DROPBOX, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE",
             "default": true
           },
           "sync_source_items": {
@@ -5725,6 +5783,11 @@
             ],
             "title": "Cancel At Period End"
           },
+          "global_user_config": {
+            "type": "object",
+            "title": "Global User Config",
+            "default": {}
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -5750,6 +5813,7 @@
           "aggregate_num_embeddings",
           "period_ends_at",
           "cancel_at_period_end",
+          "global_user_config",
           "created_at",
           "updated_at"
         ],
@@ -7525,7 +7589,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "2da50864-4700-4b70-8098-ddcafcc3267d"
+            "default": "a7c990f4-5923-47b5-a9f8-6ef5416fe5c3"
           },
           "use_ocr": {
             "anyOf": [
@@ -7675,7 +7739,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "7f46547c-7585-4463-bdd5-a1f8cde14b89"
+            "default": "18492fc0-bd2f-48d4-a035-8d12f762cc76"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -7730,17 +7794,25 @@
         ],
         "title": "TokenResponse"
       },
+      "UpdateOrganizationInput": {
+        "properties": {
+          "global_user_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UserConfiguration"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to set organization level defaults for user settings. These settings will apply to all users under\n        the organization that don't have them defined."
+          }
+        },
+        "type": "object",
+        "title": "UpdateOrganizationInput"
+      },
       "UpdateUsersInput": {
         "properties": {
-          "customer_ids": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "maxItems": 100,
-            "title": "Customer Ids",
-            "description": "List of organization supplied user IDs"
-          },
           "auto_sync_enabled_sources": {
             "anyOf": [
               {
@@ -7784,6 +7856,15 @@
             ],
             "title": "Max Files Per Upload",
             "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit."
+          },
+          "customer_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Customer Ids",
+            "description": "List of organization supplied user IDs"
           }
         },
         "type": "object",
@@ -7888,6 +7969,56 @@
           "url"
         ],
         "title": "UploadFileFromUrlInput"
+      },
+      "UserConfiguration": {
+        "properties": {
+          "auto_sync_enabled_sources": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DataSourceType"
+                },
+                "type": "array"
+              },
+              {
+                "$ref": "#/components/schemas/DataSourceExtendedInput"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auto Sync Enabled Sources",
+            "description": "List of data source types to enable auto sync for. Empty array will remove all sources \n        and the string \"ALL\" will enable it for all data sources"
+          },
+          "max_files": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Files",
+            "description": "Custom file upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,\n        then the user will have no limit."
+          },
+          "max_files_per_upload": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Files Per Upload",
+            "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit."
+          }
+        },
+        "type": "object",
+        "title": "UserConfiguration"
       },
       "UserFile": {
         "properties": {
