@@ -113,5 +113,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'sync_error_message'?: string | null;
+    /**
+     * If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
+     * @type {boolean}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'include_containers'?: boolean | null;
 }
 

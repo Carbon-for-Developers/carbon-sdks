@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **NonSyncedOnly** | Pointer to **bool** | If true, the query will return only files that have not been synced yet. | [optional] [default to false]
 **RequestIds** | Pointer to **[]string** | Filter by request ID(s) which were used to sync the files | [optional] 
 **SyncErrorMessage** | Pointer to **NullableString** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. | [optional] 
+**IncludeContainers** | Pointer to **NullableBool** | If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers. | [optional] 
 
 ## Methods
 
@@ -544,6 +545,41 @@ HasSyncErrorMessage returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetSyncErrorMessage()`
 
 UnsetSyncErrorMessage ensures that no value is present for SyncErrorMessage, not even an explicit nil
+### GetIncludeContainers
+
+`func (o *OrganizationUserFilesToSyncFilters) GetIncludeContainers() bool`
+
+GetIncludeContainers returns the IncludeContainers field if non-nil, zero value otherwise.
+
+### GetIncludeContainersOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetIncludeContainersOk() (*bool, bool)`
+
+GetIncludeContainersOk returns a tuple with the IncludeContainers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeContainers
+
+`func (o *OrganizationUserFilesToSyncFilters) SetIncludeContainers(v bool)`
+
+SetIncludeContainers sets IncludeContainers field to given value.
+
+### HasIncludeContainers
+
+`func (o *OrganizationUserFilesToSyncFilters) HasIncludeContainers() bool`
+
+HasIncludeContainers returns a boolean if a field has been set.
+
+### SetIncludeContainersNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetIncludeContainersNil(b bool)`
+
+ SetIncludeContainersNil sets the value for IncludeContainers to be an explicit nil
+
+### UnsetIncludeContainers
+`func (o *OrganizationUserFilesToSyncFilters) UnsetIncludeContainers()`
+
+UnsetIncludeContainers ensures that no value is present for IncludeContainers, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
