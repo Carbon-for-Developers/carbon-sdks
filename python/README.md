@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.27-blue)](https://pypi.org/project/carbon-python-sdk/0.1.27)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.28-blue)](https://pypi.org/project/carbon-python-sdk/0.1.28)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -90,7 +90,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.27
+pip install carbon-python-sdk==0.1.28
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -112,6 +112,7 @@ carbon = Carbon(access_token=token.access_token)
 # use SDK as usual
 white_labeling = carbon.auth.get_white_labeling()
 # etc.
+
 ```
 
 ## Async<a id="async"></a>
@@ -119,16 +120,19 @@ white_labeling = carbon.auth.get_white_labeling()
 `async` support is available by prepending `a` to any method.
 
 ```python
+
 import asyncio
 from pprint import pprint
 from carbon import Carbon, ApiException
 
 carbon = Carbon(
-    access_token="YOUR_API_KEY",
-    api_key="YOUR_API_KEY",
-    customer_id="YOUR_API_KEY",
-)
 
+        access_token = 'YOUR_API_KEY',
+
+        api_key = 'YOUR_API_KEY',
+
+        customer_id = 'YOUR_API_KEY',
+)
 
 async def main():
     try:
@@ -145,7 +149,6 @@ async def main():
         pprint(e.reason)
         pprint(e.round_trip_time)
 
-
 asyncio.run(main())
 ```
 
@@ -158,9 +161,12 @@ from pprint import pprint
 from carbon import Carbon, ApiException
 
 carbon = Carbon(
-    access_token="YOUR_API_KEY",
-    api_key="YOUR_API_KEY",
-    customer_id="YOUR_API_KEY",
+
+        access_token = 'YOUR_API_KEY',
+
+        api_key = 'YOUR_API_KEY',
+
+        customer_id = 'YOUR_API_KEY',
 )
 
 try:
@@ -417,11 +423,18 @@ get_documents_response = carbon.embeddings.get_documents(
     tags={
         "key": "string_example",
     },
-    query_vector=[3.14],
-    file_ids=[1],
-    parent_file_ids=[1],
+    query_vector=[
+        3.14
+    ],
+    file_ids=[
+        1
+    ],
+    parent_file_ids=[
+        1
+    ],
     include_all_children=False,
-    tags_v2={},
+    tags_v2={
+    },
     include_tags=True,
     include_vectors=True,
     include_raw_file=True,
@@ -687,7 +700,9 @@ Delete File Tags
 
 ```python
 delete_file_tags_response = carbon.files.delete_file_tags(
-    tags=["string_example"],
+    tags=[
+        "string_example"
+    ],
     organization_user_file_id=1,
 )
 ```
@@ -721,8 +736,12 @@ Delete Files Endpoint
 
 ```python
 delete_many_response = carbon.files.delete_many(
-    file_ids=[1],
-    sync_statuses=["string_example"],
+    file_ids=[
+        1
+    ],
+    sync_statuses=[
+        "string_example"
+    ],
     delete_non_synced_only=False,
     send_webhook=False,
     delete_child_files=False,
@@ -1085,7 +1104,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 
 ```python
 upload_response = carbon.files.upload(
-    file=open("/path/to/file", "rb"),
+    file=open('/path/to/file', 'rb'),
     chunk_size=1,
     chunk_overlap=1,
     skip_embedding_generation=False,
@@ -1324,7 +1343,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "18492fc0-bd2f-48d4-a035-8d12f762cc76",
+        "request_id": "875454df-996d-4d26-83e0-756af9628ed0",
         "enable_file_picker": True,
         "sync_source_items": True,
     },
@@ -1568,7 +1587,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="1975f217-47e4-4867-8acd-5bdb2858049b",
+    request_id="fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1636,7 +1655,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, ONEDRIVE, DROPBOX, GOOGLE_DRIVE
+Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1707,7 +1726,8 @@ List Data Source Items
 list_data_source_items_response = carbon.integrations.list_data_source_items(
     data_source_id=1,
     parent_id="string_example",
-    filters={},
+    filters={
+    },
     pagination={
         "limit": 10,
         "offset": 0,
@@ -1890,7 +1910,9 @@ pages or alter the behavior of the sync.
 ```python
 sync_confluence_response = carbon.integrations.sync_confluence(
     data_source_id=1,
-    ids=["string_example"],
+    ids=[
+        "string_example"
+    ],
     tags={},
     chunk_size=1500,
     chunk_overlap=20,
@@ -1900,7 +1922,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
+    request_id="2446df66-66dd-4ea3-b248-a416d886e087",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -1997,7 +2019,9 @@ tell the sync to assume the item is stored in the default Documents drive.
 ```python
 sync_files_response = carbon.integrations.sync_files(
     data_source_id=1,
-    ids=["string_example"],
+    ids=[
+        "string_example"
+    ],
     tags={},
     chunk_size=1500,
     chunk_overlap=20,
@@ -2007,7 +2031,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="a7c990f4-5923-47b5-a9f8-6ef5416fe5c3",
+    request_id="2446df66-66dd-4ea3-b248-a416d886e087",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
 )
@@ -2111,7 +2135,9 @@ data with the synced pages or modify the sync behavior.
 
 ```python
 sync_gitbook_response = carbon.integrations.sync_gitbook(
-    space_ids=["string_example"],
+    space_ids=[
+        "string_example"
+    ],
     data_source_id=1,
     tags={},
     chunk_size=1500,
@@ -2400,7 +2426,9 @@ carbon which can be accessed through /integrations/items/list endpoint. Maximum 
 
 ```python
 sync_repos_response = carbon.integrations.sync_repos(
-    repos=["string_example"],
+    repos=[
+        "string_example"
+    ],
     data_source_id=1,
 )
 ```
@@ -2487,7 +2515,10 @@ data with the selected items or modify the sync behavior
 
 ```python
 sync_s3_files_response = carbon.integrations.sync_s3_files(
-    ids=[{}],
+    ids=[
+        {
+        }
+    ],
     tags={},
     chunk_size=1500,
     chunk_overlap=20,
@@ -2581,7 +2612,8 @@ Update Organization
 
 ```python
 update_response = carbon.organizations.update(
-    global_user_config={},
+    global_user_config={
+    },
 )
 ```
 
@@ -2613,7 +2645,9 @@ Delete Users
 
 ```python
 delete_response = carbon.users.delete(
-    customer_ids=["string_example"],
+    customer_ids=[
+        "string_example"
+    ],
 )
 ```
 
@@ -2709,8 +2743,12 @@ Update Users
 
 ```python
 update_users_response = carbon.users.update_users(
-    customer_ids=["string_example"],
-    auto_sync_enabled_sources=["string_example"],
+    customer_ids=[
+        "string_example"
+    ],
+    auto_sync_enabled_sources=[
+        "string_example"
+    ],
     max_files=-1,
     max_files_per_upload=-1,
 )

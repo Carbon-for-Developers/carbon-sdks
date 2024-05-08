@@ -69,5 +69,8 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
     # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
     sync_error_message: typing.Optional[str]
 
+    # If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
+    include_containers: typing.Optional[bool]
+
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

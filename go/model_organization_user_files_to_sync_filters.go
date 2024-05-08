@@ -45,6 +45,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	RequestIds []string `json:"request_ids,omitempty"`
 	// The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
 	SyncErrorMessage NullableString `json:"sync_error_message,omitempty"`
+	// If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
+	IncludeContainers NullableBool `json:"include_containers,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -607,6 +609,48 @@ func (o *OrganizationUserFilesToSyncFilters) UnsetSyncErrorMessage() {
 	o.SyncErrorMessage.Unset()
 }
 
+// GetIncludeContainers returns the IncludeContainers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetIncludeContainers() bool {
+	if o == nil || isNil(o.IncludeContainers.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeContainers.Get()
+}
+
+// GetIncludeContainersOk returns a tuple with the IncludeContainers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetIncludeContainersOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.IncludeContainers.Get(), o.IncludeContainers.IsSet()
+}
+
+// HasIncludeContainers returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasIncludeContainers() bool {
+	if o != nil && o.IncludeContainers.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeContainers gets a reference to the given NullableBool and assigns it to the IncludeContainers field.
+func (o *OrganizationUserFilesToSyncFilters) SetIncludeContainers(v bool) {
+	o.IncludeContainers.Set(&v)
+}
+// SetIncludeContainersNil sets the value for IncludeContainers to be an explicit nil
+func (o *OrganizationUserFilesToSyncFilters) SetIncludeContainersNil() {
+	o.IncludeContainers.Set(nil)
+}
+
+// UnsetIncludeContainers ensures that no value is present for IncludeContainers, not even an explicit nil
+func (o *OrganizationUserFilesToSyncFilters) UnsetIncludeContainers() {
+	o.IncludeContainers.Unset()
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -653,6 +697,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncErrorMessage.IsSet() {
 		toSerialize["sync_error_message"] = o.SyncErrorMessage.Get()
+	}
+	if o.IncludeContainers.IsSet() {
+		toSerialize["include_containers"] = o.IncludeContainers.Get()
 	}
 	return json.Marshal(toSerialize)
 }
