@@ -3285,7 +3285,7 @@
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "875454df-996d-4d26-83e0-756af9628ed0",
+              "request_id": "f9ac126a-0ae4-4f08-b0c1-f9f72deac122",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4166,6 +4166,7 @@
           "JPG",
           "JPG",
           "PNG",
+          "MPEG",
           "MP3",
           "MP4",
           "MP2",
@@ -5635,7 +5636,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2"
+            "default": "76040540-19b4-4382-bf9a-6870994d6dae"
           },
           "use_ocr": {
             "anyOf": [
@@ -5665,7 +5666,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -7601,7 +7602,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "2446df66-66dd-4ea3-b248-a416d886e087"
+            "default": "1c895684-bd1d-42bb-8fc4-b05bb623e8b9"
           },
           "use_ocr": {
             "anyOf": [
@@ -7751,7 +7752,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "875454df-996d-4d26-83e0-756af9628ed0"
+            "default": "f9ac126a-0ae4-4f08-b0c1-f9f72deac122"
           },
           "enable_file_picker": {
             "type": "boolean",
