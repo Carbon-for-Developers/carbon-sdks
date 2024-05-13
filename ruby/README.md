@@ -581,6 +581,7 @@ p result
 
 
 ### `carbon.files.delete`<a id="carbonfilesdelete"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete File Endpoint
 
@@ -643,6 +644,7 @@ p result
 
 
 ### `carbon.files.delete_many`<a id="carbonfilesdelete_many"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete Files Endpoint
 
@@ -718,6 +720,7 @@ p result
 
 
 ### `carbon.files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -747,6 +750,7 @@ p result
 
 
 ### `carbon.files.get_raw_file`<a id="carbonfilesget_raw_file"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -872,6 +876,7 @@ p result
 
 
 ### `carbon.files.query_user_files_deprecated`<a id="carbonfilesquery_user_files_deprecated"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -2417,6 +2422,7 @@ p result
 
 
 ### `carbon.users.toggle_user_features`<a id="carbonuserstoggle_user_features"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Toggle User Features
 

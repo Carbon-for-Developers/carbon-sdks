@@ -115,6 +115,7 @@ func main() {
 
 
 ## ToggleUserFeatures
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Toggle User Features
 

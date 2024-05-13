@@ -102,6 +102,7 @@ func main() {
 
 
 ## Delete
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete File Endpoint
 
@@ -224,6 +225,7 @@ func main() {
 
 
 ## DeleteMany
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete Files Endpoint
 
@@ -324,6 +326,7 @@ func main() {
 
 
 ## GetParsedFile
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Parsed File
 
@@ -369,6 +372,7 @@ func main() {
 
 
 ## GetRawFile
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Raw File
 
@@ -472,6 +476,7 @@ func main() {
 
 
 ## QueryUserFilesDeprecated
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 User Files
 
