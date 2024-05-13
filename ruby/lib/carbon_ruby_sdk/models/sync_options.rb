@@ -40,6 +40,11 @@ module Carbon
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    attr_accessor :incremental_sync
+
+    attr_accessor :file_sync_config
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -55,7 +60,9 @@ module Carbon
         :'set_page_as_boundary' => :'set_page_as_boundary',
         :'request_id' => :'request_id',
         :'enable_file_picker' => :'enable_file_picker',
-        :'sync_source_items' => :'sync_source_items'
+        :'sync_source_items' => :'sync_source_items',
+        :'incremental_sync' => :'incremental_sync',
+        :'file_sync_config' => :'file_sync_config'
       }
     end
 
@@ -79,7 +86,9 @@ module Carbon
         :'set_page_as_boundary' => :'Boolean',
         :'request_id' => :'String',
         :'enable_file_picker' => :'Boolean',
-        :'sync_source_items' => :'Boolean'
+        :'sync_source_items' => :'Boolean',
+        :'incremental_sync' => :'Boolean',
+        :'file_sync_config' => :'HelpdeskFileSyncConfigNullable'
       }
     end
 
@@ -95,6 +104,7 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'max_items_per_chunk',
         :'sync_files_on_connection',
+        :'file_sync_config'
       ])
     end
 
@@ -172,7 +182,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '875454df-996d-4d26-83e0-756af9628ed0'
+        self.request_id = 'b9a72b38-115a-4dd6-bad9-00185ae2333b'
       end
 
       if attributes.key?(:'enable_file_picker')
@@ -185,6 +195,16 @@ module Carbon
         self.sync_source_items = attributes[:'sync_source_items']
       else
         self.sync_source_items = true
+      end
+
+      if attributes.key?(:'incremental_sync')
+        self.incremental_sync = attributes[:'incremental_sync']
+      else
+        self.incremental_sync = false
+      end
+
+      if attributes.key?(:'file_sync_config')
+        self.file_sync_config = attributes[:'file_sync_config']
       end
     end
 
@@ -218,7 +238,9 @@ module Carbon
           set_page_as_boundary == o.set_page_as_boundary &&
           request_id == o.request_id &&
           enable_file_picker == o.enable_file_picker &&
-          sync_source_items == o.sync_source_items
+          sync_source_items == o.sync_source_items &&
+          incremental_sync == o.incremental_sync &&
+          file_sync_config == o.file_sync_config
     end
 
     # @see the `==` method
@@ -230,7 +252,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker, sync_source_items].hash
+      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker, sync_source_items, incremental_sync, file_sync_config].hash
     end
 
     # Builds the object from hash

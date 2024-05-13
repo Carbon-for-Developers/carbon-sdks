@@ -23,11 +23,13 @@ Name | Type | Description | Notes
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
 **DataSourceId** | Pointer to **NullableInt32** | Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. | [optional] 
 **ConnectingNewAccount** | Pointer to **NullableBool** | Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. | [optional] [default to false]
-**RequestId** | Pointer to **string** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] [default to "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2"]
+**RequestId** | Pointer to **string** | This request id will be added to all files that get synced using the generated OAuth URL | [optional] [default to "444e3f13-e490-4cc0-9cba-48957104083d"]
 **UseOcr** | Pointer to **NullableBool** | Enable OCR for files that support it. Supported formats: pdf | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
-**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX | [optional] [default to true]
+**EnableFilePicker** | Pointer to **bool** | Enable integration&#39;s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE | [optional] [default to true]
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
+**IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
+**FileSyncConfig** | Pointer to [**NullableHelpdeskFileSyncConfigNullable**](HelpdeskFileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -833,6 +835,66 @@ SetSyncSourceItems sets SyncSourceItems field to given value.
 
 HasSyncSourceItems returns a boolean if a field has been set.
 
+### GetIncrementalSync
+
+`func (o *OAuthURLRequest) GetIncrementalSync() bool`
+
+GetIncrementalSync returns the IncrementalSync field if non-nil, zero value otherwise.
+
+### GetIncrementalSyncOk
+
+`func (o *OAuthURLRequest) GetIncrementalSyncOk() (*bool, bool)`
+
+GetIncrementalSyncOk returns a tuple with the IncrementalSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncrementalSync
+
+`func (o *OAuthURLRequest) SetIncrementalSync(v bool)`
+
+SetIncrementalSync sets IncrementalSync field to given value.
+
+### HasIncrementalSync
+
+`func (o *OAuthURLRequest) HasIncrementalSync() bool`
+
+HasIncrementalSync returns a boolean if a field has been set.
+
+### GetFileSyncConfig
+
+`func (o *OAuthURLRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *OAuthURLRequest) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *OAuthURLRequest) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *OAuthURLRequest) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *OAuthURLRequest) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *OAuthURLRequest) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

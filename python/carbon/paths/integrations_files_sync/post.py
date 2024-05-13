@@ -138,6 +138,7 @@ class BaseApi(api_client.Api):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -169,6 +170,8 @@ class BaseApi(api_client.Api):
             _body["use_ocr"] = use_ocr
         if parse_pdf_tables_with_ocr is not None:
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
+        if incremental_sync is not None:
+            _body["incremental_sync"] = incremental_sync
         args.body = _body
         return args
 
@@ -390,6 +393,7 @@ class SyncFilesRaw(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -411,6 +415,7 @@ class SyncFilesRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
         )
         return await self._async_files_oapg(
             body=args.body,
@@ -433,6 +438,7 @@ class SyncFilesRaw(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -452,6 +458,7 @@ class SyncFilesRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
         )
         return self._sync_files_oapg(
             body=args.body,
@@ -475,6 +482,7 @@ class SyncFiles(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -493,6 +501,7 @@ class SyncFiles(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
             **kwargs,
         )
         if validate:
@@ -516,6 +525,7 @@ class SyncFiles(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_files(
@@ -533,6 +543,7 @@ class SyncFiles(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -558,6 +569,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -579,6 +591,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
         )
         return await self._async_files_oapg(
             body=args.body,
@@ -601,6 +614,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[str] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -620,6 +634,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            incremental_sync=incremental_sync,
         )
         return self._sync_files_oapg(
             body=args.body,

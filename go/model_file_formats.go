@@ -47,6 +47,7 @@ const (
 	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
+	FILEFORMATS_MPEG FileFormats = "MPEG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
 	FILEFORMATS_MP4 FileFormats = "MP4"
 	FILEFORMATS_MP2 FileFormats = "MP2"
@@ -89,6 +90,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"GITHUB",
 	"JPG",
 	"PNG",
+	"MPEG",
 	"MP3",
 	"MP4",
 	"MP2",

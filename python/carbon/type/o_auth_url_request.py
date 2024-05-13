@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.data_source_type import DataSourceType
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.type.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
 
 class RequiredOAuthURLRequest(TypedDict):
     service: DataSourceType
@@ -69,11 +70,16 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]
 
-    # Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+    # Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
     enable_file_picker: bool
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
+
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    incremental_sync: bool
+
+    file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable]
 
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

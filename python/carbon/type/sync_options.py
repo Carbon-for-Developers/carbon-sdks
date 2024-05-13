@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.type.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
 
 class RequiredSyncOptions(TypedDict):
     pass
@@ -48,6 +49,11 @@ class OptionalSyncOptions(TypedDict, total=False):
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
+
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    incremental_sync: bool
+
+    file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable]
 
 class SyncOptions(RequiredSyncOptions, OptionalSyncOptions):
     pass

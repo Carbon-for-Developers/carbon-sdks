@@ -37,8 +37,10 @@ from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullab
 from carbon.model.data_source_type import DataSourceType as DataSourceTypeSchema
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
 from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
+from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable as HelpdeskFileSyncConfigNullableSchema
 
 from carbon.type.outh_url_response import OuthURLResponse
+from carbon.type.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.data_source_type import DataSourceType
@@ -46,6 +48,7 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
+from carbon.pydantic.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable as HelpdeskFileSyncConfigNullablePydantic
 from carbon.pydantic.data_source_type import DataSourceType as DataSourceTypePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest as OAuthURLRequestPydantic
@@ -137,6 +140,8 @@ class BaseApi(api_client.Api):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -188,6 +193,10 @@ class BaseApi(api_client.Api):
             _body["enable_file_picker"] = enable_file_picker
         if sync_source_items is not None:
             _body["sync_source_items"] = sync_source_items
+        if incremental_sync is not None:
+            _body["incremental_sync"] = incremental_sync
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         args.body = _body
         return args
 
@@ -419,6 +428,8 @@ class GetOauthUrlRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -450,6 +461,8 @@ class GetOauthUrlRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -482,6 +495,8 @@ class GetOauthUrlRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -511,6 +526,8 @@ class GetOauthUrlRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -544,6 +561,8 @@ class GetOauthUrl(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -572,6 +591,8 @@ class GetOauthUrl(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
             **kwargs,
         )
         if validate:
@@ -605,6 +626,8 @@ class GetOauthUrl(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -632,6 +655,8 @@ class GetOauthUrl(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -667,6 +692,8 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -698,6 +725,8 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -730,6 +759,8 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         enable_file_picker: typing.Optional[bool] = None,
         sync_source_items: typing.Optional[bool] = None,
+        incremental_sync: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -759,6 +790,8 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

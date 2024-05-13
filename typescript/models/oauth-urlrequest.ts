@@ -12,6 +12,7 @@ import type * as buffer from "buffer"
 
 import { DataSourceType } from './data-source-type';
 import { EmbeddingGeneratorsNullable } from './embedding-generators-nullable';
+import { HelpdeskFileSyncConfigNullable } from './helpdesk-file-sync-config-nullable';
 
 /**
  * 
@@ -152,7 +153,7 @@ export interface OAuthURLRequest {
      */
     'parse_pdf_tables_with_ocr'?: boolean | null;
     /**
-     * Enable integration\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+     * Enable integration\'s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
      * @type {boolean}
      * @memberof OAuthURLRequest
      */
@@ -163,5 +164,17 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'sync_source_items'?: boolean;
+    /**
+     * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'incremental_sync'?: boolean;
+    /**
+     * 
+     * @type {HelpdeskFileSyncConfigNullable}
+     * @memberof OAuthURLRequest
+     */
+    'file_sync_config'?: HelpdeskFileSyncConfigNullable | null;
 }
 

@@ -140,6 +140,10 @@ class FileFormats(
         return cls("PNG")
     
     @schemas.classproperty
+    def MPEG(cls):
+        return cls("MPEG")
+    
+    @schemas.classproperty
     def MP3(cls):
         return cls("MP3")
     

@@ -183,6 +183,11 @@ class SyncOptions(
             request_id = schemas.StrSchema
             enable_file_picker = schemas.BoolSchema
             sync_source_items = schemas.BoolSchema
+            incremental_sync = schemas.BoolSchema
+        
+            @staticmethod
+            def file_sync_config() -> typing.Type['HelpdeskFileSyncConfigNullable']:
+                return HelpdeskFileSyncConfigNullable
             __annotations__ = {
                 "tags": tags,
                 "chunk_size": chunk_size,
@@ -197,6 +202,8 @@ class SyncOptions(
                 "request_id": request_id,
                 "enable_file_picker": enable_file_picker,
                 "sync_source_items": sync_source_items,
+                "incremental_sync": incremental_sync,
+                "file_sync_config": file_sync_config,
             }
     
     @typing.overload
@@ -239,9 +246,15 @@ class SyncOptions(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskFileSyncConfigNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -286,9 +299,15 @@ class SyncOptions(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "sync_files_on_connection", "set_page_as_boundary", "request_id", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -308,6 +327,8 @@ class SyncOptions(
         request_id: typing.Union[MetaOapg.properties.request_id, str, schemas.Unset] = schemas.unset,
         enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
+        incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncOptions':
@@ -327,8 +348,11 @@ class SyncOptions(
             request_id=request_id,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable

@@ -2283,10 +2283,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
           description: Validation Error
-      security:
-      - accessToken: []
-      - apiKey: []
-        customerId: []
       summary: Embeddings
       tags:
       - Embeddings
@@ -3789,14 +3785,19 @@ components:
           enable_file_picker: true
           max_items_per_chunk: 0
           embedding_model: OPENAI
+          file_sync_config:
+            file_types:
+            - ARTICLE
+            sync_attachments: false
           tags: ""
           sync_source_items: true
+          incremental_sync: false
           generate_sparse_vectors: false
           sync_files_on_connection: true
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 875454df-996d-4d26-83e0-756af9628ed0
+          request_id: b9a72b38-115a-4dd6-bad9-00185ae2333b
         authentication: null
       properties:
         authentication:
@@ -3815,8 +3816,9 @@ components:
             embedding_model: OPENAI
             enable_file_picker: true
             generate_sparse_vectors: false
+            incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 875454df-996d-4d26-83e0-756af9628ed0
+            request_id: b9a72b38-115a-4dd6-bad9-00185ae2333b
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4552,6 +4554,7 @@ components:
       - GITHUB
       - JPG
       - PNG
+      - MPEG
       - MP3
       - MP4
       - MP2
@@ -5287,6 +5290,35 @@ components:
           type: array
       title: HTTPValidationError
       type: object
+    HelpdeskFileSyncConfig:
+      properties:
+        file_types:
+          default:
+          - ARTICLE
+          example:
+          - ARTICLE
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          title: File Types
+          type: array
+          x-konfig-original-example:
+          - ARTICLE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfig-properties-file_types
+        sync_attachments:
+          default: false
+          example: false
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfig-properties-sync_attachments
+      title: HelpdeskFileSyncConfig
+      type: object
+    HelpdeskFileTypes:
+      enum:
+      - TICKET
+      - ARTICLE
+      title: HelpdeskFileTypes
+      type: string
     HybridSearchTuningParams:
       properties:
         weight_a:
@@ -5512,30 +5544,35 @@ components:
       type: object
     OAuthURLRequest:
       example:
-        sharepoint_site_name: sharepoint_site_name
         chunk_size: 1500
         prepend_filename_to_chunks: false
         enable_file_picker: true
-        confluence_subdomain: confluence_subdomain
         max_items_per_chunk: 0
         connecting_new_account: false
-        parse_pdf_tables_with_ocr: false
         embedding_model: OPENAI
-        tags: ""
-        sync_source_items: true
+        file_sync_config:
+          file_types:
+          - ARTICLE
+          sync_attachments: false
         use_ocr: false
-        service: null
         generate_sparse_vectors: false
         scope: scope
+        data_source_id: 6
+        microsoft_tenant: microsoft_tenant
+        sharepoint_site_name: sharepoint_site_name
+        confluence_subdomain: confluence_subdomain
+        parse_pdf_tables_with_ocr: false
+        tags: ""
+        sync_source_items: true
+        incremental_sync: false
+        service: null
         sync_files_on_connection: true
         set_page_as_boundary: false
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+        request_id: 444e3f13-e490-4cc0-9cba-48957104083d
         zendesk_subdomain: zendesk_subdomain
-        data_source_id: 6
-        microsoft_tenant: microsoft_tenant
       properties:
         tags:
           nullable: true
@@ -5652,13 +5689,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          default: 444e3f13-e490-4cc0-9cba-48957104083d
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          example: 444e3f13-e490-4cc0-9cba-48957104083d
           title: Request Id
           type: string
-          x-konfig-original-example: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          x-konfig-original-example: 444e3f13-e490-4cc0-9cba-48957104083d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5680,8 +5717,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX,\
-            \ BOX"
+            \ it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5696,6 +5732,18 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync
+        file_sync_config:
+          $ref: '#/components/schemas/HelpdeskFileSyncConfigNullable'
       required:
       - service
       title: OAuthURLRequest
@@ -7050,13 +7098,14 @@ components:
         parse_pdf_tables_with_ocr: false
         embedding_model: OPENAI
         tags: {}
+        incremental_sync: false
         use_ocr: false
         generate_sparse_vectors: false
         set_page_as_boundary: false
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 2446df66-66dd-4ea3-b248-a416d886e087
+        request_id: a5c6b913-12ce-4ae5-af61-694dd5c400fc
         data_source_id: 0
       properties:
         tags:
@@ -7128,11 +7177,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2446df66-66dd-4ea3-b248-a416d886e087
-          example: 2446df66-66dd-4ea3-b248-a416d886e087
+          default: a5c6b913-12ce-4ae5-af61-694dd5c400fc
+          example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           title: Request Id
           type: string
-          x-konfig-original-example: 2446df66-66dd-4ea3-b248-a416d886e087
+          x-konfig-original-example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7150,6 +7199,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-incremental_sync
       required:
       - data_source_id
       - ids
@@ -7162,14 +7221,19 @@ components:
         enable_file_picker: true
         max_items_per_chunk: 0
         embedding_model: OPENAI
+        file_sync_config:
+          file_types:
+          - ARTICLE
+          sync_attachments: false
         tags: ""
         sync_source_items: true
+        incremental_sync: false
         generate_sparse_vectors: false
         sync_files_on_connection: true
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 875454df-996d-4d26-83e0-756af9628ed0
+        request_id: b9a72b38-115a-4dd6-bad9-00185ae2333b
       properties:
         tags:
           nullable: true
@@ -7242,11 +7306,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 875454df-996d-4d26-83e0-756af9628ed0
-          example: 875454df-996d-4d26-83e0-756af9628ed0
+          default: b9a72b38-115a-4dd6-bad9-00185ae2333b
+          example: b9a72b38-115a-4dd6-bad9-00185ae2333b
           title: Request Id
           type: string
-          x-konfig-original-example: 875454df-996d-4d26-83e0-756af9628ed0
+          x-konfig-original-example: b9a72b38-115a-4dd6-bad9-00185ae2333b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7264,6 +7328,18 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-sync_source_items
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-incremental_sync
+        file_sync_config:
+          $ref: '#/components/schemas/HelpdeskFileSyncConfigNullable'
       title: SyncOptions
       type: object
     TextEmbeddingGenerators:
@@ -8359,6 +8435,7 @@ components:
       - GITHUB
       - JPG
       - PNG
+      - MPEG
       - MP3
       - MP4
       - MP2
@@ -8454,6 +8531,36 @@ components:
           title: Root Files Only
           type: boolean
       title: ListItemsFilters
+      type: object
+    HelpdeskFileSyncConfigNullable:
+      description: Used to configure file syncing for certain connectors when sync_files_on_connection
+        is set to true
+      example:
+        file_types:
+        - ARTICLE
+        sync_attachments: false
+      nullable: true
+      properties:
+        file_types:
+          default:
+          - ARTICLE
+          example:
+          - ARTICLE
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          title: File Types
+          type: array
+          x-konfig-original-example:
+          - ARTICLE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types
+        sync_attachments:
+          default: false
+          example: false
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments
+      title: HelpdeskFileSyncConfig
       type: object
     UserConfigurationNullable:
       description: |-
@@ -8898,6 +9005,18 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfig-properties-file_types:
+      example:
+      - ARTICLE
+      items:
+        example: ARTICLE
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfig-properties-sync_attachments:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-chunk_size:
       example: 1500
       type: number
@@ -8931,7 +9050,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+      example: 444e3f13-e490-4cc0-9cba-48957104083d
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -8948,6 +9067,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items:
       example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync:
+      example: false
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationResponse-properties-global_user_config:
@@ -9156,7 +9279,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 2446df66-66dd-4ea3-b248-a416d886e087
+      example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9164,6 +9287,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncFilesRequest-properties-incremental_sync:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -9196,7 +9323,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 875454df-996d-4d26-83e0-756af9628ed0
+      example: b9a72b38-115a-4dd6-bad9-00185ae2333b
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9205,6 +9332,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-sync_source_items:
       example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SyncOptions-properties-incremental_sync:
+      example: false
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-skip_embedding_generation:
@@ -9326,6 +9457,18 @@ components:
     konfig-generated-schema-components-schemas-FileContentTypesNullable:
       example: TEXT
       type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types:
+      example:
+      - ARTICLE
+      items:
+        example: ARTICLE
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments:
+      example: false
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-ChunkPropertiesNullable-properties-set_page_as_boundary:
       example: false
@@ -9507,13 +9650,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          default: 444e3f13-e490-4cc0-9cba-48957104083d
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          example: 444e3f13-e490-4cc0-9cba-48957104083d
           title: Request Id
           type: string
-          x-konfig-original-example: fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2
+          x-konfig-original-example: 444e3f13-e490-4cc0-9cba-48957104083d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9535,8 +9678,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX,\
-            \ BOX"
+            \ it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9551,6 +9693,18 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-sync_source_items
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync
+        file_sync_config:
+          $ref: '#/components/schemas/HelpdeskFileSyncConfigNullable'
       required:
       - service
       type: object
@@ -9689,11 +9843,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2446df66-66dd-4ea3-b248-a416d886e087
-          example: 2446df66-66dd-4ea3-b248-a416d886e087
+          default: a5c6b913-12ce-4ae5-af61-694dd5c400fc
+          example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           title: Request Id
           type: string
-          x-konfig-original-example: 2446df66-66dd-4ea3-b248-a416d886e087
+          x-konfig-original-example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -9711,6 +9865,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-incremental_sync
       required:
       - data_source_id
       - ids
@@ -9809,11 +9973,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 2446df66-66dd-4ea3-b248-a416d886e087
-          example: 2446df66-66dd-4ea3-b248-a416d886e087
+          default: a5c6b913-12ce-4ae5-af61-694dd5c400fc
+          example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           title: Request Id
           type: string
-          x-konfig-original-example: 2446df66-66dd-4ea3-b248-a416d886e087
+          x-konfig-original-example: a5c6b913-12ce-4ae5-af61-694dd5c400fc
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -9831,6 +9995,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-parse_pdf_tables_with_ocr
+        incremental_sync:
+          default: false
+          description: |-
+            Only sync files if they have not already been synced or if the embedding properties have changed.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+          example: false
+          title: Incremental Sync
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-incremental_sync
       required:
       - data_source_id
       - ids

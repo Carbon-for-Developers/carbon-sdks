@@ -14,9 +14,11 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "875454df-996d-4d26-83e0-756af9628ed0"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "b9a72b38-115a-4dd6-bad9-00185ae2333b"]
 **EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
+**IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
+**FileSyncConfig** | Pointer to [**NullableHelpdeskFileSyncConfigNullable**](HelpdeskFileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -452,6 +454,66 @@ SetSyncSourceItems sets SyncSourceItems field to given value.
 
 HasSyncSourceItems returns a boolean if a field has been set.
 
+### GetIncrementalSync
+
+`func (o *SyncOptions) GetIncrementalSync() bool`
+
+GetIncrementalSync returns the IncrementalSync field if non-nil, zero value otherwise.
+
+### GetIncrementalSyncOk
+
+`func (o *SyncOptions) GetIncrementalSyncOk() (*bool, bool)`
+
+GetIncrementalSyncOk returns a tuple with the IncrementalSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncrementalSync
+
+`func (o *SyncOptions) SetIncrementalSync(v bool)`
+
+SetIncrementalSync sets IncrementalSync field to given value.
+
+### HasIncrementalSync
+
+`func (o *SyncOptions) HasIncrementalSync() bool`
+
+HasIncrementalSync returns a boolean if a field has been set.
+
+### GetFileSyncConfig
+
+`func (o *SyncOptions) GetFileSyncConfig() HelpdeskFileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *SyncOptions) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *SyncOptions) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *SyncOptions) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *SyncOptions) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *SyncOptions) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

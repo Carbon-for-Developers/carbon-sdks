@@ -40,6 +40,9 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    attr_accessor :incremental_sync
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -56,7 +59,8 @@ module Carbon
         :'set_page_as_boundary' => :'set_page_as_boundary',
         :'request_id' => :'request_id',
         :'use_ocr' => :'use_ocr',
-        :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr'
+        :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
+        :'incremental_sync' => :'incremental_sync'
       }
     end
 
@@ -81,7 +85,8 @@ module Carbon
         :'set_page_as_boundary' => :'Boolean',
         :'request_id' => :'String',
         :'use_ocr' => :'Boolean',
-        :'parse_pdf_tables_with_ocr' => :'Boolean'
+        :'parse_pdf_tables_with_ocr' => :'Boolean',
+        :'incremental_sync' => :'Boolean'
       }
     end
 
@@ -97,7 +102,7 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'max_items_per_chunk',
         :'use_ocr',
-        :'parse_pdf_tables_with_ocr'
+        :'parse_pdf_tables_with_ocr',
       ])
     end
 
@@ -177,7 +182,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '2446df66-66dd-4ea3-b248-a416d886e087'
+        self.request_id = 'a5c6b913-12ce-4ae5-af61-694dd5c400fc'
       end
 
       if attributes.key?(:'use_ocr')
@@ -190,6 +195,12 @@ module Carbon
         self.parse_pdf_tables_with_ocr = attributes[:'parse_pdf_tables_with_ocr']
       else
         self.parse_pdf_tables_with_ocr = false
+      end
+
+      if attributes.key?(:'incremental_sync')
+        self.incremental_sync = attributes[:'incremental_sync']
+      else
+        self.incremental_sync = false
       end
     end
 
@@ -234,7 +245,8 @@ module Carbon
           set_page_as_boundary == o.set_page_as_boundary &&
           request_id == o.request_id &&
           use_ocr == o.use_ocr &&
-          parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr
+          parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
+          incremental_sync == o.incremental_sync
     end
 
     # @see the `==` method
@@ -246,7 +258,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, data_source_id, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, request_id, use_ocr, parse_pdf_tables_with_ocr].hash
+      [tags, data_source_id, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, request_id, use_ocr, parse_pdf_tables_with_ocr, incremental_sync].hash
     end
 
     # Builds the object from hash

@@ -31,6 +31,8 @@ type SyncFilesRequest struct {
 	RequestId *string `json:"request_id,omitempty"`
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
+	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 }
 
 // NewSyncFilesRequest instantiates a new SyncFilesRequest object
@@ -55,12 +57,14 @@ func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest 
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "2446df66-66dd-4ea3-b248-a416d886e087"
+	var requestId string = "a5c6b913-12ce-4ae5-af61-694dd5c400fc"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -83,12 +87,14 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "2446df66-66dd-4ea3-b248-a416d886e087"
+	var requestId string = "a5c6b913-12ce-4ae5-af61-694dd5c400fc"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = *NewNullableBool(&parsePdfTablesWithOcr)
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -615,6 +621,38 @@ func (o *SyncFilesRequest) UnsetParsePdfTablesWithOcr() {
 	o.ParsePdfTablesWithOcr.Unset()
 }
 
+// GetIncrementalSync returns the IncrementalSync field value if set, zero value otherwise.
+func (o *SyncFilesRequest) GetIncrementalSync() bool {
+	if o == nil || isNil(o.IncrementalSync) {
+		var ret bool
+		return ret
+	}
+	return *o.IncrementalSync
+}
+
+// GetIncrementalSyncOk returns a tuple with the IncrementalSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyncFilesRequest) GetIncrementalSyncOk() (*bool, bool) {
+	if o == nil || isNil(o.IncrementalSync) {
+    return nil, false
+	}
+	return o.IncrementalSync, true
+}
+
+// HasIncrementalSync returns a boolean if a field has been set.
+func (o *SyncFilesRequest) HasIncrementalSync() bool {
+	if o != nil && !isNil(o.IncrementalSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncrementalSync gets a reference to the given bool and assigns it to the IncrementalSync field.
+func (o *SyncFilesRequest) SetIncrementalSync(v bool) {
+	o.IncrementalSync = &v
+}
+
 func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -658,6 +696,9 @@ func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ParsePdfTablesWithOcr.IsSet() {
 		toSerialize["parse_pdf_tables_with_ocr"] = o.ParsePdfTablesWithOcr.Get()
+	}
+	if !isNil(o.IncrementalSync) {
+		toSerialize["incremental_sync"] = o.IncrementalSync
 	}
 	return json.Marshal(toSerialize)
 }

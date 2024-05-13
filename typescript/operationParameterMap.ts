@@ -545,6 +545,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'sync_source_items'
             },
+            {
+                name: 'incremental_sync'
+            },
+            {
+                name: 'file_sync_config'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -664,6 +670,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'parse_pdf_tables_with_ocr'
             },
+            {
+                name: 'incremental_sync'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -716,6 +725,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'parse_pdf_tables_with_ocr'
+            },
+            {
+                name: 'incremental_sync'
             },
         ]
     },

@@ -57,6 +57,8 @@
 
 * `PNG` (value: `"PNG"`)
 
+* `MPEG` (value: `"MPEG"`)
+
 * `MP3` (value: `"MP3"`)
 
 * `MP4` (value: `"MP4"`)
