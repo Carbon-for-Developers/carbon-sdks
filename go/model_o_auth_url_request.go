@@ -44,10 +44,13 @@ type OAuthURLRequest struct {
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
-	// Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+	// Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
+	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+	IncrementalSync *bool `json:"incremental_sync,omitempty"`
+	FileSyncConfig NullableHelpdeskFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -75,7 +78,7 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2"
+	var requestId string = "444e3f13-e490-4cc0-9cba-48957104083d"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -85,6 +88,8 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.EnableFilePicker = &enableFilePicker
 	var syncSourceItems bool = true
 	this.SyncSourceItems = &syncSourceItems
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -111,7 +116,7 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2"
+	var requestId string = "444e3f13-e490-4cc0-9cba-48957104083d"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -121,6 +126,8 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.EnableFilePicker = &enableFilePicker
 	var syncSourceItems bool = true
 	this.SyncSourceItems = &syncSourceItems
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -1065,6 +1072,80 @@ func (o *OAuthURLRequest) SetSyncSourceItems(v bool) {
 	o.SyncSourceItems = &v
 }
 
+// GetIncrementalSync returns the IncrementalSync field value if set, zero value otherwise.
+func (o *OAuthURLRequest) GetIncrementalSync() bool {
+	if o == nil || isNil(o.IncrementalSync) {
+		var ret bool
+		return ret
+	}
+	return *o.IncrementalSync
+}
+
+// GetIncrementalSyncOk returns a tuple with the IncrementalSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthURLRequest) GetIncrementalSyncOk() (*bool, bool) {
+	if o == nil || isNil(o.IncrementalSync) {
+    return nil, false
+	}
+	return o.IncrementalSync, true
+}
+
+// HasIncrementalSync returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasIncrementalSync() bool {
+	if o != nil && !isNil(o.IncrementalSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncrementalSync gets a reference to the given bool and assigns it to the IncrementalSync field.
+func (o *OAuthURLRequest) SetIncrementalSync(v bool) {
+	o.IncrementalSync = &v
+}
+
+// GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNullable {
+	if o == nil || isNil(o.FileSyncConfig.Get()) {
+		var ret HelpdeskFileSyncConfigNullable
+		return ret
+	}
+	return *o.FileSyncConfig.Get()
+}
+
+// GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileSyncConfig.Get(), o.FileSyncConfig.IsSet()
+}
+
+// HasFileSyncConfig returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasFileSyncConfig() bool {
+	if o != nil && o.FileSyncConfig.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSyncConfig gets a reference to the given NullableHelpdeskFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *OAuthURLRequest) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable) {
+	o.FileSyncConfig.Set(&v)
+}
+// SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+func (o *OAuthURLRequest) SetFileSyncConfigNil() {
+	o.FileSyncConfig.Set(nil)
+}
+
+// UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+func (o *OAuthURLRequest) UnsetFileSyncConfig() {
+	o.FileSyncConfig.Unset()
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -1138,6 +1219,12 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SyncSourceItems) {
 		toSerialize["sync_source_items"] = o.SyncSourceItems
+	}
+	if !isNil(o.IncrementalSync) {
+		toSerialize["incremental_sync"] = o.IncrementalSync
+	}
+	if o.FileSyncConfig.IsSet() {
+		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
 	}
 	return json.Marshal(toSerialize)
 }

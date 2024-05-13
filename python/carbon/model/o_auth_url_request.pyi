@@ -390,6 +390,11 @@ class OAuthURLRequest(
                     )
             enable_file_picker = schemas.BoolSchema
             sync_source_items = schemas.BoolSchema
+            incremental_sync = schemas.BoolSchema
+        
+            @staticmethod
+            def file_sync_config() -> typing.Type['HelpdeskFileSyncConfigNullable']:
+                return HelpdeskFileSyncConfigNullable
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -415,6 +420,8 @@ class OAuthURLRequest(
                 "parse_pdf_tables_with_ocr": parse_pdf_tables_with_ocr,
                 "enable_file_picker": enable_file_picker,
                 "sync_source_items": sync_source_items,
+                "incremental_sync": incremental_sync,
+                "file_sync_config": file_sync_config,
             }
     
     service: 'DataSourceType'
@@ -492,9 +499,15 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskFileSyncConfigNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -572,9 +585,15 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -605,6 +624,8 @@ class OAuthURLRequest(
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
         enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
+        incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -635,9 +656,12 @@ class OAuthURLRequest(
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             enable_file_picker=enable_file_picker,
             sync_source_items=sync_source_items,
+            incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.data_source_type import DataSourceType
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable

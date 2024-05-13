@@ -539,6 +539,12 @@ operation_parameter_map = {
             {
                 'name': 'sync_source_items'
             },
+            {
+                'name': 'incremental_sync'
+            },
+            {
+                'name': 'file_sync_config'
+            },
         ]
     },
     '/integrations/confluence/list-POST': {
@@ -658,6 +664,9 @@ operation_parameter_map = {
             {
                 'name': 'parse_pdf_tables_with_ocr'
             },
+            {
+                'name': 'incremental_sync'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -710,6 +719,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'parse_pdf_tables_with_ocr'
+            },
+            {
+                'name': 'incremental_sync'
             },
         ]
     },

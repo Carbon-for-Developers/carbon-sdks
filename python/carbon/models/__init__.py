@@ -78,6 +78,9 @@ from carbon.model.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.model.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.model.gmail_sync_input import GmailSyncInput
 from carbon.model.http_validation_error import HTTPValidationError
+from carbon.model.helpdesk_file_sync_config import HelpdeskFileSyncConfig
+from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
+from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.hybrid_search_tuning_params import HybridSearchTuningParams
 from carbon.model.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.model.list_data_source_items_request import ListDataSourceItemsRequest

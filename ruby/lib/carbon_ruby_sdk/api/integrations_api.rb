@@ -557,11 +557,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # @param file_sync_config [HelpdeskFileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '444e3f13-e490-4cc0-9cba-48957104083d', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -587,6 +589,8 @@ module Carbon
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:enable_file_picker] = enable_file_picker if enable_file_picker != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -621,11 +625,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # @param file_sync_config [HelpdeskFileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '444e3f13-e490-4cc0-9cba-48957104083d', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -651,6 +657,8 @@ module Carbon
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:enable_file_picker] = enable_file_picker if enable_file_picker != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -1415,9 +1423,10 @@ module Carbon
     # @param request_id [String] 
     # @param use_ocr [Boolean] 
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2446df66-66dd-4ea3-b248-a416d886e087', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'a5c6b913-12ce-4ae5-af61-694dd5c400fc', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1433,6 +1442,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       sync_files_request = _body
       api_response = sync_confluence_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1459,9 +1469,10 @@ module Carbon
     # @param request_id [String] 
     # @param use_ocr [Boolean] 
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2446df66-66dd-4ea3-b248-a416d886e087', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'a5c6b913-12ce-4ae5-af61-694dd5c400fc', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1477,6 +1488,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       sync_files_request = _body
       sync_confluence_with_http_info_impl(sync_files_request, extra)
     end
@@ -1663,9 +1675,10 @@ module Carbon
     # @param request_id [String] 
     # @param use_ocr [Boolean] 
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2446df66-66dd-4ea3-b248-a416d886e087', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'a5c6b913-12ce-4ae5-af61-694dd5c400fc', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1681,6 +1694,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       sync_files_request = _body
       api_response = sync_files_with_http_info_impl(sync_files_request, extra)
       api_response.data
@@ -1707,9 +1721,10 @@ module Carbon
     # @param request_id [String] 
     # @param use_ocr [Boolean] 
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '2446df66-66dd-4ea3-b248-a416d886e087', use_ocr: false, parse_pdf_tables_with_ocr: false, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'a5c6b913-12ce-4ae5-af61-694dd5c400fc', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1725,6 +1740,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       sync_files_request = _body
       sync_files_with_http_info_impl(sync_files_request, extra)
     end

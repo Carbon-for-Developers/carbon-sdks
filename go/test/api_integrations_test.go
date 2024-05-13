@@ -132,6 +132,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService GetOauthUrl", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
         
         oAuthURLRequest := *carbon.NewOAuthURLRequest(
             null,
@@ -154,11 +155,13 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2")
+        oAuthURLRequest.SetRequestId("444e3f13-e490-4cc0-9cba-48957104083d")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
         oAuthURLRequest.SetSyncSourceItems(true)
+        oAuthURLRequest.SetIncrementalSync(false)
+        oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -307,9 +310,10 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("2446df66-66dd-4ea3-b248-a416d886e087")
+        syncFilesRequest.SetRequestId("a5c6b913-12ce-4ae5-af61-694dd5c400fc")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
+        syncFilesRequest.SetIncrementalSync(false)
         
         request := client.IntegrationsApi.SyncConfluence(
             syncFilesRequest,
@@ -359,9 +363,10 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("2446df66-66dd-4ea3-b248-a416d886e087")
+        syncFilesRequest.SetRequestId("a5c6b913-12ce-4ae5-af61-694dd5c400fc")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
+        syncFilesRequest.SetIncrementalSync(false)
         
         request := client.IntegrationsApi.SyncFiles(
             syncFilesRequest,

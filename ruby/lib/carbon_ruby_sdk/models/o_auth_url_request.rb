@@ -61,11 +61,16 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+    # Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
     attr_accessor :enable_file_picker
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
+
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    attr_accessor :incremental_sync
+
+    attr_accessor :file_sync_config
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,7 +98,9 @@ module Carbon
         :'use_ocr' => :'use_ocr',
         :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
         :'enable_file_picker' => :'enable_file_picker',
-        :'sync_source_items' => :'sync_source_items'
+        :'sync_source_items' => :'sync_source_items',
+        :'incremental_sync' => :'incremental_sync',
+        :'file_sync_config' => :'file_sync_config'
       }
     end
 
@@ -128,7 +135,9 @@ module Carbon
         :'use_ocr' => :'Boolean',
         :'parse_pdf_tables_with_ocr' => :'Boolean',
         :'enable_file_picker' => :'Boolean',
-        :'sync_source_items' => :'Boolean'
+        :'sync_source_items' => :'Boolean',
+        :'incremental_sync' => :'Boolean',
+        :'file_sync_config' => :'HelpdeskFileSyncConfigNullable'
       }
     end
 
@@ -154,6 +163,7 @@ module Carbon
         :'connecting_new_account',
         :'use_ocr',
         :'parse_pdf_tables_with_ocr',
+        :'file_sync_config'
       ])
     end
 
@@ -269,7 +279,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = 'fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2'
+        self.request_id = '444e3f13-e490-4cc0-9cba-48957104083d'
       end
 
       if attributes.key?(:'use_ocr')
@@ -294,6 +304,16 @@ module Carbon
         self.sync_source_items = attributes[:'sync_source_items']
       else
         self.sync_source_items = true
+      end
+
+      if attributes.key?(:'incremental_sync')
+        self.incremental_sync = attributes[:'incremental_sync']
+      else
+        self.incremental_sync = false
+      end
+
+      if attributes.key?(:'file_sync_config')
+        self.file_sync_config = attributes[:'file_sync_config']
       end
     end
 
@@ -343,7 +363,9 @@ module Carbon
           use_ocr == o.use_ocr &&
           parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
           enable_file_picker == o.enable_file_picker &&
-          sync_source_items == o.sync_source_items
+          sync_source_items == o.sync_source_items &&
+          incremental_sync == o.incremental_sync &&
+          file_sync_config == o.file_sync_config
     end
 
     # @see the `==` method
@@ -355,7 +377,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config].hash
     end
 
     # Builds the object from hash

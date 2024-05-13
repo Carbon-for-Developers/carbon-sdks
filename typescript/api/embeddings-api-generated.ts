@@ -85,12 +85,6 @@ export const EmbeddingsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
-            // authentication customerId required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

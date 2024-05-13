@@ -51,6 +51,8 @@ import { GmailSyncInput } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
+import { HelpdeskFileSyncConfigNullable } from '../models';
+// @ts-ignore
 import { IdsProperty } from '../models';
 // @ts-ignore
 import { ListDataSourceItemsRequest } from '../models';
@@ -1361,7 +1363,9 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 use_ocr: requestParameters.use_ocr,
                 parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
                 enable_file_picker: requestParameters.enable_file_picker,
-                sync_source_items: requestParameters.sync_source_items
+                sync_source_items: requestParameters.sync_source_items,
+                incremental_sync: requestParameters.incremental_sync,
+                file_sync_config: requestParameters.file_sync_config
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1477,7 +1481,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
                 request_id: requestParameters.request_id,
                 use_ocr: requestParameters.use_ocr,
-                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
+                incremental_sync: requestParameters.incremental_sync
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1518,7 +1523,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 set_page_as_boundary: requestParameters.set_page_as_boundary,
                 request_id: requestParameters.request_id,
                 use_ocr: requestParameters.use_ocr,
-                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
+                incremental_sync: requestParameters.incremental_sync
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

@@ -1397,11 +1397,12 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2",
+  request_id: "444e3f13-e490-4cc0-9cba-48957104083d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
   sync_source_items: true,
+  incremental_sync: false,
 });
 ```
 
@@ -1465,11 +1466,17 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
+
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+
+##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./models/helpdesk-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskfilesyncconfignullablemodelshelpdesk-file-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1713,9 +1720,10 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2446df66-66dd-4ea3-b248-a416d886e087",
+  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
+  incremental_sync: false,
 });
 ```
 
@@ -1750,6 +1758,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
+
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1814,9 +1826,10 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2446df66-66dd-4ea3-b248-a416d886e087",
+  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
+  incremental_sync: false,
 });
 ```
 
@@ -1851,6 +1864,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
+
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

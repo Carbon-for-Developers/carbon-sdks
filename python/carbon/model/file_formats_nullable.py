@@ -64,6 +64,7 @@ class FileFormatsNullable(
             "GITHUB": "GITHUB",
             "JPG": "JPG",
             "PNG": "PNG",
+            "MPEG": "MPEG",
             "MP3": "MP3",
             "MP4": "MP4",
             "MP2": "MP2",
@@ -184,6 +185,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def PNG(cls):
         return cls("PNG")
+    
+    @schemas.classproperty
+    def MPEG(cls):
+        return cls("MPEG")
     
     @schemas.classproperty
     def MP3(cls):
