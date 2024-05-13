@@ -1291,16 +1291,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "accessToken": []
-          },
-          {
-            "apiKey": [],
-            "customerId": []
-          }
-        ]
+        }
       }
     },
     "/text_chunks": {
@@ -3284,8 +3275,9 @@
               "embedding_model": "OPENAI",
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
+              "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "875454df-996d-4d26-83e0-756af9628ed0",
+              "request_id": "b9a72b38-115a-4dd6-bad9-00185ae2333b",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4166,6 +4158,7 @@
           "JPG",
           "JPG",
           "PNG",
+          "MPEG",
           "MP3",
           "MP4",
           "MP2",
@@ -5160,6 +5153,35 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HelpdeskFileSyncConfig": {
+        "properties": {
+          "file_types": {
+            "items": {
+              "$ref": "#/components/schemas/HelpdeskFileTypes"
+            },
+            "type": "array",
+            "title": "File Types",
+            "default": [
+              "ARTICLE"
+            ]
+          },
+          "sync_attachments": {
+            "type": "boolean",
+            "title": "Sync Attachments",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "HelpdeskFileSyncConfig"
+      },
+      "HelpdeskFileTypes": {
+        "type": "string",
+        "enum": [
+          "TICKET",
+          "ARTICLE"
+        ],
+        "title": "HelpdeskFileTypes"
+      },
       "HybridSearchTuningParams": {
         "properties": {
           "weight_a": {
@@ -5635,7 +5657,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "fc8dfd30-8e4c-4f40-acc5-f05b3cc961d2"
+            "default": "444e3f13-e490-4cc0-9cba-48957104083d"
           },
           "use_ocr": {
             "anyOf": [
@@ -5665,7 +5687,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, DROPBOX, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE",
             "default": true
           },
           "sync_source_items": {
@@ -5673,6 +5695,23 @@
             "title": "Sync Source Items",
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": true
+          },
+          "incremental_sync": {
+            "type": "boolean",
+            "title": "Incremental Sync",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
+            "default": false
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HelpdeskFileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true"
           }
         },
         "type": "object",
@@ -7601,7 +7640,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "2446df66-66dd-4ea3-b248-a416d886e087"
+            "default": "a5c6b913-12ce-4ae5-af61-694dd5c400fc"
           },
           "use_ocr": {
             "anyOf": [
@@ -7625,6 +7664,12 @@
               }
             ],
             "title": "Parse Pdf Tables With Ocr",
+            "default": false
+          },
+          "incremental_sync": {
+            "type": "boolean",
+            "title": "Incremental Sync",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
             "default": false
           }
         },
@@ -7751,7 +7796,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "875454df-996d-4d26-83e0-756af9628ed0"
+            "default": "b9a72b38-115a-4dd6-bad9-00185ae2333b"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -7763,6 +7808,23 @@
             "title": "Sync Source Items",
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": true
+          },
+          "incremental_sync": {
+            "type": "boolean",
+            "title": "Incremental Sync",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
+            "default": false
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HelpdeskFileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true"
           }
         },
         "type": "object",
