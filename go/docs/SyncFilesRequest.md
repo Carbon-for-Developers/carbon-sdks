@@ -15,10 +15,11 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "a5c6b913-12ce-4ae5-af61-694dd5c400fc"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "952c7efa-d4fe-43bf-a86c-4f5dad9fc003"]
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
+**FileSyncConfig** | Pointer to [**NullableHelpdeskGlobalFileSyncConfigNullable**](HelpdeskGlobalFileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -504,6 +505,41 @@ SetIncrementalSync sets IncrementalSync field to given value.
 
 HasIncrementalSync returns a boolean if a field has been set.
 
+### GetFileSyncConfig
+
+`func (o *SyncFilesRequest) GetFileSyncConfig() HelpdeskGlobalFileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *SyncFilesRequest) GetFileSyncConfigOk() (*HelpdeskGlobalFileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *SyncFilesRequest) SetFileSyncConfig(v HelpdeskGlobalFileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *SyncFilesRequest) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *SyncFilesRequest) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *SyncFilesRequest) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

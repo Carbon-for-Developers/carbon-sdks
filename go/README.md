@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.26)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.27)
 
 </div>
 
@@ -175,6 +175,8 @@ Class | Method | HTTP request | Description
  - [HelpdeskFileSyncConfig](docs/HelpdeskFileSyncConfig.md)
  - [HelpdeskFileSyncConfigNullable](docs/HelpdeskFileSyncConfigNullable.md)
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
+ - [HelpdeskGlobalFileSyncConfig](docs/HelpdeskGlobalFileSyncConfig.md)
+ - [HelpdeskGlobalFileSyncConfigNullable](docs/HelpdeskGlobalFileSyncConfigNullable.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
  - [IdsProperty](docs/IdsProperty.md)

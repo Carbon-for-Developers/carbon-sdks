@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.31-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.31)
+[![npm](https://img.shields.io/badge/npm-v0.1.32-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.32)
 
 </div>
 
@@ -1402,7 +1402,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "444e3f13-e490-4cc0-9cba-48957104083d",
+  request_id: "e33ac7f9-11d1-4a94-8855-016e4d6c07ff",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1471,7 +1471,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1725,7 +1725,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
+  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1767,6 +1767,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+
+##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./models/helpdesk-global-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablemodelshelpdesk-global-file-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1831,7 +1833,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
+  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1873,6 +1875,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+
+##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./models/helpdesk-global-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablemodelshelpdesk-global-file-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

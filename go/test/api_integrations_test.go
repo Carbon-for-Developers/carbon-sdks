@@ -155,7 +155,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("444e3f13-e490-4cc0-9cba-48957104083d")
+        oAuthURLRequest.SetRequestId("e33ac7f9-11d1-4a94-8855-016e4d6c07ff")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
@@ -296,6 +296,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     t.Run("Test IntegrationsApiService SyncConfluence", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         ids := *carbon.NewIdsProperty()
+        fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
@@ -310,10 +311,11 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("a5c6b913-12ce-4ae5-af61-694dd5c400fc")
+        syncFilesRequest.SetRequestId("952c7efa-d4fe-43bf-a86c-4f5dad9fc003")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
+        syncFilesRequest.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.SyncConfluence(
             syncFilesRequest,
@@ -349,6 +351,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     t.Run("Test IntegrationsApiService SyncFiles", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         ids := *carbon.NewIdsProperty()
+        fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
@@ -363,10 +366,11 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("a5c6b913-12ce-4ae5-af61-694dd5c400fc")
+        syncFilesRequest.SetRequestId("952c7efa-d4fe-43bf-a86c-4f5dad9fc003")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
+        syncFilesRequest.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.SyncFiles(
             syncFilesRequest,
