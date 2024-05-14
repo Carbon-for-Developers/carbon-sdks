@@ -673,6 +673,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'incremental_sync'
             },
+            {
+                name: 'file_sync_config'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -728,6 +731,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'incremental_sync'
+            },
+            {
+                name: 'file_sync_config'
             },
         ]
     },

@@ -53,6 +53,8 @@ export * from './httpvalidation-error';
 export * from './helpdesk-file-sync-config';
 export * from './helpdesk-file-sync-config-nullable';
 export * from './helpdesk-file-types';
+export * from './helpdesk-global-file-sync-config';
+export * from './helpdesk-global-file-sync-config-nullable';
 export * from './hybrid-search-tuning-params';
 export * from './hybrid-search-tuning-params-nullable';
 export * from './ids-property';

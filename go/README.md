@@ -175,6 +175,8 @@ Class | Method | HTTP request | Description
  - [HelpdeskFileSyncConfig](docs/HelpdeskFileSyncConfig.md)
  - [HelpdeskFileSyncConfigNullable](docs/HelpdeskFileSyncConfigNullable.md)
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
+ - [HelpdeskGlobalFileSyncConfig](docs/HelpdeskGlobalFileSyncConfig.md)
+ - [HelpdeskGlobalFileSyncConfigNullable](docs/HelpdeskGlobalFileSyncConfigNullable.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
  - [IdsProperty](docs/IdsProperty.md)

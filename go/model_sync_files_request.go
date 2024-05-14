@@ -33,6 +33,7 @@ type SyncFilesRequest struct {
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
+	FileSyncConfig NullableHelpdeskGlobalFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
 
 // NewSyncFilesRequest instantiates a new SyncFilesRequest object
@@ -57,7 +58,7 @@ func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest 
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "a5c6b913-12ce-4ae5-af61-694dd5c400fc"
+	var requestId string = "952c7efa-d4fe-43bf-a86c-4f5dad9fc003"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -87,7 +88,7 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "a5c6b913-12ce-4ae5-af61-694dd5c400fc"
+	var requestId string = "952c7efa-d4fe-43bf-a86c-4f5dad9fc003"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -653,6 +654,48 @@ func (o *SyncFilesRequest) SetIncrementalSync(v bool) {
 	o.IncrementalSync = &v
 }
 
+// GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncFilesRequest) GetFileSyncConfig() HelpdeskGlobalFileSyncConfigNullable {
+	if o == nil || isNil(o.FileSyncConfig.Get()) {
+		var ret HelpdeskGlobalFileSyncConfigNullable
+		return ret
+	}
+	return *o.FileSyncConfig.Get()
+}
+
+// GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncFilesRequest) GetFileSyncConfigOk() (*HelpdeskGlobalFileSyncConfigNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileSyncConfig.Get(), o.FileSyncConfig.IsSet()
+}
+
+// HasFileSyncConfig returns a boolean if a field has been set.
+func (o *SyncFilesRequest) HasFileSyncConfig() bool {
+	if o != nil && o.FileSyncConfig.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSyncConfig gets a reference to the given NullableHelpdeskGlobalFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *SyncFilesRequest) SetFileSyncConfig(v HelpdeskGlobalFileSyncConfigNullable) {
+	o.FileSyncConfig.Set(&v)
+}
+// SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+func (o *SyncFilesRequest) SetFileSyncConfigNil() {
+	o.FileSyncConfig.Set(nil)
+}
+
+// UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+func (o *SyncFilesRequest) UnsetFileSyncConfig() {
+	o.FileSyncConfig.Unset()
+}
+
 func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -699,6 +742,9 @@ func (o SyncFilesRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.IncrementalSync) {
 		toSerialize["incremental_sync"] = o.IncrementalSync
+	}
+	if o.FileSyncConfig.IsSet() {
+		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -314,6 +314,10 @@ class SyncFilesRequest(
                         _configuration=_configuration,
                     )
             incremental_sync = schemas.BoolSchema
+        
+            @staticmethod
+            def file_sync_config() -> typing.Type['HelpdeskGlobalFileSyncConfigNullable']:
+                return HelpdeskGlobalFileSyncConfigNullable
             __annotations__ = {
                 "data_source_id": data_source_id,
                 "ids": ids,
@@ -330,6 +334,7 @@ class SyncFilesRequest(
                 "use_ocr": use_ocr,
                 "parse_pdf_tables_with_ocr": parse_pdf_tables_with_ocr,
                 "incremental_sync": incremental_sync,
+                "file_sync_config": file_sync_config,
             }
     
     ids: MetaOapg.properties.ids
@@ -381,9 +386,12 @@ class SyncFilesRequest(
     def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskGlobalFileSyncConfigNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "incremental_sync", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "incremental_sync", "file_sync_config", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -434,9 +442,12 @@ class SyncFilesRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskGlobalFileSyncConfigNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "incremental_sync", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data_source_id", "ids", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "set_page_as_boundary", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "incremental_sync", "file_sync_config", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -458,6 +469,7 @@ class SyncFilesRequest(
         use_ocr: typing.Union[MetaOapg.properties.use_ocr, None, bool, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
         incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['HelpdeskGlobalFileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncFilesRequest':
@@ -479,9 +491,11 @@ class SyncFilesRequest(
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             incremental_sync=incremental_sync,
+            file_sync_config=file_sync_config,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.model.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable
 from carbon.model.sync_files_ids import SyncFilesIds

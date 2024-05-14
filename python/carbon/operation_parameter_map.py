@@ -667,6 +667,9 @@ operation_parameter_map = {
             {
                 'name': 'incremental_sync'
             },
+            {
+                'name': 'file_sync_config'
+            },
         ]
     },
     '/integrations/items/sync-POST': {
@@ -722,6 +725,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'incremental_sync'
+            },
+            {
+                'name': 'file_sync_config'
             },
         ]
     },

@@ -1202,7 +1202,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "b9a72b38-115a-4dd6-bad9-00185ae2333b",
+        "request_id" => "30d4247e-9dcf-41e3-98a7-61ef4a78adad",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1415,7 +1415,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "444e3f13-e490-4cc0-9cba-48957104083d",
+  request_id: "e33ac7f9-11d1-4a94-8855-016e4d6c07ff",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1474,7 +1474,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, SHAREPOINT, GOOGLE_DRIVE, DROPBOX, ONEDRIVE
+DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1736,10 +1736,13 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
+  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
+  file_sync_config: {
+        "sync_attachments" => false,
+    },
 )
 p result
 ```
@@ -1767,6 +1770,7 @@ Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
+##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_global_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_global_file_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1833,10 +1837,13 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "a5c6b913-12ce-4ae5-af61-694dd5c400fc",
+  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
+  file_sync_config: {
+        "sync_attachments" => false,
+    },
 )
 p result
 ```
@@ -1864,6 +1871,7 @@ Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
+##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_global_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_global_file_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
