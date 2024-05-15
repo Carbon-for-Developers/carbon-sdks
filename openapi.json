@@ -1291,7 +1291,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
       }
     },
     "/text_chunks": {
@@ -3277,7 +3286,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "30d4247e-9dcf-41e3-98a7-61ef4a78adad",
+              "request_id": "a1705efc-e82e-40b3-afa0-1a1f2768df88",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3529,6 +3538,17 @@
             "type": "integer",
             "title": "File Id"
           },
+          "parent_file_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent File Id"
+          },
           "source": {
             "anyOf": [
               {
@@ -3689,6 +3709,7 @@
         "required": [
           "content",
           "file_id",
+          "parent_file_id",
           "source",
           "source_url",
           "source_type",
@@ -5668,7 +5689,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "e33ac7f9-11d1-4a94-8855-016e4d6c07ff"
+            "default": "1bbe1daa-171c-4433-bdc6-cc4b23a6116f"
           },
           "use_ocr": {
             "anyOf": [
@@ -5698,7 +5719,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX",
             "default": true
           },
           "sync_source_items": {
@@ -7651,7 +7672,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "952c7efa-d4fe-43bf-a86c-4f5dad9fc003"
+            "default": "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e"
           },
           "use_ocr": {
             "anyOf": [
@@ -7818,7 +7839,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "30d4247e-9dcf-41e3-98a7-61ef4a78adad"
+            "default": "a1705efc-e82e-40b3-afa0-1a1f2768df88"
           },
           "enable_file_picker": {
             "type": "boolean",
