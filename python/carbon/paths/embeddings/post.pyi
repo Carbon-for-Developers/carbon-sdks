@@ -220,6 +220,7 @@ class BaseApi(api_client.Api):
             configuration=self.api_client.configuration,
             path_template='/embeddings',
             body=body,
+            auth_settings=_auth,
             headers=_headers,
         )
         serialized_data = request_body_get_embedding_documents_body.serialize(body, content_type)
@@ -235,6 +236,7 @@ class BaseApi(api_client.Api):
             fields=_fields,
             serialized_body=_body,
             body=body,
+            auth_settings=_auth,
             timeout=timeout,
             **kwargs
         )
@@ -332,6 +334,7 @@ class BaseApi(api_client.Api):
             configuration=self.api_client.configuration,
             path_template='/embeddings',
             body=body,
+            auth_settings=_auth,
             headers=_headers,
         )
         serialized_data = request_body_get_embedding_documents_body.serialize(body, content_type)
@@ -347,6 +350,7 @@ class BaseApi(api_client.Api):
             fields=_fields,
             serialized_body=_body,
             body=body,
+            auth_settings=_auth,
             timeout=timeout,
         )
     

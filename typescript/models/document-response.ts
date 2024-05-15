@@ -40,6 +40,12 @@ export interface DocumentResponse {
     'file_id': number;
     /**
      * 
+     * @type {number}
+     * @memberof DocumentResponse
+     */
+    'parent_file_id': number | null;
+    /**
+     * 
      * @type {string}
      * @memberof DocumentResponse
      */

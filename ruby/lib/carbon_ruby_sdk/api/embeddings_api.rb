@@ -336,7 +336,7 @@ module Carbon
       return_type = opts[:debug_return_type] || 'DocumentResponseList'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
 
       new_options = opts.merge(
         :operation => :"EmbeddingsApi.get_documents",

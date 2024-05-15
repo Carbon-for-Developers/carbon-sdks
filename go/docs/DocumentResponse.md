@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Tags** | [**map[string]Tags**](Tags.md) |  | 
 **Content** | **string** |  | 
 **FileId** | **int32** |  | 
+**ParentFileId** | **NullableInt32** |  | 
 **Source** | **NullableString** |  | 
 **SourceUrl** | **NullableString** |  | 
 **SourceType** | [**NullableDataSourceTypeNullable**](DataSourceTypeNullable.md) |  | 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewDocumentResponse
 
-`func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32, ) *DocumentResponse`
+`func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, parentFileId NullableInt32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32, ) *DocumentResponse`
 
 NewDocumentResponse instantiates a new DocumentResponse object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +107,36 @@ and a boolean to check if the value has been set.
 SetFileId sets FileId field to given value.
 
 
+### GetParentFileId
+
+`func (o *DocumentResponse) GetParentFileId() int32`
+
+GetParentFileId returns the ParentFileId field if non-nil, zero value otherwise.
+
+### GetParentFileIdOk
+
+`func (o *DocumentResponse) GetParentFileIdOk() (*int32, bool)`
+
+GetParentFileIdOk returns a tuple with the ParentFileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentFileId
+
+`func (o *DocumentResponse) SetParentFileId(v int32)`
+
+SetParentFileId sets ParentFileId field to given value.
+
+
+### SetParentFileIdNil
+
+`func (o *DocumentResponse) SetParentFileIdNil(b bool)`
+
+ SetParentFileIdNil sets the value for ParentFileId to be an explicit nil
+
+### UnsetParentFileId
+`func (o *DocumentResponse) UnsetParentFileId()`
+
+UnsetParentFileId ensures that no value is present for ParentFileId, not even an explicit nil
 ### GetSource
 
 `func (o *DocumentResponse) GetSource() string`

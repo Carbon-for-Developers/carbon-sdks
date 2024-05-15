@@ -19,6 +19,7 @@ type DocumentResponse struct {
 	Tags map[string]Tags `json:"tags"`
 	Content string `json:"content"`
 	FileId int32 `json:"file_id"`
+	ParentFileId NullableInt32 `json:"parent_file_id"`
 	Source NullableString `json:"source"`
 	SourceUrl NullableString `json:"source_url"`
 	SourceType NullableDataSourceTypeNullable `json:"source_type"`
@@ -34,11 +35,12 @@ type DocumentResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32) *DocumentResponse {
+func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, parentFileId NullableInt32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32) *DocumentResponse {
 	this := DocumentResponse{}
 	this.Tags = tags
 	this.Content = content
 	this.FileId = fileId
+	this.ParentFileId = parentFileId
 	this.Source = source
 	this.SourceUrl = sourceUrl
 	this.SourceType = sourceType
@@ -131,6 +133,32 @@ func (o *DocumentResponse) GetFileIdOk() (*int32, bool) {
 // SetFileId sets field value
 func (o *DocumentResponse) SetFileId(v int32) {
 	o.FileId = v
+}
+
+// GetParentFileId returns the ParentFileId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *DocumentResponse) GetParentFileId() int32 {
+	if o == nil || o.ParentFileId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.ParentFileId.Get()
+}
+
+// GetParentFileIdOk returns a tuple with the ParentFileId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentResponse) GetParentFileIdOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ParentFileId.Get(), o.ParentFileId.IsSet()
+}
+
+// SetParentFileId sets field value
+func (o *DocumentResponse) SetParentFileId(v int32) {
+	o.ParentFileId.Set(&v)
 }
 
 // GetSource returns the Source field value
@@ -377,6 +405,9 @@ func (o DocumentResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["file_id"] = o.FileId
+	}
+	if true {
+		toSerialize["parent_file_id"] = o.ParentFileId.Get()
 	}
 	if true {
 		toSerialize["source"] = o.Source.Get()

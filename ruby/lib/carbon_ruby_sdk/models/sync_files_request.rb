@@ -187,7 +187,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '952c7efa-d4fe-43bf-a86c-4f5dad9fc003'
+        self.request_id = 'bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e'
       end
 
       if attributes.key?(:'use_ocr')
