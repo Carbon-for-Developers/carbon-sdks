@@ -1367,6 +1367,18 @@
         ],
         "summary": "Embeddings",
         "operationId": "Embeddings_getDocuments",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
         "description": "For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`\nand `tags` are specified, `tags` is ignored. `tags_v2` enables\nbuilding complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example:\n```json\n{\n    \"OR\": [\n        {\n            \"key\": \"subject\",\n            \"value\": \"holy-bible\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"person-of-interest\",\n            \"value\": \"jesus christ\",\n            \"negate\": false\n        },\n        {\n            \"key\": \"genre\",\n            \"value\": \"religion\",\n            \"negate\": true\n        }\n        {\n            \"AND\": [\n                {\n                    \"key\": \"subject\",\n                    \"value\": \"tao-te-ching\",\n                    \"negate\": false\n                },\n                {\n                    \"key\": \"author\",\n                    \"value\": \"lao-tzu\",\n                    \"negate\": false\n                }\n            ]\n        }\n    ]\n}\n```\nIn this case, files will be filtered such that:\n1. \"subject\" = \"holy-bible\" OR\n2. \"person-of-interest\" = \"jesus christ\" OR\n3. \"genre\" != \"religion\" OR\n4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"\n\nNote that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3.\nFor tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply:\n1. \"key\" isn't optional and must be a `string`\n2. \"value\" isn't optional and can be `any` or list[`any`]\n3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in\nthe resulting query. It is `false` by default.\n\n\nWhen querying embeddings, you can optionally specify the `media_type` parameter in your request. By default (if\nnot set), it is equal to \"TEXT\". This means that the query will be performed over files that have\nbeen parsed as text (for now, this covers all files except image files). If it is equal to \"IMAGE\",\nthe query will be performed over image files (for now, `.jpg` and `.png` files). You can think of this\nfield as an additional filter on top of any filters set in `file_ids` and\n\n\nWhen `hybrid_search` is set to true, a combination of keyword search and semantic search are used to rank\nand select candidate embeddings during information retrieval. By default, these search methods are weighted\nequally during the ranking process. To adjust the weight (or \"importance\") of each search method, you can use\nthe `hybrid_search_tuning_parameters` property. The description for the different tuning parameters are:\n- `weight_a`: weight to assign to semantic search\n- `weight_b`: weight to assign to keyword search\n\nYou must ensure that `sum(weight_a, weight_b,..., weight_n)` for all *n* weights is equal to 1. The equality\nhas an error tolerance of 0.001 to account for possible floating point issues.\n\nIn order to use hybrid search for a customer across a set of documents, two flags need to be enabled:\n1. Use the `/modify_user_configuration` endpoint to to enable `sparse_vectors` for the customer. The payload\nbody for this request is below:\n```\n{\n  \"configuration_key_name\": \"sparse_vectors\",\n  \"value\": {\n    \"enabled\": true\n  }\n}\n```\n2. Make sure hybrid search is enabled for the documents across which you want to perform the search. For the\n`/uploadfile` endpoint, this can be done by setting the following query parameter: `generate_sparse_vectors=true`\n\n\nCarbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's\nmultimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.\nThe model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query \nparameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing\nembedding queries, embeddings from files that used the specified model will be considered in the query.\nFor example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with\n`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is\nspecified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that\nthe set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**\nset `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.",
         "requestBody": {
           "content": {
@@ -3422,7 +3434,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "30d4247e-9dcf-41e3-98a7-61ef4a78adad",
+              "request_id": "a1705efc-e82e-40b3-afa0-1a1f2768df88",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3697,6 +3709,11 @@
             "title": "File Id",
             "type": "integer"
           },
+          "parent_file_id": {
+            "title": "Parent File Id",
+            "type": "integer",
+            "nullable": true
+          },
           "source": {
             "title": "Source",
             "type": "string",
@@ -3755,6 +3772,7 @@
         "required": [
           "content",
           "file_id",
+          "parent_file_id",
           "source",
           "source_url",
           "source_type",
@@ -5199,7 +5217,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "e33ac7f9-11d1-4a94-8855-016e4d6c07ff"
+            "default": "1bbe1daa-171c-4433-bdc6-cc4b23a6116f"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5216,7 +5234,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX",
             "type": "boolean",
             "default": true
           },
@@ -6614,7 +6632,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "952c7efa-d4fe-43bf-a86c-4f5dad9fc003"
+            "default": "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6706,7 +6724,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "30d4247e-9dcf-41e3-98a7-61ef4a78adad"
+            "default": "a1705efc-e82e-40b3-afa0-1a1f2768df88"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",

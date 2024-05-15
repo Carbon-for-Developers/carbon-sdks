@@ -17,6 +17,8 @@ module Carbon
 
     attr_accessor :file_id
 
+    attr_accessor :parent_file_id
+
     attr_accessor :source
 
     attr_accessor :source_url
@@ -41,6 +43,7 @@ module Carbon
         :'tags' => :'tags',
         :'content' => :'content',
         :'file_id' => :'file_id',
+        :'parent_file_id' => :'parent_file_id',
         :'source' => :'source',
         :'source_url' => :'source_url',
         :'source_type' => :'source_type',
@@ -64,6 +67,7 @@ module Carbon
         :'tags' => :'Hash<String, Tags>',
         :'content' => :'String',
         :'file_id' => :'Integer',
+        :'parent_file_id' => :'Integer',
         :'source' => :'String',
         :'source_url' => :'String',
         :'source_type' => :'DataSourceTypeNullable',
@@ -80,6 +84,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'tags',
+        :'parent_file_id',
         :'source',
         :'source_url',
         :'source_type',
@@ -119,6 +124,10 @@ module Carbon
 
       if attributes.key?(:'file_id')
         self.file_id = attributes[:'file_id']
+      end
+
+      if attributes.key?(:'parent_file_id')
+        self.parent_file_id = attributes[:'parent_file_id']
       end
 
       if attributes.key?(:'source')
@@ -191,6 +200,7 @@ module Carbon
           tags == o.tags &&
           content == o.content &&
           file_id == o.file_id &&
+          parent_file_id == o.parent_file_id &&
           source == o.source &&
           source_url == o.source_url &&
           source_type == o.source_type &&
@@ -211,7 +221,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, content, file_id, source, source_url, source_type, presigned_url, vector, score, rank, content_metadata, chunk_index].hash
+      [tags, content, file_id, parent_file_id, source, source_url, source_type, presigned_url, vector, score, rank, content_metadata, chunk_index].hash
     end
 
     # Builds the object from hash

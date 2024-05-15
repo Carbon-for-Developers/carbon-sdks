@@ -25,6 +25,8 @@ class RequiredDocumentResponse(TypedDict):
 
     file_id: int
 
+    parent_file_id: typing.Optional[int]
+
     source: typing.Optional[str]
 
     source_url: typing.Optional[str]

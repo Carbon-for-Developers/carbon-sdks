@@ -26,6 +26,8 @@ class DocumentResponse(BaseModel):
 
     file_id: int = Field(alias='file_id')
 
+    parent_file_id: typing.Optional[int] = Field(alias='parent_file_id')
+
     source: typing.Optional[str] = Field(alias='source')
 
     source_url: typing.Optional[str] = Field(alias='source_url')

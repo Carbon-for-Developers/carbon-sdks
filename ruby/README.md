@@ -1202,7 +1202,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "30d4247e-9dcf-41e3-98a7-61ef4a78adad",
+        "request_id" => "a1705efc-e82e-40b3-afa0-1a1f2768df88",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1415,7 +1415,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "e33ac7f9-11d1-4a94-8855-016e4d6c07ff",
+  request_id: "1bbe1daa-171c-4433-bdc6-cc4b23a6116f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1474,7 +1474,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE
+GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1736,7 +1736,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
+  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1837,7 +1837,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
+  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

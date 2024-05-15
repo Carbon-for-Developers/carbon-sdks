@@ -1402,7 +1402,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "e33ac7f9-11d1-4a94-8855-016e4d6c07ff",
+  request_id: "1bbe1daa-171c-4433-bdc6-cc4b23a6116f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1471,7 +1471,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, BOX, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1725,7 +1725,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
+  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1833,7 +1833,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "952c7efa-d4fe-43bf-a86c-4f5dad9fc003",
+  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

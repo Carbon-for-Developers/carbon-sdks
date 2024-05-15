@@ -29,6 +29,9 @@ import (
 
 func main() {
     configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
     hybridSearchTuningParameters := *carbon.NewHybridSearchTuningParamsNullable()
