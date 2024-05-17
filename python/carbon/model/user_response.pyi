@@ -35,15 +35,16 @@ class UserResponse(
         required = {
             "num_characters_synced",
             "custom_limits",
+            "created_at",
+            "deleted_at",
+            "organization_supplied_user_id",
+            "enabled_features",
             "updated_at",
             "num_tokens_synced",
             "organization_id",
             "unique_file_tags",
-            "created_at",
             "id",
-            "deleted_at",
-            "organization_supplied_user_id",
-            "enabled_features",
+            "auto_sync_enabled_sources",
             "num_files_synced",
         }
         
@@ -108,6 +109,10 @@ class UserResponse(
                         **kwargs,
                     )
             custom_limits = schemas.DictSchema
+        
+            @staticmethod
+            def auto_sync_enabled_sources() -> typing.Type['UserResponseAutoSyncEnabledSources']:
+                return UserResponseAutoSyncEnabledSources
             __annotations__ = {
                 "id": id,
                 "organization_id": organization_id,
@@ -121,19 +126,21 @@ class UserResponse(
                 "unique_file_tags": unique_file_tags,
                 "enabled_features": enabled_features,
                 "custom_limits": custom_limits,
+                "auto_sync_enabled_sources": auto_sync_enabled_sources,
             }
     
     num_characters_synced: MetaOapg.properties.num_characters_synced
     custom_limits: MetaOapg.properties.custom_limits
+    created_at: MetaOapg.properties.created_at
+    deleted_at: MetaOapg.properties.deleted_at
+    organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
+    enabled_features: MetaOapg.properties.enabled_features
     updated_at: MetaOapg.properties.updated_at
     num_tokens_synced: MetaOapg.properties.num_tokens_synced
     organization_id: MetaOapg.properties.organization_id
     unique_file_tags: 'UserResponseUniqueFileTags'
-    created_at: MetaOapg.properties.created_at
     id: MetaOapg.properties.id
-    deleted_at: MetaOapg.properties.deleted_at
-    organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
-    enabled_features: MetaOapg.properties.enabled_features
+    auto_sync_enabled_sources: 'UserResponseAutoSyncEnabledSources'
     num_files_synced: MetaOapg.properties.num_files_synced
     
     @typing.overload
@@ -173,9 +180,12 @@ class UserResponse(
     def __getitem__(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> 'UserResponseAutoSyncEnabledSources': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", "auto_sync_enabled_sources", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -217,9 +227,12 @@ class UserResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> 'UserResponseAutoSyncEnabledSources': ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "organization_supplied_user_id", "created_at", "updated_at", "deleted_at", "num_files_synced", "num_characters_synced", "num_tokens_synced", "unique_file_tags", "enabled_features", "custom_limits", "auto_sync_enabled_sources", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -228,15 +241,16 @@ class UserResponse(
         *args: typing.Union[dict, frozendict.frozendict, ],
         num_characters_synced: typing.Union[MetaOapg.properties.num_characters_synced, decimal.Decimal, int, ],
         custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, ],
+        created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
+        deleted_at: typing.Union[MetaOapg.properties.deleted_at, None, str, datetime, ],
+        organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
+        enabled_features: typing.Union[MetaOapg.properties.enabled_features, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         num_tokens_synced: typing.Union[MetaOapg.properties.num_tokens_synced, decimal.Decimal, int, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
         unique_file_tags: 'UserResponseUniqueFileTags',
-        created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
-        deleted_at: typing.Union[MetaOapg.properties.deleted_at, None, str, datetime, ],
-        organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
-        enabled_features: typing.Union[MetaOapg.properties.enabled_features, dict, frozendict.frozendict, None, ],
+        auto_sync_enabled_sources: 'UserResponseAutoSyncEnabledSources',
         num_files_synced: typing.Union[MetaOapg.properties.num_files_synced, decimal.Decimal, int, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -246,18 +260,20 @@ class UserResponse(
             *args,
             num_characters_synced=num_characters_synced,
             custom_limits=custom_limits,
+            created_at=created_at,
+            deleted_at=deleted_at,
+            organization_supplied_user_id=organization_supplied_user_id,
+            enabled_features=enabled_features,
             updated_at=updated_at,
             num_tokens_synced=num_tokens_synced,
             organization_id=organization_id,
             unique_file_tags=unique_file_tags,
-            created_at=created_at,
             id=id,
-            deleted_at=deleted_at,
-            organization_supplied_user_id=organization_supplied_user_id,
-            enabled_features=enabled_features,
+            auto_sync_enabled_sources=auto_sync_enabled_sources,
             num_files_synced=num_files_synced,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.model.user_response_unique_file_tags import UserResponseUniqueFileTags

@@ -30,6 +30,7 @@ const (
 	FILEFORMATS_MD FileFormats = "MD"
 	FILEFORMATS_RTF FileFormats = "RTF"
 	FILEFORMATS_JSON FileFormats = "JSON"
+	FILEFORMATS_HTML FileFormats = "HTML"
 	FILEFORMATS_NOTION FileFormats = "NOTION"
 	FILEFORMATS_GOOGLE_DOCS FileFormats = "GOOGLE_DOCS"
 	FILEFORMATS_GOOGLE_SHEETS FileFormats = "GOOGLE_SHEETS"
@@ -73,6 +74,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"MD",
 	"RTF",
 	"JSON",
+	"HTML",
 	"NOTION",
 	"GOOGLE_DOCS",
 	"GOOGLE_SHEETS",

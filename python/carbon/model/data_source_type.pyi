@@ -128,6 +128,10 @@ class DataSourceType(
         return cls("JSON")
     
     @schemas.classproperty
+    def HTML(cls):
+        return cls("HTML")
+    
+    @schemas.classproperty
     def RAW_TEXT(cls):
         return cls("RAW_TEXT")
     

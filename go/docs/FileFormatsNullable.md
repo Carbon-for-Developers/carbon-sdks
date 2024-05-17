@@ -23,6 +23,8 @@
 
 * `JSON` (value: `"JSON"`)
 
+* `HTML` (value: `"HTML"`)
+
 * `NOTION` (value: `"NOTION"`)
 
 * `GOOGLE_DOCS` (value: `"GOOGLE_DOCS"`)

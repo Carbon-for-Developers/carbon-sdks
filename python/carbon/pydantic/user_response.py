@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.pydantic.user_response_unique_file_tags import UserResponseUniqueFileTags
 
 class UserResponse(BaseModel):
@@ -41,6 +42,8 @@ class UserResponse(BaseModel):
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='enabled_features')
 
     custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='custom_limits')
+
+    auto_sync_enabled_sources: UserResponseAutoSyncEnabledSources = Field(alias='auto_sync_enabled_sources')
 
     model_config = ConfigDict(
         protected_namespaces=(),

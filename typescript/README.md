@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.33-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.33)
+[![npm](https://img.shields.io/badge/npm-v0.1.34-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.34)
 
 </div>
 
@@ -1260,6 +1260,8 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
+##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./models/helpdesk-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskfilesyncconfignullablemodelshelpdesk-file-sync-config-nullablets"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -1402,7 +1404,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "1bbe1daa-171c-4433-bdc6-cc4b23a6116f",
+  request_id: "fd8991d4-05d6-4fdd-92bf-9dccb96d5b92",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1471,7 +1473,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1725,7 +1727,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
+  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1833,7 +1835,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
+  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

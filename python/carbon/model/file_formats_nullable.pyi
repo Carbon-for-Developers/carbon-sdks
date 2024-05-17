@@ -47,6 +47,7 @@ class FileFormatsNullable(
             "MD": "MD",
             "RTF": "RTF",
             "JSON": "JSON",
+            "HTML": "HTML",
             "NOTION": "NOTION",
             "GOOGLE_DOCS": "GOOGLE_DOCS",
             "GOOGLE_SHEETS": "GOOGLE_SHEETS",
@@ -117,6 +118,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def JSON(cls):
         return cls("JSON")
+    
+    @schemas.classproperty
+    def HTML(cls):
+        return cls("HTML")
     
     @schemas.classproperty
     def NOTION(cls):

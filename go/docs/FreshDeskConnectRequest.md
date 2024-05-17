@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
+**FileSyncConfig** | Pointer to [**NullableHelpdeskFileSyncConfigNullable**](HelpdeskFileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -416,6 +417,41 @@ SetSyncSourceItems sets SyncSourceItems field to given value.
 
 HasSyncSourceItems returns a boolean if a field has been set.
 
+### GetFileSyncConfig
+
+`func (o *FreshDeskConnectRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *FreshDeskConnectRequest) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *FreshDeskConnectRequest) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *FreshDeskConnectRequest) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *FreshDeskConnectRequest) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *FreshDeskConnectRequest) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

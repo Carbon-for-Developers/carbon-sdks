@@ -61,6 +61,7 @@ class DataSourceTypeNullable(
             "MD": "MD",
             "RTF": "RTF",
             "JSON": "JSON",
+            "HTML": "HTML",
             "RAW_TEXT": "RAW_TEXT",
             "WEB_SCRAPE": "WEB_SCRAPE",
             "RSS_FEED": "RSS_FEED",
@@ -179,6 +180,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def JSON(cls):
         return cls("JSON")
+    
+    @schemas.classproperty
+    def HTML(cls):
+        return cls("HTML")
     
     @schemas.classproperty
     def RAW_TEXT(cls):

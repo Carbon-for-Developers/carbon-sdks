@@ -30,6 +30,7 @@ const (
 	FILEFORMATSNULLABLE_MD FileFormatsNullable = "MD"
 	FILEFORMATSNULLABLE_RTF FileFormatsNullable = "RTF"
 	FILEFORMATSNULLABLE_JSON FileFormatsNullable = "JSON"
+	FILEFORMATSNULLABLE_HTML FileFormatsNullable = "HTML"
 	FILEFORMATSNULLABLE_NOTION FileFormatsNullable = "NOTION"
 	FILEFORMATSNULLABLE_GOOGLE_DOCS FileFormatsNullable = "GOOGLE_DOCS"
 	FILEFORMATSNULLABLE_GOOGLE_SHEETS FileFormatsNullable = "GOOGLE_SHEETS"
@@ -73,6 +74,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"MD",
 	"RTF",
 	"JSON",
+	"HTML",
 	"NOTION",
 	"GOOGLE_DOCS",
 	"GOOGLE_SHEETS",

@@ -72,6 +72,10 @@ class FileFormats(
         return cls("JSON")
     
     @schemas.classproperty
+    def HTML(cls):
+        return cls("HTML")
+    
+    @schemas.classproperty
     def NOTION(cls):
         return cls("NOTION")
     

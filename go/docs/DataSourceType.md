@@ -51,6 +51,8 @@
 
 * `JSON` (value: `"JSON"`)
 
+* `HTML` (value: `"HTML"`)
+
 * `RAW_TEXT` (value: `"RAW_TEXT"`)
 
 * `WEB_SCRAPE` (value: `"WEB_SCRAPE"`)

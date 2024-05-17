@@ -34,9 +34,11 @@ from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
+from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable as HelpdeskFileSyncConfigNullableSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 from carbon.model.fresh_desk_connect_request import FreshDeskConnectRequest as FreshDeskConnectRequestSchema
 
+from carbon.type.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.fresh_desk_connect_request import FreshDeskConnectRequest
 from carbon.type.generic_success_response import GenericSuccessResponse
@@ -44,6 +46,7 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
+from carbon.pydantic.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable as HelpdeskFileSyncConfigNullablePydantic
 from carbon.pydantic.fresh_desk_connect_request import FreshDeskConnectRequest as FreshDeskConnectRequestPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
@@ -122,6 +125,7 @@ class BaseApi(api_client.Api):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -149,6 +153,8 @@ class BaseApi(api_client.Api):
             _body["request_id"] = request_id
         if sync_source_items is not None:
             _body["sync_source_items"] = sync_source_items
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         args.body = _body
         return args
 
@@ -368,6 +374,7 @@ class ConnectFreshdeskRaw(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -387,6 +394,7 @@ class ConnectFreshdeskRaw(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return await self._aconnect_freshdesk_oapg(
             body=args.body,
@@ -407,6 +415,7 @@ class ConnectFreshdeskRaw(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -424,6 +433,7 @@ class ConnectFreshdeskRaw(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return self._connect_freshdesk_oapg(
             body=args.body,
@@ -445,6 +455,7 @@ class ConnectFreshdesk(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -461,6 +472,7 @@ class ConnectFreshdesk(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
             **kwargs,
         )
         if validate:
@@ -482,6 +494,7 @@ class ConnectFreshdesk(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.connect_freshdesk(
@@ -497,6 +510,7 @@ class ConnectFreshdesk(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -520,6 +534,7 @@ class ApiForpost(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -539,6 +554,7 @@ class ApiForpost(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return await self._aconnect_freshdesk_oapg(
             body=args.body,
@@ -559,6 +575,7 @@ class ApiForpost(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -576,6 +593,7 @@ class ApiForpost(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return self._connect_freshdesk_oapg(
             body=args.body,

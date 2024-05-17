@@ -44,6 +44,7 @@ const (
 	DATASOURCETYPENULLABLE_MD DataSourceTypeNullable = "MD"
 	DATASOURCETYPENULLABLE_RTF DataSourceTypeNullable = "RTF"
 	DATASOURCETYPENULLABLE_JSON DataSourceTypeNullable = "JSON"
+	DATASOURCETYPENULLABLE_HTML DataSourceTypeNullable = "HTML"
 	DATASOURCETYPENULLABLE_RAW_TEXT DataSourceTypeNullable = "RAW_TEXT"
 	DATASOURCETYPENULLABLE_WEB_SCRAPE DataSourceTypeNullable = "WEB_SCRAPE"
 	DATASOURCETYPENULLABLE_RSS_FEED DataSourceTypeNullable = "RSS_FEED"
@@ -93,6 +94,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"MD",
 	"RTF",
 	"JSON",
+	"HTML",
 	"RAW_TEXT",
 	"WEB_SCRAPE",
 	"RSS_FEED",

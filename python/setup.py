@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "carbon-python-sdk"
-VERSION = "0.1.32"
+VERSION = "0.1.33"
 # To install the library, run the following
 #
 # python setup.py install
@@ -29,7 +29,7 @@ REQUIRES = [
     "certifi >= 2023.7.22",
     "python-dateutil ~= 2.8.2",
     "typing_extensions ~= 4.3.0",
-    "urllib3 ~= 1.26.18",
+    "urllib3 ~= 1.26.18, ~= 2.0.0",
     "cryptography ~= 42.0.5",
     "frozendict ~= 2.3.4",
     "aiohttp ~= 3.9.2",

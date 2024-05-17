@@ -1287,7 +1287,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 request_id: requestParameters.request_id,
-                sync_source_items: requestParameters.sync_source_items
+                sync_source_items: requestParameters.sync_source_items,
+                file_sync_config: requestParameters.file_sync_config
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

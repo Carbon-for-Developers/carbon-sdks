@@ -29,13 +29,14 @@ type UserResponse struct {
 	UniqueFileTags []map[string]interface{} `json:"unique_file_tags"`
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
 	CustomLimits map[string]interface{} `json:"custom_limits"`
+	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources"`
 }
 
 // NewUserResponse instantiates a new UserResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}) *UserResponse {
+func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}) *UserResponse {
 	this := UserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -49,6 +50,7 @@ func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId 
 	this.UniqueFileTags = uniqueFileTags
 	this.EnabledFeatures = enabledFeatures
 	this.CustomLimits = customLimits
+	this.AutoSyncEnabledSources = autoSyncEnabledSources
 	return &this
 }
 
@@ -352,6 +354,30 @@ func (o *UserResponse) SetCustomLimits(v map[string]interface{}) {
 	o.CustomLimits = v
 }
 
+// GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value
+func (o *UserResponse) GetAutoSyncEnabledSources() []interface{} {
+	if o == nil {
+		var ret []interface{}
+		return ret
+	}
+
+	return o.AutoSyncEnabledSources
+}
+
+// GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAutoSyncEnabledSourcesOk() ([]interface{}, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.AutoSyncEnabledSources, true
+}
+
+// SetAutoSyncEnabledSources sets field value
+func (o *UserResponse) SetAutoSyncEnabledSources(v []interface{}) {
+	o.AutoSyncEnabledSources = v
+}
+
 func (o UserResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -389,6 +415,9 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["custom_limits"] = o.CustomLimits
+	}
+	if true {
+		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources
 	}
 	return json.Marshal(toSerialize)
 }

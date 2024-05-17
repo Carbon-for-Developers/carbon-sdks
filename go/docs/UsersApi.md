@@ -106,6 +106,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.UniqueFileTags`: %v\n", resp.UniqueFileTags)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.EnabledFeatures`: %v\n", resp.EnabledFeatures)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", resp.CustomLimits)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
 }
 ```
 
