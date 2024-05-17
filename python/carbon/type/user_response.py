@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.type.user_response_unique_file_tags import UserResponseUniqueFileTags
 
 class RequiredUserResponse(TypedDict):
@@ -40,6 +41,8 @@ class RequiredUserResponse(TypedDict):
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
     custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
+    auto_sync_enabled_sources: UserResponseAutoSyncEnabledSources
 
 class OptionalUserResponse(TypedDict, total=False):
     pass

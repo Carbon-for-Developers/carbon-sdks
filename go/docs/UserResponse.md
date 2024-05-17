@@ -16,12 +16,13 @@ Name | Type | Description | Notes
 **UniqueFileTags** | **[]map[string]interface{}** |  | 
 **EnabledFeatures** | **map[string]interface{}** |  | 
 **CustomLimits** | **map[string]interface{}** |  | [default to {}]
+**AutoSyncEnabledSources** | **[]interface{}** |  | [default to []]
 
 ## Methods
 
 ### NewUserResponse
 
-`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, ) *UserResponse`
+`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, ) *UserResponse`
 
 NewUserResponse instantiates a new UserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -294,6 +295,26 @@ and a boolean to check if the value has been set.
 `func (o *UserResponse) SetCustomLimits(v map[string]interface{})`
 
 SetCustomLimits sets CustomLimits field to given value.
+
+
+### GetAutoSyncEnabledSources
+
+`func (o *UserResponse) GetAutoSyncEnabledSources() []interface{}`
+
+GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field if non-nil, zero value otherwise.
+
+### GetAutoSyncEnabledSourcesOk
+
+`func (o *UserResponse) GetAutoSyncEnabledSourcesOk() (*[]interface{}, bool)`
+
+GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoSyncEnabledSources
+
+`func (o *UserResponse) SetAutoSyncEnabledSources(v []interface{})`
+
+SetAutoSyncEnabledSources sets AutoSyncEnabledSources field to given value.
 
 
 

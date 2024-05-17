@@ -37,7 +37,15 @@ class RawTextInput(
         }
         
         class properties:
-            contents = schemas.StrSchema
+            
+            
+            class contents(
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    min_length = 5
             
             
             class name(

@@ -1126,7 +1126,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 
 ```ruby
 result = carbon.files.upload_text(
-  contents: "string_example",
+  contents: "aaaaa",
   name: "string_example",
   chunk_size: 1,
   chunk_overlap: 1,
@@ -1202,7 +1202,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "a1705efc-e82e-40b3-afa0-1a1f2768df88",
+        "request_id" => "b194468b-b547-46b9-98d6-e45c491bb8d0",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1252,6 +1252,10 @@ result = carbon.integrations.connect_freshdesk(
   sync_files_on_connection: true,
   request_id: "string_example",
   sync_source_items: true,
+  file_sync_config: {
+        "file_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+    },
 )
 p result
 ```
@@ -1273,6 +1277,7 @@ p result
 Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
+##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_file_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1415,7 +1420,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "1bbe1daa-171c-4433-bdc6-cc4b23a6116f",
+  request_id: "fd8991d4-05d6-4fdd-92bf-9dccb96d5b92",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1474,7 +1479,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX
+ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1736,7 +1741,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
+  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1837,7 +1842,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e",
+  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

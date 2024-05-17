@@ -3434,7 +3434,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "a1705efc-e82e-40b3-afa0-1a1f2768df88",
+              "request_id": "b194468b-b547-46b9-98d6-e45c491bb8d0",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3525,6 +3525,7 @@
           "MD",
           "RTF",
           "JSON",
+          "HTML",
           "RAW_TEXT",
           "WEB_SCRAPE",
           "RSS_FEED",
@@ -4141,6 +4142,7 @@
           "MD",
           "RTF",
           "JSON",
+          "HTML",
           "NOTION",
           "GOOGLE_DOCS",
           "GOOGLE_SHEETS",
@@ -4281,6 +4283,9 @@
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "type": "boolean",
             "default": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/HelpdeskFileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -5217,7 +5222,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "1bbe1daa-171c-4433-bdc6-cc4b23a6116f"
+            "default": "fd8991d4-05d6-4fdd-92bf-9dccb96d5b92"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5234,7 +5239,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE",
             "type": "boolean",
             "default": true
           },
@@ -6045,7 +6050,8 @@
         "properties": {
           "contents": {
             "title": "Contents",
-            "type": "string"
+            "type": "string",
+            "minLength": 5
           },
           "name": {
             "title": "Name",
@@ -6632,7 +6638,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e"
+            "default": "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6724,7 +6730,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "a1705efc-e82e-40b3-afa0-1a1f2768df88"
+            "default": "b194468b-b547-46b9-98d6-e45c491bb8d0"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7235,6 +7241,14 @@
             "type": "object",
             "default": {
             }
+          },
+          "auto_sync_enabled_sources": {
+            "title": "Auto Sync Enabled Sources",
+            "items": {
+            },
+            "type": "array",
+            "default": [
+            ]
           }
         },
         "type": "object",
@@ -7250,7 +7264,8 @@
           "num_tokens_synced",
           "unique_file_tags",
           "enabled_features",
-          "custom_limits"
+          "custom_limits",
+          "auto_sync_enabled_sources"
         ]
       },
       "ValidationError": {
@@ -7729,6 +7744,7 @@
           "MD",
           "RTF",
           "JSON",
+          "HTML",
           "RAW_TEXT",
           "WEB_SCRAPE",
           "RSS_FEED",
@@ -7790,6 +7806,7 @@
           "MD",
           "RTF",
           "JSON",
+          "HTML",
           "NOTION",
           "GOOGLE_DOCS",
           "GOOGLE_SHEETS",
@@ -7820,6 +7837,29 @@
           "OPUS",
           "WEBM"
         ],
+        "nullable": true
+      },
+      "HelpdeskFileSyncConfigNullable": {
+        "title": "HelpdeskFileSyncConfig",
+        "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
+        "properties": {
+          "file_types": {
+            "title": "File Types",
+            "items": {
+              "$ref": "#/components/schemas/HelpdeskFileTypes"
+            },
+            "type": "array",
+            "default": [
+              "ARTICLE"
+            ]
+          },
+          "sync_attachments": {
+            "title": "Sync Attachments",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object",
         "nullable": true
       },
       "HybridSearchTuningParamsNullable": {
@@ -7895,29 +7935,6 @@
             "title": "Root Files Only",
             "type": "boolean",
             "nullable": true
-          }
-        },
-        "type": "object",
-        "nullable": true
-      },
-      "HelpdeskFileSyncConfigNullable": {
-        "title": "HelpdeskFileSyncConfig",
-        "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
-        "properties": {
-          "file_types": {
-            "title": "File Types",
-            "items": {
-              "$ref": "#/components/schemas/HelpdeskFileTypes"
-            },
-            "type": "array",
-            "default": [
-              "ARTICLE"
-            ]
-          },
-          "sync_attachments": {
-            "title": "Sync Attachments",
-            "type": "boolean",
-            "default": false
           }
         },
         "type": "object",

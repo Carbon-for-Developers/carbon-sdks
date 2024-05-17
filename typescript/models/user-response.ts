@@ -89,5 +89,11 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'custom_limits': object;
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof UserResponse
+     */
+    'auto_sync_enabled_sources': Array<any>;
 }
 

@@ -44,6 +44,7 @@ const (
 	DATASOURCETYPE_MD DataSourceType = "MD"
 	DATASOURCETYPE_RTF DataSourceType = "RTF"
 	DATASOURCETYPE_JSON DataSourceType = "JSON"
+	DATASOURCETYPE_HTML DataSourceType = "HTML"
 	DATASOURCETYPE_RAW_TEXT DataSourceType = "RAW_TEXT"
 	DATASOURCETYPE_WEB_SCRAPE DataSourceType = "WEB_SCRAPE"
 	DATASOURCETYPE_RSS_FEED DataSourceType = "RSS_FEED"
@@ -93,6 +94,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"MD",
 	"RTF",
 	"JSON",
+	"HTML",
 	"RAW_TEXT",
 	"WEB_SCRAPE",
 	"RSS_FEED",

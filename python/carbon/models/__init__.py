@@ -159,6 +159,7 @@ from carbon.model.user_file_embedding_properties import UserFileEmbeddingPropert
 from carbon.model.user_files_v2 import UserFilesV2
 from carbon.model.user_request_content import UserRequestContent
 from carbon.model.user_response import UserResponse
+from carbon.model.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.model.user_response_unique_file_tags import UserResponseUniqueFileTags
 from carbon.model.utilities_scrape_web_request import UtilitiesScrapeWebRequest
 from carbon.model.validation_error import ValidationError

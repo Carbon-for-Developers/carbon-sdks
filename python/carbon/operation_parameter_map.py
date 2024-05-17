@@ -410,6 +410,9 @@ operation_parameter_map = {
             {
                 'name': 'sync_source_items'
             },
+            {
+                'name': 'file_sync_config'
+            },
         ]
     },
     '/integrations/gitbook-POST': {

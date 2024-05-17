@@ -3801,7 +3801,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: a1705efc-e82e-40b3-afa0-1a1f2768df88
+          request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
         authentication: null
       properties:
         authentication:
@@ -3822,7 +3822,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: a1705efc-e82e-40b3-afa0-1a1f2768df88
+            request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -3914,6 +3914,7 @@ components:
       - MD
       - RTF
       - JSON
+      - HTML
       - RAW_TEXT
       - WEB_SCRAPE
       - RSS_FEED
@@ -4549,6 +4550,7 @@ components:
       - MD
       - RTF
       - JSON
+      - HTML
       - NOTION
       - GOOGLE_DOCS
       - GOOGLE_SHEETS
@@ -4615,18 +4617,22 @@ components:
       type: object
     FreshDeskConnectRequest:
       example:
-        sync_source_items: true
         chunk_size: 1500
         prepend_filename_to_chunks: false
+        embedding_model: OPENAI
+        file_sync_config:
+          file_types:
+          - ARTICLE
+          sync_attachments: false
+        tags: {}
+        sync_source_items: true
         api_key: api_key
         generate_sparse_vectors: false
         domain: domain
         sync_files_on_connection: true
-        embedding_model: OPENAI
         chunk_overlap: 20
         skip_embedding_generation: false
         request_id: request_id
-        tags: {}
       properties:
         tags:
           default: {}
@@ -4705,6 +4711,8 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/HelpdeskFileSyncConfigNullable'
       required:
       - api_key
       - domain
@@ -5594,7 +5602,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+        request_id: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -5712,13 +5720,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          default: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           title: Request Id
           type: string
-          x-konfig-original-example: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          x-konfig-original-example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5740,7 +5748,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -6619,6 +6627,7 @@ components:
         skip_embedding_generation: false
       properties:
         contents:
+          minLength: 5
           title: Contents
           type: string
         name:
@@ -7130,7 +7139,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+        request_id: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
         data_source_id: 0
       properties:
         tags:
@@ -7202,11 +7211,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
-          example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           title: Request Id
           type: string
-          x-konfig-original-example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7260,7 +7269,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: a1705efc-e82e-40b3-afa0-1a1f2768df88
+        request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
       properties:
         tags:
           nullable: true
@@ -7333,11 +7342,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: a1705efc-e82e-40b3-afa0-1a1f2768df88
-          example: a1705efc-e82e-40b3-afa0-1a1f2768df88
+          default: b194468b-b547-46b9-98d6-e45c491bb8d0
+          example: b194468b-b547-46b9-98d6-e45c491bb8d0
           title: Request Id
           type: string
-          x-konfig-original-example: a1705efc-e82e-40b3-afa0-1a1f2768df88
+          x-konfig-original-example: b194468b-b547-46b9-98d6-e45c491bb8d0
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7885,19 +7894,20 @@ components:
     UserResponse:
       example:
         num_characters_synced: 5
-        updated_at: 2000-01-23T04:56:07.000+00:00
         custom_limits: {}
+        created_at: 2000-01-23T04:56:07.000+00:00
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        organization_supplied_user_id: organization_supplied_user_id
+        enabled_features: "{}"
+        updated_at: 2000-01-23T04:56:07.000+00:00
         num_tokens_synced: 5
         organization_id: 6
         unique_file_tags:
         - "{}"
         - "{}"
-        created_at: 2000-01-23T04:56:07.000+00:00
         id: 0
-        deleted_at: 2000-01-23T04:56:07.000+00:00
-        organization_supplied_user_id: organization_supplied_user_id
         num_files_synced: 1
-        enabled_features: "{}"
+        auto_sync_enabled_sources: []
       properties:
         id:
           title: Id
@@ -7946,7 +7956,16 @@ components:
           type: object
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserResponse-properties-custom_limits
+        auto_sync_enabled_sources:
+          default: []
+          example: []
+          items: {}
+          title: Auto Sync Enabled Sources
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserResponse-properties-auto_sync_enabled_sources
       required:
+      - auto_sync_enabled_sources
       - created_at
       - custom_limits
       - deleted_at
@@ -8385,6 +8404,7 @@ components:
       - MD
       - RTF
       - JSON
+      - HTML
       - RAW_TEXT
       - WEB_SCRAPE
       - RSS_FEED
@@ -8445,6 +8465,7 @@ components:
       - MD
       - RTF
       - JSON
+      - HTML
       - NOTION
       - GOOGLE_DOCS
       - GOOGLE_SHEETS
@@ -8477,6 +8498,36 @@ components:
       nullable: true
       title: FileFormats
       type: string
+    HelpdeskFileSyncConfigNullable:
+      description: Used to configure file syncing for certain connectors when sync_files_on_connection
+        is set to true
+      example:
+        file_types:
+        - ARTICLE
+        sync_attachments: false
+      nullable: true
+      properties:
+        file_types:
+          default:
+          - ARTICLE
+          example:
+          - ARTICLE
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          title: File Types
+          type: array
+          x-konfig-original-example:
+          - ARTICLE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types
+        sync_attachments:
+          default: false
+          example: false
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments
+      title: HelpdeskFileSyncConfig
+      type: object
     HybridSearchTuningParamsNullable:
       description: Hybrid search tuning parameters. See the endpoint description for
         more details.
@@ -8558,36 +8609,6 @@ components:
           title: Root Files Only
           type: boolean
       title: ListItemsFilters
-      type: object
-    HelpdeskFileSyncConfigNullable:
-      description: Used to configure file syncing for certain connectors when sync_files_on_connection
-        is set to true
-      example:
-        file_types:
-        - ARTICLE
-        sync_attachments: false
-      nullable: true
-      properties:
-        file_types:
-          default:
-          - ARTICLE
-          example:
-          - ARTICLE
-          items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
-          title: File Types
-          type: array
-          x-konfig-original-example:
-          - ARTICLE
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types
-        sync_attachments:
-          default: false
-          example: false
-          title: Sync Attachments
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments
-      title: HelpdeskFileSyncConfig
       type: object
     HelpdeskGlobalFileSyncConfigNullable:
       description: "Used to configure file syncing for certain connectors, for example\
@@ -9097,7 +9118,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+      example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -9326,7 +9347,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+      example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9370,7 +9391,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: a1705efc-e82e-40b3-afa0-1a1f2768df88
+      example: b194468b-b547-46b9-98d6-e45c491bb8d0
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9418,6 +9439,11 @@ components:
       example: {}
       properties: {}
       type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UserResponse-properties-auto_sync_enabled_sources:
+      items:
+        type: string
+      type: array
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-WebhookFilters-properties-ids:
       items:
@@ -9480,6 +9506,18 @@ components:
       example: OPENAI
       type: string
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types:
+      example:
+      - ARTICLE
+      items:
+        example: ARTICLE
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-HybridSearchTuningParamsNullable:
       example:
         weight_a: 0.5
@@ -9504,18 +9542,6 @@ components:
     konfig-generated-schema-components-schemas-FileContentTypesNullable:
       example: TEXT
       type: string
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-file_types:
-      example:
-      - ARTICLE
-      items:
-        example: ARTICLE
-        type: string
-      type: array
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-HelpdeskFileSyncConfigNullable-properties-sync_attachments:
-      example: false
-      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-HelpdeskGlobalFileSyncConfigNullable-properties-sync_attachments:
       example: false
@@ -9701,13 +9727,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          default: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           title: Request Id
           type: string
-          x-konfig-original-example: 1bbe1daa-171c-4433-bdc6-cc4b23a6116f
+          x-konfig-original-example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9729,7 +9755,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, BOX, SHAREPOINT, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9894,11 +9920,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
-          example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           title: Request Id
           type: string
-          x-konfig-original-example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10026,11 +10052,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
-          example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           title: Request Id
           type: string
-          x-konfig-original-example: bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e
+          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10491,6 +10517,8 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/HelpdeskFileSyncConfigNullable'
       required:
       - api_key
       - domain
@@ -11258,6 +11286,7 @@ components:
     konfig-generated-schema-single-parameter-schema-post--upload_text:
       properties:
         contents:
+          minLength: 5
           title: Contents
           type: string
         name:

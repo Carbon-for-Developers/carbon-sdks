@@ -134,6 +134,10 @@ module Carbon
         invalid_properties.push('invalid value for "contents", contents cannot be nil.')
       end
 
+      if @contents.to_s.length < 5
+        invalid_properties.push('invalid value for "contents", the character length must be great than or equal to 5.')
+      end
+
       invalid_properties
     end
 
@@ -141,7 +145,22 @@ module Carbon
     # @return true if the model is valid
     def valid?
       return false if @contents.nil?
+      return false if @contents.to_s.length < 5
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] contents Value to be assigned
+    def contents=(contents)
+      if contents.nil?
+        fail ArgumentError, 'contents cannot be nil'
+      end
+
+      if contents.to_s.length < 5
+        fail ArgumentError, 'invalid value for "contents", the character length must be great than or equal to 5.'
+      end
+
+      @contents = contents
     end
 
     # Checks equality by comparing each attribute.

@@ -37,7 +37,12 @@ class RawTextInput(
         }
         
         class properties:
-            contents = schemas.StrSchema
+            
+            
+            class contents(
+                schemas.StrSchema
+            ):
+                pass
             
             
             class name(

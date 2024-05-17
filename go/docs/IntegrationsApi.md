@@ -105,6 +105,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
     
     freshDeskConnectRequest := *carbon.NewFreshDeskConnectRequest(
         "null",
@@ -120,6 +121,7 @@ func main() {
     freshDeskConnectRequest.SetSyncFilesOnConnection(true)
     freshDeskConnectRequest.SetRequestId("null")
     freshDeskConnectRequest.SetSyncSourceItems(true)
+    freshDeskConnectRequest.SetFileSyncConfig(fileSyncConfig)
     
     request := client.IntegrationsApi.ConnectFreshdesk(
         freshDeskConnectRequest,
@@ -318,7 +320,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("1bbe1daa-171c-4433-bdc6-cc4b23a6116f")
+    oAuthURLRequest.SetRequestId("fd8991d4-05d6-4fdd-92bf-9dccb96d5b92")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -716,7 +718,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e")
+    syncFilesRequest.SetRequestId("fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -847,7 +849,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("bc0352bc-3fc5-43a3-bd7d-0a03ff70fe0e")
+    syncFilesRequest.SetRequestId("fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)

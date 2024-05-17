@@ -35,6 +35,8 @@ module Carbon
 
     attr_accessor :custom_limits
 
+    attr_accessor :auto_sync_enabled_sources
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module Carbon
         :'num_tokens_synced' => :'num_tokens_synced',
         :'unique_file_tags' => :'unique_file_tags',
         :'enabled_features' => :'enabled_features',
-        :'custom_limits' => :'custom_limits'
+        :'custom_limits' => :'custom_limits',
+        :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources'
       }
     end
 
@@ -72,7 +75,8 @@ module Carbon
         :'num_tokens_synced' => :'Integer',
         :'unique_file_tags' => :'Array<Object>',
         :'enabled_features' => :'Object',
-        :'custom_limits' => :'Object'
+        :'custom_limits' => :'Object',
+        :'auto_sync_enabled_sources' => :'Array<Object>'
       }
     end
 
@@ -148,6 +152,12 @@ module Carbon
       if attributes.key?(:'custom_limits')
         self.custom_limits = attributes[:'custom_limits']
       end
+
+      if attributes.key?(:'auto_sync_enabled_sources')
+        if (value = attributes[:'auto_sync_enabled_sources']).is_a?(Array)
+          self.auto_sync_enabled_sources = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -194,6 +204,10 @@ module Carbon
         invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
       end
 
+      if @auto_sync_enabled_sources.nil?
+        invalid_properties.push('invalid value for "auto_sync_enabled_sources", auto_sync_enabled_sources cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -210,6 +224,7 @@ module Carbon
       return false if @num_tokens_synced.nil?
       return false if @unique_file_tags.nil?
       return false if @custom_limits.nil?
+      return false if @auto_sync_enabled_sources.nil?
       true
     end
 
@@ -229,7 +244,8 @@ module Carbon
           num_tokens_synced == o.num_tokens_synced &&
           unique_file_tags == o.unique_file_tags &&
           enabled_features == o.enabled_features &&
-          custom_limits == o.custom_limits
+          custom_limits == o.custom_limits &&
+          auto_sync_enabled_sources == o.auto_sync_enabled_sources
     end
 
     # @see the `==` method
@@ -241,7 +257,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, unique_file_tags, enabled_features, custom_limits].hash
+      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, unique_file_tags, enabled_features, custom_limits, auto_sync_enabled_sources].hash
     end
 
     # Builds the object from hash
