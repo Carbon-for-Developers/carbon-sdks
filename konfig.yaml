@@ -30,7 +30,7 @@ securitySchemeOverride:
       in: header
 generators:
   go:
-    version: 0.1.28
+    version: 0.1.29
     packageName: carbon
     outputDirectory: go
     readmeSnippet: snippets/goReadmeGettingStartedSnippet.go
@@ -38,7 +38,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/go
   ruby:
-    version: 0.1.30
+    version: 0.1.31
     moduleName: Carbon
     gemName: carbon_ruby_sdk
     outputDirectory: ruby
@@ -47,7 +47,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/ruby
   python:
-    version: 0.1.32
+    version: 0.1.33
     packageName: carbon
     projectName: carbon-python-sdk
     outputDirectory: python
@@ -58,7 +58,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/python
   typescript:
-    version: 0.1.33
+    version: 0.1.34
     npmName: carbon-typescript-sdk
     outputDirectory: typescript
     clientName: Carbon
@@ -69,7 +69,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/typescript
   php:
-    version: 0.1.29
+    version: 0.1.30
     outputDirectory: php
     packageName: carbon-php-sdk
     invokerPackage: Carbon
@@ -78,7 +78,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-php-sdk
   swift:
-    version: 0.2.18
+    version: 0.2.19
     projectName: CarbonAI
     podAuthors: carbon.ai
     outputDirectory: swift
