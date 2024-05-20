@@ -1660,6 +1660,7 @@ type FilesApiUploadRequest struct {
 	prependFilenameToChunks *bool
 	maxItemsPerChunk *int32
 	parsePdfTablesWithOcr *bool
+	detectAudioLanguage *bool
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -1719,6 +1720,12 @@ func (r *FilesApiUploadRequest) MaxItemsPerChunk(maxItemsPerChunk int32) *FilesA
 // Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
 func (r *FilesApiUploadRequest) ParsePdfTablesWithOcr(parsePdfTablesWithOcr bool) *FilesApiUploadRequest {
 	r.parsePdfTablesWithOcr = &parsePdfTablesWithOcr
+	return r
+}
+
+// Whether to automatically detect the language of the uploaded audio file.
+func (r *FilesApiUploadRequest) DetectAudioLanguage(detectAudioLanguage bool) *FilesApiUploadRequest {
+	r.detectAudioLanguage = &detectAudioLanguage
 	return r
 }
 
@@ -1819,6 +1826,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.parsePdfTablesWithOcr != nil {
 		localVarQueryParams.Add("parse_pdf_tables_with_ocr", parameterToString(*r.parsePdfTablesWithOcr, ""))
+	}
+	if r.detectAudioLanguage != nil {
+		localVarQueryParams.Add("detect_audio_language", parameterToString(*r.detectAudioLanguage, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

@@ -288,6 +288,9 @@ operation_parameter_map = {
             {
                 'name': 'parse_pdf_tables_with_ocr'
             },
+            {
+                'name': 'detect_audio_language'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -327,6 +330,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'parse_pdf_tables_with_ocr'
+            },
+            {
+                'name': 'detect_audio_language'
             },
         ]
     },

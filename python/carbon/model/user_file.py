@@ -49,6 +49,7 @@ class UserFile(
             "generate_sparse_vectors",
             "enable_auto_sync",
             "id",
+            "audio_properties",
             "chunk_properties",
             "last_sync",
             "ocr_properties",
@@ -456,6 +457,28 @@ class UserFile(
                     )
             
             
+            class audio_properties(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'audio_properties':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
+            
+            
             class request_id(
                 schemas.StrBase,
                 schemas.NoneBase,
@@ -505,6 +528,7 @@ class UserFile(
                 "skip_embedding_generation": skip_embedding_generation,
                 "source_created_at": source_created_at,
                 "generate_sparse_vectors": generate_sparse_vectors,
+                "audio_properties": audio_properties,
                 "request_id": request_id,
                 "created_at": created_at,
                 "updated_at": updated_at,
@@ -526,6 +550,7 @@ class UserFile(
     generate_sparse_vectors: MetaOapg.properties.generate_sparse_vectors
     enable_auto_sync: MetaOapg.properties.enable_auto_sync
     id: MetaOapg.properties.id
+    audio_properties: MetaOapg.properties.audio_properties
     chunk_properties: 'ChunkPropertiesNullable'
     last_sync: MetaOapg.properties.last_sync
     ocr_properties: MetaOapg.properties.ocr_properties
@@ -627,6 +652,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> MetaOapg.properties.generate_sparse_vectors: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["audio_properties"]) -> MetaOapg.properties.audio_properties: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
     
     @typing.overload
@@ -638,7 +666,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "audio_properties", "request_id", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -728,6 +756,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> MetaOapg.properties.generate_sparse_vectors: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["audio_properties"]) -> MetaOapg.properties.audio_properties: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
     
     @typing.overload
@@ -739,7 +770,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "audio_properties", "request_id", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -762,6 +793,7 @@ class UserFile(
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, ],
         enable_auto_sync: typing.Union[MetaOapg.properties.enable_auto_sync, None, bool, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
+        audio_properties: typing.Union[MetaOapg.properties.audio_properties, dict, frozendict.frozendict, None, ],
         chunk_properties: 'ChunkPropertiesNullable',
         last_sync: typing.Union[MetaOapg.properties.last_sync, None, str, datetime, ],
         ocr_properties: typing.Union[MetaOapg.properties.ocr_properties, dict, frozendict.frozendict, ],
@@ -799,6 +831,7 @@ class UserFile(
             generate_sparse_vectors=generate_sparse_vectors,
             enable_auto_sync=enable_auto_sync,
             id=id,
+            audio_properties=audio_properties,
             chunk_properties=chunk_properties,
             last_sync=last_sync,
             ocr_properties=ocr_properties,

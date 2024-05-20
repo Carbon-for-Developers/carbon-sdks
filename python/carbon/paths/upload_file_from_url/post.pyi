@@ -122,6 +122,7 @@ class BaseApi(api_client.Api):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -149,6 +150,8 @@ class BaseApi(api_client.Api):
             _body["max_items_per_chunk"] = max_items_per_chunk
         if parse_pdf_tables_with_ocr is not None:
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
+        if detect_audio_language is not None:
+            _body["detect_audio_language"] = detect_audio_language
         args.body = _body
         return args
 
@@ -368,6 +371,7 @@ class UploadFromUrlRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -387,6 +391,7 @@ class UploadFromUrlRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -407,6 +412,7 @@ class UploadFromUrlRaw(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -424,6 +430,7 @@ class UploadFromUrlRaw(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
         )
         return self._upload_from_url_oapg(
             body=args.body,
@@ -445,6 +452,7 @@ class UploadFromUrl(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -461,6 +469,7 @@ class UploadFromUrl(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
             **kwargs,
         )
         if validate:
@@ -482,6 +491,7 @@ class UploadFromUrl(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_from_url(
@@ -497,6 +507,7 @@ class UploadFromUrl(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -520,6 +531,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -539,6 +551,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -559,6 +572,7 @@ class ApiForpost(BaseApi):
         prepend_filename_to_chunks: typing.Optional[bool] = None,
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
+        detect_audio_language: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -576,6 +590,7 @@ class ApiForpost(BaseApi):
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            detect_audio_language=detect_audio_language,
         )
         return self._upload_from_url_oapg(
             body=args.body,

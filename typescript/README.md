@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.34-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.34)
+[![npm](https://img.shields.io/badge/npm-v0.1.35-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.35)
 
 </div>
 
@@ -978,6 +978,7 @@ const uploadResponse = await carbon.files.upload({
   generateSparseVectors: false,
   prependFilenameToChunks: false,
   parsePdfTablesWithOcr: false,
+  detectAudioLanguage: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1026,6 +1027,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Whether to use rich table parsing when `use_ocr` is enabled.
 
+##### detectAudioLanguage: `boolean`<a id="detectaudiolanguage-boolean"></a>
+
+Whether to automatically detect the language of the uploaded audio file.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1055,6 +1060,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   use_textract: false,
   prepend_filename_to_chunks: false,
   parse_pdf_tables_with_ocr: false,
+  detect_audio_language: false,
 });
 ```
 
@@ -1085,6 +1091,8 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### detect_audio_language: `boolean`<a id="detect_audio_language-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1404,7 +1412,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "fd8991d4-05d6-4fdd-92bf-9dccb96d5b92",
+  request_id: "26453c8f-69ab-4eb3-bc25-0ca995b118a0",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1473,7 +1481,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1727,7 +1735,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
+  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1835,7 +1843,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
+  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

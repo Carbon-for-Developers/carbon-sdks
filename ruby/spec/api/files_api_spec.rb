@@ -157,6 +157,7 @@ describe 'FilesApi' do
   # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file&#39;s name to chunks.
   # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
   # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
+  # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file.
   # @return [UserFile]
   describe 'upload test' do
     it 'should work' do

@@ -1927,6 +1927,18 @@
               "type": "boolean",
               "default": false
             }
+          },
+          {
+            "description": "Whether to automatically detect the language of the uploaded audio file.",
+            "name": "detect_audio_language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Detect Audio Language",
+              "description": "Whether to automatically detect the language of the uploaded audio file.",
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "requestBody": {
@@ -3434,7 +3446,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "b194468b-b547-46b9-98d6-e45c491bb8d0",
+              "request_id": "b360dae1-b5fd-4803-a53a-1691e3c32558",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5222,7 +5234,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "fd8991d4-05d6-4fdd-92bf-9dccb96d5b92"
+            "default": "26453c8f-69ab-4eb3-bc25-0ca995b118a0"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5239,7 +5251,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE",
             "type": "boolean",
             "default": true
           },
@@ -6638,7 +6650,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14"
+            "default": "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6730,7 +6742,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "b194468b-b547-46b9-98d6-e45c491bb8d0"
+            "default": "b360dae1-b5fd-4803-a53a-1691e3c32558"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -6909,6 +6921,11 @@
           },
           "parse_pdf_tables_with_ocr": {
             "title": "Parse Pdf Tables With Ocr",
+            "type": "boolean",
+            "default": false
+          },
+          "detect_audio_language": {
+            "title": "Detect Audio Language",
             "type": "boolean",
             "default": false
           }
@@ -7096,6 +7113,11 @@
             "type": "boolean",
             "nullable": true
           },
+          "audio_properties": {
+            "title": "Audio Properties",
+            "type": "object",
+            "nullable": true
+          },
           "request_id": {
             "title": "Request Id",
             "type": "string",
@@ -7142,6 +7164,7 @@
           "skip_embedding_generation",
           "source_created_at",
           "generate_sparse_vectors",
+          "audio_properties",
           "request_id",
           "created_at",
           "updated_at"

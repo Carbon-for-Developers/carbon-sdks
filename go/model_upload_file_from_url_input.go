@@ -29,6 +29,7 @@ type UploadFileFromUrlInput struct {
 	// Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	ParsePdfTablesWithOcr *bool `json:"parse_pdf_tables_with_ocr,omitempty"`
+	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
 }
 
 // NewUploadFileFromUrlInput instantiates a new UploadFileFromUrlInput object
@@ -50,6 +51,8 @@ func NewUploadFileFromUrlInput(url string) *UploadFileFromUrlInput {
 	this.PrependFilenameToChunks = &prependFilenameToChunks
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
+	var detectAudioLanguage bool = false
+	this.DetectAudioLanguage = &detectAudioLanguage
 	return &this
 }
 
@@ -70,6 +73,8 @@ func NewUploadFileFromUrlInputWithDefaults() *UploadFileFromUrlInput {
 	this.PrependFilenameToChunks = &prependFilenameToChunks
 	var parsePdfTablesWithOcr bool = false
 	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
+	var detectAudioLanguage bool = false
+	this.DetectAudioLanguage = &detectAudioLanguage
 	return &this
 }
 
@@ -489,6 +494,38 @@ func (o *UploadFileFromUrlInput) SetParsePdfTablesWithOcr(v bool) {
 	o.ParsePdfTablesWithOcr = &v
 }
 
+// GetDetectAudioLanguage returns the DetectAudioLanguage field value if set, zero value otherwise.
+func (o *UploadFileFromUrlInput) GetDetectAudioLanguage() bool {
+	if o == nil || isNil(o.DetectAudioLanguage) {
+		var ret bool
+		return ret
+	}
+	return *o.DetectAudioLanguage
+}
+
+// GetDetectAudioLanguageOk returns a tuple with the DetectAudioLanguage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadFileFromUrlInput) GetDetectAudioLanguageOk() (*bool, bool) {
+	if o == nil || isNil(o.DetectAudioLanguage) {
+    return nil, false
+	}
+	return o.DetectAudioLanguage, true
+}
+
+// HasDetectAudioLanguage returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasDetectAudioLanguage() bool {
+	if o != nil && !isNil(o.DetectAudioLanguage) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetectAudioLanguage gets a reference to the given bool and assigns it to the DetectAudioLanguage field.
+func (o *UploadFileFromUrlInput) SetDetectAudioLanguage(v bool) {
+	o.DetectAudioLanguage = &v
+}
+
 func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -526,6 +563,9 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ParsePdfTablesWithOcr) {
 		toSerialize["parse_pdf_tables_with_ocr"] = o.ParsePdfTablesWithOcr
+	}
+	if !isNil(o.DetectAudioLanguage) {
+		toSerialize["detect_audio_language"] = o.DetectAudioLanguage
 	}
 	return json.Marshal(toSerialize)
 }
