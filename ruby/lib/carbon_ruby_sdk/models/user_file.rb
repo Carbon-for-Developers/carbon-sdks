@@ -67,6 +67,8 @@ module Carbon
 
     attr_accessor :generate_sparse_vectors
 
+    attr_accessor :audio_properties
+
     attr_accessor :request_id
 
     attr_accessor :created_at
@@ -104,6 +106,7 @@ module Carbon
         :'skip_embedding_generation' => :'skip_embedding_generation',
         :'source_created_at' => :'source_created_at',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
+        :'audio_properties' => :'audio_properties',
         :'request_id' => :'request_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -146,6 +149,7 @@ module Carbon
         :'skip_embedding_generation' => :'Boolean',
         :'source_created_at' => :'Time',
         :'generate_sparse_vectors' => :'Boolean',
+        :'audio_properties' => :'Object',
         :'request_id' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
@@ -175,6 +179,7 @@ module Carbon
         :'additional_presigned_urls',
         :'source_created_at',
         :'generate_sparse_vectors',
+        :'audio_properties',
         :'request_id',
       ])
     end
@@ -308,6 +313,10 @@ module Carbon
         self.generate_sparse_vectors = attributes[:'generate_sparse_vectors']
       end
 
+      if attributes.key?(:'audio_properties')
+        self.audio_properties = attributes[:'audio_properties']
+      end
+
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       end
@@ -417,6 +426,7 @@ module Carbon
           skip_embedding_generation == o.skip_embedding_generation &&
           source_created_at == o.source_created_at &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
+          audio_properties == o.audio_properties &&
           request_id == o.request_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -431,7 +441,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, audio_properties, request_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash

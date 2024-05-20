@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.33-blue)](https://pypi.org/project/carbon-python-sdk/0.1.33)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.34-blue)](https://pypi.org/project/carbon-python-sdk/0.1.34)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -90,7 +90,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.33
+pip install carbon-python-sdk==0.1.34
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1101,6 +1101,7 @@ upload_response = carbon.files.upload(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
+    detect_audio_language=False,
 )
 ```
 
@@ -1148,6 +1149,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Whether to use rich table parsing when `use_ocr` is enabled.
 
+##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
+
+Whether to automatically detect the language of the uploaded audio file.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`BodyCreateUploadFileUploadfilePost`](./carbon/type/body_create_upload_file_uploadfile_post.py)
@@ -1183,6 +1188,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
+    detect_audio_language=False,
 )
 ```
 
@@ -1213,6 +1219,8 @@ upload_from_url_response = carbon.files.upload_from_url(
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### parse_pdf_tables_with_ocr: `bool`<a id="parse_pdf_tables_with_ocr-bool"></a>
+
+##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1329,7 +1337,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "b194468b-b547-46b9-98d6-e45c491bb8d0",
+        "request_id": "b360dae1-b5fd-4803-a53a-1691e3c32558",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1581,7 +1589,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="fd8991d4-05d6-4fdd-92bf-9dccb96d5b92",
+    request_id="26453c8f-69ab-4eb3-bc25-0ca995b118a0",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1654,7 +1662,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1925,7 +1933,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
+    request_id="3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2043,7 +2051,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14",
+    request_id="3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,

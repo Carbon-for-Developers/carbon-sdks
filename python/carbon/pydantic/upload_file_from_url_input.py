@@ -43,6 +43,8 @@ class UploadFileFromUrlInput(BaseModel):
 
     parse_pdf_tables_with_ocr: typing.Optional[bool] = Field(None, alias='parse_pdf_tables_with_ocr')
 
+    detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

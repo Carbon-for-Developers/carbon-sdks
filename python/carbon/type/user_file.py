@@ -77,6 +77,8 @@ class RequiredUserFile(TypedDict):
 
     generate_sparse_vectors: typing.Optional[bool]
 
+    audio_properties: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
     request_id: typing.Optional[str]
 
     created_at: datetime

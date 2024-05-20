@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **bool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **ParsePdfTablesWithOcr** | Pointer to **bool** |  | [optional] [default to false]
+**DetectAudioLanguage** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -370,6 +371,31 @@ SetParsePdfTablesWithOcr sets ParsePdfTablesWithOcr field to given value.
 `func (o *UploadFileFromUrlInput) HasParsePdfTablesWithOcr() bool`
 
 HasParsePdfTablesWithOcr returns a boolean if a field has been set.
+
+### GetDetectAudioLanguage
+
+`func (o *UploadFileFromUrlInput) GetDetectAudioLanguage() bool`
+
+GetDetectAudioLanguage returns the DetectAudioLanguage field if non-nil, zero value otherwise.
+
+### GetDetectAudioLanguageOk
+
+`func (o *UploadFileFromUrlInput) GetDetectAudioLanguageOk() (*bool, bool)`
+
+GetDetectAudioLanguageOk returns a tuple with the DetectAudioLanguage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetectAudioLanguage
+
+`func (o *UploadFileFromUrlInput) SetDetectAudioLanguage(v bool)`
+
+SetDetectAudioLanguage sets DetectAudioLanguage field to given value.
+
+### HasDetectAudioLanguage
+
+`func (o *UploadFileFromUrlInput) HasDetectAudioLanguage() bool`
+
+HasDetectAudioLanguage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

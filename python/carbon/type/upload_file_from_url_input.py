@@ -43,5 +43,7 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
 
     parse_pdf_tables_with_ocr: bool
 
+    detect_audio_language: bool
+
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass

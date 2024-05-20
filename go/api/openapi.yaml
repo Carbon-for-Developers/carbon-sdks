@@ -2700,6 +2700,22 @@ paths:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-9-schema
         style: form
+      - description: Whether to automatically detect the language of the uploaded
+          audio file.
+        explode: true
+        in: query
+        name: detect_audio_language
+        required: false
+        schema:
+          default: false
+          description: Whether to automatically detect the language of the uploaded
+            audio file.
+          example: false
+          title: Detect Audio Language
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
+        style: form
       requestBody:
         content:
           multipart/form-data:
@@ -3801,7 +3817,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
+          request_id: b360dae1-b5fd-4803-a53a-1691e3c32558
         authentication: null
       properties:
         authentication:
@@ -3822,7 +3838,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
+            request_id: b360dae1-b5fd-4803-a53a-1691e3c32558
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -5602,7 +5618,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+        request_id: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -5720,13 +5736,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          default: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          example: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           title: Request Id
           type: string
-          x-konfig-original-example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          x-konfig-original-example: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5748,7 +5764,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE"
+            \ it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7139,7 +7155,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+        request_id: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
         data_source_id: 0
       properties:
         tags:
@@ -7211,11 +7227,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
-          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          default: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
+          example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           title: Request Id
           type: string
-          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          x-konfig-original-example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7269,7 +7285,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: b194468b-b547-46b9-98d6-e45c491bb8d0
+        request_id: b360dae1-b5fd-4803-a53a-1691e3c32558
       properties:
         tags:
           nullable: true
@@ -7342,11 +7358,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: b194468b-b547-46b9-98d6-e45c491bb8d0
-          example: b194468b-b547-46b9-98d6-e45c491bb8d0
+          default: b360dae1-b5fd-4803-a53a-1691e3c32558
+          example: b360dae1-b5fd-4803-a53a-1691e3c32558
           title: Request Id
           type: string
-          x-konfig-original-example: b194468b-b547-46b9-98d6-e45c491bb8d0
+          x-konfig-original-example: b360dae1-b5fd-4803-a53a-1691e3c32558
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7472,14 +7488,15 @@ components:
         prepend_filename_to_chunks: false
         use_textract: false
         max_items_per_chunk: 1
+        detect_audio_language: false
         file_name: file_name
-        generate_sparse_vectors: false
         parse_pdf_tables_with_ocr: false
-        set_page_as_boundary: false
         embedding_model: null
+        url: url
+        generate_sparse_vectors: false
+        set_page_as_boundary: false
         chunk_overlap: 6
         skip_embedding_generation: false
-        url: url
       properties:
         url:
           title: Url
@@ -7546,6 +7563,13 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr
+        detect_audio_language:
+          default: false
+          example: false
+          title: Detect Audio Language
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
       required:
       - url
       title: UploadFileFromUrlInput
@@ -7598,6 +7622,7 @@ components:
         generate_sparse_vectors: true
         enable_auto_sync: true
         id: 0
+        audio_properties: "{}"
         last_sync: 2000-01-23T04:56:07.000+00:00
         chunk_properties:
           prepend_filename_to_chunks: false
@@ -7730,6 +7755,10 @@ components:
           nullable: true
           title: Generate Sparse Vectors
           type: boolean
+        audio_properties:
+          nullable: true
+          title: Audio Properties
+          type: object
         request_id:
           nullable: true
           title: Request Id
@@ -7744,6 +7773,7 @@ components:
           type: string
       required:
       - additional_presigned_urls
+      - audio_properties
       - chunk_overlap
       - chunk_properties
       - chunk_size
@@ -7799,6 +7829,7 @@ components:
           generate_sparse_vectors: true
           enable_auto_sync: true
           id: 0
+          audio_properties: "{}"
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
@@ -7842,6 +7873,7 @@ components:
           generate_sparse_vectors: true
           enable_auto_sync: true
           id: 0
+          audio_properties: "{}"
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
@@ -8838,6 +8870,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-10-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-paths--fetch_youtube_transcript-get-parameters-1-schema:
       example: false
       type: boolean
@@ -9118,7 +9154,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+      example: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -9347,7 +9383,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+      example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9391,7 +9427,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: b194468b-b547-46b9-98d6-e45c491bb8d0
+      example: b360dae1-b5fd-4803-a53a-1691e3c32558
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9427,6 +9463,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -9727,13 +9767,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          default: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          example: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           title: Request Id
           type: string
-          x-konfig-original-example: fd8991d4-05d6-4fdd-92bf-9dccb96d5b92
+          x-konfig-original-example: 26453c8f-69ab-4eb3-bc25-0ca995b118a0
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9755,7 +9795,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE"
+            \ it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -9920,11 +9960,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
-          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          default: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
+          example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           title: Request Id
           type: string
-          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          x-konfig-original-example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10052,11 +10092,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
-          example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          default: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
+          example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           title: Request Id
           type: string
-          x-konfig-original-example: fdb7ec68-6f04-49d2-adb3-fc5ae9f30a14
+          x-konfig-original-example: 3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11192,6 +11232,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-9-schema
+        detect_audio_language:
+          default: false
+          description: Whether to automatically detect the language of the uploaded
+            audio file.
+          example: false
+          title: Detect Audio Language
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
         file:
           format: binary
           title: File
@@ -11211,6 +11260,7 @@ components:
       - prepend_filename_to_chunks
       - max_items_per_chunk
       - parse_pdf_tables_with_ocr
+      - detect_audio_language
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:
@@ -11278,6 +11328,13 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-parse_pdf_tables_with_ocr
+        detect_audio_language:
+          default: false
+          example: false
+          title: Detect Audio Language
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
       required:
       - url
       type: object

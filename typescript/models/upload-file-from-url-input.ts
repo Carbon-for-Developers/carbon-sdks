@@ -90,5 +90,11 @@ export interface UploadFileFromUrlInput {
      * @memberof UploadFileFromUrlInput
      */
     'parse_pdf_tables_with_ocr'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UploadFileFromUrlInput
+     */
+    'detect_audio_language'?: boolean;
 }
 

@@ -235,6 +235,8 @@ securityParameters:
     query: false
   data_source_id:
     query: false
+  detect_audio_language:
+    query: false
   embedding_model:
     query: false
   generate_sparse_vectors:

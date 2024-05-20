@@ -1172,9 +1172,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param parse_pdf_tables_with_ocr [Boolean] Whether to use rich table parsing when `use_ocr` is enabled.
+    # @param detect_audio_language [Boolean] Whether to automatically detect the language of the uploaded audio file.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, extra: {})
+    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1188,6 +1189,7 @@ module Carbon
       extra[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       extra[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       extra[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      extra[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       api_response = upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
       api_response.data
     end
@@ -1231,9 +1233,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param parse_pdf_tables_with_ocr [Boolean] Whether to use rich table parsing when `use_ocr` is enabled.
+    # @param detect_audio_language [Boolean] Whether to automatically detect the language of the uploaded audio file.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, extra: {})
+    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1247,6 +1250,7 @@ module Carbon
       extra[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       extra[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       extra[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      extra[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
     end
 
@@ -1265,6 +1269,7 @@ module Carbon
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
     # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when `use_ocr` is enabled. (default to false)
+    # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file. (default to false)
     # @return [UserFile]
     private def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       data, _status_code, _headers = upload_with_http_info(file, body_create_upload_file_uploadfile_post, opts)
@@ -1286,6 +1291,7 @@ module Carbon
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
     # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when `use_ocr` is enabled. (default to false)
+    # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file. (default to false)
     # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
@@ -1314,6 +1320,7 @@ module Carbon
       query_params[:'prepend_filename_to_chunks'] = opts[:'prepend_filename_to_chunks'] if !opts[:'prepend_filename_to_chunks'].nil?
       query_params[:'max_items_per_chunk'] = opts[:'max_items_per_chunk'] if !opts[:'max_items_per_chunk'].nil?
       query_params[:'parse_pdf_tables_with_ocr'] = opts[:'parse_pdf_tables_with_ocr'] if !opts[:'parse_pdf_tables_with_ocr'].nil?
+      query_params[:'detect_audio_language'] = opts[:'detect_audio_language'] if !opts[:'detect_audio_language'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1370,9 +1377,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param detect_audio_language [Boolean] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, extra: {})
+    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1386,6 +1394,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       upload_file_from_url_input = _body
       api_response = upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
       api_response.data
@@ -1405,9 +1414,10 @@ module Carbon
     # @param prepend_filename_to_chunks [Boolean] 
     # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param detect_audio_language [Boolean] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, extra: {})
+    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1421,6 +1431,7 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       upload_file_from_url_input = _body
       upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
     end
