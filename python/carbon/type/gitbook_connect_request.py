@@ -21,6 +21,7 @@ class RequiredGitbookConnectRequest(TypedDict):
 
     access_token: str
 
+
 class OptionalGitbookConnectRequest(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

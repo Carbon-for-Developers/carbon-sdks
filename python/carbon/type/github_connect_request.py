@@ -20,6 +20,7 @@ class RequiredGithubConnectRequest(TypedDict):
 
     access_token: str
 
+
 class OptionalGithubConnectRequest(TypedDict, total=False):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool

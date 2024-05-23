@@ -20,6 +20,7 @@ from carbon.type.update_users_input_customer_ids import UpdateUsersInputCustomer
 class RequiredUpdateUsersInput(TypedDict):
     customer_ids: UpdateUsersInputCustomerIds
 
+
 class OptionalUpdateUsersInput(TypedDict, total=False):
     # List of data source types to enable auto sync for. Empty array will remove all sources          and the string \"ALL\" will enable it for all data sources
     auto_sync_enabled_sources: typing.Union[typing.List[DataSourceType], str]

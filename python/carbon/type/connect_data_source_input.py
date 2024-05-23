@@ -30,6 +30,7 @@ from carbon.type.zotero_authentication import ZoteroAuthentication
 class RequiredConnectDataSourceInput(TypedDict):
     authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication]
 
+
 class OptionalConnectDataSourceInput(TypedDict, total=False):
     sync_options: SyncOptions
 

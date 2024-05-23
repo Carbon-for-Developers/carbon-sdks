@@ -19,6 +19,7 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredOutlookSyncInput(TypedDict):
     filters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalOutlookSyncInput(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
@@ -41,6 +42,8 @@ class OptionalOutlookSyncInput(TypedDict, total=False):
     request_id: typing.Optional[str]
 
     sync_attachments: typing.Optional[bool]
+
+    incremental_sync: bool
 
 class OutlookSyncInput(RequiredOutlookSyncInput, OptionalOutlookSyncInput):
     pass

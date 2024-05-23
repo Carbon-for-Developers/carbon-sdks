@@ -121,6 +121,7 @@ class BaseApi(api_client.Api):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -146,6 +147,8 @@ class BaseApi(api_client.Api):
             _body["request_id"] = request_id
         if sync_attachments is not None:
             _body["sync_attachments"] = sync_attachments
+        if incremental_sync is not None:
+            _body["incremental_sync"] = incremental_sync
         args.body = _body
         return args
 
@@ -364,6 +367,7 @@ class SyncGmailRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -382,6 +386,7 @@ class SyncGmailRaw(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
         )
         return await self._async_gmail_oapg(
             body=args.body,
@@ -401,6 +406,7 @@ class SyncGmailRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -417,6 +423,7 @@ class SyncGmailRaw(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
         )
         return self._sync_gmail_oapg(
             body=args.body,
@@ -437,6 +444,7 @@ class SyncGmail(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -452,6 +460,7 @@ class SyncGmail(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
             **kwargs,
         )
         if validate:
@@ -472,6 +481,7 @@ class SyncGmail(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_gmail(
@@ -486,6 +496,7 @@ class SyncGmail(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -508,6 +519,7 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -526,6 +538,7 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
         )
         return await self._async_gmail_oapg(
             body=args.body,
@@ -545,6 +558,7 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -561,6 +575,7 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
         )
         return self._sync_gmail_oapg(
             body=args.body,

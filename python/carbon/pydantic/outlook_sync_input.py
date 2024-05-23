@@ -42,6 +42,8 @@ class OutlookSyncInput(BaseModel):
 
     sync_attachments: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_attachments')
 
+    incremental_sync: typing.Optional[bool] = Field(None, alias='incremental_sync')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

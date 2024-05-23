@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.32-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.32)
+[![npm](https://img.shields.io/badge/gem-v0.1.33-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.33)
 
 </div>
 
@@ -84,7 +84,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.32'
+gem 'carbon_ruby_sdk', '~> 0.1.33'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1208,7 +1208,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "b360dae1-b5fd-4803-a53a-1691e3c32558",
+        "request_id" => "ca195b1c-0656-4db7-96fc-211554e9827b",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1426,7 +1426,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "26453c8f-69ab-4eb3-bc25-0ca995b118a0",
+  request_id: "a0b57844-5937-42ef-a161-2515fc4f16df",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1485,7 +1485,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE
+SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1747,7 +1747,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1848,7 +1848,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2048,6 +2048,7 @@ result = carbon.integrations.sync_gmail(
   data_source_id: 1,
   request_id: "string_example",
   sync_attachments: false,
+  incremental_sync: false,
 )
 p result
 ```
@@ -2065,6 +2066,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
 ##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2157,6 +2159,7 @@ result = carbon.integrations.sync_outlook(
   data_source_id: 1,
   request_id: "string_example",
   sync_attachments: false,
+  incremental_sync: false,
 )
 p result
 ```
@@ -2175,6 +2178,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
 ##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

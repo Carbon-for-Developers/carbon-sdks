@@ -20,6 +20,7 @@ class RequiredS3AuthRequest(TypedDict):
 
     access_key_secret: str
 
+
 class OptionalS3AuthRequest(TypedDict, total=False):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool

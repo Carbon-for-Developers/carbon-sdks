@@ -224,6 +224,7 @@ class GmailSyncInput(
                         *args,
                         _configuration=_configuration,
                     )
+            incremental_sync = schemas.BoolSchema
             __annotations__ = {
                 "filters": filters,
                 "tags": tags,
@@ -236,6 +237,7 @@ class GmailSyncInput(
                 "data_source_id": data_source_id,
                 "request_id": request_id,
                 "sync_attachments": sync_attachments,
+                "incremental_sync": incremental_sync,
             }
     
     filters: MetaOapg.properties.filters
@@ -274,9 +276,12 @@ class GmailSyncInput(
     def __getitem__(self, name: typing_extensions.Literal["sync_attachments"]) -> MetaOapg.properties.sync_attachments: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["filters", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "data_source_id", "request_id", "sync_attachments", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["filters", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "data_source_id", "request_id", "sync_attachments", "incremental_sync", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -315,9 +320,12 @@ class GmailSyncInput(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_attachments"]) -> typing.Union[MetaOapg.properties.sync_attachments, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["filters", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "data_source_id", "request_id", "sync_attachments", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["filters", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "data_source_id", "request_id", "sync_attachments", "incremental_sync", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -335,6 +343,7 @@ class GmailSyncInput(
         data_source_id: typing.Union[MetaOapg.properties.data_source_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         sync_attachments: typing.Union[MetaOapg.properties.sync_attachments, None, bool, schemas.Unset] = schemas.unset,
+        incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GmailSyncInput':
@@ -352,6 +361,7 @@ class GmailSyncInput(
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            incremental_sync=incremental_sync,
             _configuration=_configuration,
             **kwargs,
         )

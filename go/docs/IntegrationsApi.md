@@ -320,7 +320,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("26453c8f-69ab-4eb3-bc25-0ca995b118a0")
+    oAuthURLRequest.SetRequestId("a0b57844-5937-42ef-a161-2515fc4f16df")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -718,7 +718,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18")
+    syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -849,7 +849,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18")
+    syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -1024,6 +1024,7 @@ func main() {
     gmailSyncInput.SetDataSourceId(null)
     gmailSyncInput.SetRequestId("null")
     gmailSyncInput.SetSyncAttachments(false)
+    gmailSyncInput.SetIncrementalSync(false)
     
     request := client.IntegrationsApi.SyncGmail(
         gmailSyncInput,
@@ -1085,6 +1086,7 @@ func main() {
     outlookSyncInput.SetDataSourceId(null)
     outlookSyncInput.SetRequestId("null")
     outlookSyncInput.SetSyncAttachments(false)
+    outlookSyncInput.SetIncrementalSync(false)
     
     request := client.IntegrationsApi.SyncOutlook(
         outlookSyncInput,

@@ -33,6 +33,8 @@ module Carbon
 
     attr_accessor :sync_attachments
 
+    attr_accessor :incremental_sync
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -46,7 +48,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
         :'data_source_id' => :'data_source_id',
         :'request_id' => :'request_id',
-        :'sync_attachments' => :'sync_attachments'
+        :'sync_attachments' => :'sync_attachments',
+        :'incremental_sync' => :'incremental_sync'
       }
     end
 
@@ -68,7 +71,8 @@ module Carbon
         :'prepend_filename_to_chunks' => :'Boolean',
         :'data_source_id' => :'Integer',
         :'request_id' => :'String',
-        :'sync_attachments' => :'Boolean'
+        :'sync_attachments' => :'Boolean',
+        :'incremental_sync' => :'Boolean'
       }
     end
 
@@ -83,7 +87,7 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'data_source_id',
         :'request_id',
-        :'sync_attachments'
+        :'sync_attachments',
       ])
     end
 
@@ -159,6 +163,12 @@ module Carbon
       else
         self.sync_attachments = false
       end
+
+      if attributes.key?(:'incremental_sync')
+        self.incremental_sync = attributes[:'incremental_sync']
+      else
+        self.incremental_sync = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -194,7 +204,8 @@ module Carbon
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
           data_source_id == o.data_source_id &&
           request_id == o.request_id &&
-          sync_attachments == o.sync_attachments
+          sync_attachments == o.sync_attachments &&
+          incremental_sync == o.incremental_sync
     end
 
     # @see the `==` method
@@ -206,7 +217,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id, sync_attachments].hash
+      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id, sync_attachments, incremental_sync].hash
     end
 
     # Builds the object from hash

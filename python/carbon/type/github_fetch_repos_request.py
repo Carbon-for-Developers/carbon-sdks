@@ -19,6 +19,7 @@ from carbon.type.github_fetch_repos_request_repos import GithubFetchReposRequest
 class RequiredGithubFetchReposRequest(TypedDict):
     repos: GithubFetchReposRequestRepos
 
+
 class OptionalGithubFetchReposRequest(TypedDict, total=False):
     data_source_id: typing.Optional[int]
 
