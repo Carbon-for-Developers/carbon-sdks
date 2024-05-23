@@ -828,6 +828,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'sync_attachments'
             },
+            {
+                name: 'incremental_sync'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -867,6 +870,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'sync_attachments'
+            },
+            {
+                name: 'incremental_sync'
             },
         ]
     },

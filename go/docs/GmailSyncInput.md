@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncAttachments** | Pointer to **NullableBool** |  | [optional] [default to false]
+**IncrementalSync** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -395,6 +396,31 @@ HasSyncAttachments returns a boolean if a field has been set.
 `func (o *GmailSyncInput) UnsetSyncAttachments()`
 
 UnsetSyncAttachments ensures that no value is present for SyncAttachments, not even an explicit nil
+### GetIncrementalSync
+
+`func (o *GmailSyncInput) GetIncrementalSync() bool`
+
+GetIncrementalSync returns the IncrementalSync field if non-nil, zero value otherwise.
+
+### GetIncrementalSyncOk
+
+`func (o *GmailSyncInput) GetIncrementalSyncOk() (*bool, bool)`
+
+GetIncrementalSyncOk returns a tuple with the IncrementalSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncrementalSync
+
+`func (o *GmailSyncInput) SetIncrementalSync(v bool)`
+
+SetIncrementalSync sets IncrementalSync field to given value.
+
+### HasIncrementalSync
+
+`func (o *GmailSyncInput) HasIncrementalSync() bool`
+
+HasIncrementalSync returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3446,7 +3446,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "b360dae1-b5fd-4803-a53a-1691e3c32558",
+              "request_id": "ca195b1c-0656-4db7-96fc-211554e9827b",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4849,6 +4849,11 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "incremental_sync": {
+            "title": "Incremental Sync",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -5234,7 +5239,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "26453c8f-69ab-4eb3-bc25-0ca995b118a0"
+            "default": "a0b57844-5937-42ef-a161-2515fc4f16df"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5251,7 +5256,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE",
             "type": "boolean",
             "default": true
           },
@@ -5953,6 +5958,11 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "incremental_sync": {
+            "title": "Incremental Sync",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -6650,7 +6660,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18"
+            "default": "5cb51bcc-08e9-4e31-9784-0005b5390cb6"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6742,7 +6752,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "b360dae1-b5fd-4803-a53a-1691e3c32558"
+            "default": "ca195b1c-0656-4db7-96fc-211554e9827b"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",

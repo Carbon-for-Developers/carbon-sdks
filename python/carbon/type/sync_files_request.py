@@ -23,6 +23,7 @@ class RequiredSyncFilesRequest(TypedDict):
 
     ids: typing.Union[typing.List[str], typing.List[SyncFilesIds]]
 
+
 class OptionalSyncFilesRequest(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

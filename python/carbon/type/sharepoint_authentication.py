@@ -24,6 +24,7 @@ class RequiredSharepointAuthentication(TypedDict):
 
     site_name: str
 
+
 class OptionalSharepointAuthentication(TypedDict, total=False):
     refresh_token: typing.Optional[str]
 

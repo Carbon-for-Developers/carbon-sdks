@@ -21,6 +21,7 @@ class RequiredOAuthAuthentication(TypedDict):
 
     access_token: str
 
+
 class OptionalOAuthAuthentication(TypedDict, total=False):
     refresh_token: typing.Optional[str]
 

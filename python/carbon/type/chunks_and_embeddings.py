@@ -21,6 +21,7 @@ class RequiredChunksAndEmbeddings(TypedDict):
 
     chunk: str
 
+
 class OptionalChunksAndEmbeddings(TypedDict, total=False):
     embedding: typing.Optional[ChunksAndEmbeddingsEmbedding]
 

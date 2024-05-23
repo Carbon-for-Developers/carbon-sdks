@@ -90,5 +90,11 @@ export interface OutlookSyncInput {
      * @memberof OutlookSyncInput
      */
     'sync_attachments'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OutlookSyncInput
+     */
+    'incremental_sync'?: boolean;
 }
 

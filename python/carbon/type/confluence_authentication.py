@@ -22,6 +22,7 @@ class RequiredConfluenceAuthentication(TypedDict):
 
     subdomain: str
 
+
 class OptionalConfluenceAuthentication(TypedDict, total=False):
     refresh_token: typing.Optional[str]
 

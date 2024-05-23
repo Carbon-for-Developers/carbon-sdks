@@ -91,4 +91,10 @@ describe Carbon::OutlookSyncInput do
     end
   end
 
+  describe 'test attribute "incremental_sync"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

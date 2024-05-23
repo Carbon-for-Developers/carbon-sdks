@@ -822,6 +822,9 @@ operation_parameter_map = {
             {
                 'name': 'sync_attachments'
             },
+            {
+                'name': 'incremental_sync'
+            },
         ]
     },
     '/integrations/outlook/sync-POST': {
@@ -861,6 +864,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_attachments'
+            },
+            {
+                'name': 'incremental_sync'
             },
         ]
     },

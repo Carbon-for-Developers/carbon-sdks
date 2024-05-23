@@ -27,6 +27,7 @@ type GmailSyncInput struct {
 	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
 	RequestId NullableString `json:"request_id,omitempty"`
 	SyncAttachments NullableBool `json:"sync_attachments,omitempty"`
+	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 }
 
 // NewGmailSyncInput instantiates a new GmailSyncInput object
@@ -48,6 +49,8 @@ func NewGmailSyncInput(filters map[string]interface{}) *GmailSyncInput {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var syncAttachments bool = false
 	this.SyncAttachments = *NewNullableBool(&syncAttachments)
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -68,6 +71,8 @@ func NewGmailSyncInputWithDefaults() *GmailSyncInput {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var syncAttachments bool = false
 	this.SyncAttachments = *NewNullableBool(&syncAttachments)
+	var incrementalSync bool = false
+	this.IncrementalSync = &incrementalSync
 	return &this
 }
 
@@ -496,6 +501,38 @@ func (o *GmailSyncInput) UnsetSyncAttachments() {
 	o.SyncAttachments.Unset()
 }
 
+// GetIncrementalSync returns the IncrementalSync field value if set, zero value otherwise.
+func (o *GmailSyncInput) GetIncrementalSync() bool {
+	if o == nil || isNil(o.IncrementalSync) {
+		var ret bool
+		return ret
+	}
+	return *o.IncrementalSync
+}
+
+// GetIncrementalSyncOk returns a tuple with the IncrementalSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GmailSyncInput) GetIncrementalSyncOk() (*bool, bool) {
+	if o == nil || isNil(o.IncrementalSync) {
+    return nil, false
+	}
+	return o.IncrementalSync, true
+}
+
+// HasIncrementalSync returns a boolean if a field has been set.
+func (o *GmailSyncInput) HasIncrementalSync() bool {
+	if o != nil && !isNil(o.IncrementalSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncrementalSync gets a reference to the given bool and assigns it to the IncrementalSync field.
+func (o *GmailSyncInput) SetIncrementalSync(v bool) {
+	o.IncrementalSync = &v
+}
+
 func (o GmailSyncInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -530,6 +567,9 @@ func (o GmailSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncAttachments.IsSet() {
 		toSerialize["sync_attachments"] = o.SyncAttachments.Get()
+	}
+	if !isNil(o.IncrementalSync) {
+		toSerialize["incremental_sync"] = o.IncrementalSync
 	}
 	return json.Marshal(toSerialize)
 }

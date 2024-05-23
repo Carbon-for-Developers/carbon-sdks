@@ -22,6 +22,7 @@ class RequiredGitbookSyncRequest(TypedDict):
 
     data_source_id: int
 
+
 class OptionalGitbookSyncRequest(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 

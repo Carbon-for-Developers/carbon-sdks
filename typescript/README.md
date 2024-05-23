@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.35-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.35)
+[![npm](https://img.shields.io/badge/npm-v0.1.36-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.36)
 
 </div>
 
@@ -1412,7 +1412,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "26453c8f-69ab-4eb3-bc25-0ca995b118a0",
+  request_id: "a0b57844-5937-42ef-a161-2515fc4f16df",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1481,7 +1481,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1735,7 +1735,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1843,7 +1843,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2056,6 +2056,7 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_attachments: false,
+  incremental_sync: false,
 });
 ```
 
@@ -2082,6 +2083,8 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 ##### request_id: `string`<a id="request_id-string"></a>
 
 ##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
+
+##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2172,6 +2175,7 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   sync_attachments: false,
+  incremental_sync: false,
 });
 ```
 
@@ -2200,6 +2204,8 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 ##### request_id: `string`<a id="request_id-string"></a>
 
 ##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
+
+##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

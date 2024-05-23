@@ -22,6 +22,7 @@ class RequiredSalesforceAuthentication(TypedDict):
 
     domain: str
 
+
 class OptionalSalesforceAuthentication(TypedDict, total=False):
     refresh_token: typing.Optional[str]
 

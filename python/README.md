@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.34-blue)](https://pypi.org/project/carbon-python-sdk/0.1.34)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.35-blue)](https://pypi.org/project/carbon-python-sdk/0.1.35)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -90,7 +90,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.34
+pip install carbon-python-sdk==0.1.35
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1337,7 +1337,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "b360dae1-b5fd-4803-a53a-1691e3c32558",
+        "request_id": "ca195b1c-0656-4db7-96fc-211554e9827b",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1589,7 +1589,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="26453c8f-69ab-4eb3-bc25-0ca995b118a0",
+    request_id="a0b57844-5937-42ef-a161-2515fc4f16df",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1662,7 +1662,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, ONEDRIVE, GOOGLE_DRIVE
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1933,7 +1933,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+    request_id="5cb51bcc-08e9-4e31-9784-0005b5390cb6",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2051,7 +2051,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="3d0330f2-f2e4-482b-9ca7-91d3a1bbbd18",
+    request_id="5cb51bcc-08e9-4e31-9784-0005b5390cb6",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2280,6 +2280,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
     data_source_id=1,
     request_id="string_example",
     sync_attachments=False,
+    incremental_sync=False,
 )
 ```
 
@@ -2306,6 +2307,8 @@ sync_gmail_response = carbon.integrations.sync_gmail(
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
+
+##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2401,6 +2404,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
     data_source_id=1,
     request_id="string_example",
     sync_attachments=False,
+    incremental_sync=False,
 )
 ```
 
@@ -2429,6 +2433,8 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
+
+##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
