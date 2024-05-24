@@ -16,7 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.pydantic.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 
 class FreshDeskConnectRequest(BaseModel):
     domain: str = Field(alias='domain')
@@ -44,7 +44,7 @@ class FreshDeskConnectRequest(BaseModel):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: typing.Optional[bool] = Field(None, alias='sync_source_items')
 
-    file_sync_config: typing.Optional[HelpdeskFileSyncConfigNullable] = Field(None, alias='file_sync_config')
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     model_config = ConfigDict(
         protected_namespaces=(),

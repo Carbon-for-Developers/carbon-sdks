@@ -10,13 +10,22 @@ require 'date'
 require 'time'
 
 module Carbon
-  class HelpdeskGlobalFileSyncConfig
+  class FileSyncConfig
+    # File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
+    attr_accessor :auto_synced_source_types
+
+    # Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets
     attr_accessor :sync_attachments
+
+    # Detect audio language before transcription for audio files
+    attr_accessor :detect_audio_language
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'sync_attachments' => :'sync_attachments'
+        :'auto_synced_source_types' => :'auto_synced_source_types',
+        :'sync_attachments' => :'sync_attachments',
+        :'detect_audio_language' => :'detect_audio_language'
       }
     end
 
@@ -28,7 +37,9 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'sync_attachments' => :'Boolean'
+        :'auto_synced_source_types' => :'Array<HelpdeskFileTypes>',
+        :'sync_attachments' => :'Boolean',
+        :'detect_audio_language' => :'Boolean'
       }
     end
 
@@ -42,21 +53,33 @@ module Carbon
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::HelpdeskGlobalFileSyncConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Carbon::FileSyncConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::HelpdeskGlobalFileSyncConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Carbon::FileSyncConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'auto_synced_source_types')
+        if (value = attributes[:'auto_synced_source_types']).is_a?(Array)
+          self.auto_synced_source_types = value
+        end
+      end
 
       if attributes.key?(:'sync_attachments')
         self.sync_attachments = attributes[:'sync_attachments']
       else
         self.sync_attachments = false
+      end
+
+      if attributes.key?(:'detect_audio_language')
+        self.detect_audio_language = attributes[:'detect_audio_language']
+      else
+        self.detect_audio_language = false
       end
     end
 
@@ -78,7 +101,9 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          sync_attachments == o.sync_attachments
+          auto_synced_source_types == o.auto_synced_source_types &&
+          sync_attachments == o.sync_attachments &&
+          detect_audio_language == o.detect_audio_language
     end
 
     # @see the `==` method
@@ -90,7 +115,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sync_attachments].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language].hash
     end
 
     # Builds the object from hash

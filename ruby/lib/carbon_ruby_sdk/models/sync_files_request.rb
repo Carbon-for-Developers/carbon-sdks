@@ -90,7 +90,7 @@ module Carbon
         :'use_ocr' => :'Boolean',
         :'parse_pdf_tables_with_ocr' => :'Boolean',
         :'incremental_sync' => :'Boolean',
-        :'file_sync_config' => :'HelpdeskGlobalFileSyncConfigNullable'
+        :'file_sync_config' => :'FileSyncConfigNullable'
       }
     end
 
@@ -187,7 +187,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '5cb51bcc-08e9-4e31-9784-0005b5390cb6'
+        self.request_id = '27036d05-9737-4197-b0c6-e9fb9f60f976'
       end
 
       if attributes.key?(:'use_ocr')

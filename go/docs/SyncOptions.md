@@ -14,11 +14,11 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "ca195b1c-0656-4db7-96fc-211554e9827b"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "18ef9025-4c76-443c-a115-ba77b17afd8b"]
 **EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
-**FileSyncConfig** | Pointer to [**NullableHelpdeskFileSyncConfigNullable**](HelpdeskFileSyncConfigNullable.md) |  | [optional] 
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -481,20 +481,20 @@ HasIncrementalSync returns a boolean if a field has been set.
 
 ### GetFileSyncConfig
 
-`func (o *SyncOptions) GetFileSyncConfig() HelpdeskFileSyncConfigNullable`
+`func (o *SyncOptions) GetFileSyncConfig() FileSyncConfigNullable`
 
 GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
 
 ### GetFileSyncConfigOk
 
-`func (o *SyncOptions) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool)`
+`func (o *SyncOptions) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
 
 GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFileSyncConfig
 
-`func (o *SyncOptions) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable)`
+`func (o *SyncOptions) SetFileSyncConfig(v FileSyncConfigNullable)`
 
 SetFileSyncConfig sets FileSyncConfig field to given value.
 

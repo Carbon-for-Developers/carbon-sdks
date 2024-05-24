@@ -40,6 +40,8 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
+    attr_accessor :file_sync_config
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -56,7 +58,8 @@ module Carbon
         :'data_source_id' => :'data_source_id',
         :'request_id' => :'request_id',
         :'use_ocr' => :'use_ocr',
-        :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr'
+        :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
+        :'file_sync_config' => :'file_sync_config'
       }
     end
 
@@ -81,7 +84,8 @@ module Carbon
         :'data_source_id' => :'Integer',
         :'request_id' => :'String',
         :'use_ocr' => :'Boolean',
-        :'parse_pdf_tables_with_ocr' => :'Boolean'
+        :'parse_pdf_tables_with_ocr' => :'Boolean',
+        :'file_sync_config' => :'FileSyncConfigNullable'
       }
     end
 
@@ -98,7 +102,8 @@ module Carbon
         :'data_source_id',
         :'request_id',
         :'use_ocr',
-        :'parse_pdf_tables_with_ocr'
+        :'parse_pdf_tables_with_ocr',
+        :'file_sync_config'
       ])
     end
 
@@ -192,6 +197,10 @@ module Carbon
       else
         self.parse_pdf_tables_with_ocr = false
       end
+
+      if attributes.key?(:'file_sync_config')
+        self.file_sync_config = attributes[:'file_sync_config']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -230,7 +239,8 @@ module Carbon
           data_source_id == o.data_source_id &&
           request_id == o.request_id &&
           use_ocr == o.use_ocr &&
-          parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr
+          parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
+          file_sync_config == o.file_sync_config
     end
 
     # @see the `==` method
@@ -242,7 +252,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, data_source_id, request_id, use_ocr, parse_pdf_tables_with_ocr].hash
+      [tags, ids, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, set_page_as_boundary, data_source_id, request_id, use_ocr, parse_pdf_tables_with_ocr, file_sync_config].hash
     end
 
     # Builds the object from hash

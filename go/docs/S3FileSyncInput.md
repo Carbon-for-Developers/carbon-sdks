@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -493,6 +494,41 @@ HasParsePdfTablesWithOcr returns a boolean if a field has been set.
 `func (o *S3FileSyncInput) UnsetParsePdfTablesWithOcr()`
 
 UnsetParsePdfTablesWithOcr ensures that no value is present for ParsePdfTablesWithOcr, not even an explicit nil
+### GetFileSyncConfig
+
+`func (o *S3FileSyncInput) GetFileSyncConfig() FileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *S3FileSyncInput) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *S3FileSyncInput) SetFileSyncConfig(v FileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *S3FileSyncInput) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *S3FileSyncInput) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *S3FileSyncInput) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

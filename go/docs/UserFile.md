@@ -32,8 +32,8 @@ Name | Type | Description | Notes
 **SkipEmbeddingGeneration** | **bool** |  | 
 **SourceCreatedAt** | **NullableTime** |  | 
 **GenerateSparseVectors** | **NullableBool** |  | 
-**AudioProperties** | **map[string]interface{}** |  | 
 **RequestId** | **NullableString** |  | 
+**SyncProperties** | **map[string]interface{}** |  | [default to {}]
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, audioProperties map[string]interface{}, requestId NullableString, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -816,36 +816,6 @@ SetGenerateSparseVectors sets GenerateSparseVectors field to given value.
 `func (o *UserFile) UnsetGenerateSparseVectors()`
 
 UnsetGenerateSparseVectors ensures that no value is present for GenerateSparseVectors, not even an explicit nil
-### GetAudioProperties
-
-`func (o *UserFile) GetAudioProperties() map[string]interface{}`
-
-GetAudioProperties returns the AudioProperties field if non-nil, zero value otherwise.
-
-### GetAudioPropertiesOk
-
-`func (o *UserFile) GetAudioPropertiesOk() (*map[string]interface{}, bool)`
-
-GetAudioPropertiesOk returns a tuple with the AudioProperties field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAudioProperties
-
-`func (o *UserFile) SetAudioProperties(v map[string]interface{})`
-
-SetAudioProperties sets AudioProperties field to given value.
-
-
-### SetAudioPropertiesNil
-
-`func (o *UserFile) SetAudioPropertiesNil(b bool)`
-
- SetAudioPropertiesNil sets the value for AudioProperties to be an explicit nil
-
-### UnsetAudioProperties
-`func (o *UserFile) UnsetAudioProperties()`
-
-UnsetAudioProperties ensures that no value is present for AudioProperties, not even an explicit nil
 ### GetRequestId
 
 `func (o *UserFile) GetRequestId() string`
@@ -876,6 +846,26 @@ SetRequestId sets RequestId field to given value.
 `func (o *UserFile) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetSyncProperties
+
+`func (o *UserFile) GetSyncProperties() map[string]interface{}`
+
+GetSyncProperties returns the SyncProperties field if non-nil, zero value otherwise.
+
+### GetSyncPropertiesOk
+
+`func (o *UserFile) GetSyncPropertiesOk() (*map[string]interface{}, bool)`
+
+GetSyncPropertiesOk returns a tuple with the SyncProperties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncProperties
+
+`func (o *UserFile) SetSyncProperties(v map[string]interface{})`
+
+SetSyncProperties sets SyncProperties field to given value.
+
+
 ### GetCreatedAt
 
 `func (o *UserFile) GetCreatedAt() time.Time`

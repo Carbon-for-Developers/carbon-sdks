@@ -15,11 +15,14 @@ module Carbon
 
     attr_accessor :html_content
 
+    attr_accessor :error_message
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'urls' => :'urls',
-        :'html_content' => :'html_content'
+        :'html_content' => :'html_content',
+        :'error_message' => :'error_message'
       }
     end
 
@@ -32,13 +35,15 @@ module Carbon
     def self.openapi_types
       {
         :'urls' => :'Array<String>',
-        :'html_content' => :'String'
+        :'html_content' => :'String',
+        :'error_message' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'error_message'
       ])
     end
 
@@ -65,6 +70,10 @@ module Carbon
 
       if attributes.key?(:'html_content')
         self.html_content = attributes[:'html_content']
+      end
+
+      if attributes.key?(:'error_message')
+        self.error_message = attributes[:'error_message']
       end
     end
 
@@ -97,7 +106,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           urls == o.urls &&
-          html_content == o.html_content
+          html_content == o.html_content &&
+          error_message == o.error_message
     end
 
     # @see the `==` method
@@ -109,7 +119,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [urls, html_content].hash
+      [urls, html_content, error_message].hash
     end
 
     # Builds the object from hash

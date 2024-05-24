@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.s3_get_file_input import S3GetFileInput
 
 class RequiredS3FileSyncInput(TypedDict):
@@ -48,6 +49,8 @@ class OptionalS3FileSyncInput(TypedDict, total=False):
     use_ocr: typing.Optional[bool]
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable]
 
 class S3FileSyncInput(RequiredS3FileSyncInput, OptionalS3FileSyncInput):
     pass

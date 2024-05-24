@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **DataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncAttachments** | Pointer to **NullableBool** |  | [optional] [default to false]
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 **IncrementalSync** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
@@ -396,6 +397,41 @@ HasSyncAttachments returns a boolean if a field has been set.
 `func (o *GmailSyncInput) UnsetSyncAttachments()`
 
 UnsetSyncAttachments ensures that no value is present for SyncAttachments, not even an explicit nil
+### GetFileSyncConfig
+
+`func (o *GmailSyncInput) GetFileSyncConfig() FileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *GmailSyncInput) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *GmailSyncInput) SetFileSyncConfig(v FileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *GmailSyncInput) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *GmailSyncInput) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *GmailSyncInput) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 ### GetIncrementalSync
 
 `func (o *GmailSyncInput) GetIncrementalSync() bool`

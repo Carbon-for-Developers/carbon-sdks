@@ -22,6 +22,8 @@ class FetchURLsResponse(BaseModel):
 
     html_content: str = Field(alias='html_content')
 
+    error_message: typing.Optional[str] = Field(alias='error_message')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

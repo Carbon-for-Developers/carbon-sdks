@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 
 class RequiredOutlookSyncInput(TypedDict):
     filters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
@@ -42,6 +43,8 @@ class OptionalOutlookSyncInput(TypedDict, total=False):
     request_id: typing.Optional[str]
 
     sync_attachments: typing.Optional[bool]
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable]
 
     incremental_sync: bool
 

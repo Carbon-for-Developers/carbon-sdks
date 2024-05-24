@@ -35,13 +35,13 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.sync_files_request import SyncFilesRequest as SyncFilesRequestSchema
-from carbon.model.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable as HelpdeskGlobalFileSyncConfigNullableSchema
 from carbon.model.sync_files_ids import SyncFilesIds as SyncFilesIdsSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
 
 from carbon.type.sync_files_request import SyncFilesRequest
-from carbon.type.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.sync_files_ids import SyncFilesIds
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
@@ -52,7 +52,7 @@ from carbon.pydantic.sync_files_request import SyncFilesRequest as SyncFilesRequ
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.sync_files_ids import SyncFilesIds as SyncFilesIdsPydantic
-from carbon.pydantic.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable as HelpdeskGlobalFileSyncConfigNullablePydantic
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
 
 from . import path
 
@@ -142,7 +142,7 @@ class BaseApi(api_client.Api):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -400,7 +400,7 @@ class SyncFilesRaw(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -447,7 +447,7 @@ class SyncFilesRaw(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -493,7 +493,7 @@ class SyncFiles(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -538,7 +538,7 @@ class SyncFiles(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_files(
@@ -584,7 +584,7 @@ class ApiForpost(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -631,7 +631,7 @@ class ApiForpost(BaseApi):
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
         incremental_sync: typing.Optional[bool] = None,
-        file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.33-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.33)
+[![npm](https://img.shields.io/badge/gem-v0.1.34-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.34)
 
 </div>
 
@@ -84,7 +84,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.33'
+gem 'carbon_ruby_sdk', '~> 0.1.34'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1208,7 +1208,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "ca195b1c-0656-4db7-96fc-211554e9827b",
+        "request_id" => "18ef9025-4c76-443c-a115-ba77b17afd8b",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1259,8 +1259,9 @@ result = carbon.integrations.connect_freshdesk(
   request_id: "string_example",
   sync_source_items: true,
   file_sync_config: {
-        "file_types" => ["ARTICLE"],
+        "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
+        "detect_audio_language" => false,
     },
 )
 p result
@@ -1283,7 +1284,7 @@ p result
 Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_file_sync_config_nullablerb"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1426,15 +1427,16 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "a0b57844-5937-42ef-a161-2515fc4f16df",
+  request_id: "eb3e536e-fa3e-4f8e-9a22-25f70393e759",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
   sync_source_items: true,
   incremental_sync: false,
   file_sync_config: {
-        "file_types" => ["ARTICLE"],
+        "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
+        "detect_audio_language" => false,
     },
 )
 p result
@@ -1485,7 +1487,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
+ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1496,7 +1498,7 @@ Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_file_sync_config_nullablerb"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -1747,12 +1749,14 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
   file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
+        "detect_audio_language" => false,
     },
 )
 p result
@@ -1781,7 +1785,7 @@ Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_global_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_global_file_sync_config_nullablerb"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1848,12 +1852,14 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
   file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
+        "detect_audio_language" => false,
     },
 )
 p result
@@ -1882,7 +1888,7 @@ Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/helpdesk_global_file_sync_config_nullable.rb)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablelibcarbon_ruby_sdkmodelshelpdesk_global_file_sync_config_nullablerb"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2048,6 +2054,11 @@ result = carbon.integrations.sync_gmail(
   data_source_id: 1,
   request_id: "string_example",
   sync_attachments: false,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+    },
   incremental_sync: false,
 )
 p result
@@ -2066,6 +2077,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
 ##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 ##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2159,6 +2171,11 @@ result = carbon.integrations.sync_outlook(
   data_source_id: 1,
   request_id: "string_example",
   sync_attachments: false,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+    },
   incremental_sync: false,
 )
 p result
@@ -2178,6 +2195,7 @@ p result
 ##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
 ##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 ##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2295,6 +2313,11 @@ result = carbon.integrations.sync_s3_files(
   request_id: "string_example",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+    },
 )
 p result
 ```
@@ -2317,6 +2340,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### request_id: `String`<a id="request_id-string"></a>
 ##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

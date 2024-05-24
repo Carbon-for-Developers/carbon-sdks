@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Urls** | **[]string** |  | 
 **HtmlContent** | **string** |  | 
+**ErrorMessage** | **NullableString** |  | 
 
 ## Methods
 
 ### NewFetchURLsResponse
 
-`func NewFetchURLsResponse(urls []string, htmlContent string, ) *FetchURLsResponse`
+`func NewFetchURLsResponse(urls []string, htmlContent string, errorMessage NullableString, ) *FetchURLsResponse`
 
 NewFetchURLsResponse instantiates a new FetchURLsResponse object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +67,36 @@ and a boolean to check if the value has been set.
 SetHtmlContent sets HtmlContent field to given value.
 
 
+### GetErrorMessage
+
+`func (o *FetchURLsResponse) GetErrorMessage() string`
+
+GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
+
+### GetErrorMessageOk
+
+`func (o *FetchURLsResponse) GetErrorMessageOk() (*string, bool)`
+
+GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorMessage
+
+`func (o *FetchURLsResponse) SetErrorMessage(v string)`
+
+SetErrorMessage sets ErrorMessage field to given value.
+
+
+### SetErrorMessageNil
+
+`func (o *FetchURLsResponse) SetErrorMessageNil(b bool)`
+
+ SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
+
+### UnsetErrorMessage
+`func (o *FetchURLsResponse) UnsetErrorMessage()`
+
+UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

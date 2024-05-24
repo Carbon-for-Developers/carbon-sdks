@@ -29,7 +29,7 @@ type FreshDeskConnectRequest struct {
 	RequestId NullableString `json:"request_id,omitempty"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
-	FileSyncConfig NullableHelpdeskFileSyncConfigNullable `json:"file_sync_config,omitempty"`
+	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
 
 // NewFreshDeskConnectRequest instantiates a new FreshDeskConnectRequest object
@@ -533,9 +533,9 @@ func (o *FreshDeskConnectRequest) SetSyncSourceItems(v bool) {
 }
 
 // GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FreshDeskConnectRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNullable {
+func (o *FreshDeskConnectRequest) GetFileSyncConfig() FileSyncConfigNullable {
 	if o == nil || isNil(o.FileSyncConfig.Get()) {
-		var ret HelpdeskFileSyncConfigNullable
+		var ret FileSyncConfigNullable
 		return ret
 	}
 	return *o.FileSyncConfig.Get()
@@ -544,7 +544,7 @@ func (o *FreshDeskConnectRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNull
 // GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FreshDeskConnectRequest) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool) {
+func (o *FreshDeskConnectRequest) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -560,8 +560,8 @@ func (o *FreshDeskConnectRequest) HasFileSyncConfig() bool {
 	return false
 }
 
-// SetFileSyncConfig gets a reference to the given NullableHelpdeskFileSyncConfigNullable and assigns it to the FileSyncConfig field.
-func (o *FreshDeskConnectRequest) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable) {
+// SetFileSyncConfig gets a reference to the given NullableFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *FreshDeskConnectRequest) SetFileSyncConfig(v FileSyncConfigNullable) {
 	o.FileSyncConfig.Set(&v)
 }
 // SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil

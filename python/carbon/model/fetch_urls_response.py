@@ -33,6 +33,7 @@ class FetchURLsResponse(
 
     class MetaOapg:
         required = {
+            "error_message",
             "html_content",
             "urls",
         }
@@ -43,11 +44,33 @@ class FetchURLsResponse(
             def urls() -> typing.Type['FetchURLsResponseUrls']:
                 return FetchURLsResponseUrls
             html_content = schemas.StrSchema
+            
+            
+            class error_message(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'error_message':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "urls": urls,
                 "html_content": html_content,
+                "error_message": error_message,
             }
     
+    error_message: MetaOapg.properties.error_message
     html_content: MetaOapg.properties.html_content
     urls: 'FetchURLsResponseUrls'
     
@@ -58,9 +81,12 @@ class FetchURLsResponse(
     def __getitem__(self, name: typing_extensions.Literal["html_content"]) -> MetaOapg.properties.html_content: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["error_message"]) -> MetaOapg.properties.error_message: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["urls", "html_content", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["urls", "html_content", "error_message", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -72,15 +98,19 @@ class FetchURLsResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["html_content"]) -> MetaOapg.properties.html_content: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["error_message"]) -> MetaOapg.properties.error_message: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["urls", "html_content", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["urls", "html_content", "error_message", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        error_message: typing.Union[MetaOapg.properties.error_message, None, str, ],
         html_content: typing.Union[MetaOapg.properties.html_content, str, ],
         urls: 'FetchURLsResponseUrls',
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -89,6 +119,7 @@ class FetchURLsResponse(
         return super().__new__(
             cls,
             *args,
+            error_message=error_message,
             html_content=html_content,
             urls=urls,
             _configuration=_configuration,

@@ -17,10 +17,15 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 
-class HelpdeskFileSyncConfig(BaseModel):
-    file_types: typing.Optional[typing.List[HelpdeskFileTypes]] = Field(None, alias='file_types')
+class FileSyncConfig(BaseModel):
+    # File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
+    auto_synced_source_types: typing.Optional[typing.List[HelpdeskFileTypes]] = Field(None, alias='auto_synced_source_types')
 
+    # Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets
     sync_attachments: typing.Optional[bool] = Field(None, alias='sync_attachments')
+
+    # Detect audio language before transcription for audio files
+    detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
 
     model_config = ConfigDict(
         protected_namespaces=(),

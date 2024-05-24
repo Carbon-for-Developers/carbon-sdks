@@ -51,6 +51,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.FetchUrls`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.HtmlContent`: %v\n", resp.HtmlContent)
+    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
 }
 ```
 
@@ -298,6 +299,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.SearchUrls`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.HtmlContent`: %v\n", resp.HtmlContent)
+    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
 }
 ```
 

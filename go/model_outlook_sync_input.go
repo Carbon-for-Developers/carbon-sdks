@@ -28,6 +28,7 @@ type OutlookSyncInput struct {
 	DataSourceId NullableInt32 `json:"data_source_id,omitempty"`
 	RequestId NullableString `json:"request_id,omitempty"`
 	SyncAttachments NullableBool `json:"sync_attachments,omitempty"`
+	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 }
 
@@ -548,6 +549,48 @@ func (o *OutlookSyncInput) UnsetSyncAttachments() {
 	o.SyncAttachments.Unset()
 }
 
+// GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OutlookSyncInput) GetFileSyncConfig() FileSyncConfigNullable {
+	if o == nil || isNil(o.FileSyncConfig.Get()) {
+		var ret FileSyncConfigNullable
+		return ret
+	}
+	return *o.FileSyncConfig.Get()
+}
+
+// GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OutlookSyncInput) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileSyncConfig.Get(), o.FileSyncConfig.IsSet()
+}
+
+// HasFileSyncConfig returns a boolean if a field has been set.
+func (o *OutlookSyncInput) HasFileSyncConfig() bool {
+	if o != nil && o.FileSyncConfig.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSyncConfig gets a reference to the given NullableFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *OutlookSyncInput) SetFileSyncConfig(v FileSyncConfigNullable) {
+	o.FileSyncConfig.Set(&v)
+}
+// SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+func (o *OutlookSyncInput) SetFileSyncConfigNil() {
+	o.FileSyncConfig.Set(nil)
+}
+
+// UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+func (o *OutlookSyncInput) UnsetFileSyncConfig() {
+	o.FileSyncConfig.Unset()
+}
+
 // GetIncrementalSync returns the IncrementalSync field value if set, zero value otherwise.
 func (o *OutlookSyncInput) GetIncrementalSync() bool {
 	if o == nil || isNil(o.IncrementalSync) {
@@ -617,6 +660,9 @@ func (o OutlookSyncInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncAttachments.IsSet() {
 		toSerialize["sync_attachments"] = o.SyncAttachments.Get()
+	}
+	if o.FileSyncConfig.IsSet() {
+		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
 	}
 	if !isNil(o.IncrementalSync) {
 		toSerialize["incremental_sync"] = o.IncrementalSync

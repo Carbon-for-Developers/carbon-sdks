@@ -192,16 +192,16 @@ export interface UserFile {
     'generate_sparse_vectors': boolean | null;
     /**
      * 
-     * @type {object}
-     * @memberof UserFile
-     */
-    'audio_properties': object | null;
-    /**
-     * 
      * @type {string}
      * @memberof UserFile
      */
     'request_id': string | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserFile
+     */
+    'sync_properties': object;
     /**
      * 
      * @type {string}

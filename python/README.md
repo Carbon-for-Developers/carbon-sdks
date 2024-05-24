@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.35-blue)](https://pypi.org/project/carbon-python-sdk/0.1.35)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.1.36-blue)](https://pypi.org/project/carbon-python-sdk/0.1.36)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -90,7 +90,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.35
+pip install carbon-python-sdk==0.1.36
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1337,7 +1337,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "ca195b1c-0656-4db7-96fc-211554e9827b",
+        "request_id": "18ef9025-4c76-443c-a115-ba77b17afd8b",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1393,8 +1393,9 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
     request_id="string_example",
     sync_source_items=True,
     file_sync_config={
-        "file_types": ["ARTICLE"],
+        "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
+        "detect_audio_language": False,
     },
 )
 ```
@@ -1427,7 +1428,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./carbon/type/helpdesk_file_sync_config_nullable.py)<a id="file_sync_config-helpdeskfilesyncconfignullablecarbontypehelpdesk_file_sync_config_nullablepy"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
@@ -1589,15 +1590,16 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="a0b57844-5937-42ef-a161-2515fc4f16df",
+    request_id="eb3e536e-fa3e-4f8e-9a22-25f70393e759",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
     sync_source_items=True,
     incremental_sync=False,
     file_sync_config={
-        "file_types": ["ARTICLE"],
+        "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
+        "detect_audio_language": False,
     },
 )
 ```
@@ -1662,7 +1664,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
+Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1672,7 +1674,7 @@ Enabling this flag will fetch all available content from the source to be listed
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./carbon/type/helpdesk_file_sync_config_nullable.py)<a id="file_sync_config-helpdeskfilesyncconfignullablecarbontypehelpdesk_file_sync_config_nullablepy"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
@@ -1933,12 +1935,14 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+    request_id="27036d05-9737-4197-b0c6-e9fb9f60f976",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
     file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
+        "detect_audio_language": False,
     },
 )
 ```
@@ -1980,7 +1984,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./carbon/type/helpdesk_global_file_sync_config_nullable.py)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablecarbontypehelpdesk_global_file_sync_config_nullablepy"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
@@ -2051,12 +2055,14 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+    request_id="27036d05-9737-4197-b0c6-e9fb9f60f976",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
     file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
+        "detect_audio_language": False,
     },
 )
 ```
@@ -2098,7 +2104,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./carbon/type/helpdesk_global_file_sync_config_nullable.py)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablecarbontypehelpdesk_global_file_sync_config_nullablepy"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
@@ -2280,6 +2286,11 @@ sync_gmail_response = carbon.integrations.sync_gmail(
     data_source_id=1,
     request_id="string_example",
     sync_attachments=False,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+    },
     incremental_sync=False,
 )
 ```
@@ -2307,6 +2318,9 @@ sync_gmail_response = carbon.integrations.sync_gmail(
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
@@ -2404,6 +2418,11 @@ sync_outlook_response = carbon.integrations.sync_outlook(
     data_source_id=1,
     request_id="string_example",
     sync_attachments=False,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+    },
     incremental_sync=False,
 )
 ```
@@ -2433,6 +2452,9 @@ sync_outlook_response = carbon.integrations.sync_outlook(
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### sync_attachments: `Optional[bool]`<a id="sync_attachments-optionalbool"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
@@ -2562,6 +2584,11 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
     request_id="string_example",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+    },
 )
 ```
 
@@ -2596,6 +2623,9 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 
 ##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

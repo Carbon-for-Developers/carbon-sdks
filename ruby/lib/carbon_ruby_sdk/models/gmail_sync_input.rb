@@ -33,6 +33,8 @@ module Carbon
 
     attr_accessor :sync_attachments
 
+    attr_accessor :file_sync_config
+
     attr_accessor :incremental_sync
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -49,6 +51,7 @@ module Carbon
         :'data_source_id' => :'data_source_id',
         :'request_id' => :'request_id',
         :'sync_attachments' => :'sync_attachments',
+        :'file_sync_config' => :'file_sync_config',
         :'incremental_sync' => :'incremental_sync'
       }
     end
@@ -72,6 +75,7 @@ module Carbon
         :'data_source_id' => :'Integer',
         :'request_id' => :'String',
         :'sync_attachments' => :'Boolean',
+        :'file_sync_config' => :'FileSyncConfigNullable',
         :'incremental_sync' => :'Boolean'
       }
     end
@@ -88,6 +92,7 @@ module Carbon
         :'data_source_id',
         :'request_id',
         :'sync_attachments',
+        :'file_sync_config',
       ])
     end
 
@@ -164,6 +169,10 @@ module Carbon
         self.sync_attachments = false
       end
 
+      if attributes.key?(:'file_sync_config')
+        self.file_sync_config = attributes[:'file_sync_config']
+      end
+
       if attributes.key?(:'incremental_sync')
         self.incremental_sync = attributes[:'incremental_sync']
       else
@@ -205,6 +214,7 @@ module Carbon
           data_source_id == o.data_source_id &&
           request_id == o.request_id &&
           sync_attachments == o.sync_attachments &&
+          file_sync_config == o.file_sync_config &&
           incremental_sync == o.incremental_sync
     end
 
@@ -217,7 +227,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id, sync_attachments, incremental_sync].hash
+      [tags, filters, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, data_source_id, request_id, sync_attachments, file_sync_config, incremental_sync].hash
     end
 
     # Builds the object from hash

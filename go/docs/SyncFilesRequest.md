@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "5cb51bcc-08e9-4e31-9784-0005b5390cb6"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "27036d05-9737-4197-b0c6-e9fb9f60f976"]
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
-**FileSyncConfig** | Pointer to [**NullableHelpdeskGlobalFileSyncConfigNullable**](HelpdeskGlobalFileSyncConfigNullable.md) |  | [optional] 
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -507,20 +507,20 @@ HasIncrementalSync returns a boolean if a field has been set.
 
 ### GetFileSyncConfig
 
-`func (o *SyncFilesRequest) GetFileSyncConfig() HelpdeskGlobalFileSyncConfigNullable`
+`func (o *SyncFilesRequest) GetFileSyncConfig() FileSyncConfigNullable`
 
 GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
 
 ### GetFileSyncConfigOk
 
-`func (o *SyncFilesRequest) GetFileSyncConfigOk() (*HelpdeskGlobalFileSyncConfigNullable, bool)`
+`func (o *SyncFilesRequest) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
 
 GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFileSyncConfig
 
-`func (o *SyncFilesRequest) SetFileSyncConfig(v HelpdeskGlobalFileSyncConfigNullable)`
+`func (o *SyncFilesRequest) SetFileSyncConfig(v FileSyncConfigNullable)`
 
 SetFileSyncConfig sets FileSyncConfig field to given value.
 

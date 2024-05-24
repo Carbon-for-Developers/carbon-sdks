@@ -18,16 +18,18 @@ import (
 type FetchURLsResponse struct {
 	Urls []string `json:"urls"`
 	HtmlContent string `json:"html_content"`
+	ErrorMessage NullableString `json:"error_message"`
 }
 
 // NewFetchURLsResponse instantiates a new FetchURLsResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFetchURLsResponse(urls []string, htmlContent string) *FetchURLsResponse {
+func NewFetchURLsResponse(urls []string, htmlContent string, errorMessage NullableString) *FetchURLsResponse {
 	this := FetchURLsResponse{}
 	this.Urls = urls
 	this.HtmlContent = htmlContent
+	this.ErrorMessage = errorMessage
 	return &this
 }
 
@@ -87,6 +89,32 @@ func (o *FetchURLsResponse) SetHtmlContent(v string) {
 	o.HtmlContent = v
 }
 
+// GetErrorMessage returns the ErrorMessage field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *FetchURLsResponse) GetErrorMessage() string {
+	if o == nil || o.ErrorMessage.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ErrorMessage.Get()
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FetchURLsResponse) GetErrorMessageOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ErrorMessage.Get(), o.ErrorMessage.IsSet()
+}
+
+// SetErrorMessage sets field value
+func (o *FetchURLsResponse) SetErrorMessage(v string) {
+	o.ErrorMessage.Set(&v)
+}
+
 func (o FetchURLsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -94,6 +122,9 @@ func (o FetchURLsResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["html_content"] = o.HtmlContent
+	}
+	if true {
+		toSerialize["error_message"] = o.ErrorMessage.Get()
 	}
 	return json.Marshal(toSerialize)
 }

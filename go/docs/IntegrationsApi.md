@@ -105,7 +105,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     freshDeskConnectRequest := *carbon.NewFreshDeskConnectRequest(
         "null",
@@ -297,7 +297,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     oAuthURLRequest := *carbon.NewOAuthURLRequest(
         null,
@@ -320,7 +320,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("a0b57844-5937-42ef-a161-2515fc4f16df")
+    oAuthURLRequest.SetRequestId("eb3e536e-fa3e-4f8e-9a22-25f70393e759")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -703,7 +703,7 @@ func main() {
     client := carbon.NewAPIClient(configuration)
 
     ids := *carbon.NewIdsProperty()
-    fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
@@ -718,7 +718,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
+    syncFilesRequest.SetRequestId("27036d05-9737-4197-b0c6-e9fb9f60f976")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -834,7 +834,7 @@ func main() {
     client := carbon.NewAPIClient(configuration)
 
     ids := *carbon.NewIdsProperty()
-    fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
@@ -849,7 +849,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
+    syncFilesRequest.SetRequestId("27036d05-9737-4197-b0c6-e9fb9f60f976")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -1010,6 +1010,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     gmailSyncInput := *carbon.NewGmailSyncInput(
         null,
@@ -1024,6 +1025,7 @@ func main() {
     gmailSyncInput.SetDataSourceId(null)
     gmailSyncInput.SetRequestId("null")
     gmailSyncInput.SetSyncAttachments(false)
+    gmailSyncInput.SetFileSyncConfig(fileSyncConfig)
     gmailSyncInput.SetIncrementalSync(false)
     
     request := client.IntegrationsApi.SyncGmail(
@@ -1071,6 +1073,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     outlookSyncInput := *carbon.NewOutlookSyncInput(
         null,
@@ -1086,6 +1089,7 @@ func main() {
     outlookSyncInput.SetDataSourceId(null)
     outlookSyncInput.SetRequestId("null")
     outlookSyncInput.SetSyncAttachments(false)
+    outlookSyncInput.SetFileSyncConfig(fileSyncConfig)
     outlookSyncInput.SetIncrementalSync(false)
     
     request := client.IntegrationsApi.SyncOutlook(
@@ -1239,6 +1243,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     s3FileSyncInput := *carbon.NewS3FileSyncInput(
         null,
@@ -1256,6 +1261,7 @@ func main() {
     s3FileSyncInput.SetRequestId("null")
     s3FileSyncInput.SetUseOcr(false)
     s3FileSyncInput.SetParsePdfTablesWithOcr(false)
+    s3FileSyncInput.SetFileSyncConfig(fileSyncConfig)
     
     request := client.IntegrationsApi.SyncS3Files(
         s3FileSyncInput,

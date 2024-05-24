@@ -36,9 +36,11 @@ from carbon.model.outlook_sync_input import OutlookSyncInput as OutlookSyncInput
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.outlook_sync_input import OutlookSyncInput
 from carbon.type.generic_success_response import GenericSuccessResponse
 
@@ -47,6 +49,7 @@ from carbon.pydantic.outlook_sync_input import OutlookSyncInput as OutlookSyncIn
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
 
 # body param
 SchemaForRequestBodyApplicationJson = OutlookSyncInputSchema
@@ -122,6 +125,7 @@ class BaseApi(api_client.Api):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -150,6 +154,8 @@ class BaseApi(api_client.Api):
             _body["request_id"] = request_id
         if sync_attachments is not None:
             _body["sync_attachments"] = sync_attachments
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         if incremental_sync is not None:
             _body["incremental_sync"] = incremental_sync
         args.body = _body
@@ -371,6 +377,7 @@ class SyncOutlookRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
@@ -391,6 +398,7 @@ class SyncOutlookRaw(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
         )
         return await self._async_outlook_oapg(
@@ -412,6 +420,7 @@ class SyncOutlookRaw(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -430,6 +439,7 @@ class SyncOutlookRaw(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
         )
         return self._sync_outlook_oapg(
@@ -452,6 +462,7 @@ class SyncOutlook(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
@@ -469,6 +480,7 @@ class SyncOutlook(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
             **kwargs,
         )
@@ -491,6 +503,7 @@ class SyncOutlook(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
@@ -507,6 +520,7 @@ class SyncOutlook(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
         )
         if validate:
@@ -531,6 +545,7 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
@@ -551,6 +566,7 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
         )
         return await self._async_outlook_oapg(
@@ -572,6 +588,7 @@ class ApiForpost(BaseApi):
         data_source_id: typing.Optional[typing.Optional[int]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_attachments: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         incremental_sync: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -590,6 +607,7 @@ class ApiForpost(BaseApi):
             data_source_id=data_source_id,
             request_id=request_id,
             sync_attachments=sync_attachments,
+            file_sync_config=file_sync_config,
             incremental_sync=incremental_sync,
         )
         return self._sync_outlook_oapg(

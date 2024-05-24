@@ -51,7 +51,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService ConnectFreshdesk", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         freshDeskConnectRequest := *carbon.NewFreshDeskConnectRequest(
             "null",
@@ -134,7 +134,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService GetOauthUrl", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        fileSyncConfig := *carbon.NewHelpdeskFileSyncConfigNullable()
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         oAuthURLRequest := *carbon.NewOAuthURLRequest(
             null,
@@ -157,7 +157,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("a0b57844-5937-42ef-a161-2515fc4f16df")
+        oAuthURLRequest.SetRequestId("eb3e536e-fa3e-4f8e-9a22-25f70393e759")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
@@ -298,7 +298,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     t.Run("Test IntegrationsApiService SyncConfluence", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         ids := *carbon.NewIdsProperty()
-        fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
@@ -313,7 +313,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
+        syncFilesRequest.SetRequestId("27036d05-9737-4197-b0c6-e9fb9f60f976")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
@@ -353,7 +353,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     t.Run("Test IntegrationsApiService SyncFiles", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         ids := *carbon.NewIdsProperty()
-        fileSyncConfig := *carbon.NewHelpdeskGlobalFileSyncConfigNullable()
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         syncFilesRequest := *carbon.NewSyncFilesRequest(
             null,
@@ -368,7 +368,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("5cb51bcc-08e9-4e31-9784-0005b5390cb6")
+        syncFilesRequest.SetRequestId("27036d05-9737-4197-b0c6-e9fb9f60f976")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
@@ -437,6 +437,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncGmail", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         gmailSyncInput := *carbon.NewGmailSyncInput(
             null,
@@ -451,6 +452,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gmailSyncInput.SetDataSourceId(null)
         gmailSyncInput.SetRequestId("null")
         gmailSyncInput.SetSyncAttachments(false)
+        gmailSyncInput.SetFileSyncConfig(fileSyncConfig)
         gmailSyncInput.SetIncrementalSync(false)
         
         request := client.IntegrationsApi.SyncGmail(
@@ -467,6 +469,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncOutlook", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         outlookSyncInput := *carbon.NewOutlookSyncInput(
             null,
@@ -482,6 +485,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         outlookSyncInput.SetDataSourceId(null)
         outlookSyncInput.SetRequestId("null")
         outlookSyncInput.SetSyncAttachments(false)
+        outlookSyncInput.SetFileSyncConfig(fileSyncConfig)
         outlookSyncInput.SetIncrementalSync(false)
         
         request := client.IntegrationsApi.SyncOutlook(
@@ -545,6 +549,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncS3Files", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         s3FileSyncInput := *carbon.NewS3FileSyncInput(
             null,
@@ -562,6 +567,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         s3FileSyncInput.SetRequestId("null")
         s3FileSyncInput.SetUseOcr(false)
         s3FileSyncInput.SetParsePdfTablesWithOcr(false)
+        s3FileSyncInput.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.SyncS3Files(
             s3FileSyncInput,

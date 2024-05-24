@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.pydantic.s3_get_file_input import S3GetFileInput
 
 class S3FileSyncInput(BaseModel):
@@ -47,6 +48,8 @@ class S3FileSyncInput(BaseModel):
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     model_config = ConfigDict(
         protected_namespaces=(),

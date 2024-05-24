@@ -45,8 +45,8 @@ type UserFile struct {
 	SkipEmbeddingGeneration bool `json:"skip_embedding_generation"`
 	SourceCreatedAt NullableTime `json:"source_created_at"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors"`
-	AudioProperties map[string]interface{} `json:"audio_properties"`
 	RequestId NullableString `json:"request_id"`
+	SyncProperties map[string]interface{} `json:"sync_properties"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -55,7 +55,7 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, audioProperties map[string]interface{}, requestId NullableString, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
@@ -85,8 +85,8 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 	this.SkipEmbeddingGeneration = skipEmbeddingGeneration
 	this.SourceCreatedAt = sourceCreatedAt
 	this.GenerateSparseVectors = generateSparseVectors
-	this.AudioProperties = audioProperties
 	this.RequestId = requestId
+	this.SyncProperties = syncProperties
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -812,32 +812,6 @@ func (o *UserFile) SetGenerateSparseVectors(v bool) {
 	o.GenerateSparseVectors.Set(&v)
 }
 
-// GetAudioProperties returns the AudioProperties field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *UserFile) GetAudioProperties() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.AudioProperties
-}
-
-// GetAudioPropertiesOk returns a tuple with the AudioProperties field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserFile) GetAudioPropertiesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.AudioProperties) {
-    return map[string]interface{}{}, false
-	}
-	return o.AudioProperties, true
-}
-
-// SetAudioProperties sets field value
-func (o *UserFile) SetAudioProperties(v map[string]interface{}) {
-	o.AudioProperties = v
-}
-
 // GetRequestId returns the RequestId field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *UserFile) GetRequestId() string {
@@ -862,6 +836,30 @@ func (o *UserFile) GetRequestIdOk() (*string, bool) {
 // SetRequestId sets field value
 func (o *UserFile) SetRequestId(v string) {
 	o.RequestId.Set(&v)
+}
+
+// GetSyncProperties returns the SyncProperties field value
+func (o *UserFile) GetSyncProperties() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.SyncProperties
+}
+
+// GetSyncPropertiesOk returns a tuple with the SyncProperties field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetSyncPropertiesOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.SyncProperties, true
+}
+
+// SetSyncProperties sets field value
+func (o *UserFile) SetSyncProperties(v map[string]interface{}) {
+	o.SyncProperties = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -998,11 +996,11 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["generate_sparse_vectors"] = o.GenerateSparseVectors.Get()
 	}
-	if o.AudioProperties != nil {
-		toSerialize["audio_properties"] = o.AudioProperties
-	}
 	if true {
 		toSerialize["request_id"] = o.RequestId.Get()
+	}
+	if true {
+		toSerialize["sync_properties"] = o.SyncProperties
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

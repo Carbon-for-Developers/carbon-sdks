@@ -77,7 +77,7 @@ module Carbon
         :'sync_files_on_connection' => :'Boolean',
         :'request_id' => :'String',
         :'sync_source_items' => :'Boolean',
-        :'file_sync_config' => :'HelpdeskFileSyncConfigNullable'
+        :'file_sync_config' => :'FileSyncConfigNullable'
       }
     end
 

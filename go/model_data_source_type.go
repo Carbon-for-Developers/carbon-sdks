@@ -66,6 +66,7 @@ const (
 	DATASOURCETYPE_OGG DataSourceType = "OGG"
 	DATASOURCETYPE_OPUS DataSourceType = "OPUS"
 	DATASOURCETYPE_WEBM DataSourceType = "WEBM"
+	DATASOURCETYPE_MPEG DataSourceType = "MPEG"
 )
 
 // All allowed values of DataSourceType enum
@@ -116,6 +117,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"OGG",
 	"OPUS",
 	"WEBM",
+	"MPEG",
 }
 
 func (v *DataSourceType) UnmarshalJSON(src []byte) error {
