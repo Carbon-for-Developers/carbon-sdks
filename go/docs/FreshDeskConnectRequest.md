@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
-**FileSyncConfig** | Pointer to [**NullableHelpdeskFileSyncConfigNullable**](HelpdeskFileSyncConfigNullable.md) |  | [optional] 
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -419,20 +419,20 @@ HasSyncSourceItems returns a boolean if a field has been set.
 
 ### GetFileSyncConfig
 
-`func (o *FreshDeskConnectRequest) GetFileSyncConfig() HelpdeskFileSyncConfigNullable`
+`func (o *FreshDeskConnectRequest) GetFileSyncConfig() FileSyncConfigNullable`
 
 GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
 
 ### GetFileSyncConfigOk
 
-`func (o *FreshDeskConnectRequest) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool)`
+`func (o *FreshDeskConnectRequest) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
 
 GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFileSyncConfig
 
-`func (o *FreshDeskConnectRequest) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable)`
+`func (o *FreshDeskConnectRequest) SetFileSyncConfig(v FileSyncConfigNullable)`
 
 SetFileSyncConfig sets FileSyncConfig field to given value.
 

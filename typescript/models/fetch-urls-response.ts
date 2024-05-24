@@ -29,5 +29,11 @@ export interface FetchURLsResponse {
      * @memberof FetchURLsResponse
      */
     'html_content': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FetchURLsResponse
+     */
+    'error_message': string | null;
 }
 

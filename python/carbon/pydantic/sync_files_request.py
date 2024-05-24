@@ -16,7 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.pydantic.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.pydantic.sync_files_ids import SyncFilesIds
 
 class SyncFilesRequest(BaseModel):
@@ -52,7 +52,7 @@ class SyncFilesRequest(BaseModel):
     # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     incremental_sync: typing.Optional[bool] = Field(None, alias='incremental_sync')
 
-    file_sync_config: typing.Optional[HelpdeskGlobalFileSyncConfigNullable] = Field(None, alias='file_sync_config')
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     model_config = ConfigDict(
         protected_namespaces=(),

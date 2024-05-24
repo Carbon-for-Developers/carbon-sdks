@@ -209,8 +209,8 @@ class FreshDeskConnectRequest(
             sync_source_items = schemas.BoolSchema
         
             @staticmethod
-            def file_sync_config() -> typing.Type['HelpdeskFileSyncConfigNullable']:
-                return HelpdeskFileSyncConfigNullable
+            def file_sync_config() -> typing.Type['FileSyncConfigNullable']:
+                return FileSyncConfigNullable
             __annotations__ = {
                 "domain": domain,
                 "api_key": api_key,
@@ -267,7 +267,7 @@ class FreshDeskConnectRequest(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskFileSyncConfigNullable': ...
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'FileSyncConfigNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -314,7 +314,7 @@ class FreshDeskConnectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['FileSyncConfigNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -338,7 +338,7 @@ class FreshDeskConnectRequest(
         sync_files_on_connection: typing.Union[MetaOapg.properties.sync_files_on_connection, None, bool, schemas.Unset] = schemas.unset,
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
-        file_sync_config: typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FreshDeskConnectRequest':
@@ -363,4 +363,4 @@ class FreshDeskConnectRequest(
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable

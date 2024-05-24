@@ -83,6 +83,7 @@ class DataSourceTypeNullable(
             "OGG": "OGG",
             "OPUS": "OPUS",
             "WEBM": "WEBM",
+            "MPEG": "MPEG",
         }
     
     @schemas.classproperty
@@ -268,6 +269,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def WEBM(cls):
         return cls("WEBM")
+    
+    @schemas.classproperty
+    def MPEG(cls):
+        return cls("MPEG")
 
 
     def __new__(

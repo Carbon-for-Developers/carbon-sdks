@@ -823,6 +823,9 @@ operation_parameter_map = {
                 'name': 'sync_attachments'
             },
             {
+                'name': 'file_sync_config'
+            },
+            {
                 'name': 'incremental_sync'
             },
         ]
@@ -864,6 +867,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_attachments'
+            },
+            {
+                'name': 'file_sync_config'
             },
             {
                 'name': 'incremental_sync'
@@ -954,6 +960,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'parse_pdf_tables_with_ocr'
+            },
+            {
+                'name': 'file_sync_config'
             },
         ]
     },

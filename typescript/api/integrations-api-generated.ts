@@ -35,6 +35,8 @@ import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
 import { ExternalSourceItemsOrderBy } from '../models';
 // @ts-ignore
+import { FileSyncConfigNullable } from '../models';
+// @ts-ignore
 import { FreshDeskConnectRequest } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -50,10 +52,6 @@ import { GithubFetchReposRequest } from '../models';
 import { GmailSyncInput } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
-// @ts-ignore
-import { HelpdeskFileSyncConfigNullable } from '../models';
-// @ts-ignore
-import { HelpdeskGlobalFileSyncConfigNullable } from '../models';
 // @ts-ignore
 import { IdsProperty } from '../models';
 // @ts-ignore
@@ -1593,6 +1591,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 data_source_id: requestParameters.data_source_id,
                 request_id: requestParameters.request_id,
                 sync_attachments: requestParameters.sync_attachments,
+                file_sync_config: requestParameters.file_sync_config,
                 incremental_sync: requestParameters.incremental_sync
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(gmailSyncInput, options);
@@ -1619,6 +1618,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 data_source_id: requestParameters.data_source_id,
                 request_id: requestParameters.request_id,
                 sync_attachments: requestParameters.sync_attachments,
+                file_sync_config: requestParameters.file_sync_config,
                 incremental_sync: requestParameters.incremental_sync
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
@@ -1683,7 +1683,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 data_source_id: requestParameters.data_source_id,
                 request_id: requestParameters.request_id,
                 use_ocr: requestParameters.use_ocr,
-                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
+                file_sync_config: requestParameters.file_sync_config
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

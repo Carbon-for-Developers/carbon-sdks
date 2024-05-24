@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 
 class OutlookSyncInput(BaseModel):
     filters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='filters')
@@ -41,6 +42,8 @@ class OutlookSyncInput(BaseModel):
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
     sync_attachments: typing.Optional[typing.Optional[bool]] = Field(None, alias='sync_attachments')
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     incremental_sync: typing.Optional[bool] = Field(None, alias='incremental_sync')
 

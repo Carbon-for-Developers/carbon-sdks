@@ -78,9 +78,9 @@ class UserFile(BaseModel):
 
     generate_sparse_vectors: typing.Optional[bool] = Field(alias='generate_sparse_vectors')
 
-    audio_properties: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='audio_properties')
-
     request_id: typing.Optional[str] = Field(alias='request_id')
+
+    sync_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='sync_properties')
 
     created_at: datetime = Field(alias='created_at')
 

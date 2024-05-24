@@ -3446,7 +3446,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "ca195b1c-0656-4db7-96fc-211554e9827b",
+              "request_id": "18ef9025-4c76-443c-a115-ba77b17afd8b",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3558,7 +3558,8 @@
           "M4A",
           "OGG",
           "OPUS",
-          "WEBM"
+          "WEBM",
+          "MPEG"
         ]
       },
       "DeleteFilesQueryInput": {
@@ -4124,12 +4125,18 @@
           "html_content": {
             "title": "Html Content",
             "type": "string"
+          },
+          "error_message": {
+            "title": "Error Message",
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
         "required": [
           "urls",
-          "html_content"
+          "html_content",
+          "error_message"
         ]
       },
       "FileContentTypes": {
@@ -4228,6 +4235,35 @@
           "mime_type"
         ]
       },
+      "FileSyncConfig": {
+        "title": "FileSyncConfig",
+        "properties": {
+          "auto_synced_source_types": {
+            "title": "Auto Synced Source Types",
+            "description": "File types to automatically sync when the data source connects. Only a subset of file types can be \n        controlled. If not supported, then they will always be synced",
+            "items": {
+              "$ref": "#/components/schemas/HelpdeskFileTypes"
+            },
+            "type": "array",
+            "default": [
+              "ARTICLE"
+            ]
+          },
+          "sync_attachments": {
+            "title": "Sync Attachments",
+            "description": "Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets",
+            "type": "boolean",
+            "default": false
+          },
+          "detect_audio_language": {
+            "title": "Detect Audio Language",
+            "description": "Detect audio language before transcription for audio files",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object"
+      },
       "FreshDeskConnectRequest": {
         "title": "FreshDeskConnectRequest",
         "properties": {
@@ -4297,7 +4333,7 @@
             "default": true
           },
           "file_sync_config": {
-            "$ref": "#/components/schemas/HelpdeskFileSyncConfigNullable"
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -4850,6 +4886,9 @@
             "type": "boolean",
             "nullable": true
           },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
+          },
           "incremental_sync": {
             "title": "Incremental Sync",
             "type": "boolean",
@@ -4879,27 +4918,6 @@
         },
         "type": "object"
       },
-      "HelpdeskFileSyncConfig": {
-        "title": "HelpdeskFileSyncConfig",
-        "properties": {
-          "file_types": {
-            "title": "File Types",
-            "items": {
-              "$ref": "#/components/schemas/HelpdeskFileTypes"
-            },
-            "type": "array",
-            "default": [
-              "ARTICLE"
-            ]
-          },
-          "sync_attachments": {
-            "title": "Sync Attachments",
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "type": "object"
-      },
       "HelpdeskFileTypes": {
         "title": "HelpdeskFileTypes",
         "type": "string",
@@ -4907,17 +4925,6 @@
           "TICKET",
           "ARTICLE"
         ]
-      },
-      "HelpdeskGlobalFileSyncConfig": {
-        "title": "HelpdeskGlobalFileSyncConfig",
-        "properties": {
-          "sync_attachments": {
-            "title": "Sync Attachments",
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "type": "object"
       },
       "HybridSearchTuningParams": {
         "title": "HybridSearchTuningParams",
@@ -5239,7 +5246,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "a0b57844-5937-42ef-a161-2515fc4f16df"
+            "default": "eb3e536e-fa3e-4f8e-9a22-25f70393e759"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5256,7 +5263,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX",
             "type": "boolean",
             "default": true
           },
@@ -5273,7 +5280,7 @@
             "default": false
           },
           "file_sync_config": {
-            "$ref": "#/components/schemas/HelpdeskFileSyncConfigNullable"
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -5959,6 +5966,9 @@
             "type": "boolean",
             "nullable": true
           },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
+          },
           "incremental_sync": {
             "title": "Incremental Sync",
             "type": "boolean",
@@ -6286,6 +6296,9 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -6660,7 +6673,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "5cb51bcc-08e9-4e31-9784-0005b5390cb6"
+            "default": "27036d05-9737-4197-b0c6-e9fb9f60f976"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6681,7 +6694,7 @@
             "default": false
           },
           "file_sync_config": {
-            "$ref": "#/components/schemas/HelpdeskGlobalFileSyncConfigNullable"
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -6752,7 +6765,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "ca195b1c-0656-4db7-96fc-211554e9827b"
+            "default": "18ef9025-4c76-443c-a115-ba77b17afd8b"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -6772,7 +6785,7 @@
             "default": false
           },
           "file_sync_config": {
-            "$ref": "#/components/schemas/HelpdeskFileSyncConfigNullable"
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object"
@@ -7123,15 +7136,16 @@
             "type": "boolean",
             "nullable": true
           },
-          "audio_properties": {
-            "title": "Audio Properties",
-            "type": "object",
-            "nullable": true
-          },
           "request_id": {
             "title": "Request Id",
             "type": "string",
             "nullable": true
+          },
+          "sync_properties": {
+            "title": "Sync Properties",
+            "type": "object",
+            "default": {
+            }
           },
           "created_at": {
             "title": "Created At",
@@ -7174,8 +7188,8 @@
           "skip_embedding_generation",
           "source_created_at",
           "generate_sparse_vectors",
-          "audio_properties",
           "request_id",
+          "sync_properties",
           "created_at",
           "updated_at"
         ]
@@ -7798,7 +7812,8 @@
           "M4A",
           "OGG",
           "OPUS",
-          "WEBM"
+          "WEBM",
+          "MPEG"
         ],
         "nullable": true
       },
@@ -7872,12 +7887,13 @@
         ],
         "nullable": true
       },
-      "HelpdeskFileSyncConfigNullable": {
-        "title": "HelpdeskFileSyncConfig",
+      "FileSyncConfigNullable": {
+        "title": "FileSyncConfig",
         "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
         "properties": {
-          "file_types": {
-            "title": "File Types",
+          "auto_synced_source_types": {
+            "title": "Auto Synced Source Types",
+            "description": "File types to automatically sync when the data source connects. Only a subset of file types can be \n        controlled. If not supported, then they will always be synced",
             "items": {
               "$ref": "#/components/schemas/HelpdeskFileTypes"
             },
@@ -7888,6 +7904,13 @@
           },
           "sync_attachments": {
             "title": "Sync Attachments",
+            "description": "Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets",
+            "type": "boolean",
+            "default": false
+          },
+          "detect_audio_language": {
+            "title": "Detect Audio Language",
+            "description": "Detect audio language before transcription for audio files",
             "type": "boolean",
             "default": false
           }
@@ -7968,19 +7991,6 @@
             "title": "Root Files Only",
             "type": "boolean",
             "nullable": true
-          }
-        },
-        "type": "object",
-        "nullable": true
-      },
-      "HelpdeskGlobalFileSyncConfigNullable": {
-        "title": "HelpdeskGlobalFileSyncConfig",
-        "description": "Used to configure file syncing for certain connectors, for example including attachments",
-        "properties": {
-          "sync_attachments": {
-            "title": "Sync Attachments",
-            "type": "boolean",
-            "default": false
           }
         },
         "type": "object",

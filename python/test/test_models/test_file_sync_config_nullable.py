@@ -12,12 +12,12 @@
 import unittest
 
 import carbon
-from carbon.model.helpdesk_file_sync_config import HelpdeskFileSyncConfig
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
 from carbon import configuration
 
 
-class TestHelpdeskFileSyncConfig(unittest.TestCase):
-    """HelpdeskFileSyncConfig unit test stubs"""
+class TestFileSyncConfigNullable(unittest.TestCase):
+    """FileSyncConfigNullable unit test stubs"""
     pass
 
 

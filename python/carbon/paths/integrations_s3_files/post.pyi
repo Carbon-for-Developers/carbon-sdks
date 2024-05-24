@@ -37,9 +37,11 @@ from carbon.model.s3_file_sync_input import S3FileSyncInput as S3FileSyncInputSc
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.s3_get_file_input import S3GetFileInput as S3GetFileInputSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.s3_file_sync_input import S3FileSyncInput
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.s3_get_file_input import S3GetFileInput
@@ -49,6 +51,7 @@ from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPVal
 from carbon.pydantic.s3_file_sync_input import S3FileSyncInput as S3FileSyncInputPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
 from carbon.pydantic.s3_get_file_input import S3GetFileInput as S3GetFileInputPydantic
 
 # body param
@@ -127,6 +130,7 @@ class BaseApi(api_client.Api):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -158,6 +162,8 @@ class BaseApi(api_client.Api):
             _body["use_ocr"] = use_ocr
         if parse_pdf_tables_with_ocr is not None:
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         args.body = _body
         return args
 
@@ -379,6 +385,7 @@ class SyncS3FilesRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -400,6 +407,7 @@ class SyncS3FilesRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -422,6 +430,7 @@ class SyncS3FilesRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -441,6 +450,7 @@ class SyncS3FilesRaw(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
         )
         return self._sync_s3_files_oapg(
             body=args.body,
@@ -464,6 +474,7 @@ class SyncS3Files(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -482,6 +493,7 @@ class SyncS3Files(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
             **kwargs,
         )
         if validate:
@@ -505,6 +517,7 @@ class SyncS3Files(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_s3_files(
@@ -522,6 +535,7 @@ class SyncS3Files(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -547,6 +561,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -568,6 +583,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
         )
         return await self._async_s3_files_oapg(
             body=args.body,
@@ -590,6 +606,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         use_ocr: typing.Optional[typing.Optional[bool]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -609,6 +626,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             use_ocr=use_ocr,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
+            file_sync_config=file_sync_config,
         )
         return self._sync_s3_files_oapg(
             body=args.body,

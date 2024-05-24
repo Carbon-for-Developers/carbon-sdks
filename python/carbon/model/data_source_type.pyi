@@ -214,3 +214,7 @@ class DataSourceType(
     @schemas.classproperty
     def WEBM(cls):
         return cls("WEBM")
+    
+    @schemas.classproperty
+    def MPEG(cls):
+        return cls("MPEG")

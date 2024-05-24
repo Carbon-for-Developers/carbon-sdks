@@ -393,8 +393,8 @@ class OAuthURLRequest(
             incremental_sync = schemas.BoolSchema
         
             @staticmethod
-            def file_sync_config() -> typing.Type['HelpdeskFileSyncConfigNullable']:
-                return HelpdeskFileSyncConfigNullable
+            def file_sync_config() -> typing.Type['FileSyncConfigNullable']:
+                return FileSyncConfigNullable
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -502,7 +502,7 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskFileSyncConfigNullable': ...
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'FileSyncConfigNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -588,7 +588,7 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['FileSyncConfigNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -625,7 +625,7 @@ class OAuthURLRequest(
         enable_file_picker: typing.Union[MetaOapg.properties.enable_file_picker, bool, schemas.Unset] = schemas.unset,
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
         incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
-        file_sync_config: typing.Union['HelpdeskFileSyncConfigNullable', schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -664,4 +664,4 @@ class OAuthURLRequest(
 
 from carbon.model.data_source_type import DataSourceType
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.model.helpdesk_file_sync_config_nullable import HelpdeskFileSyncConfigNullable
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable

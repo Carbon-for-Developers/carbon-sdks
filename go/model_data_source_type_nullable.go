@@ -66,6 +66,7 @@ const (
 	DATASOURCETYPENULLABLE_OGG DataSourceTypeNullable = "OGG"
 	DATASOURCETYPENULLABLE_OPUS DataSourceTypeNullable = "OPUS"
 	DATASOURCETYPENULLABLE_WEBM DataSourceTypeNullable = "WEBM"
+	DATASOURCETYPENULLABLE_MPEG DataSourceTypeNullable = "MPEG"
 )
 
 // All allowed values of DataSourceTypeNullable enum
@@ -116,6 +117,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"OGG",
 	"OPUS",
 	"WEBM",
+	"MPEG",
 }
 
 func (v *DataSourceTypeNullable) UnmarshalJSON(src []byte) error {

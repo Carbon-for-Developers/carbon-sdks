@@ -316,8 +316,8 @@ class SyncFilesRequest(
             incremental_sync = schemas.BoolSchema
         
             @staticmethod
-            def file_sync_config() -> typing.Type['HelpdeskGlobalFileSyncConfigNullable']:
-                return HelpdeskGlobalFileSyncConfigNullable
+            def file_sync_config() -> typing.Type['FileSyncConfigNullable']:
+                return FileSyncConfigNullable
             __annotations__ = {
                 "data_source_id": data_source_id,
                 "ids": ids,
@@ -386,7 +386,7 @@ class SyncFilesRequest(
     def __getitem__(self, name: typing_extensions.Literal["incremental_sync"]) -> MetaOapg.properties.incremental_sync: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'HelpdeskGlobalFileSyncConfigNullable': ...
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'FileSyncConfigNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -442,7 +442,7 @@ class SyncFilesRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["incremental_sync"]) -> typing.Union[MetaOapg.properties.incremental_sync, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['HelpdeskGlobalFileSyncConfigNullable', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['FileSyncConfigNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -469,7 +469,7 @@ class SyncFilesRequest(
         use_ocr: typing.Union[MetaOapg.properties.use_ocr, None, bool, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
         incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
-        file_sync_config: typing.Union['HelpdeskGlobalFileSyncConfigNullable', schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SyncFilesRequest':
@@ -497,5 +497,5 @@ class SyncFilesRequest(
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.model.helpdesk_global_file_sync_config_nullable import HelpdeskGlobalFileSyncConfigNullable
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.model.sync_files_ids import SyncFilesIds

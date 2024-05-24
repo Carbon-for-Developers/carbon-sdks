@@ -61,7 +61,7 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
+    # Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
     attr_accessor :enable_file_picker
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
@@ -137,7 +137,7 @@ module Carbon
         :'enable_file_picker' => :'Boolean',
         :'sync_source_items' => :'Boolean',
         :'incremental_sync' => :'Boolean',
-        :'file_sync_config' => :'HelpdeskFileSyncConfigNullable'
+        :'file_sync_config' => :'FileSyncConfigNullable'
       }
     end
 
@@ -279,7 +279,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = 'a0b57844-5937-42ef-a161-2515fc4f16df'
+        self.request_id = 'eb3e536e-fa3e-4f8e-9a22-25f70393e759'
       end
 
       if attributes.key?(:'use_ocr')

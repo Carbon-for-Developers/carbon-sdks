@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.31)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.1.32)
 
 </div>
 
@@ -160,6 +160,8 @@ Class | Method | HTTP request | Description
  - [FileFormatsNullable](docs/FileFormatsNullable.md)
  - [FileStatistics](docs/FileStatistics.md)
  - [FileStatisticsNullable](docs/FileStatisticsNullable.md)
+ - [FileSyncConfig](docs/FileSyncConfig.md)
+ - [FileSyncConfigNullable](docs/FileSyncConfigNullable.md)
  - [FreshDeskConnectRequest](docs/FreshDeskConnectRequest.md)
  - [FreskdeskAuthentication](docs/FreskdeskAuthentication.md)
  - [GenericSuccessResponse](docs/GenericSuccessResponse.md)
@@ -172,11 +174,7 @@ Class | Method | HTTP request | Description
  - [GithubFetchReposRequest](docs/GithubFetchReposRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
- - [HelpdeskFileSyncConfig](docs/HelpdeskFileSyncConfig.md)
- - [HelpdeskFileSyncConfigNullable](docs/HelpdeskFileSyncConfigNullable.md)
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
- - [HelpdeskGlobalFileSyncConfig](docs/HelpdeskGlobalFileSyncConfig.md)
- - [HelpdeskGlobalFileSyncConfigNullable](docs/HelpdeskGlobalFileSyncConfigNullable.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
  - [IdsProperty](docs/IdsProperty.md)

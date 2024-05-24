@@ -80,6 +80,7 @@ class DataSourceType(
             "OGG": "OGG",
             "OPUS": "OPUS",
             "WEBM": "WEBM",
+            "MPEG": "MPEG",
         }
     
     @schemas.classproperty
@@ -265,3 +266,7 @@ class DataSourceType(
     @schemas.classproperty
     def WEBM(cls):
         return cls("WEBM")
+    
+    @schemas.classproperty
+    def MPEG(cls):
+        return cls("MPEG")

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.36-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.36)
+[![npm](https://img.shields.io/badge/npm-v0.1.37-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.37)
 
 </div>
 
@@ -1268,7 +1268,7 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./models/helpdesk-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskfilesyncconfignullablemodelshelpdesk-file-sync-config-nullablets"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1412,7 +1412,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "a0b57844-5937-42ef-a161-2515fc4f16df",
+  request_id: "eb3e536e-fa3e-4f8e-9a22-25f70393e759",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1481,7 +1481,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1491,7 +1491,7 @@ Enabling this flag will fetch all available content from the source to be listed
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskFileSyncConfigNullable`](./models/helpdesk-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskfilesyncconfignullablemodelshelpdesk-file-sync-config-nullablets"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1735,7 +1735,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1778,7 +1778,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./models/helpdesk-global-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablemodelshelpdesk-global-file-sync-config-nullablets"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1843,7 +1843,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "5cb51bcc-08e9-4e31-9784-0005b5390cb6",
+  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1886,7 +1886,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 
-##### file_sync_config: [`HelpdeskGlobalFileSyncConfigNullable`](./models/helpdesk-global-file-sync-config-nullable.ts)<a id="file_sync_config-helpdeskglobalfilesyncconfignullablemodelshelpdesk-global-file-sync-config-nullablets"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2084,6 +2084,8 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
 
 ##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
 
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
+
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -2204,6 +2206,8 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
 ##### request_id: `string`<a id="request_id-string"></a>
 
 ##### sync_attachments: `boolean`<a id="sync_attachments-boolean"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
@@ -2354,6 +2358,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

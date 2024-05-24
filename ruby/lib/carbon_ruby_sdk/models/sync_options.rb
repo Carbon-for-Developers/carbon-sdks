@@ -88,7 +88,7 @@ module Carbon
         :'enable_file_picker' => :'Boolean',
         :'sync_source_items' => :'Boolean',
         :'incremental_sync' => :'Boolean',
-        :'file_sync_config' => :'HelpdeskFileSyncConfigNullable'
+        :'file_sync_config' => :'FileSyncConfigNullable'
       }
     end
 
@@ -182,7 +182,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = 'ca195b1c-0656-4db7-96fc-211554e9827b'
+        self.request_id = '18ef9025-4c76-443c-a115-ba77b17afd8b'
       end
 
       if attributes.key?(:'enable_file_picker')

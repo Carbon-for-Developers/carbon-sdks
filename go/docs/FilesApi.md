@@ -90,8 +90,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -214,8 +214,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -554,8 +554,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -636,8 +636,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -729,8 +729,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -820,8 +820,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -908,8 +908,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SkipEmbeddingGeneration`: %v\n", resp.SkipEmbeddingGeneration)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SourceCreatedAt`: %v\n", resp.SourceCreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.GenerateSparseVectors`: %v\n", resp.GenerateSparseVectors)
-    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.AudioProperties`: %v\n", resp.AudioProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.RequestId`: %v\n", resp.RequestId)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.UpdatedAt`: %v\n", resp.UpdatedAt)
 }

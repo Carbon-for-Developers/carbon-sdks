@@ -12,7 +12,7 @@ import type * as buffer from "buffer"
 
 import { DataSourceType } from './data-source-type';
 import { EmbeddingGeneratorsNullable } from './embedding-generators-nullable';
-import { HelpdeskFileSyncConfigNullable } from './helpdesk-file-sync-config-nullable';
+import { FileSyncConfigNullable } from './file-sync-config-nullable';
 
 /**
  * 
@@ -153,7 +153,7 @@ export interface OAuthURLRequest {
      */
     'parse_pdf_tables_with_ocr'?: boolean | null;
     /**
-     * Enable integration\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, BOX, GOOGLE_DRIVE, ONEDRIVE
+     * Enable integration\'s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
      * @type {boolean}
      * @memberof OAuthURLRequest
      */
@@ -172,9 +172,9 @@ export interface OAuthURLRequest {
     'incremental_sync'?: boolean;
     /**
      * 
-     * @type {HelpdeskFileSyncConfigNullable}
+     * @type {FileSyncConfigNullable}
      * @memberof OAuthURLRequest
      */
-    'file_sync_config'?: HelpdeskFileSyncConfigNullable | null;
+    'file_sync_config'?: FileSyncConfigNullable | null;
 }
 

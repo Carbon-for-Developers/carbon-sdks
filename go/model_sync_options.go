@@ -34,7 +34,7 @@ type SyncOptions struct {
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
-	FileSyncConfig NullableHelpdeskFileSyncConfigNullable `json:"file_sync_config,omitempty"`
+	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
 
 // NewSyncOptions instantiates a new SyncOptions object
@@ -59,7 +59,7 @@ func NewSyncOptions() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "ca195b1c-0656-4db7-96fc-211554e9827b"
+	var requestId string = "18ef9025-4c76-443c-a115-ba77b17afd8b"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
@@ -91,7 +91,7 @@ func NewSyncOptionsWithDefaults() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "ca195b1c-0656-4db7-96fc-211554e9827b"
+	var requestId string = "18ef9025-4c76-443c-a115-ba77b17afd8b"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
@@ -632,9 +632,9 @@ func (o *SyncOptions) SetIncrementalSync(v bool) {
 }
 
 // GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SyncOptions) GetFileSyncConfig() HelpdeskFileSyncConfigNullable {
+func (o *SyncOptions) GetFileSyncConfig() FileSyncConfigNullable {
 	if o == nil || isNil(o.FileSyncConfig.Get()) {
-		var ret HelpdeskFileSyncConfigNullable
+		var ret FileSyncConfigNullable
 		return ret
 	}
 	return *o.FileSyncConfig.Get()
@@ -643,7 +643,7 @@ func (o *SyncOptions) GetFileSyncConfig() HelpdeskFileSyncConfigNullable {
 // GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SyncOptions) GetFileSyncConfigOk() (*HelpdeskFileSyncConfigNullable, bool) {
+func (o *SyncOptions) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -659,8 +659,8 @@ func (o *SyncOptions) HasFileSyncConfig() bool {
 	return false
 }
 
-// SetFileSyncConfig gets a reference to the given NullableHelpdeskFileSyncConfigNullable and assigns it to the FileSyncConfig field.
-func (o *SyncOptions) SetFileSyncConfig(v HelpdeskFileSyncConfigNullable) {
+// SetFileSyncConfig gets a reference to the given NullableFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *SyncOptions) SetFileSyncConfig(v FileSyncConfigNullable) {
 	o.FileSyncConfig.Set(&v)
 }
 // SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
