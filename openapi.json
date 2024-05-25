@@ -1475,6 +1475,33 @@
         ]
       }
     },
+    "/organization/statistics": {
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Update Organization Statistics",
+        "description": "Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation\nprocess is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the\nprocess is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization\nendpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.",
+        "operationId": "update_organization_statistics_organization_statistics_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/user": {
       "post": {
         "tags": [
@@ -3298,7 +3325,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "18ef9025-4c76-443c-a115-ba77b17afd8b",
+              "request_id": "cef06a2b-499d-413c-bd0c-a65a75395da8",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5739,7 +5766,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "eb3e536e-fa3e-4f8e-9a22-25f70393e759"
+            "default": "1a3d109c-6658-48ae-a2c3-615a9b8f5a17"
           },
           "use_ocr": {
             "anyOf": [
@@ -5769,7 +5796,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -5881,6 +5908,26 @@
             "type": "object",
             "title": "Aggregate Num Embeddings"
           },
+          "aggregate_num_files_by_source": {
+            "type": "object",
+            "title": "Aggregate Num Files By Source"
+          },
+          "aggregate_num_files_by_file_format": {
+            "type": "object",
+            "title": "Aggregate Num Files By File Format"
+          },
+          "file_statistics_aggregated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Statistics Aggregated At"
+          },
           "period_ends_at": {
             "anyOf": [
               {
@@ -5932,6 +5979,9 @@
           "aggregate_num_characters",
           "aggregate_num_tokens",
           "aggregate_num_embeddings",
+          "aggregate_num_files_by_source",
+          "aggregate_num_files_by_file_format",
+          "file_statistics_aggregated_at",
           "period_ends_at",
           "cancel_at_period_end",
           "global_user_config",
@@ -7748,7 +7798,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "27036d05-9737-4197-b0c6-e9fb9f60f976"
+            "default": "7687dca7-b824-4be2-817a-722b2670e3e5"
           },
           "use_ocr": {
             "anyOf": [
@@ -7915,7 +7965,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "18ef9025-4c76-443c-a115-ba77b17afd8b"
+            "default": "cef06a2b-499d-413c-bd0c-a65a75395da8"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8621,6 +8671,30 @@
             "type": "integer",
             "title": "Num Tokens Synced"
           },
+          "aggregate_file_size": {
+            "type": "object",
+            "title": "Aggregate File Size"
+          },
+          "aggregate_num_characters": {
+            "type": "object",
+            "title": "Aggregate Num Characters"
+          },
+          "aggregate_num_tokens": {
+            "type": "object",
+            "title": "Aggregate Num Tokens"
+          },
+          "aggregate_num_embeddings": {
+            "type": "object",
+            "title": "Aggregate Num Embeddings"
+          },
+          "aggregate_num_files_by_source": {
+            "type": "object",
+            "title": "Aggregate Num Files By Source"
+          },
+          "aggregate_num_files_by_file_format": {
+            "type": "object",
+            "title": "Aggregate Num Files By File Format"
+          },
           "unique_file_tags": {
             "items": {
               "type": "object"
@@ -8662,6 +8736,12 @@
           "num_files_synced",
           "num_characters_synced",
           "num_tokens_synced",
+          "aggregate_file_size",
+          "aggregate_num_characters",
+          "aggregate_num_tokens",
+          "aggregate_num_embeddings",
+          "aggregate_num_files_by_source",
+          "aggregate_num_files_by_file_format",
           "unique_file_tags",
           "enabled_features",
           "custom_limits",
@@ -8720,6 +8800,20 @@
             "type": "string",
             "title": "Signing Key"
           },
+          "status": {
+            "$ref": "#/components/schemas/WebhookStatus"
+          },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -8737,6 +8831,8 @@
           "organization_id",
           "url",
           "signing_key",
+          "status",
+          "status_reason",
           "created_at",
           "updated_at"
         ],
@@ -8777,6 +8873,20 @@
             "type": "string",
             "title": "Url"
           },
+          "status": {
+            "$ref": "#/components/schemas/WebhookStatus"
+          },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -8793,6 +8903,8 @@
           "id",
           "organization_id",
           "url",
+          "status",
+          "status_reason",
           "created_at",
           "updated_at"
         ],
@@ -8869,6 +8981,14 @@
           "count"
         ],
         "title": "WebhookQueryResponse"
+      },
+      "WebhookStatus": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "FLAGGED"
+        ],
+        "title": "WebhookStatus"
       },
       "WebscrapeRequest": {
         "properties": {
