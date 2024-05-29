@@ -47,7 +47,6 @@ module Carbon
     PNG = "PNG".freeze
     JPEG = "JPEG".freeze
     MP3 = "MP3".freeze
-    MP4 = "MP4".freeze
     MP2 = "MP2".freeze
     AAC = "AAC".freeze
     WAV = "WAV".freeze
@@ -56,11 +55,18 @@ module Carbon
     M4_A = "M4A".freeze
     OGG = "OGG".freeze
     OPUS = "OPUS".freeze
-    WEBM = "WEBM".freeze
     MPEG = "MPEG".freeze
+    MPG = "MPG".freeze
+    MP4 = "MP4".freeze
+    WMV = "WMV".freeze
+    AVI = "AVI".freeze
+    MOV = "MOV".freeze
+    MKV = "MKV".freeze
+    FLV = "FLV".freeze
+    WEBM = "WEBM".freeze
 
     def self.all_vars
-      @all_vars ||= [GOOGLE_DRIVE, NOTION, NOTION_DATABASE, INTERCOM, DROPBOX, ONEDRIVE, SHAREPOINT, CONFLUENCE, BOX, ZENDESK, ZOTERO, S3, GMAIL, OUTLOOK, TEXT, CSV, TSV, PDF, DOCX, PPTX, XLSX, MD, RTF, JSON, HTML, RAW_TEXT, WEB_SCRAPE, RSS_FEED, FRESHDESK, GITBOOK, SALESFORCE, GITHUB, JPG, PNG, JPEG, MP3, MP4, MP2, AAC, WAV, FLAC, PCM, M4_A, OGG, OPUS, WEBM, MPEG].freeze
+      @all_vars ||= [GOOGLE_DRIVE, NOTION, NOTION_DATABASE, INTERCOM, DROPBOX, ONEDRIVE, SHAREPOINT, CONFLUENCE, BOX, ZENDESK, ZOTERO, S3, GMAIL, OUTLOOK, TEXT, CSV, TSV, PDF, DOCX, PPTX, XLSX, MD, RTF, JSON, HTML, RAW_TEXT, WEB_SCRAPE, RSS_FEED, FRESHDESK, GITBOOK, SALESFORCE, GITHUB, JPG, PNG, JPEG, MP3, MP2, AAC, WAV, FLAC, PCM, M4_A, OGG, OPUS, MPEG, MPG, MP4, WMV, AVI, MOV, MKV, FLV, WEBM].freeze
     end
 
     # Builds the enum from string

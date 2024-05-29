@@ -56,7 +56,6 @@ const (
 	DATASOURCETYPE_PNG DataSourceType = "PNG"
 	DATASOURCETYPE_JPEG DataSourceType = "JPEG"
 	DATASOURCETYPE_MP3 DataSourceType = "MP3"
-	DATASOURCETYPE_MP4 DataSourceType = "MP4"
 	DATASOURCETYPE_MP2 DataSourceType = "MP2"
 	DATASOURCETYPE_AAC DataSourceType = "AAC"
 	DATASOURCETYPE_WAV DataSourceType = "WAV"
@@ -65,8 +64,15 @@ const (
 	DATASOURCETYPE_M4_A DataSourceType = "M4A"
 	DATASOURCETYPE_OGG DataSourceType = "OGG"
 	DATASOURCETYPE_OPUS DataSourceType = "OPUS"
-	DATASOURCETYPE_WEBM DataSourceType = "WEBM"
 	DATASOURCETYPE_MPEG DataSourceType = "MPEG"
+	DATASOURCETYPE_MPG DataSourceType = "MPG"
+	DATASOURCETYPE_MP4 DataSourceType = "MP4"
+	DATASOURCETYPE_WMV DataSourceType = "WMV"
+	DATASOURCETYPE_AVI DataSourceType = "AVI"
+	DATASOURCETYPE_MOV DataSourceType = "MOV"
+	DATASOURCETYPE_MKV DataSourceType = "MKV"
+	DATASOURCETYPE_FLV DataSourceType = "FLV"
+	DATASOURCETYPE_WEBM DataSourceType = "WEBM"
 )
 
 // All allowed values of DataSourceType enum
@@ -107,7 +113,6 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"PNG",
 	"JPEG",
 	"MP3",
-	"MP4",
 	"MP2",
 	"AAC",
 	"WAV",
@@ -116,8 +121,15 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"M4A",
 	"OGG",
 	"OPUS",
-	"WEBM",
 	"MPEG",
+	"MPG",
+	"MP4",
+	"WMV",
+	"AVI",
+	"MOV",
+	"MKV",
+	"FLV",
+	"WEBM",
 }
 
 func (v *DataSourceType) UnmarshalJSON(src []byte) error {

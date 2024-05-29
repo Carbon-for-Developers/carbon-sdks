@@ -31,6 +31,12 @@ module Carbon
 
     attr_accessor :aggregate_num_embeddings
 
+    attr_accessor :aggregate_num_files_by_source
+
+    attr_accessor :aggregate_num_files_by_file_format
+
+    attr_accessor :file_statistics_aggregated_at
+
     attr_accessor :period_ends_at
 
     attr_accessor :cancel_at_period_end
@@ -54,6 +60,9 @@ module Carbon
         :'aggregate_num_characters' => :'aggregate_num_characters',
         :'aggregate_num_tokens' => :'aggregate_num_tokens',
         :'aggregate_num_embeddings' => :'aggregate_num_embeddings',
+        :'aggregate_num_files_by_source' => :'aggregate_num_files_by_source',
+        :'aggregate_num_files_by_file_format' => :'aggregate_num_files_by_file_format',
+        :'file_statistics_aggregated_at' => :'file_statistics_aggregated_at',
         :'period_ends_at' => :'period_ends_at',
         :'cancel_at_period_end' => :'cancel_at_period_end',
         :'global_user_config' => :'global_user_config',
@@ -80,6 +89,9 @@ module Carbon
         :'aggregate_num_characters' => :'Object',
         :'aggregate_num_tokens' => :'Object',
         :'aggregate_num_embeddings' => :'Object',
+        :'aggregate_num_files_by_source' => :'Object',
+        :'aggregate_num_files_by_file_format' => :'Object',
+        :'file_statistics_aggregated_at' => :'Time',
         :'period_ends_at' => :'Time',
         :'cancel_at_period_end' => :'Boolean',
         :'global_user_config' => :'Object',
@@ -94,6 +106,7 @@ module Carbon
         :'nickname',
         :'custom_branding',
         :'custom_limits',
+        :'file_statistics_aggregated_at',
         :'period_ends_at',
         :'cancel_at_period_end',
       ])
@@ -154,6 +167,18 @@ module Carbon
         self.aggregate_num_embeddings = attributes[:'aggregate_num_embeddings']
       end
 
+      if attributes.key?(:'aggregate_num_files_by_source')
+        self.aggregate_num_files_by_source = attributes[:'aggregate_num_files_by_source']
+      end
+
+      if attributes.key?(:'aggregate_num_files_by_file_format')
+        self.aggregate_num_files_by_file_format = attributes[:'aggregate_num_files_by_file_format']
+      end
+
+      if attributes.key?(:'file_statistics_aggregated_at')
+        self.file_statistics_aggregated_at = attributes[:'file_statistics_aggregated_at']
+      end
+
       if attributes.key?(:'period_ends_at')
         self.period_ends_at = attributes[:'period_ends_at']
       end
@@ -207,6 +232,14 @@ module Carbon
         invalid_properties.push('invalid value for "aggregate_num_embeddings", aggregate_num_embeddings cannot be nil.')
       end
 
+      if @aggregate_num_files_by_source.nil?
+        invalid_properties.push('invalid value for "aggregate_num_files_by_source", aggregate_num_files_by_source cannot be nil.')
+      end
+
+      if @aggregate_num_files_by_file_format.nil?
+        invalid_properties.push('invalid value for "aggregate_num_files_by_file_format", aggregate_num_files_by_file_format cannot be nil.')
+      end
+
       if @global_user_config.nil?
         invalid_properties.push('invalid value for "global_user_config", global_user_config cannot be nil.')
       end
@@ -232,6 +265,8 @@ module Carbon
       return false if @aggregate_num_characters.nil?
       return false if @aggregate_num_tokens.nil?
       return false if @aggregate_num_embeddings.nil?
+      return false if @aggregate_num_files_by_source.nil?
+      return false if @aggregate_num_files_by_file_format.nil?
       return false if @global_user_config.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
@@ -253,6 +288,9 @@ module Carbon
           aggregate_num_characters == o.aggregate_num_characters &&
           aggregate_num_tokens == o.aggregate_num_tokens &&
           aggregate_num_embeddings == o.aggregate_num_embeddings &&
+          aggregate_num_files_by_source == o.aggregate_num_files_by_source &&
+          aggregate_num_files_by_file_format == o.aggregate_num_files_by_file_format &&
+          file_statistics_aggregated_at == o.file_statistics_aggregated_at &&
           period_ends_at == o.period_ends_at &&
           cancel_at_period_end == o.cancel_at_period_end &&
           global_user_config == o.global_user_config &&
@@ -269,7 +307,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, period_ends_at, cancel_at_period_end, global_user_config, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, global_user_config, created_at, updated_at].hash
     end
 
     # Builds the object from hash

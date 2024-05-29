@@ -48,9 +48,7 @@ const (
 	FILEFORMATSNULLABLE_GITHUB FileFormatsNullable = "GITHUB"
 	FILEFORMATSNULLABLE_JPG FileFormatsNullable = "JPG"
 	FILEFORMATSNULLABLE_PNG FileFormatsNullable = "PNG"
-	FILEFORMATSNULLABLE_MPEG FileFormatsNullable = "MPEG"
 	FILEFORMATSNULLABLE_MP3 FileFormatsNullable = "MP3"
-	FILEFORMATSNULLABLE_MP4 FileFormatsNullable = "MP4"
 	FILEFORMATSNULLABLE_MP2 FileFormatsNullable = "MP2"
 	FILEFORMATSNULLABLE_AAC FileFormatsNullable = "AAC"
 	FILEFORMATSNULLABLE_WAV FileFormatsNullable = "WAV"
@@ -59,6 +57,14 @@ const (
 	FILEFORMATSNULLABLE_M4_A FileFormatsNullable = "M4A"
 	FILEFORMATSNULLABLE_OGG FileFormatsNullable = "OGG"
 	FILEFORMATSNULLABLE_OPUS FileFormatsNullable = "OPUS"
+	FILEFORMATSNULLABLE_MPEG FileFormatsNullable = "MPEG"
+	FILEFORMATSNULLABLE_MPG FileFormatsNullable = "MPG"
+	FILEFORMATSNULLABLE_MP4 FileFormatsNullable = "MP4"
+	FILEFORMATSNULLABLE_WMV FileFormatsNullable = "WMV"
+	FILEFORMATSNULLABLE_AVI FileFormatsNullable = "AVI"
+	FILEFORMATSNULLABLE_MOV FileFormatsNullable = "MOV"
+	FILEFORMATSNULLABLE_MKV FileFormatsNullable = "MKV"
+	FILEFORMATSNULLABLE_FLV FileFormatsNullable = "FLV"
 	FILEFORMATSNULLABLE_WEBM FileFormatsNullable = "WEBM"
 )
 
@@ -92,9 +98,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"GITHUB",
 	"JPG",
 	"PNG",
-	"MPEG",
 	"MP3",
-	"MP4",
 	"MP2",
 	"AAC",
 	"WAV",
@@ -103,6 +107,14 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"M4A",
 	"OGG",
 	"OPUS",
+	"MPEG",
+	"MPG",
+	"MP4",
+	"WMV",
+	"AVI",
+	"MOV",
+	"MKV",
+	"FLV",
 	"WEBM",
 }
 

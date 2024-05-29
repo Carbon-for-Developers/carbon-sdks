@@ -73,6 +73,42 @@ export interface UserResponse {
     'num_tokens_synced': number;
     /**
      * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_file_size': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_num_characters': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_num_tokens': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_num_embeddings': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_num_files_by_source': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'aggregate_num_files_by_file_format': object;
+    /**
+     * 
      * @type {Array<object>}
      * @memberof UserResponse
      */

@@ -37,6 +37,12 @@ class OrganizationResponse(BaseModel):
 
     aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_embeddings')
 
+    aggregate_num_files_by_source: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_files_by_source')
+
+    aggregate_num_files_by_file_format: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_files_by_file_format')
+
+    file_statistics_aggregated_at: typing.Optional[datetime] = Field(alias='file_statistics_aggregated_at')
+
     period_ends_at: typing.Optional[datetime] = Field(alias='period_ends_at')
 
     cancel_at_period_end: typing.Optional[bool] = Field(alias='cancel_at_period_end')

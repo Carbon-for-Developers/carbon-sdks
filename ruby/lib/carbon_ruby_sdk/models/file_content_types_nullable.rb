@@ -13,9 +13,11 @@ module Carbon
   class FileContentTypesNullable
     TEXT = "TEXT".freeze
     IMAGE = "IMAGE".freeze
+    AUDIO = "AUDIO".freeze
+    VIDEO = "VIDEO".freeze
 
     def self.all_vars
-      @all_vars ||= [TEXT, IMAGE].freeze
+      @all_vars ||= [TEXT, IMAGE, AUDIO, VIDEO].freeze
     end
 
     # Builds the enum from string

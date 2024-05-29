@@ -59,11 +59,7 @@
 
 * `PNG` (value: `"PNG"`)
 
-* `MPEG` (value: `"MPEG"`)
-
 * `MP3` (value: `"MP3"`)
-
-* `MP4` (value: `"MP4"`)
 
 * `MP2` (value: `"MP2"`)
 
@@ -80,6 +76,22 @@
 * `OGG` (value: `"OGG"`)
 
 * `OPUS` (value: `"OPUS"`)
+
+* `MPEG` (value: `"MPEG"`)
+
+* `MPG` (value: `"MPG"`)
+
+* `MP4` (value: `"MP4"`)
+
+* `WMV` (value: `"WMV"`)
+
+* `AVI` (value: `"AVI"`)
+
+* `MOV` (value: `"MOV"`)
+
+* `MKV` (value: `"MKV"`)
+
+* `FLV` (value: `"FLV"`)
 
 * `WEBM` (value: `"WEBM"`)
 

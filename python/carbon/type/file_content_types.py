@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-FileContentTypes = Literal["TEXT", "IMAGE"]
+FileContentTypes = Literal["TEXT", "IMAGE", "AUDIO", "VIDEO"]

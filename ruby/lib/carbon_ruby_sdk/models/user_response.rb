@@ -29,6 +29,18 @@ module Carbon
 
     attr_accessor :num_tokens_synced
 
+    attr_accessor :aggregate_file_size
+
+    attr_accessor :aggregate_num_characters
+
+    attr_accessor :aggregate_num_tokens
+
+    attr_accessor :aggregate_num_embeddings
+
+    attr_accessor :aggregate_num_files_by_source
+
+    attr_accessor :aggregate_num_files_by_file_format
+
     attr_accessor :unique_file_tags
 
     attr_accessor :enabled_features
@@ -49,6 +61,12 @@ module Carbon
         :'num_files_synced' => :'num_files_synced',
         :'num_characters_synced' => :'num_characters_synced',
         :'num_tokens_synced' => :'num_tokens_synced',
+        :'aggregate_file_size' => :'aggregate_file_size',
+        :'aggregate_num_characters' => :'aggregate_num_characters',
+        :'aggregate_num_tokens' => :'aggregate_num_tokens',
+        :'aggregate_num_embeddings' => :'aggregate_num_embeddings',
+        :'aggregate_num_files_by_source' => :'aggregate_num_files_by_source',
+        :'aggregate_num_files_by_file_format' => :'aggregate_num_files_by_file_format',
         :'unique_file_tags' => :'unique_file_tags',
         :'enabled_features' => :'enabled_features',
         :'custom_limits' => :'custom_limits',
@@ -73,6 +91,12 @@ module Carbon
         :'num_files_synced' => :'Integer',
         :'num_characters_synced' => :'Integer',
         :'num_tokens_synced' => :'Integer',
+        :'aggregate_file_size' => :'Object',
+        :'aggregate_num_characters' => :'Object',
+        :'aggregate_num_tokens' => :'Object',
+        :'aggregate_num_embeddings' => :'Object',
+        :'aggregate_num_files_by_source' => :'Object',
+        :'aggregate_num_files_by_file_format' => :'Object',
         :'unique_file_tags' => :'Array<Object>',
         :'enabled_features' => :'Object',
         :'custom_limits' => :'Object',
@@ -139,6 +163,30 @@ module Carbon
         self.num_tokens_synced = attributes[:'num_tokens_synced']
       end
 
+      if attributes.key?(:'aggregate_file_size')
+        self.aggregate_file_size = attributes[:'aggregate_file_size']
+      end
+
+      if attributes.key?(:'aggregate_num_characters')
+        self.aggregate_num_characters = attributes[:'aggregate_num_characters']
+      end
+
+      if attributes.key?(:'aggregate_num_tokens')
+        self.aggregate_num_tokens = attributes[:'aggregate_num_tokens']
+      end
+
+      if attributes.key?(:'aggregate_num_embeddings')
+        self.aggregate_num_embeddings = attributes[:'aggregate_num_embeddings']
+      end
+
+      if attributes.key?(:'aggregate_num_files_by_source')
+        self.aggregate_num_files_by_source = attributes[:'aggregate_num_files_by_source']
+      end
+
+      if attributes.key?(:'aggregate_num_files_by_file_format')
+        self.aggregate_num_files_by_file_format = attributes[:'aggregate_num_files_by_file_format']
+      end
+
       if attributes.key?(:'unique_file_tags')
         if (value = attributes[:'unique_file_tags']).is_a?(Array)
           self.unique_file_tags = value
@@ -196,6 +244,30 @@ module Carbon
         invalid_properties.push('invalid value for "num_tokens_synced", num_tokens_synced cannot be nil.')
       end
 
+      if @aggregate_file_size.nil?
+        invalid_properties.push('invalid value for "aggregate_file_size", aggregate_file_size cannot be nil.')
+      end
+
+      if @aggregate_num_characters.nil?
+        invalid_properties.push('invalid value for "aggregate_num_characters", aggregate_num_characters cannot be nil.')
+      end
+
+      if @aggregate_num_tokens.nil?
+        invalid_properties.push('invalid value for "aggregate_num_tokens", aggregate_num_tokens cannot be nil.')
+      end
+
+      if @aggregate_num_embeddings.nil?
+        invalid_properties.push('invalid value for "aggregate_num_embeddings", aggregate_num_embeddings cannot be nil.')
+      end
+
+      if @aggregate_num_files_by_source.nil?
+        invalid_properties.push('invalid value for "aggregate_num_files_by_source", aggregate_num_files_by_source cannot be nil.')
+      end
+
+      if @aggregate_num_files_by_file_format.nil?
+        invalid_properties.push('invalid value for "aggregate_num_files_by_file_format", aggregate_num_files_by_file_format cannot be nil.')
+      end
+
       if @unique_file_tags.nil?
         invalid_properties.push('invalid value for "unique_file_tags", unique_file_tags cannot be nil.')
       end
@@ -222,6 +294,12 @@ module Carbon
       return false if @num_files_synced.nil?
       return false if @num_characters_synced.nil?
       return false if @num_tokens_synced.nil?
+      return false if @aggregate_file_size.nil?
+      return false if @aggregate_num_characters.nil?
+      return false if @aggregate_num_tokens.nil?
+      return false if @aggregate_num_embeddings.nil?
+      return false if @aggregate_num_files_by_source.nil?
+      return false if @aggregate_num_files_by_file_format.nil?
       return false if @unique_file_tags.nil?
       return false if @custom_limits.nil?
       return false if @auto_sync_enabled_sources.nil?
@@ -242,6 +320,12 @@ module Carbon
           num_files_synced == o.num_files_synced &&
           num_characters_synced == o.num_characters_synced &&
           num_tokens_synced == o.num_tokens_synced &&
+          aggregate_file_size == o.aggregate_file_size &&
+          aggregate_num_characters == o.aggregate_num_characters &&
+          aggregate_num_tokens == o.aggregate_num_tokens &&
+          aggregate_num_embeddings == o.aggregate_num_embeddings &&
+          aggregate_num_files_by_source == o.aggregate_num_files_by_source &&
+          aggregate_num_files_by_file_format == o.aggregate_num_files_by_file_format &&
           unique_file_tags == o.unique_file_tags &&
           enabled_features == o.enabled_features &&
           custom_limits == o.custom_limits &&
@@ -257,7 +341,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, unique_file_tags, enabled_features, custom_limits, auto_sync_enabled_sources].hash
+      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, unique_file_tags, enabled_features, custom_limits, auto_sync_enabled_sources].hash
     end
 
     # Builds the object from hash

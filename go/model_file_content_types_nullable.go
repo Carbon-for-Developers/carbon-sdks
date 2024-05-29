@@ -22,12 +22,16 @@ type FileContentTypesNullable string
 const (
 	FILECONTENTTYPESNULLABLE_TEXT FileContentTypesNullable = "TEXT"
 	FILECONTENTTYPESNULLABLE_IMAGE FileContentTypesNullable = "IMAGE"
+	FILECONTENTTYPESNULLABLE_AUDIO FileContentTypesNullable = "AUDIO"
+	FILECONTENTTYPESNULLABLE_VIDEO FileContentTypesNullable = "VIDEO"
 )
 
 // All allowed values of FileContentTypesNullable enum
 var AllowedFileContentTypesNullableEnumValues = []FileContentTypesNullable{
 	"TEXT",
 	"IMAGE",
+	"AUDIO",
+	"VIDEO",
 }
 
 func (v *FileContentTypesNullable) UnmarshalJSON(src []byte) error {

@@ -6,6 +6,7 @@ Method | Path | Description
 ------------- | ------------- | -------------
 [**Get**](OrganizationsApi.md#Get) | **Get** /organization | Get Organization
 [**Update**](OrganizationsApi.md#Update) | **Post** /organization/update | Update Organization
+[**UpdateStats**](OrganizationsApi.md#UpdateStats) | **Post** /organization/statistics | Update Organization Statistics
 
 
 
@@ -50,6 +51,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumCharacters`: %v\n", resp.AggregateNumCharacters)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumTokens`: %v\n", resp.AggregateNumTokens)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumEmbeddings`: %v\n", resp.AggregateNumEmbeddings)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumFilesBySource`: %v\n", resp.AggregateNumFilesBySource)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.AggregateNumFilesByFileFormat`: %v\n", resp.AggregateNumFilesByFileFormat)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.FileStatisticsAggregatedAt`: %v\n", resp.FileStatisticsAggregatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.PeriodEndsAt`: %v\n", resp.PeriodEndsAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CancelAtPeriodEnd`: %v\n", resp.CancelAtPeriodEnd)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.GlobalUserConfig`: %v\n", resp.GlobalUserConfig)
@@ -101,6 +105,48 @@ func main() {
     // response from `Update`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.Update`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.Update.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateStats
+
+Update Organization Statistics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetApiKey("AUTHORIZATION")
+    client := carbon.NewAPIClient(configuration)
+
+    request := client.OrganizationsApi.UpdateStats(
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateStats``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `UpdateStats`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateStats`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.UpdateStats.Success`: %v\n", resp.Success)
 }
 ```
 

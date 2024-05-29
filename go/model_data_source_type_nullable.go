@@ -56,7 +56,6 @@ const (
 	DATASOURCETYPENULLABLE_PNG DataSourceTypeNullable = "PNG"
 	DATASOURCETYPENULLABLE_JPEG DataSourceTypeNullable = "JPEG"
 	DATASOURCETYPENULLABLE_MP3 DataSourceTypeNullable = "MP3"
-	DATASOURCETYPENULLABLE_MP4 DataSourceTypeNullable = "MP4"
 	DATASOURCETYPENULLABLE_MP2 DataSourceTypeNullable = "MP2"
 	DATASOURCETYPENULLABLE_AAC DataSourceTypeNullable = "AAC"
 	DATASOURCETYPENULLABLE_WAV DataSourceTypeNullable = "WAV"
@@ -65,8 +64,15 @@ const (
 	DATASOURCETYPENULLABLE_M4_A DataSourceTypeNullable = "M4A"
 	DATASOURCETYPENULLABLE_OGG DataSourceTypeNullable = "OGG"
 	DATASOURCETYPENULLABLE_OPUS DataSourceTypeNullable = "OPUS"
-	DATASOURCETYPENULLABLE_WEBM DataSourceTypeNullable = "WEBM"
 	DATASOURCETYPENULLABLE_MPEG DataSourceTypeNullable = "MPEG"
+	DATASOURCETYPENULLABLE_MPG DataSourceTypeNullable = "MPG"
+	DATASOURCETYPENULLABLE_MP4 DataSourceTypeNullable = "MP4"
+	DATASOURCETYPENULLABLE_WMV DataSourceTypeNullable = "WMV"
+	DATASOURCETYPENULLABLE_AVI DataSourceTypeNullable = "AVI"
+	DATASOURCETYPENULLABLE_MOV DataSourceTypeNullable = "MOV"
+	DATASOURCETYPENULLABLE_MKV DataSourceTypeNullable = "MKV"
+	DATASOURCETYPENULLABLE_FLV DataSourceTypeNullable = "FLV"
+	DATASOURCETYPENULLABLE_WEBM DataSourceTypeNullable = "WEBM"
 )
 
 // All allowed values of DataSourceTypeNullable enum
@@ -107,7 +113,6 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"PNG",
 	"JPEG",
 	"MP3",
-	"MP4",
 	"MP2",
 	"AAC",
 	"WAV",
@@ -116,8 +121,15 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"M4A",
 	"OGG",
 	"OPUS",
-	"WEBM",
 	"MPEG",
+	"MPG",
+	"MP4",
+	"WMV",
+	"AVI",
+	"MOV",
+	"MKV",
+	"FLV",
+	"WEBM",
 }
 
 func (v *DataSourceTypeNullable) UnmarshalJSON(src []byte) error {

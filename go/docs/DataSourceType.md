@@ -75,8 +75,6 @@
 
 * `MP3` (value: `"MP3"`)
 
-* `MP4` (value: `"MP4"`)
-
 * `MP2` (value: `"MP2"`)
 
 * `AAC` (value: `"AAC"`)
@@ -93,9 +91,23 @@
 
 * `OPUS` (value: `"OPUS"`)
 
-* `WEBM` (value: `"WEBM"`)
-
 * `MPEG` (value: `"MPEG"`)
+
+* `MPG` (value: `"MPG"`)
+
+* `MP4` (value: `"MP4"`)
+
+* `WMV` (value: `"WMV"`)
+
+* `AVI` (value: `"AVI"`)
+
+* `MOV` (value: `"MOV"`)
+
+* `MKV` (value: `"MKV"`)
+
+* `FLV` (value: `"FLV"`)
+
+* `WEBM` (value: `"WEBM"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -36,6 +36,12 @@ class RequiredOrganizationResponse(TypedDict):
 
     aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    aggregate_num_files_by_source: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
+    aggregate_num_files_by_file_format: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
+    file_statistics_aggregated_at: typing.Optional[datetime]
+
     period_ends_at: typing.Optional[datetime]
 
     cancel_at_period_end: typing.Optional[bool]

@@ -27,6 +27,9 @@ type OrganizationResponse struct {
 	AggregateNumCharacters map[string]interface{} `json:"aggregate_num_characters"`
 	AggregateNumTokens map[string]interface{} `json:"aggregate_num_tokens"`
 	AggregateNumEmbeddings map[string]interface{} `json:"aggregate_num_embeddings"`
+	AggregateNumFilesBySource map[string]interface{} `json:"aggregate_num_files_by_source"`
+	AggregateNumFilesByFileFormat map[string]interface{} `json:"aggregate_num_files_by_file_format"`
+	FileStatisticsAggregatedAt NullableTime `json:"file_statistics_aggregated_at"`
 	PeriodEndsAt NullableTime `json:"period_ends_at"`
 	CancelAtPeriodEnd NullableBool `json:"cancel_at_period_end"`
 	GlobalUserConfig map[string]interface{} `json:"global_user_config"`
@@ -38,7 +41,7 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
+func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.Name = name
@@ -50,6 +53,9 @@ func NewOrganizationResponse(id int32, name string, nickname NullableString, rem
 	this.AggregateNumCharacters = aggregateNumCharacters
 	this.AggregateNumTokens = aggregateNumTokens
 	this.AggregateNumEmbeddings = aggregateNumEmbeddings
+	this.AggregateNumFilesBySource = aggregateNumFilesBySource
+	this.AggregateNumFilesByFileFormat = aggregateNumFilesByFileFormat
+	this.FileStatisticsAggregatedAt = fileStatisticsAggregatedAt
 	this.PeriodEndsAt = periodEndsAt
 	this.CancelAtPeriodEnd = cancelAtPeriodEnd
 	this.GlobalUserConfig = globalUserConfig
@@ -312,6 +318,80 @@ func (o *OrganizationResponse) SetAggregateNumEmbeddings(v map[string]interface{
 	o.AggregateNumEmbeddings = v
 }
 
+// GetAggregateNumFilesBySource returns the AggregateNumFilesBySource field value
+func (o *OrganizationResponse) GetAggregateNumFilesBySource() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumFilesBySource
+}
+
+// GetAggregateNumFilesBySourceOk returns a tuple with the AggregateNumFilesBySource field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetAggregateNumFilesBySourceOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumFilesBySource, true
+}
+
+// SetAggregateNumFilesBySource sets field value
+func (o *OrganizationResponse) SetAggregateNumFilesBySource(v map[string]interface{}) {
+	o.AggregateNumFilesBySource = v
+}
+
+// GetAggregateNumFilesByFileFormat returns the AggregateNumFilesByFileFormat field value
+func (o *OrganizationResponse) GetAggregateNumFilesByFileFormat() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumFilesByFileFormat
+}
+
+// GetAggregateNumFilesByFileFormatOk returns a tuple with the AggregateNumFilesByFileFormat field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetAggregateNumFilesByFileFormatOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumFilesByFileFormat, true
+}
+
+// SetAggregateNumFilesByFileFormat sets field value
+func (o *OrganizationResponse) SetAggregateNumFilesByFileFormat(v map[string]interface{}) {
+	o.AggregateNumFilesByFileFormat = v
+}
+
+// GetFileStatisticsAggregatedAt returns the FileStatisticsAggregatedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *OrganizationResponse) GetFileStatisticsAggregatedAt() time.Time {
+	if o == nil || o.FileStatisticsAggregatedAt.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.FileStatisticsAggregatedAt.Get()
+}
+
+// GetFileStatisticsAggregatedAtOk returns a tuple with the FileStatisticsAggregatedAt field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationResponse) GetFileStatisticsAggregatedAtOk() (*time.Time, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileStatisticsAggregatedAt.Get(), o.FileStatisticsAggregatedAt.IsSet()
+}
+
+// SetFileStatisticsAggregatedAt sets field value
+func (o *OrganizationResponse) SetFileStatisticsAggregatedAt(v time.Time) {
+	o.FileStatisticsAggregatedAt.Set(&v)
+}
+
 // GetPeriodEndsAt returns the PeriodEndsAt field value
 // If the value is explicit nil, the zero value for time.Time will be returned
 func (o *OrganizationResponse) GetPeriodEndsAt() time.Time {
@@ -467,6 +547,15 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["aggregate_num_embeddings"] = o.AggregateNumEmbeddings
+	}
+	if true {
+		toSerialize["aggregate_num_files_by_source"] = o.AggregateNumFilesBySource
+	}
+	if true {
+		toSerialize["aggregate_num_files_by_file_format"] = o.AggregateNumFilesByFileFormat
+	}
+	if true {
+		toSerialize["file_statistics_aggregated_at"] = o.FileStatisticsAggregatedAt.Get()
 	}
 	if true {
 		toSerialize["period_ends_at"] = o.PeriodEndsAt.Get()

@@ -124,6 +124,7 @@ export * from './webhook-no-key';
 export * from './webhook-order-by-columns';
 export * from './webhook-query-input';
 export * from './webhook-query-response';
+export * from './webhook-status';
 export * from './webscrape-request';
 export * from './white-labeling-response';
 export * from './youtube-transcript-response';

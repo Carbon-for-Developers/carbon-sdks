@@ -26,6 +26,12 @@ type UserResponse struct {
 	NumFilesSynced int32 `json:"num_files_synced"`
 	NumCharactersSynced int32 `json:"num_characters_synced"`
 	NumTokensSynced int32 `json:"num_tokens_synced"`
+	AggregateFileSize map[string]interface{} `json:"aggregate_file_size"`
+	AggregateNumCharacters map[string]interface{} `json:"aggregate_num_characters"`
+	AggregateNumTokens map[string]interface{} `json:"aggregate_num_tokens"`
+	AggregateNumEmbeddings map[string]interface{} `json:"aggregate_num_embeddings"`
+	AggregateNumFilesBySource map[string]interface{} `json:"aggregate_num_files_by_source"`
+	AggregateNumFilesByFileFormat map[string]interface{} `json:"aggregate_num_files_by_file_format"`
 	UniqueFileTags []map[string]interface{} `json:"unique_file_tags"`
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
 	CustomLimits map[string]interface{} `json:"custom_limits"`
@@ -36,7 +42,7 @@ type UserResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}) *UserResponse {
+func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}) *UserResponse {
 	this := UserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -47,6 +53,12 @@ func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId 
 	this.NumFilesSynced = numFilesSynced
 	this.NumCharactersSynced = numCharactersSynced
 	this.NumTokensSynced = numTokensSynced
+	this.AggregateFileSize = aggregateFileSize
+	this.AggregateNumCharacters = aggregateNumCharacters
+	this.AggregateNumTokens = aggregateNumTokens
+	this.AggregateNumEmbeddings = aggregateNumEmbeddings
+	this.AggregateNumFilesBySource = aggregateNumFilesBySource
+	this.AggregateNumFilesByFileFormat = aggregateNumFilesByFileFormat
 	this.UniqueFileTags = uniqueFileTags
 	this.EnabledFeatures = enabledFeatures
 	this.CustomLimits = customLimits
@@ -280,6 +292,150 @@ func (o *UserResponse) SetNumTokensSynced(v int32) {
 	o.NumTokensSynced = v
 }
 
+// GetAggregateFileSize returns the AggregateFileSize field value
+func (o *UserResponse) GetAggregateFileSize() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateFileSize
+}
+
+// GetAggregateFileSizeOk returns a tuple with the AggregateFileSize field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateFileSizeOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateFileSize, true
+}
+
+// SetAggregateFileSize sets field value
+func (o *UserResponse) SetAggregateFileSize(v map[string]interface{}) {
+	o.AggregateFileSize = v
+}
+
+// GetAggregateNumCharacters returns the AggregateNumCharacters field value
+func (o *UserResponse) GetAggregateNumCharacters() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumCharacters
+}
+
+// GetAggregateNumCharactersOk returns a tuple with the AggregateNumCharacters field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateNumCharactersOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumCharacters, true
+}
+
+// SetAggregateNumCharacters sets field value
+func (o *UserResponse) SetAggregateNumCharacters(v map[string]interface{}) {
+	o.AggregateNumCharacters = v
+}
+
+// GetAggregateNumTokens returns the AggregateNumTokens field value
+func (o *UserResponse) GetAggregateNumTokens() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumTokens
+}
+
+// GetAggregateNumTokensOk returns a tuple with the AggregateNumTokens field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateNumTokensOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumTokens, true
+}
+
+// SetAggregateNumTokens sets field value
+func (o *UserResponse) SetAggregateNumTokens(v map[string]interface{}) {
+	o.AggregateNumTokens = v
+}
+
+// GetAggregateNumEmbeddings returns the AggregateNumEmbeddings field value
+func (o *UserResponse) GetAggregateNumEmbeddings() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumEmbeddings
+}
+
+// GetAggregateNumEmbeddingsOk returns a tuple with the AggregateNumEmbeddings field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateNumEmbeddingsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumEmbeddings, true
+}
+
+// SetAggregateNumEmbeddings sets field value
+func (o *UserResponse) SetAggregateNumEmbeddings(v map[string]interface{}) {
+	o.AggregateNumEmbeddings = v
+}
+
+// GetAggregateNumFilesBySource returns the AggregateNumFilesBySource field value
+func (o *UserResponse) GetAggregateNumFilesBySource() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumFilesBySource
+}
+
+// GetAggregateNumFilesBySourceOk returns a tuple with the AggregateNumFilesBySource field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateNumFilesBySourceOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumFilesBySource, true
+}
+
+// SetAggregateNumFilesBySource sets field value
+func (o *UserResponse) SetAggregateNumFilesBySource(v map[string]interface{}) {
+	o.AggregateNumFilesBySource = v
+}
+
+// GetAggregateNumFilesByFileFormat returns the AggregateNumFilesByFileFormat field value
+func (o *UserResponse) GetAggregateNumFilesByFileFormat() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.AggregateNumFilesByFileFormat
+}
+
+// GetAggregateNumFilesByFileFormatOk returns a tuple with the AggregateNumFilesByFileFormat field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetAggregateNumFilesByFileFormatOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.AggregateNumFilesByFileFormat, true
+}
+
+// SetAggregateNumFilesByFileFormat sets field value
+func (o *UserResponse) SetAggregateNumFilesByFileFormat(v map[string]interface{}) {
+	o.AggregateNumFilesByFileFormat = v
+}
+
 // GetUniqueFileTags returns the UniqueFileTags field value
 func (o *UserResponse) GetUniqueFileTags() []map[string]interface{} {
 	if o == nil {
@@ -406,6 +562,24 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["num_tokens_synced"] = o.NumTokensSynced
+	}
+	if true {
+		toSerialize["aggregate_file_size"] = o.AggregateFileSize
+	}
+	if true {
+		toSerialize["aggregate_num_characters"] = o.AggregateNumCharacters
+	}
+	if true {
+		toSerialize["aggregate_num_tokens"] = o.AggregateNumTokens
+	}
+	if true {
+		toSerialize["aggregate_num_embeddings"] = o.AggregateNumEmbeddings
+	}
+	if true {
+		toSerialize["aggregate_num_files_by_source"] = o.AggregateNumFilesBySource
+	}
+	if true {
+		toSerialize["aggregate_num_files_by_file_format"] = o.AggregateNumFilesByFileFormat
 	}
 	if true {
 		toSerialize["unique_file_tags"] = o.UniqueFileTags

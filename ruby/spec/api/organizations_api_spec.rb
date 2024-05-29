@@ -47,4 +47,15 @@ describe 'OrganizationsApi' do
     end
   end
 
+  # unit tests for update_stats
+  # Update Organization Statistics
+  # Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessResponse]
+  describe 'update_stats test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

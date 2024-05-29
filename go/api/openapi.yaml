@@ -133,6 +133,7 @@ tags:
     \ to use `object_id` in\nsubsequent API requests, you'll likely need to convert\
     \ it to an int.\n"
   name: Webhooks
+- name: Organizations
 - description: |2
 
     ---
@@ -469,7 +470,6 @@ tags:
     \ 24-hour batch sync running in the background. You can request us via Slack to\
     \ run more frequent batch syncs.\n\n# Slack\n# Confluence\n"
   name: Data Sources
-- name: Organizations
 - description: |2
 
     ---
@@ -2400,6 +2400,28 @@ paths:
       - Organizations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--organization-update
+  /organization/statistics:
+    post:
+      description: |-
+        Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+        process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+        process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+        endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+      operationId: Organizations_updateStats
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+      security:
+      - apiKey: []
+      summary: Update Organization Statistics
+      tags:
+      - Organizations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--organization-statistics
   /user:
     post:
       operationId: Users_get
@@ -2715,6 +2737,15 @@ paths:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
+        style: form
+      - description: "The media type of the file. If not provided, it will be inferred\
+          \ from the file extension."
+        explode: true
+        in: query
+        name: media_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/FileContentTypesNullable'
         style: form
       requestBody:
         content:
@@ -3818,7 +3849,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 18ef9025-4c76-443c-a115-ba77b17afd8b
+          request_id: f5552316-5da3-46e6-ad9f-2f94e30d02cd
         authentication: null
       properties:
         authentication:
@@ -3839,7 +3870,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 18ef9025-4c76-443c-a115-ba77b17afd8b
+            request_id: f5552316-5da3-46e6-ad9f-2f94e30d02cd
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -3943,7 +3974,6 @@ components:
       - PNG
       - JPEG
       - MP3
-      - MP4
       - MP2
       - AAC
       - WAV
@@ -3952,8 +3982,15 @@ components:
       - M4A
       - OGG
       - OPUS
-      - WEBM
       - MPEG
+      - MPG
+      - MP4
+      - WMV
+      - AVI
+      - MOV
+      - MKV
+      - FLV
+      - WEBM
       title: DataSourceType
       type: string
     DeleteFilesQueryInput:
@@ -4560,6 +4597,8 @@ components:
       enum:
       - TEXT
       - IMAGE
+      - AUDIO
+      - VIDEO
       title: FileContentTypes
       type: string
     FileFormats:
@@ -4592,9 +4631,7 @@ components:
       - GITHUB
       - JPG
       - PNG
-      - MPEG
       - MP3
-      - MP4
       - MP2
       - AAC
       - WAV
@@ -4603,6 +4640,14 @@ components:
       - M4A
       - OGG
       - OPUS
+      - MPEG
+      - MPG
+      - MP4
+      - WMV
+      - AVI
+      - MOV
+      - MKV
+      - FLV
       - WEBM
       title: FileFormats
       type: string
@@ -5645,7 +5690,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+        request_id: 273420dd-e05c-463f-a3cf-0ff28029639e
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -5763,13 +5808,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          default: 273420dd-e05c-463f-a3cf-0ff28029639e
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          example: 273420dd-e05c-463f-a3cf-0ff28029639e
           title: Request Id
           type: string
-          x-konfig-original-example: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          x-konfig-original-example: 273420dd-e05c-463f-a3cf-0ff28029639e
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -5791,8 +5836,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT,\
-            \ BOX"
+            \ it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -5840,18 +5884,21 @@ components:
         aggregate_file_size: "{}"
         aggregate_num_characters: "{}"
         custom_limits: "{}"
+        aggregate_num_files_by_file_format: "{}"
         cancel_at_period_end: true
         created_at: 2000-01-23T04:56:07.000+00:00
         custom_branding: "{}"
         global_user_config: {}
         updated_at: 2000-01-23T04:56:07.000+00:00
         aggregate_num_embeddings: "{}"
+        aggregate_num_files_by_source: "{}"
         name: name
         nickname: nickname
         remove_branding: true
         id: 0
         period_ends_at: 2000-01-23T04:56:07.000+00:00
         aggregate_num_tokens: "{}"
+        file_statistics_aggregated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           title: Id
@@ -5886,6 +5933,17 @@ components:
         aggregate_num_embeddings:
           title: Aggregate Num Embeddings
           type: object
+        aggregate_num_files_by_source:
+          title: Aggregate Num Files By Source
+          type: object
+        aggregate_num_files_by_file_format:
+          title: Aggregate Num Files By File Format
+          type: object
+        file_statistics_aggregated_at:
+          format: date-time
+          nullable: true
+          title: File Statistics Aggregated At
+          type: string
         period_ends_at:
           format: date-time
           nullable: true
@@ -5914,11 +5972,14 @@ components:
       - aggregate_file_size
       - aggregate_num_characters
       - aggregate_num_embeddings
+      - aggregate_num_files_by_file_format
+      - aggregate_num_files_by_source
       - aggregate_num_tokens
       - cancel_at_period_end
       - created_at
       - custom_branding
       - custom_limits
+      - file_statistics_aggregated_at
       - global_user_config
       - id
       - name
@@ -7208,7 +7269,7 @@ components:
         ids: null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 27036d05-9737-4197-b0c6-e9fb9f60f976
+        request_id: 2782cb96-1bf6-452c-a8d9-60c2378fd079
         data_source_id: 0
       properties:
         tags:
@@ -7280,11 +7341,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 27036d05-9737-4197-b0c6-e9fb9f60f976
-          example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          default: 2782cb96-1bf6-452c-a8d9-60c2378fd079
+          example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           title: Request Id
           type: string
-          x-konfig-original-example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          x-konfig-original-example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7339,7 +7400,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 18ef9025-4c76-443c-a115-ba77b17afd8b
+        request_id: f5552316-5da3-46e6-ad9f-2f94e30d02cd
       properties:
         tags:
           nullable: true
@@ -7412,11 +7473,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 18ef9025-4c76-443c-a115-ba77b17afd8b
-          example: 18ef9025-4c76-443c-a115-ba77b17afd8b
+          default: f5552316-5da3-46e6-ad9f-2f94e30d02cd
+          example: f5552316-5da3-46e6-ad9f-2f94e30d02cd
           title: Request Id
           type: string
-          x-konfig-original-example: 18ef9025-4c76-443c-a115-ba77b17afd8b
+          x-konfig-original-example: f5552316-5da3-46e6-ad9f-2f94e30d02cd
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7983,6 +8044,9 @@ components:
     UserResponse:
       example:
         num_characters_synced: 5
+        aggregate_file_size: "{}"
+        aggregate_num_characters: "{}"
+        aggregate_num_files_by_file_format: "{}"
         custom_limits: {}
         created_at: 2000-01-23T04:56:07.000+00:00
         deleted_at: 2000-01-23T04:56:07.000+00:00
@@ -7990,11 +8054,14 @@ components:
         enabled_features: "{}"
         updated_at: 2000-01-23T04:56:07.000+00:00
         num_tokens_synced: 5
+        aggregate_num_embeddings: "{}"
+        aggregate_num_files_by_source: "{}"
         organization_id: 6
         unique_file_tags:
         - "{}"
         - "{}"
         id: 0
+        aggregate_num_tokens: "{}"
         num_files_synced: 1
         auto_sync_enabled_sources: []
       properties:
@@ -8029,6 +8096,24 @@ components:
         num_tokens_synced:
           title: Num Tokens Synced
           type: integer
+        aggregate_file_size:
+          title: Aggregate File Size
+          type: object
+        aggregate_num_characters:
+          title: Aggregate Num Characters
+          type: object
+        aggregate_num_tokens:
+          title: Aggregate Num Tokens
+          type: object
+        aggregate_num_embeddings:
+          title: Aggregate Num Embeddings
+          type: object
+        aggregate_num_files_by_source:
+          title: Aggregate Num Files By Source
+          type: object
+        aggregate_num_files_by_file_format:
+          title: Aggregate Num Files By File Format
+          type: object
         unique_file_tags:
           items:
             type: object
@@ -8054,6 +8139,12 @@ components:
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserResponse-properties-auto_sync_enabled_sources
       required:
+      - aggregate_file_size
+      - aggregate_num_characters
+      - aggregate_num_embeddings
+      - aggregate_num_files_by_file_format
+      - aggregate_num_files_by_source
+      - aggregate_num_tokens
       - auto_sync_enabled_sources
       - created_at
       - custom_limits
@@ -8095,7 +8186,9 @@ components:
         organization_id: 6
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 0
+        status_reason: status_reason
         url: url
+        status: null
       properties:
         id:
           title: Id
@@ -8108,6 +8201,12 @@ components:
           type: string
         signing_key:
           title: Signing Key
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatus'
+        status_reason:
+          nullable: true
+          title: Status Reason
           type: string
         created_at:
           format: date-time
@@ -8122,6 +8221,8 @@ components:
       - id
       - organization_id
       - signing_key
+      - status
+      - status_reason
       - updated_at
       - url
       title: Webhook
@@ -8148,7 +8249,9 @@ components:
         organization_id: 6
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 0
+        status_reason: status_reason
         url: url
+        status: null
       properties:
         id:
           title: Id
@@ -8158,6 +8261,12 @@ components:
           type: integer
         url:
           title: Url
+          type: string
+        status:
+          $ref: '#/components/schemas/WebhookStatus'
+        status_reason:
+          nullable: true
+          title: Status Reason
           type: string
         created_at:
           format: date-time
@@ -8171,6 +8280,8 @@ components:
       - created_at
       - id
       - organization_id
+      - status
+      - status_reason
       - updated_at
       - url
       title: WebhookNoKey
@@ -8221,12 +8332,16 @@ components:
           organization_id: 6
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 0
+          status_reason: status_reason
           url: url
+          status: null
         - updated_at: 2000-01-23T04:56:07.000+00:00
           organization_id: 6
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 0
+          status_reason: status_reason
           url: url
+          status: null
       properties:
         results:
           items:
@@ -8241,6 +8356,12 @@ components:
       - results
       title: WebhookQueryResponse
       type: object
+    WebhookStatus:
+      enum:
+      - ACTIVE
+      - FLAGGED
+      title: WebhookStatus
+      type: string
     WebscrapeRequest:
       example:
         chunk_size: 1500
@@ -8467,6 +8588,24 @@ components:
       - zotero_id
       title: ZoteroAuthentication
       type: object
+    FileContentTypesNullable:
+      default: TEXT
+      description: |-
+        Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also
+                plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,
+                then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed
+                for `embedding_model`.
+      enum:
+      - TEXT
+      - IMAGE
+      - AUDIO
+      - VIDEO
+      example: TEXT
+      nullable: true
+      title: FileContentTypes
+      type: string
+      x-konfig-original-example: TEXT
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileContentTypesNullable
     DataSourceTypeNullable:
       enum:
       - GOOGLE_DRIVE
@@ -8505,7 +8644,6 @@ components:
       - PNG
       - JPEG
       - MP3
-      - MP4
       - MP2
       - AAC
       - WAV
@@ -8514,8 +8652,15 @@ components:
       - M4A
       - OGG
       - OPUS
-      - WEBM
       - MPEG
+      - MPG
+      - MP4
+      - WMV
+      - AVI
+      - MOV
+      - MKV
+      - FLV
+      - WEBM
       nullable: true
       title: DataSourceType
       type: string
@@ -8573,9 +8718,7 @@ components:
       - GITHUB
       - JPG
       - PNG
-      - MPEG
       - MP3
-      - MP4
       - MP2
       - AAC
       - WAV
@@ -8584,6 +8727,14 @@ components:
       - M4A
       - OGG
       - OPUS
+      - MPEG
+      - MPG
+      - MP4
+      - WMV
+      - AVI
+      - MOV
+      - MKV
+      - FLV
       - WEBM
       nullable: true
       title: FileFormats
@@ -8664,22 +8815,6 @@ components:
         weight_a: 0.5
         weight_b: 0.5
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-HybridSearchTuningParamsNullable
-    FileContentTypesNullable:
-      default: TEXT
-      description: |-
-        Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also
-                plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,
-                then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed
-                for `embedding_model`.
-      enum:
-      - TEXT
-      - IMAGE
-      example: TEXT
-      nullable: true
-      title: FileContentTypes
-      type: string
-      x-konfig-original-example: TEXT
-      x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileContentTypesNullable
     ListItemsFiltersNullable:
       example:
         root_files_only: true
@@ -9214,7 +9349,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+      example: 273420dd-e05c-463f-a3cf-0ff28029639e
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -9447,7 +9582,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+      example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9491,7 +9626,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 18ef9025-4c76-443c-a115-ba77b17afd8b
+      example: f5552316-5da3-46e6-ad9f-2f94e30d02cd
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9611,6 +9746,10 @@ components:
         type: string
       type: array
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileContentTypesNullable:
+      example: TEXT
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
       example: OPENAI
       type: string
@@ -9651,10 +9790,6 @@ components:
     konfig-generated-schema-components-schemas-HybridSearchTuningParamsNullable-properties-weight_b:
       example: 0.5
       type: number
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-FileContentTypesNullable:
-      example: TEXT
-      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-ChunkPropertiesNullable-properties-set_page_as_boundary:
       example: false
@@ -9836,13 +9971,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          default: 273420dd-e05c-463f-a3cf-0ff28029639e
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          example: 273420dd-e05c-463f-a3cf-0ff28029639e
           title: Request Id
           type: string
-          x-konfig-original-example: eb3e536e-fa3e-4f8e-9a22-25f70393e759
+          x-konfig-original-example: 273420dd-e05c-463f-a3cf-0ff28029639e
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -9864,8 +9999,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT,\
-            \ BOX"
+            \ it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -10030,11 +10164,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 27036d05-9737-4197-b0c6-e9fb9f60f976
-          example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          default: 2782cb96-1bf6-452c-a8d9-60c2378fd079
+          example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           title: Request Id
           type: string
-          x-konfig-original-example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          x-konfig-original-example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10162,11 +10296,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 27036d05-9737-4197-b0c6-e9fb9f60f976
-          example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          default: 2782cb96-1bf6-452c-a8d9-60c2378fd079
+          example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           title: Request Id
           type: string
-          x-konfig-original-example: 27036d05-9737-4197-b0c6-e9fb9f60f976
+          x-konfig-original-example: 2782cb96-1bf6-452c-a8d9-60c2378fd079
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11166,6 +11300,11 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--organization-statistics:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--user:
       properties:
         customer_id:
@@ -11331,6 +11470,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
+        media_type:
+          $ref: '#/components/schemas/FileContentTypesNullable'
         file:
           format: binary
           title: File
@@ -11351,6 +11492,7 @@ components:
       - max_items_per_chunk
       - parse_pdf_tables_with_ocr
       - detect_audio_language
+      - media_type
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:

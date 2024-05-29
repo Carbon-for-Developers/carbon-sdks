@@ -71,7 +71,7 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]
 
-    # Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
+    # Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
     enable_file_picker: bool
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint

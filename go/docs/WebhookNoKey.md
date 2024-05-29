@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Id** | **int32** |  | 
 **OrganizationId** | **int32** |  | 
 **Url** | **string** |  | 
+**Status** | [**WebhookStatus**](WebhookStatus.md) |  | 
+**StatusReason** | **NullableString** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -14,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewWebhookNoKey
 
-`func NewWebhookNoKey(id int32, organizationId int32, url string, createdAt time.Time, updatedAt time.Time, ) *WebhookNoKey`
+`func NewWebhookNoKey(id int32, organizationId int32, url string, status WebhookStatus, statusReason NullableString, createdAt time.Time, updatedAt time.Time, ) *WebhookNoKey`
 
 NewWebhookNoKey instantiates a new WebhookNoKey object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +91,56 @@ and a boolean to check if the value has been set.
 SetUrl sets Url field to given value.
 
 
+### GetStatus
+
+`func (o *WebhookNoKey) GetStatus() WebhookStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *WebhookNoKey) GetStatusOk() (*WebhookStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *WebhookNoKey) SetStatus(v WebhookStatus)`
+
+SetStatus sets Status field to given value.
+
+
+### GetStatusReason
+
+`func (o *WebhookNoKey) GetStatusReason() string`
+
+GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
+
+### GetStatusReasonOk
+
+`func (o *WebhookNoKey) GetStatusReasonOk() (*string, bool)`
+
+GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusReason
+
+`func (o *WebhookNoKey) SetStatusReason(v string)`
+
+SetStatusReason sets StatusReason field to given value.
+
+
+### SetStatusReasonNil
+
+`func (o *WebhookNoKey) SetStatusReasonNil(b bool)`
+
+ SetStatusReasonNil sets the value for StatusReason to be an explicit nil
+
+### UnsetStatusReason
+`func (o *WebhookNoKey) UnsetStatusReason()`
+
+UnsetStatusReason ensures that no value is present for StatusReason, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookNoKey) GetCreatedAt() time.Time`

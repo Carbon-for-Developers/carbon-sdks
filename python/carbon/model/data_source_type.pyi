@@ -176,10 +176,6 @@ class DataSourceType(
         return cls("MP3")
     
     @schemas.classproperty
-    def MP4(cls):
-        return cls("MP4")
-    
-    @schemas.classproperty
     def MP2(cls):
         return cls("MP2")
     
@@ -212,9 +208,37 @@ class DataSourceType(
         return cls("OPUS")
     
     @schemas.classproperty
-    def WEBM(cls):
-        return cls("WEBM")
-    
-    @schemas.classproperty
     def MPEG(cls):
         return cls("MPEG")
+    
+    @schemas.classproperty
+    def MPG(cls):
+        return cls("MPG")
+    
+    @schemas.classproperty
+    def MP4(cls):
+        return cls("MP4")
+    
+    @schemas.classproperty
+    def WMV(cls):
+        return cls("WMV")
+    
+    @schemas.classproperty
+    def AVI(cls):
+        return cls("AVI")
+    
+    @schemas.classproperty
+    def MOV(cls):
+        return cls("MOV")
+    
+    @schemas.classproperty
+    def MKV(cls):
+        return cls("MKV")
+    
+    @schemas.classproperty
+    def FLV(cls):
+        return cls("FLV")
+    
+    @schemas.classproperty
+    def WEBM(cls):
+        return cls("WEBM")

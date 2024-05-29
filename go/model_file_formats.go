@@ -48,9 +48,7 @@ const (
 	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
-	FILEFORMATS_MPEG FileFormats = "MPEG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
-	FILEFORMATS_MP4 FileFormats = "MP4"
 	FILEFORMATS_MP2 FileFormats = "MP2"
 	FILEFORMATS_AAC FileFormats = "AAC"
 	FILEFORMATS_WAV FileFormats = "WAV"
@@ -59,6 +57,14 @@ const (
 	FILEFORMATS_M4_A FileFormats = "M4A"
 	FILEFORMATS_OGG FileFormats = "OGG"
 	FILEFORMATS_OPUS FileFormats = "OPUS"
+	FILEFORMATS_MPEG FileFormats = "MPEG"
+	FILEFORMATS_MPG FileFormats = "MPG"
+	FILEFORMATS_MP4 FileFormats = "MP4"
+	FILEFORMATS_WMV FileFormats = "WMV"
+	FILEFORMATS_AVI FileFormats = "AVI"
+	FILEFORMATS_MOV FileFormats = "MOV"
+	FILEFORMATS_MKV FileFormats = "MKV"
+	FILEFORMATS_FLV FileFormats = "FLV"
 	FILEFORMATS_WEBM FileFormats = "WEBM"
 )
 
@@ -92,9 +98,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"GITHUB",
 	"JPG",
 	"PNG",
-	"MPEG",
 	"MP3",
-	"MP4",
 	"MP2",
 	"AAC",
 	"WAV",
@@ -103,6 +107,14 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"M4A",
 	"OGG",
 	"OPUS",
+	"MPEG",
+	"MPG",
+	"MP4",
+	"WMV",
+	"AVI",
+	"MOV",
+	"MKV",
+	"FLV",
 	"WEBM",
 }
 

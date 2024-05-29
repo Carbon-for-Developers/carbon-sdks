@@ -42,15 +42,15 @@
       "name": "Webhooks"
     },
     {
+      "name": "Organizations"
+    },
+    {
       "description": "\n---\n",
       "name": "Auth"
     },
     {
       "description": "\n---\nCarbon facilitates user connections and content synchronization with third-party applications. We manage authentication, ingestion, parsing, and sync scheduling. Within Carbon, content from third-party applications is uniformly categorized as \"files\" within our data model. \n\nCarbon also supports websites as a data source (see [here](https://api.carbon.ai/redoc#tag/Data-Sources/operation/web_scrape_web_scrape_post)).\n\n# Google Drive\nThe Carbon Connect `enabledIntegrations` value for Google Drive is `GOOGLE_DRIVE`. Google Slides, Google Docs and Google Sheets are supported with our Google Drive integration, along with regular text, audio and image files.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Google workspace.\n\n## Authorization Flow\n\n**Carbon's Google Drive integration is still pending approval from Google. In the meantime, end users are required to take a couple additional steps to connect their accounts (see gif below).**\n\n![](https://files.readme.io/19f57f6-Carbon_-_Google_OAuth_Flow.gif)\n\nLog into your Google Drive account.\n![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)\n\nOnce you've successfully authenticated your account, you can select files directly.\n![](https://i.ibb.co/wYs9Xbp/image.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/1fSzKHS/image.png)\n\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Google Drive API` and `Google Picker API`.\n2. Then create an `OAuth Client ID` in the `Credentials section` under `Google Drive API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.\n\n![](https://files.readme.io/e7f42e5-image.png)\n\n3. Add [https://api.carbon.ai](https://api.carbon.ai/) as the `Authorized JS origin` and <https://api.carbon.ai/integrations/google> as an `Authorized redirect URI`.\n\n![](https://files.readme.io/60d16d3-image.png)\n\n4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.\n\n![](https://files.readme.io/f265775-image.png)\n\n5. Then create an `API key` in the `Credentials section` under `Google Picker API`. Restrict the application to websites and then add [https://api.carbon.ai](https://api.carbon.ai/) to the list under website restrictions. For `API Restrictions`, pick `Restrict key` and select `Google Picker API` from the list.\n\n6. Save the API key. Copy the API key and share it with Carbon.\n\n7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) to `Authorized domain`.\n\n![](https://files.readme.io/33ebd01-image.png)\n\n![](https://files.readme.io/6d7f247-image.png)\n\n\n8. Click on `Add or Remove Scopes` button to add the following scopes: `userinfo.profile`, `userinfo.email`, `drive.readonly`, `drive.metadata.readonly`\n\n![](https://files.readme.io/6649d66-image.png)\n![](https://i.ibb.co/PNRnYwV/Screen-Shot-2023-08-11-at-2-11-51-PM.png)\n\n9. If you wish to add test users, you can do so. These users will not see the \"App is unverified\" notification. Other users will see this alert.\n10. Click `Publish App` to make this app available to your end-users.\n\n![](https://files.readme.io/d24c355-image.png)\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove Google Drive files and folders via the Google Drive picker. When a user selects a folder to be synced, we auto-sync all files added to the folder as well.\n\nYou can use the `resync_file` API endpoint to programmatically resync specific Google Drive files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Dropbox\nThe Carbon Connect `enabledIntegrations` value for Dropbox is `DROPBOX`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.dropbox.com/oauth-guide)** to connect to Dropbox.\n\n## Authorization Flow\n\nLog into your Dropbox account.\n![](https://files.readme.io/9427ebb-image.png)\n\nOnce you've successfully authenticated your account, you can select files directly.\n![](https://files.readme.io/0efd7b0-image.png)\n\nClick \"Choose\" after selecting files to grant Carbon access to files.\n![](https://files.readme.io/9c32acb-image.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Sign up on [Dropbox Developers](https://www.dropbox.com/developers) and create a new app with `Full Dropbox` access.\n\n![](https://i.ibb.co/fdrPky4/Screen-Shot-2023-09-08-at-12-39-39-PM.png)\n\n2. Copy and share the `App key` and `App secret` under the `Settings` tab with us.\n\n![](https://i.ibb.co/QmR2WXb/Screen-Shot-2023-09-08-at-1-06-46-PM.png)\n\n3. Add <https://api.carbon.ai/integrations/dropbox> as a `Redirect URIs` and [carbon.ai](carbon.ai) as the `Chooser / Saver / Embedder domains`.\n\n![](https://i.ibb.co/5vR8zgf/Screen-Shot-2023-09-08-at-1-15-17-PM.png)\n\n4. Configure your app details under the `Branding` tab. These details will appear on the OAuth Consent Screen as well. Provide your **App name**, **Publisher**, and **App icons**. \n\n![](https://i.ibb.co/wYj1LL7/Screen-Shot-2023-09-08-at-1-10-10-PM.png)\n\n5. Under the `Permissions` tab, add the following scopes: `account_info.read`, `files.metadata.read`, and `files.content.read`.\n\n![](https://i.ibb.co/xSzhgYC/Screen-Shot-2023-09-08-at-1-03-32-PM.png)\n\n6. Click `Apply for Production` under the `Settings` tab to make this app available to your end-users.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Dropbox.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the Dropbox file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Dropbox files. To delete Dropbox files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Dropbox by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Intercom\n\nThe Carbon Connect `enabledIntegrations` value for Intercom is `INTERCOM`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/setting-up-oauth)** to connect to Intercom workspaces.\n\n## Authorization Flow\n\n![](https://files.readme.io/d72b15d-image.png)\n\n![](https://files.readme.io/c2825e3-image.png)\n\n## Functionality\n\nCarbon syncs all `Published` articles under a single Intercom workspace. Any `Draft` article won't be synced. We currently support only having a single Intercom workspace connected per `customer_id`.\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. After you create or log into your [Intercom Developer](https://developers.intercom.com/) account, click `New App` to create your own app.\n\n![](https://i.ibb.co/Y3Nmh4r/Screen-Shot-2023-09-11-at-5-06-46-PM.png)\n\n2. Under the `Authentication` tab, click `Edit` -> `Use OAuth` -> `Add redirect URL` and then enter https://api.carbon.ai/integrations/intercom.\n\n![](https://i.ibb.co/pfzG9VJ/Screen-Shot-2023-09-11-at-5-17-47-PM.png)\n\n3. Under the `Authentication` tab, click `Edit` and then add permissions for `Read one admin`, `Read and List Articles`, and `Read and Write Articles`. You can remove access to the other permissions.\n\n![](https://i.ibb.co/L9BxJFK/Screen-Shot-2023-09-11-at-5-21-01-PM.png)\n\n4. Under the `Basic Info` tab, share the `Client ID` and `Client secret` with us via Slack.\n\n![](https://i.ibb.co/wCnVcQq/Screen-Shot-2023-09-11-at-5-25-39-PM.png)\n\n5. Under the `Basic Info` tab, add an `App icon` and `App name`.\n\n![](https://i.ibb.co/HqS9bhk/Screen-Shot-2023-09-11-at-5-47-31-PM.png)\n\n6. Click `Test and publish` -> `Submit for review` and fill in the details require to publish your app. After your app is approved, then we can enable the white labeling.\n\n![](https://i.ibb.co/Cm0xWBF/Screen-Shot-2023-09-11-at-5-51-09-PM.png)\n\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Intercom OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Intercom files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Notion\n\nThe Carbon Connect `enabledIntegrations` value for Notion is `NOTION`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.notion.com/docs/authorization)** to connect to Notion workspaces.\n\n## Authorization Flow\n\n![](https://files.readme.io/0fa801d-image.png)\n\n![](https://files.readme.io/f72df4f-image.png)\n\n## Functionality\n\nCarbon enables end-users to select top-level pages for synchronization and automatically syncs all sub-pages. For instance, a top-level Company page may contain sub-pages for **`Company Benefits`** and **`PTO Policy`**. Once the end-user selects the Company page in the Authorization flow, Carbon automatically includes the sub-pages **`Company Benefits`** or **`PTO Policy`** to be synced.\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Notion OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Notion files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs. \n\nWhen a user adds a nested page or database record under a selected Notion page, we auto-sync those documents as well.\n\n# OneDrive\n\nThe Carbon Connect `enabledIntegrations` value for OneDrive is `ONEDRIVE`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to OneDrive.\n\n## Authorization Flow\n\nLog into your Microsoft account.\n![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)\n\nClick the \"Confirm\" button to grant us permission to access OneDrive.\n![](https://i.ibb.co/BqxmsJG/2880x1628.png)\n\nClick the \"Select Files from OneDrive\" button to open up the OneDrive file selector.\n![](https://i.ibb.co/Sm90PHL/Screen-Shot-2023-08-31-at-4-32-37-PM.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/t4Kchcv/Screen-Shot-2023-08-31-at-4-35-33-PM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.\n\n2. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n4. Add https://api.carbon.ai/integrations/onedrive as the `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/onedrive`.\n\n![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)\n\n5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.\n\n![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)\n\n6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)\n\n8. Customize your app branding under `Manage` -> `Branding & properties`.\n\n![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)\n\n#### Setting up the File Picker UI\n\n1. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n2. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Under the `Authentication` tab, select `Add a Platform` -> `Single Page Application`. \n\n![](https://i.ibb.co/nLDdQfP/Screen-Shot-2023-09-13-at-3-03-00-PM.png)\n\n4. For the `Redirect URI` of the `Single Page Application`, you can use https://api.carbon.ai/static/loading.html or add a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/static/loading.html`.\n\n![](https://i.ibb.co/0X5Nkz7/Screen-Shot-2023-09-13-at-3-13-53-PM.png)\n\n5. Under the `Authentciation`'s `Implicit grant and hybrid flows` section, check `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)`.\n\n![](https://i.ibb.co/ckVKZgV/Screen-Shot-2023-09-13-at-3-17-44-PM.png)\n\n6. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `Sites.Read.All`, `User.Read`, `AllSites.Read`, and `MyFiles.Read`.\n\n![](https://i.ibb.co/xjtvKTg/Screen-Shot-2023-09-13-at-3-22-12-PM.png)\n\n7. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n8. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from OneDrive.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the OneDrive file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific OneDrive files. To delete OneDrive files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for OneDrive by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# SharePoint\n\nThe Carbon Connect `enabledIntegrations` value for SharePoint is `SHAREPOINT`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to SharePoint.\n\n## Authorization Flow\n\nEnter your Sharepoint `tenant` and `site name`. For example, if the SharePoint site URL is `https://jasoncarbon.sharepoint.com/sites/carbon-dev`, `jasoncarbon` is the tenant and `carbon-dev` is the site name.\n\n![](https://i.ibb.co/sgW9vfQ/Screen-Shot-2023-10-24-at-11-45-21-AM.png)\n\nLog into your Microsoft SharePoint account.\n![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)\n\nClick the \"Confirm\" button to grant us permission to access SharePoint.\n![](https://i.ibb.co/x6L7knS/Screen-Shot-2023-10-24-at-11-45-27-AM.png)\n\nOnce clicking \"Confirm\", you will be taken through a flow to grant permissions.\n![](https://i.ibb.co/HTqCBVR/Screen-Shot-2023-10-24-at-1-00-08-PM.png)\n\nClick the \"Select Files from SharePoint\" button to open up the SharePoint file selector.\n![](https://i.ibb.co/6tn24b3/Screen-Shot-2023-10-24-at-1-00-20-PM.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/WVTwT9P/Screen-Shot-2023-10-24-at-11-45-39-AM.png)\n\nYou'll see a screen confirming that your files have been added.\n![](https://i.ibb.co/nwSRcSS/Screen-Shot-2023-10-24-at-11-45-11-AM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.\n\n2. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n4. Add https://api.carbon.ai/integrations/onedrive and https://api.carbon.ai/integrations/sharepoint to `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain paths must still be `/integrations/onedrive` and `/integrations/sharepoint`.\n\n![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)\n\n5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.\n\n![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)\n\n6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)\n\n8. Customize your app branding under `Manage` -> `Branding & properties`.\n\n![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)\n\n#### Setting up the File Picker UI\n\n1. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n2. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Under the `Authentication` tab, select `Add a Platform` -> `Single Page Application`. \n\n![](https://i.ibb.co/nLDdQfP/Screen-Shot-2023-09-13-at-3-03-00-PM.png)\n\n4. For the `Redirect URI` of the `Single Page Application`, you can use https://api.carbon.ai/static/loading.html or add a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/static/loading.html`.\n\n![](https://i.ibb.co/0X5Nkz7/Screen-Shot-2023-09-13-at-3-13-53-PM.png)\n\n5. Under the `Authentciation`'s `Implicit grant and hybrid flows` section, check `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)`.\n\n![](https://i.ibb.co/ckVKZgV/Screen-Shot-2023-09-13-at-3-17-44-PM.png)\n\n6. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `Sites.Read.All`, `User.Read`, `AllSites.Read`, and `MyFiles.Read`.\n\n![](https://i.ibb.co/xjtvKTg/Screen-Shot-2023-09-13-at-3-22-12-PM.png)\n\n7. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n8. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from SharePoint.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the SharePoint file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific SharePoint files. To delete SharePoint files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for SharePoint by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Zotero\n\nThe Carbon Connect `enabledIntegrations` value for ZOTERO is `ZOTERO`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 1.0](https://www.zotero.org/support/dev/web_api/v2/oauth)** to connect to Zotero.\n\n## Authorization Flow\n\nLog into your Zotero account. \n![](https://i.ibb.co/sgnb9xC/Screen-Shot-2023-11-06-at-12-45-31-PM.png)\n\nClick the \"Accept Defaults\" button to grant us permission to access Zotero.\n![](https://i.ibb.co/sJbyWX7/Screen-Shot-2023-11-06-at-12-43-09-PM.png)\n\nOnce clicking \"Accept Defaults\", all Zotero files are synced and you should see the following confirmation:\n![](https://i.ibb.co/HLvPWK8/Screen-Shot-2023-11-06-at-12-42-42-PM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Zotero](https://www.zotero.org/) Account.\n\n2. Click [here](https://www.zotero.org/oauth/apps) to set up your OAuth app.\n\n![](https://i.ibb.co/rs41H7N/Screen-Shot-2023-11-06-at-2-41-13-PM.png)\n\n3. Click \"Register a New Application\" and fill out the info below. Add https://api.carbon.ai/integrations/zotero as the `Callback URL`. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zotero`.\n\n![](https://i.ibb.co/5nBwgWT/Screen-Shot-2023-11-06-at-12-51-59-PM.png)\n\n4. Copy and share the Client Key and Client Secret with Carbon.\n\n![](https://i.ibb.co/cTkv51s/Screen-Shot-2023-11-06-at-2-46-20-PM.png)\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Zotero.\n\n## Synchronization\n\nBy default, Carbon syncs all attachments from your Zotero library along with the accompanying info as metadata.\n\nYou can use the `resync_file` API endpoint to programmatically resync specific Zotero files. To delete Zotero files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Zotero by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Box\n\nThe Carbon Connect `enabledIntegrations` value for Box is `BOX`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developer.box.com/guides/authentication/oauth2/)** to connect to Box.\n\n## Authorization Flow\n\nLog into your Box account.\n\n![](https://i.ibb.co/8gGpBdg/Screen-Shot-2023-09-08-at-1-34-42-PM.png)\n\nClick the \"Select Files from Box\" button to open up the Box file selector.\n![](https://i.ibb.co/K55H1rp/Screen-Shot-2023-09-08-at-1-38-15-PM.png)\n\nClick the checkmark after selecting files to grant Carbon access to files.\n\n*Limitations*: You can currently only upload individual file(s) via Box's file selector. If you'd like the ability the upload entire folders, please reach out to us on Slack. \n\n![](https://i.ibb.co/Zz2pDPm/Screen-Shot-2023-09-08-at-1-33-30-PM.png)\n\nYou'll receive a confirmation that your file(s) has been uploaded.\n\n![](https://i.ibb.co/ZTZQw03/Screen-Shot-2023-09-08-at-2-03-48-PM.png)\n\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Sign up for an account under [Box Developer](https://developer.box.com/).\n\n2. Go to `My Apps`, then `Create New App` -> `Choose Custom App`.\n\n![](https://i.ibb.co/cQw41M9/Screen-Shot-2023-09-08-at-2-12-34-PM.png)\n\n2. Fill out the app details in the modal that opens.\n\n![](https://i.ibb.co/TPJpqny/Screen-Shot-2023-09-08-at-2-14-32-PM.png)\n\n3. Select User Auth with OAuth 2.0 in the following step.\n\n![](https://i.ibb.co/Hr3SJJ8/Screen-Shot-2023-09-08-at-2-20-26-PM.png)\n\n4. In the `Configuration` tab copy and paste the `Client ID` and `Client Secret` and share it with us.\n\n![](https://i.ibb.co/1mm1PWM/Screen-Shot-2023-09-08-at-2-22-53-PM.png)\n\n5. Add https://api.carbon.ai/integrations/box as a `Redirect URIs` and https://api.carbon.ai as a `CORS Domains`\n\n![](https://i.ibb.co/374946D/Screen-Shot-2023-09-08-at-2-30-28-PM.png)\n![](https://i.ibb.co/HdtDqfd/Screen-Shot-2023-09-08-at-2-31-14-PM.png)\n\n7. For scopes, select `Read all files and folders stored in Box` and `Write all files and folders stored in Box`.\n\n![](https://i.ibb.co/9wRrqKX/Screen-Shot-2023-09-08-at-2-27-44-PM.png)\n\n8. In the `App Center` tab, you can edit your branding.\n\n![](https://i.ibb.co/GsHQq2g/Screen-Shot-2023-09-08-at-2-34-26-PM.png)\n\n9. Once you're ready, you can also submit your app for approval.\n\n![](https://i.ibb.co/XVg2skh/Screen-Shot-2023-09-08-at-2-37-05-PM.png)\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Box.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the Box file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Box files. To delete Box files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Box by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n\n# Zendesk\nThe Carbon Connect `enabledIntegrations` value for Zendesk is `ZENDESK`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.Zendesk.com/building-apps/docs/setting-up-oauth)** to connect to Zendesk workspaces.\n\n## Authorization Flow\n\n![](https://i.ibb.co/Zc1sh5Q/Screen-Shot-2023-09-14-at-5-25-02-PM.png)\n\n![](https://i.ibb.co/DKqsbFC/Screen-Shot-2023-09-14-at-10-40-28-AM.png)\n\n![](https://i.ibb.co/Vw6bF82/Screen-Shot-2023-09-14-at-10-37-47-AM.png)\n\n## Functionality\n\nCarbon syncs all `Published` articles under a single Zendesk workspace. Any `Draft` article won't be synced. We currently support only having a single Zendesk workspace connected per `customer_id`.\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. In Admin Center, click the `Apps and integrations` icon and then in the sidebar, select `APIs` > `Zendesk` APIs.\n\n![](https://i.ibb.co/3cXNwRj/Screen-Shot-2023-09-14-at-9-05-14-AM.png)\n\n![](https://i.ibb.co/wzvZ9jS/Screen-Shot-2023-09-13-at-5-08-26-PM.png)\n\n2. Click the `OAuth Clients` tab on the Zendesk API page, and then click `Add OAuth client` on the right side of the OAuth client list.\n\n![](https://i.ibb.co/djnzwcx/Screen-Shot-2023-09-13-at-5-06-46-PM.png)\n\n3. Complete the following fields to create a client:\n- Client Name - Enter a name for your app. This is the name that users will see when asked to grant access to your application, and when they check the list of third-party apps that have access to their Zendesk.\nDescription - Optional. This is a short description of your app that users will see when asked to grant access to it.\n- Company - Optional. This is the company name that users will see when asked to grant access to your application. The information can help them understand who they're granting access to.\n- Logo - Optional. This is the logo that users will see when asked to grant access to your application. The image can be a JPG, GIF, or PNG. For best results, upload a square image. It will be resized for the authorization page.\n- Unique Identifier - The field is auto-populated with a reformatted version of the name you entered for your app. You can change it if you want.\n- Redirect URLs - Enter https://api.carbon.ai/integrations/zendesk here. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zendesk`.\n\n![](https://i.ibb.co/yPqPzbD/Screen-Shot-2023-09-13-at-5-15-35-PM.png)\n\n4. Click Save. After the page refreshes, a new pre-populated Secret field appears on the lower side. This is the `client_secret` value specified in the OAuth2 spec. Send us the `client_secret` value over Slack.\n6. Copy the Secret value to your clipboard and save it somewhere safe. Note: The characters may extend past the width of the text box, so make sure to select everything before copying.\n\n![](https://i.ibb.co/Db8TQDJ/Screen-Shot-2023-09-13-at-5-21-34-PM.png)\n\n7. Copy the `Unique Identifier` of the OAuth app and share that value over Slack as well.\n8. In order for us to white-label your OAuth app, you need to request approval first to convert the app from a **local OAuth client** to **global OAuth client**. You can follow the instructions [here](https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client) to do so.\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Zendesk OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Zendesk files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Slack\n# Confluence\n",
       "name": "Data Sources"
-    },
-    {
-      "name": "Organizations"
     },
     {
       "description": "\n---\nUse this endpoint to check the status of the API. A `200` response indicates that the Carbon API is up.\n\nYou can also check for the health of our services on our [Status Page](https://status.carbon.ai/).\n",
@@ -1594,6 +1594,34 @@
         }
       }
     },
+    "/organization/statistics": {
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Update Organization Statistics",
+        "operationId": "Organizations_updateStats",
+        "security": [
+          {
+            "apiKey": [
+            ]
+          }
+        ],
+        "description": "Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation\nprocess is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the\nprocess is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization\nendpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user": {
       "post": {
         "tags": [
@@ -1938,6 +1966,15 @@
               "description": "Whether to automatically detect the language of the uploaded audio file.",
               "type": "boolean",
               "default": false
+            }
+          },
+          {
+            "description": "The media type of the file. If not provided, it will be inferred from the file extension.",
+            "name": "media_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/FileContentTypesNullable"
             }
           }
         ],
@@ -3446,7 +3483,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "18ef9025-4c76-443c-a115-ba77b17afd8b",
+              "request_id": "f5552316-5da3-46e6-ad9f-2f94e30d02cd",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3549,7 +3586,6 @@
           "PNG",
           "JPEG",
           "MP3",
-          "MP4",
           "MP2",
           "AAC",
           "WAV",
@@ -3558,8 +3594,15 @@
           "M4A",
           "OGG",
           "OPUS",
-          "WEBM",
-          "MPEG"
+          "MPEG",
+          "MPG",
+          "MP4",
+          "WMV",
+          "AVI",
+          "MOV",
+          "MKV",
+          "FLV",
+          "WEBM"
         ]
       },
       "DeleteFilesQueryInput": {
@@ -4144,7 +4187,9 @@
         "type": "string",
         "enum": [
           "TEXT",
-          "IMAGE"
+          "IMAGE",
+          "AUDIO",
+          "VIDEO"
         ]
       },
       "FileFormats": {
@@ -4179,9 +4224,7 @@
           "GITHUB",
           "JPG",
           "PNG",
-          "MPEG",
           "MP3",
-          "MP4",
           "MP2",
           "AAC",
           "WAV",
@@ -4190,6 +4233,14 @@
           "M4A",
           "OGG",
           "OPUS",
+          "MPEG",
+          "MPG",
+          "MP4",
+          "WMV",
+          "AVI",
+          "MOV",
+          "MKV",
+          "FLV",
           "WEBM"
         ]
       },
@@ -5246,7 +5297,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "eb3e536e-fa3e-4f8e-9a22-25f70393e759"
+            "default": "273420dd-e05c-463f-a3cf-0ff28029639e"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5263,7 +5314,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE",
             "type": "boolean",
             "default": true
           },
@@ -5350,6 +5401,20 @@
             "title": "Aggregate Num Embeddings",
             "type": "object"
           },
+          "aggregate_num_files_by_source": {
+            "title": "Aggregate Num Files By Source",
+            "type": "object"
+          },
+          "aggregate_num_files_by_file_format": {
+            "title": "Aggregate Num Files By File Format",
+            "type": "object"
+          },
+          "file_statistics_aggregated_at": {
+            "title": "File Statistics Aggregated At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
           "period_ends_at": {
             "title": "Period Ends At",
             "type": "string",
@@ -5390,6 +5455,9 @@
           "aggregate_num_characters",
           "aggregate_num_tokens",
           "aggregate_num_embeddings",
+          "aggregate_num_files_by_source",
+          "aggregate_num_files_by_file_format",
+          "file_statistics_aggregated_at",
           "period_ends_at",
           "cancel_at_period_end",
           "global_user_config",
@@ -6673,7 +6741,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "27036d05-9737-4197-b0c6-e9fb9f60f976"
+            "default": "2782cb96-1bf6-452c-a8d9-60c2378fd079"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6765,7 +6833,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "18ef9025-4c76-443c-a115-ba77b17afd8b"
+            "default": "f5552316-5da3-46e6-ad9f-2f94e30d02cd"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7271,6 +7339,30 @@
             "title": "Num Tokens Synced",
             "type": "integer"
           },
+          "aggregate_file_size": {
+            "title": "Aggregate File Size",
+            "type": "object"
+          },
+          "aggregate_num_characters": {
+            "title": "Aggregate Num Characters",
+            "type": "object"
+          },
+          "aggregate_num_tokens": {
+            "title": "Aggregate Num Tokens",
+            "type": "object"
+          },
+          "aggregate_num_embeddings": {
+            "title": "Aggregate Num Embeddings",
+            "type": "object"
+          },
+          "aggregate_num_files_by_source": {
+            "title": "Aggregate Num Files By Source",
+            "type": "object"
+          },
+          "aggregate_num_files_by_file_format": {
+            "title": "Aggregate Num Files By File Format",
+            "type": "object"
+          },
           "unique_file_tags": {
             "title": "Unique File Tags",
             "items": {
@@ -7309,6 +7401,12 @@
           "num_files_synced",
           "num_characters_synced",
           "num_tokens_synced",
+          "aggregate_file_size",
+          "aggregate_num_characters",
+          "aggregate_num_tokens",
+          "aggregate_num_embeddings",
+          "aggregate_num_files_by_source",
+          "aggregate_num_files_by_file_format",
           "unique_file_tags",
           "enabled_features",
           "custom_limits",
@@ -7367,6 +7465,14 @@
             "title": "Signing Key",
             "type": "string"
           },
+          "status": {
+            "$ref": "#/components/schemas/WebhookStatus"
+          },
+          "status_reason": {
+            "title": "Status Reason",
+            "type": "string",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -7384,6 +7490,8 @@
           "organization_id",
           "url",
           "signing_key",
+          "status",
+          "status_reason",
           "created_at",
           "updated_at"
         ]
@@ -7419,6 +7527,14 @@
             "title": "Url",
             "type": "string"
           },
+          "status": {
+            "$ref": "#/components/schemas/WebhookStatus"
+          },
+          "status_reason": {
+            "title": "Status Reason",
+            "type": "string",
+            "nullable": true
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -7435,6 +7551,8 @@
           "id",
           "organization_id",
           "url",
+          "status",
+          "status_reason",
           "created_at",
           "updated_at"
         ]
@@ -7504,6 +7622,14 @@
         "required": [
           "results",
           "count"
+        ]
+      },
+      "WebhookStatus": {
+        "title": "WebhookStatus",
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "FLAGGED"
         ]
       },
       "WebscrapeRequest": {
@@ -7763,6 +7889,19 @@
           "zotero_id"
         ]
       },
+      "FileContentTypesNullable": {
+        "title": "FileContentTypes",
+        "description": "Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also\n        plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,\n        then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed\n        for `embedding_model`.",
+        "type": "string",
+        "enum": [
+          "TEXT",
+          "IMAGE",
+          "AUDIO",
+          "VIDEO"
+        ],
+        "default": "TEXT",
+        "nullable": true
+      },
       "DataSourceTypeNullable": {
         "title": "DataSourceType",
         "type": "string",
@@ -7803,7 +7942,6 @@
           "PNG",
           "JPEG",
           "MP3",
-          "MP4",
           "MP2",
           "AAC",
           "WAV",
@@ -7812,8 +7950,15 @@
           "M4A",
           "OGG",
           "OPUS",
-          "WEBM",
-          "MPEG"
+          "MPEG",
+          "MPG",
+          "MP4",
+          "WMV",
+          "AVI",
+          "MOV",
+          "MKV",
+          "FLV",
+          "WEBM"
         ],
         "nullable": true
       },
@@ -7872,9 +8017,7 @@
           "GITHUB",
           "JPG",
           "PNG",
-          "MPEG",
           "MP3",
-          "MP4",
           "MP2",
           "AAC",
           "WAV",
@@ -7883,6 +8026,14 @@
           "M4A",
           "OGG",
           "OPUS",
+          "MPEG",
+          "MPG",
+          "MP4",
+          "WMV",
+          "AVI",
+          "MOV",
+          "MKV",
+          "FLV",
           "WEBM"
         ],
         "nullable": true
@@ -7951,17 +8102,6 @@
             "weight_b": 0.7
           }
         ]
-      },
-      "FileContentTypesNullable": {
-        "title": "FileContentTypes",
-        "description": "Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also\n        plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,\n        then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed\n        for `embedding_model`.",
-        "type": "string",
-        "enum": [
-          "TEXT",
-          "IMAGE"
-        ],
-        "default": "TEXT",
-        "nullable": true
       },
       "ListItemsFiltersNullable": {
         "title": "ListItemsFilters",

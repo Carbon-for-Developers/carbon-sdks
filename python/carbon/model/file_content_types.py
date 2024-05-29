@@ -36,6 +36,8 @@ class FileContentTypes(
         enum_value_to_name = {
             "TEXT": "TEXT",
             "IMAGE": "IMAGE",
+            "AUDIO": "AUDIO",
+            "VIDEO": "VIDEO",
         }
     
     @schemas.classproperty
@@ -45,3 +47,11 @@ class FileContentTypes(
     @schemas.classproperty
     def IMAGE(cls):
         return cls("IMAGE")
+    
+    @schemas.classproperty
+    def AUDIO(cls):
+        return cls("AUDIO")
+    
+    @schemas.classproperty
+    def VIDEO(cls):
+        return cls("VIDEO")

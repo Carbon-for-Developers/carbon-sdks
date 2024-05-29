@@ -38,3 +38,11 @@ class FileContentTypes(
     @schemas.classproperty
     def IMAGE(cls):
         return cls("IMAGE")
+    
+    @schemas.classproperty
+    def AUDIO(cls):
+        return cls("AUDIO")
+    
+    @schemas.classproperty
+    def VIDEO(cls):
+        return cls("VIDEO")

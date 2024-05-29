@@ -297,6 +297,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'detect_audio_language'
             },
+            {
+                name: 'media_type'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -981,6 +984,10 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'global_user_config'
             },
+        ]
+    },
+    '/organization/statistics-POST': {
+        parameters: [
         ]
     },
     '/delete_users-POST': {

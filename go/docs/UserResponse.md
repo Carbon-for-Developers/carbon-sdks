@@ -13,6 +13,12 @@ Name | Type | Description | Notes
 **NumFilesSynced** | **int32** |  | 
 **NumCharactersSynced** | **int32** |  | 
 **NumTokensSynced** | **int32** |  | 
+**AggregateFileSize** | **map[string]interface{}** |  | 
+**AggregateNumCharacters** | **map[string]interface{}** |  | 
+**AggregateNumTokens** | **map[string]interface{}** |  | 
+**AggregateNumEmbeddings** | **map[string]interface{}** |  | 
+**AggregateNumFilesBySource** | **map[string]interface{}** |  | 
+**AggregateNumFilesByFileFormat** | **map[string]interface{}** |  | 
 **UniqueFileTags** | **[]map[string]interface{}** |  | 
 **EnabledFeatures** | **map[string]interface{}** |  | 
 **CustomLimits** | **map[string]interface{}** |  | [default to {}]
@@ -22,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewUserResponse
 
-`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, ) *UserResponse`
+`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, ) *UserResponse`
 
 NewUserResponse instantiates a new UserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -225,6 +231,126 @@ and a boolean to check if the value has been set.
 `func (o *UserResponse) SetNumTokensSynced(v int32)`
 
 SetNumTokensSynced sets NumTokensSynced field to given value.
+
+
+### GetAggregateFileSize
+
+`func (o *UserResponse) GetAggregateFileSize() map[string]interface{}`
+
+GetAggregateFileSize returns the AggregateFileSize field if non-nil, zero value otherwise.
+
+### GetAggregateFileSizeOk
+
+`func (o *UserResponse) GetAggregateFileSizeOk() (*map[string]interface{}, bool)`
+
+GetAggregateFileSizeOk returns a tuple with the AggregateFileSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateFileSize
+
+`func (o *UserResponse) SetAggregateFileSize(v map[string]interface{})`
+
+SetAggregateFileSize sets AggregateFileSize field to given value.
+
+
+### GetAggregateNumCharacters
+
+`func (o *UserResponse) GetAggregateNumCharacters() map[string]interface{}`
+
+GetAggregateNumCharacters returns the AggregateNumCharacters field if non-nil, zero value otherwise.
+
+### GetAggregateNumCharactersOk
+
+`func (o *UserResponse) GetAggregateNumCharactersOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumCharactersOk returns a tuple with the AggregateNumCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumCharacters
+
+`func (o *UserResponse) SetAggregateNumCharacters(v map[string]interface{})`
+
+SetAggregateNumCharacters sets AggregateNumCharacters field to given value.
+
+
+### GetAggregateNumTokens
+
+`func (o *UserResponse) GetAggregateNumTokens() map[string]interface{}`
+
+GetAggregateNumTokens returns the AggregateNumTokens field if non-nil, zero value otherwise.
+
+### GetAggregateNumTokensOk
+
+`func (o *UserResponse) GetAggregateNumTokensOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumTokensOk returns a tuple with the AggregateNumTokens field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumTokens
+
+`func (o *UserResponse) SetAggregateNumTokens(v map[string]interface{})`
+
+SetAggregateNumTokens sets AggregateNumTokens field to given value.
+
+
+### GetAggregateNumEmbeddings
+
+`func (o *UserResponse) GetAggregateNumEmbeddings() map[string]interface{}`
+
+GetAggregateNumEmbeddings returns the AggregateNumEmbeddings field if non-nil, zero value otherwise.
+
+### GetAggregateNumEmbeddingsOk
+
+`func (o *UserResponse) GetAggregateNumEmbeddingsOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumEmbeddingsOk returns a tuple with the AggregateNumEmbeddings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumEmbeddings
+
+`func (o *UserResponse) SetAggregateNumEmbeddings(v map[string]interface{})`
+
+SetAggregateNumEmbeddings sets AggregateNumEmbeddings field to given value.
+
+
+### GetAggregateNumFilesBySource
+
+`func (o *UserResponse) GetAggregateNumFilesBySource() map[string]interface{}`
+
+GetAggregateNumFilesBySource returns the AggregateNumFilesBySource field if non-nil, zero value otherwise.
+
+### GetAggregateNumFilesBySourceOk
+
+`func (o *UserResponse) GetAggregateNumFilesBySourceOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumFilesBySourceOk returns a tuple with the AggregateNumFilesBySource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumFilesBySource
+
+`func (o *UserResponse) SetAggregateNumFilesBySource(v map[string]interface{})`
+
+SetAggregateNumFilesBySource sets AggregateNumFilesBySource field to given value.
+
+
+### GetAggregateNumFilesByFileFormat
+
+`func (o *UserResponse) GetAggregateNumFilesByFileFormat() map[string]interface{}`
+
+GetAggregateNumFilesByFileFormat returns the AggregateNumFilesByFileFormat field if non-nil, zero value otherwise.
+
+### GetAggregateNumFilesByFileFormatOk
+
+`func (o *UserResponse) GetAggregateNumFilesByFileFormatOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumFilesByFileFormatOk returns a tuple with the AggregateNumFilesByFileFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumFilesByFileFormat
+
+`func (o *UserResponse) SetAggregateNumFilesByFileFormat(v map[string]interface{})`
+
+SetAggregateNumFilesByFileFormat sets AggregateNumFilesByFileFormat field to given value.
 
 
 ### GetUniqueFileTags

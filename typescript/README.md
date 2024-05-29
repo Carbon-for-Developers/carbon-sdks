@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.1.37-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.1.37)
+[![npm](https://img.shields.io/badge/npm-v0.2.0-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.0)
 
 </div>
 
@@ -62,6 +62,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
+  * [`carbon.organizations.updateStats`](#carbonorganizationsupdatestats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
@@ -979,6 +980,7 @@ const uploadResponse = await carbon.files.upload({
   prependFilenameToChunks: false,
   parsePdfTablesWithOcr: false,
   detectAudioLanguage: false,
+  mediaType: "TEXT",
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1030,6 +1032,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 ##### detectAudioLanguage: `boolean`<a id="detectaudiolanguage-boolean"></a>
 
 Whether to automatically detect the language of the uploaded audio file.
+
+##### mediaType: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="mediatype-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
+
+The media type of the file. If not provided, it will be inferred from the file extension.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1412,7 +1418,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "eb3e536e-fa3e-4f8e-9a22-25f70393e759",
+  request_id: "273420dd-e05c-463f-a3cf-0ff28029639e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1481,7 +1487,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1735,7 +1741,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
+  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1843,7 +1849,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
+  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2418,6 +2424,32 @@ const updateResponse = await carbon.organizations.update({});
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization/update` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.organizations.updateStats`<a id="carbonorganizationsupdatestats"></a>
+
+Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const updateStatsResponse = await carbon.organizations.updateStats();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization/statistics` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
