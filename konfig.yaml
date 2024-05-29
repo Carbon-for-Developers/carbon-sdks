@@ -29,6 +29,16 @@ securitySchemeOverride:
       name: customer-id
       in: header
 generators:
+  java:
+    version: 0.1.0
+    groupId: com.konfigthis.carbonai
+    artifactId: carbonai-java-sdk
+    clientName: Carbon
+    outputDirectory: java
+    readmeSnippet: snippets/javaReadmeGettingStartedSnippet.java
+    git:
+      userId: Carbon-for-Developers
+      repoId: carbon-sdks/tree/main/java
   go:
     version: 0.2.1
     packageName: carbon
