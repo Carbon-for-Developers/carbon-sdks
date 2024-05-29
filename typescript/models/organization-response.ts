@@ -79,6 +79,24 @@ export interface OrganizationResponse {
     'aggregate_num_embeddings': object;
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
+    'aggregate_num_files_by_source': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
+    'aggregate_num_files_by_file_format': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationResponse
+     */
+    'file_statistics_aggregated_at': string | null;
+    /**
+     * 
      * @type {string}
      * @memberof OrganizationResponse
      */

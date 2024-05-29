@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type FileContentTypes = 'TEXT' | 'IMAGE'
+export type FileContentTypes = 'TEXT' | 'IMAGE' | 'AUDIO' | 'VIDEO'
 

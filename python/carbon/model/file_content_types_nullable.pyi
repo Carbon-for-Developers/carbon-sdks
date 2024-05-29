@@ -44,6 +44,8 @@ class FileContentTypesNullable(
         enum_value_to_name = {
             "TEXT": "TEXT",
             "IMAGE": "IMAGE",
+            "AUDIO": "AUDIO",
+            "VIDEO": "VIDEO",
         }
     
     @schemas.classproperty
@@ -53,6 +55,14 @@ class FileContentTypesNullable(
     @schemas.classproperty
     def IMAGE(cls):
         return cls("IMAGE")
+    
+    @schemas.classproperty
+    def AUDIO(cls):
+        return cls("AUDIO")
+    
+    @schemas.classproperty
+    def VIDEO(cls):
+        return cls("VIDEO")
 
 
     def __new__(

@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.webhook_status import WebhookStatus
 
 class WebhookNoKey(BaseModel):
     id: int = Field(alias='id')
@@ -22,6 +23,10 @@ class WebhookNoKey(BaseModel):
     organization_id: int = Field(alias='organization_id')
 
     url: str = Field(alias='url')
+
+    status: WebhookStatus = Field(alias='status')
+
+    status_reason: typing.Optional[str] = Field(alias='status_reason')
 
     created_at: datetime = Field(alias='created_at')
 

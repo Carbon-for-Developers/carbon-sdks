@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **AggregateNumCharacters** | **map[string]interface{}** |  | 
 **AggregateNumTokens** | **map[string]interface{}** |  | 
 **AggregateNumEmbeddings** | **map[string]interface{}** |  | 
+**AggregateNumFilesBySource** | **map[string]interface{}** |  | 
+**AggregateNumFilesByFileFormat** | **map[string]interface{}** |  | 
+**FileStatisticsAggregatedAt** | **NullableTime** |  | 
 **PeriodEndsAt** | **NullableTime** |  | 
 **CancelAtPeriodEnd** | **NullableBool** |  | 
 **GlobalUserConfig** | **map[string]interface{}** |  | [default to {}]
@@ -24,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
+`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -269,6 +272,76 @@ and a boolean to check if the value has been set.
 SetAggregateNumEmbeddings sets AggregateNumEmbeddings field to given value.
 
 
+### GetAggregateNumFilesBySource
+
+`func (o *OrganizationResponse) GetAggregateNumFilesBySource() map[string]interface{}`
+
+GetAggregateNumFilesBySource returns the AggregateNumFilesBySource field if non-nil, zero value otherwise.
+
+### GetAggregateNumFilesBySourceOk
+
+`func (o *OrganizationResponse) GetAggregateNumFilesBySourceOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumFilesBySourceOk returns a tuple with the AggregateNumFilesBySource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumFilesBySource
+
+`func (o *OrganizationResponse) SetAggregateNumFilesBySource(v map[string]interface{})`
+
+SetAggregateNumFilesBySource sets AggregateNumFilesBySource field to given value.
+
+
+### GetAggregateNumFilesByFileFormat
+
+`func (o *OrganizationResponse) GetAggregateNumFilesByFileFormat() map[string]interface{}`
+
+GetAggregateNumFilesByFileFormat returns the AggregateNumFilesByFileFormat field if non-nil, zero value otherwise.
+
+### GetAggregateNumFilesByFileFormatOk
+
+`func (o *OrganizationResponse) GetAggregateNumFilesByFileFormatOk() (*map[string]interface{}, bool)`
+
+GetAggregateNumFilesByFileFormatOk returns a tuple with the AggregateNumFilesByFileFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregateNumFilesByFileFormat
+
+`func (o *OrganizationResponse) SetAggregateNumFilesByFileFormat(v map[string]interface{})`
+
+SetAggregateNumFilesByFileFormat sets AggregateNumFilesByFileFormat field to given value.
+
+
+### GetFileStatisticsAggregatedAt
+
+`func (o *OrganizationResponse) GetFileStatisticsAggregatedAt() time.Time`
+
+GetFileStatisticsAggregatedAt returns the FileStatisticsAggregatedAt field if non-nil, zero value otherwise.
+
+### GetFileStatisticsAggregatedAtOk
+
+`func (o *OrganizationResponse) GetFileStatisticsAggregatedAtOk() (*time.Time, bool)`
+
+GetFileStatisticsAggregatedAtOk returns a tuple with the FileStatisticsAggregatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileStatisticsAggregatedAt
+
+`func (o *OrganizationResponse) SetFileStatisticsAggregatedAt(v time.Time)`
+
+SetFileStatisticsAggregatedAt sets FileStatisticsAggregatedAt field to given value.
+
+
+### SetFileStatisticsAggregatedAtNil
+
+`func (o *OrganizationResponse) SetFileStatisticsAggregatedAtNil(b bool)`
+
+ SetFileStatisticsAggregatedAtNil sets the value for FileStatisticsAggregatedAt to be an explicit nil
+
+### UnsetFileStatisticsAggregatedAt
+`func (o *OrganizationResponse) UnsetFileStatisticsAggregatedAt()`
+
+UnsetFileStatisticsAggregatedAt ensures that no value is present for FileStatisticsAggregatedAt, not even an explicit nil
 ### GetPeriodEndsAt
 
 `func (o *OrganizationResponse) GetPeriodEndsAt() time.Time`

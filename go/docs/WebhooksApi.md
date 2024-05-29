@@ -51,6 +51,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.OrganizationId`: %v\n", resp.OrganizationId)
     fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.Url`: %v\n", resp.Url)
     fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.SigningKey`: %v\n", resp.SigningKey)
+    fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.Status`: %v\n", resp.Status)
+    fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.StatusReason`: %v\n", resp.StatusReason)
     fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Webhook.AddUrl.UpdatedAt`: %v\n", resp.UpdatedAt)
 }

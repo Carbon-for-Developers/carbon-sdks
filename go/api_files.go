@@ -1661,6 +1661,7 @@ type FilesApiUploadRequest struct {
 	maxItemsPerChunk *int32
 	parsePdfTablesWithOcr *bool
 	detectAudioLanguage *bool
+	mediaType *FileContentTypesNullable
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -1726,6 +1727,12 @@ func (r *FilesApiUploadRequest) ParsePdfTablesWithOcr(parsePdfTablesWithOcr bool
 // Whether to automatically detect the language of the uploaded audio file.
 func (r *FilesApiUploadRequest) DetectAudioLanguage(detectAudioLanguage bool) *FilesApiUploadRequest {
 	r.detectAudioLanguage = &detectAudioLanguage
+	return r
+}
+
+// The media type of the file. If not provided, it will be inferred from the file extension.
+func (r *FilesApiUploadRequest) MediaType(mediaType FileContentTypesNullable) *FilesApiUploadRequest {
+	r.mediaType = &mediaType
 	return r
 }
 
@@ -1829,6 +1836,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.detectAudioLanguage != nil {
 		localVarQueryParams.Add("detect_audio_language", parameterToString(*r.detectAudioLanguage, ""))
+	}
+	if r.mediaType != nil {
+		localVarQueryParams.Add("media_type", parameterToString(*r.mediaType, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

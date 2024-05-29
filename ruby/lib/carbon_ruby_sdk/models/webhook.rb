@@ -19,6 +19,10 @@ module Carbon
 
     attr_accessor :signing_key
 
+    attr_accessor :status
+
+    attr_accessor :status_reason
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -30,6 +34,8 @@ module Carbon
         :'organization_id' => :'organization_id',
         :'url' => :'url',
         :'signing_key' => :'signing_key',
+        :'status' => :'status',
+        :'status_reason' => :'status_reason',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -47,6 +53,8 @@ module Carbon
         :'organization_id' => :'Integer',
         :'url' => :'String',
         :'signing_key' => :'String',
+        :'status' => :'WebhookStatus',
+        :'status_reason' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -55,6 +63,7 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'status_reason',
       ])
     end
 
@@ -89,6 +98,14 @@ module Carbon
         self.signing_key = attributes[:'signing_key']
       end
 
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'status_reason')
+        self.status_reason = attributes[:'status_reason']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -118,6 +135,10 @@ module Carbon
         invalid_properties.push('invalid value for "signing_key", signing_key cannot be nil.')
       end
 
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -136,6 +157,7 @@ module Carbon
       return false if @organization_id.nil?
       return false if @url.nil?
       return false if @signing_key.nil?
+      return false if @status.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -150,6 +172,8 @@ module Carbon
           organization_id == o.organization_id &&
           url == o.url &&
           signing_key == o.signing_key &&
+          status == o.status &&
+          status_reason == o.status_reason &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -163,7 +187,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, url, signing_key, created_at, updated_at].hash
+      [id, organization_id, url, signing_key, status, status_reason, created_at, updated_at].hash
     end
 
     # Builds the object from hash

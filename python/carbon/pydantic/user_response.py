@@ -37,6 +37,18 @@ class UserResponse(BaseModel):
 
     num_tokens_synced: int = Field(alias='num_tokens_synced')
 
+    aggregate_file_size: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_file_size')
+
+    aggregate_num_characters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_characters')
+
+    aggregate_num_tokens: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_tokens')
+
+    aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_embeddings')
+
+    aggregate_num_files_by_source: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_files_by_source')
+
+    aggregate_num_files_by_file_format: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_num_files_by_file_format')
+
     unique_file_tags: UserResponseUniqueFileTags = Field(alias='unique_file_tags')
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='enabled_features')

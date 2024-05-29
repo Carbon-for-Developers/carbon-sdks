@@ -37,19 +37,47 @@ class WebhookNoKey(
             "organization_id",
             "created_at",
             "id",
+            "status_reason",
             "url",
+            "status",
         }
         
         class properties:
             id = schemas.IntSchema
             organization_id = schemas.IntSchema
             url = schemas.StrSchema
+        
+            @staticmethod
+            def status() -> typing.Type['WebhookStatus']:
+                return WebhookStatus
+            
+            
+            class status_reason(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'status_reason':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
                 "id": id,
                 "organization_id": organization_id,
                 "url": url,
+                "status": status,
+                "status_reason": status_reason,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -58,7 +86,9 @@ class WebhookNoKey(
     organization_id: MetaOapg.properties.organization_id
     created_at: MetaOapg.properties.created_at
     id: MetaOapg.properties.id
+    status_reason: MetaOapg.properties.status_reason
     url: MetaOapg.properties.url
+    status: 'WebhookStatus'
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -70,6 +100,12 @@ class WebhookNoKey(
     def __getitem__(self, name: typing_extensions.Literal["url"]) -> MetaOapg.properties.url: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["status"]) -> 'WebhookStatus': ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["status_reason"]) -> MetaOapg.properties.status_reason: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -78,7 +114,7 @@ class WebhookNoKey(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "url", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "url", "status", "status_reason", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -93,6 +129,12 @@ class WebhookNoKey(
     def get_item_oapg(self, name: typing_extensions.Literal["url"]) -> MetaOapg.properties.url: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["status"]) -> 'WebhookStatus': ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["status_reason"]) -> MetaOapg.properties.status_reason: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -101,7 +143,7 @@ class WebhookNoKey(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "url", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "organization_id", "url", "status", "status_reason", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -112,7 +154,9 @@ class WebhookNoKey(
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
+        status_reason: typing.Union[MetaOapg.properties.status_reason, None, str, ],
         url: typing.Union[MetaOapg.properties.url, str, ],
+        status: 'WebhookStatus',
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WebhookNoKey':
@@ -123,7 +167,11 @@ class WebhookNoKey(
             organization_id=organization_id,
             created_at=created_at,
             id=id,
+            status_reason=status_reason,
             url=url,
+            status=status,
             _configuration=_configuration,
             **kwargs,
         )
+
+from carbon.model.webhook_status import WebhookStatus

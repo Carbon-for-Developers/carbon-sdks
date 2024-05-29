@@ -35,6 +35,7 @@ class PathValues(str, enum.Enum):
     UPLOAD_CHUNKS_AND_EMBEDDINGS = "/upload_chunks_and_embeddings"
     ORGANIZATION = "/organization"
     ORGANIZATION_UPDATE = "/organization/update"
+    ORGANIZATION_STATISTICS = "/organization/statistics"
     USER = "/user"
     MODIFY_USER_CONFIGURATION = "/modify_user_configuration"
     DELETE_USERS = "/delete_users"

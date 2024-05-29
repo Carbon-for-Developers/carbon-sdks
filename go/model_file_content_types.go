@@ -22,12 +22,16 @@ type FileContentTypes string
 const (
 	FILECONTENTTYPES_TEXT FileContentTypes = "TEXT"
 	FILECONTENTTYPES_IMAGE FileContentTypes = "IMAGE"
+	FILECONTENTTYPES_AUDIO FileContentTypes = "AUDIO"
+	FILECONTENTTYPES_VIDEO FileContentTypes = "VIDEO"
 )
 
 // All allowed values of FileContentTypes enum
 var AllowedFileContentTypesEnumValues = []FileContentTypes{
 	"TEXT",
 	"IMAGE",
+	"AUDIO",
+	"VIDEO",
 }
 
 func (v *FileContentTypes) UnmarshalJSON(src []byte) error {

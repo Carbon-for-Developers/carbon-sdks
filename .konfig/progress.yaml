@@ -128,6 +128,8 @@ operationIds:
     post: Users_toggleUserFeatures
   /organization:
     get: Organizations_get
+  /organization/statistics:
+    post: Organizations_updateStats
   /organization/update:
     post: Organizations_update
   /parsed_file/{file_id}:
@@ -244,6 +246,8 @@ securityParameters:
   id:
     query: false
   max_items_per_chunk:
+    query: false
+  media_type:
     query: false
   page:
     query: false

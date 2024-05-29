@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type FileContentTypesNullable = 'TEXT' | 'IMAGE'
+export type FileContentTypesNullable = 'TEXT' | 'IMAGE' | 'AUDIO' | 'VIDEO'
 

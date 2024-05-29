@@ -247,6 +247,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.MaxItemsPerChunk(56)
         request.ParsePdfTablesWithOcr(false)
         request.DetectAudioLanguage(false)
+        request.MediaType()
         
         resp, httpRes, err := request.Execute()
 

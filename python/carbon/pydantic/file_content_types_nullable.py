@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
-FileContentTypesNullable = Literal["TEXT", "IMAGE"]
+FileContentTypesNullable = Literal["TEXT", "IMAGE", "AUDIO", "VIDEO"]

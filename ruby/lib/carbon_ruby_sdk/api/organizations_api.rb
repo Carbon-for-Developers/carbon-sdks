@@ -177,6 +177,89 @@ module Carbon
       end
       APIResponse::new(data, status_code, headers, response)
     end
+
+
+    # Update Organization Statistics
+    #
+    # Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+    # process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+    # process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+    # endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+    #
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update_stats(extra: {})
+      api_response = update_stats_with_http_info_impl(extra)
+      api_response.data
+    end
+
+    # Update Organization Statistics
+    #
+    # Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+    # process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+    # process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+    # endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+    #
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def update_stats_with_http_info(extra: {})
+      update_stats_with_http_info_impl(extra)
+    end
+
+    # Update Organization Statistics
+    # Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def update_stats_impl(opts = {})
+      data, _status_code, _headers = update_stats_with_http_info(opts)
+      data
+    end
+
+    # Update Organization Statistics
+    # Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def update_stats_with_http_info_impl(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrganizationsApi.update_stats ...'
+      end
+      # resource path
+      local_var_path = '/organization/statistics'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['apiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrganizationsApi.update_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrganizationsApi#update_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
   end
 
   # top-level client access to avoid having the user to insantiate their own API instances

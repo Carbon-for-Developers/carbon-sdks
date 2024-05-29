@@ -291,6 +291,9 @@ operation_parameter_map = {
             {
                 'name': 'detect_audio_language'
             },
+            {
+                'name': 'media_type'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -975,6 +978,10 @@ operation_parameter_map = {
             {
                 'name': 'global_user_config'
             },
+        ]
+    },
+    '/organization/statistics-POST': {
+        'parameters': [
         ]
     },
     '/delete_users-POST': {

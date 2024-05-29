@@ -39,9 +39,7 @@ module Carbon
     GITHUB = "GITHUB".freeze
     JPG = "JPG".freeze
     PNG = "PNG".freeze
-    MPEG = "MPEG".freeze
     MP3 = "MP3".freeze
-    MP4 = "MP4".freeze
     MP2 = "MP2".freeze
     AAC = "AAC".freeze
     WAV = "WAV".freeze
@@ -50,10 +48,18 @@ module Carbon
     M4_A = "M4A".freeze
     OGG = "OGG".freeze
     OPUS = "OPUS".freeze
+    MPEG = "MPEG".freeze
+    MPG = "MPG".freeze
+    MP4 = "MP4".freeze
+    WMV = "WMV".freeze
+    AVI = "AVI".freeze
+    MOV = "MOV".freeze
+    MKV = "MKV".freeze
+    FLV = "FLV".freeze
     WEBM = "WEBM".freeze
 
     def self.all_vars
-      @all_vars ||= [TXT, CSV, TSV, PDF, DOCX, PPTX, XLSX, MD, RTF, JSON, HTML, NOTION, GOOGLE_DOCS, GOOGLE_SHEETS, GOOGLE_SLIDES, INTERCOM, CONFLUENCE, RSS_FEED, GMAIL, OUTLOOK, ZENDESK, FRESHDESK, WEB_SCRAPE, GITBOOK, SALESFORCE, GITHUB, JPG, PNG, MPEG, MP3, MP4, MP2, AAC, WAV, FLAC, PCM, M4_A, OGG, OPUS, WEBM].freeze
+      @all_vars ||= [TXT, CSV, TSV, PDF, DOCX, PPTX, XLSX, MD, RTF, JSON, HTML, NOTION, GOOGLE_DOCS, GOOGLE_SHEETS, GOOGLE_SLIDES, INTERCOM, CONFLUENCE, RSS_FEED, GMAIL, OUTLOOK, ZENDESK, FRESHDESK, WEB_SCRAPE, GITBOOK, SALESFORCE, GITHUB, JPG, PNG, MP3, MP2, AAC, WAV, FLAC, PCM, M4_A, OGG, OPUS, MPEG, MPG, MP4, WMV, AVI, MOV, MKV, FLV, WEBM].freeze
     end
 
     # Builds the enum from string

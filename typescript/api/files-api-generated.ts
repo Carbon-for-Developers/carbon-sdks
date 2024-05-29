@@ -33,6 +33,8 @@ import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
 import { ExternalFileSyncStatuses } from '../models';
 // @ts-ignore
+import { FileContentTypesNullable } from '../models';
+// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -604,10 +606,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {number} [maxItemsPerChunk] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
          * @param {boolean} [parsePdfTablesWithOcr] Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
          * @param {boolean} [detectAudioLanguage] Whether to automatically detect the language of the uploaded audio file.
+         * @param {FileContentTypesNullable} [mediaType] The media type of the file. If not provided, it will be inferred from the file extension.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, mediaType?: FileContentTypesNullable, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -717,6 +720,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (detectAudioLanguage !== undefined) {
                 localVarQueryParameter['detect_audio_language'] = detectAudioLanguage;
+            }
+
+            if (mediaType !== undefined) {
+                localVarQueryParameter['media_type'] = mediaType;
             }
 
 
@@ -1031,7 +1038,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
                 file: requestParameters.file
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.mediaType, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1430,6 +1437,13 @@ export type FilesApiUploadRequest = {
     * @memberof FilesApiUpload
     */
     readonly detectAudioLanguage?: boolean
+    
+    /**
+    * The media type of the file. If not provided, it will be inferred from the file extension.
+    * @type {FileContentTypesNullable}
+    * @memberof FilesApiUpload
+    */
+    readonly mediaType?: FileContentTypesNullable
     
 } & BodyCreateUploadFileUploadfilePost
 

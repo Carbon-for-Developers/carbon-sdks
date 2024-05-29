@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.1.34-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.1.34)
+[![npm](https://img.shields.io/badge/gem-v0.2.0-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.0)
 
 </div>
 
@@ -63,6 +63,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
+  * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
@@ -84,7 +85,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.1.34'
+gem 'carbon_ruby_sdk', '~> 0.2.0'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1002,6 +1003,7 @@ result = carbon.files.upload(
   max_items_per_chunk: 1,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  media_type: "TEXT",
 )
 p result
 ```
@@ -1046,6 +1048,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
 Whether to automatically detect the language of the uploaded audio file.
+
+##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
+The media type of the file. If not provided, it will be inferred from the file
+extension.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1208,7 +1214,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "18ef9025-4c76-443c-a115-ba77b17afd8b",
+        "request_id" => "f5552316-5da3-46e6-ad9f-2f94e30d02cd",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1427,7 +1433,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "eb3e536e-fa3e-4f8e-9a22-25f70393e759",
+  request_id: "273420dd-e05c-463f-a3cf-0ff28029639e",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1487,7 +1493,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
+SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1749,7 +1755,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
+  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1852,7 +1858,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "27036d05-9737-4197-b0c6-e9fb9f60f976",
+  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2402,6 +2408,33 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization/update` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.organizations.update_stats`<a id="carbonorganizationsupdate_stats"></a>
+
+Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.organizations.update_stats
+p result
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization/statistics` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

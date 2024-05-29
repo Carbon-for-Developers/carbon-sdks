@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.1.36-blue)](https://pypi.org/project/carbon-python-sdk/0.1.36)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.0-blue)](https://pypi.org/project/carbon-python-sdk/0.2.0)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -67,6 +67,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
+  * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
@@ -90,7 +91,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.1.36
+pip install carbon-python-sdk==0.2.0
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1102,6 +1103,7 @@ upload_response = carbon.files.upload(
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
+    media_type="TEXT",
 )
 ```
 
@@ -1152,6 +1154,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 ##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
 
 Whether to automatically detect the language of the uploaded audio file.
+
+##### media_type: [`FileContentTypesNullable`](./carbon/type/.py)<a id="media_type-filecontenttypesnullablecarbontypepy"></a>
+
+The media type of the file. If not provided, it will be inferred from the file extension.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1337,7 +1343,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "18ef9025-4c76-443c-a115-ba77b17afd8b",
+        "request_id": "f5552316-5da3-46e6-ad9f-2f94e30d02cd",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1590,7 +1596,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="eb3e536e-fa3e-4f8e-9a22-25f70393e759",
+    request_id="273420dd-e05c-463f-a3cf-0ff28029639e",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1664,7 +1670,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, SHAREPOINT, BOX
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1935,7 +1941,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="27036d05-9737-4197-b0c6-e9fb9f60f976",
+    request_id="2782cb96-1bf6-452c-a8d9-60c2378fd079",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2055,7 +2061,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="27036d05-9737-4197-b0c6-e9fb9f60f976",
+    request_id="2782cb96-1bf6-452c-a8d9-60c2378fd079",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2691,6 +2697,31 @@ update_response = carbon.organizations.update(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization/update` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.organizations.update_stats`<a id="carbonorganizationsupdate_stats"></a>
+
+Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
+process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
+process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
+endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+update_stats_response = carbon.organizations.update_stats()
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/organization/statistics` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

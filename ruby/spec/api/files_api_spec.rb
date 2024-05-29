@@ -158,6 +158,7 @@ describe 'FilesApi' do
   # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
   # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
   # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file.
+  # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
   # @return [UserFile]
   describe 'upload test' do
     it 'should work' do

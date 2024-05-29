@@ -73,6 +73,42 @@ describe Carbon::UserResponse do
     end
   end
 
+  describe 'test attribute "aggregate_file_size"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "aggregate_num_characters"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "aggregate_num_tokens"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "aggregate_num_embeddings"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "aggregate_num_files_by_source"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "aggregate_num_files_by_file_format"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "unique_file_tags"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

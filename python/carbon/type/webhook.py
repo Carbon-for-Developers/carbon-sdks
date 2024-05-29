@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.webhook_status import WebhookStatus
 
 class RequiredWebhook(TypedDict):
     id: int
@@ -23,6 +24,10 @@ class RequiredWebhook(TypedDict):
     url: str
 
     signing_key: str
+
+    status: WebhookStatus
+
+    status_reason: typing.Optional[str]
 
     created_at: datetime
 
