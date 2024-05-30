@@ -31,6 +31,8 @@ import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
+import { EmbeddingModel } from '../models';
+// @ts-ignore
 import { ExternalFileSyncStatuses } from '../models';
 // @ts-ignore
 import { FileContentTypesNullable } from '../models';
@@ -599,7 +601,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {number} [chunkOverlap] Chunk overlap in tiktoken tokens to be used when processing file.
          * @param {boolean} [skipEmbeddingGeneration] Flag to control whether or not embeddings should be generated and stored             when processing file.
          * @param {boolean} [setPageAsBoundary] Flag to control whether or not to set the a page\&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
-         * @param {TextEmbeddingGenerators} [embeddingModel] Embedding model that will be used to embed file chunks.
+         * @param {EmbeddingModel} [embeddingModel] Embedding model that will be used to embed file chunks.
          * @param {boolean} [useOcr] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
          * @param {boolean} [generateSparseVectors] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
          * @param {boolean} [prependFilenameToChunks] Whether or not to prepend the file\&#39;s name to chunks.
@@ -610,7 +612,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: TextEmbeddingGenerators, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, mediaType?: FileContentTypesNullable, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, mediaType?: FileContentTypesNullable, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -1391,10 +1393,10 @@ export type FilesApiUploadRequest = {
     
     /**
     * Embedding model that will be used to embed file chunks.
-    * @type {TextEmbeddingGenerators}
+    * @type {EmbeddingModel}
     * @memberof FilesApiUpload
     */
-    readonly embeddingModel?: TextEmbeddingGenerators
+    readonly embeddingModel?: EmbeddingModel
     
     /**
     * Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.0-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.0)
+[![npm](https://img.shields.io/badge/gem-v0.2.1-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.1)
 
 </div>
 
@@ -85,7 +85,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.0'
+gem 'carbon_ruby_sdk', '~> 0.2.1'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -996,7 +996,7 @@ result = carbon.files.upload(
   chunk_overlap: 1,
   skip_embedding_generation: false,
   set_page_as_boundary: false,
-  embedding_model: "OPENAI",
+  embedding_model: "string_example",
   use_ocr: false,
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
@@ -1026,7 +1026,7 @@ Flag to control whether or not to set the a page's worth of content as the
 maximum amount of content that can appear in a chunk. Only valid for PDFs. See
 description route description for more information.
 
-##### embedding_model: [`TextEmbeddingGenerators`](./lib/carbon_ruby_sdk/models/text_embedding_generators.rb)<a id="embedding_model-textembeddinggeneratorslibcarbon_ruby_sdkmodelstext_embedding_generatorsrb"></a>
+##### embedding_model: [`EmbeddingModel`](./lib/carbon_ruby_sdk/models/embedding_model.rb)<a id="embedding_model-embeddingmodellibcarbon_ruby_sdkmodelsembedding_modelrb"></a>
 Embedding model that will be used to embed file chunks.
 
 ##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
@@ -1214,7 +1214,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "f5552316-5da3-46e6-ad9f-2f94e30d02cd",
+        "request_id" => "fceb0182-329c-4e45-953b-885c747cf4a3",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1433,7 +1433,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "273420dd-e05c-463f-a3cf-0ff28029639e",
+  request_id: "ce1b1ec8-be64-491c-9159-c40f85fa0073",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1493,7 +1493,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
+DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1755,7 +1755,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
+  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1858,7 +1858,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
+  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

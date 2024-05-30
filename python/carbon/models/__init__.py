@@ -94,6 +94,7 @@ from carbon.model.list_items_filters_nullable_ids import ListItemsFiltersNullabl
 from carbon.model.list_request import ListRequest
 from carbon.model.list_response import ListResponse
 from carbon.model.modify_user_configuration_input import ModifyUserConfigurationInput
+from carbon.model.multi_modal_embedding_generators import MultiModalEmbeddingGenerators
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest

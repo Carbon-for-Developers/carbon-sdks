@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.0-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.0)
+[![npm](https://img.shields.io/badge/npm-v0.2.1-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.1)
 
 </div>
 
@@ -974,7 +974,6 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const uploadResponse = await carbon.files.upload({
   skipEmbeddingGeneration: false,
   setPageAsBoundary: false,
-  embeddingModel: "OPENAI",
   useOcr: false,
   generateSparseVectors: false,
   prependFilenameToChunks: false,
@@ -1005,7 +1004,7 @@ Flag to control whether or not embeddings should be generated and stored        
 
 Flag to control whether or not to set the a page\'s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
 
-##### embeddingModel: [`TextEmbeddingGenerators`](./models/text-embedding-generators.ts)<a id="embeddingmodel-textembeddinggeneratorsmodelstext-embedding-generatorsts"></a>
+##### embeddingModel: [`EmbeddingModel`](./models/embedding-model.ts)<a id="embeddingmodel-embeddingmodelmodelsembedding-modelts"></a>
 
 Embedding model that will be used to embed file chunks.
 
@@ -1418,7 +1417,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "273420dd-e05c-463f-a3cf-0ff28029639e",
+  request_id: "ce1b1ec8-be64-491c-9159-c40f85fa0073",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1487,7 +1486,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1741,7 +1740,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
+  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1849,7 +1848,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "2782cb96-1bf6-452c-a8d9-60c2378fd079",
+  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

@@ -1654,7 +1654,7 @@ type FilesApiUploadRequest struct {
 	chunkOverlap *int32
 	skipEmbeddingGeneration *bool
 	setPageAsBoundary *bool
-	embeddingModel *TextEmbeddingGenerators
+	embeddingModel *EmbeddingModel
 	useOcr *bool
 	generateSparseVectors *bool
 	prependFilenameToChunks *bool
@@ -1689,7 +1689,7 @@ func (r *FilesApiUploadRequest) SetPageAsBoundary(setPageAsBoundary bool) *Files
 }
 
 // Embedding model that will be used to embed file chunks.
-func (r *FilesApiUploadRequest) EmbeddingModel(embeddingModel TextEmbeddingGenerators) *FilesApiUploadRequest {
+func (r *FilesApiUploadRequest) EmbeddingModel(embeddingModel EmbeddingModel) *FilesApiUploadRequest {
 	r.embeddingModel = &embeddingModel
 	return r
 }

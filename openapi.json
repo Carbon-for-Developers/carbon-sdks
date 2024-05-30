@@ -1774,9 +1774,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/TextEmbeddingGenerators"
+                },
+                {
+                  "$ref": "#/components/schemas/MultiModalEmbeddingGenerators"
                 }
               ],
               "description": "Embedding model that will be used to embed file chunks.",
@@ -3343,7 +3346,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "f5552316-5da3-46e6-ad9f-2f94e30d02cd",
+              "request_id": "fceb0182-329c-4e45-953b-885c747cf4a3",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5536,6 +5539,11 @@
         ],
         "title": "ModifyUserConfigurationInput"
       },
+      "MultiModalEmbeddingGenerators": {
+        "type": "string",
+        "const": "VERTEX_MULTIMODAL",
+        "title": "MultiModalEmbeddingGenerators"
+      },
       "NotionAuthentication": {
         "properties": {
           "source": {
@@ -5798,7 +5806,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "273420dd-e05c-463f-a3cf-0ff28029639e"
+            "default": "ce1b1ec8-be64-491c-9159-c40f85fa0073"
           },
           "use_ocr": {
             "anyOf": [
@@ -5828,7 +5836,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE",
             "default": true
           },
           "sync_source_items": {
@@ -7830,7 +7838,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "2782cb96-1bf6-452c-a8d9-60c2378fd079"
+            "default": "9fe9190e-384f-4baa-a416-d51ed93d1be7"
           },
           "use_ocr": {
             "anyOf": [
@@ -7997,7 +8005,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "f5552316-5da3-46e6-ad9f-2f94e30d02cd"
+            "default": "fceb0182-329c-4e45-953b-885c747cf4a3"
           },
           "enable_file_picker": {
             "type": "boolean",
