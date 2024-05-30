@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.0)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.1)
 
 </div>
 
@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingAndChunk](docs/EmbeddingAndChunk.md)
  - [EmbeddingGenerators](docs/EmbeddingGenerators.md)
  - [EmbeddingGeneratorsNullable](docs/EmbeddingGeneratorsNullable.md)
+ - [EmbeddingModel](docs/EmbeddingModel.md)
  - [EmbeddingProperties](docs/EmbeddingProperties.md)
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)

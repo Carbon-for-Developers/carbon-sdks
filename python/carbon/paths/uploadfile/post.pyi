@@ -94,7 +94,44 @@ class ChunkOverlapSchema(
         )
 SkipEmbeddingGenerationSchema = schemas.BoolSchema
 SetPageAsBoundarySchema = schemas.BoolSchema
-EmbeddingModelSchema = TextEmbeddingGeneratorsSchema
+
+
+class EmbeddingModelSchema(
+    schemas.ComposedSchema,
+):
+
+
+    class MetaOapg:
+        any_of_1 = schemas.StrSchema
+        
+        @classmethod
+        @functools.lru_cache()
+        def any_of(cls):
+            # we need this here to make our import statements work
+            # we must store _composed_schemas in here so the code is only run
+            # when we invoke this method. If we kept this at the class
+            # level we would get an error because the class level
+            # code would be run when this module is imported, and these composed
+            # classes don't exist yet because their module has not finished
+            # loading
+            return [
+                TextEmbeddingGeneratorsSchema,
+                cls.any_of_1,
+            ]
+
+
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+    ) -> 'EmbeddingModelSchema':
+        return super().__new__(
+            cls,
+            *args,
+            _configuration=_configuration,
+            **kwargs,
+        )
 UseOcrSchema = schemas.BoolSchema
 GenerateSparseVectorsSchema = schemas.BoolSchema
 PrependFilenameToChunksSchema = schemas.BoolSchema
@@ -133,7 +170,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'chunk_overlap': typing.Union[ChunkOverlapSchema, None, decimal.Decimal, int, ],
         'skip_embedding_generation': typing.Union[SkipEmbeddingGenerationSchema, bool, ],
         'set_page_as_boundary': typing.Union[SetPageAsBoundarySchema, bool, ],
-        'embedding_model': typing.Union[EmbeddingModelSchema, ],
+        'embedding_model': typing.Union[EmbeddingModelSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         'use_ocr': typing.Union[UseOcrSchema, bool, ],
         'generate_sparse_vectors': typing.Union[GenerateSparseVectorsSchema, bool, ],
         'prepend_filename_to_chunks': typing.Union[PrependFilenameToChunksSchema, bool, ],
@@ -177,7 +214,7 @@ request_query_set_page_as_boundary = api_client.QueryParameter(
 request_query_embedding_model = api_client.QueryParameter(
     name="embedding_model",
     style=api_client.ParameterStyle.FORM,
-    schema=TextEmbeddingGeneratorsSchema,
+    schema=EmbeddingModelSchema,
     explode=True,
 )
 request_query_use_ocr = api_client.QueryParameter(
@@ -289,7 +326,7 @@ class BaseApi(api_client.Api):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -594,7 +631,7 @@ class UploadRaw(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -636,7 +673,7 @@ class UploadRaw(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -677,7 +714,7 @@ class Upload(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -716,7 +753,7 @@ class Upload(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -756,7 +793,7 @@ class ApiForpost(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -798,7 +835,7 @@ class ApiForpost(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[TextEmbeddingGenerators] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,

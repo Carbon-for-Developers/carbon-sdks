@@ -685,7 +685,7 @@ func main() {
     request.ChunkOverlap(56)
     request.SkipEmbeddingGeneration(false)
     request.SetPageAsBoundary(false)
-    request.EmbeddingModel()
+    request.EmbeddingModel(embeddingModel)
     request.UseOcr(false)
     request.GenerateSparseVectors(false)
     request.PrependFilenameToChunks(false)

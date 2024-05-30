@@ -1166,7 +1166,7 @@ module Carbon
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
     # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored when processing file.
     # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page's worth of content as the maximum amount of content that can appear in a chunk. Only valid for PDFs. See description route description for more information.
-    # @param embedding_model [TextEmbeddingGenerators] Embedding model that will be used to embed file chunks.
+    # @param embedding_model [EmbeddingModel] Embedding model that will be used to embed file chunks.
     # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
     # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
@@ -1176,7 +1176,7 @@ module Carbon
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, media_type: 'TEXT', extra: {})
+    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, media_type: 'TEXT', extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1229,7 +1229,7 @@ module Carbon
     # @param chunk_overlap [Integer] Chunk overlap in tiktoken tokens to be used when processing file.
     # @param skip_embedding_generation [Boolean] Flag to control whether or not embeddings should be generated and stored when processing file.
     # @param set_page_as_boundary [Boolean] Flag to control whether or not to set the a page's worth of content as the maximum amount of content that can appear in a chunk. Only valid for PDFs. See description route description for more information.
-    # @param embedding_model [TextEmbeddingGenerators] Embedding model that will be used to embed file chunks.
+    # @param embedding_model [EmbeddingModel] Embedding model that will be used to embed file chunks.
     # @param use_ocr [Boolean] Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with tables, images, and/or scanned text.
     # @param generate_sparse_vectors [Boolean] Whether or not to generate sparse vectors for the file. This is *required* for the file to be a candidate for hybrid search.
     # @param prepend_filename_to_chunks [Boolean] Whether or not to prepend the file's name to chunks.
@@ -1239,7 +1239,7 @@ module Carbon
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: SENTINEL, use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, media_type: 'TEXT', extra: {})
+    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, media_type: 'TEXT', extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1267,7 +1267,7 @@ module Carbon
     # @option opts [Integer] :chunk_overlap Chunk overlap in tiktoken tokens to be used when processing file.
     # @option opts [Boolean] :skip_embedding_generation Flag to control whether or not embeddings should be generated and stored             when processing file. (default to false)
     # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
-    # @option opts [TextEmbeddingGenerators] :embedding_model Embedding model that will be used to embed file chunks.
+    # @option opts [EmbeddingModel] :embedding_model Embedding model that will be used to embed file chunks. (default to 'OPENAI')
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)
@@ -1290,7 +1290,7 @@ module Carbon
     # @option opts [Integer] :chunk_overlap Chunk overlap in tiktoken tokens to be used when processing file.
     # @option opts [Boolean] :skip_embedding_generation Flag to control whether or not embeddings should be generated and stored             when processing file. (default to false)
     # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (default to false)
-    # @option opts [TextEmbeddingGenerators] :embedding_model Embedding model that will be used to embed file chunks.
+    # @option opts [EmbeddingModel] :embedding_model Embedding model that will be used to embed file chunks. (default to 'OPENAI')
     # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (default to false)
     # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (default to false)
     # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file's name to chunks. (default to false)

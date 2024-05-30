@@ -23,6 +23,7 @@ export * from './document-response-list';
 export * from './embedding-and-chunk';
 export * from './embedding-generators';
 export * from './embedding-generators-nullable';
+export * from './embedding-model';
 export * from './embedding-properties';
 export * from './embeddings-and-chunks-filters';
 export * from './embeddings-and-chunks-order-by-columns';

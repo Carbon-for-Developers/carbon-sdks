@@ -151,7 +151,7 @@ describe 'FilesApi' do
   # @option opts [Integer] :chunk_overlap Chunk overlap in tiktoken tokens to be used when processing file.
   # @option opts [Boolean] :skip_embedding_generation Flag to control whether or not embeddings should be generated and stored             when processing file.
   # @option opts [Boolean] :set_page_as_boundary Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
-  # @option opts [TextEmbeddingGenerators] :embedding_model Embedding model that will be used to embed file chunks.
+  # @option opts [EmbeddingModel] :embedding_model Embedding model that will be used to embed file chunks.
   # @option opts [Boolean] :use_ocr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
   # @option opts [Boolean] :generate_sparse_vectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
   # @option opts [Boolean] :prepend_filename_to_chunks Whether or not to prepend the file&#39;s name to chunks.
