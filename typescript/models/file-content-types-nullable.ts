@@ -12,7 +12,7 @@ import type * as buffer from "buffer"
 
 
 /**
- * Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also         plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,         then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed         for `embedding_model`.
+ * 
  * @export
  * @enum {string}
  */

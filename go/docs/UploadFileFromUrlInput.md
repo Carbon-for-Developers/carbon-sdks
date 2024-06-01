@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **ParsePdfTablesWithOcr** | Pointer to **bool** |  | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** |  | [optional] [default to false]
+**MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -397,6 +398,41 @@ SetDetectAudioLanguage sets DetectAudioLanguage field to given value.
 
 HasDetectAudioLanguage returns a boolean if a field has been set.
 
+### GetMediaType
+
+`func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable`
+
+GetMediaType returns the MediaType field if non-nil, zero value otherwise.
+
+### GetMediaTypeOk
+
+`func (o *UploadFileFromUrlInput) GetMediaTypeOk() (*FileContentTypesNullable, bool)`
+
+GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaType
+
+`func (o *UploadFileFromUrlInput) SetMediaType(v FileContentTypesNullable)`
+
+SetMediaType sets MediaType field to given value.
+
+### HasMediaType
+
+`func (o *UploadFileFromUrlInput) HasMediaType() bool`
+
+HasMediaType returns a boolean if a field has been set.
+
+### SetMediaTypeNil
+
+`func (o *UploadFileFromUrlInput) SetMediaTypeNil(b bool)`
+
+ SetMediaTypeNil sets the value for MediaType to be an explicit nil
+
+### UnsetMediaType
+`func (o *UploadFileFromUrlInput) UnsetMediaType()`
+
+UnsetMediaType ensures that no value is present for MediaType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1064,7 +1064,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
-                detect_audio_language: requestParameters.detect_audio_language
+                detect_audio_language: requestParameters.detect_audio_language,
+                media_type: requestParameters.media_type
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

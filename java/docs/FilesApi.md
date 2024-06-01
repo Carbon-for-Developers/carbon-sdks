@@ -1288,7 +1288,7 @@ public class Example {
 | **maxItemsPerChunk** | **Integer**| Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] |
 | **parsePdfTablesWithOcr** | **Boolean**| Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled. | [optional] [default to false] |
 | **detectAudioLanguage** | **Boolean**| Whether to automatically detect the language of the uploaded audio file. | [optional] [default to false] |
-| **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [default to TEXT] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
+| **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
 
 ### Return type
 
@@ -1352,6 +1352,7 @@ public class Example {
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean parsePdfTablesWithOcr = false;
     Boolean detectAudioLanguage = false;
+    FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT");
     try {
       UserFile result = client
               .files
@@ -1368,6 +1369,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .mediaType(mediaType)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1427,6 +1429,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .mediaType(mediaType)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

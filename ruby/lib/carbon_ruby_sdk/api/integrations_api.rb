@@ -16,6 +16,98 @@ module Carbon
       @api_client = api_client
     end
 
+    # Cancel Data Source Items Sync
+    #
+    # @param data_source_id [Integer] 
+    # @param body [SyncDirectoryRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def cancel(data_source_id:, extra: {})
+      _body = {}
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      sync_directory_request = _body
+      api_response = cancel_with_http_info_impl(sync_directory_request, extra)
+      api_response.data
+    end
+
+    # Cancel Data Source Items Sync
+    #
+    # @param data_source_id [Integer] 
+    # @param body [SyncDirectoryRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def cancel_with_http_info(data_source_id:, extra: {})
+      _body = {}
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      sync_directory_request = _body
+      cancel_with_http_info_impl(sync_directory_request, extra)
+    end
+
+    # Cancel Data Source Items Sync
+    # @param sync_directory_request [SyncDirectoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [OrganizationUserDataSourceAPI]
+    private def cancel_impl(sync_directory_request, opts = {})
+      data, _status_code, _headers = cancel_with_http_info(sync_directory_request, opts)
+      data
+    end
+
+    # Cancel Data Source Items Sync
+    # @param sync_directory_request [SyncDirectoryRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is OrganizationUserDataSourceAPI, status code, headers and response
+    private def cancel_with_http_info_impl(sync_directory_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.cancel ...'
+      end
+      # verify the required parameter 'sync_directory_request' is set
+      if @api_client.config.client_side_validation && sync_directory_request.nil?
+        fail ArgumentError, "Missing the required parameter 'sync_directory_request' when calling IntegrationsApi.cancel"
+      end
+      # resource path
+      local_var_path = '/integrations/items/sync/cancel'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sync_directory_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrganizationUserDataSourceAPI'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.cancel",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#cancel\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Connect Data Source
     #
     # @param authentication [AuthenticationProperty] 
@@ -561,13 +653,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'ce1b1ec8-be64-491c-9159-c40f85fa0073', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '2e662fad-1193-4482-a2d7-ec7b821a9d2b', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -629,13 +721,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'ce1b1ec8-be64-491c-9159-c40f85fa0073', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '2e662fad-1193-4482-a2d7-ec7b821a9d2b', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -1431,7 +1523,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '9fe9190e-384f-4baa-a416-d51ed93d1be7', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'dd2130b5-0f9f-4f3a-b450-f3fa458763ae', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1479,7 +1571,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '9fe9190e-384f-4baa-a416-d51ed93d1be7', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'dd2130b5-0f9f-4f3a-b450-f3fa458763ae', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1687,7 +1779,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '9fe9190e-384f-4baa-a416-d51ed93d1be7', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'dd2130b5-0f9f-4f3a-b450-f3fa458763ae', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1735,7 +1827,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '9fe9190e-384f-4baa-a416-d51ed93d1be7', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'dd2130b5-0f9f-4f3a-b450-f3fa458763ae', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL

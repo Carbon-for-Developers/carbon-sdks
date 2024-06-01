@@ -4,6 +4,7 @@ from carbon.paths import PathValues
 from carbon.apis.paths.integrations_oauth_url import IntegrationsOauthUrl
 from carbon.apis.paths.integrations_connect import IntegrationsConnect
 from carbon.apis.paths.integrations_items_sync import IntegrationsItemsSync
+from carbon.apis.paths.integrations_items_sync_cancel import IntegrationsItemsSyncCancel
 from carbon.apis.paths.integrations_items_list import IntegrationsItemsList
 from carbon.apis.paths.integrations_files_sync import IntegrationsFilesSync
 from carbon.apis.paths.integrations_confluence_list import IntegrationsConfluenceList
@@ -67,6 +68,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_OAUTH_URL: IntegrationsOauthUrl,
         PathValues.INTEGRATIONS_CONNECT: IntegrationsConnect,
         PathValues.INTEGRATIONS_ITEMS_SYNC: IntegrationsItemsSync,
+        PathValues.INTEGRATIONS_ITEMS_SYNC_CANCEL: IntegrationsItemsSyncCancel,
         PathValues.INTEGRATIONS_ITEMS_LIST: IntegrationsItemsList,
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,
         PathValues.INTEGRATIONS_CONFLUENCE_LIST: IntegrationsConfluenceList,
@@ -131,6 +133,7 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_OAUTH_URL: IntegrationsOauthUrl,
         PathValues.INTEGRATIONS_CONNECT: IntegrationsConnect,
         PathValues.INTEGRATIONS_ITEMS_SYNC: IntegrationsItemsSync,
+        PathValues.INTEGRATIONS_ITEMS_SYNC_CANCEL: IntegrationsItemsSyncCancel,
         PathValues.INTEGRATIONS_ITEMS_LIST: IntegrationsItemsList,
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,
         PathValues.INTEGRATIONS_CONFLUENCE_LIST: IntegrationsConfluenceList,

@@ -26,6 +26,17 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for cancel
+  # Cancel Data Source Items Sync
+  # @param sync_directory_request 
+  # @param [Hash] opts the optional parameters
+  # @return [OrganizationUserDataSourceAPI]
+  describe 'cancel test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for connect_data_source
   # Connect Data Source
   # @param connect_data_source_input 

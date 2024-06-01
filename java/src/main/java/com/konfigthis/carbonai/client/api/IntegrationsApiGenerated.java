@@ -104,6 +104,169 @@ public class IntegrationsApiGenerated {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call cancelCall(SyncDirectoryRequest syncDirectoryRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = syncDirectoryRequest;
+
+        // create path and map variables
+        String localVarPath = "/integrations/items/sync/cancel";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelValidateBeforeCall(SyncDirectoryRequest syncDirectoryRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'syncDirectoryRequest' is set
+        if (syncDirectoryRequest == null) {
+            throw new ApiException("Missing the required parameter 'syncDirectoryRequest' when calling cancel(Async)");
+        }
+
+        return cancelCall(syncDirectoryRequest, _callback);
+
+    }
+
+
+    private ApiResponse<OrganizationUserDataSourceAPI> cancelWithHttpInfo(SyncDirectoryRequest syncDirectoryRequest) throws ApiException {
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(syncDirectoryRequest, null);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelAsync(SyncDirectoryRequest syncDirectoryRequest, final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(syncDirectoryRequest, _callback);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class CancelRequestBuilder {
+        private final Integer dataSourceId;
+
+        private CancelRequestBuilder(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+        }
+
+        /**
+         * Build call for cancel
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            SyncDirectoryRequest syncDirectoryRequest = buildBodyParams();
+            return cancelCall(syncDirectoryRequest, _callback);
+        }
+
+        private SyncDirectoryRequest buildBodyParams() {
+            SyncDirectoryRequest syncDirectoryRequest = new SyncDirectoryRequest();
+            syncDirectoryRequest.dataSourceId(this.dataSourceId);
+            return syncDirectoryRequest;
+        }
+
+        /**
+         * Execute cancel request
+         * @return OrganizationUserDataSourceAPI
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrganizationUserDataSourceAPI execute() throws ApiException {
+            SyncDirectoryRequest syncDirectoryRequest = buildBodyParams();
+            ApiResponse<OrganizationUserDataSourceAPI> localVarResp = cancelWithHttpInfo(syncDirectoryRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute cancel request with HTTP info returned
+         * @return ApiResponse&lt;OrganizationUserDataSourceAPI&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrganizationUserDataSourceAPI> executeWithHttpInfo() throws ApiException {
+            SyncDirectoryRequest syncDirectoryRequest = buildBodyParams();
+            return cancelWithHttpInfo(syncDirectoryRequest);
+        }
+
+        /**
+         * Execute cancel request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+            SyncDirectoryRequest syncDirectoryRequest = buildBodyParams();
+            return cancelAsync(syncDirectoryRequest, _callback);
+        }
+    }
+
+    /**
+     * Cancel Data Source Items Sync
+     * 
+     * @param syncDirectoryRequest  (required)
+     * @return CancelRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public CancelRequestBuilder cancel(Integer dataSourceId) throws IllegalArgumentException {
+        if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
+        return new CancelRequestBuilder(dataSourceId);
+    }
     private okhttp3.Call connectDataSourceCall(ConnectDataSourceInput connectDataSourceInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1341,7 +1504,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to ce1b1ec8-be64-491c-9159-c40f85fa0073)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 2e662fad-1193-4482-a2d7-ec7b821a9d2b)
          * @return GetOauthUrlRequestBuilder
          */
         public GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -1371,7 +1534,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE (optional, default to true)
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX (optional, default to true)
          * @return GetOauthUrlRequestBuilder
          */
         public GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
@@ -2926,7 +3089,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 9fe9190e-384f-4baa-a416-d51ed93d1be7)
+         * @param requestId  (optional, default to dd2130b5-0f9f-4f3a-b450-f3fa458763ae)
          * @return SyncConfluenceRequestBuilder
          */
         public SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3424,7 +3587,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 9fe9190e-384f-4baa-a416-d51ed93d1be7)
+         * @param requestId  (optional, default to dd2130b5-0f9f-4f3a-b450-f3fa458763ae)
          * @return SyncFilesRequestBuilder
          */
         public SyncFilesRequestBuilder requestId(String requestId) {

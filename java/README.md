@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.0-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.0)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.1-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.1)
 
 </div>
 
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.0"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.1"
 }
 ```
 
@@ -98,7 +98,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.0.jar`
+* `target/carbonai-java-sdk-0.1.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**uploadFromUrl**](docs/FilesApi.md#uploadFromUrl) | **POST** /upload_file_from_url | Create Upload File From Url
 *FilesApi* | [**uploadText**](docs/FilesApi.md#uploadText) | **POST** /upload_text | Create Raw Text
 *HealthApi* | [**check**](docs/HealthApi.md#check) | **GET** /health | Health
+*IntegrationsApi* | [**cancel**](docs/IntegrationsApi.md#cancel) | **POST** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 *IntegrationsApi* | [**connectDataSource**](docs/IntegrationsApi.md#connectDataSource) | **POST** /integrations/connect | Connect Data Source
 *IntegrationsApi* | [**connectFreshdesk**](docs/IntegrationsApi.md#connectFreshdesk) | **POST** /integrations/freshdesk | Freshdesk Connect
 *IntegrationsApi* | [**connectGitbook**](docs/IntegrationsApi.md#connectGitbook) | **POST** /integrations/gitbook | Gitbook Connect

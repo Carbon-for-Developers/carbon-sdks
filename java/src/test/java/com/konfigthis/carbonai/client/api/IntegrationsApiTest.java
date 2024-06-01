@@ -74,6 +74,19 @@ public class IntegrationsApiTest {
     }
 
     /**
+     * Cancel Data Source Items Sync
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void cancelTest() throws ApiException {
+        Integer dataSourceId = null;
+        OrganizationUserDataSourceAPI response = api.cancel(dataSourceId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
      * Connect Data Source
      *
      * @throws ApiException if the Api call fails

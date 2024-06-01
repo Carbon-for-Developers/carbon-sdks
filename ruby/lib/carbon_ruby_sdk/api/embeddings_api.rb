@@ -126,11 +126,11 @@ module Carbon
     # @param include_raw_file [Boolean] Flag to control whether or not to include a signed URL to the raw file containing each chunk in the response.
     # @param hybrid_search [Boolean] Flag to control whether or not to perform hybrid search.
     # @param hybrid_search_tuning_parameters [HybridSearchTuningParamsNullable] 
-    # @param media_type [FileContentTypesNullable] Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type, then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed for `embedding_model`.
+    # @param media_type [FileContentTypesNullable] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: 'TEXT', embedding_model: 'OPENAI', extra: {})
+    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL
@@ -262,11 +262,11 @@ module Carbon
     # @param include_raw_file [Boolean] Flag to control whether or not to include a signed URL to the raw file containing each chunk in the response.
     # @param hybrid_search [Boolean] Flag to control whether or not to perform hybrid search.
     # @param hybrid_search_tuning_parameters [HybridSearchTuningParamsNullable] 
-    # @param media_type [FileContentTypesNullable] Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type, then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed for `embedding_model`.
+    # @param media_type [FileContentTypesNullable] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: 'TEXT', embedding_model: 'OPENAI', extra: {})
+    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL

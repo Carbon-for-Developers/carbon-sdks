@@ -337,6 +337,9 @@ operation_parameter_map = {
             {
                 'name': 'detect_audio_language'
             },
+            {
+                'name': 'media_type'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -369,6 +372,13 @@ operation_parameter_map = {
     },
     '/health-GET': {
         'parameters': [
+        ]
+    },
+    '/integrations/items/sync/cancel-POST': {
+        'parameters': [
+            {
+                'name': 'data_source_id'
+            },
         ]
     },
     '/integrations/connect-POST': {

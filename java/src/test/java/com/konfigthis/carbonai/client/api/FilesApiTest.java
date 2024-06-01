@@ -308,6 +308,7 @@ public class FilesApiTest {
         Integer maxItemsPerChunk = null;
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
+        FileContentTypesNullable mediaType = null;
         UserFile response = api.uploadFromUrl(url)
                 .fileName(fileName)
                 .chunkSize(chunkSize)
@@ -321,6 +322,7 @@ public class FilesApiTest {
                 .maxItemsPerChunk(maxItemsPerChunk)
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
+                .mediaType(mediaType)
                 .execute();
         // TODO: test validations
     }

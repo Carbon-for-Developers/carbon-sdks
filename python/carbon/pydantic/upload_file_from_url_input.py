@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
 
 class UploadFileFromUrlInput(BaseModel):
     url: str = Field(alias='url')
@@ -44,6 +45,8 @@ class UploadFileFromUrlInput(BaseModel):
     parse_pdf_tables_with_ocr: typing.Optional[bool] = Field(None, alias='parse_pdf_tables_with_ocr')
 
     detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
+
+    media_type: typing.Optional[FileContentTypesNullable] = Field(None, alias='media_type')
 
     model_config = ConfigDict(
         protected_namespaces=(),

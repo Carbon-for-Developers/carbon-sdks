@@ -230,6 +230,59 @@
         }
       }
     },
+    "/integrations/items/sync/cancel": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Cancel Data Source Items Sync",
+        "operationId": "Integrations_cancel",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncDirectoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/integrations/items/list": {
       "post": {
         "tags": [
@@ -3493,7 +3546,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "fceb0182-329c-4e45-953b-885c747cf4a3",
+              "request_id": "368135ce-5cca-4fb5-a19d-42b9a409af35",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5312,7 +5365,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "ce1b1ec8-be64-491c-9159-c40f85fa0073"
+            "default": "2e662fad-1193-4482-a2d7-ec7b821a9d2b"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5329,7 +5382,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX",
             "type": "boolean",
             "default": true
           },
@@ -6756,7 +6809,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "9fe9190e-384f-4baa-a416-d51ed93d1be7"
+            "default": "dd2130b5-0f9f-4f3a-b450-f3fa458763ae"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6848,7 +6901,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "fceb0182-329c-4e45-953b-885c747cf4a3"
+            "default": "368135ce-5cca-4fb5-a19d-42b9a409af35"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7034,6 +7087,9 @@
             "title": "Detect Audio Language",
             "type": "boolean",
             "default": false
+          },
+          "media_type": {
+            "$ref": "#/components/schemas/FileContentTypesNullable"
           }
         },
         "type": "object",
@@ -7906,7 +7962,6 @@
       },
       "FileContentTypesNullable": {
         "title": "FileContentTypes",
-        "description": "Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also\n        plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,\n        then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed\n        for `embedding_model`.",
         "type": "string",
         "enum": [
           "TEXT",
@@ -7914,7 +7969,6 @@
           "AUDIO",
           "VIDEO"
         ],
-        "default": "TEXT",
         "nullable": true
       },
       "DataSourceTypeNullable": {

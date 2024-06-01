@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **IncludeRawFile** | Pointer to **NullableBool** | Flag to control whether or not to include a signed URL to the raw file containing each chunk         in the response. | [optional] 
 **HybridSearch** | Pointer to **NullableBool** | Flag to control whether or not to perform hybrid search. | [optional] 
 **HybridSearchTuningParameters** | Pointer to [**NullableHybridSearchTuningParamsNullable**](HybridSearchTuningParamsNullable.md) |  | [optional] 
-**MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] [default to FILECONTENTTYPESNULLABLE_TEXT]
+**MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **EmbeddingModel** | Pointer to [**NullableEmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional] [default to EMBEDDINGGENERATORSNULLABLE_OPENAI]
 
 ## Methods

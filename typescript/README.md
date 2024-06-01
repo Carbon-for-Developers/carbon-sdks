@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.1-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.1)
+[![npm](https://img.shields.io/badge/npm-v0.2.2-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.2)
 
 </div>
 
@@ -38,6 +38,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
   * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
@@ -419,8 +420,6 @@ Flag to control whether or not to perform hybrid search.
 ##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./models/hybrid-search-tuning-params-nullable.ts)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablemodelshybrid-search-tuning-params-nullablets"></a>
 
 ##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
-
-Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also         plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,         then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed         for `embedding_model`.
 
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./models/embedding-generators-nullable.ts)<a id="embedding_model-embeddinggeneratorsnullablemodelsembedding-generators-nullablets"></a>
 
@@ -1066,6 +1065,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   prepend_filename_to_chunks: false,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  media_type: "TEXT",
 });
 ```
 
@@ -1098,6 +1098,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 ##### detect_audio_language: `boolean`<a id="detect_audio_language-boolean"></a>
+
+##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1180,6 +1182,35 @@ const checkResponse = await carbon.health.check();
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/health` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
+
+Cancel Data Source Items Sync
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const cancelResponse = await carbon.integrations.cancel({
+  data_source_id: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./models/organization-user-data-source-api.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/items/sync/cancel` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1417,7 +1448,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "ce1b1ec8-be64-491c-9159-c40f85fa0073",
+  request_id: "2e662fad-1193-4482-a2d7-ec7b821a9d2b",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1486,7 +1517,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1740,7 +1771,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
+  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1848,7 +1879,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
+  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

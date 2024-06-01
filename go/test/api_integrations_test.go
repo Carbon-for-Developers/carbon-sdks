@@ -27,6 +27,25 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     client := carbon.NewAPIClient(configuration)
     */
 
+    t.Run("Test IntegrationsApiService Cancel", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        syncDirectoryRequest := *carbon.NewSyncDirectoryRequest(
+            null,
+        )
+        
+        request := client.IntegrationsApi.Cancel(
+            syncDirectoryRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService ConnectDataSource", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         authentication := *carbon.NewAuthenticationProperty()
@@ -157,7 +176,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("ce1b1ec8-be64-491c-9159-c40f85fa0073")
+        oAuthURLRequest.SetRequestId("2e662fad-1193-4482-a2d7-ec7b821a9d2b")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
@@ -313,7 +332,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("9fe9190e-384f-4baa-a416-d51ed93d1be7")
+        syncFilesRequest.SetRequestId("dd2130b5-0f9f-4f3a-b450-f3fa458763ae")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
@@ -368,7 +387,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("9fe9190e-384f-4baa-a416-d51ed93d1be7")
+        syncFilesRequest.SetRequestId("dd2130b5-0f9f-4f3a-b450-f3fa458763ae")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)

@@ -1402,6 +1402,40 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-items-sync
       x-content-type: application/json
       x-accepts: application/json
+  /integrations/items/sync/cancel:
+    post:
+      operationId: Integrations_cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDirectoryRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserDataSourceAPI'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Cancel Data Source Items Sync
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-items-sync-cancel
+      x-content-type: application/json
+      x-accepts: application/json
   /integrations/items/list:
     post:
       operationId: Integrations_listDataSourceItems
@@ -4003,7 +4037,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: fceb0182-329c-4e45-953b-885c747cf4a3
+          request_id: 368135ce-5cca-4fb5-a19d-42b9a409af35
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4039,7 +4073,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: fceb0182-329c-4e45-953b-885c747cf4a3
+            request_id: 368135ce-5cca-4fb5-a19d-42b9a409af35
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -5039,7 +5073,7 @@ components:
           key: ""
         hybrid_search: true
         include_all_children: false
-        media_type: TEXT
+        media_type: null
         file_ids:
         - 1
         - 1
@@ -5898,7 +5932,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: ce1b1ec8-be64-491c-9159-c40f85fa0073
+        request_id: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6016,13 +6050,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          default: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          example: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           title: Request Id
           type: string
-          x-konfig-original-example: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          x-konfig-original-example: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6044,7 +6078,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE"
+            \ it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7475,7 +7509,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+        request_id: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
         data_source_id: 0
       properties:
         tags:
@@ -7547,11 +7581,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9fe9190e-384f-4baa-a416-d51ed93d1be7
-          example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          default: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
+          example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           title: Request Id
           type: string
-          x-konfig-original-example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          x-konfig-original-example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7606,7 +7640,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: fceb0182-329c-4e45-953b-885c747cf4a3
+        request_id: 368135ce-5cca-4fb5-a19d-42b9a409af35
       properties:
         tags:
           nullable: true
@@ -7679,11 +7713,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: fceb0182-329c-4e45-953b-885c747cf4a3
-          example: fceb0182-329c-4e45-953b-885c747cf4a3
+          default: 368135ce-5cca-4fb5-a19d-42b9a409af35
+          example: 368135ce-5cca-4fb5-a19d-42b9a409af35
           title: Request Id
           type: string
-          x-konfig-original-example: fceb0182-329c-4e45-953b-885c747cf4a3
+          x-konfig-original-example: 368135ce-5cca-4fb5-a19d-42b9a409af35
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -7814,6 +7848,7 @@ components:
         parse_pdf_tables_with_ocr: false
         embedding_model: null
         url: url
+        media_type: null
         generate_sparse_vectors: false
         set_page_as_boundary: false
         chunk_overlap: 6
@@ -7891,6 +7926,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
+        media_type:
+          $ref: '#/components/schemas/FileContentTypesNullable'
       required:
       - url
       title: UploadFileFromUrlInput
@@ -8794,23 +8831,14 @@ components:
       title: ZoteroAuthentication
       type: object
     FileContentTypesNullable:
-      default: TEXT
-      description: |-
-        Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also
-                plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,
-                then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed
-                for `embedding_model`.
       enum:
       - TEXT
       - IMAGE
       - AUDIO
       - VIDEO
-      example: TEXT
       nullable: true
       title: FileContentTypes
       type: string
-      x-konfig-original-example: TEXT
-      x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileContentTypesNullable
     DataSourceTypeNullable:
       enum:
       - GOOGLE_DRIVE
@@ -9565,7 +9593,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: ce1b1ec8-be64-491c-9159-c40f85fa0073
+      example: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -9798,7 +9826,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+      example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -9842,7 +9870,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: fceb0182-329c-4e45-953b-885c747cf4a3
+      example: 368135ce-5cca-4fb5-a19d-42b9a409af35
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -9961,10 +9989,6 @@ components:
       items:
         type: string
       type: array
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-FileContentTypesNullable:
-      example: TEXT
-      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
       example: OPENAI
@@ -10187,13 +10211,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          default: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          example: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           title: Request Id
           type: string
-          x-konfig-original-example: ce1b1ec8-be64-491c-9159-c40f85fa0073
+          x-konfig-original-example: 2e662fad-1193-4482-a2d7-ec7b821a9d2b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -10215,7 +10239,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE"
+            \ it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -10259,6 +10283,16 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--integrations-items-sync:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+      required:
+      - data_source_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-items-sync-cancel:
       properties:
         data_source_id:
           title: Data Source Id
@@ -10361,11 +10395,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9fe9190e-384f-4baa-a416-d51ed93d1be7
-          example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          default: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
+          example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           title: Request Id
           type: string
-          x-konfig-original-example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          x-konfig-original-example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10486,11 +10520,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9fe9190e-384f-4baa-a416-d51ed93d1be7
-          example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          default: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
+          example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           title: Request Id
           type: string
-          x-konfig-original-example: 9fe9190e-384f-4baa-a416-d51ed93d1be7
+          x-konfig-original-example: dd2130b5-0f9f-4f3a-b450-f3fa458763ae
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11726,6 +11760,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
+        media_type:
+          $ref: '#/components/schemas/FileContentTypesNullable'
       required:
       - url
       type: object

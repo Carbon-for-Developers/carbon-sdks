@@ -343,6 +343,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'detect_audio_language'
             },
+            {
+                name: 'media_type'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -375,6 +378,13 @@ export const operationParameterMap: Record<string, Entry> = {
     },
     '/health-GET': {
         parameters: [
+        ]
+    },
+    '/integrations/items/sync/cancel-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
         ]
     },
     '/integrations/connect-POST': {

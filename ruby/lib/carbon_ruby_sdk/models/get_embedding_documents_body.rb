@@ -49,7 +49,6 @@ module Carbon
 
     attr_accessor :hybrid_search_tuning_parameters
 
-    # Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform the search. Also         plays a role in determining what embedding model is used to embed the query. If `IMAGE` is chosen as the media type,         then the embedding model used will be an embedding model that is not text-only, *regardless* of what value is passed         for `embedding_model`.
     attr_accessor :media_type
 
     attr_accessor :embedding_model
@@ -198,8 +197,6 @@ module Carbon
 
       if attributes.key?(:'media_type')
         self.media_type = attributes[:'media_type']
-      else
-        self.media_type = 'TEXT'
       end
 
       if attributes.key?(:'embedding_model')

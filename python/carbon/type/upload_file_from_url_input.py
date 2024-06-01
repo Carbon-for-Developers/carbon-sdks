@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.file_content_types_nullable import FileContentTypesNullable
 
 class RequiredUploadFileFromUrlInput(TypedDict):
     url: str
@@ -45,6 +46,8 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
     parse_pdf_tables_with_ocr: bool
 
     detect_audio_language: bool
+
+    media_type: typing.Optional[FileContentTypesNullable]
 
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass
