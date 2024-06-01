@@ -4,6 +4,7 @@ All URIs are relative to *https://api.carbon.ai*
 
 Method | Path | Description
 ------------- | ------------- | -------------
+[**Cancel**](IntegrationsApi.md#Cancel) | **Post** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 [**ConnectDataSource**](IntegrationsApi.md#ConnectDataSource) | **Post** /integrations/connect | Connect Data Source
 [**ConnectFreshdesk**](IntegrationsApi.md#ConnectFreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 [**ConnectGitbook**](IntegrationsApi.md#ConnectGitbook) | **Post** /integrations/gitbook | Gitbook Connect
@@ -27,6 +28,70 @@ Method | Path | Description
 [**SyncRssFeed**](IntegrationsApi.md#SyncRssFeed) | **Post** /integrations/rss_feed | Rss Feed
 [**SyncS3Files**](IntegrationsApi.md#SyncS3Files) | **Post** /integrations/s3/files | S3 Files
 
+
+
+## Cancel
+
+Cancel Data Source Items Sync
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    
+    syncDirectoryRequest := *carbon.NewSyncDirectoryRequest(
+        null,
+    )
+    
+    request := client.IntegrationsApi.Cancel(
+        syncDirectoryRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.Cancel``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `Cancel`: OrganizationUserDataSourceAPI
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.Cancel`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.Id`: %v\n", resp.Id)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.DataSourceType`: %v\n", resp.DataSourceType)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.Token`: %v\n", resp.Token)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.SyncStatus`: %v\n", resp.SyncStatus)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.SourceItemsSyncedAt`: %v\n", resp.SourceItemsSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.OrganizationUserId`: %v\n", resp.OrganizationUserId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.OrganizationId`: %v\n", resp.OrganizationId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.OrganizationSuppliedUserId`: %v\n", resp.OrganizationSuppliedUserId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.RevokedAccess`: %v\n", resp.RevokedAccess)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.LastSyncedAt`: %v\n", resp.LastSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.LastSyncAction`: %v\n", resp.LastSyncAction)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.EnableAutoSync`: %v\n", resp.EnableAutoSync)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.CreatedAt`: %v\n", resp.CreatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.UpdatedAt`: %v\n", resp.UpdatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.DataSourceMetadata`: %v\n", resp.DataSourceMetadata)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ConnectDataSource
@@ -320,7 +385,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("ce1b1ec8-be64-491c-9159-c40f85fa0073")
+    oAuthURLRequest.SetRequestId("2e662fad-1193-4482-a2d7-ec7b821a9d2b")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -718,7 +783,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("9fe9190e-384f-4baa-a416-d51ed93d1be7")
+    syncFilesRequest.SetRequestId("dd2130b5-0f9f-4f3a-b450-f3fa458763ae")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -849,7 +914,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("9fe9190e-384f-4baa-a416-d51ed93d1be7")
+    syncFilesRequest.SetRequestId("dd2130b5-0f9f-4f3a-b450-f3fa458763ae")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)

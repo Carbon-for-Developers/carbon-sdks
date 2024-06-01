@@ -30,6 +30,7 @@ type UploadFileFromUrlInput struct {
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	ParsePdfTablesWithOcr *bool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
+	MediaType NullableFileContentTypesNullable `json:"media_type,omitempty"`
 }
 
 // NewUploadFileFromUrlInput instantiates a new UploadFileFromUrlInput object
@@ -526,6 +527,48 @@ func (o *UploadFileFromUrlInput) SetDetectAudioLanguage(v bool) {
 	o.DetectAudioLanguage = &v
 }
 
+// GetMediaType returns the MediaType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable {
+	if o == nil || isNil(o.MediaType.Get()) {
+		var ret FileContentTypesNullable
+		return ret
+	}
+	return *o.MediaType.Get()
+}
+
+// GetMediaTypeOk returns a tuple with the MediaType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UploadFileFromUrlInput) GetMediaTypeOk() (*FileContentTypesNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MediaType.Get(), o.MediaType.IsSet()
+}
+
+// HasMediaType returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasMediaType() bool {
+	if o != nil && o.MediaType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMediaType gets a reference to the given NullableFileContentTypesNullable and assigns it to the MediaType field.
+func (o *UploadFileFromUrlInput) SetMediaType(v FileContentTypesNullable) {
+	o.MediaType.Set(&v)
+}
+// SetMediaTypeNil sets the value for MediaType to be an explicit nil
+func (o *UploadFileFromUrlInput) SetMediaTypeNil() {
+	o.MediaType.Set(nil)
+}
+
+// UnsetMediaType ensures that no value is present for MediaType, not even an explicit nil
+func (o *UploadFileFromUrlInput) UnsetMediaType() {
+	o.MediaType.Unset()
+}
+
 func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -566,6 +609,9 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.DetectAudioLanguage) {
 		toSerialize["detect_audio_language"] = o.DetectAudioLanguage
+	}
+	if o.MediaType.IsSet() {
+		toSerialize["media_type"] = o.MediaType.Get()
 	}
 	return json.Marshal(toSerialize)
 }

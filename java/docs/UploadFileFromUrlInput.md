@@ -20,6 +20,7 @@
 |**maxItemsPerChunk** | **Integer** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. |  [optional] |
 |**parsePdfTablesWithOcr** | **Boolean** |  |  [optional] |
 |**detectAudioLanguage** | **Boolean** |  |  [optional] |
+|**mediaType** | **FileContentTypesNullable** |  |  [optional] |
 
 
 

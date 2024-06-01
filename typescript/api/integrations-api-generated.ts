@@ -101,6 +101,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
     return {
         /**
          * 
+         * @summary Cancel Data Source Items Sync
+         * @param {SyncDirectoryRequest} syncDirectoryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancel: async (syncDirectoryRequest: SyncDirectoryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'syncDirectoryRequest' is not null or undefined
+            assertParamExists('cancel', 'syncDirectoryRequest', syncDirectoryRequest)
+            const localVarPath = `/integrations/items/sync/cancel`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: syncDirectoryRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/items/sync/cancel',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(syncDirectoryRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Connect Data Source
          * @param {ConnectDataSourceInput} connectDataSourceInput 
          * @param {*} [options] Override http request option.
@@ -1252,6 +1304,20 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Cancel Data Source Items Sync
+         * @param {IntegrationsApiCancelRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cancel(requestParameters: IntegrationsApiCancelRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
+            const syncDirectoryRequest: SyncDirectoryRequest = {
+                data_source_id: requestParameters.data_source_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancel(syncDirectoryRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Connect Data Source
          * @param {IntegrationsApiConnectDataSourceRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1701,6 +1767,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
     return {
         /**
          * 
+         * @summary Cancel Data Source Items Sync
+         * @param {IntegrationsApiCancelRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cancel(requestParameters: IntegrationsApiCancelRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceAPI> {
+            return localVarFp.cancel(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Connect Data Source
          * @param {IntegrationsApiConnectDataSourceRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1921,6 +1997,15 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
         },
     };
 };
+
+/**
+ * Request parameters for cancel operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiCancelRequest
+ */
+export type IntegrationsApiCancelRequest = {
+    
+} & SyncDirectoryRequest
 
 /**
  * Request parameters for connectDataSource operation in IntegrationsApi.
@@ -2176,6 +2261,18 @@ export type IntegrationsApiSyncS3FilesRequest = {
  * @extends {BaseAPI}
  */
 export class IntegrationsApiGenerated extends BaseAPI {
+    /**
+     * 
+     * @summary Cancel Data Source Items Sync
+     * @param {IntegrationsApiCancelRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public cancel(requestParameters: IntegrationsApiCancelRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).cancel(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Connect Data Source

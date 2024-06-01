@@ -56,8 +56,6 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 	this.K = k
 	var includeAllChildren bool = false
 	this.IncludeAllChildren = &includeAllChildren
-	var mediaType FileContentTypesNullable = FILECONTENTTYPESNULLABLE_TEXT
-	this.MediaType = *NewNullableFileContentTypesNullable(&mediaType)
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
 	return &this
@@ -70,8 +68,6 @@ func NewGetEmbeddingDocumentsBodyWithDefaults() *GetEmbeddingDocumentsBody {
 	this := GetEmbeddingDocumentsBody{}
 	var includeAllChildren bool = false
 	this.IncludeAllChildren = &includeAllChildren
-	var mediaType FileContentTypesNullable = FILECONTENTTYPESNULLABLE_TEXT
-	this.MediaType = *NewNullableFileContentTypesNullable(&mediaType)
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
 	return &this

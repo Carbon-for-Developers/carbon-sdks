@@ -4,6 +4,7 @@ All URIs are relative to *https://api.carbon.ai*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**cancel**](IntegrationsApi.md#cancel) | **POST** /integrations/items/sync/cancel | Cancel Data Source Items Sync |
 | [**connectDataSource**](IntegrationsApi.md#connectDataSource) | **POST** /integrations/connect | Connect Data Source |
 | [**connectFreshdesk**](IntegrationsApi.md#connectFreshdesk) | **POST** /integrations/freshdesk | Freshdesk Connect |
 | [**connectGitbook**](IntegrationsApi.md#connectGitbook) | **POST** /integrations/gitbook | Gitbook Connect |
@@ -27,6 +28,116 @@ All URIs are relative to *https://api.carbon.ai*
 | [**syncRssFeed**](IntegrationsApi.md#syncRssFeed) | **POST** /integrations/rss_feed | Rss Feed |
 | [**syncS3Files**](IntegrationsApi.md#syncS3Files) | **POST** /integrations/s3/files | S3 Files |
 
+
+<a name="cancel"></a>
+# **cancel**
+> OrganizationUserDataSourceAPI cancel(syncDirectoryRequest).execute();
+
+Cancel Data Source Items Sync
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    Integer dataSourceId = 56;
+    try {
+      OrganizationUserDataSourceAPI result = client
+              .integrations
+              .cancel(dataSourceId)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getId());
+      System.out.println(result.getDataSourceExternalId());
+      System.out.println(result.getDataSourceType());
+      System.out.println(result.getToken());
+      System.out.println(result.getSyncStatus());
+      System.out.println(result.getSourceItemsSyncedAt());
+      System.out.println(result.getOrganizationUserId());
+      System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationSuppliedUserId());
+      System.out.println(result.getRevokedAccess());
+      System.out.println(result.getLastSyncedAt());
+      System.out.println(result.getLastSyncAction());
+      System.out.println(result.getEnableAutoSync());
+      System.out.println(result.getCreatedAt());
+      System.out.println(result.getUpdatedAt());
+      System.out.println(result.getFilesSyncedAt());
+      System.out.println(result.getDataSourceMetadata());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#cancel");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<OrganizationUserDataSourceAPI> response = client
+              .integrations
+              .cancel(dataSourceId)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#cancel");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **syncDirectoryRequest** | [**SyncDirectoryRequest**](SyncDirectoryRequest.md)|  | |
+
+### Return type
+
+[**OrganizationUserDataSourceAPI**](OrganizationUserDataSourceAPI.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
 
 <a name="connectDataSource"></a>
 # **connectDataSource**
@@ -551,10 +662,10 @@ public class Example {
     Boolean setPageAsBoundary = false;
     Integer dataSourceId = 56; // Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
     Boolean connectingNewAccount = false; // Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
-    String requestId = "ce1b1ec8-be64-491c-9159-c40f85fa0073"; // This request id will be added to all files that get synced using the generated OAuth URL
+    String requestId = "2e662fad-1193-4482-a2d7-ec7b821a9d2b"; // This request id will be added to all files that get synced using the generated OAuth URL
     Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: pdf
     Boolean parsePdfTablesWithOcr = false;
-    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
@@ -1409,7 +1520,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "9fe9190e-384f-4baa-a416-d51ed93d1be7";
+    String requestId = "dd2130b5-0f9f-4f3a-b450-f3fa458763ae";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
@@ -1658,7 +1769,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "9fe9190e-384f-4baa-a416-d51ed93d1be7";
+    String requestId = "dd2130b5-0f9f-4f3a-b450-f3fa458763ae";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.

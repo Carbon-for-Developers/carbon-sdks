@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.1-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.1)
+[![npm](https://img.shields.io/badge/gem-v0.2.2-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.2)
 
 </div>
 
@@ -39,6 +39,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
@@ -85,7 +86,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.1'
+gem 'carbon_ruby_sdk', '~> 0.2.2'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -426,12 +427,6 @@ Flag to control whether or not to perform hybrid search.
 
 ##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./lib/carbon_ruby_sdk/models/hybrid_search_tuning_params_nullable.rb)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablelibcarbon_ruby_sdkmodelshybrid_search_tuning_params_nullablerb"></a>
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
-Used to filter the kind of files (e.g. `TEXT` or `IMAGE`) over which to perform
-the search. Also plays a role in determining what embedding model is used to
-embed the query. If `IMAGE` is chosen as the media type, then the embedding
-model used will be an embedding model that is not text-only, *regardless* of
-what value is passed for `embedding_model`.
-
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1087,6 +1082,7 @@ result = carbon.files.upload_from_url(
   max_items_per_chunk: 1,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  media_type: "TEXT",
 )
 p result
 ```
@@ -1108,6 +1104,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
+##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1193,6 +1190,35 @@ p result
 ---
 
 
+### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
+
+Cancel Data Source Items Sync
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.cancel(
+  data_source_id: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/items/sync/cancel` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.connect_data_source`<a id="carbonintegrationsconnect_data_source"></a>
 
 Connect Data Source
@@ -1214,7 +1240,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "fceb0182-329c-4e45-953b-885c747cf4a3",
+        "request_id" => "368135ce-5cca-4fb5-a19d-42b9a409af35",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1433,7 +1459,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "ce1b1ec8-be64-491c-9159-c40f85fa0073",
+  request_id: "2e662fad-1193-4482-a2d7-ec7b821a9d2b",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1493,7 +1519,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1755,7 +1781,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
+  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1858,7 +1884,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "9fe9190e-384f-4baa-a416-d51ed93d1be7",
+  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

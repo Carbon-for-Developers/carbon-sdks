@@ -2291,7 +2291,7 @@ public class FilesApiGenerated {
         
         /**
          * Set mediaType
-         * @param mediaType The media type of the file. If not provided, it will be inferred from the file extension. (optional, default to TEXT)
+         * @param mediaType The media type of the file. If not provided, it will be inferred from the file extension. (optional)
          * @return UploadRequestBuilder
          */
         public UploadRequestBuilder mediaType(FileContentTypesNullable mediaType) {
@@ -2470,6 +2470,7 @@ public class FilesApiGenerated {
         private Integer maxItemsPerChunk;
         private Boolean parsePdfTablesWithOcr;
         private Boolean detectAudioLanguage;
+        private FileContentTypesNullable mediaType;
 
         private UploadFromUrlRequestBuilder(String url) {
             this.url = url;
@@ -2596,6 +2597,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set mediaType
+         * @param mediaType  (optional)
+         * @return UploadFromUrlRequestBuilder
+         */
+        public UploadFromUrlRequestBuilder mediaType(FileContentTypesNullable mediaType) {
+            this.mediaType = mediaType;
+            return this;
+        }
+        
+        /**
          * Build call for uploadFromUrl
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2626,6 +2637,7 @@ public class FilesApiGenerated {
             uploadFileFromUrlInput.maxItemsPerChunk(this.maxItemsPerChunk);
             uploadFileFromUrlInput.parsePdfTablesWithOcr(this.parsePdfTablesWithOcr);
             uploadFileFromUrlInput.detectAudioLanguage(this.detectAudioLanguage);
+            uploadFileFromUrlInput.mediaType(this.mediaType);
             return uploadFileFromUrlInput;
         }
 

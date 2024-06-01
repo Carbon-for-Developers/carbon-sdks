@@ -35,14 +35,17 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput as UploadFileFromUrlInputSchema
 from carbon.model.user_file import UserFile as UserFileSchema
+from carbon.model.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullableSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_content_types_nullable import FileContentTypesNullable
 from carbon.type.upload_file_from_url_input import UploadFileFromUrlInput
 from carbon.type.user_file import UserFile
 
 from ...api_client import Dictionary
+from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullablePydantic
 from carbon.pydantic.user_file import UserFile as UserFilePydantic
 from carbon.pydantic.upload_file_from_url_input import UploadFileFromUrlInput as UploadFileFromUrlInputPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
@@ -123,6 +126,7 @@ class BaseApi(api_client.Api):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -152,6 +156,8 @@ class BaseApi(api_client.Api):
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
         if detect_audio_language is not None:
             _body["detect_audio_language"] = detect_audio_language
+        if media_type is not None:
+            _body["media_type"] = media_type
         args.body = _body
         return args
 
@@ -372,6 +378,7 @@ class UploadFromUrlRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -392,6 +399,7 @@ class UploadFromUrlRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -413,6 +421,7 @@ class UploadFromUrlRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -431,6 +440,7 @@ class UploadFromUrlRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
         )
         return self._upload_from_url_oapg(
             body=args.body,
@@ -453,6 +463,7 @@ class UploadFromUrl(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -470,6 +481,7 @@ class UploadFromUrl(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
             **kwargs,
         )
         if validate:
@@ -492,6 +504,7 @@ class UploadFromUrl(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_from_url(
@@ -508,6 +521,7 @@ class UploadFromUrl(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -532,6 +546,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -552,6 +567,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -573,6 +589,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        media_type: typing.Optional[FileContentTypesNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -591,6 +608,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            media_type=media_type,
         )
         return self._upload_from_url_oapg(
             body=args.body,

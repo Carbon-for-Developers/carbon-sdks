@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -102,6 +103,10 @@ public class UploadFileFromUrlInput {
   public static final String SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE = "detect_audio_language";
   @SerializedName(SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE)
   private Boolean detectAudioLanguage = false;
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private FileContentTypesNullable mediaType;
 
   public UploadFileFromUrlInput() {
   }
@@ -482,6 +487,35 @@ public class UploadFileFromUrlInput {
     this.detectAudioLanguage = detectAudioLanguage;
   }
 
+
+  public UploadFileFromUrlInput mediaType(FileContentTypesNullable mediaType) {
+    
+    
+    
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public FileContentTypesNullable getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(FileContentTypesNullable mediaType) {
+    
+    
+    
+    this.mediaType = mediaType;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -549,7 +583,8 @@ public class UploadFileFromUrlInput {
         Objects.equals(this.prependFilenameToChunks, uploadFileFromUrlInput.prependFilenameToChunks) &&
         Objects.equals(this.maxItemsPerChunk, uploadFileFromUrlInput.maxItemsPerChunk) &&
         Objects.equals(this.parsePdfTablesWithOcr, uploadFileFromUrlInput.parsePdfTablesWithOcr) &&
-        Objects.equals(this.detectAudioLanguage, uploadFileFromUrlInput.detectAudioLanguage)&&
+        Objects.equals(this.detectAudioLanguage, uploadFileFromUrlInput.detectAudioLanguage) &&
+        Objects.equals(this.mediaType, uploadFileFromUrlInput.mediaType)&&
         Objects.equals(this.additionalProperties, uploadFileFromUrlInput.additionalProperties);
   }
 
@@ -559,7 +594,7 @@ public class UploadFileFromUrlInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, additionalProperties);
+    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -586,6 +621,7 @@ public class UploadFileFromUrlInput {
     sb.append("    maxItemsPerChunk: ").append(toIndentedString(maxItemsPerChunk)).append("\n");
     sb.append("    parsePdfTablesWithOcr: ").append(toIndentedString(parsePdfTablesWithOcr)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -622,6 +658,7 @@ public class UploadFileFromUrlInput {
     openapiFields.add("max_items_per_chunk");
     openapiFields.add("parse_pdf_tables_with_ocr");
     openapiFields.add("detect_audio_language");
+    openapiFields.add("media_type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

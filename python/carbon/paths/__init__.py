@@ -9,6 +9,7 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_OAUTH_URL = "/integrations/oauth_url"
     INTEGRATIONS_CONNECT = "/integrations/connect"
     INTEGRATIONS_ITEMS_SYNC = "/integrations/items/sync"
+    INTEGRATIONS_ITEMS_SYNC_CANCEL = "/integrations/items/sync/cancel"
     INTEGRATIONS_ITEMS_LIST = "/integrations/items/list"
     INTEGRATIONS_FILES_SYNC = "/integrations/files/sync"
     INTEGRATIONS_CONFLUENCE_LIST = "/integrations/confluence/list"

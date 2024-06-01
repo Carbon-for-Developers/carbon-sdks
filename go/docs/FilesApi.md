@@ -780,6 +780,7 @@ func main() {
     uploadFileFromUrlInput.SetMaxItemsPerChunk(null)
     uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
     uploadFileFromUrlInput.SetDetectAudioLanguage(false)
+    uploadFileFromUrlInput.SetMediaType(null)
     
     request := client.FilesApi.UploadFromUrl(
         uploadFileFromUrlInput,

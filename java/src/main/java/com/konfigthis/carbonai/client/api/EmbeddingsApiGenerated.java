@@ -291,7 +291,7 @@ public class EmbeddingsApiGenerated {
         
         /**
          * Set mediaType
-         * @param mediaType  (optional, default to TEXT)
+         * @param mediaType  (optional)
          * @return GetDocumentsRequestBuilder
          */
         public GetDocumentsRequestBuilder mediaType(FileContentTypesNullable mediaType) {

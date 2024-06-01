@@ -275,6 +275,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         uploadFileFromUrlInput.SetMaxItemsPerChunk(null)
         uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
         uploadFileFromUrlInput.SetDetectAudioLanguage(false)
+        uploadFileFromUrlInput.SetMediaType(null)
         
         request := client.FilesApi.UploadFromUrl(
             uploadFileFromUrlInput,

@@ -111,7 +111,7 @@ public class GetEmbeddingDocumentsBody {
 
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
-  private FileContentTypesNullable mediaType = FileContentTypesNullable.TEXT;
+  private FileContentTypesNullable mediaType;
 
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embedding_model";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)

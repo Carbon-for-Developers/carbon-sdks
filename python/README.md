@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.1-blue)](https://pypi.org/project/carbon-python-sdk/0.2.1)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.2-blue)](https://pypi.org/project/carbon-python-sdk/0.2.2)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -43,6 +43,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
   * [`carbon.health.check`](#carbonhealthcheck)
+  * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
@@ -91,7 +92,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.1
+pip install carbon-python-sdk==0.2.2
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1196,6 +1197,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
+    media_type="TEXT",
 )
 ```
 
@@ -1228,6 +1230,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `bool`<a id="parse_pdf_tables_with_ocr-bool"></a>
 
 ##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
+
+##### media_type: [`FileContentTypesNullable`](./carbon/type/file_content_types_nullable.py)<a id="media_type-filecontenttypesnullablecarbontypefile_content_types_nullablepy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1323,6 +1327,37 @@ check_response = carbon.health.check()
 
 ---
 
+### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
+
+Cancel Data Source Items Sync
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+cancel_response = carbon.integrations.cancel(
+    data_source_id=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`SyncDirectoryRequest`](./carbon/type/sync_directory_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OrganizationUserDataSourceAPI`](./carbon/pydantic/organization_user_data_source_api.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/items/sync/cancel` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.integrations.connect_data_source`<a id="carbonintegrationsconnect_data_source"></a>
 
 Connect Data Source
@@ -1344,7 +1379,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "fceb0182-329c-4e45-953b-885c747cf4a3",
+        "request_id": "368135ce-5cca-4fb5-a19d-42b9a409af35",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1597,7 +1632,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="ce1b1ec8-be64-491c-9159-c40f85fa0073",
+    request_id="2e662fad-1193-4482-a2d7-ec7b821a9d2b",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1671,7 +1706,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, SHAREPOINT, ONEDRIVE, BOX, GOOGLE_DRIVE
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1942,7 +1977,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="9fe9190e-384f-4baa-a416-d51ed93d1be7",
+    request_id="dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2062,7 +2097,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="9fe9190e-384f-4baa-a416-d51ed93d1be7",
+    request_id="dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
