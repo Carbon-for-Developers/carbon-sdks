@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **CssClassesToSkip** | Pointer to **[]string** |  | [optional] [default to []]
 **CssSelectorsToSkip** | Pointer to **[]string** |  | [optional] [default to []]
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
+**UrlPathsToInclude** | Pointer to **[]string** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
+**UrlPathsToExclude** | Pointer to **[]string** | URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
 
 ## Methods
 
@@ -467,6 +469,76 @@ SetEmbeddingModel sets EmbeddingModel field to given value.
 
 HasEmbeddingModel returns a boolean if a field has been set.
 
+### GetUrlPathsToInclude
+
+`func (o *SitemapScrapeRequest) GetUrlPathsToInclude() []string`
+
+GetUrlPathsToInclude returns the UrlPathsToInclude field if non-nil, zero value otherwise.
+
+### GetUrlPathsToIncludeOk
+
+`func (o *SitemapScrapeRequest) GetUrlPathsToIncludeOk() (*[]string, bool)`
+
+GetUrlPathsToIncludeOk returns a tuple with the UrlPathsToInclude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlPathsToInclude
+
+`func (o *SitemapScrapeRequest) SetUrlPathsToInclude(v []string)`
+
+SetUrlPathsToInclude sets UrlPathsToInclude field to given value.
+
+### HasUrlPathsToInclude
+
+`func (o *SitemapScrapeRequest) HasUrlPathsToInclude() bool`
+
+HasUrlPathsToInclude returns a boolean if a field has been set.
+
+### SetUrlPathsToIncludeNil
+
+`func (o *SitemapScrapeRequest) SetUrlPathsToIncludeNil(b bool)`
+
+ SetUrlPathsToIncludeNil sets the value for UrlPathsToInclude to be an explicit nil
+
+### UnsetUrlPathsToInclude
+`func (o *SitemapScrapeRequest) UnsetUrlPathsToInclude()`
+
+UnsetUrlPathsToInclude ensures that no value is present for UrlPathsToInclude, not even an explicit nil
+### GetUrlPathsToExclude
+
+`func (o *SitemapScrapeRequest) GetUrlPathsToExclude() []string`
+
+GetUrlPathsToExclude returns the UrlPathsToExclude field if non-nil, zero value otherwise.
+
+### GetUrlPathsToExcludeOk
+
+`func (o *SitemapScrapeRequest) GetUrlPathsToExcludeOk() (*[]string, bool)`
+
+GetUrlPathsToExcludeOk returns a tuple with the UrlPathsToExclude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlPathsToExclude
+
+`func (o *SitemapScrapeRequest) SetUrlPathsToExclude(v []string)`
+
+SetUrlPathsToExclude sets UrlPathsToExclude field to given value.
+
+### HasUrlPathsToExclude
+
+`func (o *SitemapScrapeRequest) HasUrlPathsToExclude() bool`
+
+HasUrlPathsToExclude returns a boolean if a field has been set.
+
+### SetUrlPathsToExcludeNil
+
+`func (o *SitemapScrapeRequest) SetUrlPathsToExcludeNil(b bool)`
+
+ SetUrlPathsToExcludeNil sets the value for UrlPathsToExclude to be an explicit nil
+
+### UnsetUrlPathsToExclude
+`func (o *SitemapScrapeRequest) UnsetUrlPathsToExclude()`
+
+UnsetUrlPathsToExclude ensures that no value is present for UrlPathsToExclude, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

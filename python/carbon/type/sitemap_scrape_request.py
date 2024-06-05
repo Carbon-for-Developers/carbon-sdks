@@ -19,6 +19,8 @@ from carbon.type.sitemap_scrape_request_css_classes_to_skip import SitemapScrape
 from carbon.type.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
 from carbon.type.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
 from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
+from carbon.type.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
+from carbon.type.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
 
 class RequiredSitemapScrapeRequest(TypedDict):
     url: str
@@ -48,6 +50,10 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
     css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip]
 
     embedding_model: EmbeddingGenerators
+
+    url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude]
+
+    url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude]
 
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.2-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.2)
+[![npm](https://img.shields.io/badge/gem-v0.2.3-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.3)
 
 </div>
 
@@ -86,7 +86,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.2'
+gem 'carbon_ruby_sdk', '~> 0.2.3'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1240,7 +1240,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "368135ce-5cca-4fb5-a19d-42b9a409af35",
+        "request_id" => "652297b9-0f55-46d8-869d-13a36e89e5da",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1459,7 +1459,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "2e662fad-1193-4482-a2d7-ec7b821a9d2b",
+  request_id: "71f214fa-2155-41cb-9336-9b3070e86897",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1519,7 +1519,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
+DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1781,7 +1781,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1884,7 +1884,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2741,6 +2741,8 @@ result = carbon.utilities.scrape_sitemap(
   css_classes_to_skip: [],
   css_selectors_to_skip: [],
   embedding_model: "OPENAI",
+  url_paths_to_include: [],
+  url_paths_to_exclude: [],
 )
 p result
 ```
@@ -2760,6 +2762,16 @@ p result
 ##### css_classes_to_skip: Array<`String`><a id="css_classes_to_skip-array"></a>
 ##### css_selectors_to_skip: Array<`String`><a id="css_selectors_to_skip-array"></a>
 ##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### url_paths_to_include: Array<`String`><a id="url_paths_to_include-array"></a>
+URL subpaths or directories that you want to include. For example if you want to
+only include URLs that start with /questions in stackoverflow.com, you will add
+/questions/ in this input
+
+##### url_paths_to_exclude: Array<`String`><a id="url_paths_to_exclude-array"></a>
+URL subpaths or directories that you want to exclude. For example if you want to
+exclude URLs that start with /questions in stackoverflow.com, you will add
+/questions/ in this input
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -2799,6 +2811,7 @@ result = carbon.utilities.scrape_web(
             "css_classes_to_skip" => [],
             "css_selectors_to_skip" => [],
             "embedding_model" => "OPENAI",
+            "url_paths_to_include" => [],
         }
     ],
 )

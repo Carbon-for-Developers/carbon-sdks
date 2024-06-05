@@ -30,6 +30,8 @@ type WebscrapeRequest struct {
 	CssClassesToSkip []string `json:"css_classes_to_skip,omitempty"`
 	CssSelectorsToSkip []string `json:"css_selectors_to_skip,omitempty"`
 	EmbeddingModel *EmbeddingGenerators `json:"embedding_model,omitempty"`
+	// URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+	UrlPathsToInclude []string `json:"url_paths_to_include,omitempty"`
 }
 
 // NewWebscrapeRequest instantiates a new WebscrapeRequest object
@@ -606,6 +608,39 @@ func (o *WebscrapeRequest) SetEmbeddingModel(v EmbeddingGenerators) {
 	o.EmbeddingModel = &v
 }
 
+// GetUrlPathsToInclude returns the UrlPathsToInclude field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WebscrapeRequest) GetUrlPathsToInclude() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UrlPathsToInclude
+}
+
+// GetUrlPathsToIncludeOk returns a tuple with the UrlPathsToInclude field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WebscrapeRequest) GetUrlPathsToIncludeOk() ([]string, bool) {
+	if o == nil || isNil(o.UrlPathsToInclude) {
+    return nil, false
+	}
+	return o.UrlPathsToInclude, true
+}
+
+// HasUrlPathsToInclude returns a boolean if a field has been set.
+func (o *WebscrapeRequest) HasUrlPathsToInclude() bool {
+	if o != nil && isNil(o.UrlPathsToInclude) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrlPathsToInclude gets a reference to the given []string and assigns it to the UrlPathsToInclude field.
+func (o *WebscrapeRequest) SetUrlPathsToInclude(v []string) {
+	o.UrlPathsToInclude = v
+}
+
 func (o WebscrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -649,6 +684,9 @@ func (o WebscrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.EmbeddingModel) {
 		toSerialize["embedding_model"] = o.EmbeddingModel
+	}
+	if o.UrlPathsToInclude != nil {
+		toSerialize["url_paths_to_include"] = o.UrlPathsToInclude
 	}
 	return json.Marshal(toSerialize)
 }

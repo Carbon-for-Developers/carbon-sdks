@@ -29,6 +29,10 @@ type SitemapScrapeRequest struct {
 	CssClassesToSkip []string `json:"css_classes_to_skip,omitempty"`
 	CssSelectorsToSkip []string `json:"css_selectors_to_skip,omitempty"`
 	EmbeddingModel *EmbeddingGenerators `json:"embedding_model,omitempty"`
+	// URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+	UrlPathsToInclude []string `json:"url_paths_to_include,omitempty"`
+	// URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+	UrlPathsToExclude []string `json:"url_paths_to_exclude,omitempty"`
 }
 
 // NewSitemapScrapeRequest instantiates a new SitemapScrapeRequest object
@@ -555,6 +559,72 @@ func (o *SitemapScrapeRequest) SetEmbeddingModel(v EmbeddingGenerators) {
 	o.EmbeddingModel = &v
 }
 
+// GetUrlPathsToInclude returns the UrlPathsToInclude field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SitemapScrapeRequest) GetUrlPathsToInclude() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UrlPathsToInclude
+}
+
+// GetUrlPathsToIncludeOk returns a tuple with the UrlPathsToInclude field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SitemapScrapeRequest) GetUrlPathsToIncludeOk() ([]string, bool) {
+	if o == nil || isNil(o.UrlPathsToInclude) {
+    return nil, false
+	}
+	return o.UrlPathsToInclude, true
+}
+
+// HasUrlPathsToInclude returns a boolean if a field has been set.
+func (o *SitemapScrapeRequest) HasUrlPathsToInclude() bool {
+	if o != nil && isNil(o.UrlPathsToInclude) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrlPathsToInclude gets a reference to the given []string and assigns it to the UrlPathsToInclude field.
+func (o *SitemapScrapeRequest) SetUrlPathsToInclude(v []string) {
+	o.UrlPathsToInclude = v
+}
+
+// GetUrlPathsToExclude returns the UrlPathsToExclude field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SitemapScrapeRequest) GetUrlPathsToExclude() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UrlPathsToExclude
+}
+
+// GetUrlPathsToExcludeOk returns a tuple with the UrlPathsToExclude field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SitemapScrapeRequest) GetUrlPathsToExcludeOk() ([]string, bool) {
+	if o == nil || isNil(o.UrlPathsToExclude) {
+    return nil, false
+	}
+	return o.UrlPathsToExclude, true
+}
+
+// HasUrlPathsToExclude returns a boolean if a field has been set.
+func (o *SitemapScrapeRequest) HasUrlPathsToExclude() bool {
+	if o != nil && isNil(o.UrlPathsToExclude) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrlPathsToExclude gets a reference to the given []string and assigns it to the UrlPathsToExclude field.
+func (o *SitemapScrapeRequest) SetUrlPathsToExclude(v []string) {
+	o.UrlPathsToExclude = v
+}
+
 func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -595,6 +665,12 @@ func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.EmbeddingModel) {
 		toSerialize["embedding_model"] = o.EmbeddingModel
+	}
+	if o.UrlPathsToInclude != nil {
+		toSerialize["url_paths_to_include"] = o.UrlPathsToInclude
+	}
+	if o.UrlPathsToExclude != nil {
+		toSerialize["url_paths_to_exclude"] = o.UrlPathsToExclude
 	}
 	return json.Marshal(toSerialize)
 }

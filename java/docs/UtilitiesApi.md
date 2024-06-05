@@ -353,6 +353,8 @@ public class Example {
     List<String> cssClassesToSkip = Arrays.asList();
     List<String> cssSelectorsToSkip = Arrays.asList();
     EmbeddingGenerators embeddingModel = EmbeddingGenerators.fromValue("OPENAI");
+    List<String> urlPathsToInclude = Arrays.asList(); // URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+    List<String> urlPathsToExclude = Arrays.asList(); // URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     try {
       Object result = client
               .utilities
@@ -369,6 +371,8 @@ public class Example {
               .cssClassesToSkip(cssClassesToSkip)
               .cssSelectorsToSkip(cssSelectorsToSkip)
               .embeddingModel(embeddingModel)
+              .urlPathsToInclude(urlPathsToInclude)
+              .urlPathsToExclude(urlPathsToExclude)
               .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling UtilitiesApi#scrapeSitemap");
@@ -395,6 +399,8 @@ public class Example {
               .cssClassesToSkip(cssClassesToSkip)
               .cssSelectorsToSkip(cssSelectorsToSkip)
               .embeddingModel(embeddingModel)
+              .urlPathsToInclude(urlPathsToInclude)
+              .urlPathsToExclude(urlPathsToExclude)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

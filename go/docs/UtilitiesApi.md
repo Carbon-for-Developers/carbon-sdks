@@ -193,6 +193,8 @@ func main() {
     sitemapScrapeRequest.SetCssClassesToSkip([])
     sitemapScrapeRequest.SetCssSelectorsToSkip([])
     sitemapScrapeRequest.SetEmbeddingModel(null)
+    sitemapScrapeRequest.SetUrlPathsToInclude([])
+    sitemapScrapeRequest.SetUrlPathsToExclude([])
     
     request := client.UtilitiesApi.ScrapeSitemap(
         sitemapScrapeRequest,

@@ -19,6 +19,7 @@ from carbon.type.webscrape_request_css_classes_to_skip import WebscrapeRequestCs
 from carbon.type.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
 from carbon.type.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
 from carbon.type.webscrape_request_tags import WebscrapeRequestTags
+from carbon.type.webscrape_request_url_paths_to_include import WebscrapeRequestUrlPathsToInclude
 
 class RequiredWebscrapeRequest(TypedDict):
     url: str
@@ -50,6 +51,8 @@ class OptionalWebscrapeRequest(TypedDict, total=False):
     css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip]
 
     embedding_model: EmbeddingGenerators
+
+    url_paths_to_include: typing.Optional[WebscrapeRequestUrlPathsToInclude]
 
 class WebscrapeRequest(RequiredWebscrapeRequest, OptionalWebscrapeRequest):
     pass

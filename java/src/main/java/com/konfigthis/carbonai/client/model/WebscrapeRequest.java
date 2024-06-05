@@ -111,6 +111,10 @@ public class WebscrapeRequest {
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private EmbeddingGenerators embeddingModel;
 
+  public static final String SERIALIZED_NAME_URL_PATHS_TO_INCLUDE = "url_paths_to_include";
+  @SerializedName(SERIALIZED_NAME_URL_PATHS_TO_INCLUDE)
+  private List<String> urlPathsToInclude = null;
+
   public WebscrapeRequest() {
   }
 
@@ -561,6 +565,43 @@ public class WebscrapeRequest {
     this.embeddingModel = embeddingModel;
   }
 
+
+  public WebscrapeRequest urlPathsToInclude(List<String> urlPathsToInclude) {
+    
+    
+    
+    
+    this.urlPathsToInclude = urlPathsToInclude;
+    return this;
+  }
+
+  public WebscrapeRequest addUrlPathsToIncludeItem(String urlPathsToIncludeItem) {
+    if (this.urlPathsToInclude == null) {
+      this.urlPathsToInclude = new ArrayList<>();
+    }
+    this.urlPathsToInclude.add(urlPathsToIncludeItem);
+    return this;
+  }
+
+   /**
+   * URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+   * @return urlPathsToInclude
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input")
+
+  public List<String> getUrlPathsToInclude() {
+    return urlPathsToInclude;
+  }
+
+
+  public void setUrlPathsToInclude(List<String> urlPathsToInclude) {
+    
+    
+    
+    this.urlPathsToInclude = urlPathsToInclude;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -629,7 +670,8 @@ public class WebscrapeRequest {
         Objects.equals(this.htmlTagsToSkip, webscrapeRequest.htmlTagsToSkip) &&
         Objects.equals(this.cssClassesToSkip, webscrapeRequest.cssClassesToSkip) &&
         Objects.equals(this.cssSelectorsToSkip, webscrapeRequest.cssSelectorsToSkip) &&
-        Objects.equals(this.embeddingModel, webscrapeRequest.embeddingModel)&&
+        Objects.equals(this.embeddingModel, webscrapeRequest.embeddingModel) &&
+        Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude)&&
         Objects.equals(this.additionalProperties, webscrapeRequest.additionalProperties);
   }
 
@@ -639,7 +681,7 @@ public class WebscrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, additionalProperties);
+    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -667,6 +709,7 @@ public class WebscrapeRequest {
     sb.append("    cssClassesToSkip: ").append(toIndentedString(cssClassesToSkip)).append("\n");
     sb.append("    cssSelectorsToSkip: ").append(toIndentedString(cssSelectorsToSkip)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -704,6 +747,7 @@ public class WebscrapeRequest {
     openapiFields.add("css_classes_to_skip");
     openapiFields.add("css_selectors_to_skip");
     openapiFields.add("embedding_model");
+    openapiFields.add("url_paths_to_include");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -743,6 +787,10 @@ public class WebscrapeRequest {
       // ensure the optional json data is an array if present (nullable)
       if (jsonObj.get("css_selectors_to_skip") != null && !jsonObj.get("css_selectors_to_skip").isJsonNull() && !jsonObj.get("css_selectors_to_skip").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `css_selectors_to_skip` to be an array in the JSON string or null but got `%s`", jsonObj.get("css_selectors_to_skip").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("url_paths_to_include") != null && !jsonObj.get("url_paths_to_include").isJsonNull() && !jsonObj.get("url_paths_to_include").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url_paths_to_include` to be an array in the JSON string or null but got `%s`", jsonObj.get("url_paths_to_include").toString()));
       }
   }
 

@@ -653,6 +653,8 @@ public class UtilitiesApiGenerated {
         private List<String> cssClassesToSkip;
         private List<String> cssSelectorsToSkip;
         private EmbeddingGenerators embeddingModel;
+        private List<String> urlPathsToInclude;
+        private List<String> urlPathsToExclude;
 
         private ScrapeSitemapRequestBuilder(String url) {
             this.url = url;
@@ -779,6 +781,26 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set urlPathsToInclude
+         * @param urlPathsToInclude URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input (optional)
+         * @return ScrapeSitemapRequestBuilder
+         */
+        public ScrapeSitemapRequestBuilder urlPathsToInclude(List<String> urlPathsToInclude) {
+            this.urlPathsToInclude = urlPathsToInclude;
+            return this;
+        }
+        
+        /**
+         * Set urlPathsToExclude
+         * @param urlPathsToExclude URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input (optional)
+         * @return ScrapeSitemapRequestBuilder
+         */
+        public ScrapeSitemapRequestBuilder urlPathsToExclude(List<String> urlPathsToExclude) {
+            this.urlPathsToExclude = urlPathsToExclude;
+            return this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -809,6 +831,8 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.cssClassesToSkip(this.cssClassesToSkip);
             sitemapScrapeRequest.cssSelectorsToSkip(this.cssSelectorsToSkip);
             sitemapScrapeRequest.embeddingModel(this.embeddingModel);
+            sitemapScrapeRequest.urlPathsToInclude(this.urlPathsToInclude);
+            sitemapScrapeRequest.urlPathsToExclude(this.urlPathsToExclude);
             return sitemapScrapeRequest;
         }
 

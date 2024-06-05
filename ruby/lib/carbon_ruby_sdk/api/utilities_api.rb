@@ -342,9 +342,11 @@ module Carbon
     # @param css_classes_to_skip [Array<String>] 
     # @param css_selectors_to_skip [Array<String>] 
     # @param embedding_model [EmbeddingGenerators] 
+    # @param url_paths_to_include [Array<String>] URL subpaths or directories that you want to include. For example if you want to only include URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+    # @param url_paths_to_exclude [Array<String>] URL subpaths or directories that you want to exclude. For example if you want to exclude URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', extra: {})
+    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -359,6 +361,8 @@ module Carbon
       _body[:css_classes_to_skip] = css_classes_to_skip if css_classes_to_skip != SENTINEL
       _body[:css_selectors_to_skip] = css_selectors_to_skip if css_selectors_to_skip != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:url_paths_to_include] = url_paths_to_include if url_paths_to_include != SENTINEL
+      _body[:url_paths_to_exclude] = url_paths_to_exclude if url_paths_to_exclude != SENTINEL
       sitemap_scrape_request = _body
       api_response = scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
       api_response.data
@@ -387,9 +391,11 @@ module Carbon
     # @param css_classes_to_skip [Array<String>] 
     # @param css_selectors_to_skip [Array<String>] 
     # @param embedding_model [EmbeddingGenerators] 
+    # @param url_paths_to_include [Array<String>] URL subpaths or directories that you want to include. For example if you want to only include URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+    # @param url_paths_to_exclude [Array<String>] URL subpaths or directories that you want to exclude. For example if you want to exclude URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', extra: {})
+    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -404,6 +410,8 @@ module Carbon
       _body[:css_classes_to_skip] = css_classes_to_skip if css_classes_to_skip != SENTINEL
       _body[:css_selectors_to_skip] = css_selectors_to_skip if css_selectors_to_skip != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:url_paths_to_include] = url_paths_to_include if url_paths_to_include != SENTINEL
+      _body[:url_paths_to_exclude] = url_paths_to_exclude if url_paths_to_exclude != SENTINEL
       sitemap_scrape_request = _body
       scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
     end

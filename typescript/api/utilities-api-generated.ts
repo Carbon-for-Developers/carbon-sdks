@@ -420,7 +420,9 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
                 html_tags_to_skip: requestParameters.html_tags_to_skip,
                 css_classes_to_skip: requestParameters.css_classes_to_skip,
                 css_selectors_to_skip: requestParameters.css_selectors_to_skip,
-                embedding_model: requestParameters.embedding_model
+                embedding_model: requestParameters.embedding_model,
+                url_paths_to_include: requestParameters.url_paths_to_include,
+                url_paths_to_exclude: requestParameters.url_paths_to_exclude
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(sitemapScrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
