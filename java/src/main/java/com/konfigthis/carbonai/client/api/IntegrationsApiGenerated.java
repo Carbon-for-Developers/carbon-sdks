@@ -1504,7 +1504,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 2e662fad-1193-4482-a2d7-ec7b821a9d2b)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 71f214fa-2155-41cb-9336-9b3070e86897)
          * @return GetOauthUrlRequestBuilder
          */
         public GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -1534,7 +1534,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX (optional, default to true)
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX (optional, default to true)
          * @return GetOauthUrlRequestBuilder
          */
         public GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
@@ -3089,7 +3089,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to dd2130b5-0f9f-4f3a-b450-f3fa458763ae)
+         * @param requestId  (optional, default to 6136b467-242e-49df-9478-d3e0cfdde299)
          * @return SyncConfluenceRequestBuilder
          */
         public SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3587,7 +3587,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to dd2130b5-0f9f-4f3a-b450-f3fa458763ae)
+         * @param requestId  (optional, default to 6136b467-242e-49df-9478-d3e0cfdde299)
          * @return SyncFilesRequestBuilder
          */
         public SyncFilesRequestBuilder requestId(String requestId) {

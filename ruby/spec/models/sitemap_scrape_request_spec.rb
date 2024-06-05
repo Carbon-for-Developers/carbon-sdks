@@ -97,4 +97,16 @@ describe Carbon::SitemapScrapeRequest do
     end
   end
 
+  describe 'test attribute "url_paths_to_include"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "url_paths_to_exclude"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

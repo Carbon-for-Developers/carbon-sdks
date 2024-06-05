@@ -20,6 +20,7 @@ from carbon.pydantic.webscrape_request_css_classes_to_skip import WebscrapeReque
 from carbon.pydantic.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
 from carbon.pydantic.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
 from carbon.pydantic.webscrape_request_tags import WebscrapeRequestTags
+from carbon.pydantic.webscrape_request_url_paths_to_include import WebscrapeRequestUrlPathsToInclude
 
 class WebscrapeRequest(BaseModel):
     url: str = Field(alias='url')
@@ -49,6 +50,8 @@ class WebscrapeRequest(BaseModel):
     css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
 
     embedding_model: typing.Optional[EmbeddingGenerators] = Field(None, alias='embedding_model')
+
+    url_paths_to_include: typing.Optional[WebscrapeRequestUrlPathsToInclude] = Field(None, alias='url_paths_to_include')
 
     model_config = ConfigDict(
         protected_namespaces=(),

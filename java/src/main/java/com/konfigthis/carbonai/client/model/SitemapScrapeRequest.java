@@ -107,6 +107,14 @@ public class SitemapScrapeRequest {
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private EmbeddingGenerators embeddingModel;
 
+  public static final String SERIALIZED_NAME_URL_PATHS_TO_INCLUDE = "url_paths_to_include";
+  @SerializedName(SERIALIZED_NAME_URL_PATHS_TO_INCLUDE)
+  private List<String> urlPathsToInclude = null;
+
+  public static final String SERIALIZED_NAME_URL_PATHS_TO_EXCLUDE = "url_paths_to_exclude";
+  @SerializedName(SERIALIZED_NAME_URL_PATHS_TO_EXCLUDE)
+  private List<String> urlPathsToExclude = null;
+
   public SitemapScrapeRequest() {
   }
 
@@ -523,6 +531,80 @@ public class SitemapScrapeRequest {
     this.embeddingModel = embeddingModel;
   }
 
+
+  public SitemapScrapeRequest urlPathsToInclude(List<String> urlPathsToInclude) {
+    
+    
+    
+    
+    this.urlPathsToInclude = urlPathsToInclude;
+    return this;
+  }
+
+  public SitemapScrapeRequest addUrlPathsToIncludeItem(String urlPathsToIncludeItem) {
+    if (this.urlPathsToInclude == null) {
+      this.urlPathsToInclude = new ArrayList<>();
+    }
+    this.urlPathsToInclude.add(urlPathsToIncludeItem);
+    return this;
+  }
+
+   /**
+   * URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+   * @return urlPathsToInclude
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input")
+
+  public List<String> getUrlPathsToInclude() {
+    return urlPathsToInclude;
+  }
+
+
+  public void setUrlPathsToInclude(List<String> urlPathsToInclude) {
+    
+    
+    
+    this.urlPathsToInclude = urlPathsToInclude;
+  }
+
+
+  public SitemapScrapeRequest urlPathsToExclude(List<String> urlPathsToExclude) {
+    
+    
+    
+    
+    this.urlPathsToExclude = urlPathsToExclude;
+    return this;
+  }
+
+  public SitemapScrapeRequest addUrlPathsToExcludeItem(String urlPathsToExcludeItem) {
+    if (this.urlPathsToExclude == null) {
+      this.urlPathsToExclude = new ArrayList<>();
+    }
+    this.urlPathsToExclude.add(urlPathsToExcludeItem);
+    return this;
+  }
+
+   /**
+   * URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+   * @return urlPathsToExclude
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input")
+
+  public List<String> getUrlPathsToExclude() {
+    return urlPathsToExclude;
+  }
+
+
+  public void setUrlPathsToExclude(List<String> urlPathsToExclude) {
+    
+    
+    
+    this.urlPathsToExclude = urlPathsToExclude;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -590,7 +672,9 @@ public class SitemapScrapeRequest {
         Objects.equals(this.htmlTagsToSkip, sitemapScrapeRequest.htmlTagsToSkip) &&
         Objects.equals(this.cssClassesToSkip, sitemapScrapeRequest.cssClassesToSkip) &&
         Objects.equals(this.cssSelectorsToSkip, sitemapScrapeRequest.cssSelectorsToSkip) &&
-        Objects.equals(this.embeddingModel, sitemapScrapeRequest.embeddingModel)&&
+        Objects.equals(this.embeddingModel, sitemapScrapeRequest.embeddingModel) &&
+        Objects.equals(this.urlPathsToInclude, sitemapScrapeRequest.urlPathsToInclude) &&
+        Objects.equals(this.urlPathsToExclude, sitemapScrapeRequest.urlPathsToExclude)&&
         Objects.equals(this.additionalProperties, sitemapScrapeRequest.additionalProperties);
   }
 
@@ -600,7 +684,7 @@ public class SitemapScrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, additionalProperties);
+    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -627,6 +711,8 @@ public class SitemapScrapeRequest {
     sb.append("    cssClassesToSkip: ").append(toIndentedString(cssClassesToSkip)).append("\n");
     sb.append("    cssSelectorsToSkip: ").append(toIndentedString(cssSelectorsToSkip)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
+    sb.append("    urlPathsToExclude: ").append(toIndentedString(urlPathsToExclude)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -663,6 +749,8 @@ public class SitemapScrapeRequest {
     openapiFields.add("css_classes_to_skip");
     openapiFields.add("css_selectors_to_skip");
     openapiFields.add("embedding_model");
+    openapiFields.add("url_paths_to_include");
+    openapiFields.add("url_paths_to_exclude");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -702,6 +790,14 @@ public class SitemapScrapeRequest {
       // ensure the optional json data is an array if present (nullable)
       if (jsonObj.get("css_selectors_to_skip") != null && !jsonObj.get("css_selectors_to_skip").isJsonNull() && !jsonObj.get("css_selectors_to_skip").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `css_selectors_to_skip` to be an array in the JSON string or null but got `%s`", jsonObj.get("css_selectors_to_skip").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("url_paths_to_include") != null && !jsonObj.get("url_paths_to_include").isJsonNull() && !jsonObj.get("url_paths_to_include").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url_paths_to_include` to be an array in the JSON string or null but got `%s`", jsonObj.get("url_paths_to_include").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("url_paths_to_exclude") != null && !jsonObj.get("url_paths_to_exclude").isJsonNull() && !jsonObj.get("url_paths_to_exclude").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url_paths_to_exclude` to be an array in the JSON string or null but got `%s`", jsonObj.get("url_paths_to_exclude").toString()));
       }
   }
 

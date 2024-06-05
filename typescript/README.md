@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.2-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.2)
+[![npm](https://img.shields.io/badge/npm-v0.2.3-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.3)
 
 </div>
 
@@ -1448,7 +1448,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "2e662fad-1193-4482-a2d7-ec7b821a9d2b",
+  request_id: "71f214fa-2155-41cb-9336-9b3070e86897",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1517,7 +1517,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1771,7 +1771,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1879,7 +1879,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2749,6 +2749,8 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   css_classes_to_skip: [],
   css_selectors_to_skip: [],
   embedding_model: "OPENAI",
+  url_paths_to_include: [],
+  url_paths_to_exclude: [],
 });
 ```
 
@@ -2779,6 +2781,14 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
 ##### css_selectors_to_skip: `string`[]<a id="css_selectors_to_skip-string"></a>
 
 ##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### url_paths_to_include: `string`[]<a id="url_paths_to_include-string"></a>
+
+URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+
+##### url_paths_to_exclude: `string`[]<a id="url_paths_to_exclude-string"></a>
+
+URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -2818,6 +2828,7 @@ const scrapeWebResponse = await carbon.utilities.scrapeWeb([
     css_classes_to_skip: [],
     css_selectors_to_skip: [],
     embedding_model: "OPENAI",
+    url_paths_to_include: [],
   },
 ]);
 ```

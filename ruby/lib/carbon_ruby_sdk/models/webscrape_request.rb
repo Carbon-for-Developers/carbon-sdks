@@ -39,6 +39,9 @@ module Carbon
 
     attr_accessor :embedding_model
 
+    # URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+    attr_accessor :url_paths_to_include
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -55,7 +58,8 @@ module Carbon
         :'html_tags_to_skip' => :'html_tags_to_skip',
         :'css_classes_to_skip' => :'css_classes_to_skip',
         :'css_selectors_to_skip' => :'css_selectors_to_skip',
-        :'embedding_model' => :'embedding_model'
+        :'embedding_model' => :'embedding_model',
+        :'url_paths_to_include' => :'url_paths_to_include'
       }
     end
 
@@ -80,7 +84,8 @@ module Carbon
         :'html_tags_to_skip' => :'Array<String>',
         :'css_classes_to_skip' => :'Array<String>',
         :'css_selectors_to_skip' => :'Array<String>',
-        :'embedding_model' => :'EmbeddingGenerators'
+        :'embedding_model' => :'EmbeddingGenerators',
+        :'url_paths_to_include' => :'Array<String>'
       }
     end
 
@@ -99,6 +104,7 @@ module Carbon
         :'html_tags_to_skip',
         :'css_classes_to_skip',
         :'css_selectors_to_skip',
+        :'url_paths_to_include'
       ])
     end
 
@@ -198,6 +204,12 @@ module Carbon
       else
         self.embedding_model = 'OPENAI'
       end
+
+      if attributes.key?(:'url_paths_to_include')
+        if (value = attributes[:'url_paths_to_include']).is_a?(Array)
+          self.url_paths_to_include = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -216,6 +228,10 @@ module Carbon
         invalid_properties.push('invalid value for "max_pages_to_scrape", must be greater than or equal to 1.')
       end
 
+      if !@url_paths_to_include.nil? && @url_paths_to_include.length > 10
+        invalid_properties.push('invalid value for "url_paths_to_include", number of items must be less than or equal to 10.')
+      end
+
       invalid_properties
     end
 
@@ -225,6 +241,7 @@ module Carbon
       return false if @url.nil?
       return false if !@recursion_depth.nil? && @recursion_depth < 0
       return false if !@max_pages_to_scrape.nil? && @max_pages_to_scrape < 1
+      return false if !@url_paths_to_include.nil? && @url_paths_to_include.length > 10
       true
     end
 
@@ -248,6 +265,16 @@ module Carbon
       @max_pages_to_scrape = max_pages_to_scrape
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] url_paths_to_include Value to be assigned
+    def url_paths_to_include=(url_paths_to_include)
+      if !url_paths_to_include.nil? && url_paths_to_include.length > 10
+        fail ArgumentError, 'invalid value for "url_paths_to_include", number of items must be less than or equal to 10.'
+      end
+
+      @url_paths_to_include = url_paths_to_include
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -266,7 +293,8 @@ module Carbon
           html_tags_to_skip == o.html_tags_to_skip &&
           css_classes_to_skip == o.css_classes_to_skip &&
           css_selectors_to_skip == o.css_selectors_to_skip &&
-          embedding_model == o.embedding_model
+          embedding_model == o.embedding_model &&
+          url_paths_to_include == o.url_paths_to_include
     end
 
     # @see the `==` method
@@ -278,7 +306,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model].hash
+      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include].hash
     end
 
     # Builds the object from hash

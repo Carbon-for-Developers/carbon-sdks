@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CssClassesToSkip** | Pointer to **[]string** |  | [optional] [default to []]
 **CssSelectorsToSkip** | Pointer to **[]string** |  | [optional] [default to []]
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
+**UrlPathsToInclude** | Pointer to **[]string** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
 
 ## Methods
 
@@ -503,6 +504,41 @@ SetEmbeddingModel sets EmbeddingModel field to given value.
 
 HasEmbeddingModel returns a boolean if a field has been set.
 
+### GetUrlPathsToInclude
+
+`func (o *WebscrapeRequest) GetUrlPathsToInclude() []string`
+
+GetUrlPathsToInclude returns the UrlPathsToInclude field if non-nil, zero value otherwise.
+
+### GetUrlPathsToIncludeOk
+
+`func (o *WebscrapeRequest) GetUrlPathsToIncludeOk() (*[]string, bool)`
+
+GetUrlPathsToIncludeOk returns a tuple with the UrlPathsToInclude field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlPathsToInclude
+
+`func (o *WebscrapeRequest) SetUrlPathsToInclude(v []string)`
+
+SetUrlPathsToInclude sets UrlPathsToInclude field to given value.
+
+### HasUrlPathsToInclude
+
+`func (o *WebscrapeRequest) HasUrlPathsToInclude() bool`
+
+HasUrlPathsToInclude returns a boolean if a field has been set.
+
+### SetUrlPathsToIncludeNil
+
+`func (o *WebscrapeRequest) SetUrlPathsToIncludeNil(b bool)`
+
+ SetUrlPathsToIncludeNil sets the value for UrlPathsToInclude to be an explicit nil
+
+### UnsetUrlPathsToInclude
+`func (o *WebscrapeRequest) UnsetUrlPathsToInclude()`
+
+UnsetUrlPathsToInclude ensures that no value is present for UrlPathsToInclude, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

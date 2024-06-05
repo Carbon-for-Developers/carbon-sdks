@@ -148,4 +148,20 @@ public class SitemapScrapeRequestTest {
         // TODO: test embeddingModel
     }
 
+    /**
+     * Test the property 'urlPathsToInclude'
+     */
+    @Test
+    public void urlPathsToIncludeTest() {
+        // TODO: test urlPathsToInclude
+    }
+
+    /**
+     * Test the property 'urlPathsToExclude'
+     */
+    @Test
+    public void urlPathsToExcludeTest() {
+        // TODO: test urlPathsToExclude
+    }
+
 }

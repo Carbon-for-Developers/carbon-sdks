@@ -156,4 +156,12 @@ public class WebscrapeRequestTest {
         // TODO: test embeddingModel
     }
 
+    /**
+     * Test the property 'urlPathsToInclude'
+     */
+    @Test
+    public void urlPathsToIncludeTest() {
+        // TODO: test urlPathsToInclude
+    }
+
 }

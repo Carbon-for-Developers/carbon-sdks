@@ -114,6 +114,8 @@ public class UtilitiesApiTest {
         List<String> cssClassesToSkip = null;
         List<String> cssSelectorsToSkip = null;
         EmbeddingGenerators embeddingModel = null;
+        List<String> urlPathsToInclude = null;
+        List<String> urlPathsToExclude = null;
         Object response = api.scrapeSitemap(url)
                 .tags(tags)
                 .maxPagesToScrape(maxPagesToScrape)
@@ -127,6 +129,8 @@ public class UtilitiesApiTest {
                 .cssClassesToSkip(cssClassesToSkip)
                 .cssSelectorsToSkip(cssSelectorsToSkip)
                 .embeddingModel(embeddingModel)
+                .urlPathsToInclude(urlPathsToInclude)
+                .urlPathsToExclude(urlPathsToExclude)
                 .execute();
         // TODO: test validations
     }

@@ -20,6 +20,8 @@ from carbon.pydantic.sitemap_scrape_request_css_classes_to_skip import SitemapSc
 from carbon.pydantic.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
 from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
 from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags
+from carbon.pydantic.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
+from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
 
 class SitemapScrapeRequest(BaseModel):
     url: str = Field(alias='url')
@@ -47,6 +49,10 @@ class SitemapScrapeRequest(BaseModel):
     css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
 
     embedding_model: typing.Optional[EmbeddingGenerators] = Field(None, alias='embedding_model')
+
+    url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = Field(None, alias='url_paths_to_include')
+
+    url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = Field(None, alias='url_paths_to_exclude')
 
     model_config = ConfigDict(
         protected_namespaces=(),

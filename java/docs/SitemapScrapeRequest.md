@@ -20,6 +20,8 @@
 |**cssClassesToSkip** | **List&lt;String&gt;** |  |  [optional] |
 |**cssSelectorsToSkip** | **List&lt;String&gt;** |  |  [optional] |
 |**embeddingModel** | **EmbeddingGenerators** |  |  [optional] |
+|**urlPathsToInclude** | **List&lt;String&gt;** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input |  [optional] |
+|**urlPathsToExclude** | **List&lt;String&gt;** | URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input |  [optional] |
 
 
 

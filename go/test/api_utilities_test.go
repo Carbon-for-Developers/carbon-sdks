@@ -88,6 +88,8 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         sitemapScrapeRequest.SetCssClassesToSkip([])
         sitemapScrapeRequest.SetCssSelectorsToSkip([])
         sitemapScrapeRequest.SetEmbeddingModel(null)
+        sitemapScrapeRequest.SetUrlPathsToInclude([])
+        sitemapScrapeRequest.SetUrlPathsToExclude([])
         
         request := client.UtilitiesApi.ScrapeSitemap(
             sitemapScrapeRequest,

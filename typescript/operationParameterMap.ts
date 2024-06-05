@@ -1105,6 +1105,12 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'embedding_model'
             },
+            {
+                name: 'url_paths_to_include'
+            },
+            {
+                name: 'url_paths_to_exclude'
+            },
         ]
     },
     '/web_scrape-POST': {

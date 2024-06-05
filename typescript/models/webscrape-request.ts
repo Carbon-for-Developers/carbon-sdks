@@ -103,5 +103,11 @@ export interface WebscrapeRequest {
      * @memberof WebscrapeRequest
      */
     'embedding_model'?: EmbeddingGenerators;
+    /**
+     * URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+     * @type {Array<string>}
+     * @memberof WebscrapeRequest
+     */
+    'url_paths_to_include'?: Array<string> | null;
 }
 

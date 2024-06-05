@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.2-blue)](https://pypi.org/project/carbon-python-sdk/0.2.2)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.3-blue)](https://pypi.org/project/carbon-python-sdk/0.2.3)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -92,7 +92,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.2
+pip install carbon-python-sdk==0.2.3
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1379,7 +1379,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "368135ce-5cca-4fb5-a19d-42b9a409af35",
+        "request_id": "652297b9-0f55-46d8-869d-13a36e89e5da",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1632,7 +1632,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="2e662fad-1193-4482-a2d7-ec7b821a9d2b",
+    request_id="71f214fa-2155-41cb-9336-9b3070e86897",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1706,7 +1706,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX
+Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1977,7 +1977,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+    request_id="6136b467-242e-49df-9478-d3e0cfdde299",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2097,7 +2097,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="dd2130b5-0f9f-4f3a-b450-f3fa458763ae",
+    request_id="6136b467-242e-49df-9478-d3e0cfdde299",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -3038,6 +3038,8 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     css_classes_to_skip=[],
     css_selectors_to_skip=[],
     embedding_model="OPENAI",
+    url_paths_to_include=[],
+    url_paths_to_exclude=[],
 )
 ```
 
@@ -3068,6 +3070,10 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
 ##### css_selectors_to_skip: [`SitemapScrapeRequestCssSelectorsToSkip`](./carbon/type/sitemap_scrape_request_css_selectors_to_skip.py)<a id="css_selectors_to_skip-sitemapscraperequestcssselectorstoskipcarbontypesitemap_scrape_request_css_selectors_to_skippy"></a>
 
 ##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### url_paths_to_include: [`SitemapScrapeRequestUrlPathsToInclude`](./carbon/type/sitemap_scrape_request_url_paths_to_include.py)<a id="url_paths_to_include-sitemapscraperequesturlpathstoincludecarbontypesitemap_scrape_request_url_paths_to_includepy"></a>
+
+##### url_paths_to_exclude: [`SitemapScrapeRequestUrlPathsToExclude`](./carbon/type/sitemap_scrape_request_url_paths_to_exclude.py)<a id="url_paths_to_exclude-sitemapscraperequesturlpathstoexcludecarbontypesitemap_scrape_request_url_paths_to_excludepy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3110,6 +3116,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "css_classes_to_skip": [],
             "css_selectors_to_skip": [],
             "embedding_model": "OPENAI",
+            "url_paths_to_include": [],
         }
     ],
 )
