@@ -609,10 +609,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [parsePdfTablesWithOcr] Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
          * @param {boolean} [detectAudioLanguage] Whether to automatically detect the language of the uploaded audio file.
          * @param {FileContentTypesNullable} [mediaType] The media type of the file. If not provided, it will be inferred from the file extension.
+         * @param {boolean} [splitRows] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, mediaType?: FileContentTypesNullable, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, mediaType?: FileContentTypesNullable, splitRows?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -726,6 +727,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (mediaType !== undefined) {
                 localVarQueryParameter['media_type'] = mediaType;
+            }
+
+            if (splitRows !== undefined) {
+                localVarQueryParameter['split_rows'] = splitRows;
             }
 
 
@@ -1040,7 +1045,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
                 file: requestParameters.file
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.mediaType, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.mediaType, requestParameters.splitRows, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1065,7 +1070,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 max_items_per_chunk: requestParameters.max_items_per_chunk,
                 parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
                 detect_audio_language: requestParameters.detect_audio_language,
-                media_type: requestParameters.media_type
+                media_type: requestParameters.media_type,
+                split_rows: requestParameters.split_rows
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1447,6 +1453,13 @@ export type FilesApiUploadRequest = {
     * @memberof FilesApiUpload
     */
     readonly mediaType?: FileContentTypesNullable
+    
+    /**
+    * Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    * @type {boolean}
+    * @memberof FilesApiUpload
+    */
+    readonly splitRows?: boolean
     
 } & BodyCreateUploadFileUploadfilePost
 

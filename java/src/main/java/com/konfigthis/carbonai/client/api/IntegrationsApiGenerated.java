@@ -175,10 +175,10 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class CancelRequestBuilder {
-        private final Integer dataSourceId;
+    public abstract class CancelRequestBuilderGenerated {
+        final Integer dataSourceId;
 
-        private CancelRequestBuilder(Integer dataSourceId) {
+        public CancelRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
@@ -263,9 +263,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public CancelRequestBuilder cancel(Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.CancelRequestBuilder cancel(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new CancelRequestBuilder(dataSourceId);
+        return ((IntegrationsApi) this).new CancelRequestBuilder(dataSourceId);
     }
     private okhttp3.Call connectDataSourceCall(ConnectDataSourceInput connectDataSourceInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -338,22 +338,22 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ConnectDataSourceRequestBuilder {
-        private final OANSCZGF authentication;
-        private SyncOptions syncOptions;
+    public abstract class ConnectDataSourceRequestBuilderGenerated {
+        final OANSCZGF authentication;
+        SyncOptions syncOptions;
 
-        private ConnectDataSourceRequestBuilder(OANSCZGF authentication) {
+        public ConnectDataSourceRequestBuilderGenerated(OANSCZGF authentication) {
             this.authentication = authentication;
         }
 
         /**
          * Set syncOptions
          * @param syncOptions  (optional)
-         * @return ConnectDataSourceRequestBuilder
+         * @return IntegrationsApi.ConnectDataSourceRequestBuilder
          */
-        public ConnectDataSourceRequestBuilder syncOptions(SyncOptions syncOptions) {
+        public IntegrationsApi.ConnectDataSourceRequestBuilder syncOptions(SyncOptions syncOptions) {
             this.syncOptions = syncOptions;
-            return this;
+            return (IntegrationsApi.ConnectDataSourceRequestBuilder) this;
         }
         
         /**
@@ -438,9 +438,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectDataSourceRequestBuilder connectDataSource(OANSCZGF authentication) throws IllegalArgumentException {
+    public IntegrationsApi.ConnectDataSourceRequestBuilder connectDataSource(OANSCZGF authentication) throws IllegalArgumentException {
         if (authentication == null) throw new IllegalArgumentException("\"authentication\" is required but got null");
-        return new ConnectDataSourceRequestBuilder(authentication);
+        return ((IntegrationsApi) this).new ConnectDataSourceRequestBuilder(authentication);
     }
     private okhttp3.Call connectFreshdeskCall(FreshDeskConnectRequest freshDeskConnectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -513,22 +513,22 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ConnectFreshdeskRequestBuilder {
-        private final String domain;
-        private final String apiKey;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Boolean syncFilesOnConnection;
-        private String requestId;
-        private Boolean syncSourceItems;
-        private FileSyncConfigNullable fileSyncConfig;
+    public abstract class ConnectFreshdeskRequestBuilderGenerated {
+        final String domain;
+        final String apiKey;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
+        FileSyncConfigNullable fileSyncConfig;
 
-        private ConnectFreshdeskRequestBuilder(String domain, String apiKey) {
+        public ConnectFreshdeskRequestBuilderGenerated(String domain, String apiKey) {
             this.domain = domain;
             this.apiKey = apiKey;
         }
@@ -536,111 +536,111 @@ public class IntegrationsApiGenerated {
         /**
          * Set tags
          * @param tags  (optional)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder tags(Object tags) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional, default to OPENAI)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set syncFilesOnConnection
          * @param syncFilesOnConnection  (optional, default to true)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
             this.syncFilesOnConnection = syncFilesOnConnection;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set syncSourceItems
          * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return ConnectFreshdeskRequestBuilder
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
          */
-        public ConnectFreshdeskRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
         }
         
         /**
@@ -736,14 +736,14 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectFreshdeskRequestBuilder connectFreshdesk(String domain, String apiKey) throws IllegalArgumentException {
+    public IntegrationsApi.ConnectFreshdeskRequestBuilder connectFreshdesk(String domain, String apiKey) throws IllegalArgumentException {
         if (domain == null) throw new IllegalArgumentException("\"domain\" is required but got null");
             
 
         if (apiKey == null) throw new IllegalArgumentException("\"apiKey\" is required but got null");
             
 
-        return new ConnectFreshdeskRequestBuilder(domain, apiKey);
+        return ((IntegrationsApi) this).new ConnectFreshdeskRequestBuilder(domain, apiKey);
     }
     private okhttp3.Call connectGitbookCall(GitbookConnectRequest gitbookConnectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -816,21 +816,21 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ConnectGitbookRequestBuilder {
-        private final String organization;
-        private final String accessToken;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Boolean syncFilesOnConnection;
-        private String requestId;
-        private Boolean syncSourceItems;
+    public abstract class ConnectGitbookRequestBuilderGenerated {
+        final String organization;
+        final String accessToken;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
 
-        private ConnectGitbookRequestBuilder(String organization, String accessToken) {
+        public ConnectGitbookRequestBuilderGenerated(String organization, String accessToken) {
             this.organization = organization;
             this.accessToken = accessToken;
         }
@@ -838,101 +838,101 @@ public class IntegrationsApiGenerated {
         /**
          * Set tags
          * @param tags  (optional)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder tags(Object tags) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set syncFilesOnConnection
          * @param syncFilesOnConnection  (optional, default to true)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
             this.syncFilesOnConnection = syncFilesOnConnection;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
          * Set syncSourceItems
          * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
-         * @return ConnectGitbookRequestBuilder
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
          */
-        public ConnectGitbookRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+        public IntegrationsApi.ConnectGitbookRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
-            return this;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
         }
         
         /**
@@ -1027,14 +1027,14 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectGitbookRequestBuilder connectGitbook(String organization, String accessToken) throws IllegalArgumentException {
+    public IntegrationsApi.ConnectGitbookRequestBuilder connectGitbook(String organization, String accessToken) throws IllegalArgumentException {
         if (organization == null) throw new IllegalArgumentException("\"organization\" is required but got null");
             
 
         if (accessToken == null) throw new IllegalArgumentException("\"accessToken\" is required but got null");
             
 
-        return new ConnectGitbookRequestBuilder(organization, accessToken);
+        return ((IntegrationsApi) this).new ConnectGitbookRequestBuilder(organization, accessToken);
     }
     private okhttp3.Call createAwsIamUserCall(S3AuthRequest s3AuthRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1107,12 +1107,12 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class CreateAwsIamUserRequestBuilder {
-        private final String accessKey;
-        private final String accessKeySecret;
-        private Boolean syncSourceItems;
+    public abstract class CreateAwsIamUserRequestBuilderGenerated {
+        final String accessKey;
+        final String accessKeySecret;
+        Boolean syncSourceItems;
 
-        private CreateAwsIamUserRequestBuilder(String accessKey, String accessKeySecret) {
+        public CreateAwsIamUserRequestBuilderGenerated(String accessKey, String accessKeySecret) {
             this.accessKey = accessKey;
             this.accessKeySecret = accessKeySecret;
         }
@@ -1120,11 +1120,11 @@ public class IntegrationsApiGenerated {
         /**
          * Set syncSourceItems
          * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
-         * @return CreateAwsIamUserRequestBuilder
+         * @return IntegrationsApi.CreateAwsIamUserRequestBuilder
          */
-        public CreateAwsIamUserRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+        public IntegrationsApi.CreateAwsIamUserRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
-            return this;
+            return (IntegrationsApi.CreateAwsIamUserRequestBuilder) this;
         }
         
         /**
@@ -1210,14 +1210,14 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public CreateAwsIamUserRequestBuilder createAwsIamUser(String accessKey, String accessKeySecret) throws IllegalArgumentException {
+    public IntegrationsApi.CreateAwsIamUserRequestBuilder createAwsIamUser(String accessKey, String accessKeySecret) throws IllegalArgumentException {
         if (accessKey == null) throw new IllegalArgumentException("\"accessKey\" is required but got null");
             
 
         if (accessKeySecret == null) throw new IllegalArgumentException("\"accessKeySecret\" is required but got null");
             
 
-        return new CreateAwsIamUserRequestBuilder(accessKey, accessKeySecret);
+        return ((IntegrationsApi) this).new CreateAwsIamUserRequestBuilder(accessKey, accessKeySecret);
     }
     private okhttp3.Call getOauthUrlCall(OAuthURLRequest oauthURLRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1290,286 +1290,286 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class GetOauthUrlRequestBuilder {
-        private final DataSourceType service;
-        private Object tags;
-        private String scope;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private String zendeskSubdomain;
-        private String microsoftTenant;
-        private String sharepointSiteName;
-        private String confluenceSubdomain;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private String salesforceDomain;
-        private Boolean syncFilesOnConnection;
-        private Boolean setPageAsBoundary;
-        private Integer dataSourceId;
-        private Boolean connectingNewAccount;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean enableFilePicker;
-        private Boolean syncSourceItems;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+    public abstract class GetOauthUrlRequestBuilderGenerated {
+        final DataSourceType service;
+        Object tags;
+        String scope;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        String zendeskSubdomain;
+        String microsoftTenant;
+        String sharepointSiteName;
+        String confluenceSubdomain;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        String salesforceDomain;
+        Boolean syncFilesOnConnection;
+        Boolean setPageAsBoundary;
+        Integer dataSourceId;
+        Boolean connectingNewAccount;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean enableFilePicker;
+        Boolean syncSourceItems;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
-        private GetOauthUrlRequestBuilder(DataSourceType service) {
+        public GetOauthUrlRequestBuilderGenerated(DataSourceType service) {
             this.service = service;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder tags(Object tags) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set scope
          * @param scope  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder scope(String scope) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder scope(String scope) {
             this.scope = scope;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional, default to OPENAI)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set zendeskSubdomain
          * @param zendeskSubdomain  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder zendeskSubdomain(String zendeskSubdomain) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder zendeskSubdomain(String zendeskSubdomain) {
             this.zendeskSubdomain = zendeskSubdomain;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set microsoftTenant
          * @param microsoftTenant  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder microsoftTenant(String microsoftTenant) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder microsoftTenant(String microsoftTenant) {
             this.microsoftTenant = microsoftTenant;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set sharepointSiteName
          * @param sharepointSiteName  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder sharepointSiteName(String sharepointSiteName) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder sharepointSiteName(String sharepointSiteName) {
             this.sharepointSiteName = sharepointSiteName;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set confluenceSubdomain
          * @param confluenceSubdomain  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder confluenceSubdomain(String confluenceSubdomain) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder confluenceSubdomain(String confluenceSubdomain) {
             this.confluenceSubdomain = confluenceSubdomain;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set salesforceDomain
          * @param salesforceDomain  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder salesforceDomain(String salesforceDomain) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder salesforceDomain(String salesforceDomain) {
             this.salesforceDomain = salesforceDomain;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set syncFilesOnConnection
          * @param syncFilesOnConnection Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk (optional, default to true)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
             this.syncFilesOnConnection = syncFilesOnConnection;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary  (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set dataSourceId
          * @param dataSourceId Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account. (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set connectingNewAccount
          * @param connectingNewAccount Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID. (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder connectingNewAccount(Boolean connectingNewAccount) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder connectingNewAccount(Boolean connectingNewAccount) {
             this.connectingNewAccount = connectingNewAccount;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 71f214fa-2155-41cb-9336-9b3070e86897)
-         * @return GetOauthUrlRequestBuilder
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to b7620173-662c-4ae7-bb61-2e6ffd8619f5)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set useOcr
          * @param useOcr Enable OCR for files that support it. Supported formats: pdf (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder useOcr(Boolean useOcr) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder useOcr(Boolean useOcr) {
             this.useOcr = useOcr;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr  (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX (optional, default to true)
-         * @return GetOauthUrlRequestBuilder
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT (optional, default to true)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
             this.enableFilePicker = enableFilePicker;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set syncSourceItems
          * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set incrementalSync
          * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. (optional, default to false)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder incrementalSync(Boolean incrementalSync) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder incrementalSync(Boolean incrementalSync) {
             this.incrementalSync = incrementalSync;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return GetOauthUrlRequestBuilder
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
-        public GetOauthUrlRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.GetOauthUrlRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
         /**
@@ -1678,9 +1678,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public GetOauthUrlRequestBuilder getOauthUrl(DataSourceType service) throws IllegalArgumentException {
+    public IntegrationsApi.GetOauthUrlRequestBuilder getOauthUrl(DataSourceType service) throws IllegalArgumentException {
         if (service == null) throw new IllegalArgumentException("\"service\" is required but got null");
-        return new GetOauthUrlRequestBuilder(service);
+        return ((IntegrationsApi) this).new GetOauthUrlRequestBuilder(service);
     }
     private okhttp3.Call listConfluencePagesCall(ListRequest listRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1753,22 +1753,22 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListConfluencePagesRequestBuilder {
-        private final Integer dataSourceId;
-        private String parentId;
+    public abstract class ListConfluencePagesRequestBuilderGenerated {
+        final Integer dataSourceId;
+        String parentId;
 
-        private ListConfluencePagesRequestBuilder(Integer dataSourceId) {
+        public ListConfluencePagesRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
         /**
          * Set parentId
          * @param parentId  (optional)
-         * @return ListConfluencePagesRequestBuilder
+         * @return IntegrationsApi.ListConfluencePagesRequestBuilder
          */
-        public ListConfluencePagesRequestBuilder parentId(String parentId) {
+        public IntegrationsApi.ListConfluencePagesRequestBuilder parentId(String parentId) {
             this.parentId = parentId;
-            return this;
+            return (IntegrationsApi.ListConfluencePagesRequestBuilder) this;
         }
         
         /**
@@ -1853,9 +1853,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListConfluencePagesRequestBuilder listConfluencePages(Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.ListConfluencePagesRequestBuilder listConfluencePages(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new ListConfluencePagesRequestBuilder(dataSourceId);
+        return ((IntegrationsApi) this).new ListConfluencePagesRequestBuilder(dataSourceId);
     }
     private okhttp3.Call listDataSourceItemsCall(ListDataSourceItemsRequest listDataSourceItemsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1928,66 +1928,66 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListDataSourceItemsRequestBuilder {
-        private final Integer dataSourceId;
-        private String parentId;
-        private ListItemsFiltersNullable filters;
-        private Pagination pagination;
-        private ExternalSourceItemsOrderBy orderBy;
-        private OrderDirV2 orderDir;
+    public abstract class ListDataSourceItemsRequestBuilderGenerated {
+        final Integer dataSourceId;
+        String parentId;
+        ListItemsFiltersNullable filters;
+        Pagination pagination;
+        ExternalSourceItemsOrderBy orderBy;
+        OrderDirV2 orderDir;
 
-        private ListDataSourceItemsRequestBuilder(Integer dataSourceId) {
+        public ListDataSourceItemsRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
         /**
          * Set parentId
          * @param parentId  (optional)
-         * @return ListDataSourceItemsRequestBuilder
+         * @return IntegrationsApi.ListDataSourceItemsRequestBuilder
          */
-        public ListDataSourceItemsRequestBuilder parentId(String parentId) {
+        public IntegrationsApi.ListDataSourceItemsRequestBuilder parentId(String parentId) {
             this.parentId = parentId;
-            return this;
+            return (IntegrationsApi.ListDataSourceItemsRequestBuilder) this;
         }
         
         /**
          * Set filters
          * @param filters  (optional)
-         * @return ListDataSourceItemsRequestBuilder
+         * @return IntegrationsApi.ListDataSourceItemsRequestBuilder
          */
-        public ListDataSourceItemsRequestBuilder filters(ListItemsFiltersNullable filters) {
+        public IntegrationsApi.ListDataSourceItemsRequestBuilder filters(ListItemsFiltersNullable filters) {
             this.filters = filters;
-            return this;
+            return (IntegrationsApi.ListDataSourceItemsRequestBuilder) this;
         }
         
         /**
          * Set pagination
          * @param pagination  (optional)
-         * @return ListDataSourceItemsRequestBuilder
+         * @return IntegrationsApi.ListDataSourceItemsRequestBuilder
          */
-        public ListDataSourceItemsRequestBuilder pagination(Pagination pagination) {
+        public IntegrationsApi.ListDataSourceItemsRequestBuilder pagination(Pagination pagination) {
             this.pagination = pagination;
-            return this;
+            return (IntegrationsApi.ListDataSourceItemsRequestBuilder) this;
         }
         
         /**
          * Set orderBy
          * @param orderBy  (optional)
-         * @return ListDataSourceItemsRequestBuilder
+         * @return IntegrationsApi.ListDataSourceItemsRequestBuilder
          */
-        public ListDataSourceItemsRequestBuilder orderBy(ExternalSourceItemsOrderBy orderBy) {
+        public IntegrationsApi.ListDataSourceItemsRequestBuilder orderBy(ExternalSourceItemsOrderBy orderBy) {
             this.orderBy = orderBy;
-            return this;
+            return (IntegrationsApi.ListDataSourceItemsRequestBuilder) this;
         }
         
         /**
          * Set orderDir
          * @param orderDir  (optional)
-         * @return ListDataSourceItemsRequestBuilder
+         * @return IntegrationsApi.ListDataSourceItemsRequestBuilder
          */
-        public ListDataSourceItemsRequestBuilder orderDir(OrderDirV2 orderDir) {
+        public IntegrationsApi.ListDataSourceItemsRequestBuilder orderDir(OrderDirV2 orderDir) {
             this.orderDir = orderDir;
-            return this;
+            return (IntegrationsApi.ListDataSourceItemsRequestBuilder) this;
         }
         
         /**
@@ -2076,9 +2076,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListDataSourceItemsRequestBuilder listDataSourceItems(Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.ListDataSourceItemsRequestBuilder listDataSourceItems(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new ListDataSourceItemsRequestBuilder(dataSourceId);
+        return ((IntegrationsApi) this).new ListDataSourceItemsRequestBuilder(dataSourceId);
     }
     private okhttp3.Call listFoldersCall(Integer dataSourceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2149,20 +2149,20 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListFoldersRequestBuilder {
-        private Integer dataSourceId;
+    public abstract class ListFoldersRequestBuilderGenerated {
+        Integer dataSourceId;
 
-        private ListFoldersRequestBuilder() {
+        public ListFoldersRequestBuilderGenerated() {
         }
 
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return ListFoldersRequestBuilder
+         * @return IntegrationsApi.ListFoldersRequestBuilder
          */
-        public ListFoldersRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.ListFoldersRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.ListFoldersRequestBuilder) this;
         }
         
         /**
@@ -2236,8 +2236,8 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListFoldersRequestBuilder listFolders() throws IllegalArgumentException {
-        return new ListFoldersRequestBuilder();
+    public IntegrationsApi.ListFoldersRequestBuilder listFolders() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListFoldersRequestBuilder();
     }
     private okhttp3.Call listGitbookSpacesCall(Integer dataSourceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2313,10 +2313,10 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListGitbookSpacesRequestBuilder {
-        private final Integer dataSourceId;
+    public abstract class ListGitbookSpacesRequestBuilderGenerated {
+        final Integer dataSourceId;
 
-        private ListGitbookSpacesRequestBuilder(Integer dataSourceId) {
+        public ListGitbookSpacesRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
@@ -2392,9 +2392,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListGitbookSpacesRequestBuilder listGitbookSpaces(Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.ListGitbookSpacesRequestBuilder listGitbookSpaces(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new ListGitbookSpacesRequestBuilder(dataSourceId);
+        return ((IntegrationsApi) this).new ListGitbookSpacesRequestBuilder(dataSourceId);
     }
     private okhttp3.Call listLabelsCall(Integer dataSourceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2465,20 +2465,20 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListLabelsRequestBuilder {
-        private Integer dataSourceId;
+    public abstract class ListLabelsRequestBuilderGenerated {
+        Integer dataSourceId;
 
-        private ListLabelsRequestBuilder() {
+        public ListLabelsRequestBuilderGenerated() {
         }
 
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return ListLabelsRequestBuilder
+         * @return IntegrationsApi.ListLabelsRequestBuilder
          */
-        public ListLabelsRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.ListLabelsRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.ListLabelsRequestBuilder) this;
         }
         
         /**
@@ -2552,8 +2552,8 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListLabelsRequestBuilder listLabels() throws IllegalArgumentException {
-        return new ListLabelsRequestBuilder();
+    public IntegrationsApi.ListLabelsRequestBuilder listLabels() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListLabelsRequestBuilder();
     }
     private okhttp3.Call listOutlookCategoriesCall(Integer dataSourceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2624,20 +2624,20 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListOutlookCategoriesRequestBuilder {
-        private Integer dataSourceId;
+    public abstract class ListOutlookCategoriesRequestBuilderGenerated {
+        Integer dataSourceId;
 
-        private ListOutlookCategoriesRequestBuilder() {
+        public ListOutlookCategoriesRequestBuilderGenerated() {
         }
 
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return ListOutlookCategoriesRequestBuilder
+         * @return IntegrationsApi.ListOutlookCategoriesRequestBuilder
          */
-        public ListOutlookCategoriesRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.ListOutlookCategoriesRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.ListOutlookCategoriesRequestBuilder) this;
         }
         
         /**
@@ -2711,8 +2711,8 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListOutlookCategoriesRequestBuilder listOutlookCategories() throws IllegalArgumentException {
-        return new ListOutlookCategoriesRequestBuilder();
+    public IntegrationsApi.ListOutlookCategoriesRequestBuilder listOutlookCategories() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListOutlookCategoriesRequestBuilder();
     }
     private okhttp3.Call listReposCall(Integer perPage, Integer page, Integer dataSourceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2791,42 +2791,42 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class ListReposRequestBuilder {
-        private Integer perPage;
-        private Integer page;
-        private Integer dataSourceId;
+    public abstract class ListReposRequestBuilderGenerated {
+        Integer perPage;
+        Integer page;
+        Integer dataSourceId;
 
-        private ListReposRequestBuilder() {
+        public ListReposRequestBuilderGenerated() {
         }
 
         /**
          * Set perPage
          * @param perPage  (optional, default to 30)
-         * @return ListReposRequestBuilder
+         * @return IntegrationsApi.ListReposRequestBuilder
          */
-        public ListReposRequestBuilder perPage(Integer perPage) {
+        public IntegrationsApi.ListReposRequestBuilder perPage(Integer perPage) {
             this.perPage = perPage;
-            return this;
+            return (IntegrationsApi.ListReposRequestBuilder) this;
         }
         
         /**
          * Set page
          * @param page  (optional, default to 1)
-         * @return ListReposRequestBuilder
+         * @return IntegrationsApi.ListReposRequestBuilder
          */
-        public ListReposRequestBuilder page(Integer page) {
+        public IntegrationsApi.ListReposRequestBuilder page(Integer page) {
             this.page = page;
-            return this;
+            return (IntegrationsApi.ListReposRequestBuilder) this;
         }
         
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return ListReposRequestBuilder
+         * @return IntegrationsApi.ListReposRequestBuilder
          */
-        public ListReposRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.ListReposRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.ListReposRequestBuilder) this;
         }
         
         /**
@@ -2900,8 +2900,8 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ListReposRequestBuilder listRepos() throws IllegalArgumentException {
-        return new ListReposRequestBuilder();
+    public IntegrationsApi.ListReposRequestBuilder listRepos() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListReposRequestBuilder();
     }
     private okhttp3.Call syncConfluenceCall(SyncFilesRequest syncFilesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2974,25 +2974,25 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncConfluenceRequestBuilder {
-        private final Integer dataSourceId;
-        private final List<Object> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+    public abstract class SyncConfluenceRequestBuilderGenerated {
+        final Integer dataSourceId;
+        final List<Object> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
-        private SyncConfluenceRequestBuilder(Integer dataSourceId, List<Object> ids) {
+        public SyncConfluenceRequestBuilderGenerated(Integer dataSourceId, List<Object> ids) {
             this.dataSourceId = dataSourceId;
             this.ids = ids;
         }
@@ -3000,141 +3000,141 @@ public class IntegrationsApiGenerated {
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional, default to OPENAI)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 6136b467-242e-49df-9478-d3e0cfdde299)
-         * @return SyncConfluenceRequestBuilder
+         * @param requestId  (optional, default to b2c5c595-0cfb-4ec3-96ff-87158c2b6207)
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set useOcr
          * @param useOcr  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder useOcr(Boolean useOcr) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder useOcr(Boolean useOcr) {
             this.useOcr = useOcr;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr  (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set incrementalSync
          * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. (optional, default to false)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder incrementalSync(Boolean incrementalSync) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder incrementalSync(Boolean incrementalSync) {
             this.incrementalSync = incrementalSync;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return SyncConfluenceRequestBuilder
+         * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
-        public SyncConfluenceRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.SyncConfluenceRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.SyncConfluenceRequestBuilder) this;
         }
         
         /**
@@ -3233,10 +3233,10 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncConfluenceRequestBuilder syncConfluence(Integer dataSourceId, List<Object> ids) throws IllegalArgumentException {
+    public IntegrationsApi.SyncConfluenceRequestBuilder syncConfluence(Integer dataSourceId, List<Object> ids) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
-        return new SyncConfluenceRequestBuilder(dataSourceId, ids);
+        return ((IntegrationsApi) this).new SyncConfluenceRequestBuilder(dataSourceId, ids);
     }
     private okhttp3.Call syncDataSourceItemsCall(SyncDirectoryRequest syncDirectoryRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -3309,10 +3309,10 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncDataSourceItemsRequestBuilder {
-        private final Integer dataSourceId;
+    public abstract class SyncDataSourceItemsRequestBuilderGenerated {
+        final Integer dataSourceId;
 
-        private SyncDataSourceItemsRequestBuilder(Integer dataSourceId) {
+        public SyncDataSourceItemsRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
@@ -3397,9 +3397,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncDataSourceItemsRequestBuilder syncDataSourceItems(Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.SyncDataSourceItemsRequestBuilder syncDataSourceItems(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new SyncDataSourceItemsRequestBuilder(dataSourceId);
+        return ((IntegrationsApi) this).new SyncDataSourceItemsRequestBuilder(dataSourceId);
     }
     private okhttp3.Call syncFilesCall(SyncFilesRequest syncFilesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -3472,25 +3472,25 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncFilesRequestBuilder {
-        private final Integer dataSourceId;
-        private final List<Object> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGeneratorsNullable embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private Boolean incrementalSync;
-        private FileSyncConfigNullable fileSyncConfig;
+    public abstract class SyncFilesRequestBuilderGenerated {
+        final Integer dataSourceId;
+        final List<Object> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGeneratorsNullable embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        Boolean incrementalSync;
+        FileSyncConfigNullable fileSyncConfig;
 
-        private SyncFilesRequestBuilder(Integer dataSourceId, List<Object> ids) {
+        public SyncFilesRequestBuilderGenerated(Integer dataSourceId, List<Object> ids) {
             this.dataSourceId = dataSourceId;
             this.ids = ids;
         }
@@ -3498,141 +3498,141 @@ public class IntegrationsApiGenerated {
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncFilesRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncFilesRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncFilesRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncFilesRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional, default to OPENAI)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
+        public IntegrationsApi.SyncFilesRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncFilesRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncFilesRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public IntegrationsApi.SyncFilesRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public IntegrationsApi.SyncFilesRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 6136b467-242e-49df-9478-d3e0cfdde299)
-         * @return SyncFilesRequestBuilder
+         * @param requestId  (optional, default to b2c5c595-0cfb-4ec3-96ff-87158c2b6207)
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set useOcr
          * @param useOcr  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder useOcr(Boolean useOcr) {
+        public IntegrationsApi.SyncFilesRequestBuilder useOcr(Boolean useOcr) {
             this.useOcr = useOcr;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr  (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public IntegrationsApi.SyncFilesRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set incrementalSync
          * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. (optional, default to false)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder incrementalSync(Boolean incrementalSync) {
+        public IntegrationsApi.SyncFilesRequestBuilder incrementalSync(Boolean incrementalSync) {
             this.incrementalSync = incrementalSync;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return SyncFilesRequestBuilder
+         * @return IntegrationsApi.SyncFilesRequestBuilder
          */
-        public SyncFilesRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.SyncFilesRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.SyncFilesRequestBuilder) this;
         }
         
         /**
@@ -3731,10 +3731,10 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncFilesRequestBuilder syncFiles(Integer dataSourceId, List<Object> ids) throws IllegalArgumentException {
+    public IntegrationsApi.SyncFilesRequestBuilder syncFiles(Integer dataSourceId, List<Object> ids) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
-        return new SyncFilesRequestBuilder(dataSourceId, ids);
+        return ((IntegrationsApi) this).new SyncFilesRequestBuilder(dataSourceId, ids);
     }
     private okhttp3.Call syncGitHubCall(GithubConnectRequest githubConnectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -3807,12 +3807,12 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncGitHubRequestBuilder {
-        private final String username;
-        private final String accessToken;
-        private Boolean syncSourceItems;
+    public abstract class SyncGitHubRequestBuilderGenerated {
+        final String username;
+        final String accessToken;
+        Boolean syncSourceItems;
 
-        private SyncGitHubRequestBuilder(String username, String accessToken) {
+        public SyncGitHubRequestBuilderGenerated(String username, String accessToken) {
             this.username = username;
             this.accessToken = accessToken;
         }
@@ -3820,11 +3820,11 @@ public class IntegrationsApiGenerated {
         /**
          * Set syncSourceItems
          * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to false)
-         * @return SyncGitHubRequestBuilder
+         * @return IntegrationsApi.SyncGitHubRequestBuilder
          */
-        public SyncGitHubRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+        public IntegrationsApi.SyncGitHubRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
-            return this;
+            return (IntegrationsApi.SyncGitHubRequestBuilder) this;
         }
         
         /**
@@ -3910,14 +3910,14 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncGitHubRequestBuilder syncGitHub(String username, String accessToken) throws IllegalArgumentException {
+    public IntegrationsApi.SyncGitHubRequestBuilder syncGitHub(String username, String accessToken) throws IllegalArgumentException {
         if (username == null) throw new IllegalArgumentException("\"username\" is required but got null");
             
 
         if (accessToken == null) throw new IllegalArgumentException("\"accessToken\" is required but got null");
             
 
-        return new SyncGitHubRequestBuilder(username, accessToken);
+        return ((IntegrationsApi) this).new SyncGitHubRequestBuilder(username, accessToken);
     }
     private okhttp3.Call syncGitbookCall(GitbookSyncRequest gitbookSyncRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -3990,19 +3990,19 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncGitbookRequestBuilder {
-        private final List<String> spaceIds;
-        private final Integer dataSourceId;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private String requestId;
+    public abstract class SyncGitbookRequestBuilderGenerated {
+        final List<String> spaceIds;
+        final Integer dataSourceId;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        String requestId;
 
-        private SyncGitbookRequestBuilder(List<String> spaceIds, Integer dataSourceId) {
+        public SyncGitbookRequestBuilderGenerated(List<String> spaceIds, Integer dataSourceId) {
             this.spaceIds = spaceIds;
             this.dataSourceId = dataSourceId;
         }
@@ -4010,81 +4010,81 @@ public class IntegrationsApiGenerated {
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncGitbookRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncGitbookRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncGitbookRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncGitbookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.SyncGitbookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncGitbookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncGitbookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return SyncGitbookRequestBuilder
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
          */
-        public SyncGitbookRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncGitbookRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
         }
         
         /**
@@ -4177,10 +4177,10 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncGitbookRequestBuilder syncGitbook(List<String> spaceIds, Integer dataSourceId) throws IllegalArgumentException {
+    public IntegrationsApi.SyncGitbookRequestBuilder syncGitbook(List<String> spaceIds, Integer dataSourceId) throws IllegalArgumentException {
         if (spaceIds == null) throw new IllegalArgumentException("\"spaceIds\" is required but got null");
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new SyncGitbookRequestBuilder(spaceIds, dataSourceId);
+        return ((IntegrationsApi) this).new SyncGitbookRequestBuilder(spaceIds, dataSourceId);
     }
     private okhttp3.Call syncGmailCall(GmailSyncInput gmailSyncInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4253,143 +4253,143 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncGmailRequestBuilder {
-        private final Object filters;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean syncAttachments;
-        private FileSyncConfigNullable fileSyncConfig;
-        private Boolean incrementalSync;
+    public abstract class SyncGmailRequestBuilderGenerated {
+        final Object filters;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer dataSourceId;
+        String requestId;
+        Boolean syncAttachments;
+        FileSyncConfigNullable fileSyncConfig;
+        Boolean incrementalSync;
 
-        private SyncGmailRequestBuilder(Object filters) {
+        public SyncGmailRequestBuilderGenerated(Object filters) {
             this.filters = filters;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncGmailRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncGmailRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncGmailRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncGmailRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.SyncGmailRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncGmailRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncGmailRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.SyncGmailRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncGmailRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set syncAttachments
          * @param syncAttachments  (optional, default to false)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder syncAttachments(Boolean syncAttachments) {
+        public IntegrationsApi.SyncGmailRequestBuilder syncAttachments(Boolean syncAttachments) {
             this.syncAttachments = syncAttachments;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.SyncGmailRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
          * Set incrementalSync
          * @param incrementalSync  (optional, default to false)
-         * @return SyncGmailRequestBuilder
+         * @return IntegrationsApi.SyncGmailRequestBuilder
          */
-        public SyncGmailRequestBuilder incrementalSync(Boolean incrementalSync) {
+        public IntegrationsApi.SyncGmailRequestBuilder incrementalSync(Boolean incrementalSync) {
             this.incrementalSync = incrementalSync;
-            return this;
+            return (IntegrationsApi.SyncGmailRequestBuilder) this;
         }
         
         /**
@@ -4485,9 +4485,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncGmailRequestBuilder syncGmail(Object filters) throws IllegalArgumentException {
+    public IntegrationsApi.SyncGmailRequestBuilder syncGmail(Object filters) throws IllegalArgumentException {
         if (filters == null) throw new IllegalArgumentException("\"filters\" is required but got null");
-        return new SyncGmailRequestBuilder(filters);
+        return ((IntegrationsApi) this).new SyncGmailRequestBuilder(filters);
     }
     private okhttp3.Call syncOutlookCall(OutlookSyncInput outlookSyncInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4560,154 +4560,154 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncOutlookRequestBuilder {
-        private final Object filters;
-        private Object tags;
-        private String folder;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean syncAttachments;
-        private FileSyncConfigNullable fileSyncConfig;
-        private Boolean incrementalSync;
+    public abstract class SyncOutlookRequestBuilderGenerated {
+        final Object filters;
+        Object tags;
+        String folder;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer dataSourceId;
+        String requestId;
+        Boolean syncAttachments;
+        FileSyncConfigNullable fileSyncConfig;
+        Boolean incrementalSync;
 
-        private SyncOutlookRequestBuilder(Object filters) {
+        public SyncOutlookRequestBuilderGenerated(Object filters) {
             this.filters = filters;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncOutlookRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set folder
          * @param folder  (optional, default to Inbox)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder folder(String folder) {
+        public IntegrationsApi.SyncOutlookRequestBuilder folder(String folder) {
             this.folder = folder;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncOutlookRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncOutlookRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncOutlookRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.SyncOutlookRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncOutlookRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncOutlookRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.SyncOutlookRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncOutlookRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set syncAttachments
          * @param syncAttachments  (optional, default to false)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder syncAttachments(Boolean syncAttachments) {
+        public IntegrationsApi.SyncOutlookRequestBuilder syncAttachments(Boolean syncAttachments) {
             this.syncAttachments = syncAttachments;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.SyncOutlookRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
          * Set incrementalSync
          * @param incrementalSync  (optional, default to false)
-         * @return SyncOutlookRequestBuilder
+         * @return IntegrationsApi.SyncOutlookRequestBuilder
          */
-        public SyncOutlookRequestBuilder incrementalSync(Boolean incrementalSync) {
+        public IntegrationsApi.SyncOutlookRequestBuilder incrementalSync(Boolean incrementalSync) {
             this.incrementalSync = incrementalSync;
-            return this;
+            return (IntegrationsApi.SyncOutlookRequestBuilder) this;
         }
         
         /**
@@ -4804,9 +4804,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncOutlookRequestBuilder syncOutlook(Object filters) throws IllegalArgumentException {
+    public IntegrationsApi.SyncOutlookRequestBuilder syncOutlook(Object filters) throws IllegalArgumentException {
         if (filters == null) throw new IllegalArgumentException("\"filters\" is required but got null");
-        return new SyncOutlookRequestBuilder(filters);
+        return ((IntegrationsApi) this).new SyncOutlookRequestBuilder(filters);
     }
     private okhttp3.Call syncReposCall(GithubFetchReposRequest githubFetchReposRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4879,22 +4879,22 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncReposRequestBuilder {
-        private final List<String> repos;
-        private Integer dataSourceId;
+    public abstract class SyncReposRequestBuilderGenerated {
+        final List<String> repos;
+        Integer dataSourceId;
 
-        private SyncReposRequestBuilder(List<String> repos) {
+        public SyncReposRequestBuilderGenerated(List<String> repos) {
             this.repos = repos;
         }
 
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return SyncReposRequestBuilder
+         * @return IntegrationsApi.SyncReposRequestBuilder
          */
-        public SyncReposRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.SyncReposRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.SyncReposRequestBuilder) this;
         }
         
         /**
@@ -4979,9 +4979,9 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncReposRequestBuilder syncRepos(List<String> repos) throws IllegalArgumentException {
+    public IntegrationsApi.SyncReposRequestBuilder syncRepos(List<String> repos) throws IllegalArgumentException {
         if (repos == null) throw new IllegalArgumentException("\"repos\" is required but got null");
-        return new SyncReposRequestBuilder(repos);
+        return ((IntegrationsApi) this).new SyncReposRequestBuilder(repos);
     }
     private okhttp3.Call syncRssFeedCall(RSSFeedInput rsSFeedInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -5054,99 +5054,99 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncRssFeedRequestBuilder {
-        private final String url;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private String requestId;
+    public abstract class SyncRssFeedRequestBuilderGenerated {
+        final String url;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        String requestId;
 
-        private SyncRssFeedRequestBuilder(String url) {
+        public SyncRssFeedRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return SyncRssFeedRequestBuilder
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
          */
-        public SyncRssFeedRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncRssFeedRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
         }
         
         /**
@@ -5238,11 +5238,11 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncRssFeedRequestBuilder syncRssFeed(String url) throws IllegalArgumentException {
+    public IntegrationsApi.SyncRssFeedRequestBuilder syncRssFeed(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new SyncRssFeedRequestBuilder(url);
+        return ((IntegrationsApi) this).new SyncRssFeedRequestBuilder(url);
     }
     private okhttp3.Call syncS3FilesCall(S3FileSyncInput s3FileSyncInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -5315,165 +5315,165 @@ public class IntegrationsApiGenerated {
         return localVarCall;
     }
 
-    public class SyncS3FilesRequestBuilder {
-        private final List<S3GetFileInput> ids;
-        private Object tags;
-        private Integer chunkSize;
-        private Integer chunkOverlap;
-        private Boolean skipEmbeddingGeneration;
-        private EmbeddingGenerators embeddingModel;
-        private Boolean generateSparseVectors;
-        private Boolean prependFilenameToChunks;
-        private Integer maxItemsPerChunk;
-        private Boolean setPageAsBoundary;
-        private Integer dataSourceId;
-        private String requestId;
-        private Boolean useOcr;
-        private Boolean parsePdfTablesWithOcr;
-        private FileSyncConfigNullable fileSyncConfig;
+    public abstract class SyncS3FilesRequestBuilderGenerated {
+        final List<S3GetFileInput> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        Integer dataSourceId;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        FileSyncConfigNullable fileSyncConfig;
 
-        private SyncS3FilesRequestBuilder(List<S3GetFileInput> ids) {
+        public SyncS3FilesRequestBuilderGenerated(List<S3GetFileInput> ids) {
             this.ids = ids;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder tags(Object tags) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder tags(Object tags) {
             this.tags = tags;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder chunkSize(Integer chunkSize) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set dataSourceId
          * @param dataSourceId  (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder dataSourceId(Integer dataSourceId) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder dataSourceId(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set requestId
          * @param requestId  (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder requestId(String requestId) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder requestId(String requestId) {
             this.requestId = requestId;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set useOcr
          * @param useOcr  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder useOcr(Boolean useOcr) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder useOcr(Boolean useOcr) {
             this.useOcr = useOcr;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr  (optional, default to false)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
          * Set fileSyncConfig
          * @param fileSyncConfig  (optional)
-         * @return SyncS3FilesRequestBuilder
+         * @return IntegrationsApi.SyncS3FilesRequestBuilder
          */
-        public SyncS3FilesRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+        public IntegrationsApi.SyncS3FilesRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
             this.fileSyncConfig = fileSyncConfig;
-            return this;
+            return (IntegrationsApi.SyncS3FilesRequestBuilder) this;
         }
         
         /**
@@ -5571,8 +5571,8 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SyncS3FilesRequestBuilder syncS3Files(List<S3GetFileInput> ids) throws IllegalArgumentException {
+    public IntegrationsApi.SyncS3FilesRequestBuilder syncS3Files(List<S3GetFileInput> ids) throws IllegalArgumentException {
         if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
-        return new SyncS3FilesRequestBuilder(ids);
+        return ((IntegrationsApi) this).new SyncS3FilesRequestBuilder(ids);
     }
 }

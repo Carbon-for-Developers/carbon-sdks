@@ -248,6 +248,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.ParsePdfTablesWithOcr(false)
         request.DetectAudioLanguage(false)
         request.MediaType()
+        request.SplitRows(false)
         
         resp, httpRes, err := request.Execute()
 
@@ -276,6 +277,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
         uploadFileFromUrlInput.SetDetectAudioLanguage(false)
         uploadFileFromUrlInput.SetMediaType(null)
+        uploadFileFromUrlInput.SetSplitRows(false)
         
         request := client.FilesApi.UploadFromUrl(
             uploadFileFromUrlInput,

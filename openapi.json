@@ -1934,6 +1934,18 @@
               "title": "Media Type"
             },
             "description": "The media type of the file. If not provided, it will be inferred from the file extension."
+          },
+          {
+            "name": "split_rows",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
+              "default": false,
+              "title": "Split Rows"
+            },
+            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files."
           }
         ],
         "requestBody": {
@@ -3396,7 +3408,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "652297b9-0f55-46d8-869d-13a36e89e5da",
+              "request_id": "07144230-657d-40ab-9fb5-89095bf3fc65",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5856,7 +5868,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "71f214fa-2155-41cb-9336-9b3070e86897"
+            "default": "b7620173-662c-4ae7-bb61-2e6ffd8619f5"
           },
           "use_ocr": {
             "anyOf": [
@@ -5886,7 +5898,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -7922,7 +7934,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "6136b467-242e-49df-9478-d3e0cfdde299"
+            "default": "b2c5c595-0cfb-4ec3-96ff-87158c2b6207"
           },
           "use_ocr": {
             "anyOf": [
@@ -8089,7 +8101,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "652297b9-0f55-46d8-869d-13a36e89e5da"
+            "default": "07144230-657d-40ab-9fb5-89095bf3fc65"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8344,6 +8356,11 @@
                 "type": "null"
               }
             ]
+          },
+          "split_rows": {
+            "type": "boolean",
+            "title": "Split Rows",
+            "default": false
           }
         },
         "type": "object",

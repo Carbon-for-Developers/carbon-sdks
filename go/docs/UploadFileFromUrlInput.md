@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ParsePdfTablesWithOcr** | Pointer to **bool** |  | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** |  | [optional] [default to false]
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
+**SplitRows** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -433,6 +434,31 @@ HasMediaType returns a boolean if a field has been set.
 `func (o *UploadFileFromUrlInput) UnsetMediaType()`
 
 UnsetMediaType ensures that no value is present for MediaType, not even an explicit nil
+### GetSplitRows
+
+`func (o *UploadFileFromUrlInput) GetSplitRows() bool`
+
+GetSplitRows returns the SplitRows field if non-nil, zero value otherwise.
+
+### GetSplitRowsOk
+
+`func (o *UploadFileFromUrlInput) GetSplitRowsOk() (*bool, bool)`
+
+GetSplitRowsOk returns a tuple with the SplitRows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplitRows
+
+`func (o *UploadFileFromUrlInput) SetSplitRows(v bool)`
+
+SetSplitRows sets SplitRows field to given value.
+
+### HasSplitRows
+
+`func (o *UploadFileFromUrlInput) HasSplitRows() bool`
+
+HasSplitRows returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

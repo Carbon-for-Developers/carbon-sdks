@@ -294,6 +294,9 @@ operation_parameter_map = {
             {
                 'name': 'media_type'
             },
+            {
+                'name': 'split_rows'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -339,6 +342,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'media_type'
+            },
+            {
+                'name': 'split_rows'
             },
         ]
     },

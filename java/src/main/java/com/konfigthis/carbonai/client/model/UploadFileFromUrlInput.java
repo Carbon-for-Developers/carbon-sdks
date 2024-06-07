@@ -108,6 +108,10 @@ public class UploadFileFromUrlInput {
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
   private FileContentTypesNullable mediaType;
 
+  public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
+  @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
+  private Boolean splitRows = false;
+
   public UploadFileFromUrlInput() {
   }
 
@@ -516,6 +520,35 @@ public class UploadFileFromUrlInput {
     this.mediaType = mediaType;
   }
 
+
+  public UploadFileFromUrlInput splitRows(Boolean splitRows) {
+    
+    
+    
+    
+    this.splitRows = splitRows;
+    return this;
+  }
+
+   /**
+   * Get splitRows
+   * @return splitRows
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
+
+  public Boolean getSplitRows() {
+    return splitRows;
+  }
+
+
+  public void setSplitRows(Boolean splitRows) {
+    
+    
+    
+    this.splitRows = splitRows;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -584,7 +617,8 @@ public class UploadFileFromUrlInput {
         Objects.equals(this.maxItemsPerChunk, uploadFileFromUrlInput.maxItemsPerChunk) &&
         Objects.equals(this.parsePdfTablesWithOcr, uploadFileFromUrlInput.parsePdfTablesWithOcr) &&
         Objects.equals(this.detectAudioLanguage, uploadFileFromUrlInput.detectAudioLanguage) &&
-        Objects.equals(this.mediaType, uploadFileFromUrlInput.mediaType)&&
+        Objects.equals(this.mediaType, uploadFileFromUrlInput.mediaType) &&
+        Objects.equals(this.splitRows, uploadFileFromUrlInput.splitRows)&&
         Objects.equals(this.additionalProperties, uploadFileFromUrlInput.additionalProperties);
   }
 
@@ -594,7 +628,7 @@ public class UploadFileFromUrlInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, additionalProperties);
+    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -622,6 +656,7 @@ public class UploadFileFromUrlInput {
     sb.append("    parsePdfTablesWithOcr: ").append(toIndentedString(parsePdfTablesWithOcr)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -659,6 +694,7 @@ public class UploadFileFromUrlInput {
     openapiFields.add("parse_pdf_tables_with_ocr");
     openapiFields.add("detect_audio_language");
     openapiFields.add("media_type");
+    openapiFields.add("split_rows");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
