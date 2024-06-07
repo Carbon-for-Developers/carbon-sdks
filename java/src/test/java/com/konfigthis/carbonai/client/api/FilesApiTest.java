@@ -271,6 +271,7 @@ public class FilesApiTest {
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
         FileContentTypesNullable mediaType = null;
+        Boolean splitRows = null;
         UserFile response = api.upload(_file)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
@@ -284,6 +285,7 @@ public class FilesApiTest {
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
                 .mediaType(mediaType)
+                .splitRows(splitRows)
                 .execute();
         // TODO: test validations
     }
@@ -309,6 +311,7 @@ public class FilesApiTest {
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
         FileContentTypesNullable mediaType = null;
+        Boolean splitRows = null;
         UserFile response = api.uploadFromUrl(url)
                 .fileName(fileName)
                 .chunkSize(chunkSize)
@@ -323,6 +326,7 @@ public class FilesApiTest {
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
                 .mediaType(mediaType)
+                .splitRows(splitRows)
                 .execute();
         // TODO: test validations
     }

@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.3-blue)](https://pypi.org/project/carbon-python-sdk/0.2.3)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.4-blue)](https://pypi.org/project/carbon-python-sdk/0.2.4)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -92,7 +92,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.3
+pip install carbon-python-sdk==0.2.4
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1105,6 +1105,7 @@ upload_response = carbon.files.upload(
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
     media_type="TEXT",
+    split_rows=False,
 )
 ```
 
@@ -1161,6 +1162,10 @@ Whether to automatically detect the language of the uploaded audio file.
 
 The media type of the file. If not provided, it will be inferred from the file extension.
 
+##### split_rows: `bool`<a id="split_rows-bool"></a>
+
+Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`BodyCreateUploadFileUploadfilePost`](./carbon/type/body_create_upload_file_uploadfile_post.py)
@@ -1198,6 +1203,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
     media_type="TEXT",
+    split_rows=False,
 )
 ```
 
@@ -1232,6 +1238,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
 
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/file_content_types_nullable.py)<a id="media_type-filecontenttypesnullablecarbontypefile_content_types_nullablepy"></a>
+
+##### split_rows: `bool`<a id="split_rows-bool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1379,7 +1387,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "652297b9-0f55-46d8-869d-13a36e89e5da",
+        "request_id": "07144230-657d-40ab-9fb5-89095bf3fc65",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1632,7 +1640,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="71f214fa-2155-41cb-9336-9b3070e86897",
+    request_id="b7620173-662c-4ae7-bb61-2e6ffd8619f5",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1706,7 +1714,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
+Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1977,7 +1985,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="6136b467-242e-49df-9478-d3e0cfdde299",
+    request_id="b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2097,7 +2105,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="6136b467-242e-49df-9478-d3e0cfdde299",
+    request_id="b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,

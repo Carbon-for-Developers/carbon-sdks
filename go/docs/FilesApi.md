@@ -693,6 +693,7 @@ func main() {
     request.ParsePdfTablesWithOcr(false)
     request.DetectAudioLanguage(false)
     request.MediaType()
+    request.SplitRows(false)
     
     resp, httpRes, err := request.Execute()
 
@@ -781,6 +782,7 @@ func main() {
     uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
     uploadFileFromUrlInput.SetDetectAudioLanguage(false)
     uploadFileFromUrlInput.SetMediaType(null)
+    uploadFileFromUrlInput.SetSplitRows(false)
     
     request := client.FilesApi.UploadFromUrl(
         uploadFileFromUrlInput,

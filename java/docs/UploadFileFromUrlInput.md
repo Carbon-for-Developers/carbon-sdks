@@ -21,6 +21,7 @@
 |**parsePdfTablesWithOcr** | **Boolean** |  |  [optional] |
 |**detectAudioLanguage** | **Boolean** |  |  [optional] |
 |**mediaType** | **FileContentTypesNullable** |  |  [optional] |
+|**splitRows** | **Boolean** |  |  [optional] |
 
 
 

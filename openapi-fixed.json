@@ -2039,6 +2039,18 @@
             "schema": {
               "$ref": "#/components/schemas/FileContentTypesNullable"
             }
+          },
+          {
+            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
+            "name": "split_rows",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Split Rows",
+              "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "requestBody": {
@@ -3546,7 +3558,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "652297b9-0f55-46d8-869d-13a36e89e5da",
+              "request_id": "07144230-657d-40ab-9fb5-89095bf3fc65",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5365,7 +5377,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "71f214fa-2155-41cb-9336-9b3070e86897"
+            "default": "b7620173-662c-4ae7-bb61-2e6ffd8619f5"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5382,7 +5394,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT",
             "type": "boolean",
             "default": true
           },
@@ -6833,7 +6845,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "6136b467-242e-49df-9478-d3e0cfdde299"
+            "default": "b2c5c595-0cfb-4ec3-96ff-87158c2b6207"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6925,7 +6937,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "652297b9-0f55-46d8-869d-13a36e89e5da"
+            "default": "07144230-657d-40ab-9fb5-89095bf3fc65"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7114,6 +7126,11 @@
           },
           "media_type": {
             "$ref": "#/components/schemas/FileContentTypesNullable"
+          },
+          "split_rows": {
+            "title": "Split Rows",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",

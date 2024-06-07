@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.3-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.3)
+[![npm](https://img.shields.io/badge/npm-v0.2.4-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.4)
 
 </div>
 
@@ -979,6 +979,7 @@ const uploadResponse = await carbon.files.upload({
   parsePdfTablesWithOcr: false,
   detectAudioLanguage: false,
   mediaType: "TEXT",
+  splitRows: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1035,6 +1036,10 @@ Whether to automatically detect the language of the uploaded audio file.
 
 The media type of the file. If not provided, it will be inferred from the file extension.
 
+##### splitRows: `boolean`<a id="splitrows-boolean"></a>
+
+Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1066,6 +1071,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   media_type: "TEXT",
+  split_rows: false,
 });
 ```
 
@@ -1100,6 +1106,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### detect_audio_language: `boolean`<a id="detect_audio_language-boolean"></a>
 
 ##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
+
+##### split_rows: `boolean`<a id="split_rows-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1448,7 +1456,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "71f214fa-2155-41cb-9336-9b3070e86897",
+  request_id: "b7620173-662c-4ae7-bb61-2e6ffd8619f5",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1517,7 +1525,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1771,7 +1779,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
+  request_id: "b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1879,7 +1887,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
+  request_id: "b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

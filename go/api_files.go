@@ -1662,6 +1662,7 @@ type FilesApiUploadRequest struct {
 	parsePdfTablesWithOcr *bool
 	detectAudioLanguage *bool
 	mediaType *FileContentTypesNullable
+	splitRows *bool
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -1733,6 +1734,12 @@ func (r *FilesApiUploadRequest) DetectAudioLanguage(detectAudioLanguage bool) *F
 // The media type of the file. If not provided, it will be inferred from the file extension.
 func (r *FilesApiUploadRequest) MediaType(mediaType FileContentTypesNullable) *FilesApiUploadRequest {
 	r.mediaType = &mediaType
+	return r
+}
+
+// Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+func (r *FilesApiUploadRequest) SplitRows(splitRows bool) *FilesApiUploadRequest {
+	r.splitRows = &splitRows
 	return r
 }
 
@@ -1839,6 +1846,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.mediaType != nil {
 		localVarQueryParams.Add("media_type", parameterToString(*r.mediaType, ""))
+	}
+	if r.splitRows != nil {
+		localVarQueryParams.Add("split_rows", parameterToString(*r.splitRows, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.3-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.3)
+[![npm](https://img.shields.io/badge/gem-v0.2.4-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.4)
 
 </div>
 
@@ -86,7 +86,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.3'
+gem 'carbon_ruby_sdk', '~> 0.2.4'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -999,6 +999,7 @@ result = carbon.files.upload(
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   media_type: "TEXT",
+  split_rows: false,
 )
 p result
 ```
@@ -1048,6 +1049,10 @@ Whether to automatically detect the language of the uploaded audio file.
 The media type of the file. If not provided, it will be inferred from the file
 extension.
 
+##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
+Whether to split tabular rows into chunks. Currently only valid for CSV, TSV,
+and XLSX files.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1083,6 +1088,7 @@ result = carbon.files.upload_from_url(
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   media_type: "TEXT",
+  split_rows: false,
 )
 p result
 ```
@@ -1105,6 +1111,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
+##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1240,7 +1247,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "652297b9-0f55-46d8-869d-13a36e89e5da",
+        "request_id" => "07144230-657d-40ab-9fb5-89095bf3fc65",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1459,7 +1466,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "71f214fa-2155-41cb-9336-9b3070e86897",
+  request_id: "b7620173-662c-4ae7-bb61-2e6ffd8619f5",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1519,7 +1526,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX
+DROPBOX, ONEDRIVE, BOX, GOOGLE_DRIVE, SHAREPOINT
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1781,7 +1788,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
+  request_id: "b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1884,7 +1891,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6136b467-242e-49df-9478-d3e0cfdde299",
+  request_id: "b2c5c595-0cfb-4ec3-96ff-87158c2b6207",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

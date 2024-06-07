@@ -300,6 +300,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'media_type'
             },
+            {
+                name: 'split_rows'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -345,6 +348,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'media_type'
+            },
+            {
+                name: 'split_rows'
             },
         ]
     },

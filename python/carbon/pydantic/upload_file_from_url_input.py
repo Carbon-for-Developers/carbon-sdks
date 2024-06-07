@@ -48,6 +48,8 @@ class UploadFileFromUrlInput(BaseModel):
 
     media_type: typing.Optional[FileContentTypesNullable] = Field(None, alias='media_type')
 
+    split_rows: typing.Optional[bool] = Field(None, alias='split_rows')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

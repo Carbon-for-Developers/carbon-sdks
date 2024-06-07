@@ -103,5 +103,11 @@ export interface UploadFileFromUrlInput {
      * @memberof UploadFileFromUrlInput
      */
     'media_type'?: FileContentTypesNullable | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UploadFileFromUrlInput
+     */
+    'split_rows'?: boolean;
 }
 

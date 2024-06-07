@@ -49,5 +49,7 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
 
     media_type: typing.Optional[FileContentTypesNullable]
 
+    split_rows: bool
+
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass

@@ -267,6 +267,8 @@ securityParameters:
     query: false
   skip_embedding_generation:
     query: false
+  split_rows:
+    query: false
   url:
     query: false
   use_ocr:

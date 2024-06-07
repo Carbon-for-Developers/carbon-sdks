@@ -127,6 +127,7 @@ class BaseApi(api_client.Api):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -158,6 +159,8 @@ class BaseApi(api_client.Api):
             _body["detect_audio_language"] = detect_audio_language
         if media_type is not None:
             _body["media_type"] = media_type
+        if split_rows is not None:
+            _body["split_rows"] = split_rows
         args.body = _body
         return args
 
@@ -379,6 +382,7 @@ class UploadFromUrlRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -400,6 +404,7 @@ class UploadFromUrlRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -422,6 +427,7 @@ class UploadFromUrlRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -441,6 +447,7 @@ class UploadFromUrlRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
         )
         return self._upload_from_url_oapg(
             body=args.body,
@@ -464,6 +471,7 @@ class UploadFromUrl(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -482,6 +490,7 @@ class UploadFromUrl(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
             **kwargs,
         )
         if validate:
@@ -505,6 +514,7 @@ class UploadFromUrl(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_from_url(
@@ -522,6 +532,7 @@ class UploadFromUrl(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -547,6 +558,7 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -568,6 +580,7 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -590,6 +603,7 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
+        split_rows: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -609,6 +623,7 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             media_type=media_type,
+            split_rows=split_rows,
         )
         return self._upload_from_url_oapg(
             body=args.body,

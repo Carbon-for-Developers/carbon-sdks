@@ -1134,7 +1134,7 @@ public class Example {
 
 <a name="upload"></a>
 # **upload**
-> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).mediaType(mediaType).execute();
+> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).mediaType(mediaType).splitRows(splitRows).execute();
 
 Create Upload File
 
@@ -1178,6 +1178,7 @@ public class Example {
     Boolean parsePdfTablesWithOcr = false; // Whether to use rich table parsing when `use_ocr` is enabled.
     Boolean detectAudioLanguage = false; // Whether to automatically detect the language of the uploaded audio file.
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT"); // The media type of the file. If not provided, it will be inferred from the file extension.
+    Boolean splitRows = false; // Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     try {
       UserFile result = client
               .files
@@ -1194,6 +1195,7 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .mediaType(mediaType)
+              .splitRows(splitRows)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1253,6 +1255,7 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .mediaType(mediaType)
+              .splitRows(splitRows)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1289,6 +1292,7 @@ public class Example {
 | **parsePdfTablesWithOcr** | **Boolean**| Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled. | [optional] [default to false] |
 | **detectAudioLanguage** | **Boolean**| Whether to automatically detect the language of the uploaded audio file. | [optional] [default to false] |
 | **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
+| **splitRows** | **Boolean**| Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false] |
 
 ### Return type
 
@@ -1353,6 +1357,7 @@ public class Example {
     Boolean parsePdfTablesWithOcr = false;
     Boolean detectAudioLanguage = false;
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT");
+    Boolean splitRows = false;
     try {
       UserFile result = client
               .files
@@ -1370,6 +1375,7 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .mediaType(mediaType)
+              .splitRows(splitRows)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1430,6 +1436,7 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .mediaType(mediaType)
+              .splitRows(splitRows)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

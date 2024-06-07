@@ -153,4 +153,12 @@ public class UploadFileFromUrlInputTest {
         // TODO: test mediaType
     }
 
+    /**
+     * Test the property 'splitRows'
+     */
+    @Test
+    public void splitRowsTest() {
+        // TODO: test splitRows
+    }
+
 }
