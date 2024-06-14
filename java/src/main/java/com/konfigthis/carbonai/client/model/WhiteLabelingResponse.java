@@ -57,6 +57,10 @@ public class WhiteLabelingResponse {
   @SerializedName(SERIALIZED_NAME_INTEGRATIONS)
   private Object integrations;
 
+  public static final String SERIALIZED_NAME_CUSTOM_LIMITS = "custom_limits";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_LIMITS)
+  private Object customLimits;
+
   public WhiteLabelingResponse() {
   }
 
@@ -117,6 +121,35 @@ public class WhiteLabelingResponse {
     this.integrations = integrations;
   }
 
+
+  public WhiteLabelingResponse customLimits(Object customLimits) {
+    
+    
+    
+    
+    this.customLimits = customLimits;
+    return this;
+  }
+
+   /**
+   * Get customLimits
+   * @return customLimits
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Object getCustomLimits() {
+    return customLimits;
+  }
+
+
+  public void setCustomLimits(Object customLimits) {
+    
+    
+    
+    this.customLimits = customLimits;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -173,13 +206,14 @@ public class WhiteLabelingResponse {
     }
     WhiteLabelingResponse whiteLabelingResponse = (WhiteLabelingResponse) o;
     return Objects.equals(this.removeBranding, whiteLabelingResponse.removeBranding) &&
-        Objects.equals(this.integrations, whiteLabelingResponse.integrations)&&
+        Objects.equals(this.integrations, whiteLabelingResponse.integrations) &&
+        Objects.equals(this.customLimits, whiteLabelingResponse.customLimits)&&
         Objects.equals(this.additionalProperties, whiteLabelingResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(removeBranding, integrations, additionalProperties);
+    return Objects.hash(removeBranding, integrations, customLimits, additionalProperties);
   }
 
   @Override
@@ -188,6 +222,7 @@ public class WhiteLabelingResponse {
     sb.append("class WhiteLabelingResponse {\n");
     sb.append("    removeBranding: ").append(toIndentedString(removeBranding)).append("\n");
     sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
+    sb.append("    customLimits: ").append(toIndentedString(customLimits)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -213,11 +248,13 @@ public class WhiteLabelingResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("remove_branding");
     openapiFields.add("integrations");
+    openapiFields.add("custom_limits");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("remove_branding");
     openapiRequiredFields.add("integrations");
+    openapiRequiredFields.add("custom_limits");
   }
 
  /**

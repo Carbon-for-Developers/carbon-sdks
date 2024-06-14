@@ -24,7 +24,8 @@ import typing
 import typing_extensions
 import aiohttp
 import urllib3
-from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
+import pydantic
+from pydantic import BaseModel, RootModel, ConfigDict
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
 from urllib3.fields import RequestField as RequestFieldBase
@@ -51,6 +52,183 @@ from carbon.schemas import (
     Unset,
     unset,
 )
+
+# import all pydantic classes so that any type hints which are quoted due to circular imports
+# are still available in the global namespace
+from carbon.pydantic.add_webhook_props import AddWebhookProps
+from carbon.pydantic.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
+from carbon.pydantic.chunk_properties import ChunkProperties
+from carbon.pydantic.chunk_properties_nullable import ChunkPropertiesNullable
+from carbon.pydantic.chunks_and_embeddings import ChunksAndEmbeddings
+from carbon.pydantic.chunks_and_embeddings_embedding import ChunksAndEmbeddingsEmbedding
+from carbon.pydantic.chunks_and_embeddings_upload_input import ChunksAndEmbeddingsUploadInput
+from carbon.pydantic.chunks_and_embeddings_upload_input_custom_credentials import ChunksAndEmbeddingsUploadInputCustomCredentials
+from carbon.pydantic.configuration_keys import ConfigurationKeys
+from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
+from carbon.pydantic.connect_data_source_input import ConnectDataSourceInput
+from carbon.pydantic.connect_data_source_response import ConnectDataSourceResponse
+from carbon.pydantic.custom_credentials_type import CustomCredentialsType
+from carbon.pydantic.data_source_extended_input import DataSourceExtendedInput
+from carbon.pydantic.data_source_last_sync_actions import DataSourceLastSyncActions
+from carbon.pydantic.data_source_sync_statuses import DataSourceSyncStatuses
+from carbon.pydantic.data_source_type import DataSourceType
+from carbon.pydantic.data_source_type_nullable import DataSourceTypeNullable
+from carbon.pydantic.delete_files_query_input import DeleteFilesQueryInput
+from carbon.pydantic.delete_files_query_input_file_ids import DeleteFilesQueryInputFileIds
+from carbon.pydantic.delete_files_v2_query_input import DeleteFilesV2QueryInput
+from carbon.pydantic.delete_users_input import DeleteUsersInput
+from carbon.pydantic.delete_users_input_customer_ids import DeleteUsersInputCustomerIds
+from carbon.pydantic.directory_item import DirectoryItem
+from carbon.pydantic.document_response import DocumentResponse
+from carbon.pydantic.document_response_list import DocumentResponseList
+from carbon.pydantic.document_response_tags import DocumentResponseTags
+from carbon.pydantic.document_response_vector import DocumentResponseVector
+from carbon.pydantic.embedding_and_chunk import EmbeddingAndChunk
+from carbon.pydantic.embedding_and_chunk_embedding import EmbeddingAndChunkEmbedding
+from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.pydantic.embedding_properties import EmbeddingProperties
+from carbon.pydantic.embeddings_and_chunks_filters import EmbeddingsAndChunksFilters
+from carbon.pydantic.embeddings_and_chunks_order_by_columns import EmbeddingsAndChunksOrderByColumns
+from carbon.pydantic.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
+from carbon.pydantic.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
+from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
+from carbon.pydantic.external_source_item import ExternalSourceItem
+from carbon.pydantic.external_source_items_order_by import ExternalSourceItemsOrderBy
+from carbon.pydantic.fetch_urls_response import FetchURLsResponse
+from carbon.pydantic.fetch_urls_response_urls import FetchURLsResponseUrls
+from carbon.pydantic.file_content_types import FileContentTypes
+from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
+from carbon.pydantic.file_formats import FileFormats
+from carbon.pydantic.file_formats_nullable import FileFormatsNullable
+from carbon.pydantic.file_statistics import FileStatistics
+from carbon.pydantic.file_statistics_nullable import FileStatisticsNullable
+from carbon.pydantic.file_sync_config import FileSyncConfig
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.pydantic.files_query_user_files_deprecated_response import FilesQueryUserFilesDeprecatedResponse
+from carbon.pydantic.fresh_desk_connect_request import FreshDeskConnectRequest
+from carbon.pydantic.freskdesk_authentication import FreskdeskAuthentication
+from carbon.pydantic.generic_success_response import GenericSuccessResponse
+from carbon.pydantic.get_embedding_documents_body import GetEmbeddingDocumentsBody
+from carbon.pydantic.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
+from carbon.pydantic.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
+from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
+from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.pydantic.gitbook_authetication import GitbookAuthetication
+from carbon.pydantic.gitbook_connect_request import GitbookConnectRequest
+from carbon.pydantic.gitbook_sync_request import GitbookSyncRequest
+from carbon.pydantic.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
+from carbon.pydantic.github_authentication import GithubAuthentication
+from carbon.pydantic.github_connect_request import GithubConnectRequest
+from carbon.pydantic.github_fetch_repos_request import GithubFetchReposRequest
+from carbon.pydantic.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
+from carbon.pydantic.gmail_sync_input import GmailSyncInput
+from carbon.pydantic.http_validation_error import HTTPValidationError
+from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
+from carbon.pydantic.hybrid_search_tuning_params import HybridSearchTuningParams
+from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.pydantic.list_data_source_items_request import ListDataSourceItemsRequest
+from carbon.pydantic.list_data_source_items_response import ListDataSourceItemsResponse
+from carbon.pydantic.list_items_filters import ListItemsFilters
+from carbon.pydantic.list_items_filters_external_ids import ListItemsFiltersExternalIds
+from carbon.pydantic.list_items_filters_ids import ListItemsFiltersIds
+from carbon.pydantic.list_items_filters_nullable import ListItemsFiltersNullable
+from carbon.pydantic.list_items_filters_nullable_external_ids import ListItemsFiltersNullableExternalIds
+from carbon.pydantic.list_items_filters_nullable_ids import ListItemsFiltersNullableIds
+from carbon.pydantic.list_request import ListRequest
+from carbon.pydantic.list_response import ListResponse
+from carbon.pydantic.modify_user_configuration_input import ModifyUserConfigurationInput
+from carbon.pydantic.multi_modal_embedding_generators import MultiModalEmbeddingGenerators
+from carbon.pydantic.notion_authentication import NotionAuthentication
+from carbon.pydantic.o_auth_authentication import OAuthAuthentication
+from carbon.pydantic.o_auth_url_request import OAuthURLRequest
+from carbon.pydantic.order_dir import OrderDir
+from carbon.pydantic.order_dir_v2 import OrderDirV2
+from carbon.pydantic.organization_response import OrganizationResponse
+from carbon.pydantic.organization_user_data_source_api import OrganizationUserDataSourceAPI
+from carbon.pydantic.organization_user_data_source_filters import OrganizationUserDataSourceFilters
+from carbon.pydantic.organization_user_data_source_filters_ids import OrganizationUserDataSourceFiltersIds
+from carbon.pydantic.organization_user_data_source_order_by_columns import OrganizationUserDataSourceOrderByColumns
+from carbon.pydantic.organization_user_data_source_query_input import OrganizationUserDataSourceQueryInput
+from carbon.pydantic.organization_user_data_source_response import OrganizationUserDataSourceResponse
+from carbon.pydantic.organization_user_file_tag_create import OrganizationUserFileTagCreate
+from carbon.pydantic.organization_user_file_tag_create_tags import OrganizationUserFileTagCreateTags
+from carbon.pydantic.organization_user_file_tags_remove import OrganizationUserFileTagsRemove
+from carbon.pydantic.organization_user_file_tags_remove_tags import OrganizationUserFileTagsRemoveTags
+from carbon.pydantic.organization_user_files_to_sync_filters import OrganizationUserFilesToSyncFilters
+from carbon.pydantic.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
+from carbon.pydantic.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
+from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
+from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
+from carbon.pydantic.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
+from carbon.pydantic.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
+from carbon.pydantic.organization_user_files_to_sync_order_by_types import OrganizationUserFilesToSyncOrderByTypes
+from carbon.pydantic.organization_user_files_to_sync_query_input import OrganizationUserFilesToSyncQueryInput
+from carbon.pydantic.outh_url_response import OuthURLResponse
+from carbon.pydantic.outlook_sync_input import OutlookSyncInput
+from carbon.pydantic.pagination import Pagination
+from carbon.pydantic.presigned_url_response import PresignedURLResponse
+from carbon.pydantic.rss_feed_input import RSSFeedInput
+from carbon.pydantic.raw_text_input import RawTextInput
+from carbon.pydantic.resync_file_query_input import ResyncFileQueryInput
+from carbon.pydantic.revoke_access_token_input import RevokeAccessTokenInput
+from carbon.pydantic.s3_auth_request import S3AuthRequest
+from carbon.pydantic.s3_authentication import S3Authentication
+from carbon.pydantic.s3_file_sync_input import S3FileSyncInput
+from carbon.pydantic.s3_get_file_input import S3GetFileInput
+from carbon.pydantic.salesforce_authentication import SalesforceAuthentication
+from carbon.pydantic.sharepoint_authentication import SharepointAuthentication
+from carbon.pydantic.simple_o_auth_data_sources import SimpleOAuthDataSources
+from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
+from carbon.pydantic.sitemap_scrape_request import SitemapScrapeRequest
+from carbon.pydantic.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip
+from carbon.pydantic.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip
+from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip
+from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags
+from carbon.pydantic.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
+from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.pydantic.sync_directory_request import SyncDirectoryRequest
+from carbon.pydantic.sync_files_ids import SyncFilesIds
+from carbon.pydantic.sync_files_request import SyncFilesRequest
+from carbon.pydantic.sync_options import SyncOptions
+from carbon.pydantic.text_embedding_generators import TextEmbeddingGenerators
+from carbon.pydantic.token_response import TokenResponse
+from carbon.pydantic.update_organization_input import UpdateOrganizationInput
+from carbon.pydantic.update_users_input import UpdateUsersInput
+from carbon.pydantic.update_users_input_customer_ids import UpdateUsersInputCustomerIds
+from carbon.pydantic.upload_file_from_url_input import UploadFileFromUrlInput
+from carbon.pydantic.user_configuration import UserConfiguration
+from carbon.pydantic.user_configuration_nullable import UserConfigurationNullable
+from carbon.pydantic.user_file import UserFile
+from carbon.pydantic.user_file_embedding_properties import UserFileEmbeddingProperties
+from carbon.pydantic.user_files_v2 import UserFilesV2
+from carbon.pydantic.user_request_content import UserRequestContent
+from carbon.pydantic.user_response import UserResponse
+from carbon.pydantic.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
+from carbon.pydantic.user_response_unique_file_tags import UserResponseUniqueFileTags
+from carbon.pydantic.utilities_scrape_web_request import UtilitiesScrapeWebRequest
+from carbon.pydantic.validation_error import ValidationError
+from carbon.pydantic.validation_error_loc import ValidationErrorLoc
+from carbon.pydantic.webhook import Webhook
+from carbon.pydantic.webhook_filters import WebhookFilters
+from carbon.pydantic.webhook_filters_ids import WebhookFiltersIds
+from carbon.pydantic.webhook_no_key import WebhookNoKey
+from carbon.pydantic.webhook_order_by_columns import WebhookOrderByColumns
+from carbon.pydantic.webhook_query_input import WebhookQueryInput
+from carbon.pydantic.webhook_query_response import WebhookQueryResponse
+from carbon.pydantic.webhook_status import WebhookStatus
+from carbon.pydantic.webscrape_request import WebscrapeRequest
+from carbon.pydantic.webscrape_request_css_classes_to_skip import WebscrapeRequestCssClassesToSkip
+from carbon.pydantic.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
+from carbon.pydantic.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
+from carbon.pydantic.webscrape_request_tags import WebscrapeRequestTags
+from carbon.pydantic.webscrape_request_url_paths_to_include import WebscrapeRequestUrlPathsToInclude
+from carbon.pydantic.white_labeling_response import WhiteLabelingResponse
+from carbon.pydantic.youtube_transcript_response import YoutubeTranscriptResponse
+from carbon.pydantic.youtube_transcript_response_raw_transcript import YoutubeTranscriptResponseRawTranscript
+from carbon.pydantic.youtube_transcript_response_raw_transcript_item import YoutubeTranscriptResponseRawTranscriptItem
+from carbon.pydantic.zendesk_authentication import ZendeskAuthentication
+from carbon.pydantic.zotero_authentication import ZoteroAuthentication
 
 @dataclass
 class MappedArgs:
@@ -91,7 +269,7 @@ def closest_type_match(value: typing.Any, types: typing.List[typing.Type]) -> ty
                     try:
                         t(**value)
                         best_match = t
-                    except ValidationError:
+                    except pydantic.ValidationError:
                         continue
             else:  # This is a non-generic type
                 if isinstance(value, t):
@@ -136,7 +314,7 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
     # if model is BaseModel, iterate over fields and recursively call
     elif issubclass(model, BaseModel):
         new_data = {}
-        for field_name, field_type in model.__annotations__.items():
+        for field_name, field_type in typing.get_type_hints(model, globals()).items():
             # get alias
             alias = model.model_fields[field_name].alias
             if alias in data:
@@ -1240,7 +1418,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.4/python'
+        self.user_agent = 'Konfig/0.2.5/python'
 
     def __enter__(self):
         return self

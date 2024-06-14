@@ -15,11 +15,14 @@ module Carbon
 
     attr_accessor :integrations
 
+    attr_accessor :custom_limits
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'remove_branding' => :'remove_branding',
-        :'integrations' => :'integrations'
+        :'integrations' => :'integrations',
+        :'custom_limits' => :'custom_limits'
       }
     end
 
@@ -32,7 +35,8 @@ module Carbon
     def self.openapi_types
       {
         :'remove_branding' => :'Boolean',
-        :'integrations' => :'Object'
+        :'integrations' => :'Object',
+        :'custom_limits' => :'Object'
       }
     end
 
@@ -64,6 +68,10 @@ module Carbon
       if attributes.key?(:'integrations')
         self.integrations = attributes[:'integrations']
       end
+
+      if attributes.key?(:'custom_limits')
+        self.custom_limits = attributes[:'custom_limits']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -78,6 +86,10 @@ module Carbon
         invalid_properties.push('invalid value for "integrations", integrations cannot be nil.')
       end
 
+      if @custom_limits.nil?
+        invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -86,6 +98,7 @@ module Carbon
     def valid?
       return false if @remove_branding.nil?
       return false if @integrations.nil?
+      return false if @custom_limits.nil?
       true
     end
 
@@ -95,7 +108,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           remove_branding == o.remove_branding &&
-          integrations == o.integrations
+          integrations == o.integrations &&
+          custom_limits == o.custom_limits
     end
 
     # @see the `==` method
@@ -107,7 +121,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remove_branding, integrations].hash
+      [remove_branding, integrations, custom_limits].hash
     end
 
     # Builds the object from hash

@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**removeBranding** | **Boolean** |  |  |
 |**integrations** | **Object** |  |  |
+|**customLimits** | **Object** |  |  |
 
 
 

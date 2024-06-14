@@ -89,6 +89,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `AuthApi.GetWhiteLabeling`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.RemoveBranding`: %v\n", resp.RemoveBranding)
     fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.Integrations`: %v\n", resp.Integrations)
+    fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.CustomLimits`: %v\n", resp.CustomLimits)
 }
 ```
 

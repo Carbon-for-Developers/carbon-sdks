@@ -33,6 +33,7 @@ type OrganizationResponse struct {
 	PeriodEndsAt NullableTime `json:"period_ends_at"`
 	CancelAtPeriodEnd NullableBool `json:"cancel_at_period_end"`
 	GlobalUserConfig map[string]interface{} `json:"global_user_config"`
+	FileSyncUsage map[string]interface{} `json:"file_sync_usage"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -41,7 +42,7 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
+func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.Name = name
@@ -59,6 +60,7 @@ func NewOrganizationResponse(id int32, name string, nickname NullableString, rem
 	this.PeriodEndsAt = periodEndsAt
 	this.CancelAtPeriodEnd = cancelAtPeriodEnd
 	this.GlobalUserConfig = globalUserConfig
+	this.FileSyncUsage = fileSyncUsage
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -468,6 +470,30 @@ func (o *OrganizationResponse) SetGlobalUserConfig(v map[string]interface{}) {
 	o.GlobalUserConfig = v
 }
 
+// GetFileSyncUsage returns the FileSyncUsage field value
+func (o *OrganizationResponse) GetFileSyncUsage() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.FileSyncUsage
+}
+
+// GetFileSyncUsageOk returns a tuple with the FileSyncUsage field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetFileSyncUsageOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.FileSyncUsage, true
+}
+
+// SetFileSyncUsage sets field value
+func (o *OrganizationResponse) SetFileSyncUsage(v map[string]interface{}) {
+	o.FileSyncUsage = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *OrganizationResponse) GetCreatedAt() time.Time {
 	if o == nil {
@@ -565,6 +591,9 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["global_user_config"] = o.GlobalUserConfig
+	}
+	if true {
+		toSerialize["file_sync_usage"] = o.FileSyncUsage
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

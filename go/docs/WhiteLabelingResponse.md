@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RemoveBranding** | **bool** |  | 
 **Integrations** | **map[string]interface{}** |  | 
+**CustomLimits** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewWhiteLabelingResponse
 
-`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, ) *WhiteLabelingResponse`
+`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, ) *WhiteLabelingResponse`
 
 NewWhiteLabelingResponse instantiates a new WhiteLabelingResponse object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *WhiteLabelingResponse) SetIntegrations(v map[string]interface{})`
 
 SetIntegrations sets Integrations field to given value.
+
+
+### GetCustomLimits
+
+`func (o *WhiteLabelingResponse) GetCustomLimits() map[string]interface{}`
+
+GetCustomLimits returns the CustomLimits field if non-nil, zero value otherwise.
+
+### GetCustomLimitsOk
+
+`func (o *WhiteLabelingResponse) GetCustomLimitsOk() (*map[string]interface{}, bool)`
+
+GetCustomLimitsOk returns a tuple with the CustomLimits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomLimits
+
+`func (o *WhiteLabelingResponse) SetCustomLimits(v map[string]interface{})`
+
+SetCustomLimits sets CustomLimits field to given value.
 
 
 
