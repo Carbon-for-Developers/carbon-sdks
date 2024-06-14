@@ -168,6 +168,14 @@ public class OrganizationResponseTest {
     }
 
     /**
+     * Test the property 'fileSyncUsage'
+     */
+    @Test
+    public void fileSyncUsageTest() {
+        // TODO: test fileSyncUsage
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

@@ -54,4 +54,12 @@ public class WhiteLabelingResponseTest {
         // TODO: test integrations
     }
 
+    /**
+     * Test the property 'customLimits'
+     */
+    @Test
+    public void customLimitsTest() {
+        // TODO: test customLimits
+    }
+
 }

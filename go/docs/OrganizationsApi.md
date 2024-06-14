@@ -57,6 +57,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.PeriodEndsAt`: %v\n", resp.PeriodEndsAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CancelAtPeriodEnd`: %v\n", resp.CancelAtPeriodEnd)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.GlobalUserConfig`: %v\n", resp.GlobalUserConfig)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.FileSyncUsage`: %v\n", resp.FileSyncUsage)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.UpdatedAt`: %v\n", resp.UpdatedAt)
 }

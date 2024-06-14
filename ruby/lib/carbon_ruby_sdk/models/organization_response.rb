@@ -43,6 +43,8 @@ module Carbon
 
     attr_accessor :global_user_config
 
+    attr_accessor :file_sync_usage
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -66,6 +68,7 @@ module Carbon
         :'period_ends_at' => :'period_ends_at',
         :'cancel_at_period_end' => :'cancel_at_period_end',
         :'global_user_config' => :'global_user_config',
+        :'file_sync_usage' => :'file_sync_usage',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -95,6 +98,7 @@ module Carbon
         :'period_ends_at' => :'Time',
         :'cancel_at_period_end' => :'Boolean',
         :'global_user_config' => :'Object',
+        :'file_sync_usage' => :'Object',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -191,6 +195,10 @@ module Carbon
         self.global_user_config = attributes[:'global_user_config']
       end
 
+      if attributes.key?(:'file_sync_usage')
+        self.file_sync_usage = attributes[:'file_sync_usage']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -244,6 +252,10 @@ module Carbon
         invalid_properties.push('invalid value for "global_user_config", global_user_config cannot be nil.')
       end
 
+      if @file_sync_usage.nil?
+        invalid_properties.push('invalid value for "file_sync_usage", file_sync_usage cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -268,6 +280,7 @@ module Carbon
       return false if @aggregate_num_files_by_source.nil?
       return false if @aggregate_num_files_by_file_format.nil?
       return false if @global_user_config.nil?
+      return false if @file_sync_usage.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -294,6 +307,7 @@ module Carbon
           period_ends_at == o.period_ends_at &&
           cancel_at_period_end == o.cancel_at_period_end &&
           global_user_config == o.global_user_config &&
+          file_sync_usage == o.file_sync_usage &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -307,7 +321,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, global_user_config, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, global_user_config, file_sync_usage, created_at, updated_at].hash
     end
 
     # Builds the object from hash

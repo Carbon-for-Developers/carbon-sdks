@@ -23,6 +23,7 @@
 |**periodEndsAt** | **OffsetDateTime** |  |  |
 |**cancelAtPeriodEnd** | **Boolean** |  |  |
 |**globalUserConfig** | **Object** |  |  |
+|**fileSyncUsage** | **Object** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

@@ -58,6 +58,7 @@ public class Example {
       System.out.println(result.getPeriodEndsAt());
       System.out.println(result.getCancelAtPeriodEnd());
       System.out.println(result.getGlobalUserConfig());
+      System.out.println(result.getFileSyncUsage());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {

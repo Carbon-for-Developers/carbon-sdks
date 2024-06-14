@@ -49,6 +49,8 @@ class OrganizationResponse(BaseModel):
 
     global_user_config: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='global_user_config')
 
+    file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='file_sync_usage')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

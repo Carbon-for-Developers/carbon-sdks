@@ -115,6 +115,12 @@ export interface OrganizationResponse {
     'global_user_config': object;
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
+    'file_sync_usage': object;
+    /**
+     * 
      * @type {string}
      * @memberof OrganizationResponse
      */

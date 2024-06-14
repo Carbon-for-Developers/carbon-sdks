@@ -29,5 +29,11 @@ export interface WhiteLabelingResponse {
      * @memberof WhiteLabelingResponse
      */
     'integrations': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof WhiteLabelingResponse
+     */
+    'custom_limits': object;
 }
 

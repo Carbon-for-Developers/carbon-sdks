@@ -114,6 +114,10 @@ public class OrganizationResponse {
   @SerializedName(SERIALIZED_NAME_GLOBAL_USER_CONFIG)
   private Object globalUserConfig;
 
+  public static final String SERIALIZED_NAME_FILE_SYNC_USAGE = "file_sync_usage";
+  @SerializedName(SERIALIZED_NAME_FILE_SYNC_USAGE)
+  private Object fileSyncUsage;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
@@ -589,6 +593,35 @@ public class OrganizationResponse {
   }
 
 
+  public OrganizationResponse fileSyncUsage(Object fileSyncUsage) {
+    
+    
+    
+    
+    this.fileSyncUsage = fileSyncUsage;
+    return this;
+  }
+
+   /**
+   * Get fileSyncUsage
+   * @return fileSyncUsage
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getFileSyncUsage() {
+    return fileSyncUsage;
+  }
+
+
+  public void setFileSyncUsage(Object fileSyncUsage) {
+    
+    
+    
+    this.fileSyncUsage = fileSyncUsage;
+  }
+
+
   public OrganizationResponse createdAt(OffsetDateTime createdAt) {
     
     
@@ -717,6 +750,7 @@ public class OrganizationResponse {
         Objects.equals(this.periodEndsAt, organizationResponse.periodEndsAt) &&
         Objects.equals(this.cancelAtPeriodEnd, organizationResponse.cancelAtPeriodEnd) &&
         Objects.equals(this.globalUserConfig, organizationResponse.globalUserConfig) &&
+        Objects.equals(this.fileSyncUsage, organizationResponse.fileSyncUsage) &&
         Objects.equals(this.createdAt, organizationResponse.createdAt) &&
         Objects.equals(this.updatedAt, organizationResponse.updatedAt)&&
         Objects.equals(this.additionalProperties, organizationResponse.additionalProperties);
@@ -724,7 +758,7 @@ public class OrganizationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, globalUserConfig, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, globalUserConfig, fileSyncUsage, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -747,6 +781,7 @@ public class OrganizationResponse {
     sb.append("    periodEndsAt: ").append(toIndentedString(periodEndsAt)).append("\n");
     sb.append("    cancelAtPeriodEnd: ").append(toIndentedString(cancelAtPeriodEnd)).append("\n");
     sb.append("    globalUserConfig: ").append(toIndentedString(globalUserConfig)).append("\n");
+    sb.append("    fileSyncUsage: ").append(toIndentedString(fileSyncUsage)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -788,6 +823,7 @@ public class OrganizationResponse {
     openapiFields.add("period_ends_at");
     openapiFields.add("cancel_at_period_end");
     openapiFields.add("global_user_config");
+    openapiFields.add("file_sync_usage");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -809,6 +845,7 @@ public class OrganizationResponse {
     openapiRequiredFields.add("period_ends_at");
     openapiRequiredFields.add("cancel_at_period_end");
     openapiRequiredFields.add("global_user_config");
+    openapiRequiredFields.add("file_sync_usage");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }

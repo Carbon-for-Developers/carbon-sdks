@@ -18,16 +18,18 @@ import (
 type WhiteLabelingResponse struct {
 	RemoveBranding bool `json:"remove_branding"`
 	Integrations map[string]interface{} `json:"integrations"`
+	CustomLimits map[string]interface{} `json:"custom_limits"`
 }
 
 // NewWhiteLabelingResponse instantiates a new WhiteLabelingResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}) *WhiteLabelingResponse {
+func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}) *WhiteLabelingResponse {
 	this := WhiteLabelingResponse{}
 	this.RemoveBranding = removeBranding
 	this.Integrations = integrations
+	this.CustomLimits = customLimits
 	return &this
 }
 
@@ -87,6 +89,30 @@ func (o *WhiteLabelingResponse) SetIntegrations(v map[string]interface{}) {
 	o.Integrations = v
 }
 
+// GetCustomLimits returns the CustomLimits field value
+func (o *WhiteLabelingResponse) GetCustomLimits() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.CustomLimits
+}
+
+// GetCustomLimitsOk returns a tuple with the CustomLimits field value
+// and a boolean to check if the value has been set.
+func (o *WhiteLabelingResponse) GetCustomLimitsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.CustomLimits, true
+}
+
+// SetCustomLimits sets field value
+func (o *WhiteLabelingResponse) SetCustomLimits(v map[string]interface{}) {
+	o.CustomLimits = v
+}
+
 func (o WhiteLabelingResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -94,6 +120,9 @@ func (o WhiteLabelingResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["integrations"] = o.Integrations
+	}
+	if true {
+		toSerialize["custom_limits"] = o.CustomLimits
 	}
 	return json.Marshal(toSerialize)
 }

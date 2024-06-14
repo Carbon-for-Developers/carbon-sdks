@@ -140,6 +140,7 @@ public class Example {
       System.out.println(result);
       System.out.println(result.getRemoveBranding());
       System.out.println(result.getIntegrations());
+      System.out.println(result.getCustomLimits());
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthApi#getWhiteLabeling");
       System.err.println("Status code: " + e.getStatusCode());

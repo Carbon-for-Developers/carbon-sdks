@@ -20,6 +20,8 @@ class RequiredWhiteLabelingResponse(TypedDict):
 
     integrations: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class OptionalWhiteLabelingResponse(TypedDict, total=False):
     pass
 
