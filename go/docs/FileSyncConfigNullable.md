@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AutoSyncedSourceTypes** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced | [optional] [default to ["ARTICLE"]]
 **SyncAttachments** | Pointer to **bool** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** | Detect audio language before transcription for audio files | [optional] [default to false]
+**SplitRows** | Pointer to **bool** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false]
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetDetectAudioLanguage sets DetectAudioLanguage field to given value.
 `func (o *FileSyncConfigNullable) HasDetectAudioLanguage() bool`
 
 HasDetectAudioLanguage returns a boolean if a field has been set.
+
+### GetSplitRows
+
+`func (o *FileSyncConfigNullable) GetSplitRows() bool`
+
+GetSplitRows returns the SplitRows field if non-nil, zero value otherwise.
+
+### GetSplitRowsOk
+
+`func (o *FileSyncConfigNullable) GetSplitRowsOk() (*bool, bool)`
+
+GetSplitRowsOk returns a tuple with the SplitRows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplitRows
+
+`func (o *FileSyncConfigNullable) SetSplitRows(v bool)`
+
+SetSplitRows sets SplitRows field to given value.
+
+### HasSplitRows
+
+`func (o *FileSyncConfigNullable) HasSplitRows() bool`
+
+HasSplitRows returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

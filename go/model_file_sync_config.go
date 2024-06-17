@@ -22,6 +22,8 @@ type FileSyncConfig struct {
 	SyncAttachments *bool `json:"sync_attachments,omitempty"`
 	// Detect audio language before transcription for audio files
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
+	// Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+	SplitRows *bool `json:"split_rows,omitempty"`
 }
 
 // NewFileSyncConfig instantiates a new FileSyncConfig object
@@ -34,6 +36,8 @@ func NewFileSyncConfig() *FileSyncConfig {
 	this.SyncAttachments = &syncAttachments
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var splitRows bool = false
+	this.SplitRows = &splitRows
 	return &this
 }
 
@@ -46,6 +50,8 @@ func NewFileSyncConfigWithDefaults() *FileSyncConfig {
 	this.SyncAttachments = &syncAttachments
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var splitRows bool = false
+	this.SplitRows = &splitRows
 	return &this
 }
 
@@ -145,6 +151,38 @@ func (o *FileSyncConfig) SetDetectAudioLanguage(v bool) {
 	o.DetectAudioLanguage = &v
 }
 
+// GetSplitRows returns the SplitRows field value if set, zero value otherwise.
+func (o *FileSyncConfig) GetSplitRows() bool {
+	if o == nil || isNil(o.SplitRows) {
+		var ret bool
+		return ret
+	}
+	return *o.SplitRows
+}
+
+// GetSplitRowsOk returns a tuple with the SplitRows field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FileSyncConfig) GetSplitRowsOk() (*bool, bool) {
+	if o == nil || isNil(o.SplitRows) {
+    return nil, false
+	}
+	return o.SplitRows, true
+}
+
+// HasSplitRows returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasSplitRows() bool {
+	if o != nil && !isNil(o.SplitRows) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitRows gets a reference to the given bool and assigns it to the SplitRows field.
+func (o *FileSyncConfig) SetSplitRows(v bool) {
+	o.SplitRows = &v
+}
+
 func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AutoSyncedSourceTypes) {
@@ -155,6 +193,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.DetectAudioLanguage) {
 		toSerialize["detect_audio_language"] = o.DetectAudioLanguage
+	}
+	if !isNil(o.SplitRows) {
+		toSerialize["split_rows"] = o.SplitRows
 	}
 	return json.Marshal(toSerialize)
 }

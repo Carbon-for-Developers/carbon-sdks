@@ -27,6 +27,9 @@ class FileSyncConfig(BaseModel):
     # Detect audio language before transcription for audio files
     detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
 
+    # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    split_rows: typing.Optional[bool] = Field(None, alias='split_rows')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

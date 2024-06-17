@@ -64,6 +64,10 @@ public class FileSyncConfig {
   @SerializedName(SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE)
   private Boolean detectAudioLanguage = false;
 
+  public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
+  @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
+  private Boolean splitRows = false;
+
   public FileSyncConfig() {
   }
 
@@ -161,6 +165,35 @@ public class FileSyncConfig {
     this.detectAudioLanguage = detectAudioLanguage;
   }
 
+
+  public FileSyncConfig splitRows(Boolean splitRows) {
+    
+    
+    
+    
+    this.splitRows = splitRows;
+    return this;
+  }
+
+   /**
+   * Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+   * @return splitRows
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.")
+
+  public Boolean getSplitRows() {
+    return splitRows;
+  }
+
+
+  public void setSplitRows(Boolean splitRows) {
+    
+    
+    
+    this.splitRows = splitRows;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -218,13 +251,14 @@ public class FileSyncConfig {
     FileSyncConfig fileSyncConfig = (FileSyncConfig) o;
     return Objects.equals(this.autoSyncedSourceTypes, fileSyncConfig.autoSyncedSourceTypes) &&
         Objects.equals(this.syncAttachments, fileSyncConfig.syncAttachments) &&
-        Objects.equals(this.detectAudioLanguage, fileSyncConfig.detectAudioLanguage)&&
+        Objects.equals(this.detectAudioLanguage, fileSyncConfig.detectAudioLanguage) &&
+        Objects.equals(this.splitRows, fileSyncConfig.splitRows)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, splitRows, additionalProperties);
   }
 
   @Override
@@ -234,6 +268,7 @@ public class FileSyncConfig {
     sb.append("    autoSyncedSourceTypes: ").append(toIndentedString(autoSyncedSourceTypes)).append("\n");
     sb.append("    syncAttachments: ").append(toIndentedString(syncAttachments)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
+    sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -260,6 +295,7 @@ public class FileSyncConfig {
     openapiFields.add("auto_synced_source_types");
     openapiFields.add("sync_attachments");
     openapiFields.add("detect_audio_language");
+    openapiFields.add("split_rows");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

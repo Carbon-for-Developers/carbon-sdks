@@ -3558,7 +3558,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "3faff6b4-cf31-42c5-b652-a4115dfbc64f",
+              "request_id": "701c68d4-27fe-4bd5-8f73-100577f7eaa5",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4384,6 +4384,12 @@
           "detect_audio_language": {
             "title": "Detect Audio Language",
             "description": "Detect audio language before transcription for audio files",
+            "type": "boolean",
+            "default": false
+          },
+          "split_rows": {
+            "title": "Split Rows",
+            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
             "type": "boolean",
             "default": false
           }
@@ -5377,7 +5383,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "f3bc66ce-11ad-480a-97d3-8564f86ea2e4"
+            "default": "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5394,7 +5400,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, GOOGLE_DRIVE, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX",
             "type": "boolean",
             "default": true
           },
@@ -6852,7 +6858,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "6ae9a1d5-64b6-4ec2-ab39-8869a383e3cf"
+            "default": "7233a302-6276-4747-af1f-9b1d1e1ed6f8"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6944,7 +6950,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "3faff6b4-cf31-42c5-b652-a4115dfbc64f"
+            "default": "701c68d4-27fe-4bd5-8f73-100577f7eaa5"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -8196,6 +8202,12 @@
           "detect_audio_language": {
             "title": "Detect Audio Language",
             "description": "Detect audio language before transcription for audio files",
+            "type": "boolean",
+            "default": false
+          },
+          "split_rows": {
+            "title": "Split Rows",
+            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
             "type": "boolean",
             "default": false
           }

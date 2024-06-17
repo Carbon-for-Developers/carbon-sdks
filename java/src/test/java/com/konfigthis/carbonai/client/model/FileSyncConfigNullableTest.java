@@ -65,4 +65,12 @@ public class FileSyncConfigNullableTest {
         // TODO: test detectAudioLanguage
     }
 
+    /**
+     * Test the property 'splitRows'
+     */
+    @Test
+    public void splitRowsTest() {
+        // TODO: test splitRows
+    }
+
 }
