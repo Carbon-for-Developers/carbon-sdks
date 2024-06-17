@@ -36,5 +36,11 @@ export interface FileSyncConfigNullable {
      * @memberof FileSyncConfigNullable
      */
     'detect_audio_language'?: boolean;
+    /**
+     * Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+     * @type {boolean}
+     * @memberof FileSyncConfigNullable
+     */
+    'split_rows'?: boolean;
 }
 

@@ -29,5 +29,8 @@ class OptionalFileSyncConfigNullable(TypedDict, total=False):
     # Detect audio language before transcription for audio files
     detect_audio_language: bool
 
+    # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    split_rows: bool
+
 class FileSyncConfigNullable(RequiredFileSyncConfigNullable, OptionalFileSyncConfigNullable):
     pass

@@ -20,12 +20,16 @@ module Carbon
     # Detect audio language before transcription for audio files
     attr_accessor :detect_audio_language
 
+    # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    attr_accessor :split_rows
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'auto_synced_source_types' => :'auto_synced_source_types',
         :'sync_attachments' => :'sync_attachments',
-        :'detect_audio_language' => :'detect_audio_language'
+        :'detect_audio_language' => :'detect_audio_language',
+        :'split_rows' => :'split_rows'
       }
     end
 
@@ -39,7 +43,8 @@ module Carbon
       {
         :'auto_synced_source_types' => :'Array<HelpdeskFileTypes>',
         :'sync_attachments' => :'Boolean',
-        :'detect_audio_language' => :'Boolean'
+        :'detect_audio_language' => :'Boolean',
+        :'split_rows' => :'Boolean'
       }
     end
 
@@ -81,6 +86,12 @@ module Carbon
       else
         self.detect_audio_language = false
       end
+
+      if attributes.key?(:'split_rows')
+        self.split_rows = attributes[:'split_rows']
+      else
+        self.split_rows = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -103,7 +114,8 @@ module Carbon
       self.class == o.class &&
           auto_synced_source_types == o.auto_synced_source_types &&
           sync_attachments == o.sync_attachments &&
-          detect_audio_language == o.detect_audio_language
+          detect_audio_language == o.detect_audio_language &&
+          split_rows == o.split_rows
     end
 
     # @see the `==` method
@@ -115,7 +127,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, split_rows].hash
     end
 
     # Builds the object from hash

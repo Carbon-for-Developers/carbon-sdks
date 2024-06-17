@@ -65,6 +65,10 @@ public class FileSyncConfigNullable {
   @SerializedName(SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE)
   private Boolean detectAudioLanguage = false;
 
+  public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
+  @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
+  private Boolean splitRows = false;
+
   public FileSyncConfigNullable() {
   }
 
@@ -162,6 +166,35 @@ public class FileSyncConfigNullable {
     this.detectAudioLanguage = detectAudioLanguage;
   }
 
+
+  public FileSyncConfigNullable splitRows(Boolean splitRows) {
+    
+    
+    
+    
+    this.splitRows = splitRows;
+    return this;
+  }
+
+   /**
+   * Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+   * @return splitRows
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.")
+
+  public Boolean getSplitRows() {
+    return splitRows;
+  }
+
+
+  public void setSplitRows(Boolean splitRows) {
+    
+    
+    
+    this.splitRows = splitRows;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -219,13 +252,14 @@ public class FileSyncConfigNullable {
     FileSyncConfigNullable fileSyncConfigNullable = (FileSyncConfigNullable) o;
     return Objects.equals(this.autoSyncedSourceTypes, fileSyncConfigNullable.autoSyncedSourceTypes) &&
         Objects.equals(this.syncAttachments, fileSyncConfigNullable.syncAttachments) &&
-        Objects.equals(this.detectAudioLanguage, fileSyncConfigNullable.detectAudioLanguage)&&
+        Objects.equals(this.detectAudioLanguage, fileSyncConfigNullable.detectAudioLanguage) &&
+        Objects.equals(this.splitRows, fileSyncConfigNullable.splitRows)&&
         Objects.equals(this.additionalProperties, fileSyncConfigNullable.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, splitRows, additionalProperties);
   }
 
   @Override
@@ -235,6 +269,7 @@ public class FileSyncConfigNullable {
     sb.append("    autoSyncedSourceTypes: ").append(toIndentedString(autoSyncedSourceTypes)).append("\n");
     sb.append("    syncAttachments: ").append(toIndentedString(syncAttachments)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
+    sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -261,6 +296,7 @@ public class FileSyncConfigNullable {
     openapiFields.add("auto_synced_source_types");
     openapiFields.add("sync_attachments");
     openapiFields.add("detect_audio_language");
+    openapiFields.add("split_rows");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

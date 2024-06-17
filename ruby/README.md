@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.5-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.5)
+[![npm](https://img.shields.io/badge/gem-v0.2.6-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.6)
 
 </div>
 
@@ -86,7 +86,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.5'
+gem 'carbon_ruby_sdk', '~> 0.2.6'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1247,7 +1247,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "3faff6b4-cf31-42c5-b652-a4115dfbc64f",
+        "request_id" => "701c68d4-27fe-4bd5-8f73-100577f7eaa5",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1301,6 +1301,7 @@ result = carbon.integrations.connect_freshdesk(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
 )
 p result
@@ -1466,7 +1467,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "f3bc66ce-11ad-480a-97d3-8564f86ea2e4",
+  request_id: "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1476,6 +1477,7 @@ result = carbon.integrations.get_oauth_url(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
 )
 p result
@@ -1526,7 +1528,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, ONEDRIVE, DROPBOX, GOOGLE_DRIVE, SHAREPOINT
+SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1788,7 +1790,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6ae9a1d5-64b6-4ec2-ab39-8869a383e3cf",
+  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1796,6 +1798,7 @@ result = carbon.integrations.sync_confluence(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
 )
 p result
@@ -1891,7 +1894,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6ae9a1d5-64b6-4ec2-ab39-8869a383e3cf",
+  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1899,6 +1902,7 @@ result = carbon.integrations.sync_files(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
 )
 p result
@@ -2097,6 +2101,7 @@ result = carbon.integrations.sync_gmail(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
   incremental_sync: false,
 )
@@ -2214,6 +2219,7 @@ result = carbon.integrations.sync_outlook(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
   incremental_sync: false,
 )
@@ -2356,6 +2362,7 @@ result = carbon.integrations.sync_s3_files(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "split_rows" => false,
     },
 )
 p result
