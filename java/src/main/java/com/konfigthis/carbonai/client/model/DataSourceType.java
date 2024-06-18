@@ -91,6 +91,8 @@ import com.google.gson.stream.JsonWriter;
   
   GITHUB("GITHUB"),
   
+  SLACK("SLACK"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

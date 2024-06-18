@@ -46,6 +46,7 @@ const (
 	FILEFORMATSNULLABLE_GITBOOK FileFormatsNullable = "GITBOOK"
 	FILEFORMATSNULLABLE_SALESFORCE FileFormatsNullable = "SALESFORCE"
 	FILEFORMATSNULLABLE_GITHUB FileFormatsNullable = "GITHUB"
+	FILEFORMATSNULLABLE_SLACK FileFormatsNullable = "SLACK"
 	FILEFORMATSNULLABLE_JPG FileFormatsNullable = "JPG"
 	FILEFORMATSNULLABLE_PNG FileFormatsNullable = "PNG"
 	FILEFORMATSNULLABLE_MP3 FileFormatsNullable = "MP3"
@@ -96,6 +97,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"GITBOOK",
 	"SALESFORCE",
 	"GITHUB",
+	"SLACK",
 	"JPG",
 	"PNG",
 	"MP3",

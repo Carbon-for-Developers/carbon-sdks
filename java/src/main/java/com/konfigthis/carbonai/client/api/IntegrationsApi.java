@@ -31,6 +31,8 @@ import com.konfigthis.carbonai.client.model.RSSFeedInput;
 import com.konfigthis.carbonai.client.model.S3AuthRequest;
 import com.konfigthis.carbonai.client.model.S3FileSyncInput;
 import com.konfigthis.carbonai.client.model.S3GetFileInput;
+import com.konfigthis.carbonai.client.model.SlackFilters;
+import com.konfigthis.carbonai.client.model.SlackSyncRequest;
 import com.konfigthis.carbonai.client.model.SyncDirectoryRequest;
 import com.konfigthis.carbonai.client.model.SyncFilesRequest;
 import com.konfigthis.carbonai.client.model.SyncOptions;
@@ -77,6 +79,11 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
     public class ListConfluencePagesRequestBuilder extends ListConfluencePagesRequestBuilderGenerated {
         public ListConfluencePagesRequestBuilder(Integer dataSourceId) {
             super(dataSourceId);
+        }
+    }
+    public class ListConversationsRequestBuilder extends ListConversationsRequestBuilderGenerated {
+        public ListConversationsRequestBuilder() {
+            super();
         }
     }
     public class ListDataSourceItemsRequestBuilder extends ListDataSourceItemsRequestBuilderGenerated {
@@ -157,6 +164,11 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
     public class SyncS3FilesRequestBuilder extends SyncS3FilesRequestBuilderGenerated {
         public SyncS3FilesRequestBuilder(List<S3GetFileInput> ids) {
             super(ids);
+        }
+    }
+    public class SyncSlackRequestBuilder extends SyncSlackRequestBuilderGenerated {
+        public SyncSlackRequestBuilder(SlackFilters filters) {
+            super(filters);
         }
     }
 }

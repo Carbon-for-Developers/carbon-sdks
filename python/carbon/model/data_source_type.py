@@ -66,6 +66,7 @@ class DataSourceType(
             "GITBOOK": "GITBOOK",
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
+            "SLACK": "SLACK",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -216,6 +217,10 @@ class DataSourceType(
     @schemas.classproperty
     def GITHUB(cls):
         return cls("GITHUB")
+    
+    @schemas.classproperty
+    def SLACK(cls):
+        return cls("SLACK")
     
     @schemas.classproperty
     def JPG(cls):

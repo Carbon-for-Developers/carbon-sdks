@@ -37,6 +37,7 @@
 |**generateSparseVectors** | **Boolean** |  |  |
 |**requestId** | **String** |  |  |
 |**syncProperties** | **Object** |  |  |
+|**messagesMetadata** | **Object** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

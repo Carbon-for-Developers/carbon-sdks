@@ -585,6 +585,22 @@ operation_parameter_map = {
             },
         ]
     },
+    '/integrations/slack/conversations-GET': {
+        'parameters': [
+            {
+                'name': 'types'
+            },
+            {
+                'name': 'cursor'
+            },
+            {
+                'name': 'data_source_id'
+            },
+            {
+                'name': 'exclude_archived'
+            },
+        ]
+    },
     '/integrations/items/list-POST': {
         'parameters': [
             {
@@ -982,6 +998,40 @@ operation_parameter_map = {
             },
             {
                 'name': 'file_sync_config'
+            },
+        ]
+    },
+    '/integrations/slack/sync-POST': {
+        'parameters': [
+            {
+                'name': 'filters'
+            },
+            {
+                'name': 'tags'
+            },
+            {
+                'name': 'chunk_size'
+            },
+            {
+                'name': 'chunk_overlap'
+            },
+            {
+                'name': 'skip_embedding_generation'
+            },
+            {
+                'name': 'embedding_model'
+            },
+            {
+                'name': 'generate_sparse_vectors'
+            },
+            {
+                'name': 'prepend_filename_to_chunks'
+            },
+            {
+                'name': 'data_source_id'
+            },
+            {
+                'name': 'request_id'
             },
         ]
     },

@@ -47,6 +47,7 @@ type UserFile struct {
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors"`
 	RequestId NullableString `json:"request_id"`
 	SyncProperties map[string]interface{} `json:"sync_properties"`
+	MessagesMetadata map[string]interface{} `json:"messages_metadata"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -55,7 +56,7 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
@@ -87,6 +88,7 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 	this.GenerateSparseVectors = generateSparseVectors
 	this.RequestId = requestId
 	this.SyncProperties = syncProperties
+	this.MessagesMetadata = messagesMetadata
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -862,6 +864,30 @@ func (o *UserFile) SetSyncProperties(v map[string]interface{}) {
 	o.SyncProperties = v
 }
 
+// GetMessagesMetadata returns the MessagesMetadata field value
+func (o *UserFile) GetMessagesMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.MessagesMetadata
+}
+
+// GetMessagesMetadataOk returns a tuple with the MessagesMetadata field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetMessagesMetadataOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.MessagesMetadata, true
+}
+
+// SetMessagesMetadata sets field value
+func (o *UserFile) SetMessagesMetadata(v map[string]interface{}) {
+	o.MessagesMetadata = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *UserFile) GetCreatedAt() time.Time {
 	if o == nil {
@@ -1001,6 +1027,9 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["sync_properties"] = o.SyncProperties
+	}
+	if true {
+		toSerialize["messages_metadata"] = o.MessagesMetadata
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

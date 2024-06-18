@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.6-blue)](https://pypi.org/project/carbon-python-sdk/0.2.6)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.7-blue)](https://pypi.org/project/carbon-python-sdk/0.2.7)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -50,6 +50,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
+  * [`carbon.integrations.list_conversations`](#carbonintegrationslist_conversations)
   * [`carbon.integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
   * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
@@ -66,6 +67,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_repos`](#carbonintegrationssync_repos)
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
+  * [`carbon.integrations.sync_slack`](#carbonintegrationssync_slack)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
   * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
@@ -92,7 +94,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.6
+pip install carbon-python-sdk==0.2.7
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1387,7 +1389,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "701c68d4-27fe-4bd5-8f73-100577f7eaa5",
+        "request_id": "2b33f04a-b2ca-473b-b6e2-c89df5e01f94",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1641,7 +1643,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="f8e2cd13-d01d-4ebe-a42c-2a03626c37c0",
+    request_id="229bd6e7-4931-4900-8f58-0e4071e45b25",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1716,7 +1718,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1779,6 +1781,45 @@ list_confluence_pages_response = carbon.integrations.list_confluence_pages(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/confluence/list` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.list_conversations`<a id="carbonintegrationslist_conversations"></a>
+
+List all of your public and private channels, DMs, and Group DMs. The ID from response 
+can be used as a filter to sync messages to Carbon   
+types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.
+Defaults to public_channel.    
+cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    
+data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
+exclude_archived: Should archived conversations be excluded, defaults to true
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_conversations_response = carbon.integrations.list_conversations(
+    types="public_channel",
+    cursor="string_example",
+    data_source_id=1,
+    exclude_archived=True,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### types: `str`<a id="types-str"></a>
+
+##### cursor: `Optional[str]`<a id="cursor-optionalstr"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### exclude_archived: `bool`<a id="exclude_archived-bool"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/conversations` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1987,7 +2028,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+    request_id="bb4d49b0-3837-444a-9b71-f529df5968cb",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2108,7 +2149,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+    request_id="bb4d49b0-3837-444a-9b71-f529df5968cb",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2694,6 +2735,64 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/s3/files` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_slack`<a id="carbonintegrationssync_slack"></a>
+
+You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
+conversation will be used as an input for this endpoint with timestamps as optional filters.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_slack_response = carbon.integrations.sync_slack(
+    filters={
+        "conversation_id": "conversation_id_example",
+    },
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+    data_source_id=1,
+    request_id="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`SlackFilters`](./carbon/type/slack_filters.py)<a id="filters-slackfilterscarbontypeslack_filterspy"></a>
+
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`SlackSyncRequest`](./carbon/type/slack_sync_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/sync` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

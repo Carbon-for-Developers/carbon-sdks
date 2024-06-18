@@ -187,6 +187,8 @@ from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScra
 from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.pydantic.slack_filters import SlackFilters
+from carbon.pydantic.slack_sync_request import SlackSyncRequest
 from carbon.pydantic.sync_directory_request import SyncDirectoryRequest
 from carbon.pydantic.sync_files_ids import SyncFilesIds
 from carbon.pydantic.sync_files_request import SyncFilesRequest
@@ -1418,7 +1420,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.6/python'
+        self.user_agent = 'Konfig/0.2.7/python'
 
     def __enter__(self):
         return self

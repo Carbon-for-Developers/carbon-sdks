@@ -41,6 +41,7 @@ class SimpleOAuthDataSources(
             "BOX": "BOX",
             "GMAIL": "GMAIL",
             "OUTLOOK": "OUTLOOK",
+            "SLACK": "SLACK",
         }
     
     @schemas.classproperty
@@ -70,3 +71,7 @@ class SimpleOAuthDataSources(
     @schemas.classproperty
     def OUTLOOK(cls):
         return cls("OUTLOOK")
+    
+    @schemas.classproperty
+    def SLACK(cls):
+        return cls("SLACK")

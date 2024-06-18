@@ -39,7 +39,9 @@ import com.google.gson.stream.JsonWriter;
   
   GMAIL("GMAIL"),
   
-  OUTLOOK("OUTLOOK");
+  OUTLOOK("OUTLOOK"),
+  
+  SLACK("SLACK");
 
   private String value;
 

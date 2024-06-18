@@ -52,6 +52,7 @@ const (
 	DATASOURCETYPE_GITBOOK DataSourceType = "GITBOOK"
 	DATASOURCETYPE_SALESFORCE DataSourceType = "SALESFORCE"
 	DATASOURCETYPE_GITHUB DataSourceType = "GITHUB"
+	DATASOURCETYPE_SLACK DataSourceType = "SLACK"
 	DATASOURCETYPE_JPG DataSourceType = "JPG"
 	DATASOURCETYPE_PNG DataSourceType = "PNG"
 	DATASOURCETYPE_JPEG DataSourceType = "JPEG"
@@ -109,6 +110,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"GITBOOK",
 	"SALESFORCE",
 	"GITHUB",
+	"SLACK",
 	"JPG",
 	"PNG",
 	"JPEG",

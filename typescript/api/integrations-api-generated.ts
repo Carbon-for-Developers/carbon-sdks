@@ -85,6 +85,10 @@ import { S3FileSyncInput } from '../models';
 // @ts-ignore
 import { S3GetFileInput } from '../models';
 // @ts-ignore
+import { SlackFilters } from '../models';
+// @ts-ignore
+import { SlackSyncRequest } from '../models';
+// @ts-ignore
 import { SyncDirectoryRequest } from '../models';
 // @ts-ignore
 import { SyncFilesRequest } from '../models';
@@ -456,6 +460,70 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+         * @summary Slack List Conversations
+         * @param {string} [types] 
+         * @param {string} [cursor] 
+         * @param {number} [dataSourceId] 
+         * @param {boolean} [excludeArchived] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listConversations: async (types?: string, cursor?: string, dataSourceId?: number, excludeArchived?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/slack/conversations`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (types !== undefined) {
+                localVarQueryParameter['types'] = types;
+            }
+
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
+            }
+
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
+            if (excludeArchived !== undefined) {
+                localVarQueryParameter['exclude_archived'] = excludeArchived;
+            }
+
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/slack/conversations',
+                httpMethod: 'GET'
+            });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -1292,6 +1360,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+         * @summary Slack Sync
+         * @param {SlackSyncRequest} slackSyncRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncSlack: async (slackSyncRequest: SlackSyncRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'slackSyncRequest' is not null or undefined
+            assertParamExists('syncSlack', 'slackSyncRequest', slackSyncRequest)
+            const localVarPath = `/integrations/slack/sync`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: slackSyncRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/slack/sync',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(slackSyncRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -1450,6 +1570,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 parent_id: requestParameters.parent_id
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.listConfluencePages(listRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+         * @summary Slack List Conversations
+         * @param {IntegrationsApiListConversationsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listConversations(requestParameters: IntegrationsApiListConversationsRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listConversations(requestParameters.types, requestParameters.cursor, requestParameters.dataSourceId, requestParameters.excludeArchived, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1755,6 +1886,29 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+         * @summary Slack Sync
+         * @param {IntegrationsApiSyncSlackRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncSlack(requestParameters: IntegrationsApiSyncSlackRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const slackSyncRequest: SlackSyncRequest = {
+                tags: requestParameters.tags,
+                filters: requestParameters.filters,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                data_source_id: requestParameters.data_source_id,
+                request_id: requestParameters.request_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncSlack(slackSyncRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -1834,6 +1988,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
          */
         listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig): AxiosPromise<ListResponse> {
             return localVarFp.listConfluencePages(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+         * @summary Slack List Conversations
+         * @param {IntegrationsApiListConversationsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listConversations(requestParameters: IntegrationsApiListConversationsRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listConversations(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1995,6 +2159,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
         syncS3Files(requestParameters: IntegrationsApiSyncS3FilesRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.syncS3Files(requestParameters, options).then((request) => request(axios, basePath));
         },
+        /**
+         * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+         * @summary Slack Sync
+         * @param {IntegrationsApiSyncSlackRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncSlack(requestParameters: IntegrationsApiSyncSlackRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.syncSlack(requestParameters, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -2060,6 +2234,43 @@ export type IntegrationsApiGetOauthUrlRequest = {
 export type IntegrationsApiListConfluencePagesRequest = {
     
 } & ListRequest
+
+/**
+ * Request parameters for listConversations operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListConversationsRequest
+ */
+export type IntegrationsApiListConversationsRequest = {
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof IntegrationsApiListConversations
+    */
+    readonly types?: string
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof IntegrationsApiListConversations
+    */
+    readonly cursor?: string
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListConversations
+    */
+    readonly dataSourceId?: number
+    
+    /**
+    * 
+    * @type {boolean}
+    * @memberof IntegrationsApiListConversations
+    */
+    readonly excludeArchived?: boolean
+    
+}
 
 /**
  * Request parameters for listDataSourceItems operation in IntegrationsApi.
@@ -2255,6 +2466,15 @@ export type IntegrationsApiSyncS3FilesRequest = {
 } & S3FileSyncInput
 
 /**
+ * Request parameters for syncSlack operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncSlackRequest
+ */
+export type IntegrationsApiSyncSlackRequest = {
+    
+} & SlackSyncRequest
+
+/**
  * IntegrationsApiGenerated - object-oriented interface
  * @export
  * @class IntegrationsApiGenerated
@@ -2343,6 +2563,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).listConfluencePages(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+     * @summary Slack List Conversations
+     * @param {IntegrationsApiListConversationsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listConversations(requestParameters: IntegrationsApiListConversationsRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listConversations(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2535,5 +2767,17 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public syncS3Files(requestParameters: IntegrationsApiSyncS3FilesRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).syncS3Files(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+     * @summary Slack Sync
+     * @param {IntegrationsApiSyncSlackRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncSlack(requestParameters: IntegrationsApiSyncSlackRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncSlack(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

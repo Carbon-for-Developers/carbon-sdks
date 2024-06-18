@@ -204,6 +204,12 @@ export interface UserFile {
     'sync_properties': object;
     /**
      * 
+     * @type {object}
+     * @memberof UserFile
+     */
+    'messages_metadata': object;
+    /**
+     * 
      * @type {string}
      * @memberof UserFile
      */

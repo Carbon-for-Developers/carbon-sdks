@@ -177,6 +177,10 @@ public class UserFile {
   @SerializedName(SERIALIZED_NAME_SYNC_PROPERTIES)
   private Object syncProperties;
 
+  public static final String SERIALIZED_NAME_MESSAGES_METADATA = "messages_metadata";
+  @SerializedName(SERIALIZED_NAME_MESSAGES_METADATA)
+  private Object messagesMetadata;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
@@ -1063,6 +1067,35 @@ public class UserFile {
   }
 
 
+  public UserFile messagesMetadata(Object messagesMetadata) {
+    
+    
+    
+    
+    this.messagesMetadata = messagesMetadata;
+    return this;
+  }
+
+   /**
+   * Get messagesMetadata
+   * @return messagesMetadata
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getMessagesMetadata() {
+    return messagesMetadata;
+  }
+
+
+  public void setMessagesMetadata(Object messagesMetadata) {
+    
+    
+    
+    this.messagesMetadata = messagesMetadata;
+  }
+
+
   public UserFile createdAt(OffsetDateTime createdAt) {
     
     
@@ -1205,6 +1238,7 @@ public class UserFile {
         Objects.equals(this.generateSparseVectors, userFile.generateSparseVectors) &&
         Objects.equals(this.requestId, userFile.requestId) &&
         Objects.equals(this.syncProperties, userFile.syncProperties) &&
+        Objects.equals(this.messagesMetadata, userFile.messagesMetadata) &&
         Objects.equals(this.createdAt, userFile.createdAt) &&
         Objects.equals(this.updatedAt, userFile.updatedAt)&&
         Objects.equals(this.additionalProperties, userFile.additionalProperties);
@@ -1212,7 +1246,7 @@ public class UserFile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, syncProperties, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, syncProperties, messagesMetadata, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1249,6 +1283,7 @@ public class UserFile {
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    syncProperties: ").append(toIndentedString(syncProperties)).append("\n");
+    sb.append("    messagesMetadata: ").append(toIndentedString(messagesMetadata)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -1304,6 +1339,7 @@ public class UserFile {
     openapiFields.add("generate_sparse_vectors");
     openapiFields.add("request_id");
     openapiFields.add("sync_properties");
+    openapiFields.add("messages_metadata");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -1339,6 +1375,7 @@ public class UserFile {
     openapiRequiredFields.add("generate_sparse_vectors");
     openapiRequiredFields.add("request_id");
     openapiRequiredFields.add("sync_properties");
+    openapiRequiredFields.add("messages_metadata");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }

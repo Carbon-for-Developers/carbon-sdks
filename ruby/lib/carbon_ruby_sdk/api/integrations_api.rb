@@ -653,13 +653,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'f8e2cd13-d01d-4ebe-a42c-2a03626c37c0', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '229bd6e7-4931-4900-8f58-0e4071e45b25', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -721,13 +721,13 @@ module Carbon
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
     # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf
     # @param parse_pdf_tables_with_ocr [Boolean] 
-    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+    # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: 'f8e2cd13-d01d-4ebe-a42c-2a03626c37c0', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: '229bd6e7-4931-4900-8f58-0e4071e45b25', use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -937,6 +937,123 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#list_confluence_pages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Slack List Conversations
+    #
+    # List all of your public and private channels, DMs, and Group DMs. The ID from response 
+    # can be used as a filter to sync messages to Carbon   
+    # types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.
+    # Defaults to public_channel.    
+    # cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    
+    # data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
+    # exclude_archived: Should archived conversations be excluded, defaults to true
+    #
+    # @param types [String] 
+    # @param cursor [String] 
+    # @param data_source_id [Integer] 
+    # @param exclude_archived [Boolean] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_conversations(types: 'public_channel', cursor: SENTINEL, data_source_id: SENTINEL, exclude_archived: true, extra: {})
+      extra[:types] = types if types != SENTINEL
+      extra[:cursor] = cursor if cursor != SENTINEL
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      extra[:exclude_archived] = exclude_archived if exclude_archived != SENTINEL
+      api_response = list_conversations_with_http_info_impl(extra)
+      api_response.data
+    end
+
+    # Slack List Conversations
+    #
+    # List all of your public and private channels, DMs, and Group DMs. The ID from response 
+    # can be used as a filter to sync messages to Carbon   
+    # types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.
+    # Defaults to public_channel.    
+    # cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    
+    # data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
+    # exclude_archived: Should archived conversations be excluded, defaults to true
+    #
+    # @param types [String] 
+    # @param cursor [String] 
+    # @param data_source_id [Integer] 
+    # @param exclude_archived [Boolean] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_conversations_with_http_info(types: 'public_channel', cursor: SENTINEL, data_source_id: SENTINEL, exclude_archived: true, extra: {})
+      extra[:types] = types if types != SENTINEL
+      extra[:cursor] = cursor if cursor != SENTINEL
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      extra[:exclude_archived] = exclude_archived if exclude_archived != SENTINEL
+      list_conversations_with_http_info_impl(extra)
+    end
+
+    # Slack List Conversations
+    # List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :types  (default to 'public_channel')
+    # @option opts [String] :cursor 
+    # @option opts [Integer] :data_source_id 
+    # @option opts [Boolean] :exclude_archived  (default to true)
+    # @return [Object]
+    private def list_conversations_impl(opts = {})
+      data, _status_code, _headers = list_conversations_with_http_info(opts)
+      data
+    end
+
+    # Slack List Conversations
+    # List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :types  (default to 'public_channel')
+    # @option opts [String] :cursor 
+    # @option opts [Integer] :data_source_id 
+    # @option opts [Boolean] :exclude_archived  (default to true)
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def list_conversations_with_http_info_impl(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_conversations ...'
+      end
+      # resource path
+      local_var_path = '/integrations/slack/conversations'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'types'] = opts[:'types'] if !opts[:'types'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
+      query_params[:'exclude_archived'] = opts[:'exclude_archived'] if !opts[:'exclude_archived'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.list_conversations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#list_conversations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end
@@ -1523,7 +1640,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '7233a302-6276-4747-af1f-9b1d1e1ed6f8', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_confluence(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'bb4d49b0-3837-444a-9b71-f529df5968cb', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1571,7 +1688,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '7233a302-6276-4747-af1f-9b1d1e1ed6f8', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_confluence_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'bb4d49b0-3837-444a-9b71-f529df5968cb', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1779,7 +1896,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '7233a302-6276-4747-af1f-9b1d1e1ed6f8', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_files(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'bb4d49b0-3837-444a-9b71-f529df5968cb', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -1827,7 +1944,7 @@ module Carbon
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [SyncFilesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: '7233a302-6276-4747-af1f-9b1d1e1ed6f8', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
+    def sync_files_with_http_info(data_source_id:, ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, request_id: 'bb4d49b0-3837-444a-9b71-f529df5968cb', use_ocr: false, parse_pdf_tables_with_ocr: false, incremental_sync: false, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
@@ -3059,6 +3176,142 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationsApi#sync_s3_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Slack Sync
+    #
+    # You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
+    # conversation will be used as an input for this endpoint with timestamps as optional filters.
+    #
+    # @param filters [SlackFilters] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
+    # @param request_id [String] 
+    # @param body [SlackSyncRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_slack(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      slack_sync_request = _body
+      api_response = sync_slack_with_http_info_impl(slack_sync_request, extra)
+      api_response.data
+    end
+
+    # Slack Sync
+    #
+    # You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
+    # conversation will be used as an input for this endpoint with timestamps as optional filters.
+    #
+    # @param filters [SlackFilters] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param data_source_id [Integer] 
+    # @param request_id [String] 
+    # @param body [SlackSyncRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_slack_with_http_info(filters:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, data_source_id: SENTINEL, request_id: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      slack_sync_request = _body
+      sync_slack_with_http_info_impl(slack_sync_request, extra)
+    end
+
+    # Slack Sync
+    # You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+    # @param slack_sync_request [SlackSyncRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def sync_slack_impl(slack_sync_request, opts = {})
+      data, _status_code, _headers = sync_slack_with_http_info(slack_sync_request, opts)
+      data
+    end
+
+    # Slack Sync
+    # You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+    # @param slack_sync_request [SlackSyncRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def sync_slack_with_http_info_impl(slack_sync_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_slack ...'
+      end
+      # verify the required parameter 'slack_sync_request' is set
+      if @api_client.config.client_side_validation && slack_sync_request.nil?
+        fail ArgumentError, "Missing the required parameter 'slack_sync_request' when calling IntegrationsApi.sync_slack"
+      end
+      # resource path
+      local_var_path = '/integrations/slack/sync'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(slack_sync_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_slack",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_slack\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end

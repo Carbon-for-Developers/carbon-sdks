@@ -46,6 +46,8 @@ import com.konfigthis.carbonai.client.model.RSSFeedInput;
 import com.konfigthis.carbonai.client.model.S3AuthRequest;
 import com.konfigthis.carbonai.client.model.S3FileSyncInput;
 import com.konfigthis.carbonai.client.model.S3GetFileInput;
+import com.konfigthis.carbonai.client.model.SlackFilters;
+import com.konfigthis.carbonai.client.model.SlackSyncRequest;
 import com.konfigthis.carbonai.client.model.SyncDirectoryRequest;
 import com.konfigthis.carbonai.client.model.SyncFilesRequest;
 import com.konfigthis.carbonai.client.model.SyncOptions;
@@ -271,6 +273,28 @@ public class IntegrationsApiTest {
         String parentId = null;
         ListResponse response = api.listConfluencePages(dataSourceId)
                 .parentId(parentId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Slack List Conversations
+     *
+     * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listConversationsTest() throws ApiException {
+        String types = null;
+        String cursor = null;
+        Integer dataSourceId = null;
+        Boolean excludeArchived = null;
+        Object response = api.listConversations()
+                .types(types)
+                .cursor(cursor)
+                .dataSourceId(dataSourceId)
+                .excludeArchived(excludeArchived)
                 .execute();
         // TODO: test validations
     }
@@ -697,6 +721,39 @@ public class IntegrationsApiTest {
                 .useOcr(useOcr)
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .fileSyncConfig(fileSyncConfig)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Slack Sync
+     *
+     * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void syncSlackTest() throws ApiException {
+        SlackFilters filters = null;
+        Object tags = null;
+        Integer chunkSize = null;
+        Integer chunkOverlap = null;
+        Boolean skipEmbeddingGeneration = null;
+        EmbeddingGenerators embeddingModel = null;
+        Boolean generateSparseVectors = null;
+        Boolean prependFilenameToChunks = null;
+        Integer dataSourceId = null;
+        String requestId = null;
+        Object response = api.syncSlack(filters)
+                .tags(tags)
+                .chunkSize(chunkSize)
+                .chunkOverlap(chunkOverlap)
+                .skipEmbeddingGeneration(skipEmbeddingGeneration)
+                .embeddingModel(embeddingModel)
+                .generateSparseVectors(generateSparseVectors)
+                .prependFilenameToChunks(prependFilenameToChunks)
+                .dataSourceId(dataSourceId)
+                .requestId(requestId)
                 .execute();
         // TODO: test validations
     }

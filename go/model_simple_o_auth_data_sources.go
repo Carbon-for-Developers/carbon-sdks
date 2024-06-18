@@ -27,6 +27,7 @@ const (
 	SIMPLEOAUTHDATASOURCES_BOX SimpleOAuthDataSources = "BOX"
 	SIMPLEOAUTHDATASOURCES_GMAIL SimpleOAuthDataSources = "GMAIL"
 	SIMPLEOAUTHDATASOURCES_OUTLOOK SimpleOAuthDataSources = "OUTLOOK"
+	SIMPLEOAUTHDATASOURCES_SLACK SimpleOAuthDataSources = "SLACK"
 )
 
 // All allowed values of SimpleOAuthDataSources enum
@@ -38,6 +39,7 @@ var AllowedSimpleOAuthDataSourcesEnumValues = []SimpleOAuthDataSources{
 	"BOX",
 	"GMAIL",
 	"OUTLOOK",
+	"SLACK",
 }
 
 func (v *SimpleOAuthDataSources) UnmarshalJSON(src []byte) error {
