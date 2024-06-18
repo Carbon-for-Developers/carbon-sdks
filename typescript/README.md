@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.6-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.6)
+[![npm](https://img.shields.io/badge/npm-v0.2.7-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.7)
 
 </div>
 
@@ -45,6 +45,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.createAwsIamUser`](#carbonintegrationscreateawsiamuser)
   * [`carbon.integrations.getOauthUrl`](#carbonintegrationsgetoauthurl)
   * [`carbon.integrations.listConfluencePages`](#carbonintegrationslistconfluencepages)
+  * [`carbon.integrations.listConversations`](#carbonintegrationslistconversations)
   * [`carbon.integrations.listDataSourceItems`](#carbonintegrationslistdatasourceitems)
   * [`carbon.integrations.listFolders`](#carbonintegrationslistfolders)
   * [`carbon.integrations.listGitbookSpaces`](#carbonintegrationslistgitbookspaces)
@@ -61,6 +62,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.syncRepos`](#carbonintegrationssyncrepos)
   * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
   * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
+  * [`carbon.integrations.syncSlack`](#carbonintegrationssyncslack)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
   * [`carbon.organizations.updateStats`](#carbonorganizationsupdatestats)
@@ -1456,7 +1458,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0",
+  request_id: "229bd6e7-4931-4900-8f58-0e4071e45b25",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1525,7 +1527,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1582,6 +1584,44 @@ const listConfluencePagesResponse =
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/confluence/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.listConversations`<a id="carbonintegrationslistconversations"></a>
+
+List all of your public and private channels, DMs, and Group DMs. The ID from response 
+can be used as a filter to sync messages to Carbon   
+types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.
+Defaults to public_channel.    
+cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    
+data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
+exclude_archived: Should archived conversations be excluded, defaults to true
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listConversationsResponse = await carbon.integrations.listConversations({
+  types: "public_channel",
+  excludeArchived: true,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### types: `string`<a id="types-string"></a>
+
+##### cursor: `string`<a id="cursor-string"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
+
+##### excludeArchived: `boolean`<a id="excludearchived-boolean"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/conversations` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1779,7 +1819,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1887,7 +1927,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2412,6 +2452,58 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/s3/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncSlack`<a id="carbonintegrationssyncslack"></a>
+
+You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
+conversation will be used as an input for this endpoint with timestamps as optional filters.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const syncSlackResponse = await carbon.integrations.syncSlack({
+  filters: {
+    conversation_id: "conversation_id_example",
+  },
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`SlackFilters`](./models/slack-filters.ts)<a id="filters-slackfiltersmodelsslack-filtersts"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### chunk_size: `number`<a id="chunk_size-number"></a>
+
+##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### skip_embedding_generation: `boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/sync` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

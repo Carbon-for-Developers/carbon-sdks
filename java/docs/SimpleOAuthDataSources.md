@@ -19,5 +19,7 @@
 
 * `OUTLOOK` (value: `"OUTLOOK"`)
 
+* `SLACK` (value: `"SLACK"`)
+
 
 

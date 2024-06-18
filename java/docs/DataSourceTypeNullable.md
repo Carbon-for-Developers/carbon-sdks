@@ -69,6 +69,8 @@
 
 * `GITHUB` (value: `"GITHUB"`)
 
+* `SLACK` (value: `"SLACK"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

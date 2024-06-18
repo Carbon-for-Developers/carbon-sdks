@@ -11,6 +11,7 @@ Method | Path | Description
 [**CreateAwsIamUser**](IntegrationsApi.md#CreateAwsIamUser) | **Post** /integrations/s3 | S3 Auth
 [**GetOauthUrl**](IntegrationsApi.md#GetOauthUrl) | **Post** /integrations/oauth_url | Get Oauth Url
 [**ListConfluencePages**](IntegrationsApi.md#ListConfluencePages) | **Post** /integrations/confluence/list | Confluence List
+[**ListConversations**](IntegrationsApi.md#ListConversations) | **Get** /integrations/slack/conversations | Slack List Conversations
 [**ListDataSourceItems**](IntegrationsApi.md#ListDataSourceItems) | **Post** /integrations/items/list | List Data Source Items
 [**ListFolders**](IntegrationsApi.md#ListFolders) | **Get** /integrations/outlook/user_folders | Outlook Folders
 [**ListGitbookSpaces**](IntegrationsApi.md#ListGitbookSpaces) | **Get** /integrations/gitbook/spaces | Gitbook Spaces
@@ -27,6 +28,7 @@ Method | Path | Description
 [**SyncRepos**](IntegrationsApi.md#SyncRepos) | **Post** /integrations/github/sync_repos | Github Sync Repos
 [**SyncRssFeed**](IntegrationsApi.md#SyncRssFeed) | **Post** /integrations/rss_feed | Rss Feed
 [**SyncS3Files**](IntegrationsApi.md#SyncS3Files) | **Post** /integrations/s3/files | S3 Files
+[**SyncSlack**](IntegrationsApi.md#SyncSlack) | **Post** /integrations/slack/sync | Slack Sync
 
 
 
@@ -385,7 +387,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("f8e2cd13-d01d-4ebe-a42c-2a03626c37c0")
+    oAuthURLRequest.SetRequestId("229bd6e7-4931-4900-8f58-0e4071e45b25")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -457,6 +459,53 @@ func main() {
     // response from `ListConfluencePages`: ListResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListConfluencePages`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `ListResponse.ListConfluencePages.Data`: %v\n", resp.Data)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListConversations
+
+Slack List Conversations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    request := client.IntegrationsApi.ListConversations(
+    )
+    request.Types(""public_channel"")
+    request.Cursor("cursor_example")
+    request.DataSourceId(56)
+    request.ExcludeArchived(true)
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ListConversations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ListConversations`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListConversations`: %v\n", resp)
 }
 ```
 
@@ -783,7 +832,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("7233a302-6276-4747-af1f-9b1d1e1ed6f8")
+    syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -914,7 +963,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("7233a302-6276-4747-af1f-9b1d1e1ed6f8")
+    syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -1341,6 +1390,65 @@ func main() {
     // response from `SyncS3Files`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncS3Files`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.SyncS3Files.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncSlack
+
+Slack Sync
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    filters := *carbon.NewSlackFilters()
+    
+    slackSyncRequest := *carbon.NewSlackSyncRequest(
+        filters,
+    )
+    slackSyncRequest.SetTags({})
+    slackSyncRequest.SetChunkSize(1500)
+    slackSyncRequest.SetChunkOverlap(20)
+    slackSyncRequest.SetSkipEmbeddingGeneration(false)
+    slackSyncRequest.SetEmbeddingModel(null)
+    slackSyncRequest.SetGenerateSparseVectors(false)
+    slackSyncRequest.SetPrependFilenameToChunks(false)
+    slackSyncRequest.SetDataSourceId(null)
+    slackSyncRequest.SetRequestId("null")
+    
+    request := client.IntegrationsApi.SyncSlack(
+        slackSyncRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.SyncSlack``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `SyncSlack`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncSlack`: %v\n", resp)
 }
 ```
 

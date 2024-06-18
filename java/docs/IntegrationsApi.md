@@ -11,6 +11,7 @@ All URIs are relative to *https://api.carbon.ai*
 | [**createAwsIamUser**](IntegrationsApi.md#createAwsIamUser) | **POST** /integrations/s3 | S3 Auth |
 | [**getOauthUrl**](IntegrationsApi.md#getOauthUrl) | **POST** /integrations/oauth_url | Get Oauth Url |
 | [**listConfluencePages**](IntegrationsApi.md#listConfluencePages) | **POST** /integrations/confluence/list | Confluence List |
+| [**listConversations**](IntegrationsApi.md#listConversations) | **GET** /integrations/slack/conversations | Slack List Conversations |
 | [**listDataSourceItems**](IntegrationsApi.md#listDataSourceItems) | **POST** /integrations/items/list | List Data Source Items |
 | [**listFolders**](IntegrationsApi.md#listFolders) | **GET** /integrations/outlook/user_folders | Outlook Folders |
 | [**listGitbookSpaces**](IntegrationsApi.md#listGitbookSpaces) | **GET** /integrations/gitbook/spaces | Gitbook Spaces |
@@ -27,6 +28,7 @@ All URIs are relative to *https://api.carbon.ai*
 | [**syncRepos**](IntegrationsApi.md#syncRepos) | **POST** /integrations/github/sync_repos | Github Sync Repos |
 | [**syncRssFeed**](IntegrationsApi.md#syncRssFeed) | **POST** /integrations/rss_feed | Rss Feed |
 | [**syncS3Files**](IntegrationsApi.md#syncS3Files) | **POST** /integrations/s3/files | S3 Files |
+| [**syncSlack**](IntegrationsApi.md#syncSlack) | **POST** /integrations/slack/sync | Slack Sync |
 
 
 <a name="cancel"></a>
@@ -662,10 +664,10 @@ public class Example {
     Boolean setPageAsBoundary = false;
     Integer dataSourceId = 56; // Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
     Boolean connectingNewAccount = false; // Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
-    String requestId = "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0"; // This request id will be added to all files that get synced using the generated OAuth URL
+    String requestId = "229bd6e7-4931-4900-8f58-0e4071e45b25"; // This request id will be added to all files that get synced using the generated OAuth URL
     Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: pdf
     Boolean parsePdfTablesWithOcr = false;
-    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
@@ -873,6 +875,114 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="listConversations"></a>
+# **listConversations**
+> Object listConversations().types(types).cursor(cursor).dataSourceId(dataSourceId).excludeArchived(excludeArchived).execute();
+
+Slack List Conversations
+
+List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    String types = "public_channel";
+    String cursor = "cursor_example";
+    Integer dataSourceId = 56;
+    Boolean excludeArchived = true;
+    try {
+      Object result = client
+              .integrations
+              .listConversations()
+              .types(types)
+              .cursor(cursor)
+              .dataSourceId(dataSourceId)
+              .excludeArchived(excludeArchived)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#listConversations");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Object> response = client
+              .integrations
+              .listConversations()
+              .types(types)
+              .cursor(cursor)
+              .dataSourceId(dataSourceId)
+              .excludeArchived(excludeArchived)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#listConversations");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **types** | **String**|  | [optional] [default to public_channel] |
+| **cursor** | **String**|  | [optional] |
+| **dataSourceId** | **Integer**|  | [optional] |
+| **excludeArchived** | **Boolean**|  | [optional] [default to true] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1520,7 +1630,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "7233a302-6276-4747-af1f-9b1d1e1ed6f8";
+    String requestId = "bb4d49b0-3837-444a-9b71-f529df5968cb";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
@@ -1769,7 +1879,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "7233a302-6276-4747-af1f-9b1d1e1ed6f8";
+    String requestId = "bb4d49b0-3837-444a-9b71-f529df5968cb";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
@@ -2688,6 +2798,127 @@ public class Example {
 ### Return type
 
 [**GenericSuccessResponse**](GenericSuccessResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="syncSlack"></a>
+# **syncSlack**
+> Object syncSlack(slackSyncRequest).execute();
+
+Slack Sync
+
+You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    SlackFilters filters = new SlackFilters();
+    Object tags = null;
+    Integer chunkSize = 1500;
+    Integer chunkOverlap = 20;
+    Boolean skipEmbeddingGeneration = false;
+    EmbeddingGenerators embeddingModel = EmbeddingGenerators.fromValue("OPENAI");
+    Boolean generateSparseVectors = false;
+    Boolean prependFilenameToChunks = false;
+    Integer dataSourceId = 56;
+    String requestId = "requestId_example";
+    try {
+      Object result = client
+              .integrations
+              .syncSlack(filters)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .dataSourceId(dataSourceId)
+              .requestId(requestId)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncSlack");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Object> response = client
+              .integrations
+              .syncSlack(filters)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .dataSourceId(dataSourceId)
+              .requestId(requestId)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncSlack");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **slackSyncRequest** | [**SlackSyncRequest**](SlackSyncRequest.md)|  | |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

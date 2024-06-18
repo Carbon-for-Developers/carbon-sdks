@@ -2241,6 +2241,122 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-github-sync_repos
       x-content-type: application/json
       x-accepts: application/json
+  /integrations/slack/conversations:
+    get:
+      description: "List all of your public and private channels, DMs, and Group DMs.\
+        \ The ID from response \ncan be used as a filter to sync messages to Carbon\
+        \   \ntypes: Comma separated list of types. Available types are im (DMs),\
+        \ mpim (group DMs), public_channel, and private_channel.\nDefaults to public_channel.\
+        \    \ncursor: Used for pagination. If next_cursor is returned in response,\
+        \ you need to pass it as the cursor in the next request    \ndata_source_id:\
+        \ Data source needs to be specified if you have linked multiple slack accounts\
+        \  \nexclude_archived: Should archived conversations be excluded, defaults\
+        \ to true"
+      operationId: Integrations_listConversations
+      parameters:
+      - explode: true
+        in: query
+        name: types
+        required: false
+        schema:
+          default: public_channel
+          example: public_channel
+          title: Types
+          type: string
+          x-konfig-original-example: public_channel
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-0-schema
+        style: form
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          nullable: true
+          title: Cursor
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: exclude_archived
+        required: false
+        schema:
+          default: true
+          example: true
+          title: Exclude Archived
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-3-schema
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsListConversationsResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Slack List Conversations
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-slack-conversations
+      x-accepts: application/json
+  /integrations/slack/sync:
+    post:
+      description: "You can list all conversations using the endpoint /integrations/slack/conversations.\
+        \ The ID of \nconversation will be used as an input for this endpoint with\
+        \ timestamps as optional filters."
+      operationId: Integrations_syncSlack
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlackSyncRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsSyncSlackResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Slack Sync
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-slack-sync
+      x-content-type: application/json
+      x-accepts: application/json
   /auth/v1/access_token:
     get:
       operationId: Auth_getAccessToken
@@ -4054,7 +4170,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+          request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4090,7 +4206,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+            request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4191,6 +4307,7 @@ components:
       - GITBOOK
       - SALESFORCE
       - GITHUB
+      - SLACK
       - JPG
       - PNG
       - JPEG
@@ -4851,6 +4968,7 @@ components:
       - GITBOOK
       - SALESFORCE
       - GITHUB
+      - SLACK
       - JPG
       - PNG
       - MP3
@@ -5961,7 +6079,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+        request_id: 229bd6e7-4931-4900-8f58-0e4071e45b25
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6079,13 +6197,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          default: 229bd6e7-4931-4900-8f58-0e4071e45b25
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          example: 229bd6e7-4931-4900-8f58-0e4071e45b25
           title: Request Id
           type: string
-          x-konfig-original-example: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          x-konfig-original-example: 229bd6e7-4931-4900-8f58-0e4071e45b25
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6107,7 +6225,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX,\
+            \ it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE,\
             \ BOX"
           example: true
           title: Enable File Picker
@@ -7344,6 +7462,7 @@ components:
       - BOX
       - GMAIL
       - OUTLOOK
+      - SLACK
       title: SimpleOAuthDataSources
       type: string
     SingleChunksAndEmbeddingsUploadInput:
@@ -7533,6 +7652,108 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    SlackFilters:
+      example:
+        conversation_id: conversation_id
+        after: after
+      properties:
+        conversation_id:
+          description: "Conversation ID from slack, can be obtained from Carbon with\
+            \ slack conversations endpoint"
+          title: Conversation Id
+          type: string
+        after:
+          description: "Only messages after this date will be included in results.\
+            \ If not set, all messages \n        will be included. Should be entered\
+            \ in YYYY/mm/dd format"
+          nullable: true
+          title: After
+          type: string
+      required:
+      - conversation_id
+      title: SlackFilters
+      type: object
+    SlackSyncRequest:
+      example:
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        generate_sparse_vectors: false
+        embedding_model: null
+        filters:
+          conversation_id: conversation_id
+          after: after
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        request_id: request_id
+        data_source_id: 0
+        tags: {}
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags
+        filters:
+          $ref: '#/components/schemas/SlackFilters'
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+      required:
+      - filters
+      title: SlackSyncRequest
+      type: object
+      x-konfig-properties:
+        embedding_model:
+          default: OPENAI
     SyncDirectoryRequest:
       example:
         data_source_id: 0
@@ -7580,7 +7801,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+        request_id: bb4d49b0-3837-444a-9b71-f529df5968cb
         data_source_id: 0
       properties:
         tags:
@@ -7652,11 +7873,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
-          example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          default: bb4d49b0-3837-444a-9b71-f529df5968cb
+          example: bb4d49b0-3837-444a-9b71-f529df5968cb
           title: Request Id
           type: string
-          x-konfig-original-example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7712,7 +7933,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+        request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
       properties:
         tags:
           nullable: true
@@ -7785,11 +8006,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
-          example: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+          default: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+          example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
           title: Request Id
           type: string
-          x-konfig-original-example: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+          x-konfig-original-example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8084,6 +8305,7 @@ components:
         chunk_overlap: 4
         skip_embedding_generation: true
         request_id: request_id
+        messages_metadata: {}
       properties:
         tags:
           nullable: true
@@ -8201,6 +8423,12 @@ components:
           type: object
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-sync_properties
+        messages_metadata:
+          example: {}
+          title: Messages Metadata
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-messages_metadata
         created_at:
           format: date-time
           title: Created At
@@ -8224,6 +8452,7 @@ components:
       - generate_sparse_vectors
       - id
       - last_sync
+      - messages_metadata
       - name
       - ocr_job_started_at
       - ocr_properties
@@ -8293,6 +8522,7 @@ components:
           chunk_overlap: 4
           skip_embedding_generation: true
           request_id: request_id
+          messages_metadata: {}
         - additional_presigned_urls: "{}"
           chunk_size: 2
           organization_user_data_source_id: 1
@@ -8337,6 +8567,7 @@ components:
           chunk_overlap: 4
           skip_embedding_generation: true
           request_id: request_id
+          messages_metadata: {}
       properties:
         results:
           items:
@@ -8973,6 +9204,7 @@ components:
       - GITBOOK
       - SALESFORCE
       - GITHUB
+      - SLACK
       - JPG
       - PNG
       - JPEG
@@ -9049,6 +9281,7 @@ components:
       - GITBOOK
       - SALESFORCE
       - GITHUB
+      - SLACK
       - JPG
       - PNG
       - MP3
@@ -9349,6 +9582,20 @@ components:
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncReposResponse
       x-konfig-is-used-in-successful-response: true
+    IntegrationsListConversationsResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsListConversationsResponse
+      x-konfig-is-used-in-successful-response: true
+    IntegrationsSyncSlackResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncSlackResponse
+      x-konfig-is-used-in-successful-response: true
     FilesQueryUserFilesDeprecatedResponse:
       items:
         $ref: '#/components/schemas/UserFile'
@@ -9390,6 +9637,14 @@ components:
     konfig-generated-schema-paths--integrations-github-repos-get-parameters-1-schema:
       example: 1
       type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-0-schema:
+      example: public_channel
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-3-schema:
+      example: true
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-paths--uploadfile-post-parameters-2-schema:
       example: false
@@ -9711,7 +9966,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+      example: 229bd6e7-4931-4900-8f58-0e4071e45b25
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -9929,6 +10184,31 @@ components:
         type: string
       type: array
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SlackSyncRequest-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-tags:
       example: {}
       properties: {}
@@ -9959,7 +10239,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+      example: bb4d49b0-3837-444a-9b71-f529df5968cb
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10003,7 +10283,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 701c68d4-27fe-4bd5-8f73-100577f7eaa5
+      example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -10056,6 +10336,11 @@ components:
       type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UserFile-properties-sync_properties:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UserFile-properties-messages_metadata:
       example: {}
       properties: {}
       type: object
@@ -10220,6 +10505,16 @@ components:
       properties: {}
       type: object
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IntegrationsListConversationsResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IntegrationsSyncSlackResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UtilitiesScrapeWebResponse:
       example: {}
       properties: {}
@@ -10357,13 +10652,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          default: 229bd6e7-4931-4900-8f58-0e4071e45b25
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          example: 229bd6e7-4931-4900-8f58-0e4071e45b25
           title: Request Id
           type: string
-          x-konfig-original-example: f8e2cd13-d01d-4ebe-a42c-2a03626c37c0
+          x-konfig-original-example: 229bd6e7-4931-4900-8f58-0e4071e45b25
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -10385,7 +10680,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX,\
+            \ it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE,\
             \ BOX"
           example: true
           title: Enable File Picker
@@ -10542,11 +10837,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
-          example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          default: bb4d49b0-3837-444a-9b71-f529df5968cb
+          example: bb4d49b0-3837-444a-9b71-f529df5968cb
           title: Request Id
           type: string
-          x-konfig-original-example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10667,11 +10962,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
-          example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          default: bb4d49b0-3837-444a-9b71-f529df5968cb
+          example: bb4d49b0-3837-444a-9b71-f529df5968cb
           title: Request Id
           type: string
-          x-konfig-original-example: 7233a302-6276-4747-af1f-9b1d1e1ed6f8
+          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11414,6 +11709,103 @@ components:
           type: integer
       required:
       - repos
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-slack-conversations:
+      properties:
+        types:
+          default: public_channel
+          example: public_channel
+          title: Types
+          type: string
+          x-konfig-original-example: public_channel
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-0-schema
+        cursor:
+          nullable: true
+          title: Cursor
+          type: string
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        exclude_archived:
+          default: true
+          example: true
+          title: Exclude Archived
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-slack-conversations-get-parameters-3-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - types
+      - cursor
+      - data_source_id
+      - exclude_archived
+    konfig-generated-schema-single-parameter-schema-post--integrations-slack-sync:
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags
+        filters:
+          $ref: '#/components/schemas/SlackFilters'
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SlackSyncRequest-properties-prepend_filename_to_chunks
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+      required:
+      - filters
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

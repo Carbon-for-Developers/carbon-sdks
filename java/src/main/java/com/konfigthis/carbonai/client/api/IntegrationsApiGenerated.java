@@ -56,6 +56,8 @@ import com.konfigthis.carbonai.client.model.RSSFeedInput;
 import com.konfigthis.carbonai.client.model.S3AuthRequest;
 import com.konfigthis.carbonai.client.model.S3FileSyncInput;
 import com.konfigthis.carbonai.client.model.S3GetFileInput;
+import com.konfigthis.carbonai.client.model.SlackFilters;
+import com.konfigthis.carbonai.client.model.SlackSyncRequest;
 import com.konfigthis.carbonai.client.model.SyncDirectoryRequest;
 import com.konfigthis.carbonai.client.model.SyncFilesRequest;
 import com.konfigthis.carbonai.client.model.SyncOptions;
@@ -1504,7 +1506,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to f8e2cd13-d01d-4ebe-a42c-2a03626c37c0)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 229bd6e7-4931-4900-8f58-0e4071e45b25)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -1534,7 +1536,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX (optional, default to true)
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX (optional, default to true)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
@@ -1856,6 +1858,210 @@ public class IntegrationsApiGenerated {
     public IntegrationsApi.ListConfluencePagesRequestBuilder listConfluencePages(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         return ((IntegrationsApi) this).new ListConfluencePagesRequestBuilder(dataSourceId);
+    }
+    private okhttp3.Call listConversationsCall(String types, String cursor, Integer dataSourceId, Boolean excludeArchived, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/integrations/slack/conversations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (types != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("types", types));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        if (dataSourceId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("data_source_id", dataSourceId));
+        }
+
+        if (excludeArchived != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("exclude_archived", excludeArchived));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listConversationsValidateBeforeCall(String types, String cursor, Integer dataSourceId, Boolean excludeArchived, final ApiCallback _callback) throws ApiException {
+        return listConversationsCall(types, cursor, dataSourceId, excludeArchived, _callback);
+
+    }
+
+
+    private ApiResponse<Object> listConversationsWithHttpInfo(String types, String cursor, Integer dataSourceId, Boolean excludeArchived) throws ApiException {
+        okhttp3.Call localVarCall = listConversationsValidateBeforeCall(types, cursor, dataSourceId, excludeArchived, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listConversationsAsync(String types, String cursor, Integer dataSourceId, Boolean excludeArchived, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listConversationsValidateBeforeCall(types, cursor, dataSourceId, excludeArchived, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ListConversationsRequestBuilderGenerated {
+        String types;
+        String cursor;
+        Integer dataSourceId;
+        Boolean excludeArchived;
+
+        public ListConversationsRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set types
+         * @param types  (optional, default to public_channel)
+         * @return IntegrationsApi.ListConversationsRequestBuilder
+         */
+        public IntegrationsApi.ListConversationsRequestBuilder types(String types) {
+            this.types = types;
+            return (IntegrationsApi.ListConversationsRequestBuilder) this;
+        }
+        
+        /**
+         * Set cursor
+         * @param cursor  (optional)
+         * @return IntegrationsApi.ListConversationsRequestBuilder
+         */
+        public IntegrationsApi.ListConversationsRequestBuilder cursor(String cursor) {
+            this.cursor = cursor;
+            return (IntegrationsApi.ListConversationsRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceId
+         * @param dataSourceId  (optional)
+         * @return IntegrationsApi.ListConversationsRequestBuilder
+         */
+        public IntegrationsApi.ListConversationsRequestBuilder dataSourceId(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+            return (IntegrationsApi.ListConversationsRequestBuilder) this;
+        }
+        
+        /**
+         * Set excludeArchived
+         * @param excludeArchived  (optional, default to true)
+         * @return IntegrationsApi.ListConversationsRequestBuilder
+         */
+        public IntegrationsApi.ListConversationsRequestBuilder excludeArchived(Boolean excludeArchived) {
+            this.excludeArchived = excludeArchived;
+            return (IntegrationsApi.ListConversationsRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for listConversations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listConversationsCall(types, cursor, dataSourceId, excludeArchived, _callback);
+        }
+
+
+        /**
+         * Execute listConversations request
+         * @return Object
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Object execute() throws ApiException {
+            ApiResponse<Object> localVarResp = listConversationsWithHttpInfo(types, cursor, dataSourceId, excludeArchived);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute listConversations request with HTTP info returned
+         * @return ApiResponse&lt;Object&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+            return listConversationsWithHttpInfo(types, cursor, dataSourceId, excludeArchived);
+        }
+
+        /**
+         * Execute listConversations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+            return listConversationsAsync(types, cursor, dataSourceId, excludeArchived, _callback);
+        }
+    }
+
+    /**
+     * Slack List Conversations
+     * List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+     * @return ListConversationsRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.ListConversationsRequestBuilder listConversations() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListConversationsRequestBuilder();
     }
     private okhttp3.Call listDataSourceItemsCall(ListDataSourceItemsRequest listDataSourceItemsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -3089,7 +3295,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 7233a302-6276-4747-af1f-9b1d1e1ed6f8)
+         * @param requestId  (optional, default to bb4d49b0-3837-444a-9b71-f529df5968cb)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3587,7 +3793,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 7233a302-6276-4747-af1f-9b1d1e1ed6f8)
+         * @param requestId  (optional, default to bb4d49b0-3837-444a-9b71-f529df5968cb)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {
@@ -5574,5 +5780,276 @@ public class IntegrationsApiGenerated {
     public IntegrationsApi.SyncS3FilesRequestBuilder syncS3Files(List<S3GetFileInput> ids) throws IllegalArgumentException {
         if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
         return ((IntegrationsApi) this).new SyncS3FilesRequestBuilder(ids);
+    }
+    private okhttp3.Call syncSlackCall(SlackSyncRequest slackSyncRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = slackSyncRequest;
+
+        // create path and map variables
+        String localVarPath = "/integrations/slack/sync";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call syncSlackValidateBeforeCall(SlackSyncRequest slackSyncRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slackSyncRequest' is set
+        if (slackSyncRequest == null) {
+            throw new ApiException("Missing the required parameter 'slackSyncRequest' when calling syncSlack(Async)");
+        }
+
+        return syncSlackCall(slackSyncRequest, _callback);
+
+    }
+
+
+    private ApiResponse<Object> syncSlackWithHttpInfo(SlackSyncRequest slackSyncRequest) throws ApiException {
+        okhttp3.Call localVarCall = syncSlackValidateBeforeCall(slackSyncRequest, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call syncSlackAsync(SlackSyncRequest slackSyncRequest, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = syncSlackValidateBeforeCall(slackSyncRequest, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class SyncSlackRequestBuilderGenerated {
+        final SlackFilters filters;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer dataSourceId;
+        String requestId;
+
+        public SyncSlackRequestBuilderGenerated(SlackFilters filters) {
+            this.filters = filters;
+        }
+
+        /**
+         * Set tags
+         * @param tags  (optional)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder tags(Object tags) {
+            this.tags = tags;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkSize
+         * @param chunkSize  (optional, default to 1500)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder chunkSize(Integer chunkSize) {
+            this.chunkSize = chunkSize;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkOverlap
+         * @param chunkOverlap  (optional, default to 20)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder chunkOverlap(Integer chunkOverlap) {
+            this.chunkOverlap = chunkOverlap;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set skipEmbeddingGeneration
+         * @param skipEmbeddingGeneration  (optional, default to false)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+            this.skipEmbeddingGeneration = skipEmbeddingGeneration;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set embeddingModel
+         * @param embeddingModel  (optional)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+            this.embeddingModel = embeddingModel;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set generateSparseVectors
+         * @param generateSparseVectors  (optional, default to false)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+            this.generateSparseVectors = generateSparseVectors;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set prependFilenameToChunks
+         * @param prependFilenameToChunks  (optional, default to false)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+            this.prependFilenameToChunks = prependFilenameToChunks;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceId
+         * @param dataSourceId  (optional)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder dataSourceId(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Set requestId
+         * @param requestId  (optional)
+         * @return IntegrationsApi.SyncSlackRequestBuilder
+         */
+        public IntegrationsApi.SyncSlackRequestBuilder requestId(String requestId) {
+            this.requestId = requestId;
+            return (IntegrationsApi.SyncSlackRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for syncSlack
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            SlackSyncRequest slackSyncRequest = buildBodyParams();
+            return syncSlackCall(slackSyncRequest, _callback);
+        }
+
+        private SlackSyncRequest buildBodyParams() {
+            SlackSyncRequest slackSyncRequest = new SlackSyncRequest();
+            slackSyncRequest.tags(this.tags);
+            slackSyncRequest.filters(this.filters);
+            slackSyncRequest.chunkSize(this.chunkSize);
+            slackSyncRequest.chunkOverlap(this.chunkOverlap);
+            slackSyncRequest.skipEmbeddingGeneration(this.skipEmbeddingGeneration);
+            slackSyncRequest.embeddingModel(this.embeddingModel);
+            slackSyncRequest.generateSparseVectors(this.generateSparseVectors);
+            slackSyncRequest.prependFilenameToChunks(this.prependFilenameToChunks);
+            slackSyncRequest.dataSourceId(this.dataSourceId);
+            slackSyncRequest.requestId(this.requestId);
+            return slackSyncRequest;
+        }
+
+        /**
+         * Execute syncSlack request
+         * @return Object
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Object execute() throws ApiException {
+            SlackSyncRequest slackSyncRequest = buildBodyParams();
+            ApiResponse<Object> localVarResp = syncSlackWithHttpInfo(slackSyncRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute syncSlack request with HTTP info returned
+         * @return ApiResponse&lt;Object&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+            SlackSyncRequest slackSyncRequest = buildBodyParams();
+            return syncSlackWithHttpInfo(slackSyncRequest);
+        }
+
+        /**
+         * Execute syncSlack request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+            SlackSyncRequest slackSyncRequest = buildBodyParams();
+            return syncSlackAsync(slackSyncRequest, _callback);
+        }
+    }
+
+    /**
+     * Slack Sync
+     * You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+     * @param slackSyncRequest  (required)
+     * @return SyncSlackRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.SyncSlackRequestBuilder syncSlack(SlackFilters filters) throws IllegalArgumentException {
+        if (filters == null) throw new IllegalArgumentException("\"filters\" is required but got null");
+        return ((IntegrationsApi) this).new SyncSlackRequestBuilder(filters);
     }
 }

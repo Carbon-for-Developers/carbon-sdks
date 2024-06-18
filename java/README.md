@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.5-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.5)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.6-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.6)
 
 </div>
 
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.5"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.6"
 }
 ```
 
@@ -98,7 +98,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.5.jar`
+* `target/carbonai-java-sdk-0.1.6.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**createAwsIamUser**](docs/IntegrationsApi.md#createAwsIamUser) | **POST** /integrations/s3 | S3 Auth
 *IntegrationsApi* | [**getOauthUrl**](docs/IntegrationsApi.md#getOauthUrl) | **POST** /integrations/oauth_url | Get Oauth Url
 *IntegrationsApi* | [**listConfluencePages**](docs/IntegrationsApi.md#listConfluencePages) | **POST** /integrations/confluence/list | Confluence List
+*IntegrationsApi* | [**listConversations**](docs/IntegrationsApi.md#listConversations) | **GET** /integrations/slack/conversations | Slack List Conversations
 *IntegrationsApi* | [**listDataSourceItems**](docs/IntegrationsApi.md#listDataSourceItems) | **POST** /integrations/items/list | List Data Source Items
 *IntegrationsApi* | [**listFolders**](docs/IntegrationsApi.md#listFolders) | **GET** /integrations/outlook/user_folders | Outlook Folders
 *IntegrationsApi* | [**listGitbookSpaces**](docs/IntegrationsApi.md#listGitbookSpaces) | **GET** /integrations/gitbook/spaces | Gitbook Spaces
@@ -190,6 +191,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**syncRepos**](docs/IntegrationsApi.md#syncRepos) | **POST** /integrations/github/sync_repos | Github Sync Repos
 *IntegrationsApi* | [**syncRssFeed**](docs/IntegrationsApi.md#syncRssFeed) | **POST** /integrations/rss_feed | Rss Feed
 *IntegrationsApi* | [**syncS3Files**](docs/IntegrationsApi.md#syncS3Files) | **POST** /integrations/s3/files | S3 Files
+*IntegrationsApi* | [**syncSlack**](docs/IntegrationsApi.md#syncSlack) | **POST** /integrations/slack/sync | Slack Sync
 *OrganizationsApi* | [**get**](docs/OrganizationsApi.md#get) | **GET** /organization | Get Organization
 *OrganizationsApi* | [**update**](docs/OrganizationsApi.md#update) | **POST** /organization/update | Update Organization
 *OrganizationsApi* | [**updateStats**](docs/OrganizationsApi.md#updateStats) | **POST** /organization/statistics | Update Organization Statistics
@@ -305,6 +307,8 @@ Class | Method | HTTP request | Description
  - [SimpleOAuthDataSources](docs/SimpleOAuthDataSources.md)
  - [SingleChunksAndEmbeddingsUploadInput](docs/SingleChunksAndEmbeddingsUploadInput.md)
  - [SitemapScrapeRequest](docs/SitemapScrapeRequest.md)
+ - [SlackFilters](docs/SlackFilters.md)
+ - [SlackSyncRequest](docs/SlackSyncRequest.md)
  - [SyncDirectoryRequest](docs/SyncDirectoryRequest.md)
  - [SyncFilesIds](docs/SyncFilesIds.md)
  - [SyncFilesRequest](docs/SyncFilesRequest.md)

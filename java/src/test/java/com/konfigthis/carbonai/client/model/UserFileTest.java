@@ -287,6 +287,14 @@ public class UserFileTest {
     }
 
     /**
+     * Test the property 'messagesMetadata'
+     */
+    @Test
+    public void messagesMetadataTest() {
+        // TODO: test messagesMetadata
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

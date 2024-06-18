@@ -90,6 +90,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -310,6 +311,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1072,6 +1074,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1228,6 +1231,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1408,6 +1412,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1563,6 +1568,7 @@ public class Example {
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
+      System.out.println(result.getMessagesMetadata());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {

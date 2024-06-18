@@ -176,7 +176,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSetPageAsBoundary(false)
         oAuthURLRequest.SetDataSourceId(null)
         oAuthURLRequest.SetConnectingNewAccount(false)
-        oAuthURLRequest.SetRequestId("f8e2cd13-d01d-4ebe-a42c-2a03626c37c0")
+        oAuthURLRequest.SetRequestId("229bd6e7-4931-4900-8f58-0e4071e45b25")
         oAuthURLRequest.SetUseOcr(false)
         oAuthURLRequest.SetParsePdfTablesWithOcr(false)
         oAuthURLRequest.SetEnableFilePicker(true)
@@ -207,6 +207,23 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         request := client.IntegrationsApi.ListConfluencePages(
             listRequest,
         )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test IntegrationsApiService ListConversations", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        request := client.IntegrationsApi.ListConversations(
+        )
+        request.Types(""public_channel"")
+        request.Cursor("cursor_example")
+        request.DataSourceId(56)
+        request.ExcludeArchived(true)
         
         resp, httpRes, err := request.Execute()
 
@@ -332,7 +349,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("7233a302-6276-4747-af1f-9b1d1e1ed6f8")
+        syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
@@ -387,7 +404,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         syncFilesRequest.SetPrependFilenameToChunks(false)
         syncFilesRequest.SetMaxItemsPerChunk(null)
         syncFilesRequest.SetSetPageAsBoundary(false)
-        syncFilesRequest.SetRequestId("7233a302-6276-4747-af1f-9b1d1e1ed6f8")
+        syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
         syncFilesRequest.SetUseOcr(false)
         syncFilesRequest.SetParsePdfTablesWithOcr(false)
         syncFilesRequest.SetIncrementalSync(false)
@@ -590,6 +607,35 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         
         request := client.IntegrationsApi.SyncS3Files(
             s3FileSyncInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test IntegrationsApiService SyncSlack", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewSlackFilters()
+        
+        slackSyncRequest := *carbon.NewSlackSyncRequest(
+            filters,
+        )
+        slackSyncRequest.SetTags({})
+        slackSyncRequest.SetChunkSize(1500)
+        slackSyncRequest.SetChunkOverlap(20)
+        slackSyncRequest.SetSkipEmbeddingGeneration(false)
+        slackSyncRequest.SetEmbeddingModel(null)
+        slackSyncRequest.SetGenerateSparseVectors(false)
+        slackSyncRequest.SetPrependFilenameToChunks(false)
+        slackSyncRequest.SetDataSourceId(null)
+        slackSyncRequest.SetRequestId("null")
+        
+        request := client.IntegrationsApi.SyncSlack(
+            slackSyncRequest,
         )
         
         resp, httpRes, err := request.Execute()

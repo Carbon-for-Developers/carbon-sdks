@@ -100,6 +100,8 @@ export * from './sharepoint-authentication';
 export * from './simple-oauth-data-sources';
 export * from './single-chunks-and-embeddings-upload-input';
 export * from './sitemap-scrape-request';
+export * from './slack-filters';
+export * from './slack-sync-request';
 export * from './source-property';
 export * from './sync-directory-request';
 export * from './sync-files-ids';

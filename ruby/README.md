@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.6-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.6)
+[![npm](https://img.shields.io/badge/gem-v0.2.7-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.7)
 
 </div>
 
@@ -46,6 +46,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
+  * [`carbon.integrations.list_conversations`](#carbonintegrationslist_conversations)
   * [`carbon.integrations.list_data_source_items`](#carbonintegrationslist_data_source_items)
   * [`carbon.integrations.list_folders`](#carbonintegrationslist_folders)
   * [`carbon.integrations.list_gitbook_spaces`](#carbonintegrationslist_gitbook_spaces)
@@ -62,6 +63,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.sync_repos`](#carbonintegrationssync_repos)
   * [`carbon.integrations.sync_rss_feed`](#carbonintegrationssync_rss_feed)
   * [`carbon.integrations.sync_s3_files`](#carbonintegrationssync_s3_files)
+  * [`carbon.integrations.sync_slack`](#carbonintegrationssync_slack)
   * [`carbon.organizations.get`](#carbonorganizationsget)
   * [`carbon.organizations.update`](#carbonorganizationsupdate)
   * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
@@ -86,7 +88,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.6'
+gem 'carbon_ruby_sdk', '~> 0.2.7'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1247,7 +1249,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "701c68d4-27fe-4bd5-8f73-100577f7eaa5",
+        "request_id" => "2b33f04a-b2ca-473b-b6e2-c89df5e01f94",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1467,7 +1469,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0",
+  request_id: "229bd6e7-4931-4900-8f58-0e4071e45b25",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1528,7 +1530,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX
+DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1584,6 +1586,43 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/confluence/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.list_conversations`<a id="carbonintegrationslist_conversations"></a>
+
+List all of your public and private channels, DMs, and Group DMs. The ID from response 
+can be used as a filter to sync messages to Carbon   
+types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.
+Defaults to public_channel.    
+cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    
+data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
+exclude_archived: Should archived conversations be excluded, defaults to true
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.list_conversations(
+  types: "public_channel",
+  cursor: "string_example",
+  data_source_id: 1,
+  exclude_archived: true,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### types: `String`<a id="types-string"></a>
+##### cursor: `String`<a id="cursor-string"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### exclude_archived: `Boolean`<a id="exclude_archived-boolean"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/conversations` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1790,7 +1829,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1894,7 +1933,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "7233a302-6276-4747-af1f-9b1d1e1ed6f8",
+  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2394,6 +2433,52 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/s3/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.sync_slack`<a id="carbonintegrationssync_slack"></a>
+
+You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
+conversation will be used as an input for this endpoint with timestamps as optional filters.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.sync_slack(
+  filters: {
+        "conversation_id" => "conversation_id_example",
+    },
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  data_source_id: 1,
+  request_id: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`SlackFilters`](./lib/carbon_ruby_sdk/models/slack_filters.rb)<a id="filters-slackfilterslibcarbon_ruby_sdkmodelsslack_filtersrb"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### request_id: `String`<a id="request_id-string"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/slack/sync` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

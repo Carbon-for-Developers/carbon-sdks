@@ -108,6 +108,21 @@ describe 'IntegrationsApi' do
     end
   end
 
+  # unit tests for list_conversations
+  # Slack List Conversations
+  # List all of your public and private channels, DMs, and Group DMs. The ID from response  can be used as a filter to sync messages to Carbon    types: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel. Defaults to public_channel.     cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request     data_source_id: Data source needs to be specified if you have linked multiple slack accounts   exclude_archived: Should archived conversations be excluded, defaults to true
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :types 
+  # @option opts [String] :cursor 
+  # @option opts [Integer] :data_source_id 
+  # @option opts [Boolean] :exclude_archived 
+  # @return [Object]
+  describe 'list_conversations test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for list_data_source_items
   # List Data Source Items
   # @param list_data_source_items_request 
@@ -294,6 +309,18 @@ describe 'IntegrationsApi' do
   # @param [Hash] opts the optional parameters
   # @return [GenericSuccessResponse]
   describe 'sync_s3_files test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for sync_slack
+  # Slack Sync
+  # You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters.
+  # @param slack_sync_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'sync_slack test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

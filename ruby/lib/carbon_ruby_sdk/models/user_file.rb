@@ -71,6 +71,8 @@ module Carbon
 
     attr_accessor :sync_properties
 
+    attr_accessor :messages_metadata
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -108,6 +110,7 @@ module Carbon
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'request_id' => :'request_id',
         :'sync_properties' => :'sync_properties',
+        :'messages_metadata' => :'messages_metadata',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -151,6 +154,7 @@ module Carbon
         :'generate_sparse_vectors' => :'Boolean',
         :'request_id' => :'String',
         :'sync_properties' => :'Object',
+        :'messages_metadata' => :'Object',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -320,6 +324,10 @@ module Carbon
         self.sync_properties = attributes[:'sync_properties']
       end
 
+      if attributes.key?(:'messages_metadata')
+        self.messages_metadata = attributes[:'messages_metadata']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -369,6 +377,10 @@ module Carbon
         invalid_properties.push('invalid value for "sync_properties", sync_properties cannot be nil.')
       end
 
+      if @messages_metadata.nil?
+        invalid_properties.push('invalid value for "messages_metadata", messages_metadata cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -392,6 +404,7 @@ module Carbon
       return false if @ocr_properties.nil?
       return false if @skip_embedding_generation.nil?
       return false if @sync_properties.nil?
+      return false if @messages_metadata.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -432,6 +445,7 @@ module Carbon
           generate_sparse_vectors == o.generate_sparse_vectors &&
           request_id == o.request_id &&
           sync_properties == o.sync_properties &&
+          messages_metadata == o.messages_metadata &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -445,7 +459,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, created_at, updated_at].hash
     end
 
     # Builds the object from hash

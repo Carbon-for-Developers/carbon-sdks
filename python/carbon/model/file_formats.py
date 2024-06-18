@@ -60,6 +60,7 @@ class FileFormats(
             "GITBOOK": "GITBOOK",
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
+            "SLACK": "SLACK",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -185,6 +186,10 @@ class FileFormats(
     @schemas.classproperty
     def GITHUB(cls):
         return cls("GITHUB")
+    
+    @schemas.classproperty
+    def SLACK(cls):
+        return cls("SLACK")
     
     @schemas.classproperty
     def JPG(cls):

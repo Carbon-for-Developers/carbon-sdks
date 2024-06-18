@@ -143,6 +143,8 @@ from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeR
 from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.model.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
 from carbon.model.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.model.slack_filters import SlackFilters
+from carbon.model.slack_sync_request import SlackSyncRequest
 from carbon.model.sync_directory_request import SyncDirectoryRequest
 from carbon.model.sync_files_ids import SyncFilesIds
 from carbon.model.sync_files_request import SyncFilesRequest

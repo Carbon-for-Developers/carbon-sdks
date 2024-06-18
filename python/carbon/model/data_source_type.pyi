@@ -160,6 +160,10 @@ class DataSourceType(
         return cls("GITHUB")
     
     @schemas.classproperty
+    def SLACK(cls):
+        return cls("SLACK")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

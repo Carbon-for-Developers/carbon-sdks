@@ -65,6 +65,7 @@ class UserFile(
             "chunk_overlap",
             "request_id",
             "skip_embedding_generation",
+            "messages_metadata",
         }
         
         class properties:
@@ -476,6 +477,7 @@ class UserFile(
                         _configuration=_configuration,
                     )
             sync_properties = schemas.DictSchema
+            messages_metadata = schemas.DictSchema
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -509,6 +511,7 @@ class UserFile(
                 "generate_sparse_vectors": generate_sparse_vectors,
                 "request_id": request_id,
                 "sync_properties": sync_properties,
+                "messages_metadata": messages_metadata,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -545,6 +548,7 @@ class UserFile(
     chunk_overlap: MetaOapg.properties.chunk_overlap
     request_id: MetaOapg.properties.request_id
     skip_embedding_generation: MetaOapg.properties.skip_embedding_generation
+    messages_metadata: MetaOapg.properties.messages_metadata
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
@@ -637,6 +641,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["sync_properties"]) -> MetaOapg.properties.sync_properties: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["messages_metadata"]) -> MetaOapg.properties.messages_metadata: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -645,7 +652,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -741,6 +748,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_properties"]) -> MetaOapg.properties.sync_properties: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["messages_metadata"]) -> MetaOapg.properties.messages_metadata: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -749,7 +759,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -788,6 +798,7 @@ class UserFile(
         chunk_overlap: typing.Union[MetaOapg.properties.chunk_overlap, None, decimal.Decimal, int, ],
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, ],
         skip_embedding_generation: typing.Union[MetaOapg.properties.skip_embedding_generation, bool, ],
+        messages_metadata: typing.Union[MetaOapg.properties.messages_metadata, dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UserFile':
@@ -826,6 +837,7 @@ class UserFile(
             chunk_overlap=chunk_overlap,
             request_id=request_id,
             skip_embedding_generation=skip_embedding_generation,
+            messages_metadata=messages_metadata,
             _configuration=_configuration,
             **kwargs,
         )
