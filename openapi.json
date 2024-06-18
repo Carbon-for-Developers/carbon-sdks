@@ -1220,6 +1220,148 @@
         ]
       }
     },
+    "/integrations/slack/conversations": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Slack List Conversations",
+        "description": "List all of your public and private channels, DMs, and Group DMs. The ID from response \ncan be used as a filter to sync messages to Carbon   \ntypes: Comma separated list of types. Available types are im (DMs), mpim (group DMs), public_channel, and private_channel.\nDefaults to public_channel.    \ncursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request    \ndata_source_id: Data source needs to be specified if you have linked multiple slack accounts  \nexclude_archived: Should archived conversations be excluded, defaults to true",
+        "operationId": "slack_list_conversations_integrations_slack_conversations_get",
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "public_channel",
+              "title": "Types"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Data Source Id"
+            }
+          },
+          {
+            "name": "exclude_archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Exclude Archived"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/slack/sync": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Slack Sync",
+        "description": "You can list all conversations using the endpoint /integrations/slack/conversations. The ID of \nconversation will be used as an input for this endpoint with timestamps as optional filters.",
+        "operationId": "slack_sync_integrations_slack_sync_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlackSyncRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -3408,7 +3550,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "701c68d4-27fe-4bd5-8f73-100577f7eaa5",
+              "request_id": "2b33f04a-b2ca-473b-b6e2-c89df5e01f94",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3517,6 +3659,7 @@
           "GITBOOK",
           "SALESFORCE",
           "GITHUB",
+          "SLACK",
           "JPG",
           "PNG",
           "JPEG",
@@ -4321,6 +4464,7 @@
           "GITBOOK",
           "SALESFORCE",
           "GITHUB",
+          "SLACK",
           "JPG",
           "JPG",
           "PNG",
@@ -5874,7 +6018,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "f8e2cd13-d01d-4ebe-a42c-2a03626c37c0"
+            "default": "229bd6e7-4931-4900-8f58-0e4071e45b25"
           },
           "use_ocr": {
             "anyOf": [
@@ -5904,7 +6048,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX",
             "default": true
           },
           "sync_source_items": {
@@ -7514,7 +7658,8 @@
           "ONEDRIVE",
           "BOX",
           "GMAIL",
-          "OUTLOOK"
+          "OUTLOOK",
+          "SLACK"
         ],
         "title": "SimpleOAuthDataSources"
       },
@@ -7788,6 +7933,146 @@
         ],
         "title": "SitemapScrapeRequest"
       },
+      "SlackFilters": {
+        "properties": {
+          "conversation_id": {
+            "type": "string",
+            "title": "Conversation Id",
+            "description": "Conversation ID from slack, can be obtained from Carbon with slack conversations endpoint"
+          },
+          "after": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After",
+            "description": "Only messages after this date will be included in results. If not set, all messages \n        will be included. Should be entered in YYYY/mm/dd format"
+          }
+        },
+        "type": "object",
+        "required": [
+          "conversation_id"
+        ],
+        "title": "SlackFilters"
+      },
+      "SlackSyncRequest": {
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/SlackFilters"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          },
+          "data_source_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Id"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "filters"
+        ],
+        "title": "SlackSyncRequest"
+      },
       "SyncDirectoryRequest": {
         "properties": {
           "data_source_id": {
@@ -7946,7 +8231,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "7233a302-6276-4747-af1f-9b1d1e1ed6f8"
+            "default": "bb4d49b0-3837-444a-9b71-f529df5968cb"
           },
           "use_ocr": {
             "anyOf": [
@@ -8113,7 +8398,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "701c68d4-27fe-4bd5-8f73-100577f7eaa5"
+            "default": "2b33f04a-b2ca-473b-b6e2-c89df5e01f94"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8704,6 +8989,11 @@
             "title": "Sync Properties",
             "default": {}
           },
+          "messages_metadata": {
+            "type": "object",
+            "title": "Messages Metadata",
+            "default": {}
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -8747,6 +9037,7 @@
           "generate_sparse_vectors",
           "request_id",
           "sync_properties",
+          "messages_metadata",
           "created_at",
           "updated_at"
         ],
