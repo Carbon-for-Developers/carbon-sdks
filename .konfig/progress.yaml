@@ -2,6 +2,10 @@ description: Connect external data to LLMs, no matter the source.
 examples: {}
 examples_2: {}
 examples_3:
+  /fetch_webpage:
+    post:
+      '200':
+        application/json: {}
   /health:
     get:
       '200':
@@ -54,6 +58,10 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /user_webpages:
+    post:
+      '200':
+        application/json: {}
   /web_scrape:
     post:
       '200':
@@ -84,6 +92,8 @@ operationIds:
     post: Embeddings_getDocuments
   /fetch_urls:
     get: Utilities_fetchUrls
+  /fetch_webpage:
+    post: Utilities_fetchWebpage
   /fetch_youtube_transcript:
     get: Utilities_fetchYoutubeTranscripts
   /health:
@@ -180,6 +190,8 @@ operationIds:
     post: Files_queryUserFilesDeprecated
   /user_files_v2:
     post: Files_queryUserFiles
+  /user_webpages:
+    post: Utilities_userWebpages
   /web_scrape:
     post: Utilities_scrapeWeb
   /webhooks:
@@ -192,6 +204,10 @@ requestSchemaNames:
       application/json: UtilitiesScrapeWebRequest
 responseDescriptions: {}
 responseSchemaNames:
+  /fetch_webpage:
+    post:
+      '200':
+        application/json: UtilitiesFetchWebpageResponse
   /health:
     get:
       '200':
@@ -248,6 +264,10 @@ responseSchemaNames:
     post:
       '200':
         application/json: FilesQueryUserFilesDeprecatedResponse
+  /user_webpages:
+    post:
+      '200':
+        application/json: UtilitiesUserWebpagesResponse
   /web_scrape:
     post:
       '200':

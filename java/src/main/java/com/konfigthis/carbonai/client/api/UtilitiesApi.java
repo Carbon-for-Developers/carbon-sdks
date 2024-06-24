@@ -2,8 +2,14 @@ package com.konfigthis.carbonai.client.api;
 
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FetchURLsRequest;
 import com.konfigthis.carbonai.client.model.FetchURLsResponse;
+import com.konfigthis.carbonai.client.model.OrderDirV2;
+import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.SitemapScrapeRequest;
+import com.konfigthis.carbonai.client.model.UserWebPageOrderByTypes;
+import com.konfigthis.carbonai.client.model.UserWebPagesFilters;
+import com.konfigthis.carbonai.client.model.UserWebPagesRequest;
 import com.konfigthis.carbonai.client.model.WebscrapeRequest;
 import com.konfigthis.carbonai.client.model.YoutubeTranscriptResponse;
 import java.util.ArrayList;
@@ -18,6 +24,11 @@ public class UtilitiesApi extends UtilitiesApiGenerated {
     }
     public class FetchUrlsRequestBuilder extends FetchUrlsRequestBuilderGenerated {
         public FetchUrlsRequestBuilder(String url) {
+            super(url);
+        }
+    }
+    public class FetchWebpageRequestBuilder extends FetchWebpageRequestBuilderGenerated {
+        public FetchWebpageRequestBuilder(String url) {
             super(url);
         }
     }
@@ -44,6 +55,11 @@ public class UtilitiesApi extends UtilitiesApiGenerated {
     public class SearchUrlsRequestBuilder extends SearchUrlsRequestBuilderGenerated {
         public SearchUrlsRequestBuilder(String query) {
             super(query);
+        }
+    }
+    public class UserWebpagesRequestBuilder extends UserWebpagesRequestBuilderGenerated {
+        public UserWebpagesRequestBuilder() {
+            super();
         }
     }
 }

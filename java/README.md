@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.6-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.6)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.7-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.7)
 
 </div>
 
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.6</version>
+  <version>0.1.7</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.6"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.7"
 }
 ```
 
@@ -98,7 +98,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.6.jar`
+* `target/carbonai-java-sdk-0.1.7.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -166,7 +166,6 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**upload**](docs/FilesApi.md#upload) | **POST** /uploadfile | Create Upload File
 *FilesApi* | [**uploadFromUrl**](docs/FilesApi.md#uploadFromUrl) | **POST** /upload_file_from_url | Create Upload File From Url
 *FilesApi* | [**uploadText**](docs/FilesApi.md#uploadText) | **POST** /upload_text | Create Raw Text
-*HealthApi* | [**check**](docs/HealthApi.md#check) | **GET** /health | Health
 *IntegrationsApi* | [**cancel**](docs/IntegrationsApi.md#cancel) | **POST** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 *IntegrationsApi* | [**connectDataSource**](docs/IntegrationsApi.md#connectDataSource) | **POST** /integrations/connect | Connect Data Source
 *IntegrationsApi* | [**connectFreshdesk**](docs/IntegrationsApi.md#connectFreshdesk) | **POST** /integrations/freshdesk | Freshdesk Connect
@@ -200,11 +199,13 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**toggleUserFeatures**](docs/UsersApi.md#toggleUserFeatures) | **POST** /modify_user_configuration | Toggle User Features
 *UsersApi* | [**updateUsers**](docs/UsersApi.md#updateUsers) | **POST** /update_users | Update Users
 *UtilitiesApi* | [**fetchUrls**](docs/UtilitiesApi.md#fetchUrls) | **GET** /fetch_urls | Fetch Urls
+*UtilitiesApi* | [**fetchWebpage**](docs/UtilitiesApi.md#fetchWebpage) | **POST** /fetch_webpage | Fetch Urls V2
 *UtilitiesApi* | [**fetchYoutubeTranscripts**](docs/UtilitiesApi.md#fetchYoutubeTranscripts) | **GET** /fetch_youtube_transcript | Fetch Youtube Transcripts
 *UtilitiesApi* | [**processSitemap**](docs/UtilitiesApi.md#processSitemap) | **GET** /process_sitemap | Sitemap
 *UtilitiesApi* | [**scrapeSitemap**](docs/UtilitiesApi.md#scrapeSitemap) | **POST** /scrape_sitemap | Scrape Sitemap
 *UtilitiesApi* | [**scrapeWeb**](docs/UtilitiesApi.md#scrapeWeb) | **POST** /web_scrape | Web Scrape
 *UtilitiesApi* | [**searchUrls**](docs/UtilitiesApi.md#searchUrls) | **GET** /search_urls | Search Urls
+*UtilitiesApi* | [**userWebpages**](docs/UtilitiesApi.md#userWebpages) | **POST** /user_webpages | User Web Pages
 *WebhooksApi* | [**addUrl**](docs/WebhooksApi.md#addUrl) | **POST** /add_webhook | Add Webhook Url
 *WebhooksApi* | [**deleteUrl**](docs/WebhooksApi.md#deleteUrl) | **DELETE** /delete_webhook/{webhook_id} | Delete Webhook Url
 *WebhooksApi* | [**urls**](docs/WebhooksApi.md#urls) | **POST** /webhooks | Webhook Urls
@@ -243,6 +244,7 @@ Class | Method | HTTP request | Description
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)
  - [ExternalSourceItemsOrderBy](docs/ExternalSourceItemsOrderBy.md)
+ - [FetchURLsRequest](docs/FetchURLsRequest.md)
  - [FetchURLsResponse](docs/FetchURLsResponse.md)
  - [FileContentTypes](docs/FileContentTypes.md)
  - [FileContentTypesNullable](docs/FileContentTypesNullable.md)
@@ -325,6 +327,9 @@ Class | Method | HTTP request | Description
  - [UserFilesV2](docs/UserFilesV2.md)
  - [UserRequestContent](docs/UserRequestContent.md)
  - [UserResponse](docs/UserResponse.md)
+ - [UserWebPageOrderByTypes](docs/UserWebPageOrderByTypes.md)
+ - [UserWebPagesFilters](docs/UserWebPagesFilters.md)
+ - [UserWebPagesRequest](docs/UserWebPagesRequest.md)
  - [ValidationError](docs/ValidationError.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookFilters](docs/WebhookFilters.md)

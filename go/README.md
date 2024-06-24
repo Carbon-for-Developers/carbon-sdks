@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.7)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.8)
 
 </div>
 
@@ -78,7 +78,6 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**Upload**](docs/FilesApi.md#upload) | **Post** /uploadfile | Create Upload File
 *FilesApi* | [**UploadFromUrl**](docs/FilesApi.md#uploadfromurl) | **Post** /upload_file_from_url | Create Upload File From Url
 *FilesApi* | [**UploadText**](docs/FilesApi.md#uploadtext) | **Post** /upload_text | Create Raw Text
-*HealthApi* | [**Check**](docs/HealthApi.md#check) | **Get** /health | Health
 *IntegrationsApi* | [**Cancel**](docs/IntegrationsApi.md#cancel) | **Post** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 *IntegrationsApi* | [**ConnectDataSource**](docs/IntegrationsApi.md#connectdatasource) | **Post** /integrations/connect | Connect Data Source
 *IntegrationsApi* | [**ConnectFreshdesk**](docs/IntegrationsApi.md#connectfreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
@@ -112,11 +111,13 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**ToggleUserFeatures**](docs/UsersApi.md#toggleuserfeatures) | **Post** /modify_user_configuration | Toggle User Features
 *UsersApi* | [**UpdateUsers**](docs/UsersApi.md#updateusers) | **Post** /update_users | Update Users
 *UtilitiesApi* | [**FetchUrls**](docs/UtilitiesApi.md#fetchurls) | **Get** /fetch_urls | Fetch Urls
+*UtilitiesApi* | [**FetchWebpage**](docs/UtilitiesApi.md#fetchwebpage) | **Post** /fetch_webpage | Fetch Urls V2
 *UtilitiesApi* | [**FetchYoutubeTranscripts**](docs/UtilitiesApi.md#fetchyoutubetranscripts) | **Get** /fetch_youtube_transcript | Fetch Youtube Transcripts
 *UtilitiesApi* | [**ProcessSitemap**](docs/UtilitiesApi.md#processsitemap) | **Get** /process_sitemap | Sitemap
 *UtilitiesApi* | [**ScrapeSitemap**](docs/UtilitiesApi.md#scrapesitemap) | **Post** /scrape_sitemap | Scrape Sitemap
 *UtilitiesApi* | [**ScrapeWeb**](docs/UtilitiesApi.md#scrapeweb) | **Post** /web_scrape | Web Scrape
 *UtilitiesApi* | [**SearchUrls**](docs/UtilitiesApi.md#searchurls) | **Get** /search_urls | Search Urls
+*UtilitiesApi* | [**UserWebpages**](docs/UtilitiesApi.md#userwebpages) | **Post** /user_webpages | User Web Pages
 *WebhooksApi* | [**AddUrl**](docs/WebhooksApi.md#addurl) | **Post** /add_webhook | Add Webhook Url
 *WebhooksApi* | [**DeleteUrl**](docs/WebhooksApi.md#deleteurl) | **Delete** /delete_webhook/{webhook_id} | Delete Webhook Url
 *WebhooksApi* | [**Urls**](docs/WebhooksApi.md#urls) | **Post** /webhooks | Webhook Urls
@@ -125,7 +126,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AddWebhookProps](docs/AddWebhookProps.md)
- - [AuthenticationProperty](docs/AuthenticationProperty.md)
  - [AutoSyncEnabledSourcesProperty](docs/AutoSyncEnabledSourcesProperty.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
@@ -149,7 +149,6 @@ Class | Method | HTTP request | Description
  - [EmbeddingAndChunk](docs/EmbeddingAndChunk.md)
  - [EmbeddingGenerators](docs/EmbeddingGenerators.md)
  - [EmbeddingGeneratorsNullable](docs/EmbeddingGeneratorsNullable.md)
- - [EmbeddingModel](docs/EmbeddingModel.md)
  - [EmbeddingProperties](docs/EmbeddingProperties.md)
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)
@@ -158,6 +157,7 @@ Class | Method | HTTP request | Description
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)
  - [ExternalSourceItemsOrderBy](docs/ExternalSourceItemsOrderBy.md)
+ - [FetchURLsRequest](docs/FetchURLsRequest.md)
  - [FetchURLsResponse](docs/FetchURLsResponse.md)
  - [FileContentTypes](docs/FileContentTypes.md)
  - [FileContentTypesNullable](docs/FileContentTypesNullable.md)
@@ -182,7 +182,6 @@ Class | Method | HTTP request | Description
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
- - [IdsProperty](docs/IdsProperty.md)
  - [ListDataSourceItemsRequest](docs/ListDataSourceItemsRequest.md)
  - [ListDataSourceItemsResponse](docs/ListDataSourceItemsResponse.md)
  - [ListItemsFilters](docs/ListItemsFilters.md)
@@ -192,7 +191,9 @@ Class | Method | HTTP request | Description
  - [LocationPropertyInner](docs/LocationPropertyInner.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
+ - [OANSCZGF](docs/OANSCZGF.md)
  - [OAuthAuthentication](docs/OAuthAuthentication.md)
+ - [OAuthAuthenticationSource](docs/OAuthAuthenticationSource.md)
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OrderDir](docs/OrderDir.md)
  - [OrderDirV2](docs/OrderDirV2.md)
@@ -231,8 +232,11 @@ Class | Method | HTTP request | Description
  - [SourceProperty](docs/SourceProperty.md)
  - [SyncDirectoryRequest](docs/SyncDirectoryRequest.md)
  - [SyncFilesIds](docs/SyncFilesIds.md)
+ - [SyncFilesIds1](docs/SyncFilesIds1.md)
  - [SyncFilesRequest](docs/SyncFilesRequest.md)
+ - [SyncFilesRequestIdsInner](docs/SyncFilesRequestIdsInner.md)
  - [SyncOptions](docs/SyncOptions.md)
+ - [TMEmbeddingGenerators](docs/TMEmbeddingGenerators.md)
  - [Tags](docs/Tags.md)
  - [Tags1](docs/Tags1.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
@@ -246,6 +250,9 @@ Class | Method | HTTP request | Description
  - [UserFilesV2](docs/UserFilesV2.md)
  - [UserRequestContent](docs/UserRequestContent.md)
  - [UserResponse](docs/UserResponse.md)
+ - [UserWebPageOrderByTypes](docs/UserWebPageOrderByTypes.md)
+ - [UserWebPagesFilters](docs/UserWebPagesFilters.md)
+ - [UserWebPagesRequest](docs/UserWebPagesRequest.md)
  - [ValidationError](docs/ValidationError.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookFilters](docs/WebhookFilters.md)

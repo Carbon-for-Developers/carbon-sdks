@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 **DataSourceId** | **int32** |  | 
-**Ids** | [**IdsProperty**](IdsProperty.md) |  | 
+**Ids** | [**[]SyncFilesRequestIdsInner**](SyncFilesRequestIdsInner.md) |  | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] [default to 1500]
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] [default to 20]
 **SkipEmbeddingGeneration** | Pointer to **NullableBool** |  | [optional] [default to false]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "bb4d49b0-3837-444a-9b71-f529df5968cb"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"]
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewSyncFilesRequest
 
-`func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty, ) *SyncFilesRequest`
+`func NewSyncFilesRequest(dataSourceId int32, ids []SyncFilesRequestIdsInner, ) *SyncFilesRequest`
 
 NewSyncFilesRequest instantiates a new SyncFilesRequest object
 This constructor will assign default values to properties that have it defined,
@@ -97,20 +97,20 @@ SetDataSourceId sets DataSourceId field to given value.
 
 ### GetIds
 
-`func (o *SyncFilesRequest) GetIds() IdsProperty`
+`func (o *SyncFilesRequest) GetIds() []SyncFilesRequestIdsInner`
 
 GetIds returns the Ids field if non-nil, zero value otherwise.
 
 ### GetIdsOk
 
-`func (o *SyncFilesRequest) GetIdsOk() (*IdsProperty, bool)`
+`func (o *SyncFilesRequest) GetIdsOk() (*[]SyncFilesRequestIdsInner, bool)`
 
 GetIdsOk returns a tuple with the Ids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIds
 
-`func (o *SyncFilesRequest) SetIds(v IdsProperty)`
+`func (o *SyncFilesRequest) SetIds(v []SyncFilesRequestIdsInner)`
 
 SetIds sets Ids field to given value.
 

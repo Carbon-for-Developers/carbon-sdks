@@ -60,9 +60,10 @@ from carbon.apis.paths.web_scrape import WebScrape
 from carbon.apis.paths.process_sitemap import ProcessSitemap
 from carbon.apis.paths.scrape_sitemap import ScrapeSitemap
 from carbon.apis.paths.fetch_urls import FetchUrls
+from carbon.apis.paths.fetch_webpage import FetchWebpage
+from carbon.apis.paths.user_webpages import UserWebpages
 from carbon.apis.paths.search_urls import SearchUrls
 from carbon.apis.paths.fetch_youtube_transcript import FetchYoutubeTranscript
-from carbon.apis.paths.health import Health
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -126,9 +127,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.PROCESS_SITEMAP: ProcessSitemap,
         PathValues.SCRAPE_SITEMAP: ScrapeSitemap,
         PathValues.FETCH_URLS: FetchUrls,
+        PathValues.FETCH_WEBPAGE: FetchWebpage,
+        PathValues.USER_WEBPAGES: UserWebpages,
         PathValues.SEARCH_URLS: SearchUrls,
         PathValues.FETCH_YOUTUBE_TRANSCRIPT: FetchYoutubeTranscript,
-        PathValues.HEALTH: Health,
     }
 )
 
@@ -193,8 +195,9 @@ path_to_api = PathToApi(
         PathValues.PROCESS_SITEMAP: ProcessSitemap,
         PathValues.SCRAPE_SITEMAP: ScrapeSitemap,
         PathValues.FETCH_URLS: FetchUrls,
+        PathValues.FETCH_WEBPAGE: FetchWebpage,
+        PathValues.USER_WEBPAGES: UserWebpages,
         PathValues.SEARCH_URLS: SearchUrls,
         PathValues.FETCH_YOUTUBE_TRANSCRIPT: FetchYoutubeTranscript,
-        PathValues.HEALTH: Health,
     }
 )

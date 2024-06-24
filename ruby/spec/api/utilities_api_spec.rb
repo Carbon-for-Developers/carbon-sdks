@@ -38,6 +38,17 @@ describe 'UtilitiesApi' do
     end
   end
 
+  # unit tests for fetch_webpage
+  # Fetch Urls V2
+  # @param fetch_urls_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'fetch_webpage test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for fetch_youtube_transcripts
   # Fetch Youtube Transcripts
   # Fetches english transcripts from YouTube videos.  Args:     id (str): The ID of the YouTube video.      raw (bool): Whether to return the raw transcript or not. Defaults to False.  Returns:     dict: A dictionary with the transcript of the YouTube video.
@@ -94,6 +105,17 @@ describe 'UtilitiesApi' do
   # @param [Hash] opts the optional parameters
   # @return [FetchURLsResponse]
   describe 'search_urls test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for user_webpages
+  # User Web Pages
+  # @param user_web_pages_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Object]
+  describe 'user_webpages test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

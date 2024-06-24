@@ -49,6 +49,7 @@ require 'carbon_ruby_sdk/models/embeddings_and_chunks_response'
 require 'carbon_ruby_sdk/models/external_file_sync_statuses'
 require 'carbon_ruby_sdk/models/external_source_item'
 require 'carbon_ruby_sdk/models/external_source_items_order_by'
+require 'carbon_ruby_sdk/models/fetch_urls_request'
 require 'carbon_ruby_sdk/models/fetch_urls_response'
 require 'carbon_ruby_sdk/models/file_content_types'
 require 'carbon_ruby_sdk/models/file_content_types_nullable'
@@ -137,6 +138,9 @@ require 'carbon_ruby_sdk/models/user_file'
 require 'carbon_ruby_sdk/models/user_files_v2'
 require 'carbon_ruby_sdk/models/user_request_content'
 require 'carbon_ruby_sdk/models/user_response'
+require 'carbon_ruby_sdk/models/user_web_page_order_by_types'
+require 'carbon_ruby_sdk/models/user_web_pages_filters'
+require 'carbon_ruby_sdk/models/user_web_pages_request'
 require 'carbon_ruby_sdk/models/validation_error'
 require 'carbon_ruby_sdk/models/webhook'
 require 'carbon_ruby_sdk/models/webhook_filters'
@@ -156,7 +160,6 @@ require 'carbon_ruby_sdk/api/auth_api'
 require 'carbon_ruby_sdk/api/data_sources_api'
 require 'carbon_ruby_sdk/api/embeddings_api'
 require 'carbon_ruby_sdk/api/files_api'
-require 'carbon_ruby_sdk/api/health_api'
 require 'carbon_ruby_sdk/api/integrations_api'
 require 'carbon_ruby_sdk/api/organizations_api'
 require 'carbon_ruby_sdk/api/users_api'
@@ -223,7 +226,6 @@ module Carbon
     attr_reader :data_sources
     attr_reader :embeddings
     attr_reader :files
-    attr_reader :health
     attr_reader :integrations
     attr_reader :organizations
     attr_reader :users
@@ -236,7 +238,6 @@ module Carbon
       @data_sources = Carbon::DataSourcesApi.new(@api_client)
       @embeddings = Carbon::EmbeddingsApi.new(@api_client)
       @files = Carbon::FilesApi.new(@api_client)
-      @health = Carbon::HealthApi.new(@api_client)
       @integrations = Carbon::IntegrationsApi.new(@api_client)
       @organizations = Carbon::OrganizationsApi.new(@api_client)
       @users = Carbon::UsersApi.new(@api_client)

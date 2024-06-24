@@ -57,8 +57,6 @@ type APIClient struct {
 
 	FilesApi *FilesApiService
 
-	HealthApi *HealthApiService
-
 	IntegrationsApi *IntegrationsApiService
 
 	OrganizationsApi *OrganizationsApiService
@@ -90,7 +88,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataSourcesApi = (*DataSourcesApiService)(&c.common)
 	c.EmbeddingsApi = (*EmbeddingsApiService)(&c.common)
 	c.FilesApi = (*FilesApiService)(&c.common)
-	c.HealthApi = (*HealthApiService)(&c.common)
 	c.IntegrationsApi = (*IntegrationsApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.UsersApi = (*UsersApiService)(&c.common)

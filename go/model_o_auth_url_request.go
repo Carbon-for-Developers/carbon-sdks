@@ -44,7 +44,7 @@ type OAuthURLRequest struct {
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
-	// Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
+	// Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
@@ -78,7 +78,7 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "229bd6e7-4931-4900-8f58-0e4071e45b25"
+	var requestId string = "1855375f-faa1-4965-99a1-03d1cab8000b"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -116,7 +116,7 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "229bd6e7-4931-4900-8f58-0e4071e45b25"
+	var requestId string = "1855375f-faa1-4965-99a1-03d1cab8000b"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)

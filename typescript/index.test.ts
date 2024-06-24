@@ -38,10 +38,6 @@ describe("carbon-typescript-sdk", () => {
     });
     console.log(syncS3Files.data);
   });
-  it("health check", async () => {
-    const status = await carbon.health.check();
-    console.log(status.data);
-  });
   it("file upload", async () => {
     const file = await carbon.files.upload({
       file: fs.readFileSync("README.md"),

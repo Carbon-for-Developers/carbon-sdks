@@ -17,8 +17,14 @@ import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FetchURLsRequest;
 import com.konfigthis.carbonai.client.model.FetchURLsResponse;
+import com.konfigthis.carbonai.client.model.OrderDirV2;
+import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.SitemapScrapeRequest;
+import com.konfigthis.carbonai.client.model.UserWebPageOrderByTypes;
+import com.konfigthis.carbonai.client.model.UserWebPagesFilters;
+import com.konfigthis.carbonai.client.model.UserWebPagesRequest;
 import com.konfigthis.carbonai.client.model.WebscrapeRequest;
 import com.konfigthis.carbonai.client.model.YoutubeTranscriptResponse;
 import org.junit.jupiter.api.Disabled;
@@ -56,6 +62,19 @@ public class UtilitiesApiTest {
     public void fetchUrlsTest() throws ApiException {
         String url = null;
         FetchURLsResponse response = api.fetchUrls(url)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Fetch Urls V2
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void fetchWebpageTest() throws ApiException {
+        String url = null;
+        Object response = api.fetchWebpage(url)
                 .execute();
         // TODO: test validations
     }
@@ -160,6 +179,26 @@ public class UtilitiesApiTest {
     public void searchUrlsTest() throws ApiException {
         String query = null;
         FetchURLsResponse response = api.searchUrls(query)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * User Web Pages
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void userWebpagesTest() throws ApiException {
+        UserWebPagesFilters filters = null;
+        Pagination pagination = null;
+        UserWebPageOrderByTypes orderBy = null;
+        OrderDirV2 orderDir = null;
+        Object response = api.userWebpages()
+                .filters(filters)
+                .pagination(pagination)
+                .orderBy(orderBy)
+                .orderDir(orderDir)
                 .execute();
         // TODO: test validations
     }

@@ -18,7 +18,7 @@ import (
 type SyncFilesRequest struct {
 	Tags map[string]interface{} `json:"tags,omitempty"`
 	DataSourceId int32 `json:"data_source_id"`
-	Ids IdsProperty `json:"ids"`
+	Ids []SyncFilesRequestIdsInner `json:"ids"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
 	SkipEmbeddingGeneration NullableBool `json:"skip_embedding_generation,omitempty"`
@@ -40,7 +40,7 @@ type SyncFilesRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest {
+func NewSyncFilesRequest(dataSourceId int32, ids []SyncFilesRequestIdsInner) *SyncFilesRequest {
 	this := SyncFilesRequest{}
 	this.DataSourceId = dataSourceId
 	this.Ids = ids
@@ -58,7 +58,7 @@ func NewSyncFilesRequest(dataSourceId int32, ids IdsProperty) *SyncFilesRequest 
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "bb4d49b0-3837-444a-9b71-f529df5968cb"
+	var requestId string = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -88,7 +88,7 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "bb4d49b0-3837-444a-9b71-f529df5968cb"
+	var requestId string = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -157,9 +157,9 @@ func (o *SyncFilesRequest) SetDataSourceId(v int32) {
 }
 
 // GetIds returns the Ids field value
-func (o *SyncFilesRequest) GetIds() IdsProperty {
+func (o *SyncFilesRequest) GetIds() []SyncFilesRequestIdsInner {
 	if o == nil {
-		var ret IdsProperty
+		var ret []SyncFilesRequestIdsInner
 		return ret
 	}
 
@@ -168,15 +168,15 @@ func (o *SyncFilesRequest) GetIds() IdsProperty {
 
 // GetIdsOk returns a tuple with the Ids field value
 // and a boolean to check if the value has been set.
-func (o *SyncFilesRequest) GetIdsOk() (*IdsProperty, bool) {
+func (o *SyncFilesRequest) GetIdsOk() ([]SyncFilesRequestIdsInner, bool) {
 	if o == nil {
     return nil, false
 	}
-	return &o.Ids, true
+	return o.Ids, true
 }
 
 // SetIds sets field value
-func (o *SyncFilesRequest) SetIds(v IdsProperty) {
+func (o *SyncFilesRequest) SetIds(v []SyncFilesRequestIdsInner) {
 	o.Ids = v
 }
 

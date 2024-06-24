@@ -23,13 +23,25 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { EmbeddingGenerators } from '../models';
 // @ts-ignore
+import { FetchURLsRequest } from '../models';
+// @ts-ignore
 import { FetchURLsResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
+import { OrderDirV2 } from '../models';
+// @ts-ignore
+import { Pagination } from '../models';
+// @ts-ignore
 import { SitemapScrapeRequest } from '../models';
 // @ts-ignore
 import { Tags1 } from '../models';
+// @ts-ignore
+import { UserWebPageOrderByTypes } from '../models';
+// @ts-ignore
+import { UserWebPagesFilters } from '../models';
+// @ts-ignore
+import { UserWebPagesRequest } from '../models';
 // @ts-ignore
 import { WebscrapeRequest } from '../models';
 // @ts-ignore
@@ -48,6 +60,7 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
          * @summary Fetch Urls
          * @param {string} url 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         fetchUrls: async (url: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -87,6 +100,58 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 pathTemplate: '/fetch_urls',
                 httpMethod: 'GET'
             });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Fetch Urls V2
+         * @param {FetchURLsRequest} fetchURLsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchWebpage: async (fetchURLsRequest: FetchURLsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fetchURLsRequest' is not null or undefined
+            assertParamExists('fetchWebpage', 'fetchURLsRequest', fetchURLsRequest)
+            const localVarPath = `/fetch_webpage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: fetchURLsRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/fetch_webpage',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(fetchURLsRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -356,6 +421,58 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary User Web Pages
+         * @param {UserWebPagesRequest} userWebPagesRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userWebpages: async (userWebPagesRequest: UserWebPagesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userWebPagesRequest' is not null or undefined
+            assertParamExists('userWebpages', 'userWebPagesRequest', userWebPagesRequest)
+            const localVarPath = `/user_webpages`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: userWebPagesRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/user_webpages',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(userWebPagesRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -371,10 +488,25 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @summary Fetch Urls
          * @param {UtilitiesApiFetchUrlsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async fetchUrls(requestParameters: UtilitiesApiFetchUrlsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchURLsResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.fetchUrls(requestParameters.url, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Fetch Urls V2
+         * @param {UtilitiesApiFetchWebpageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async fetchWebpage(requestParameters: UtilitiesApiFetchWebpageRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const fetchURLsRequest: FetchURLsRequest = {
+                url: requestParameters.url
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchWebpage(fetchURLsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -450,6 +582,23 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.searchUrls(requestParameters.query, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary User Web Pages
+         * @param {UtilitiesApiUserWebpagesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userWebpages(requestParameters: UtilitiesApiUserWebpagesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const userWebPagesRequest: UserWebPagesRequest = {
+                filters: requestParameters.filters,
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userWebpages(userWebPagesRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -465,10 +614,21 @@ export const UtilitiesApiFactory = function (configuration?: Configuration, base
          * @summary Fetch Urls
          * @param {UtilitiesApiFetchUrlsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         fetchUrls(requestParameters: UtilitiesApiFetchUrlsRequest, options?: AxiosRequestConfig): AxiosPromise<FetchURLsResponse> {
             return localVarFp.fetchUrls(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Fetch Urls V2
+         * @param {UtilitiesApiFetchWebpageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchWebpage(requestParameters: UtilitiesApiFetchWebpageRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.fetchWebpage(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * Fetches english transcripts from YouTube videos.  Args:     id (str): The ID of the YouTube video.      raw (bool): Whether to return the raw transcript or not. Defaults to False.  Returns:     dict: A dictionary with the transcript of the YouTube video.
@@ -520,6 +680,16 @@ export const UtilitiesApiFactory = function (configuration?: Configuration, base
         searchUrls(requestParameters: UtilitiesApiSearchUrlsRequest, options?: AxiosRequestConfig): AxiosPromise<FetchURLsResponse> {
             return localVarFp.searchUrls(requestParameters, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary User Web Pages
+         * @param {UtilitiesApiUserWebpagesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userWebpages(requestParameters: UtilitiesApiUserWebpagesRequest, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.userWebpages(requestParameters, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -538,6 +708,15 @@ export type UtilitiesApiFetchUrlsRequest = {
     readonly url: string
     
 }
+
+/**
+ * Request parameters for fetchWebpage operation in UtilitiesApi.
+ * @export
+ * @interface UtilitiesApiFetchWebpageRequest
+ */
+export type UtilitiesApiFetchWebpageRequest = {
+    
+} & FetchURLsRequest
 
 /**
  * Request parameters for fetchYoutubeTranscripts operation in UtilitiesApi.
@@ -611,6 +790,15 @@ export type UtilitiesApiSearchUrlsRequest = {
 }
 
 /**
+ * Request parameters for userWebpages operation in UtilitiesApi.
+ * @export
+ * @interface UtilitiesApiUserWebpagesRequest
+ */
+export type UtilitiesApiUserWebpagesRequest = {
+    
+} & UserWebPagesRequest
+
+/**
  * UtilitiesApiGenerated - object-oriented interface
  * @export
  * @class UtilitiesApiGenerated
@@ -622,11 +810,24 @@ export class UtilitiesApiGenerated extends BaseAPI {
      * @summary Fetch Urls
      * @param {UtilitiesApiFetchUrlsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof UtilitiesApiGenerated
      */
     public fetchUrls(requestParameters: UtilitiesApiFetchUrlsRequest, options?: AxiosRequestConfig) {
         return UtilitiesApiFp(this.configuration).fetchUrls(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Fetch Urls V2
+     * @param {UtilitiesApiFetchWebpageRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UtilitiesApiGenerated
+     */
+    public fetchWebpage(requestParameters: UtilitiesApiFetchWebpageRequest, options?: AxiosRequestConfig) {
+        return UtilitiesApiFp(this.configuration).fetchWebpage(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -687,5 +888,17 @@ export class UtilitiesApiGenerated extends BaseAPI {
      */
     public searchUrls(requestParameters: UtilitiesApiSearchUrlsRequest, options?: AxiosRequestConfig) {
         return UtilitiesApiFp(this.configuration).searchUrls(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary User Web Pages
+     * @param {UtilitiesApiUserWebpagesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UtilitiesApiGenerated
+     */
+    public userWebpages(requestParameters: UtilitiesApiUserWebpagesRequest, options?: AxiosRequestConfig) {
+        return UtilitiesApiFp(this.configuration).userWebpages(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

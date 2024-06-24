@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Authentication** | [**AuthenticationProperty**](AuthenticationProperty.md) |  | 
+**Authentication** | [**OANSCZGF**](OANSCZGF.md) |  | 
 **SyncOptions** | Pointer to [**SyncOptions**](SyncOptions.md) |  | [optional] 
 
 ## Methods
 
 ### NewConnectDataSourceInput
 
-`func NewConnectDataSourceInput(authentication AuthenticationProperty, ) *ConnectDataSourceInput`
+`func NewConnectDataSourceInput(authentication OANSCZGF, ) *ConnectDataSourceInput`
 
 NewConnectDataSourceInput instantiates a new ConnectDataSourceInput object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAuthentication
 
-`func (o *ConnectDataSourceInput) GetAuthentication() AuthenticationProperty`
+`func (o *ConnectDataSourceInput) GetAuthentication() OANSCZGF`
 
 GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
 
 ### GetAuthenticationOk
 
-`func (o *ConnectDataSourceInput) GetAuthenticationOk() (*AuthenticationProperty, bool)`
+`func (o *ConnectDataSourceInput) GetAuthenticationOk() (*OANSCZGF, bool)`
 
 GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthentication
 
-`func (o *ConnectDataSourceInput) SetAuthentication(v AuthenticationProperty)`
+`func (o *ConnectDataSourceInput) SetAuthentication(v OANSCZGF)`
 
 SetAuthentication sets Authentication field to given value.
 

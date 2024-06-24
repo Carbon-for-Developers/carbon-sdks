@@ -664,10 +664,10 @@ public class Example {
     Boolean setPageAsBoundary = false;
     Integer dataSourceId = 56; // Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
     Boolean connectingNewAccount = false; // Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
-    String requestId = "229bd6e7-4931-4900-8f58-0e4071e45b25"; // This request id will be added to all files that get synced using the generated OAuth URL
+    String requestId = "1855375f-faa1-4965-99a1-03d1cab8000b"; // This request id will be added to all files that get synced using the generated OAuth URL
     Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: pdf
     Boolean parsePdfTablesWithOcr = false;
-    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
+    Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
@@ -1630,7 +1630,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "bb4d49b0-3837-444a-9b71-f529df5968cb";
+    String requestId = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
@@ -1879,7 +1879,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "bb4d49b0-3837-444a-9b71-f529df5968cb";
+    String requestId = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.

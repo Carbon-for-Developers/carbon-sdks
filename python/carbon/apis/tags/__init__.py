@@ -15,7 +15,7 @@ class TagValues(str, enum.Enum):
     ORGANIZATIONS = "Organizations"
     AUTH = "Auth"
     DATA_SOURCES = "Data Sources"
-    HEALTH = "Health"
     GETTING_STARTED = "Getting Started"
     CARBON_CONNECT = "Carbon Connect"
+    HEALTH = "Health"
     CONTACT_US = "Contact Us"

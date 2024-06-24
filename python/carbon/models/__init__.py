@@ -51,6 +51,7 @@ from carbon.model.embeddings_and_chunks_response import EmbeddingsAndChunksRespo
 from carbon.model.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.model.external_source_item import ExternalSourceItem
 from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy
+from carbon.model.fetch_urls_request import FetchURLsRequest
 from carbon.model.fetch_urls_response import FetchURLsResponse
 from carbon.model.fetch_urls_response_urls import FetchURLsResponseUrls
 from carbon.model.file_content_types import FileContentTypes
@@ -164,6 +165,10 @@ from carbon.model.user_request_content import UserRequestContent
 from carbon.model.user_response import UserResponse
 from carbon.model.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.model.user_response_unique_file_tags import UserResponseUniqueFileTags
+from carbon.model.user_web_page_order_by_types import UserWebPageOrderByTypes
+from carbon.model.user_web_pages_filters import UserWebPagesFilters
+from carbon.model.user_web_pages_filters_ids import UserWebPagesFiltersIds
+from carbon.model.user_web_pages_request import UserWebPagesRequest
 from carbon.model.utilities_scrape_web_request import UtilitiesScrapeWebRequest
 from carbon.model.validation_error import ValidationError
 from carbon.model.validation_error_loc import ValidationErrorLoc

@@ -470,13 +470,6 @@ tags:
     \ 24-hour batch sync running in the background. You can request us via Slack to\
     \ run more frequent batch syncs.\n\n# Slack\n# Confluence\n"
   name: Data Sources
-- description: |2
-
-    ---
-    Use this endpoint to check the status of the API. A `200` response indicates that the Carbon API is up.
-
-    You can also check for the health of our services on our [Status Page](https://status.carbon.ai/).
-  name: Health
 - description: "\n---\n\n![](http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png)\n\
     \n## What is Carbon?\n\nCarbon provides a comprehensive framework designed to\
     \ streamline the process of connecting external data sources to Large Language\
@@ -1286,6 +1279,13 @@ tags:
     \ of the file updation\n      \"action\": `<action>`, // This is the action type.\
     \ It can be one of the following: `ADD`, `UPDATE`, `REMOVE`\n  }\n  ```\n"
   name: Carbon Connect
+- description: |2
+
+    ---
+    Use this endpoint to check the status of the API. A `200` response indicates that the Carbon API is up.
+
+    You can also check for the health of our services on our [Status Page](https://status.carbon.ai/).
+  name: Health
 - description: "\n---\n### \U0001f4ac We're here to help!\n\nIt’s our mandate to deliver\
     \ a delightful experience and answer any questions you might have. This documentation\
     \ is meant to help get you started but isn't the only resource you have! \n\n\
@@ -2785,7 +2785,7 @@ paths:
         name: embedding_model
         required: false
         schema:
-          $ref: '#/components/schemas/Embedding_Model'
+          $ref: '#/components/schemas/TMEmbeddingGenerators'
         style: form
       - description: |-
           Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with
@@ -3673,6 +3673,7 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--scrape_sitemap
   /fetch_urls:
     get:
+      deprecated: true
       description: "Extracts all URLs from a webpage. \n\nArgs:\n    url (str): URL\
         \ of the webpage\n\nReturns:\n    FetchURLsResponse: A response object with\
         \ a list of URLs extracted from the webpage and the webpage content."
@@ -3708,6 +3709,68 @@ paths:
       - Utilities
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--fetch_urls
+  /fetch_webpage:
+    post:
+      operationId: Utilities_fetchWebpage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchURLsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilitiesFetchWebpageResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Fetch Urls V2
+      tags:
+      - Utilities
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--fetch_webpage
+  /user_webpages:
+    post:
+      operationId: Utilities_userWebpages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserWebPagesRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilitiesUserWebpagesResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: User Web Pages
+      tags:
+      - Utilities
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--user_webpages
   /search_urls:
     get:
       description: "Perform a web search and obtain a list of relevant URLs.\n\nAs\
@@ -3802,21 +3865,6 @@ paths:
       - Utilities
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--fetch_youtube_transcript
-  /health:
-    get:
-      operationId: Health_check
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HealthCheckResponse'
-          description: Successful Response
-      summary: Health
-      tags:
-      - Health
-      x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--health
 components:
   schemas:
     AddWebhookProps:
@@ -4008,11 +4056,26 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
-        authentication: null
+          request_id: 9e41dd01-0592-477a-97b3-df618acf082b
+        authentication:
+          tenant_name: tenant_name
+          source: null
+          organization_name: organization_name
+          access_token: access_token
+          workspace_id: workspace_id
+          site_name: site_name
+          refresh_token: refresh_token
+          zotero_id: zotero_id
+          api_key: api_key
+          domain: domain
+          access_key: access_key
+          access_key_secret: access_key_secret
+          subdomain: subdomain
+          access_token_secret: access_token_secret
+          username: username
       properties:
         authentication:
-          $ref: '#/components/schemas/Authentication_Property'
+          $ref: '#/components/schemas/OANSCZGF'
         sync_options:
           $ref: '#/components/schemas/SyncOptions'
       required:
@@ -4029,7 +4092,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+            request_id: 9e41dd01-0592-477a-97b3-df618acf082b
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4727,6 +4790,17 @@ components:
       - directories_first
       title: ExternalSourceItemsOrderBy
       type: string
+    FetchURLsRequest:
+      example:
+        url: url
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: FetchURLsRequest
+      type: object
     FetchURLsResponse:
       example:
         error_message: error_message
@@ -5822,7 +5896,7 @@ components:
     OAuthAuthentication:
       properties:
         source:
-          $ref: '#/components/schemas/SimpleOAuthDataSources'
+          $ref: '#/components/schemas/OAuthAuthentication_source'
         access_token:
           title: Access Token
           type: string
@@ -5830,8 +5904,43 @@ components:
           nullable: true
           title: Refresh Token
           type: string
+        workspace_id:
+          title: Workspace Id
+          type: string
+        tenant_name:
+          title: Tenant Name
+          type: string
+        site_name:
+          title: Site Name
+          type: string
+        subdomain:
+          title: Subdomain
+          type: string
+        access_token_secret:
+          title: Access Token Secret
+          type: string
+        username:
+          title: Username
+          type: string
+        zotero_id:
+          title: Zotero Id
+          type: string
+        organization_name:
+          title: Organization Name
+          type: string
+        domain:
+          title: Domain
+          type: string
+        api_key:
+          title: Api Key
+          type: string
+        access_key:
+          title: Access Key
+          type: string
+        access_key_secret:
+          title: Access Key Secret
+          type: string
       required:
-      - access_token
       - source
       title: OAuthAuthentication
       type: object
@@ -5866,7 +5975,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 229bd6e7-4931-4900-8f58-0e4071e45b25
+        request_id: 1855375f-faa1-4965-99a1-03d1cab8000b
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -5984,13 +6093,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          default: 1855375f-faa1-4965-99a1-03d1cab8000b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          example: 1855375f-faa1-4965-99a1-03d1cab8000b
           title: Request Id
           type: string
-          x-konfig-original-example: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          x-konfig-original-example: 1855375f-faa1-4965-99a1-03d1cab8000b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6012,8 +6121,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE,\
-            \ BOX"
+            \ it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7589,10 +7697,12 @@ components:
         use_ocr: false
         generate_sparse_vectors: false
         set_page_as_boundary: false
-        ids: null
+        ids:
+        - null
+        - null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: bb4d49b0-3837-444a-9b71-f529df5968cb
+        request_id: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
         data_source_id: 0
       properties:
         tags:
@@ -7607,7 +7717,9 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          $ref: '#/components/schemas/Ids_Property'
+          items:
+            $ref: '#/components/schemas/SyncFilesRequest_ids_inner'
+          type: array
         chunk_size:
           default: 1500
           example: 1500
@@ -7664,11 +7776,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bb4d49b0-3837-444a-9b71-f529df5968cb
-          example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           title: Request Id
           type: string
-          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7724,7 +7836,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+        request_id: 9e41dd01-0592-477a-97b3-df618acf082b
       properties:
         tags:
           nullable: true
@@ -7797,11 +7909,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
-          example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+          default: 9e41dd01-0592-477a-97b3-df618acf082b
+          example: 9e41dd01-0592-477a-97b3-df618acf082b
           title: Request Id
           type: string
-          x-konfig-original-example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+          x-konfig-original-example: 9e41dd01-0592-477a-97b3-df618acf082b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8506,6 +8618,60 @@ components:
       - updated_at
       title: UserResponse
       type: object
+    UserWebPageOrderByTypes:
+      enum:
+      - created_at
+      - updated_at
+      - id
+      title: UserWebPageOrderByTypes
+      type: string
+    UserWebPagesFilters:
+      example:
+        ids:
+        - 0
+        - 0
+      properties:
+        ids:
+          items:
+            type: integer
+          nullable: true
+          title: Ids
+          type: array
+      title: UserWebPagesFilters
+      type: object
+    UserWebPagesRequest:
+      example:
+        order_dir: null
+        pagination:
+          offset: 0
+          limit: 10
+        order_by: null
+        filters:
+          ids:
+          - 0
+          - 0
+      properties:
+        filters:
+          $ref: '#/components/schemas/UserWebPagesFilters'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/UserWebPageOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
+      title: UserWebPagesRequest
+      type: object
+      x-konfig-properties:
+        filters:
+          default: {}
+        pagination:
+          default:
+            limit: 10
+            offset: 0
+        order_by:
+          default: updated_at
+        order_dir:
+          default: desc
     ValidationError:
       properties:
         loc:
@@ -9404,12 +9570,18 @@ components:
       type: object
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-UtilitiesScrapeSitemapResponse
-    HealthCheckResponse:
+    UtilitiesFetchWebpageResponse:
       example: {}
       properties: {}
       type: object
       x-konfig-original-example: {}
-      x-konfig-generated-schema: konfig-generated-schema-components-schemas-HealthCheckResponse
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-UtilitiesFetchWebpageResponse
+    UtilitiesUserWebpagesResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-UtilitiesUserWebpagesResponse
     konfig-generated-schema-paths--integrations-github-repos-get-parameters-0-schema:
       example: 30
       type: number
@@ -9746,7 +9918,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 229bd6e7-4931-4900-8f58-0e4071e45b25
+      example: 1855375f-faa1-4965-99a1-03d1cab8000b
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10019,7 +10191,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: bb4d49b0-3837-444a-9b71-f529df5968cb
+      example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10063,7 +10235,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 2b33f04a-b2ca-473b-b6e2-c89df5e01f94
+      example: 9e41dd01-0592-477a-97b3-df618acf082b
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -10310,7 +10482,12 @@ components:
       properties: {}
       type: object
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-HealthCheckResponse:
+    konfig-generated-schema-components-schemas-UtilitiesFetchWebpageResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UtilitiesUserWebpagesResponse:
       example: {}
       properties: {}
       type: object
@@ -10432,13 +10609,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          default: 1855375f-faa1-4965-99a1-03d1cab8000b
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          example: 1855375f-faa1-4965-99a1-03d1cab8000b
           title: Request Id
           type: string
-          x-konfig-original-example: 229bd6e7-4931-4900-8f58-0e4071e45b25
+          x-konfig-original-example: 1855375f-faa1-4965-99a1-03d1cab8000b
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -10460,8 +10637,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE,\
-            \ BOX"
+            \ it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -10496,19 +10672,7 @@ components:
     konfig-generated-schema-single-parameter-schema-post--integrations-connect:
       properties:
         authentication:
-          anyOf:
-          - $ref: '#/components/schemas/OAuthAuthentication'
-          - $ref: '#/components/schemas/NotionAuthentication'
-          - $ref: '#/components/schemas/SharepointAuthentication'
-          - $ref: '#/components/schemas/ConfluenceAuthentication'
-          - $ref: '#/components/schemas/ZendeskAuthentication'
-          - $ref: '#/components/schemas/ZoteroAuthentication'
-          - $ref: '#/components/schemas/GitbookAuthetication'
-          - $ref: '#/components/schemas/SalesforceAuthentication'
-          - $ref: '#/components/schemas/FreskdeskAuthentication'
-          - $ref: '#/components/schemas/S3Authentication'
-          - $ref: '#/components/schemas/GithubAuthentication'
-          title: Authentication
+          $ref: '#/components/schemas/OANSCZGF'
         sync_options:
           $ref: '#/components/schemas/SyncOptions'
       required:
@@ -10572,14 +10736,22 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - items:
-              $ref: '#/components/schemas/SyncFilesIds'
-            type: array
-          title: Ids
+          items:
+            oneOf:
+            - type: string
+            - properties:
+                id:
+                  title: Id
+                  type: string
+                root_id:
+                  title: Root Id
+                  type: string
+              required:
+              - id
+              - root_id
+              title: SyncFilesIds
+              type: object
+          type: array
         chunk_size:
           default: 1500
           example: 1500
@@ -10636,11 +10808,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bb4d49b0-3837-444a-9b71-f529df5968cb
-          example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           title: Request Id
           type: string
-          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10704,14 +10876,22 @@ components:
           title: Data Source Id
           type: integer
         ids:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - items:
-              $ref: '#/components/schemas/SyncFilesIds'
-            type: array
-          title: Ids
+          items:
+            oneOf:
+            - type: string
+            - properties:
+                id:
+                  title: Id
+                  type: string
+                root_id:
+                  title: Root Id
+                  type: string
+              required:
+              - id
+              - root_id
+              title: SyncFilesIds
+              type: object
+          type: array
         chunk_size:
           default: 1500
           example: 1500
@@ -10768,11 +10948,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bb4d49b0-3837-444a-9b71-f529df5968cb
-          example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           title: Request Id
           type: string
-          x-konfig-original-example: bb4d49b0-3837-444a-9b71-f529df5968cb
+          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11988,14 +12168,7 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-3-schema
         embedding_model:
-          anyOf:
-          - $ref: '#/components/schemas/TextEmbeddingGenerators'
-          - $ref: '#/components/schemas/MultiModalEmbeddingGenerators'
-          default: OPENAI
-          description: Embedding model that will be used to embed file chunks.
-          example: OPENAI
-          title: Embedding Model
-          x-konfig-original-example: OPENAI
+          $ref: '#/components/schemas/TMEmbeddingGenerators'
         use_ocr:
           default: false
           description: |-
@@ -12645,6 +12818,29 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter:
       - url
+    konfig-generated-schema-single-parameter-schema-post--fetch_webpage:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--user_webpages:
+      properties:
+        filters:
+          $ref: '#/components/schemas/UserWebPagesFilters'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/UserWebPageOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-get--search_urls:
       properties:
         query:
@@ -12675,34 +12871,91 @@ components:
       x-konfig-is-parameter:
       - id
       - raw
-    konfig-generated-schema-single-parameter-schema-get--health:
-      properties: {}
+    TMEmbeddingGenerators:
+      enum:
+      - OPENAI
+      - AZURE_OPENAI
+      - COHERE_MULTILINGUAL_V3
+      - OPENAI_ADA_LARGE_256
+      - OPENAI_ADA_LARGE_1024
+      - OPENAI_ADA_LARGE_3072
+      - OPENAI_ADA_SMALL_512
+      - OPENAI_ADA_SMALL_1536
+      - AZURE_ADA_LARGE_256
+      - AZURE_ADA_LARGE_1024
+      - AZURE_ADA_LARGE_3072
+      - AZURE_ADA_SMALL_512
+      - AZURE_ADA_SMALL_1536
+      - SOLAR_1_MINI
+      title: TextEmbeddingGenerators
+      type: string
+    OANSCZGF:
+      example:
+        tenant_name: tenant_name
+        source: null
+        organization_name: organization_name
+        access_token: access_token
+        workspace_id: workspace_id
+        site_name: site_name
+        refresh_token: refresh_token
+        zotero_id: zotero_id
+        api_key: api_key
+        domain: domain
+        access_key: access_key
+        access_key_secret: access_key_secret
+        subdomain: subdomain
+        access_token_secret: access_token_secret
+        username: username
+      properties:
+        source:
+          $ref: '#/components/schemas/OAuthAuthentication_source'
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        workspace_id:
+          title: Workspace Id
+          type: string
+        tenant_name:
+          title: Tenant Name
+          type: string
+        site_name:
+          title: Site Name
+          type: string
+        subdomain:
+          title: Subdomain
+          type: string
+        access_token_secret:
+          title: Access Token Secret
+          type: string
+        username:
+          title: Username
+          type: string
+        zotero_id:
+          title: Zotero Id
+          type: string
+        organization_name:
+          title: Organization Name
+          type: string
+        domain:
+          title: Domain
+          type: string
+        api_key:
+          title: Api Key
+          type: string
+        access_key:
+          title: Access Key
+          type: string
+        access_key_secret:
+          title: Access Key Secret
+          type: string
+      required:
+      - source
+      title: OAuthAuthentication
       type: object
-      x-do-not-generate: true
-      x-konfig-is-parameter: []
-    Embedding_Model:
-      anyOf:
-      - $ref: '#/components/schemas/TextEmbeddingGenerators'
-      - $ref: '#/components/schemas/MultiModalEmbeddingGenerators'
-      default: OPENAI
-      description: Embedding model that will be used to embed file chunks.
-      example: OPENAI
-      title: Embedding Model
-      x-konfig-original-example: OPENAI
-    Authentication_Property:
-      anyOf:
-      - $ref: '#/components/schemas/OAuthAuthentication'
-      - $ref: '#/components/schemas/NotionAuthentication'
-      - $ref: '#/components/schemas/SharepointAuthentication'
-      - $ref: '#/components/schemas/ConfluenceAuthentication'
-      - $ref: '#/components/schemas/ZendeskAuthentication'
-      - $ref: '#/components/schemas/ZoteroAuthentication'
-      - $ref: '#/components/schemas/GitbookAuthetication'
-      - $ref: '#/components/schemas/SalesforceAuthentication'
-      - $ref: '#/components/schemas/FreskdeskAuthentication'
-      - $ref: '#/components/schemas/S3Authentication'
-      - $ref: '#/components/schemas/GithubAuthentication'
-      title: Authentication
     Tags:
       anyOf:
       - type: string
@@ -12741,6 +12994,29 @@ components:
       - items:
           type: boolean
         type: array
+    OAuthAuthentication_source:
+      oneOf:
+      - enum:
+        - GOOGLE_DRIVE
+        - INTERCOM
+        - DROPBOX
+        - ONEDRIVE
+        - BOX
+        - GMAIL
+        - OUTLOOK
+        - SLACK
+        title: SimpleOAuthDataSources
+        type: string
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
+      - title: Source
     Source_Property:
       anyOf:
       - $ref: '#/components/schemas/DataSourceType'
@@ -12751,15 +13027,23 @@ components:
         \ return files from any of the sources in the list."
       nullable: true
       title: Source
-    Ids_Property:
-      anyOf:
-      - items:
+    SyncFilesIds_1:
+      properties:
+        id:
+          title: Id
           type: string
-        type: array
-      - items:
-          $ref: '#/components/schemas/SyncFilesIds'
-        type: array
-      title: Ids
+        root_id:
+          title: Root Id
+          type: string
+      required:
+      - id
+      - root_id
+      title: SyncFilesIds
+      type: object
+    SyncFilesRequest_ids_inner:
+      oneOf:
+      - type: string
+      - $ref: '#/components/schemas/SyncFilesIds_1'
     Auto_Sync_Enabled_Sources_Property:
       anyOf:
       - items:

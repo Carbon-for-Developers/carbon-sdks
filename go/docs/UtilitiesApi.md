@@ -5,15 +5,18 @@ All URIs are relative to *https://api.carbon.ai*
 Method | Path | Description
 ------------- | ------------- | -------------
 [**FetchUrls**](UtilitiesApi.md#FetchUrls) | **Get** /fetch_urls | Fetch Urls
+[**FetchWebpage**](UtilitiesApi.md#FetchWebpage) | **Post** /fetch_webpage | Fetch Urls V2
 [**FetchYoutubeTranscripts**](UtilitiesApi.md#FetchYoutubeTranscripts) | **Get** /fetch_youtube_transcript | Fetch Youtube Transcripts
 [**ProcessSitemap**](UtilitiesApi.md#ProcessSitemap) | **Get** /process_sitemap | Sitemap
 [**ScrapeSitemap**](UtilitiesApi.md#ScrapeSitemap) | **Post** /scrape_sitemap | Scrape Sitemap
 [**ScrapeWeb**](UtilitiesApi.md#ScrapeWeb) | **Post** /web_scrape | Web Scrape
 [**SearchUrls**](UtilitiesApi.md#SearchUrls) | **Get** /search_urls | Search Urls
+[**UserWebpages**](UtilitiesApi.md#UserWebpages) | **Post** /user_webpages | User Web Pages
 
 
 
 ## FetchUrls
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Fetch Urls
 
@@ -52,6 +55,53 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.HtmlContent`: %v\n", resp.HtmlContent)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FetchWebpage
+
+Fetch Urls V2
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    
+    fetchURLsRequest := *carbon.NewFetchURLsRequest(
+        "null",
+    )
+    
+    request := client.UtilitiesApi.FetchWebpage(
+        fetchURLsRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UtilitiesApi.FetchWebpage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `FetchWebpage`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.FetchWebpage`: %v\n", resp)
 }
 ```
 
@@ -302,6 +352,57 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.HtmlContent`: %v\n", resp.HtmlContent)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UserWebpages
+
+User Web Pages
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    filters := *carbon.NewUserWebPagesFilters()
+    pagination := *carbon.NewPagination()
+    
+    userWebPagesRequest := *carbon.NewUserWebPagesRequest()
+    userWebPagesRequest.SetFilters(filters)
+    userWebPagesRequest.SetPagination(pagination)
+    userWebPagesRequest.SetOrderBy(null)
+    userWebPagesRequest.SetOrderDir(null)
+    
+    request := client.UtilitiesApi.UserWebpages(
+        userWebPagesRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UtilitiesApi.UserWebpages``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `UserWebpages`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.UserWebpages`: %v\n", resp)
 }
 ```
 

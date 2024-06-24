@@ -16,19 +16,30 @@ import (
 
 // OAuthAuthentication struct for OAuthAuthentication
 type OAuthAuthentication struct {
-	Source SimpleOAuthDataSources `json:"source"`
-	AccessToken string `json:"access_token"`
+	Source OAuthAuthenticationSource `json:"source"`
+	AccessToken *string `json:"access_token,omitempty"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
+	WorkspaceId *string `json:"workspace_id,omitempty"`
+	TenantName *string `json:"tenant_name,omitempty"`
+	SiteName *string `json:"site_name,omitempty"`
+	Subdomain *string `json:"subdomain,omitempty"`
+	AccessTokenSecret *string `json:"access_token_secret,omitempty"`
+	Username *string `json:"username,omitempty"`
+	ZoteroId *string `json:"zotero_id,omitempty"`
+	OrganizationName *string `json:"organization_name,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	ApiKey *string `json:"api_key,omitempty"`
+	AccessKey *string `json:"access_key,omitempty"`
+	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 }
 
 // NewOAuthAuthentication instantiates a new OAuthAuthentication object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthAuthentication(source SimpleOAuthDataSources, accessToken string) *OAuthAuthentication {
+func NewOAuthAuthentication(source OAuthAuthenticationSource) *OAuthAuthentication {
 	this := OAuthAuthentication{}
 	this.Source = source
-	this.AccessToken = accessToken
 	return &this
 }
 
@@ -41,9 +52,9 @@ func NewOAuthAuthenticationWithDefaults() *OAuthAuthentication {
 }
 
 // GetSource returns the Source field value
-func (o *OAuthAuthentication) GetSource() SimpleOAuthDataSources {
+func (o *OAuthAuthentication) GetSource() OAuthAuthenticationSource {
 	if o == nil {
-		var ret SimpleOAuthDataSources
+		var ret OAuthAuthenticationSource
 		return ret
 	}
 
@@ -52,7 +63,7 @@ func (o *OAuthAuthentication) GetSource() SimpleOAuthDataSources {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *OAuthAuthentication) GetSourceOk() (*SimpleOAuthDataSources, bool) {
+func (o *OAuthAuthentication) GetSourceOk() (*OAuthAuthenticationSource, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -60,32 +71,40 @@ func (o *OAuthAuthentication) GetSourceOk() (*SimpleOAuthDataSources, bool) {
 }
 
 // SetSource sets field value
-func (o *OAuthAuthentication) SetSource(v SimpleOAuthDataSources) {
+func (o *OAuthAuthentication) SetSource(v OAuthAuthenticationSource) {
 	o.Source = v
 }
 
-// GetAccessToken returns the AccessToken field value
+// GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *OAuthAuthentication) GetAccessToken() string {
-	if o == nil {
+	if o == nil || isNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
-
-	return o.AccessToken
+	return *o.AccessToken
 }
 
-// GetAccessTokenOk returns a tuple with the AccessToken field value
+// GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OAuthAuthentication) GetAccessTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.AccessToken) {
     return nil, false
 	}
-	return &o.AccessToken, true
+	return o.AccessToken, true
 }
 
-// SetAccessToken sets field value
+// HasAccessToken returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccessToken() bool {
+	if o != nil && !isNil(o.AccessToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessToken gets a reference to the given string and assigns it to the AccessToken field.
 func (o *OAuthAuthentication) SetAccessToken(v string) {
-	o.AccessToken = v
+	o.AccessToken = &v
 }
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -130,16 +149,436 @@ func (o *OAuthAuthentication) UnsetRefreshToken() {
 	o.RefreshToken.Unset()
 }
 
+// GetWorkspaceId returns the WorkspaceId field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetWorkspaceId() string {
+	if o == nil || isNil(o.WorkspaceId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkspaceId
+}
+
+// GetWorkspaceIdOk returns a tuple with the WorkspaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetWorkspaceIdOk() (*string, bool) {
+	if o == nil || isNil(o.WorkspaceId) {
+    return nil, false
+	}
+	return o.WorkspaceId, true
+}
+
+// HasWorkspaceId returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasWorkspaceId() bool {
+	if o != nil && !isNil(o.WorkspaceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkspaceId gets a reference to the given string and assigns it to the WorkspaceId field.
+func (o *OAuthAuthentication) SetWorkspaceId(v string) {
+	o.WorkspaceId = &v
+}
+
+// GetTenantName returns the TenantName field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetTenantName() string {
+	if o == nil || isNil(o.TenantName) {
+		var ret string
+		return ret
+	}
+	return *o.TenantName
+}
+
+// GetTenantNameOk returns a tuple with the TenantName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetTenantNameOk() (*string, bool) {
+	if o == nil || isNil(o.TenantName) {
+    return nil, false
+	}
+	return o.TenantName, true
+}
+
+// HasTenantName returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasTenantName() bool {
+	if o != nil && !isNil(o.TenantName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantName gets a reference to the given string and assigns it to the TenantName field.
+func (o *OAuthAuthentication) SetTenantName(v string) {
+	o.TenantName = &v
+}
+
+// GetSiteName returns the SiteName field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetSiteName() string {
+	if o == nil || isNil(o.SiteName) {
+		var ret string
+		return ret
+	}
+	return *o.SiteName
+}
+
+// GetSiteNameOk returns a tuple with the SiteName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetSiteNameOk() (*string, bool) {
+	if o == nil || isNil(o.SiteName) {
+    return nil, false
+	}
+	return o.SiteName, true
+}
+
+// HasSiteName returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasSiteName() bool {
+	if o != nil && !isNil(o.SiteName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteName gets a reference to the given string and assigns it to the SiteName field.
+func (o *OAuthAuthentication) SetSiteName(v string) {
+	o.SiteName = &v
+}
+
+// GetSubdomain returns the Subdomain field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetSubdomain() string {
+	if o == nil || isNil(o.Subdomain) {
+		var ret string
+		return ret
+	}
+	return *o.Subdomain
+}
+
+// GetSubdomainOk returns a tuple with the Subdomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetSubdomainOk() (*string, bool) {
+	if o == nil || isNil(o.Subdomain) {
+    return nil, false
+	}
+	return o.Subdomain, true
+}
+
+// HasSubdomain returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasSubdomain() bool {
+	if o != nil && !isNil(o.Subdomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubdomain gets a reference to the given string and assigns it to the Subdomain field.
+func (o *OAuthAuthentication) SetSubdomain(v string) {
+	o.Subdomain = &v
+}
+
+// GetAccessTokenSecret returns the AccessTokenSecret field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetAccessTokenSecret() string {
+	if o == nil || isNil(o.AccessTokenSecret) {
+		var ret string
+		return ret
+	}
+	return *o.AccessTokenSecret
+}
+
+// GetAccessTokenSecretOk returns a tuple with the AccessTokenSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetAccessTokenSecretOk() (*string, bool) {
+	if o == nil || isNil(o.AccessTokenSecret) {
+    return nil, false
+	}
+	return o.AccessTokenSecret, true
+}
+
+// HasAccessTokenSecret returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccessTokenSecret() bool {
+	if o != nil && !isNil(o.AccessTokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessTokenSecret gets a reference to the given string and assigns it to the AccessTokenSecret field.
+func (o *OAuthAuthentication) SetAccessTokenSecret(v string) {
+	o.AccessTokenSecret = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetUsername() string {
+	if o == nil || isNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetUsernameOk() (*string, bool) {
+	if o == nil || isNil(o.Username) {
+    return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasUsername() bool {
+	if o != nil && !isNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *OAuthAuthentication) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetZoteroId returns the ZoteroId field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetZoteroId() string {
+	if o == nil || isNil(o.ZoteroId) {
+		var ret string
+		return ret
+	}
+	return *o.ZoteroId
+}
+
+// GetZoteroIdOk returns a tuple with the ZoteroId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetZoteroIdOk() (*string, bool) {
+	if o == nil || isNil(o.ZoteroId) {
+    return nil, false
+	}
+	return o.ZoteroId, true
+}
+
+// HasZoteroId returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasZoteroId() bool {
+	if o != nil && !isNil(o.ZoteroId) {
+		return true
+	}
+
+	return false
+}
+
+// SetZoteroId gets a reference to the given string and assigns it to the ZoteroId field.
+func (o *OAuthAuthentication) SetZoteroId(v string) {
+	o.ZoteroId = &v
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetOrganizationName() string {
+	if o == nil || isNil(o.OrganizationName) {
+		var ret string
+		return ret
+	}
+	return *o.OrganizationName
+}
+
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetOrganizationNameOk() (*string, bool) {
+	if o == nil || isNil(o.OrganizationName) {
+    return nil, false
+	}
+	return o.OrganizationName, true
+}
+
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasOrganizationName() bool {
+	if o != nil && !isNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+func (o *OAuthAuthentication) SetOrganizationName(v string) {
+	o.OrganizationName = &v
+}
+
+// GetDomain returns the Domain field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetDomain() string {
+	if o == nil || isNil(o.Domain) {
+		var ret string
+		return ret
+	}
+	return *o.Domain
+}
+
+// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetDomainOk() (*string, bool) {
+	if o == nil || isNil(o.Domain) {
+    return nil, false
+	}
+	return o.Domain, true
+}
+
+// HasDomain returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasDomain() bool {
+	if o != nil && !isNil(o.Domain) {
+		return true
+	}
+
+	return false
+}
+
+// SetDomain gets a reference to the given string and assigns it to the Domain field.
+func (o *OAuthAuthentication) SetDomain(v string) {
+	o.Domain = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetApiKey() string {
+	if o == nil || isNil(o.ApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetApiKeyOk() (*string, bool) {
+	if o == nil || isNil(o.ApiKey) {
+    return nil, false
+	}
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasApiKey() bool {
+	if o != nil && !isNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *OAuthAuthentication) SetApiKey(v string) {
+	o.ApiKey = &v
+}
+
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetAccessKey() string {
+	if o == nil || isNil(o.AccessKey) {
+		var ret string
+		return ret
+	}
+	return *o.AccessKey
+}
+
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetAccessKeyOk() (*string, bool) {
+	if o == nil || isNil(o.AccessKey) {
+    return nil, false
+	}
+	return o.AccessKey, true
+}
+
+// HasAccessKey returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccessKey() bool {
+	if o != nil && !isNil(o.AccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+func (o *OAuthAuthentication) SetAccessKey(v string) {
+	o.AccessKey = &v
+}
+
+// GetAccessKeySecret returns the AccessKeySecret field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetAccessKeySecret() string {
+	if o == nil || isNil(o.AccessKeySecret) {
+		var ret string
+		return ret
+	}
+	return *o.AccessKeySecret
+}
+
+// GetAccessKeySecretOk returns a tuple with the AccessKeySecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetAccessKeySecretOk() (*string, bool) {
+	if o == nil || isNil(o.AccessKeySecret) {
+    return nil, false
+	}
+	return o.AccessKeySecret, true
+}
+
+// HasAccessKeySecret returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccessKeySecret() bool {
+	if o != nil && !isNil(o.AccessKeySecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKeySecret gets a reference to the given string and assigns it to the AccessKeySecret field.
+func (o *OAuthAuthentication) SetAccessKeySecret(v string) {
+	o.AccessKeySecret = &v
+}
+
 func (o OAuthAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["source"] = o.Source
 	}
-	if true {
+	if !isNil(o.AccessToken) {
 		toSerialize["access_token"] = o.AccessToken
 	}
 	if o.RefreshToken.IsSet() {
 		toSerialize["refresh_token"] = o.RefreshToken.Get()
+	}
+	if !isNil(o.WorkspaceId) {
+		toSerialize["workspace_id"] = o.WorkspaceId
+	}
+	if !isNil(o.TenantName) {
+		toSerialize["tenant_name"] = o.TenantName
+	}
+	if !isNil(o.SiteName) {
+		toSerialize["site_name"] = o.SiteName
+	}
+	if !isNil(o.Subdomain) {
+		toSerialize["subdomain"] = o.Subdomain
+	}
+	if !isNil(o.AccessTokenSecret) {
+		toSerialize["access_token_secret"] = o.AccessTokenSecret
+	}
+	if !isNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !isNil(o.ZoteroId) {
+		toSerialize["zotero_id"] = o.ZoteroId
+	}
+	if !isNil(o.OrganizationName) {
+		toSerialize["organization_name"] = o.OrganizationName
+	}
+	if !isNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
+	}
+	if !isNil(o.ApiKey) {
+		toSerialize["api_key"] = o.ApiKey
+	}
+	if !isNil(o.AccessKey) {
+		toSerialize["access_key"] = o.AccessKey
+	}
+	if !isNil(o.AccessKeySecret) {
+		toSerialize["access_key_secret"] = o.AccessKeySecret
 	}
 	return json.Marshal(toSerialize)
 }

@@ -15,7 +15,6 @@ import {
   DataSourcesApi,
   EmbeddingsApi,
   FilesApi,
-  HealthApi,
   IntegrationsApi,
   OrganizationsApi,
   UsersApi,
@@ -30,7 +29,6 @@ export class Carbon extends CarbonCustom {
   readonly dataSources: DataSourcesApi;
   readonly embeddings: EmbeddingsApi;
   readonly files: FilesApi;
-  readonly health: HealthApi;
   readonly integrations: IntegrationsApi;
   readonly organizations: OrganizationsApi;
   readonly users: UsersApi;
@@ -44,7 +42,6 @@ export class Carbon extends CarbonCustom {
     this.dataSources = new DataSourcesApi(configuration);
     this.embeddings = new EmbeddingsApi(configuration);
     this.files = new FilesApi(configuration);
-    this.health = new HealthApi(configuration);
     this.integrations = new IntegrationsApi(configuration);
     this.organizations = new OrganizationsApi(configuration);
     this.users = new UsersApi(configuration);

@@ -61,10 +61,6 @@ class TestSimple(unittest.TestCase):
         pprint(files)
         self.assertIsNotNone(files)
 
-        status = carbon.health.check()
-        pprint(status)
-        self.assertIsNotNone(status)
-
         file = carbon.files.upload(
             file=open("README.md", "rb"),
             embedding_model="OPENAI"

@@ -95,6 +95,7 @@ from carbon.pydantic.embeddings_and_chunks_response import EmbeddingsAndChunksRe
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.external_source_item import ExternalSourceItem
 from carbon.pydantic.external_source_items_order_by import ExternalSourceItemsOrderBy
+from carbon.pydantic.fetch_urls_request import FetchURLsRequest
 from carbon.pydantic.fetch_urls_response import FetchURLsResponse
 from carbon.pydantic.fetch_urls_response_urls import FetchURLsResponseUrls
 from carbon.pydantic.file_content_types import FileContentTypes
@@ -208,6 +209,10 @@ from carbon.pydantic.user_request_content import UserRequestContent
 from carbon.pydantic.user_response import UserResponse
 from carbon.pydantic.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
 from carbon.pydantic.user_response_unique_file_tags import UserResponseUniqueFileTags
+from carbon.pydantic.user_web_page_order_by_types import UserWebPageOrderByTypes
+from carbon.pydantic.user_web_pages_filters import UserWebPagesFilters
+from carbon.pydantic.user_web_pages_filters_ids import UserWebPagesFiltersIds
+from carbon.pydantic.user_web_pages_request import UserWebPagesRequest
 from carbon.pydantic.utilities_scrape_web_request import UtilitiesScrapeWebRequest
 from carbon.pydantic.validation_error import ValidationError
 from carbon.pydantic.validation_error_loc import ValidationErrorLoc
@@ -1420,7 +1425,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.7/python'
+        self.user_agent = 'Konfig/0.2.8/python'
 
     def __enter__(self):
         return self
