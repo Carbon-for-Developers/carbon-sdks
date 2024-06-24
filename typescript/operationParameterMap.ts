@@ -382,10 +382,6 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
-    '/health-GET': {
-        parameters: [
-        ]
-    },
     '/integrations/items/sync/cancel-POST': {
         parameters: [
             {
@@ -1103,6 +1099,13 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/fetch_webpage-POST': {
+        parameters: [
+            {
+                name: 'url'
+            },
+        ]
+    },
     '/fetch_youtube_transcript-GET': {
         parameters: [
             {
@@ -1177,6 +1180,22 @@ export const operationParameterMap: Record<string, Entry> = {
         parameters: [
             {
                 name: 'query'
+            },
+        ]
+    },
+    '/user_webpages-POST': {
+        parameters: [
+            {
+                name: 'filters'
+            },
+            {
+                name: 'pagination'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
             },
         ]
     },

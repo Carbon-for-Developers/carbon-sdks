@@ -4,7 +4,6 @@ import com.konfigthis.carbonai.client.api.AuthApi;
 import com.konfigthis.carbonai.client.api.DataSourcesApi;
 import com.konfigthis.carbonai.client.api.EmbeddingsApi;
 import com.konfigthis.carbonai.client.api.FilesApi;
-import com.konfigthis.carbonai.client.api.HealthApi;
 import com.konfigthis.carbonai.client.api.IntegrationsApi;
 import com.konfigthis.carbonai.client.api.OrganizationsApi;
 import com.konfigthis.carbonai.client.api.UsersApi;
@@ -17,7 +16,6 @@ public class Carbon {
     public final DataSourcesApi dataSources;
     public final EmbeddingsApi embeddings;
     public final FilesApi files;
-    public final HealthApi health;
     public final IntegrationsApi integrations;
     public final OrganizationsApi organizations;
     public final UsersApi users;
@@ -34,7 +32,6 @@ public class Carbon {
         this.dataSources = new DataSourcesApi(this.apiClient);
         this.embeddings = new EmbeddingsApi(this.apiClient);
         this.files = new FilesApi(this.apiClient);
-        this.health = new HealthApi(this.apiClient);
         this.integrations = new IntegrationsApi(this.apiClient);
         this.organizations = new OrganizationsApi(this.apiClient);
         this.users = new UsersApi(this.apiClient);

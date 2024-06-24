@@ -118,7 +118,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    authentication := *carbon.NewAuthenticationProperty()
+    authentication := *carbon.NewOANSCZGF()
     syncOptions := *carbon.NewSyncOptions()
     
     connectDataSourceInput := *carbon.NewConnectDataSourceInput(
@@ -387,7 +387,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("229bd6e7-4931-4900-8f58-0e4071e45b25")
+    oAuthURLRequest.SetRequestId("1855375f-faa1-4965-99a1-03d1cab8000b")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -816,12 +816,11 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    ids := *carbon.NewIdsProperty()
     fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
-        ids,
+        null,
     )
     syncFilesRequest.SetTags({})
     syncFilesRequest.SetChunkSize(1500)
@@ -832,7 +831,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
+    syncFilesRequest.SetRequestId("9e2d7dc0-7a78-49fa-9f68-a411cfa13267")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -947,12 +946,11 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    ids := *carbon.NewIdsProperty()
     fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     syncFilesRequest := *carbon.NewSyncFilesRequest(
         null,
-        ids,
+        null,
     )
     syncFilesRequest.SetTags({})
     syncFilesRequest.SetChunkSize(1500)
@@ -963,7 +961,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("bb4d49b0-3837-444a-9b71-f529df5968cb")
+    syncFilesRequest.SetRequestId("9e2d7dc0-7a78-49fa-9f68-a411cfa13267")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)

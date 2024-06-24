@@ -240,7 +240,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.ChunkOverlap(56)
         request.SkipEmbeddingGeneration(false)
         request.SetPageAsBoundary(false)
-        request.EmbeddingModel(embeddingModel)
+        request.EmbeddingModel()
         request.UseOcr(false)
         request.GenerateSparseVectors(false)
         request.PrependFilenameToChunks(false)

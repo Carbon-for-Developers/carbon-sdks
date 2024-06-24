@@ -10,9 +10,9 @@ from carbon.apis.tags.webhooks_api import WebhooksApi
 from carbon.apis.tags.organizations_api import OrganizationsApi
 from carbon.apis.tags.auth_api import AuthApi
 from carbon.apis.tags.data_sources_api import DataSourcesApi
-from carbon.apis.tags.health_api import HealthApi
 from carbon.apis.tags.getting_started_api import GettingStartedApi
 from carbon.apis.tags.carbon_connect_api import CarbonConnectApi
+from carbon.apis.tags.health_api import HealthApi
 from carbon.apis.tags.contact_us_api import ContactUsApi
 
 TagToApi = typing_extensions.TypedDict(
@@ -27,9 +27,9 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.ORGANIZATIONS: OrganizationsApi,
         TagValues.AUTH: AuthApi,
         TagValues.DATA_SOURCES: DataSourcesApi,
-        TagValues.HEALTH: HealthApi,
         TagValues.GETTING_STARTED: GettingStartedApi,
         TagValues.CARBON_CONNECT: CarbonConnectApi,
+        TagValues.HEALTH: HealthApi,
         TagValues.CONTACT_US: ContactUsApi,
     }
 )
@@ -45,9 +45,9 @@ tag_to_api = TagToApi(
         TagValues.ORGANIZATIONS: OrganizationsApi,
         TagValues.AUTH: AuthApi,
         TagValues.DATA_SOURCES: DataSourcesApi,
-        TagValues.HEALTH: HealthApi,
         TagValues.GETTING_STARTED: GettingStartedApi,
         TagValues.CARBON_CONNECT: CarbonConnectApi,
+        TagValues.HEALTH: HealthApi,
         TagValues.CONTACT_US: ContactUsApi,
     }
 )

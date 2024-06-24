@@ -5,11 +5,13 @@ All URIs are relative to *https://api.carbon.ai*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**fetchUrls**](UtilitiesApi.md#fetchUrls) | **GET** /fetch_urls | Fetch Urls |
+| [**fetchWebpage**](UtilitiesApi.md#fetchWebpage) | **POST** /fetch_webpage | Fetch Urls V2 |
 | [**fetchYoutubeTranscripts**](UtilitiesApi.md#fetchYoutubeTranscripts) | **GET** /fetch_youtube_transcript | Fetch Youtube Transcripts |
 | [**processSitemap**](UtilitiesApi.md#processSitemap) | **GET** /process_sitemap | Sitemap |
 | [**scrapeSitemap**](UtilitiesApi.md#scrapeSitemap) | **POST** /scrape_sitemap | Scrape Sitemap |
 | [**scrapeWeb**](UtilitiesApi.md#scrapeWeb) | **POST** /web_scrape | Web Scrape |
 | [**searchUrls**](UtilitiesApi.md#searchUrls) | **GET** /search_urls | Search Urls |
+| [**userWebpages**](UtilitiesApi.md#userWebpages) | **POST** /user_webpages | User Web Pages |
 
 
 <a name="fetchUrls"></a>
@@ -103,6 +105,98 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="fetchWebpage"></a>
+# **fetchWebpage**
+> Object fetchWebpage(fetchURLsRequest).execute();
+
+Fetch Urls V2
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.UtilitiesApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    String url = "url_example";
+    try {
+      Object result = client
+              .utilities
+              .fetchWebpage(url)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UtilitiesApi#fetchWebpage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Object> response = client
+              .utilities
+              .fetchWebpage(url)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UtilitiesApi#fetchWebpage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **fetchURLsRequest** | [**FetchURLsRequest**](FetchURLsRequest.md)|  | |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -627,6 +721,109 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="userWebpages"></a>
+# **userWebpages**
+> Object userWebpages(userWebPagesRequest).execute();
+
+User Web Pages
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.UtilitiesApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    UserWebPagesFilters filters = new UserWebPagesFilters();
+    Pagination pagination = new Pagination();
+    UserWebPageOrderByTypes orderBy = UserWebPageOrderByTypes.fromValue("created_at");
+    OrderDirV2 orderDir = OrderDirV2.fromValue("asc");
+    try {
+      Object result = client
+              .utilities
+              .userWebpages()
+              .filters(filters)
+              .pagination(pagination)
+              .orderBy(orderBy)
+              .orderDir(orderDir)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UtilitiesApi#userWebpages");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Object> response = client
+              .utilities
+              .userWebpages()
+              .filters(filters)
+              .pagination(pagination)
+              .orderBy(orderBy)
+              .orderDir(orderDir)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UtilitiesApi#userWebpages");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userWebPagesRequest** | [**UserWebPagesRequest**](UserWebPagesRequest.md)|  | |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

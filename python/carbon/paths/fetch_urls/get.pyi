@@ -327,6 +327,7 @@ class BaseApi(api_client.Api):
 class FetchUrlsRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     async def afetch_urls(
         self,
         url: str,
@@ -344,6 +345,7 @@ class FetchUrlsRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     def fetch_urls(
         self,
         url: str,
@@ -360,6 +362,7 @@ class FetchUrlsRaw(BaseApi):
 
 class FetchUrls(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     async def afetch_urls(
         self,
         url: str,
@@ -375,6 +378,7 @@ class FetchUrls(BaseApi):
         return api_client.construct_model_instance(FetchURLsResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     def fetch_urls(
         self,
         url: str,
@@ -391,6 +395,7 @@ class FetchUrls(BaseApi):
 class ApiForget(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     async def aget(
         self,
         url: str,
@@ -408,6 +413,7 @@ class ApiForget(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="utilities")
     def get(
         self,
         url: str,

@@ -65,6 +65,7 @@ class PathValues(str, enum.Enum):
     PROCESS_SITEMAP = "/process_sitemap"
     SCRAPE_SITEMAP = "/scrape_sitemap"
     FETCH_URLS = "/fetch_urls"
+    FETCH_WEBPAGE = "/fetch_webpage"
+    USER_WEBPAGES = "/user_webpages"
     SEARCH_URLS = "/search_urls"
     FETCH_YOUTUBE_TRANSCRIPT = "/fetch_youtube_transcript"
-    HEALTH = "/health"

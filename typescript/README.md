@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.7-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.7)
+[![npm](https://img.shields.io/badge/npm-v0.2.8-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.8)
 
 </div>
 
@@ -37,7 +37,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
-  * [`carbon.health.check`](#carbonhealthcheck)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
@@ -71,11 +70,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
   * [`carbon.users.updateUsers`](#carbonusersupdateusers)
   * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
+  * [`carbon.utilities.fetchWebpage`](#carbonutilitiesfetchwebpage)
   * [`carbon.utilities.fetchYoutubeTranscripts`](#carbonutilitiesfetchyoutubetranscripts)
   * [`carbon.utilities.processSitemap`](#carbonutilitiesprocesssitemap)
   * [`carbon.utilities.scrapeSitemap`](#carbonutilitiesscrapesitemap)
   * [`carbon.utilities.scrapeWeb`](#carbonutilitiesscrapeweb)
   * [`carbon.utilities.searchUrls`](#carbonutilitiessearchurls)
+  * [`carbon.utilities.userWebpages`](#carbonutilitiesuserwebpages)
   * [`carbon.webhooks.addUrl`](#carbonwebhooksaddurl)
   * [`carbon.webhooks.deleteUrl`](#carbonwebhooksdeleteurl)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
@@ -1179,25 +1180,6 @@ const uploadTextResponse = await carbon.files.uploadText({
 ---
 
 
-### `carbon.health.check`<a id="carbonhealthcheck"></a>
-
-Health
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```typescript
-const checkResponse = await carbon.health.check();
-```
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/health` `GET`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
 ### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
 
 Cancel Data Source Items Sync
@@ -1458,7 +1440,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "229bd6e7-4931-4900-8f58-0e4071e45b25",
+  request_id: "1855375f-faa1-4965-99a1-03d1cab8000b",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1527,7 +1509,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1819,7 +1801,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
+  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1927,7 +1909,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
+  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2719,6 +2701,7 @@ Custom file upload limit for the user across a single upload.         If set, th
 
 
 ### `carbon.utilities.fetchUrls`<a id="carbonutilitiesfetchurls"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Extracts all URLs from a webpage. 
 
@@ -2747,6 +2730,31 @@ const fetchUrlsResponse = await carbon.utilities.fetchUrls({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.utilities.fetchWebpage`<a id="carbonutilitiesfetchwebpage"></a>
+
+Fetch Urls V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const fetchWebpageResponse = await carbon.utilities.fetchWebpage({
+  url: "url_example",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### url: `string`<a id="url-string"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/fetch_webpage` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -2987,6 +2995,38 @@ const searchUrlsResponse = await carbon.utilities.searchUrls({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/search_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.utilities.userWebpages`<a id="carbonutilitiesuserwebpages"></a>
+
+User Web Pages
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const userWebpagesResponse = await carbon.utilities.userWebpages({
+  order_by: "created_at",
+  order_dir: "asc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`UserWebPagesFilters`](./models/user-web-pages-filters.ts)<a id="filters-userwebpagesfiltersmodelsuser-web-pages-filtersts"></a>
+
+##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### order_by: [`UserWebPageOrderByTypes`](./models/user-web-page-order-by-types.ts)<a id="order_by-userwebpageorderbytypesmodelsuser-web-page-order-by-typests"></a>
+
+##### order_dir: [`OrderDirV2`](./models/order-dir-v2.ts)<a id="order_dir-orderdirv2modelsorder-dir-v2ts"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_webpages` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

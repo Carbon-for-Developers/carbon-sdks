@@ -41,6 +41,25 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test UtilitiesApiService FetchWebpage", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        fetchURLsRequest := *carbon.NewFetchURLsRequest(
+            "null",
+        )
+        
+        request := client.UtilitiesApi.FetchWebpage(
+            fetchURLsRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test UtilitiesApiService FetchYoutubeTranscripts", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.UtilitiesApi.FetchYoutubeTranscripts(
@@ -124,6 +143,29 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         request := client.UtilitiesApi.SearchUrls(
             "query_example",
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test UtilitiesApiService UserWebpages", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewUserWebPagesFilters()
+        pagination := *carbon.NewPagination()
+        
+        userWebPagesRequest := *carbon.NewUserWebPagesRequest()
+        userWebPagesRequest.SetFilters(filters)
+        userWebPagesRequest.SetPagination(pagination)
+        userWebPagesRequest.SetOrderBy(null)
+        userWebPagesRequest.SetOrderDir(null)
+        
+        request := client.UtilitiesApi.UserWebpages(
+            userWebPagesRequest,
         )
         
         resp, httpRes, err := request.Execute()

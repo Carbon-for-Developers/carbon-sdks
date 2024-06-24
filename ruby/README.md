@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.7-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.7)
+[![npm](https://img.shields.io/badge/gem-v0.2.8-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.8)
 
 </div>
 
@@ -38,7 +38,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
-  * [`carbon.health.check`](#carbonhealthcheck)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
@@ -72,11 +71,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
+  * [`carbon.utilities.fetch_webpage`](#carbonutilitiesfetch_webpage)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
   * [`carbon.utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
   * [`carbon.utilities.scrape_sitemap`](#carbonutilitiesscrape_sitemap)
   * [`carbon.utilities.scrape_web`](#carbonutilitiesscrape_web)
   * [`carbon.utilities.search_urls`](#carbonutilitiessearch_urls)
+  * [`carbon.utilities.user_webpages`](#carbonutilitiesuser_webpages)
   * [`carbon.webhooks.add_url`](#carbonwebhooksadd_url)
   * [`carbon.webhooks.delete_url`](#carbonwebhooksdelete_url)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
@@ -88,7 +89,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.7'
+gem 'carbon_ruby_sdk', '~> 0.2.8'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1179,26 +1180,6 @@ p result
 ---
 
 
-### `carbon.health.check`<a id="carbonhealthcheck"></a>
-
-Health
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```ruby
-result = carbon.health.check
-p result
-```
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/health` `GET`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
 ### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
 
 Cancel Data Source Items Sync
@@ -1249,7 +1230,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "2b33f04a-b2ca-473b-b6e2-c89df5e01f94",
+        "request_id" => "9e41dd01-0592-477a-97b3-df618acf082b",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1469,7 +1450,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "229bd6e7-4931-4900-8f58-0e4071e45b25",
+  request_id: "1855375f-faa1-4965-99a1-03d1cab8000b",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1530,7 +1511,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
+SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1829,7 +1810,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
+  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1933,7 +1914,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bb4d49b0-3837-444a-9b71-f529df5968cb",
+  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2708,6 +2689,7 @@ upload. If not set, or if set to -1, then the user will have no limit.
 
 
 ### `carbon.utilities.fetch_urls`<a id="carbonutilitiesfetch_urls"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Extracts all URLs from a webpage. 
 
@@ -2736,6 +2718,31 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.utilities.fetch_webpage`<a id="carbonutilitiesfetch_webpage"></a>
+
+Fetch Urls V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.utilities.fetch_webpage(
+  url: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### url: `String`<a id="url-string"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/fetch_webpage` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -2970,6 +2977,41 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/search_urls` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.utilities.user_webpages`<a id="carbonutilitiesuser_webpages"></a>
+
+User Web Pages
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.utilities.user_webpages(
+  filters: {
+    },
+  pagination: {
+        "limit" => 10,
+        "offset" => 0,
+    },
+  order_by: "created_at",
+  order_dir: "asc",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`UserWebPagesFilters`](./lib/carbon_ruby_sdk/models/user_web_pages_filters.rb)<a id="filters-userwebpagesfilterslibcarbon_ruby_sdkmodelsuser_web_pages_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`UserWebPageOrderByTypes`](./lib/carbon_ruby_sdk/models/user_web_page_order_by_types.rb)<a id="order_by-userwebpageorderbytypeslibcarbon_ruby_sdkmodelsuser_web_page_order_by_typesrb"></a>
+##### order_dir: [`OrderDirV2`](./lib/carbon_ruby_sdk/models/order_dir_v2.rb)<a id="order_dir-orderdirv2libcarbon_ruby_sdkmodelsorder_dir_v2rb"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_webpages` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

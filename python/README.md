@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.7-blue)](https://pypi.org/project/carbon-python-sdk/0.2.7)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.8-blue)](https://pypi.org/project/carbon-python-sdk/0.2.8)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -42,7 +42,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
-  * [`carbon.health.check`](#carbonhealthcheck)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
@@ -76,11 +75,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
+  * [`carbon.utilities.fetch_webpage`](#carbonutilitiesfetch_webpage)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
   * [`carbon.utilities.process_sitemap`](#carbonutilitiesprocess_sitemap)
   * [`carbon.utilities.scrape_sitemap`](#carbonutilitiesscrape_sitemap)
   * [`carbon.utilities.scrape_web`](#carbonutilitiesscrape_web)
   * [`carbon.utilities.search_urls`](#carbonutilitiessearch_urls)
+  * [`carbon.utilities.user_webpages`](#carbonutilitiesuser_webpages)
   * [`carbon.webhooks.add_url`](#carbonwebhooksadd_url)
   * [`carbon.webhooks.delete_url`](#carbonwebhooksdelete_url)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
@@ -94,7 +95,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.7
+pip install carbon-python-sdk==0.2.8
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1319,24 +1320,6 @@ upload_text_response = carbon.files.upload_text(
 
 ---
 
-### `carbon.health.check`<a id="carbonhealthcheck"></a>
-
-Health
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-check_response = carbon.health.check()
-```
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/health` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
 
 Cancel Data Source Items Sync
@@ -1389,7 +1372,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "2b33f04a-b2ca-473b-b6e2-c89df5e01f94",
+        "request_id": "9e41dd01-0592-477a-97b3-df618acf082b",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1643,7 +1626,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="229bd6e7-4931-4900-8f58-0e4071e45b25",
+    request_id="1855375f-faa1-4965-99a1-03d1cab8000b",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1718,7 +1701,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, SHAREPOINT, GOOGLE_DRIVE, BOX
+Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -2028,7 +2011,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="bb4d49b0-3837-444a-9b71-f529df5968cb",
+    request_id="9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2149,7 +2132,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="bb4d49b0-3837-444a-9b71-f529df5968cb",
+    request_id="9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -3022,6 +3005,7 @@ Custom file upload limit for the user across a single upload.         If set, th
 ---
 
 ### `carbon.utilities.fetch_urls`<a id="carbonutilitiesfetch_urls"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Extracts all URLs from a webpage. 
 
@@ -3050,6 +3034,33 @@ fetch_urls_response = carbon.utilities.fetch_urls(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_urls` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.utilities.fetch_webpage`<a id="carbonutilitiesfetch_webpage"></a>
+
+Fetch Urls V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+fetch_webpage_response = carbon.utilities.fetch_webpage(
+    url="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### url: `str`<a id="url-str"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`FetchURLsRequest`](./carbon/type/fetch_urls_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/fetch_webpage` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -3288,6 +3299,47 @@ search_urls_response = carbon.utilities.search_urls(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/search_urls` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.utilities.user_webpages`<a id="carbonutilitiesuser_webpages"></a>
+
+User Web Pages
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+user_webpages_response = carbon.utilities.user_webpages(
+    filters={},
+    pagination={
+        "limit": 10,
+        "offset": 0,
+    },
+    order_by="created_at",
+    order_dir="asc",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`UserWebPagesFilters`](./carbon/type/user_web_pages_filters.py)<a id="filters-userwebpagesfilterscarbontypeuser_web_pages_filterspy"></a>
+
+
+##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
+
+
+##### order_by: [`UserWebPageOrderByTypes`](./carbon/type/user_web_page_order_by_types.py)<a id="order_by-userwebpageorderbytypescarbontypeuser_web_page_order_by_typespy"></a>
+
+##### order_dir: [`OrderDirV2`](./carbon/type/order_dir_v2.py)<a id="order_dir-orderdirv2carbontypeorder_dir_v2py"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`UserWebPagesRequest`](./carbon/type/user_web_pages_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/user_webpages` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

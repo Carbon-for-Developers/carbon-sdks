@@ -376,10 +376,6 @@ operation_parameter_map = {
             },
         ]
     },
-    '/health-GET': {
-        'parameters': [
-        ]
-    },
     '/integrations/items/sync/cancel-POST': {
         'parameters': [
             {
@@ -1097,6 +1093,13 @@ operation_parameter_map = {
             },
         ]
     },
+    '/fetch_webpage-POST': {
+        'parameters': [
+            {
+                'name': 'url'
+            },
+        ]
+    },
     '/fetch_youtube_transcript-GET': {
         'parameters': [
             {
@@ -1171,6 +1174,22 @@ operation_parameter_map = {
         'parameters': [
             {
                 'name': 'query'
+            },
+        ]
+    },
+    '/user_webpages-POST': {
+        'parameters': [
+            {
+                'name': 'filters'
+            },
+            {
+                'name': 'pagination'
+            },
+            {
+                'name': 'order_by'
+            },
+            {
+                'name': 'order_dir'
             },
         ]
     },

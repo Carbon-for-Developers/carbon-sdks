@@ -114,6 +114,98 @@ module Carbon
     end
 
 
+    # Fetch Urls V2
+    #
+    # @param url [String] 
+    # @param body [FetchURLsRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def fetch_webpage(url:, extra: {})
+      _body = {}
+      _body[:url] = url if url != SENTINEL
+      fetch_urls_request = _body
+      api_response = fetch_webpage_with_http_info_impl(fetch_urls_request, extra)
+      api_response.data
+    end
+
+    # Fetch Urls V2
+    #
+    # @param url [String] 
+    # @param body [FetchURLsRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def fetch_webpage_with_http_info(url:, extra: {})
+      _body = {}
+      _body[:url] = url if url != SENTINEL
+      fetch_urls_request = _body
+      fetch_webpage_with_http_info_impl(fetch_urls_request, extra)
+    end
+
+    # Fetch Urls V2
+    # @param fetch_urls_request [FetchURLsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def fetch_webpage_impl(fetch_urls_request, opts = {})
+      data, _status_code, _headers = fetch_webpage_with_http_info(fetch_urls_request, opts)
+      data
+    end
+
+    # Fetch Urls V2
+    # @param fetch_urls_request [FetchURLsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def fetch_webpage_with_http_info_impl(fetch_urls_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: UtilitiesApi.fetch_webpage ...'
+      end
+      # verify the required parameter 'fetch_urls_request' is set
+      if @api_client.config.client_side_validation && fetch_urls_request.nil?
+        fail ArgumentError, "Missing the required parameter 'fetch_urls_request' when calling UtilitiesApi.fetch_webpage"
+      end
+      # resource path
+      local_var_path = '/fetch_webpage'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(fetch_urls_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"UtilitiesApi.fetch_webpage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: UtilitiesApi#fetch_webpage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Fetch Youtube Transcripts
     #
     # Fetches english transcripts from YouTube videos.
@@ -708,6 +800,110 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UtilitiesApi#search_urls\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # User Web Pages
+    #
+    # @param filters [UserWebPagesFilters] 
+    # @param pagination [Pagination] 
+    # @param order_by [UserWebPageOrderByTypes] 
+    # @param order_dir [OrderDirV2] 
+    # @param body [UserWebPagesRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def user_webpages(filters: SENTINEL, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'desc', extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      user_web_pages_request = _body
+      api_response = user_webpages_with_http_info_impl(user_web_pages_request, extra)
+      api_response.data
+    end
+
+    # User Web Pages
+    #
+    # @param filters [UserWebPagesFilters] 
+    # @param pagination [Pagination] 
+    # @param order_by [UserWebPageOrderByTypes] 
+    # @param order_dir [OrderDirV2] 
+    # @param body [UserWebPagesRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def user_webpages_with_http_info(filters: SENTINEL, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'desc', extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      user_web_pages_request = _body
+      user_webpages_with_http_info_impl(user_web_pages_request, extra)
+    end
+
+    # User Web Pages
+    # @param user_web_pages_request [UserWebPagesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    private def user_webpages_impl(user_web_pages_request, opts = {})
+      data, _status_code, _headers = user_webpages_with_http_info(user_web_pages_request, opts)
+      data
+    end
+
+    # User Web Pages
+    # @param user_web_pages_request [UserWebPagesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def user_webpages_with_http_info_impl(user_web_pages_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: UtilitiesApi.user_webpages ...'
+      end
+      # verify the required parameter 'user_web_pages_request' is set
+      if @api_client.config.client_side_validation && user_web_pages_request.nil?
+        fail ArgumentError, "Missing the required parameter 'user_web_pages_request' when calling UtilitiesApi.user_webpages"
+      end
+      # resource path
+      local_var_path = '/user_webpages'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_web_pages_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"UtilitiesApi.user_webpages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: UtilitiesApi#user_webpages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end

@@ -27,8 +27,14 @@ import java.io.IOException;
 
 
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FetchURLsRequest;
 import com.konfigthis.carbonai.client.model.FetchURLsResponse;
+import com.konfigthis.carbonai.client.model.OrderDirV2;
+import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.SitemapScrapeRequest;
+import com.konfigthis.carbonai.client.model.UserWebPageOrderByTypes;
+import com.konfigthis.carbonai.client.model.UserWebPagesFilters;
+import com.konfigthis.carbonai.client.model.UserWebPagesRequest;
 import com.konfigthis.carbonai.client.model.WebscrapeRequest;
 import com.konfigthis.carbonai.client.model.YoutubeTranscriptResponse;
 
@@ -124,6 +130,7 @@ public class UtilitiesApiGenerated {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call fetchUrlsValidateBeforeCall(String url, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'url' is set
@@ -167,7 +174,9 @@ public class UtilitiesApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return fetchUrlsCall(url, _callback);
         }
@@ -182,7 +191,9 @@ public class UtilitiesApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public FetchURLsResponse execute() throws ApiException {
             ApiResponse<FetchURLsResponse> localVarResp = fetchUrlsWithHttpInfo(url);
             return localVarResp.getResponseBody();
@@ -197,7 +208,9 @@ public class UtilitiesApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<FetchURLsResponse> executeWithHttpInfo() throws ApiException {
             return fetchUrlsWithHttpInfo(url);
         }
@@ -212,7 +225,9 @@ public class UtilitiesApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<FetchURLsResponse> _callback) throws ApiException {
             return fetchUrlsAsync(url, _callback);
         }
@@ -228,12 +243,179 @@ public class UtilitiesApiGenerated {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public UtilitiesApi.FetchUrlsRequestBuilder fetchUrls(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
         return ((UtilitiesApi) this).new FetchUrlsRequestBuilder(url);
+    }
+    private okhttp3.Call fetchWebpageCall(FetchURLsRequest fetchURLsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fetchURLsRequest;
+
+        // create path and map variables
+        String localVarPath = "/fetch_webpage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchWebpageValidateBeforeCall(FetchURLsRequest fetchURLsRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fetchURLsRequest' is set
+        if (fetchURLsRequest == null) {
+            throw new ApiException("Missing the required parameter 'fetchURLsRequest' when calling fetchWebpage(Async)");
+        }
+
+        return fetchWebpageCall(fetchURLsRequest, _callback);
+
+    }
+
+
+    private ApiResponse<Object> fetchWebpageWithHttpInfo(FetchURLsRequest fetchURLsRequest) throws ApiException {
+        okhttp3.Call localVarCall = fetchWebpageValidateBeforeCall(fetchURLsRequest, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call fetchWebpageAsync(FetchURLsRequest fetchURLsRequest, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchWebpageValidateBeforeCall(fetchURLsRequest, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class FetchWebpageRequestBuilderGenerated {
+        final String url;
+
+        public FetchWebpageRequestBuilderGenerated(String url) {
+            this.url = url;
+        }
+
+        /**
+         * Build call for fetchWebpage
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            FetchURLsRequest fetchURLsRequest = buildBodyParams();
+            return fetchWebpageCall(fetchURLsRequest, _callback);
+        }
+
+        private FetchURLsRequest buildBodyParams() {
+            FetchURLsRequest fetchURLsRequest = new FetchURLsRequest();
+            fetchURLsRequest.url(this.url);
+            return fetchURLsRequest;
+        }
+
+        /**
+         * Execute fetchWebpage request
+         * @return Object
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Object execute() throws ApiException {
+            FetchURLsRequest fetchURLsRequest = buildBodyParams();
+            ApiResponse<Object> localVarResp = fetchWebpageWithHttpInfo(fetchURLsRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute fetchWebpage request with HTTP info returned
+         * @return ApiResponse&lt;Object&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+            FetchURLsRequest fetchURLsRequest = buildBodyParams();
+            return fetchWebpageWithHttpInfo(fetchURLsRequest);
+        }
+
+        /**
+         * Execute fetchWebpage request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+            FetchURLsRequest fetchURLsRequest = buildBodyParams();
+            return fetchWebpageAsync(fetchURLsRequest, _callback);
+        }
+    }
+
+    /**
+     * Fetch Urls V2
+     * 
+     * @param fetchURLsRequest  (required)
+     * @return FetchWebpageRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public UtilitiesApi.FetchWebpageRequestBuilder fetchWebpage(String url) throws IllegalArgumentException {
+        if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
+            
+
+        return ((UtilitiesApi) this).new FetchWebpageRequestBuilder(url);
     }
     private okhttp3.Call fetchYoutubeTranscriptsCall(String id, Boolean raw, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1228,5 +1410,212 @@ public class UtilitiesApiGenerated {
             
 
         return ((UtilitiesApi) this).new SearchUrlsRequestBuilder(query);
+    }
+    private okhttp3.Call userWebpagesCall(UserWebPagesRequest userWebPagesRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = userWebPagesRequest;
+
+        // create path and map variables
+        String localVarPath = "/user_webpages";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call userWebpagesValidateBeforeCall(UserWebPagesRequest userWebPagesRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'userWebPagesRequest' is set
+        if (userWebPagesRequest == null) {
+            throw new ApiException("Missing the required parameter 'userWebPagesRequest' when calling userWebpages(Async)");
+        }
+
+        return userWebpagesCall(userWebPagesRequest, _callback);
+
+    }
+
+
+    private ApiResponse<Object> userWebpagesWithHttpInfo(UserWebPagesRequest userWebPagesRequest) throws ApiException {
+        okhttp3.Call localVarCall = userWebpagesValidateBeforeCall(userWebPagesRequest, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call userWebpagesAsync(UserWebPagesRequest userWebPagesRequest, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = userWebpagesValidateBeforeCall(userWebPagesRequest, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class UserWebpagesRequestBuilderGenerated {
+        UserWebPagesFilters filters;
+        Pagination pagination;
+        UserWebPageOrderByTypes orderBy;
+        OrderDirV2 orderDir;
+
+        public UserWebpagesRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set filters
+         * @param filters  (optional)
+         * @return UtilitiesApi.UserWebpagesRequestBuilder
+         */
+        public UtilitiesApi.UserWebpagesRequestBuilder filters(UserWebPagesFilters filters) {
+            this.filters = filters;
+            return (UtilitiesApi.UserWebpagesRequestBuilder) this;
+        }
+        
+        /**
+         * Set pagination
+         * @param pagination  (optional)
+         * @return UtilitiesApi.UserWebpagesRequestBuilder
+         */
+        public UtilitiesApi.UserWebpagesRequestBuilder pagination(Pagination pagination) {
+            this.pagination = pagination;
+            return (UtilitiesApi.UserWebpagesRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderBy
+         * @param orderBy  (optional)
+         * @return UtilitiesApi.UserWebpagesRequestBuilder
+         */
+        public UtilitiesApi.UserWebpagesRequestBuilder orderBy(UserWebPageOrderByTypes orderBy) {
+            this.orderBy = orderBy;
+            return (UtilitiesApi.UserWebpagesRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderDir
+         * @param orderDir  (optional)
+         * @return UtilitiesApi.UserWebpagesRequestBuilder
+         */
+        public UtilitiesApi.UserWebpagesRequestBuilder orderDir(OrderDirV2 orderDir) {
+            this.orderDir = orderDir;
+            return (UtilitiesApi.UserWebpagesRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for userWebpages
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            UserWebPagesRequest userWebPagesRequest = buildBodyParams();
+            return userWebpagesCall(userWebPagesRequest, _callback);
+        }
+
+        private UserWebPagesRequest buildBodyParams() {
+            UserWebPagesRequest userWebPagesRequest = new UserWebPagesRequest();
+            userWebPagesRequest.filters(this.filters);
+            userWebPagesRequest.pagination(this.pagination);
+            userWebPagesRequest.orderBy(this.orderBy);
+            userWebPagesRequest.orderDir(this.orderDir);
+            return userWebPagesRequest;
+        }
+
+        /**
+         * Execute userWebpages request
+         * @return Object
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Object execute() throws ApiException {
+            UserWebPagesRequest userWebPagesRequest = buildBodyParams();
+            ApiResponse<Object> localVarResp = userWebpagesWithHttpInfo(userWebPagesRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute userWebpages request with HTTP info returned
+         * @return ApiResponse&lt;Object&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+            UserWebPagesRequest userWebPagesRequest = buildBodyParams();
+            return userWebpagesWithHttpInfo(userWebPagesRequest);
+        }
+
+        /**
+         * Execute userWebpages request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+            UserWebPagesRequest userWebPagesRequest = buildBodyParams();
+            return userWebpagesAsync(userWebPagesRequest, _callback);
+        }
+    }
+
+    /**
+     * User Web Pages
+     * 
+     * @param userWebPagesRequest  (required)
+     * @return UserWebpagesRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public UtilitiesApi.UserWebpagesRequestBuilder userWebpages() throws IllegalArgumentException {
+        return ((UtilitiesApi) this).new UserWebpagesRequestBuilder();
     }
 }
