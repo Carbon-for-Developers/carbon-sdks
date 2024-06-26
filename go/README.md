@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.8)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.9)
 
 </div>
 
@@ -64,6 +64,7 @@ Class | Method | HTTP request | Description
 *DataSourcesApi* | [**RevokeAccessToken**](docs/DataSourcesApi.md#revokeaccesstoken) | **Post** /revoke_access_token | Revoke Access Token
 *EmbeddingsApi* | [**GetDocuments**](docs/EmbeddingsApi.md#getdocuments) | **Post** /embeddings | Embeddings
 *EmbeddingsApi* | [**GetEmbeddingsAndChunks**](docs/EmbeddingsApi.md#getembeddingsandchunks) | **Post** /text_chunks | Retrieve Embeddings And Content
+*EmbeddingsApi* | [**List**](docs/EmbeddingsApi.md#list) | **Post** /list_chunks_and_embeddings | Retrieve Embeddings And Content V2
 *EmbeddingsApi* | [**UploadChunksAndEmbeddings**](docs/EmbeddingsApi.md#uploadchunksandembeddings) | **Post** /upload_chunks_and_embeddings | Upload Chunks And Embeddings
 *FilesApi* | [**CreateUserFileTags**](docs/FilesApi.md#createuserfiletags) | **Post** /create_user_file_tags | Create File Tags
 *FilesApi* | [**Delete**](docs/FilesApi.md#delete) | **Delete** /deletefile/{file_id} | Delete File Endpoint
@@ -153,6 +154,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
+ - [EmbeddingsAndChunksQueryInputV2](docs/EmbeddingsAndChunksQueryInputV2.md)
  - [EmbeddingsAndChunksResponse](docs/EmbeddingsAndChunksResponse.md)
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)

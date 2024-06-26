@@ -8,12 +8,15 @@ import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksFilters;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksOrderByColumns;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInput;
+import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInputV2;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
+import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
+import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncOrderByTypes;
 import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput;
 import java.util.ArrayList;
@@ -33,6 +36,11 @@ public class EmbeddingsApi extends EmbeddingsApiGenerated {
     }
     public class GetEmbeddingsAndChunksRequestBuilder extends GetEmbeddingsAndChunksRequestBuilderGenerated {
         public GetEmbeddingsAndChunksRequestBuilder(EmbeddingsAndChunksFilters filters) {
+            super(filters);
+        }
+    }
+    public class ListRequestBuilder extends ListRequestBuilderGenerated {
+        public ListRequestBuilder(OrganizationUserFilesToSyncFilters filters) {
             super(filters);
         }
     }

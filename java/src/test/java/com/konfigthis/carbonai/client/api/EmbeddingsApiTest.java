@@ -23,12 +23,15 @@ import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksFilters;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksOrderByColumns;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInput;
+import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInputV2;
 import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
+import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
+import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncOrderByTypes;
 import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput;
 import org.junit.jupiter.api.Disabled;
@@ -110,6 +113,27 @@ public class EmbeddingsApiTest {
         OrderDir orderDir = null;
         Boolean includeVectors = null;
         EmbeddingsAndChunksResponse response = api.getEmbeddingsAndChunks(filters)
+                .pagination(pagination)
+                .orderBy(orderBy)
+                .orderDir(orderDir)
+                .includeVectors(includeVectors)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Retrieve Embeddings And Content V2
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listTest() throws ApiException {
+        OrganizationUserFilesToSyncFilters filters = null;
+        Pagination pagination = null;
+        OrganizationUserFilesToSyncOrderByTypes orderBy = null;
+        OrderDir orderDir = null;
+        Boolean includeVectors = null;
+        EmbeddingsAndChunksResponse response = api.list(filters)
                 .pagination(pagination)
                 .orderBy(orderBy)
                 .orderDir(orderDir)

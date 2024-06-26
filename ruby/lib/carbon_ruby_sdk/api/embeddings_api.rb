@@ -464,6 +464,114 @@ module Carbon
     end
 
 
+    # Retrieve Embeddings And Content V2
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param pagination [Pagination] 
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
+    # @param order_dir [OrderDir] 
+    # @param include_vectors [Boolean] 
+    # @param body [EmbeddingsAndChunksQueryInputV2] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+      _body = {}
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:include_vectors] = include_vectors if include_vectors != SENTINEL
+      embeddings_and_chunks_query_input_v2 = _body
+      api_response = list_with_http_info_impl(embeddings_and_chunks_query_input_v2, extra)
+      api_response.data
+    end
+
+    # Retrieve Embeddings And Content V2
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param pagination [Pagination] 
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
+    # @param order_dir [OrderDir] 
+    # @param include_vectors [Boolean] 
+    # @param body [EmbeddingsAndChunksQueryInputV2] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_with_http_info(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+      _body = {}
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:include_vectors] = include_vectors if include_vectors != SENTINEL
+      embeddings_and_chunks_query_input_v2 = _body
+      list_with_http_info_impl(embeddings_and_chunks_query_input_v2, extra)
+    end
+
+    # Retrieve Embeddings And Content V2
+    # @param embeddings_and_chunks_query_input_v2 [EmbeddingsAndChunksQueryInputV2] 
+    # @param [Hash] opts the optional parameters
+    # @return [EmbeddingsAndChunksResponse]
+    private def list_impl(embeddings_and_chunks_query_input_v2, opts = {})
+      data, _status_code, _headers = list_with_http_info(embeddings_and_chunks_query_input_v2, opts)
+      data
+    end
+
+    # Retrieve Embeddings And Content V2
+    # @param embeddings_and_chunks_query_input_v2 [EmbeddingsAndChunksQueryInputV2] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is EmbeddingsAndChunksResponse, status code, headers and response
+    private def list_with_http_info_impl(embeddings_and_chunks_query_input_v2, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EmbeddingsApi.list ...'
+      end
+      # verify the required parameter 'embeddings_and_chunks_query_input_v2' is set
+      if @api_client.config.client_side_validation && embeddings_and_chunks_query_input_v2.nil?
+        fail ArgumentError, "Missing the required parameter 'embeddings_and_chunks_query_input_v2' when calling EmbeddingsApi.list"
+      end
+      # resource path
+      local_var_path = '/list_chunks_and_embeddings'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(embeddings_and_chunks_query_input_v2)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmbeddingsAndChunksResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"EmbeddingsApi.list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EmbeddingsApi#list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Upload Chunks And Embeddings
     #
     # @param embedding_model [EmbeddingGenerators] 

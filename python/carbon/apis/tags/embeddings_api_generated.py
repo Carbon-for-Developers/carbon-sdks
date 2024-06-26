@@ -10,6 +10,7 @@
 
 from carbon.paths.embeddings.post import GetDocuments
 from carbon.paths.text_chunks.post import GetEmbeddingsAndChunks
+from carbon.paths.list_chunks_and_embeddings.post import List
 from carbon.paths.upload_chunks_and_embeddings.post import UploadChunksAndEmbeddings
 from carbon.apis.tags.embeddings_api_raw import EmbeddingsApiRaw
 
@@ -17,6 +18,7 @@ from carbon.apis.tags.embeddings_api_raw import EmbeddingsApiRaw
 class EmbeddingsApiGenerated(
     GetDocuments,
     GetEmbeddingsAndChunks,
+    List,
     UploadChunksAndEmbeddings,
 ):
     """NOTE:

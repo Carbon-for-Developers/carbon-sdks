@@ -35,6 +35,8 @@ import { EmbeddingsAndChunksOrderByColumns } from '../models';
 // @ts-ignore
 import { EmbeddingsAndChunksQueryInput } from '../models';
 // @ts-ignore
+import { EmbeddingsAndChunksQueryInputV2 } from '../models';
+// @ts-ignore
 import { EmbeddingsAndChunksResponse } from '../models';
 // @ts-ignore
 import { FileContentTypesNullable } from '../models';
@@ -48,6 +50,10 @@ import { HTTPValidationError } from '../models';
 import { HybridSearchTuningParamsNullable } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
+// @ts-ignore
+import { OrganizationUserFilesToSyncFilters } from '../models';
+// @ts-ignore
+import { OrganizationUserFilesToSyncOrderByTypes } from '../models';
 // @ts-ignore
 import { Pagination } from '../models';
 // @ts-ignore
@@ -169,6 +175,58 @@ export const EmbeddingsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @summary Retrieve Embeddings And Content V2
+         * @param {EmbeddingsAndChunksQueryInputV2} embeddingsAndChunksQueryInputV2 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        list: async (embeddingsAndChunksQueryInputV2: EmbeddingsAndChunksQueryInputV2, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'embeddingsAndChunksQueryInputV2' is not null or undefined
+            assertParamExists('list', 'embeddingsAndChunksQueryInputV2', embeddingsAndChunksQueryInputV2)
+            const localVarPath = `/list_chunks_and_embeddings`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: embeddingsAndChunksQueryInputV2,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/list_chunks_and_embeddings',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(embeddingsAndChunksQueryInputV2, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Upload Chunks And Embeddings
          * @param {ChunksAndEmbeddingsUploadInput} chunksAndEmbeddingsUploadInput 
          * @param {*} [options] Override http request option.
@@ -277,6 +335,24 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve Embeddings And Content V2
+         * @param {EmbeddingsApiListRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async list(requestParameters: EmbeddingsApiListRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EmbeddingsAndChunksResponse>> {
+            const embeddingsAndChunksQueryInputV2: EmbeddingsAndChunksQueryInputV2 = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters,
+                include_vectors: requestParameters.include_vectors
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.list(embeddingsAndChunksQueryInputV2, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Upload Chunks And Embeddings
          * @param {EmbeddingsApiUploadChunksAndEmbeddingsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -325,6 +401,16 @@ export const EmbeddingsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @summary Retrieve Embeddings And Content V2
+         * @param {EmbeddingsApiListRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        list(requestParameters: EmbeddingsApiListRequest, options?: AxiosRequestConfig): AxiosPromise<EmbeddingsAndChunksResponse> {
+            return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Upload Chunks And Embeddings
          * @param {EmbeddingsApiUploadChunksAndEmbeddingsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -353,6 +439,15 @@ export type EmbeddingsApiGetDocumentsRequest = {
 export type EmbeddingsApiGetEmbeddingsAndChunksRequest = {
     
 } & EmbeddingsAndChunksQueryInput
+
+/**
+ * Request parameters for list operation in EmbeddingsApi.
+ * @export
+ * @interface EmbeddingsApiListRequest
+ */
+export type EmbeddingsApiListRequest = {
+    
+} & EmbeddingsAndChunksQueryInputV2
 
 /**
  * Request parameters for uploadChunksAndEmbeddings operation in EmbeddingsApi.
@@ -392,6 +487,18 @@ export class EmbeddingsApiGenerated extends BaseAPI {
      */
     public getEmbeddingsAndChunks(requestParameters: EmbeddingsApiGetEmbeddingsAndChunksRequest, options?: AxiosRequestConfig) {
         return EmbeddingsApiFp(this.configuration).getEmbeddingsAndChunks(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieve Embeddings And Content V2
+     * @param {EmbeddingsApiListRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmbeddingsApiGenerated
+     */
+    public list(requestParameters: EmbeddingsApiListRequest, options?: AxiosRequestConfig) {
+        return EmbeddingsApiFp(this.configuration).list(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

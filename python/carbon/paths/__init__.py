@@ -35,6 +35,7 @@ class PathValues(str, enum.Enum):
     AUTH_V1_WHITE_LABELING = "/auth/v1/white_labeling"
     EMBEDDINGS = "/embeddings"
     TEXT_CHUNKS = "/text_chunks"
+    LIST_CHUNKS_AND_EMBEDDINGS = "/list_chunks_and_embeddings"
     UPLOAD_CHUNKS_AND_EMBEDDINGS = "/upload_chunks_and_embeddings"
     ORGANIZATION = "/organization"
     ORGANIZATION_UPDATE = "/organization/update"

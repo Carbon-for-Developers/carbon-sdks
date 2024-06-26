@@ -148,6 +148,8 @@ operationIds:
     get: Integrations_listConversations
   /integrations/slack/sync:
     post: Integrations_syncSlack
+  /list_chunks_and_embeddings:
+    post: Embeddings_list
   /modify_user_configuration:
     post: Users_toggleUserFeatures
   /organization:

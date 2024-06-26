@@ -104,6 +104,25 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/list_chunks_and_embeddings-POST': {
+        parameters: [
+            {
+                name: 'filters'
+            },
+            {
+                name: 'pagination'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'include_vectors'
+            },
+        ]
+    },
     '/upload_chunks_and_embeddings-POST': {
         parameters: [
             {

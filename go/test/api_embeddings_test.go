@@ -86,6 +86,31 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test EmbeddingsApiService List", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        pagination := *carbon.NewPagination()
+        filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+        
+        embeddingsAndChunksQueryInputV2 := *carbon.NewEmbeddingsAndChunksQueryInputV2(
+            filters,
+        )
+        embeddingsAndChunksQueryInputV2.SetPagination(pagination)
+        embeddingsAndChunksQueryInputV2.SetOrderBy(null)
+        embeddingsAndChunksQueryInputV2.SetOrderDir(null)
+        embeddingsAndChunksQueryInputV2.SetIncludeVectors(false)
+        
+        request := client.EmbeddingsApi.List(
+            embeddingsAndChunksQueryInputV2,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test EmbeddingsApiService UploadChunksAndEmbeddings", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

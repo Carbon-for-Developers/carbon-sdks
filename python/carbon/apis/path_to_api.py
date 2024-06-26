@@ -30,6 +30,7 @@ from carbon.apis.paths.auth_v1_access_token import AuthV1AccessToken
 from carbon.apis.paths.auth_v1_white_labeling import AuthV1WhiteLabeling
 from carbon.apis.paths.embeddings import Embeddings
 from carbon.apis.paths.text_chunks import TextChunks
+from carbon.apis.paths.list_chunks_and_embeddings import ListChunksAndEmbeddings
 from carbon.apis.paths.upload_chunks_and_embeddings import UploadChunksAndEmbeddings
 from carbon.apis.paths.organization import Organization
 from carbon.apis.paths.organization_update import OrganizationUpdate
@@ -97,6 +98,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
         PathValues.TEXT_CHUNKS: TextChunks,
+        PathValues.LIST_CHUNKS_AND_EMBEDDINGS: ListChunksAndEmbeddings,
         PathValues.UPLOAD_CHUNKS_AND_EMBEDDINGS: UploadChunksAndEmbeddings,
         PathValues.ORGANIZATION: Organization,
         PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,
@@ -165,6 +167,7 @@ path_to_api = PathToApi(
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
         PathValues.TEXT_CHUNKS: TextChunks,
+        PathValues.LIST_CHUNKS_AND_EMBEDDINGS: ListChunksAndEmbeddings,
         PathValues.UPLOAD_CHUNKS_AND_EMBEDDINGS: UploadChunksAndEmbeddings,
         PathValues.ORGANIZATION: Organization,
         PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,

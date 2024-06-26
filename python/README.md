@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.8-blue)](https://pypi.org/project/carbon-python-sdk/0.2.8)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.9-blue)](https://pypi.org/project/carbon-python-sdk/0.2.9)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -28,6 +28,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
   * [`carbon.embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
+  * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.upload_chunks_and_embeddings`](#carbonembeddingsupload_chunks_and_embeddings)
   * [`carbon.files.create_user_file_tags`](#carbonfilescreate_user_file_tags)
   * [`carbon.files.delete`](#carbonfilesdelete)
@@ -95,7 +96,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.8
+pip install carbon-python-sdk==0.2.9
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -550,6 +551,57 @@ get_embeddings_and_chunks_response = carbon.embeddings.get_embeddings_and_chunks
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/text_chunks` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.embeddings.list`<a id="carbonembeddingslist"></a>
+
+Retrieve Embeddings And Content V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_response = carbon.embeddings.list(
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
+    pagination={
+        "limit": 10,
+        "offset": 0,
+    },
+    order_by="created_at",
+    order_dir="desc",
+    include_vectors=False,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
+
+
+##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
+
+
+##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./carbon/type/organization_user_files_to_sync_order_by_types.py)<a id="order_by-organizationuserfilestosyncorderbytypescarbontypeorganization_user_files_to_sync_order_by_typespy"></a>
+
+##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
+
+##### include_vectors: `bool`<a id="include_vectors-bool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`EmbeddingsAndChunksQueryInputV2`](./carbon/type/embeddings_and_chunks_query_input_v2.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`EmbeddingsAndChunksResponse`](./carbon/pydantic/embeddings_and_chunks_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_chunks_and_embeddings` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1372,7 +1424,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "9e41dd01-0592-477a-97b3-df618acf082b",
+        "request_id": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1626,7 +1678,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="1855375f-faa1-4965-99a1-03d1cab8000b",
+    request_id="6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1701,7 +1753,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
+Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -2011,7 +2063,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+    request_id="bcd3ae91-8bae-4d50-9046-94dc62b2078f",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2132,7 +2184,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+    request_id="bcd3ae91-8bae-4d50-9046-94dc62b2078f",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,

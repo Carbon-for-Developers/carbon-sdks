@@ -11,12 +11,14 @@
 
 from carbon.paths.embeddings.post import GetDocumentsRaw
 from carbon.paths.text_chunks.post import GetEmbeddingsAndChunksRaw
+from carbon.paths.list_chunks_and_embeddings.post import ListRaw
 from carbon.paths.upload_chunks_and_embeddings.post import UploadChunksAndEmbeddingsRaw
 
 
 class EmbeddingsApiRaw(
     GetDocumentsRaw,
     GetEmbeddingsAndChunksRaw,
+    ListRaw,
     UploadChunksAndEmbeddingsRaw,
 ):
     """NOTE:
