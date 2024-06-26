@@ -2465,6 +2465,37 @@ paths:
       - Embeddings
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--text_chunks
+  /list_chunks_and_embeddings:
+    post:
+      operationId: Embeddings_list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingsAndChunksQueryInputV2'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingsAndChunksResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Retrieve Embeddings And Content V2
+      tags:
+      - Embeddings
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--list_chunks_and_embeddings
   /upload_chunks_and_embeddings:
     post:
       operationId: Embeddings_uploadChunksAndEmbeddings
@@ -4056,7 +4087,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 9e41dd01-0592-477a-97b3-df618acf082b
+          request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
         authentication:
           tenant_name: tenant_name
           source: null
@@ -4092,7 +4123,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 9e41dd01-0592-477a-97b3-df618acf082b
+            request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4623,6 +4654,78 @@ components:
       required:
       - filters
       title: EmbeddingsAndChunksQueryInput
+      type: object
+      x-konfig-properties:
+        pagination:
+          default:
+            limit: 10
+            offset: 0
+        order_by:
+          default: updated_at
+        order_dir:
+          default: asc
+    EmbeddingsAndChunksQueryInputV2:
+      example:
+        order_dir: null
+        pagination:
+          offset: 0
+          limit: 10
+        order_by: null
+        include_vectors: false
+        filters:
+          organization_user_data_source_id:
+          - 1
+          - 1
+          source: null
+          tags:
+            key: null
+          embedding_generators:
+          - null
+          - null
+          root_files_only: true
+          sync_error_message: sync_error_message
+          include_all_children: false
+          name: name
+          tags_v2: "{}"
+          ids:
+          - 0
+          - 0
+          sync_statuses:
+          - null
+          - null
+          request_ids:
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          external_file_ids:
+          - external_file_ids
+          - external_file_ids
+          include_containers: true
+          non_synced_only: false
+          parent_file_ids:
+          - 6
+          - 6
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDir'
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+        include_vectors:
+          default: false
+          example: false
+          title: Include Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-EmbeddingsAndChunksQueryInputV2-properties-include_vectors
+      required:
+      - filters
+      title: EmbeddingsAndChunksQueryInputV2
       type: object
       x-konfig-properties:
         pagination:
@@ -5975,7 +6078,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 1855375f-faa1-4965-99a1-03d1cab8000b
+        request_id: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6093,13 +6196,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 1855375f-faa1-4965-99a1-03d1cab8000b
+          default: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 1855375f-faa1-4965-99a1-03d1cab8000b
+          example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           title: Request Id
           type: string
-          x-konfig-original-example: 1855375f-faa1-4965-99a1-03d1cab8000b
+          x-konfig-original-example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6121,7 +6224,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7702,7 +7805,7 @@ components:
         - null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+        request_id: bcd3ae91-8bae-4d50-9046-94dc62b2078f
         data_source_id: 0
       properties:
         tags:
@@ -7776,11 +7879,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
-          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           title: Request Id
           type: string
-          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -7836,7 +7939,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 9e41dd01-0592-477a-97b3-df618acf082b
+        request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
       properties:
         tags:
           nullable: true
@@ -7909,11 +8012,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 9e41dd01-0592-477a-97b3-df618acf082b
-          example: 9e41dd01-0592-477a-97b3-df618acf082b
+          default: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+          example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
           title: Request Id
           type: string
-          x-konfig-original-example: 9e41dd01-0592-477a-97b3-df618acf082b
+          x-konfig-original-example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -9683,6 +9786,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-EmbeddingsAndChunksQueryInputV2-properties-include_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfig-properties-auto_synced_source_types:
       example:
       - ARTICLE
@@ -9918,7 +10025,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 1855375f-faa1-4965-99a1-03d1cab8000b
+      example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10191,7 +10298,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+      example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10235,7 +10342,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 9e41dd01-0592-477a-97b3-df618acf082b
+      example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -10609,13 +10716,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 1855375f-faa1-4965-99a1-03d1cab8000b
+          default: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 1855375f-faa1-4965-99a1-03d1cab8000b
+          example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           title: Request Id
           type: string
-          x-konfig-original-example: 1855375f-faa1-4965-99a1-03d1cab8000b
+          x-konfig-original-example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -10637,7 +10744,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX"
+            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -10808,11 +10915,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
-          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           title: Request Id
           type: string
-          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -10948,11 +11055,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
-          example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           title: Request Id
           type: string
-          x-konfig-original-example: 9e2d7dc0-7a78-49fa-9f68-a411cfa13267
+          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11995,6 +12102,28 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-EmbeddingsAndChunksQueryInput-properties-include_vectors
+      required:
+      - filters
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--list_chunks_and_embeddings:
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDir'
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+        include_vectors:
+          default: false
+          example: false
+          title: Include Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-EmbeddingsAndChunksQueryInputV2-properties-include_vectors
       required:
       - filters
       type: object

@@ -28,6 +28,7 @@ export * from './embedding-properties';
 export * from './embeddings-and-chunks-filters';
 export * from './embeddings-and-chunks-order-by-columns';
 export * from './embeddings-and-chunks-query-input';
+export * from './embeddings-and-chunks-query-input-v2';
 export * from './embeddings-and-chunks-response';
 export * from './external-file-sync-statuses';
 export * from './external-source-item';

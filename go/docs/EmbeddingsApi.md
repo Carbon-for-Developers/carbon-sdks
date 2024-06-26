@@ -6,6 +6,7 @@ Method | Path | Description
 ------------- | ------------- | -------------
 [**GetDocuments**](EmbeddingsApi.md#GetDocuments) | **Post** /embeddings | Embeddings
 [**GetEmbeddingsAndChunks**](EmbeddingsApi.md#GetEmbeddingsAndChunks) | **Post** /text_chunks | Retrieve Embeddings And Content
+[**List**](EmbeddingsApi.md#List) | **Post** /list_chunks_and_embeddings | Retrieve Embeddings And Content V2
 [**UploadChunksAndEmbeddings**](EmbeddingsApi.md#UploadChunksAndEmbeddings) | **Post** /upload_chunks_and_embeddings | Upload Chunks And Embeddings
 
 
@@ -122,6 +123,61 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `EmbeddingsApi.GetEmbeddingsAndChunks`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `EmbeddingsAndChunksResponse.GetEmbeddingsAndChunks.Results`: %v\n", resp.Results)
     fmt.Fprintf(os.Stdout, "Response from `EmbeddingsAndChunksResponse.GetEmbeddingsAndChunks.Count`: %v\n", resp.Count)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+Retrieve Embeddings And Content V2
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    pagination := *carbon.NewPagination()
+    filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+    
+    embeddingsAndChunksQueryInputV2 := *carbon.NewEmbeddingsAndChunksQueryInputV2(
+        filters,
+    )
+    embeddingsAndChunksQueryInputV2.SetPagination(pagination)
+    embeddingsAndChunksQueryInputV2.SetOrderBy(null)
+    embeddingsAndChunksQueryInputV2.SetOrderDir(null)
+    embeddingsAndChunksQueryInputV2.SetIncludeVectors(false)
+    
+    request := client.EmbeddingsApi.List(
+        embeddingsAndChunksQueryInputV2,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EmbeddingsApi.List``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `List`: EmbeddingsAndChunksResponse
+    fmt.Fprintf(os.Stdout, "Response from `EmbeddingsApi.List`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EmbeddingsAndChunksResponse.List.Results`: %v\n", resp.Results)
+    fmt.Fprintf(os.Stdout, "Response from `EmbeddingsAndChunksResponse.List.Count`: %v\n", resp.Count)
 }
 ```
 

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.8-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.8)
+[![npm](https://img.shields.io/badge/gem-v0.2.9-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.9)
 
 </div>
 
@@ -24,6 +24,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
   * [`carbon.embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
+  * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.upload_chunks_and_embeddings`](#carbonembeddingsupload_chunks_and_embeddings)
   * [`carbon.files.create_user_file_tags`](#carbonfilescreate_user_file_tags)
   * [`carbon.files.delete`](#carbonfilesdelete)
@@ -89,7 +90,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.8'
+gem 'carbon_ruby_sdk', '~> 0.2.9'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -481,6 +482,49 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/text_chunks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.embeddings.list`<a id="carbonembeddingslist"></a>
+
+Retrieve Embeddings And Content V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.embeddings.list(
+  filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
+    },
+  pagination: {
+        "limit" => 10,
+        "offset" => 0,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  include_vectors: false,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EmbeddingsAndChunksResponse](./lib/carbon_ruby_sdk/models/embeddings_and_chunks_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_chunks_and_embeddings` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1230,7 +1274,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "9e41dd01-0592-477a-97b3-df618acf082b",
+        "request_id" => "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1450,7 +1494,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "1855375f-faa1-4965-99a1-03d1cab8000b",
+  request_id: "6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1511,7 +1555,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
+ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1810,7 +1854,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1914,7 +1958,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.8-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.8)
+[![npm](https://img.shields.io/badge/npm-v0.2.9-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.9)
 
 </div>
 
@@ -23,6 +23,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
   * [`carbon.embeddings.getDocuments`](#carbonembeddingsgetdocuments)
   * [`carbon.embeddings.getEmbeddingsAndChunks`](#carbonembeddingsgetembeddingsandchunks)
+  * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.uploadChunksAndEmbeddings`](#carbonembeddingsuploadchunksandembeddings)
   * [`carbon.files.createUserFileTags`](#carbonfilescreateuserfiletags)
   * [`carbon.files.delete`](#carbonfilesdelete)
@@ -477,6 +478,49 @@ const getEmbeddingsAndChunksResponse =
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/text_chunks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.embeddings.list`<a id="carbonembeddingslist"></a>
+
+Retrieve Embeddings And Content V2
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listResponse = await carbon.embeddings.list({
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
+    include_all_children: false,
+    non_synced_only: false,
+  },
+  include_vectors: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./models/organization-user-files-to-sync-order-by-types.ts)<a id="order_by-organizationuserfilestosyncorderbytypesmodelsorganization-user-files-to-sync-order-by-typests"></a>
+
+##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
+
+##### include_vectors: `boolean`<a id="include_vectors-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EmbeddingsAndChunksResponse](./models/embeddings-and-chunks-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_chunks_and_embeddings` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1440,7 +1484,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "1855375f-faa1-4965-99a1-03d1cab8000b",
+  request_id: "6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1509,7 +1553,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1801,7 +1845,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1909,7 +1953,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "9e2d7dc0-7a78-49fa-9f68-a411cfa13267",
+  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

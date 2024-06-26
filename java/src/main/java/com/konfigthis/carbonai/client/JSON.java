@@ -129,6 +129,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingProperties.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksFilters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInput.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInputV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ExternalSourceItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.FetchURLsRequest.CustomTypeAdapterFactory());

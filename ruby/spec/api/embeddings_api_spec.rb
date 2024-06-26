@@ -49,6 +49,17 @@ describe 'EmbeddingsApi' do
     end
   end
 
+  # unit tests for list
+  # Retrieve Embeddings And Content V2
+  # @param embeddings_and_chunks_query_input_v2 
+  # @param [Hash] opts the optional parameters
+  # @return [EmbeddingsAndChunksResponse]
+  describe 'list test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for upload_chunks_and_embeddings
   # Upload Chunks And Embeddings
   # @param chunks_and_embeddings_upload_input 

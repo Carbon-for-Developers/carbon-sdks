@@ -29,7 +29,7 @@
 |**requestId** | **String** | This request id will be added to all files that get synced using the generated OAuth URL |  [optional] |
 |**useOcr** | **Boolean** | Enable OCR for files that support it. Supported formats: pdf |  [optional] |
 |**parsePdfTablesWithOcr** | **Boolean** |  |  [optional] |
-|**enableFilePicker** | **Boolean** | Enable integration&#39;s file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX |  [optional] |
+|**enableFilePicker** | **Boolean** | Enable integration&#39;s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT |  [optional] |
 |**syncSourceItems** | **Boolean** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint |  [optional] |
 |**incrementalSync** | **Boolean** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. |  [optional] |
 |**fileSyncConfig** | [**FileSyncConfigNullable**](FileSyncConfigNullable.md) |  |  [optional] |

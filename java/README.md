@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.7-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.7)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.8-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.8)
 
 </div>
 
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.7</version>
+  <version>0.1.8</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.7"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.8"
 }
 ```
 
@@ -98,7 +98,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.7.jar`
+* `target/carbonai-java-sdk-0.1.8.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *DataSourcesApi* | [**revokeAccessToken**](docs/DataSourcesApi.md#revokeAccessToken) | **POST** /revoke_access_token | Revoke Access Token
 *EmbeddingsApi* | [**getDocuments**](docs/EmbeddingsApi.md#getDocuments) | **POST** /embeddings | Embeddings
 *EmbeddingsApi* | [**getEmbeddingsAndChunks**](docs/EmbeddingsApi.md#getEmbeddingsAndChunks) | **POST** /text_chunks | Retrieve Embeddings And Content
+*EmbeddingsApi* | [**list**](docs/EmbeddingsApi.md#list) | **POST** /list_chunks_and_embeddings | Retrieve Embeddings And Content V2
 *EmbeddingsApi* | [**uploadChunksAndEmbeddings**](docs/EmbeddingsApi.md#uploadChunksAndEmbeddings) | **POST** /upload_chunks_and_embeddings | Upload Chunks And Embeddings
 *FilesApi* | [**createUserFileTags**](docs/FilesApi.md#createUserFileTags) | **POST** /create_user_file_tags | Create File Tags
 *FilesApi* | [**delete**](docs/FilesApi.md#delete) | **DELETE** /deletefile/{file_id} | Delete File Endpoint
@@ -240,6 +241,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
+ - [EmbeddingsAndChunksQueryInputV2](docs/EmbeddingsAndChunksQueryInputV2.md)
  - [EmbeddingsAndChunksResponse](docs/EmbeddingsAndChunksResponse.md)
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)

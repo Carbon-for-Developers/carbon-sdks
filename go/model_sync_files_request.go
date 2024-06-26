@@ -58,7 +58,7 @@ func NewSyncFilesRequest(dataSourceId int32, ids []SyncFilesRequestIdsInner) *Sy
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"
+	var requestId string = "bcd3ae91-8bae-4d50-9046-94dc62b2078f"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -88,7 +88,7 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"
+	var requestId string = "bcd3ae91-8bae-4d50-9046-94dc62b2078f"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)

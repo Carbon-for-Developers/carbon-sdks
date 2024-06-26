@@ -91,6 +91,7 @@ from carbon.pydantic.embedding_properties import EmbeddingProperties
 from carbon.pydantic.embeddings_and_chunks_filters import EmbeddingsAndChunksFilters
 from carbon.pydantic.embeddings_and_chunks_order_by_columns import EmbeddingsAndChunksOrderByColumns
 from carbon.pydantic.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
+from carbon.pydantic.embeddings_and_chunks_query_input_v2 import EmbeddingsAndChunksQueryInputV2
 from carbon.pydantic.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.external_source_item import ExternalSourceItem
@@ -1425,7 +1426,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.8/python'
+        self.user_agent = 'Konfig/0.2.9/python'
 
     def __enter__(self):
         return self
