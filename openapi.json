@@ -1545,6 +1545,56 @@
         ]
       }
     },
+    "/list_chunks_and_embeddings": {
+      "post": {
+        "tags": [
+          "Embeddings"
+        ],
+        "summary": "Retrieve Embeddings And Content V2",
+        "operationId": "retrieve_embeddings_and_content_v2_list_chunks_and_embeddings_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmbeddingsAndChunksQueryInputV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmbeddingsAndChunksResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/upload_chunks_and_embeddings": {
       "post": {
         "tags": [
@@ -3628,7 +3678,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "9e41dd01-0592-477a-97b3-df618acf082b",
+              "request_id": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4275,6 +4325,50 @@
           "filters"
         ],
         "title": "EmbeddingsAndChunksQueryInput"
+      },
+      "EmbeddingsAndChunksQueryInputV2": {
+        "properties": {
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Pagination"
+              }
+            ],
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
+              }
+            ],
+            "default": "updated_at"
+          },
+          "order_dir": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrderDir"
+              }
+            ],
+            "default": "asc"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+          },
+          "include_vectors": {
+            "type": "boolean",
+            "title": "Include Vectors",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "filters"
+        ],
+        "title": "EmbeddingsAndChunksQueryInputV2"
       },
       "EmbeddingsAndChunksResponse": {
         "properties": {
@@ -6109,7 +6203,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "1855375f-faa1-4965-99a1-03d1cab8000b"
+            "default": "6c38b4bb-1536-46c9-ade7-72fabf05b3bb"
           },
           "use_ocr": {
             "anyOf": [
@@ -6139,7 +6233,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, GOOGLE_DRIVE, ONEDRIVE, BOX, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -8322,7 +8416,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "9e2d7dc0-7a78-49fa-9f68-a411cfa13267"
+            "default": "bcd3ae91-8bae-4d50-9046-94dc62b2078f"
           },
           "use_ocr": {
             "anyOf": [
@@ -8489,7 +8583,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "9e41dd01-0592-477a-97b3-df618acf082b"
+            "default": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb"
           },
           "enable_file_picker": {
             "type": "boolean",
