@@ -95,6 +95,13 @@ from carbon.model.list_items_filters_nullable_external_ids import ListItemsFilte
 from carbon.model.list_items_filters_nullable_ids import ListItemsFiltersNullableIds
 from carbon.model.list_request import ListRequest
 from carbon.model.list_response import ListResponse
+from carbon.model.list_user_response import ListUserResponse
+from carbon.model.list_user_response_auto_sync_enabled_sources import ListUserResponseAutoSyncEnabledSources
+from carbon.model.list_users_filters import ListUsersFilters
+from carbon.model.list_users_filters_carbon_user_ids import ListUsersFiltersCarbonUserIds
+from carbon.model.list_users_filters_customer_ids import ListUsersFiltersCustomerIds
+from carbon.model.list_users_order_by_types import ListUsersOrderByTypes
+from carbon.model.list_users_request import ListUsersRequest
 from carbon.model.modify_user_configuration_input import ModifyUserConfigurationInput
 from carbon.model.multi_modal_embedding_generators import MultiModalEmbeddingGenerators
 from carbon.model.notion_authentication import NotionAuthentication
@@ -162,6 +169,7 @@ from carbon.model.user_configuration_nullable import UserConfigurationNullable
 from carbon.model.user_file import UserFile
 from carbon.model.user_file_embedding_properties import UserFileEmbeddingProperties
 from carbon.model.user_files_v2 import UserFilesV2
+from carbon.model.user_list_response import UserListResponse
 from carbon.model.user_request_content import UserRequestContent
 from carbon.model.user_response import UserResponse
 from carbon.model.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources

@@ -18,8 +18,14 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
 import com.konfigthis.carbonai.client.model.DeleteUsersInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
+import com.konfigthis.carbonai.client.model.ListUsersFilters;
+import com.konfigthis.carbonai.client.model.ListUsersOrderByTypes;
+import com.konfigthis.carbonai.client.model.ListUsersRequest;
 import com.konfigthis.carbonai.client.model.ModifyUserConfigurationInput;
+import com.konfigthis.carbonai.client.model.OrderDirV2;
+import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.UpdateUsersInput;
+import com.konfigthis.carbonai.client.model.UserListResponse;
 import com.konfigthis.carbonai.client.model.UserRequestContent;
 import com.konfigthis.carbonai.client.model.UserResponse;
 import org.junit.jupiter.api.Disabled;
@@ -68,6 +74,30 @@ public class UsersApiTest {
     public void getTest() throws ApiException {
         String customerId = null;
         UserResponse response = api.get(customerId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * List Users Endpoint
+     *
+     * List users within an organization
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void listTest() throws ApiException {
+        Pagination pagination = null;
+        ListUsersFilters filters = null;
+        ListUsersOrderByTypes orderBy = null;
+        OrderDirV2 orderDir = null;
+        Boolean includeCount = null;
+        UserListResponse response = api.list()
+                .pagination(pagination)
+                .filters(filters)
+                .orderBy(orderBy)
+                .orderDir(orderDir)
+                .includeCount(includeCount)
                 .execute();
         // TODO: test validations
     }

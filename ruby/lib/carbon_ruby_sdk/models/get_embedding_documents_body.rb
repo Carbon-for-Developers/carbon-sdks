@@ -53,6 +53,9 @@ module Carbon
 
     attr_accessor :embedding_model
 
+    # Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+    attr_accessor :include_file_level_metadata
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -70,7 +73,8 @@ module Carbon
         :'hybrid_search' => :'hybrid_search',
         :'hybrid_search_tuning_parameters' => :'hybrid_search_tuning_parameters',
         :'media_type' => :'media_type',
-        :'embedding_model' => :'embedding_model'
+        :'embedding_model' => :'embedding_model',
+        :'include_file_level_metadata' => :'include_file_level_metadata'
       }
     end
 
@@ -96,7 +100,8 @@ module Carbon
         :'hybrid_search' => :'Boolean',
         :'hybrid_search_tuning_parameters' => :'HybridSearchTuningParamsNullable',
         :'media_type' => :'FileContentTypesNullable',
-        :'embedding_model' => :'EmbeddingGeneratorsNullable'
+        :'embedding_model' => :'EmbeddingGeneratorsNullable',
+        :'include_file_level_metadata' => :'Boolean'
       }
     end
 
@@ -114,7 +119,8 @@ module Carbon
         :'hybrid_search',
         :'hybrid_search_tuning_parameters',
         :'media_type',
-        :'embedding_model'
+        :'embedding_model',
+        :'include_file_level_metadata'
       ])
     end
 
@@ -204,6 +210,12 @@ module Carbon
       else
         self.embedding_model = 'OPENAI'
       end
+
+      if attributes.key?(:'include_file_level_metadata')
+        self.include_file_level_metadata = attributes[:'include_file_level_metadata']
+      else
+        self.include_file_level_metadata = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -286,7 +298,8 @@ module Carbon
           hybrid_search == o.hybrid_search &&
           hybrid_search_tuning_parameters == o.hybrid_search_tuning_parameters &&
           media_type == o.media_type &&
-          embedding_model == o.embedding_model
+          embedding_model == o.embedding_model &&
+          include_file_level_metadata == o.include_file_level_metadata
     end
 
     # @see the `==` method
@@ -298,7 +311,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model].hash
+      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata].hash
     end
 
     # Builds the object from hash

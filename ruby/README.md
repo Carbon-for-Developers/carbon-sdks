@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.9-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.9)
+[![npm](https://img.shields.io/badge/gem-v0.2.10-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.10)
 
 </div>
 
@@ -69,6 +69,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
+  * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
@@ -90,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.9'
+gem 'carbon_ruby_sdk', '~> 0.2.10'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -379,6 +380,7 @@ result = carbon.embeddings.get_documents(
     },
   media_type: "TEXT",
   embedding_model: "OPENAI",
+  include_file_level_metadata: false,
 )
 p result
 ```
@@ -432,6 +434,11 @@ Flag to control whether or not to perform hybrid search.
 ##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./lib/carbon_ruby_sdk/models/hybrid_search_tuning_params_nullable.rb)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablelibcarbon_ruby_sdkmodelshybrid_search_tuning_params_nullablerb"></a>
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
+##### include_file_level_metadata: `Boolean`<a id="include_file_level_metadata-boolean"></a>
+Flag to control whether or not to include file-level metadata in the response.
+This metadata will be included in the `content_metadata` field of each document
+along with chunk/embedding level metadata.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [DocumentResponseList](./lib/carbon_ruby_sdk/models/document_response_list.rb)
@@ -1274,7 +1281,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
+        "request_id" => "7b23cde6-ec28-417a-9bff-b10e9042394c",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1494,7 +1501,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
+  request_id: "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1555,7 +1562,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
+GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1854,7 +1861,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1958,7 +1965,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2645,6 +2652,47 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.list`<a id="carbonuserslist"></a>
+
+List users within an organization
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.users.list(
+  pagination: {
+        "limit" => 10,
+        "offset" => 0,
+    },
+  filters: {
+    },
+  order_by: "created_at",
+  order_dir: "asc",
+  include_count: false,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### filters: [`ListUsersFilters`](./lib/carbon_ruby_sdk/models/list_users_filters.rb)<a id="filters-listusersfilterslibcarbon_ruby_sdkmodelslist_users_filtersrb"></a>
+##### order_by: [`ListUsersOrderByTypes`](./lib/carbon_ruby_sdk/models/list_users_order_by_types.rb)<a id="order_by-listusersorderbytypeslibcarbon_ruby_sdkmodelslist_users_order_by_typesrb"></a>
+##### order_dir: [`OrderDirV2`](./lib/carbon_ruby_sdk/models/order_dir_v2.rb)<a id="order_dir-orderdirv2libcarbon_ruby_sdkmodelsorder_dir_v2rb"></a>
+##### include_count: `Boolean`<a id="include_count-boolean"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserListResponse](./lib/carbon_ruby_sdk/models/user_list_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -139,6 +139,13 @@ from carbon.pydantic.list_items_filters_nullable_external_ids import ListItemsFi
 from carbon.pydantic.list_items_filters_nullable_ids import ListItemsFiltersNullableIds
 from carbon.pydantic.list_request import ListRequest
 from carbon.pydantic.list_response import ListResponse
+from carbon.pydantic.list_user_response import ListUserResponse
+from carbon.pydantic.list_user_response_auto_sync_enabled_sources import ListUserResponseAutoSyncEnabledSources
+from carbon.pydantic.list_users_filters import ListUsersFilters
+from carbon.pydantic.list_users_filters_carbon_user_ids import ListUsersFiltersCarbonUserIds
+from carbon.pydantic.list_users_filters_customer_ids import ListUsersFiltersCustomerIds
+from carbon.pydantic.list_users_order_by_types import ListUsersOrderByTypes
+from carbon.pydantic.list_users_request import ListUsersRequest
 from carbon.pydantic.modify_user_configuration_input import ModifyUserConfigurationInput
 from carbon.pydantic.multi_modal_embedding_generators import MultiModalEmbeddingGenerators
 from carbon.pydantic.notion_authentication import NotionAuthentication
@@ -206,6 +213,7 @@ from carbon.pydantic.user_configuration_nullable import UserConfigurationNullabl
 from carbon.pydantic.user_file import UserFile
 from carbon.pydantic.user_file_embedding_properties import UserFileEmbeddingProperties
 from carbon.pydantic.user_files_v2 import UserFilesV2
+from carbon.pydantic.user_list_response import UserListResponse
 from carbon.pydantic.user_request_content import UserRequestContent
 from carbon.pydantic.user_response import UserResponse
 from carbon.pydantic.user_response_auto_sync_enabled_sources import UserResponseAutoSyncEnabledSources
@@ -1426,7 +1434,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.9/python'
+        self.user_agent = 'Konfig/0.2.10/python'
 
     def __enter__(self):
         return self

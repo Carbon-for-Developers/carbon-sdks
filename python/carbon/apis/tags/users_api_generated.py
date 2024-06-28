@@ -10,6 +10,7 @@
 
 from carbon.paths.delete_users.post import Delete
 from carbon.paths.user.post import Get
+from carbon.paths.list_users.post import List
 from carbon.paths.modify_user_configuration.post import ToggleUserFeatures
 from carbon.paths.update_users.post import UpdateUsers
 from carbon.apis.tags.users_api_raw import UsersApiRaw
@@ -18,6 +19,7 @@ from carbon.apis.tags.users_api_raw import UsersApiRaw
 class UsersApiGenerated(
     Delete,
     Get,
+    List,
     ToggleUserFeatures,
     UpdateUsers,
 ):

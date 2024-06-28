@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.8-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.8)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.9-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.9)
 
 </div>
 
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.8</version>
+  <version>0.1.9</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -61,7 +61,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.8"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.9"
 }
 ```
 
@@ -98,7 +98,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.8.jar`
+* `target/carbonai-java-sdk-0.1.9.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -197,6 +197,7 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**updateStats**](docs/OrganizationsApi.md#updateStats) | **POST** /organization/statistics | Update Organization Statistics
 *UsersApi* | [**delete**](docs/UsersApi.md#delete) | **POST** /delete_users | Delete Users
 *UsersApi* | [**get**](docs/UsersApi.md#get) | **POST** /user | User Endpoint
+*UsersApi* | [**list**](docs/UsersApi.md#list) | **POST** /list_users | List Users Endpoint
 *UsersApi* | [**toggleUserFeatures**](docs/UsersApi.md#toggleUserFeatures) | **POST** /modify_user_configuration | Toggle User Features
 *UsersApi* | [**updateUsers**](docs/UsersApi.md#updateUsers) | **POST** /update_users | Update Users
 *UtilitiesApi* | [**fetchUrls**](docs/UtilitiesApi.md#fetchUrls) | **GET** /fetch_urls | Fetch Urls
@@ -276,6 +277,10 @@ Class | Method | HTTP request | Description
  - [ListItemsFiltersNullable](docs/ListItemsFiltersNullable.md)
  - [ListRequest](docs/ListRequest.md)
  - [ListResponse](docs/ListResponse.md)
+ - [ListUserResponse](docs/ListUserResponse.md)
+ - [ListUsersFilters](docs/ListUsersFilters.md)
+ - [ListUsersOrderByTypes](docs/ListUsersOrderByTypes.md)
+ - [ListUsersRequest](docs/ListUsersRequest.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
  - [OANSCZGF](docs/OANSCZGF.md)
@@ -327,6 +332,7 @@ Class | Method | HTTP request | Description
  - [UserConfigurationNullable](docs/UserConfigurationNullable.md)
  - [UserFile](docs/UserFile.md)
  - [UserFilesV2](docs/UserFilesV2.md)
+ - [UserListResponse](docs/UserListResponse.md)
  - [UserRequestContent](docs/UserRequestContent.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserWebPageOrderByTypes](docs/UserWebPageOrderByTypes.md)

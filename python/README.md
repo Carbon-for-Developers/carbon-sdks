@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.9-blue)](https://pypi.org/project/carbon-python-sdk/0.2.9)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.10-blue)](https://pypi.org/project/carbon-python-sdk/0.2.10)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -73,6 +73,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.organizations.update_stats`](#carbonorganizationsupdate_stats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
+  * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
@@ -96,7 +97,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.9
+pip install carbon-python-sdk==0.2.10
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -438,6 +439,7 @@ get_documents_response = carbon.embeddings.get_documents(
     },
     media_type="TEXT",
     embedding_model="OPENAI",
+    include_file_level_metadata=False,
 )
 ```
 
@@ -489,6 +491,10 @@ Flag to control whether or not to perform hybrid search.
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/file_content_types_nullable.py)<a id="media_type-filecontenttypesnullablecarbontypefile_content_types_nullablepy"></a>
 
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./carbon/type/embedding_generators_nullable.py)<a id="embedding_model-embeddinggeneratorsnullablecarbontypeembedding_generators_nullablepy"></a>
+
+##### include_file_level_metadata: `Optional[bool]`<a id="include_file_level_metadata-optionalbool"></a>
+
+Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1424,7 +1430,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
+        "request_id": "7b23cde6-ec28-417a-9bff-b10e9042394c",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1678,7 +1684,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
+    request_id="dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1753,7 +1759,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
+Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -2063,7 +2069,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+    request_id="6e21ecc1-8385-46ac-abea-01ca0b2b268d",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2184,7 +2190,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+    request_id="6e21ecc1-8385-46ac-abea-01ca0b2b268d",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2969,6 +2975,54 @@ get_response = carbon.users.get(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.users.list`<a id="carbonuserslist"></a>
+
+List users within an organization
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_response = carbon.users.list(
+    pagination={
+        "limit": 10,
+        "offset": 0,
+    },
+    filters={},
+    order_by="created_at",
+    order_dir="asc",
+    include_count=False,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
+
+
+##### filters: [`ListUsersFilters`](./carbon/type/list_users_filters.py)<a id="filters-listusersfilterscarbontypelist_users_filterspy"></a>
+
+
+##### order_by: [`ListUsersOrderByTypes`](./carbon/type/list_users_order_by_types.py)<a id="order_by-listusersorderbytypescarbontypelist_users_order_by_typespy"></a>
+
+##### order_dir: [`OrderDirV2`](./carbon/type/order_dir_v2.py)<a id="order_dir-orderdirv2carbontypeorder_dir_v2py"></a>
+
+##### include_count: `bool`<a id="include_count-bool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`ListUsersRequest`](./carbon/type/list_users_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`UserListResponse`](./carbon/pydantic/user_list_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_users` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -28,8 +28,14 @@ import java.io.IOException;
 
 import com.konfigthis.carbonai.client.model.DeleteUsersInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
+import com.konfigthis.carbonai.client.model.ListUsersFilters;
+import com.konfigthis.carbonai.client.model.ListUsersOrderByTypes;
+import com.konfigthis.carbonai.client.model.ListUsersRequest;
 import com.konfigthis.carbonai.client.model.ModifyUserConfigurationInput;
+import com.konfigthis.carbonai.client.model.OrderDirV2;
+import com.konfigthis.carbonai.client.model.Pagination;
 import com.konfigthis.carbonai.client.model.UpdateUsersInput;
+import com.konfigthis.carbonai.client.model.UserListResponse;
 import com.konfigthis.carbonai.client.model.UserRequestContent;
 import com.konfigthis.carbonai.client.model.UserResponse;
 
@@ -404,6 +410,225 @@ public class UsersApiGenerated {
             
 
         return ((UsersApi) this).new GetRequestBuilder(customerId);
+    }
+    private okhttp3.Call listCall(ListUsersRequest listUsersRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = listUsersRequest;
+
+        // create path and map variables
+        String localVarPath = "/list_users";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listValidateBeforeCall(ListUsersRequest listUsersRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'listUsersRequest' is set
+        if (listUsersRequest == null) {
+            throw new ApiException("Missing the required parameter 'listUsersRequest' when calling list(Async)");
+        }
+
+        return listCall(listUsersRequest, _callback);
+
+    }
+
+
+    private ApiResponse<UserListResponse> listWithHttpInfo(ListUsersRequest listUsersRequest) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(listUsersRequest, null);
+        Type localVarReturnType = new TypeToken<UserListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(ListUsersRequest listUsersRequest, final ApiCallback<UserListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listValidateBeforeCall(listUsersRequest, _callback);
+        Type localVarReturnType = new TypeToken<UserListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ListRequestBuilderGenerated {
+        Pagination pagination;
+        ListUsersFilters filters;
+        ListUsersOrderByTypes orderBy;
+        OrderDirV2 orderDir;
+        Boolean includeCount;
+
+        public ListRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set pagination
+         * @param pagination  (optional)
+         * @return UsersApi.ListRequestBuilder
+         */
+        public UsersApi.ListRequestBuilder pagination(Pagination pagination) {
+            this.pagination = pagination;
+            return (UsersApi.ListRequestBuilder) this;
+        }
+        
+        /**
+         * Set filters
+         * @param filters  (optional)
+         * @return UsersApi.ListRequestBuilder
+         */
+        public UsersApi.ListRequestBuilder filters(ListUsersFilters filters) {
+            this.filters = filters;
+            return (UsersApi.ListRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderBy
+         * @param orderBy  (optional)
+         * @return UsersApi.ListRequestBuilder
+         */
+        public UsersApi.ListRequestBuilder orderBy(ListUsersOrderByTypes orderBy) {
+            this.orderBy = orderBy;
+            return (UsersApi.ListRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderDir
+         * @param orderDir  (optional)
+         * @return UsersApi.ListRequestBuilder
+         */
+        public UsersApi.ListRequestBuilder orderDir(OrderDirV2 orderDir) {
+            this.orderDir = orderDir;
+            return (UsersApi.ListRequestBuilder) this;
+        }
+        
+        /**
+         * Set includeCount
+         * @param includeCount  (optional, default to false)
+         * @return UsersApi.ListRequestBuilder
+         */
+        public UsersApi.ListRequestBuilder includeCount(Boolean includeCount) {
+            this.includeCount = includeCount;
+            return (UsersApi.ListRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for list
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            ListUsersRequest listUsersRequest = buildBodyParams();
+            return listCall(listUsersRequest, _callback);
+        }
+
+        private ListUsersRequest buildBodyParams() {
+            ListUsersRequest listUsersRequest = new ListUsersRequest();
+            listUsersRequest.pagination(this.pagination);
+            listUsersRequest.filters(this.filters);
+            listUsersRequest.orderBy(this.orderBy);
+            listUsersRequest.orderDir(this.orderDir);
+            listUsersRequest.includeCount(this.includeCount);
+            return listUsersRequest;
+        }
+
+        /**
+         * Execute list request
+         * @return UserListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UserListResponse execute() throws ApiException {
+            ListUsersRequest listUsersRequest = buildBodyParams();
+            ApiResponse<UserListResponse> localVarResp = listWithHttpInfo(listUsersRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute list request with HTTP info returned
+         * @return ApiResponse&lt;UserListResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UserListResponse> executeWithHttpInfo() throws ApiException {
+            ListUsersRequest listUsersRequest = buildBodyParams();
+            return listWithHttpInfo(listUsersRequest);
+        }
+
+        /**
+         * Execute list request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UserListResponse> _callback) throws ApiException {
+            ListUsersRequest listUsersRequest = buildBodyParams();
+            return listAsync(listUsersRequest, _callback);
+        }
+    }
+
+    /**
+     * List Users Endpoint
+     * List users within an organization
+     * @param listUsersRequest  (required)
+     * @return ListRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public UsersApi.ListRequestBuilder list() throws IllegalArgumentException {
+        return ((UsersApi) this).new ListRequestBuilder();
     }
     private okhttp3.Call toggleUserFeaturesCall(ModifyUserConfigurationInput modifyUserConfigurationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;

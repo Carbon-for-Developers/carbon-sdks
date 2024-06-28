@@ -58,6 +58,7 @@ public class Example {
     HybridSearchTuningParamsNullable hybridSearchTuningParameters = new HybridSearchTuningParamsNullable();
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT");
     EmbeddingGeneratorsNullable embeddingModel = EmbeddingGeneratorsNullable.fromValue("OPENAI");
+    Boolean includeFileLevelMetadata = false; // Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     try {
       DocumentResponseList result = client
               .embeddings
@@ -75,6 +76,7 @@ public class Example {
               .hybridSearchTuningParameters(hybridSearchTuningParameters)
               .mediaType(mediaType)
               .embeddingModel(embeddingModel)
+              .includeFileLevelMetadata(includeFileLevelMetadata)
               .execute();
       System.out.println(result);
       System.out.println(result.getDocuments());
@@ -104,6 +106,7 @@ public class Example {
               .hybridSearchTuningParameters(hybridSearchTuningParameters)
               .mediaType(mediaType)
               .embeddingModel(embeddingModel)
+              .includeFileLevelMetadata(includeFileLevelMetadata)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

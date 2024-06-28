@@ -59,7 +59,7 @@ func NewSyncOptions() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "ae8cd936-69c9-42cd-affb-87f3bea6d8eb"
+	var requestId string = "7b23cde6-ec28-417a-9bff-b10e9042394c"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker
@@ -91,7 +91,7 @@ func NewSyncOptionsWithDefaults() *SyncOptions {
 	this.SyncFilesOnConnection = *NewNullableBool(&syncFilesOnConnection)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "ae8cd936-69c9-42cd-affb-87f3bea6d8eb"
+	var requestId string = "7b23cde6-ec28-417a-9bff-b10e9042394c"
 	this.RequestId = &requestId
 	var enableFilePicker bool = true
 	this.EnableFilePicker = &enableFilePicker

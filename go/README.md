@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.9)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.10)
 
 </div>
 
@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *OrganizationsApi* | [**UpdateStats**](docs/OrganizationsApi.md#updatestats) | **Post** /organization/statistics | Update Organization Statistics
 *UsersApi* | [**Delete**](docs/UsersApi.md#delete) | **Post** /delete_users | Delete Users
 *UsersApi* | [**Get**](docs/UsersApi.md#get) | **Post** /user | User Endpoint
+*UsersApi* | [**List**](docs/UsersApi.md#list) | **Post** /list_users | List Users Endpoint
 *UsersApi* | [**ToggleUserFeatures**](docs/UsersApi.md#toggleuserfeatures) | **Post** /modify_user_configuration | Toggle User Features
 *UsersApi* | [**UpdateUsers**](docs/UsersApi.md#updateusers) | **Post** /update_users | Update Users
 *UtilitiesApi* | [**FetchUrls**](docs/UtilitiesApi.md#fetchurls) | **Get** /fetch_urls | Fetch Urls
@@ -190,6 +191,10 @@ Class | Method | HTTP request | Description
  - [ListItemsFiltersNullable](docs/ListItemsFiltersNullable.md)
  - [ListRequest](docs/ListRequest.md)
  - [ListResponse](docs/ListResponse.md)
+ - [ListUserResponse](docs/ListUserResponse.md)
+ - [ListUsersFilters](docs/ListUsersFilters.md)
+ - [ListUsersOrderByTypes](docs/ListUsersOrderByTypes.md)
+ - [ListUsersRequest](docs/ListUsersRequest.md)
  - [LocationPropertyInner](docs/LocationPropertyInner.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
@@ -250,6 +255,7 @@ Class | Method | HTTP request | Description
  - [UserConfigurationNullable](docs/UserConfigurationNullable.md)
  - [UserFile](docs/UserFile.md)
  - [UserFilesV2](docs/UserFilesV2.md)
+ - [UserListResponse](docs/UserListResponse.md)
  - [UserRequestContent](docs/UserRequestContent.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserWebPageOrderByTypes](docs/UserWebPageOrderByTypes.md)

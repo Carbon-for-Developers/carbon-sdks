@@ -310,7 +310,8 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
                 hybrid_search: requestParameters.hybrid_search,
                 hybrid_search_tuning_parameters: requestParameters.hybrid_search_tuning_parameters,
                 media_type: requestParameters.media_type,
-                embedding_model: requestParameters.embedding_model
+                embedding_model: requestParameters.embedding_model,
+                include_file_level_metadata: requestParameters.include_file_level_metadata
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDocuments(getEmbeddingDocumentsBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

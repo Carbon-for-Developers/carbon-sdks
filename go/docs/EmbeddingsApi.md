@@ -54,6 +54,7 @@ func main() {
     getEmbeddingDocumentsBody.SetHybridSearchTuningParameters(hybridSearchTuningParameters)
     getEmbeddingDocumentsBody.SetMediaType(null)
     getEmbeddingDocumentsBody.SetEmbeddingModel(null)
+    getEmbeddingDocumentsBody.SetIncludeFileLevelMetadata(false)
     
     request := client.EmbeddingsApi.GetDocuments(
         getEmbeddingDocumentsBody,

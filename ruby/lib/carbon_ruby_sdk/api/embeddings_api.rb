@@ -128,9 +128,10 @@ module Carbon
     # @param hybrid_search_tuning_parameters [HybridSearchTuningParamsNullable] 
     # @param media_type [FileContentTypesNullable] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
+    # @param include_file_level_metadata [Boolean] Flag to control whether or not to include file-level metadata in the response. This metadata will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', extra: {})
+    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL
@@ -147,6 +148,7 @@ module Carbon
       _body[:hybrid_search_tuning_parameters] = hybrid_search_tuning_parameters if hybrid_search_tuning_parameters != SENTINEL
       _body[:media_type] = media_type if media_type != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:include_file_level_metadata] = include_file_level_metadata if include_file_level_metadata != SENTINEL
       get_embedding_documents_body = _body
       api_response = get_documents_with_http_info_impl(get_embedding_documents_body, extra)
       api_response.data
@@ -264,9 +266,10 @@ module Carbon
     # @param hybrid_search_tuning_parameters [HybridSearchTuningParamsNullable] 
     # @param media_type [FileContentTypesNullable] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
+    # @param include_file_level_metadata [Boolean] Flag to control whether or not to include file-level metadata in the response. This metadata will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', extra: {})
+    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL
@@ -283,6 +286,7 @@ module Carbon
       _body[:hybrid_search_tuning_parameters] = hybrid_search_tuning_parameters if hybrid_search_tuning_parameters != SENTINEL
       _body[:media_type] = media_type if media_type != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:include_file_level_metadata] = include_file_level_metadata if include_file_level_metadata != SENTINEL
       get_embedding_documents_body = _body
       get_documents_with_http_info_impl(get_embedding_documents_body, extra)
     end

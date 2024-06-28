@@ -112,5 +112,11 @@ export interface GetEmbeddingDocumentsBody {
      * @memberof GetEmbeddingDocumentsBody
      */
     'embedding_model'?: EmbeddingGeneratorsNullable | null;
+    /**
+     * Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+     * @type {boolean}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'include_file_level_metadata'?: boolean | null;
 }
 

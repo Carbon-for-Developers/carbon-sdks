@@ -200,6 +200,120 @@ module Carbon
     end
 
 
+    # List Users Endpoint
+    #
+    # List users within an organization
+    #
+    # @param pagination [Pagination] 
+    # @param filters [ListUsersFilters] 
+    # @param order_by [ListUsersOrderByTypes] 
+    # @param order_dir [OrderDirV2] 
+    # @param include_count [Boolean] 
+    # @param body [ListUsersRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list(pagination: SENTINEL, filters: SENTINEL, order_by: 'created_at', order_dir: 'desc', include_count: false, extra: {})
+      _body = {}
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      _body[:include_count] = include_count if include_count != SENTINEL
+      list_users_request = _body
+      api_response = list_with_http_info_impl(list_users_request, extra)
+      api_response.data
+    end
+
+    # List Users Endpoint
+    #
+    # List users within an organization
+    #
+    # @param pagination [Pagination] 
+    # @param filters [ListUsersFilters] 
+    # @param order_by [ListUsersOrderByTypes] 
+    # @param order_dir [OrderDirV2] 
+    # @param include_count [Boolean] 
+    # @param body [ListUsersRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_with_http_info(pagination: SENTINEL, filters: SENTINEL, order_by: 'created_at', order_dir: 'desc', include_count: false, extra: {})
+      _body = {}
+      _body[:pagination] = pagination if pagination != SENTINEL
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:order_by] = order_by if order_by != SENTINEL
+      _body[:order_dir] = order_dir if order_dir != SENTINEL
+      _body[:include_count] = include_count if include_count != SENTINEL
+      list_users_request = _body
+      list_with_http_info_impl(list_users_request, extra)
+    end
+
+    # List Users Endpoint
+    # List users within an organization
+    # @param list_users_request [ListUsersRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [UserListResponse]
+    private def list_impl(list_users_request, opts = {})
+      data, _status_code, _headers = list_with_http_info(list_users_request, opts)
+      data
+    end
+
+    # List Users Endpoint
+    # List users within an organization
+    # @param list_users_request [ListUsersRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is UserListResponse, status code, headers and response
+    private def list_with_http_info_impl(list_users_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: UsersApi.list ...'
+      end
+      # verify the required parameter 'list_users_request' is set
+      if @api_client.config.client_side_validation && list_users_request.nil?
+        fail ArgumentError, "Missing the required parameter 'list_users_request' when calling UsersApi.list"
+      end
+      # resource path
+      local_var_path = '/list_users'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(list_users_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['apiKey']
+
+      new_options = opts.merge(
+        :operation => :"UsersApi.list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: UsersApi#list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Toggle User Features
     #
     # @param configuration_key_name [String] 

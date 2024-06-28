@@ -176,6 +176,7 @@ public class EmbeddingsApiGenerated {
         HybridSearchTuningParamsNullable hybridSearchTuningParameters;
         FileContentTypesNullable mediaType;
         EmbeddingGeneratorsNullable embeddingModel;
+        Boolean includeFileLevelMetadata;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -313,6 +314,16 @@ public class EmbeddingsApiGenerated {
         }
         
         /**
+         * Set includeFileLevelMetadata
+         * @param includeFileLevelMetadata Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata. (optional, default to false)
+         * @return EmbeddingsApi.GetDocumentsRequestBuilder
+         */
+        public EmbeddingsApi.GetDocumentsRequestBuilder includeFileLevelMetadata(Boolean includeFileLevelMetadata) {
+            this.includeFileLevelMetadata = includeFileLevelMetadata;
+            return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getDocuments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -345,6 +356,7 @@ public class EmbeddingsApiGenerated {
             getEmbeddingDocumentsBody.hybridSearchTuningParameters(this.hybridSearchTuningParameters);
             getEmbeddingDocumentsBody.mediaType(this.mediaType);
             getEmbeddingDocumentsBody.embeddingModel(this.embeddingModel);
+            getEmbeddingDocumentsBody.includeFileLevelMetadata(this.includeFileLevelMetadata);
             return getEmbeddingDocumentsBody;
         }
 

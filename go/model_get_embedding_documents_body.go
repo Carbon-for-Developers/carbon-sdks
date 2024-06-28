@@ -44,6 +44,8 @@ type GetEmbeddingDocumentsBody struct {
 	HybridSearchTuningParameters NullableHybridSearchTuningParamsNullable `json:"hybrid_search_tuning_parameters,omitempty"`
 	MediaType NullableFileContentTypesNullable `json:"media_type,omitempty"`
 	EmbeddingModel NullableEmbeddingGeneratorsNullable `json:"embedding_model,omitempty"`
+	// Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+	IncludeFileLevelMetadata NullableBool `json:"include_file_level_metadata,omitempty"`
 }
 
 // NewGetEmbeddingDocumentsBody instantiates a new GetEmbeddingDocumentsBody object
@@ -58,6 +60,8 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 	this.IncludeAllChildren = &includeAllChildren
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
+	var includeFileLevelMetadata bool = false
+	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
 	return &this
 }
 
@@ -70,6 +74,8 @@ func NewGetEmbeddingDocumentsBodyWithDefaults() *GetEmbeddingDocumentsBody {
 	this.IncludeAllChildren = &includeAllChildren
 	var embeddingModel EmbeddingGeneratorsNullable = EMBEDDINGGENERATORSNULLABLE_OPENAI
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
+	var includeFileLevelMetadata bool = false
+	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
 	return &this
 }
 
@@ -615,6 +621,48 @@ func (o *GetEmbeddingDocumentsBody) UnsetEmbeddingModel() {
 	o.EmbeddingModel.Unset()
 }
 
+// GetIncludeFileLevelMetadata returns the IncludeFileLevelMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetEmbeddingDocumentsBody) GetIncludeFileLevelMetadata() bool {
+	if o == nil || isNil(o.IncludeFileLevelMetadata.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeFileLevelMetadata.Get()
+}
+
+// GetIncludeFileLevelMetadataOk returns a tuple with the IncludeFileLevelMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetEmbeddingDocumentsBody) GetIncludeFileLevelMetadataOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.IncludeFileLevelMetadata.Get(), o.IncludeFileLevelMetadata.IsSet()
+}
+
+// HasIncludeFileLevelMetadata returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasIncludeFileLevelMetadata() bool {
+	if o != nil && o.IncludeFileLevelMetadata.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeFileLevelMetadata gets a reference to the given NullableBool and assigns it to the IncludeFileLevelMetadata field.
+func (o *GetEmbeddingDocumentsBody) SetIncludeFileLevelMetadata(v bool) {
+	o.IncludeFileLevelMetadata.Set(&v)
+}
+// SetIncludeFileLevelMetadataNil sets the value for IncludeFileLevelMetadata to be an explicit nil
+func (o *GetEmbeddingDocumentsBody) SetIncludeFileLevelMetadataNil() {
+	o.IncludeFileLevelMetadata.Set(nil)
+}
+
+// UnsetIncludeFileLevelMetadata ensures that no value is present for IncludeFileLevelMetadata, not even an explicit nil
+func (o *GetEmbeddingDocumentsBody) UnsetIncludeFileLevelMetadata() {
+	o.IncludeFileLevelMetadata.Unset()
+}
+
 func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -661,6 +709,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.EmbeddingModel.IsSet() {
 		toSerialize["embedding_model"] = o.EmbeddingModel.Get()
+	}
+	if o.IncludeFileLevelMetadata.IsSet() {
+		toSerialize["include_file_level_metadata"] = o.IncludeFileLevelMetadata.Get()
 	}
 	return json.Marshal(toSerialize)
 }

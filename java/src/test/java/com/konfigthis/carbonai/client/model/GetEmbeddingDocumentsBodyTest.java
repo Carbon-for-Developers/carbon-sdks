@@ -166,4 +166,12 @@ public class GetEmbeddingDocumentsBodyTest {
         // TODO: test embeddingModel
     }
 
+    /**
+     * Test the property 'includeFileLevelMetadata'
+     */
+    @Test
+    public void includeFileLevelMetadataTest() {
+        // TODO: test includeFileLevelMetadata
+    }
+
 }

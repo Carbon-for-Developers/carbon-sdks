@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "bcd3ae91-8bae-4d50-9046-94dc62b2078f"]
+**RequestId** | Pointer to **string** |  | [optional] [default to "6e21ecc1-8385-46ac-abea-01ca0b2b268d"]
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources. | [optional] [default to false]
