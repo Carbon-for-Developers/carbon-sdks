@@ -63,6 +63,9 @@ class GetEmbeddingDocumentsBody(BaseModel):
 
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = Field(None, alias='embedding_model')
 
+    # Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+    include_file_level_metadata: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_file_level_metadata')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

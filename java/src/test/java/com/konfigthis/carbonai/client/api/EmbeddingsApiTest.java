@@ -82,6 +82,7 @@ public class EmbeddingsApiTest {
         HybridSearchTuningParamsNullable hybridSearchTuningParameters = null;
         FileContentTypesNullable mediaType = null;
         EmbeddingGeneratorsNullable embeddingModel = null;
+        Boolean includeFileLevelMetadata = null;
         DocumentResponseList response = api.getDocuments(query, k)
                 .tags(tags)
                 .queryVector(queryVector)
@@ -96,6 +97,7 @@ public class EmbeddingsApiTest {
                 .hybridSearchTuningParameters(hybridSearchTuningParameters)
                 .mediaType(mediaType)
                 .embeddingModel(embeddingModel)
+                .includeFileLevelMetadata(includeFileLevelMetadata)
                 .execute();
         // TODO: test validations
     }

@@ -77,6 +77,9 @@ operation_parameter_map = {
             {
                 'name': 'embedding_model'
             },
+            {
+                'name': 'include_file_level_metadata'
+            },
         ]
     },
     '/text_chunks-POST': {
@@ -1076,6 +1079,25 @@ operation_parameter_map = {
         'parameters': [
             {
                 'name': 'customer_id'
+            },
+        ]
+    },
+    '/list_users-POST': {
+        'parameters': [
+            {
+                'name': 'pagination'
+            },
+            {
+                'name': 'filters'
+            },
+            {
+                'name': 'order_by'
+            },
+            {
+                'name': 'order_dir'
+            },
+            {
+                'name': 'include_count'
             },
         ]
     },

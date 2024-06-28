@@ -131,7 +131,7 @@ public class OAuthURLRequest {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "6c38b4bb-1536-46c9-ade7-72fabf05b3bb";
+  private String requestId = "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7";
 
   public static final String SERIALIZED_NAME_USE_OCR = "use_ocr";
   @SerializedName(SERIALIZED_NAME_USE_OCR)
@@ -725,7 +725,7 @@ public class OAuthURLRequest {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "6c38b4bb-1536-46c9-ade7-72fabf05b3bb", value = "This request id will be added to all files that get synced using the generated OAuth URL")
+  @ApiModelProperty(example = "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7", value = "This request id will be added to all files that get synced using the generated OAuth URL")
 
   public String getRequestId() {
     return requestId;
@@ -808,11 +808,11 @@ public class OAuthURLRequest {
   }
 
    /**
-   * Enable integration&#39;s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
+   * Enable integration&#39;s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
    * @return enableFilePicker
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT")
+  @ApiModelProperty(example = "true", value = "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX")
 
   public Boolean getEnableFilePicker() {
     return enableFilePicker;

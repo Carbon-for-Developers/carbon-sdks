@@ -11,6 +11,7 @@
 
 from carbon.paths.delete_users.post import DeleteRaw
 from carbon.paths.user.post import GetRaw
+from carbon.paths.list_users.post import ListRaw
 from carbon.paths.modify_user_configuration.post import ToggleUserFeaturesRaw
 from carbon.paths.update_users.post import UpdateUsersRaw
 
@@ -18,6 +19,7 @@ from carbon.paths.update_users.post import UpdateUsersRaw
 class UsersApiRaw(
     DeleteRaw,
     GetRaw,
+    ListRaw,
     ToggleUserFeaturesRaw,
     UpdateUsersRaw,
 ):

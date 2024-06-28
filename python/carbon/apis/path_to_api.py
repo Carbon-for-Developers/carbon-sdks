@@ -39,6 +39,7 @@ from carbon.apis.paths.user import User
 from carbon.apis.paths.modify_user_configuration import ModifyUserConfiguration
 from carbon.apis.paths.delete_users import DeleteUsers
 from carbon.apis.paths.update_users import UpdateUsers
+from carbon.apis.paths.list_users import ListUsers
 from carbon.apis.paths.uploadfile import Uploadfile
 from carbon.apis.paths.upload_file_from_url import UploadFileFromUrl
 from carbon.apis.paths.upload_text import UploadText
@@ -107,6 +108,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,
         PathValues.UPDATE_USERS: UpdateUsers,
+        PathValues.LIST_USERS: ListUsers,
         PathValues.UPLOADFILE: Uploadfile,
         PathValues.UPLOAD_FILE_FROM_URL: UploadFileFromUrl,
         PathValues.UPLOAD_TEXT: UploadText,
@@ -176,6 +178,7 @@ path_to_api = PathToApi(
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,
         PathValues.UPDATE_USERS: UpdateUsers,
+        PathValues.LIST_USERS: ListUsers,
         PathValues.UPLOADFILE: Uploadfile,
         PathValues.UPLOAD_FILE_FROM_URL: UploadFileFromUrl,
         PathValues.UPLOAD_TEXT: UploadText,

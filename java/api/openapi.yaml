@@ -2815,6 +2815,39 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--update_users
       x-content-type: application/json
       x-accepts: application/json
+  /list_users:
+    post:
+      description: List users within an organization
+      operationId: Users_list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListUsersRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - apiKey: []
+      summary: List Users Endpoint
+      tags:
+      - Users
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--list_users
+      x-content-type: application/json
+      x-accepts: application/json
   /uploadfile:
     post:
       description: "This endpoint is used to directly upload local files to Carbon.\
@@ -4257,7 +4290,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+          request_id: 7b23cde6-ec28-417a-9bff-b10e9042394c
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4293,7 +4326,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+            request_id: 7b23cde6-ec28-417a-9bff-b10e9042394c
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -5377,6 +5410,7 @@ components:
         - 0.8008281904610115
         - 0.8008281904610115
         include_raw_file: true
+        include_file_level_metadata: false
         query: query
         hybrid_search_tuning_parameters:
           weight_a: 0.5
@@ -5559,6 +5593,17 @@ components:
           $ref: '#/components/schemas/FileContentTypesNullable'
         embedding_model:
           $ref: '#/components/schemas/EmbeddingGeneratorsNullable'
+        include_file_level_metadata:
+          default: false
+          description: |-
+            Flag to control whether or not to include file-level metadata in the response. This metadata
+                    will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+          example: false
+          nullable: true
+          title: Include File Level Metadata
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata
       required:
       - k
       - query
@@ -6133,6 +6178,145 @@ components:
       title: ListResponse
       type: object
       x-konfig-is-used-in-successful-response: true
+    ListUserResponse:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        custom_limits: {}
+        organization_id: 6
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        deleted_at: 2000-01-23T04:56:07.000+00:00
+        organization_supplied_user_id: organization_supplied_user_id
+        enabled_features: "{}"
+        auto_sync_enabled_sources: []
+      properties:
+        id:
+          title: Id
+          type: integer
+        organization_id:
+          title: Organization Id
+          type: integer
+        organization_supplied_user_id:
+          title: Organization Supplied User Id
+          type: string
+        created_at:
+          format: date-time
+          title: Created At
+          type: string
+        updated_at:
+          format: date-time
+          title: Updated At
+          type: string
+        deleted_at:
+          format: date-time
+          nullable: true
+          title: Deleted At
+          type: string
+        enabled_features:
+          nullable: true
+          title: Enabled Features
+          type: object
+        custom_limits:
+          example: {}
+          title: Custom Limits
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUserResponse-properties-custom_limits
+        auto_sync_enabled_sources:
+          default: []
+          example: []
+          items: {}
+          title: Auto Sync Enabled Sources
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUserResponse-properties-auto_sync_enabled_sources
+      required:
+      - auto_sync_enabled_sources
+      - created_at
+      - custom_limits
+      - deleted_at
+      - enabled_features
+      - id
+      - organization_id
+      - organization_supplied_user_id
+      - updated_at
+      title: ListUserResponse
+      type: object
+    ListUsersFilters:
+      example:
+        customer_ids:
+        - customer_ids
+        - customer_ids
+        carbon_user_ids:
+        - 0
+        - 0
+      properties:
+        customer_ids:
+          description: Filter by a list of customer IDs
+          items:
+            type: string
+          nullable: true
+          title: Customer Ids
+          type: array
+        carbon_user_ids:
+          description: Filter by a list of carbon user IDs
+          items:
+            type: integer
+          nullable: true
+          title: Carbon User Ids
+          type: array
+      title: ListUsersFilters
+      type: object
+    ListUsersOrderByTypes:
+      enum:
+      - created_at
+      - updated_at
+      title: ListUsersOrderByTypes
+      type: string
+    ListUsersRequest:
+      example:
+        order_dir: null
+        pagination:
+          offset: 0
+          limit: 10
+        order_by: null
+        filters:
+          customer_ids:
+          - customer_ids
+          - customer_ids
+          carbon_user_ids:
+          - 0
+          - 0
+        include_count: false
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        filters:
+          $ref: '#/components/schemas/ListUsersFilters'
+        order_by:
+          $ref: '#/components/schemas/ListUsersOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
+        include_count:
+          default: false
+          example: false
+          title: Include Count
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUsersRequest-properties-include_count
+      title: ListUsersRequest
+      type: object
+      x-konfig-properties:
+        pagination:
+          default:
+            limit: 10
+            offset: 0
+        filters:
+          default: {}
+        order_by:
+          default: created_at
+        order_dir:
+          default: desc
     ModifyUserConfigurationInput:
       example:
         configuration_key_name: configuration_key_name
@@ -6249,7 +6433,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+        request_id: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6367,13 +6551,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          default: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          example: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           title: Request Id
           type: string
-          x-konfig-original-example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          x-konfig-original-example: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6395,7 +6579,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT"
+            \ it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7970,7 +8154,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+        request_id: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
         data_source_id: 0
       properties:
         tags:
@@ -8042,11 +8226,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
-          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          default: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
+          example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           title: Request Id
           type: string
-          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          x-konfig-original-example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8102,7 +8286,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+        request_id: 7b23cde6-ec28-417a-9bff-b10e9042394c
       properties:
         tags:
           nullable: true
@@ -8175,11 +8359,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
-          example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+          default: 7b23cde6-ec28-417a-9bff-b10e9042394c
+          example: 7b23cde6-ec28-417a-9bff-b10e9042394c
           title: Request Id
           type: string
-          x-konfig-original-example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+          x-konfig-original-example: 7b23cde6-ec28-417a-9bff-b10e9042394c
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8750,6 +8934,44 @@ components:
       - count
       - results
       title: UserFilesV2
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    UserListResponse:
+      example:
+        count: 1
+        users:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          custom_limits: {}
+          organization_id: 6
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          organization_supplied_user_id: organization_supplied_user_id
+          enabled_features: "{}"
+          auto_sync_enabled_sources: []
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          custom_limits: {}
+          organization_id: 6
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 0
+          deleted_at: 2000-01-23T04:56:07.000+00:00
+          organization_supplied_user_id: organization_supplied_user_id
+          enabled_features: "{}"
+          auto_sync_enabled_sources: []
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/ListUserResponse'
+          title: Users
+          type: array
+        count:
+          nullable: true
+          title: Count
+          type: integer
+      required:
+      - count
+      - users
+      title: UserListResponse
       type: object
       x-konfig-is-used-in-successful-response: true
     UserRequestContent:
@@ -10072,6 +10294,10 @@ components:
           type: array
       type: object
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-tags:
       example: {}
       properties: {}
@@ -10167,6 +10393,20 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ListUserResponse-properties-custom_limits:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ListUserResponse-properties-auto_sync_enabled_sources:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ListUsersRequest-properties-include_count:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-chunk_size:
       example: 1500
       type: number
@@ -10200,7 +10440,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+      example: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10473,7 +10713,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+      example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10517,7 +10757,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: ae8cd936-69c9-42cd-affb-87f3bea6d8eb
+      example: 7b23cde6-ec28-417a-9bff-b10e9042394c
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -10891,13 +11131,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          default: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          example: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           title: Request Id
           type: string
-          x-konfig-original-example: 6c38b4bb-1536-46c9-ade7-72fabf05b3bb
+          x-konfig-original-example: dbc54493-ce4f-4a1d-a78b-862f21f1e3d7
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -10919,7 +11159,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT"
+            \ it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -11075,11 +11315,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
-          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          default: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
+          example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           title: Request Id
           type: string
-          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          x-konfig-original-example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11200,11 +11440,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: bcd3ae91-8bae-4d50-9046-94dc62b2078f
-          example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          default: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
+          example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           title: Request Id
           type: string
-          x-konfig-original-example: bcd3ae91-8bae-4d50-9046-94dc62b2078f
+          x-konfig-original-example: 6e21ecc1-8385-46ac-abea-01ca0b2b268d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -12203,6 +12443,17 @@ components:
           $ref: '#/components/schemas/FileContentTypesNullable'
         embedding_model:
           $ref: '#/components/schemas/EmbeddingGeneratorsNullable'
+        include_file_level_metadata:
+          default: false
+          description: |-
+            Flag to control whether or not to include file-level metadata in the response. This metadata
+                    will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+          example: false
+          nullable: true
+          title: Include File Level Metadata
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata
       required:
       - k
       - query
@@ -12372,6 +12623,26 @@ components:
           type: array
       required:
       - customer_ids
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--list_users:
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        filters:
+          $ref: '#/components/schemas/ListUsersFilters'
+        order_by:
+          $ref: '#/components/schemas/ListUsersOrderByTypes'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2'
+        include_count:
+          default: false
+          example: false
+          title: Include Count
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUsersRequest-properties-include_count
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

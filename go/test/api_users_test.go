@@ -65,6 +65,30 @@ func Test_carbon_UsersApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test UsersApiService List", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        pagination := *carbon.NewPagination()
+        filters := *carbon.NewListUsersFilters()
+        
+        listUsersRequest := *carbon.NewListUsersRequest()
+        listUsersRequest.SetPagination(pagination)
+        listUsersRequest.SetFilters(filters)
+        listUsersRequest.SetOrderBy(null)
+        listUsersRequest.SetOrderDir(null)
+        listUsersRequest.SetIncludeCount(false)
+        
+        request := client.UsersApi.List(
+            listUsersRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test UsersApiService ToggleUserFeatures", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **HybridSearchTuningParameters** | Pointer to [**NullableHybridSearchTuningParamsNullable**](HybridSearchTuningParamsNullable.md) |  | [optional] 
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **EmbeddingModel** | Pointer to [**NullableEmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional] [default to EMBEDDINGGENERATORSNULLABLE_OPENAI]
+**IncludeFileLevelMetadata** | Pointer to **NullableBool** | Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata. | [optional] [default to false]
 
 ## Methods
 
@@ -524,6 +525,41 @@ HasEmbeddingModel returns a boolean if a field has been set.
 `func (o *GetEmbeddingDocumentsBody) UnsetEmbeddingModel()`
 
 UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
+### GetIncludeFileLevelMetadata
+
+`func (o *GetEmbeddingDocumentsBody) GetIncludeFileLevelMetadata() bool`
+
+GetIncludeFileLevelMetadata returns the IncludeFileLevelMetadata field if non-nil, zero value otherwise.
+
+### GetIncludeFileLevelMetadataOk
+
+`func (o *GetEmbeddingDocumentsBody) GetIncludeFileLevelMetadataOk() (*bool, bool)`
+
+GetIncludeFileLevelMetadataOk returns a tuple with the IncludeFileLevelMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeFileLevelMetadata
+
+`func (o *GetEmbeddingDocumentsBody) SetIncludeFileLevelMetadata(v bool)`
+
+SetIncludeFileLevelMetadata sets IncludeFileLevelMetadata field to given value.
+
+### HasIncludeFileLevelMetadata
+
+`func (o *GetEmbeddingDocumentsBody) HasIncludeFileLevelMetadata() bool`
+
+HasIncludeFileLevelMetadata returns a boolean if a field has been set.
+
+### SetIncludeFileLevelMetadataNil
+
+`func (o *GetEmbeddingDocumentsBody) SetIncludeFileLevelMetadataNil(b bool)`
+
+ SetIncludeFileLevelMetadataNil sets the value for IncludeFileLevelMetadata to be an explicit nil
+
+### UnsetIncludeFileLevelMetadata
+`func (o *GetEmbeddingDocumentsBody) UnsetIncludeFileLevelMetadata()`
+
+UnsetIncludeFileLevelMetadata ensures that no value is present for IncludeFileLevelMetadata, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

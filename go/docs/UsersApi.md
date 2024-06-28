@@ -6,6 +6,7 @@ Method | Path | Description
 ------------- | ------------- | -------------
 [**Delete**](UsersApi.md#Delete) | **Post** /delete_users | Delete Users
 [**Get**](UsersApi.md#Get) | **Post** /user | User Endpoint
+[**List**](UsersApi.md#List) | **Post** /list_users | List Users Endpoint
 [**ToggleUserFeatures**](UsersApi.md#ToggleUserFeatures) | **Post** /modify_user_configuration | Toggle User Features
 [**UpdateUsers**](UsersApi.md#UpdateUsers) | **Post** /update_users | Update Users
 
@@ -113,6 +114,60 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.EnabledFeatures`: %v\n", resp.EnabledFeatures)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", resp.CustomLimits)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+List Users Endpoint
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetApiKey("AUTHORIZATION")
+    client := carbon.NewAPIClient(configuration)
+
+    pagination := *carbon.NewPagination()
+    filters := *carbon.NewListUsersFilters()
+    
+    listUsersRequest := *carbon.NewListUsersRequest()
+    listUsersRequest.SetPagination(pagination)
+    listUsersRequest.SetFilters(filters)
+    listUsersRequest.SetOrderBy(null)
+    listUsersRequest.SetOrderDir(null)
+    listUsersRequest.SetIncludeCount(false)
+    
+    request := client.UsersApi.List(
+        listUsersRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.List``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `List`: UserListResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.List`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `UserListResponse.List.Users`: %v\n", resp.Users)
+    fmt.Fprintf(os.Stdout, "Response from `UserListResponse.List.Count`: %v\n", resp.Count)
 }
 ```
 

@@ -2063,6 +2063,54 @@
         }
       }
     },
+    "/list_users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List Users Endpoint",
+        "operationId": "Users_list",
+        "security": [
+          {
+            "apiKey": [
+            ]
+          }
+        ],
+        "description": "List users within an organization",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListUsersRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/uploadfile": {
       "post": {
         "tags": [
@@ -3837,7 +3885,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb",
+              "request_id": "7b23cde6-ec28-417a-9bff-b10e9042394c",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5036,6 +5084,13 @@
           },
           "embedding_model": {
             "$ref": "#/components/schemas/EmbeddingGeneratorsNullable"
+          },
+          "include_file_level_metadata": {
+            "title": "Include File Level Metadata",
+            "description": "Flag to control whether or not to include file-level metadata in the response. This metadata\n        will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -5541,6 +5596,143 @@
           "data"
         ]
       },
+      "ListUserResponse": {
+        "title": "ListUserResponse",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "organization_id": {
+            "title": "Organization Id",
+            "type": "integer"
+          },
+          "organization_supplied_user_id": {
+            "title": "Organization Supplied User Id",
+            "type": "string"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string",
+            "format": "date-time"
+          },
+          "deleted_at": {
+            "title": "Deleted At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "enabled_features": {
+            "title": "Enabled Features",
+            "type": "object",
+            "nullable": true
+          },
+          "custom_limits": {
+            "title": "Custom Limits",
+            "type": "object",
+            "default": {
+            }
+          },
+          "auto_sync_enabled_sources": {
+            "title": "Auto Sync Enabled Sources",
+            "items": {
+            },
+            "type": "array",
+            "default": [
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "organization_id",
+          "organization_supplied_user_id",
+          "created_at",
+          "updated_at",
+          "deleted_at",
+          "enabled_features",
+          "custom_limits",
+          "auto_sync_enabled_sources"
+        ]
+      },
+      "ListUsersFilters": {
+        "title": "ListUsersFilters",
+        "properties": {
+          "customer_ids": {
+            "title": "Customer Ids",
+            "description": "Filter by a list of customer IDs",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "carbon_user_ids": {
+            "title": "Carbon User Ids",
+            "description": "Filter by a list of carbon user IDs",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ListUsersOrderByTypes": {
+        "title": "ListUsersOrderByTypes",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "ListUsersRequest": {
+        "title": "ListUsersRequest",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/ListUsersFilters"
+          },
+          "order_by": {
+            "$ref": "#/components/schemas/ListUsersOrderByTypes"
+          },
+          "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2"
+          },
+          "include_count": {
+            "title": "Include Count",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object",
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "filters": {
+            "default": {
+            }
+          },
+          "order_by": {
+            "default": "created_at"
+          },
+          "order_dir": {
+            "default": "desc"
+          }
+        }
+      },
       "ModifyUserConfigurationInput": {
         "title": "ModifyUserConfigurationInput",
         "properties": {
@@ -5717,7 +5909,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "6c38b4bb-1536-46c9-ade7-72fabf05b3bb"
+            "default": "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5734,7 +5926,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX",
             "type": "boolean",
             "default": true
           },
@@ -7280,7 +7472,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "bcd3ae91-8bae-4d50-9046-94dc62b2078f"
+            "default": "6e21ecc1-8385-46ac-abea-01ca0b2b268d"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -7372,7 +7564,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "ae8cd936-69c9-42cd-affb-87f3bea6d8eb"
+            "default": "7b23cde6-ec28-417a-9bff-b10e9042394c"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7834,6 +8026,28 @@
         "type": "object",
         "required": [
           "results",
+          "count"
+        ]
+      },
+      "UserListResponse": {
+        "title": "UserListResponse",
+        "properties": {
+          "users": {
+            "title": "Users",
+            "items": {
+              "$ref": "#/components/schemas/ListUserResponse"
+            },
+            "type": "array"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "users",
           "count"
         ]
       },

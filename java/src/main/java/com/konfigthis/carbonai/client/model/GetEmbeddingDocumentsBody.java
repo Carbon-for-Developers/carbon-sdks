@@ -117,6 +117,10 @@ public class GetEmbeddingDocumentsBody {
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private EmbeddingGeneratorsNullable embeddingModel = EmbeddingGeneratorsNullable.OPENAI;
 
+  public static final String SERIALIZED_NAME_INCLUDE_FILE_LEVEL_METADATA = "include_file_level_metadata";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_FILE_LEVEL_METADATA)
+  private Boolean includeFileLevelMetadata = false;
+
   public GetEmbeddingDocumentsBody() {
   }
 
@@ -597,6 +601,35 @@ public class GetEmbeddingDocumentsBody {
     this.embeddingModel = embeddingModel;
   }
 
+
+  public GetEmbeddingDocumentsBody includeFileLevelMetadata(Boolean includeFileLevelMetadata) {
+    
+    
+    
+    
+    this.includeFileLevelMetadata = includeFileLevelMetadata;
+    return this;
+  }
+
+   /**
+   * Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata.
+   * @return includeFileLevelMetadata
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.")
+
+  public Boolean getIncludeFileLevelMetadata() {
+    return includeFileLevelMetadata;
+  }
+
+
+  public void setIncludeFileLevelMetadata(Boolean includeFileLevelMetadata) {
+    
+    
+    
+    this.includeFileLevelMetadata = includeFileLevelMetadata;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -666,7 +699,8 @@ public class GetEmbeddingDocumentsBody {
         Objects.equals(this.hybridSearch, getEmbeddingDocumentsBody.hybridSearch) &&
         Objects.equals(this.hybridSearchTuningParameters, getEmbeddingDocumentsBody.hybridSearchTuningParameters) &&
         Objects.equals(this.mediaType, getEmbeddingDocumentsBody.mediaType) &&
-        Objects.equals(this.embeddingModel, getEmbeddingDocumentsBody.embeddingModel)&&
+        Objects.equals(this.embeddingModel, getEmbeddingDocumentsBody.embeddingModel) &&
+        Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata)&&
         Objects.equals(this.additionalProperties, getEmbeddingDocumentsBody.additionalProperties);
   }
 
@@ -676,7 +710,7 @@ public class GetEmbeddingDocumentsBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, additionalProperties);
+    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -705,6 +739,7 @@ public class GetEmbeddingDocumentsBody {
     sb.append("    hybridSearchTuningParameters: ").append(toIndentedString(hybridSearchTuningParameters)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    includeFileLevelMetadata: ").append(toIndentedString(includeFileLevelMetadata)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -743,6 +778,7 @@ public class GetEmbeddingDocumentsBody {
     openapiFields.add("hybrid_search_tuning_parameters");
     openapiFields.add("media_type");
     openapiFields.add("embedding_model");
+    openapiFields.add("include_file_level_metadata");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

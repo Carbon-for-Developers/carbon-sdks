@@ -44,6 +44,7 @@ class PathValues(str, enum.Enum):
     MODIFY_USER_CONFIGURATION = "/modify_user_configuration"
     DELETE_USERS = "/delete_users"
     UPDATE_USERS = "/update_users"
+    LIST_USERS = "/list_users"
     UPLOADFILE = "/uploadfile"
     UPLOAD_FILE_FROM_URL = "/upload_file_from_url"
     UPLOAD_TEXT = "/upload_text"

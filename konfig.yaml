@@ -30,7 +30,7 @@ securitySchemeOverride:
       in: header
 generators:
   java:
-    version: 0.1.8
+    version: 0.1.9
     groupId: com.konfigthis.carbonai
     artifactId: carbonai-java-sdk
     clientName: Carbon
@@ -40,7 +40,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/java
   go:
-    version: 0.2.9
+    version: 0.2.10
     packageName: carbon
     outputDirectory: go
     readmeSnippet: snippets/goReadmeGettingStartedSnippet.go
@@ -48,7 +48,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/go
   ruby:
-    version: 0.2.9
+    version: 0.2.10
     moduleName: Carbon
     gemName: carbon_ruby_sdk
     outputDirectory: ruby
@@ -57,7 +57,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/ruby
   python:
-    version: 0.2.9
+    version: 0.2.10
     packageName: carbon
     projectName: carbon-python-sdk
     outputDirectory: python
@@ -68,7 +68,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/python
   typescript:
-    version: 0.2.9
+    version: 0.2.10
     npmName: carbon-typescript-sdk
     outputDirectory: typescript
     clientName: Carbon
@@ -79,7 +79,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/typescript
   php:
-    version: 0.2.9
+    version: 0.2.10
     outputDirectory: php
     packageName: carbon-php-sdk
     invokerPackage: Carbon
@@ -88,7 +88,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-php-sdk
   swift:
-    version: 0.3.9
+    version: 0.3.10
     projectName: CarbonAI
     podAuthors: carbon.ai
     outputDirectory: swift

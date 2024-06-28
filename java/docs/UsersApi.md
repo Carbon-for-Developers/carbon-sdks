@@ -6,6 +6,7 @@ All URIs are relative to *https://api.carbon.ai*
 |------------- | ------------- | -------------|
 | [**delete**](UsersApi.md#delete) | **POST** /delete_users | Delete Users |
 | [**get**](UsersApi.md#get) | **POST** /user | User Endpoint |
+| [**list**](UsersApi.md#list) | **POST** /list_users | List Users Endpoint |
 | [**toggleUserFeatures**](UsersApi.md#toggleUserFeatures) | **POST** /modify_user_configuration | Toggle User Features |
 | [**updateUsers**](UsersApi.md#updateUsers) | **POST** /update_users | Update Users |
 
@@ -193,6 +194,113 @@ public class Example {
 ### Return type
 
 [**UserResponse**](UserResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="list"></a>
+# **list**
+> UserListResponse list(listUsersRequest).execute();
+
+List Users Endpoint
+
+List users within an organization
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.UsersApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    Pagination pagination = new Pagination();
+    ListUsersFilters filters = new ListUsersFilters();
+    ListUsersOrderByTypes orderBy = ListUsersOrderByTypes.fromValue("created_at");
+    OrderDirV2 orderDir = OrderDirV2.fromValue("asc");
+    Boolean includeCount = false;
+    try {
+      UserListResponse result = client
+              .users
+              .list()
+              .pagination(pagination)
+              .filters(filters)
+              .orderBy(orderBy)
+              .orderDir(orderDir)
+              .includeCount(includeCount)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getUsers());
+      System.out.println(result.getCount());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#list");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<UserListResponse> response = client
+              .users
+              .list()
+              .pagination(pagination)
+              .filters(filters)
+              .orderBy(orderBy)
+              .orderDir(orderDir)
+              .includeCount(includeCount)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#list");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **listUsersRequest** | [**ListUsersRequest**](ListUsersRequest.md)|  | |
+
+### Return type
+
+[**UserListResponse**](UserListResponse.md)
 
 ### Authorization
 

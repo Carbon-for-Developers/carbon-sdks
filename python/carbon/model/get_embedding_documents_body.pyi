@@ -181,6 +181,26 @@ class GetEmbeddingDocumentsBody(
             @staticmethod
             def embedding_model() -> typing.Type['EmbeddingGeneratorsNullable']:
                 return EmbeddingGeneratorsNullable
+            
+            
+            class include_file_level_metadata(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'include_file_level_metadata':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "query": query,
                 "k": k,
@@ -197,6 +217,7 @@ class GetEmbeddingDocumentsBody(
                 "hybrid_search_tuning_parameters": hybrid_search_tuning_parameters,
                 "media_type": media_type,
                 "embedding_model": embedding_model,
+                "include_file_level_metadata": include_file_level_metadata,
             }
     
     query: MetaOapg.properties.query
@@ -248,9 +269,12 @@ class GetEmbeddingDocumentsBody(
     def __getitem__(self, name: typing_extensions.Literal["embedding_model"]) -> 'EmbeddingGeneratorsNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["include_file_level_metadata"]) -> MetaOapg.properties.include_file_level_metadata: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -301,9 +325,12 @@ class GetEmbeddingDocumentsBody(
     def get_item_oapg(self, name: typing_extensions.Literal["embedding_model"]) -> typing.Union['EmbeddingGeneratorsNullable', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["include_file_level_metadata"]) -> typing.Union[MetaOapg.properties.include_file_level_metadata, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -325,6 +352,7 @@ class GetEmbeddingDocumentsBody(
         hybrid_search_tuning_parameters: typing.Union['HybridSearchTuningParamsNullable', schemas.Unset] = schemas.unset,
         media_type: typing.Union['FileContentTypesNullable', schemas.Unset] = schemas.unset,
         embedding_model: typing.Union['EmbeddingGeneratorsNullable', schemas.Unset] = schemas.unset,
+        include_file_level_metadata: typing.Union[MetaOapg.properties.include_file_level_metadata, None, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GetEmbeddingDocumentsBody':
@@ -346,6 +374,7 @@ class GetEmbeddingDocumentsBody(
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
             _configuration=_configuration,
             **kwargs,
         )

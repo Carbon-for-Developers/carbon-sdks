@@ -29,9 +29,21 @@ import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
+import { ListUsersFilters } from '../models';
+// @ts-ignore
+import { ListUsersOrderByTypes } from '../models';
+// @ts-ignore
+import { ListUsersRequest } from '../models';
+// @ts-ignore
 import { ModifyUserConfigurationInput } from '../models';
 // @ts-ignore
+import { OrderDirV2 } from '../models';
+// @ts-ignore
+import { Pagination } from '../models';
+// @ts-ignore
 import { UpdateUsersInput } from '../models';
+// @ts-ignore
+import { UserListResponse } from '../models';
 // @ts-ignore
 import { UserRequestContent } from '../models';
 // @ts-ignore
@@ -134,6 +146,54 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(userRequestContent, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * List users within an organization
+         * @summary List Users Endpoint
+         * @param {ListUsersRequest} listUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        list: async (listUsersRequest: ListUsersRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'listUsersRequest' is not null or undefined
+            assertParamExists('list', 'listUsersRequest', listUsersRequest)
+            const localVarPath = `/list_users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: listUsersRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/list_users',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(listUsersRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -281,6 +341,24 @@ export const UsersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * List users within an organization
+         * @summary List Users Endpoint
+         * @param {UsersApiListRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async list(requestParameters: UsersApiListRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserListResponse>> {
+            const listUsersRequest: ListUsersRequest = {
+                pagination: requestParameters.pagination,
+                filters: requestParameters.filters,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                include_count: requestParameters.include_count
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.list(listUsersRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 
          * @summary Toggle User Features
          * @param {UsersApiToggleUserFeaturesRequest} requestParameters Request parameters.
@@ -344,6 +422,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
             return localVarFp.get(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * List users within an organization
+         * @summary List Users Endpoint
+         * @param {UsersApiListRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        list(requestParameters: UsersApiListRequest, options?: AxiosRequestConfig): AxiosPromise<UserListResponse> {
+            return localVarFp.list(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * @summary Toggle User Features
          * @param {UsersApiToggleUserFeaturesRequest} requestParameters Request parameters.
@@ -384,6 +472,15 @@ export type UsersApiDeleteRequest = {
 export type UsersApiGetRequest = {
     
 } & UserRequestContent
+
+/**
+ * Request parameters for list operation in UsersApi.
+ * @export
+ * @interface UsersApiListRequest
+ */
+export type UsersApiListRequest = {
+    
+} & ListUsersRequest
 
 /**
  * Request parameters for toggleUserFeatures operation in UsersApi.
@@ -432,6 +529,18 @@ export class UsersApiGenerated extends BaseAPI {
      */
     public get(requestParameters: UsersApiGetRequest, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * List users within an organization
+     * @summary List Users Endpoint
+     * @param {UsersApiListRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiGenerated
+     */
+    public list(requestParameters: UsersApiListRequest, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).list(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

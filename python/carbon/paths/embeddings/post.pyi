@@ -143,6 +143,7 @@ class BaseApi(api_client.Api):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -176,6 +177,8 @@ class BaseApi(api_client.Api):
             _body["media_type"] = media_type
         if embedding_model is not None:
             _body["embedding_model"] = embedding_model
+        if include_file_level_metadata is not None:
+            _body["include_file_level_metadata"] = include_file_level_metadata
         args.body = _body
         return args
 
@@ -398,6 +401,7 @@ class GetDocumentsRaw(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -420,6 +424,7 @@ class GetDocumentsRaw(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -443,6 +448,7 @@ class GetDocumentsRaw(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -463,6 +469,7 @@ class GetDocumentsRaw(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
         )
         return self._get_documents_oapg(
             body=args.body,
@@ -487,6 +494,7 @@ class GetDocuments(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> DocumentResponseListPydantic:
@@ -506,6 +514,7 @@ class GetDocuments(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
             **kwargs,
         )
         if validate:
@@ -530,6 +539,7 @@ class GetDocuments(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> DocumentResponseListPydantic:
         raw_response = self.raw.get_documents(
@@ -548,6 +558,7 @@ class GetDocuments(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
         )
         if validate:
             return DocumentResponseListPydantic(**raw_response.body)
@@ -574,6 +585,7 @@ class ApiForpost(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -596,6 +608,7 @@ class ApiForpost(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -619,6 +632,7 @@ class ApiForpost(BaseApi):
         hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
+        include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -639,6 +653,7 @@ class ApiForpost(BaseApi):
             hybrid_search_tuning_parameters=hybrid_search_tuning_parameters,
             media_type=media_type,
             embedding_model=embedding_model,
+            include_file_level_metadata=include_file_level_metadata,
         )
         return self._get_documents_oapg(
             body=args.body,

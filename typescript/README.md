@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.9-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.9)
+[![npm](https://img.shields.io/badge/npm-v0.2.10-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.10)
 
 </div>
 
@@ -68,6 +68,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.organizations.updateStats`](#carbonorganizationsupdatestats)
   * [`carbon.users.delete`](#carbonusersdelete)
   * [`carbon.users.get`](#carbonusersget)
+  * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
   * [`carbon.users.updateUsers`](#carbonusersupdateusers)
   * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
@@ -368,6 +369,7 @@ const getDocumentsResponse = await carbon.embeddings.getDocuments({
   include_all_children: false,
   media_type: "TEXT",
   embedding_model: "OPENAI",
+  include_file_level_metadata: false,
 });
 ```
 
@@ -426,6 +428,10 @@ Flag to control whether or not to perform hybrid search.
 ##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./models/embedding-generators-nullable.ts)<a id="embedding_model-embeddinggeneratorsnullablemodelsembedding-generators-nullablets"></a>
+
+##### include_file_level_metadata: `boolean`<a id="include_file_level_metadata-boolean"></a>
+
+Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1484,7 +1490,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "6c38b4bb-1536-46c9-ade7-72fabf05b3bb",
+  request_id: "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1553,7 +1559,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: ONEDRIVE, GOOGLE_DRIVE, DROPBOX, BOX, SHAREPOINT
+Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1845,7 +1851,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1953,7 +1959,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "bcd3ae91-8bae-4d50-9046-94dc62b2078f",
+  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2664,6 +2670,45 @@ const getResponse = await carbon.users.get({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.list`<a id="carbonuserslist"></a>
+
+List users within an organization
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listResponse = await carbon.users.list({
+  order_by: "created_at",
+  order_dir: "asc",
+  include_count: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### filters: [`ListUsersFilters`](./models/list-users-filters.ts)<a id="filters-listusersfiltersmodelslist-users-filtersts"></a>
+
+##### order_by: [`ListUsersOrderByTypes`](./models/list-users-order-by-types.ts)<a id="order_by-listusersorderbytypesmodelslist-users-order-by-typests"></a>
+
+##### order_dir: [`OrderDirV2`](./models/order-dir-v2.ts)<a id="order_dir-orderdirv2modelsorder-dir-v2ts"></a>
+
+##### include_count: `boolean`<a id="include_count-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserListResponse](./models/user-list-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/list_users` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
