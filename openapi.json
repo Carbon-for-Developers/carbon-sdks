@@ -3725,7 +3725,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "7b23cde6-ec28-417a-9bff-b10e9042394c",
+              "request_id": "8e4270b4-fa2a-4912-8ea4-b47d3c9b67eb",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -6426,7 +6426,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7"
+            "default": "0a166202-5d8b-4613-a6fb-e8c2521603f5"
           },
           "use_ocr": {
             "anyOf": [
@@ -6456,7 +6456,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: ONEDRIVE, BOX, GOOGLE_DRIVE, DROPBOX, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -6468,7 +6468,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
@@ -8639,7 +8639,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "6e21ecc1-8385-46ac-abea-01ca0b2b268d"
+            "default": "5c98c052-e05b-4e74-ad20-b0763b3bac15"
           },
           "use_ocr": {
             "anyOf": [
@@ -8668,7 +8668,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
@@ -8806,7 +8806,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "7b23cde6-ec28-417a-9bff-b10e9042394c"
+            "default": "8e4270b4-fa2a-4912-8ea4-b47d3c9b67eb"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8822,7 +8822,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
