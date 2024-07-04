@@ -94,7 +94,7 @@ public class SyncOptions {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "7b23cde6-ec28-417a-9bff-b10e9042394c";
+  private String requestId = "8131a584-e13b-487a-bc3c-b381ae26de5f";
 
   public static final String SERIALIZED_NAME_ENABLE_FILE_PICKER = "enable_file_picker";
   @SerializedName(SERIALIZED_NAME_ENABLE_FILE_PICKER)
@@ -419,7 +419,7 @@ public class SyncOptions {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "7b23cde6-ec28-417a-9bff-b10e9042394c", value = "")
+  @ApiModelProperty(example = "8131a584-e13b-487a-bc3c-b381ae26de5f", value = "")
 
   public String getRequestId() {
     return requestId;
@@ -502,11 +502,11 @@ public class SyncOptions {
   }
 
    /**
-   * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+   * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
    * @return incrementalSync
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.")
+  @ApiModelProperty(example = "false", value = "Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.")
 
   public Boolean getIncrementalSync() {
     return incrementalSync;

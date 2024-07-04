@@ -40,7 +40,7 @@ module Carbon
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
     attr_accessor :incremental_sync
 
     attr_accessor :file_sync_config
@@ -182,7 +182,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '7b23cde6-ec28-417a-9bff-b10e9042394c'
+        self.request_id = '8131a584-e13b-487a-bc3c-b381ae26de5f'
       end
 
       if attributes.key?(:'enable_file_picker')

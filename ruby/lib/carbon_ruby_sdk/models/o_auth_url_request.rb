@@ -61,13 +61,13 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
+    # Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
     attr_accessor :enable_file_picker
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
     attr_accessor :incremental_sync
 
     attr_accessor :file_sync_config
@@ -279,7 +279,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = 'dbc54493-ce4f-4a1d-a78b-862f21f1e3d7'
+        self.request_id = '8d34bb4e-31ad-411c-bb01-f19a466f9644'
       end
 
       if attributes.key?(:'use_ocr')

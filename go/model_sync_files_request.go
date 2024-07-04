@@ -31,7 +31,7 @@ type SyncFilesRequest struct {
 	RequestId *string `json:"request_id,omitempty"`
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
-	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
@@ -58,7 +58,7 @@ func NewSyncFilesRequest(dataSourceId int32, ids []SyncFilesRequestIdsInner) *Sy
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "6e21ecc1-8385-46ac-abea-01ca0b2b268d"
+	var requestId string = "10dcc8bc-d3a9-477f-84c5-8ee86866c083"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
@@ -88,7 +88,7 @@ func NewSyncFilesRequestWithDefaults() *SyncFilesRequest {
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
 	var setPageAsBoundary bool = false
 	this.SetPageAsBoundary = &setPageAsBoundary
-	var requestId string = "6e21ecc1-8385-46ac-abea-01ca0b2b268d"
+	var requestId string = "10dcc8bc-d3a9-477f-84c5-8ee86866c083"
 	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
