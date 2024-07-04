@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.10-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.10)
+[![npm](https://img.shields.io/badge/npm-v0.2.11-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.11)
 
 </div>
 
@@ -1490,7 +1490,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
+  request_id: "8d34bb4e-31ad-411c-bb01-f19a466f9644",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1559,7 +1559,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1567,7 +1567,7 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
@@ -1851,7 +1851,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1892,7 +1892,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
@@ -1959,7 +1959,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2000,7 +2000,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
@@ -2117,6 +2117,8 @@ For now, we support a limited set of keys listed below.
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
 You can also use them in combination to get emails from a certain period.  
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+<b>from</b>: Email address of the sender  
+<b>to</b>: Email address of the recipient  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 
@@ -2227,7 +2229,8 @@ For now, we support a limited set of keys listed below.
 
 <b>category</b>: Custom categories that you created in Outlook.  
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
-<b>is</b>: Can have the following values: flagged   
+<b>is</b>: Can have the following values: flagged  
+<b>from</b>: Email address of the sender   
 
 An example of a basic query with filters can be
 ```json

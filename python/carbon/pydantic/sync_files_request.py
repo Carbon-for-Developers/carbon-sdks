@@ -49,7 +49,7 @@ class SyncFilesRequest(BaseModel):
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
     incremental_sync: typing.Optional[bool] = Field(None, alias='incremental_sync')
 
     file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')

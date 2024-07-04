@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.10-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.10)
+[![npm](https://img.shields.io/badge/gem-v0.2.11-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.11)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.10'
+gem 'carbon_ruby_sdk', '~> 0.2.11'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1281,7 +1281,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "7b23cde6-ec28-417a-9bff-b10e9042394c",
+        "request_id" => "8131a584-e13b-487a-bc3c-b381ae26de5f",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1501,7 +1501,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
+  request_id: "8d34bb4e-31ad-411c-bb01-f19a466f9644",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1562,7 +1562,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
+BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1571,7 +1571,8 @@ via list items endpoint
 ##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
-GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for
+other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1861,7 +1862,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1896,7 +1897,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
-GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for
+other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1965,7 +1967,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2000,7 +2002,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
-GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for
+other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -2110,6 +2113,8 @@ For now, we support a limited set of keys listed below.
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
 You can also use them in combination to get emails from a certain period.  
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+<b>from</b>: Email address of the sender  
+<b>to</b>: Email address of the recipient  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 
@@ -2217,7 +2222,8 @@ For now, we support a limited set of keys listed below.
 
 <b>category</b>: Custom categories that you created in Outlook.  
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
-<b>is</b>: Can have the following values: flagged   
+<b>is</b>: Can have the following values: flagged  
+<b>from</b>: Email address of the sender   
 
 An example of a basic query with filters can be
 ```json

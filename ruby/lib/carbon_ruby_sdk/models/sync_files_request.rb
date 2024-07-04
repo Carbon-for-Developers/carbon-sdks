@@ -40,7 +40,7 @@ module Carbon
 
     attr_accessor :parse_pdf_tables_with_ocr
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
     attr_accessor :incremental_sync
 
     attr_accessor :file_sync_config
@@ -187,7 +187,7 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       else
-        self.request_id = '6e21ecc1-8385-46ac-abea-01ca0b2b268d'
+        self.request_id = '10dcc8bc-d3a9-477f-84c5-8ee86866c083'
       end
 
       if attributes.key?(:'use_ocr')

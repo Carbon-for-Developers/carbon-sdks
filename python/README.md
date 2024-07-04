@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.10-blue)](https://pypi.org/project/carbon-python-sdk/0.2.10)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.11-blue)](https://pypi.org/project/carbon-python-sdk/0.2.11)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -97,7 +97,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.10
+pip install carbon-python-sdk==0.2.11
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1430,7 +1430,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "7b23cde6-ec28-417a-9bff-b10e9042394c",
+        "request_id": "8131a584-e13b-487a-bc3c-b381ae26de5f",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1684,7 +1684,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="dbc54493-ce4f-4a1d-a78b-862f21f1e3d7",
+    request_id="8d34bb4e-31ad-411c-bb01-f19a466f9644",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1759,7 +1759,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
+Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1767,7 +1767,7 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2069,7 +2069,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+    request_id="10dcc8bc-d3a9-477f-84c5-8ee86866c083",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2117,7 +2117,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2190,7 +2190,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="6e21ecc1-8385-46ac-abea-01ca0b2b268d",
+    request_id="10dcc8bc-d3a9-477f-84c5-8ee86866c083",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2238,7 +2238,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2364,6 +2364,8 @@ For now, we support a limited set of keys listed below.
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
 You can also use them in combination to get emails from a certain period.  
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+<b>from</b>: Email address of the sender  
+<b>to</b>: Email address of the recipient  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 
@@ -2486,7 +2488,8 @@ For now, we support a limited set of keys listed below.
 
 <b>category</b>: Custom categories that you created in Outlook.  
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
-<b>is</b>: Can have the following values: flagged   
+<b>is</b>: Can have the following values: flagged  
+<b>from</b>: Email address of the sender   
 
 An example of a basic query with filters can be
 ```json

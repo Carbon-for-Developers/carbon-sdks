@@ -3104,6 +3104,8 @@ For now, we support a limited set of keys listed below.
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.
 You can also use them in combination to get emails from a certain period.  
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
+<b>from</b>: Email address of the sender  
+<b>to</b>: Email address of the recipient  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 
@@ -3309,7 +3311,8 @@ For now, we support a limited set of keys listed below.
 
 <b>category</b>: Custom categories that you created in Outlook.  
 <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.    
-<b>is</b>: Can have the following values: flagged   
+<b>is</b>: Can have the following values: flagged  
+<b>from</b>: Email address of the sender   
 
 An example of a basic query with filters can be
 ```json

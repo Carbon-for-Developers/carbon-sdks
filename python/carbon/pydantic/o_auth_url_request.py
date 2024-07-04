@@ -70,13 +70,13 @@ class OAuthURLRequest(BaseModel):
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')
 
-    # Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, BOX, DROPBOX
+    # Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
     enable_file_picker: typing.Optional[bool] = Field(None, alias='enable_file_picker')
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: typing.Optional[bool] = Field(None, alias='sync_source_items')
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
     incremental_sync: typing.Optional[bool] = Field(None, alias='incremental_sync')
 
     file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
