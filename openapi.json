@@ -3725,7 +3725,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "8131a584-e13b-487a-bc3c-b381ae26de5f",
+              "request_id": "4854e06f-2b7f-44a2-a8e6-20a6a6b86fa8",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3924,6 +3924,12 @@
           "send_webhook": {
             "type": "boolean",
             "title": "Send Webhook",
+            "default": false
+          },
+          "preserve_file_record": {
+            "type": "boolean",
+            "title": "Preserve File Record",
+            "description": "Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for\n        resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that\n        even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.",
             "default": false
           }
         },
@@ -5272,6 +5278,19 @@
             "title": "Include File Level Metadata",
             "description": "Flag to control whether or not to include file-level metadata in the response. This metadata\n        will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.",
             "default": false
+          },
+          "high_accuracy": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "High Accuracy",
+            "description": "Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.\n        If true, the search may return more accurate results, but may take longer to complete.",
+            "default": false
           }
         },
         "type": "object",
@@ -6426,7 +6445,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "8d34bb4e-31ad-411c-bb01-f19a466f9644"
+            "default": "7a42b383-8e1e-4929-9602-f8e4739a5f4e"
           },
           "use_ocr": {
             "anyOf": [
@@ -6456,7 +6475,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT, BOX, DROPBOX",
             "default": true
           },
           "sync_source_items": {
@@ -8639,7 +8658,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "10dcc8bc-d3a9-477f-84c5-8ee86866c083"
+            "default": "0484927d-29ee-4c80-9d50-1c1c4d0dac93"
           },
           "use_ocr": {
             "anyOf": [
@@ -8806,7 +8825,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "8131a584-e13b-487a-bc3c-b381ae26de5f"
+            "default": "4854e06f-2b7f-44a2-a8e6-20a6a6b86fa8"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -9402,6 +9421,11 @@
             "title": "Messages Metadata",
             "default": {}
           },
+          "file_contents_deleted": {
+            "type": "boolean",
+            "title": "File Contents Deleted",
+            "default": false
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -9446,6 +9470,7 @@
           "request_id",
           "sync_properties",
           "messages_metadata",
+          "file_contents_deleted",
           "created_at",
           "updated_at"
         ],
