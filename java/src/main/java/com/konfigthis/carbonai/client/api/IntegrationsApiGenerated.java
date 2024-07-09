@@ -1506,7 +1506,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 8d34bb4e-31ad-411c-bb01-f19a466f9644)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -1536,7 +1536,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE (optional, default to true)
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT (optional, default to true)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
@@ -3295,7 +3295,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 10dcc8bc-d3a9-477f-84c5-8ee86866c083)
+         * @param requestId  (optional, default to 791318ee-229d-4c64-bb0a-2563b8014484)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3793,7 +3793,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 10dcc8bc-d3a9-477f-84c5-8ee86866c083)
+         * @param requestId  (optional, default to 791318ee-229d-4c64-bb0a-2563b8014484)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {

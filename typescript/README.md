@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.11-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.11)
+[![npm](https://img.shields.io/badge/npm-v0.2.12-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.12)
 
 </div>
 
@@ -370,6 +370,7 @@ const getDocumentsResponse = await carbon.embeddings.getDocuments({
   media_type: "TEXT",
   embedding_model: "OPENAI",
   include_file_level_metadata: false,
+  high_accuracy: false,
 });
 ```
 
@@ -432,6 +433,10 @@ Flag to control whether or not to perform hybrid search.
 ##### include_file_level_metadata: `boolean`<a id="include_file_level_metadata-boolean"></a>
 
 Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
+
+##### high_accuracy: `boolean`<a id="high_accuracy-boolean"></a>
+
+Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -739,6 +744,7 @@ Delete Files V2 Endpoint
 ```typescript
 const deleteV2Response = await carbon.files.deleteV2({
   send_webhook: false,
+  preserve_file_record: false,
 });
 ```
 
@@ -747,6 +753,10 @@ const deleteV2Response = await carbon.files.deleteV2({
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
 
 ##### send_webhook: `boolean`<a id="send_webhook-boolean"></a>
+
+##### preserve_file_record: `boolean`<a id="preserve_file_record-boolean"></a>
+
+Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1490,7 +1500,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "8d34bb4e-31ad-411c-bb01-f19a466f9644",
+  request_id: "1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1559,7 +1569,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1851,7 +1861,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
+  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1959,7 +1969,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
+  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

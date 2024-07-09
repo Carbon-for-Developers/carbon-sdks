@@ -177,6 +177,7 @@ public class EmbeddingsApiGenerated {
         FileContentTypesNullable mediaType;
         EmbeddingGeneratorsNullable embeddingModel;
         Boolean includeFileLevelMetadata;
+        Boolean highAccuracy;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -324,6 +325,16 @@ public class EmbeddingsApiGenerated {
         }
         
         /**
+         * Set highAccuracy
+         * @param highAccuracy Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. (optional, default to false)
+         * @return EmbeddingsApi.GetDocumentsRequestBuilder
+         */
+        public EmbeddingsApi.GetDocumentsRequestBuilder highAccuracy(Boolean highAccuracy) {
+            this.highAccuracy = highAccuracy;
+            return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getDocuments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -357,6 +368,7 @@ public class EmbeddingsApiGenerated {
             getEmbeddingDocumentsBody.mediaType(this.mediaType);
             getEmbeddingDocumentsBody.embeddingModel(this.embeddingModel);
             getEmbeddingDocumentsBody.includeFileLevelMetadata(this.includeFileLevelMetadata);
+            getEmbeddingDocumentsBody.highAccuracy(this.highAccuracy);
             return getEmbeddingDocumentsBody;
         }
 

@@ -80,6 +80,9 @@ operation_parameter_map = {
             {
                 'name': 'include_file_level_metadata'
             },
+            {
+                'name': 'high_accuracy'
+            },
         ]
     },
     '/text_chunks-POST': {
@@ -192,6 +195,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'send_webhook'
+            },
+            {
+                'name': 'preserve_file_record'
             },
         ]
     },

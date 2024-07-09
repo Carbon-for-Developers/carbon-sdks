@@ -137,9 +137,11 @@ public class FilesApiTest {
     public void deleteV2Test() throws ApiException {
         OrganizationUserFilesToSyncFilters filters = null;
         Boolean sendWebhook = null;
+        Boolean preserveFileRecord = null;
         GenericSuccessResponse response = api.deleteV2()
                 .filters(filters)
                 .sendWebhook(sendWebhook)
+                .preserveFileRecord(preserveFileRecord)
                 .execute();
         // TODO: test validations
     }

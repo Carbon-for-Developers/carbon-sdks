@@ -425,12 +425,14 @@ module Carbon
     #
     # @param filters [OrganizationUserFilesToSyncFilters] 
     # @param send_webhook [Boolean] 
+    # @param preserve_file_record [Boolean] Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
     # @param body [DeleteFilesV2QueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def delete_v2(filters: SENTINEL, send_webhook: false, extra: {})
+    def delete_v2(filters: SENTINEL, send_webhook: false, preserve_file_record: false, extra: {})
       _body = {}
       _body[:filters] = filters if filters != SENTINEL
       _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      _body[:preserve_file_record] = preserve_file_record if preserve_file_record != SENTINEL
       delete_files_v2_query_input = _body
       api_response = delete_v2_with_http_info_impl(delete_files_v2_query_input, extra)
       api_response.data
@@ -440,12 +442,14 @@ module Carbon
     #
     # @param filters [OrganizationUserFilesToSyncFilters] 
     # @param send_webhook [Boolean] 
+    # @param preserve_file_record [Boolean] Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
     # @param body [DeleteFilesV2QueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def delete_v2_with_http_info(filters: SENTINEL, send_webhook: false, extra: {})
+    def delete_v2_with_http_info(filters: SENTINEL, send_webhook: false, preserve_file_record: false, extra: {})
       _body = {}
       _body[:filters] = filters if filters != SENTINEL
       _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
+      _body[:preserve_file_record] = preserve_file_record if preserve_file_record != SENTINEL
       delete_files_v2_query_input = _body
       delete_v2_with_http_info_impl(delete_files_v2_query_input, extra)
     end

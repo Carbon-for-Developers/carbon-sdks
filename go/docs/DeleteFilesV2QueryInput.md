@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filters** | Pointer to [**OrganizationUserFilesToSyncFilters**](OrganizationUserFilesToSyncFilters.md) |  | [optional] 
 **SendWebhook** | Pointer to **bool** |  | [optional] [default to false]
+**PreserveFileRecord** | Pointer to **bool** | Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default &#x60;preserve_file_record&#x60; is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if &#x60;preserve_file_record&#x60; is true, raw files uploaded via the &#x60;uploadfile&#x60; endpoint still cannot be resynced. | [optional] [default to false]
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetSendWebhook sets SendWebhook field to given value.
 `func (o *DeleteFilesV2QueryInput) HasSendWebhook() bool`
 
 HasSendWebhook returns a boolean if a field has been set.
+
+### GetPreserveFileRecord
+
+`func (o *DeleteFilesV2QueryInput) GetPreserveFileRecord() bool`
+
+GetPreserveFileRecord returns the PreserveFileRecord field if non-nil, zero value otherwise.
+
+### GetPreserveFileRecordOk
+
+`func (o *DeleteFilesV2QueryInput) GetPreserveFileRecordOk() (*bool, bool)`
+
+GetPreserveFileRecordOk returns a tuple with the PreserveFileRecord field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreserveFileRecord
+
+`func (o *DeleteFilesV2QueryInput) SetPreserveFileRecord(v bool)`
+
+SetPreserveFileRecord sets PreserveFileRecord field to given value.
+
+### HasPreserveFileRecord
+
+`func (o *DeleteFilesV2QueryInput) HasPreserveFileRecord() bool`
+
+HasPreserveFileRecord returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

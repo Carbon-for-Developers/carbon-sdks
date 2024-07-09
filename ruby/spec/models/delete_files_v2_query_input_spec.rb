@@ -31,4 +31,10 @@ describe Carbon::DeleteFilesV2QueryInput do
     end
   end
 
+  describe 'test attribute "preserve_file_record"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

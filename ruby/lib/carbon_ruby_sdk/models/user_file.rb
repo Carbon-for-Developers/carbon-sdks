@@ -73,6 +73,8 @@ module Carbon
 
     attr_accessor :messages_metadata
 
+    attr_accessor :file_contents_deleted
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -111,6 +113,7 @@ module Carbon
         :'request_id' => :'request_id',
         :'sync_properties' => :'sync_properties',
         :'messages_metadata' => :'messages_metadata',
+        :'file_contents_deleted' => :'file_contents_deleted',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -155,6 +158,7 @@ module Carbon
         :'request_id' => :'String',
         :'sync_properties' => :'Object',
         :'messages_metadata' => :'Object',
+        :'file_contents_deleted' => :'Boolean',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -328,6 +332,12 @@ module Carbon
         self.messages_metadata = attributes[:'messages_metadata']
       end
 
+      if attributes.key?(:'file_contents_deleted')
+        self.file_contents_deleted = attributes[:'file_contents_deleted']
+      else
+        self.file_contents_deleted = false
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -381,6 +391,10 @@ module Carbon
         invalid_properties.push('invalid value for "messages_metadata", messages_metadata cannot be nil.')
       end
 
+      if @file_contents_deleted.nil?
+        invalid_properties.push('invalid value for "file_contents_deleted", file_contents_deleted cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -405,6 +419,7 @@ module Carbon
       return false if @skip_embedding_generation.nil?
       return false if @sync_properties.nil?
       return false if @messages_metadata.nil?
+      return false if @file_contents_deleted.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -446,6 +461,7 @@ module Carbon
           request_id == o.request_id &&
           sync_properties == o.sync_properties &&
           messages_metadata == o.messages_metadata &&
+          file_contents_deleted == o.file_contents_deleted &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -459,7 +475,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, file_contents_deleted, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -66,6 +66,9 @@ class GetEmbeddingDocumentsBody(BaseModel):
     # Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     include_file_level_metadata: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_file_level_metadata')
 
+    # Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+    high_accuracy: typing.Optional[typing.Optional[bool]] = Field(None, alias='high_accuracy')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

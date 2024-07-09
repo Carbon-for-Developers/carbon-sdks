@@ -118,5 +118,11 @@ export interface GetEmbeddingDocumentsBody {
      * @memberof GetEmbeddingDocumentsBody
      */
     'include_file_level_metadata'?: boolean | null;
+    /**
+     * Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+     * @type {boolean}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'high_accuracy'?: boolean | null;
 }
 

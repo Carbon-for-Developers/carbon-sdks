@@ -93,6 +93,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -218,6 +219,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -307,6 +309,7 @@ func main() {
     deleteFilesV2QueryInput := *carbon.NewDeleteFilesV2QueryInput()
     deleteFilesV2QueryInput.SetFilters(filters)
     deleteFilesV2QueryInput.SetSendWebhook(false)
+    deleteFilesV2QueryInput.SetPreserveFileRecord(false)
     
     request := client.FilesApi.DeleteV2(
         deleteFilesV2QueryInput,
@@ -559,6 +562,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -642,6 +646,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -738,6 +743,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -832,6 +838,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -921,6 +928,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.RequestId`: %v\n", resp.RequestId)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.MessagesMetadata`: %v\n", resp.MessagesMetadata)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.UpdatedAt`: %v\n", resp.UpdatedAt)
 }

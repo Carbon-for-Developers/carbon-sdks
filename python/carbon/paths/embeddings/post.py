@@ -155,6 +155,7 @@ class BaseApi(api_client.Api):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -190,6 +191,8 @@ class BaseApi(api_client.Api):
             _body["embedding_model"] = embedding_model
         if include_file_level_metadata is not None:
             _body["include_file_level_metadata"] = include_file_level_metadata
+        if high_accuracy is not None:
+            _body["high_accuracy"] = high_accuracy
         args.body = _body
         return args
 
@@ -413,6 +416,7 @@ class GetDocumentsRaw(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -436,6 +440,7 @@ class GetDocumentsRaw(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -460,6 +465,7 @@ class GetDocumentsRaw(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -481,6 +487,7 @@ class GetDocumentsRaw(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
         )
         return self._get_documents_oapg(
             body=args.body,
@@ -506,6 +513,7 @@ class GetDocuments(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> DocumentResponseListPydantic:
@@ -526,6 +534,7 @@ class GetDocuments(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
             **kwargs,
         )
         if validate:
@@ -551,6 +560,7 @@ class GetDocuments(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> DocumentResponseListPydantic:
         raw_response = self.raw.get_documents(
@@ -570,6 +580,7 @@ class GetDocuments(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
         )
         if validate:
             return DocumentResponseListPydantic(**raw_response.body)
@@ -597,6 +608,7 @@ class ApiForpost(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -620,6 +632,7 @@ class ApiForpost(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -644,6 +657,7 @@ class ApiForpost(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
+        high_accuracy: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -665,6 +679,7 @@ class ApiForpost(BaseApi):
             media_type=media_type,
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
+            high_accuracy=high_accuracy,
         )
         return self._get_documents_oapg(
             body=args.body,

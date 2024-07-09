@@ -58,6 +58,10 @@ public class DeleteFilesV2QueryInput {
   @SerializedName(SERIALIZED_NAME_SEND_WEBHOOK)
   private Boolean sendWebhook = false;
 
+  public static final String SERIALIZED_NAME_PRESERVE_FILE_RECORD = "preserve_file_record";
+  @SerializedName(SERIALIZED_NAME_PRESERVE_FILE_RECORD)
+  private Boolean preserveFileRecord = false;
+
   public DeleteFilesV2QueryInput() {
   }
 
@@ -118,6 +122,35 @@ public class DeleteFilesV2QueryInput {
     this.sendWebhook = sendWebhook;
   }
 
+
+  public DeleteFilesV2QueryInput preserveFileRecord(Boolean preserveFileRecord) {
+    
+    
+    
+    
+    this.preserveFileRecord = preserveFileRecord;
+    return this;
+  }
+
+   /**
+   * Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default &#x60;preserve_file_record&#x60; is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if &#x60;preserve_file_record&#x60; is true, raw files uploaded via the &#x60;uploadfile&#x60; endpoint still cannot be resynced.
+   * @return preserveFileRecord
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.")
+
+  public Boolean getPreserveFileRecord() {
+    return preserveFileRecord;
+  }
+
+
+  public void setPreserveFileRecord(Boolean preserveFileRecord) {
+    
+    
+    
+    this.preserveFileRecord = preserveFileRecord;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -174,13 +207,14 @@ public class DeleteFilesV2QueryInput {
     }
     DeleteFilesV2QueryInput deleteFilesV2QueryInput = (DeleteFilesV2QueryInput) o;
     return Objects.equals(this.filters, deleteFilesV2QueryInput.filters) &&
-        Objects.equals(this.sendWebhook, deleteFilesV2QueryInput.sendWebhook)&&
+        Objects.equals(this.sendWebhook, deleteFilesV2QueryInput.sendWebhook) &&
+        Objects.equals(this.preserveFileRecord, deleteFilesV2QueryInput.preserveFileRecord)&&
         Objects.equals(this.additionalProperties, deleteFilesV2QueryInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(filters, sendWebhook, additionalProperties);
+    return Objects.hash(filters, sendWebhook, preserveFileRecord, additionalProperties);
   }
 
   @Override
@@ -189,6 +223,7 @@ public class DeleteFilesV2QueryInput {
     sb.append("class DeleteFilesV2QueryInput {\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    sendWebhook: ").append(toIndentedString(sendWebhook)).append("\n");
+    sb.append("    preserveFileRecord: ").append(toIndentedString(preserveFileRecord)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -214,6 +249,7 @@ public class DeleteFilesV2QueryInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("filters");
     openapiFields.add("send_webhook");
+    openapiFields.add("preserve_file_record");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

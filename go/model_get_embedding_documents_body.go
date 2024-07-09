@@ -46,6 +46,8 @@ type GetEmbeddingDocumentsBody struct {
 	EmbeddingModel NullableEmbeddingGeneratorsNullable `json:"embedding_model,omitempty"`
 	// Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
 	IncludeFileLevelMetadata NullableBool `json:"include_file_level_metadata,omitempty"`
+	// Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+	HighAccuracy NullableBool `json:"high_accuracy,omitempty"`
 }
 
 // NewGetEmbeddingDocumentsBody instantiates a new GetEmbeddingDocumentsBody object
@@ -62,6 +64,8 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
 	var includeFileLevelMetadata bool = false
 	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
+	var highAccuracy bool = false
+	this.HighAccuracy = *NewNullableBool(&highAccuracy)
 	return &this
 }
 
@@ -76,6 +80,8 @@ func NewGetEmbeddingDocumentsBodyWithDefaults() *GetEmbeddingDocumentsBody {
 	this.EmbeddingModel = *NewNullableEmbeddingGeneratorsNullable(&embeddingModel)
 	var includeFileLevelMetadata bool = false
 	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
+	var highAccuracy bool = false
+	this.HighAccuracy = *NewNullableBool(&highAccuracy)
 	return &this
 }
 
@@ -663,6 +669,48 @@ func (o *GetEmbeddingDocumentsBody) UnsetIncludeFileLevelMetadata() {
 	o.IncludeFileLevelMetadata.Unset()
 }
 
+// GetHighAccuracy returns the HighAccuracy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetEmbeddingDocumentsBody) GetHighAccuracy() bool {
+	if o == nil || isNil(o.HighAccuracy.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.HighAccuracy.Get()
+}
+
+// GetHighAccuracyOk returns a tuple with the HighAccuracy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetEmbeddingDocumentsBody) GetHighAccuracyOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.HighAccuracy.Get(), o.HighAccuracy.IsSet()
+}
+
+// HasHighAccuracy returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasHighAccuracy() bool {
+	if o != nil && o.HighAccuracy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHighAccuracy gets a reference to the given NullableBool and assigns it to the HighAccuracy field.
+func (o *GetEmbeddingDocumentsBody) SetHighAccuracy(v bool) {
+	o.HighAccuracy.Set(&v)
+}
+// SetHighAccuracyNil sets the value for HighAccuracy to be an explicit nil
+func (o *GetEmbeddingDocumentsBody) SetHighAccuracyNil() {
+	o.HighAccuracy.Set(nil)
+}
+
+// UnsetHighAccuracy ensures that no value is present for HighAccuracy, not even an explicit nil
+func (o *GetEmbeddingDocumentsBody) UnsetHighAccuracy() {
+	o.HighAccuracy.Unset()
+}
+
 func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -712,6 +760,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.IncludeFileLevelMetadata.IsSet() {
 		toSerialize["include_file_level_metadata"] = o.IncludeFileLevelMetadata.Get()
+	}
+	if o.HighAccuracy.IsSet() {
+		toSerialize["high_accuracy"] = o.HighAccuracy.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -86,6 +86,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'include_file_level_metadata'
             },
+            {
+                name: 'high_accuracy'
+            },
         ]
     },
     '/text_chunks-POST': {
@@ -198,6 +201,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'send_webhook'
+            },
+            {
+                name: 'preserve_file_record'
             },
         ]
     },

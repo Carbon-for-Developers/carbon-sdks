@@ -295,6 +295,14 @@ public class UserFileTest {
     }
 
     /**
+     * Test the property 'fileContentsDeleted'
+     */
+    @Test
+    public void fileContentsDeletedTest() {
+        // TODO: test fileContentsDeleted
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

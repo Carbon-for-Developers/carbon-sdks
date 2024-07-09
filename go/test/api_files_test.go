@@ -110,6 +110,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         deleteFilesV2QueryInput := *carbon.NewDeleteFilesV2QueryInput()
         deleteFilesV2QueryInput.SetFilters(filters)
         deleteFilesV2QueryInput.SetSendWebhook(false)
+        deleteFilesV2QueryInput.SetPreserveFileRecord(false)
         
         request := client.FilesApi.DeleteV2(
             deleteFilesV2QueryInput,

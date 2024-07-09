@@ -30,5 +30,11 @@ export interface DeleteFilesV2QueryInput {
      * @memberof DeleteFilesV2QueryInput
      */
     'send_webhook'?: boolean;
+    /**
+     * Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+     * @type {boolean}
+     * @memberof DeleteFilesV2QueryInput
+     */
+    'preserve_file_record'?: boolean;
 }
 

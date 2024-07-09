@@ -123,6 +123,7 @@ class BaseApi(api_client.Api):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -130,6 +131,8 @@ class BaseApi(api_client.Api):
             _body["filters"] = filters
         if send_webhook is not None:
             _body["send_webhook"] = send_webhook
+        if preserve_file_record is not None:
+            _body["preserve_file_record"] = preserve_file_record
         args.body = _body
         return args
 
@@ -339,6 +342,7 @@ class DeleteV2Raw(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -348,6 +352,7 @@ class DeleteV2Raw(BaseApi):
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
         )
         return await self._adelete_v2_oapg(
             body=args.body,
@@ -358,6 +363,7 @@ class DeleteV2Raw(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -365,6 +371,7 @@ class DeleteV2Raw(BaseApi):
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
         )
         return self._delete_v2_oapg(
             body=args.body,
@@ -376,12 +383,14 @@ class DeleteV2(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
         raw_response = await self.raw.adelete_v2(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
             **kwargs,
         )
         if validate:
@@ -393,11 +402,13 @@ class DeleteV2(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.delete_v2(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -411,6 +422,7 @@ class ApiForpost(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -420,6 +432,7 @@ class ApiForpost(BaseApi):
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
         )
         return await self._adelete_v2_oapg(
             body=args.body,
@@ -430,6 +443,7 @@ class ApiForpost(BaseApi):
         self,
         filters: typing.Optional[OrganizationUserFilesToSyncFilters] = None,
         send_webhook: typing.Optional[bool] = None,
+        preserve_file_record: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -437,6 +451,7 @@ class ApiForpost(BaseApi):
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
         )
         return self._delete_v2_oapg(
             body=args.body,

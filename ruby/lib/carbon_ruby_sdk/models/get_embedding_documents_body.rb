@@ -56,6 +56,9 @@ module Carbon
     # Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     attr_accessor :include_file_level_metadata
 
+    # Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+    attr_accessor :high_accuracy
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -74,7 +77,8 @@ module Carbon
         :'hybrid_search_tuning_parameters' => :'hybrid_search_tuning_parameters',
         :'media_type' => :'media_type',
         :'embedding_model' => :'embedding_model',
-        :'include_file_level_metadata' => :'include_file_level_metadata'
+        :'include_file_level_metadata' => :'include_file_level_metadata',
+        :'high_accuracy' => :'high_accuracy'
       }
     end
 
@@ -101,7 +105,8 @@ module Carbon
         :'hybrid_search_tuning_parameters' => :'HybridSearchTuningParamsNullable',
         :'media_type' => :'FileContentTypesNullable',
         :'embedding_model' => :'EmbeddingGeneratorsNullable',
-        :'include_file_level_metadata' => :'Boolean'
+        :'include_file_level_metadata' => :'Boolean',
+        :'high_accuracy' => :'Boolean'
       }
     end
 
@@ -120,7 +125,8 @@ module Carbon
         :'hybrid_search_tuning_parameters',
         :'media_type',
         :'embedding_model',
-        :'include_file_level_metadata'
+        :'include_file_level_metadata',
+        :'high_accuracy'
       ])
     end
 
@@ -216,6 +222,12 @@ module Carbon
       else
         self.include_file_level_metadata = false
       end
+
+      if attributes.key?(:'high_accuracy')
+        self.high_accuracy = attributes[:'high_accuracy']
+      else
+        self.high_accuracy = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -299,7 +311,8 @@ module Carbon
           hybrid_search_tuning_parameters == o.hybrid_search_tuning_parameters &&
           media_type == o.media_type &&
           embedding_model == o.embedding_model &&
-          include_file_level_metadata == o.include_file_level_metadata
+          include_file_level_metadata == o.include_file_level_metadata &&
+          high_accuracy == o.high_accuracy
     end
 
     # @see the `==` method
@@ -311,7 +324,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata].hash
+      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata, high_accuracy].hash
     end
 
     # Builds the object from hash

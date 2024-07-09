@@ -38,6 +38,7 @@
 |**requestId** | **String** |  |  |
 |**syncProperties** | **Object** |  |  |
 |**messagesMetadata** | **Object** |  |  |
+|**fileContentsDeleted** | **Boolean** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

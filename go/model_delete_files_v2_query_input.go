@@ -18,6 +18,8 @@ import (
 type DeleteFilesV2QueryInput struct {
 	Filters *OrganizationUserFilesToSyncFilters `json:"filters,omitempty"`
 	SendWebhook *bool `json:"send_webhook,omitempty"`
+	// Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+	PreserveFileRecord *bool `json:"preserve_file_record,omitempty"`
 }
 
 // NewDeleteFilesV2QueryInput instantiates a new DeleteFilesV2QueryInput object
@@ -28,6 +30,8 @@ func NewDeleteFilesV2QueryInput() *DeleteFilesV2QueryInput {
 	this := DeleteFilesV2QueryInput{}
 	var sendWebhook bool = false
 	this.SendWebhook = &sendWebhook
+	var preserveFileRecord bool = false
+	this.PreserveFileRecord = &preserveFileRecord
 	return &this
 }
 
@@ -38,6 +42,8 @@ func NewDeleteFilesV2QueryInputWithDefaults() *DeleteFilesV2QueryInput {
 	this := DeleteFilesV2QueryInput{}
 	var sendWebhook bool = false
 	this.SendWebhook = &sendWebhook
+	var preserveFileRecord bool = false
+	this.PreserveFileRecord = &preserveFileRecord
 	return &this
 }
 
@@ -105,6 +111,38 @@ func (o *DeleteFilesV2QueryInput) SetSendWebhook(v bool) {
 	o.SendWebhook = &v
 }
 
+// GetPreserveFileRecord returns the PreserveFileRecord field value if set, zero value otherwise.
+func (o *DeleteFilesV2QueryInput) GetPreserveFileRecord() bool {
+	if o == nil || isNil(o.PreserveFileRecord) {
+		var ret bool
+		return ret
+	}
+	return *o.PreserveFileRecord
+}
+
+// GetPreserveFileRecordOk returns a tuple with the PreserveFileRecord field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteFilesV2QueryInput) GetPreserveFileRecordOk() (*bool, bool) {
+	if o == nil || isNil(o.PreserveFileRecord) {
+    return nil, false
+	}
+	return o.PreserveFileRecord, true
+}
+
+// HasPreserveFileRecord returns a boolean if a field has been set.
+func (o *DeleteFilesV2QueryInput) HasPreserveFileRecord() bool {
+	if o != nil && !isNil(o.PreserveFileRecord) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreserveFileRecord gets a reference to the given bool and assigns it to the PreserveFileRecord field.
+func (o *DeleteFilesV2QueryInput) SetPreserveFileRecord(v bool) {
+	o.PreserveFileRecord = &v
+}
+
 func (o DeleteFilesV2QueryInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Filters) {
@@ -112,6 +150,9 @@ func (o DeleteFilesV2QueryInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SendWebhook) {
 		toSerialize["send_webhook"] = o.SendWebhook
+	}
+	if !isNil(o.PreserveFileRecord) {
+		toSerialize["preserve_file_record"] = o.PreserveFileRecord
 	}
 	return json.Marshal(toSerialize)
 }

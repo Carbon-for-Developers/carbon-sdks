@@ -55,4 +55,12 @@ public class DeleteFilesV2QueryInputTest {
         // TODO: test sendWebhook
     }
 
+    /**
+     * Test the property 'preserveFileRecord'
+     */
+    @Test
+    public void preserveFileRecordTest() {
+        // TODO: test preserveFileRecord
+    }
+
 }

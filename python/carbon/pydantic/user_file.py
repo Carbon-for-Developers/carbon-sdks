@@ -84,6 +84,8 @@ class UserFile(BaseModel):
 
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='messages_metadata')
 
+    file_contents_deleted: bool = Field(alias='file_contents_deleted')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

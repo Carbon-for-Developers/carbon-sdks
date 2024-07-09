@@ -39,9 +39,11 @@ class DeleteFilesV2QueryInput(
             def filters() -> typing.Type['OrganizationUserFilesToSyncFilters']:
                 return OrganizationUserFilesToSyncFilters
             send_webhook = schemas.BoolSchema
+            preserve_file_record = schemas.BoolSchema
             __annotations__ = {
                 "filters": filters,
                 "send_webhook": send_webhook,
+                "preserve_file_record": preserve_file_record,
             }
     
     @typing.overload
@@ -51,9 +53,12 @@ class DeleteFilesV2QueryInput(
     def __getitem__(self, name: typing_extensions.Literal["send_webhook"]) -> MetaOapg.properties.send_webhook: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["preserve_file_record"]) -> MetaOapg.properties.preserve_file_record: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["filters", "send_webhook", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["filters", "send_webhook", "preserve_file_record", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -65,9 +70,12 @@ class DeleteFilesV2QueryInput(
     def get_item_oapg(self, name: typing_extensions.Literal["send_webhook"]) -> typing.Union[MetaOapg.properties.send_webhook, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["preserve_file_record"]) -> typing.Union[MetaOapg.properties.preserve_file_record, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["filters", "send_webhook", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["filters", "send_webhook", "preserve_file_record", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -76,6 +84,7 @@ class DeleteFilesV2QueryInput(
         *args: typing.Union[dict, frozendict.frozendict, ],
         filters: typing.Union['OrganizationUserFilesToSyncFilters', schemas.Unset] = schemas.unset,
         send_webhook: typing.Union[MetaOapg.properties.send_webhook, bool, schemas.Unset] = schemas.unset,
+        preserve_file_record: typing.Union[MetaOapg.properties.preserve_file_record, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DeleteFilesV2QueryInput':
@@ -84,6 +93,7 @@ class DeleteFilesV2QueryInput(
             *args,
             filters=filters,
             send_webhook=send_webhook,
+            preserve_file_record=preserve_file_record,
             _configuration=_configuration,
             **kwargs,
         )
