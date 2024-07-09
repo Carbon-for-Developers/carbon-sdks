@@ -174,4 +174,12 @@ public class GetEmbeddingDocumentsBodyTest {
         // TODO: test includeFileLevelMetadata
     }
 
+    /**
+     * Test the property 'highAccuracy'
+     */
+    @Test
+    public void highAccuracyTest() {
+        // TODO: test highAccuracy
+    }
+
 }

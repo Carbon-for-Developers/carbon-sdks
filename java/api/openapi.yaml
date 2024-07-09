@@ -4291,7 +4291,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 8131a584-e13b-487a-bc3c-b381ae26de5f
+          request_id: 0210abaa-8c19-4ac6-9c4b-fb856acce902
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4327,7 +4327,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 8131a584-e13b-487a-bc3c-b381ae26de5f
+            request_id: 0210abaa-8c19-4ac6-9c4b-fb856acce902
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4537,6 +4537,7 @@ components:
           parent_file_ids:
           - 6
           - 6
+        preserve_file_record: false
       properties:
         filters:
           $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
@@ -4547,6 +4548,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-send_webhook
+        preserve_file_record:
+          default: false
+          description: |-
+            Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for
+                    resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that
+                    even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+          example: false
+          title: Preserve File Record
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-preserve_file_record
       title: DeleteFilesV2QueryInput
       type: object
       x-konfig-properties:
@@ -5422,6 +5434,7 @@ components:
         tags:
           key: ""
         hybrid_search: true
+        high_accuracy: false
         include_all_children: false
         media_type: null
         file_ids:
@@ -5605,6 +5618,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata
+        high_accuracy:
+          default: false
+          description: |-
+            Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.
+                    If true, the search may return more accurate results, but may take longer to complete.
+          example: false
+          nullable: true
+          title: High Accuracy
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy
       required:
       - k
       - query
@@ -6434,7 +6458,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+        request_id: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6552,13 +6576,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          default: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          example: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           title: Request Id
           type: string
-          x-konfig-original-example: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          x-konfig-original-example: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6580,7 +6604,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
+            \ it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -8155,7 +8179,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+        request_id: 791318ee-229d-4c64-bb0a-2563b8014484
         data_source_id: 0
       properties:
         tags:
@@ -8227,11 +8251,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
-          example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          default: 791318ee-229d-4c64-bb0a-2563b8014484
+          example: 791318ee-229d-4c64-bb0a-2563b8014484
           title: Request Id
           type: string
-          x-konfig-original-example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          x-konfig-original-example: 791318ee-229d-4c64-bb0a-2563b8014484
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8287,7 +8311,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 8131a584-e13b-487a-bc3c-b381ae26de5f
+        request_id: 0210abaa-8c19-4ac6-9c4b-fb856acce902
       properties:
         tags:
           nullable: true
@@ -8360,11 +8384,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 8131a584-e13b-487a-bc3c-b381ae26de5f
-          example: 8131a584-e13b-487a-bc3c-b381ae26de5f
+          default: 0210abaa-8c19-4ac6-9c4b-fb856acce902
+          example: 0210abaa-8c19-4ac6-9c4b-fb856acce902
           title: Request Id
           type: string
-          x-konfig-original-example: 8131a584-e13b-487a-bc3c-b381ae26de5f
+          x-konfig-original-example: 0210abaa-8c19-4ac6-9c4b-fb856acce902
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8625,6 +8649,7 @@ components:
         sync_properties: {}
         external_file_id: external_file_id
         created_at: 2000-01-23T04:56:07.000+00:00
+        file_contents_deleted: false
         source: null
         file_metadata: "{}"
         organization_supplied_user_id: organization_supplied_user_id
@@ -8783,6 +8808,13 @@ components:
           type: object
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-messages_metadata
+        file_contents_deleted:
+          default: false
+          example: false
+          title: File Contents Deleted
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-file_contents_deleted
         created_at:
           format: date-time
           title: Created At
@@ -8801,6 +8833,7 @@ components:
       - enable_auto_sync
       - external_file_id
       - external_url
+      - file_contents_deleted
       - file_metadata
       - file_statistics
       - generate_sparse_vectors
@@ -8842,6 +8875,7 @@ components:
           sync_properties: {}
           external_file_id: external_file_id
           created_at: 2000-01-23T04:56:07.000+00:00
+          file_contents_deleted: false
           source: null
           file_metadata: "{}"
           organization_supplied_user_id: organization_supplied_user_id
@@ -8887,6 +8921,7 @@ components:
           sync_properties: {}
           external_file_id: external_file_id
           created_at: 2000-01-23T04:56:07.000+00:00
+          file_contents_deleted: false
           source: null
           file_metadata: "{}"
           organization_supplied_user_id: organization_supplied_user_id
@@ -10172,6 +10207,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-preserve_file_record:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-DirectoryItem-properties-is_synced:
       example: false
       type: boolean
@@ -10296,6 +10335,10 @@ components:
       type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -10441,7 +10484,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+      example: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10714,7 +10757,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+      example: 791318ee-229d-4c64-bb0a-2563b8014484
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10758,7 +10801,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 8131a584-e13b-487a-bc3c-b381ae26de5f
+      example: 0210abaa-8c19-4ac6-9c4b-fb856acce902
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -10819,6 +10862,10 @@ components:
       example: {}
       properties: {}
       type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UserFile-properties-file_contents_deleted:
+      example: false
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UserResponse-properties-custom_limits:
       example: {}
@@ -11132,13 +11179,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          default: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          example: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           title: Request Id
           type: string
-          x-konfig-original-example: 8d34bb4e-31ad-411c-bb01-f19a466f9644
+          x-konfig-original-example: 1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -11160,7 +11207,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
+            \ it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -11316,11 +11363,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
-          example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          default: 791318ee-229d-4c64-bb0a-2563b8014484
+          example: 791318ee-229d-4c64-bb0a-2563b8014484
           title: Request Id
           type: string
-          x-konfig-original-example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          x-konfig-original-example: 791318ee-229d-4c64-bb0a-2563b8014484
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11441,11 +11488,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
-          example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          default: 791318ee-229d-4c64-bb0a-2563b8014484
+          example: 791318ee-229d-4c64-bb0a-2563b8014484
           title: Request Id
           type: string
-          x-konfig-original-example: 10dcc8bc-d3a9-477f-84c5-8ee86866c083
+          x-konfig-original-example: 791318ee-229d-4c64-bb0a-2563b8014484
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -12455,6 +12502,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-include_file_level_metadata
+        high_accuracy:
+          default: false
+          description: |-
+            Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.
+                    If true, the search may return more accurate results, but may take longer to complete.
+          example: false
+          nullable: true
+          title: High Accuracy
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy
       required:
       - k
       - query
@@ -12910,6 +12968,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-send_webhook
+        preserve_file_record:
+          default: false
+          description: |-
+            Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for
+                    resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that
+                    even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+          example: false
+          title: Preserve File Record
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-preserve_file_record
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

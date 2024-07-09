@@ -40,6 +40,7 @@ class UserFile(
             "sync_properties",
             "created_at",
             "external_file_id",
+            "file_contents_deleted",
             "file_metadata",
             "source",
             "organization_supplied_user_id",
@@ -478,6 +479,7 @@ class UserFile(
                     )
             sync_properties = schemas.DictSchema
             messages_metadata = schemas.DictSchema
+            file_contents_deleted = schemas.BoolSchema
             created_at = schemas.DateTimeSchema
             updated_at = schemas.DateTimeSchema
             __annotations__ = {
@@ -512,6 +514,7 @@ class UserFile(
                 "request_id": request_id,
                 "sync_properties": sync_properties,
                 "messages_metadata": messages_metadata,
+                "file_contents_deleted": file_contents_deleted,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -523,6 +526,7 @@ class UserFile(
     sync_properties: MetaOapg.properties.sync_properties
     created_at: MetaOapg.properties.created_at
     external_file_id: MetaOapg.properties.external_file_id
+    file_contents_deleted: MetaOapg.properties.file_contents_deleted
     file_metadata: MetaOapg.properties.file_metadata
     source: 'DataSourceType'
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
@@ -644,6 +648,9 @@ class UserFile(
     def __getitem__(self, name: typing_extensions.Literal["messages_metadata"]) -> MetaOapg.properties.messages_metadata: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_contents_deleted"]) -> MetaOapg.properties.file_contents_deleted: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -652,7 +659,7 @@ class UserFile(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "file_contents_deleted", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -751,6 +758,9 @@ class UserFile(
     def get_item_oapg(self, name: typing_extensions.Literal["messages_metadata"]) -> MetaOapg.properties.messages_metadata: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_contents_deleted"]) -> MetaOapg.properties.file_contents_deleted: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
     
     @typing.overload
@@ -759,7 +769,7 @@ class UserFile(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "source", "organization_id", "organization_supplied_user_id", "organization_user_data_source_id", "external_file_id", "external_url", "sync_status", "sync_error_message", "last_sync", "file_statistics", "file_metadata", "embedding_properties", "chunk_size", "chunk_overlap", "chunk_properties", "ocr_properties", "ocr_job_started_at", "name", "parent_id", "enable_auto_sync", "presigned_url", "parsed_text_url", "additional_presigned_urls", "skip_embedding_generation", "source_created_at", "generate_sparse_vectors", "request_id", "sync_properties", "messages_metadata", "file_contents_deleted", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -773,6 +783,7 @@ class UserFile(
         sync_properties: typing.Union[MetaOapg.properties.sync_properties, dict, frozendict.frozendict, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         external_file_id: typing.Union[MetaOapg.properties.external_file_id, str, ],
+        file_contents_deleted: typing.Union[MetaOapg.properties.file_contents_deleted, bool, ],
         file_metadata: typing.Union[MetaOapg.properties.file_metadata, dict, frozendict.frozendict, None, ],
         source: 'DataSourceType',
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
@@ -812,6 +823,7 @@ class UserFile(
             sync_properties=sync_properties,
             created_at=created_at,
             external_file_id=external_file_id,
+            file_contents_deleted=file_contents_deleted,
             file_metadata=file_metadata,
             source=source,
             organization_supplied_user_id=organization_supplied_user_id,

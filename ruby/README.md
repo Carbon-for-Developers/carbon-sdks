@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.11-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.11)
+[![npm](https://img.shields.io/badge/gem-v0.2.12-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.12)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.11'
+gem 'carbon_ruby_sdk', '~> 0.2.12'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -381,6 +381,7 @@ result = carbon.embeddings.get_documents(
   media_type: "TEXT",
   embedding_model: "OPENAI",
   include_file_level_metadata: false,
+  high_accuracy: false,
 )
 p result
 ```
@@ -438,6 +439,11 @@ Flag to control whether or not to perform hybrid search.
 Flag to control whether or not to include file-level metadata in the response.
 This metadata will be included in the `content_metadata` field of each document
 along with chunk/embedding level metadata.
+
+##### high_accuracy: `Boolean`<a id="high_accuracy-boolean"></a>
+Flag to control whether or not to perform a high accuracy embedding search. By
+default, this is set to false. If true, the search may return more accurate
+results, but may take longer to complete.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -748,6 +754,7 @@ result = carbon.files.delete_v2(
         "non_synced_only" => false,
     },
   send_webhook: false,
+  preserve_file_record: false,
 )
 p result
 ```
@@ -756,6 +763,14 @@ p result
 
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
 ##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
+##### preserve_file_record: `Boolean`<a id="preserve_file_record-boolean"></a>
+Whether or not to delete all data related to the file from the database, BUT to
+preserve the file metadata, allowing for resyncs. By default
+`preserve_file_record` is false, which means that all data related to the file
+*as well as* its metadata will be deleted. Note that even if
+`preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint
+still cannot be resynced.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1281,7 +1296,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "8131a584-e13b-487a-bc3c-b381ae26de5f",
+        "request_id" => "0210abaa-8c19-4ac6-9c4b-fb856acce902",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1501,7 +1516,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "8d34bb4e-31ad-411c-bb01-f19a466f9644",
+  request_id: "1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1562,7 +1577,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
+GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1862,7 +1877,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
+  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1967,7 +1982,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "10dcc8bc-d3a9-477f-84c5-8ee86866c083",
+  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

@@ -83,6 +83,8 @@ class RequiredUserFile(TypedDict):
 
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    file_contents_deleted: bool
+
     created_at: datetime
 
     updated_at: datetime

@@ -91,6 +91,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -312,6 +313,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -510,12 +512,14 @@ public class Example {
     Carbon client = new Carbon(configuration);
     OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
     Boolean sendWebhook = false;
+    Boolean preserveFileRecord = false; // Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
     try {
       GenericSuccessResponse result = client
               .files
               .deleteV2()
               .filters(filters)
               .sendWebhook(sendWebhook)
+              .preserveFileRecord(preserveFileRecord)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -534,6 +538,7 @@ public class Example {
               .deleteV2()
               .filters(filters)
               .sendWebhook(sendWebhook)
+              .preserveFileRecord(preserveFileRecord)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1075,6 +1080,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1232,6 +1238,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1413,6 +1420,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1569,6 +1577,7 @@ public class Example {
       System.out.println(result.getRequestId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
+      System.out.println(result.getFileContentsDeleted());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {

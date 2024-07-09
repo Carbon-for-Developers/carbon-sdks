@@ -23,6 +23,7 @@
 |**mediaType** | **FileContentTypesNullable** |  |  [optional] |
 |**embeddingModel** | **EmbeddingGeneratorsNullable** |  |  [optional] |
 |**includeFileLevelMetadata** | **Boolean** | Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata. |  [optional] |
+|**highAccuracy** | **Boolean** | Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. |  [optional] |
 
 
 

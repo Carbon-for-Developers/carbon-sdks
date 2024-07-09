@@ -67,5 +67,8 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
     # Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     include_file_level_metadata: typing.Optional[bool]
 
+    # Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+    high_accuracy: typing.Optional[bool]
+
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

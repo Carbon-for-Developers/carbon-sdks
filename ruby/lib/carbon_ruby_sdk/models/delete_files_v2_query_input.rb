@@ -15,11 +15,15 @@ module Carbon
 
     attr_accessor :send_webhook
 
+    # Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+    attr_accessor :preserve_file_record
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'filters' => :'filters',
-        :'send_webhook' => :'send_webhook'
+        :'send_webhook' => :'send_webhook',
+        :'preserve_file_record' => :'preserve_file_record'
       }
     end
 
@@ -32,7 +36,8 @@ module Carbon
     def self.openapi_types
       {
         :'filters' => :'OrganizationUserFilesToSyncFilters',
-        :'send_webhook' => :'Boolean'
+        :'send_webhook' => :'Boolean',
+        :'preserve_file_record' => :'Boolean'
       }
     end
 
@@ -66,6 +71,12 @@ module Carbon
       else
         self.send_webhook = false
       end
+
+      if attributes.key?(:'preserve_file_record')
+        self.preserve_file_record = attributes[:'preserve_file_record']
+      else
+        self.preserve_file_record = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -87,7 +98,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           filters == o.filters &&
-          send_webhook == o.send_webhook
+          send_webhook == o.send_webhook &&
+          preserve_file_record == o.preserve_file_record
     end
 
     # @see the `==` method
@@ -99,7 +111,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filters, send_webhook].hash
+      [filters, send_webhook, preserve_file_record].hash
     end
 
     # Builds the object from hash

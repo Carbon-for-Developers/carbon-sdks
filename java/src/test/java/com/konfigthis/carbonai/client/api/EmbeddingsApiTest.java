@@ -83,6 +83,7 @@ public class EmbeddingsApiTest {
         FileContentTypesNullable mediaType = null;
         EmbeddingGeneratorsNullable embeddingModel = null;
         Boolean includeFileLevelMetadata = null;
+        Boolean highAccuracy = null;
         DocumentResponseList response = api.getDocuments(query, k)
                 .tags(tags)
                 .queryVector(queryVector)
@@ -98,6 +99,7 @@ public class EmbeddingsApiTest {
                 .mediaType(mediaType)
                 .embeddingModel(embeddingModel)
                 .includeFileLevelMetadata(includeFileLevelMetadata)
+                .highAccuracy(highAccuracy)
                 .execute();
         // TODO: test validations
     }

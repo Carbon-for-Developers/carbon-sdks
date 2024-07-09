@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **EmbeddingModel** | Pointer to [**NullableEmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional] [default to EMBEDDINGGENERATORSNULLABLE_OPENAI]
 **IncludeFileLevelMetadata** | Pointer to **NullableBool** | Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata. | [optional] [default to false]
+**HighAccuracy** | Pointer to **NullableBool** | Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. | [optional] [default to false]
 
 ## Methods
 
@@ -560,6 +561,41 @@ HasIncludeFileLevelMetadata returns a boolean if a field has been set.
 `func (o *GetEmbeddingDocumentsBody) UnsetIncludeFileLevelMetadata()`
 
 UnsetIncludeFileLevelMetadata ensures that no value is present for IncludeFileLevelMetadata, not even an explicit nil
+### GetHighAccuracy
+
+`func (o *GetEmbeddingDocumentsBody) GetHighAccuracy() bool`
+
+GetHighAccuracy returns the HighAccuracy field if non-nil, zero value otherwise.
+
+### GetHighAccuracyOk
+
+`func (o *GetEmbeddingDocumentsBody) GetHighAccuracyOk() (*bool, bool)`
+
+GetHighAccuracyOk returns a tuple with the HighAccuracy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHighAccuracy
+
+`func (o *GetEmbeddingDocumentsBody) SetHighAccuracy(v bool)`
+
+SetHighAccuracy sets HighAccuracy field to given value.
+
+### HasHighAccuracy
+
+`func (o *GetEmbeddingDocumentsBody) HasHighAccuracy() bool`
+
+HasHighAccuracy returns a boolean if a field has been set.
+
+### SetHighAccuracyNil
+
+`func (o *GetEmbeddingDocumentsBody) SetHighAccuracyNil(b bool)`
+
+ SetHighAccuracyNil sets the value for HighAccuracy to be an explicit nil
+
+### UnsetHighAccuracy
+`func (o *GetEmbeddingDocumentsBody) UnsetHighAccuracy()`
+
+UnsetHighAccuracy ensures that no value is present for HighAccuracy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

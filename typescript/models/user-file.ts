@@ -210,6 +210,12 @@ export interface UserFile {
     'messages_metadata': object;
     /**
      * 
+     * @type {boolean}
+     * @memberof UserFile
+     */
+    'file_contents_deleted': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof UserFile
      */

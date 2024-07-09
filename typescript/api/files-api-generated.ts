@@ -947,7 +947,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
         async deleteV2(requestParameters: FilesApiDeleteV2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const deleteFilesV2QueryInput: DeleteFilesV2QueryInput = {
                 filters: requestParameters.filters,
-                send_webhook: requestParameters.send_webhook
+                send_webhook: requestParameters.send_webhook,
+                preserve_file_record: requestParameters.preserve_file_record
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteV2(deleteFilesV2QueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

@@ -121,6 +121,10 @@ public class GetEmbeddingDocumentsBody {
   @SerializedName(SERIALIZED_NAME_INCLUDE_FILE_LEVEL_METADATA)
   private Boolean includeFileLevelMetadata = false;
 
+  public static final String SERIALIZED_NAME_HIGH_ACCURACY = "high_accuracy";
+  @SerializedName(SERIALIZED_NAME_HIGH_ACCURACY)
+  private Boolean highAccuracy = false;
+
   public GetEmbeddingDocumentsBody() {
   }
 
@@ -630,6 +634,35 @@ public class GetEmbeddingDocumentsBody {
     this.includeFileLevelMetadata = includeFileLevelMetadata;
   }
 
+
+  public GetEmbeddingDocumentsBody highAccuracy(Boolean highAccuracy) {
+    
+    
+    
+    
+    this.highAccuracy = highAccuracy;
+    return this;
+  }
+
+   /**
+   * Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+   * @return highAccuracy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.")
+
+  public Boolean getHighAccuracy() {
+    return highAccuracy;
+  }
+
+
+  public void setHighAccuracy(Boolean highAccuracy) {
+    
+    
+    
+    this.highAccuracy = highAccuracy;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -700,7 +733,8 @@ public class GetEmbeddingDocumentsBody {
         Objects.equals(this.hybridSearchTuningParameters, getEmbeddingDocumentsBody.hybridSearchTuningParameters) &&
         Objects.equals(this.mediaType, getEmbeddingDocumentsBody.mediaType) &&
         Objects.equals(this.embeddingModel, getEmbeddingDocumentsBody.embeddingModel) &&
-        Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata)&&
+        Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata) &&
+        Objects.equals(this.highAccuracy, getEmbeddingDocumentsBody.highAccuracy)&&
         Objects.equals(this.additionalProperties, getEmbeddingDocumentsBody.additionalProperties);
   }
 
@@ -710,7 +744,7 @@ public class GetEmbeddingDocumentsBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, additionalProperties);
+    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -740,6 +774,7 @@ public class GetEmbeddingDocumentsBody {
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    includeFileLevelMetadata: ").append(toIndentedString(includeFileLevelMetadata)).append("\n");
+    sb.append("    highAccuracy: ").append(toIndentedString(highAccuracy)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -779,6 +814,7 @@ public class GetEmbeddingDocumentsBody {
     openapiFields.add("media_type");
     openapiFields.add("embedding_model");
     openapiFields.add("include_file_level_metadata");
+    openapiFields.add("high_accuracy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

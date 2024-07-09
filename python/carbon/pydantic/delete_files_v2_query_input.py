@@ -22,6 +22,9 @@ class DeleteFilesV2QueryInput(BaseModel):
 
     send_webhook: typing.Optional[bool] = Field(None, alias='send_webhook')
 
+    # Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
+    preserve_file_record: typing.Optional[bool] = Field(None, alias='preserve_file_record')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

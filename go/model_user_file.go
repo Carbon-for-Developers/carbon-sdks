@@ -48,6 +48,7 @@ type UserFile struct {
 	RequestId NullableString `json:"request_id"`
 	SyncProperties map[string]interface{} `json:"sync_properties"`
 	MessagesMetadata map[string]interface{} `json:"messages_metadata"`
+	FileContentsDeleted bool `json:"file_contents_deleted"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -56,7 +57,7 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
@@ -89,6 +90,7 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 	this.RequestId = requestId
 	this.SyncProperties = syncProperties
 	this.MessagesMetadata = messagesMetadata
+	this.FileContentsDeleted = fileContentsDeleted
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -99,6 +101,8 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 // but it doesn't guarantee that properties required by API are set
 func NewUserFileWithDefaults() *UserFile {
 	this := UserFile{}
+	var fileContentsDeleted bool = false
+	this.FileContentsDeleted = fileContentsDeleted
 	return &this
 }
 
@@ -888,6 +892,30 @@ func (o *UserFile) SetMessagesMetadata(v map[string]interface{}) {
 	o.MessagesMetadata = v
 }
 
+// GetFileContentsDeleted returns the FileContentsDeleted field value
+func (o *UserFile) GetFileContentsDeleted() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.FileContentsDeleted
+}
+
+// GetFileContentsDeletedOk returns a tuple with the FileContentsDeleted field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetFileContentsDeletedOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.FileContentsDeleted, true
+}
+
+// SetFileContentsDeleted sets field value
+func (o *UserFile) SetFileContentsDeleted(v bool) {
+	o.FileContentsDeleted = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *UserFile) GetCreatedAt() time.Time {
 	if o == nil {
@@ -1030,6 +1058,9 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["messages_metadata"] = o.MessagesMetadata
+	}
+	if true {
+		toSerialize["file_contents_deleted"] = o.FileContentsDeleted
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

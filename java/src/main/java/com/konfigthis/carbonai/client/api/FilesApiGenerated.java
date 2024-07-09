@@ -897,6 +897,7 @@ public class FilesApiGenerated {
     public abstract class DeleteV2RequestBuilderGenerated {
         OrganizationUserFilesToSyncFilters filters;
         Boolean sendWebhook;
+        Boolean preserveFileRecord;
 
         public DeleteV2RequestBuilderGenerated() {
         }
@@ -922,6 +923,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set preserveFileRecord
+         * @param preserveFileRecord Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default &#x60;preserve_file_record&#x60; is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if &#x60;preserve_file_record&#x60; is true, raw files uploaded via the &#x60;uploadfile&#x60; endpoint still cannot be resynced. (optional, default to false)
+         * @return FilesApi.DeleteV2RequestBuilder
+         */
+        public FilesApi.DeleteV2RequestBuilder preserveFileRecord(Boolean preserveFileRecord) {
+            this.preserveFileRecord = preserveFileRecord;
+            return (FilesApi.DeleteV2RequestBuilder) this;
+        }
+        
+        /**
          * Build call for deleteV2
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -941,6 +952,7 @@ public class FilesApiGenerated {
             DeleteFilesV2QueryInput deleteFilesV2QueryInput = new DeleteFilesV2QueryInput();
             deleteFilesV2QueryInput.filters(this.filters);
             deleteFilesV2QueryInput.sendWebhook(this.sendWebhook);
+            deleteFilesV2QueryInput.preserveFileRecord(this.preserveFileRecord);
             return deleteFilesV2QueryInput;
         }
 
