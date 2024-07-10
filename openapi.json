@@ -3725,7 +3725,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "0210abaa-8c19-4ac6-9c4b-fb856acce902",
+              "request_id": "0d7c8d61-5426-48f2-92b5-8ddf3ea896c0",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4686,6 +4686,7 @@
           "MD",
           "RTF",
           "JSON",
+          "HTML",
           "HTML",
           "NOTION",
           "GOOGLE_DOCS",
@@ -6445,7 +6446,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7"
+            "default": "b5e6a267-6127-4a6b-96a4-2168333501e4"
           },
           "use_ocr": {
             "anyOf": [
@@ -6475,7 +6476,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, BOX, ONEDRIVE, GOOGLE_DRIVE, DROPBOX",
             "default": true
           },
           "sync_source_items": {
@@ -7226,6 +7227,21 @@
             ],
             "title": "Include Containers",
             "description": "If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers."
+          },
+          "external_urls": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Urls",
+            "description": "The external URLs of the files. The query will return files with these external URLs."
           }
         },
         "type": "object",
@@ -8658,7 +8674,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "791318ee-229d-4c64-bb0a-2563b8014484"
+            "default": "95382c5d-1061-47e5-8bae-65dad9978bdd"
           },
           "use_ocr": {
             "anyOf": [
@@ -8825,7 +8841,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "0210abaa-8c19-4ac6-9c4b-fb856acce902"
+            "default": "0d7c8d61-5426-48f2-92b5-8ddf3ea896c0"
           },
           "enable_file_picker": {
             "type": "boolean",
