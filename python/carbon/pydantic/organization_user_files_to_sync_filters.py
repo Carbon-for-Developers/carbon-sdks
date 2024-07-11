@@ -19,6 +19,7 @@ from carbon.pydantic.data_source_type import DataSourceType
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
+from carbon.pydantic.organization_user_files_to_sync_filters_external_urls import OrganizationUserFilesToSyncFiltersExternalUrls
 from carbon.pydantic.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
@@ -69,6 +70,8 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
 
     # If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
     include_containers: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_containers')
+
+    external_urls: typing.Optional[OrganizationUserFilesToSyncFiltersExternalUrls] = Field(None, alias='external_urls')
 
     model_config = ConfigDict(
         protected_namespaces=(),

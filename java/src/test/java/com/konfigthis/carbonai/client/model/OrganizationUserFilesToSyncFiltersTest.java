@@ -173,4 +173,12 @@ public class OrganizationUserFilesToSyncFiltersTest {
         // TODO: test includeContainers
     }
 
+    /**
+     * Test the property 'externalUrls'
+     */
+    @Test
+    public void externalUrlsTest() {
+        // TODO: test externalUrls
+    }
+
 }

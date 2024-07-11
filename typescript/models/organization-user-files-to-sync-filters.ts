@@ -119,5 +119,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'include_containers'?: boolean | null;
+    /**
+     * The external URLs of the files. The query will return files with these external URLs.
+     * @type {Array<string>}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'external_urls'?: Array<string> | null;
 }
 

@@ -166,6 +166,7 @@ from carbon.pydantic.organization_user_file_tags_remove import OrganizationUserF
 from carbon.pydantic.organization_user_file_tags_remove_tags import OrganizationUserFileTagsRemoveTags
 from carbon.pydantic.organization_user_files_to_sync_filters import OrganizationUserFilesToSyncFilters
 from carbon.pydantic.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
+from carbon.pydantic.organization_user_files_to_sync_filters_external_urls import OrganizationUserFilesToSyncFiltersExternalUrls
 from carbon.pydantic.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
@@ -1434,7 +1435,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.12/python'
+        self.user_agent = 'Konfig/0.2.13/python'
 
     def __enter__(self):
         return self
