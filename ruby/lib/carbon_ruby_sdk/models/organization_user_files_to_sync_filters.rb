@@ -56,6 +56,9 @@ module Carbon
     # If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
     attr_accessor :include_containers
 
+    # The external URLs of the files. The query will return files with these external URLs.
+    attr_accessor :external_urls
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -74,7 +77,8 @@ module Carbon
         :'non_synced_only' => :'non_synced_only',
         :'request_ids' => :'request_ids',
         :'sync_error_message' => :'sync_error_message',
-        :'include_containers' => :'include_containers'
+        :'include_containers' => :'include_containers',
+        :'external_urls' => :'external_urls'
       }
     end
 
@@ -101,7 +105,8 @@ module Carbon
         :'non_synced_only' => :'Boolean',
         :'request_ids' => :'Array<String>',
         :'sync_error_message' => :'String',
-        :'include_containers' => :'Boolean'
+        :'include_containers' => :'Boolean',
+        :'external_urls' => :'Array<String>'
       }
     end
 
@@ -121,7 +126,8 @@ module Carbon
         :'root_files_only',
         :'request_ids',
         :'sync_error_message',
-        :'include_containers'
+        :'include_containers',
+        :'external_urls'
       ])
     end
 
@@ -223,6 +229,12 @@ module Carbon
       if attributes.key?(:'include_containers')
         self.include_containers = attributes[:'include_containers']
       end
+
+      if attributes.key?(:'external_urls')
+        if (value = attributes[:'external_urls']).is_a?(Array)
+          self.external_urls = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -273,7 +285,8 @@ module Carbon
           non_synced_only == o.non_synced_only &&
           request_ids == o.request_ids &&
           sync_error_message == o.sync_error_message &&
-          include_containers == o.include_containers
+          include_containers == o.include_containers &&
+          external_urls == o.external_urls
     end
 
     # @see the `==` method
@@ -285,7 +298,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids, sync_error_message, include_containers].hash
+      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids, sync_error_message, include_containers, external_urls].hash
     end
 
     # Builds the object from hash

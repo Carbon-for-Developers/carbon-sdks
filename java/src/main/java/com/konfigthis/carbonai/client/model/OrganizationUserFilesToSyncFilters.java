@@ -120,6 +120,10 @@ public class OrganizationUserFilesToSyncFilters {
   @SerializedName(SERIALIZED_NAME_INCLUDE_CONTAINERS)
   private Boolean includeContainers;
 
+  public static final String SERIALIZED_NAME_EXTERNAL_URLS = "external_urls";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_URLS)
+  private List<String> externalUrls = null;
+
   public OrganizationUserFilesToSyncFilters() {
   }
 
@@ -654,6 +658,43 @@ public class OrganizationUserFilesToSyncFilters {
     this.includeContainers = includeContainers;
   }
 
+
+  public OrganizationUserFilesToSyncFilters externalUrls(List<String> externalUrls) {
+    
+    
+    
+    
+    this.externalUrls = externalUrls;
+    return this;
+  }
+
+  public OrganizationUserFilesToSyncFilters addExternalUrlsItem(String externalUrlsItem) {
+    if (this.externalUrls == null) {
+      this.externalUrls = new ArrayList<>();
+    }
+    this.externalUrls.add(externalUrlsItem);
+    return this;
+  }
+
+   /**
+   * The external URLs of the files. The query will return files with these external URLs.
+   * @return externalUrls
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The external URLs of the files. The query will return files with these external URLs.")
+
+  public List<String> getExternalUrls() {
+    return externalUrls;
+  }
+
+
+  public void setExternalUrls(List<String> externalUrls) {
+    
+    
+    
+    this.externalUrls = externalUrls;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -724,7 +765,8 @@ public class OrganizationUserFilesToSyncFilters {
         Objects.equals(this.nonSyncedOnly, organizationUserFilesToSyncFilters.nonSyncedOnly) &&
         Objects.equals(this.requestIds, organizationUserFilesToSyncFilters.requestIds) &&
         Objects.equals(this.syncErrorMessage, organizationUserFilesToSyncFilters.syncErrorMessage) &&
-        Objects.equals(this.includeContainers, organizationUserFilesToSyncFilters.includeContainers)&&
+        Objects.equals(this.includeContainers, organizationUserFilesToSyncFilters.includeContainers) &&
+        Objects.equals(this.externalUrls, organizationUserFilesToSyncFilters.externalUrls)&&
         Objects.equals(this.additionalProperties, organizationUserFilesToSyncFilters.additionalProperties);
   }
 
@@ -734,7 +776,7 @@ public class OrganizationUserFilesToSyncFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, source, name, tagsV2, ids, externalFileIds, syncStatuses, parentFileIds, organizationUserDataSourceId, embeddingGenerators, rootFilesOnly, includeAllChildren, nonSyncedOnly, requestIds, syncErrorMessage, includeContainers, additionalProperties);
+    return Objects.hash(tags, source, name, tagsV2, ids, externalFileIds, syncStatuses, parentFileIds, organizationUserDataSourceId, embeddingGenerators, rootFilesOnly, includeAllChildren, nonSyncedOnly, requestIds, syncErrorMessage, includeContainers, externalUrls, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -764,6 +806,7 @@ public class OrganizationUserFilesToSyncFilters {
     sb.append("    requestIds: ").append(toIndentedString(requestIds)).append("\n");
     sb.append("    syncErrorMessage: ").append(toIndentedString(syncErrorMessage)).append("\n");
     sb.append("    includeContainers: ").append(toIndentedString(includeContainers)).append("\n");
+    sb.append("    externalUrls: ").append(toIndentedString(externalUrls)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -803,6 +846,7 @@ public class OrganizationUserFilesToSyncFilters {
     openapiFields.add("request_ids");
     openapiFields.add("sync_error_message");
     openapiFields.add("include_containers");
+    openapiFields.add("external_urls");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -853,6 +897,10 @@ public class OrganizationUserFilesToSyncFilters {
       }
       if (!jsonObj.get("sync_error_message").isJsonNull() && (jsonObj.get("sync_error_message") != null && !jsonObj.get("sync_error_message").isJsonNull()) && !jsonObj.get("sync_error_message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sync_error_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sync_error_message").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("external_urls") != null && !jsonObj.get("external_urls").isJsonNull() && !jsonObj.get("external_urls").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `external_urls` to be an array in the JSON string or null but got `%s`", jsonObj.get("external_urls").toString()));
       }
   }
 

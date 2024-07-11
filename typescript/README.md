@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.12-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.12)
+[![npm](https://img.shields.io/badge/npm-v0.2.13-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.13)
 
 </div>
 
@@ -1500,7 +1500,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "1c47fc7c-4c6e-466f-9bf9-979ad9dc87a7",
+  request_id: "e381f47f-50ca-416e-b1a9-39661bde5520",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1569,7 +1569,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: GOOGLE_DRIVE, DROPBOX, BOX, ONEDRIVE, SHAREPOINT
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, SHAREPOINT, DROPBOX, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1861,7 +1861,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
+  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1969,7 +1969,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "791318ee-229d-4c64-bb0a-2563b8014484",
+  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

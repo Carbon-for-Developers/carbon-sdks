@@ -47,6 +47,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	SyncErrorMessage NullableString `json:"sync_error_message,omitempty"`
 	// If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
 	IncludeContainers NullableBool `json:"include_containers,omitempty"`
+	// The external URLs of the files. The query will return files with these external URLs.
+	ExternalUrls []string `json:"external_urls,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -651,6 +653,39 @@ func (o *OrganizationUserFilesToSyncFilters) UnsetIncludeContainers() {
 	o.IncludeContainers.Unset()
 }
 
+// GetExternalUrls returns the ExternalUrls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetExternalUrls() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.ExternalUrls
+}
+
+// GetExternalUrlsOk returns a tuple with the ExternalUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetExternalUrlsOk() ([]string, bool) {
+	if o == nil || isNil(o.ExternalUrls) {
+    return nil, false
+	}
+	return o.ExternalUrls, true
+}
+
+// HasExternalUrls returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasExternalUrls() bool {
+	if o != nil && isNil(o.ExternalUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalUrls gets a reference to the given []string and assigns it to the ExternalUrls field.
+func (o *OrganizationUserFilesToSyncFilters) SetExternalUrls(v []string) {
+	o.ExternalUrls = v
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -700,6 +735,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.IncludeContainers.IsSet() {
 		toSerialize["include_containers"] = o.IncludeContainers.Get()
+	}
+	if o.ExternalUrls != nil {
+		toSerialize["external_urls"] = o.ExternalUrls
 	}
 	return json.Marshal(toSerialize)
 }

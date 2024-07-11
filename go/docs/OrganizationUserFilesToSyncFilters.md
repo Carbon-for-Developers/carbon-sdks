@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **RequestIds** | Pointer to **[]string** | Filter by request ID(s) which were used to sync the files | [optional] 
 **SyncErrorMessage** | Pointer to **NullableString** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. | [optional] 
 **IncludeContainers** | Pointer to **NullableBool** | If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers. | [optional] 
+**ExternalUrls** | Pointer to **[]string** | The external URLs of the files. The query will return files with these external URLs. | [optional] 
 
 ## Methods
 
@@ -580,6 +581,41 @@ HasIncludeContainers returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetIncludeContainers()`
 
 UnsetIncludeContainers ensures that no value is present for IncludeContainers, not even an explicit nil
+### GetExternalUrls
+
+`func (o *OrganizationUserFilesToSyncFilters) GetExternalUrls() []string`
+
+GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
+
+### GetExternalUrlsOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetExternalUrlsOk() (*[]string, bool)`
+
+GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalUrls
+
+`func (o *OrganizationUserFilesToSyncFilters) SetExternalUrls(v []string)`
+
+SetExternalUrls sets ExternalUrls field to given value.
+
+### HasExternalUrls
+
+`func (o *OrganizationUserFilesToSyncFilters) HasExternalUrls() bool`
+
+HasExternalUrls returns a boolean if a field has been set.
+
+### SetExternalUrlsNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetExternalUrlsNil(b bool)`
+
+ SetExternalUrlsNil sets the value for ExternalUrls to be an explicit nil
+
+### UnsetExternalUrls
+`func (o *OrganizationUserFilesToSyncFilters) UnsetExternalUrls()`
+
+UnsetExternalUrls ensures that no value is present for ExternalUrls, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
