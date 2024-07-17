@@ -3725,7 +3725,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "a486f437-9dc6-4baa-960f-3731ff5ae078",
+              "request_id": "3a0195db-42f0-48ed-b809-d253f436a8e0",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5292,6 +5292,17 @@
             "title": "High Accuracy",
             "description": "Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.\n        If true, the search may return more accurate results, but may take longer to complete.",
             "default": false
+          },
+          "rerank": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RerankParams"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Parameters for reranking the chunks using a specified model. This field accepts an object with details of the reranking model to be used; either 'Cohere' or 'Jina'. If provided, the specified reranking model will reorder the retrieved chunks based on their relevance to the query."
           }
         },
         "type": "object",
@@ -6446,7 +6457,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "e381f47f-50ca-416e-b1a9-39661bde5520"
+            "default": "b2935b7f-ee64-4d76-8864-8b6731211938"
           },
           "use_ocr": {
             "anyOf": [
@@ -6476,7 +6487,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, SHAREPOINT, DROPBOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX",
             "default": true
           },
           "sync_source_items": {
@@ -7721,6 +7732,19 @@
         ],
         "title": "RawTextInput"
       },
+      "RerankParams": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "title": "RerankParams"
+      },
       "ResyncFileQueryInput": {
         "properties": {
           "file_id": {
@@ -8674,7 +8698,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "3d5122a0-73e5-4674-b4b4-26ff5ad078fa"
+            "default": "50140a8f-c06f-40df-9b91-d10d074bcb67"
           },
           "use_ocr": {
             "anyOf": [
@@ -8841,7 +8865,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "a486f437-9dc6-4baa-960f-3731ff5ae078"
+            "default": "3a0195db-42f0-48ed-b809-d253f436a8e0"
           },
           "enable_file_picker": {
             "type": "boolean",
