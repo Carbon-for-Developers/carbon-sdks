@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.13)
+[![Go Reference](https://pkg.go.dev/badge/github.com/Carbon-for-Developers/carbon-sdks/go)](https://pkg.go.dev/github.com/Carbon-for-Developers/carbon-sdks/go@v0.2.14)
 
 </div>
 
@@ -223,6 +223,8 @@ Class | Method | HTTP request | Description
  - [RankProperty](docs/RankProperty.md)
  - [RawTextInput](docs/RawTextInput.md)
  - [RawTranscriptPropertyInnerValue](docs/RawTranscriptPropertyInnerValue.md)
+ - [RerankParams](docs/RerankParams.md)
+ - [RerankParamsNullable](docs/RerankParamsNullable.md)
  - [ResyncFileQueryInput](docs/ResyncFileQueryInput.md)
  - [RevokeAccessTokenInput](docs/RevokeAccessTokenInput.md)
  - [S3AuthRequest](docs/S3AuthRequest.md)

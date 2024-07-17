@@ -180,6 +180,8 @@ from carbon.pydantic.pagination import Pagination
 from carbon.pydantic.presigned_url_response import PresignedURLResponse
 from carbon.pydantic.rss_feed_input import RSSFeedInput
 from carbon.pydantic.raw_text_input import RawTextInput
+from carbon.pydantic.rerank_params import RerankParams
+from carbon.pydantic.rerank_params_nullable import RerankParamsNullable
 from carbon.pydantic.resync_file_query_input import ResyncFileQueryInput
 from carbon.pydantic.revoke_access_token_input import RevokeAccessTokenInput
 from carbon.pydantic.s3_auth_request import S3AuthRequest
@@ -1435,7 +1437,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.13/python'
+        self.user_agent = 'Konfig/0.2.14/python'
 
     def __enter__(self):
         return self

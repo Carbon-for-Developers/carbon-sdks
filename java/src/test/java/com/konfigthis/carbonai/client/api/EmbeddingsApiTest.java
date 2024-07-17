@@ -33,6 +33,7 @@ import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncOrderByTypes;
 import com.konfigthis.carbonai.client.model.Pagination;
+import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -84,6 +85,7 @@ public class EmbeddingsApiTest {
         EmbeddingGeneratorsNullable embeddingModel = null;
         Boolean includeFileLevelMetadata = null;
         Boolean highAccuracy = null;
+        RerankParamsNullable rerank = null;
         DocumentResponseList response = api.getDocuments(query, k)
                 .tags(tags)
                 .queryVector(queryVector)
@@ -100,6 +102,7 @@ public class EmbeddingsApiTest {
                 .embeddingModel(embeddingModel)
                 .includeFileLevelMetadata(includeFileLevelMetadata)
                 .highAccuracy(highAccuracy)
+                .rerank(rerank)
                 .execute();
         // TODO: test validations
     }

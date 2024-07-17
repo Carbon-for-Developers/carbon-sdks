@@ -21,6 +21,7 @@ from carbon.type.get_embedding_documents_body_parent_file_ids import GetEmbeddin
 from carbon.type.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.type.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
 from carbon.type.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.type.rerank_params_nullable import RerankParamsNullable
 
 class RequiredGetEmbeddingDocumentsBody(TypedDict):
     # Query for which to get related chunks and embeddings.
@@ -69,6 +70,8 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
 
     # Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
     high_accuracy: typing.Optional[bool]
+
+    rerank: typing.Optional[RerankParamsNullable]
 
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

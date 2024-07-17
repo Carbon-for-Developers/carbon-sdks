@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
+import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -180,6 +181,14 @@ public class GetEmbeddingDocumentsBodyTest {
     @Test
     public void highAccuracyTest() {
         // TODO: test highAccuracy
+    }
+
+    /**
+     * Test the property 'rerank'
+     */
+    @Test
+    public void rerankTest() {
+        // TODO: test rerank
     }
 
 }

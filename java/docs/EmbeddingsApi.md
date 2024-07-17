@@ -60,6 +60,7 @@ public class Example {
     EmbeddingGeneratorsNullable embeddingModel = EmbeddingGeneratorsNullable.fromValue("OPENAI");
     Boolean includeFileLevelMetadata = false; // Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     Boolean highAccuracy = false; // Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+    RerankParamsNullable rerank = new RerankParamsNullable();
     try {
       DocumentResponseList result = client
               .embeddings
@@ -79,6 +80,7 @@ public class Example {
               .embeddingModel(embeddingModel)
               .includeFileLevelMetadata(includeFileLevelMetadata)
               .highAccuracy(highAccuracy)
+              .rerank(rerank)
               .execute();
       System.out.println(result);
       System.out.println(result.getDocuments());
@@ -110,6 +112,7 @@ public class Example {
               .embeddingModel(embeddingModel)
               .includeFileLevelMetadata(includeFileLevelMetadata)
               .highAccuracy(highAccuracy)
+              .rerank(rerank)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

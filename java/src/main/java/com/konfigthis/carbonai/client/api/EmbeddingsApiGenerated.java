@@ -43,6 +43,7 @@ import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncOrderByTypes;
 import com.konfigthis.carbonai.client.model.Pagination;
+import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput;
 
 import java.lang.reflect.Type;
@@ -178,6 +179,7 @@ public class EmbeddingsApiGenerated {
         EmbeddingGeneratorsNullable embeddingModel;
         Boolean includeFileLevelMetadata;
         Boolean highAccuracy;
+        RerankParamsNullable rerank;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -335,6 +337,16 @@ public class EmbeddingsApiGenerated {
         }
         
         /**
+         * Set rerank
+         * @param rerank  (optional)
+         * @return EmbeddingsApi.GetDocumentsRequestBuilder
+         */
+        public EmbeddingsApi.GetDocumentsRequestBuilder rerank(RerankParamsNullable rerank) {
+            this.rerank = rerank;
+            return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getDocuments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -369,6 +381,7 @@ public class EmbeddingsApiGenerated {
             getEmbeddingDocumentsBody.embeddingModel(this.embeddingModel);
             getEmbeddingDocumentsBody.includeFileLevelMetadata(this.includeFileLevelMetadata);
             getEmbeddingDocumentsBody.highAccuracy(this.highAccuracy);
+            getEmbeddingDocumentsBody.rerank(this.rerank);
             return getEmbeddingDocumentsBody;
         }
 

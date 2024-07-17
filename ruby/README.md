@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.13-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.13)
+[![npm](https://img.shields.io/badge/gem-v0.2.14-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.14)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.13'
+gem 'carbon_ruby_sdk', '~> 0.2.14'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -382,6 +382,9 @@ result = carbon.embeddings.get_documents(
   embedding_model: "OPENAI",
   include_file_level_metadata: false,
   high_accuracy: false,
+  rerank: {
+        "model" => "model_example",
+    },
 )
 p result
 ```
@@ -445,6 +448,7 @@ Flag to control whether or not to perform a high accuracy embedding search. By
 default, this is set to false. If true, the search may return more accurate
 results, but may take longer to complete.
 
+##### rerank: [`RerankParamsNullable`](./lib/carbon_ruby_sdk/models/rerank_params_nullable.rb)<a id="rerank-rerankparamsnullablelibcarbon_ruby_sdkmodelsrerank_params_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [DocumentResponseList](./lib/carbon_ruby_sdk/models/document_response_list.rb)
@@ -1296,7 +1300,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "a486f437-9dc6-4baa-960f-3731ff5ae078",
+        "request_id" => "3a0195db-42f0-48ed-b809-d253f436a8e0",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1516,7 +1520,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "e381f47f-50ca-416e-b1a9-39661bde5520",
+  request_id: "b2935b7f-ee64-4d76-8864-8b6731211938",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1577,7 +1581,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, ONEDRIVE, SHAREPOINT, DROPBOX, GOOGLE_DRIVE
+SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1877,7 +1881,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
+  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1982,7 +1986,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
+  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

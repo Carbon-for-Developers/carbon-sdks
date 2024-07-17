@@ -36,6 +36,7 @@ func main() {
     client := carbon.NewAPIClient(configuration)
 
     hybridSearchTuningParameters := *carbon.NewHybridSearchTuningParamsNullable()
+    rerank := *carbon.NewRerankParamsNullable()
     
     getEmbeddingDocumentsBody := *carbon.NewGetEmbeddingDocumentsBody(
         "null",
@@ -56,6 +57,7 @@ func main() {
     getEmbeddingDocumentsBody.SetEmbeddingModel(null)
     getEmbeddingDocumentsBody.SetIncludeFileLevelMetadata(false)
     getEmbeddingDocumentsBody.SetHighAccuracy(false)
+    getEmbeddingDocumentsBody.SetRerank(rerank)
     
     request := client.EmbeddingsApi.GetDocuments(
         getEmbeddingDocumentsBody,
