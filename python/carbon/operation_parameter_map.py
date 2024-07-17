@@ -83,6 +83,9 @@ operation_parameter_map = {
             {
                 'name': 'high_accuracy'
             },
+            {
+                'name': 'rerank'
+            },
         ]
     },
     '/text_chunks-POST': {

@@ -42,6 +42,7 @@ from carbon.model.get_embedding_documents_body_tags import GetEmbeddingDocuments
 from carbon.model.document_response_list import DocumentResponseList as DocumentResponseListSchema
 from carbon.model.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds as GetEmbeddingDocumentsBodyFileIdsSchema
 from carbon.model.get_embedding_documents_body import GetEmbeddingDocumentsBody as GetEmbeddingDocumentsBodySchema
+from carbon.model.rerank_params_nullable import RerankParamsNullable as RerankParamsNullableSchema
 
 from carbon.type.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.type.http_validation_error import HTTPValidationError
@@ -50,6 +51,7 @@ from carbon.type.document_response_list import DocumentResponseList
 from carbon.type.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.type.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
 from carbon.type.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.type.rerank_params_nullable import RerankParamsNullable
 from carbon.type.get_embedding_documents_body import GetEmbeddingDocumentsBody
 from carbon.type.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
@@ -58,6 +60,7 @@ from ...api_client import Dictionary
 from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullablePydantic
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable as HybridSearchTuningParamsNullablePydantic
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
+from carbon.pydantic.rerank_params_nullable import RerankParamsNullable as RerankParamsNullablePydantic
 from carbon.pydantic.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds as GetEmbeddingDocumentsBodyFileIdsPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector as GetEmbeddingDocumentsBodyQueryVectorPydantic
@@ -156,6 +159,7 @@ class BaseApi(api_client.Api):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -193,6 +197,8 @@ class BaseApi(api_client.Api):
             _body["include_file_level_metadata"] = include_file_level_metadata
         if high_accuracy is not None:
             _body["high_accuracy"] = high_accuracy
+        if rerank is not None:
+            _body["rerank"] = rerank
         args.body = _body
         return args
 
@@ -417,6 +423,7 @@ class GetDocumentsRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -441,6 +448,7 @@ class GetDocumentsRaw(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -466,6 +474,7 @@ class GetDocumentsRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -488,6 +497,7 @@ class GetDocumentsRaw(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
         )
         return self._get_documents_oapg(
             body=args.body,
@@ -514,6 +524,7 @@ class GetDocuments(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> DocumentResponseListPydantic:
@@ -535,6 +546,7 @@ class GetDocuments(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
             **kwargs,
         )
         if validate:
@@ -561,6 +573,7 @@ class GetDocuments(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
         validate: bool = False,
     ) -> DocumentResponseListPydantic:
         raw_response = self.raw.get_documents(
@@ -581,6 +594,7 @@ class GetDocuments(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
         )
         if validate:
             return DocumentResponseListPydantic(**raw_response.body)
@@ -609,6 +623,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -633,6 +648,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -658,6 +674,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
+        rerank: typing.Optional[RerankParamsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -680,6 +697,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
+            rerank=rerank,
         )
         return self._get_documents_oapg(
             body=args.body,

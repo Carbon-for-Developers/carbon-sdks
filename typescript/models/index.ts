@@ -95,6 +95,8 @@ export * from './rssfeed-input';
 export * from './rank-property';
 export * from './raw-text-input';
 export * from './raw-transcript-property-inner-value';
+export * from './rerank-params';
+export * from './rerank-params-nullable';
 export * from './resync-file-query-input';
 export * from './revoke-access-token-input';
 export * from './s3-auth-request';

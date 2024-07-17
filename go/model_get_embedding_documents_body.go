@@ -48,6 +48,7 @@ type GetEmbeddingDocumentsBody struct {
 	IncludeFileLevelMetadata NullableBool `json:"include_file_level_metadata,omitempty"`
 	// Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
 	HighAccuracy NullableBool `json:"high_accuracy,omitempty"`
+	Rerank NullableRerankParamsNullable `json:"rerank,omitempty"`
 }
 
 // NewGetEmbeddingDocumentsBody instantiates a new GetEmbeddingDocumentsBody object
@@ -711,6 +712,48 @@ func (o *GetEmbeddingDocumentsBody) UnsetHighAccuracy() {
 	o.HighAccuracy.Unset()
 }
 
+// GetRerank returns the Rerank field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetEmbeddingDocumentsBody) GetRerank() RerankParamsNullable {
+	if o == nil || isNil(o.Rerank.Get()) {
+		var ret RerankParamsNullable
+		return ret
+	}
+	return *o.Rerank.Get()
+}
+
+// GetRerankOk returns a tuple with the Rerank field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetEmbeddingDocumentsBody) GetRerankOk() (*RerankParamsNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.Rerank.Get(), o.Rerank.IsSet()
+}
+
+// HasRerank returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasRerank() bool {
+	if o != nil && o.Rerank.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRerank gets a reference to the given NullableRerankParamsNullable and assigns it to the Rerank field.
+func (o *GetEmbeddingDocumentsBody) SetRerank(v RerankParamsNullable) {
+	o.Rerank.Set(&v)
+}
+// SetRerankNil sets the value for Rerank to be an explicit nil
+func (o *GetEmbeddingDocumentsBody) SetRerankNil() {
+	o.Rerank.Set(nil)
+}
+
+// UnsetRerank ensures that no value is present for Rerank, not even an explicit nil
+func (o *GetEmbeddingDocumentsBody) UnsetRerank() {
+	o.Rerank.Unset()
+}
+
 func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -763,6 +806,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.HighAccuracy.IsSet() {
 		toSerialize["high_accuracy"] = o.HighAccuracy.Get()
+	}
+	if o.Rerank.IsSet() {
+		toSerialize["rerank"] = o.Rerank.Get()
 	}
 	return json.Marshal(toSerialize)
 }

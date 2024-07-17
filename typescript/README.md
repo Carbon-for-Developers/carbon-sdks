@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.13-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.13)
+[![npm](https://img.shields.io/badge/npm-v0.2.14-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.14)
 
 </div>
 
@@ -437,6 +437,8 @@ Flag to control whether or not to include file-level metadata in the response. T
 ##### high_accuracy: `boolean`<a id="high_accuracy-boolean"></a>
 
 Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
+
+##### rerank: [`RerankParamsNullable`](./models/rerank-params-nullable.ts)<a id="rerank-rerankparamsnullablemodelsrerank-params-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1500,7 +1502,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "e381f47f-50ca-416e-b1a9-39661bde5520",
+  request_id: "b2935b7f-ee64-4d76-8864-8b6731211938",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1569,7 +1571,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, SHAREPOINT, DROPBOX, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1861,7 +1863,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
+  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1969,7 +1971,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "3d5122a0-73e5-4674-b4b4-26ff5ad078fa",
+  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

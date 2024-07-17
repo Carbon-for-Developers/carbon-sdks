@@ -57,6 +57,8 @@ import { OrganizationUserFilesToSyncOrderByTypes } from '../models';
 // @ts-ignore
 import { Pagination } from '../models';
 // @ts-ignore
+import { RerankParamsNullable } from '../models';
+// @ts-ignore
 import { SingleChunksAndEmbeddingsUploadInput } from '../models';
 // @ts-ignore
 import { Tags1 } from '../models';
@@ -312,7 +314,8 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
                 media_type: requestParameters.media_type,
                 embedding_model: requestParameters.embedding_model,
                 include_file_level_metadata: requestParameters.include_file_level_metadata,
-                high_accuracy: requestParameters.high_accuracy
+                high_accuracy: requestParameters.high_accuracy,
+                rerank: requestParameters.rerank
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDocuments(getEmbeddingDocumentsBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

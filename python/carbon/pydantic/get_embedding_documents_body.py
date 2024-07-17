@@ -22,6 +22,7 @@ from carbon.pydantic.get_embedding_documents_body_parent_file_ids import GetEmbe
 from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.pydantic.rerank_params_nullable import RerankParamsNullable
 
 class GetEmbeddingDocumentsBody(BaseModel):
     # Query for which to get related chunks and embeddings.
@@ -68,6 +69,8 @@ class GetEmbeddingDocumentsBody(BaseModel):
 
     # Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
     high_accuracy: typing.Optional[typing.Optional[bool]] = Field(None, alias='high_accuracy')
+
+    rerank: typing.Optional[RerankParamsNullable] = Field(None, alias='rerank')
 
     model_config = ConfigDict(
         protected_namespaces=(),

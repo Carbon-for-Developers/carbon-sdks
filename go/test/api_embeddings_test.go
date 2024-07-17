@@ -30,6 +30,7 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
     t.Run("Test EmbeddingsApiService GetDocuments", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         hybridSearchTuningParameters := *carbon.NewHybridSearchTuningParamsNullable()
+        rerank := *carbon.NewRerankParamsNullable()
         
         getEmbeddingDocumentsBody := *carbon.NewGetEmbeddingDocumentsBody(
             "null",
@@ -50,6 +51,7 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
         getEmbeddingDocumentsBody.SetEmbeddingModel(null)
         getEmbeddingDocumentsBody.SetIncludeFileLevelMetadata(false)
         getEmbeddingDocumentsBody.SetHighAccuracy(false)
+        getEmbeddingDocumentsBody.SetRerank(rerank)
         
         request := client.EmbeddingsApi.GetDocuments(
             getEmbeddingDocumentsBody,

@@ -18,6 +18,7 @@ import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncOrderByTypes;
 import com.konfigthis.carbonai.client.model.Pagination;
+import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput;
 import java.util.ArrayList;
 import java.util.HashMap;

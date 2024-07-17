@@ -89,6 +89,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'high_accuracy'
             },
+            {
+                name: 'rerank'
+            },
         ]
     },
     '/text_chunks-POST': {

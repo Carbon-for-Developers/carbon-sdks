@@ -136,6 +136,8 @@ from carbon.model.pagination import Pagination
 from carbon.model.presigned_url_response import PresignedURLResponse
 from carbon.model.rss_feed_input import RSSFeedInput
 from carbon.model.raw_text_input import RawTextInput
+from carbon.model.rerank_params import RerankParams
+from carbon.model.rerank_params_nullable import RerankParamsNullable
 from carbon.model.resync_file_query_input import ResyncFileQueryInput
 from carbon.model.revoke_access_token_input import RevokeAccessTokenInput
 from carbon.model.s3_auth_request import S3AuthRequest

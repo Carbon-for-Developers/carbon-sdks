@@ -3885,7 +3885,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "a486f437-9dc6-4baa-960f-3731ff5ae078",
+              "request_id": "3a0195db-42f0-48ed-b809-d253f436a8e0",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5104,6 +5104,9 @@
             "default": false,
             "type": "boolean",
             "nullable": true
+          },
+          "rerank": {
+            "$ref": "#/components/schemas/RerankParamsNullable"
           }
         },
         "type": "object",
@@ -5922,7 +5925,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "e381f47f-50ca-416e-b1a9-39661bde5520"
+            "default": "b2935b7f-ee64-4d76-8864-8b6731211938"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5939,7 +5942,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, SHAREPOINT, DROPBOX, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX",
             "type": "boolean",
             "default": true
           },
@@ -6834,6 +6837,19 @@
           "contents"
         ]
       },
+      "RerankParams": {
+        "title": "RerankParams",
+        "properties": {
+          "model": {
+            "title": "Model",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model"
+        ]
+      },
       "ResyncFileQueryInput": {
         "title": "ResyncFileQueryInput",
         "properties": {
@@ -7494,7 +7510,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "3d5122a0-73e5-4674-b4b4-26ff5ad078fa"
+            "default": "50140a8f-c06f-40df-9b91-d10d074bcb67"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -7586,7 +7602,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "a486f437-9dc6-4baa-960f-3731ff5ae078"
+            "default": "3a0195db-42f0-48ed-b809-d253f436a8e0"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -8980,6 +8996,21 @@
             "weight_b": 0.7
           }
         ]
+      },
+      "RerankParamsNullable": {
+        "title": "RerankParams",
+        "description": "Parameters for reranking the chunks using a specified model. This field accepts an object with details of the reranking model to be used; either 'Cohere' or 'Jina'. If provided, the specified reranking model will reorder the retrieved chunks based on their relevance to the query.",
+        "properties": {
+          "model": {
+            "title": "Model",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "nullable": true
       },
       "ListItemsFiltersNullable": {
         "title": "ListItemsFilters",

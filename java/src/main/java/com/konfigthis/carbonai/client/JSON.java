@@ -180,6 +180,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PresignedURLResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RSSFeedInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RawTextInput.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RerankParams.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RerankParamsNullable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ResyncFileQueryInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RevokeAccessTokenInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.S3AuthRequest.CustomTypeAdapterFactory());

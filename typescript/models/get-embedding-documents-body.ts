@@ -13,6 +13,7 @@ import type * as buffer from "buffer"
 import { EmbeddingGeneratorsNullable } from './embedding-generators-nullable';
 import { FileContentTypesNullable } from './file-content-types-nullable';
 import { HybridSearchTuningParamsNullable } from './hybrid-search-tuning-params-nullable';
+import { RerankParamsNullable } from './rerank-params-nullable';
 import { Tags1 } from './tags1';
 
 /**
@@ -124,5 +125,11 @@ export interface GetEmbeddingDocumentsBody {
      * @memberof GetEmbeddingDocumentsBody
      */
     'high_accuracy'?: boolean | null;
+    /**
+     * 
+     * @type {RerankParamsNullable}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'rerank'?: RerankParamsNullable | null;
 }
 

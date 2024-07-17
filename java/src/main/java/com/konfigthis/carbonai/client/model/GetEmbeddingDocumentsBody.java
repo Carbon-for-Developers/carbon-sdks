@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
+import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -124,6 +125,10 @@ public class GetEmbeddingDocumentsBody {
   public static final String SERIALIZED_NAME_HIGH_ACCURACY = "high_accuracy";
   @SerializedName(SERIALIZED_NAME_HIGH_ACCURACY)
   private Boolean highAccuracy = false;
+
+  public static final String SERIALIZED_NAME_RERANK = "rerank";
+  @SerializedName(SERIALIZED_NAME_RERANK)
+  private RerankParamsNullable rerank;
 
   public GetEmbeddingDocumentsBody() {
   }
@@ -663,6 +668,35 @@ public class GetEmbeddingDocumentsBody {
     this.highAccuracy = highAccuracy;
   }
 
+
+  public GetEmbeddingDocumentsBody rerank(RerankParamsNullable rerank) {
+    
+    
+    
+    
+    this.rerank = rerank;
+    return this;
+  }
+
+   /**
+   * Get rerank
+   * @return rerank
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RerankParamsNullable getRerank() {
+    return rerank;
+  }
+
+
+  public void setRerank(RerankParamsNullable rerank) {
+    
+    
+    
+    this.rerank = rerank;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -734,7 +768,8 @@ public class GetEmbeddingDocumentsBody {
         Objects.equals(this.mediaType, getEmbeddingDocumentsBody.mediaType) &&
         Objects.equals(this.embeddingModel, getEmbeddingDocumentsBody.embeddingModel) &&
         Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata) &&
-        Objects.equals(this.highAccuracy, getEmbeddingDocumentsBody.highAccuracy)&&
+        Objects.equals(this.highAccuracy, getEmbeddingDocumentsBody.highAccuracy) &&
+        Objects.equals(this.rerank, getEmbeddingDocumentsBody.rerank)&&
         Objects.equals(this.additionalProperties, getEmbeddingDocumentsBody.additionalProperties);
   }
 
@@ -744,7 +779,7 @@ public class GetEmbeddingDocumentsBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, additionalProperties);
+    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, rerank, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -775,6 +810,7 @@ public class GetEmbeddingDocumentsBody {
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    includeFileLevelMetadata: ").append(toIndentedString(includeFileLevelMetadata)).append("\n");
     sb.append("    highAccuracy: ").append(toIndentedString(highAccuracy)).append("\n");
+    sb.append("    rerank: ").append(toIndentedString(rerank)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -815,6 +851,7 @@ public class GetEmbeddingDocumentsBody {
     openapiFields.add("embedding_model");
     openapiFields.add("include_file_level_metadata");
     openapiFields.add("high_accuracy");
+    openapiFields.add("rerank");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -859,6 +896,10 @@ public class GetEmbeddingDocumentsBody {
       // validate the optional field `hybrid_search_tuning_parameters`
       if (jsonObj.get("hybrid_search_tuning_parameters") != null && !jsonObj.get("hybrid_search_tuning_parameters").isJsonNull()) {
         HybridSearchTuningParamsNullable.validateJsonObject(jsonObj.getAsJsonObject("hybrid_search_tuning_parameters"));
+      }
+      // validate the optional field `rerank`
+      if (jsonObj.get("rerank") != null && !jsonObj.get("rerank").isJsonNull()) {
+        RerankParamsNullable.validateJsonObject(jsonObj.getAsJsonObject("rerank"));
       }
   }
 
