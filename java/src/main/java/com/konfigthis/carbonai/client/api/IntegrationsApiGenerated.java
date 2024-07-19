@@ -1506,7 +1506,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to b2935b7f-ee64-4d76-8864-8b6731211938)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to d29ec177-bbc6-43c7-9b16-0ee340804c99)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -1536,7 +1536,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set enableFilePicker
-         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX (optional, default to true)
+         * @param enableFilePicker Enable integration&#39;s file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX (optional, default to true)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder enableFilePicker(Boolean enableFilePicker) {
@@ -1729,6 +1729,7 @@ public class IntegrationsApiGenerated {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listConfluencePagesValidateBeforeCall(ListRequest listRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'listRequest' is set
@@ -1783,7 +1784,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             ListRequest listRequest = buildBodyParams();
             return listConfluencePagesCall(listRequest, _callback);
@@ -1805,7 +1808,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ListResponse execute() throws ApiException {
             ListRequest listRequest = buildBodyParams();
             ApiResponse<ListResponse> localVarResp = listConfluencePagesWithHttpInfo(listRequest);
@@ -1821,7 +1826,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<ListResponse> executeWithHttpInfo() throws ApiException {
             ListRequest listRequest = buildBodyParams();
             return listConfluencePagesWithHttpInfo(listRequest);
@@ -1837,7 +1844,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<ListResponse> _callback) throws ApiException {
             ListRequest listRequest = buildBodyParams();
             return listConfluencePagesAsync(listRequest, _callback);
@@ -1846,7 +1855,7 @@ public class IntegrationsApiGenerated {
 
     /**
      * Confluence List
-     * To begin listing a user&#39;s Confluence pages, at least a &#x60;data_source_id&#x60; of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user&#39;s page directory, additional requests to this endpoint can be made with the same &#x60;data_source_id&#x60; and with &#x60;parent_id&#x60; set to the id of page from a previous request. For convenience, the &#x60;has_children&#x60; property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the &#x60;parent_id&#x60;.
+     * This endpoint has been deprecated. Use /integrations/items/list instead.  To begin listing a user&#39;s Confluence pages, at least a &#x60;data_source_id&#x60; of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user&#39;s page directory, additional requests to this endpoint can be made with the same &#x60;data_source_id&#x60; and with &#x60;parent_id&#x60; set to the id of page from a previous request. For convenience, the &#x60;has_children&#x60; property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the &#x60;parent_id&#x60;.
      * @param listRequest  (required)
      * @return ListConfluencePagesRequestBuilder
      * @http.response.details
@@ -1854,7 +1863,9 @@ public class IntegrationsApiGenerated {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public IntegrationsApi.ListConfluencePagesRequestBuilder listConfluencePages(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         return ((IntegrationsApi) this).new ListConfluencePagesRequestBuilder(dataSourceId);
@@ -3154,6 +3165,7 @@ public class IntegrationsApiGenerated {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call syncConfluenceValidateBeforeCall(SyncFilesRequest syncFilesRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'syncFilesRequest' is set
@@ -3295,7 +3307,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 50140a8f-c06f-40df-9b91-d10d074bcb67)
+         * @param requestId  (optional, default to ca60b474-8b43-4b44-9deb-adb701e40610)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3353,7 +3365,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             SyncFilesRequest syncFilesRequest = buildBodyParams();
             return syncConfluenceCall(syncFilesRequest, _callback);
@@ -3389,7 +3403,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public GenericSuccessResponse execute() throws ApiException {
             SyncFilesRequest syncFilesRequest = buildBodyParams();
             ApiResponse<GenericSuccessResponse> localVarResp = syncConfluenceWithHttpInfo(syncFilesRequest);
@@ -3405,7 +3421,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<GenericSuccessResponse> executeWithHttpInfo() throws ApiException {
             SyncFilesRequest syncFilesRequest = buildBodyParams();
             return syncConfluenceWithHttpInfo(syncFilesRequest);
@@ -3421,7 +3439,9 @@ public class IntegrationsApiGenerated {
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
          </table>
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
             SyncFilesRequest syncFilesRequest = buildBodyParams();
             return syncConfluenceAsync(syncFilesRequest, _callback);
@@ -3430,7 +3450,7 @@ public class IntegrationsApiGenerated {
 
     /**
      * Confluence Sync
-     * After listing pages in a user&#39;s Confluence account, the set of selected page &#x60;ids&#x60; and the connected account&#39;s &#x60;data_source_id&#x60; can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+     * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user&#39;s Confluence account, the set of selected page &#x60;ids&#x60; and the connected account&#39;s &#x60;data_source_id&#x60; can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
      * @param syncFilesRequest  (required)
      * @return SyncConfluenceRequestBuilder
      * @http.response.details
@@ -3438,7 +3458,9 @@ public class IntegrationsApiGenerated {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public IntegrationsApi.SyncConfluenceRequestBuilder syncConfluence(Integer dataSourceId, List<Object> ids) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
@@ -3793,7 +3815,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 50140a8f-c06f-40df-9b91-d10d074bcb67)
+         * @param requestId  (optional, default to ca60b474-8b43-4b44-9deb-adb701e40610)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {

@@ -387,7 +387,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("b2935b7f-ee64-4d76-8864-8b6731211938")
+    oAuthURLRequest.SetRequestId("d29ec177-bbc6-43c7-9b16-0ee340804c99")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -417,6 +417,7 @@ func main() {
 
 
 ## ListConfluencePages
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Confluence List
 
@@ -793,6 +794,7 @@ func main() {
 
 
 ## SyncConfluence
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Confluence Sync
 
@@ -831,7 +833,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("50140a8f-c06f-40df-9b91-d10d074bcb67")
+    syncFilesRequest.SetRequestId("ca60b474-8b43-4b44-9deb-adb701e40610")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -961,7 +963,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("50140a8f-c06f-40df-9b91-d10d074bcb67")
+    syncFilesRequest.SetRequestId("ca60b474-8b43-4b44-9deb-adb701e40610")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)

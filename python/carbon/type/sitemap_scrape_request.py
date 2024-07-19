@@ -21,6 +21,7 @@ from carbon.type.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRe
 from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.type.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
 from carbon.type.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.type.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape
 
 class RequiredSitemapScrapeRequest(TypedDict):
     url: str
@@ -54,6 +55,8 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
     url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude]
 
     url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude]
+
+    urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape]
 
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

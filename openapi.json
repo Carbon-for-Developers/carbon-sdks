@@ -321,7 +321,7 @@
           "Integrations"
         ],
         "summary": "Confluence List",
-        "description": "To begin listing a user's Confluence pages, at least a `data_source_id` of a connected\nConfluence account must be specified. This base request returns a list of root pages for\nevery space the user has access to in a Confluence instance. To traverse further down\nthe user's page directory, additional requests to this endpoint can be made with the same\n`data_source_id` and with `parent_id` set to the id of page from a previous request. For\nconvenience, the `has_children` property in each directory item in the response list will\nflag which pages will return non-empty lists of pages when set as the `parent_id`.",
+        "description": "This endpoint has been deprecated. Use /integrations/items/list instead.\n\nTo begin listing a user's Confluence pages, at least a `data_source_id` of a connected\nConfluence account must be specified. This base request returns a list of root pages for\nevery space the user has access to in a Confluence instance. To traverse further down\nthe user's page directory, additional requests to this endpoint can be made with the same\n`data_source_id` and with `parent_id` set to the id of page from a previous request. For\nconvenience, the `has_children` property in each directory item in the response list will\nflag which pages will return non-empty lists of pages when set as the `parent_id`.",
         "operationId": "confluence_list_integrations_confluence_list_post",
         "requestBody": {
           "content": {
@@ -355,6 +355,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "accessToken": []
@@ -372,7 +373,7 @@
           "Integrations"
         ],
         "summary": "Confluence Sync",
-        "description": "After listing pages in a user's Confluence account, the set of selected page `ids` and the\nconnected account's `data_source_id` can be passed into this endpoint to sync them into\nCarbon. Additional parameters listed below can be used to associate data to the selected\npages or alter the behavior of the sync.",
+        "description": "This endpoint has been deprecated. Use /integrations/files/sync instead.\n\nAfter listing pages in a user's Confluence account, the set of selected page `ids` and the\nconnected account's `data_source_id` can be passed into this endpoint to sync them into\nCarbon. Additional parameters listed below can be used to associate data to the selected\npages or alter the behavior of the sync.",
         "operationId": "confluence_sync_integrations_confluence_sync_post",
         "requestBody": {
           "content": {
@@ -406,6 +407,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "accessToken": []
@@ -3725,7 +3727,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "3a0195db-42f0-48ed-b809-d253f436a8e0",
+              "request_id": "07b02a24-9429-4a3c-aa98-27ff63503082",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -6457,7 +6459,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "b2935b7f-ee64-4d76-8864-8b6731211938"
+            "default": "d29ec177-bbc6-43c7-9b16-0ee340804c99"
           },
           "use_ocr": {
             "anyOf": [
@@ -6487,7 +6489,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX",
             "default": true
           },
           "sync_source_items": {
@@ -8392,6 +8394,22 @@
             "title": "Url Paths To Exclude",
             "description": "URL subpaths or directories that you want to exclude. For example if you want to exclude\n        URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input",
             "default": []
+          },
+          "urls_to_scrape": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Urls To Scrape",
+            "description": "You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,\n          you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.",
+            "default": []
           }
         },
         "type": "object",
@@ -8698,7 +8716,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "50140a8f-c06f-40df-9b91-d10d074bcb67"
+            "default": "ca60b474-8b43-4b44-9deb-adb701e40610"
           },
           "use_ocr": {
             "anyOf": [
@@ -8865,7 +8883,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "3a0195db-42f0-48ed-b809-d253f436a8e0"
+            "default": "07b02a24-9429-4a3c-aa98-27ff63503082"
           },
           "enable_file_picker": {
             "type": "boolean",

@@ -19,6 +19,23 @@ class TestSimple(unittest.TestCase):
     def setUp(self):
         pass
 
+    def test_integer_arg(self):
+        carbon = Carbon(
+            api_key = 'YOUR_API_KEY',
+            customer_id = 'YOUR_API_KEY',
+            host = "http://127.0.0.1:4010"
+        )
+        res = carbon.integrations.get_oauth_url( 
+            service='SHAREPOINT',
+            data_source_id=int(17714),
+            request_id='{request_id: 123}',
+            skip_embedding_generation=True,
+            microsoft_tenant='modelml',
+            sharepoint_site_name='word-ingestion-dev',
+            enable_file_picker=False,
+        )
+        self.assertIsNotNone(res)
+
     def test_auth_schemes(self):
         carbon = Carbon(
             api_key = 'YOUR_API_KEY',

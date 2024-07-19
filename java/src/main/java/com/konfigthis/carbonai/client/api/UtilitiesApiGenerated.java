@@ -837,6 +837,7 @@ public class UtilitiesApiGenerated {
         EmbeddingGenerators embeddingModel;
         List<String> urlPathsToInclude;
         List<String> urlPathsToExclude;
+        List<String> urlsToScrape;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -983,6 +984,16 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set urlsToScrape
+         * @param urlsToScrape You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped. (optional)
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
+         */
+        public UtilitiesApi.ScrapeSitemapRequestBuilder urlsToScrape(List<String> urlsToScrape) {
+            this.urlsToScrape = urlsToScrape;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1015,6 +1026,7 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.embeddingModel(this.embeddingModel);
             sitemapScrapeRequest.urlPathsToInclude(this.urlPathsToInclude);
             sitemapScrapeRequest.urlPathsToExclude(this.urlPathsToExclude);
+            sitemapScrapeRequest.urlsToScrape(this.urlsToScrape);
             return sitemapScrapeRequest;
         }
 

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
 **UrlPathsToInclude** | Pointer to **[]string** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
 **UrlPathsToExclude** | Pointer to **[]string** | URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
+**UrlsToScrape** | Pointer to **[]string** | You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped. | [optional] [default to []]
 
 ## Methods
 
@@ -539,6 +540,41 @@ HasUrlPathsToExclude returns a boolean if a field has been set.
 `func (o *SitemapScrapeRequest) UnsetUrlPathsToExclude()`
 
 UnsetUrlPathsToExclude ensures that no value is present for UrlPathsToExclude, not even an explicit nil
+### GetUrlsToScrape
+
+`func (o *SitemapScrapeRequest) GetUrlsToScrape() []string`
+
+GetUrlsToScrape returns the UrlsToScrape field if non-nil, zero value otherwise.
+
+### GetUrlsToScrapeOk
+
+`func (o *SitemapScrapeRequest) GetUrlsToScrapeOk() (*[]string, bool)`
+
+GetUrlsToScrapeOk returns a tuple with the UrlsToScrape field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrlsToScrape
+
+`func (o *SitemapScrapeRequest) SetUrlsToScrape(v []string)`
+
+SetUrlsToScrape sets UrlsToScrape field to given value.
+
+### HasUrlsToScrape
+
+`func (o *SitemapScrapeRequest) HasUrlsToScrape() bool`
+
+HasUrlsToScrape returns a boolean if a field has been set.
+
+### SetUrlsToScrapeNil
+
+`func (o *SitemapScrapeRequest) SetUrlsToScrapeNil(b bool)`
+
+ SetUrlsToScrapeNil sets the value for UrlsToScrape to be an explicit nil
+
+### UnsetUrlsToScrape
+`func (o *SitemapScrapeRequest) UnsetUrlsToScrape()`
+
+UnsetUrlsToScrape ensures that no value is present for UrlsToScrape, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

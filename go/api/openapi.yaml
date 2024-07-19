@@ -1495,7 +1495,10 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-files-sync
   /integrations/confluence/list:
     post:
+      deprecated: true
       description: |-
+        This endpoint has been deprecated. Use /integrations/items/list instead.
+
         To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
         Confluence account must be specified. This base request returns a list of root pages for
         every space the user has access to in a Confluence instance. To traverse further down
@@ -1534,7 +1537,10 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-confluence-list
   /integrations/confluence/sync:
     post:
+      deprecated: true
       description: |-
+        This endpoint has been deprecated. Use /integrations/files/sync instead.
+
         After listing pages in a user's Confluence account, the set of selected page `ids` and the
         connected account's `data_source_id` can be passed into this endpoint to sync them into
         Carbon. Additional parameters listed below can be used to associate data to the selected
@@ -4118,7 +4124,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 3a0195db-42f0-48ed-b809-d253f436a8e0
+          request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
         authentication:
           tenant_name: tenant_name
           source: null
@@ -4154,7 +4160,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 3a0195db-42f0-48ed-b809-d253f436a8e0
+            request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -6295,7 +6301,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: b2935b7f-ee64-4d76-8864-8b6731211938
+        request_id: d29ec177-bbc6-43c7-9b16-0ee340804c99
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6413,13 +6419,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: b2935b7f-ee64-4d76-8864-8b6731211938
+          default: d29ec177-bbc6-43c7-9b16-0ee340804c99
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: b2935b7f-ee64-4d76-8864-8b6731211938
+          example: d29ec177-bbc6-43c7-9b16-0ee340804c99
           title: Request Id
           type: string
-          x-konfig-original-example: b2935b7f-ee64-4d76-8864-8b6731211938
+          x-konfig-original-example: d29ec177-bbc6-43c7-9b16-0ee340804c99
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6441,8 +6447,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE,\
-            \ BOX"
+            \ it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7749,6 +7754,7 @@ components:
       example:
         chunk_size: 1500
         prepend_filename_to_chunks: false
+        urls_to_scrape: []
         max_pages_to_scrape: 1
         css_classes_to_skip: []
         embedding_model: null
@@ -7889,6 +7895,19 @@ components:
           type: array
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-url_paths_to_exclude
+        urls_to_scrape:
+          default: []
+          description: |-
+            You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,
+                      you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+          example: []
+          items:
+            type: string
+          nullable: true
+          title: Urls To Scrape
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-urls_to_scrape
       required:
       - url
       title: SitemapScrapeRequest
@@ -8046,7 +8065,7 @@ components:
         - null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 50140a8f-c06f-40df-9b91-d10d074bcb67
+        request_id: ca60b474-8b43-4b44-9deb-adb701e40610
         data_source_id: 0
       properties:
         tags:
@@ -8120,11 +8139,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 50140a8f-c06f-40df-9b91-d10d074bcb67
-          example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          default: ca60b474-8b43-4b44-9deb-adb701e40610
+          example: ca60b474-8b43-4b44-9deb-adb701e40610
           title: Request Id
           type: string
-          x-konfig-original-example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8180,7 +8199,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 3a0195db-42f0-48ed-b809-d253f436a8e0
+        request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
       properties:
         tags:
           nullable: true
@@ -8253,11 +8272,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 3a0195db-42f0-48ed-b809-d253f436a8e0
-          example: 3a0195db-42f0-48ed-b809-d253f436a8e0
+          default: 07b02a24-9429-4a3c-aa98-27ff63503082
+          example: 07b02a24-9429-4a3c-aa98-27ff63503082
           title: Request Id
           type: string
-          x-konfig-original-example: 3a0195db-42f0-48ed-b809-d253f436a8e0
+          x-konfig-original-example: 07b02a24-9429-4a3c-aa98-27ff63503082
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -10356,7 +10375,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: b2935b7f-ee64-4d76-8864-8b6731211938
+      example: d29ec177-bbc6-43c7-9b16-0ee340804c99
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10574,6 +10593,11 @@ components:
         type: string
       type: array
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-urls_to_scrape:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags:
       example: {}
       properties: {}
@@ -10629,7 +10653,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+      example: ca60b474-8b43-4b44-9deb-adb701e40610
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10673,7 +10697,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 3a0195db-42f0-48ed-b809-d253f436a8e0
+      example: 07b02a24-9429-4a3c-aa98-27ff63503082
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -11051,13 +11075,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: b2935b7f-ee64-4d76-8864-8b6731211938
+          default: d29ec177-bbc6-43c7-9b16-0ee340804c99
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: b2935b7f-ee64-4d76-8864-8b6731211938
+          example: d29ec177-bbc6-43c7-9b16-0ee340804c99
           title: Request Id
           type: string
-          x-konfig-original-example: b2935b7f-ee64-4d76-8864-8b6731211938
+          x-konfig-original-example: d29ec177-bbc6-43c7-9b16-0ee340804c99
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -11079,8 +11103,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE,\
-            \ BOX"
+            \ it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX"
           example: true
           title: Enable File Picker
           type: boolean
@@ -11251,11 +11274,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 50140a8f-c06f-40df-9b91-d10d074bcb67
-          example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          default: ca60b474-8b43-4b44-9deb-adb701e40610
+          example: ca60b474-8b43-4b44-9deb-adb701e40610
           title: Request Id
           type: string
-          x-konfig-original-example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11391,11 +11414,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 50140a8f-c06f-40df-9b91-d10d074bcb67
-          example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          default: ca60b474-8b43-4b44-9deb-adb701e40610
+          example: ca60b474-8b43-4b44-9deb-adb701e40610
           title: Request Id
           type: string
-          x-konfig-original-example: 50140a8f-c06f-40df-9b91-d10d074bcb67
+          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -13322,6 +13345,19 @@ components:
           type: array
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-url_paths_to_exclude
+        urls_to_scrape:
+          default: []
+          description: |-
+            You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,
+                      you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+          example: []
+          items:
+            type: string
+          nullable: true
+          title: Urls To Scrape
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-urls_to_scrape
       required:
       - url
       type: object

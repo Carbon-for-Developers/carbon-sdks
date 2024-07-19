@@ -36,6 +36,7 @@ from carbon.model.http_validation_error import HTTPValidationError as HTTPValida
 from carbon.model.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip as SitemapScrapeRequestCssClassesToSkipSchema
 from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags as SitemapScrapeRequestTagsSchema
 from carbon.model.sitemap_scrape_request_css_selectors_to_skip import SitemapScrapeRequestCssSelectorsToSkip as SitemapScrapeRequestCssSelectorsToSkipSchema
+from carbon.model.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape as SitemapScrapeRequestUrlsToScrapeSchema
 from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip as SitemapScrapeRequestHtmlTagsToSkipSchema
 from carbon.model.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude as SitemapScrapeRequestUrlPathsToExcludeSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
@@ -43,6 +44,7 @@ from carbon.model.sitemap_scrape_request import SitemapScrapeRequest as SitemapS
 from carbon.model.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude as SitemapScrapeRequestUrlPathsToIncludeSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape
 from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
@@ -57,6 +59,7 @@ from carbon.pydantic.sitemap_scrape_request import SitemapScrapeRequest as Sitem
 from carbon.pydantic.sitemap_scrape_request_css_classes_to_skip import SitemapScrapeRequestCssClassesToSkip as SitemapScrapeRequestCssClassesToSkipPydantic
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude as SitemapScrapeRequestUrlPathsToExcludePydantic
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude as SitemapScrapeRequestUrlPathsToIncludePydantic
+from carbon.pydantic.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape as SitemapScrapeRequestUrlsToScrapePydantic
 from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeRequestHtmlTagsToSkip as SitemapScrapeRequestHtmlTagsToSkipPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags as SitemapScrapeRequestTagsPydantic
@@ -151,6 +154,7 @@ class BaseApi(api_client.Api):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -184,6 +188,8 @@ class BaseApi(api_client.Api):
             _body["url_paths_to_include"] = url_paths_to_include
         if url_paths_to_exclude is not None:
             _body["url_paths_to_exclude"] = url_paths_to_exclude
+        if urls_to_scrape is not None:
+            _body["urls_to_scrape"] = urls_to_scrape
         args.body = _body
         return args
 
@@ -406,6 +412,7 @@ class ScrapeSitemapRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -428,6 +435,7 @@ class ScrapeSitemapRaw(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -451,6 +459,7 @@ class ScrapeSitemapRaw(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -471,6 +480,7 @@ class ScrapeSitemapRaw(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,
@@ -495,6 +505,7 @@ class ScrapeSitemap(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -514,6 +525,7 @@ class ScrapeSitemap(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
             **kwargs,
         )
         if validate:
@@ -538,6 +550,7 @@ class ScrapeSitemap(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.scrape_sitemap(
@@ -556,6 +569,7 @@ class ScrapeSitemap(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -582,6 +596,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -604,6 +619,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -627,6 +643,7 @@ class ApiForpost(BaseApi):
         embedding_model: typing.Optional[EmbeddingGenerators] = None,
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
+        urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -647,6 +664,7 @@ class ApiForpost(BaseApi):
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,

@@ -245,6 +245,7 @@ func main() {
     sitemapScrapeRequest.SetEmbeddingModel(null)
     sitemapScrapeRequest.SetUrlPathsToInclude([])
     sitemapScrapeRequest.SetUrlPathsToExclude([])
+    sitemapScrapeRequest.SetUrlsToScrape([])
     
     request := client.UtilitiesApi.ScrapeSitemap(
         sitemapScrapeRequest,

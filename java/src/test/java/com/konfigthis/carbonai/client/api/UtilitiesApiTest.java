@@ -135,6 +135,7 @@ public class UtilitiesApiTest {
         EmbeddingGenerators embeddingModel = null;
         List<String> urlPathsToInclude = null;
         List<String> urlPathsToExclude = null;
+        List<String> urlsToScrape = null;
         Object response = api.scrapeSitemap(url)
                 .tags(tags)
                 .maxPagesToScrape(maxPagesToScrape)
@@ -150,6 +151,7 @@ public class UtilitiesApiTest {
                 .embeddingModel(embeddingModel)
                 .urlPathsToInclude(urlPathsToInclude)
                 .urlPathsToExclude(urlPathsToExclude)
+                .urlsToScrape(urlsToScrape)
                 .execute();
         // TODO: test validations
     }

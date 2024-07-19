@@ -115,6 +115,10 @@ public class SitemapScrapeRequest {
   @SerializedName(SERIALIZED_NAME_URL_PATHS_TO_EXCLUDE)
   private List<String> urlPathsToExclude = null;
 
+  public static final String SERIALIZED_NAME_URLS_TO_SCRAPE = "urls_to_scrape";
+  @SerializedName(SERIALIZED_NAME_URLS_TO_SCRAPE)
+  private List<String> urlsToScrape = null;
+
   public SitemapScrapeRequest() {
   }
 
@@ -605,6 +609,43 @@ public class SitemapScrapeRequest {
     this.urlPathsToExclude = urlPathsToExclude;
   }
 
+
+  public SitemapScrapeRequest urlsToScrape(List<String> urlsToScrape) {
+    
+    
+    
+    
+    this.urlsToScrape = urlsToScrape;
+    return this;
+  }
+
+  public SitemapScrapeRequest addUrlsToScrapeItem(String urlsToScrapeItem) {
+    if (this.urlsToScrape == null) {
+      this.urlsToScrape = new ArrayList<>();
+    }
+    this.urlsToScrape.add(urlsToScrapeItem);
+    return this;
+  }
+
+   /**
+   * You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+   * @return urlsToScrape
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.")
+
+  public List<String> getUrlsToScrape() {
+    return urlsToScrape;
+  }
+
+
+  public void setUrlsToScrape(List<String> urlsToScrape) {
+    
+    
+    
+    this.urlsToScrape = urlsToScrape;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -674,7 +715,8 @@ public class SitemapScrapeRequest {
         Objects.equals(this.cssSelectorsToSkip, sitemapScrapeRequest.cssSelectorsToSkip) &&
         Objects.equals(this.embeddingModel, sitemapScrapeRequest.embeddingModel) &&
         Objects.equals(this.urlPathsToInclude, sitemapScrapeRequest.urlPathsToInclude) &&
-        Objects.equals(this.urlPathsToExclude, sitemapScrapeRequest.urlPathsToExclude)&&
+        Objects.equals(this.urlPathsToExclude, sitemapScrapeRequest.urlPathsToExclude) &&
+        Objects.equals(this.urlsToScrape, sitemapScrapeRequest.urlsToScrape)&&
         Objects.equals(this.additionalProperties, sitemapScrapeRequest.additionalProperties);
   }
 
@@ -684,7 +726,7 @@ public class SitemapScrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, additionalProperties);
+    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, urlsToScrape, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -713,6 +755,7 @@ public class SitemapScrapeRequest {
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
     sb.append("    urlPathsToExclude: ").append(toIndentedString(urlPathsToExclude)).append("\n");
+    sb.append("    urlsToScrape: ").append(toIndentedString(urlsToScrape)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -751,6 +794,7 @@ public class SitemapScrapeRequest {
     openapiFields.add("embedding_model");
     openapiFields.add("url_paths_to_include");
     openapiFields.add("url_paths_to_exclude");
+    openapiFields.add("urls_to_scrape");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -798,6 +842,10 @@ public class SitemapScrapeRequest {
       // ensure the optional json data is an array if present (nullable)
       if (jsonObj.get("url_paths_to_exclude") != null && !jsonObj.get("url_paths_to_exclude").isJsonNull() && !jsonObj.get("url_paths_to_exclude").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `url_paths_to_exclude` to be an array in the JSON string or null but got `%s`", jsonObj.get("url_paths_to_exclude").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("urls_to_scrape") != null && !jsonObj.get("urls_to_scrape").isJsonNull() && !jsonObj.get("urls_to_scrape").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `urls_to_scrape` to be an array in the JSON string or null but got `%s`", jsonObj.get("urls_to_scrape").toString()));
       }
   }
 

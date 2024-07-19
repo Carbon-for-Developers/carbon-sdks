@@ -109,6 +109,7 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         sitemapScrapeRequest.SetEmbeddingModel(null)
         sitemapScrapeRequest.SetUrlPathsToInclude([])
         sitemapScrapeRequest.SetUrlPathsToExclude([])
+        sitemapScrapeRequest.SetUrlsToScrape([])
         
         request := client.UtilitiesApi.ScrapeSitemap(
             sitemapScrapeRequest,

@@ -383,6 +383,7 @@ class BaseApi(api_client.Api):
 class SyncConfluenceRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def async_confluence(
         self,
         data_source_id: int,
@@ -430,6 +431,7 @@ class SyncConfluenceRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def sync_confluence(
         self,
         data_source_id: int,
@@ -476,6 +478,7 @@ class SyncConfluenceRaw(BaseApi):
 
 class SyncConfluence(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def async_confluence(
         self,
         data_source_id: int,
@@ -521,6 +524,7 @@ class SyncConfluence(BaseApi):
         return api_client.construct_model_instance(GenericSuccessResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def sync_confluence(
         self,
         data_source_id: int,
@@ -567,6 +571,7 @@ class SyncConfluence(BaseApi):
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def apost(
         self,
         data_source_id: int,
@@ -614,6 +619,7 @@ class ApiForpost(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def post(
         self,
         data_source_id: int,

@@ -22,6 +22,7 @@ from carbon.pydantic.sitemap_scrape_request_html_tags_to_skip import SitemapScra
 from carbon.pydantic.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
 from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.pydantic.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape
 
 class SitemapScrapeRequest(BaseModel):
     url: str = Field(alias='url')
@@ -53,6 +54,8 @@ class SitemapScrapeRequest(BaseModel):
     url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = Field(None, alias='url_paths_to_include')
 
     url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = Field(None, alias='url_paths_to_exclude')
+
+    urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = Field(None, alias='urls_to_scrape')
 
     model_config = ConfigDict(
         protected_namespaces=(),
