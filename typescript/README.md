@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.14-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.14)
+[![npm](https://img.shields.io/badge/npm-v0.2.15-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.15)
 
 </div>
 
@@ -1502,7 +1502,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "b2935b7f-ee64-4d76-8864-8b6731211938",
+  request_id: "d29ec177-bbc6-43c7-9b16-0ee340804c99",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1571,7 +1571,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1597,6 +1597,9 @@ Only sync files if they have not already been synced or if the embedding propert
 
 
 ### `carbon.integrations.listConfluencePages`<a id="carbonintegrationslistconfluencepages"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/items/list instead.
 
 To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
 Confluence account must be specified. This base request returns a list of root pages for
@@ -1844,6 +1847,9 @@ const listReposResponse = await carbon.integrations.listRepos({
 
 
 ### `carbon.integrations.syncConfluence`<a id="carbonintegrationssyncconfluence"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/files/sync instead.
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
 connected account's `data_source_id` can be passed into this endpoint to sync them into
@@ -1863,7 +1869,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
+  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1971,7 +1977,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
+  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2963,6 +2969,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   embedding_model: "OPENAI",
   url_paths_to_include: [],
   url_paths_to_exclude: [],
+  urls_to_scrape: [],
 });
 ```
 
@@ -3001,6 +3008,10 @@ URL subpaths or directories that you want to include. For example if you want to
 ##### url_paths_to_exclude: `string`[]<a id="url_paths_to_exclude-string"></a>
 
 URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
+
+##### urls_to_scrape: `string`[]<a id="urls_to_scrape-string"></a>
+
+You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

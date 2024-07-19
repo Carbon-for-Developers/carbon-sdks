@@ -109,5 +109,11 @@ export interface SitemapScrapeRequest {
      * @memberof SitemapScrapeRequest
      */
     'url_paths_to_exclude'?: Array<string> | null;
+    /**
+     * You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+     * @type {Array<string>}
+     * @memberof SitemapScrapeRequest
+     */
+    'urls_to_scrape'?: Array<string> | null;
 }
 

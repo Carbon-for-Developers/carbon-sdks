@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.14-blue)](https://pypi.org/project/carbon-python-sdk/0.2.14)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.15-blue)](https://pypi.org/project/carbon-python-sdk/0.2.15)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -97,7 +97,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.14
+pip install carbon-python-sdk==0.2.15
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1446,7 +1446,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "3a0195db-42f0-48ed-b809-d253f436a8e0",
+        "request_id": "07b02a24-9429-4a3c-aa98-27ff63503082",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1700,7 +1700,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="b2935b7f-ee64-4d76-8864-8b6731211938",
+    request_id="d29ec177-bbc6-43c7-9b16-0ee340804c99",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1775,7 +1775,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX
+Enable integration's file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -1804,6 +1804,9 @@ Only sync files if they have not already been synced or if the embedding propert
 ---
 
 ### `carbon.integrations.list_confluence_pages`<a id="carbonintegrationslist_confluence_pages"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/items/list instead.
 
 To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
 Confluence account must be specified. This base request returns a list of root pages for
@@ -2064,6 +2067,9 @@ list_repos_response = carbon.integrations.list_repos(
 ---
 
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/files/sync instead.
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
 connected account's `data_source_id` can be passed into this endpoint to sync them into
@@ -2085,7 +2091,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="50140a8f-c06f-40df-9b91-d10d074bcb67",
+    request_id="ca60b474-8b43-4b44-9deb-adb701e40610",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2206,7 +2212,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="50140a8f-c06f-40df-9b91-d10d074bcb67",
+    request_id="ca60b474-8b43-4b44-9deb-adb701e40610",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -3290,6 +3296,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     embedding_model="OPENAI",
     url_paths_to_include=[],
     url_paths_to_exclude=[],
+    urls_to_scrape=[],
 )
 ```
 
@@ -3324,6 +3331,8 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
 ##### url_paths_to_include: [`SitemapScrapeRequestUrlPathsToInclude`](./carbon/type/sitemap_scrape_request_url_paths_to_include.py)<a id="url_paths_to_include-sitemapscraperequesturlpathstoincludecarbontypesitemap_scrape_request_url_paths_to_includepy"></a>
 
 ##### url_paths_to_exclude: [`SitemapScrapeRequestUrlPathsToExclude`](./carbon/type/sitemap_scrape_request_url_paths_to_exclude.py)<a id="url_paths_to_exclude-sitemapscraperequesturlpathstoexcludecarbontypesitemap_scrape_request_url_paths_to_excludepy"></a>
+
+##### urls_to_scrape: [`SitemapScrapeRequestUrlsToScrape`](./carbon/type/sitemap_scrape_request_urls_to_scrape.py)<a id="urls_to_scrape-sitemapscraperequesturlstoscrapecarbontypesitemap_scrape_request_urls_to_scrapepy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

@@ -416,10 +416,11 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+         * This endpoint has been deprecated. Use /integrations/items/list instead.  To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
          * @summary Confluence List
          * @param {ListRequest} listRequest 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         listConfluencePages: async (listRequest: ListRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -841,10 +842,11 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+         * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {SyncFilesRequest} syncFilesRequest 
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         syncConfluence: async (syncFilesRequest: SyncFilesRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
@@ -1558,10 +1560,11 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+         * This endpoint has been deprecated. Use /integrations/items/list instead.  To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
          * @summary Confluence List
          * @param {IntegrationsApiListConfluencePagesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListResponse>> {
@@ -1658,10 +1661,11 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+         * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         async syncConfluence(requestParameters: IntegrationsApiSyncConfluenceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
@@ -1980,10 +1984,11 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.getOauthUrl(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+         * This endpoint has been deprecated. Use /integrations/items/list instead.  To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
          * @summary Confluence List
          * @param {IntegrationsApiListConfluencePagesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig): AxiosPromise<ListResponse> {
@@ -2060,10 +2065,11 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.listRepos(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+         * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
+         * @deprecated
          * @throws {RequiredError}
          */
         syncConfluence(requestParameters: IntegrationsApiSyncConfluenceRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
@@ -2554,10 +2560,11 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
+     * This endpoint has been deprecated. Use /integrations/items/list instead.  To begin listing a user\'s Confluence pages, at least a `data_source_id` of a connected Confluence account must be specified. This base request returns a list of root pages for every space the user has access to in a Confluence instance. To traverse further down the user\'s page directory, additional requests to this endpoint can be made with the same `data_source_id` and with `parent_id` set to the id of page from a previous request. For convenience, the `has_children` property in each directory item in the response list will flag which pages will return non-empty lists of pages when set as the `parent_id`.
      * @summary Confluence List
      * @param {IntegrationsApiListConfluencePagesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof IntegrationsApiGenerated
      */
@@ -2650,10 +2657,11 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
+     * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
      * @summary Confluence Sync
      * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof IntegrationsApiGenerated
      */

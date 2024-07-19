@@ -983,6 +983,8 @@ func (r IntegrationsApiListConfluencePagesRequest) Execute() (*ListResponse, *ht
 /*
 ListConfluencePages Confluence List
 
+This endpoint has been deprecated. Use /integrations/items/list instead.
+
 To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
 Confluence account must be specified. This base request returns a list of root pages for
 every space the user has access to in a Confluence instance. To traverse further down
@@ -994,6 +996,8 @@ flag which pages will return non-empty lists of pages when set as the `parent_id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param listRequest
  @return IntegrationsApiListConfluencePagesRequest
+
+Deprecated
 */
 func (a *IntegrationsApiService) ListConfluencePages(listRequest ListRequest) IntegrationsApiListConfluencePagesRequest {
 	return IntegrationsApiListConfluencePagesRequest{
@@ -1005,6 +1009,7 @@ func (a *IntegrationsApiService) ListConfluencePages(listRequest ListRequest) In
 
 // Execute executes the request
 //  @return ListResponse
+// Deprecated
 func (a *IntegrationsApiService) ListConfluencePagesExecute(r IntegrationsApiListConfluencePagesRequest) (*ListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2309,6 +2314,8 @@ func (r IntegrationsApiSyncConfluenceRequest) Execute() (*GenericSuccessResponse
 /*
 SyncConfluence Confluence Sync
 
+This endpoint has been deprecated. Use /integrations/files/sync instead.
+
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
 connected account's `data_source_id` can be passed into this endpoint to sync them into
 Carbon. Additional parameters listed below can be used to associate data to the selected
@@ -2317,6 +2324,8 @@ pages or alter the behavior of the sync.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param syncFilesRequest
  @return IntegrationsApiSyncConfluenceRequest
+
+Deprecated
 */
 func (a *IntegrationsApiService) SyncConfluence(syncFilesRequest SyncFilesRequest) IntegrationsApiSyncConfluenceRequest {
 	return IntegrationsApiSyncConfluenceRequest{
@@ -2328,6 +2337,7 @@ func (a *IntegrationsApiService) SyncConfluence(syncFilesRequest SyncFilesReques
 
 // Execute executes the request
 //  @return GenericSuccessResponse
+// Deprecated
 func (a *IntegrationsApiService) SyncConfluenceExecute(r IntegrationsApiSyncConfluenceRequest) (*GenericSuccessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

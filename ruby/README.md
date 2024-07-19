@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.14-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.14)
+[![npm](https://img.shields.io/badge/gem-v0.2.15-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.15)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.14'
+gem 'carbon_ruby_sdk', '~> 0.2.15'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1300,7 +1300,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "3a0195db-42f0-48ed-b809-d253f436a8e0",
+        "request_id" => "07b02a24-9429-4a3c-aa98-27ff63503082",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1520,7 +1520,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "b2935b7f-ee64-4d76-8864-8b6731211938",
+  request_id: "d29ec177-bbc6-43c7-9b16-0ee340804c99",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1581,7 +1581,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-SHAREPOINT, DROPBOX, ONEDRIVE, GOOGLE_DRIVE, BOX
+BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1608,6 +1608,9 @@ other data sources.
 
 
 ### `carbon.integrations.list_confluence_pages`<a id="carbonintegrationslist_confluence_pages"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/items/list instead.
 
 To begin listing a user's Confluence pages, at least a `data_source_id` of a connected
 Confluence account must be specified. This base request returns a list of root pages for
@@ -1858,6 +1861,9 @@ p result
 
 
 ### `carbon.integrations.sync_confluence`<a id="carbonintegrationssync_confluence"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
+
+This endpoint has been deprecated. Use /integrations/files/sync instead.
 
 After listing pages in a user's Confluence account, the set of selected page `ids` and the
 connected account's `data_source_id` can be passed into this endpoint to sync them into
@@ -1881,7 +1887,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
+  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1986,7 +1992,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "50140a8f-c06f-40df-9b91-d10d074bcb67",
+  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2966,6 +2972,7 @@ result = carbon.utilities.scrape_sitemap(
   embedding_model: "OPENAI",
   url_paths_to_include: [],
   url_paths_to_exclude: [],
+  urls_to_scrape: [],
 )
 p result
 ```
@@ -2994,6 +3001,11 @@ only include URLs that start with /questions in stackoverflow.com, you will add
 URL subpaths or directories that you want to exclude. For example if you want to
 exclude URLs that start with /questions in stackoverflow.com, you will add
 /questions/ in this input
+
+##### urls_to_scrape: Array<`String`><a id="urls_to_scrape-array"></a>
+You can submit a subset of URLs from the sitemap that should be scraped. To get
+the list of URLs, you can check out /process_sitemap endpoint. If left empty,
+all URLs from the sitemap will be scraped.
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

@@ -1214,6 +1214,9 @@ operation_parameter_map = {
             {
                 'name': 'url_paths_to_exclude'
             },
+            {
+                'name': 'urls_to_scrape'
+            },
         ]
     },
     '/web_scrape-POST': {

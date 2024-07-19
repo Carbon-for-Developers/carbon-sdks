@@ -33,6 +33,8 @@ type SitemapScrapeRequest struct {
 	UrlPathsToInclude []string `json:"url_paths_to_include,omitempty"`
 	// URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
 	UrlPathsToExclude []string `json:"url_paths_to_exclude,omitempty"`
+	// You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+	UrlsToScrape []string `json:"urls_to_scrape,omitempty"`
 }
 
 // NewSitemapScrapeRequest instantiates a new SitemapScrapeRequest object
@@ -625,6 +627,39 @@ func (o *SitemapScrapeRequest) SetUrlPathsToExclude(v []string) {
 	o.UrlPathsToExclude = v
 }
 
+// GetUrlsToScrape returns the UrlsToScrape field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SitemapScrapeRequest) GetUrlsToScrape() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UrlsToScrape
+}
+
+// GetUrlsToScrapeOk returns a tuple with the UrlsToScrape field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SitemapScrapeRequest) GetUrlsToScrapeOk() ([]string, bool) {
+	if o == nil || isNil(o.UrlsToScrape) {
+    return nil, false
+	}
+	return o.UrlsToScrape, true
+}
+
+// HasUrlsToScrape returns a boolean if a field has been set.
+func (o *SitemapScrapeRequest) HasUrlsToScrape() bool {
+	if o != nil && isNil(o.UrlsToScrape) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrlsToScrape gets a reference to the given []string and assigns it to the UrlsToScrape field.
+func (o *SitemapScrapeRequest) SetUrlsToScrape(v []string) {
+	o.UrlsToScrape = v
+}
+
 func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -671,6 +706,9 @@ func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UrlPathsToExclude != nil {
 		toSerialize["url_paths_to_exclude"] = o.UrlPathsToExclude
+	}
+	if o.UrlsToScrape != nil {
+		toSerialize["urls_to_scrape"] = o.UrlsToScrape
 	}
 	return json.Marshal(toSerialize)
 }

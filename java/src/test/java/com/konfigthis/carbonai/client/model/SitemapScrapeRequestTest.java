@@ -164,4 +164,12 @@ public class SitemapScrapeRequestTest {
         // TODO: test urlPathsToExclude
     }
 
+    /**
+     * Test the property 'urlsToScrape'
+     */
+    @Test
+    public void urlsToScrapeTest() {
+        // TODO: test urlsToScrape
+    }
+
 }

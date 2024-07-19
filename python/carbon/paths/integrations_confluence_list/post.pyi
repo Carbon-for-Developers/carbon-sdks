@@ -321,6 +321,7 @@ class BaseApi(api_client.Api):
 class ListConfluencePagesRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def alist_confluence_pages(
         self,
         data_source_id: int,
@@ -340,6 +341,7 @@ class ListConfluencePagesRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def list_confluence_pages(
         self,
         data_source_id: int,
@@ -358,6 +360,7 @@ class ListConfluencePagesRaw(BaseApi):
 
 class ListConfluencePages(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def alist_confluence_pages(
         self,
         data_source_id: int,
@@ -375,6 +378,7 @@ class ListConfluencePages(BaseApi):
         return api_client.construct_model_instance(ListResponsePydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def list_confluence_pages(
         self,
         data_source_id: int,
@@ -393,6 +397,7 @@ class ListConfluencePages(BaseApi):
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     async def apost(
         self,
         data_source_id: int,
@@ -412,6 +417,7 @@ class ApiForpost(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="integrations")
     def post(
         self,
         data_source_id: int,

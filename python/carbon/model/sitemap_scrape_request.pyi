@@ -209,6 +209,10 @@ class SitemapScrapeRequest(
             @staticmethod
             def url_paths_to_exclude() -> typing.Type['SitemapScrapeRequestUrlPathsToExclude']:
                 return SitemapScrapeRequestUrlPathsToExclude
+        
+            @staticmethod
+            def urls_to_scrape() -> typing.Type['SitemapScrapeRequestUrlsToScrape']:
+                return SitemapScrapeRequestUrlsToScrape
             __annotations__ = {
                 "url": url,
                 "tags": tags,
@@ -225,6 +229,7 @@ class SitemapScrapeRequest(
                 "embedding_model": embedding_model,
                 "url_paths_to_include": url_paths_to_include,
                 "url_paths_to_exclude": url_paths_to_exclude,
+                "urls_to_scrape": urls_to_scrape,
             }
     
     url: MetaOapg.properties.url
@@ -275,9 +280,12 @@ class SitemapScrapeRequest(
     def __getitem__(self, name: typing_extensions.Literal["url_paths_to_exclude"]) -> 'SitemapScrapeRequestUrlPathsToExclude': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["urls_to_scrape"]) -> 'SitemapScrapeRequestUrlsToScrape': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -328,9 +336,12 @@ class SitemapScrapeRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["url_paths_to_exclude"]) -> typing.Union['SitemapScrapeRequestUrlPathsToExclude', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["urls_to_scrape"]) -> typing.Union['SitemapScrapeRequestUrlsToScrape', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -352,6 +363,7 @@ class SitemapScrapeRequest(
         embedding_model: typing.Union['EmbeddingGenerators', schemas.Unset] = schemas.unset,
         url_paths_to_include: typing.Union['SitemapScrapeRequestUrlPathsToInclude', schemas.Unset] = schemas.unset,
         url_paths_to_exclude: typing.Union['SitemapScrapeRequestUrlPathsToExclude', schemas.Unset] = schemas.unset,
+        urls_to_scrape: typing.Union['SitemapScrapeRequestUrlsToScrape', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SitemapScrapeRequest':
@@ -373,6 +385,7 @@ class SitemapScrapeRequest(
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
+            urls_to_scrape=urls_to_scrape,
             _configuration=_configuration,
             **kwargs,
         )
@@ -384,3 +397,4 @@ from carbon.model.sitemap_scrape_request_html_tags_to_skip import SitemapScrapeR
 from carbon.model.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 from carbon.model.sitemap_scrape_request_url_paths_to_exclude import SitemapScrapeRequestUrlPathsToExclude
 from carbon.model.sitemap_scrape_request_url_paths_to_include import SitemapScrapeRequestUrlPathsToInclude
+from carbon.model.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape

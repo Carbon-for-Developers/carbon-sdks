@@ -43,6 +43,9 @@ module Carbon
     # URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     attr_accessor :url_paths_to_exclude
 
+    # You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+    attr_accessor :urls_to_scrape
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -60,7 +63,8 @@ module Carbon
         :'css_selectors_to_skip' => :'css_selectors_to_skip',
         :'embedding_model' => :'embedding_model',
         :'url_paths_to_include' => :'url_paths_to_include',
-        :'url_paths_to_exclude' => :'url_paths_to_exclude'
+        :'url_paths_to_exclude' => :'url_paths_to_exclude',
+        :'urls_to_scrape' => :'urls_to_scrape'
       }
     end
 
@@ -86,7 +90,8 @@ module Carbon
         :'css_selectors_to_skip' => :'Array<String>',
         :'embedding_model' => :'EmbeddingGenerators',
         :'url_paths_to_include' => :'Array<String>',
-        :'url_paths_to_exclude' => :'Array<String>'
+        :'url_paths_to_exclude' => :'Array<String>',
+        :'urls_to_scrape' => :'Array<String>'
       }
     end
 
@@ -105,7 +110,8 @@ module Carbon
         :'css_classes_to_skip',
         :'css_selectors_to_skip',
         :'url_paths_to_include',
-        :'url_paths_to_exclude'
+        :'url_paths_to_exclude',
+        :'urls_to_scrape'
       ])
     end
 
@@ -209,6 +215,12 @@ module Carbon
           self.url_paths_to_exclude = value
         end
       end
+
+      if attributes.key?(:'urls_to_scrape')
+        if (value = attributes[:'urls_to_scrape']).is_a?(Array)
+          self.urls_to_scrape = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -293,7 +305,8 @@ module Carbon
           css_selectors_to_skip == o.css_selectors_to_skip &&
           embedding_model == o.embedding_model &&
           url_paths_to_include == o.url_paths_to_include &&
-          url_paths_to_exclude == o.url_paths_to_exclude
+          url_paths_to_exclude == o.url_paths_to_exclude &&
+          urls_to_scrape == o.urls_to_scrape
     end
 
     # @see the `==` method
@@ -305,7 +318,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude].hash
+      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude, urls_to_scrape].hash
     end
 
     # Builds the object from hash
