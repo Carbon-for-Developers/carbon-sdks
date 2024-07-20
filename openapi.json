@@ -3727,7 +3727,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "07b02a24-9429-4a3c-aa98-27ff63503082",
+              "request_id": "7aa8f3d8-6150-4c0d-8bb3-50a090a2af4f",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3775,6 +3775,33 @@
           "UPSTAGE"
         ],
         "title": "CustomCredentialsType"
+      },
+      "DataSourceConfiguration": {
+        "properties": {
+          "allowed_file_formats": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allowed File Formats",
+            "description": "List of allowed file formats for the organization. An empty list means all file formats are allowed.",
+            "default": []
+          },
+          "google_workspace_docs_save_as": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Google Workspace Docs Save As",
+            "description": "Used to set the format Google Workspace documents (Docs, Sheets, Slides) are stored as for raw files uploads in S3. The default format is TXT"
+          }
+        },
+        "type": "object",
+        "title": "DataSourceConfiguration"
       },
       "DataSourceExtendedInput": {
         "type": "string",
@@ -6459,7 +6486,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "d29ec177-bbc6-43c7-9b16-0ee340804c99"
+            "default": "3c12d39f-eb7f-4328-acc0-e553f076d663"
           },
           "use_ocr": {
             "anyOf": [
@@ -6489,7 +6516,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, GOOGLE_DRIVE, BOX, ONEDRIVE, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -6644,6 +6671,11 @@
             ],
             "title": "Cancel At Period End"
           },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
+          },
           "global_user_config": {
             "type": "object",
             "title": "Global User Config",
@@ -6682,6 +6714,7 @@
           "file_statistics_aggregated_at",
           "period_ends_at",
           "cancel_at_period_end",
+          "connector_settings",
           "global_user_config",
           "file_sync_usage",
           "created_at",
@@ -8716,7 +8749,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "ca60b474-8b43-4b44-9deb-adb701e40610"
+            "default": "341002c7-e5a0-4057-a2a4-adfe2c0a4474"
           },
           "use_ocr": {
             "anyOf": [
@@ -8883,7 +8916,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "07b02a24-9429-4a3c-aa98-27ff63503082"
+            "default": "7aa8f3d8-6150-4c0d-8bb3-50a090a2af4f"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8967,6 +9000,21 @@
               }
             ],
             "description": "Used to set organization level defaults for user settings. These settings will apply to all users under\n        the organization that don't have them defined."
+          },
+          "data_source_configs": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/DataSourceConfiguration"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Configs",
+            "description": "Used to set organization level defaults for configuration related to data sources."
           }
         },
         "type": "object",
