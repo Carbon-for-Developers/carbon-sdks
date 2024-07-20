@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GlobalUserConfig** | Pointer to [**NullableUserConfigurationNullable**](UserConfigurationNullable.md) |  | [optional] 
+**DataSourceConfigs** | Pointer to [**map[string]DataSourceConfiguration**](DataSourceConfiguration.md) | Used to set organization level defaults for configuration related to data sources. | [optional] 
 
 ## Methods
 
@@ -60,6 +61,41 @@ HasGlobalUserConfig returns a boolean if a field has been set.
 `func (o *UpdateOrganizationInput) UnsetGlobalUserConfig()`
 
 UnsetGlobalUserConfig ensures that no value is present for GlobalUserConfig, not even an explicit nil
+### GetDataSourceConfigs
+
+`func (o *UpdateOrganizationInput) GetDataSourceConfigs() map[string]DataSourceConfiguration`
+
+GetDataSourceConfigs returns the DataSourceConfigs field if non-nil, zero value otherwise.
+
+### GetDataSourceConfigsOk
+
+`func (o *UpdateOrganizationInput) GetDataSourceConfigsOk() (*map[string]DataSourceConfiguration, bool)`
+
+GetDataSourceConfigsOk returns a tuple with the DataSourceConfigs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceConfigs
+
+`func (o *UpdateOrganizationInput) SetDataSourceConfigs(v map[string]DataSourceConfiguration)`
+
+SetDataSourceConfigs sets DataSourceConfigs field to given value.
+
+### HasDataSourceConfigs
+
+`func (o *UpdateOrganizationInput) HasDataSourceConfigs() bool`
+
+HasDataSourceConfigs returns a boolean if a field has been set.
+
+### SetDataSourceConfigsNil
+
+`func (o *UpdateOrganizationInput) SetDataSourceConfigsNil(b bool)`
+
+ SetDataSourceConfigsNil sets the value for DataSourceConfigs to be an explicit nil
+
+### UnsetDataSourceConfigs
+`func (o *UpdateOrganizationInput) UnsetDataSourceConfigs()`
+
+UnsetDataSourceConfigs ensures that no value is present for DataSourceConfigs, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

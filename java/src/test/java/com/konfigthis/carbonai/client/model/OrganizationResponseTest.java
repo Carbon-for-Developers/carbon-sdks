@@ -160,6 +160,14 @@ public class OrganizationResponseTest {
     }
 
     /**
+     * Test the property 'connectorSettings'
+     */
+    @Test
+    public void connectorSettingsTest() {
+        // TODO: test connectorSettings
+    }
+
+    /**
      * Test the property 'globalUserConfig'
      */
     @Test

@@ -41,6 +41,8 @@ module Carbon
 
     attr_accessor :cancel_at_period_end
 
+    attr_accessor :connector_settings
+
     attr_accessor :global_user_config
 
     attr_accessor :file_sync_usage
@@ -67,6 +69,7 @@ module Carbon
         :'file_statistics_aggregated_at' => :'file_statistics_aggregated_at',
         :'period_ends_at' => :'period_ends_at',
         :'cancel_at_period_end' => :'cancel_at_period_end',
+        :'connector_settings' => :'connector_settings',
         :'global_user_config' => :'global_user_config',
         :'file_sync_usage' => :'file_sync_usage',
         :'created_at' => :'created_at',
@@ -97,6 +100,7 @@ module Carbon
         :'file_statistics_aggregated_at' => :'Time',
         :'period_ends_at' => :'Time',
         :'cancel_at_period_end' => :'Boolean',
+        :'connector_settings' => :'Object',
         :'global_user_config' => :'Object',
         :'file_sync_usage' => :'Object',
         :'created_at' => :'Time',
@@ -191,6 +195,10 @@ module Carbon
         self.cancel_at_period_end = attributes[:'cancel_at_period_end']
       end
 
+      if attributes.key?(:'connector_settings')
+        self.connector_settings = attributes[:'connector_settings']
+      end
+
       if attributes.key?(:'global_user_config')
         self.global_user_config = attributes[:'global_user_config']
       end
@@ -248,6 +256,10 @@ module Carbon
         invalid_properties.push('invalid value for "aggregate_num_files_by_file_format", aggregate_num_files_by_file_format cannot be nil.')
       end
 
+      if @connector_settings.nil?
+        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
+      end
+
       if @global_user_config.nil?
         invalid_properties.push('invalid value for "global_user_config", global_user_config cannot be nil.')
       end
@@ -279,6 +291,7 @@ module Carbon
       return false if @aggregate_num_embeddings.nil?
       return false if @aggregate_num_files_by_source.nil?
       return false if @aggregate_num_files_by_file_format.nil?
+      return false if @connector_settings.nil?
       return false if @global_user_config.nil?
       return false if @file_sync_usage.nil?
       return false if @created_at.nil?
@@ -306,6 +319,7 @@ module Carbon
           file_statistics_aggregated_at == o.file_statistics_aggregated_at &&
           period_ends_at == o.period_ends_at &&
           cancel_at_period_end == o.cancel_at_period_end &&
+          connector_settings == o.connector_settings &&
           global_user_config == o.global_user_config &&
           file_sync_usage == o.file_sync_usage &&
           created_at == o.created_at &&
@@ -321,7 +335,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, global_user_config, file_sync_usage, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, connector_settings, global_user_config, file_sync_usage, created_at, updated_at].hash
     end
 
     # Builds the object from hash

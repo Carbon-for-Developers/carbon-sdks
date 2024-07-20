@@ -13,10 +13,14 @@ module Carbon
   class UpdateOrganizationInput
     attr_accessor :global_user_config
 
+    # Used to set organization level defaults for configuration related to data sources.
+    attr_accessor :data_source_configs
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'global_user_config' => :'global_user_config'
+        :'global_user_config' => :'global_user_config',
+        :'data_source_configs' => :'data_source_configs'
       }
     end
 
@@ -28,14 +32,16 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'global_user_config' => :'UserConfigurationNullable'
+        :'global_user_config' => :'UserConfigurationNullable',
+        :'data_source_configs' => :'Hash<String, DataSourceConfiguration>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'global_user_config'
+        :'global_user_config',
+        :'data_source_configs'
       ])
     end
 
@@ -57,6 +63,12 @@ module Carbon
       if attributes.key?(:'global_user_config')
         self.global_user_config = attributes[:'global_user_config']
       end
+
+      if attributes.key?(:'data_source_configs')
+        if (value = attributes[:'data_source_configs']).is_a?(Hash)
+          self.data_source_configs = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -77,7 +89,8 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          global_user_config == o.global_user_config
+          global_user_config == o.global_user_config &&
+          data_source_configs == o.data_source_configs
     end
 
     # @see the `==` method
@@ -89,7 +102,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [global_user_config].hash
+      [global_user_config, data_source_configs].hash
     end
 
     # Builds the object from hash

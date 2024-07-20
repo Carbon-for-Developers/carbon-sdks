@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **FileStatisticsAggregatedAt** | **NullableTime** |  | 
 **PeriodEndsAt** | **NullableTime** |  | 
 **CancelAtPeriodEnd** | **NullableBool** |  | 
+**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
 **GlobalUserConfig** | **map[string]interface{}** |  | [default to {}]
 **FileSyncUsage** | **map[string]interface{}** |  | [default to {}]
 **CreatedAt** | **time.Time** |  | 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
+`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -403,6 +404,26 @@ SetCancelAtPeriodEnd sets CancelAtPeriodEnd field to given value.
 `func (o *OrganizationResponse) UnsetCancelAtPeriodEnd()`
 
 UnsetCancelAtPeriodEnd ensures that no value is present for CancelAtPeriodEnd, not even an explicit nil
+### GetConnectorSettings
+
+`func (o *OrganizationResponse) GetConnectorSettings() map[string]interface{}`
+
+GetConnectorSettings returns the ConnectorSettings field if non-nil, zero value otherwise.
+
+### GetConnectorSettingsOk
+
+`func (o *OrganizationResponse) GetConnectorSettingsOk() (*map[string]interface{}, bool)`
+
+GetConnectorSettingsOk returns a tuple with the ConnectorSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectorSettings
+
+`func (o *OrganizationResponse) SetConnectorSettings(v map[string]interface{})`
+
+SetConnectorSettings sets ConnectorSettings field to given value.
+
+
 ### GetGlobalUserConfig
 
 `func (o *OrganizationResponse) GetGlobalUserConfig() map[string]interface{}`

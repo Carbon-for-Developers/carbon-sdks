@@ -17,6 +17,8 @@ import (
 // UpdateOrganizationInput struct for UpdateOrganizationInput
 type UpdateOrganizationInput struct {
 	GlobalUserConfig NullableUserConfigurationNullable `json:"global_user_config,omitempty"`
+	// Used to set organization level defaults for configuration related to data sources.
+	DataSourceConfigs map[string]DataSourceConfiguration `json:"data_source_configs,omitempty"`
 }
 
 // NewUpdateOrganizationInput instantiates a new UpdateOrganizationInput object
@@ -78,10 +80,46 @@ func (o *UpdateOrganizationInput) UnsetGlobalUserConfig() {
 	o.GlobalUserConfig.Unset()
 }
 
+// GetDataSourceConfigs returns the DataSourceConfigs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateOrganizationInput) GetDataSourceConfigs() map[string]DataSourceConfiguration {
+	if o == nil {
+		var ret map[string]DataSourceConfiguration
+		return ret
+	}
+	return o.DataSourceConfigs
+}
+
+// GetDataSourceConfigsOk returns a tuple with the DataSourceConfigs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateOrganizationInput) GetDataSourceConfigsOk() (*map[string]DataSourceConfiguration, bool) {
+	if o == nil || isNil(o.DataSourceConfigs) {
+    return nil, false
+	}
+	return &o.DataSourceConfigs, true
+}
+
+// HasDataSourceConfigs returns a boolean if a field has been set.
+func (o *UpdateOrganizationInput) HasDataSourceConfigs() bool {
+	if o != nil && isNil(o.DataSourceConfigs) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceConfigs gets a reference to the given map[string]DataSourceConfiguration and assigns it to the DataSourceConfigs field.
+func (o *UpdateOrganizationInput) SetDataSourceConfigs(v map[string]DataSourceConfiguration) {
+	o.DataSourceConfigs = v
+}
+
 func (o UpdateOrganizationInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.GlobalUserConfig.IsSet() {
 		toSerialize["global_user_config"] = o.GlobalUserConfig.Get()
+	}
+	if o.DataSourceConfigs != nil {
+		toSerialize["data_source_configs"] = o.DataSourceConfigs
 	}
 	return json.Marshal(toSerialize)
 }

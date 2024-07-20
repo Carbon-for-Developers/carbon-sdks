@@ -74,6 +74,7 @@ const (
 	DATASOURCETYPE_MKV DataSourceType = "MKV"
 	DATASOURCETYPE_FLV DataSourceType = "FLV"
 	DATASOURCETYPE_WEBM DataSourceType = "WEBM"
+	DATASOURCETYPE_EML DataSourceType = "EML"
 )
 
 // All allowed values of DataSourceType enum
@@ -132,6 +133,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"MKV",
 	"FLV",
 	"WEBM",
+	"EML",
 }
 
 func (v *DataSourceType) UnmarshalJSON(src []byte) error {

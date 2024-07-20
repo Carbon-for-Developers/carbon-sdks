@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.carbonai.client.model.DataSourceConfiguration;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.OrganizationResponse;
 import com.konfigthis.carbonai.client.model.UpdateOrganizationInput;
@@ -292,6 +293,7 @@ public class OrganizationsApiGenerated {
 
     public abstract class UpdateRequestBuilderGenerated {
         UserConfigurationNullable globalUserConfig;
+        Map<String, DataSourceConfiguration> dataSourceConfigs;
 
         public UpdateRequestBuilderGenerated() {
         }
@@ -303,6 +305,16 @@ public class OrganizationsApiGenerated {
          */
         public OrganizationsApi.UpdateRequestBuilder globalUserConfig(UserConfigurationNullable globalUserConfig) {
             this.globalUserConfig = globalUserConfig;
+            return (OrganizationsApi.UpdateRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceConfigs
+         * @param dataSourceConfigs Used to set organization level defaults for configuration related to data sources. (optional)
+         * @return OrganizationsApi.UpdateRequestBuilder
+         */
+        public OrganizationsApi.UpdateRequestBuilder dataSourceConfigs(Map<String, DataSourceConfiguration> dataSourceConfigs) {
+            this.dataSourceConfigs = dataSourceConfigs;
             return (OrganizationsApi.UpdateRequestBuilder) this;
         }
         
@@ -325,6 +337,7 @@ public class OrganizationsApiGenerated {
         private UpdateOrganizationInput buildBodyParams() {
             UpdateOrganizationInput updateOrganizationInput = new UpdateOrganizationInput();
             updateOrganizationInput.globalUserConfig(this.globalUserConfig);
+            updateOrganizationInput.dataSourceConfigs(this.dataSourceConfigs);
             return updateOrganizationInput;
         }
 

@@ -246,3 +246,7 @@ class DataSourceType(
     @schemas.classproperty
     def WEBM(cls):
         return cls("WEBM")
+    
+    @schemas.classproperty
+    def EML(cls):
+        return cls("EML")

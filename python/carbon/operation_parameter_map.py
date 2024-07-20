@@ -1071,6 +1071,9 @@ operation_parameter_map = {
             {
                 'name': 'global_user_config'
             },
+            {
+                'name': 'data_source_configs'
+            },
         ]
     },
     '/organization/statistics-POST': {

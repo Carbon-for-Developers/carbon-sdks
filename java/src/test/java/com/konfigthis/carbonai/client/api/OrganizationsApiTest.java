@@ -16,6 +16,7 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.model.DataSourceConfiguration;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.OrganizationResponse;
 import com.konfigthis.carbonai.client.model.UpdateOrganizationInput;
@@ -64,8 +65,10 @@ public class OrganizationsApiTest {
     @Test
     public void updateTest() throws ApiException {
         UserConfigurationNullable globalUserConfig = null;
+        Map<String, DataSourceConfiguration> dataSourceConfigs = null;
         GenericSuccessResponse response = api.update()
                 .globalUserConfig(globalUserConfig)
+                .dataSourceConfigs(dataSourceConfigs)
                 .execute();
         // TODO: test validations
     }

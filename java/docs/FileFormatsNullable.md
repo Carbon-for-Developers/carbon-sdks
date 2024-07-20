@@ -99,5 +99,7 @@
 
 * `WEBM` (value: `"WEBM"`)
 
+* `EML` (value: `"EML"`)
+
 
 

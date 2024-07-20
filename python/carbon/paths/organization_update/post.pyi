@@ -33,6 +33,7 @@ import frozendict  # noqa: F401
 from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
+from carbon.model.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs as UpdateOrganizationInputDataSourceConfigsSchema
 from carbon.model.user_configuration_nullable import UserConfigurationNullable as UserConfigurationNullableSchema
 from carbon.model.update_organization_input import UpdateOrganizationInput as UpdateOrganizationInputSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
@@ -41,12 +42,14 @@ from carbon.type.user_configuration_nullable import UserConfigurationNullable
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.update_organization_input import UpdateOrganizationInput
 from carbon.type.generic_success_response import GenericSuccessResponse
+from carbon.type.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 
 from ...api_client import Dictionary
 from carbon.pydantic.update_organization_input import UpdateOrganizationInput as UpdateOrganizationInputPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.user_configuration_nullable import UserConfigurationNullable as UserConfigurationNullablePydantic
+from carbon.pydantic.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs as UpdateOrganizationInputDataSourceConfigsPydantic
 
 # body param
 SchemaForRequestBodyApplicationJson = UpdateOrganizationInputSchema
@@ -111,11 +114,14 @@ class BaseApi(api_client.Api):
     def _update_mapped_args(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
         if global_user_config is not None:
             _body["global_user_config"] = global_user_config
+        if data_source_configs is not None:
+            _body["data_source_configs"] = data_source_configs
         args.body = _body
         return args
 
@@ -324,6 +330,7 @@ class UpdateRaw(BaseApi):
     async def aupdate(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -332,6 +339,7 @@ class UpdateRaw(BaseApi):
     ]:
         args = self._update_mapped_args(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
         )
         return await self._aupdate_oapg(
             body=args.body,
@@ -341,12 +349,14 @@ class UpdateRaw(BaseApi):
     def update(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._update_mapped_args(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
         )
         return self._update_oapg(
             body=args.body,
@@ -357,11 +367,13 @@ class Update(BaseApi):
     async def aupdate(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
         raw_response = await self.raw.aupdate(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
             **kwargs,
         )
         if validate:
@@ -372,10 +384,12 @@ class Update(BaseApi):
     def update(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.update(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -388,6 +402,7 @@ class ApiForpost(BaseApi):
     async def apost(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -396,6 +411,7 @@ class ApiForpost(BaseApi):
     ]:
         args = self._update_mapped_args(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
         )
         return await self._aupdate_oapg(
             body=args.body,
@@ -405,12 +421,14 @@ class ApiForpost(BaseApi):
     def post(
         self,
         global_user_config: typing.Optional[UserConfigurationNullable] = None,
+        data_source_configs: typing.Optional[UpdateOrganizationInputDataSourceConfigs] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._update_mapped_args(
             global_user_config=global_user_config,
+            data_source_configs=data_source_configs,
         )
         return self._update_oapg(
             body=args.body,

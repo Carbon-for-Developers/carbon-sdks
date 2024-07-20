@@ -47,6 +47,8 @@ class OrganizationResponse(BaseModel):
 
     cancel_at_period_end: typing.Optional[bool] = Field(alias='cancel_at_period_end')
 
+    connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='connector_settings')
+
     global_user_config: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='global_user_config')
 
     file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='file_sync_usage')

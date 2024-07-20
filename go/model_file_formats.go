@@ -67,6 +67,7 @@ const (
 	FILEFORMATS_MKV FileFormats = "MKV"
 	FILEFORMATS_FLV FileFormats = "FLV"
 	FILEFORMATS_WEBM FileFormats = "WEBM"
+	FILEFORMATS_EML FileFormats = "EML"
 )
 
 // All allowed values of FileFormats enum
@@ -118,6 +119,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"MKV",
 	"FLV",
 	"WEBM",
+	"EML",
 }
 
 func (v *FileFormats) UnmarshalJSON(src []byte) error {

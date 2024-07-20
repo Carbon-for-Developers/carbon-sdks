@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.15-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.15)
+[![npm](https://img.shields.io/badge/npm-v0.2.16-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.16)
 
 </div>
 
@@ -1502,7 +1502,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "d29ec177-bbc6-43c7-9b16-0ee340804c99",
+  request_id: "e5fd53f8-ed96-474a-ba66-1fc1948facdf",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1571,7 +1571,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1869,7 +1869,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
+  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1977,7 +1977,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
+  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2599,6 +2599,10 @@ const updateResponse = await carbon.organizations.update({});
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### global_user_config: [`UserConfigurationNullable`](./models/user-configuration-nullable.ts)<a id="global_user_config-userconfigurationnullablemodelsuser-configuration-nullablets"></a>
+
+##### data_source_configs: Record<string, [`DataSourceConfiguration`](./models/data-source-configuration.ts)><a id="data_source_configs-record"></a>
+
+Used to set organization level defaults for configuration related to data sources.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

@@ -57,6 +57,7 @@ public class Example {
       System.out.println(result.getFileStatisticsAggregatedAt());
       System.out.println(result.getPeriodEndsAt());
       System.out.println(result.getCancelAtPeriodEnd());
+      System.out.println(result.getConnectorSettings());
       System.out.println(result.getGlobalUserConfig());
       System.out.println(result.getFileSyncUsage());
       System.out.println(result.getCreatedAt());
@@ -141,11 +142,13 @@ public class Example {
     configuration.apiKey  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
     UserConfigurationNullable globalUserConfig = new UserConfigurationNullable();
+    Map<String, DataSourceConfiguration> dataSourceConfigs = new HashMap(); // Used to set organization level defaults for configuration related to data sources.
     try {
       GenericSuccessResponse result = client
               .organizations
               .update()
               .globalUserConfig(globalUserConfig)
+              .dataSourceConfigs(dataSourceConfigs)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -163,6 +166,7 @@ public class Example {
               .organizations
               .update()
               .globalUserConfig(globalUserConfig)
+              .dataSourceConfigs(dataSourceConfigs)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

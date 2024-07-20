@@ -74,6 +74,7 @@ const (
 	DATASOURCETYPENULLABLE_MKV DataSourceTypeNullable = "MKV"
 	DATASOURCETYPENULLABLE_FLV DataSourceTypeNullable = "FLV"
 	DATASOURCETYPENULLABLE_WEBM DataSourceTypeNullable = "WEBM"
+	DATASOURCETYPENULLABLE_EML DataSourceTypeNullable = "EML"
 )
 
 // All allowed values of DataSourceTypeNullable enum
@@ -132,6 +133,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"MKV",
 	"FLV",
 	"WEBM",
+	"EML",
 }
 
 func (v *DataSourceTypeNullable) UnmarshalJSON(src []byte) error {
