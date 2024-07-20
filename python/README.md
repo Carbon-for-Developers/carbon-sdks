@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.15-blue)](https://pypi.org/project/carbon-python-sdk/0.2.15)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.16-blue)](https://pypi.org/project/carbon-python-sdk/0.2.16)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -97,7 +97,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.15
+pip install carbon-python-sdk==0.2.16
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1446,7 +1446,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "07b02a24-9429-4a3c-aa98-27ff63503082",
+        "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1700,7 +1700,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="d29ec177-bbc6-43c7-9b16-0ee340804c99",
+    request_id="e5fd53f8-ed96-474a-ba66-1fc1948facdf",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1775,7 +1775,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
+Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -2091,7 +2091,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="ca60b474-8b43-4b44-9deb-adb701e40610",
+    request_id="77b56048-a895-4377-b0d3-e190d1b7de32",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2212,7 +2212,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="ca60b474-8b43-4b44-9deb-adb701e40610",
+    request_id="77b56048-a895-4377-b0d3-e190d1b7de32",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2895,6 +2895,11 @@ Update Organization
 ```python
 update_response = carbon.organizations.update(
     global_user_config={},
+    data_source_configs={
+        "key": {
+            "allowed_file_formats": [],
+        },
+    },
 )
 ```
 
@@ -2902,6 +2907,8 @@ update_response = carbon.organizations.update(
 
 ##### global_user_config: [`UserConfigurationNullable`](./carbon/type/user_configuration_nullable.py)<a id="global_user_config-userconfigurationnullablecarbontypeuser_configuration_nullablepy"></a>
 
+
+##### data_source_configs: [`UpdateOrganizationInputDataSourceConfigs`](./carbon/type/update_organization_input_data_source_configs.py)<a id="data_source_configs-updateorganizationinputdatasourceconfigscarbontypeupdate_organization_input_data_source_configspy"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

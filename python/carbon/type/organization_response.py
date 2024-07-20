@@ -46,6 +46,8 @@ class RequiredOrganizationResponse(TypedDict):
 
     cancel_at_period_end: typing.Optional[bool]
 
+    connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
     global_user_config: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]

@@ -110,6 +110,10 @@ public class OrganizationResponse {
   @SerializedName(SERIALIZED_NAME_CANCEL_AT_PERIOD_END)
   private Boolean cancelAtPeriodEnd;
 
+  public static final String SERIALIZED_NAME_CONNECTOR_SETTINGS = "connector_settings";
+  @SerializedName(SERIALIZED_NAME_CONNECTOR_SETTINGS)
+  private Object connectorSettings;
+
   public static final String SERIALIZED_NAME_GLOBAL_USER_CONFIG = "global_user_config";
   @SerializedName(SERIALIZED_NAME_GLOBAL_USER_CONFIG)
   private Object globalUserConfig;
@@ -564,6 +568,35 @@ public class OrganizationResponse {
   }
 
 
+  public OrganizationResponse connectorSettings(Object connectorSettings) {
+    
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+    return this;
+  }
+
+   /**
+   * Get connectorSettings
+   * @return connectorSettings
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getConnectorSettings() {
+    return connectorSettings;
+  }
+
+
+  public void setConnectorSettings(Object connectorSettings) {
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+  }
+
+
   public OrganizationResponse globalUserConfig(Object globalUserConfig) {
     
     
@@ -749,6 +782,7 @@ public class OrganizationResponse {
         Objects.equals(this.fileStatisticsAggregatedAt, organizationResponse.fileStatisticsAggregatedAt) &&
         Objects.equals(this.periodEndsAt, organizationResponse.periodEndsAt) &&
         Objects.equals(this.cancelAtPeriodEnd, organizationResponse.cancelAtPeriodEnd) &&
+        Objects.equals(this.connectorSettings, organizationResponse.connectorSettings) &&
         Objects.equals(this.globalUserConfig, organizationResponse.globalUserConfig) &&
         Objects.equals(this.fileSyncUsage, organizationResponse.fileSyncUsage) &&
         Objects.equals(this.createdAt, organizationResponse.createdAt) &&
@@ -758,7 +792,7 @@ public class OrganizationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, globalUserConfig, fileSyncUsage, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, connectorSettings, globalUserConfig, fileSyncUsage, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -780,6 +814,7 @@ public class OrganizationResponse {
     sb.append("    fileStatisticsAggregatedAt: ").append(toIndentedString(fileStatisticsAggregatedAt)).append("\n");
     sb.append("    periodEndsAt: ").append(toIndentedString(periodEndsAt)).append("\n");
     sb.append("    cancelAtPeriodEnd: ").append(toIndentedString(cancelAtPeriodEnd)).append("\n");
+    sb.append("    connectorSettings: ").append(toIndentedString(connectorSettings)).append("\n");
     sb.append("    globalUserConfig: ").append(toIndentedString(globalUserConfig)).append("\n");
     sb.append("    fileSyncUsage: ").append(toIndentedString(fileSyncUsage)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -822,6 +857,7 @@ public class OrganizationResponse {
     openapiFields.add("file_statistics_aggregated_at");
     openapiFields.add("period_ends_at");
     openapiFields.add("cancel_at_period_end");
+    openapiFields.add("connector_settings");
     openapiFields.add("global_user_config");
     openapiFields.add("file_sync_usage");
     openapiFields.add("created_at");
@@ -844,6 +880,7 @@ public class OrganizationResponse {
     openapiRequiredFields.add("file_statistics_aggregated_at");
     openapiRequiredFields.add("period_ends_at");
     openapiRequiredFields.add("cancel_at_period_end");
+    openapiRequiredFields.add("connector_settings");
     openapiRequiredFields.add("global_user_config");
     openapiRequiredFields.add("file_sync_usage");
     openapiRequiredFields.add("created_at");

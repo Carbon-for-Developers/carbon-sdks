@@ -133,7 +133,9 @@ import com.google.gson.stream.JsonWriter;
   
   FLV("FLV"),
   
-  WEBM("WEBM");
+  WEBM("WEBM"),
+  
+  EML("EML");
 
   private String value;
 

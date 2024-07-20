@@ -1,6 +1,7 @@
 package com.konfigthis.carbonai.client.api;
 
 import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.model.DataSourceConfiguration;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.OrganizationResponse;
 import com.konfigthis.carbonai.client.model.UpdateOrganizationInput;

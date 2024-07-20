@@ -21,6 +21,8 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { DataSourceConfiguration } from '../models';
+// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
@@ -196,7 +198,8 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          */
         async update(requestParameters: OrganizationsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
             const updateOrganizationInput: UpdateOrganizationInput = {
-                global_user_config: requestParameters.global_user_config
+                global_user_config: requestParameters.global_user_config,
+                data_source_configs: requestParameters.data_source_configs
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.update(updateOrganizationInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

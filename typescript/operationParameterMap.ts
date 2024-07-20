@@ -1077,6 +1077,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'global_user_config'
             },
+            {
+                name: 'data_source_configs'
+            },
         ]
     },
     '/organization/statistics-POST': {

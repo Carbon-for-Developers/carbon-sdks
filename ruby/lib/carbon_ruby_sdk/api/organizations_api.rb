@@ -90,11 +90,13 @@ module Carbon
     # Update Organization
     #
     # @param global_user_config [UserConfigurationNullable] 
+    # @param data_source_configs [Hash<String, DataSourceConfiguration>] Used to set organization level defaults for configuration related to data sources.
     # @param body [UpdateOrganizationInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update(global_user_config: SENTINEL, extra: {})
+    def update(global_user_config: SENTINEL, data_source_configs: SENTINEL, extra: {})
       _body = {}
       _body[:global_user_config] = global_user_config if global_user_config != SENTINEL
+      _body[:data_source_configs] = data_source_configs if data_source_configs != SENTINEL
       update_organization_input = _body
       api_response = update_with_http_info_impl(update_organization_input, extra)
       api_response.data
@@ -103,11 +105,13 @@ module Carbon
     # Update Organization
     #
     # @param global_user_config [UserConfigurationNullable] 
+    # @param data_source_configs [Hash<String, DataSourceConfiguration>] Used to set organization level defaults for configuration related to data sources.
     # @param body [UpdateOrganizationInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_with_http_info(global_user_config: SENTINEL, extra: {})
+    def update_with_http_info(global_user_config: SENTINEL, data_source_configs: SENTINEL, extra: {})
       _body = {}
       _body[:global_user_config] = global_user_config if global_user_config != SENTINEL
+      _body[:data_source_configs] = data_source_configs if data_source_configs != SENTINEL
       update_organization_input = _body
       update_with_http_info_impl(update_organization_input, extra)
     end

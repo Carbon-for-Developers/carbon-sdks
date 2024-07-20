@@ -46,6 +46,7 @@ func Test_carbon_OrganizationsApiService(t *testing.T) {
         
         updateOrganizationInput := *carbon.NewUpdateOrganizationInput()
         updateOrganizationInput.SetGlobalUserConfig(globalUserConfig)
+        updateOrganizationInput.SetDataSourceConfigs(null)
         
         request := client.OrganizationsApi.Update(
             updateOrganizationInput,

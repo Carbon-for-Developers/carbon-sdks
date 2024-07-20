@@ -112,6 +112,12 @@ export interface OrganizationResponse {
      * @type {object}
      * @memberof OrganizationResponse
      */
+    'connector_settings': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
     'global_user_config': object;
     /**
      * 

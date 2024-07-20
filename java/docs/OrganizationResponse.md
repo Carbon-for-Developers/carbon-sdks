@@ -22,6 +22,7 @@
 |**fileStatisticsAggregatedAt** | **OffsetDateTime** |  |  |
 |**periodEndsAt** | **OffsetDateTime** |  |  |
 |**cancelAtPeriodEnd** | **Boolean** |  |  |
+|**connectorSettings** | **Object** |  |  |
 |**globalUserConfig** | **Object** |  |  |
 |**fileSyncUsage** | **Object** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |

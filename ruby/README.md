@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.15-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.15)
+[![npm](https://img.shields.io/badge/gem-v0.2.16-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.16)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.15'
+gem 'carbon_ruby_sdk', '~> 0.2.16'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -1300,7 +1300,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "07b02a24-9429-4a3c-aa98-27ff63503082",
+        "request_id" => "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1520,7 +1520,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "d29ec177-bbc6-43c7-9b16-0ee340804c99",
+  request_id: "e5fd53f8-ed96-474a-ba66-1fc1948facdf",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1581,7 +1581,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX
+BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1887,7 +1887,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
+  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1992,7 +1992,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "ca60b474-8b43-4b44-9deb-adb701e40610",
+  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2582,6 +2582,11 @@ Update Organization
 result = carbon.organizations.update(
   global_user_config: {
     },
+  data_source_configs: {
+        "key": {
+            "allowed_file_formats" => [],
+        },
+    },
 )
 p result
 ```
@@ -2589,6 +2594,10 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### global_user_config: [`UserConfigurationNullable`](./lib/carbon_ruby_sdk/models/user_configuration_nullable.rb)<a id="global_user_config-userconfigurationnullablelibcarbon_ruby_sdkmodelsuser_configuration_nullablerb"></a>
+##### data_source_configs: Hash<string, [`DataSourceConfiguration`](./lib/carbon_ruby_sdk/models/data_source_configuration.rb)><a id="data_source_configs-hash"></a>
+Used to set organization level defaults for configuration related to data
+sources.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)

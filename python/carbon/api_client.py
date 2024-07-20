@@ -68,6 +68,8 @@ from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
 from carbon.pydantic.connect_data_source_input import ConnectDataSourceInput
 from carbon.pydantic.connect_data_source_response import ConnectDataSourceResponse
 from carbon.pydantic.custom_credentials_type import CustomCredentialsType
+from carbon.pydantic.data_source_configuration import DataSourceConfiguration
+from carbon.pydantic.data_source_configuration_allowed_file_formats import DataSourceConfigurationAllowedFileFormats
 from carbon.pydantic.data_source_extended_input import DataSourceExtendedInput
 from carbon.pydantic.data_source_last_sync_actions import DataSourceLastSyncActions
 from carbon.pydantic.data_source_sync_statuses import DataSourceSyncStatuses
@@ -209,6 +211,7 @@ from carbon.pydantic.sync_options import SyncOptions
 from carbon.pydantic.text_embedding_generators import TextEmbeddingGenerators
 from carbon.pydantic.token_response import TokenResponse
 from carbon.pydantic.update_organization_input import UpdateOrganizationInput
+from carbon.pydantic.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 from carbon.pydantic.update_users_input import UpdateUsersInput
 from carbon.pydantic.update_users_input_customer_ids import UpdateUsersInputCustomerIds
 from carbon.pydantic.upload_file_from_url_input import UploadFileFromUrlInput
@@ -1438,7 +1441,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.15/python'
+        self.user_agent = 'Konfig/0.2.16/python'
 
     def __enter__(self):
         return self

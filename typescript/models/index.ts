@@ -10,6 +10,7 @@ export * from './confluence-authentication';
 export * from './connect-data-source-input';
 export * from './connect-data-source-response';
 export * from './custom-credentials-type';
+export * from './data-source-configuration';
 export * from './data-source-last-sync-actions';
 export * from './data-source-sync-statuses';
 export * from './data-source-type';

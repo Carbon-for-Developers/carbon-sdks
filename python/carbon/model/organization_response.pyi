@@ -35,6 +35,7 @@ class OrganizationResponse(
         required = {
             "aggregate_file_size",
             "aggregate_num_characters",
+            "connector_settings",
             "file_sync_usage",
             "aggregate_num_files_by_file_format",
             "cancel_at_period_end",
@@ -198,6 +199,7 @@ class OrganizationResponse(
                         *args,
                         _configuration=_configuration,
                     )
+            connector_settings = schemas.DictSchema
             global_user_config = schemas.DictSchema
             file_sync_usage = schemas.DictSchema
             created_at = schemas.DateTimeSchema
@@ -218,6 +220,7 @@ class OrganizationResponse(
                 "file_statistics_aggregated_at": file_statistics_aggregated_at,
                 "period_ends_at": period_ends_at,
                 "cancel_at_period_end": cancel_at_period_end,
+                "connector_settings": connector_settings,
                 "global_user_config": global_user_config,
                 "file_sync_usage": file_sync_usage,
                 "created_at": created_at,
@@ -226,6 +229,7 @@ class OrganizationResponse(
     
     aggregate_file_size: MetaOapg.properties.aggregate_file_size
     aggregate_num_characters: MetaOapg.properties.aggregate_num_characters
+    connector_settings: MetaOapg.properties.connector_settings
     file_sync_usage: MetaOapg.properties.file_sync_usage
     aggregate_num_files_by_file_format: MetaOapg.properties.aggregate_num_files_by_file_format
     cancel_at_period_end: MetaOapg.properties.cancel_at_period_end
@@ -290,6 +294,9 @@ class OrganizationResponse(
     def __getitem__(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["connector_settings"]) -> MetaOapg.properties.connector_settings: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["global_user_config"]) -> MetaOapg.properties.global_user_config: ...
     
     @typing.overload
@@ -304,7 +311,7 @@ class OrganizationResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "aggregate_num_files_by_source", "aggregate_num_files_by_file_format", "file_statistics_aggregated_at", "period_ends_at", "cancel_at_period_end", "global_user_config", "file_sync_usage", "created_at", "updated_at", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "aggregate_num_files_by_source", "aggregate_num_files_by_file_format", "file_statistics_aggregated_at", "period_ends_at", "cancel_at_period_end", "connector_settings", "global_user_config", "file_sync_usage", "created_at", "updated_at", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -355,6 +362,9 @@ class OrganizationResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["cancel_at_period_end"]) -> MetaOapg.properties.cancel_at_period_end: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["connector_settings"]) -> MetaOapg.properties.connector_settings: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["global_user_config"]) -> MetaOapg.properties.global_user_config: ...
     
     @typing.overload
@@ -369,7 +379,7 @@ class OrganizationResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "aggregate_num_files_by_source", "aggregate_num_files_by_file_format", "file_statistics_aggregated_at", "period_ends_at", "cancel_at_period_end", "global_user_config", "file_sync_usage", "created_at", "updated_at", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "nickname", "remove_branding", "custom_branding", "custom_limits", "aggregate_file_size", "aggregate_num_characters", "aggregate_num_tokens", "aggregate_num_embeddings", "aggregate_num_files_by_source", "aggregate_num_files_by_file_format", "file_statistics_aggregated_at", "period_ends_at", "cancel_at_period_end", "connector_settings", "global_user_config", "file_sync_usage", "created_at", "updated_at", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -378,6 +388,7 @@ class OrganizationResponse(
         *args: typing.Union[dict, frozendict.frozendict, ],
         aggregate_file_size: typing.Union[MetaOapg.properties.aggregate_file_size, dict, frozendict.frozendict, ],
         aggregate_num_characters: typing.Union[MetaOapg.properties.aggregate_num_characters, dict, frozendict.frozendict, ],
+        connector_settings: typing.Union[MetaOapg.properties.connector_settings, dict, frozendict.frozendict, ],
         file_sync_usage: typing.Union[MetaOapg.properties.file_sync_usage, dict, frozendict.frozendict, ],
         aggregate_num_files_by_file_format: typing.Union[MetaOapg.properties.aggregate_num_files_by_file_format, dict, frozendict.frozendict, ],
         cancel_at_period_end: typing.Union[MetaOapg.properties.cancel_at_period_end, None, bool, ],
@@ -403,6 +414,7 @@ class OrganizationResponse(
             *args,
             aggregate_file_size=aggregate_file_size,
             aggregate_num_characters=aggregate_num_characters,
+            connector_settings=connector_settings,
             file_sync_usage=file_sync_usage,
             aggregate_num_files_by_file_format=aggregate_num_files_by_file_format,
             cancel_at_period_end=cancel_at_period_end,

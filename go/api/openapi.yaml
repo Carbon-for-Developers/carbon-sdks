@@ -4124,7 +4124,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
+          request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
         authentication:
           tenant_name: tenant_name
           source: null
@@ -4160,7 +4160,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
+            request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4207,6 +4207,31 @@ components:
       - UPSTAGE
       title: CustomCredentialsType
       type: string
+    DataSourceConfiguration:
+      example:
+        google_workspace_docs_save_as: google_workspace_docs_save_as
+        allowed_file_formats: []
+      properties:
+        allowed_file_formats:
+          default: []
+          description: List of allowed file formats for the organization. An empty
+            list means all file formats are allowed.
+          example: []
+          items:
+            type: string
+          title: Allowed File Formats
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-DataSourceConfiguration-properties-allowed_file_formats
+        google_workspace_docs_save_as:
+          description: "Used to set the format Google Workspace documents (Docs, Sheets,\
+            \ Slides) are stored as for raw files uploads in S3. The default format\
+            \ is TXT"
+          nullable: true
+          title: Google Workspace Docs Save As
+          type: string
+      title: DataSourceConfiguration
+      type: object
     DataSourceExtendedInput:
       title: DataSourceExtendedInput
       type: string
@@ -4282,6 +4307,7 @@ components:
       - MKV
       - FLV
       - WEBM
+      - EML
       title: DataSourceType
       type: string
     DeleteFilesQueryInput:
@@ -5042,6 +5068,7 @@ components:
       - MKV
       - FLV
       - WEBM
+      - EML
       title: FileFormats
       type: string
     FileStatistics:
@@ -6301,7 +6328,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: d29ec177-bbc6-43c7-9b16-0ee340804c99
+        request_id: e5fd53f8-ed96-474a-ba66-1fc1948facdf
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6419,13 +6446,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          default: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           title: Request Id
           type: string
-          x-konfig-original-example: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          x-konfig-original-example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6447,7 +6474,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX"
+            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -6494,6 +6521,7 @@ components:
       example:
         aggregate_file_size: "{}"
         aggregate_num_characters: "{}"
+        connector_settings: {}
         file_sync_usage: {}
         custom_limits: "{}"
         aggregate_num_files_by_file_format: "{}"
@@ -6565,6 +6593,13 @@ components:
           nullable: true
           title: Cancel At Period End
           type: boolean
+        connector_settings:
+          default: {}
+          example: {}
+          title: Connector Settings
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationResponse-properties-connector_settings
         global_user_config:
           default: {}
           example: {}
@@ -6595,6 +6630,7 @@ components:
       - aggregate_num_files_by_source
       - aggregate_num_tokens
       - cancel_at_period_end
+      - connector_settings
       - created_at
       - custom_branding
       - custom_limits
@@ -8065,7 +8101,7 @@ components:
         - null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: ca60b474-8b43-4b44-9deb-adb701e40610
+        request_id: 77b56048-a895-4377-b0d3-e190d1b7de32
         data_source_id: 0
       properties:
         tags:
@@ -8139,11 +8175,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: ca60b474-8b43-4b44-9deb-adb701e40610
-          example: ca60b474-8b43-4b44-9deb-adb701e40610
+          default: 77b56048-a895-4377-b0d3-e190d1b7de32
+          example: 77b56048-a895-4377-b0d3-e190d1b7de32
           title: Request Id
           type: string
-          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
+          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8199,7 +8235,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 07b02a24-9429-4a3c-aa98-27ff63503082
+        request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
       properties:
         tags:
           nullable: true
@@ -8272,11 +8308,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: 07b02a24-9429-4a3c-aa98-27ff63503082
-          example: 07b02a24-9429-4a3c-aa98-27ff63503082
+          default: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+          example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
           title: Request Id
           type: string
-          x-konfig-original-example: 07b02a24-9429-4a3c-aa98-27ff63503082
+          x-konfig-original-example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8348,9 +8384,21 @@ components:
           max_files: 0
           auto_sync_enabled_sources: null
           max_files_per_upload: 0
+        data_source_configs:
+          key:
+            google_workspace_docs_save_as: google_workspace_docs_save_as
+            allowed_file_formats: []
       properties:
         global_user_config:
           $ref: '#/components/schemas/UserConfigurationNullable'
+        data_source_configs:
+          additionalProperties:
+            $ref: '#/components/schemas/DataSourceConfiguration'
+          description: Used to set organization level defaults for configuration related
+            to data sources.
+          nullable: true
+          title: Data Source Configs
+          type: object
       title: UpdateOrganizationInput
       type: object
     UpdateUsersInput:
@@ -9596,6 +9644,7 @@ components:
       - MKV
       - FLV
       - WEBM
+      - EML
       nullable: true
       title: DataSourceType
       type: string
@@ -9672,6 +9721,7 @@ components:
       - MKV
       - FLV
       - WEBM
+      - EML
       nullable: true
       title: FileFormats
       type: string
@@ -10082,6 +10132,11 @@ components:
       properties: {}
       type: object
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-DataSourceConfiguration-properties-allowed_file_formats:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-DeleteFilesQueryInput-properties-delete_non_synced_only:
       example: false
       type: boolean
@@ -10375,7 +10430,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: d29ec177-bbc6-43c7-9b16-0ee340804c99
+      example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10397,6 +10452,11 @@ components:
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationResponse-properties-connector_settings:
+      example: {}
+      properties: {}
+      type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationResponse-properties-global_user_config:
       example: {}
@@ -10653,7 +10713,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: ca60b474-8b43-4b44-9deb-adb701e40610
+      example: 77b56048-a895-4377-b0d3-e190d1b7de32
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10697,7 +10757,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: 07b02a24-9429-4a3c-aa98-27ff63503082
+      example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -11075,13 +11135,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          default: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           title: Request Id
           type: string
-          x-konfig-original-example: d29ec177-bbc6-43c7-9b16-0ee340804c99
+          x-konfig-original-example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -11103,7 +11163,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX"
+            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
           example: true
           title: Enable File Picker
           type: boolean
@@ -11274,11 +11334,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: ca60b474-8b43-4b44-9deb-adb701e40610
-          example: ca60b474-8b43-4b44-9deb-adb701e40610
+          default: 77b56048-a895-4377-b0d3-e190d1b7de32
+          example: 77b56048-a895-4377-b0d3-e190d1b7de32
           title: Request Id
           type: string
-          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
+          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11414,11 +11474,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: ca60b474-8b43-4b44-9deb-adb701e40610
-          example: ca60b474-8b43-4b44-9deb-adb701e40610
+          default: 77b56048-a895-4377-b0d3-e190d1b7de32
+          example: 77b56048-a895-4377-b0d3-e190d1b7de32
           title: Request Id
           type: string
-          x-konfig-original-example: ca60b474-8b43-4b44-9deb-adb701e40610
+          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -12559,6 +12619,14 @@ components:
       properties:
         global_user_config:
           $ref: '#/components/schemas/UserConfigurationNullable'
+        data_source_configs:
+          additionalProperties:
+            $ref: '#/components/schemas/DataSourceConfiguration'
+          description: Used to set organization level defaults for configuration related
+            to data sources.
+          nullable: true
+          title: Data Source Configs
+          type: object
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

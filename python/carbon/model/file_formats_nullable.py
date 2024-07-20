@@ -84,6 +84,7 @@ class FileFormatsNullable(
             "MKV": "MKV",
             "FLV": "FLV",
             "WEBM": "WEBM",
+            "EML": "EML",
         }
     
     @schemas.classproperty
@@ -273,6 +274,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def WEBM(cls):
         return cls("WEBM")
+    
+    @schemas.classproperty
+    def EML(cls):
+        return cls("EML")
 
 
     def __new__(

@@ -67,6 +67,7 @@ const (
 	FILEFORMATSNULLABLE_MKV FileFormatsNullable = "MKV"
 	FILEFORMATSNULLABLE_FLV FileFormatsNullable = "FLV"
 	FILEFORMATSNULLABLE_WEBM FileFormatsNullable = "WEBM"
+	FILEFORMATSNULLABLE_EML FileFormatsNullable = "EML"
 )
 
 // All allowed values of FileFormatsNullable enum
@@ -118,6 +119,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"MKV",
 	"FLV",
 	"WEBM",
+	"EML",
 }
 
 func (v *FileFormatsNullable) UnmarshalJSON(src []byte) error {

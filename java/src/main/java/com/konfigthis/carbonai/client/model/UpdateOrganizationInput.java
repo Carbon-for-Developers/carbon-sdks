@@ -19,10 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.DataSourceConfiguration;
 import com.konfigthis.carbonai.client.model.UserConfigurationNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -55,6 +58,10 @@ public class UpdateOrganizationInput {
   @SerializedName(SERIALIZED_NAME_GLOBAL_USER_CONFIG)
   private UserConfigurationNullable globalUserConfig;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_CONFIGS = "data_source_configs";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_CONFIGS)
+  private Map<String, DataSourceConfiguration> dataSourceConfigs = null;
+
   public UpdateOrganizationInput() {
   }
 
@@ -84,6 +91,43 @@ public class UpdateOrganizationInput {
     
     
     this.globalUserConfig = globalUserConfig;
+  }
+
+
+  public UpdateOrganizationInput dataSourceConfigs(Map<String, DataSourceConfiguration> dataSourceConfigs) {
+    
+    
+    
+    
+    this.dataSourceConfigs = dataSourceConfigs;
+    return this;
+  }
+
+  public UpdateOrganizationInput putDataSourceConfigsItem(String key, DataSourceConfiguration dataSourceConfigsItem) {
+    if (this.dataSourceConfigs == null) {
+      this.dataSourceConfigs = new HashMap<>();
+    }
+    this.dataSourceConfigs.put(key, dataSourceConfigsItem);
+    return this;
+  }
+
+   /**
+   * Used to set organization level defaults for configuration related to data sources.
+   * @return dataSourceConfigs
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Used to set organization level defaults for configuration related to data sources.")
+
+  public Map<String, DataSourceConfiguration> getDataSourceConfigs() {
+    return dataSourceConfigs;
+  }
+
+
+  public void setDataSourceConfigs(Map<String, DataSourceConfiguration> dataSourceConfigs) {
+    
+    
+    
+    this.dataSourceConfigs = dataSourceConfigs;
   }
 
   /**
@@ -141,7 +185,8 @@ public class UpdateOrganizationInput {
       return false;
     }
     UpdateOrganizationInput updateOrganizationInput = (UpdateOrganizationInput) o;
-    return Objects.equals(this.globalUserConfig, updateOrganizationInput.globalUserConfig)&&
+    return Objects.equals(this.globalUserConfig, updateOrganizationInput.globalUserConfig) &&
+        Objects.equals(this.dataSourceConfigs, updateOrganizationInput.dataSourceConfigs)&&
         Objects.equals(this.additionalProperties, updateOrganizationInput.additionalProperties);
   }
 
@@ -151,7 +196,7 @@ public class UpdateOrganizationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(globalUserConfig, additionalProperties);
+    return Objects.hash(globalUserConfig, dataSourceConfigs, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +211,7 @@ public class UpdateOrganizationInput {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateOrganizationInput {\n");
     sb.append("    globalUserConfig: ").append(toIndentedString(globalUserConfig)).append("\n");
+    sb.append("    dataSourceConfigs: ").append(toIndentedString(dataSourceConfigs)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -190,6 +236,7 @@ public class UpdateOrganizationInput {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("global_user_config");
+    openapiFields.add("data_source_configs");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

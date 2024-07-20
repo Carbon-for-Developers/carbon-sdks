@@ -56,6 +56,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.FileStatisticsAggregatedAt`: %v\n", resp.FileStatisticsAggregatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.PeriodEndsAt`: %v\n", resp.PeriodEndsAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CancelAtPeriodEnd`: %v\n", resp.CancelAtPeriodEnd)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.ConnectorSettings`: %v\n", resp.ConnectorSettings)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.GlobalUserConfig`: %v\n", resp.GlobalUserConfig)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.FileSyncUsage`: %v\n", resp.FileSyncUsage)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationResponse.Get.CreatedAt`: %v\n", resp.CreatedAt)
@@ -92,6 +93,7 @@ func main() {
     
     updateOrganizationInput := *carbon.NewUpdateOrganizationInput()
     updateOrganizationInput.SetGlobalUserConfig(globalUserConfig)
+    updateOrganizationInput.SetDataSourceConfigs(null)
     
     request := client.OrganizationsApi.Update(
         updateOrganizationInput,

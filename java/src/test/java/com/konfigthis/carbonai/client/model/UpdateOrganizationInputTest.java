@@ -17,10 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.DataSourceConfiguration;
 import com.konfigthis.carbonai.client.model.UserConfigurationNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -46,6 +49,14 @@ public class UpdateOrganizationInputTest {
     @Test
     public void globalUserConfigTest() {
         // TODO: test globalUserConfig
+    }
+
+    /**
+     * Test the property 'dataSourceConfigs'
+     */
+    @Test
+    public void dataSourceConfigsTest() {
+        // TODO: test dataSourceConfigs
     }
 
 }
