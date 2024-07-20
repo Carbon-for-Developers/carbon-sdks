@@ -3727,7 +3727,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "07b02a24-9429-4a3c-aa98-27ff63503082",
+              "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -3775,6 +3775,33 @@
           "UPSTAGE"
         ],
         "title": "CustomCredentialsType"
+      },
+      "DataSourceConfiguration": {
+        "properties": {
+          "allowed_file_formats": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allowed File Formats",
+            "description": "List of allowed file formats for the organization. An empty list means all file formats are allowed.",
+            "default": []
+          },
+          "google_workspace_docs_save_as": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Google Workspace Docs Save As",
+            "description": "Used to set the format Google Workspace documents (Docs, Sheets, Slides) are stored as for raw files uploads in S3. The default format is TXT"
+          }
+        },
+        "type": "object",
+        "title": "DataSourceConfiguration"
       },
       "DataSourceExtendedInput": {
         "type": "string",
@@ -3857,7 +3884,8 @@
           "MOV",
           "MKV",
           "FLV",
-          "WEBM"
+          "WEBM",
+          "EML"
         ],
         "title": "DataSourceType"
       },
@@ -4726,7 +4754,8 @@
           "MOV",
           "MKV",
           "FLV",
-          "WEBM"
+          "WEBM",
+          "EML"
         ],
         "title": "FileFormats"
       },
@@ -6459,7 +6488,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "d29ec177-bbc6-43c7-9b16-0ee340804c99"
+            "default": "e5fd53f8-ed96-474a-ba66-1fc1948facdf"
           },
           "use_ocr": {
             "anyOf": [
@@ -6489,7 +6518,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, GOOGLE_DRIVE, SHAREPOINT, ONEDRIVE, DROPBOX",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
             "default": true
           },
           "sync_source_items": {
@@ -6644,6 +6673,11 @@
             ],
             "title": "Cancel At Period End"
           },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
+          },
           "global_user_config": {
             "type": "object",
             "title": "Global User Config",
@@ -6682,6 +6716,7 @@
           "file_statistics_aggregated_at",
           "period_ends_at",
           "cancel_at_period_end",
+          "connector_settings",
           "global_user_config",
           "file_sync_usage",
           "created_at",
@@ -8716,7 +8751,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "ca60b474-8b43-4b44-9deb-adb701e40610"
+            "default": "77b56048-a895-4377-b0d3-e190d1b7de32"
           },
           "use_ocr": {
             "anyOf": [
@@ -8883,7 +8918,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "07b02a24-9429-4a3c-aa98-27ff63503082"
+            "default": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8967,6 +9002,21 @@
               }
             ],
             "description": "Used to set organization level defaults for user settings. These settings will apply to all users under\n        the organization that don't have them defined."
+          },
+          "data_source_configs": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/DataSourceConfiguration"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Configs",
+            "description": "Used to set organization level defaults for configuration related to data sources."
           }
         },
         "type": "object",
