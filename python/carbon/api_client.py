@@ -332,6 +332,8 @@ def construct_model_instance(model: typing.Type[T], data: typing.Any) -> T:
         return data
     elif model is dict:
         return data
+    elif model is Dictionary:
+        return data
     elif model is object:
         return data
     # if model is BaseModel, iterate over fields and recursively call
@@ -1441,7 +1443,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/0.2.16/python'
+        self.user_agent = 'Konfig/0.2.17/python'
 
     def __enter__(self):
         return self
