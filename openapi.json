@@ -3727,7 +3727,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+              "request_id": "6ba29df7-7906-4d1a-a105-46b2fea90b2c",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -6488,7 +6488,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "e5fd53f8-ed96-474a-ba66-1fc1948facdf"
+            "default": "56195c4b-7109-45a9-8206-026f6685ce29"
           },
           "use_ocr": {
             "anyOf": [
@@ -6518,7 +6518,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: DROPBOX, ONEDRIVE, GOOGLE_DRIVE, SHAREPOINT, BOX",
             "default": true
           },
           "sync_source_items": {
@@ -8751,7 +8751,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "77b56048-a895-4377-b0d3-e190d1b7de32"
+            "default": "a0ce4fbd-1230-4d5c-8fe6-14b8905d4a6f"
           },
           "use_ocr": {
             "anyOf": [
@@ -8918,7 +8918,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85"
+            "default": "6ba29df7-7906-4d1a-a105-46b2fea90b2c"
           },
           "enable_file_picker": {
             "type": "boolean",
