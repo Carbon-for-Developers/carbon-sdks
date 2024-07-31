@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    uses: konfig-dev/automation/.github/workflows/release.yaml@main
+    secrets:
+      KONFIG_API_KEY: ${{ secrets.KONFIG_API_KEY }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      PYPI_TOKEN_1: ${{ secrets.PYPI_TOKEN_1 }}
+      SUBMODULE_DEPLOY_KEY_PHP: ${{ secrets.SUBMODULE_DEPLOY_KEY_PHP }}
+      SUBMODULE_DEPLOY_KEY_SWIFT: ${{ secrets.SUBMODULE_DEPLOY_KEY_SWIFT }}
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+      OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+      OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
+      GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+      COCOAPODS_SESSION_PASSWORD: ${{ secrets.COCOAPODS_SESSION_PASSWORD }}
+      COCOAPODS_SESSION_EMAIL: ${{ secrets.COCOAPODS_SESSION_EMAIL }}
