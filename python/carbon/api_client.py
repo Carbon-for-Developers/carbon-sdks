@@ -210,6 +210,8 @@ from carbon.pydantic.sync_files_request import SyncFilesRequest
 from carbon.pydantic.sync_options import SyncOptions
 from carbon.pydantic.text_embedding_generators import TextEmbeddingGenerators
 from carbon.pydantic.token_response import TokenResponse
+from carbon.pydantic.transcription_service import TranscriptionService
+from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.pydantic.update_organization_input import UpdateOrganizationInput
 from carbon.pydantic.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 from carbon.pydantic.update_users_input import UpdateUsersInput

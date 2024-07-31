@@ -1043,6 +1043,7 @@ const uploadResponse = await carbon.files.upload({
   prependFilenameToChunks: false,
   parsePdfTablesWithOcr: false,
   detectAudioLanguage: false,
+  transcriptionService: "assemblyai",
   mediaType: "TEXT",
   splitRows: false,
   file: fs.readFileSync("/path/to/file"),
@@ -1097,6 +1098,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 
 Whether to automatically detect the language of the uploaded audio file.
 
+##### transcriptionService: [`TranscriptionServiceNullable`](./models/transcription-service-nullable.ts)<a id="transcriptionservice-transcriptionservicenullablemodelstranscription-service-nullablets"></a>
+
+The transcription service to use for audio files. If no service is specified, \'deepgram\' will be used.
+
 ##### mediaType: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="mediatype-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
 The media type of the file. If not provided, it will be inferred from the file extension.
@@ -1135,6 +1140,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   prepend_filename_to_chunks: false,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  transcription_service: "assemblyai",
   media_type: "TEXT",
   split_rows: false,
 });
@@ -1169,6 +1175,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
 ##### detect_audio_language: `boolean`<a id="detect_audio_language-boolean"></a>
+
+##### transcription_service: [`TranscriptionServiceNullable`](./models/transcription-service-nullable.ts)<a id="transcription_service-transcriptionservicenullablemodelstranscription-service-nullablets"></a>
 
 ##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
@@ -1502,7 +1510,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "e5fd53f8-ed96-474a-ba66-1fc1948facdf",
+  request_id: "859ca4fb-b289-475e-9509-35a98a8fe40d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1571,7 +1579,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `boolean`<a id="enable_file_picker-boolean"></a>
 
-Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
+Enable integration\\\'s file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
@@ -1869,7 +1877,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
+  request_id: "fc57cd47-6aac-4e8f-9a00-ceae0b396f11",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1977,7 +1985,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
+  request_id: "fc57cd47-6aac-4e8f-9a00-ceae0b396f11",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

@@ -2275,6 +2275,15 @@
             }
           },
           {
+            "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.",
+            "name": "transcription_service",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/TranscriptionServiceNullable"
+            }
+          },
+          {
             "description": "The media type of the file. If not provided, it will be inferred from the file extension.",
             "name": "media_type",
             "in": "query",
@@ -3887,7 +3896,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+              "request_id": "eea02e43-54b1-4bee-ab9e-091040d2134c",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4800,6 +4809,9 @@
             "description": "Detect audio language before transcription for audio files",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "split_rows": {
             "title": "Split Rows",
@@ -5951,7 +5963,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "e5fd53f8-ed96-474a-ba66-1fc1948facdf"
+            "default": "859ca4fb-b289-475e-9509-35a98a8fe40d"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5968,7 +5980,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT",
             "type": "boolean",
             "default": true
           },
@@ -7554,7 +7566,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "77b56048-a895-4377-b0d3-e190d1b7de32"
+            "default": "fc57cd47-6aac-4e8f-9a00-ceae0b396f11"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -7646,7 +7658,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85"
+            "default": "eea02e43-54b1-4bee-ab9e-091040d2134c"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7707,6 +7719,14 @@
         "required": [
           "access_token",
           "refresh_token"
+        ]
+      },
+      "TranscriptionService": {
+        "title": "TranscriptionService",
+        "type": "string",
+        "enum": [
+          "assemblyai",
+          "deepgram"
         ]
       },
       "UpdateOrganizationInput": {
@@ -7841,6 +7861,9 @@
             "title": "Detect Audio Language",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "media_type": {
             "$ref": "#/components/schemas/FileContentTypesNullable"
@@ -8830,6 +8853,15 @@
           "zotero_id"
         ]
       },
+      "TranscriptionServiceNullable": {
+        "title": "TranscriptionService",
+        "type": "string",
+        "enum": [
+          "assemblyai",
+          "deepgram"
+        ],
+        "nullable": true
+      },
       "FileContentTypesNullable": {
         "title": "FileContentTypes",
         "type": "string",
@@ -9007,6 +9039,9 @@
             "description": "Detect audio language before transcription for audio files",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "split_rows": {
             "title": "Split Rows",

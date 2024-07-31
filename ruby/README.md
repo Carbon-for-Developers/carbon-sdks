@@ -1071,6 +1071,7 @@ result = carbon.files.upload(
   max_items_per_chunk: 1,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  transcription_service: "assemblyai",
   media_type: "TEXT",
   split_rows: false,
 )
@@ -1118,6 +1119,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
 Whether to automatically detect the language of the uploaded audio file.
 
+##### transcription_service: [`TranscriptionServiceNullable`](./lib/carbon_ruby_sdk/models/transcription_service_nullable.rb)<a id="transcription_service-transcriptionservicenullablelibcarbon_ruby_sdkmodelstranscription_service_nullablerb"></a>
+The transcription service to use for audio files. If no service is specified,
+'deepgram' will be used.
+
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 The media type of the file. If not provided, it will be inferred from the file
 extension.
@@ -1160,6 +1165,7 @@ result = carbon.files.upload_from_url(
   max_items_per_chunk: 1,
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
+  transcription_service: "assemblyai",
   media_type: "TEXT",
   split_rows: false,
 )
@@ -1183,6 +1189,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
+##### transcription_service: [`TranscriptionServiceNullable`](./lib/carbon_ruby_sdk/models/transcription_service_nullable.rb)<a id="transcription_service-transcriptionservicenullablelibcarbon_ruby_sdkmodelstranscription_service_nullablerb"></a>
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 ##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1300,7 +1307,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+        "request_id" => "eea02e43-54b1-4bee-ab9e-091040d2134c",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1354,6 +1361,7 @@ result = carbon.integrations.connect_freshdesk(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
 )
@@ -1520,7 +1528,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "e5fd53f8-ed96-474a-ba66-1fc1948facdf",
+  request_id: "859ca4fb-b289-475e-9509-35a98a8fe40d",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1530,6 +1538,7 @@ result = carbon.integrations.get_oauth_url(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
 )
@@ -1581,7 +1590,7 @@ Enable OCR for files that support it. Supported formats: pdf
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 Enable integration's file picker for sources that support it. Supported sources:
-BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
+BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
 
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
@@ -1887,7 +1896,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
+  request_id: "fc57cd47-6aac-4e8f-9a00-ceae0b396f11",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1895,6 +1904,7 @@ result = carbon.integrations.sync_confluence(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
 )
@@ -1992,7 +2002,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "77b56048-a895-4377-b0d3-e190d1b7de32",
+  request_id: "fc57cd47-6aac-4e8f-9a00-ceae0b396f11",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2000,6 +2010,7 @@ result = carbon.integrations.sync_files(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
 )
@@ -2202,6 +2213,7 @@ result = carbon.integrations.sync_gmail(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
   incremental_sync: false,
@@ -2321,6 +2333,7 @@ result = carbon.integrations.sync_outlook(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
   incremental_sync: false,
@@ -2464,6 +2477,7 @@ result = carbon.integrations.sync_s3_files(
         "auto_synced_source_types" => ["ARTICLE"],
         "sync_attachments" => false,
         "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
         "split_rows" => false,
     },
 )

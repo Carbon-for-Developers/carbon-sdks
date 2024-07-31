@@ -22,6 +22,7 @@ type FileSyncConfig struct {
 	SyncAttachments *bool `json:"sync_attachments,omitempty"`
 	// Detect audio language before transcription for audio files
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
+	TranscriptionService NullableTranscriptionServiceNullable `json:"transcription_service,omitempty"`
 	// Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
 	SplitRows *bool `json:"split_rows,omitempty"`
 }
@@ -151,6 +152,48 @@ func (o *FileSyncConfig) SetDetectAudioLanguage(v bool) {
 	o.DetectAudioLanguage = &v
 }
 
+// GetTranscriptionService returns the TranscriptionService field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FileSyncConfig) GetTranscriptionService() TranscriptionServiceNullable {
+	if o == nil || isNil(o.TranscriptionService.Get()) {
+		var ret TranscriptionServiceNullable
+		return ret
+	}
+	return *o.TranscriptionService.Get()
+}
+
+// GetTranscriptionServiceOk returns a tuple with the TranscriptionService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FileSyncConfig) GetTranscriptionServiceOk() (*TranscriptionServiceNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.TranscriptionService.Get(), o.TranscriptionService.IsSet()
+}
+
+// HasTranscriptionService returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasTranscriptionService() bool {
+	if o != nil && o.TranscriptionService.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTranscriptionService gets a reference to the given NullableTranscriptionServiceNullable and assigns it to the TranscriptionService field.
+func (o *FileSyncConfig) SetTranscriptionService(v TranscriptionServiceNullable) {
+	o.TranscriptionService.Set(&v)
+}
+// SetTranscriptionServiceNil sets the value for TranscriptionService to be an explicit nil
+func (o *FileSyncConfig) SetTranscriptionServiceNil() {
+	o.TranscriptionService.Set(nil)
+}
+
+// UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
+func (o *FileSyncConfig) UnsetTranscriptionService() {
+	o.TranscriptionService.Unset()
+}
+
 // GetSplitRows returns the SplitRows field value if set, zero value otherwise.
 func (o *FileSyncConfig) GetSplitRows() bool {
 	if o == nil || isNil(o.SplitRows) {
@@ -193,6 +236,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.DetectAudioLanguage) {
 		toSerialize["detect_audio_language"] = o.DetectAudioLanguage
+	}
+	if o.TranscriptionService.IsSet() {
+		toSerialize["transcription_service"] = o.TranscriptionService.Get()
 	}
 	if !isNil(o.SplitRows) {
 		toSerialize["split_rows"] = o.SplitRows

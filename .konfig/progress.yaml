@@ -317,6 +317,8 @@ securityParameters:
     query: false
   split_rows:
     query: false
+  transcription_service:
+    query: false
   types:
     query: false
   url:

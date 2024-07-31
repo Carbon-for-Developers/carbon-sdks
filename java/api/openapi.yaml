@@ -3052,6 +3052,15 @@ paths:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
         style: form
+      - description: "The transcription service to use for audio files. If no service\
+          \ is specified, 'deepgram' will be used."
+        explode: true
+        in: query
+        name: transcription_service
+        required: false
+        schema:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
+        style: form
       - description: "The media type of the file. If not provided, it will be inferred\
           \ from the file extension."
         explode: true
@@ -3075,7 +3084,7 @@ paths:
           title: Split Rows
           type: boolean
           x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-12-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-13-schema
         style: form
       requestBody:
         content:
@@ -4287,6 +4296,7 @@ components:
             detect_audio_language: false
             split_rows: false
             sync_attachments: false
+            transcription_service: null
             auto_synced_source_types:
             - ARTICLE
           tags: ""
@@ -4297,7 +4307,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+          request_id: eea02e43-54b1-4bee-ab9e-091040d2134c
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4333,7 +4343,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+            request_id: eea02e43-54b1-4bee-ab9e-091040d2134c
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -5313,6 +5323,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-detect_audio_language
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
         split_rows:
           default: false
           description: "Whether to split tabular rows into chunks. Currently only\
@@ -5333,6 +5345,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         tags: {}
@@ -5956,6 +5969,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         filters: "{}"
@@ -6482,6 +6496,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         use_ocr: false
@@ -6501,7 +6516,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+        request_id: 859ca4fb-b289-475e-9509-35a98a8fe40d
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6619,13 +6634,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          default: 859ca4fb-b289-475e-9509-35a98a8fe40d
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          example: 859ca4fb-b289-475e-9509-35a98a8fe40d
           title: Request Id
           type: string
-          x-konfig-original-example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          x-konfig-original-example: 859ca4fb-b289-475e-9509-35a98a8fe40d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -6647,7 +6662,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
+            \ it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -7363,6 +7378,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         filters: "{}"
@@ -7730,6 +7746,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         tags: {}
@@ -8255,6 +8272,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         tags: {}
@@ -8267,7 +8285,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 77b56048-a895-4377-b0d3-e190d1b7de32
+        request_id: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
         data_source_id: 0
       properties:
         tags:
@@ -8339,11 +8357,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 77b56048-a895-4377-b0d3-e190d1b7de32
-          example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          default: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
+          example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           title: Request Id
           type: string
-          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          x-konfig-original-example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8389,6 +8407,7 @@ components:
           detect_audio_language: false
           split_rows: false
           sync_attachments: false
+          transcription_service: null
           auto_synced_source_types:
           - ARTICLE
         tags: ""
@@ -8399,7 +8418,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+        request_id: eea02e43-54b1-4bee-ab9e-091040d2134c
       properties:
         tags:
           nullable: true
@@ -8472,11 +8491,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
-          example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+          default: eea02e43-54b1-4bee-ab9e-091040d2134c
+          example: eea02e43-54b1-4bee-ab9e-091040d2134c
           title: Request Id
           type: string
-          x-konfig-original-example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+          x-konfig-original-example: eea02e43-54b1-4bee-ab9e-091040d2134c
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -8543,6 +8562,12 @@ components:
       title: TokenResponse
       type: object
       x-konfig-is-used-in-successful-response: true
+    TranscriptionService:
+      enum:
+      - assemblyai
+      - deepgram
+      title: TranscriptionService
+      type: string
     UpdateOrganizationInput:
       example:
         global_user_config:
@@ -8625,6 +8650,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 6
         skip_embedding_generation: false
+        transcription_service: null
       properties:
         url:
           title: Url
@@ -8698,6 +8724,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:
@@ -9742,6 +9770,13 @@ components:
       - zotero_id
       title: ZoteroAuthentication
       type: object
+    TranscriptionServiceNullable:
+      enum:
+      - assemblyai
+      - deepgram
+      nullable: true
+      title: TranscriptionService
+      type: string
     FileContentTypesNullable:
       enum:
       - TEXT
@@ -9895,6 +9930,7 @@ components:
         detect_audio_language: false
         split_rows: false
         sync_attachments: false
+        transcription_service: null
         auto_synced_source_types:
         - ARTICLE
       nullable: true
@@ -9931,6 +9967,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-detect_audio_language
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
         split_rows:
           default: false
           description: "Whether to split tabular rows into chunks. Currently only\
@@ -10280,7 +10318,7 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-paths--uploadfile-post-parameters-12-schema:
+    konfig-generated-schema-paths--uploadfile-post-parameters-13-schema:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -10607,7 +10645,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+      example: 859ca4fb-b289-475e-9509-35a98a8fe40d
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10890,7 +10928,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 77b56048-a895-4377-b0d3-e190d1b7de32
+      example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -10934,7 +10972,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: e38a7eee-02b7-4f73-be14-ea9bb1f09e85
+      example: eea02e43-54b1-4bee-ab9e-091040d2134c
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -11312,13 +11350,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          default: 859ca4fb-b289-475e-9509-35a98a8fe40d
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          example: 859ca4fb-b289-475e-9509-35a98a8fe40d
           title: Request Id
           type: string
-          x-konfig-original-example: e5fd53f8-ed96-474a-ba66-1fc1948facdf
+          x-konfig-original-example: 859ca4fb-b289-475e-9509-35a98a8fe40d
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -11340,7 +11378,7 @@ components:
         enable_file_picker:
           default: true
           description: "Enable integration's file picker for sources that support\
-            \ it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE"
+            \ it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT"
           example: true
           title: Enable File Picker
           type: boolean
@@ -11496,11 +11534,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 77b56048-a895-4377-b0d3-e190d1b7de32
-          example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          default: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
+          example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           title: Request Id
           type: string
-          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          x-konfig-original-example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11621,11 +11659,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 77b56048-a895-4377-b0d3-e190d1b7de32
-          example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          default: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
+          example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           title: Request Id
           type: string
-          x-konfig-original-example: 77b56048-a895-4377-b0d3-e190d1b7de32
+          x-konfig-original-example: fc57cd47-6aac-4e8f-9a00-ceae0b396f11
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -12935,6 +12973,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:
@@ -12945,7 +12985,7 @@ components:
           title: Split Rows
           type: boolean
           x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-12-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-13-schema
         file:
           format: binary
           title: File
@@ -12966,6 +13006,7 @@ components:
       - max_items_per_chunk
       - parse_pdf_tables_with_ocr
       - detect_audio_language
+      - transcription_service
       - media_type
       - split_rows
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
@@ -13042,6 +13083,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:

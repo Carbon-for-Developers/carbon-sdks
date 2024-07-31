@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
+from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 
 class UploadFileFromUrlInput(BaseModel):
     url: str = Field(alias='url')
@@ -45,6 +46,8 @@ class UploadFileFromUrlInput(BaseModel):
     parse_pdf_tables_with_ocr: typing.Optional[bool] = Field(None, alias='parse_pdf_tables_with_ocr')
 
     detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
+
+    transcription_service: typing.Optional[TranscriptionServiceNullable] = Field(None, alias='transcription_service')
 
     media_type: typing.Optional[FileContentTypesNullable] = Field(None, alias='media_type')
 

@@ -328,6 +328,8 @@ Class | Method | HTTP request | Description
  - [TMEmbeddingGenerators](docs/TMEmbeddingGenerators.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
  - [TokenResponse](docs/TokenResponse.md)
+ - [TranscriptionService](docs/TranscriptionService.md)
+ - [TranscriptionServiceNullable](docs/TranscriptionServiceNullable.md)
  - [UpdateOrganizationInput](docs/UpdateOrganizationInput.md)
  - [UpdateUsersInput](docs/UpdateUsersInput.md)
  - [UploadFileFromUrlInput](docs/UploadFileFromUrlInput.md)

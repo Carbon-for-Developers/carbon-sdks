@@ -166,6 +166,8 @@ from carbon.model.sync_files_request import SyncFilesRequest
 from carbon.model.sync_options import SyncOptions
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
+from carbon.model.transcription_service import TranscriptionService
+from carbon.model.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.model.update_organization_input import UpdateOrganizationInput
 from carbon.model.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 from carbon.model.update_users_input import UpdateUsersInput

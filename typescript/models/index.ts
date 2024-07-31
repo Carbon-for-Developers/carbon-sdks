@@ -120,6 +120,8 @@ export * from './tags';
 export * from './tags1';
 export * from './text-embedding-generators';
 export * from './token-response';
+export * from './transcription-service';
+export * from './transcription-service-nullable';
 export * from './update-organization-input';
 export * from './update-users-input';
 export * from './upload-file-from-url-input';

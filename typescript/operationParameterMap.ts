@@ -329,6 +329,9 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'detect_audio_language'
             },
             {
+                name: 'transcription_service'
+            },
+            {
                 name: 'media_type'
             },
             {
@@ -376,6 +379,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'detect_audio_language'
+            },
+            {
+                name: 'transcription_service'
             },
             {
                 name: 'media_type'

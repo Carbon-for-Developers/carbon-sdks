@@ -323,6 +323,9 @@ operation_parameter_map = {
                 'name': 'detect_audio_language'
             },
             {
+                'name': 'transcription_service'
+            },
+            {
                 'name': 'media_type'
             },
             {
@@ -370,6 +373,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'detect_audio_language'
+            },
+            {
+                'name': 'transcription_service'
             },
             {
                 'name': 'media_type'

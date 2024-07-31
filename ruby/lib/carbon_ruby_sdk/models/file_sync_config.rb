@@ -20,6 +20,8 @@ module Carbon
     # Detect audio language before transcription for audio files
     attr_accessor :detect_audio_language
 
+    attr_accessor :transcription_service
+
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     attr_accessor :split_rows
 
@@ -29,6 +31,7 @@ module Carbon
         :'auto_synced_source_types' => :'auto_synced_source_types',
         :'sync_attachments' => :'sync_attachments',
         :'detect_audio_language' => :'detect_audio_language',
+        :'transcription_service' => :'transcription_service',
         :'split_rows' => :'split_rows'
       }
     end
@@ -44,6 +47,7 @@ module Carbon
         :'auto_synced_source_types' => :'Array<HelpdeskFileTypes>',
         :'sync_attachments' => :'Boolean',
         :'detect_audio_language' => :'Boolean',
+        :'transcription_service' => :'TranscriptionServiceNullable',
         :'split_rows' => :'Boolean'
       }
     end
@@ -51,6 +55,7 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'transcription_service',
       ])
     end
 
@@ -87,6 +92,10 @@ module Carbon
         self.detect_audio_language = false
       end
 
+      if attributes.key?(:'transcription_service')
+        self.transcription_service = attributes[:'transcription_service']
+      end
+
       if attributes.key?(:'split_rows')
         self.split_rows = attributes[:'split_rows']
       else
@@ -115,6 +124,7 @@ module Carbon
           auto_synced_source_types == o.auto_synced_source_types &&
           sync_attachments == o.sync_attachments &&
           detect_audio_language == o.detect_audio_language &&
+          transcription_service == o.transcription_service &&
           split_rows == o.split_rows
     end
 
@@ -127,7 +137,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, split_rows].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, split_rows].hash
     end
 
     # Builds the object from hash
