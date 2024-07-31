@@ -2159,6 +2159,24 @@
             "description": "Whether to automatically detect the language of the uploaded audio file."
           },
           {
+            "name": "transcription_service",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/TranscriptionService"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.",
+              "title": "Transcription Service"
+            },
+            "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used."
+          },
+          {
             "name": "media_type",
             "in": "query",
             "required": false,
@@ -3727,7 +3745,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+              "request_id": "eea02e43-54b1-4bee-ab9e-091040d2134c",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4862,6 +4880,17 @@
             "title": "Detect Audio Language",
             "description": "Detect audio language before transcription for audio files",
             "default": false
+          },
+          "transcription_service": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TranscriptionService"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used."
           },
           "split_rows": {
             "type": "boolean",
@@ -6488,7 +6517,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "e5fd53f8-ed96-474a-ba66-1fc1948facdf"
+            "default": "859ca4fb-b289-475e-9509-35a98a8fe40d"
           },
           "use_ocr": {
             "anyOf": [
@@ -6518,7 +6547,7 @@
           "enable_file_picker": {
             "type": "boolean",
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT",
             "default": true
           },
           "sync_source_items": {
@@ -8751,7 +8780,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "77b56048-a895-4377-b0d3-e190d1b7de32"
+            "default": "fc57cd47-6aac-4e8f-9a00-ceae0b396f11"
           },
           "use_ocr": {
             "anyOf": [
@@ -8918,7 +8947,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85"
+            "default": "eea02e43-54b1-4bee-ab9e-091040d2134c"
           },
           "enable_file_picker": {
             "type": "boolean",
@@ -8989,6 +9018,14 @@
           "refresh_token"
         ],
         "title": "TokenResponse"
+      },
+      "TranscriptionService": {
+        "type": "string",
+        "enum": [
+          "assemblyai",
+          "deepgram"
+        ],
+        "title": "TranscriptionService"
       },
       "UpdateOrganizationInput": {
         "properties": {
@@ -9178,6 +9215,16 @@
             "type": "boolean",
             "title": "Detect Audio Language",
             "default": false
+          },
+          "transcription_service": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TranscriptionService"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "media_type": {
             "anyOf": [
