@@ -55,7 +55,11 @@ public class SentWebhookPayload {
    */
   @JsonAdapter(WebhookTypeEnum.Adapter.class)
  public enum WebhookTypeEnum {
+    ADD("ADD"),
+    
     ALL_UPLOADED_FILES_QUEUED("ALL_UPLOADED_FILES_QUEUED"),
+    
+    CANCEL("CANCEL"),
     
     CHECKUP("CHECKUP"),
     
@@ -79,7 +83,11 @@ public class SentWebhookPayload {
     
     RATE_LIMIT_ERROR("RATE_LIMIT_ERROR"),
     
+    REVOKE("REVOKE"),
+    
     SPARSE_VECTOR_QUEUE_STATUS("SPARSE_VECTOR_QUEUE_STATUS"),
+    
+    UPDATE("UPDATE"),
     
     WEBPAGE_ERROR("WEBPAGE_ERROR"),
     

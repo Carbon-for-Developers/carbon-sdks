@@ -28,6 +28,7 @@ import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
+import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
@@ -86,6 +87,7 @@ public class EmbeddingsApiTest {
         Boolean includeFileLevelMetadata = null;
         Boolean highAccuracy = null;
         RerankParamsNullable rerank = null;
+        List<HelpdeskFileTypes> fileTypesAtSource = null;
         DocumentResponseList response = api.getDocuments(query, k)
                 .tags(tags)
                 .queryVector(queryVector)
@@ -103,6 +105,7 @@ public class EmbeddingsApiTest {
                 .includeFileLevelMetadata(includeFileLevelMetadata)
                 .highAccuracy(highAccuracy)
                 .rerank(rerank)
+                .fileTypesAtSource(fileTypesAtSource)
                 .execute();
         // TODO: test validations
     }

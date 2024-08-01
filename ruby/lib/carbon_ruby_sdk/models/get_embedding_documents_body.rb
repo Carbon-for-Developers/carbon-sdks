@@ -61,6 +61,9 @@ module Carbon
 
     attr_accessor :rerank
 
+    # Filter files based on their type at the source (for example help center tickets and articles)
+    attr_accessor :file_types_at_source
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -81,7 +84,8 @@ module Carbon
         :'embedding_model' => :'embedding_model',
         :'include_file_level_metadata' => :'include_file_level_metadata',
         :'high_accuracy' => :'high_accuracy',
-        :'rerank' => :'rerank'
+        :'rerank' => :'rerank',
+        :'file_types_at_source' => :'file_types_at_source'
       }
     end
 
@@ -110,7 +114,8 @@ module Carbon
         :'embedding_model' => :'EmbeddingGeneratorsNullable',
         :'include_file_level_metadata' => :'Boolean',
         :'high_accuracy' => :'Boolean',
-        :'rerank' => :'RerankParamsNullable'
+        :'rerank' => :'RerankParamsNullable',
+        :'file_types_at_source' => :'Array<HelpdeskFileTypes>'
       }
     end
 
@@ -131,7 +136,8 @@ module Carbon
         :'embedding_model',
         :'include_file_level_metadata',
         :'high_accuracy',
-        :'rerank'
+        :'rerank',
+        :'file_types_at_source'
       ])
     end
 
@@ -237,6 +243,12 @@ module Carbon
       if attributes.key?(:'rerank')
         self.rerank = attributes[:'rerank']
       end
+
+      if attributes.key?(:'file_types_at_source')
+        if (value = attributes[:'file_types_at_source']).is_a?(Array)
+          self.file_types_at_source = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -322,7 +334,8 @@ module Carbon
           embedding_model == o.embedding_model &&
           include_file_level_metadata == o.include_file_level_metadata &&
           high_accuracy == o.high_accuracy &&
-          rerank == o.rerank
+          rerank == o.rerank &&
+          file_types_at_source == o.file_types_at_source
     end
 
     # @see the `==` method
@@ -334,7 +347,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata, high_accuracy, rerank].hash
+      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata, high_accuracy, rerank, file_types_at_source].hash
     end
 
     # Builds the object from hash

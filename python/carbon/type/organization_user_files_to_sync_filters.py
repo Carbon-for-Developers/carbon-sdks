@@ -17,6 +17,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.data_source_type import DataSourceType
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.external_file_sync_statuses import ExternalFileSyncStatuses
+from carbon.type.helpdesk_file_types import HelpdeskFileTypes
 from carbon.type.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
 from carbon.type.organization_user_files_to_sync_filters_external_urls import OrganizationUserFilesToSyncFiltersExternalUrls
 from carbon.type.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
@@ -74,6 +75,9 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
     include_containers: typing.Optional[bool]
 
     external_urls: typing.Optional[OrganizationUserFilesToSyncFiltersExternalUrls]
+
+    # Filter files based on their type at the source (for example help center tickets and articles)
+    file_types_at_source: typing.Optional[typing.List[HelpdeskFileTypes]]
 
 class OrganizationUserFilesToSyncFilters(RequiredOrganizationUserFilesToSyncFilters, OptionalOrganizationUserFilesToSyncFilters):
     pass

@@ -58,6 +58,7 @@ func main() {
     getEmbeddingDocumentsBody.SetIncludeFileLevelMetadata(false)
     getEmbeddingDocumentsBody.SetHighAccuracy(false)
     getEmbeddingDocumentsBody.SetRerank(rerank)
+    getEmbeddingDocumentsBody.SetFileTypesAtSource(null)
     
     request := client.EmbeddingsApi.GetDocuments(
         getEmbeddingDocumentsBody,

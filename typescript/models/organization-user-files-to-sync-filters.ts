@@ -12,6 +12,7 @@ import type * as buffer from "buffer"
 
 import { EmbeddingGenerators } from './embedding-generators';
 import { ExternalFileSyncStatuses } from './external-file-sync-statuses';
+import { HelpdeskFileTypes } from './helpdesk-file-types';
 import { SourceProperty } from './source-property';
 import { Tags1 } from './tags1';
 
@@ -125,5 +126,11 @@ export interface OrganizationUserFilesToSyncFilters {
      * @memberof OrganizationUserFilesToSyncFilters
      */
     'external_urls'?: Array<string> | null;
+    /**
+     * Filter files based on their type at the source (for example help center tickets and articles)
+     * @type {Array<HelpdeskFileTypes>}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'file_types_at_source'?: Array<HelpdeskFileTypes> | null;
 }
 

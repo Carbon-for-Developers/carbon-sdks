@@ -86,6 +86,9 @@ operation_parameter_map = {
             {
                 'name': 'rerank'
             },
+            {
+                'name': 'file_types_at_source'
+            },
         ]
     },
     '/text_chunks-POST': {

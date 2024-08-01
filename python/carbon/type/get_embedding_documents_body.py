@@ -20,6 +20,7 @@ from carbon.type.get_embedding_documents_body_file_ids import GetEmbeddingDocume
 from carbon.type.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.type.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.type.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.type.helpdesk_file_types import HelpdeskFileTypes
 from carbon.type.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.type.rerank_params_nullable import RerankParamsNullable
 
@@ -72,6 +73,9 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
     high_accuracy: typing.Optional[bool]
 
     rerank: typing.Optional[RerankParamsNullable]
+
+    # Filter files based on their type at the source (for example help center tickets and articles)
+    file_types_at_source: typing.Optional[typing.List[HelpdeskFileTypes]]
 
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

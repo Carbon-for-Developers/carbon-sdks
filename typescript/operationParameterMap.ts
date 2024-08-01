@@ -92,6 +92,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'rerank'
             },
+            {
+                name: 'file_types_at_source'
+            },
         ]
     },
     '/text_chunks-POST': {

@@ -131,7 +131,7 @@ public class OAuthURLRequest {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "77c4d6f4-3ef2-43d4-8481-476a74fd5178";
+  private String requestId = "c4055754-ba2d-4f57-a990-6e990abbbd90";
 
   public static final String SERIALIZED_NAME_USE_OCR = "use_ocr";
   @SerializedName(SERIALIZED_NAME_USE_OCR)
@@ -725,7 +725,7 @@ public class OAuthURLRequest {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "77c4d6f4-3ef2-43d4-8481-476a74fd5178", value = "This request id will be added to all files that get synced using the generated OAuth URL")
+  @ApiModelProperty(example = "c4055754-ba2d-4f57-a990-6e990abbbd90", value = "This request id will be added to all files that get synced using the generated OAuth URL")
 
   public String getRequestId() {
     return requestId;

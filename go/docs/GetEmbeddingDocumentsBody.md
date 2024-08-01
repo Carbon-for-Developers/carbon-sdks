@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IncludeFileLevelMetadata** | Pointer to **NullableBool** | Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the &#x60;content_metadata&#x60; field of each document along with chunk/embedding level metadata. | [optional] [default to false]
 **HighAccuracy** | Pointer to **NullableBool** | Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. | [optional] [default to false]
 **Rerank** | Pointer to [**NullableRerankParamsNullable**](RerankParamsNullable.md) |  | [optional] 
+**FileTypesAtSource** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | Filter files based on their type at the source (for example help center tickets and articles) | [optional] 
 
 ## Methods
 
@@ -632,6 +633,41 @@ HasRerank returns a boolean if a field has been set.
 `func (o *GetEmbeddingDocumentsBody) UnsetRerank()`
 
 UnsetRerank ensures that no value is present for Rerank, not even an explicit nil
+### GetFileTypesAtSource
+
+`func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSource() []HelpdeskFileTypes`
+
+GetFileTypesAtSource returns the FileTypesAtSource field if non-nil, zero value otherwise.
+
+### GetFileTypesAtSourceOk
+
+`func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSourceOk() (*[]HelpdeskFileTypes, bool)`
+
+GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileTypesAtSource
+
+`func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSource(v []HelpdeskFileTypes)`
+
+SetFileTypesAtSource sets FileTypesAtSource field to given value.
+
+### HasFileTypesAtSource
+
+`func (o *GetEmbeddingDocumentsBody) HasFileTypesAtSource() bool`
+
+HasFileTypesAtSource returns a boolean if a field has been set.
+
+### SetFileTypesAtSourceNil
+
+`func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSourceNil(b bool)`
+
+ SetFileTypesAtSourceNil sets the value for FileTypesAtSource to be an explicit nil
+
+### UnsetFileTypesAtSource
+`func (o *GetEmbeddingDocumentsBody) UnsetFileTypesAtSource()`
+
+UnsetFileTypesAtSource ensures that no value is present for FileTypesAtSource, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -47,6 +47,8 @@ import { GetEmbeddingDocumentsBody } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
+import { HelpdeskFileTypes } from '../models';
+// @ts-ignore
 import { HybridSearchTuningParamsNullable } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
@@ -315,7 +317,8 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 include_file_level_metadata: requestParameters.include_file_level_metadata,
                 high_accuracy: requestParameters.high_accuracy,
-                rerank: requestParameters.rerank
+                rerank: requestParameters.rerank,
+                file_types_at_source: requestParameters.file_types_at_source
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getDocuments(getEmbeddingDocumentsBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

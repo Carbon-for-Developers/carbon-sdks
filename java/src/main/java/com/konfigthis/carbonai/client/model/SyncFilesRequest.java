@@ -100,7 +100,7 @@ public class SyncFilesRequest {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "0a2f743b-fe89-4193-86c3-87ca6d2ffc43";
+  private String requestId = "991e89b6-1e71-41e1-bdc4-4dd475f21696";
 
   public static final String SERIALIZED_NAME_USE_OCR = "use_ocr";
   @SerializedName(SERIALIZED_NAME_USE_OCR)
@@ -459,7 +459,7 @@ public class SyncFilesRequest {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0a2f743b-fe89-4193-86c3-87ca6d2ffc43", value = "")
+  @ApiModelProperty(example = "991e89b6-1e71-41e1-bdc4-4dd475f21696", value = "")
 
   public String getRequestId() {
     return requestId;

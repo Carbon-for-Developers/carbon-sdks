@@ -12,6 +12,7 @@ import type * as buffer from "buffer"
 
 import { EmbeddingGeneratorsNullable } from './embedding-generators-nullable';
 import { FileContentTypesNullable } from './file-content-types-nullable';
+import { HelpdeskFileTypes } from './helpdesk-file-types';
 import { HybridSearchTuningParamsNullable } from './hybrid-search-tuning-params-nullable';
 import { RerankParamsNullable } from './rerank-params-nullable';
 import { Tags1 } from './tags1';
@@ -131,5 +132,11 @@ export interface GetEmbeddingDocumentsBody {
      * @memberof GetEmbeddingDocumentsBody
      */
     'rerank'?: RerankParamsNullable | null;
+    /**
+     * Filter files based on their type at the source (for example help center tickets and articles)
+     * @type {Array<HelpdeskFileTypes>}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'file_types_at_source'?: Array<HelpdeskFileTypes> | null;
 }
 

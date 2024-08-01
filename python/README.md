@@ -7,7 +7,7 @@
 Connect external data to LLMs, no matter the source.
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.2.18-blue)](https://pypi.org/project/carbon-python-sdk/0.2.18)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.2.19-blue)](https://pypi.org/project/carbon-python-sdk/0.2.19)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/Carbon-for-Developers/carbon-sdks/tree/main/python#readme)
 
 </div>
@@ -97,7 +97,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install carbon-python-sdk==0.2.18
+pip install carbon-python-sdk==0.2.19
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -444,6 +444,7 @@ get_documents_response = carbon.embeddings.get_documents(
     rerank={
         "model": "model_example",
     },
+    file_types_at_source=["string_example"],
 )
 ```
 
@@ -506,6 +507,10 @@ Flag to control whether or not to perform a high accuracy embedding search. By d
 
 ##### rerank: [`RerankParamsNullable`](./carbon/type/rerank_params_nullable.py)<a id="rerank-rerankparamsnullablecarbontypererank_params_nullablepy"></a>
 
+
+##### file_types_at_source: List[[`HelpdeskFileTypes`](./carbon/type/helpdesk_file_types.py)]<a id="file_types_at_source-listhelpdeskfiletypescarbontypehelpdesk_file_typespy"></a>
+
+Filter files based on their type at the source (for example help center tickets and articles)
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1454,7 +1459,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99",
+        "request_id": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1709,7 +1714,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="77c4d6f4-3ef2-43d4-8481-476a74fd5178",
+    request_id="c4055754-ba2d-4f57-a990-6e990abbbd90",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -2101,7 +2106,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+    request_id="991e89b6-1e71-41e1-bdc4-4dd475f21696",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2223,7 +2228,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+    request_id="991e89b6-1e71-41e1-bdc4-4dd475f21696",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
