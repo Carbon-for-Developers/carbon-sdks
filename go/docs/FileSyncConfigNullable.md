@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AutoSyncedSourceTypes** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced | [optional] [default to ["ARTICLE"]]
 **SyncAttachments** | Pointer to **bool** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** | Detect audio language before transcription for audio files | [optional] [default to false]
+**TranscriptionService** | Pointer to [**NullableTranscriptionServiceNullable**](TranscriptionServiceNullable.md) |  | [optional] 
 **SplitRows** | Pointer to **bool** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false]
 
 ## Methods
@@ -103,6 +104,41 @@ SetDetectAudioLanguage sets DetectAudioLanguage field to given value.
 
 HasDetectAudioLanguage returns a boolean if a field has been set.
 
+### GetTranscriptionService
+
+`func (o *FileSyncConfigNullable) GetTranscriptionService() TranscriptionServiceNullable`
+
+GetTranscriptionService returns the TranscriptionService field if non-nil, zero value otherwise.
+
+### GetTranscriptionServiceOk
+
+`func (o *FileSyncConfigNullable) GetTranscriptionServiceOk() (*TranscriptionServiceNullable, bool)`
+
+GetTranscriptionServiceOk returns a tuple with the TranscriptionService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTranscriptionService
+
+`func (o *FileSyncConfigNullable) SetTranscriptionService(v TranscriptionServiceNullable)`
+
+SetTranscriptionService sets TranscriptionService field to given value.
+
+### HasTranscriptionService
+
+`func (o *FileSyncConfigNullable) HasTranscriptionService() bool`
+
+HasTranscriptionService returns a boolean if a field has been set.
+
+### SetTranscriptionServiceNil
+
+`func (o *FileSyncConfigNullable) SetTranscriptionServiceNil(b bool)`
+
+ SetTranscriptionServiceNil sets the value for TranscriptionService to be an explicit nil
+
+### UnsetTranscriptionService
+`func (o *FileSyncConfigNullable) UnsetTranscriptionService()`
+
+UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
 ### GetSplitRows
 
 `func (o *FileSyncConfigNullable) GetSplitRows() bool`

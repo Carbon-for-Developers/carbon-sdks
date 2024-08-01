@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **ParsePdfTablesWithOcr** | Pointer to **bool** |  | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** |  | [optional] [default to false]
+**TranscriptionService** | Pointer to [**NullableTranscriptionServiceNullable**](TranscriptionServiceNullable.md) |  | [optional] 
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **SplitRows** | Pointer to **bool** |  | [optional] [default to false]
 
@@ -399,6 +400,41 @@ SetDetectAudioLanguage sets DetectAudioLanguage field to given value.
 
 HasDetectAudioLanguage returns a boolean if a field has been set.
 
+### GetTranscriptionService
+
+`func (o *UploadFileFromUrlInput) GetTranscriptionService() TranscriptionServiceNullable`
+
+GetTranscriptionService returns the TranscriptionService field if non-nil, zero value otherwise.
+
+### GetTranscriptionServiceOk
+
+`func (o *UploadFileFromUrlInput) GetTranscriptionServiceOk() (*TranscriptionServiceNullable, bool)`
+
+GetTranscriptionServiceOk returns a tuple with the TranscriptionService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTranscriptionService
+
+`func (o *UploadFileFromUrlInput) SetTranscriptionService(v TranscriptionServiceNullable)`
+
+SetTranscriptionService sets TranscriptionService field to given value.
+
+### HasTranscriptionService
+
+`func (o *UploadFileFromUrlInput) HasTranscriptionService() bool`
+
+HasTranscriptionService returns a boolean if a field has been set.
+
+### SetTranscriptionServiceNil
+
+`func (o *UploadFileFromUrlInput) SetTranscriptionServiceNil(b bool)`
+
+ SetTranscriptionServiceNil sets the value for TranscriptionService to be an explicit nil
+
+### UnsetTranscriptionService
+`func (o *UploadFileFromUrlInput) UnsetTranscriptionService()`
+
+UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
 ### GetMediaType
 
 `func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable`

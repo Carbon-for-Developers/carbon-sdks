@@ -701,6 +701,7 @@ func main() {
     request.MaxItemsPerChunk(56)
     request.ParsePdfTablesWithOcr(false)
     request.DetectAudioLanguage(false)
+    request.TranscriptionService()
     request.MediaType()
     request.SplitRows(false)
     
@@ -792,6 +793,7 @@ func main() {
     uploadFileFromUrlInput.SetMaxItemsPerChunk(null)
     uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
     uploadFileFromUrlInput.SetDetectAudioLanguage(false)
+    uploadFileFromUrlInput.SetTranscriptionService(null)
     uploadFileFromUrlInput.SetMediaType(null)
     uploadFileFromUrlInput.SetSplitRows(false)
     

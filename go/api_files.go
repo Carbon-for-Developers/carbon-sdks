@@ -1661,6 +1661,7 @@ type FilesApiUploadRequest struct {
 	maxItemsPerChunk *int32
 	parsePdfTablesWithOcr *bool
 	detectAudioLanguage *bool
+	transcriptionService *TranscriptionServiceNullable
 	mediaType *FileContentTypesNullable
 	splitRows *bool
 }
@@ -1728,6 +1729,12 @@ func (r *FilesApiUploadRequest) ParsePdfTablesWithOcr(parsePdfTablesWithOcr bool
 // Whether to automatically detect the language of the uploaded audio file.
 func (r *FilesApiUploadRequest) DetectAudioLanguage(detectAudioLanguage bool) *FilesApiUploadRequest {
 	r.detectAudioLanguage = &detectAudioLanguage
+	return r
+}
+
+// The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used.
+func (r *FilesApiUploadRequest) TranscriptionService(transcriptionService TranscriptionServiceNullable) *FilesApiUploadRequest {
+	r.transcriptionService = &transcriptionService
 	return r
 }
 
@@ -1843,6 +1850,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.detectAudioLanguage != nil {
 		localVarQueryParams.Add("detect_audio_language", parameterToString(*r.detectAudioLanguage, ""))
+	}
+	if r.transcriptionService != nil {
+		localVarQueryParams.Add("transcription_service", parameterToString(*r.transcriptionService, ""))
 	}
 	if r.mediaType != nil {
 		localVarQueryParams.Add("media_type", parameterToString(*r.mediaType, ""))

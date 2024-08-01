@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
+import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -143,6 +144,14 @@ public class UploadFileFromUrlInputTest {
     @Test
     public void detectAudioLanguageTest() {
         // TODO: test detectAudioLanguage
+    }
+
+    /**
+     * Test the property 'transcriptionService'
+     */
+    @Test
+    public void transcriptionServiceTest() {
+        // TODO: test transcriptionService
     }
 
     /**

@@ -12,6 +12,7 @@ import type * as buffer from "buffer"
 
 import { EmbeddingGenerators } from './embedding-generators';
 import { FileContentTypesNullable } from './file-content-types-nullable';
+import { TranscriptionServiceNullable } from './transcription-service-nullable';
 
 /**
  * 
@@ -97,6 +98,12 @@ export interface UploadFileFromUrlInput {
      * @memberof UploadFileFromUrlInput
      */
     'detect_audio_language'?: boolean;
+    /**
+     * 
+     * @type {TranscriptionServiceNullable}
+     * @memberof UploadFileFromUrlInput
+     */
+    'transcription_service'?: TranscriptionServiceNullable | null;
     /**
      * 
      * @type {FileContentTypesNullable}

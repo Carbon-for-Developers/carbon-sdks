@@ -36,6 +36,7 @@ import com.konfigthis.carbonai.client.model.PresignedURLResponse;
 import com.konfigthis.carbonai.client.model.RawTextInput;
 import com.konfigthis.carbonai.client.model.ResyncFileQueryInput;
 import com.konfigthis.carbonai.client.model.TMEmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import com.konfigthis.carbonai.client.model.UploadFileFromUrlInput;
 import com.konfigthis.carbonai.client.model.UserFile;
 import com.konfigthis.carbonai.client.model.UserFilesV2;
@@ -272,6 +273,7 @@ public class FilesApiTest {
         Integer maxItemsPerChunk = null;
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
+        TranscriptionServiceNullable transcriptionService = null;
         FileContentTypesNullable mediaType = null;
         Boolean splitRows = null;
         UserFile response = api.upload(_file)
@@ -286,6 +288,7 @@ public class FilesApiTest {
                 .maxItemsPerChunk(maxItemsPerChunk)
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
+                .transcriptionService(transcriptionService)
                 .mediaType(mediaType)
                 .splitRows(splitRows)
                 .execute();
@@ -312,6 +315,7 @@ public class FilesApiTest {
         Integer maxItemsPerChunk = null;
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
+        TranscriptionServiceNullable transcriptionService = null;
         FileContentTypesNullable mediaType = null;
         Boolean splitRows = null;
         UserFile response = api.uploadFromUrl(url)
@@ -327,6 +331,7 @@ public class FilesApiTest {
                 .maxItemsPerChunk(maxItemsPerChunk)
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
+                .transcriptionService(transcriptionService)
                 .mediaType(mediaType)
                 .splitRows(splitRows)
                 .execute();

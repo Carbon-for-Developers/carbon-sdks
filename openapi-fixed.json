@@ -2275,6 +2275,15 @@
             }
           },
           {
+            "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.",
+            "name": "transcription_service",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/TranscriptionServiceNullable"
+            }
+          },
+          {
             "description": "The media type of the file. If not provided, it will be inferred from the file extension.",
             "name": "media_type",
             "in": "query",
@@ -3887,7 +3896,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+              "request_id": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -4800,6 +4809,9 @@
             "description": "Detect audio language before transcription for audio files",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "split_rows": {
             "title": "Split Rows",
@@ -5951,7 +5963,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "e5fd53f8-ed96-474a-ba66-1fc1948facdf"
+            "default": "77c4d6f4-3ef2-43d4-8481-476a74fd5178"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -5968,7 +5980,7 @@
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
-            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE",
+            "description": "Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT",
             "type": "boolean",
             "default": true
           },
@@ -7554,7 +7566,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "77b56048-a895-4377-b0d3-e190d1b7de32"
+            "default": "0a2f743b-fe89-4193-86c3-87ca6d2ffc43"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -7646,7 +7658,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85"
+            "default": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -7707,6 +7719,14 @@
         "required": [
           "access_token",
           "refresh_token"
+        ]
+      },
+      "TranscriptionService": {
+        "title": "TranscriptionService",
+        "type": "string",
+        "enum": [
+          "assemblyai",
+          "deepgram"
         ]
       },
       "UpdateOrganizationInput": {
@@ -7841,6 +7861,9 @@
             "title": "Detect Audio Language",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "media_type": {
             "$ref": "#/components/schemas/FileContentTypesNullable"
@@ -8830,6 +8853,105 @@
           "zotero_id"
         ]
       },
+      "SentWebhookRequestBody": {
+        "properties": {
+          "payload": {
+            "type": "string"
+          }
+        }
+      },
+      "SentWebhookPayload": {
+        "properties": {
+          "webhook_type": {
+            "type": "string",
+            "enum": [
+              "ALL_UPLOADED_FILES_QUEUED",
+              "CHECKUP",
+              "DATA_SOURCE_READY",
+              "FILES_CREATED",
+              "FILES_SKIPPED",
+              "FILE_DELETED",
+              "FILE_ERROR",
+              "FILE_READY",
+              "FILE_STATISTICS_AGGREGATED",
+              "FILE_SYNC_LIMIT_REACHED",
+              "ORGANIZATION_USER_DELETED",
+              "RATE_LIMIT_ERROR",
+              "SPARSE_VECTOR_QUEUE_STATUS",
+              "WEBPAGE_ERROR",
+              "WEBPAGE_READY",
+              "WEBSCRAPE_URLS_READY"
+            ]
+          },
+          "customer_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "object": {
+            "type": "object",
+            "properties": {
+              "object_type": {
+                "type": "string",
+                "enum": [
+                  "CHUNK_LIST",
+                  "DATA_SOURCE",
+                  "FILE",
+                  "FILE_LIST",
+                  "NONE",
+                  "ORGANIZATION_USER",
+                  "UPLOAD_REQUEST_ID",
+                  "WEBPAGE"
+                ]
+              },
+              "object_id": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                ],
+                "nullable": true
+              },
+              "additional_information": {
+                "oneOf": [
+                  {
+                    "type": "object"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "TranscriptionServiceNullable": {
+        "title": "TranscriptionService",
+        "type": "string",
+        "enum": [
+          "assemblyai",
+          "deepgram"
+        ],
+        "nullable": true
+      },
       "FileContentTypesNullable": {
         "title": "FileContentTypes",
         "type": "string",
@@ -9007,6 +9129,9 @@
             "description": "Detect audio language before transcription for audio files",
             "type": "boolean",
             "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
           },
           "split_rows": {
             "title": "Split Rows",
@@ -9338,6 +9463,29 @@
         "type": "apiKey",
         "name": "customer-id",
         "in": "header"
+      }
+    }
+  },
+  "webhooks": {
+    "Webhook": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SentWebhookRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Return a 200 status to indicate that the data was received successfully"
+          }
+        }
       }
     }
   }

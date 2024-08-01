@@ -38,6 +38,8 @@ module Carbon
 
     attr_accessor :detect_audio_language
 
+    attr_accessor :transcription_service
+
     attr_accessor :media_type
 
     attr_accessor :split_rows
@@ -58,6 +60,7 @@ module Carbon
         :'max_items_per_chunk' => :'max_items_per_chunk',
         :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
         :'detect_audio_language' => :'detect_audio_language',
+        :'transcription_service' => :'transcription_service',
         :'media_type' => :'media_type',
         :'split_rows' => :'split_rows'
       }
@@ -84,6 +87,7 @@ module Carbon
         :'max_items_per_chunk' => :'Integer',
         :'parse_pdf_tables_with_ocr' => :'Boolean',
         :'detect_audio_language' => :'Boolean',
+        :'transcription_service' => :'TranscriptionServiceNullable',
         :'media_type' => :'FileContentTypesNullable',
         :'split_rows' => :'Boolean'
       }
@@ -96,6 +100,7 @@ module Carbon
         :'chunk_size',
         :'chunk_overlap',
         :'max_items_per_chunk',
+        :'transcription_service',
         :'media_type',
       ])
     end
@@ -183,6 +188,10 @@ module Carbon
         self.detect_audio_language = false
       end
 
+      if attributes.key?(:'transcription_service')
+        self.transcription_service = attributes[:'transcription_service']
+      end
+
       if attributes.key?(:'media_type')
         self.media_type = attributes[:'media_type']
       end
@@ -230,6 +239,7 @@ module Carbon
           max_items_per_chunk == o.max_items_per_chunk &&
           parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
           detect_audio_language == o.detect_audio_language &&
+          transcription_service == o.transcription_service &&
           media_type == o.media_type &&
           split_rows == o.split_rows
     end
@@ -243,7 +253,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, media_type, split_rows].hash
+      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, transcription_service, media_type, split_rows].hash
     end
 
     # Builds the object from hash

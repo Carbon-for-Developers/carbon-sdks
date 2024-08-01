@@ -158,6 +158,7 @@ describe 'FilesApi' do
   # @option opts [Integer] :max_items_per_chunk Number of objects per chunk. For csv, tsv, xlsx, and json files only.
   # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
   # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file.
+  # @option opts [TranscriptionServiceNullable] :transcription_service The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used.
   # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
   # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
   # @return [UserFile]

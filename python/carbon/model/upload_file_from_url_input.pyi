@@ -131,6 +131,10 @@ class UploadFileFromUrlInput(
             detect_audio_language = schemas.BoolSchema
         
             @staticmethod
+            def transcription_service() -> typing.Type['TranscriptionServiceNullable']:
+                return TranscriptionServiceNullable
+        
+            @staticmethod
             def media_type() -> typing.Type['FileContentTypesNullable']:
                 return FileContentTypesNullable
             split_rows = schemas.BoolSchema
@@ -148,6 +152,7 @@ class UploadFileFromUrlInput(
                 "max_items_per_chunk": max_items_per_chunk,
                 "parse_pdf_tables_with_ocr": parse_pdf_tables_with_ocr,
                 "detect_audio_language": detect_audio_language,
+                "transcription_service": transcription_service,
                 "media_type": media_type,
                 "split_rows": split_rows,
             }
@@ -194,6 +199,9 @@ class UploadFileFromUrlInput(
     def __getitem__(self, name: typing_extensions.Literal["detect_audio_language"]) -> MetaOapg.properties.detect_audio_language: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["transcription_service"]) -> 'TranscriptionServiceNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["media_type"]) -> 'FileContentTypesNullable': ...
     
     @typing.overload
@@ -202,7 +210,7 @@ class UploadFileFromUrlInput(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "media_type", "split_rows", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "media_type", "split_rows", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -247,6 +255,9 @@ class UploadFileFromUrlInput(
     def get_item_oapg(self, name: typing_extensions.Literal["detect_audio_language"]) -> typing.Union[MetaOapg.properties.detect_audio_language, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["transcription_service"]) -> typing.Union['TranscriptionServiceNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["media_type"]) -> typing.Union['FileContentTypesNullable', schemas.Unset]: ...
     
     @typing.overload
@@ -255,7 +266,7 @@ class UploadFileFromUrlInput(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "media_type", "split_rows", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "media_type", "split_rows", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -275,6 +286,7 @@ class UploadFileFromUrlInput(
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, bool, schemas.Unset] = schemas.unset,
         detect_audio_language: typing.Union[MetaOapg.properties.detect_audio_language, bool, schemas.Unset] = schemas.unset,
+        transcription_service: typing.Union['TranscriptionServiceNullable', schemas.Unset] = schemas.unset,
         media_type: typing.Union['FileContentTypesNullable', schemas.Unset] = schemas.unset,
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -296,6 +308,7 @@ class UploadFileFromUrlInput(
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
             _configuration=_configuration,
@@ -304,3 +317,4 @@ class UploadFileFromUrlInput(
 
 from carbon.model.embedding_generators import EmbeddingGenerators
 from carbon.model.file_content_types_nullable import FileContentTypesNullable
+from carbon.model.transcription_service_nullable import TranscriptionServiceNullable

@@ -37,10 +37,12 @@ from carbon.model.upload_file_from_url_input import UploadFileFromUrlInput as Up
 from carbon.model.user_file import UserFile as UserFileSchema
 from carbon.model.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullableSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
+from carbon.model.transcription_service_nullable import TranscriptionServiceNullable as TranscriptionServiceNullableSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
+from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.type.upload_file_from_url_input import UploadFileFromUrlInput
 from carbon.type.user_file import UserFile
 
@@ -49,6 +51,7 @@ from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
 from carbon.pydantic.user_file import UserFile as UserFilePydantic
 from carbon.pydantic.upload_file_from_url_input import UploadFileFromUrlInput as UploadFileFromUrlInputPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
+from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable as TranscriptionServiceNullablePydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
 
 from . import path
@@ -137,6 +140,7 @@ class BaseApi(api_client.Api):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
@@ -168,6 +172,8 @@ class BaseApi(api_client.Api):
             _body["parse_pdf_tables_with_ocr"] = parse_pdf_tables_with_ocr
         if detect_audio_language is not None:
             _body["detect_audio_language"] = detect_audio_language
+        if transcription_service is not None:
+            _body["transcription_service"] = transcription_service
         if media_type is not None:
             _body["media_type"] = media_type
         if split_rows is not None:
@@ -392,6 +398,7 @@ class UploadFromUrlRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         **kwargs,
@@ -414,6 +421,7 @@ class UploadFromUrlRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
         )
@@ -437,6 +445,7 @@ class UploadFromUrlRaw(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
     ) -> typing.Union[
@@ -457,6 +466,7 @@ class UploadFromUrlRaw(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
         )
@@ -481,6 +491,7 @@ class UploadFromUrl(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         validate: bool = False,
@@ -500,6 +511,7 @@ class UploadFromUrl(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
             **kwargs,
@@ -524,6 +536,7 @@ class UploadFromUrl(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         validate: bool = False,
@@ -542,6 +555,7 @@ class UploadFromUrl(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
         )
@@ -568,6 +582,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         **kwargs,
@@ -590,6 +605,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
         )
@@ -613,6 +629,7 @@ class ApiForpost(BaseApi):
         max_items_per_chunk: typing.Optional[typing.Optional[int]] = None,
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
+        transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
     ) -> typing.Union[
@@ -633,6 +650,7 @@ class ApiForpost(BaseApi):
             max_items_per_chunk=max_items_per_chunk,
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             media_type=media_type,
             split_rows=split_rows,
         )

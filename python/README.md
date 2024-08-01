@@ -1181,6 +1181,7 @@ upload_response = carbon.files.upload(
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
+    transcription_service="assemblyai",
     media_type="TEXT",
     split_rows=False,
 )
@@ -1235,6 +1236,10 @@ Whether to use rich table parsing when `use_ocr` is enabled.
 
 Whether to automatically detect the language of the uploaded audio file.
 
+##### transcription_service: [`TranscriptionServiceNullable`](./carbon/type/.py)<a id="transcription_service-transcriptionservicenullablecarbontypepy"></a>
+
+The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/.py)<a id="media_type-filecontenttypesnullablecarbontypepy"></a>
 
 The media type of the file. If not provided, it will be inferred from the file extension.
@@ -1279,6 +1284,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     max_items_per_chunk=1,
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
+    transcription_service="assemblyai",
     media_type="TEXT",
     split_rows=False,
 )
@@ -1313,6 +1319,8 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `bool`<a id="parse_pdf_tables_with_ocr-bool"></a>
 
 ##### detect_audio_language: `bool`<a id="detect_audio_language-bool"></a>
+
+##### transcription_service: [`TranscriptionServiceNullable`](./carbon/type/transcription_service_nullable.py)<a id="transcription_service-transcriptionservicenullablecarbontypetranscription_service_nullablepy"></a>
 
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/file_content_types_nullable.py)<a id="media_type-filecontenttypesnullablecarbontypefile_content_types_nullablepy"></a>
 
@@ -1446,7 +1454,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "e38a7eee-02b7-4f73-be14-ea9bb1f09e85",
+        "request_id": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1505,6 +1513,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
 )
@@ -1700,7 +1709,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="e5fd53f8-ed96-474a-ba66-1fc1948facdf",
+    request_id="77c4d6f4-3ef2-43d4-8481-476a74fd5178",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1710,6 +1719,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
 )
@@ -1775,7 +1785,7 @@ Enable OCR for files that support it. Supported formats: pdf
 
 ##### enable_file_picker: `bool`<a id="enable_file_picker-bool"></a>
 
-Enable integration's file picker for sources that support it. Supported sources: BOX, ONEDRIVE, DROPBOX, SHAREPOINT, GOOGLE_DRIVE
+Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
@@ -2091,7 +2101,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="77b56048-a895-4377-b0d3-e190d1b7de32",
+    request_id="0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2099,6 +2109,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
 )
@@ -2212,7 +2223,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="77b56048-a895-4377-b0d3-e190d1b7de32",
+    request_id="0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2220,6 +2231,7 @@ sync_files_response = carbon.integrations.sync_files(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
 )
@@ -2450,6 +2462,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
     incremental_sync=False,
@@ -2584,6 +2597,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
     incremental_sync=False,
@@ -2751,6 +2765,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
         "auto_synced_source_types": ["ARTICLE"],
         "sync_attachments": False,
         "detect_audio_language": False,
+        "transcription_service": "assemblyai",
         "split_rows": False,
     },
 )
