@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SyncErrorMessage** | Pointer to **NullableString** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. | [optional] 
 **IncludeContainers** | Pointer to **NullableBool** | If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers. | [optional] 
 **ExternalUrls** | Pointer to **[]string** | The external URLs of the files. The query will return files with these external URLs. | [optional] 
+**FileTypesAtSource** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | Filter files based on their type at the source (for example help center tickets and articles) | [optional] 
 
 ## Methods
 
@@ -616,6 +617,41 @@ HasExternalUrls returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetExternalUrls()`
 
 UnsetExternalUrls ensures that no value is present for ExternalUrls, not even an explicit nil
+### GetFileTypesAtSource
+
+`func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSource() []HelpdeskFileTypes`
+
+GetFileTypesAtSource returns the FileTypesAtSource field if non-nil, zero value otherwise.
+
+### GetFileTypesAtSourceOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSourceOk() (*[]HelpdeskFileTypes, bool)`
+
+GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileTypesAtSource
+
+`func (o *OrganizationUserFilesToSyncFilters) SetFileTypesAtSource(v []HelpdeskFileTypes)`
+
+SetFileTypesAtSource sets FileTypesAtSource field to given value.
+
+### HasFileTypesAtSource
+
+`func (o *OrganizationUserFilesToSyncFilters) HasFileTypesAtSource() bool`
+
+HasFileTypesAtSource returns a boolean if a field has been set.
+
+### SetFileTypesAtSourceNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetFileTypesAtSourceNil(b bool)`
+
+ SetFileTypesAtSourceNil sets the value for FileTypesAtSource to be an explicit nil
+
+### UnsetFileTypesAtSource
+`func (o *OrganizationUserFilesToSyncFilters) UnsetFileTypesAtSource()`
+
+UnsetFileTypesAtSource ensures that no value is present for FileTypesAtSource, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

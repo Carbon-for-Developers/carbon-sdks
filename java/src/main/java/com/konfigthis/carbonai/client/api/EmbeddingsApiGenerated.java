@@ -38,6 +38,7 @@ import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
+import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
@@ -180,6 +181,7 @@ public class EmbeddingsApiGenerated {
         Boolean includeFileLevelMetadata;
         Boolean highAccuracy;
         RerankParamsNullable rerank;
+        List<HelpdeskFileTypes> fileTypesAtSource;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -347,6 +349,16 @@ public class EmbeddingsApiGenerated {
         }
         
         /**
+         * Set fileTypesAtSource
+         * @param fileTypesAtSource Filter files based on their type at the source (for example help center tickets and articles) (optional)
+         * @return EmbeddingsApi.GetDocumentsRequestBuilder
+         */
+        public EmbeddingsApi.GetDocumentsRequestBuilder fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+            this.fileTypesAtSource = fileTypesAtSource;
+            return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getDocuments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -382,6 +394,7 @@ public class EmbeddingsApiGenerated {
             getEmbeddingDocumentsBody.includeFileLevelMetadata(this.includeFileLevelMetadata);
             getEmbeddingDocumentsBody.highAccuracy(this.highAccuracy);
             getEmbeddingDocumentsBody.rerank(this.rerank);
+            getEmbeddingDocumentsBody.fileTypesAtSource(this.fileTypesAtSource);
             return getEmbeddingDocumentsBody;
         }
 

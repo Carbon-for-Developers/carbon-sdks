@@ -52,6 +52,7 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
         getEmbeddingDocumentsBody.SetIncludeFileLevelMetadata(false)
         getEmbeddingDocumentsBody.SetHighAccuracy(false)
         getEmbeddingDocumentsBody.SetRerank(rerank)
+        getEmbeddingDocumentsBody.SetFileTypesAtSource(null)
         
         request := client.EmbeddingsApi.GetDocuments(
             getEmbeddingDocumentsBody,

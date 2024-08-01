@@ -49,6 +49,8 @@ type GetEmbeddingDocumentsBody struct {
 	// Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
 	HighAccuracy NullableBool `json:"high_accuracy,omitempty"`
 	Rerank NullableRerankParamsNullable `json:"rerank,omitempty"`
+	// Filter files based on their type at the source (for example help center tickets and articles)
+	FileTypesAtSource []HelpdeskFileTypes `json:"file_types_at_source,omitempty"`
 }
 
 // NewGetEmbeddingDocumentsBody instantiates a new GetEmbeddingDocumentsBody object
@@ -754,6 +756,39 @@ func (o *GetEmbeddingDocumentsBody) UnsetRerank() {
 	o.Rerank.Unset()
 }
 
+// GetFileTypesAtSource returns the FileTypesAtSource field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSource() []HelpdeskFileTypes {
+	if o == nil {
+		var ret []HelpdeskFileTypes
+		return ret
+	}
+	return o.FileTypesAtSource
+}
+
+// GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSourceOk() ([]HelpdeskFileTypes, bool) {
+	if o == nil || isNil(o.FileTypesAtSource) {
+    return nil, false
+	}
+	return o.FileTypesAtSource, true
+}
+
+// HasFileTypesAtSource returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasFileTypesAtSource() bool {
+	if o != nil && isNil(o.FileTypesAtSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileTypesAtSource gets a reference to the given []HelpdeskFileTypes and assigns it to the FileTypesAtSource field.
+func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSource(v []HelpdeskFileTypes) {
+	o.FileTypesAtSource = v
+}
+
 func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -809,6 +844,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.Rerank.IsSet() {
 		toSerialize["rerank"] = o.Rerank.Get()
+	}
+	if o.FileTypesAtSource != nil {
+		toSerialize["file_types_at_source"] = o.FileTypesAtSource
 	}
 	return json.Marshal(toSerialize)
 }

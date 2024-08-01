@@ -231,6 +231,33 @@ class GetEmbeddingDocumentsBody(
             @staticmethod
             def rerank() -> typing.Type['RerankParamsNullable']:
                 return RerankParamsNullable
+            
+            
+            class file_types_at_source(
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['HelpdeskFileTypes']:
+                        return HelpdeskFileTypes
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[list, tuple, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'file_types_at_source':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "query": query,
                 "k": k,
@@ -250,6 +277,7 @@ class GetEmbeddingDocumentsBody(
                 "include_file_level_metadata": include_file_level_metadata,
                 "high_accuracy": high_accuracy,
                 "rerank": rerank,
+                "file_types_at_source": file_types_at_source,
             }
     
     query: MetaOapg.properties.query
@@ -310,9 +338,12 @@ class GetEmbeddingDocumentsBody(
     def __getitem__(self, name: typing_extensions.Literal["rerank"]) -> 'RerankParamsNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_types_at_source"]) -> MetaOapg.properties.file_types_at_source: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", "high_accuracy", "rerank", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", "high_accuracy", "rerank", "file_types_at_source", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -372,9 +403,12 @@ class GetEmbeddingDocumentsBody(
     def get_item_oapg(self, name: typing_extensions.Literal["rerank"]) -> typing.Union['RerankParamsNullable', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_types_at_source"]) -> typing.Union[MetaOapg.properties.file_types_at_source, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", "high_accuracy", "rerank", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["query", "k", "tags", "query_vector", "file_ids", "parent_file_ids", "include_all_children", "tags_v2", "include_tags", "include_vectors", "include_raw_file", "hybrid_search", "hybrid_search_tuning_parameters", "media_type", "embedding_model", "include_file_level_metadata", "high_accuracy", "rerank", "file_types_at_source", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -399,6 +433,7 @@ class GetEmbeddingDocumentsBody(
         include_file_level_metadata: typing.Union[MetaOapg.properties.include_file_level_metadata, None, bool, schemas.Unset] = schemas.unset,
         high_accuracy: typing.Union[MetaOapg.properties.high_accuracy, None, bool, schemas.Unset] = schemas.unset,
         rerank: typing.Union['RerankParamsNullable', schemas.Unset] = schemas.unset,
+        file_types_at_source: typing.Union[MetaOapg.properties.file_types_at_source, list, tuple, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GetEmbeddingDocumentsBody':
@@ -423,6 +458,7 @@ class GetEmbeddingDocumentsBody(
             include_file_level_metadata=include_file_level_metadata,
             high_accuracy=high_accuracy,
             rerank=rerank,
+            file_types_at_source=file_types_at_source,
             _configuration=_configuration,
             **kwargs,
         )
@@ -433,5 +469,6 @@ from carbon.model.get_embedding_documents_body_file_ids import GetEmbeddingDocum
 from carbon.model.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.model.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.model.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.model.rerank_params_nullable import RerankParamsNullable

@@ -21,6 +21,7 @@ from carbon.pydantic.get_embedding_documents_body_file_ids import GetEmbeddingDo
 from carbon.pydantic.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
+from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.pydantic.rerank_params_nullable import RerankParamsNullable
 
@@ -71,6 +72,9 @@ class GetEmbeddingDocumentsBody(BaseModel):
     high_accuracy: typing.Optional[typing.Optional[bool]] = Field(None, alias='high_accuracy')
 
     rerank: typing.Optional[RerankParamsNullable] = Field(None, alias='rerank')
+
+    # Filter files based on their type at the source (for example help center tickets and articles)
+    file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = Field(None, alias='file_types_at_source')
 
     model_config = ConfigDict(
         protected_namespaces=(),

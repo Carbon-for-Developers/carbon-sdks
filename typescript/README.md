@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/npm-v0.2.17-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.17)
+[![npm](https://img.shields.io/badge/npm-v0.2.18-blue)](https://www.npmjs.com/package/carbon-typescript-sdk/v/0.2.18)
 
 </div>
 
@@ -439,6 +439,10 @@ Flag to control whether or not to include file-level metadata in the response. T
 Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
 
 ##### rerank: [`RerankParamsNullable`](./models/rerank-params-nullable.ts)<a id="rerank-rerankparamsnullablemodelsrerank-params-nullablets"></a>
+
+##### file_types_at_source: [`HelpdeskFileTypes`](./models/helpdesk-file-types.ts)[]<a id="file_types_at_source-helpdeskfiletypesmodelshelpdesk-file-typests"></a>
+
+Filter files based on their type at the source (for example help center tickets and articles)
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1510,7 +1514,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "77c4d6f4-3ef2-43d4-8481-476a74fd5178",
+  request_id: "c4055754-ba2d-4f57-a990-6e990abbbd90",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1877,7 +1881,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1985,7 +1989,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

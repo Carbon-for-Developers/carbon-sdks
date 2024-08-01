@@ -44,7 +44,9 @@ class SentWebhookPayload(
             
                 class MetaOapg:
                     enum_value_to_name = {
+                        "ADD": "ADD",
                         "ALL_UPLOADED_FILES_QUEUED": "ALL_UPLOADED_FILES_QUEUED",
+                        "CANCEL": "CANCEL",
                         "CHECKUP": "CHECKUP",
                         "DATA_SOURCE_READY": "DATA_SOURCE_READY",
                         "FILES_CREATED": "FILES_CREATED",
@@ -56,15 +58,25 @@ class SentWebhookPayload(
                         "FILE_SYNC_LIMIT_REACHED": "FILE_SYNC_LIMIT_REACHED",
                         "ORGANIZATION_USER_DELETED": "ORGANIZATION_USER_DELETED",
                         "RATE_LIMIT_ERROR": "RATE_LIMIT_ERROR",
+                        "REVOKE": "REVOKE",
                         "SPARSE_VECTOR_QUEUE_STATUS": "SPARSE_VECTOR_QUEUE_STATUS",
+                        "UPDATE": "UPDATE",
                         "WEBPAGE_ERROR": "WEBPAGE_ERROR",
                         "WEBPAGE_READY": "WEBPAGE_READY",
                         "WEBSCRAPE_URLS_READY": "WEBSCRAPE_URLS_READY",
                     }
                 
                 @schemas.classproperty
+                def ADD(cls):
+                    return cls("ADD")
+                
+                @schemas.classproperty
                 def ALL_UPLOADED_FILES_QUEUED(cls):
                     return cls("ALL_UPLOADED_FILES_QUEUED")
+                
+                @schemas.classproperty
+                def CANCEL(cls):
+                    return cls("CANCEL")
                 
                 @schemas.classproperty
                 def CHECKUP(cls):
@@ -111,8 +123,16 @@ class SentWebhookPayload(
                     return cls("RATE_LIMIT_ERROR")
                 
                 @schemas.classproperty
+                def REVOKE(cls):
+                    return cls("REVOKE")
+                
+                @schemas.classproperty
                 def SPARSE_VECTOR_QUEUE_STATUS(cls):
                     return cls("SPARSE_VECTOR_QUEUE_STATUS")
+                
+                @schemas.classproperty
+                def UPDATE(cls):
+                    return cls("UPDATE")
                 
                 @schemas.classproperty
                 def WEBPAGE_ERROR(cls):

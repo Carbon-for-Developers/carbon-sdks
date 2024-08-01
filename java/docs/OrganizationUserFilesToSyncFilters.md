@@ -24,6 +24,7 @@
 |**syncErrorMessage** | **String** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. |  [optional] |
 |**includeContainers** | **Boolean** | If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers. |  [optional] |
 |**externalUrls** | **List&lt;String&gt;** | The external URLs of the files. The query will return files with these external URLs. |  [optional] |
+|**fileTypesAtSource** | **List&lt;HelpdeskFileTypes&gt;** | Filter files based on their type at the source (for example help center tickets and articles) |  [optional] |
 
 
 

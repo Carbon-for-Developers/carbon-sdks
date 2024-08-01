@@ -4307,7 +4307,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+          request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
         authentication:
           tenant_name: tenant_name
           source: ""
@@ -4343,7 +4343,7 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+            request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4555,6 +4555,9 @@ components:
           - null
           - null
           root_files_only: true
+          file_types_at_source:
+          - null
+          - null
           sync_error_message: sync_error_message
           include_all_children: false
           name: name
@@ -4944,6 +4947,9 @@ components:
           - null
           - null
           root_files_only: true
+          file_types_at_source:
+          - null
+          - null
           sync_error_message: sync_error_message
           include_all_children: false
           name: name
@@ -5489,6 +5495,9 @@ components:
         high_accuracy: false
         rerank:
           model: model
+        file_types_at_source:
+        - null
+        - null
         include_all_children: false
         media_type: null
         file_ids:
@@ -5685,6 +5694,14 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy
         rerank:
           $ref: '#/components/schemas/RerankParamsNullable'
+        file_types_at_source:
+          description: Filter files based on their type at the source (for example
+            help center tickets and articles)
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          nullable: true
+          title: File Types At Source
+          type: array
       required:
       - k
       - query
@@ -6516,7 +6533,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+        request_id: c4055754-ba2d-4f57-a990-6e990abbbd90
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6634,13 +6651,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          default: c4055754-ba2d-4f57-a990-6e990abbbd90
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          example: c4055754-ba2d-4f57-a990-6e990abbbd90
           title: Request Id
           type: string
-          x-konfig-original-example: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          x-konfig-original-example: c4055754-ba2d-4f57-a990-6e990abbbd90
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -7096,6 +7113,9 @@ components:
         - null
         - null
         root_files_only: true
+        file_types_at_source:
+        - null
+        - null
         sync_error_message: sync_error_message
         include_all_children: false
         name: name
@@ -7261,6 +7281,14 @@ components:
           nullable: true
           title: External Urls
           type: array
+        file_types_at_source:
+          description: Filter files based on their type at the source (for example
+            help center tickets and articles)
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          nullable: true
+          title: File Types At Source
+          type: array
       title: OrganizationUserFilesToSyncFilters
       type: object
     OrganizationUserFilesToSyncOrderByTypes:
@@ -7294,6 +7322,9 @@ components:
           - null
           - null
           root_files_only: true
+          file_types_at_source:
+          - null
+          - null
           sync_error_message: sync_error_message
           include_all_children: false
           name: name
@@ -8285,7 +8316,7 @@ components:
         - ""
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+        request_id: 991e89b6-1e71-41e1-bdc4-4dd475f21696
         data_source_id: 0
       properties:
         tags:
@@ -8357,11 +8388,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
-          example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           title: Request Id
           type: string
-          x-konfig-original-example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -8418,7 +8449,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+        request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
       properties:
         tags:
           nullable: true
@@ -8491,11 +8522,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
-          example: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+          default: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
+          example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
           title: Request Id
           type: string
-          x-konfig-original-example: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+          x-konfig-original-example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
@@ -9778,7 +9809,9 @@ components:
       properties:
         webhook_type:
           enum:
+          - ADD
           - ALL_UPLOADED_FILES_QUEUED
+          - CANCEL
           - CHECKUP
           - DATA_SOURCE_READY
           - FILES_CREATED
@@ -9790,7 +9823,9 @@ components:
           - FILE_SYNC_LIMIT_REACHED
           - ORGANIZATION_USER_DELETED
           - RATE_LIMIT_ERROR
+          - REVOKE
           - SPARSE_VECTOR_QUEUE_STATUS
+          - UPDATE
           - WEBPAGE_ERROR
           - WEBPAGE_READY
           - WEBSCRAPE_URLS_READY
@@ -10676,7 +10711,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+      example: c4055754-ba2d-4f57-a990-6e990abbbd90
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
@@ -10959,7 +10994,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+      example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
@@ -11003,7 +11038,7 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: bdd2d0b8-c211-49bd-b70a-4889ae5fab99
+      example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
@@ -11381,13 +11416,13 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          default: c4055754-ba2d-4f57-a990-6e990abbbd90
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          example: c4055754-ba2d-4f57-a990-6e990abbbd90
           title: Request Id
           type: string
-          x-konfig-original-example: 77c4d6f4-3ef2-43d4-8481-476a74fd5178
+          x-konfig-original-example: c4055754-ba2d-4f57-a990-6e990abbbd90
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
@@ -11565,11 +11600,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
-          example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           title: Request Id
           type: string
-          x-konfig-original-example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -11690,11 +11725,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
-          example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           title: Request Id
           type: string
-          x-konfig-original-example: 0a2f743b-fe89-4193-86c3-87ca6d2ffc43
+          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
@@ -12717,6 +12752,14 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy
         rerank:
           $ref: '#/components/schemas/RerankParamsNullable'
+        file_types_at_source:
+          description: Filter files based on their type at the source (for example
+            help center tickets and articles)
+          items:
+            $ref: '#/components/schemas/HelpdeskFileTypes'
+          nullable: true
+          title: File Types At Source
+          type: array
       required:
       - k
       - query

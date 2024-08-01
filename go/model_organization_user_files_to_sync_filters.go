@@ -49,6 +49,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	IncludeContainers NullableBool `json:"include_containers,omitempty"`
 	// The external URLs of the files. The query will return files with these external URLs.
 	ExternalUrls []string `json:"external_urls,omitempty"`
+	// Filter files based on their type at the source (for example help center tickets and articles)
+	FileTypesAtSource []HelpdeskFileTypes `json:"file_types_at_source,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -686,6 +688,39 @@ func (o *OrganizationUserFilesToSyncFilters) SetExternalUrls(v []string) {
 	o.ExternalUrls = v
 }
 
+// GetFileTypesAtSource returns the FileTypesAtSource field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSource() []HelpdeskFileTypes {
+	if o == nil {
+		var ret []HelpdeskFileTypes
+		return ret
+	}
+	return o.FileTypesAtSource
+}
+
+// GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSourceOk() ([]HelpdeskFileTypes, bool) {
+	if o == nil || isNil(o.FileTypesAtSource) {
+    return nil, false
+	}
+	return o.FileTypesAtSource, true
+}
+
+// HasFileTypesAtSource returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasFileTypesAtSource() bool {
+	if o != nil && isNil(o.FileTypesAtSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileTypesAtSource gets a reference to the given []HelpdeskFileTypes and assigns it to the FileTypesAtSource field.
+func (o *OrganizationUserFilesToSyncFilters) SetFileTypesAtSource(v []HelpdeskFileTypes) {
+	o.FileTypesAtSource = v
+}
+
 func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -738,6 +773,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.ExternalUrls != nil {
 		toSerialize["external_urls"] = o.ExternalUrls
+	}
+	if o.FileTypesAtSource != nil {
+		toSerialize["file_types_at_source"] = o.FileTypesAtSource
 	}
 	return json.Marshal(toSerialize)
 }

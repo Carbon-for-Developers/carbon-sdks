@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
+import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import io.swagger.annotations.ApiModel;
@@ -129,6 +130,10 @@ public class GetEmbeddingDocumentsBody {
   public static final String SERIALIZED_NAME_RERANK = "rerank";
   @SerializedName(SERIALIZED_NAME_RERANK)
   private RerankParamsNullable rerank;
+
+  public static final String SERIALIZED_NAME_FILE_TYPES_AT_SOURCE = "file_types_at_source";
+  @SerializedName(SERIALIZED_NAME_FILE_TYPES_AT_SOURCE)
+  private List<HelpdeskFileTypes> fileTypesAtSource = null;
 
   public GetEmbeddingDocumentsBody() {
   }
@@ -697,6 +702,43 @@ public class GetEmbeddingDocumentsBody {
     this.rerank = rerank;
   }
 
+
+  public GetEmbeddingDocumentsBody fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+    
+    
+    
+    
+    this.fileTypesAtSource = fileTypesAtSource;
+    return this;
+  }
+
+  public GetEmbeddingDocumentsBody addFileTypesAtSourceItem(HelpdeskFileTypes fileTypesAtSourceItem) {
+    if (this.fileTypesAtSource == null) {
+      this.fileTypesAtSource = new ArrayList<>();
+    }
+    this.fileTypesAtSource.add(fileTypesAtSourceItem);
+    return this;
+  }
+
+   /**
+   * Filter files based on their type at the source (for example help center tickets and articles)
+   * @return fileTypesAtSource
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Filter files based on their type at the source (for example help center tickets and articles)")
+
+  public List<HelpdeskFileTypes> getFileTypesAtSource() {
+    return fileTypesAtSource;
+  }
+
+
+  public void setFileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+    
+    
+    
+    this.fileTypesAtSource = fileTypesAtSource;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -769,7 +811,8 @@ public class GetEmbeddingDocumentsBody {
         Objects.equals(this.embeddingModel, getEmbeddingDocumentsBody.embeddingModel) &&
         Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata) &&
         Objects.equals(this.highAccuracy, getEmbeddingDocumentsBody.highAccuracy) &&
-        Objects.equals(this.rerank, getEmbeddingDocumentsBody.rerank)&&
+        Objects.equals(this.rerank, getEmbeddingDocumentsBody.rerank) &&
+        Objects.equals(this.fileTypesAtSource, getEmbeddingDocumentsBody.fileTypesAtSource)&&
         Objects.equals(this.additionalProperties, getEmbeddingDocumentsBody.additionalProperties);
   }
 
@@ -779,7 +822,7 @@ public class GetEmbeddingDocumentsBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, rerank, additionalProperties);
+    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, rerank, fileTypesAtSource, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -811,6 +854,7 @@ public class GetEmbeddingDocumentsBody {
     sb.append("    includeFileLevelMetadata: ").append(toIndentedString(includeFileLevelMetadata)).append("\n");
     sb.append("    highAccuracy: ").append(toIndentedString(highAccuracy)).append("\n");
     sb.append("    rerank: ").append(toIndentedString(rerank)).append("\n");
+    sb.append("    fileTypesAtSource: ").append(toIndentedString(fileTypesAtSource)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -852,6 +896,7 @@ public class GetEmbeddingDocumentsBody {
     openapiFields.add("include_file_level_metadata");
     openapiFields.add("high_accuracy");
     openapiFields.add("rerank");
+    openapiFields.add("file_types_at_source");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -900,6 +945,10 @@ public class GetEmbeddingDocumentsBody {
       // validate the optional field `rerank`
       if (jsonObj.get("rerank") != null && !jsonObj.get("rerank").isJsonNull()) {
         RerankParamsNullable.validateJsonObject(jsonObj.getAsJsonObject("rerank"));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("file_types_at_source") != null && !jsonObj.get("file_types_at_source").isJsonNull() && !jsonObj.get("file_types_at_source").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `file_types_at_source` to be an array in the JSON string or null but got `%s`", jsonObj.get("file_types_at_source").toString()));
       }
   }
 

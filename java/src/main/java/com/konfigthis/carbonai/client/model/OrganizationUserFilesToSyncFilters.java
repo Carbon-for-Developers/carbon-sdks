@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
+import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -123,6 +124,10 @@ public class OrganizationUserFilesToSyncFilters {
   public static final String SERIALIZED_NAME_EXTERNAL_URLS = "external_urls";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_URLS)
   private List<String> externalUrls = null;
+
+  public static final String SERIALIZED_NAME_FILE_TYPES_AT_SOURCE = "file_types_at_source";
+  @SerializedName(SERIALIZED_NAME_FILE_TYPES_AT_SOURCE)
+  private List<HelpdeskFileTypes> fileTypesAtSource = null;
 
   public OrganizationUserFilesToSyncFilters() {
   }
@@ -695,6 +700,43 @@ public class OrganizationUserFilesToSyncFilters {
     this.externalUrls = externalUrls;
   }
 
+
+  public OrganizationUserFilesToSyncFilters fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+    
+    
+    
+    
+    this.fileTypesAtSource = fileTypesAtSource;
+    return this;
+  }
+
+  public OrganizationUserFilesToSyncFilters addFileTypesAtSourceItem(HelpdeskFileTypes fileTypesAtSourceItem) {
+    if (this.fileTypesAtSource == null) {
+      this.fileTypesAtSource = new ArrayList<>();
+    }
+    this.fileTypesAtSource.add(fileTypesAtSourceItem);
+    return this;
+  }
+
+   /**
+   * Filter files based on their type at the source (for example help center tickets and articles)
+   * @return fileTypesAtSource
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Filter files based on their type at the source (for example help center tickets and articles)")
+
+  public List<HelpdeskFileTypes> getFileTypesAtSource() {
+    return fileTypesAtSource;
+  }
+
+
+  public void setFileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+    
+    
+    
+    this.fileTypesAtSource = fileTypesAtSource;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -766,7 +808,8 @@ public class OrganizationUserFilesToSyncFilters {
         Objects.equals(this.requestIds, organizationUserFilesToSyncFilters.requestIds) &&
         Objects.equals(this.syncErrorMessage, organizationUserFilesToSyncFilters.syncErrorMessage) &&
         Objects.equals(this.includeContainers, organizationUserFilesToSyncFilters.includeContainers) &&
-        Objects.equals(this.externalUrls, organizationUserFilesToSyncFilters.externalUrls)&&
+        Objects.equals(this.externalUrls, organizationUserFilesToSyncFilters.externalUrls) &&
+        Objects.equals(this.fileTypesAtSource, organizationUserFilesToSyncFilters.fileTypesAtSource)&&
         Objects.equals(this.additionalProperties, organizationUserFilesToSyncFilters.additionalProperties);
   }
 
@@ -776,7 +819,7 @@ public class OrganizationUserFilesToSyncFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, source, name, tagsV2, ids, externalFileIds, syncStatuses, parentFileIds, organizationUserDataSourceId, embeddingGenerators, rootFilesOnly, includeAllChildren, nonSyncedOnly, requestIds, syncErrorMessage, includeContainers, externalUrls, additionalProperties);
+    return Objects.hash(tags, source, name, tagsV2, ids, externalFileIds, syncStatuses, parentFileIds, organizationUserDataSourceId, embeddingGenerators, rootFilesOnly, includeAllChildren, nonSyncedOnly, requestIds, syncErrorMessage, includeContainers, externalUrls, fileTypesAtSource, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -807,6 +850,7 @@ public class OrganizationUserFilesToSyncFilters {
     sb.append("    syncErrorMessage: ").append(toIndentedString(syncErrorMessage)).append("\n");
     sb.append("    includeContainers: ").append(toIndentedString(includeContainers)).append("\n");
     sb.append("    externalUrls: ").append(toIndentedString(externalUrls)).append("\n");
+    sb.append("    fileTypesAtSource: ").append(toIndentedString(fileTypesAtSource)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -847,6 +891,7 @@ public class OrganizationUserFilesToSyncFilters {
     openapiFields.add("sync_error_message");
     openapiFields.add("include_containers");
     openapiFields.add("external_urls");
+    openapiFields.add("file_types_at_source");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -901,6 +946,10 @@ public class OrganizationUserFilesToSyncFilters {
       // ensure the optional json data is an array if present (nullable)
       if (jsonObj.get("external_urls") != null && !jsonObj.get("external_urls").isJsonNull() && !jsonObj.get("external_urls").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `external_urls` to be an array in the JSON string or null but got `%s`", jsonObj.get("external_urls").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("file_types_at_source") != null && !jsonObj.get("file_types_at_source").isJsonNull() && !jsonObj.get("file_types_at_source").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `file_types_at_source` to be an array in the JSON string or null but got `%s`", jsonObj.get("file_types_at_source").toString()));
       }
   }
 

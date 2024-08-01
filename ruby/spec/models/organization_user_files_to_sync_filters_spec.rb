@@ -121,4 +121,10 @@ describe Carbon::OrganizationUserFilesToSyncFilters do
     end
   end
 
+  describe 'test attribute "file_types_at_source"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

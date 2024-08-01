@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
+import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -179,6 +180,14 @@ public class OrganizationUserFilesToSyncFiltersTest {
     @Test
     public void externalUrlsTest() {
         // TODO: test externalUrls
+    }
+
+    /**
+     * Test the property 'fileTypesAtSource'
+     */
+    @Test
+    public void fileTypesAtSourceTest() {
+        // TODO: test fileTypesAtSource
     }
 
 }

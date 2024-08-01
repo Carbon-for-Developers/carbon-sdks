@@ -61,6 +61,7 @@ public class Example {
     Boolean includeFileLevelMetadata = false; // Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     Boolean highAccuracy = false; // Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
     RerankParamsNullable rerank = new RerankParamsNullable();
+    List<HelpdeskFileTypes> fileTypesAtSource = Arrays.asList(); // Filter files based on their type at the source (for example help center tickets and articles)
     try {
       DocumentResponseList result = client
               .embeddings
@@ -81,6 +82,7 @@ public class Example {
               .includeFileLevelMetadata(includeFileLevelMetadata)
               .highAccuracy(highAccuracy)
               .rerank(rerank)
+              .fileTypesAtSource(fileTypesAtSource)
               .execute();
       System.out.println(result);
       System.out.println(result.getDocuments());
@@ -113,6 +115,7 @@ public class Example {
               .includeFileLevelMetadata(includeFileLevelMetadata)
               .highAccuracy(highAccuracy)
               .rerank(rerank)
+              .fileTypesAtSource(fileTypesAtSource)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

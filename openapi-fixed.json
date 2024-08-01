@@ -3896,7 +3896,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99",
+              "request_id": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -5145,6 +5145,15 @@
           },
           "rerank": {
             "$ref": "#/components/schemas/RerankParamsNullable"
+          },
+          "file_types_at_source": {
+            "title": "File Types At Source",
+            "description": "Filter files based on their type at the source (for example help center tickets and articles)",
+            "items": {
+              "$ref": "#/components/schemas/HelpdeskFileTypes"
+            },
+            "type": "array",
+            "nullable": true
           }
         },
         "type": "object",
@@ -5963,7 +5972,7 @@
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
             "type": "string",
-            "default": "77c4d6f4-3ef2-43d4-8481-476a74fd5178"
+            "default": "c4055754-ba2d-4f57-a990-6e990abbbd90"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -6569,6 +6578,15 @@
             "description": "The external URLs of the files. The query will return files with these external URLs.",
             "items": {
               "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "file_types_at_source": {
+            "title": "File Types At Source",
+            "description": "Filter files based on their type at the source (for example help center tickets and articles)",
+            "items": {
+              "$ref": "#/components/schemas/HelpdeskFileTypes"
             },
             "type": "array",
             "nullable": true
@@ -7566,7 +7584,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "0a2f743b-fe89-4193-86c3-87ca6d2ffc43"
+            "default": "991e89b6-1e71-41e1-bdc4-4dd475f21696"
           },
           "use_ocr": {
             "title": "Use Ocr",
@@ -7658,7 +7676,7 @@
           "request_id": {
             "title": "Request Id",
             "type": "string",
-            "default": "bdd2d0b8-c211-49bd-b70a-4889ae5fab99"
+            "default": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3"
           },
           "enable_file_picker": {
             "title": "Enable File Picker",
@@ -8865,7 +8883,9 @@
           "webhook_type": {
             "type": "string",
             "enum": [
+              "ADD",
               "ALL_UPLOADED_FILES_QUEUED",
+              "CANCEL",
               "CHECKUP",
               "DATA_SOURCE_READY",
               "FILES_CREATED",
@@ -8877,7 +8897,9 @@
               "FILE_SYNC_LIMIT_REACHED",
               "ORGANIZATION_USER_DELETED",
               "RATE_LIMIT_ERROR",
+              "REVOKE",
               "SPARSE_VECTOR_QUEUE_STATUS",
+              "UPDATE",
               "WEBPAGE_ERROR",
               "WEBPAGE_READY",
               "WEBSCRAPE_URLS_READY"

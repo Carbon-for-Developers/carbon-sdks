@@ -1506,7 +1506,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to 77c4d6f4-3ef2-43d4-8481-476a74fd5178)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to c4055754-ba2d-4f57-a990-6e990abbbd90)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -3307,7 +3307,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 0a2f743b-fe89-4193-86c3-87ca6d2ffc43)
+         * @param requestId  (optional, default to 991e89b6-1e71-41e1-bdc4-4dd475f21696)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3815,7 +3815,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 0a2f743b-fe89-4193-86c3-87ca6d2ffc43)
+         * @param requestId  (optional, default to 991e89b6-1e71-41e1-bdc4-4dd475f21696)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {

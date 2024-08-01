@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![npm](https://img.shields.io/badge/gem-v0.2.17-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.17)
+[![npm](https://img.shields.io/badge/gem-v0.2.18-blue)](https://rubygems.org/gems/carbon_ruby_sdk/versions/0.2.18)
 
 </div>
 
@@ -91,7 +91,7 @@ Connect external data to LLMs, no matter the source.
 Add to Gemfile:
 
 ```ruby
-gem 'carbon_ruby_sdk', '~> 0.2.17'
+gem 'carbon_ruby_sdk', '~> 0.2.18'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -385,6 +385,9 @@ result = carbon.embeddings.get_documents(
   rerank: {
         "model" => "model_example",
     },
+  file_types_at_source: [
+        "string_example"
+    ],
 )
 p result
 ```
@@ -449,6 +452,10 @@ default, this is set to false. If true, the search may return more accurate
 results, but may take longer to complete.
 
 ##### rerank: [`RerankParamsNullable`](./lib/carbon_ruby_sdk/models/rerank_params_nullable.rb)<a id="rerank-rerankparamsnullablelibcarbon_ruby_sdkmodelsrerank_params_nullablerb"></a>
+##### file_types_at_source: Array<[`HelpdeskFileTypes`](./lib/carbon_ruby_sdk/models/helpdesk_file_types.rb)><a id="file_types_at_source-array"></a>
+Filter files based on their type at the source (for example help center tickets
+and articles)
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [DocumentResponseList](./lib/carbon_ruby_sdk/models/document_response_list.rb)
@@ -1307,7 +1314,7 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "bdd2d0b8-c211-49bd-b70a-4889ae5fab99",
+        "request_id" => "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1528,7 +1535,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "77c4d6f4-3ef2-43d4-8481-476a74fd5178",
+  request_id: "c4055754-ba2d-4f57-a990-6e990abbbd90",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1896,7 +1903,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2002,7 +2009,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "0a2f743b-fe89-4193-86c3-87ca6d2ffc43",
+  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
