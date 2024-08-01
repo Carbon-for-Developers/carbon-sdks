@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.helpdesk_file_types import HelpdeskFileTypes
+from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 
 class RequiredFileSyncConfigNullable(TypedDict):
     pass
@@ -28,6 +29,8 @@ class OptionalFileSyncConfigNullable(TypedDict, total=False):
 
     # Detect audio language before transcription for audio files
     detect_audio_language: bool
+
+    transcription_service: typing.Optional[TranscriptionServiceNullable]
 
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: bool

@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
+from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 
 class FileSyncConfigNullable(BaseModel):
     # File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
@@ -26,6 +27,8 @@ class FileSyncConfigNullable(BaseModel):
 
     # Detect audio language before transcription for audio files
     detect_audio_language: typing.Optional[bool] = Field(None, alias='detect_audio_language')
+
+    transcription_service: typing.Optional[TranscriptionServiceNullable] = Field(None, alias='transcription_service')
 
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: typing.Optional[bool] = Field(None, alias='split_rows')

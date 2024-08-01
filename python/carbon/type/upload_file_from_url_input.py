@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
+from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 
 class RequiredUploadFileFromUrlInput(TypedDict):
     url: str
@@ -46,6 +47,8 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
     parse_pdf_tables_with_ocr: bool
 
     detect_audio_language: bool
+
+    transcription_service: typing.Optional[TranscriptionServiceNullable]
 
     media_type: typing.Optional[FileContentTypesNullable]
 

@@ -20,11 +20,13 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -63,6 +65,10 @@ public class FileSyncConfig {
   public static final String SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE = "detect_audio_language";
   @SerializedName(SERIALIZED_NAME_DETECT_AUDIO_LANGUAGE)
   private Boolean detectAudioLanguage = false;
+
+  public static final String SERIALIZED_NAME_TRANSCRIPTION_SERVICE = "transcription_service";
+  @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_SERVICE)
+  private TranscriptionServiceNullable transcriptionService;
 
   public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
   @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
@@ -166,6 +172,35 @@ public class FileSyncConfig {
   }
 
 
+  public FileSyncConfig transcriptionService(TranscriptionServiceNullable transcriptionService) {
+    
+    
+    
+    
+    this.transcriptionService = transcriptionService;
+    return this;
+  }
+
+   /**
+   * Get transcriptionService
+   * @return transcriptionService
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TranscriptionServiceNullable getTranscriptionService() {
+    return transcriptionService;
+  }
+
+
+  public void setTranscriptionService(TranscriptionServiceNullable transcriptionService) {
+    
+    
+    
+    this.transcriptionService = transcriptionService;
+  }
+
+
   public FileSyncConfig splitRows(Boolean splitRows) {
     
     
@@ -252,13 +287,25 @@ public class FileSyncConfig {
     return Objects.equals(this.autoSyncedSourceTypes, fileSyncConfig.autoSyncedSourceTypes) &&
         Objects.equals(this.syncAttachments, fileSyncConfig.syncAttachments) &&
         Objects.equals(this.detectAudioLanguage, fileSyncConfig.detectAudioLanguage) &&
+        Objects.equals(this.transcriptionService, fileSyncConfig.transcriptionService) &&
         Objects.equals(this.splitRows, fileSyncConfig.splitRows)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, splitRows, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, splitRows, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -268,6 +315,7 @@ public class FileSyncConfig {
     sb.append("    autoSyncedSourceTypes: ").append(toIndentedString(autoSyncedSourceTypes)).append("\n");
     sb.append("    syncAttachments: ").append(toIndentedString(syncAttachments)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
+    sb.append("    transcriptionService: ").append(toIndentedString(transcriptionService)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -295,6 +343,7 @@ public class FileSyncConfig {
     openapiFields.add("auto_synced_source_types");
     openapiFields.add("sync_attachments");
     openapiFields.add("detect_audio_language");
+    openapiFields.add("transcription_service");
     openapiFields.add("split_rows");
 
     // a set of required properties/fields (JSON key names)

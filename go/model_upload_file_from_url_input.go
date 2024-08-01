@@ -30,6 +30,7 @@ type UploadFileFromUrlInput struct {
 	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 	ParsePdfTablesWithOcr *bool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
+	TranscriptionService NullableTranscriptionServiceNullable `json:"transcription_service,omitempty"`
 	MediaType NullableFileContentTypesNullable `json:"media_type,omitempty"`
 	SplitRows *bool `json:"split_rows,omitempty"`
 }
@@ -532,6 +533,48 @@ func (o *UploadFileFromUrlInput) SetDetectAudioLanguage(v bool) {
 	o.DetectAudioLanguage = &v
 }
 
+// GetTranscriptionService returns the TranscriptionService field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UploadFileFromUrlInput) GetTranscriptionService() TranscriptionServiceNullable {
+	if o == nil || isNil(o.TranscriptionService.Get()) {
+		var ret TranscriptionServiceNullable
+		return ret
+	}
+	return *o.TranscriptionService.Get()
+}
+
+// GetTranscriptionServiceOk returns a tuple with the TranscriptionService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UploadFileFromUrlInput) GetTranscriptionServiceOk() (*TranscriptionServiceNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.TranscriptionService.Get(), o.TranscriptionService.IsSet()
+}
+
+// HasTranscriptionService returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasTranscriptionService() bool {
+	if o != nil && o.TranscriptionService.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTranscriptionService gets a reference to the given NullableTranscriptionServiceNullable and assigns it to the TranscriptionService field.
+func (o *UploadFileFromUrlInput) SetTranscriptionService(v TranscriptionServiceNullable) {
+	o.TranscriptionService.Set(&v)
+}
+// SetTranscriptionServiceNil sets the value for TranscriptionService to be an explicit nil
+func (o *UploadFileFromUrlInput) SetTranscriptionServiceNil() {
+	o.TranscriptionService.Set(nil)
+}
+
+// UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
+func (o *UploadFileFromUrlInput) UnsetTranscriptionService() {
+	o.TranscriptionService.Unset()
+}
+
 // GetMediaType returns the MediaType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable {
 	if o == nil || isNil(o.MediaType.Get()) {
@@ -646,6 +689,9 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.DetectAudioLanguage) {
 		toSerialize["detect_audio_language"] = o.DetectAudioLanguage
+	}
+	if o.TranscriptionService.IsSet() {
+		toSerialize["transcription_service"] = o.TranscriptionService.Get()
 	}
 	if o.MediaType.IsSet() {
 		toSerialize["media_type"] = o.MediaType.Get()

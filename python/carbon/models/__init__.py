@@ -147,6 +147,8 @@ from carbon.model.s3_authentication import S3Authentication
 from carbon.model.s3_file_sync_input import S3FileSyncInput
 from carbon.model.s3_get_file_input import S3GetFileInput
 from carbon.model.salesforce_authentication import SalesforceAuthentication
+from carbon.model.sent_webhook_payload import SentWebhookPayload
+from carbon.model.sent_webhook_request_body import SentWebhookRequestBody
 from carbon.model.sharepoint_authentication import SharepointAuthentication
 from carbon.model.simple_o_auth_data_sources import SimpleOAuthDataSources
 from carbon.model.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
@@ -166,6 +168,8 @@ from carbon.model.sync_files_request import SyncFilesRequest
 from carbon.model.sync_options import SyncOptions
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
+from carbon.model.transcription_service import TranscriptionService
+from carbon.model.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.model.update_organization_input import UpdateOrganizationInput
 from carbon.model.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 from carbon.model.update_users_input import UpdateUsersInput

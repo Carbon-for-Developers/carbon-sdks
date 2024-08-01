@@ -46,6 +46,7 @@ import com.konfigthis.carbonai.client.model.PresignedURLResponse;
 import com.konfigthis.carbonai.client.model.RawTextInput;
 import com.konfigthis.carbonai.client.model.ResyncFileQueryInput;
 import com.konfigthis.carbonai.client.model.TMEmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import com.konfigthis.carbonai.client.model.UploadFileFromUrlInput;
 import com.konfigthis.carbonai.client.model.UserFile;
 import com.konfigthis.carbonai.client.model.UserFilesV2;
@@ -2044,7 +2045,7 @@ public class FilesApiGenerated {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
         return ((FilesApi) this).new ResyncRequestBuilder(fileId);
     }
-    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2117,6 +2118,10 @@ public class FilesApiGenerated {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("detect_audio_language", detectAudioLanguage));
         }
 
+        if (transcriptionService != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("transcription_service", transcriptionService));
+        }
+
         if (mediaType != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("media_type", mediaType));
         }
@@ -2146,7 +2151,7 @@ public class FilesApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
         // verify the required parameter '_file' is set
         if (_file == null) {
             throw new ApiException("Missing the required parameter '_file' when calling upload(Async)");
@@ -2157,20 +2162,20 @@ public class FilesApiGenerated {
             throw new ApiException("Missing the required parameter 'bodyCreateUploadFileUploadfilePost' when calling upload(Async)");
         }
 
-        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, _callback);
+        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
 
     }
 
 
-    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, FileContentTypesNullable mediaType, Boolean splitRows) throws ApiException {
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, null);
+    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, null);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback<UserFile> _callback) throws ApiException {
+    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback<UserFile> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, _callback);
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2189,6 +2194,7 @@ public class FilesApiGenerated {
         Integer maxItemsPerChunk;
         Boolean parsePdfTablesWithOcr;
         Boolean detectAudioLanguage;
+        TranscriptionServiceNullable transcriptionService;
         FileContentTypesNullable mediaType;
         Boolean splitRows;
 
@@ -2307,6 +2313,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set transcriptionService
+         * @param transcriptionService The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used. (optional)
+         * @return FilesApi.UploadRequestBuilder
+         */
+        public FilesApi.UploadRequestBuilder transcriptionService(TranscriptionServiceNullable transcriptionService) {
+            this.transcriptionService = transcriptionService;
+            return (FilesApi.UploadRequestBuilder) this;
+        }
+        
+        /**
          * Set mediaType
          * @param mediaType The media type of the file. If not provided, it will be inferred from the file extension. (optional)
          * @return FilesApi.UploadRequestBuilder
@@ -2339,7 +2355,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, _callback);
+            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
         }
 
         private BodyCreateUploadFileUploadfilePost buildBodyParams() {
@@ -2360,7 +2376,7 @@ public class FilesApiGenerated {
          */
         public UserFile execute() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows);
+            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows);
             return localVarResp.getResponseBody();
         }
 
@@ -2376,7 +2392,7 @@ public class FilesApiGenerated {
          */
         public ApiResponse<UserFile> executeWithHttpInfo() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows);
+            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows);
         }
 
         /**
@@ -2392,7 +2408,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UserFile> _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, mediaType, splitRows, _callback);
+            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
         }
     }
 
@@ -2497,6 +2513,7 @@ public class FilesApiGenerated {
         Integer maxItemsPerChunk;
         Boolean parsePdfTablesWithOcr;
         Boolean detectAudioLanguage;
+        TranscriptionServiceNullable transcriptionService;
         FileContentTypesNullable mediaType;
         Boolean splitRows;
 
@@ -2625,6 +2642,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set transcriptionService
+         * @param transcriptionService  (optional)
+         * @return FilesApi.UploadFromUrlRequestBuilder
+         */
+        public FilesApi.UploadFromUrlRequestBuilder transcriptionService(TranscriptionServiceNullable transcriptionService) {
+            this.transcriptionService = transcriptionService;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
+        }
+        
+        /**
          * Set mediaType
          * @param mediaType  (optional)
          * @return FilesApi.UploadFromUrlRequestBuilder
@@ -2675,6 +2702,7 @@ public class FilesApiGenerated {
             uploadFileFromUrlInput.maxItemsPerChunk(this.maxItemsPerChunk);
             uploadFileFromUrlInput.parsePdfTablesWithOcr(this.parsePdfTablesWithOcr);
             uploadFileFromUrlInput.detectAudioLanguage(this.detectAudioLanguage);
+            uploadFileFromUrlInput.transcriptionService(this.transcriptionService);
             uploadFileFromUrlInput.mediaType(this.mediaType);
             uploadFileFromUrlInput.splitRows(this.splitRows);
             return uploadFileFromUrlInput;

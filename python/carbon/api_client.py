@@ -191,6 +191,8 @@ from carbon.pydantic.s3_authentication import S3Authentication
 from carbon.pydantic.s3_file_sync_input import S3FileSyncInput
 from carbon.pydantic.s3_get_file_input import S3GetFileInput
 from carbon.pydantic.salesforce_authentication import SalesforceAuthentication
+from carbon.pydantic.sent_webhook_payload import SentWebhookPayload
+from carbon.pydantic.sent_webhook_request_body import SentWebhookRequestBody
 from carbon.pydantic.sharepoint_authentication import SharepointAuthentication
 from carbon.pydantic.simple_o_auth_data_sources import SimpleOAuthDataSources
 from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
@@ -210,6 +212,8 @@ from carbon.pydantic.sync_files_request import SyncFilesRequest
 from carbon.pydantic.sync_options import SyncOptions
 from carbon.pydantic.text_embedding_generators import TextEmbeddingGenerators
 from carbon.pydantic.token_response import TokenResponse
+from carbon.pydantic.transcription_service import TranscriptionService
+from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.pydantic.update_organization_input import UpdateOrganizationInput
 from carbon.pydantic.update_organization_input_data_source_configs import UpdateOrganizationInputDataSourceConfigs
 from carbon.pydantic.update_users_input import UpdateUsersInput

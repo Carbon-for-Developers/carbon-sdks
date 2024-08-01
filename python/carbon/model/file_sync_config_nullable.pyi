@@ -67,11 +67,16 @@ class FileSyncConfigNullable(
                     return super().__getitem__(i)
             sync_attachments = schemas.BoolSchema
             detect_audio_language = schemas.BoolSchema
+        
+            @staticmethod
+            def transcription_service() -> typing.Type['TranscriptionServiceNullable']:
+                return TranscriptionServiceNullable
             split_rows = schemas.BoolSchema
             __annotations__ = {
                 "auto_synced_source_types": auto_synced_source_types,
                 "sync_attachments": sync_attachments,
                 "detect_audio_language": detect_audio_language,
+                "transcription_service": transcription_service,
                 "split_rows": split_rows,
             }
 
@@ -86,12 +91,15 @@ class FileSyncConfigNullable(
     def __getitem__(self, name: typing_extensions.Literal["detect_audio_language"]) -> MetaOapg.properties.detect_audio_language: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["transcription_service"]) -> 'TranscriptionServiceNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["split_rows"]) -> MetaOapg.properties.split_rows: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "split_rows", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "split_rows", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -106,12 +114,15 @@ class FileSyncConfigNullable(
     def get_item_oapg(self, name: typing_extensions.Literal["detect_audio_language"]) -> typing.Union[MetaOapg.properties.detect_audio_language, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["transcription_service"]) -> typing.Union['TranscriptionServiceNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["split_rows"]) -> typing.Union[MetaOapg.properties.split_rows, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "split_rows", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "split_rows", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -121,6 +132,7 @@ class FileSyncConfigNullable(
         auto_synced_source_types: typing.Union[MetaOapg.properties.auto_synced_source_types, list, tuple, schemas.Unset] = schemas.unset,
         sync_attachments: typing.Union[MetaOapg.properties.sync_attachments, bool, schemas.Unset] = schemas.unset,
         detect_audio_language: typing.Union[MetaOapg.properties.detect_audio_language, bool, schemas.Unset] = schemas.unset,
+        transcription_service: typing.Union['TranscriptionServiceNullable', schemas.Unset] = schemas.unset,
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -131,9 +143,11 @@ class FileSyncConfigNullable(
             auto_synced_source_types=auto_synced_source_types,
             sync_attachments=sync_attachments,
             detect_audio_language=detect_audio_language,
+            transcription_service=transcription_service,
             split_rows=split_rows,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.helpdesk_file_types import HelpdeskFileTypes
+from carbon.model.transcription_service_nullable import TranscriptionServiceNullable

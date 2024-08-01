@@ -1143,7 +1143,7 @@ public class Example {
 
 <a name="upload"></a>
 # **upload**
-> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).mediaType(mediaType).splitRows(splitRows).execute();
+> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).transcriptionService(transcriptionService).mediaType(mediaType).splitRows(splitRows).execute();
 
 Create Upload File
 
@@ -1186,6 +1186,7 @@ public class Example {
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean parsePdfTablesWithOcr = false; // Whether to use rich table parsing when `use_ocr` is enabled.
     Boolean detectAudioLanguage = false; // Whether to automatically detect the language of the uploaded audio file.
+    TranscriptionServiceNullable transcriptionService = TranscriptionServiceNullable.fromValue("assemblyai"); // The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT"); // The media type of the file. If not provided, it will be inferred from the file extension.
     Boolean splitRows = false; // Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     try {
@@ -1203,6 +1204,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .transcriptionService(transcriptionService)
               .mediaType(mediaType)
               .splitRows(splitRows)
               .execute();
@@ -1265,6 +1267,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .transcriptionService(transcriptionService)
               .mediaType(mediaType)
               .splitRows(splitRows)
               .executeWithHttpInfo();
@@ -1302,6 +1305,7 @@ public class Example {
 | **maxItemsPerChunk** | **Integer**| Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] |
 | **parsePdfTablesWithOcr** | **Boolean**| Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled. | [optional] [default to false] |
 | **detectAudioLanguage** | **Boolean**| Whether to automatically detect the language of the uploaded audio file. | [optional] [default to false] |
+| **transcriptionService** | [**TranscriptionServiceNullable**](.md)| The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used. | [optional] [enum: assemblyai, deepgram] |
 | **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
 | **splitRows** | **Boolean**| Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false] |
 
@@ -1367,6 +1371,7 @@ public class Example {
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean parsePdfTablesWithOcr = false;
     Boolean detectAudioLanguage = false;
+    TranscriptionServiceNullable transcriptionService = TranscriptionServiceNullable.fromValue("assemblyai");
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT");
     Boolean splitRows = false;
     try {
@@ -1385,6 +1390,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .transcriptionService(transcriptionService)
               .mediaType(mediaType)
               .splitRows(splitRows)
               .execute();
@@ -1448,6 +1454,7 @@ public class Example {
               .maxItemsPerChunk(maxItemsPerChunk)
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
+              .transcriptionService(transcriptionService)
               .mediaType(mediaType)
               .splitRows(splitRows)
               .executeWithHttpInfo();

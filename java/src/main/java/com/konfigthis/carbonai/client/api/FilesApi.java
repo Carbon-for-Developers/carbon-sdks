@@ -21,6 +21,7 @@ import com.konfigthis.carbonai.client.model.PresignedURLResponse;
 import com.konfigthis.carbonai.client.model.RawTextInput;
 import com.konfigthis.carbonai.client.model.ResyncFileQueryInput;
 import com.konfigthis.carbonai.client.model.TMEmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import com.konfigthis.carbonai.client.model.UploadFileFromUrlInput;
 import com.konfigthis.carbonai.client.model.UserFile;
 import com.konfigthis.carbonai.client.model.UserFilesV2;
