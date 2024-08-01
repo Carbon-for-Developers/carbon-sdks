@@ -18,7 +18,6 @@ module Carbon
           :'Array<Integer>',
           :'Array<String>',
           :'Integer',
-          :'Null',
           :'String'
         ]
       end

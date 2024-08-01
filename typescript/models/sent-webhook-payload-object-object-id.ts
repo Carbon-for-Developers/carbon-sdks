@@ -15,6 +15,6 @@ import type * as buffer from "buffer"
  * @type SentWebhookPayloadObjectObjectId
  * @export
  */
-export type SentWebhookPayloadObjectObjectId = Array<number> | Array<string> | Null | number | string;
+export type SentWebhookPayloadObjectObjectId = Array<number> | Array<string> | number | string;
 
 

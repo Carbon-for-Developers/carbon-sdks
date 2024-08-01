@@ -15,6 +15,6 @@ import type * as buffer from "buffer"
  * @type SentWebhookPayloadObjectAdditionalInformation
  * @export
  */
-export type SentWebhookPayloadObjectAdditionalInformation = Null | object | string;
+export type SentWebhookPayloadObjectAdditionalInformation = object | string;
 
 

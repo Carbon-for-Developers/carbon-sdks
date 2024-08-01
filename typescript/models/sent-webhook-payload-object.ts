@@ -30,13 +30,13 @@ export interface SentWebhookPayloadObject {
      * @type {SentWebhookPayloadObjectObjectId}
      * @memberof SentWebhookPayloadObject
      */
-    'object_id'?: SentWebhookPayloadObjectObjectId;
+    'object_id'?: SentWebhookPayloadObjectObjectId | null;
     /**
      * 
      * @type {SentWebhookPayloadObjectAdditionalInformation}
      * @memberof SentWebhookPayloadObject
      */
-    'additional_information'?: SentWebhookPayloadObjectAdditionalInformation;
+    'additional_information'?: SentWebhookPayloadObjectAdditionalInformation | null;
 }
 
 type SentWebhookPayloadObjectObjectTypeEnum = 'CHUNK_LIST' | 'DATA_SOURCE' | 'FILE' | 'FILE_LIST' | 'NONE' | 'ORGANIZATION_USER' | 'UPLOAD_REQUEST_ID' | 'WEBPAGE'

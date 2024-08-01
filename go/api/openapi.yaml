@@ -13762,6 +13762,7 @@ components:
       - type: string
       - type: number
     SentWebhookPayload_object_object_id:
+      nullable: true
       oneOf:
       - type: string
       - type: integer
@@ -13771,12 +13772,11 @@ components:
       - items:
           type: integer
         type: array
-      - type: "null"
     SentWebhookPayload_object_additional_information:
+      nullable: true
       oneOf:
       - type: object
       - type: string
-      - type: "null"
     SentWebhookPayload_object:
       properties:
         object_type:

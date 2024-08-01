@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ObjectType** | Pointer to **string** |  | [optional] 
-**ObjectId** | Pointer to [**SentWebhookPayloadObjectObjectId**](SentWebhookPayloadObjectObjectId.md) |  | [optional] 
-**AdditionalInformation** | Pointer to [**SentWebhookPayloadObjectAdditionalInformation**](SentWebhookPayloadObjectAdditionalInformation.md) |  | [optional] 
+**ObjectId** | Pointer to [**NullableSentWebhookPayloadObjectObjectId**](SentWebhookPayloadObjectObjectId.md) |  | [optional] 
+**AdditionalInformation** | Pointer to [**NullableSentWebhookPayloadObjectAdditionalInformation**](SentWebhookPayloadObjectAdditionalInformation.md) |  | [optional] 
 
 ## Methods
 
@@ -77,6 +77,16 @@ SetObjectId sets ObjectId field to given value.
 
 HasObjectId returns a boolean if a field has been set.
 
+### SetObjectIdNil
+
+`func (o *SentWebhookPayloadObject) SetObjectIdNil(b bool)`
+
+ SetObjectIdNil sets the value for ObjectId to be an explicit nil
+
+### UnsetObjectId
+`func (o *SentWebhookPayloadObject) UnsetObjectId()`
+
+UnsetObjectId ensures that no value is present for ObjectId, not even an explicit nil
 ### GetAdditionalInformation
 
 `func (o *SentWebhookPayloadObject) GetAdditionalInformation() SentWebhookPayloadObjectAdditionalInformation`
@@ -102,6 +112,16 @@ SetAdditionalInformation sets AdditionalInformation field to given value.
 
 HasAdditionalInformation returns a boolean if a field has been set.
 
+### SetAdditionalInformationNil
+
+`func (o *SentWebhookPayloadObject) SetAdditionalInformationNil(b bool)`
+
+ SetAdditionalInformationNil sets the value for AdditionalInformation to be an explicit nil
+
+### UnsetAdditionalInformation
+`func (o *SentWebhookPayloadObject) UnsetAdditionalInformation()`
+
+UnsetAdditionalInformation ensures that no value is present for AdditionalInformation, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

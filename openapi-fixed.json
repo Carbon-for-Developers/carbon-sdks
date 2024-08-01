@@ -8924,11 +8924,9 @@
                     "items": {
                       "type": "integer"
                     }
-                  },
-                  {
-                    "type": "null"
                   }
-                ]
+                ],
+                "nullable": true
               },
               "additional_information": {
                 "oneOf": [
@@ -8937,11 +8935,9 @@
                   },
                   {
                     "type": "string"
-                  },
-                  {
-                    "type": "null"
                   }
-                ]
+                ],
+                "nullable": true
               }
             }
           }

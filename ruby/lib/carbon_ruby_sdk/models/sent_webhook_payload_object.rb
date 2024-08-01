@@ -43,6 +43,8 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'object_id',
+        :'additional_information'
       ])
     end
 

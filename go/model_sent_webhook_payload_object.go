@@ -17,8 +17,8 @@ import (
 // SentWebhookPayloadObject struct for SentWebhookPayloadObject
 type SentWebhookPayloadObject struct {
 	ObjectType *string `json:"object_type,omitempty"`
-	ObjectId *SentWebhookPayloadObjectObjectId `json:"object_id,omitempty"`
-	AdditionalInformation *SentWebhookPayloadObjectAdditionalInformation `json:"additional_information,omitempty"`
+	ObjectId NullableSentWebhookPayloadObjectObjectId `json:"object_id,omitempty"`
+	AdditionalInformation NullableSentWebhookPayloadObjectAdditionalInformation `json:"additional_information,omitempty"`
 }
 
 // NewSentWebhookPayloadObject instantiates a new SentWebhookPayloadObject object
@@ -70,68 +70,88 @@ func (o *SentWebhookPayloadObject) SetObjectType(v string) {
 	o.ObjectType = &v
 }
 
-// GetObjectId returns the ObjectId field value if set, zero value otherwise.
+// GetObjectId returns the ObjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SentWebhookPayloadObject) GetObjectId() SentWebhookPayloadObjectObjectId {
-	if o == nil || isNil(o.ObjectId) {
+	if o == nil || isNil(o.ObjectId.Get()) {
 		var ret SentWebhookPayloadObjectObjectId
 		return ret
 	}
-	return *o.ObjectId
+	return *o.ObjectId.Get()
 }
 
 // GetObjectIdOk returns a tuple with the ObjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SentWebhookPayloadObject) GetObjectIdOk() (*SentWebhookPayloadObjectObjectId, bool) {
-	if o == nil || isNil(o.ObjectId) {
+	if o == nil {
     return nil, false
 	}
-	return o.ObjectId, true
+	return o.ObjectId.Get(), o.ObjectId.IsSet()
 }
 
 // HasObjectId returns a boolean if a field has been set.
 func (o *SentWebhookPayloadObject) HasObjectId() bool {
-	if o != nil && !isNil(o.ObjectId) {
+	if o != nil && o.ObjectId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetObjectId gets a reference to the given SentWebhookPayloadObjectObjectId and assigns it to the ObjectId field.
+// SetObjectId gets a reference to the given NullableSentWebhookPayloadObjectObjectId and assigns it to the ObjectId field.
 func (o *SentWebhookPayloadObject) SetObjectId(v SentWebhookPayloadObjectObjectId) {
-	o.ObjectId = &v
+	o.ObjectId.Set(&v)
+}
+// SetObjectIdNil sets the value for ObjectId to be an explicit nil
+func (o *SentWebhookPayloadObject) SetObjectIdNil() {
+	o.ObjectId.Set(nil)
 }
 
-// GetAdditionalInformation returns the AdditionalInformation field value if set, zero value otherwise.
+// UnsetObjectId ensures that no value is present for ObjectId, not even an explicit nil
+func (o *SentWebhookPayloadObject) UnsetObjectId() {
+	o.ObjectId.Unset()
+}
+
+// GetAdditionalInformation returns the AdditionalInformation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SentWebhookPayloadObject) GetAdditionalInformation() SentWebhookPayloadObjectAdditionalInformation {
-	if o == nil || isNil(o.AdditionalInformation) {
+	if o == nil || isNil(o.AdditionalInformation.Get()) {
 		var ret SentWebhookPayloadObjectAdditionalInformation
 		return ret
 	}
-	return *o.AdditionalInformation
+	return *o.AdditionalInformation.Get()
 }
 
 // GetAdditionalInformationOk returns a tuple with the AdditionalInformation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SentWebhookPayloadObject) GetAdditionalInformationOk() (*SentWebhookPayloadObjectAdditionalInformation, bool) {
-	if o == nil || isNil(o.AdditionalInformation) {
+	if o == nil {
     return nil, false
 	}
-	return o.AdditionalInformation, true
+	return o.AdditionalInformation.Get(), o.AdditionalInformation.IsSet()
 }
 
 // HasAdditionalInformation returns a boolean if a field has been set.
 func (o *SentWebhookPayloadObject) HasAdditionalInformation() bool {
-	if o != nil && !isNil(o.AdditionalInformation) {
+	if o != nil && o.AdditionalInformation.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAdditionalInformation gets a reference to the given SentWebhookPayloadObjectAdditionalInformation and assigns it to the AdditionalInformation field.
+// SetAdditionalInformation gets a reference to the given NullableSentWebhookPayloadObjectAdditionalInformation and assigns it to the AdditionalInformation field.
 func (o *SentWebhookPayloadObject) SetAdditionalInformation(v SentWebhookPayloadObjectAdditionalInformation) {
-	o.AdditionalInformation = &v
+	o.AdditionalInformation.Set(&v)
+}
+// SetAdditionalInformationNil sets the value for AdditionalInformation to be an explicit nil
+func (o *SentWebhookPayloadObject) SetAdditionalInformationNil() {
+	o.AdditionalInformation.Set(nil)
+}
+
+// UnsetAdditionalInformation ensures that no value is present for AdditionalInformation, not even an explicit nil
+func (o *SentWebhookPayloadObject) UnsetAdditionalInformation() {
+	o.AdditionalInformation.Unset()
 }
 
 func (o SentWebhookPayloadObject) MarshalJSON() ([]byte, error) {
@@ -139,11 +159,11 @@ func (o SentWebhookPayloadObject) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ObjectType) {
 		toSerialize["object_type"] = o.ObjectType
 	}
-	if !isNil(o.ObjectId) {
-		toSerialize["object_id"] = o.ObjectId
+	if o.ObjectId.IsSet() {
+		toSerialize["object_id"] = o.ObjectId.Get()
 	}
-	if !isNil(o.AdditionalInformation) {
-		toSerialize["additional_information"] = o.AdditionalInformation
+	if o.AdditionalInformation.IsSet() {
+		toSerialize["additional_information"] = o.AdditionalInformation.Get()
 	}
 	return json.Marshal(toSerialize)
 }

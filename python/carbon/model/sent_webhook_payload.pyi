@@ -210,7 +210,6 @@ class SentWebhookPayload(
                                 
                                     def __getitem__(self, i: int) -> MetaOapg.items:
                                         return super().__getitem__(i)
-                                one_of_4 = schemas.NoneSchema
                                 
                                 @classmethod
                                 @functools.lru_cache()
@@ -227,7 +226,6 @@ class SentWebhookPayload(
                                         cls.one_of_1,
                                         cls.one_of_2,
                                         cls.one_of_3,
-                                        cls.one_of_4,
                                     ]
                         
                         
@@ -253,7 +251,6 @@ class SentWebhookPayload(
                             class MetaOapg:
                                 one_of_0 = schemas.DictSchema
                                 one_of_1 = schemas.StrSchema
-                                one_of_2 = schemas.NoneSchema
                                 
                                 @classmethod
                                 @functools.lru_cache()
@@ -268,7 +265,6 @@ class SentWebhookPayload(
                                     return [
                                         cls.one_of_0,
                                         cls.one_of_1,
-                                        cls.one_of_2,
                                     ]
                         
                         
