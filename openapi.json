@@ -3745,7 +3745,7 @@
               "generate_sparse_vectors": false,
               "incremental_sync": false,
               "prepend_filename_to_chunks": false,
-              "request_id": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
+              "request_id": "011faebf-325b-4869-83fd-e311280b60b9",
               "set_page_as_boundary": false,
               "skip_embedding_generation": false,
               "sync_files_on_connection": true,
@@ -6532,7 +6532,7 @@
             "type": "string",
             "title": "Request Id",
             "description": "This request id will be added to all files that get synced using the generated OAuth URL",
-            "default": "c4055754-ba2d-4f57-a990-6e990abbbd90"
+            "default": "5f5f0c83-4a94-408c-bc51-fe41d22b5aa6"
           },
           "use_ocr": {
             "anyOf": [
@@ -8810,7 +8810,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "991e89b6-1e71-41e1-bdc4-4dd475f21696"
+            "default": "b5313ef4-84c6-4138-bffb-b20d86f7c7b9"
           },
           "use_ocr": {
             "anyOf": [
@@ -8977,7 +8977,7 @@
           "request_id": {
             "type": "string",
             "title": "Request Id",
-            "default": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3"
+            "default": "011faebf-325b-4869-83fd-e311280b60b9"
           },
           "enable_file_picker": {
             "type": "boolean",
