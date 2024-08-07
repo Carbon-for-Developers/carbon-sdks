@@ -110,6 +110,10 @@ public class OANSCZGF {
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY_SECRET)
   private String accessKeySecret;
 
+  public static final String SERIALIZED_NAME_ENDPOINT_URL = "endpoint_url";
+  @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
+  private String endpointUrl;
+
   public OANSCZGF() {
   }
 
@@ -547,6 +551,35 @@ public class OANSCZGF {
     this.accessKeySecret = accessKeySecret;
   }
 
+
+  public OANSCZGF endpointUrl(String endpointUrl) {
+    
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+    return this;
+  }
+
+   /**
+   * You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets.
+   * @return endpointUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.")
+
+  public String getEndpointUrl() {
+    return endpointUrl;
+  }
+
+
+  public void setEndpointUrl(String endpointUrl) {
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -616,7 +649,8 @@ public class OANSCZGF {
         Objects.equals(this.domain, OANSCZGF.domain) &&
         Objects.equals(this.apiKey, OANSCZGF.apiKey) &&
         Objects.equals(this.accessKey, OANSCZGF.accessKey) &&
-        Objects.equals(this.accessKeySecret, OANSCZGF.accessKeySecret)&&
+        Objects.equals(this.accessKeySecret, OANSCZGF.accessKeySecret) &&
+        Objects.equals(this.endpointUrl, OANSCZGF.endpointUrl)&&
         Objects.equals(this.additionalProperties, OANSCZGF.additionalProperties);
   }
 
@@ -626,7 +660,7 @@ public class OANSCZGF {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, additionalProperties);
+    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -655,6 +689,7 @@ public class OANSCZGF {
     sb.append("    apiKey: ").append(toIndentedString(apiKey)).append("\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
+    sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -693,6 +728,7 @@ public class OANSCZGF {
     openapiFields.add("api_key");
     openapiFields.add("access_key");
     openapiFields.add("access_key_secret");
+    openapiFields.add("endpoint_url");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -759,6 +795,9 @@ public class OANSCZGF {
       }
       if ((jsonObj.get("access_key_secret") != null && !jsonObj.get("access_key_secret").isJsonNull()) && !jsonObj.get("access_key_secret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_key_secret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_key_secret").toString()));
+      }
+      if (!jsonObj.get("endpoint_url").isJsonNull() && (jsonObj.get("endpoint_url") != null && !jsonObj.get("endpoint_url").isJsonNull()) && !jsonObj.get("endpoint_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endpoint_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint_url").toString()));
       }
   }
 

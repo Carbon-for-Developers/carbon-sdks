@@ -527,6 +527,9 @@ operation_parameter_map = {
             {
                 'name': 'sync_source_items'
             },
+            {
+                'name': 'endpoint_url'
+            },
         ]
     },
     '/integrations/oauth_url-POST': {

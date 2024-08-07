@@ -20,6 +20,7 @@ type DataSourceType string
 
 // List of DataSourceType
 const (
+	DATASOURCETYPE_GOOGLE_CLOUD_STORAGE DataSourceType = "GOOGLE_CLOUD_STORAGE"
 	DATASOURCETYPE_GOOGLE_DRIVE DataSourceType = "GOOGLE_DRIVE"
 	DATASOURCETYPE_NOTION DataSourceType = "NOTION"
 	DATASOURCETYPE_NOTION_DATABASE DataSourceType = "NOTION_DATABASE"
@@ -79,6 +80,7 @@ const (
 
 // All allowed values of DataSourceType enum
 var AllowedDataSourceTypeEnumValues = []DataSourceType{
+	"GOOGLE_CLOUD_STORAGE",
 	"GOOGLE_DRIVE",
 	"NOTION",
 	"NOTION_DATABASE",

@@ -1452,13 +1452,16 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ### `carbon.integrations.createAwsIamUser`<a id="carbonintegrationscreateawsiamuser"></a>
 
-Create a new IAM user with permissions to:
+This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
+For S3, create a new IAM user with permissions to:
 <ol>
 <li>List all buckets.</li>
 <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
 the same permissions.</li>
 </ol>
-Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.  
+For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.
+Endpoint URL is required to connect Digital Ocean Spaces.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1479,6 +1482,10 @@ const createAwsIamUserResponse = await carbon.integrations.createAwsIamUser({
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### endpoint_url: `string`<a id="endpoint_url-string"></a>
+
+You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It\\\'s not required for S3 buckets.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1504,7 +1511,7 @@ success state.
 
 ```typescript
 const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
-  service: "GOOGLE_DRIVE",
+  service: "GOOGLE_CLOUD_STORAGE",
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -1514,7 +1521,6 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
   sync_files_on_connection: true,
   set_page_as_boundary: false,
   connecting_new_account: false,
-  request_id: "c4055754-ba2d-4f57-a990-6e990abbbd90",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1881,7 +1887,6 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -1989,7 +1994,6 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   set_page_as_boundary: false,
-  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

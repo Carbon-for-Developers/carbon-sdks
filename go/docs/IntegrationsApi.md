@@ -302,6 +302,7 @@ func main() {
         "null",
     )
     s3AuthRequest.SetSyncSourceItems(true)
+    s3AuthRequest.SetEndpointUrl("null")
     
     request := client.IntegrationsApi.CreateAwsIamUser(
         s3AuthRequest,
@@ -387,7 +388,7 @@ func main() {
     oAuthURLRequest.SetSetPageAsBoundary(false)
     oAuthURLRequest.SetDataSourceId(null)
     oAuthURLRequest.SetConnectingNewAccount(false)
-    oAuthURLRequest.SetRequestId("c4055754-ba2d-4f57-a990-6e990abbbd90")
+    oAuthURLRequest.SetRequestId("null")
     oAuthURLRequest.SetUseOcr(false)
     oAuthURLRequest.SetParsePdfTablesWithOcr(false)
     oAuthURLRequest.SetEnableFilePicker(true)
@@ -833,7 +834,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("991e89b6-1e71-41e1-bdc4-4dd475f21696")
+    syncFilesRequest.SetRequestId("null")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)
@@ -963,7 +964,7 @@ func main() {
     syncFilesRequest.SetPrependFilenameToChunks(false)
     syncFilesRequest.SetMaxItemsPerChunk(null)
     syncFilesRequest.SetSetPageAsBoundary(false)
-    syncFilesRequest.SetRequestId("991e89b6-1e71-41e1-bdc4-4dd475f21696")
+    syncFilesRequest.SetRequestId("null")
     syncFilesRequest.SetUseOcr(false)
     syncFilesRequest.SetParsePdfTablesWithOcr(false)
     syncFilesRequest.SetIncrementalSync(false)

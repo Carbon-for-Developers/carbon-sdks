@@ -1113,6 +1113,7 @@ public class IntegrationsApiGenerated {
         final String accessKey;
         final String accessKeySecret;
         Boolean syncSourceItems;
+        String endpointUrl;
 
         public CreateAwsIamUserRequestBuilderGenerated(String accessKey, String accessKeySecret) {
             this.accessKey = accessKey;
@@ -1126,6 +1127,16 @@ public class IntegrationsApiGenerated {
          */
         public IntegrationsApi.CreateAwsIamUserRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.CreateAwsIamUserRequestBuilder) this;
+        }
+        
+        /**
+         * Set endpointUrl
+         * @param endpointUrl You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. (optional)
+         * @return IntegrationsApi.CreateAwsIamUserRequestBuilder
+         */
+        public IntegrationsApi.CreateAwsIamUserRequestBuilder endpointUrl(String endpointUrl) {
+            this.endpointUrl = endpointUrl;
             return (IntegrationsApi.CreateAwsIamUserRequestBuilder) this;
         }
         
@@ -1150,6 +1161,7 @@ public class IntegrationsApiGenerated {
             s3AuthRequest.accessKey(this.accessKey);
             s3AuthRequest.accessKeySecret(this.accessKeySecret);
             s3AuthRequest.syncSourceItems(this.syncSourceItems);
+            s3AuthRequest.endpointUrl(this.endpointUrl);
             return s3AuthRequest;
         }
 
@@ -1203,7 +1215,7 @@ public class IntegrationsApiGenerated {
 
     /**
      * S3 Auth
-     * Create a new IAM user with permissions to: &lt;ol&gt; &lt;li&gt;List all buckets.&lt;/li&gt; &lt;li&gt;Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.&lt;/li&gt; &lt;/ol&gt; Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+     * This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)   For S3, create a new IAM user with permissions to: &lt;ol&gt; &lt;li&gt;List all buckets.&lt;/li&gt; &lt;li&gt;Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.&lt;/li&gt; &lt;/ol&gt; Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.   For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces. Endpoint URL is required to connect Digital Ocean Spaces.
      * @param s3AuthRequest  (required)
      * @return CreateAwsIamUserRequestBuilder
      * @http.response.details
@@ -1506,7 +1518,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional, default to c4055754-ba2d-4f57-a990-6e990abbbd90)
+         * @param requestId This request id will be added to all files that get synced using the generated OAuth URL (optional)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder requestId(String requestId) {
@@ -3307,7 +3319,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 991e89b6-1e71-41e1-bdc4-4dd475f21696)
+         * @param requestId  (optional)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder requestId(String requestId) {
@@ -3815,7 +3827,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set requestId
-         * @param requestId  (optional, default to 991e89b6-1e71-41e1-bdc4-4dd475f21696)
+         * @param requestId  (optional)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder requestId(String requestId) {

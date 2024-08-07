@@ -20,6 +20,8 @@ type S3AuthRequest struct {
 	AccessKeySecret string `json:"access_key_secret"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
+	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
 }
 
 // NewS3AuthRequest instantiates a new S3AuthRequest object
@@ -125,6 +127,48 @@ func (o *S3AuthRequest) SetSyncSourceItems(v bool) {
 	o.SyncSourceItems = &v
 }
 
+// GetEndpointUrl returns the EndpointUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *S3AuthRequest) GetEndpointUrl() string {
+	if o == nil || isNil(o.EndpointUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointUrl.Get()
+}
+
+// GetEndpointUrlOk returns a tuple with the EndpointUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *S3AuthRequest) GetEndpointUrlOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.EndpointUrl.Get(), o.EndpointUrl.IsSet()
+}
+
+// HasEndpointUrl returns a boolean if a field has been set.
+func (o *S3AuthRequest) HasEndpointUrl() bool {
+	if o != nil && o.EndpointUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointUrl gets a reference to the given NullableString and assigns it to the EndpointUrl field.
+func (o *S3AuthRequest) SetEndpointUrl(v string) {
+	o.EndpointUrl.Set(&v)
+}
+// SetEndpointUrlNil sets the value for EndpointUrl to be an explicit nil
+func (o *S3AuthRequest) SetEndpointUrlNil() {
+	o.EndpointUrl.Set(nil)
+}
+
+// UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
+func (o *S3AuthRequest) UnsetEndpointUrl() {
+	o.EndpointUrl.Unset()
+}
+
 func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -135,6 +179,9 @@ func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SyncSourceItems) {
 		toSerialize["sync_source_items"] = o.SyncSourceItems
+	}
+	if o.EndpointUrl.IsSet() {
+		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
 	}
 	return json.Marshal(toSerialize)
 }

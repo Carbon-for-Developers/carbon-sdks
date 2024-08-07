@@ -159,4 +159,12 @@ public class OANSCZGFTest {
         // TODO: test accessKeySecret
     }
 
+    /**
+     * Test the property 'endpointUrl'
+     */
+    @Test
+    public void endpointUrlTest() {
+        // TODO: test endpointUrl
+    }
+
 }

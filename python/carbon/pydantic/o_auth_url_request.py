@@ -63,7 +63,7 @@ class OAuthURLRequest(BaseModel):
     connecting_new_account: typing.Optional[typing.Optional[bool]] = Field(None, alias='connecting_new_account')
 
     # This request id will be added to all files that get synced using the generated OAuth URL
-    request_id: typing.Optional[str] = Field(None, alias='request_id')
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
     # Enable OCR for files that support it. Supported formats: pdf
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')

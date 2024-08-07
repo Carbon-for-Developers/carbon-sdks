@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,10 @@ public class S3AuthRequest {
   public static final String SERIALIZED_NAME_SYNC_SOURCE_ITEMS = "sync_source_items";
   @SerializedName(SERIALIZED_NAME_SYNC_SOURCE_ITEMS)
   private Boolean syncSourceItems = true;
+
+  public static final String SERIALIZED_NAME_ENDPOINT_URL = "endpoint_url";
+  @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
+  private String endpointUrl;
 
   public S3AuthRequest() {
   }
@@ -150,6 +155,35 @@ public class S3AuthRequest {
     this.syncSourceItems = syncSourceItems;
   }
 
+
+  public S3AuthRequest endpointUrl(String endpointUrl) {
+    
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+    return this;
+  }
+
+   /**
+   * You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets.
+   * @return endpointUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.")
+
+  public String getEndpointUrl() {
+    return endpointUrl;
+  }
+
+
+  public void setEndpointUrl(String endpointUrl) {
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -207,13 +241,25 @@ public class S3AuthRequest {
     S3AuthRequest s3AuthRequest = (S3AuthRequest) o;
     return Objects.equals(this.accessKey, s3AuthRequest.accessKey) &&
         Objects.equals(this.accessKeySecret, s3AuthRequest.accessKeySecret) &&
-        Objects.equals(this.syncSourceItems, s3AuthRequest.syncSourceItems)&&
+        Objects.equals(this.syncSourceItems, s3AuthRequest.syncSourceItems) &&
+        Objects.equals(this.endpointUrl, s3AuthRequest.endpointUrl)&&
         Objects.equals(this.additionalProperties, s3AuthRequest.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessKeySecret, syncSourceItems, additionalProperties);
+    return Objects.hash(accessKey, accessKeySecret, syncSourceItems, endpointUrl, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -223,6 +269,7 @@ public class S3AuthRequest {
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
+    sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,6 +296,7 @@ public class S3AuthRequest {
     openapiFields.add("access_key");
     openapiFields.add("access_key_secret");
     openapiFields.add("sync_source_items");
+    openapiFields.add("endpoint_url");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -280,6 +328,9 @@ public class S3AuthRequest {
       }
       if (!jsonObj.get("access_key_secret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_key_secret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_key_secret").toString()));
+      }
+      if (!jsonObj.get("endpoint_url").isJsonNull() && (jsonObj.get("endpoint_url") != null && !jsonObj.get("endpoint_url").isJsonNull()) && !jsonObj.get("endpoint_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endpoint_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint_url").toString()));
       }
   }
 

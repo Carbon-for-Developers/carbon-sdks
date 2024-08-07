@@ -64,7 +64,7 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     connecting_new_account: typing.Optional[bool]
 
     # This request id will be added to all files that get synced using the generated OAuth URL
-    request_id: str
+    request_id: typing.Optional[str]
 
     # Enable OCR for files that support it. Supported formats: pdf
     use_ocr: typing.Optional[bool]

@@ -27,6 +27,8 @@ import com.google.gson.stream.JsonWriter;
  */
 @JsonAdapter(DataSourceTypeNullable.Adapter.class)public enum DataSourceTypeNullable {
   
+  GOOGLE_CLOUD_STORAGE("GOOGLE_CLOUD_STORAGE"),
+  
   GOOGLE_DRIVE("GOOGLE_DRIVE"),
   
   NOTION("NOTION"),

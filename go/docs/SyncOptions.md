@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SyncFilesOnConnection** | Pointer to **NullableBool** | Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk | [optional] [default to true]
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3"]
+**RequestId** | Pointer to **NullableString** |  | [optional] 
 **EnableFilePicker** | Pointer to **bool** |  | [optional] [default to true]
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources. | [optional] [default to false]
@@ -404,6 +404,16 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
+### SetRequestIdNil
+
+`func (o *SyncOptions) SetRequestIdNil(b bool)`
+
+ SetRequestIdNil sets the value for RequestId to be an explicit nil
+
+### UnsetRequestId
+`func (o *SyncOptions) UnsetRequestId()`
+
+UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 ### GetEnableFilePicker
 
 `func (o *SyncOptions) GetEnableFilePicker() bool`

@@ -21,5 +21,7 @@
 
 * `SLACK` (value: `"SLACK"`)
 
+* `GOOGLE_CLOUD_STORAGE` (value: `"GOOGLE_CLOUD_STORAGE"`)
+
 
 

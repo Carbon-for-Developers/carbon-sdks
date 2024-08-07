@@ -17,12 +17,16 @@ module Carbon
 
     attr_accessor :access_key_secret
 
+    # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    attr_accessor :endpoint_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'source' => :'source',
         :'access_key' => :'access_key',
-        :'access_key_secret' => :'access_key_secret'
+        :'access_key_secret' => :'access_key_secret',
+        :'endpoint_url' => :'endpoint_url'
       }
     end
 
@@ -36,7 +40,8 @@ module Carbon
       {
         :'source' => :'Object',
         :'access_key' => :'String',
-        :'access_key_secret' => :'String'
+        :'access_key_secret' => :'String',
+        :'endpoint_url' => :'String'
       }
     end
 
@@ -44,6 +49,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'source',
+        :'endpoint_url'
       ])
     end
 
@@ -72,6 +78,10 @@ module Carbon
 
       if attributes.key?(:'access_key_secret')
         self.access_key_secret = attributes[:'access_key_secret']
+      end
+
+      if attributes.key?(:'endpoint_url')
+        self.endpoint_url = attributes[:'endpoint_url']
       end
     end
 
@@ -105,7 +115,8 @@ module Carbon
       self.class == o.class &&
           source == o.source &&
           access_key == o.access_key &&
-          access_key_secret == o.access_key_secret
+          access_key_secret == o.access_key_secret &&
+          endpoint_url == o.endpoint_url
     end
 
     # @see the `==` method
@@ -117,7 +128,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source, access_key, access_key_secret].hash
+      [source, access_key, access_key_secret, endpoint_url].hash
     end
 
     # Builds the object from hash

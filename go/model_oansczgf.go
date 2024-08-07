@@ -31,6 +31,8 @@ type OANSCZGF struct {
 	ApiKey *string `json:"api_key,omitempty"`
 	AccessKey *string `json:"access_key,omitempty"`
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
+	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
 }
 
 // NewOANSCZGF instantiates a new OANSCZGF object
@@ -533,6 +535,48 @@ func (o *OANSCZGF) SetAccessKeySecret(v string) {
 	o.AccessKeySecret = &v
 }
 
+// GetEndpointUrl returns the EndpointUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OANSCZGF) GetEndpointUrl() string {
+	if o == nil || isNil(o.EndpointUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointUrl.Get()
+}
+
+// GetEndpointUrlOk returns a tuple with the EndpointUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OANSCZGF) GetEndpointUrlOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.EndpointUrl.Get(), o.EndpointUrl.IsSet()
+}
+
+// HasEndpointUrl returns a boolean if a field has been set.
+func (o *OANSCZGF) HasEndpointUrl() bool {
+	if o != nil && o.EndpointUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointUrl gets a reference to the given NullableString and assigns it to the EndpointUrl field.
+func (o *OANSCZGF) SetEndpointUrl(v string) {
+	o.EndpointUrl.Set(&v)
+}
+// SetEndpointUrlNil sets the value for EndpointUrl to be an explicit nil
+func (o *OANSCZGF) SetEndpointUrlNil() {
+	o.EndpointUrl.Set(nil)
+}
+
+// UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
+func (o *OANSCZGF) UnsetEndpointUrl() {
+	o.EndpointUrl.Unset()
+}
+
 func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -579,6 +623,9 @@ func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.AccessKeySecret) {
 		toSerialize["access_key_secret"] = o.AccessKeySecret
+	}
+	if o.EndpointUrl.IsSet() {
+		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
 	}
 	return json.Marshal(toSerialize)
 }

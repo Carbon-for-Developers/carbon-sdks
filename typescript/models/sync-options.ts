@@ -84,7 +84,7 @@ export interface SyncOptions {
      * @type {string}
      * @memberof SyncOptions
      */
-    'request_id'?: string;
+    'request_id'?: string | null;
     /**
      * 
      * @type {boolean}

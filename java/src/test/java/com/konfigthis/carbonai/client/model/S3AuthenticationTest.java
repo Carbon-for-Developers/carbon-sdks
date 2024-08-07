@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -60,6 +61,14 @@ public class S3AuthenticationTest {
     @Test
     public void accessKeySecretTest() {
         // TODO: test accessKeySecret
+    }
+
+    /**
+     * Test the property 'endpointUrl'
+     */
+    @Test
+    public void endpointUrlTest() {
+        // TODO: test endpointUrl
     }
 
 }

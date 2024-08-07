@@ -37,6 +37,7 @@ class DataSourceTypeNullable(
 
     class MetaOapg:
         enum_value_to_name = {
+            "GOOGLE_CLOUD_STORAGE": "GOOGLE_CLOUD_STORAGE",
             "GOOGLE_DRIVE": "GOOGLE_DRIVE",
             "NOTION": "NOTION",
             "NOTION_DATABASE": "NOTION_DATABASE",
@@ -93,6 +94,10 @@ class DataSourceTypeNullable(
             "WEBM": "WEBM",
             "EML": "EML",
         }
+    
+    @schemas.classproperty
+    def GOOGLE_CLOUD_STORAGE(cls):
+        return cls("GOOGLE_CLOUD_STORAGE")
     
     @schemas.classproperty
     def GOOGLE_DRIVE(cls):

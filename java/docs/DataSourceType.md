@@ -5,6 +5,8 @@
 ## Enum
 
 
+* `GOOGLE_CLOUD_STORAGE` (value: `"GOOGLE_CLOUD_STORAGE"`)
+
 * `GOOGLE_DRIVE` (value: `"GOOGLE_DRIVE"`)
 
 * `NOTION` (value: `"NOTION"`)

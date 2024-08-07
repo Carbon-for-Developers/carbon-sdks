@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-SimpleOAuthDataSources = Literal["GOOGLE_DRIVE", "INTERCOM", "DROPBOX", "ONEDRIVE", "BOX", "GMAIL", "OUTLOOK", "SLACK"]
+SimpleOAuthDataSources = Literal["GOOGLE_DRIVE", "INTERCOM", "DROPBOX", "ONEDRIVE", "BOX", "GMAIL", "OUTLOOK", "SLACK", "GOOGLE_CLOUD_STORAGE"]

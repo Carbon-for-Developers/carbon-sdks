@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type SimpleOAuthDataSources = 'GOOGLE_DRIVE' | 'INTERCOM' | 'DROPBOX' | 'ONEDRIVE' | 'BOX' | 'GMAIL' | 'OUTLOOK' | 'SLACK'
+export type SimpleOAuthDataSources = 'GOOGLE_DRIVE' | 'INTERCOM' | 'DROPBOX' | 'ONEDRIVE' | 'BOX' | 'GMAIL' | 'OUTLOOK' | 'SLACK' | 'GOOGLE_CLOUD_STORAGE'
 

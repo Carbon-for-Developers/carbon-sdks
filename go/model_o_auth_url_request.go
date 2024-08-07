@@ -40,7 +40,7 @@ type OAuthURLRequest struct {
 	// Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
 	ConnectingNewAccount NullableBool `json:"connecting_new_account,omitempty"`
 	// This request id will be added to all files that get synced using the generated OAuth URL
-	RequestId *string `json:"request_id,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
 	// Enable OCR for files that support it. Supported formats: pdf
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
@@ -78,8 +78,6 @@ func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "c4055754-ba2d-4f57-a990-6e990abbbd90"
-	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
@@ -116,8 +114,6 @@ func NewOAuthURLRequestWithDefaults() *OAuthURLRequest {
 	this.SetPageAsBoundary = &setPageAsBoundary
 	var connectingNewAccount bool = false
 	this.ConnectingNewAccount = *NewNullableBool(&connectingNewAccount)
-	var requestId string = "c4055754-ba2d-4f57-a990-6e990abbbd90"
-	this.RequestId = &requestId
 	var useOcr bool = false
 	this.UseOcr = *NewNullableBool(&useOcr)
 	var parsePdfTablesWithOcr bool = false
@@ -892,36 +888,46 @@ func (o *OAuthURLRequest) UnsetConnectingNewAccount() {
 	o.ConnectingNewAccount.Unset()
 }
 
-// GetRequestId returns the RequestId field value if set, zero value otherwise.
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthURLRequest) GetRequestId() string {
-	if o == nil || isNil(o.RequestId) {
+	if o == nil || isNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RequestId
+	return *o.RequestId.Get()
 }
 
 // GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OAuthURLRequest) GetRequestIdOk() (*string, bool) {
-	if o == nil || isNil(o.RequestId) {
+	if o == nil {
     return nil, false
 	}
-	return o.RequestId, true
+	return o.RequestId.Get(), o.RequestId.IsSet()
 }
 
 // HasRequestId returns a boolean if a field has been set.
 func (o *OAuthURLRequest) HasRequestId() bool {
-	if o != nil && !isNil(o.RequestId) {
+	if o != nil && o.RequestId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
 func (o *OAuthURLRequest) SetRequestId(v string) {
-	o.RequestId = &v
+	o.RequestId.Set(&v)
+}
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *OAuthURLRequest) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
+
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *OAuthURLRequest) UnsetRequestId() {
+	o.RequestId.Unset()
 }
 
 // GetUseOcr returns the UseOcr field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1205,8 +1211,8 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	if o.ConnectingNewAccount.IsSet() {
 		toSerialize["connecting_new_account"] = o.ConnectingNewAccount.Get()
 	}
-	if !isNil(o.RequestId) {
-		toSerialize["request_id"] = o.RequestId
+	if o.RequestId.IsSet() {
+		toSerialize["request_id"] = o.RequestId.Get()
 	}
 	if o.UseOcr.IsSet() {
 		toSerialize["use_ocr"] = o.UseOcr.Get()
