@@ -19,9 +19,10 @@ module Carbon
     GMAIL = "GMAIL".freeze
     OUTLOOK = "OUTLOOK".freeze
     SLACK = "SLACK".freeze
+    GOOGLE_CLOUD_STORAGE = "GOOGLE_CLOUD_STORAGE".freeze
 
     def self.all_vars
-      @all_vars ||= [GOOGLE_DRIVE, INTERCOM, DROPBOX, ONEDRIVE, BOX, GMAIL, OUTLOOK, SLACK].freeze
+      @all_vars ||= [GOOGLE_DRIVE, INTERCOM, DROPBOX, ONEDRIVE, BOX, GMAIL, OUTLOOK, SLACK, GOOGLE_CLOUD_STORAGE].freeze
     end
 
     # Builds the enum from string

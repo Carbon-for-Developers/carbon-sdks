@@ -255,7 +255,7 @@ query_user_data_sources_response = carbon.data_sources.query_user_data_sources(
     order_by="created_at",
     order_dir="desc",
     filters={
-        "source": "GOOGLE_DRIVE",
+        "source": "GOOGLE_CLOUD_STORAGE",
     },
 )
 ```
@@ -1459,7 +1459,6 @@ connect_data_source_response = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks": False,
         "sync_files_on_connection": True,
         "set_page_as_boundary": False,
-        "request_id": "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
         "enable_file_picker": True,
         "sync_source_items": True,
         "incremental_sync": False,
@@ -1641,13 +1640,16 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ### `carbon.integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
-Create a new IAM user with permissions to:
+This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
+For S3, create a new IAM user with permissions to:
 <ol>
 <li>List all buckets.</li>
 <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
 the same permissions.</li>
 </ol>
-Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.  
+For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.
+Endpoint URL is required to connect Digital Ocean Spaces.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1656,6 +1658,7 @@ create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
     access_key="string_example",
     access_key_secret="string_example",
     sync_source_items=True,
+    endpoint_url="string_example",
 )
 ```
 
@@ -1668,6 +1671,10 @@ create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### endpoint_url: `Optional[str]`<a id="endpoint_url-optionalstr"></a>
+
+You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1695,7 +1702,7 @@ success state.
 
 ```python
 get_oauth_url_response = carbon.integrations.get_oauth_url(
-    service="GOOGLE_DRIVE",
+    service="GOOGLE_CLOUD_STORAGE",
     tags=None,
     scope="string_example",
     chunk_size=1500,
@@ -1714,7 +1721,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     set_page_as_boundary=False,
     data_source_id=1,
     connecting_new_account=False,
-    request_id="c4055754-ba2d-4f57-a990-6e990abbbd90",
+    request_id="string_example",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     enable_file_picker=True,
@@ -1778,7 +1785,7 @@ Used to specify a data source to sync from if you have multiple connected. It ca
 
 Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
 
-##### request_id: `str`<a id="request_id-str"></a>
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 This request id will be added to all files that get synced using the generated OAuth URL
 
@@ -2106,7 +2113,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="991e89b6-1e71-41e1-bdc4-4dd475f21696",
+    request_id="string_example",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2147,7 +2154,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
-##### request_id: `str`<a id="request_id-str"></a>
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 
@@ -2228,7 +2235,7 @@ sync_files_response = carbon.integrations.sync_files(
     prepend_filename_to_chunks=False,
     max_items_per_chunk=1,
     set_page_as_boundary=False,
-    request_id="991e89b6-1e71-41e1-bdc4-4dd475f21696",
+    request_id="string_example",
     use_ocr=False,
     parse_pdf_tables_with_ocr=False,
     incremental_sync=False,
@@ -2269,7 +2276,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
 
-##### request_id: `str`<a id="request_id-str"></a>
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
 
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 

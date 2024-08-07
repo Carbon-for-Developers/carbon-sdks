@@ -198,7 +198,7 @@ result = carbon.data_sources.query_user_data_sources(
   order_by: "created_at",
   order_dir: "desc",
   filters: {
-        "source" => "GOOGLE_DRIVE",
+        "source" => "GOOGLE_CLOUD_STORAGE",
     },
 )
 p result
@@ -1314,7 +1314,6 @@ result = carbon.integrations.connect_data_source(
         "prepend_filename_to_chunks" => false,
         "sync_files_on_connection" => true,
         "set_page_as_boundary" => false,
-        "request_id" => "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3",
         "enable_file_picker" => true,
         "sync_source_items" => true,
         "incremental_sync" => false,
@@ -1465,13 +1464,16 @@ via list items endpoint
 
 ### `carbon.integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
-Create a new IAM user with permissions to:
+This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
+For S3, create a new IAM user with permissions to:
 <ol>
 <li>List all buckets.</li>
 <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry 
 the same permissions.</li>
 </ol>
-Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.  
+For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.
+Endpoint URL is required to connect Digital Ocean Spaces.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1480,6 +1482,7 @@ result = carbon.integrations.create_aws_iam_user(
   access_key: "string_example",
   access_key_secret: "string_example",
   sync_source_items: true,
+  endpoint_url: "string_example",
 )
 p result
 ```
@@ -1491,6 +1494,11 @@ p result
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
+
+##### endpoint_url: `String`<a id="endpoint_url-string"></a>
+You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space
+through this endpoint. The URL should be of format
+<region>.digitaloceanspaces.com. It's not required for S3 buckets.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1516,7 +1524,7 @@ success state.
 
 ```ruby
 result = carbon.integrations.get_oauth_url(
-  service: "GOOGLE_DRIVE",
+  service: "GOOGLE_CLOUD_STORAGE",
   tags: None,
   scope: "string_example",
   chunk_size: 1500,
@@ -1535,7 +1543,7 @@ result = carbon.integrations.get_oauth_url(
   set_page_as_boundary: false,
   data_source_id: 1,
   connecting_new_account: false,
-  request_id: "c4055754-ba2d-4f57-a990-6e990abbbd90",
+  request_id: "string_example",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   enable_file_picker: true,
@@ -1903,7 +1911,7 @@ result = carbon.integrations.sync_confluence(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
+  request_id: "string_example",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,
@@ -2009,7 +2017,7 @@ result = carbon.integrations.sync_files(
   prepend_filename_to_chunks: false,
   max_items_per_chunk: 1,
   set_page_as_boundary: false,
-  request_id: "991e89b6-1e71-41e1-bdc4-4dd475f21696",
+  request_id: "string_example",
   use_ocr: false,
   parse_pdf_tables_with_ocr: false,
   incremental_sync: false,

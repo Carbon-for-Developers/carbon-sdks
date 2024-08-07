@@ -131,7 +131,7 @@ public class OAuthURLRequest {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "c4055754-ba2d-4f57-a990-6e990abbbd90";
+  private String requestId;
 
   public static final String SERIALIZED_NAME_USE_OCR = "use_ocr";
   @SerializedName(SERIALIZED_NAME_USE_OCR)
@@ -725,7 +725,7 @@ public class OAuthURLRequest {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c4055754-ba2d-4f57-a990-6e990abbbd90", value = "This request id will be added to all files that get synced using the generated OAuth URL")
+  @ApiModelProperty(value = "This request id will be added to all files that get synced using the generated OAuth URL")
 
   public String getRequestId() {
     return requestId;
@@ -1135,7 +1135,7 @@ public class OAuthURLRequest {
       if (!jsonObj.get("salesforce_domain").isJsonNull() && (jsonObj.get("salesforce_domain") != null && !jsonObj.get("salesforce_domain").isJsonNull()) && !jsonObj.get("salesforce_domain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesforce_domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesforce_domain").toString()));
       }
-      if ((jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
+      if (!jsonObj.get("request_id").isJsonNull() && (jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
       // validate the optional field `file_sync_config`

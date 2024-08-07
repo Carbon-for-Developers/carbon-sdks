@@ -41,7 +41,9 @@ import com.google.gson.stream.JsonWriter;
   
   OUTLOOK("OUTLOOK"),
   
-  SLACK("SLACK");
+  SLACK("SLACK"),
+  
+  GOOGLE_CLOUD_STORAGE("GOOGLE_CLOUD_STORAGE");
 
   private String value;
 

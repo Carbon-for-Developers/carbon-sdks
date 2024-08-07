@@ -43,7 +43,7 @@ class SyncFilesRequest(BaseModel):
 
     set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
 
-    request_id: typing.Optional[str] = Field(None, alias='request_id')
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
 

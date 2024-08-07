@@ -110,6 +110,10 @@ public class OAuthAuthentication {
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY_SECRET)
   private String accessKeySecret;
 
+  public static final String SERIALIZED_NAME_ENDPOINT_URL = "endpoint_url";
+  @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
+  private String endpointUrl;
+
   public OAuthAuthentication() {
   }
 
@@ -547,6 +551,35 @@ public class OAuthAuthentication {
     this.accessKeySecret = accessKeySecret;
   }
 
+
+  public OAuthAuthentication endpointUrl(String endpointUrl) {
+    
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+    return this;
+  }
+
+   /**
+   * You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets.
+   * @return endpointUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.")
+
+  public String getEndpointUrl() {
+    return endpointUrl;
+  }
+
+
+  public void setEndpointUrl(String endpointUrl) {
+    
+    
+    
+    this.endpointUrl = endpointUrl;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -616,7 +649,8 @@ public class OAuthAuthentication {
         Objects.equals(this.domain, oauthAuthentication.domain) &&
         Objects.equals(this.apiKey, oauthAuthentication.apiKey) &&
         Objects.equals(this.accessKey, oauthAuthentication.accessKey) &&
-        Objects.equals(this.accessKeySecret, oauthAuthentication.accessKeySecret)&&
+        Objects.equals(this.accessKeySecret, oauthAuthentication.accessKeySecret) &&
+        Objects.equals(this.endpointUrl, oauthAuthentication.endpointUrl)&&
         Objects.equals(this.additionalProperties, oauthAuthentication.additionalProperties);
   }
 
@@ -626,7 +660,7 @@ public class OAuthAuthentication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, additionalProperties);
+    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -655,6 +689,7 @@ public class OAuthAuthentication {
     sb.append("    apiKey: ").append(toIndentedString(apiKey)).append("\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
+    sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -693,6 +728,7 @@ public class OAuthAuthentication {
     openapiFields.add("api_key");
     openapiFields.add("access_key");
     openapiFields.add("access_key_secret");
+    openapiFields.add("endpoint_url");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -759,6 +795,9 @@ public class OAuthAuthentication {
       }
       if ((jsonObj.get("access_key_secret") != null && !jsonObj.get("access_key_secret").isJsonNull()) && !jsonObj.get("access_key_secret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `access_key_secret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_key_secret").toString()));
+      }
+      if (!jsonObj.get("endpoint_url").isJsonNull() && (jsonObj.get("endpoint_url") != null && !jsonObj.get("endpoint_url").isJsonNull()) && !jsonObj.get("endpoint_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endpoint_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint_url").toString()));
       }
   }
 

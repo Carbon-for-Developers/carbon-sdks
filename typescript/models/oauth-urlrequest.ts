@@ -139,7 +139,7 @@ export interface OAuthURLRequest {
      * @type {string}
      * @memberof OAuthURLRequest
      */
-    'request_id'?: string;
+    'request_id'?: string | null;
     /**
      * Enable OCR for files that support it. Supported formats: pdf
      * @type {boolean}

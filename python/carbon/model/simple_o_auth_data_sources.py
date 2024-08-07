@@ -42,6 +42,7 @@ class SimpleOAuthDataSources(
             "GMAIL": "GMAIL",
             "OUTLOOK": "OUTLOOK",
             "SLACK": "SLACK",
+            "GOOGLE_CLOUD_STORAGE": "GOOGLE_CLOUD_STORAGE",
         }
     
     @schemas.classproperty
@@ -75,3 +76,7 @@ class SimpleOAuthDataSources(
     @schemas.classproperty
     def SLACK(cls):
         return cls("SLACK")
+    
+    @schemas.classproperty
+    def GOOGLE_CLOUD_STORAGE(cls):
+        return cls("GOOGLE_CLOUD_STORAGE")

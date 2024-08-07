@@ -502,7 +502,7 @@ public class Example {
 
 S3 Auth
 
-Create a new IAM user with permissions to: &lt;ol&gt; &lt;li&gt;List all buckets.&lt;/li&gt; &lt;li&gt;Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.&lt;/li&gt; &lt;/ol&gt; Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.
+This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)   For S3, create a new IAM user with permissions to: &lt;ol&gt; &lt;li&gt;List all buckets.&lt;/li&gt; &lt;li&gt;Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.&lt;/li&gt; &lt;/ol&gt; Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.   For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces. Endpoint URL is required to connect Digital Ocean Spaces.
 
 ### Example
 ```java
@@ -532,11 +532,13 @@ public class Example {
     String accessKey = "accessKey_example";
     String accessKeySecret = "accessKeySecret_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    String endpointUrl = "endpointUrl_example"; // You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     try {
       OrganizationUserDataSourceAPI result = client
               .integrations
               .createAwsIamUser(accessKey, accessKeySecret)
               .syncSourceItems(syncSourceItems)
+              .endpointUrl(endpointUrl)
               .execute();
       System.out.println(result);
       System.out.println(result.getId());
@@ -570,6 +572,7 @@ public class Example {
               .integrations
               .createAwsIamUser(accessKey, accessKeySecret)
               .syncSourceItems(syncSourceItems)
+              .endpointUrl(endpointUrl)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -645,7 +648,7 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    DataSourceType service = DataSourceType.fromValue("GOOGLE_DRIVE");
+    DataSourceType service = DataSourceType.fromValue("GOOGLE_CLOUD_STORAGE");
     Object tags = null;
     String scope = "scope_example";
     Integer chunkSize = 1500;
@@ -664,7 +667,7 @@ public class Example {
     Boolean setPageAsBoundary = false;
     Integer dataSourceId = 56; // Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
     Boolean connectingNewAccount = false; // Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
-    String requestId = "c4055754-ba2d-4f57-a990-6e990abbbd90"; // This request id will be added to all files that get synced using the generated OAuth URL
+    String requestId = "requestId_example"; // This request id will be added to all files that get synced using the generated OAuth URL
     Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: pdf
     Boolean parsePdfTablesWithOcr = false;
     Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
@@ -1630,7 +1633,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "991e89b6-1e71-41e1-bdc4-4dd475f21696";
+    String requestId = "requestId_example";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.
@@ -1879,7 +1882,7 @@ public class Example {
     Boolean prependFilenameToChunks = false;
     Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
     Boolean setPageAsBoundary = false;
-    String requestId = "991e89b6-1e71-41e1-bdc4-4dd475f21696";
+    String requestId = "requestId_example";
     Boolean useOcr = false;
     Boolean parsePdfTablesWithOcr = false;
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources.

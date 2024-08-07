@@ -25,5 +25,8 @@ class OptionalS3AuthRequest(TypedDict, total=False):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
 
+    # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    endpoint_url: typing.Optional[str]
+
 class S3AuthRequest(RequiredS3AuthRequest, OptionalS3AuthRequest):
     pass

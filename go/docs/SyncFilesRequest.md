@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **PrependFilenameToChunks** | Pointer to **NullableBool** |  | [optional] [default to false]
 **MaxItemsPerChunk** | Pointer to **NullableInt32** | Number of objects per chunk. For csv, tsv, xlsx, and json files only. | [optional] 
 **SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
-**RequestId** | Pointer to **string** |  | [optional] [default to "991e89b6-1e71-41e1-bdc4-4dd475f21696"]
+**RequestId** | Pointer to **NullableString** |  | [optional] 
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK. It will be ignored for other data sources. | [optional] [default to false]
@@ -410,6 +410,16 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
+### SetRequestIdNil
+
+`func (o *SyncFilesRequest) SetRequestIdNil(b bool)`
+
+ SetRequestIdNil sets the value for RequestId to be an explicit nil
+
+### UnsetRequestId
+`func (o *SyncFilesRequest) UnsetRequestId()`
+
+UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
 ### GetUseOcr
 
 `func (o *SyncFilesRequest) GetUseOcr() bool`

@@ -35,5 +35,11 @@ export interface S3Authentication {
      * @memberof S3Authentication
      */
     'access_key_secret': string;
+    /**
+     * You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It\'s not required for S3 buckets.
+     * @type {string}
+     * @memberof S3Authentication
+     */
+    'endpoint_url'?: string | null;
 }
 

@@ -20,6 +20,7 @@ type DataSourceTypeNullable string
 
 // List of DataSourceTypeNullable
 const (
+	DATASOURCETYPENULLABLE_GOOGLE_CLOUD_STORAGE DataSourceTypeNullable = "GOOGLE_CLOUD_STORAGE"
 	DATASOURCETYPENULLABLE_GOOGLE_DRIVE DataSourceTypeNullable = "GOOGLE_DRIVE"
 	DATASOURCETYPENULLABLE_NOTION DataSourceTypeNullable = "NOTION"
 	DATASOURCETYPENULLABLE_NOTION_DATABASE DataSourceTypeNullable = "NOTION_DATABASE"
@@ -79,6 +80,7 @@ const (
 
 // All allowed values of DataSourceTypeNullable enum
 var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
+	"GOOGLE_CLOUD_STORAGE",
 	"GOOGLE_DRIVE",
 	"NOTION",
 	"NOTION_DATABASE",

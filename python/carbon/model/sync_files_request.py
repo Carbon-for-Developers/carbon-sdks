@@ -272,7 +272,26 @@ class SyncFilesRequest(
                         _configuration=_configuration,
                     )
             set_page_as_boundary = schemas.BoolSchema
-            request_id = schemas.StrSchema
+            
+            
+            class request_id(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'request_id':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             
             
             class use_ocr(
@@ -465,7 +484,7 @@ class SyncFilesRequest(
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
         max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
-        request_id: typing.Union[MetaOapg.properties.request_id, str, schemas.Unset] = schemas.unset,
+        request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         use_ocr: typing.Union[MetaOapg.properties.use_ocr, None, bool, schemas.Unset] = schemas.unset,
         parse_pdf_tables_with_ocr: typing.Union[MetaOapg.properties.parse_pdf_tables_with_ocr, None, bool, schemas.Unset] = schemas.unset,
         incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,

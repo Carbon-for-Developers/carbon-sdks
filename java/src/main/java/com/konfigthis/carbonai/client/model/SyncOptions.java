@@ -94,7 +94,7 @@ public class SyncOptions {
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  private String requestId = "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3";
+  private String requestId;
 
   public static final String SERIALIZED_NAME_ENABLE_FILE_PICKER = "enable_file_picker";
   @SerializedName(SERIALIZED_NAME_ENABLE_FILE_PICKER)
@@ -419,7 +419,7 @@ public class SyncOptions {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3", value = "")
+  @ApiModelProperty(value = "")
 
   public String getRequestId() {
     return requestId;
@@ -712,7 +712,7 @@ public class SyncOptions {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SyncOptions is not found in the empty JSON string", SyncOptions.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
+      if (!jsonObj.get("request_id").isJsonNull() && (jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
       // validate the optional field `file_sync_config`

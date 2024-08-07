@@ -105,6 +105,7 @@ module Carbon
         :'generate_sparse_vectors',
         :'prepend_filename_to_chunks',
         :'max_items_per_chunk',
+        :'request_id',
         :'use_ocr',
         :'parse_pdf_tables_with_ocr',
         :'file_sync_config'
@@ -186,8 +187,6 @@ module Carbon
 
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
-      else
-        self.request_id = '991e89b6-1e71-41e1-bdc4-4dd475f21696'
       end
 
       if attributes.key?(:'use_ocr')

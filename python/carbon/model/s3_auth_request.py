@@ -41,10 +41,31 @@ class S3AuthRequest(
             access_key = schemas.StrSchema
             access_key_secret = schemas.StrSchema
             sync_source_items = schemas.BoolSchema
+            
+            
+            class endpoint_url(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'endpoint_url':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "access_key": access_key,
                 "access_key_secret": access_key_secret,
                 "sync_source_items": sync_source_items,
+                "endpoint_url": endpoint_url,
             }
     
     access_key: MetaOapg.properties.access_key
@@ -60,9 +81,12 @@ class S3AuthRequest(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["endpoint_url"]) -> MetaOapg.properties.endpoint_url: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", "endpoint_url", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -77,9 +101,12 @@ class S3AuthRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["endpoint_url"]) -> typing.Union[MetaOapg.properties.endpoint_url, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["access_key", "access_key_secret", "sync_source_items", "endpoint_url", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -89,6 +116,7 @@ class S3AuthRequest(
         access_key: typing.Union[MetaOapg.properties.access_key, str, ],
         access_key_secret: typing.Union[MetaOapg.properties.access_key_secret, str, ],
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
+        endpoint_url: typing.Union[MetaOapg.properties.endpoint_url, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'S3AuthRequest':
@@ -98,6 +126,7 @@ class S3AuthRequest(
             access_key=access_key,
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
+            endpoint_url=endpoint_url,
             _configuration=_configuration,
             **kwargs,
         )

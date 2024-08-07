@@ -533,6 +533,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'sync_source_items'
             },
+            {
+                name: 'endpoint_url'
+            },
         ]
     },
     '/integrations/oauth_url-POST': {

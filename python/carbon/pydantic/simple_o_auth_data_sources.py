@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
-SimpleOAuthDataSources = Literal["GOOGLE_DRIVE", "INTERCOM", "DROPBOX", "ONEDRIVE", "BOX", "GMAIL", "OUTLOOK", "SLACK"]
+SimpleOAuthDataSources = Literal["GOOGLE_DRIVE", "INTERCOM", "DROPBOX", "ONEDRIVE", "BOX", "GMAIL", "OUTLOOK", "SLACK", "GOOGLE_CLOUD_STORAGE"]

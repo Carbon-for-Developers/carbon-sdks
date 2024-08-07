@@ -18,12 +18,16 @@ module Carbon
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
+    # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    attr_accessor :endpoint_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'access_key' => :'access_key',
         :'access_key_secret' => :'access_key_secret',
-        :'sync_source_items' => :'sync_source_items'
+        :'sync_source_items' => :'sync_source_items',
+        :'endpoint_url' => :'endpoint_url'
       }
     end
 
@@ -37,13 +41,15 @@ module Carbon
       {
         :'access_key' => :'String',
         :'access_key_secret' => :'String',
-        :'sync_source_items' => :'Boolean'
+        :'sync_source_items' => :'Boolean',
+        :'endpoint_url' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'endpoint_url'
       ])
     end
 
@@ -74,6 +80,10 @@ module Carbon
         self.sync_source_items = attributes[:'sync_source_items']
       else
         self.sync_source_items = true
+      end
+
+      if attributes.key?(:'endpoint_url')
+        self.endpoint_url = attributes[:'endpoint_url']
       end
     end
 
@@ -107,7 +117,8 @@ module Carbon
       self.class == o.class &&
           access_key == o.access_key &&
           access_key_secret == o.access_key_secret &&
-          sync_source_items == o.sync_source_items
+          sync_source_items == o.sync_source_items &&
+          endpoint_url == o.endpoint_url
     end
 
     # @see the `==` method
@@ -119,7 +130,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_key, access_key_secret, sync_source_items].hash
+      [access_key, access_key_secret, sync_source_items, endpoint_url].hash
     end
 
     # Builds the object from hash

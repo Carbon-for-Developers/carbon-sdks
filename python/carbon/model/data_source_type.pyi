@@ -32,6 +32,10 @@ class DataSourceType(
     """
     
     @schemas.classproperty
+    def GOOGLE_CLOUD_STORAGE(cls):
+        return cls("GOOGLE_CLOUD_STORAGE")
+    
+    @schemas.classproperty
     def GOOGLE_DRIVE(cls):
         return cls("GOOGLE_DRIVE")
     

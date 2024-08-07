@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessKey** | **string** |  | 
 **AccessKeySecret** | **string** |  | 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
+**EndpointUrl** | Pointer to **NullableString** | You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. | [optional] 
 
 ## Methods
 
@@ -92,6 +93,41 @@ SetSyncSourceItems sets SyncSourceItems field to given value.
 
 HasSyncSourceItems returns a boolean if a field has been set.
 
+### GetEndpointUrl
+
+`func (o *S3AuthRequest) GetEndpointUrl() string`
+
+GetEndpointUrl returns the EndpointUrl field if non-nil, zero value otherwise.
+
+### GetEndpointUrlOk
+
+`func (o *S3AuthRequest) GetEndpointUrlOk() (*string, bool)`
+
+GetEndpointUrlOk returns a tuple with the EndpointUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointUrl
+
+`func (o *S3AuthRequest) SetEndpointUrl(v string)`
+
+SetEndpointUrl sets EndpointUrl field to given value.
+
+### HasEndpointUrl
+
+`func (o *S3AuthRequest) HasEndpointUrl() bool`
+
+HasEndpointUrl returns a boolean if a field has been set.
+
+### SetEndpointUrlNil
+
+`func (o *S3AuthRequest) SetEndpointUrlNil(b bool)`
+
+ SetEndpointUrlNil sets the value for EndpointUrl to be an explicit nil
+
+### UnsetEndpointUrl
+`func (o *S3AuthRequest) UnsetEndpointUrl()`
+
+UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

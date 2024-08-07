@@ -24,6 +24,9 @@ class S3AuthRequest(BaseModel):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: typing.Optional[bool] = Field(None, alias='sync_source_items')
 
+    # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    endpoint_url: typing.Optional[typing.Optional[str]] = Field(None, alias='endpoint_url')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

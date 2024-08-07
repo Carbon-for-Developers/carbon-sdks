@@ -1576,11 +1576,15 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-confluence-sync
   /integrations/s3:
     post:
-      description: "Create a new IAM user with permissions to:\n<ol>\n<li>List all\
-        \ buckets.</li>\n<li>Read from the specific buckets and objects to sync with\
-        \ Carbon. Ensure any future buckets or objects carry \nthe same permissions.</li>\n\
-        </ol>\nOnce created, generate an access key for this user and share the credentials\
-        \ with us. We recommend testing this key beforehand."
+      description: "This endpoint can be used to connect S3 as well as Digital Ocean\
+        \ Spaces (S3 compatible)  \nFor S3, create a new IAM user with permissions\
+        \ to:\n<ol>\n<li>List all buckets.</li>\n<li>Read from the specific buckets\
+        \ and objects to sync with Carbon. Ensure any future buckets or objects carry\
+        \ \nthe same permissions.</li>\n</ol>\nOnce created, generate an access key\
+        \ for this user and share the credentials with us. We recommend testing this\
+        \ key beforehand.  \nFor Digital Ocean Spaces, generate the above credentials\
+        \ in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.\n\
+        Endpoint URL is required to connect Digital Ocean Spaces."
       operationId: Integrations_createAwsIamUser
       requestBody:
         content:
@@ -4134,7 +4138,7 @@ components:
           set_page_as_boundary: false
           chunk_overlap: 20
           skip_embedding_generation: false
-          request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
+          request_id: request_id
         authentication:
           tenant_name: tenant_name
           source: null
@@ -4144,6 +4148,7 @@ components:
           site_name: site_name
           refresh_token: refresh_token
           zotero_id: zotero_id
+          endpoint_url: endpoint_url
           api_key: api_key
           domain: domain
           access_key: access_key
@@ -4170,7 +4175,6 @@ components:
             generate_sparse_vectors: false
             incremental_sync: false
             prepend_filename_to_chunks: false
-            request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
             set_page_as_boundary: false
             skip_embedding_generation: false
             sync_files_on_connection: true
@@ -4263,6 +4267,7 @@ components:
       type: string
     DataSourceType:
       enum:
+      - GOOGLE_CLOUD_STORAGE
       - GOOGLE_DRIVE
       - NOTION
       - NOTION_DATABASE
@@ -6324,6 +6329,13 @@ components:
         access_key_secret:
           title: Access Key Secret
           type: string
+        endpoint_url:
+          description: |-
+            You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.
+                    The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+          nullable: true
+          title: Endpoint Url
+          type: string
       required:
       - source
       title: OAuthAuthentication
@@ -6360,7 +6372,7 @@ components:
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
-        request_id: c4055754-ba2d-4f57-a990-6e990abbbd90
+        request_id: request_id
         zendesk_subdomain: zendesk_subdomain
       properties:
         tags:
@@ -6478,14 +6490,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: c4055754-ba2d-4f57-a990-6e990abbbd90
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: c4055754-ba2d-4f57-a990-6e990abbbd90
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: c4055754-ba2d-4f57-a990-6e990abbbd90
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf"
@@ -7557,6 +7566,7 @@ components:
     S3AuthRequest:
       example:
         sync_source_items: true
+        endpoint_url: endpoint_url
         access_key: access_key
         access_key_secret: access_key_secret
       properties:
@@ -7575,6 +7585,13 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items
+        endpoint_url:
+          description: |-
+            You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.
+                    The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+          nullable: true
+          title: Endpoint Url
+          type: string
       required:
       - access_key
       - access_key_secret
@@ -7589,6 +7606,13 @@ components:
           type: string
         access_key_secret:
           title: Access Key Secret
+          type: string
+        endpoint_url:
+          description: |-
+            You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.
+                    The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+          nullable: true
+          title: Endpoint Url
           type: string
       required:
       - access_key
@@ -7794,6 +7818,7 @@ components:
       - GMAIL
       - OUTLOOK
       - SLACK
+      - GOOGLE_CLOUD_STORAGE
       title: SimpleOAuthDataSources
       type: string
     SingleChunksAndEmbeddingsUploadInput:
@@ -8150,7 +8175,7 @@ components:
         - null
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+        request_id: request_id
         data_source_id: 0
       properties:
         tags:
@@ -8224,12 +8249,9 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false
@@ -8285,7 +8307,7 @@ components:
         set_page_as_boundary: false
         chunk_overlap: 20
         skip_embedding_generation: false
-        request_id: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
+        request_id: request_id
       properties:
         tags:
           nullable: true
@@ -8358,12 +8380,9 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary
         request_id:
-          default: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
-          example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-request_id
         enable_file_picker:
           default: true
           example: true
@@ -9691,6 +9710,7 @@ components:
       type: string
     DataSourceTypeNullable:
       enum:
+      - GOOGLE_CLOUD_STORAGE
       - GOOGLE_DRIVE
       - NOTION
       - NOTION_DATABASE
@@ -10533,10 +10553,6 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id:
-      example: c4055754-ba2d-4f57-a990-6e990abbbd90
-      type: string
-      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-use_ocr:
       example: false
       type: boolean
@@ -10816,10 +10832,6 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id:
-      example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-      type: string
-      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncFilesRequest-properties-use_ocr:
       example: false
       type: boolean
@@ -10859,10 +10871,6 @@ components:
     konfig-generated-schema-components-schemas-SyncOptions-properties-set_page_as_boundary:
       example: false
       type: boolean
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-SyncOptions-properties-request_id:
-      example: f5e8c193-f7e1-4e45-9be5-6aa157dfe3c3
-      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SyncOptions-properties-enable_file_picker:
       example: true
@@ -11239,14 +11247,11 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-connecting_new_account
         request_id:
-          default: c4055754-ba2d-4f57-a990-6e990abbbd90
           description: This request id will be added to all files that get synced
             using the generated OAuth URL
-          example: c4055754-ba2d-4f57-a990-6e990abbbd90
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: c4055754-ba2d-4f57-a990-6e990abbbd90
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-request_id
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf"
@@ -11438,12 +11443,9 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false
@@ -11578,12 +11580,9 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-set_page_as_boundary
         request_id:
-          default: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
+          nullable: true
           title: Request Id
           type: string
-          x-konfig-original-example: 991e89b6-1e71-41e1-bdc4-4dd475f21696
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncFilesRequest-properties-request_id
         use_ocr:
           default: false
           example: false
@@ -11635,6 +11634,13 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items
+        endpoint_url:
+          description: |-
+            You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.
+                    The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+          nullable: true
+          title: Endpoint Url
+          type: string
       required:
       - access_key
       - access_key_secret
@@ -13640,6 +13646,7 @@ components:
         site_name: site_name
         refresh_token: refresh_token
         zotero_id: zotero_id
+        endpoint_url: endpoint_url
         api_key: api_key
         domain: domain
         access_key: access_key
@@ -13692,6 +13699,13 @@ components:
           type: string
         access_key_secret:
           title: Access Key Secret
+          type: string
+        endpoint_url:
+          description: |-
+            You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.
+                    The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+          nullable: true
+          title: Endpoint Url
           type: string
       required:
       - source
@@ -13746,6 +13760,7 @@ components:
         - GMAIL
         - OUTLOOK
         - SLACK
+        - GOOGLE_CLOUD_STORAGE
         title: SimpleOAuthDataSources
         type: string
       - title: Source
