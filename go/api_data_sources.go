@@ -62,7 +62,11 @@ func (a *DataSourcesApiService) QueryUserDataSourcesExecute(r DataSourcesApiQuer
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/user_data_sources"
+    subpath := "/user_data_sources"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -86,7 +90,9 @@ func (a *DataSourcesApiService) QueryUserDataSourcesExecute(r DataSourcesApiQuer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationUserDataSourceQueryInput
+    if !checkNilInterface(r.organizationUserDataSourceQueryInput) {
+        localVarPostBody = r.organizationUserDataSourceQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -129,6 +135,8 @@ func (a *DataSourcesApiService) QueryUserDataSourcesExecute(r DataSourcesApiQuer
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -216,7 +224,11 @@ func (a *DataSourcesApiService) RevokeAccessTokenExecute(r DataSourcesApiRevokeA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/revoke_access_token"
+    subpath := "/revoke_access_token"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,7 +252,9 @@ func (a *DataSourcesApiService) RevokeAccessTokenExecute(r DataSourcesApiRevokeA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.revokeAccessTokenInput
+    if !checkNilInterface(r.revokeAccessTokenInput) {
+        localVarPostBody = r.revokeAccessTokenInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -283,6 +297,8 @@ func (a *DataSourcesApiService) RevokeAccessTokenExecute(r DataSourcesApiRevokeA
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
