@@ -63,7 +63,11 @@ func (a *WebhooksApiService) AddUrlExecute(r WebhooksApiAddUrlRequest) (*Webhook
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/add_webhook"
+    subpath := "/add_webhook"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -87,7 +91,9 @@ func (a *WebhooksApiService) AddUrlExecute(r WebhooksApiAddUrlRequest) (*Webhook
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.addWebhookProps
+    if !checkNilInterface(r.addWebhookProps) {
+        localVarPostBody = r.addWebhookProps
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -102,6 +108,8 @@ func (a *WebhooksApiService) AddUrlExecute(r WebhooksApiAddUrlRequest) (*Webhook
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -189,7 +197,11 @@ func (a *WebhooksApiService) DeleteUrlExecute(r WebhooksApiDeleteUrlRequest) (*G
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/delete_webhook/{webhook_id}"
+    subpath := "/delete_webhook/{webhook_id}"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"webhook_id"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -227,6 +239,8 @@ func (a *WebhooksApiService) DeleteUrlExecute(r WebhooksApiDeleteUrlRequest) (*G
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -314,7 +328,11 @@ func (a *WebhooksApiService) UrlsExecute(r WebhooksApiUrlsRequest) (*WebhookQuer
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/webhooks"
+    subpath := "/webhooks"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -338,7 +356,9 @@ func (a *WebhooksApiService) UrlsExecute(r WebhooksApiUrlsRequest) (*WebhookQuer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.webhookQueryInput
+    if !checkNilInterface(r.webhookQueryInput) {
+        localVarPostBody = r.webhookQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -353,6 +373,8 @@ func (a *WebhooksApiService) UrlsExecute(r WebhooksApiUrlsRequest) (*WebhookQuer
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

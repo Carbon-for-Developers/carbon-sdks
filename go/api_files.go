@@ -76,7 +76,11 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/create_user_file_tags"
+    subpath := "/create_user_file_tags"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -100,7 +104,9 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationUserFileTagCreate
+    if !checkNilInterface(r.organizationUserFileTagCreate) {
+        localVarPostBody = r.organizationUserFileTagCreate
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -143,6 +149,8 @@ func (a *FilesApiService) CreateUserFileTagsExecute(r FilesApiCreateUserFileTags
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -233,7 +241,11 @@ func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSucces
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/deletefile/{file_id}"
+    subpath := "/deletefile/{file_id}"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"file_id"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -299,6 +311,8 @@ func (a *FilesApiService) DeleteExecute(r FilesApiDeleteRequest) (*GenericSucces
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -386,7 +400,11 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/delete_user_file_tags"
+    subpath := "/delete_user_file_tags"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -410,7 +428,9 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationUserFileTagsRemove
+    if !checkNilInterface(r.organizationUserFileTagsRemove) {
+        localVarPostBody = r.organizationUserFileTagsRemove
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -453,6 +473,8 @@ func (a *FilesApiService) DeleteFileTagsExecute(r FilesApiDeleteFileTagsRequest)
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -543,7 +565,11 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/delete_files"
+    subpath := "/delete_files"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -567,7 +593,9 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deleteFilesQueryInput
+    if !checkNilInterface(r.deleteFilesQueryInput) {
+        localVarPostBody = r.deleteFilesQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -610,6 +638,8 @@ func (a *FilesApiService) DeleteManyExecute(r FilesApiDeleteManyRequest) (*Gener
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -697,7 +727,11 @@ func (a *FilesApiService) DeleteV2Execute(r FilesApiDeleteV2Request) (*GenericSu
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/delete_files_v2"
+    subpath := "/delete_files_v2"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -721,7 +755,9 @@ func (a *FilesApiService) DeleteV2Execute(r FilesApiDeleteV2Request) (*GenericSu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deleteFilesV2QueryInput
+    if !checkNilInterface(r.deleteFilesV2QueryInput) {
+        localVarPostBody = r.deleteFilesV2QueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -764,6 +800,8 @@ func (a *FilesApiService) DeleteV2Execute(r FilesApiDeleteV2Request) (*GenericSu
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -856,7 +894,11 @@ func (a *FilesApiService) GetParsedFileExecute(r FilesApiGetParsedFileRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/parsed_file/{file_id}"
+    subpath := "/parsed_file/{file_id}"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"file_id"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -922,6 +964,8 @@ func (a *FilesApiService) GetParsedFileExecute(r FilesApiGetParsedFileRequest) (
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1014,7 +1058,11 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/raw_file/{file_id}"
+    subpath := "/raw_file/{file_id}"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"file_id"+"}", url.PathEscape(parameterToString(r.fileId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1080,6 +1128,8 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1218,7 +1268,11 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/user_files_v2"
+    subpath := "/user_files_v2"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1242,7 +1296,9 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationUserFilesToSyncQueryInput
+    if !checkNilInterface(r.organizationUserFilesToSyncQueryInput) {
+        localVarPostBody = r.organizationUserFilesToSyncQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1285,6 +1341,8 @@ func (a *FilesApiService) QueryUserFilesExecute(r FilesApiQueryUserFilesRequest)
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1377,7 +1435,11 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/user_files"
+    subpath := "/user_files"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1401,7 +1463,9 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationUserFilesToSyncQueryInput
+    if !checkNilInterface(r.organizationUserFilesToSyncQueryInput) {
+        localVarPostBody = r.organizationUserFilesToSyncQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1444,6 +1508,8 @@ func (a *FilesApiService) QueryUserFilesDeprecatedExecute(r FilesApiQueryUserFil
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1531,7 +1597,11 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/resync_file"
+    subpath := "/resync_file"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1555,7 +1625,9 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resyncFileQueryInput
+    if !checkNilInterface(r.resyncFileQueryInput) {
+        localVarPostBody = r.resyncFileQueryInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1598,6 +1670,8 @@ func (a *FilesApiService) ResyncExecute(r FilesApiResyncRequest) (*UserFile, *ht
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1812,7 +1886,11 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/uploadfile"
+    subpath := "/uploadfile"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1892,7 +1970,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	// body params
-	localVarPostBody = r.bodyCreateUploadFileUploadfilePost
+    if !checkNilInterface(r.bodyCreateUploadFileUploadfilePost) {
+        localVarPostBody = r.bodyCreateUploadFileUploadfilePost
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1935,6 +2015,8 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2022,7 +2104,11 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/upload_file_from_url"
+    subpath := "/upload_file_from_url"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2046,7 +2132,9 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uploadFileFromUrlInput
+    if !checkNilInterface(r.uploadFileFromUrlInput) {
+        localVarPostBody = r.uploadFileFromUrlInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2089,6 +2177,8 @@ func (a *FilesApiService) UploadFromUrlExecute(r FilesApiUploadFromUrlRequest) (
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2187,7 +2277,11 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/upload_text"
+    subpath := "/upload_text"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2211,7 +2305,9 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rawTextInput
+    if !checkNilInterface(r.rawTextInput) {
+        localVarPostBody = r.rawTextInput
+    }
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2254,6 +2350,8 @@ func (a *FilesApiService) UploadTextExecute(r FilesApiUploadTextRequest) (*UserF
 			}
 		}
 	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
