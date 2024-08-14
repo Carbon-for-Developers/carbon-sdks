@@ -103,7 +103,7 @@ export class Configuration {
         
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
-        this.userAgent = param.userAgent === undefined ? "Konfig/0.2.20/typescript" : param.userAgent;
+        this.userAgent = param.userAgent === undefined ? "Konfig/0.2.21/typescript" : param.userAgent;
         this.formDataCtor = param.formDataCtor;
     }
 
