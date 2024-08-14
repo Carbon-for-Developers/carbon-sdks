@@ -76,6 +76,9 @@ class GetEmbeddingDocumentsBody(BaseModel):
     # Filter files based on their type at the source (for example help center tickets and articles)
     file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = Field(None, alias='file_types_at_source')
 
+    # Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+    exclude_cold_storage_files: typing.Optional[bool] = Field(None, alias='exclude_cold_storage_files')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

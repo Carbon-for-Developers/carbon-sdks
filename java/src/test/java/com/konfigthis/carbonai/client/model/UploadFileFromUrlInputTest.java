@@ -17,6 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
@@ -155,6 +156,14 @@ public class UploadFileFromUrlInputTest {
     }
 
     /**
+     * Test the property 'includeSpeakerLabels'
+     */
+    @Test
+    public void includeSpeakerLabelsTest() {
+        // TODO: test includeSpeakerLabels
+    }
+
+    /**
      * Test the property 'mediaType'
      */
     @Test
@@ -168,6 +177,14 @@ public class UploadFileFromUrlInputTest {
     @Test
     public void splitRowsTest() {
         // TODO: test splitRows
+    }
+
+    /**
+     * Test the property 'coldStorageParams'
+     */
+    @Test
+    public void coldStorageParamsTest() {
+        // TODO: test coldStorageParams
     }
 
 }

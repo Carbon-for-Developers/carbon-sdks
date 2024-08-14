@@ -65,6 +65,8 @@ public class SentWebhookPayload {
     
     DATA_SOURCE_READY("DATA_SOURCE_READY"),
     
+    EMBEDDING_STORAGE_MODIFIED("EMBEDDING_STORAGE_MODIFIED"),
+    
     FILES_CREATED("FILES_CREATED"),
     
     FILES_SKIPPED("FILES_SKIPPED"),
@@ -78,6 +80,10 @@ public class SentWebhookPayload {
     FILE_STATISTICS_AGGREGATED("FILE_STATISTICS_AGGREGATED"),
     
     FILE_SYNC_LIMIT_REACHED("FILE_SYNC_LIMIT_REACHED"),
+    
+    MOVED_TO_COLD_STORAGE("MOVED_TO_COLD_STORAGE"),
+    
+    MOVED_TO_HOT_STORAGE("MOVED_TO_HOT_STORAGE"),
     
     ORGANIZATION_USER_DELETED("ORGANIZATION_USER_DELETED"),
     
@@ -428,7 +434,9 @@ public class SentWebhookPayload {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

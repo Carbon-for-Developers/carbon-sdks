@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.ChunkPropertiesNullable;
 import com.konfigthis.carbonai.client.model.DataSourceType;
 import com.konfigthis.carbonai.client.model.EmbeddingProperties;
+import com.konfigthis.carbonai.client.model.EmbeddingStorageStatus;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
 import com.konfigthis.carbonai.client.model.FileStatisticsNullable;
 import io.swagger.annotations.ApiModel;
@@ -300,6 +301,30 @@ public class UserFileTest {
     @Test
     public void fileContentsDeletedTest() {
         // TODO: test fileContentsDeleted
+    }
+
+    /**
+     * Test the property 'supportsColdStorage'
+     */
+    @Test
+    public void supportsColdStorageTest() {
+        // TODO: test supportsColdStorage
+    }
+
+    /**
+     * Test the property 'hotStorageTimeToLive'
+     */
+    @Test
+    public void hotStorageTimeToLiveTest() {
+        // TODO: test hotStorageTimeToLive
+    }
+
+    /**
+     * Test the property 'embeddingStorageStatus'
+     */
+    @Test
+    public void embeddingStorageStatusTest() {
+        // TODO: test embeddingStorageStatus
     }
 
     /**

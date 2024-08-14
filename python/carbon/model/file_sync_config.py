@@ -66,12 +66,14 @@ class FileSyncConfig(
             @staticmethod
             def transcription_service() -> typing.Type['TranscriptionServiceNullable']:
                 return TranscriptionServiceNullable
+            include_speaker_labels = schemas.BoolSchema
             split_rows = schemas.BoolSchema
             __annotations__ = {
                 "auto_synced_source_types": auto_synced_source_types,
                 "sync_attachments": sync_attachments,
                 "detect_audio_language": detect_audio_language,
                 "transcription_service": transcription_service,
+                "include_speaker_labels": include_speaker_labels,
                 "split_rows": split_rows,
             }
     
@@ -88,12 +90,15 @@ class FileSyncConfig(
     def __getitem__(self, name: typing_extensions.Literal["transcription_service"]) -> 'TranscriptionServiceNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["include_speaker_labels"]) -> MetaOapg.properties.include_speaker_labels: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["split_rows"]) -> MetaOapg.properties.split_rows: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "split_rows", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -111,12 +116,15 @@ class FileSyncConfig(
     def get_item_oapg(self, name: typing_extensions.Literal["transcription_service"]) -> typing.Union['TranscriptionServiceNullable', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["include_speaker_labels"]) -> typing.Union[MetaOapg.properties.include_speaker_labels, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["split_rows"]) -> typing.Union[MetaOapg.properties.split_rows, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "split_rows", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -127,6 +135,7 @@ class FileSyncConfig(
         sync_attachments: typing.Union[MetaOapg.properties.sync_attachments, bool, schemas.Unset] = schemas.unset,
         detect_audio_language: typing.Union[MetaOapg.properties.detect_audio_language, bool, schemas.Unset] = schemas.unset,
         transcription_service: typing.Union['TranscriptionServiceNullable', schemas.Unset] = schemas.unset,
+        include_speaker_labels: typing.Union[MetaOapg.properties.include_speaker_labels, bool, schemas.Unset] = schemas.unset,
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -138,6 +147,7 @@ class FileSyncConfig(
             sync_attachments=sync_attachments,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             split_rows=split_rows,
             _configuration=_configuration,
             **kwargs,

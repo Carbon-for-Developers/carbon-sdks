@@ -62,6 +62,10 @@ class SentWebhookPayload(
                     return cls("DATA_SOURCE_READY")
                 
                 @schemas.classproperty
+                def EMBEDDING_STORAGE_MODIFIED(cls):
+                    return cls("EMBEDDING_STORAGE_MODIFIED")
+                
+                @schemas.classproperty
                 def FILES_CREATED(cls):
                     return cls("FILES_CREATED")
                 
@@ -88,6 +92,14 @@ class SentWebhookPayload(
                 @schemas.classproperty
                 def FILE_SYNC_LIMIT_REACHED(cls):
                     return cls("FILE_SYNC_LIMIT_REACHED")
+                
+                @schemas.classproperty
+                def MOVED_TO_COLD_STORAGE(cls):
+                    return cls("MOVED_TO_COLD_STORAGE")
+                
+                @schemas.classproperty
+                def MOVED_TO_HOT_STORAGE(cls):
+                    return cls("MOVED_TO_HOT_STORAGE")
                 
                 @schemas.classproperty
                 def ORGANIZATION_USER_DELETED(cls):

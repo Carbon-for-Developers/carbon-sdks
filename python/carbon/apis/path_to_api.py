@@ -48,6 +48,8 @@ from carbon.apis.paths.user_files_v2 import UserFilesV2
 from carbon.apis.paths.create_user_file_tags import CreateUserFileTags
 from carbon.apis.paths.delete_user_file_tags import DeleteUserFileTags
 from carbon.apis.paths.resync_file import ResyncFile
+from carbon.apis.paths.move_to_hot_storage import MoveToHotStorage
+from carbon.apis.paths.modify_cold_storage_parameters import ModifyColdStorageParameters
 from carbon.apis.paths.raw_file_file_id import RawFileFileId
 from carbon.apis.paths.parsed_file_file_id import ParsedFileFileId
 from carbon.apis.paths.user_files import UserFiles
@@ -117,6 +119,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.CREATE_USER_FILE_TAGS: CreateUserFileTags,
         PathValues.DELETE_USER_FILE_TAGS: DeleteUserFileTags,
         PathValues.RESYNC_FILE: ResyncFile,
+        PathValues.MOVE_TO_HOT_STORAGE: MoveToHotStorage,
+        PathValues.MODIFY_COLD_STORAGE_PARAMETERS: ModifyColdStorageParameters,
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,
@@ -187,6 +191,8 @@ path_to_api = PathToApi(
         PathValues.CREATE_USER_FILE_TAGS: CreateUserFileTags,
         PathValues.DELETE_USER_FILE_TAGS: DeleteUserFileTags,
         PathValues.RESYNC_FILE: ResyncFile,
+        PathValues.MOVE_TO_HOT_STORAGE: MoveToHotStorage,
+        PathValues.MODIFY_COLD_STORAGE_PARAMETERS: ModifyColdStorageParameters,
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,

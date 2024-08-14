@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.ChunkPropertiesNullable;
 import com.konfigthis.carbonai.client.model.DataSourceType;
 import com.konfigthis.carbonai.client.model.EmbeddingProperties;
+import com.konfigthis.carbonai.client.model.EmbeddingStorageStatus;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
 import com.konfigthis.carbonai.client.model.FileStatisticsNullable;
 import io.swagger.annotations.ApiModel;
@@ -184,6 +185,18 @@ public class UserFile {
   public static final String SERIALIZED_NAME_FILE_CONTENTS_DELETED = "file_contents_deleted";
   @SerializedName(SERIALIZED_NAME_FILE_CONTENTS_DELETED)
   private Boolean fileContentsDeleted = false;
+
+  public static final String SERIALIZED_NAME_SUPPORTS_COLD_STORAGE = "supports_cold_storage";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_COLD_STORAGE)
+  private Boolean supportsColdStorage;
+
+  public static final String SERIALIZED_NAME_HOT_STORAGE_TIME_TO_LIVE = "hot_storage_time_to_live";
+  @SerializedName(SERIALIZED_NAME_HOT_STORAGE_TIME_TO_LIVE)
+  private Integer hotStorageTimeToLive;
+
+  public static final String SERIALIZED_NAME_EMBEDDING_STORAGE_STATUS = "embedding_storage_status";
+  @SerializedName(SERIALIZED_NAME_EMBEDDING_STORAGE_STATUS)
+  private EmbeddingStorageStatus embeddingStorageStatus;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -1129,6 +1142,93 @@ public class UserFile {
   }
 
 
+  public UserFile supportsColdStorage(Boolean supportsColdStorage) {
+    
+    
+    
+    
+    this.supportsColdStorage = supportsColdStorage;
+    return this;
+  }
+
+   /**
+   * Get supportsColdStorage
+   * @return supportsColdStorage
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getSupportsColdStorage() {
+    return supportsColdStorage;
+  }
+
+
+  public void setSupportsColdStorage(Boolean supportsColdStorage) {
+    
+    
+    
+    this.supportsColdStorage = supportsColdStorage;
+  }
+
+
+  public UserFile hotStorageTimeToLive(Integer hotStorageTimeToLive) {
+    
+    
+    
+    
+    this.hotStorageTimeToLive = hotStorageTimeToLive;
+    return this;
+  }
+
+   /**
+   * Get hotStorageTimeToLive
+   * @return hotStorageTimeToLive
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(required = true, value = "")
+
+  public Integer getHotStorageTimeToLive() {
+    return hotStorageTimeToLive;
+  }
+
+
+  public void setHotStorageTimeToLive(Integer hotStorageTimeToLive) {
+    
+    
+    
+    this.hotStorageTimeToLive = hotStorageTimeToLive;
+  }
+
+
+  public UserFile embeddingStorageStatus(EmbeddingStorageStatus embeddingStorageStatus) {
+    
+    
+    
+    
+    this.embeddingStorageStatus = embeddingStorageStatus;
+    return this;
+  }
+
+   /**
+   * Get embeddingStorageStatus
+   * @return embeddingStorageStatus
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public EmbeddingStorageStatus getEmbeddingStorageStatus() {
+    return embeddingStorageStatus;
+  }
+
+
+  public void setEmbeddingStorageStatus(EmbeddingStorageStatus embeddingStorageStatus) {
+    
+    
+    
+    this.embeddingStorageStatus = embeddingStorageStatus;
+  }
+
+
   public UserFile createdAt(OffsetDateTime createdAt) {
     
     
@@ -1273,6 +1373,9 @@ public class UserFile {
         Objects.equals(this.syncProperties, userFile.syncProperties) &&
         Objects.equals(this.messagesMetadata, userFile.messagesMetadata) &&
         Objects.equals(this.fileContentsDeleted, userFile.fileContentsDeleted) &&
+        Objects.equals(this.supportsColdStorage, userFile.supportsColdStorage) &&
+        Objects.equals(this.hotStorageTimeToLive, userFile.hotStorageTimeToLive) &&
+        Objects.equals(this.embeddingStorageStatus, userFile.embeddingStorageStatus) &&
         Objects.equals(this.createdAt, userFile.createdAt) &&
         Objects.equals(this.updatedAt, userFile.updatedAt)&&
         Objects.equals(this.additionalProperties, userFile.additionalProperties);
@@ -1280,7 +1383,7 @@ public class UserFile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, syncProperties, messagesMetadata, fileContentsDeleted, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1319,6 +1422,9 @@ public class UserFile {
     sb.append("    syncProperties: ").append(toIndentedString(syncProperties)).append("\n");
     sb.append("    messagesMetadata: ").append(toIndentedString(messagesMetadata)).append("\n");
     sb.append("    fileContentsDeleted: ").append(toIndentedString(fileContentsDeleted)).append("\n");
+    sb.append("    supportsColdStorage: ").append(toIndentedString(supportsColdStorage)).append("\n");
+    sb.append("    hotStorageTimeToLive: ").append(toIndentedString(hotStorageTimeToLive)).append("\n");
+    sb.append("    embeddingStorageStatus: ").append(toIndentedString(embeddingStorageStatus)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -1376,6 +1482,9 @@ public class UserFile {
     openapiFields.add("sync_properties");
     openapiFields.add("messages_metadata");
     openapiFields.add("file_contents_deleted");
+    openapiFields.add("supports_cold_storage");
+    openapiFields.add("hot_storage_time_to_live");
+    openapiFields.add("embedding_storage_status");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -1413,6 +1522,9 @@ public class UserFile {
     openapiRequiredFields.add("sync_properties");
     openapiRequiredFields.add("messages_metadata");
     openapiRequiredFields.add("file_contents_deleted");
+    openapiRequiredFields.add("supports_cold_storage");
+    openapiRequiredFields.add("hot_storage_time_to_live");
+    openapiRequiredFields.add("embedding_storage_status");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }
@@ -1493,7 +1605,9 @@ public class UserFile {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

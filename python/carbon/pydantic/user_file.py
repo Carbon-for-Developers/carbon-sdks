@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.chunk_properties_nullable import ChunkPropertiesNullable
 from carbon.pydantic.data_source_type import DataSourceType
+from carbon.pydantic.embedding_storage_status import EmbeddingStorageStatus
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.file_statistics_nullable import FileStatisticsNullable
 from carbon.pydantic.user_file_embedding_properties import UserFileEmbeddingProperties
@@ -85,6 +86,12 @@ class UserFile(BaseModel):
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='messages_metadata')
 
     file_contents_deleted: bool = Field(alias='file_contents_deleted')
+
+    supports_cold_storage: bool = Field(alias='supports_cold_storage')
+
+    hot_storage_time_to_live: typing.Optional[int] = Field(alias='hot_storage_time_to_live')
+
+    embedding_storage_status: EmbeddingStorageStatus = Field(alias='embedding_storage_status')
 
     created_at: datetime = Field(alias='created_at')
 

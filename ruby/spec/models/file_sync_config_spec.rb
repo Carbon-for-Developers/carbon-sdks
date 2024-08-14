@@ -43,6 +43,12 @@ describe Carbon::FileSyncConfig do
     end
   end
 
+  describe 'test attribute "include_speaker_labels"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "split_rows"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

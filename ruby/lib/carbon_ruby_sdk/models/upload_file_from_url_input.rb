@@ -40,9 +40,13 @@ module Carbon
 
     attr_accessor :transcription_service
 
+    attr_accessor :include_speaker_labels
+
     attr_accessor :media_type
 
     attr_accessor :split_rows
+
+    attr_accessor :cold_storage_params
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -61,8 +65,10 @@ module Carbon
         :'parse_pdf_tables_with_ocr' => :'parse_pdf_tables_with_ocr',
         :'detect_audio_language' => :'detect_audio_language',
         :'transcription_service' => :'transcription_service',
+        :'include_speaker_labels' => :'include_speaker_labels',
         :'media_type' => :'media_type',
-        :'split_rows' => :'split_rows'
+        :'split_rows' => :'split_rows',
+        :'cold_storage_params' => :'cold_storage_params'
       }
     end
 
@@ -88,8 +94,10 @@ module Carbon
         :'parse_pdf_tables_with_ocr' => :'Boolean',
         :'detect_audio_language' => :'Boolean',
         :'transcription_service' => :'TranscriptionServiceNullable',
+        :'include_speaker_labels' => :'Boolean',
         :'media_type' => :'FileContentTypesNullable',
-        :'split_rows' => :'Boolean'
+        :'split_rows' => :'Boolean',
+        :'cold_storage_params' => :'ColdStorageProps'
       }
     end
 
@@ -192,6 +200,12 @@ module Carbon
         self.transcription_service = attributes[:'transcription_service']
       end
 
+      if attributes.key?(:'include_speaker_labels')
+        self.include_speaker_labels = attributes[:'include_speaker_labels']
+      else
+        self.include_speaker_labels = false
+      end
+
       if attributes.key?(:'media_type')
         self.media_type = attributes[:'media_type']
       end
@@ -200,6 +214,10 @@ module Carbon
         self.split_rows = attributes[:'split_rows']
       else
         self.split_rows = false
+      end
+
+      if attributes.key?(:'cold_storage_params')
+        self.cold_storage_params = attributes[:'cold_storage_params']
       end
     end
 
@@ -240,8 +258,10 @@ module Carbon
           parse_pdf_tables_with_ocr == o.parse_pdf_tables_with_ocr &&
           detect_audio_language == o.detect_audio_language &&
           transcription_service == o.transcription_service &&
+          include_speaker_labels == o.include_speaker_labels &&
           media_type == o.media_type &&
-          split_rows == o.split_rows
+          split_rows == o.split_rows &&
+          cold_storage_params == o.cold_storage_params
     end
 
     # @see the `==` method
@@ -253,7 +273,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, transcription_service, media_type, split_rows].hash
+      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, transcription_service, include_speaker_labels, media_type, split_rows, cold_storage_params].hash
     end
 
     # Builds the object from hash

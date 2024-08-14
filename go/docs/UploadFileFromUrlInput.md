@@ -18,8 +18,10 @@ Name | Type | Description | Notes
 **ParsePdfTablesWithOcr** | Pointer to **bool** |  | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** |  | [optional] [default to false]
 **TranscriptionService** | Pointer to [**NullableTranscriptionServiceNullable**](TranscriptionServiceNullable.md) |  | [optional] 
+**IncludeSpeakerLabels** | Pointer to **bool** |  | [optional] [default to false]
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **SplitRows** | Pointer to **bool** |  | [optional] [default to false]
+**ColdStorageParams** | Pointer to [**ColdStorageProps**](ColdStorageProps.md) |  | [optional] 
 
 ## Methods
 
@@ -435,6 +437,31 @@ HasTranscriptionService returns a boolean if a field has been set.
 `func (o *UploadFileFromUrlInput) UnsetTranscriptionService()`
 
 UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
+### GetIncludeSpeakerLabels
+
+`func (o *UploadFileFromUrlInput) GetIncludeSpeakerLabels() bool`
+
+GetIncludeSpeakerLabels returns the IncludeSpeakerLabels field if non-nil, zero value otherwise.
+
+### GetIncludeSpeakerLabelsOk
+
+`func (o *UploadFileFromUrlInput) GetIncludeSpeakerLabelsOk() (*bool, bool)`
+
+GetIncludeSpeakerLabelsOk returns a tuple with the IncludeSpeakerLabels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeSpeakerLabels
+
+`func (o *UploadFileFromUrlInput) SetIncludeSpeakerLabels(v bool)`
+
+SetIncludeSpeakerLabels sets IncludeSpeakerLabels field to given value.
+
+### HasIncludeSpeakerLabels
+
+`func (o *UploadFileFromUrlInput) HasIncludeSpeakerLabels() bool`
+
+HasIncludeSpeakerLabels returns a boolean if a field has been set.
+
 ### GetMediaType
 
 `func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable`
@@ -494,6 +521,31 @@ SetSplitRows sets SplitRows field to given value.
 `func (o *UploadFileFromUrlInput) HasSplitRows() bool`
 
 HasSplitRows returns a boolean if a field has been set.
+
+### GetColdStorageParams
+
+`func (o *UploadFileFromUrlInput) GetColdStorageParams() ColdStorageProps`
+
+GetColdStorageParams returns the ColdStorageParams field if non-nil, zero value otherwise.
+
+### GetColdStorageParamsOk
+
+`func (o *UploadFileFromUrlInput) GetColdStorageParamsOk() (*ColdStorageProps, bool)`
+
+GetColdStorageParamsOk returns a tuple with the ColdStorageParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColdStorageParams
+
+`func (o *UploadFileFromUrlInput) SetColdStorageParams(v ColdStorageProps)`
+
+SetColdStorageParams sets ColdStorageParams field to given value.
+
+### HasColdStorageParams
+
+`func (o *UploadFileFromUrlInput) HasColdStorageParams() bool`
+
+HasColdStorageParams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -2,6 +2,7 @@ package com.konfigthis.carbonai.client.api;
 
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.model.BodyCreateUploadFileUploadfilePost;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.DeleteFilesQueryInput;
 import com.konfigthis.carbonai.client.model.DeleteFilesV2QueryInput;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -10,6 +11,8 @@ import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
 import java.io.File;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
+import com.konfigthis.carbonai.client.model.ModifyColdStorageParametersQueryInput;
+import com.konfigthis.carbonai.client.model.MoveToHotStorageQueryInput;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagCreate;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagsRemove;
@@ -68,6 +71,16 @@ public class FilesApi extends FilesApiGenerated {
     public class GetRawFileRequestBuilder extends GetRawFileRequestBuilderGenerated {
         public GetRawFileRequestBuilder(Integer fileId) {
             super(fileId);
+        }
+    }
+    public class ModifyColdStorageParametersRequestBuilder extends ModifyColdStorageParametersRequestBuilderGenerated {
+        public ModifyColdStorageParametersRequestBuilder() {
+            super();
+        }
+    }
+    public class MoveToHotStorageRequestBuilder extends MoveToHotStorageRequestBuilderGenerated {
+        public MoveToHotStorageRequestBuilder() {
+            super();
         }
     }
     public class QueryUserFilesRequestBuilder extends QueryUserFilesRequestBuilderGenerated {

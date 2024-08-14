@@ -26,6 +26,7 @@
 |**highAccuracy** | **Boolean** | Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. |  [optional] |
 |**rerank** | [**RerankParamsNullable**](RerankParamsNullable.md) |  |  [optional] |
 |**fileTypesAtSource** | **List&lt;HelpdeskFileTypes&gt;** | Filter files based on their type at the source (for example help center tickets and articles) |  [optional] |
+|**excludeColdStorageFiles** | **Boolean** | Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage. |  [optional] |
 
 
 

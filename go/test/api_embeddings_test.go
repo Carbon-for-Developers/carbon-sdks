@@ -53,6 +53,7 @@ func Test_carbon_EmbeddingsApiService(t *testing.T) {
         getEmbeddingDocumentsBody.SetHighAccuracy(false)
         getEmbeddingDocumentsBody.SetRerank(rerank)
         getEmbeddingDocumentsBody.SetFileTypesAtSource(null)
+        getEmbeddingDocumentsBody.SetExcludeColdStorageFiles(false)
         
         request := client.EmbeddingsApi.GetDocuments(
             getEmbeddingDocumentsBody,

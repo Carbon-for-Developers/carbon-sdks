@@ -27,6 +27,8 @@ module Carbon
 
     attr_accessor :generate_sparse_vectors
 
+    attr_accessor :cold_storage_params
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +39,8 @@ module Carbon
         :'skip_embedding_generation' => :'skip_embedding_generation',
         :'overwrite_file_id' => :'overwrite_file_id',
         :'embedding_model' => :'embedding_model',
-        :'generate_sparse_vectors' => :'generate_sparse_vectors'
+        :'generate_sparse_vectors' => :'generate_sparse_vectors',
+        :'cold_storage_params' => :'cold_storage_params'
       }
     end
 
@@ -56,7 +59,8 @@ module Carbon
         :'skip_embedding_generation' => :'Boolean',
         :'overwrite_file_id' => :'Integer',
         :'embedding_model' => :'EmbeddingGeneratorsNullable',
-        :'generate_sparse_vectors' => :'Boolean'
+        :'generate_sparse_vectors' => :'Boolean',
+        :'cold_storage_params' => :'ColdStorageProps'
       }
     end
 
@@ -68,7 +72,7 @@ module Carbon
         :'chunk_overlap',
         :'overwrite_file_id',
         :'embedding_model',
-        :'generate_sparse_vectors'
+        :'generate_sparse_vectors',
       ])
     end
 
@@ -124,6 +128,10 @@ module Carbon
       else
         self.generate_sparse_vectors = false
       end
+
+      if attributes.key?(:'cold_storage_params')
+        self.cold_storage_params = attributes[:'cold_storage_params']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -175,7 +183,8 @@ module Carbon
           skip_embedding_generation == o.skip_embedding_generation &&
           overwrite_file_id == o.overwrite_file_id &&
           embedding_model == o.embedding_model &&
-          generate_sparse_vectors == o.generate_sparse_vectors
+          generate_sparse_vectors == o.generate_sparse_vectors &&
+          cold_storage_params == o.cold_storage_params
     end
 
     # @see the `==` method
@@ -187,7 +196,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [contents, name, chunk_size, chunk_overlap, skip_embedding_generation, overwrite_file_id, embedding_model, generate_sparse_vectors].hash
+      [contents, name, chunk_size, chunk_overlap, skip_embedding_generation, overwrite_file_id, embedding_model, generate_sparse_vectors, cold_storage_params].hash
     end
 
     # Builds the object from hash

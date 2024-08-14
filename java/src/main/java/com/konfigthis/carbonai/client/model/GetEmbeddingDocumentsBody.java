@@ -135,6 +135,10 @@ public class GetEmbeddingDocumentsBody {
   @SerializedName(SERIALIZED_NAME_FILE_TYPES_AT_SOURCE)
   private List<HelpdeskFileTypes> fileTypesAtSource = null;
 
+  public static final String SERIALIZED_NAME_EXCLUDE_COLD_STORAGE_FILES = "exclude_cold_storage_files";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_COLD_STORAGE_FILES)
+  private Boolean excludeColdStorageFiles = false;
+
   public GetEmbeddingDocumentsBody() {
   }
 
@@ -739,6 +743,35 @@ public class GetEmbeddingDocumentsBody {
     this.fileTypesAtSource = fileTypesAtSource;
   }
 
+
+  public GetEmbeddingDocumentsBody excludeColdStorageFiles(Boolean excludeColdStorageFiles) {
+    
+    
+    
+    
+    this.excludeColdStorageFiles = excludeColdStorageFiles;
+    return this;
+  }
+
+   /**
+   * Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+   * @return excludeColdStorageFiles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.")
+
+  public Boolean getExcludeColdStorageFiles() {
+    return excludeColdStorageFiles;
+  }
+
+
+  public void setExcludeColdStorageFiles(Boolean excludeColdStorageFiles) {
+    
+    
+    
+    this.excludeColdStorageFiles = excludeColdStorageFiles;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -812,7 +845,8 @@ public class GetEmbeddingDocumentsBody {
         Objects.equals(this.includeFileLevelMetadata, getEmbeddingDocumentsBody.includeFileLevelMetadata) &&
         Objects.equals(this.highAccuracy, getEmbeddingDocumentsBody.highAccuracy) &&
         Objects.equals(this.rerank, getEmbeddingDocumentsBody.rerank) &&
-        Objects.equals(this.fileTypesAtSource, getEmbeddingDocumentsBody.fileTypesAtSource)&&
+        Objects.equals(this.fileTypesAtSource, getEmbeddingDocumentsBody.fileTypesAtSource) &&
+        Objects.equals(this.excludeColdStorageFiles, getEmbeddingDocumentsBody.excludeColdStorageFiles)&&
         Objects.equals(this.additionalProperties, getEmbeddingDocumentsBody.additionalProperties);
   }
 
@@ -822,7 +856,7 @@ public class GetEmbeddingDocumentsBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, rerank, fileTypesAtSource, additionalProperties);
+    return Objects.hash(tags, query, queryVector, k, fileIds, parentFileIds, includeAllChildren, tagsV2, includeTags, includeVectors, includeRawFile, hybridSearch, hybridSearchTuningParameters, mediaType, embeddingModel, includeFileLevelMetadata, highAccuracy, rerank, fileTypesAtSource, excludeColdStorageFiles, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -855,6 +889,7 @@ public class GetEmbeddingDocumentsBody {
     sb.append("    highAccuracy: ").append(toIndentedString(highAccuracy)).append("\n");
     sb.append("    rerank: ").append(toIndentedString(rerank)).append("\n");
     sb.append("    fileTypesAtSource: ").append(toIndentedString(fileTypesAtSource)).append("\n");
+    sb.append("    excludeColdStorageFiles: ").append(toIndentedString(excludeColdStorageFiles)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -897,6 +932,7 @@ public class GetEmbeddingDocumentsBody {
     openapiFields.add("high_accuracy");
     openapiFields.add("rerank");
     openapiFields.add("file_types_at_source");
+    openapiFields.add("exclude_cold_storage_files");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -979,7 +1015,9 @@ public class GetEmbeddingDocumentsBody {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

@@ -49,6 +49,9 @@ type UserFile struct {
 	SyncProperties map[string]interface{} `json:"sync_properties"`
 	MessagesMetadata map[string]interface{} `json:"messages_metadata"`
 	FileContentsDeleted bool `json:"file_contents_deleted"`
+	SupportsColdStorage bool `json:"supports_cold_storage"`
+	HotStorageTimeToLive NullableInt32 `json:"hot_storage_time_to_live"`
+	EmbeddingStorageStatus EmbeddingStorageStatus `json:"embedding_storage_status"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -57,7 +60,7 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
@@ -91,6 +94,9 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 	this.SyncProperties = syncProperties
 	this.MessagesMetadata = messagesMetadata
 	this.FileContentsDeleted = fileContentsDeleted
+	this.SupportsColdStorage = supportsColdStorage
+	this.HotStorageTimeToLive = hotStorageTimeToLive
+	this.EmbeddingStorageStatus = embeddingStorageStatus
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -916,6 +922,80 @@ func (o *UserFile) SetFileContentsDeleted(v bool) {
 	o.FileContentsDeleted = v
 }
 
+// GetSupportsColdStorage returns the SupportsColdStorage field value
+func (o *UserFile) GetSupportsColdStorage() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.SupportsColdStorage
+}
+
+// GetSupportsColdStorageOk returns a tuple with the SupportsColdStorage field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetSupportsColdStorageOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.SupportsColdStorage, true
+}
+
+// SetSupportsColdStorage sets field value
+func (o *UserFile) SetSupportsColdStorage(v bool) {
+	o.SupportsColdStorage = v
+}
+
+// GetHotStorageTimeToLive returns the HotStorageTimeToLive field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *UserFile) GetHotStorageTimeToLive() int32 {
+	if o == nil || o.HotStorageTimeToLive.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.HotStorageTimeToLive.Get()
+}
+
+// GetHotStorageTimeToLiveOk returns a tuple with the HotStorageTimeToLive field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserFile) GetHotStorageTimeToLiveOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.HotStorageTimeToLive.Get(), o.HotStorageTimeToLive.IsSet()
+}
+
+// SetHotStorageTimeToLive sets field value
+func (o *UserFile) SetHotStorageTimeToLive(v int32) {
+	o.HotStorageTimeToLive.Set(&v)
+}
+
+// GetEmbeddingStorageStatus returns the EmbeddingStorageStatus field value
+func (o *UserFile) GetEmbeddingStorageStatus() EmbeddingStorageStatus {
+	if o == nil {
+		var ret EmbeddingStorageStatus
+		return ret
+	}
+
+	return o.EmbeddingStorageStatus
+}
+
+// GetEmbeddingStorageStatusOk returns a tuple with the EmbeddingStorageStatus field value
+// and a boolean to check if the value has been set.
+func (o *UserFile) GetEmbeddingStorageStatusOk() (*EmbeddingStorageStatus, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.EmbeddingStorageStatus, true
+}
+
+// SetEmbeddingStorageStatus sets field value
+func (o *UserFile) SetEmbeddingStorageStatus(v EmbeddingStorageStatus) {
+	o.EmbeddingStorageStatus = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *UserFile) GetCreatedAt() time.Time {
 	if o == nil {
@@ -1061,6 +1141,15 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["file_contents_deleted"] = o.FileContentsDeleted
+	}
+	if true {
+		toSerialize["supports_cold_storage"] = o.SupportsColdStorage
+	}
+	if true {
+		toSerialize["hot_storage_time_to_live"] = o.HotStorageTimeToLive.Get()
+	}
+	if true {
+		toSerialize["embedding_storage_status"] = o.EmbeddingStorageStatus
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

@@ -37,6 +37,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.delete_v2`](#carbonfilesdelete_v2)
   * [`carbon.files.get_parsed_file`](#carbonfilesget_parsed_file)
   * [`carbon.files.get_raw_file`](#carbonfilesget_raw_file)
+  * [`carbon.files.modify_cold_storage_parameters`](#carbonfilesmodify_cold_storage_parameters)
+  * [`carbon.files.move_to_hot_storage`](#carbonfilesmove_to_hot_storage)
   * [`carbon.files.query_user_files`](#carbonfilesquery_user_files)
   * [`carbon.files.query_user_files_deprecated`](#carbonfilesquery_user_files_deprecated)
   * [`carbon.files.resync`](#carbonfilesresync)
@@ -445,6 +447,7 @@ get_documents_response = carbon.embeddings.get_documents(
         "model": "model_example",
     },
     file_types_at_source=["string_example"],
+    exclude_cold_storage_files=False,
 )
 ```
 
@@ -511,6 +514,10 @@ Flag to control whether or not to perform a high accuracy embedding search. By d
 ##### file_types_at_source: List[[`HelpdeskFileTypes`](./carbon/type/helpdesk_file_types.py)]<a id="file_types_at_source-listhelpdeskfiletypescarbontypehelpdesk_file_typespy"></a>
 
 Filter files based on their type at the source (for example help center tickets and articles)
+
+##### exclude_cold_storage_files: `bool`<a id="exclude_cold_storage_files-bool"></a>
+
+Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -938,6 +945,74 @@ get_raw_file_response = carbon.files.get_raw_file(
 
 ---
 
+### `carbon.files.modify_cold_storage_parameters`<a id="carbonfilesmodify_cold_storage_parameters"></a>
+
+Modify Cold Storage Parameters
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+modify_cold_storage_parameters_response = carbon.files.modify_cold_storage_parameters(
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
+    enable_cold_storage=True,
+    hot_storage_time_to_live=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
+
+
+##### enable_cold_storage: `Optional[bool]`<a id="enable_cold_storage-optionalbool"></a>
+
+##### hot_storage_time_to_live: `Optional[int]`<a id="hot_storage_time_to_live-optionalint"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`ModifyColdStorageParametersQueryInput`](./carbon/type/modify_cold_storage_parameters_query_input.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/modify_cold_storage_parameters` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.files.move_to_hot_storage`<a id="carbonfilesmove_to_hot_storage"></a>
+
+Move To Hot Storage
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+move_to_hot_storage_response = carbon.files.move_to_hot_storage(
+    filters={
+        "include_all_children": False,
+        "non_synced_only": False,
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`MoveToHotStorageQueryInput`](./carbon/type/move_to_hot_storage_query_input.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/move_to_hot_storage` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.files.query_user_files`<a id="carbonfilesquery_user_files"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
@@ -1187,8 +1262,11 @@ upload_response = carbon.files.upload(
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
     transcription_service="assemblyai",
+    include_speaker_labels=False,
     media_type="TEXT",
     split_rows=False,
+    enable_cold_storage=False,
+    hot_storage_time_to_live=1,
 )
 ```
 
@@ -1245,6 +1323,10 @@ Whether to automatically detect the language of the uploaded audio file.
 
 The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
 
+##### include_speaker_labels: `bool`<a id="include_speaker_labels-bool"></a>
+
+Detect multiple speakers and label segments of speech by speaker for audio files.
+
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/.py)<a id="media_type-filecontenttypesnullablecarbontypepy"></a>
 
 The media type of the file. If not provided, it will be inferred from the file extension.
@@ -1252,6 +1334,14 @@ The media type of the file. If not provided, it will be inferred from the file e
 ##### split_rows: `bool`<a id="split_rows-bool"></a>
 
 Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+
+##### enable_cold_storage: `bool`<a id="enable_cold_storage-bool"></a>
+
+Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+
+##### hot_storage_time_to_live: `Optional[int]`<a id="hot_storage_time_to_live-optionalint"></a>
+
+Time in seconds after which the file will be moved to cold storage.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1290,8 +1380,12 @@ upload_from_url_response = carbon.files.upload_from_url(
     parse_pdf_tables_with_ocr=False,
     detect_audio_language=False,
     transcription_service="assemblyai",
+    include_speaker_labels=False,
     media_type="TEXT",
     split_rows=False,
+    cold_storage_params={
+        "enable_cold_storage": False,
+    },
 )
 ```
 
@@ -1327,9 +1421,14 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### transcription_service: [`TranscriptionServiceNullable`](./carbon/type/transcription_service_nullable.py)<a id="transcription_service-transcriptionservicenullablecarbontypetranscription_service_nullablepy"></a>
 
+##### include_speaker_labels: `bool`<a id="include_speaker_labels-bool"></a>
+
 ##### media_type: [`FileContentTypesNullable`](./carbon/type/file_content_types_nullable.py)<a id="media_type-filecontenttypesnullablecarbontypefile_content_types_nullablepy"></a>
 
 ##### split_rows: `bool`<a id="split_rows-bool"></a>
+
+##### cold_storage_params: [`ColdStorageProps`](./carbon/type/cold_storage_props.py)<a id="cold_storage_params-coldstoragepropscarbontypecold_storage_propspy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1371,6 +1470,9 @@ upload_text_response = carbon.files.upload_text(
     overwrite_file_id=1,
     embedding_model="OPENAI",
     generate_sparse_vectors=False,
+    cold_storage_params={
+        "enable_cold_storage": False,
+    },
 )
 ```
 
@@ -1391,6 +1493,9 @@ upload_text_response = carbon.files.upload_text(
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./carbon/type/embedding_generators_nullable.py)<a id="embedding_model-embeddinggeneratorsnullablecarbontypeembedding_generators_nullablepy"></a>
 
 ##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### cold_storage_params: [`ColdStorageProps`](./carbon/type/cold_storage_props.py)<a id="cold_storage_params-coldstoragepropscarbontypecold_storage_propspy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1518,6 +1623,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
 )
@@ -1732,8 +1838,10 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
+    automatically_open_file_picker=True,
 )
 ```
 
@@ -1809,6 +1917,10 @@ Only sync files if they have not already been synced or if the embedding propert
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
+
+##### automatically_open_file_picker: `Optional[bool]`<a id="automatically_open_file_picker-optionalbool"></a>
+
+Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2122,6 +2234,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
 )
@@ -2244,6 +2357,7 @@ sync_files_response = carbon.integrations.sync_files(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
 )
@@ -2475,6 +2589,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
     incremental_sync=False,
@@ -2610,6 +2725,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
     incremental_sync=False,
@@ -2778,6 +2894,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
         "sync_attachments": False,
         "detect_audio_language": False,
         "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
         "split_rows": False,
     },
 )

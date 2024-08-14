@@ -1331,6 +1331,7 @@ public class IntegrationsApiGenerated {
         Boolean syncSourceItems;
         Boolean incrementalSync;
         FileSyncConfigNullable fileSyncConfig;
+        Boolean automaticallyOpenFilePicker;
 
         public GetOauthUrlRequestBuilderGenerated(DataSourceType service) {
             this.service = service;
@@ -1587,6 +1588,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set automaticallyOpenFilePicker
+         * @param automaticallyOpenFilePicker Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. (optional)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
+         */
+        public IntegrationsApi.GetOauthUrlRequestBuilder automaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
+            this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getOauthUrl
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1630,6 +1641,7 @@ public class IntegrationsApiGenerated {
             oauthURLRequest.syncSourceItems(this.syncSourceItems);
             oauthURLRequest.incrementalSync(this.incrementalSync);
             oauthURLRequest.fileSyncConfig(this.fileSyncConfig);
+            oauthURLRequest.automaticallyOpenFilePicker(this.automaticallyOpenFilePicker);
             return oauthURLRequest;
         }
 

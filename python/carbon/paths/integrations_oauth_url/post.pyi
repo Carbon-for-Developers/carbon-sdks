@@ -142,6 +142,7 @@ class BaseApi(api_client.Api):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -197,6 +198,8 @@ class BaseApi(api_client.Api):
             _body["incremental_sync"] = incremental_sync
         if file_sync_config is not None:
             _body["file_sync_config"] = file_sync_config
+        if automatically_open_file_picker is not None:
+            _body["automatically_open_file_picker"] = automatically_open_file_picker
         args.body = _body
         return args
 
@@ -430,6 +433,7 @@ class GetOauthUrlRaw(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -463,6 +467,7 @@ class GetOauthUrlRaw(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -497,6 +502,7 @@ class GetOauthUrlRaw(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -528,6 +534,7 @@ class GetOauthUrlRaw(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -563,6 +570,7 @@ class GetOauthUrl(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -593,6 +601,7 @@ class GetOauthUrl(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
             **kwargs,
         )
         if validate:
@@ -628,6 +637,7 @@ class GetOauthUrl(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -657,6 +667,7 @@ class GetOauthUrl(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -694,6 +705,7 @@ class ApiForpost(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -727,6 +739,7 @@ class ApiForpost(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -761,6 +774,7 @@ class ApiForpost(BaseApi):
         sync_source_items: typing.Optional[bool] = None,
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -792,6 +806,7 @@ class ApiForpost(BaseApi):
             sync_source_items=sync_source_items,
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
+            automatically_open_file_picker=automatically_open_file_picker,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

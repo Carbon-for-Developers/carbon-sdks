@@ -62,6 +62,7 @@ public class Example {
     Boolean highAccuracy = false; // Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
     RerankParamsNullable rerank = new RerankParamsNullable();
     List<HelpdeskFileTypes> fileTypesAtSource = Arrays.asList(); // Filter files based on their type at the source (for example help center tickets and articles)
+    Boolean excludeColdStorageFiles = false; // Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
     try {
       DocumentResponseList result = client
               .embeddings
@@ -83,6 +84,7 @@ public class Example {
               .highAccuracy(highAccuracy)
               .rerank(rerank)
               .fileTypesAtSource(fileTypesAtSource)
+              .excludeColdStorageFiles(excludeColdStorageFiles)
               .execute();
       System.out.println(result);
       System.out.println(result.getDocuments());
@@ -116,6 +118,7 @@ public class Example {
               .highAccuracy(highAccuracy)
               .rerank(rerank)
               .fileTypesAtSource(fileTypesAtSource)
+              .excludeColdStorageFiles(excludeColdStorageFiles)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

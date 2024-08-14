@@ -36,9 +36,11 @@ from carbon.model.http_validation_error import HTTPValidationError as HTTPValida
 from carbon.model.user_file import UserFile as UserFileSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.raw_text_input import RawTextInput as RawTextInputSchema
+from carbon.model.cold_storage_props import ColdStorageProps as ColdStoragePropsSchema
 
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.raw_text_input import RawTextInput
+from carbon.type.cold_storage_props import ColdStorageProps
 from carbon.type.user_file import UserFile
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
@@ -47,6 +49,7 @@ from carbon.pydantic.user_file import UserFile as UserFilePydantic
 from carbon.pydantic.raw_text_input import RawTextInput as RawTextInputPydantic
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
+from carbon.pydantic.cold_storage_props import ColdStorageProps as ColdStoragePropsPydantic
 
 from . import path
 
@@ -129,6 +132,7 @@ class BaseApi(api_client.Api):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -148,6 +152,8 @@ class BaseApi(api_client.Api):
             _body["embedding_model"] = embedding_model
         if generate_sparse_vectors is not None:
             _body["generate_sparse_vectors"] = generate_sparse_vectors
+        if cold_storage_params is not None:
+            _body["cold_storage_params"] = cold_storage_params
         args.body = _body
         return args
 
@@ -363,6 +369,7 @@ class UploadTextRaw(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -378,6 +385,7 @@ class UploadTextRaw(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
         )
         return await self._aupload_text_oapg(
             body=args.body,
@@ -394,6 +402,7 @@ class UploadTextRaw(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -407,6 +416,7 @@ class UploadTextRaw(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
         )
         return self._upload_text_oapg(
             body=args.body,
@@ -424,6 +434,7 @@ class UploadText(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -436,6 +447,7 @@ class UploadText(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
             **kwargs,
         )
         if validate:
@@ -453,6 +465,7 @@ class UploadText(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_text(
@@ -464,6 +477,7 @@ class UploadText(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -483,6 +497,7 @@ class ApiForpost(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -498,6 +513,7 @@ class ApiForpost(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
         )
         return await self._aupload_text_oapg(
             body=args.body,
@@ -514,6 +530,7 @@ class ApiForpost(BaseApi):
         overwrite_file_id: typing.Optional[typing.Optional[int]] = None,
         embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = None,
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
+        cold_storage_params: typing.Optional[ColdStorageProps] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -527,6 +544,7 @@ class ApiForpost(BaseApi):
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
         )
         return self._upload_text_oapg(
             body=args.body,

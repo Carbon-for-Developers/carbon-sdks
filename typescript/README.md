@@ -32,6 +32,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.deleteV2`](#carbonfilesdeletev2)
   * [`carbon.files.getParsedFile`](#carbonfilesgetparsedfile)
   * [`carbon.files.getRawFile`](#carbonfilesgetrawfile)
+  * [`carbon.files.modifyColdStorageParameters`](#carbonfilesmodifycoldstorageparameters)
+  * [`carbon.files.moveToHotStorage`](#carbonfilesmovetohotstorage)
   * [`carbon.files.queryUserFiles`](#carbonfilesqueryuserfiles)
   * [`carbon.files.queryUserFilesDeprecated`](#carbonfilesqueryuserfilesdeprecated)
   * [`carbon.files.resync`](#carbonfilesresync)
@@ -371,6 +373,7 @@ const getDocumentsResponse = await carbon.embeddings.getDocuments({
   embedding_model: "OPENAI",
   include_file_level_metadata: false,
   high_accuracy: false,
+  exclude_cold_storage_files: false,
 });
 ```
 
@@ -443,6 +446,10 @@ Flag to control whether or not to perform a high accuracy embedding search. By d
 ##### file_types_at_source: [`HelpdeskFileTypes`](./models/helpdesk-file-types.ts)[]<a id="file_types_at_source-helpdeskfiletypesmodelshelpdesk-file-typests"></a>
 
 Filter files based on their type at the source (for example help center tickets and articles)
+
+##### exclude_cold_storage_files: `boolean`<a id="exclude_cold_storage_files-boolean"></a>
+
+Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -837,6 +844,57 @@ const getRawFileResponse = await carbon.files.getRawFile({
 ---
 
 
+### `carbon.files.modifyColdStorageParameters`<a id="carbonfilesmodifycoldstorageparameters"></a>
+
+Modify Cold Storage Parameters
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const modifyColdStorageParametersResponse =
+  await carbon.files.modifyColdStorageParameters({});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+##### enable_cold_storage: `boolean`<a id="enable_cold_storage-boolean"></a>
+
+##### hot_storage_time_to_live: `number`<a id="hot_storage_time_to_live-number"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/modify_cold_storage_parameters` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.files.moveToHotStorage`<a id="carbonfilesmovetohotstorage"></a>
+
+Move To Hot Storage
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const moveToHotStorageResponse = await carbon.files.moveToHotStorage({});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/move_to_hot_storage` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.files.queryUserFiles`<a id="carbonfilesqueryuserfiles"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
@@ -1048,8 +1106,10 @@ const uploadResponse = await carbon.files.upload({
   parsePdfTablesWithOcr: false,
   detectAudioLanguage: false,
   transcriptionService: "assemblyai",
+  includeSpeakerLabels: false,
   mediaType: "TEXT",
   splitRows: false,
+  enableColdStorage: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1106,6 +1166,10 @@ Whether to automatically detect the language of the uploaded audio file.
 
 The transcription service to use for audio files. If no service is specified, \'deepgram\' will be used.
 
+##### includeSpeakerLabels: `boolean`<a id="includespeakerlabels-boolean"></a>
+
+Detect multiple speakers and label segments of speech by speaker for audio files.
+
 ##### mediaType: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="mediatype-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
 The media type of the file. If not provided, it will be inferred from the file extension.
@@ -1113,6 +1177,14 @@ The media type of the file. If not provided, it will be inferred from the file e
 ##### splitRows: `boolean`<a id="splitrows-boolean"></a>
 
 Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+
+##### enableColdStorage: `boolean`<a id="enablecoldstorage-boolean"></a>
+
+Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+
+##### hotStorageTimeToLive: `number`<a id="hotstoragetimetolive-number"></a>
+
+Time in seconds after which the file will be moved to cold storage.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1145,6 +1217,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   transcription_service: "assemblyai",
+  include_speaker_labels: false,
   media_type: "TEXT",
   split_rows: false,
 });
@@ -1182,9 +1255,13 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### transcription_service: [`TranscriptionServiceNullable`](./models/transcription-service-nullable.ts)<a id="transcription_service-transcriptionservicenullablemodelstranscription-service-nullablets"></a>
 
+##### include_speaker_labels: `boolean`<a id="include_speaker_labels-boolean"></a>
+
 ##### media_type: [`FileContentTypesNullable`](./models/file-content-types-nullable.ts)<a id="media_type-filecontenttypesnullablemodelsfile-content-types-nullablets"></a>
 
 ##### split_rows: `boolean`<a id="split_rows-boolean"></a>
+
+##### cold_storage_params: [`ColdStorageProps`](./models/cold-storage-props.ts)<a id="cold_storage_params-coldstoragepropsmodelscold-storage-propsts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1240,6 +1317,8 @@ const uploadTextResponse = await carbon.files.uploadText({
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./models/embedding-generators-nullable.ts)<a id="embedding_model-embeddinggeneratorsnullablemodelsembedding-generators-nullablets"></a>
 
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### cold_storage_params: [`ColdStorageProps`](./models/cold-storage-props.ts)<a id="cold_storage_params-coldstoragepropsmodelscold-storage-propsts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1600,6 +1679,10 @@ Enabling this flag will fetch all available content from the source to be listed
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
+
+##### automatically_open_file_picker: `boolean`<a id="automatically_open_file_picker-boolean"></a>
+
+Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

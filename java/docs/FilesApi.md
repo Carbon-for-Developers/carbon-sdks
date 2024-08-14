@@ -11,6 +11,8 @@ All URIs are relative to *https://api.carbon.ai*
 | [**deleteV2**](FilesApi.md#deleteV2) | **POST** /delete_files_v2 | Delete Files V2 Endpoint |
 | [**getParsedFile**](FilesApi.md#getParsedFile) | **GET** /parsed_file/{file_id} | Parsed File |
 | [**getRawFile**](FilesApi.md#getRawFile) | **GET** /raw_file/{file_id} | Raw File |
+| [**modifyColdStorageParameters**](FilesApi.md#modifyColdStorageParameters) | **POST** /modify_cold_storage_parameters | Modify Cold Storage Parameters |
+| [**moveToHotStorage**](FilesApi.md#moveToHotStorage) | **POST** /move_to_hot_storage | Move To Hot Storage |
 | [**queryUserFiles**](FilesApi.md#queryUserFiles) | **POST** /user_files_v2 | User Files V2 |
 | [**queryUserFilesDeprecated**](FilesApi.md#queryUserFilesDeprecated) | **POST** /user_files | User Files |
 | [**resync**](FilesApi.md#resync) | **POST** /resync_file | Resync File |
@@ -92,6 +94,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -314,6 +319,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -773,6 +781,200 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Successful Response |  -  |
 
+<a name="modifyColdStorageParameters"></a>
+# **modifyColdStorageParameters**
+> Boolean modifyColdStorageParameters(modifyColdStorageParametersQueryInput).execute();
+
+Modify Cold Storage Parameters
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.FilesApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
+    Boolean enableColdStorage = true;
+    Integer hotStorageTimeToLive = 56;
+    try {
+      Boolean result = client
+              .files
+              .modifyColdStorageParameters()
+              .filters(filters)
+              .enableColdStorage(enableColdStorage)
+              .hotStorageTimeToLive(hotStorageTimeToLive)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#modifyColdStorageParameters");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Boolean> response = client
+              .files
+              .modifyColdStorageParameters()
+              .filters(filters)
+              .enableColdStorage(enableColdStorage)
+              .hotStorageTimeToLive(hotStorageTimeToLive)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#modifyColdStorageParameters");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **modifyColdStorageParametersQueryInput** | [**ModifyColdStorageParametersQueryInput**](ModifyColdStorageParametersQueryInput.md)|  | |
+
+### Return type
+
+**Boolean**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="moveToHotStorage"></a>
+# **moveToHotStorage**
+> Boolean moveToHotStorage(moveToHotStorageQueryInput).execute();
+
+Move To Hot Storage
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.FilesApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
+    try {
+      Boolean result = client
+              .files
+              .moveToHotStorage()
+              .filters(filters)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#moveToHotStorage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Boolean> response = client
+              .files
+              .moveToHotStorage()
+              .filters(filters)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilesApi#moveToHotStorage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **moveToHotStorageQueryInput** | [**MoveToHotStorageQueryInput**](MoveToHotStorageQueryInput.md)|  | |
+
+### Return type
+
+**Boolean**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
 <a name="queryUserFiles"></a>
 # **queryUserFiles**
 > UserFilesV2 queryUserFiles(organizationUserFilesToSyncQueryInput).execute();
@@ -1081,6 +1283,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1143,7 +1348,7 @@ public class Example {
 
 <a name="upload"></a>
 # **upload**
-> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).transcriptionService(transcriptionService).mediaType(mediaType).splitRows(splitRows).execute();
+> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).transcriptionService(transcriptionService).includeSpeakerLabels(includeSpeakerLabels).mediaType(mediaType).splitRows(splitRows).enableColdStorage(enableColdStorage).hotStorageTimeToLive(hotStorageTimeToLive).execute();
 
 Create Upload File
 
@@ -1187,8 +1392,11 @@ public class Example {
     Boolean parsePdfTablesWithOcr = false; // Whether to use rich table parsing when `use_ocr` is enabled.
     Boolean detectAudioLanguage = false; // Whether to automatically detect the language of the uploaded audio file.
     TranscriptionServiceNullable transcriptionService = TranscriptionServiceNullable.fromValue("assemblyai"); // The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+    Boolean includeSpeakerLabels = false; // Detect multiple speakers and label segments of speech by speaker for audio files.
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT"); // The media type of the file. If not provided, it will be inferred from the file extension.
     Boolean splitRows = false; // Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    Boolean enableColdStorage = false; // Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+    Integer hotStorageTimeToLive = 56; // Time in seconds after which the file will be moved to cold storage.
     try {
       UserFile result = client
               .files
@@ -1205,8 +1413,11 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .transcriptionService(transcriptionService)
+              .includeSpeakerLabels(includeSpeakerLabels)
               .mediaType(mediaType)
               .splitRows(splitRows)
+              .enableColdStorage(enableColdStorage)
+              .hotStorageTimeToLive(hotStorageTimeToLive)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1241,6 +1452,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1268,8 +1482,11 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .transcriptionService(transcriptionService)
+              .includeSpeakerLabels(includeSpeakerLabels)
               .mediaType(mediaType)
               .splitRows(splitRows)
+              .enableColdStorage(enableColdStorage)
+              .hotStorageTimeToLive(hotStorageTimeToLive)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1306,8 +1523,11 @@ public class Example {
 | **parsePdfTablesWithOcr** | **Boolean**| Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled. | [optional] [default to false] |
 | **detectAudioLanguage** | **Boolean**| Whether to automatically detect the language of the uploaded audio file. | [optional] [default to false] |
 | **transcriptionService** | [**TranscriptionServiceNullable**](.md)| The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used. | [optional] [enum: assemblyai, deepgram] |
+| **includeSpeakerLabels** | **Boolean**| Detect multiple speakers and label segments of speech by speaker for audio files. | [optional] [default to false] |
 | **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
 | **splitRows** | **Boolean**| Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false] |
+| **enableColdStorage** | **Boolean**| Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. | [optional] [default to false] |
+| **hotStorageTimeToLive** | **Integer**| Time in seconds after which the file will be moved to cold storage. | [optional] |
 
 ### Return type
 
@@ -1372,8 +1592,10 @@ public class Example {
     Boolean parsePdfTablesWithOcr = false;
     Boolean detectAudioLanguage = false;
     TranscriptionServiceNullable transcriptionService = TranscriptionServiceNullable.fromValue("assemblyai");
+    Boolean includeSpeakerLabels = false;
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT");
     Boolean splitRows = false;
+    ColdStorageProps coldStorageParams = new ColdStorageProps();
     try {
       UserFile result = client
               .files
@@ -1391,8 +1613,10 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .transcriptionService(transcriptionService)
+              .includeSpeakerLabels(includeSpeakerLabels)
               .mediaType(mediaType)
               .splitRows(splitRows)
+              .coldStorageParams(coldStorageParams)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1427,6 +1651,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1455,8 +1682,10 @@ public class Example {
               .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
               .detectAudioLanguage(detectAudioLanguage)
               .transcriptionService(transcriptionService)
+              .includeSpeakerLabels(includeSpeakerLabels)
               .mediaType(mediaType)
               .splitRows(splitRows)
+              .coldStorageParams(coldStorageParams)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1540,6 +1769,7 @@ public class Example {
     Integer overwriteFileId = 56;
     EmbeddingGeneratorsNullable embeddingModel = EmbeddingGeneratorsNullable.fromValue("OPENAI");
     Boolean generateSparseVectors = false;
+    ColdStorageProps coldStorageParams = new ColdStorageProps();
     try {
       UserFile result = client
               .files
@@ -1551,6 +1781,7 @@ public class Example {
               .overwriteFileId(overwriteFileId)
               .embeddingModel(embeddingModel)
               .generateSparseVectors(generateSparseVectors)
+              .coldStorageParams(coldStorageParams)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1585,6 +1816,9 @@ public class Example {
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
+      System.out.println(result.getSupportsColdStorage());
+      System.out.println(result.getHotStorageTimeToLive());
+      System.out.println(result.getEmbeddingStorageStatus());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
@@ -1607,6 +1841,7 @@ public class Example {
               .overwriteFileId(overwriteFileId)
               .embeddingModel(embeddingModel)
               .generateSparseVectors(generateSparseVectors)
+              .coldStorageParams(coldStorageParams)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

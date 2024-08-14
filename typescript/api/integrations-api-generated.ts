@@ -1555,7 +1555,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 enable_file_picker: requestParameters.enable_file_picker,
                 sync_source_items: requestParameters.sync_source_items,
                 incremental_sync: requestParameters.incremental_sync,
-                file_sync_config: requestParameters.file_sync_config
+                file_sync_config: requestParameters.file_sync_config,
+                automatically_open_file_picker: requestParameters.automatically_open_file_picker
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

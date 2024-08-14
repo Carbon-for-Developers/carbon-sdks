@@ -148,6 +148,10 @@ class RawTextInput(
                         *args,
                         _configuration=_configuration,
                     )
+        
+            @staticmethod
+            def cold_storage_params() -> typing.Type['ColdStorageProps']:
+                return ColdStorageProps
             __annotations__ = {
                 "contents": contents,
                 "name": name,
@@ -157,6 +161,7 @@ class RawTextInput(
                 "overwrite_file_id": overwrite_file_id,
                 "embedding_model": embedding_model,
                 "generate_sparse_vectors": generate_sparse_vectors,
+                "cold_storage_params": cold_storage_params,
             }
     
     contents: MetaOapg.properties.contents
@@ -186,9 +191,12 @@ class RawTextInput(
     def __getitem__(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> MetaOapg.properties.generate_sparse_vectors: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["cold_storage_params"]) -> 'ColdStorageProps': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["contents", "name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "overwrite_file_id", "embedding_model", "generate_sparse_vectors", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["contents", "name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "overwrite_file_id", "embedding_model", "generate_sparse_vectors", "cold_storage_params", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -218,9 +226,12 @@ class RawTextInput(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_sparse_vectors"]) -> typing.Union[MetaOapg.properties.generate_sparse_vectors, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["cold_storage_params"]) -> typing.Union['ColdStorageProps', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["contents", "name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "overwrite_file_id", "embedding_model", "generate_sparse_vectors", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["contents", "name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "overwrite_file_id", "embedding_model", "generate_sparse_vectors", "cold_storage_params", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -235,6 +246,7 @@ class RawTextInput(
         overwrite_file_id: typing.Union[MetaOapg.properties.overwrite_file_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         embedding_model: typing.Union['EmbeddingGeneratorsNullable', schemas.Unset] = schemas.unset,
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, schemas.Unset] = schemas.unset,
+        cold_storage_params: typing.Union['ColdStorageProps', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'RawTextInput':
@@ -249,8 +261,10 @@ class RawTextInput(
             overwrite_file_id=overwrite_file_id,
             embedding_model=embedding_model,
             generate_sparse_vectors=generate_sparse_vectors,
+            cold_storage_params=cold_storage_params,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.cold_storage_props import ColdStorageProps
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable

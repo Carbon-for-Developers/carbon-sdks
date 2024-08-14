@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.cold_storage_props import ColdStorageProps
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 class RequiredRawTextInput(TypedDict):
@@ -34,6 +35,8 @@ class OptionalRawTextInput(TypedDict, total=False):
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
 
     generate_sparse_vectors: typing.Optional[bool]
+
+    cold_storage_params: ColdStorageProps
 
 class RawTextInput(RequiredRawTextInput, OptionalRawTextInput):
     pass

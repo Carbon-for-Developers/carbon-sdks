@@ -95,6 +95,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'file_types_at_source'
             },
+            {
+                name: 'exclude_cold_storage_files'
+            },
         ]
     },
     '/text_chunks-POST': {
@@ -227,6 +230,26 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/modify_cold_storage_parameters-POST': {
+        parameters: [
+            {
+                name: 'filters'
+            },
+            {
+                name: 'enable_cold_storage'
+            },
+            {
+                name: 'hot_storage_time_to_live'
+            },
+        ]
+    },
+    '/move_to_hot_storage-POST': {
+        parameters: [
+            {
+                name: 'filters'
+            },
+        ]
+    },
     '/user_files_v2-POST': {
         parameters: [
             {
@@ -335,10 +358,19 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'transcription_service'
             },
             {
+                name: 'include_speaker_labels'
+            },
+            {
                 name: 'media_type'
             },
             {
                 name: 'split_rows'
+            },
+            {
+                name: 'enable_cold_storage'
+            },
+            {
+                name: 'hot_storage_time_to_live'
             },
         ]
     },
@@ -387,10 +419,16 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'transcription_service'
             },
             {
+                name: 'include_speaker_labels'
+            },
+            {
                 name: 'media_type'
             },
             {
                 name: 'split_rows'
+            },
+            {
+                name: 'cold_storage_params'
             },
         ]
     },
@@ -419,6 +457,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'generate_sparse_vectors'
+            },
+            {
+                name: 'cold_storage_params'
             },
         ]
     },
@@ -617,6 +658,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'file_sync_config'
+            },
+            {
+                name: 'automatically_open_file_picker'
             },
         ]
     },

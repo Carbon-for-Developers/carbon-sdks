@@ -36,6 +36,9 @@ Name | Type | Description | Notes
 **SyncProperties** | **map[string]interface{}** |  | [default to {}]
 **MessagesMetadata** | **map[string]interface{}** |  | [default to {}]
 **FileContentsDeleted** | **bool** |  | [default to false]
+**SupportsColdStorage** | **bool** |  | 
+**HotStorageTimeToLive** | **NullableInt32** |  | 
+**EmbeddingStorageStatus** | [**EmbeddingStorageStatus**](EmbeddingStorageStatus.md) |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -43,7 +46,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -906,6 +909,76 @@ and a boolean to check if the value has been set.
 `func (o *UserFile) SetFileContentsDeleted(v bool)`
 
 SetFileContentsDeleted sets FileContentsDeleted field to given value.
+
+
+### GetSupportsColdStorage
+
+`func (o *UserFile) GetSupportsColdStorage() bool`
+
+GetSupportsColdStorage returns the SupportsColdStorage field if non-nil, zero value otherwise.
+
+### GetSupportsColdStorageOk
+
+`func (o *UserFile) GetSupportsColdStorageOk() (*bool, bool)`
+
+GetSupportsColdStorageOk returns a tuple with the SupportsColdStorage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsColdStorage
+
+`func (o *UserFile) SetSupportsColdStorage(v bool)`
+
+SetSupportsColdStorage sets SupportsColdStorage field to given value.
+
+
+### GetHotStorageTimeToLive
+
+`func (o *UserFile) GetHotStorageTimeToLive() int32`
+
+GetHotStorageTimeToLive returns the HotStorageTimeToLive field if non-nil, zero value otherwise.
+
+### GetHotStorageTimeToLiveOk
+
+`func (o *UserFile) GetHotStorageTimeToLiveOk() (*int32, bool)`
+
+GetHotStorageTimeToLiveOk returns a tuple with the HotStorageTimeToLive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHotStorageTimeToLive
+
+`func (o *UserFile) SetHotStorageTimeToLive(v int32)`
+
+SetHotStorageTimeToLive sets HotStorageTimeToLive field to given value.
+
+
+### SetHotStorageTimeToLiveNil
+
+`func (o *UserFile) SetHotStorageTimeToLiveNil(b bool)`
+
+ SetHotStorageTimeToLiveNil sets the value for HotStorageTimeToLive to be an explicit nil
+
+### UnsetHotStorageTimeToLive
+`func (o *UserFile) UnsetHotStorageTimeToLive()`
+
+UnsetHotStorageTimeToLive ensures that no value is present for HotStorageTimeToLive, not even an explicit nil
+### GetEmbeddingStorageStatus
+
+`func (o *UserFile) GetEmbeddingStorageStatus() EmbeddingStorageStatus`
+
+GetEmbeddingStorageStatus returns the EmbeddingStorageStatus field if non-nil, zero value otherwise.
+
+### GetEmbeddingStorageStatusOk
+
+`func (o *UserFile) GetEmbeddingStorageStatusOk() (*EmbeddingStorageStatus, bool)`
+
+GetEmbeddingStorageStatusOk returns a tuple with the EmbeddingStorageStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmbeddingStorageStatus
+
+`func (o *UserFile) SetEmbeddingStorageStatus(v EmbeddingStorageStatus)`
+
+SetEmbeddingStorageStatus sets EmbeddingStorageStatus field to given value.
 
 
 ### GetCreatedAt

@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **HighAccuracy** | Pointer to **NullableBool** | Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete. | [optional] [default to false]
 **Rerank** | Pointer to [**NullableRerankParamsNullable**](RerankParamsNullable.md) |  | [optional] 
 **FileTypesAtSource** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | Filter files based on their type at the source (for example help center tickets and articles) | [optional] 
+**ExcludeColdStorageFiles** | Pointer to **bool** | Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage. | [optional] [default to false]
 
 ## Methods
 
@@ -668,6 +669,31 @@ HasFileTypesAtSource returns a boolean if a field has been set.
 `func (o *GetEmbeddingDocumentsBody) UnsetFileTypesAtSource()`
 
 UnsetFileTypesAtSource ensures that no value is present for FileTypesAtSource, not even an explicit nil
+### GetExcludeColdStorageFiles
+
+`func (o *GetEmbeddingDocumentsBody) GetExcludeColdStorageFiles() bool`
+
+GetExcludeColdStorageFiles returns the ExcludeColdStorageFiles field if non-nil, zero value otherwise.
+
+### GetExcludeColdStorageFilesOk
+
+`func (o *GetEmbeddingDocumentsBody) GetExcludeColdStorageFilesOk() (*bool, bool)`
+
+GetExcludeColdStorageFilesOk returns a tuple with the ExcludeColdStorageFiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeColdStorageFiles
+
+`func (o *GetEmbeddingDocumentsBody) SetExcludeColdStorageFiles(v bool)`
+
+SetExcludeColdStorageFiles sets ExcludeColdStorageFiles field to given value.
+
+### HasExcludeColdStorageFiles
+
+`func (o *GetEmbeddingDocumentsBody) HasExcludeColdStorageFiles() bool`
+
+HasExcludeColdStorageFiles returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

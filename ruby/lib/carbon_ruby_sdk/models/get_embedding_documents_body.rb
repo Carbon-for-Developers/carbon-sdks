@@ -64,6 +64,9 @@ module Carbon
     # Filter files based on their type at the source (for example help center tickets and articles)
     attr_accessor :file_types_at_source
 
+    # Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+    attr_accessor :exclude_cold_storage_files
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -85,7 +88,8 @@ module Carbon
         :'include_file_level_metadata' => :'include_file_level_metadata',
         :'high_accuracy' => :'high_accuracy',
         :'rerank' => :'rerank',
-        :'file_types_at_source' => :'file_types_at_source'
+        :'file_types_at_source' => :'file_types_at_source',
+        :'exclude_cold_storage_files' => :'exclude_cold_storage_files'
       }
     end
 
@@ -115,7 +119,8 @@ module Carbon
         :'include_file_level_metadata' => :'Boolean',
         :'high_accuracy' => :'Boolean',
         :'rerank' => :'RerankParamsNullable',
-        :'file_types_at_source' => :'Array<HelpdeskFileTypes>'
+        :'file_types_at_source' => :'Array<HelpdeskFileTypes>',
+        :'exclude_cold_storage_files' => :'Boolean'
       }
     end
 
@@ -137,7 +142,7 @@ module Carbon
         :'include_file_level_metadata',
         :'high_accuracy',
         :'rerank',
-        :'file_types_at_source'
+        :'file_types_at_source',
       ])
     end
 
@@ -249,6 +254,12 @@ module Carbon
           self.file_types_at_source = value
         end
       end
+
+      if attributes.key?(:'exclude_cold_storage_files')
+        self.exclude_cold_storage_files = attributes[:'exclude_cold_storage_files']
+      else
+        self.exclude_cold_storage_files = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -335,7 +346,8 @@ module Carbon
           include_file_level_metadata == o.include_file_level_metadata &&
           high_accuracy == o.high_accuracy &&
           rerank == o.rerank &&
-          file_types_at_source == o.file_types_at_source
+          file_types_at_source == o.file_types_at_source &&
+          exclude_cold_storage_files == o.exclude_cold_storage_files
     end
 
     # @see the `==` method
@@ -347,7 +359,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata, high_accuracy, rerank, file_types_at_source].hash
+      [tags, query, query_vector, k, file_ids, parent_file_ids, include_all_children, tags_v2, include_tags, include_vectors, include_raw_file, hybrid_search, hybrid_search_tuning_parameters, media_type, embedding_model, include_file_level_metadata, high_accuracy, rerank, file_types_at_source, exclude_cold_storage_files].hash
     end
 
     # Builds the object from hash

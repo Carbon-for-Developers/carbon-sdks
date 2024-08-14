@@ -256,6 +256,14 @@ responseSchemaNames:
     post:
       '200':
         application/json: IntegrationsSyncSlackResponse
+  /modify_cold_storage_parameters:
+    post:
+      '200':
+        application/json: FilesModifyColdStorageParametersResponse
+  /move_to_hot_storage:
+    post:
+      '200':
+        application/json: FilesMoveToHotStorageResponse
   /process_sitemap:
     get:
       '200':
@@ -289,11 +297,17 @@ securityParameters:
     query: false
   embedding_model:
     query: false
+  enable_cold_storage:
+    query: false
   exclude_archived:
     query: false
   generate_sparse_vectors:
     query: false
+  hot_storage_time_to_live:
+    query: false
   id:
+    query: false
+  include_speaker_labels:
     query: false
   max_items_per_chunk:
     query: false

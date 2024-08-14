@@ -395,6 +395,7 @@ func main() {
     oAuthURLRequest.SetSyncSourceItems(true)
     oAuthURLRequest.SetIncrementalSync(false)
     oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
+    oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,

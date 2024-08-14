@@ -67,4 +67,10 @@ describe Carbon::RawTextInput do
     end
   end
 
+  describe 'test attribute "cold_storage_params"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

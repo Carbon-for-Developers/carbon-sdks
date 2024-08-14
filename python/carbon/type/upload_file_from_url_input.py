@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.cold_storage_props import ColdStorageProps
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
 from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
@@ -50,9 +51,13 @@ class OptionalUploadFileFromUrlInput(TypedDict, total=False):
 
     transcription_service: typing.Optional[TranscriptionServiceNullable]
 
+    include_speaker_labels: bool
+
     media_type: typing.Optional[FileContentTypesNullable]
 
     split_rows: bool
+
+    cold_storage_params: ColdStorageProps
 
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass

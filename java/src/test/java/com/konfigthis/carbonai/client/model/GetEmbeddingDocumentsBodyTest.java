@@ -200,4 +200,12 @@ public class GetEmbeddingDocumentsBodyTest {
         // TODO: test fileTypesAtSource
     }
 
+    /**
+     * Test the property 'excludeColdStorageFiles'
+     */
+    @Test
+    public void excludeColdStorageFilesTest() {
+        // TODO: test excludeColdStorageFiles
+    }
+
 }

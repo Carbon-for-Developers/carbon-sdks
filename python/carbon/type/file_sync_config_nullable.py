@@ -32,6 +32,9 @@ class OptionalFileSyncConfigNullable(TypedDict, total=False):
 
     transcription_service: typing.Optional[TranscriptionServiceNullable]
 
+    # Detect multiple speakers and label segments of speech by speaker for audio files.
+    include_speaker_labels: bool
+
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: bool
 

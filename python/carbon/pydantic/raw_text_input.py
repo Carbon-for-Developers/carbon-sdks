@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.cold_storage_props import ColdStorageProps
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 class RawTextInput(BaseModel):
@@ -33,6 +34,8 @@ class RawTextInput(BaseModel):
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = Field(None, alias='embedding_model')
 
     generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = Field(None, alias='generate_sparse_vectors')
+
+    cold_storage_params: typing.Optional[ColdStorageProps] = Field(None, alias='cold_storage_params')
 
     model_config = ConfigDict(
         protected_namespaces=(),

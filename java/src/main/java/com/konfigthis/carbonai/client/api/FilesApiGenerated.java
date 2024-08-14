@@ -27,6 +27,7 @@ import java.io.IOException;
 
 
 import com.konfigthis.carbonai.client.model.BodyCreateUploadFileUploadfilePost;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.DeleteFilesQueryInput;
 import com.konfigthis.carbonai.client.model.DeleteFilesV2QueryInput;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -35,6 +36,8 @@ import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
 import java.io.File;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
+import com.konfigthis.carbonai.client.model.ModifyColdStorageParametersQueryInput;
+import com.konfigthis.carbonai.client.model.MoveToHotStorageQueryInput;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagCreate;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagsRemove;
@@ -1349,6 +1352,372 @@ public class FilesApiGenerated {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
         return ((FilesApi) this).new GetRawFileRequestBuilder(fileId);
     }
+    private okhttp3.Call modifyColdStorageParametersCall(ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = modifyColdStorageParametersQueryInput;
+
+        // create path and map variables
+        String localVarPath = "/modify_cold_storage_parameters";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call modifyColdStorageParametersValidateBeforeCall(ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'modifyColdStorageParametersQueryInput' is set
+        if (modifyColdStorageParametersQueryInput == null) {
+            throw new ApiException("Missing the required parameter 'modifyColdStorageParametersQueryInput' when calling modifyColdStorageParameters(Async)");
+        }
+
+        return modifyColdStorageParametersCall(modifyColdStorageParametersQueryInput, _callback);
+
+    }
+
+
+    private ApiResponse<Boolean> modifyColdStorageParametersWithHttpInfo(ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput) throws ApiException {
+        okhttp3.Call localVarCall = modifyColdStorageParametersValidateBeforeCall(modifyColdStorageParametersQueryInput, null);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call modifyColdStorageParametersAsync(ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput, final ApiCallback<Boolean> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = modifyColdStorageParametersValidateBeforeCall(modifyColdStorageParametersQueryInput, _callback);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ModifyColdStorageParametersRequestBuilderGenerated {
+        OrganizationUserFilesToSyncFilters filters;
+        Boolean enableColdStorage;
+        Integer hotStorageTimeToLive;
+
+        public ModifyColdStorageParametersRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set filters
+         * @param filters  (optional)
+         * @return FilesApi.ModifyColdStorageParametersRequestBuilder
+         */
+        public FilesApi.ModifyColdStorageParametersRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
+            this.filters = filters;
+            return (FilesApi.ModifyColdStorageParametersRequestBuilder) this;
+        }
+        
+        /**
+         * Set enableColdStorage
+         * @param enableColdStorage  (optional)
+         * @return FilesApi.ModifyColdStorageParametersRequestBuilder
+         */
+        public FilesApi.ModifyColdStorageParametersRequestBuilder enableColdStorage(Boolean enableColdStorage) {
+            this.enableColdStorage = enableColdStorage;
+            return (FilesApi.ModifyColdStorageParametersRequestBuilder) this;
+        }
+        
+        /**
+         * Set hotStorageTimeToLive
+         * @param hotStorageTimeToLive  (optional)
+         * @return FilesApi.ModifyColdStorageParametersRequestBuilder
+         */
+        public FilesApi.ModifyColdStorageParametersRequestBuilder hotStorageTimeToLive(Integer hotStorageTimeToLive) {
+            this.hotStorageTimeToLive = hotStorageTimeToLive;
+            return (FilesApi.ModifyColdStorageParametersRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for modifyColdStorageParameters
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput = buildBodyParams();
+            return modifyColdStorageParametersCall(modifyColdStorageParametersQueryInput, _callback);
+        }
+
+        private ModifyColdStorageParametersQueryInput buildBodyParams() {
+            ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput = new ModifyColdStorageParametersQueryInput();
+            modifyColdStorageParametersQueryInput.filters(this.filters);
+            modifyColdStorageParametersQueryInput.enableColdStorage(this.enableColdStorage);
+            modifyColdStorageParametersQueryInput.hotStorageTimeToLive(this.hotStorageTimeToLive);
+            return modifyColdStorageParametersQueryInput;
+        }
+
+        /**
+         * Execute modifyColdStorageParameters request
+         * @return Boolean
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Boolean execute() throws ApiException {
+            ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput = buildBodyParams();
+            ApiResponse<Boolean> localVarResp = modifyColdStorageParametersWithHttpInfo(modifyColdStorageParametersQueryInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute modifyColdStorageParameters request with HTTP info returned
+         * @return ApiResponse&lt;Boolean&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Boolean> executeWithHttpInfo() throws ApiException {
+            ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput = buildBodyParams();
+            return modifyColdStorageParametersWithHttpInfo(modifyColdStorageParametersQueryInput);
+        }
+
+        /**
+         * Execute modifyColdStorageParameters request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Boolean> _callback) throws ApiException {
+            ModifyColdStorageParametersQueryInput modifyColdStorageParametersQueryInput = buildBodyParams();
+            return modifyColdStorageParametersAsync(modifyColdStorageParametersQueryInput, _callback);
+        }
+    }
+
+    /**
+     * Modify Cold Storage Parameters
+     * 
+     * @param modifyColdStorageParametersQueryInput  (required)
+     * @return ModifyColdStorageParametersRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public FilesApi.ModifyColdStorageParametersRequestBuilder modifyColdStorageParameters() throws IllegalArgumentException {
+        return ((FilesApi) this).new ModifyColdStorageParametersRequestBuilder();
+    }
+    private okhttp3.Call moveToHotStorageCall(MoveToHotStorageQueryInput moveToHotStorageQueryInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = moveToHotStorageQueryInput;
+
+        // create path and map variables
+        String localVarPath = "/move_to_hot_storage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call moveToHotStorageValidateBeforeCall(MoveToHotStorageQueryInput moveToHotStorageQueryInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'moveToHotStorageQueryInput' is set
+        if (moveToHotStorageQueryInput == null) {
+            throw new ApiException("Missing the required parameter 'moveToHotStorageQueryInput' when calling moveToHotStorage(Async)");
+        }
+
+        return moveToHotStorageCall(moveToHotStorageQueryInput, _callback);
+
+    }
+
+
+    private ApiResponse<Boolean> moveToHotStorageWithHttpInfo(MoveToHotStorageQueryInput moveToHotStorageQueryInput) throws ApiException {
+        okhttp3.Call localVarCall = moveToHotStorageValidateBeforeCall(moveToHotStorageQueryInput, null);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call moveToHotStorageAsync(MoveToHotStorageQueryInput moveToHotStorageQueryInput, final ApiCallback<Boolean> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = moveToHotStorageValidateBeforeCall(moveToHotStorageQueryInput, _callback);
+        Type localVarReturnType = new TypeToken<Boolean>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class MoveToHotStorageRequestBuilderGenerated {
+        OrganizationUserFilesToSyncFilters filters;
+
+        public MoveToHotStorageRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set filters
+         * @param filters  (optional)
+         * @return FilesApi.MoveToHotStorageRequestBuilder
+         */
+        public FilesApi.MoveToHotStorageRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
+            this.filters = filters;
+            return (FilesApi.MoveToHotStorageRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for moveToHotStorage
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            MoveToHotStorageQueryInput moveToHotStorageQueryInput = buildBodyParams();
+            return moveToHotStorageCall(moveToHotStorageQueryInput, _callback);
+        }
+
+        private MoveToHotStorageQueryInput buildBodyParams() {
+            MoveToHotStorageQueryInput moveToHotStorageQueryInput = new MoveToHotStorageQueryInput();
+            moveToHotStorageQueryInput.filters(this.filters);
+            return moveToHotStorageQueryInput;
+        }
+
+        /**
+         * Execute moveToHotStorage request
+         * @return Boolean
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Boolean execute() throws ApiException {
+            MoveToHotStorageQueryInput moveToHotStorageQueryInput = buildBodyParams();
+            ApiResponse<Boolean> localVarResp = moveToHotStorageWithHttpInfo(moveToHotStorageQueryInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute moveToHotStorage request with HTTP info returned
+         * @return ApiResponse&lt;Boolean&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Boolean> executeWithHttpInfo() throws ApiException {
+            MoveToHotStorageQueryInput moveToHotStorageQueryInput = buildBodyParams();
+            return moveToHotStorageWithHttpInfo(moveToHotStorageQueryInput);
+        }
+
+        /**
+         * Execute moveToHotStorage request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Boolean> _callback) throws ApiException {
+            MoveToHotStorageQueryInput moveToHotStorageQueryInput = buildBodyParams();
+            return moveToHotStorageAsync(moveToHotStorageQueryInput, _callback);
+        }
+    }
+
+    /**
+     * Move To Hot Storage
+     * 
+     * @param moveToHotStorageQueryInput  (required)
+     * @return MoveToHotStorageRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public FilesApi.MoveToHotStorageRequestBuilder moveToHotStorage() throws IllegalArgumentException {
+        return ((FilesApi) this).new MoveToHotStorageRequestBuilder();
+    }
     private okhttp3.Call queryUserFilesCall(OrganizationUserFilesToSyncQueryInput organizationUserFilesToSyncQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -2045,7 +2414,7 @@ public class FilesApiGenerated {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
         return ((FilesApi) this).new ResyncRequestBuilder(fileId);
     }
-    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2122,12 +2491,24 @@ public class FilesApiGenerated {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("transcription_service", transcriptionService));
         }
 
+        if (includeSpeakerLabels != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("include_speaker_labels", includeSpeakerLabels));
+        }
+
         if (mediaType != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("media_type", mediaType));
         }
 
         if (splitRows != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("split_rows", splitRows));
+        }
+
+        if (enableColdStorage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("enable_cold_storage", enableColdStorage));
+        }
+
+        if (hotStorageTimeToLive != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("hot_storage_time_to_live", hotStorageTimeToLive));
         }
 
         final String[] localVarAccepts = {
@@ -2151,7 +2532,7 @@ public class FilesApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback _callback) throws ApiException {
         // verify the required parameter '_file' is set
         if (_file == null) {
             throw new ApiException("Missing the required parameter '_file' when calling upload(Async)");
@@ -2162,20 +2543,20 @@ public class FilesApiGenerated {
             throw new ApiException("Missing the required parameter 'bodyCreateUploadFileUploadfilePost' when calling upload(Async)");
         }
 
-        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
+        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
 
     }
 
 
-    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows) throws ApiException {
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, null);
+    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, null);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, FileContentTypesNullable mediaType, Boolean splitRows, final ApiCallback<UserFile> _callback) throws ApiException {
+    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback<UserFile> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2195,8 +2576,11 @@ public class FilesApiGenerated {
         Boolean parsePdfTablesWithOcr;
         Boolean detectAudioLanguage;
         TranscriptionServiceNullable transcriptionService;
+        Boolean includeSpeakerLabels;
         FileContentTypesNullable mediaType;
         Boolean splitRows;
+        Boolean enableColdStorage;
+        Integer hotStorageTimeToLive;
 
         public UploadRequestBuilderGenerated(File _file) {
             this._file = _file;
@@ -2323,6 +2707,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set includeSpeakerLabels
+         * @param includeSpeakerLabels Detect multiple speakers and label segments of speech by speaker for audio files. (optional, default to false)
+         * @return FilesApi.UploadRequestBuilder
+         */
+        public FilesApi.UploadRequestBuilder includeSpeakerLabels(Boolean includeSpeakerLabels) {
+            this.includeSpeakerLabels = includeSpeakerLabels;
+            return (FilesApi.UploadRequestBuilder) this;
+        }
+        
+        /**
          * Set mediaType
          * @param mediaType The media type of the file. If not provided, it will be inferred from the file extension. (optional)
          * @return FilesApi.UploadRequestBuilder
@@ -2343,6 +2737,26 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set enableColdStorage
+         * @param enableColdStorage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (optional, default to false)
+         * @return FilesApi.UploadRequestBuilder
+         */
+        public FilesApi.UploadRequestBuilder enableColdStorage(Boolean enableColdStorage) {
+            this.enableColdStorage = enableColdStorage;
+            return (FilesApi.UploadRequestBuilder) this;
+        }
+        
+        /**
+         * Set hotStorageTimeToLive
+         * @param hotStorageTimeToLive Time in seconds after which the file will be moved to cold storage. (optional)
+         * @return FilesApi.UploadRequestBuilder
+         */
+        public FilesApi.UploadRequestBuilder hotStorageTimeToLive(Integer hotStorageTimeToLive) {
+            this.hotStorageTimeToLive = hotStorageTimeToLive;
+            return (FilesApi.UploadRequestBuilder) this;
+        }
+        
+        /**
          * Build call for upload
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2355,7 +2769,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
+            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
         }
 
         private BodyCreateUploadFileUploadfilePost buildBodyParams() {
@@ -2376,7 +2790,7 @@ public class FilesApiGenerated {
          */
         public UserFile execute() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows);
+            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive);
             return localVarResp.getResponseBody();
         }
 
@@ -2392,7 +2806,7 @@ public class FilesApiGenerated {
          */
         public ApiResponse<UserFile> executeWithHttpInfo() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows);
+            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive);
         }
 
         /**
@@ -2408,7 +2822,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UserFile> _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, _callback);
+            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
         }
     }
 
@@ -2514,8 +2928,10 @@ public class FilesApiGenerated {
         Boolean parsePdfTablesWithOcr;
         Boolean detectAudioLanguage;
         TranscriptionServiceNullable transcriptionService;
+        Boolean includeSpeakerLabels;
         FileContentTypesNullable mediaType;
         Boolean splitRows;
+        ColdStorageProps coldStorageParams;
 
         public UploadFromUrlRequestBuilderGenerated(String url) {
             this.url = url;
@@ -2652,6 +3068,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set includeSpeakerLabels
+         * @param includeSpeakerLabels  (optional, default to false)
+         * @return FilesApi.UploadFromUrlRequestBuilder
+         */
+        public FilesApi.UploadFromUrlRequestBuilder includeSpeakerLabels(Boolean includeSpeakerLabels) {
+            this.includeSpeakerLabels = includeSpeakerLabels;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
+        }
+        
+        /**
          * Set mediaType
          * @param mediaType  (optional)
          * @return FilesApi.UploadFromUrlRequestBuilder
@@ -2668,6 +3094,16 @@ public class FilesApiGenerated {
          */
         public FilesApi.UploadFromUrlRequestBuilder splitRows(Boolean splitRows) {
             this.splitRows = splitRows;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
+        }
+        
+        /**
+         * Set coldStorageParams
+         * @param coldStorageParams  (optional)
+         * @return FilesApi.UploadFromUrlRequestBuilder
+         */
+        public FilesApi.UploadFromUrlRequestBuilder coldStorageParams(ColdStorageProps coldStorageParams) {
+            this.coldStorageParams = coldStorageParams;
             return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
@@ -2703,8 +3139,10 @@ public class FilesApiGenerated {
             uploadFileFromUrlInput.parsePdfTablesWithOcr(this.parsePdfTablesWithOcr);
             uploadFileFromUrlInput.detectAudioLanguage(this.detectAudioLanguage);
             uploadFileFromUrlInput.transcriptionService(this.transcriptionService);
+            uploadFileFromUrlInput.includeSpeakerLabels(this.includeSpeakerLabels);
             uploadFileFromUrlInput.mediaType(this.mediaType);
             uploadFileFromUrlInput.splitRows(this.splitRows);
+            uploadFileFromUrlInput.coldStorageParams(this.coldStorageParams);
             return uploadFileFromUrlInput;
         }
 
@@ -2853,6 +3291,7 @@ public class FilesApiGenerated {
         Integer overwriteFileId;
         EmbeddingGeneratorsNullable embeddingModel;
         Boolean generateSparseVectors;
+        ColdStorageProps coldStorageParams;
 
         public UploadTextRequestBuilderGenerated(String contents) {
             this.contents = contents;
@@ -2929,6 +3368,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set coldStorageParams
+         * @param coldStorageParams  (optional)
+         * @return FilesApi.UploadTextRequestBuilder
+         */
+        public FilesApi.UploadTextRequestBuilder coldStorageParams(ColdStorageProps coldStorageParams) {
+            this.coldStorageParams = coldStorageParams;
+            return (FilesApi.UploadTextRequestBuilder) this;
+        }
+        
+        /**
          * Build call for uploadText
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2954,6 +3403,7 @@ public class FilesApiGenerated {
             rawTextInput.overwriteFileId(this.overwriteFileId);
             rawTextInput.embeddingModel(this.embeddingModel);
             rawTextInput.generateSparseVectors(this.generateSparseVectors);
+            rawTextInput.coldStorageParams(this.coldStorageParams);
             return rawTextInput;
         }
 

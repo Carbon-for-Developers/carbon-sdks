@@ -33,6 +33,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.delete_v2`](#carbonfilesdelete_v2)
   * [`carbon.files.get_parsed_file`](#carbonfilesget_parsed_file)
   * [`carbon.files.get_raw_file`](#carbonfilesget_raw_file)
+  * [`carbon.files.modify_cold_storage_parameters`](#carbonfilesmodify_cold_storage_parameters)
+  * [`carbon.files.move_to_hot_storage`](#carbonfilesmove_to_hot_storage)
   * [`carbon.files.query_user_files`](#carbonfilesquery_user_files)
   * [`carbon.files.query_user_files_deprecated`](#carbonfilesquery_user_files_deprecated)
   * [`carbon.files.resync`](#carbonfilesresync)
@@ -388,6 +390,7 @@ result = carbon.embeddings.get_documents(
   file_types_at_source: [
         "string_example"
     ],
+  exclude_cold_storage_files: false,
 )
 p result
 ```
@@ -455,6 +458,11 @@ results, but may take longer to complete.
 ##### file_types_at_source: Array<[`HelpdeskFileTypes`](./lib/carbon_ruby_sdk/models/helpdesk_file_types.rb)><a id="file_types_at_source-array"></a>
 Filter files based on their type at the source (for example help center tickets
 and articles)
+
+##### exclude_cold_storage_files: `Boolean`<a id="exclude_cold_storage_files-boolean"></a>
+Flag to control whether or not to exclude files that are not in hot storage. If
+set to False, then an error will be returned if any filtered files are in cold
+storage.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -855,6 +863,66 @@ p result
 ---
 
 
+### `carbon.files.modify_cold_storage_parameters`<a id="carbonfilesmodify_cold_storage_parameters"></a>
+
+Modify Cold Storage Parameters
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.files.modify_cold_storage_parameters(
+  filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
+    },
+  enable_cold_storage: true,
+  hot_storage_time_to_live: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+##### enable_cold_storage: `Boolean`<a id="enable_cold_storage-boolean"></a>
+##### hot_storage_time_to_live: `Integer`<a id="hot_storage_time_to_live-integer"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/modify_cold_storage_parameters` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.files.move_to_hot_storage`<a id="carbonfilesmove_to_hot_storage"></a>
+
+Move To Hot Storage
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.files.move_to_hot_storage(
+  filters: {
+        "include_all_children" => false,
+        "non_synced_only" => false,
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/move_to_hot_storage` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.files.query_user_files`<a id="carbonfilesquery_user_files"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
@@ -1079,8 +1147,11 @@ result = carbon.files.upload(
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   transcription_service: "assemblyai",
+  include_speaker_labels: false,
   media_type: "TEXT",
   split_rows: false,
+  enable_cold_storage: false,
+  hot_storage_time_to_live: 1,
 )
 p result
 ```
@@ -1130,6 +1201,10 @@ Whether to automatically detect the language of the uploaded audio file.
 The transcription service to use for audio files. If no service is specified,
 'deepgram' will be used.
 
+##### include_speaker_labels: `Boolean`<a id="include_speaker_labels-boolean"></a>
+Detect multiple speakers and label segments of speech by speaker for audio
+files.
+
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 The media type of the file. If not provided, it will be inferred from the file
 extension.
@@ -1137,6 +1212,13 @@ extension.
 ##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
 Whether to split tabular rows into chunks. Currently only valid for CSV, TSV,
 and XLSX files.
+
+##### enable_cold_storage: `Boolean`<a id="enable_cold_storage-boolean"></a>
+Enable cold storage for the file. If set to true, the file will be moved to cold
+storage after a certain period of inactivity. Default is false.
+
+##### hot_storage_time_to_live: `Integer`<a id="hot_storage_time_to_live-integer"></a>
+Time in seconds after which the file will be moved to cold storage.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1173,8 +1255,12 @@ result = carbon.files.upload_from_url(
   parse_pdf_tables_with_ocr: false,
   detect_audio_language: false,
   transcription_service: "assemblyai",
+  include_speaker_labels: false,
   media_type: "TEXT",
   split_rows: false,
+  cold_storage_params: {
+        "enable_cold_storage" => false,
+    },
 )
 p result
 ```
@@ -1197,8 +1283,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
 ##### transcription_service: [`TranscriptionServiceNullable`](./lib/carbon_ruby_sdk/models/transcription_service_nullable.rb)<a id="transcription_service-transcriptionservicenullablelibcarbon_ruby_sdkmodelstranscription_service_nullablerb"></a>
+##### include_speaker_labels: `Boolean`<a id="include_speaker_labels-boolean"></a>
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 ##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
+##### cold_storage_params: [`ColdStorageProps`](./lib/carbon_ruby_sdk/models/cold_storage_props.rb)<a id="cold_storage_params-coldstoragepropslibcarbon_ruby_sdkmodelscold_storage_propsrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1237,6 +1325,9 @@ result = carbon.files.upload_text(
   overwrite_file_id: 1,
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
+  cold_storage_params: {
+        "enable_cold_storage" => false,
+    },
 )
 p result
 ```
@@ -1251,6 +1342,7 @@ p result
 ##### overwrite_file_id: `Integer`<a id="overwrite_file_id-integer"></a>
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### cold_storage_params: [`ColdStorageProps`](./lib/carbon_ruby_sdk/models/cold_storage_props.rb)<a id="cold_storage_params-coldstoragepropslibcarbon_ruby_sdkmodelscold_storage_propsrb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1368,6 +1460,7 @@ result = carbon.integrations.connect_freshdesk(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
 )
@@ -1554,8 +1647,10 @@ result = carbon.integrations.get_oauth_url(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
+  automatically_open_file_picker: true,
 )
 p result
 ```
@@ -1618,6 +1713,11 @@ GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE,
 NOTION, SHAREPOINT. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+##### automatically_open_file_picker: `Boolean`<a id="automatically_open_file_picker-boolean"></a>
+Automatically open source file picker after the OAuth flow is complete. This
+flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT.
+It will be ignored for other data sources.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -1920,6 +2020,7 @@ result = carbon.integrations.sync_confluence(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
 )
@@ -2026,6 +2127,7 @@ result = carbon.integrations.sync_files(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
 )
@@ -2229,6 +2331,7 @@ result = carbon.integrations.sync_gmail(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
   incremental_sync: false,
@@ -2349,6 +2452,7 @@ result = carbon.integrations.sync_outlook(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
   incremental_sync: false,
@@ -2493,6 +2597,7 @@ result = carbon.integrations.sync_s3_files(
         "sync_attachments" => false,
         "detect_audio_language" => false,
         "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
         "split_rows" => false,
     },
 )

@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.cold_storage_props import ColdStorageProps
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
 from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
@@ -49,9 +50,13 @@ class UploadFileFromUrlInput(BaseModel):
 
     transcription_service: typing.Optional[TranscriptionServiceNullable] = Field(None, alias='transcription_service')
 
+    include_speaker_labels: typing.Optional[bool] = Field(None, alias='include_speaker_labels')
+
     media_type: typing.Optional[FileContentTypesNullable] = Field(None, alias='media_type')
 
     split_rows: typing.Optional[bool] = Field(None, alias='split_rows')
+
+    cold_storage_params: typing.Optional[ColdStorageProps] = Field(None, alias='cold_storage_params')
 
     model_config = ConfigDict(
         protected_namespaces=(),

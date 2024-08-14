@@ -106,6 +106,28 @@ describe 'FilesApi' do
     end
   end
 
+  # unit tests for modify_cold_storage_parameters
+  # Modify Cold Storage Parameters
+  # @param modify_cold_storage_parameters_query_input 
+  # @param [Hash] opts the optional parameters
+  # @return [Boolean]
+  describe 'modify_cold_storage_parameters test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for move_to_hot_storage
+  # Move To Hot Storage
+  # @param move_to_hot_storage_query_input 
+  # @param [Hash] opts the optional parameters
+  # @return [Boolean]
+  describe 'move_to_hot_storage test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for query_user_files
   # User Files V2
   # For pre-filtering documents, using &#x60;tags_v2&#x60; is preferred to using &#x60;tags&#x60; (which is now deprecated). If both &#x60;tags_v2&#x60; and &#x60;tags&#x60; are specified, &#x60;tags&#x60; is ignored. &#x60;tags_v2&#x60; enables building complex filters through the use of \&quot;AND\&quot;, \&quot;OR\&quot;, and negation logic. Take the below input as an example: &#x60;&#x60;&#x60;json {     \&quot;OR\&quot;: [         {             \&quot;key\&quot;: \&quot;subject\&quot;,             \&quot;value\&quot;: \&quot;holy-bible\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;person-of-interest\&quot;,             \&quot;value\&quot;: \&quot;jesus christ\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;genre\&quot;,             \&quot;value\&quot;: \&quot;religion\&quot;,             \&quot;negate\&quot;: true         }         {             \&quot;AND\&quot;: [                 {                     \&quot;key\&quot;: \&quot;subject\&quot;,                     \&quot;value\&quot;: \&quot;tao-te-ching\&quot;,                     \&quot;negate\&quot;: false                 },                 {                     \&quot;key\&quot;: \&quot;author\&quot;,                     \&quot;value\&quot;: \&quot;lao-tzu\&quot;,                     \&quot;negate\&quot;: false                 }             ]         }     ] } &#x60;&#x60;&#x60; In this case, files will be filtered such that: 1. \&quot;subject\&quot; &#x3D; \&quot;holy-bible\&quot; OR 2. \&quot;person-of-interest\&quot; &#x3D; \&quot;jesus christ\&quot; OR 3. \&quot;genre\&quot; !&#x3D; \&quot;religion\&quot; OR 4. \&quot;subject\&quot; &#x3D; \&quot;tao-te-ching\&quot; AND \&quot;author\&quot; &#x3D; \&quot;lao-tzu\&quot;  Note that the top level of the query must be either an \&quot;OR\&quot; or \&quot;AND\&quot; array. Currently, nesting is limited to 3. For tag blocks (those with \&quot;key\&quot;, \&quot;value\&quot;, and \&quot;negate\&quot; keys), the following typing rules apply: 1. \&quot;key\&quot; isn&#39;t optional and must be a &#x60;string&#x60; 2. \&quot;value\&quot; isn&#39;t optional and can be &#x60;any&#x60; or list[&#x60;any&#x60;] 3. \&quot;negate\&quot; is optional and must be &#x60;true&#x60; or &#x60;false&#x60;. If present and &#x60;true&#x60;, then the filter block is negated in the resulting query. It is &#x60;false&#x60; by default.
@@ -159,8 +181,11 @@ describe 'FilesApi' do
   # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
   # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file.
   # @option opts [TranscriptionServiceNullable] :transcription_service The transcription service to use for audio files. If no service is specified, &#39;deepgram&#39; will be used.
+  # @option opts [Boolean] :include_speaker_labels Detect multiple speakers and label segments of speech by speaker for audio files.
   # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
   # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+  # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+  # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
   # @return [UserFile]
   describe 'upload test' do
     it 'should work' do

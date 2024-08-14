@@ -88,6 +88,7 @@ public class EmbeddingsApiTest {
         Boolean highAccuracy = null;
         RerankParamsNullable rerank = null;
         List<HelpdeskFileTypes> fileTypesAtSource = null;
+        Boolean excludeColdStorageFiles = null;
         DocumentResponseList response = api.getDocuments(query, k)
                 .tags(tags)
                 .queryVector(queryVector)
@@ -106,6 +107,7 @@ public class EmbeddingsApiTest {
                 .highAccuracy(highAccuracy)
                 .rerank(rerank)
                 .fileTypesAtSource(fileTypesAtSource)
+                .excludeColdStorageFiles(excludeColdStorageFiles)
                 .execute();
         // TODO: test validations
     }

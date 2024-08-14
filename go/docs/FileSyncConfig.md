@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **SyncAttachments** | Pointer to **bool** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** | Detect audio language before transcription for audio files | [optional] [default to false]
 **TranscriptionService** | Pointer to [**NullableTranscriptionServiceNullable**](TranscriptionServiceNullable.md) |  | [optional] 
+**IncludeSpeakerLabels** | Pointer to **bool** | Detect multiple speakers and label segments of speech by speaker for audio files. | [optional] [default to false]
 **SplitRows** | Pointer to **bool** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false]
 
 ## Methods
@@ -139,6 +140,31 @@ HasTranscriptionService returns a boolean if a field has been set.
 `func (o *FileSyncConfig) UnsetTranscriptionService()`
 
 UnsetTranscriptionService ensures that no value is present for TranscriptionService, not even an explicit nil
+### GetIncludeSpeakerLabels
+
+`func (o *FileSyncConfig) GetIncludeSpeakerLabels() bool`
+
+GetIncludeSpeakerLabels returns the IncludeSpeakerLabels field if non-nil, zero value otherwise.
+
+### GetIncludeSpeakerLabelsOk
+
+`func (o *FileSyncConfig) GetIncludeSpeakerLabelsOk() (*bool, bool)`
+
+GetIncludeSpeakerLabelsOk returns a tuple with the IncludeSpeakerLabels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeSpeakerLabels
+
+`func (o *FileSyncConfig) SetIncludeSpeakerLabels(v bool)`
+
+SetIncludeSpeakerLabels sets IncludeSpeakerLabels field to given value.
+
+### HasIncludeSpeakerLabels
+
+`func (o *FileSyncConfig) HasIncludeSpeakerLabels() bool`
+
+HasIncludeSpeakerLabels returns a boolean if a field has been set.
+
 ### GetSplitRows
 
 `func (o *FileSyncConfig) GetSplitRows() bool`
