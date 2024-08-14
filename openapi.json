@@ -2177,6 +2177,18 @@
             "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used."
           },
           {
+            "name": "include_speaker_labels",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Detect multiple speakers and label segments of speech by speaker for audio files.",
+              "default": false,
+              "title": "Include Speaker Labels"
+            },
+            "description": "Detect multiple speakers and label segments of speech by speaker for audio files."
+          },
+          {
             "name": "media_type",
             "in": "query",
             "required": false,
@@ -2205,6 +2217,37 @@
               "title": "Split Rows"
             },
             "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files."
+          },
+          {
+            "name": "enable_cold_storage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.",
+              "default": false,
+              "title": "Enable Cold Storage"
+            },
+            "description": "Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false."
+          },
+          {
+            "name": "hot_storage_time_to_live",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Time in seconds after which the file will be moved to cold storage.",
+              "gte": 60,
+              "title": "Hot Storage Time To Live"
+            },
+            "description": "Time in seconds after which the file will be moved to cold storage."
           }
         ],
         "requestBody": {
@@ -2568,6 +2611,108 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserFile"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/move_to_hot_storage": {
+      "post": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Move To Hot Storage",
+        "operationId": "Files_moveToHotStorage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveToHotStorageQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "title": "Response Files Movetohotstorage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/modify_cold_storage_parameters": {
+      "post": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Modify Cold Storage Parameters",
+        "operationId": "modify_cold_storage_parameters_modify_cold_storage_parameters_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyColdStorageParametersQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "title": "Response Modify Cold Storage Parameters Modify Cold Storage Parameters Post"
                 }
               }
             }
@@ -3652,6 +3797,31 @@
         ],
         "title": "ChunksAndEmbeddingsUploadInput"
       },
+      "ColdStorageProps": {
+        "properties": {
+          "enable_cold_storage": {
+            "type": "boolean",
+            "title": "Enable Cold Storage",
+            "description": "Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.",
+            "default": false
+          },
+          "hot_storage_time_to_live": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hot Storage Time To Live",
+            "description": "Time in seconds after which the file will be moved to cold storage.",
+            "gte": 60
+          }
+        },
+        "type": "object",
+        "title": "ColdStorageProps"
+      },
       "ConfigurationKeys": {
         "type": "string",
         "const": "sparse_vectors",
@@ -4351,6 +4521,16 @@
         ],
         "title": "EmbeddingProperties"
       },
+      "EmbeddingStorageStatus": {
+        "type": "string",
+        "enum": [
+          "HOT_STORAGE",
+          "HOT_TO_COLD",
+          "COLD_STORAGE",
+          "COLD_TO_HOT"
+        ],
+        "title": "EmbeddingStorageStatus"
+      },
       "EmbeddingsAndChunksFilters": {
         "properties": {
           "user_file_id": {
@@ -4892,6 +5072,12 @@
             ],
             "description": "The transcription service to use for audio files. If no service is specified, 'deepgram' will be used."
           },
+          "include_speaker_labels": {
+            "type": "boolean",
+            "title": "Include Speaker Labels",
+            "description": "Detect multiple speakers and label segments of speech by speaker for audio files.",
+            "default": false
+          },
           "split_rows": {
             "type": "boolean",
             "title": "Split Rows",
@@ -5378,6 +5564,12 @@
             ],
             "title": "File Types At Source",
             "description": "Filter files based on their type at the source (for example help center tickets and articles)"
+          },
+          "exclude_cold_storage_files": {
+            "type": "boolean",
+            "title": "Exclude Cold Storage Files",
+            "description": "Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered\n        files are in cold storage.",
+            "default": false
           }
         },
         "type": "object",
@@ -6248,6 +6440,46 @@
         "type": "object",
         "title": "ListUsersRequest"
       },
+      "ModifyColdStorageParametersQueryInput": {
+        "properties": {
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+              }
+            ],
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
+          },
+          "enable_cold_storage": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Enable Cold Storage"
+          },
+          "hot_storage_time_to_live": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hot Storage Time To Live",
+            "gte": 60
+          }
+        },
+        "type": "object",
+        "title": "ModifyColdStorageParametersQueryInput"
+      },
       "ModifyUserConfigurationInput": {
         "properties": {
           "configuration_key_name": {
@@ -6264,6 +6496,23 @@
           "value"
         ],
         "title": "ModifyUserConfigurationInput"
+      },
+      "MoveToHotStorageQueryInput": {
+        "properties": {
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+              }
+            ],
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
+          }
+        },
+        "type": "object",
+        "title": "MoveToHotStorageQueryInput"
       },
       "MultiModalEmbeddingGenerators": {
         "type": "string",
@@ -6593,6 +6842,18 @@
               }
             ],
             "description": "Used to configure file syncing (automatic or through connector's inbuilt file picker) on completion\n        of the OAuth flow"
+          },
+          "automatically_open_file_picker": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Automatically Open File Picker",
+            "description": "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by\n        BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources."
           }
         },
         "type": "object",
@@ -7826,6 +8087,16 @@
             ],
             "title": "Generate Sparse Vectors",
             "default": false
+          },
+          "cold_storage_params": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ColdStorageProps"
+              }
+            ],
+            "default": {
+              "enable_cold_storage": false
+            }
           }
         },
         "type": "object",
@@ -9049,6 +9320,18 @@
               }
             ],
             "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true"
+          },
+          "automatically_open_file_picker": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Automatically Open File Picker",
+            "description": "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by\n        BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources."
           }
         },
         "type": "object",
@@ -9299,6 +9582,11 @@
               }
             ]
           },
+          "include_speaker_labels": {
+            "type": "boolean",
+            "title": "Include Speaker Labels",
+            "default": false
+          },
           "media_type": {
             "anyOf": [
               {
@@ -9313,6 +9601,16 @@
             "type": "boolean",
             "title": "Split Rows",
             "default": false
+          },
+          "cold_storage_params": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ColdStorageProps"
+              }
+            ],
+            "default": {
+              "enable_cold_storage": false
+            }
           }
         },
         "type": "object",
@@ -9654,6 +9952,24 @@
             "title": "File Contents Deleted",
             "default": false
           },
+          "supports_cold_storage": {
+            "type": "boolean",
+            "title": "Supports Cold Storage"
+          },
+          "hot_storage_time_to_live": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hot Storage Time To Live"
+          },
+          "embedding_storage_status": {
+            "$ref": "#/components/schemas/EmbeddingStorageStatus"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -9699,6 +10015,9 @@
           "sync_properties",
           "messages_metadata",
           "file_contents_deleted",
+          "supports_cold_storage",
+          "hot_storage_time_to_live",
+          "embedding_storage_status",
           "created_at",
           "updated_at"
         ],
@@ -10585,6 +10904,7 @@
               "CANCEL",
               "CHECKUP",
               "DATA_SOURCE_READY",
+              "EMBEDDING_STORAGE_MODIFIED",
               "FILES_CREATED",
               "FILES_SKIPPED",
               "FILE_DELETED",
@@ -10592,6 +10912,8 @@
               "FILE_READY",
               "FILE_STATISTICS_AGGREGATED",
               "FILE_SYNC_LIMIT_REACHED",
+              "MOVED_TO_COLD_STORAGE",
+              "MOVED_TO_HOT_STORAGE",
               "ORGANIZATION_USER_DELETED",
               "RATE_LIMIT_ERROR",
               "REVOKE",
