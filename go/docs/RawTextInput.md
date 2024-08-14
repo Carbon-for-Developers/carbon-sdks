@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **OverwriteFileId** | Pointer to **NullableInt32** |  | [optional] 
 **EmbeddingModel** | Pointer to [**NullableEmbeddingGeneratorsNullable**](EmbeddingGeneratorsNullable.md) |  | [optional] [default to EMBEDDINGGENERATORSNULLABLE_OPENAI]
 **GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] [default to false]
+**ColdStorageParams** | Pointer to [**ColdStorageProps**](ColdStorageProps.md) |  | [optional] 
 
 ## Methods
 
@@ -287,6 +288,31 @@ HasGenerateSparseVectors returns a boolean if a field has been set.
 `func (o *RawTextInput) UnsetGenerateSparseVectors()`
 
 UnsetGenerateSparseVectors ensures that no value is present for GenerateSparseVectors, not even an explicit nil
+### GetColdStorageParams
+
+`func (o *RawTextInput) GetColdStorageParams() ColdStorageProps`
+
+GetColdStorageParams returns the ColdStorageParams field if non-nil, zero value otherwise.
+
+### GetColdStorageParamsOk
+
+`func (o *RawTextInput) GetColdStorageParamsOk() (*ColdStorageProps, bool)`
+
+GetColdStorageParamsOk returns a tuple with the ColdStorageParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColdStorageParams
+
+`func (o *RawTextInput) SetColdStorageParams(v ColdStorageProps)`
+
+SetColdStorageParams sets ColdStorageParams field to given value.
+
+### HasColdStorageParams
+
+`func (o *RawTextInput) HasColdStorageParams() bool`
+
+HasColdStorageParams returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

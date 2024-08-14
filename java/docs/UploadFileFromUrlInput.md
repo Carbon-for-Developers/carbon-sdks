@@ -21,8 +21,10 @@
 |**parsePdfTablesWithOcr** | **Boolean** |  |  [optional] |
 |**detectAudioLanguage** | **Boolean** |  |  [optional] |
 |**transcriptionService** | **TranscriptionServiceNullable** |  |  [optional] |
+|**includeSpeakerLabels** | **Boolean** |  |  [optional] |
 |**mediaType** | **FileContentTypesNullable** |  |  [optional] |
 |**splitRows** | **Boolean** |  |  [optional] |
+|**coldStorageParams** | [**ColdStorageProps**](ColdStorageProps.md) |  |  [optional] |
 
 
 

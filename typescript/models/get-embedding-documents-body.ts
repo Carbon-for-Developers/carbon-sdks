@@ -138,5 +138,11 @@ export interface GetEmbeddingDocumentsBody {
      * @memberof GetEmbeddingDocumentsBody
      */
     'file_types_at_source'?: Array<HelpdeskFileTypes> | null;
+    /**
+     * Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+     * @type {boolean}
+     * @memberof GetEmbeddingDocumentsBody
+     */
+    'exclude_cold_storage_files'?: boolean;
 }
 

@@ -184,6 +184,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetSyncSourceItems(true)
         oAuthURLRequest.SetIncrementalSync(false)
         oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
+        oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,

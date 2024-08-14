@@ -44,6 +44,12 @@ export interface FileSyncConfig {
      */
     'transcription_service'?: TranscriptionServiceNullable | null;
     /**
+     * Detect multiple speakers and label segments of speech by speaker for audio files.
+     * @type {boolean}
+     * @memberof FileSyncConfig
+     */
+    'include_speaker_labels'?: boolean;
+    /**
      * Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
      * @type {boolean}
      * @memberof FileSyncConfig

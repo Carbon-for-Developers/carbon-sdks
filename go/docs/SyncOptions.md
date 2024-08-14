@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources. | [optional] [default to false]
 **FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
+**AutomaticallyOpenFilePicker** | Pointer to **NullableBool** | Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. | [optional] 
 
 ## Methods
 
@@ -524,6 +525,41 @@ HasFileSyncConfig returns a boolean if a field has been set.
 `func (o *SyncOptions) UnsetFileSyncConfig()`
 
 UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+### GetAutomaticallyOpenFilePicker
+
+`func (o *SyncOptions) GetAutomaticallyOpenFilePicker() bool`
+
+GetAutomaticallyOpenFilePicker returns the AutomaticallyOpenFilePicker field if non-nil, zero value otherwise.
+
+### GetAutomaticallyOpenFilePickerOk
+
+`func (o *SyncOptions) GetAutomaticallyOpenFilePickerOk() (*bool, bool)`
+
+GetAutomaticallyOpenFilePickerOk returns a tuple with the AutomaticallyOpenFilePicker field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutomaticallyOpenFilePicker
+
+`func (o *SyncOptions) SetAutomaticallyOpenFilePicker(v bool)`
+
+SetAutomaticallyOpenFilePicker sets AutomaticallyOpenFilePicker field to given value.
+
+### HasAutomaticallyOpenFilePicker
+
+`func (o *SyncOptions) HasAutomaticallyOpenFilePicker() bool`
+
+HasAutomaticallyOpenFilePicker returns a boolean if a field has been set.
+
+### SetAutomaticallyOpenFilePickerNil
+
+`func (o *SyncOptions) SetAutomaticallyOpenFilePickerNil(b bool)`
+
+ SetAutomaticallyOpenFilePickerNil sets the value for AutomaticallyOpenFilePicker to be an explicit nil
+
+### UnsetAutomaticallyOpenFilePicker
+`func (o *SyncOptions) UnsetAutomaticallyOpenFilePicker()`
+
+UnsetAutomaticallyOpenFilePicker ensures that no value is present for AutomaticallyOpenFilePicker, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

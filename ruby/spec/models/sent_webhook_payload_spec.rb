@@ -22,7 +22,7 @@ describe Carbon::SentWebhookPayload do
   describe 'test attribute "webhook_type"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNC_LIMIT_REACHED", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "EMBEDDING_STORAGE_MODIFIED", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNC_LIMIT_REACHED", "MOVED_TO_COLD_STORAGE", "MOVED_TO_HOT_STORAGE", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
       # validator.allowable_values.each do |value|
       #   expect { instance.webhook_type = value }.not_to raise_error
       # end

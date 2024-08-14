@@ -81,6 +81,9 @@ class OAuthURLRequest(BaseModel):
 
     file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
+    # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+    automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = Field(None, alias='automatically_open_file_picker')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

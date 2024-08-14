@@ -1177,6 +1177,330 @@ func (a *FilesApiService) GetRawFileExecute(r FilesApiGetRawFileRequest) (*Presi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type FilesApiModifyColdStorageParametersRequest struct {
+	ctx context.Context
+	ApiService *FilesApiService
+	modifyColdStorageParametersQueryInput ModifyColdStorageParametersQueryInput
+}
+
+func (r FilesApiModifyColdStorageParametersRequest) Execute() (bool, *http.Response, error) {
+	return r.ApiService.ModifyColdStorageParametersExecute(r)
+}
+
+/*
+ModifyColdStorageParameters Modify Cold Storage Parameters
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param modifyColdStorageParametersQueryInput
+ @return FilesApiModifyColdStorageParametersRequest
+*/
+func (a *FilesApiService) ModifyColdStorageParameters(modifyColdStorageParametersQueryInput ModifyColdStorageParametersQueryInput) FilesApiModifyColdStorageParametersRequest {
+	return FilesApiModifyColdStorageParametersRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+		modifyColdStorageParametersQueryInput: modifyColdStorageParametersQueryInput,
+	}
+}
+
+// Execute executes the request
+//  @return bool
+func (a *FilesApiService) ModifyColdStorageParametersExecute(r FilesApiModifyColdStorageParametersRequest) (bool, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  bool
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FilesApiService.ModifyColdStorageParameters")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+    subpath := "/modify_cold_storage_parameters"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+    if !checkNilInterface(r.modifyColdStorageParametersQueryInput) {
+        localVarPostBody = r.modifyColdStorageParametersQueryInput
+    }
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["accessToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FilesApiMoveToHotStorageRequest struct {
+	ctx context.Context
+	ApiService *FilesApiService
+	moveToHotStorageQueryInput MoveToHotStorageQueryInput
+}
+
+func (r FilesApiMoveToHotStorageRequest) Execute() (bool, *http.Response, error) {
+	return r.ApiService.MoveToHotStorageExecute(r)
+}
+
+/*
+MoveToHotStorage Move To Hot Storage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param moveToHotStorageQueryInput
+ @return FilesApiMoveToHotStorageRequest
+*/
+func (a *FilesApiService) MoveToHotStorage(moveToHotStorageQueryInput MoveToHotStorageQueryInput) FilesApiMoveToHotStorageRequest {
+	return FilesApiMoveToHotStorageRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+		moveToHotStorageQueryInput: moveToHotStorageQueryInput,
+	}
+}
+
+// Execute executes the request
+//  @return bool
+func (a *FilesApiService) MoveToHotStorageExecute(r FilesApiMoveToHotStorageRequest) (bool, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  bool
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FilesApiService.MoveToHotStorage")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+    subpath := "/move_to_hot_storage"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+    if !checkNilInterface(r.moveToHotStorageQueryInput) {
+        localVarPostBody = r.moveToHotStorageQueryInput
+    }
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["accessToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type FilesApiQueryUserFilesRequest struct {
 	ctx context.Context
 	ApiService *FilesApiService
@@ -1736,8 +2060,11 @@ type FilesApiUploadRequest struct {
 	parsePdfTablesWithOcr *bool
 	detectAudioLanguage *bool
 	transcriptionService *TranscriptionServiceNullable
+	includeSpeakerLabels *bool
 	mediaType *FileContentTypesNullable
 	splitRows *bool
+	enableColdStorage *bool
+	hotStorageTimeToLive *int32
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -1812,6 +2139,12 @@ func (r *FilesApiUploadRequest) TranscriptionService(transcriptionService Transc
 	return r
 }
 
+// Detect multiple speakers and label segments of speech by speaker for audio files.
+func (r *FilesApiUploadRequest) IncludeSpeakerLabels(includeSpeakerLabels bool) *FilesApiUploadRequest {
+	r.includeSpeakerLabels = &includeSpeakerLabels
+	return r
+}
+
 // The media type of the file. If not provided, it will be inferred from the file extension.
 func (r *FilesApiUploadRequest) MediaType(mediaType FileContentTypesNullable) *FilesApiUploadRequest {
 	r.mediaType = &mediaType
@@ -1821,6 +2154,18 @@ func (r *FilesApiUploadRequest) MediaType(mediaType FileContentTypesNullable) *F
 // Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
 func (r *FilesApiUploadRequest) SplitRows(splitRows bool) *FilesApiUploadRequest {
 	r.splitRows = &splitRows
+	return r
+}
+
+// Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+func (r *FilesApiUploadRequest) EnableColdStorage(enableColdStorage bool) *FilesApiUploadRequest {
+	r.enableColdStorage = &enableColdStorage
+	return r
+}
+
+// Time in seconds after which the file will be moved to cold storage.
+func (r *FilesApiUploadRequest) HotStorageTimeToLive(hotStorageTimeToLive int32) *FilesApiUploadRequest {
+	r.hotStorageTimeToLive = &hotStorageTimeToLive
 	return r
 }
 
@@ -1932,11 +2277,20 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	if r.transcriptionService != nil {
 		localVarQueryParams.Add("transcription_service", parameterToString(*r.transcriptionService, ""))
 	}
+	if r.includeSpeakerLabels != nil {
+		localVarQueryParams.Add("include_speaker_labels", parameterToString(*r.includeSpeakerLabels, ""))
+	}
 	if r.mediaType != nil {
 		localVarQueryParams.Add("media_type", parameterToString(*r.mediaType, ""))
 	}
 	if r.splitRows != nil {
 		localVarQueryParams.Add("split_rows", parameterToString(*r.splitRows, ""))
+	}
+	if r.enableColdStorage != nil {
+		localVarQueryParams.Add("enable_cold_storage", parameterToString(*r.enableColdStorage, ""))
+	}
+	if r.hotStorageTimeToLive != nil {
+		localVarQueryParams.Add("hot_storage_time_to_live", parameterToString(*r.hotStorageTimeToLive, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

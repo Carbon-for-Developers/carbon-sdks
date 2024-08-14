@@ -30,6 +30,9 @@ class FileSyncConfigNullable(BaseModel):
 
     transcription_service: typing.Optional[TranscriptionServiceNullable] = Field(None, alias='transcription_service')
 
+    # Detect multiple speakers and label segments of speech by speaker for audio files.
+    include_speaker_labels: typing.Optional[bool] = Field(None, alias='include_speaker_labels')
+
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: typing.Optional[bool] = Field(None, alias='split_rows')
 

@@ -70,6 +70,10 @@ public class FileSyncConfig {
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_SERVICE)
   private TranscriptionServiceNullable transcriptionService;
 
+  public static final String SERIALIZED_NAME_INCLUDE_SPEAKER_LABELS = "include_speaker_labels";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_SPEAKER_LABELS)
+  private Boolean includeSpeakerLabels = false;
+
   public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
   @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
   private Boolean splitRows = false;
@@ -201,6 +205,35 @@ public class FileSyncConfig {
   }
 
 
+  public FileSyncConfig includeSpeakerLabels(Boolean includeSpeakerLabels) {
+    
+    
+    
+    
+    this.includeSpeakerLabels = includeSpeakerLabels;
+    return this;
+  }
+
+   /**
+   * Detect multiple speakers and label segments of speech by speaker for audio files.
+   * @return includeSpeakerLabels
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Detect multiple speakers and label segments of speech by speaker for audio files.")
+
+  public Boolean getIncludeSpeakerLabels() {
+    return includeSpeakerLabels;
+  }
+
+
+  public void setIncludeSpeakerLabels(Boolean includeSpeakerLabels) {
+    
+    
+    
+    this.includeSpeakerLabels = includeSpeakerLabels;
+  }
+
+
   public FileSyncConfig splitRows(Boolean splitRows) {
     
     
@@ -288,6 +321,7 @@ public class FileSyncConfig {
         Objects.equals(this.syncAttachments, fileSyncConfig.syncAttachments) &&
         Objects.equals(this.detectAudioLanguage, fileSyncConfig.detectAudioLanguage) &&
         Objects.equals(this.transcriptionService, fileSyncConfig.transcriptionService) &&
+        Objects.equals(this.includeSpeakerLabels, fileSyncConfig.includeSpeakerLabels) &&
         Objects.equals(this.splitRows, fileSyncConfig.splitRows)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
@@ -298,7 +332,7 @@ public class FileSyncConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, splitRows, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -316,6 +350,7 @@ public class FileSyncConfig {
     sb.append("    syncAttachments: ").append(toIndentedString(syncAttachments)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
     sb.append("    transcriptionService: ").append(toIndentedString(transcriptionService)).append("\n");
+    sb.append("    includeSpeakerLabels: ").append(toIndentedString(includeSpeakerLabels)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -344,6 +379,7 @@ public class FileSyncConfig {
     openapiFields.add("sync_attachments");
     openapiFields.add("detect_audio_language");
     openapiFields.add("transcription_service");
+    openapiFields.add("include_speaker_labels");
     openapiFields.add("split_rows");
 
     // a set of required properties/fields (JSON key names)
@@ -395,7 +431,9 @@ public class FileSyncConfig {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

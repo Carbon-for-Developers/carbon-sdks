@@ -76,6 +76,14 @@ public class FileSyncConfigNullableTest {
     }
 
     /**
+     * Test the property 'includeSpeakerLabels'
+     */
+    @Test
+    public void includeSpeakerLabelsTest() {
+        // TODO: test includeSpeakerLabels
+    }
+
+    /**
      * Test the property 'splitRows'
      */
     @Test

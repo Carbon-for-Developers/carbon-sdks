@@ -176,5 +176,11 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'file_sync_config'?: FileSyncConfigNullable | null;
+    /**
+     * Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+     * @type {boolean}
+     * @memberof OAuthURLRequest
+     */
+    'automatically_open_file_picker'?: boolean | null;
 }
 

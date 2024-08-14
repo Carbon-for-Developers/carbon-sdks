@@ -35,6 +35,8 @@ type SyncOptions struct {
 	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
+	// Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+	AutomaticallyOpenFilePicker NullableBool `json:"automatically_open_file_picker,omitempty"`
 }
 
 // NewSyncOptions instantiates a new SyncOptions object
@@ -679,6 +681,48 @@ func (o *SyncOptions) UnsetFileSyncConfig() {
 	o.FileSyncConfig.Unset()
 }
 
+// GetAutomaticallyOpenFilePicker returns the AutomaticallyOpenFilePicker field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncOptions) GetAutomaticallyOpenFilePicker() bool {
+	if o == nil || isNil(o.AutomaticallyOpenFilePicker.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AutomaticallyOpenFilePicker.Get()
+}
+
+// GetAutomaticallyOpenFilePickerOk returns a tuple with the AutomaticallyOpenFilePicker field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncOptions) GetAutomaticallyOpenFilePickerOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.AutomaticallyOpenFilePicker.Get(), o.AutomaticallyOpenFilePicker.IsSet()
+}
+
+// HasAutomaticallyOpenFilePicker returns a boolean if a field has been set.
+func (o *SyncOptions) HasAutomaticallyOpenFilePicker() bool {
+	if o != nil && o.AutomaticallyOpenFilePicker.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAutomaticallyOpenFilePicker gets a reference to the given NullableBool and assigns it to the AutomaticallyOpenFilePicker field.
+func (o *SyncOptions) SetAutomaticallyOpenFilePicker(v bool) {
+	o.AutomaticallyOpenFilePicker.Set(&v)
+}
+// SetAutomaticallyOpenFilePickerNil sets the value for AutomaticallyOpenFilePicker to be an explicit nil
+func (o *SyncOptions) SetAutomaticallyOpenFilePickerNil() {
+	o.AutomaticallyOpenFilePicker.Set(nil)
+}
+
+// UnsetAutomaticallyOpenFilePicker ensures that no value is present for AutomaticallyOpenFilePicker, not even an explicit nil
+func (o *SyncOptions) UnsetAutomaticallyOpenFilePicker() {
+	o.AutomaticallyOpenFilePicker.Unset()
+}
+
 func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -725,6 +769,9 @@ func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	}
 	if o.FileSyncConfig.IsSet() {
 		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
+	}
+	if o.AutomaticallyOpenFilePicker.IsSet() {
+		toSerialize["automatically_open_file_picker"] = o.AutomaticallyOpenFilePicker.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -152,6 +152,46 @@ func Test_carbon_FilesApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test FilesApiService ModifyColdStorageParameters", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+        
+        modifyColdStorageParametersQueryInput := *carbon.NewModifyColdStorageParametersQueryInput()
+        modifyColdStorageParametersQueryInput.SetFilters(filters)
+        modifyColdStorageParametersQueryInput.SetEnableColdStorage(null)
+        modifyColdStorageParametersQueryInput.SetHotStorageTimeToLive(null)
+        
+        request := client.FilesApi.ModifyColdStorageParameters(
+            modifyColdStorageParametersQueryInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test FilesApiService MoveToHotStorage", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+        
+        moveToHotStorageQueryInput := *carbon.NewMoveToHotStorageQueryInput()
+        moveToHotStorageQueryInput.SetFilters(filters)
+        
+        request := client.FilesApi.MoveToHotStorage(
+            moveToHotStorageQueryInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test FilesApiService QueryUserFiles", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         pagination := *carbon.NewPagination()
@@ -249,8 +289,11 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.ParsePdfTablesWithOcr(false)
         request.DetectAudioLanguage(false)
         request.TranscriptionService()
+        request.IncludeSpeakerLabels(false)
         request.MediaType()
         request.SplitRows(false)
+        request.EnableColdStorage(false)
+        request.HotStorageTimeToLive(56)
         
         resp, httpRes, err := request.Execute()
 
@@ -262,6 +305,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
 
     t.Run("Test FilesApiService UploadFromUrl", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        coldStorageParams := *carbon.NewColdStorageProps()
         
         uploadFileFromUrlInput := *carbon.NewUploadFileFromUrlInput(
             "null",
@@ -279,8 +323,10 @@ func Test_carbon_FilesApiService(t *testing.T) {
         uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
         uploadFileFromUrlInput.SetDetectAudioLanguage(false)
         uploadFileFromUrlInput.SetTranscriptionService(null)
+        uploadFileFromUrlInput.SetIncludeSpeakerLabels(false)
         uploadFileFromUrlInput.SetMediaType(null)
         uploadFileFromUrlInput.SetSplitRows(false)
+        uploadFileFromUrlInput.SetColdStorageParams(coldStorageParams)
         
         request := client.FilesApi.UploadFromUrl(
             uploadFileFromUrlInput,
@@ -296,6 +342,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
 
     t.Run("Test FilesApiService UploadText", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        coldStorageParams := *carbon.NewColdStorageProps()
         
         rawTextInput := *carbon.NewRawTextInput(
             "null",
@@ -307,6 +354,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         rawTextInput.SetOverwriteFileId(null)
         rawTextInput.SetEmbeddingModel(null)
         rawTextInput.SetGenerateSparseVectors(false)
+        rawTextInput.SetColdStorageParams(coldStorageParams)
         
         request := client.FilesApi.UploadText(
             rawTextInput,

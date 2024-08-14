@@ -182,6 +182,7 @@ public class EmbeddingsApiGenerated {
         Boolean highAccuracy;
         RerankParamsNullable rerank;
         List<HelpdeskFileTypes> fileTypesAtSource;
+        Boolean excludeColdStorageFiles;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
             this.query = query;
@@ -359,6 +360,16 @@ public class EmbeddingsApiGenerated {
         }
         
         /**
+         * Set excludeColdStorageFiles
+         * @param excludeColdStorageFiles Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage. (optional, default to false)
+         * @return EmbeddingsApi.GetDocumentsRequestBuilder
+         */
+        public EmbeddingsApi.GetDocumentsRequestBuilder excludeColdStorageFiles(Boolean excludeColdStorageFiles) {
+            this.excludeColdStorageFiles = excludeColdStorageFiles;
+            return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getDocuments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -395,6 +406,7 @@ public class EmbeddingsApiGenerated {
             getEmbeddingDocumentsBody.highAccuracy(this.highAccuracy);
             getEmbeddingDocumentsBody.rerank(this.rerank);
             getEmbeddingDocumentsBody.fileTypesAtSource(this.fileTypesAtSource);
+            getEmbeddingDocumentsBody.excludeColdStorageFiles(this.excludeColdStorageFiles);
             return getEmbeddingDocumentsBody;
         }
 

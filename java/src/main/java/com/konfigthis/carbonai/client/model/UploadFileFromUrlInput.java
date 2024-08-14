@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
@@ -109,6 +110,10 @@ public class UploadFileFromUrlInput {
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_SERVICE)
   private TranscriptionServiceNullable transcriptionService;
 
+  public static final String SERIALIZED_NAME_INCLUDE_SPEAKER_LABELS = "include_speaker_labels";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_SPEAKER_LABELS)
+  private Boolean includeSpeakerLabels = false;
+
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
   private FileContentTypesNullable mediaType;
@@ -116,6 +121,10 @@ public class UploadFileFromUrlInput {
   public static final String SERIALIZED_NAME_SPLIT_ROWS = "split_rows";
   @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
   private Boolean splitRows = false;
+
+  public static final String SERIALIZED_NAME_COLD_STORAGE_PARAMS = "cold_storage_params";
+  @SerializedName(SERIALIZED_NAME_COLD_STORAGE_PARAMS)
+  private ColdStorageProps coldStorageParams;
 
   public UploadFileFromUrlInput() {
   }
@@ -526,6 +535,35 @@ public class UploadFileFromUrlInput {
   }
 
 
+  public UploadFileFromUrlInput includeSpeakerLabels(Boolean includeSpeakerLabels) {
+    
+    
+    
+    
+    this.includeSpeakerLabels = includeSpeakerLabels;
+    return this;
+  }
+
+   /**
+   * Get includeSpeakerLabels
+   * @return includeSpeakerLabels
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
+
+  public Boolean getIncludeSpeakerLabels() {
+    return includeSpeakerLabels;
+  }
+
+
+  public void setIncludeSpeakerLabels(Boolean includeSpeakerLabels) {
+    
+    
+    
+    this.includeSpeakerLabels = includeSpeakerLabels;
+  }
+
+
   public UploadFileFromUrlInput mediaType(FileContentTypesNullable mediaType) {
     
     
@@ -581,6 +619,35 @@ public class UploadFileFromUrlInput {
     
     
     this.splitRows = splitRows;
+  }
+
+
+  public UploadFileFromUrlInput coldStorageParams(ColdStorageProps coldStorageParams) {
+    
+    
+    
+    
+    this.coldStorageParams = coldStorageParams;
+    return this;
+  }
+
+   /**
+   * Get coldStorageParams
+   * @return coldStorageParams
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ColdStorageProps getColdStorageParams() {
+    return coldStorageParams;
+  }
+
+
+  public void setColdStorageParams(ColdStorageProps coldStorageParams) {
+    
+    
+    
+    this.coldStorageParams = coldStorageParams;
   }
 
   /**
@@ -652,8 +719,10 @@ public class UploadFileFromUrlInput {
         Objects.equals(this.parsePdfTablesWithOcr, uploadFileFromUrlInput.parsePdfTablesWithOcr) &&
         Objects.equals(this.detectAudioLanguage, uploadFileFromUrlInput.detectAudioLanguage) &&
         Objects.equals(this.transcriptionService, uploadFileFromUrlInput.transcriptionService) &&
+        Objects.equals(this.includeSpeakerLabels, uploadFileFromUrlInput.includeSpeakerLabels) &&
         Objects.equals(this.mediaType, uploadFileFromUrlInput.mediaType) &&
-        Objects.equals(this.splitRows, uploadFileFromUrlInput.splitRows)&&
+        Objects.equals(this.splitRows, uploadFileFromUrlInput.splitRows) &&
+        Objects.equals(this.coldStorageParams, uploadFileFromUrlInput.coldStorageParams)&&
         Objects.equals(this.additionalProperties, uploadFileFromUrlInput.additionalProperties);
   }
 
@@ -663,7 +732,7 @@ public class UploadFileFromUrlInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, mediaType, splitRows, additionalProperties);
+    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, coldStorageParams, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -691,8 +760,10 @@ public class UploadFileFromUrlInput {
     sb.append("    parsePdfTablesWithOcr: ").append(toIndentedString(parsePdfTablesWithOcr)).append("\n");
     sb.append("    detectAudioLanguage: ").append(toIndentedString(detectAudioLanguage)).append("\n");
     sb.append("    transcriptionService: ").append(toIndentedString(transcriptionService)).append("\n");
+    sb.append("    includeSpeakerLabels: ").append(toIndentedString(includeSpeakerLabels)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
+    sb.append("    coldStorageParams: ").append(toIndentedString(coldStorageParams)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -730,8 +801,10 @@ public class UploadFileFromUrlInput {
     openapiFields.add("parse_pdf_tables_with_ocr");
     openapiFields.add("detect_audio_language");
     openapiFields.add("transcription_service");
+    openapiFields.add("include_speaker_labels");
     openapiFields.add("media_type");
     openapiFields.add("split_rows");
+    openapiFields.add("cold_storage_params");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -763,6 +836,10 @@ public class UploadFileFromUrlInput {
       if (!jsonObj.get("file_name").isJsonNull() && (jsonObj.get("file_name") != null && !jsonObj.get("file_name").isJsonNull()) && !jsonObj.get("file_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `file_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_name").toString()));
       }
+      // validate the optional field `cold_storage_params`
+      if (jsonObj.get("cold_storage_params") != null && !jsonObj.get("cold_storage_params").isJsonNull()) {
+        ColdStorageProps.validateJsonObject(jsonObj.getAsJsonObject("cold_storage_params"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -792,7 +869,9 @@ public class UploadFileFromUrlInput {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

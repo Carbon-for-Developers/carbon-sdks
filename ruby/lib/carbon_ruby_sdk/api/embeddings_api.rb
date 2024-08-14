@@ -132,9 +132,10 @@ module Carbon
     # @param high_accuracy [Boolean] Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false. If true, the search may return more accurate results, but may take longer to complete.
     # @param rerank [RerankParamsNullable] 
     # @param file_types_at_source [Array<HelpdeskFileTypes>] Filter files based on their type at the source (for example help center tickets and articles)
+    # @param exclude_cold_storage_files [Boolean] Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered files are in cold storage.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, high_accuracy: false, rerank: SENTINEL, file_types_at_source: SENTINEL, extra: {})
+    def get_documents(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, high_accuracy: false, rerank: SENTINEL, file_types_at_source: SENTINEL, exclude_cold_storage_files: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL
@@ -155,6 +156,7 @@ module Carbon
       _body[:high_accuracy] = high_accuracy if high_accuracy != SENTINEL
       _body[:rerank] = rerank if rerank != SENTINEL
       _body[:file_types_at_source] = file_types_at_source if file_types_at_source != SENTINEL
+      _body[:exclude_cold_storage_files] = exclude_cold_storage_files if exclude_cold_storage_files != SENTINEL
       get_embedding_documents_body = _body
       api_response = get_documents_with_http_info_impl(get_embedding_documents_body, extra)
       api_response.data
@@ -276,9 +278,10 @@ module Carbon
     # @param high_accuracy [Boolean] Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false. If true, the search may return more accurate results, but may take longer to complete.
     # @param rerank [RerankParamsNullable] 
     # @param file_types_at_source [Array<HelpdeskFileTypes>] Filter files based on their type at the source (for example help center tickets and articles)
+    # @param exclude_cold_storage_files [Boolean] Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered files are in cold storage.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, high_accuracy: false, rerank: SENTINEL, file_types_at_source: SENTINEL, extra: {})
+    def get_documents_with_http_info(query:, k:, tags: SENTINEL, query_vector: SENTINEL, file_ids: SENTINEL, parent_file_ids: SENTINEL, include_all_children: false, tags_v2: SENTINEL, include_tags: SENTINEL, include_vectors: SENTINEL, include_raw_file: SENTINEL, hybrid_search: SENTINEL, hybrid_search_tuning_parameters: SENTINEL, media_type: SENTINEL, embedding_model: 'OPENAI', include_file_level_metadata: false, high_accuracy: false, rerank: SENTINEL, file_types_at_source: SENTINEL, exclude_cold_storage_files: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:query] = query if query != SENTINEL
@@ -299,6 +302,7 @@ module Carbon
       _body[:high_accuracy] = high_accuracy if high_accuracy != SENTINEL
       _body[:rerank] = rerank if rerank != SENTINEL
       _body[:file_types_at_source] = file_types_at_source if file_types_at_source != SENTINEL
+      _body[:exclude_cold_storage_files] = exclude_cold_storage_files if exclude_cold_storage_files != SENTINEL
       get_embedding_documents_body = _body
       get_documents_with_http_info_impl(get_embedding_documents_body, extra)
     end

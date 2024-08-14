@@ -691,6 +691,198 @@ module Carbon
     end
 
 
+    # Modify Cold Storage Parameters
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param enable_cold_storage [Boolean] 
+    # @param hot_storage_time_to_live [Integer] 
+    # @param body [ModifyColdStorageParametersQueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def modify_cold_storage_parameters(filters: SENTINEL, enable_cold_storage: SENTINEL, hot_storage_time_to_live: SENTINEL, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
+      _body[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
+      modify_cold_storage_parameters_query_input = _body
+      api_response = modify_cold_storage_parameters_with_http_info_impl(modify_cold_storage_parameters_query_input, extra)
+      api_response.data
+    end
+
+    # Modify Cold Storage Parameters
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param enable_cold_storage [Boolean] 
+    # @param hot_storage_time_to_live [Integer] 
+    # @param body [ModifyColdStorageParametersQueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def modify_cold_storage_parameters_with_http_info(filters: SENTINEL, enable_cold_storage: SENTINEL, hot_storage_time_to_live: SENTINEL, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      _body[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
+      _body[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
+      modify_cold_storage_parameters_query_input = _body
+      modify_cold_storage_parameters_with_http_info_impl(modify_cold_storage_parameters_query_input, extra)
+    end
+
+    # Modify Cold Storage Parameters
+    # @param modify_cold_storage_parameters_query_input [ModifyColdStorageParametersQueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Boolean]
+    private def modify_cold_storage_parameters_impl(modify_cold_storage_parameters_query_input, opts = {})
+      data, _status_code, _headers = modify_cold_storage_parameters_with_http_info(modify_cold_storage_parameters_query_input, opts)
+      data
+    end
+
+    # Modify Cold Storage Parameters
+    # @param modify_cold_storage_parameters_query_input [ModifyColdStorageParametersQueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Boolean, status code, headers and response
+    private def modify_cold_storage_parameters_with_http_info_impl(modify_cold_storage_parameters_query_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FilesApi.modify_cold_storage_parameters ...'
+      end
+      # verify the required parameter 'modify_cold_storage_parameters_query_input' is set
+      if @api_client.config.client_side_validation && modify_cold_storage_parameters_query_input.nil?
+        fail ArgumentError, "Missing the required parameter 'modify_cold_storage_parameters_query_input' when calling FilesApi.modify_cold_storage_parameters"
+      end
+      # resource path
+      local_var_path = '/modify_cold_storage_parameters'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(modify_cold_storage_parameters_query_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Boolean'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"FilesApi.modify_cold_storage_parameters",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FilesApi#modify_cold_storage_parameters\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Move To Hot Storage
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param body [MoveToHotStorageQueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def move_to_hot_storage(filters: SENTINEL, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      move_to_hot_storage_query_input = _body
+      api_response = move_to_hot_storage_with_http_info_impl(move_to_hot_storage_query_input, extra)
+      api_response.data
+    end
+
+    # Move To Hot Storage
+    #
+    # @param filters [OrganizationUserFilesToSyncFilters] 
+    # @param body [MoveToHotStorageQueryInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def move_to_hot_storage_with_http_info(filters: SENTINEL, extra: {})
+      _body = {}
+      _body[:filters] = filters if filters != SENTINEL
+      move_to_hot_storage_query_input = _body
+      move_to_hot_storage_with_http_info_impl(move_to_hot_storage_query_input, extra)
+    end
+
+    # Move To Hot Storage
+    # @param move_to_hot_storage_query_input [MoveToHotStorageQueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [Boolean]
+    private def move_to_hot_storage_impl(move_to_hot_storage_query_input, opts = {})
+      data, _status_code, _headers = move_to_hot_storage_with_http_info(move_to_hot_storage_query_input, opts)
+      data
+    end
+
+    # Move To Hot Storage
+    # @param move_to_hot_storage_query_input [MoveToHotStorageQueryInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is Boolean, status code, headers and response
+    private def move_to_hot_storage_with_http_info_impl(move_to_hot_storage_query_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FilesApi.move_to_hot_storage ...'
+      end
+      # verify the required parameter 'move_to_hot_storage_query_input' is set
+      if @api_client.config.client_side_validation && move_to_hot_storage_query_input.nil?
+        fail ArgumentError, "Missing the required parameter 'move_to_hot_storage_query_input' when calling FilesApi.move_to_hot_storage"
+      end
+      # resource path
+      local_var_path = '/move_to_hot_storage'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(move_to_hot_storage_query_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Boolean'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"FilesApi.move_to_hot_storage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FilesApi#move_to_hot_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # User Files V2
     #
     # For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
@@ -1178,11 +1370,14 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] Whether to use rich table parsing when `use_ocr` is enabled.
     # @param detect_audio_language [Boolean] Whether to automatically detect the language of the uploaded audio file.
     # @param transcription_service [TranscriptionServiceNullable] The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+    # @param include_speaker_labels [Boolean] Detect multiple speakers and label segments of speech by speaker for audio files.
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param split_rows [Boolean] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+    # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, media_type: SENTINEL, split_rows: false, extra: {})
+    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1198,8 +1393,11 @@ module Carbon
       extra[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       extra[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       extra[:transcription_service] = transcription_service if transcription_service != SENTINEL
+      extra[:include_speaker_labels] = include_speaker_labels if include_speaker_labels != SENTINEL
       extra[:media_type] = media_type if media_type != SENTINEL
       extra[:split_rows] = split_rows if split_rows != SENTINEL
+      extra[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
+      extra[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
       api_response = upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
       api_response.data
     end
@@ -1245,11 +1443,14 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] Whether to use rich table parsing when `use_ocr` is enabled.
     # @param detect_audio_language [Boolean] Whether to automatically detect the language of the uploaded audio file.
     # @param transcription_service [TranscriptionServiceNullable] The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+    # @param include_speaker_labels [Boolean] Detect multiple speakers and label segments of speech by speaker for audio files.
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param split_rows [Boolean] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+    # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+    # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, media_type: SENTINEL, split_rows: false, extra: {})
+    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1265,8 +1466,11 @@ module Carbon
       extra[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       extra[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       extra[:transcription_service] = transcription_service if transcription_service != SENTINEL
+      extra[:include_speaker_labels] = include_speaker_labels if include_speaker_labels != SENTINEL
       extra[:media_type] = media_type if media_type != SENTINEL
       extra[:split_rows] = split_rows if split_rows != SENTINEL
+      extra[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
+      extra[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
       upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
     end
 
@@ -1287,8 +1491,11 @@ module Carbon
     # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when `use_ocr` is enabled. (default to false)
     # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file. (default to false)
     # @option opts [TranscriptionServiceNullable] :transcription_service The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+    # @option opts [Boolean] :include_speaker_labels Detect multiple speakers and label segments of speech by speaker for audio files. (default to false)
     # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
     # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. (default to false)
+    # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
+    # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
     # @return [UserFile]
     private def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       data, _status_code, _headers = upload_with_http_info(file, body_create_upload_file_uploadfile_post, opts)
@@ -1312,8 +1519,11 @@ module Carbon
     # @option opts [Boolean] :parse_pdf_tables_with_ocr Whether to use rich table parsing when `use_ocr` is enabled. (default to false)
     # @option opts [Boolean] :detect_audio_language Whether to automatically detect the language of the uploaded audio file. (default to false)
     # @option opts [TranscriptionServiceNullable] :transcription_service The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
+    # @option opts [Boolean] :include_speaker_labels Detect multiple speakers and label segments of speech by speaker for audio files. (default to false)
     # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
     # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. (default to false)
+    # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
+    # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
     # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
@@ -1344,8 +1554,11 @@ module Carbon
       query_params[:'parse_pdf_tables_with_ocr'] = opts[:'parse_pdf_tables_with_ocr'] if !opts[:'parse_pdf_tables_with_ocr'].nil?
       query_params[:'detect_audio_language'] = opts[:'detect_audio_language'] if !opts[:'detect_audio_language'].nil?
       query_params[:'transcription_service'] = opts[:'transcription_service'] if !opts[:'transcription_service'].nil?
+      query_params[:'include_speaker_labels'] = opts[:'include_speaker_labels'] if !opts[:'include_speaker_labels'].nil?
       query_params[:'media_type'] = opts[:'media_type'] if !opts[:'media_type'].nil?
       query_params[:'split_rows'] = opts[:'split_rows'] if !opts[:'split_rows'].nil?
+      query_params[:'enable_cold_storage'] = opts[:'enable_cold_storage'] if !opts[:'enable_cold_storage'].nil?
+      query_params[:'hot_storage_time_to_live'] = opts[:'hot_storage_time_to_live'] if !opts[:'hot_storage_time_to_live'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1404,11 +1617,13 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param detect_audio_language [Boolean] 
     # @param transcription_service [TranscriptionServiceNullable] 
+    # @param include_speaker_labels [Boolean] 
     # @param media_type [FileContentTypesNullable] 
     # @param split_rows [Boolean] 
+    # @param cold_storage_params [ColdStorageProps] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, media_type: SENTINEL, split_rows: false, extra: {})
+    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1424,8 +1639,10 @@ module Carbon
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       _body[:transcription_service] = transcription_service if transcription_service != SENTINEL
+      _body[:include_speaker_labels] = include_speaker_labels if include_speaker_labels != SENTINEL
       _body[:media_type] = media_type if media_type != SENTINEL
       _body[:split_rows] = split_rows if split_rows != SENTINEL
+      _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       upload_file_from_url_input = _body
       api_response = upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
       api_response.data
@@ -1447,11 +1664,13 @@ module Carbon
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param detect_audio_language [Boolean] 
     # @param transcription_service [TranscriptionServiceNullable] 
+    # @param include_speaker_labels [Boolean] 
     # @param media_type [FileContentTypesNullable] 
     # @param split_rows [Boolean] 
+    # @param cold_storage_params [ColdStorageProps] 
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, media_type: SENTINEL, split_rows: false, extra: {})
+    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1467,8 +1686,10 @@ module Carbon
       _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
       _body[:detect_audio_language] = detect_audio_language if detect_audio_language != SENTINEL
       _body[:transcription_service] = transcription_service if transcription_service != SENTINEL
+      _body[:include_speaker_labels] = include_speaker_labels if include_speaker_labels != SENTINEL
       _body[:media_type] = media_type if media_type != SENTINEL
       _body[:split_rows] = split_rows if split_rows != SENTINEL
+      _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       upload_file_from_url_input = _body
       upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
     end
@@ -1561,9 +1782,10 @@ module Carbon
     # @param overwrite_file_id [Integer] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
+    # @param cold_storage_params [ColdStorageProps] 
     # @param body [RawTextInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_text(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, extra: {})
+    def upload_text(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, extra: {})
       _body = {}
       _body[:contents] = contents if contents != SENTINEL
       _body[:name] = name if name != SENTINEL
@@ -1573,6 +1795,7 @@ module Carbon
       _body[:overwrite_file_id] = overwrite_file_id if overwrite_file_id != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       raw_text_input = _body
       api_response = upload_text_with_http_info_impl(raw_text_input, extra)
       api_response.data
@@ -1599,9 +1822,10 @@ module Carbon
     # @param overwrite_file_id [Integer] 
     # @param embedding_model [EmbeddingGeneratorsNullable] 
     # @param generate_sparse_vectors [Boolean] 
+    # @param cold_storage_params [ColdStorageProps] 
     # @param body [RawTextInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_text_with_http_info(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, extra: {})
+    def upload_text_with_http_info(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, extra: {})
       _body = {}
       _body[:contents] = contents if contents != SENTINEL
       _body[:name] = name if name != SENTINEL
@@ -1611,6 +1835,7 @@ module Carbon
       _body[:overwrite_file_id] = overwrite_file_id if overwrite_file_id != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       raw_text_input = _body
       upload_text_with_http_info_impl(raw_text_input, extra)
     end

@@ -82,5 +82,8 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     file_sync_config: typing.Optional[FileSyncConfigNullable]
 
+    # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+    automatically_open_file_picker: typing.Optional[bool]
+
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

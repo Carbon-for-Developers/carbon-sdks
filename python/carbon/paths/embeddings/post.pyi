@@ -153,6 +153,7 @@ class BaseApi(api_client.Api):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -194,6 +195,8 @@ class BaseApi(api_client.Api):
             _body["rerank"] = rerank
         if file_types_at_source is not None:
             _body["file_types_at_source"] = file_types_at_source
+        if exclude_cold_storage_files is not None:
+            _body["exclude_cold_storage_files"] = exclude_cold_storage_files
         args.body = _body
         return args
 
@@ -420,6 +423,7 @@ class GetDocumentsRaw(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -446,6 +450,7 @@ class GetDocumentsRaw(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -473,6 +478,7 @@ class GetDocumentsRaw(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -497,6 +503,7 @@ class GetDocumentsRaw(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
         )
         return self._get_documents_oapg(
             body=args.body,
@@ -525,6 +532,7 @@ class GetDocuments(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> DocumentResponseListPydantic:
@@ -548,6 +556,7 @@ class GetDocuments(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
             **kwargs,
         )
         if validate:
@@ -576,6 +585,7 @@ class GetDocuments(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> DocumentResponseListPydantic:
         raw_response = self.raw.get_documents(
@@ -598,6 +608,7 @@ class GetDocuments(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
         )
         if validate:
             return DocumentResponseListPydantic(**raw_response.body)
@@ -628,6 +639,7 @@ class ApiForpost(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -654,6 +666,7 @@ class ApiForpost(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
         )
         return await self._aget_documents_oapg(
             body=args.body,
@@ -681,6 +694,7 @@ class ApiForpost(BaseApi):
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
         file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -705,6 +719,7 @@ class ApiForpost(BaseApi):
             high_accuracy=high_accuracy,
             rerank=rerank,
             file_types_at_source=file_types_at_source,
+            exclude_cold_storage_files=exclude_cold_storage_files,
         )
         return self._get_documents_oapg(
             body=args.body,

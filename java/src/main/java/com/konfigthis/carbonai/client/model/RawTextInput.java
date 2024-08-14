@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -82,6 +83,10 @@ public class RawTextInput {
   public static final String SERIALIZED_NAME_GENERATE_SPARSE_VECTORS = "generate_sparse_vectors";
   @SerializedName(SERIALIZED_NAME_GENERATE_SPARSE_VECTORS)
   private Boolean generateSparseVectors = false;
+
+  public static final String SERIALIZED_NAME_COLD_STORAGE_PARAMS = "cold_storage_params";
+  @SerializedName(SERIALIZED_NAME_COLD_STORAGE_PARAMS)
+  private ColdStorageProps coldStorageParams;
 
   public RawTextInput() {
   }
@@ -321,6 +326,35 @@ public class RawTextInput {
     this.generateSparseVectors = generateSparseVectors;
   }
 
+
+  public RawTextInput coldStorageParams(ColdStorageProps coldStorageParams) {
+    
+    
+    
+    
+    this.coldStorageParams = coldStorageParams;
+    return this;
+  }
+
+   /**
+   * Get coldStorageParams
+   * @return coldStorageParams
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ColdStorageProps getColdStorageParams() {
+    return coldStorageParams;
+  }
+
+
+  public void setColdStorageParams(ColdStorageProps coldStorageParams) {
+    
+    
+    
+    this.coldStorageParams = coldStorageParams;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -383,7 +417,8 @@ public class RawTextInput {
         Objects.equals(this.skipEmbeddingGeneration, rawTextInput.skipEmbeddingGeneration) &&
         Objects.equals(this.overwriteFileId, rawTextInput.overwriteFileId) &&
         Objects.equals(this.embeddingModel, rawTextInput.embeddingModel) &&
-        Objects.equals(this.generateSparseVectors, rawTextInput.generateSparseVectors)&&
+        Objects.equals(this.generateSparseVectors, rawTextInput.generateSparseVectors) &&
+        Objects.equals(this.coldStorageParams, rawTextInput.coldStorageParams)&&
         Objects.equals(this.additionalProperties, rawTextInput.additionalProperties);
   }
 
@@ -393,7 +428,7 @@ public class RawTextInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contents, name, chunkSize, chunkOverlap, skipEmbeddingGeneration, overwriteFileId, embeddingModel, generateSparseVectors, additionalProperties);
+    return Objects.hash(contents, name, chunkSize, chunkOverlap, skipEmbeddingGeneration, overwriteFileId, embeddingModel, generateSparseVectors, coldStorageParams, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -415,6 +450,7 @@ public class RawTextInput {
     sb.append("    overwriteFileId: ").append(toIndentedString(overwriteFileId)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
+    sb.append("    coldStorageParams: ").append(toIndentedString(coldStorageParams)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -446,6 +482,7 @@ public class RawTextInput {
     openapiFields.add("overwrite_file_id");
     openapiFields.add("embedding_model");
     openapiFields.add("generate_sparse_vectors");
+    openapiFields.add("cold_storage_params");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -477,6 +514,10 @@ public class RawTextInput {
       if (!jsonObj.get("name").isJsonNull() && (jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // validate the optional field `cold_storage_params`
+      if (jsonObj.get("cold_storage_params") != null && !jsonObj.get("cold_storage_params").isJsonNull()) {
+        ColdStorageProps.validateJsonObject(jsonObj.getAsJsonObject("cold_storage_params"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -506,7 +547,9 @@ public class RawTextInput {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

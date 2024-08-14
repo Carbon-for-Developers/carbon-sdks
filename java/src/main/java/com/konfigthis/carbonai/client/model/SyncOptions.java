@@ -112,6 +112,10 @@ public class SyncOptions {
   @SerializedName(SERIALIZED_NAME_FILE_SYNC_CONFIG)
   private FileSyncConfigNullable fileSyncConfig;
 
+  public static final String SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER = "automatically_open_file_picker";
+  @SerializedName(SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER)
+  private Boolean automaticallyOpenFilePicker;
+
   public SyncOptions() {
   }
 
@@ -549,6 +553,35 @@ public class SyncOptions {
     this.fileSyncConfig = fileSyncConfig;
   }
 
+
+  public SyncOptions automaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
+    
+    
+    
+    
+    this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+    return this;
+  }
+
+   /**
+   * Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+   * @return automaticallyOpenFilePicker
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.")
+
+  public Boolean getAutomaticallyOpenFilePicker() {
+    return automaticallyOpenFilePicker;
+  }
+
+
+  public void setAutomaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
+    
+    
+    
+    this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -618,7 +651,8 @@ public class SyncOptions {
         Objects.equals(this.enableFilePicker, syncOptions.enableFilePicker) &&
         Objects.equals(this.syncSourceItems, syncOptions.syncSourceItems) &&
         Objects.equals(this.incrementalSync, syncOptions.incrementalSync) &&
-        Objects.equals(this.fileSyncConfig, syncOptions.fileSyncConfig)&&
+        Objects.equals(this.fileSyncConfig, syncOptions.fileSyncConfig) &&
+        Objects.equals(this.automaticallyOpenFilePicker, syncOptions.automaticallyOpenFilePicker)&&
         Objects.equals(this.additionalProperties, syncOptions.additionalProperties);
   }
 
@@ -628,7 +662,7 @@ public class SyncOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, syncFilesOnConnection, setPageAsBoundary, requestId, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, additionalProperties);
+    return Objects.hash(tags, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, syncFilesOnConnection, setPageAsBoundary, requestId, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -657,6 +691,7 @@ public class SyncOptions {
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
     sb.append("    incrementalSync: ").append(toIndentedString(incrementalSync)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
+    sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -695,6 +730,7 @@ public class SyncOptions {
     openapiFields.add("sync_source_items");
     openapiFields.add("incremental_sync");
     openapiFields.add("file_sync_config");
+    openapiFields.add("automatically_open_file_picker");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -748,7 +784,9 @@ public class SyncOptions {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

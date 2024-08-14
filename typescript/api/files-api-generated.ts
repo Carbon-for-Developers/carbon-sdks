@@ -23,6 +23,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { BodyCreateUploadFileUploadfilePost } from '../models';
 // @ts-ignore
+import { ColdStorageProps } from '../models';
+// @ts-ignore
 import { DeleteFilesQueryInput } from '../models';
 // @ts-ignore
 import { DeleteFilesV2QueryInput } from '../models';
@@ -40,6 +42,10 @@ import { FileContentTypesNullable } from '../models';
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
+// @ts-ignore
+import { ModifyColdStorageParametersQueryInput } from '../models';
+// @ts-ignore
+import { MoveToHotStorageQueryInput } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
 // @ts-ignore
@@ -438,6 +444,110 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
+         * 
+         * @summary Modify Cold Storage Parameters
+         * @param {ModifyColdStorageParametersQueryInput} modifyColdStorageParametersQueryInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        modifyColdStorageParameters: async (modifyColdStorageParametersQueryInput: ModifyColdStorageParametersQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'modifyColdStorageParametersQueryInput' is not null or undefined
+            assertParamExists('modifyColdStorageParameters', 'modifyColdStorageParametersQueryInput', modifyColdStorageParametersQueryInput)
+            const localVarPath = `/modify_cold_storage_parameters`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: modifyColdStorageParametersQueryInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/modify_cold_storage_parameters',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyColdStorageParametersQueryInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Move To Hot Storage
+         * @param {MoveToHotStorageQueryInput} moveToHotStorageQueryInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        moveToHotStorage: async (moveToHotStorageQueryInput: MoveToHotStorageQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'moveToHotStorageQueryInput' is not null or undefined
+            assertParamExists('moveToHotStorage', 'moveToHotStorageQueryInput', moveToHotStorageQueryInput)
+            const localVarPath = `/move_to_hot_storage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: moveToHotStorageQueryInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/move_to_hot_storage',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(moveToHotStorageQueryInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
          * @summary User Files V2
          * @param {OrganizationUserFilesToSyncQueryInput} organizationUserFilesToSyncQueryInput 
@@ -611,12 +721,15 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [parsePdfTablesWithOcr] Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled.
          * @param {boolean} [detectAudioLanguage] Whether to automatically detect the language of the uploaded audio file.
          * @param {TranscriptionServiceNullable} [transcriptionService] The transcription service to use for audio files. If no service is specified, \&#39;deepgram\&#39; will be used.
+         * @param {boolean} [includeSpeakerLabels] Detect multiple speakers and label segments of speech by speaker for audio files.
          * @param {FileContentTypesNullable} [mediaType] The media type of the file. If not provided, it will be inferred from the file extension.
          * @param {boolean} [splitRows] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
+         * @param {boolean} [enableColdStorage] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+         * @param {number} [hotStorageTimeToLive] Time in seconds after which the file will be moved to cold storage.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, transcriptionService?: TranscriptionServiceNullable, mediaType?: FileContentTypesNullable, splitRows?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, transcriptionService?: TranscriptionServiceNullable, includeSpeakerLabels?: boolean, mediaType?: FileContentTypesNullable, splitRows?: boolean, enableColdStorage?: boolean, hotStorageTimeToLive?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -732,12 +845,24 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['transcription_service'] = transcriptionService;
             }
 
+            if (includeSpeakerLabels !== undefined) {
+                localVarQueryParameter['include_speaker_labels'] = includeSpeakerLabels;
+            }
+
             if (mediaType !== undefined) {
                 localVarQueryParameter['media_type'] = mediaType;
             }
 
             if (splitRows !== undefined) {
                 localVarQueryParameter['split_rows'] = splitRows;
+            }
+
+            if (enableColdStorage !== undefined) {
+                localVarQueryParameter['enable_cold_storage'] = enableColdStorage;
+            }
+
+            if (hotStorageTimeToLive !== undefined) {
+                localVarQueryParameter['hot_storage_time_to_live'] = hotStorageTimeToLive;
             }
 
 
@@ -985,6 +1110,36 @@ export const FilesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * 
+         * @summary Modify Cold Storage Parameters
+         * @param {FilesApiModifyColdStorageParametersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async modifyColdStorageParameters(requestParameters: FilesApiModifyColdStorageParametersRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const modifyColdStorageParametersQueryInput: ModifyColdStorageParametersQueryInput = {
+                filters: requestParameters.filters,
+                enable_cold_storage: requestParameters.enable_cold_storage,
+                hot_storage_time_to_live: requestParameters.hot_storage_time_to_live
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.modifyColdStorageParameters(modifyColdStorageParametersQueryInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Move To Hot Storage
+         * @param {FilesApiMoveToHotStorageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async moveToHotStorage(requestParameters: FilesApiMoveToHotStorageRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const moveToHotStorageQueryInput: MoveToHotStorageQueryInput = {
+                filters: requestParameters.filters
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.moveToHotStorage(moveToHotStorageQueryInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
          * @summary User Files V2
          * @param {FilesApiQueryUserFilesRequest} requestParameters Request parameters.
@@ -1053,7 +1208,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
                 file: requestParameters.file
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.transcriptionService, requestParameters.mediaType, requestParameters.splitRows, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.transcriptionService, requestParameters.includeSpeakerLabels, requestParameters.mediaType, requestParameters.splitRows, requestParameters.enableColdStorage, requestParameters.hotStorageTimeToLive, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1079,8 +1234,10 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
                 detect_audio_language: requestParameters.detect_audio_language,
                 transcription_service: requestParameters.transcription_service,
+                include_speaker_labels: requestParameters.include_speaker_labels,
                 media_type: requestParameters.media_type,
-                split_rows: requestParameters.split_rows
+                split_rows: requestParameters.split_rows,
+                cold_storage_params: requestParameters.cold_storage_params
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1101,7 +1258,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 skip_embedding_generation: requestParameters.skip_embedding_generation,
                 overwrite_file_id: requestParameters.overwrite_file_id,
                 embedding_model: requestParameters.embedding_model,
-                generate_sparse_vectors: requestParameters.generate_sparse_vectors
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                cold_storage_params: requestParameters.cold_storage_params
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(rawTextInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1189,6 +1347,26 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
          */
         getRawFile(requestParameters: FilesApiGetRawFileRequest, options?: AxiosRequestConfig): AxiosPromise<PresignedURLResponse> {
             return localVarFp.getRawFile(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Modify Cold Storage Parameters
+         * @param {FilesApiModifyColdStorageParametersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        modifyColdStorageParameters(requestParameters: FilesApiModifyColdStorageParametersRequest, options?: AxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.modifyColdStorageParameters(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Move To Hot Storage
+         * @param {FilesApiMoveToHotStorageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        moveToHotStorage(requestParameters: FilesApiMoveToHotStorageRequest, options?: AxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.moveToHotStorage(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2` and `tags` are specified, `tags` is ignored. `tags_v2` enables building complex filters through the use of \"AND\", \"OR\", and negation logic. Take the below input as an example: ```json {     \"OR\": [         {             \"key\": \"subject\",             \"value\": \"holy-bible\",             \"negate\": false         },         {             \"key\": \"person-of-interest\",             \"value\": \"jesus christ\",             \"negate\": false         },         {             \"key\": \"genre\",             \"value\": \"religion\",             \"negate\": true         }         {             \"AND\": [                 {                     \"key\": \"subject\",                     \"value\": \"tao-te-ching\",                     \"negate\": false                 },                 {                     \"key\": \"author\",                     \"value\": \"lao-tzu\",                     \"negate\": false                 }             ]         }     ] } ``` In this case, files will be filtered such that: 1. \"subject\" = \"holy-bible\" OR 2. \"person-of-interest\" = \"jesus christ\" OR 3. \"genre\" != \"religion\" OR 4. \"subject\" = \"tao-te-ching\" AND \"author\" = \"lao-tzu\"  Note that the top level of the query must be either an \"OR\" or \"AND\" array. Currently, nesting is limited to 3. For tag blocks (those with \"key\", \"value\", and \"negate\" keys), the following typing rules apply: 1. \"key\" isn\'t optional and must be a `string` 2. \"value\" isn\'t optional and can be `any` or list[`any`] 3. \"negate\" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in the resulting query. It is `false` by default.
@@ -1339,6 +1517,24 @@ export type FilesApiGetRawFileRequest = {
 }
 
 /**
+ * Request parameters for modifyColdStorageParameters operation in FilesApi.
+ * @export
+ * @interface FilesApiModifyColdStorageParametersRequest
+ */
+export type FilesApiModifyColdStorageParametersRequest = {
+    
+} & ModifyColdStorageParametersQueryInput
+
+/**
+ * Request parameters for moveToHotStorage operation in FilesApi.
+ * @export
+ * @interface FilesApiMoveToHotStorageRequest
+ */
+export type FilesApiMoveToHotStorageRequest = {
+    
+} & MoveToHotStorageQueryInput
+
+/**
  * Request parameters for queryUserFiles operation in FilesApi.
  * @export
  * @interface FilesApiQueryUserFilesRequest
@@ -1464,6 +1660,13 @@ export type FilesApiUploadRequest = {
     readonly transcriptionService?: TranscriptionServiceNullable
     
     /**
+    * Detect multiple speakers and label segments of speech by speaker for audio files.
+    * @type {boolean}
+    * @memberof FilesApiUpload
+    */
+    readonly includeSpeakerLabels?: boolean
+    
+    /**
     * The media type of the file. If not provided, it will be inferred from the file extension.
     * @type {FileContentTypesNullable}
     * @memberof FilesApiUpload
@@ -1476,6 +1679,20 @@ export type FilesApiUploadRequest = {
     * @memberof FilesApiUpload
     */
     readonly splitRows?: boolean
+    
+    /**
+    * Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
+    * @type {boolean}
+    * @memberof FilesApiUpload
+    */
+    readonly enableColdStorage?: boolean
+    
+    /**
+    * Time in seconds after which the file will be moved to cold storage.
+    * @type {number}
+    * @memberof FilesApiUpload
+    */
+    readonly hotStorageTimeToLive?: number
     
 } & BodyCreateUploadFileUploadfilePost
 
@@ -1590,6 +1807,30 @@ export class FilesApiGenerated extends BaseAPI {
      */
     public getRawFile(requestParameters: FilesApiGetRawFileRequest, options?: AxiosRequestConfig) {
         return FilesApiFp(this.configuration).getRawFile(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Modify Cold Storage Parameters
+     * @param {FilesApiModifyColdStorageParametersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FilesApiGenerated
+     */
+    public modifyColdStorageParameters(requestParameters: FilesApiModifyColdStorageParametersRequest, options?: AxiosRequestConfig) {
+        return FilesApiFp(this.configuration).modifyColdStorageParameters(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Move To Hot Storage
+     * @param {FilesApiMoveToHotStorageRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FilesApiGenerated
+     */
+    public moveToHotStorage(requestParameters: FilesApiMoveToHotStorageRequest, options?: AxiosRequestConfig) {
+        return FilesApiFp(this.configuration).moveToHotStorage(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

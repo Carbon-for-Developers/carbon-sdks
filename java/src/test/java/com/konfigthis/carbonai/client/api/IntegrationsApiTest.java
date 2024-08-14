@@ -232,6 +232,7 @@ public class IntegrationsApiTest {
         Boolean syncSourceItems = null;
         Boolean incrementalSync = null;
         FileSyncConfigNullable fileSyncConfig = null;
+        Boolean automaticallyOpenFilePicker = null;
         OuthURLResponse response = api.getOauthUrl(service)
                 .tags(tags)
                 .scope(scope)
@@ -258,6 +259,7 @@ public class IntegrationsApiTest {
                 .syncSourceItems(syncSourceItems)
                 .incrementalSync(incrementalSync)
                 .fileSyncConfig(fileSyncConfig)
+                .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
                 .execute();
         // TODO: test validations
     }

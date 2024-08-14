@@ -15,6 +15,7 @@
 |**overwriteFileId** | **Integer** |  |  [optional] |
 |**embeddingModel** | **EmbeddingGeneratorsNullable** |  |  [optional] |
 |**generateSparseVectors** | **Boolean** |  |  [optional] |
+|**coldStorageParams** | [**ColdStorageProps**](ColdStorageProps.md) |  |  [optional] |
 
 
 

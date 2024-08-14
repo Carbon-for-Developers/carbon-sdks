@@ -23,6 +23,8 @@ type FileSyncConfig struct {
 	// Detect audio language before transcription for audio files
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
 	TranscriptionService NullableTranscriptionServiceNullable `json:"transcription_service,omitempty"`
+	// Detect multiple speakers and label segments of speech by speaker for audio files.
+	IncludeSpeakerLabels *bool `json:"include_speaker_labels,omitempty"`
 	// Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
 	SplitRows *bool `json:"split_rows,omitempty"`
 }
@@ -37,6 +39,8 @@ func NewFileSyncConfig() *FileSyncConfig {
 	this.SyncAttachments = &syncAttachments
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var includeSpeakerLabels bool = false
+	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
 	return &this
@@ -51,6 +55,8 @@ func NewFileSyncConfigWithDefaults() *FileSyncConfig {
 	this.SyncAttachments = &syncAttachments
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var includeSpeakerLabels bool = false
+	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
 	return &this
@@ -194,6 +200,38 @@ func (o *FileSyncConfig) UnsetTranscriptionService() {
 	o.TranscriptionService.Unset()
 }
 
+// GetIncludeSpeakerLabels returns the IncludeSpeakerLabels field value if set, zero value otherwise.
+func (o *FileSyncConfig) GetIncludeSpeakerLabels() bool {
+	if o == nil || isNil(o.IncludeSpeakerLabels) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeSpeakerLabels
+}
+
+// GetIncludeSpeakerLabelsOk returns a tuple with the IncludeSpeakerLabels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FileSyncConfig) GetIncludeSpeakerLabelsOk() (*bool, bool) {
+	if o == nil || isNil(o.IncludeSpeakerLabels) {
+    return nil, false
+	}
+	return o.IncludeSpeakerLabels, true
+}
+
+// HasIncludeSpeakerLabels returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasIncludeSpeakerLabels() bool {
+	if o != nil && !isNil(o.IncludeSpeakerLabels) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeSpeakerLabels gets a reference to the given bool and assigns it to the IncludeSpeakerLabels field.
+func (o *FileSyncConfig) SetIncludeSpeakerLabels(v bool) {
+	o.IncludeSpeakerLabels = &v
+}
+
 // GetSplitRows returns the SplitRows field value if set, zero value otherwise.
 func (o *FileSyncConfig) GetSplitRows() bool {
 	if o == nil || isNil(o.SplitRows) {
@@ -239,6 +277,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.TranscriptionService.IsSet() {
 		toSerialize["transcription_service"] = o.TranscriptionService.Get()
+	}
+	if !isNil(o.IncludeSpeakerLabels) {
+		toSerialize["include_speaker_labels"] = o.IncludeSpeakerLabels
 	}
 	if !isNil(o.SplitRows) {
 		toSerialize["split_rows"] = o.SplitRows

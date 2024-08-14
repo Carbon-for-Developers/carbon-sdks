@@ -161,6 +161,8 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**deleteV2**](docs/FilesApi.md#deleteV2) | **POST** /delete_files_v2 | Delete Files V2 Endpoint
 *FilesApi* | [**getParsedFile**](docs/FilesApi.md#getParsedFile) | **GET** /parsed_file/{file_id} | Parsed File
 *FilesApi* | [**getRawFile**](docs/FilesApi.md#getRawFile) | **GET** /raw_file/{file_id} | Raw File
+*FilesApi* | [**modifyColdStorageParameters**](docs/FilesApi.md#modifyColdStorageParameters) | **POST** /modify_cold_storage_parameters | Modify Cold Storage Parameters
+*FilesApi* | [**moveToHotStorage**](docs/FilesApi.md#moveToHotStorage) | **POST** /move_to_hot_storage | Move To Hot Storage
 *FilesApi* | [**queryUserFiles**](docs/FilesApi.md#queryUserFiles) | **POST** /user_files_v2 | User Files V2
 *FilesApi* | [**queryUserFilesDeprecated**](docs/FilesApi.md#queryUserFilesDeprecated) | **POST** /user_files | User Files
 *FilesApi* | [**resync**](docs/FilesApi.md#resync) | **POST** /resync_file | Resync File
@@ -221,6 +223,7 @@ Class | Method | HTTP request | Description
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
  - [ChunksAndEmbeddings](docs/ChunksAndEmbeddings.md)
  - [ChunksAndEmbeddingsUploadInput](docs/ChunksAndEmbeddingsUploadInput.md)
+ - [ColdStorageProps](docs/ColdStorageProps.md)
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
  - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
@@ -240,6 +243,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingGenerators](docs/EmbeddingGenerators.md)
  - [EmbeddingGeneratorsNullable](docs/EmbeddingGeneratorsNullable.md)
  - [EmbeddingProperties](docs/EmbeddingProperties.md)
+ - [EmbeddingStorageStatus](docs/EmbeddingStorageStatus.md)
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
@@ -282,7 +286,9 @@ Class | Method | HTTP request | Description
  - [ListUsersFilters](docs/ListUsersFilters.md)
  - [ListUsersOrderByTypes](docs/ListUsersOrderByTypes.md)
  - [ListUsersRequest](docs/ListUsersRequest.md)
+ - [ModifyColdStorageParametersQueryInput](docs/ModifyColdStorageParametersQueryInput.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
+ - [MoveToHotStorageQueryInput](docs/MoveToHotStorageQueryInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
  - [OANSCZGF](docs/OANSCZGF.md)
  - [OAuthAuthentication](docs/OAuthAuthentication.md)

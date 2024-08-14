@@ -24,6 +24,7 @@ type RawTextInput struct {
 	OverwriteFileId NullableInt32 `json:"overwrite_file_id,omitempty"`
 	EmbeddingModel NullableEmbeddingGeneratorsNullable `json:"embedding_model,omitempty"`
 	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
+	ColdStorageParams *ColdStorageProps `json:"cold_storage_params,omitempty"`
 }
 
 // NewRawTextInput instantiates a new RawTextInput object
@@ -364,6 +365,38 @@ func (o *RawTextInput) UnsetGenerateSparseVectors() {
 	o.GenerateSparseVectors.Unset()
 }
 
+// GetColdStorageParams returns the ColdStorageParams field value if set, zero value otherwise.
+func (o *RawTextInput) GetColdStorageParams() ColdStorageProps {
+	if o == nil || isNil(o.ColdStorageParams) {
+		var ret ColdStorageProps
+		return ret
+	}
+	return *o.ColdStorageParams
+}
+
+// GetColdStorageParamsOk returns a tuple with the ColdStorageParams field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RawTextInput) GetColdStorageParamsOk() (*ColdStorageProps, bool) {
+	if o == nil || isNil(o.ColdStorageParams) {
+    return nil, false
+	}
+	return o.ColdStorageParams, true
+}
+
+// HasColdStorageParams returns a boolean if a field has been set.
+func (o *RawTextInput) HasColdStorageParams() bool {
+	if o != nil && !isNil(o.ColdStorageParams) {
+		return true
+	}
+
+	return false
+}
+
+// SetColdStorageParams gets a reference to the given ColdStorageProps and assigns it to the ColdStorageParams field.
+func (o *RawTextInput) SetColdStorageParams(v ColdStorageProps) {
+	o.ColdStorageParams = &v
+}
+
 func (o RawTextInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -389,6 +422,9 @@ func (o RawTextInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.GenerateSparseVectors.IsSet() {
 		toSerialize["generate_sparse_vectors"] = o.GenerateSparseVectors.Get()
+	}
+	if !isNil(o.ColdStorageParams) {
+		toSerialize["cold_storage_params"] = o.ColdStorageParams
 	}
 	return json.Marshal(toSerialize)
 }

@@ -23,6 +23,9 @@ module Carbon
 
     attr_accessor :transcription_service
 
+    # Detect multiple speakers and label segments of speech by speaker for audio files.
+    attr_accessor :include_speaker_labels
+
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     attr_accessor :split_rows
 
@@ -33,6 +36,7 @@ module Carbon
         :'sync_attachments' => :'sync_attachments',
         :'detect_audio_language' => :'detect_audio_language',
         :'transcription_service' => :'transcription_service',
+        :'include_speaker_labels' => :'include_speaker_labels',
         :'split_rows' => :'split_rows'
       }
     end
@@ -49,6 +53,7 @@ module Carbon
         :'sync_attachments' => :'Boolean',
         :'detect_audio_language' => :'Boolean',
         :'transcription_service' => :'TranscriptionServiceNullable',
+        :'include_speaker_labels' => :'Boolean',
         :'split_rows' => :'Boolean'
       }
     end
@@ -97,6 +102,12 @@ module Carbon
         self.transcription_service = attributes[:'transcription_service']
       end
 
+      if attributes.key?(:'include_speaker_labels')
+        self.include_speaker_labels = attributes[:'include_speaker_labels']
+      else
+        self.include_speaker_labels = false
+      end
+
       if attributes.key?(:'split_rows')
         self.split_rows = attributes[:'split_rows']
       else
@@ -126,6 +137,7 @@ module Carbon
           sync_attachments == o.sync_attachments &&
           detect_audio_language == o.detect_audio_language &&
           transcription_service == o.transcription_service &&
+          include_speaker_labels == o.include_speaker_labels &&
           split_rows == o.split_rows
     end
 
@@ -138,7 +150,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, split_rows].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows].hash
     end
 
     # Builds the object from hash

@@ -31,8 +31,10 @@ type UploadFileFromUrlInput struct {
 	ParsePdfTablesWithOcr *bool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	DetectAudioLanguage *bool `json:"detect_audio_language,omitempty"`
 	TranscriptionService NullableTranscriptionServiceNullable `json:"transcription_service,omitempty"`
+	IncludeSpeakerLabels *bool `json:"include_speaker_labels,omitempty"`
 	MediaType NullableFileContentTypesNullable `json:"media_type,omitempty"`
 	SplitRows *bool `json:"split_rows,omitempty"`
+	ColdStorageParams *ColdStorageProps `json:"cold_storage_params,omitempty"`
 }
 
 // NewUploadFileFromUrlInput instantiates a new UploadFileFromUrlInput object
@@ -56,6 +58,8 @@ func NewUploadFileFromUrlInput(url string) *UploadFileFromUrlInput {
 	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var includeSpeakerLabels bool = false
+	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
 	return &this
@@ -80,6 +84,8 @@ func NewUploadFileFromUrlInputWithDefaults() *UploadFileFromUrlInput {
 	this.ParsePdfTablesWithOcr = &parsePdfTablesWithOcr
 	var detectAudioLanguage bool = false
 	this.DetectAudioLanguage = &detectAudioLanguage
+	var includeSpeakerLabels bool = false
+	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
 	return &this
@@ -575,6 +581,38 @@ func (o *UploadFileFromUrlInput) UnsetTranscriptionService() {
 	o.TranscriptionService.Unset()
 }
 
+// GetIncludeSpeakerLabels returns the IncludeSpeakerLabels field value if set, zero value otherwise.
+func (o *UploadFileFromUrlInput) GetIncludeSpeakerLabels() bool {
+	if o == nil || isNil(o.IncludeSpeakerLabels) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeSpeakerLabels
+}
+
+// GetIncludeSpeakerLabelsOk returns a tuple with the IncludeSpeakerLabels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadFileFromUrlInput) GetIncludeSpeakerLabelsOk() (*bool, bool) {
+	if o == nil || isNil(o.IncludeSpeakerLabels) {
+    return nil, false
+	}
+	return o.IncludeSpeakerLabels, true
+}
+
+// HasIncludeSpeakerLabels returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasIncludeSpeakerLabels() bool {
+	if o != nil && !isNil(o.IncludeSpeakerLabels) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeSpeakerLabels gets a reference to the given bool and assigns it to the IncludeSpeakerLabels field.
+func (o *UploadFileFromUrlInput) SetIncludeSpeakerLabels(v bool) {
+	o.IncludeSpeakerLabels = &v
+}
+
 // GetMediaType returns the MediaType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UploadFileFromUrlInput) GetMediaType() FileContentTypesNullable {
 	if o == nil || isNil(o.MediaType.Get()) {
@@ -649,6 +687,38 @@ func (o *UploadFileFromUrlInput) SetSplitRows(v bool) {
 	o.SplitRows = &v
 }
 
+// GetColdStorageParams returns the ColdStorageParams field value if set, zero value otherwise.
+func (o *UploadFileFromUrlInput) GetColdStorageParams() ColdStorageProps {
+	if o == nil || isNil(o.ColdStorageParams) {
+		var ret ColdStorageProps
+		return ret
+	}
+	return *o.ColdStorageParams
+}
+
+// GetColdStorageParamsOk returns a tuple with the ColdStorageParams field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadFileFromUrlInput) GetColdStorageParamsOk() (*ColdStorageProps, bool) {
+	if o == nil || isNil(o.ColdStorageParams) {
+    return nil, false
+	}
+	return o.ColdStorageParams, true
+}
+
+// HasColdStorageParams returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasColdStorageParams() bool {
+	if o != nil && !isNil(o.ColdStorageParams) {
+		return true
+	}
+
+	return false
+}
+
+// SetColdStorageParams gets a reference to the given ColdStorageProps and assigns it to the ColdStorageParams field.
+func (o *UploadFileFromUrlInput) SetColdStorageParams(v ColdStorageProps) {
+	o.ColdStorageParams = &v
+}
+
 func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -693,11 +763,17 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	if o.TranscriptionService.IsSet() {
 		toSerialize["transcription_service"] = o.TranscriptionService.Get()
 	}
+	if !isNil(o.IncludeSpeakerLabels) {
+		toSerialize["include_speaker_labels"] = o.IncludeSpeakerLabels
+	}
 	if o.MediaType.IsSet() {
 		toSerialize["media_type"] = o.MediaType.Get()
 	}
 	if !isNil(o.SplitRows) {
 		toSerialize["split_rows"] = o.SplitRows
+	}
+	if !isNil(o.ColdStorageParams) {
+		toSerialize["cold_storage_params"] = o.ColdStorageParams
 	}
 	return json.Marshal(toSerialize)
 }

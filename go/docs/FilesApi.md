@@ -11,6 +11,8 @@ Method | Path | Description
 [**DeleteV2**](FilesApi.md#DeleteV2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint
 [**GetParsedFile**](FilesApi.md#GetParsedFile) | **Get** /parsed_file/{file_id} | Parsed File
 [**GetRawFile**](FilesApi.md#GetRawFile) | **Get** /raw_file/{file_id} | Raw File
+[**ModifyColdStorageParameters**](FilesApi.md#ModifyColdStorageParameters) | **Post** /modify_cold_storage_parameters | Modify Cold Storage Parameters
+[**MoveToHotStorage**](FilesApi.md#MoveToHotStorage) | **Post** /move_to_hot_storage | Move To Hot Storage
 [**QueryUserFiles**](FilesApi.md#QueryUserFiles) | **Post** /user_files_v2 | User Files V2
 [**QueryUserFilesDeprecated**](FilesApi.md#QueryUserFilesDeprecated) | **Post** /user_files | User Files
 [**Resync**](FilesApi.md#Resync) | **Post** /resync_file | Resync File
@@ -94,6 +96,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -220,6 +225,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.DeleteFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -424,6 +432,102 @@ func main() {
 [[Back to README]](../README.md)
 
 
+## ModifyColdStorageParameters
+
+Modify Cold Storage Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+    
+    modifyColdStorageParametersQueryInput := *carbon.NewModifyColdStorageParametersQueryInput()
+    modifyColdStorageParametersQueryInput.SetFilters(filters)
+    modifyColdStorageParametersQueryInput.SetEnableColdStorage(null)
+    modifyColdStorageParametersQueryInput.SetHotStorageTimeToLive(null)
+    
+    request := client.FilesApi.ModifyColdStorageParameters(
+        modifyColdStorageParametersQueryInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FilesApi.ModifyColdStorageParameters``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ModifyColdStorageParameters`: bool
+    fmt.Fprintf(os.Stdout, "Response from `FilesApi.ModifyColdStorageParameters`: %v\n", resp)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MoveToHotStorage
+
+Move To Hot Storage
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    filters := *carbon.NewOrganizationUserFilesToSyncFilters()
+    
+    moveToHotStorageQueryInput := *carbon.NewMoveToHotStorageQueryInput()
+    moveToHotStorageQueryInput.SetFilters(filters)
+    
+    request := client.FilesApi.MoveToHotStorage(
+        moveToHotStorageQueryInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FilesApi.MoveToHotStorage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `MoveToHotStorage`: bool
+    fmt.Fprintf(os.Stdout, "Response from `FilesApi.MoveToHotStorage`: %v\n", resp)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## QueryUserFiles
 
 User Files V2
@@ -563,6 +667,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.QueryUserFilesDeprecated.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -647,6 +754,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Resync.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -702,8 +812,11 @@ func main() {
     request.ParsePdfTablesWithOcr(false)
     request.DetectAudioLanguage(false)
     request.TranscriptionService()
+    request.IncludeSpeakerLabels(false)
     request.MediaType()
     request.SplitRows(false)
+    request.EnableColdStorage(false)
+    request.HotStorageTimeToLive(56)
     
     resp, httpRes, err := request.Execute()
 
@@ -745,6 +858,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.Upload.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -777,6 +893,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    coldStorageParams := *carbon.NewColdStorageProps()
     
     uploadFileFromUrlInput := *carbon.NewUploadFileFromUrlInput(
         "null",
@@ -794,8 +911,10 @@ func main() {
     uploadFileFromUrlInput.SetParsePdfTablesWithOcr(false)
     uploadFileFromUrlInput.SetDetectAudioLanguage(false)
     uploadFileFromUrlInput.SetTranscriptionService(null)
+    uploadFileFromUrlInput.SetIncludeSpeakerLabels(false)
     uploadFileFromUrlInput.SetMediaType(null)
     uploadFileFromUrlInput.SetSplitRows(false)
+    uploadFileFromUrlInput.SetColdStorageParams(coldStorageParams)
     
     request := client.FilesApi.UploadFromUrl(
         uploadFileFromUrlInput,
@@ -841,6 +960,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadFromUrl.UpdatedAt`: %v\n", resp.UpdatedAt)
 }
@@ -875,6 +997,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    coldStorageParams := *carbon.NewColdStorageProps()
     
     rawTextInput := *carbon.NewRawTextInput(
         "null",
@@ -886,6 +1009,7 @@ func main() {
     rawTextInput.SetOverwriteFileId(null)
     rawTextInput.SetEmbeddingModel(null)
     rawTextInput.SetGenerateSparseVectors(false)
+    rawTextInput.SetColdStorageParams(coldStorageParams)
     
     request := client.FilesApi.UploadText(
         rawTextInput,
@@ -931,6 +1055,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SyncProperties`: %v\n", resp.SyncProperties)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.MessagesMetadata`: %v\n", resp.MessagesMetadata)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.FileContentsDeleted`: %v\n", resp.FileContentsDeleted)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.SupportsColdStorage`: %v\n", resp.SupportsColdStorage)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.HotStorageTimeToLive`: %v\n", resp.HotStorageTimeToLive)
+    fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.UploadText.UpdatedAt`: %v\n", resp.UpdatedAt)
 }

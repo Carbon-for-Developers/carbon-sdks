@@ -161,8 +161,30 @@ class MaxItemsPerChunkSchema(
 ParsePdfTablesWithOcrSchema = schemas.BoolSchema
 DetectAudioLanguageSchema = schemas.BoolSchema
 TranscriptionServiceSchema = TranscriptionServiceNullableSchema
+IncludeSpeakerLabelsSchema = schemas.BoolSchema
 MediaTypeSchema = FileContentTypesNullableSchema
 SplitRowsSchema = schemas.BoolSchema
+EnableColdStorageSchema = schemas.BoolSchema
+
+
+class HotStorageTimeToLiveSchema(
+    schemas.IntBase,
+    schemas.NoneBase,
+    schemas.Schema,
+    schemas.NoneDecimalMixin
+):
+
+
+    def __new__(
+        cls,
+        *args: typing.Union[None, decimal.Decimal, int, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'HotStorageTimeToLiveSchema':
+        return super().__new__(
+            cls,
+            *args,
+            _configuration=_configuration,
+        )
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -183,8 +205,11 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'parse_pdf_tables_with_ocr': typing.Union[ParsePdfTablesWithOcrSchema, bool, ],
         'detect_audio_language': typing.Union[DetectAudioLanguageSchema, bool, ],
         'transcription_service': typing.Union[TranscriptionServiceSchema, ],
+        'include_speaker_labels': typing.Union[IncludeSpeakerLabelsSchema, bool, ],
         'media_type': typing.Union[MediaTypeSchema, ],
         'split_rows': typing.Union[SplitRowsSchema, bool, ],
+        'enable_cold_storage': typing.Union[EnableColdStorageSchema, bool, ],
+        'hot_storage_time_to_live': typing.Union[HotStorageTimeToLiveSchema, None, decimal.Decimal, int, ],
     },
     total=False
 )
@@ -266,6 +291,12 @@ request_query_transcription_service = api_client.QueryParameter(
     schema=TranscriptionServiceNullableSchema,
     explode=True,
 )
+request_query_include_speaker_labels = api_client.QueryParameter(
+    name="include_speaker_labels",
+    style=api_client.ParameterStyle.FORM,
+    schema=IncludeSpeakerLabelsSchema,
+    explode=True,
+)
 request_query_media_type = api_client.QueryParameter(
     name="media_type",
     style=api_client.ParameterStyle.FORM,
@@ -276,6 +307,18 @@ request_query_split_rows = api_client.QueryParameter(
     name="split_rows",
     style=api_client.ParameterStyle.FORM,
     schema=SplitRowsSchema,
+    explode=True,
+)
+request_query_enable_cold_storage = api_client.QueryParameter(
+    name="enable_cold_storage",
+    style=api_client.ParameterStyle.FORM,
+    schema=EnableColdStorageSchema,
+    explode=True,
+)
+request_query_hot_storage_time_to_live = api_client.QueryParameter(
+    name="hot_storage_time_to_live",
+    style=api_client.ParameterStyle.FORM,
+    schema=HotStorageTimeToLiveSchema,
     explode=True,
 )
 # body param
@@ -353,8 +396,11 @@ class BaseApi(api_client.Api):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _query_params = {}
@@ -386,10 +432,16 @@ class BaseApi(api_client.Api):
             _query_params["detect_audio_language"] = detect_audio_language
         if transcription_service is not None:
             _query_params["transcription_service"] = transcription_service
+        if include_speaker_labels is not None:
+            _query_params["include_speaker_labels"] = include_speaker_labels
         if media_type is not None:
             _query_params["media_type"] = media_type
         if split_rows is not None:
             _query_params["split_rows"] = split_rows
+        if enable_cold_storage is not None:
+            _query_params["enable_cold_storage"] = enable_cold_storage
+        if hot_storage_time_to_live is not None:
+            _query_params["hot_storage_time_to_live"] = hot_storage_time_to_live
         args.query = _query_params
         return args
 
@@ -431,8 +483,11 @@ class BaseApi(api_client.Api):
             request_query_parse_pdf_tables_with_ocr,
             request_query_detect_audio_language,
             request_query_transcription_service,
+            request_query_include_speaker_labels,
             request_query_media_type,
             request_query_split_rows,
+            request_query_enable_cold_storage,
+            request_query_hot_storage_time_to_live,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -574,8 +629,11 @@ class BaseApi(api_client.Api):
             request_query_parse_pdf_tables_with_ocr,
             request_query_detect_audio_language,
             request_query_transcription_service,
+            request_query_include_speaker_labels,
             request_query_media_type,
             request_query_split_rows,
+            request_query_enable_cold_storage,
+            request_query_hot_storage_time_to_live,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -668,8 +726,11 @@ class UploadRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -690,8 +751,11 @@ class UploadRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -714,8 +778,11 @@ class UploadRaw(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -734,8 +801,11 @@ class UploadRaw(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
         )
         return self._upload_oapg(
             body=args.body,
@@ -759,8 +829,11 @@ class Upload(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -778,8 +851,11 @@ class Upload(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
             **kwargs,
         )
         if validate:
@@ -802,8 +878,11 @@ class Upload(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload(
@@ -820,8 +899,11 @@ class Upload(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -846,8 +928,11 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -868,8 +953,11 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -892,8 +980,11 @@ class ApiForpost(BaseApi):
         parse_pdf_tables_with_ocr: typing.Optional[bool] = None,
         detect_audio_language: typing.Optional[bool] = None,
         transcription_service: typing.Optional[TranscriptionServiceNullable] = None,
+        include_speaker_labels: typing.Optional[bool] = None,
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
+        enable_cold_storage: typing.Optional[bool] = None,
+        hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -912,8 +1003,11 @@ class ApiForpost(BaseApi):
             parse_pdf_tables_with_ocr=parse_pdf_tables_with_ocr,
             detect_audio_language=detect_audio_language,
             transcription_service=transcription_service,
+            include_speaker_labels=include_speaker_labels,
             media_type=media_type,
             split_rows=split_rows,
+            enable_cold_storage=enable_cold_storage,
+            hot_storage_time_to_live=hot_storage_time_to_live,
         )
         return self._upload_oapg(
             body=args.body,

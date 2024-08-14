@@ -77,5 +77,8 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
     # Filter files based on their type at the source (for example help center tickets and articles)
     file_types_at_source: typing.Optional[typing.List[HelpdeskFileTypes]]
 
+    # Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+    exclude_cold_storage_files: bool
+
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

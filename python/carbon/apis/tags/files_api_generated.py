@@ -15,6 +15,8 @@ from carbon.paths.delete_files.post import DeleteMany
 from carbon.paths.delete_files_v2.post import DeleteV2
 from carbon.paths.parsed_file_file_id.get import GetParsedFile
 from carbon.paths.raw_file_file_id.get import GetRawFile
+from carbon.paths.modify_cold_storage_parameters.post import ModifyColdStorageParameters
+from carbon.paths.move_to_hot_storage.post import MoveToHotStorage
 from carbon.paths.user_files_v2.post import QueryUserFiles
 from carbon.paths.user_files.post import QueryUserFilesDeprecated
 from carbon.paths.resync_file.post import Resync
@@ -32,6 +34,8 @@ class FilesApiGenerated(
     DeleteV2,
     GetParsedFile,
     GetRawFile,
+    ModifyColdStorageParameters,
+    MoveToHotStorage,
     QueryUserFiles,
     QueryUserFilesDeprecated,
     Resync,

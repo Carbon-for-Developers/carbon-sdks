@@ -161,4 +161,12 @@ public class SyncOptionsTest {
         // TODO: test fileSyncConfig
     }
 
+    /**
+     * Test the property 'automaticallyOpenFilePicker'
+     */
+    @Test
+    public void automaticallyOpenFilePickerTest() {
+        // TODO: test automaticallyOpenFilePicker
+    }
+
 }

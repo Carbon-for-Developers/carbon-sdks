@@ -53,6 +53,8 @@ class PathValues(str, enum.Enum):
     CREATE_USER_FILE_TAGS = "/create_user_file_tags"
     DELETE_USER_FILE_TAGS = "/delete_user_file_tags"
     RESYNC_FILE = "/resync_file"
+    MOVE_TO_HOT_STORAGE = "/move_to_hot_storage"
+    MODIFY_COLD_STORAGE_PARAMETERS = "/modify_cold_storage_parameters"
     RAW_FILE_FILE_ID = "/raw_file/{file_id}"
     PARSED_FILE_FILE_ID = "/parsed_file/{file_id}"
     USER_FILES = "/user_files"

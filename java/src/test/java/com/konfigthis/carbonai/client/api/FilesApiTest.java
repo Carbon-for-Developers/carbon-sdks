@@ -17,6 +17,7 @@ import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
 import com.konfigthis.carbonai.client.model.BodyCreateUploadFileUploadfilePost;
+import com.konfigthis.carbonai.client.model.ColdStorageProps;
 import com.konfigthis.carbonai.client.model.DeleteFilesQueryInput;
 import com.konfigthis.carbonai.client.model.DeleteFilesV2QueryInput;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -25,6 +26,8 @@ import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
 import java.io.File;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
+import com.konfigthis.carbonai.client.model.ModifyColdStorageParametersQueryInput;
+import com.konfigthis.carbonai.client.model.MoveToHotStorageQueryInput;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagCreate;
 import com.konfigthis.carbonai.client.model.OrganizationUserFileTagsRemove;
@@ -178,6 +181,38 @@ public class FilesApiTest {
     }
 
     /**
+     * Modify Cold Storage Parameters
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void modifyColdStorageParametersTest() throws ApiException {
+        OrganizationUserFilesToSyncFilters filters = null;
+        Boolean enableColdStorage = null;
+        Integer hotStorageTimeToLive = null;
+        Boolean response = api.modifyColdStorageParameters()
+                .filters(filters)
+                .enableColdStorage(enableColdStorage)
+                .hotStorageTimeToLive(hotStorageTimeToLive)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Move To Hot Storage
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void moveToHotStorageTest() throws ApiException {
+        OrganizationUserFilesToSyncFilters filters = null;
+        Boolean response = api.moveToHotStorage()
+                .filters(filters)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
      * User Files V2
      *
      * For pre-filtering documents, using &#x60;tags_v2&#x60; is preferred to using &#x60;tags&#x60; (which is now deprecated). If both &#x60;tags_v2&#x60; and &#x60;tags&#x60; are specified, &#x60;tags&#x60; is ignored. &#x60;tags_v2&#x60; enables building complex filters through the use of \&quot;AND\&quot;, \&quot;OR\&quot;, and negation logic. Take the below input as an example: &#x60;&#x60;&#x60;json {     \&quot;OR\&quot;: [         {             \&quot;key\&quot;: \&quot;subject\&quot;,             \&quot;value\&quot;: \&quot;holy-bible\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;person-of-interest\&quot;,             \&quot;value\&quot;: \&quot;jesus christ\&quot;,             \&quot;negate\&quot;: false         },         {             \&quot;key\&quot;: \&quot;genre\&quot;,             \&quot;value\&quot;: \&quot;religion\&quot;,             \&quot;negate\&quot;: true         }         {             \&quot;AND\&quot;: [                 {                     \&quot;key\&quot;: \&quot;subject\&quot;,                     \&quot;value\&quot;: \&quot;tao-te-ching\&quot;,                     \&quot;negate\&quot;: false                 },                 {                     \&quot;key\&quot;: \&quot;author\&quot;,                     \&quot;value\&quot;: \&quot;lao-tzu\&quot;,                     \&quot;negate\&quot;: false                 }             ]         }     ] } &#x60;&#x60;&#x60; In this case, files will be filtered such that: 1. \&quot;subject\&quot; &#x3D; \&quot;holy-bible\&quot; OR 2. \&quot;person-of-interest\&quot; &#x3D; \&quot;jesus christ\&quot; OR 3. \&quot;genre\&quot; !&#x3D; \&quot;religion\&quot; OR 4. \&quot;subject\&quot; &#x3D; \&quot;tao-te-ching\&quot; AND \&quot;author\&quot; &#x3D; \&quot;lao-tzu\&quot;  Note that the top level of the query must be either an \&quot;OR\&quot; or \&quot;AND\&quot; array. Currently, nesting is limited to 3. For tag blocks (those with \&quot;key\&quot;, \&quot;value\&quot;, and \&quot;negate\&quot; keys), the following typing rules apply: 1. \&quot;key\&quot; isn&#39;t optional and must be a &#x60;string&#x60; 2. \&quot;value\&quot; isn&#39;t optional and can be &#x60;any&#x60; or list[&#x60;any&#x60;] 3. \&quot;negate\&quot; is optional and must be &#x60;true&#x60; or &#x60;false&#x60;. If present and &#x60;true&#x60;, then the filter block is negated in the resulting query. It is &#x60;false&#x60; by default.
@@ -274,8 +309,11 @@ public class FilesApiTest {
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
         TranscriptionServiceNullable transcriptionService = null;
+        Boolean includeSpeakerLabels = null;
         FileContentTypesNullable mediaType = null;
         Boolean splitRows = null;
+        Boolean enableColdStorage = null;
+        Integer hotStorageTimeToLive = null;
         UserFile response = api.upload(_file)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
@@ -289,8 +327,11 @@ public class FilesApiTest {
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
                 .transcriptionService(transcriptionService)
+                .includeSpeakerLabels(includeSpeakerLabels)
                 .mediaType(mediaType)
                 .splitRows(splitRows)
+                .enableColdStorage(enableColdStorage)
+                .hotStorageTimeToLive(hotStorageTimeToLive)
                 .execute();
         // TODO: test validations
     }
@@ -316,8 +357,10 @@ public class FilesApiTest {
         Boolean parsePdfTablesWithOcr = null;
         Boolean detectAudioLanguage = null;
         TranscriptionServiceNullable transcriptionService = null;
+        Boolean includeSpeakerLabels = null;
         FileContentTypesNullable mediaType = null;
         Boolean splitRows = null;
+        ColdStorageProps coldStorageParams = null;
         UserFile response = api.uploadFromUrl(url)
                 .fileName(fileName)
                 .chunkSize(chunkSize)
@@ -332,8 +375,10 @@ public class FilesApiTest {
                 .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
                 .detectAudioLanguage(detectAudioLanguage)
                 .transcriptionService(transcriptionService)
+                .includeSpeakerLabels(includeSpeakerLabels)
                 .mediaType(mediaType)
                 .splitRows(splitRows)
+                .coldStorageParams(coldStorageParams)
                 .execute();
         // TODO: test validations
     }
@@ -355,6 +400,7 @@ public class FilesApiTest {
         Integer overwriteFileId = null;
         EmbeddingGeneratorsNullable embeddingModel = null;
         Boolean generateSparseVectors = null;
+        ColdStorageProps coldStorageParams = null;
         UserFile response = api.uploadText(contents)
                 .name(name)
                 .chunkSize(chunkSize)
@@ -363,6 +409,7 @@ public class FilesApiTest {
                 .overwriteFileId(overwriteFileId)
                 .embeddingModel(embeddingModel)
                 .generateSparseVectors(generateSparseVectors)
+                .coldStorageParams(coldStorageParams)
                 .execute();
         // TODO: test validations
     }

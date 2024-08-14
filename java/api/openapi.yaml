@@ -3065,6 +3065,22 @@ paths:
         schema:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
         style: form
+      - description: Detect multiple speakers and label segments of speech by speaker
+          for audio files.
+        explode: true
+        in: query
+        name: include_speaker_labels
+        required: false
+        schema:
+          default: false
+          description: Detect multiple speakers and label segments of speech by speaker
+            for audio files.
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-12-schema
+        style: form
       - description: "The media type of the file. If not provided, it will be inferred\
           \ from the file extension."
         explode: true
@@ -3088,7 +3104,37 @@ paths:
           title: Split Rows
           type: boolean
           x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-13-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-14-schema
+        style: form
+      - description: "Enable cold storage for the file. If set to true, the file will\
+          \ be moved to cold storage after a certain period of inactivity. Default\
+          \ is false."
+        explode: true
+        in: query
+        name: enable_cold_storage
+        required: false
+        schema:
+          default: false
+          description: "Enable cold storage for the file. If set to true, the file\
+            \ will be moved to cold storage after a certain period of inactivity.\
+            \ Default is false."
+          example: false
+          title: Enable Cold Storage
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-15-schema
+        style: form
+      - description: Time in seconds after which the file will be moved to cold storage.
+        explode: true
+        in: query
+        name: hot_storage_time_to_live
+        required: false
+        schema:
+          description: Time in seconds after which the file will be moved to cold
+            storage.
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
         style: form
       requestBody:
         content:
@@ -3436,6 +3482,74 @@ paths:
       - Files
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--resync_file
+      x-content-type: application/json
+      x-accepts: application/json
+  /move_to_hot_storage:
+    post:
+      operationId: Files_moveToHotStorage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveToHotStorageQueryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilesMoveToHotStorageResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Move To Hot Storage
+      tags:
+      - Files
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--move_to_hot_storage
+      x-content-type: application/json
+      x-accepts: application/json
+  /modify_cold_storage_parameters:
+    post:
+      operationId: Files_modifyColdStorageParameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyColdStorageParametersQueryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilesModifyColdStorageParametersResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Modify Cold Storage Parameters
+      tags:
+      - Files
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--modify_cold_storage_parameters
       x-content-type: application/json
       x-accepts: application/json
   /raw_file/{file_id}:
@@ -4265,6 +4379,29 @@ components:
       - embedding_model
       title: ChunksAndEmbeddingsUploadInput
       type: object
+    ColdStorageProps:
+      example:
+        hot_storage_time_to_live: 5
+        enable_cold_storage: false
+      properties:
+        enable_cold_storage:
+          default: false
+          description: "Enable cold storage for the file. If set to true, the file\
+            \ will be moved to cold storage after a certain period of inactivity.\
+            \ Default is false."
+          example: false
+          title: Enable Cold Storage
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ColdStorageProps-properties-enable_cold_storage
+        hot_storage_time_to_live:
+          description: Time in seconds after which the file will be moved to cold
+            storage.
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
+      title: ColdStorageProps
+      type: object
     ConfigurationKeys:
       title: ConfigurationKeys
       type: string
@@ -4298,11 +4435,13 @@ components:
           embedding_model: OPENAI
           file_sync_config:
             detect_audio_language: false
+            include_speaker_labels: false
             split_rows: false
             sync_attachments: false
             transcription_service: null
             auto_synced_source_types:
             - ARTICLE
+          automatically_open_file_picker: true
           tags: ""
           sync_source_items: true
           incremental_sync: false
@@ -4872,6 +5011,14 @@ components:
       - chunk_size
       title: EmbeddingProperties
       type: object
+    EmbeddingStorageStatus:
+      enum:
+      - HOT_STORAGE
+      - HOT_TO_COLD
+      - COLD_STORAGE
+      - COLD_TO_HOT
+      title: EmbeddingStorageStatus
+      type: string
     EmbeddingsAndChunksFilters:
       example:
         user_file_id: 0
@@ -5336,6 +5483,15 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-detect_audio_language
         transcription_service:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          description: Detect multiple speakers and label segments of speech by speaker
+            for audio files.
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-include_speaker_labels
         split_rows:
           default: false
           description: "Whether to split tabular rows into chunks. Currently only\
@@ -5354,6 +5510,7 @@ components:
         embedding_model: OPENAI
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -5486,6 +5643,7 @@ components:
         - 0.8008281904610115
         - 0.8008281904610115
         include_raw_file: true
+        exclude_cold_storage_files: false
         include_file_level_metadata: false
         query: query
         hybrid_search_tuning_parameters:
@@ -5707,6 +5865,16 @@ components:
           nullable: true
           title: File Types At Source
           type: array
+        exclude_cold_storage_files:
+          default: false
+          description: |-
+            Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered
+                    files are in cold storage.
+          example: false
+          title: Exclude Cold Storage Files
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-exclude_cold_storage_files
       required:
       - k
       - query
@@ -5989,6 +6157,7 @@ components:
         embedding_model: null
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -6421,6 +6590,69 @@ components:
           default: created_at
         order_dir:
           default: desc
+    ModifyColdStorageParametersQueryInput:
+      example:
+        hot_storage_time_to_live: 0
+        filters:
+          organization_user_data_source_id:
+          - 1
+          - 1
+          source: ""
+          tags:
+            key: ""
+          embedding_generators:
+          - null
+          - null
+          root_files_only: true
+          file_types_at_source:
+          - null
+          - null
+          sync_error_message: sync_error_message
+          include_all_children: false
+          name: name
+          tags_v2: "{}"
+          ids:
+          - 0
+          - 0
+          sync_statuses:
+          - null
+          - null
+          request_ids:
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          external_file_ids:
+          - external_file_ids
+          - external_file_ids
+          include_containers: true
+          non_synced_only: false
+          external_urls:
+          - external_urls
+          - external_urls
+          parent_file_ids:
+          - 6
+          - 6
+        enable_cold_storage: true
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+        enable_cold_storage:
+          nullable: true
+          title: Enable Cold Storage
+          type: boolean
+        hot_storage_time_to_live:
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
+      title: ModifyColdStorageParametersQueryInput
+      type: object
+      x-konfig-properties:
+        filters:
+          default:
+            include_all_children: false
+            non_synced_only: false
     ModifyUserConfigurationInput:
       example:
         configuration_key_name: configuration_key_name
@@ -6437,6 +6669,59 @@ components:
       - value
       title: ModifyUserConfigurationInput
       type: object
+    MoveToHotStorageQueryInput:
+      example:
+        filters:
+          organization_user_data_source_id:
+          - 1
+          - 1
+          source: ""
+          tags:
+            key: ""
+          embedding_generators:
+          - null
+          - null
+          root_files_only: true
+          file_types_at_source:
+          - null
+          - null
+          sync_error_message: sync_error_message
+          include_all_children: false
+          name: name
+          tags_v2: "{}"
+          ids:
+          - 0
+          - 0
+          sync_statuses:
+          - null
+          - null
+          request_ids:
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          - request_ids
+          external_file_ids:
+          - external_file_ids
+          - external_file_ids
+          include_containers: true
+          non_synced_only: false
+          external_urls:
+          - external_urls
+          - external_urls
+          parent_file_ids:
+          - 6
+          - 6
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+      title: MoveToHotStorageQueryInput
+      type: object
+      x-konfig-properties:
+        filters:
+          default:
+            include_all_children: false
+            non_synced_only: false
     MultiModalEmbeddingGenerators:
       title: MultiModalEmbeddingGenerators
       type: string
@@ -6523,6 +6808,7 @@ components:
         embedding_model: OPENAI
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -6536,6 +6822,7 @@ components:
         sharepoint_site_name: sharepoint_site_name
         confluence_subdomain: confluence_subdomain
         parse_pdf_tables_with_ocr: false
+        automatically_open_file_picker: true
         tags: ""
         sync_source_items: true
         incremental_sync: false
@@ -6715,6 +7002,13 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync
         file_sync_config:
           $ref: '#/components/schemas/FileSyncConfigNullable'
+        automatically_open_file_picker:
+          description: |-
+            Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by
+                    BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+          nullable: true
+          title: Automatically Open File Picker
+          type: boolean
       required:
       - service
       title: OAuthURLRequest
@@ -7416,6 +7710,7 @@ components:
         embedding_model: null
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -7638,6 +7933,9 @@ components:
         overwrite_file_id: 1
         contents: contents
         generate_sparse_vectors: false
+        cold_storage_params:
+          hot_storage_time_to_live: 5
+          enable_cold_storage: false
         name: name
         embedding_model: OPENAI
         chunk_overlap: 6
@@ -7680,10 +7978,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_sparse_vectors
+        cold_storage_params:
+          $ref: '#/components/schemas/ColdStorageProps'
       required:
       - contents
       title: RawTextInput
       type: object
+      x-konfig-properties:
+        cold_storage_params:
+          default:
+            enable_cold_storage: false
     RerankParams:
       properties:
         model:
@@ -7799,6 +8103,7 @@ components:
         embedding_model: null
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -8326,6 +8631,7 @@ components:
         embedding_model: OPENAI
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
@@ -8458,11 +8764,13 @@ components:
         embedding_model: OPENAI
         file_sync_config:
           detect_audio_language: false
+          include_speaker_labels: false
           split_rows: false
           sync_attachments: false
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+        automatically_open_file_picker: true
         tags: ""
         sync_source_items: true
         incremental_sync: false
@@ -8575,6 +8883,13 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncOptions-properties-incremental_sync
         file_sync_config:
           $ref: '#/components/schemas/FileSyncConfigNullable'
+        automatically_open_file_picker:
+          description: |-
+            Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by
+                    BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+          nullable: true
+          title: Automatically Open File Picker
+          type: boolean
       title: SyncOptions
       type: object
     TextEmbeddingGenerators:
@@ -8690,9 +9005,13 @@ components:
         use_textract: false
         max_items_per_chunk: 1
         detect_audio_language: false
+        include_speaker_labels: false
         split_rows: false
         file_name: file_name
         parse_pdf_tables_with_ocr: false
+        cold_storage_params:
+          hot_storage_time_to_live: 5
+          enable_cold_storage: false
         embedding_model: null
         url: url
         media_type: null
@@ -8776,6 +9095,13 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
         transcription_service:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-include_speaker_labels
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:
@@ -8785,6 +9111,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-split_rows
+        cold_storage_params:
+          $ref: '#/components/schemas/ColdStorageProps'
       required:
       - url
       title: UploadFileFromUrlInput
@@ -8792,6 +9120,9 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+        cold_storage_params:
+          default:
+            enable_cold_storage: false
     UserConfiguration:
       properties:
         auto_sync_enabled_sources: {}
@@ -8835,9 +9166,11 @@ components:
         source_created_at: 2000-01-23T04:56:07.000+00:00
         ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
+        embedding_storage_status: null
         generate_sparse_vectors: true
         enable_auto_sync: true
         id: 0
+        supports_cold_storage: true
         last_sync: 2000-01-23T04:56:07.000+00:00
         chunk_properties:
           prepend_filename_to_chunks: false
@@ -8846,6 +9179,7 @@ components:
         ocr_properties: {}
         presigned_url: presigned_url
         tags: "{}"
+        hot_storage_time_to_live: 1
         sync_error_message: sync_error_message
         parent_id: 1
         organization_id: 6
@@ -8993,6 +9327,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UserFile-properties-file_contents_deleted
+        supports_cold_storage:
+          title: Supports Cold Storage
+          type: boolean
+        hot_storage_time_to_live:
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
+        embedding_storage_status:
+          $ref: '#/components/schemas/EmbeddingStorageStatus'
         created_at:
           format: date-time
           title: Created At
@@ -9008,6 +9351,7 @@ components:
       - chunk_size
       - created_at
       - embedding_properties
+      - embedding_storage_status
       - enable_auto_sync
       - external_file_id
       - external_url
@@ -9015,6 +9359,7 @@ components:
       - file_metadata
       - file_statistics
       - generate_sparse_vectors
+      - hot_storage_time_to_live
       - id
       - last_sync
       - messages_metadata
@@ -9031,6 +9376,7 @@ components:
       - skip_embedding_generation
       - source
       - source_created_at
+      - supports_cold_storage
       - sync_error_message
       - sync_properties
       - sync_status
@@ -9061,9 +9407,11 @@ components:
           source_created_at: 2000-01-23T04:56:07.000+00:00
           ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          embedding_storage_status: null
           generate_sparse_vectors: true
           enable_auto_sync: true
           id: 0
+          supports_cold_storage: true
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
@@ -9072,6 +9420,7 @@ components:
           ocr_properties: {}
           presigned_url: presigned_url
           tags: "{}"
+          hot_storage_time_to_live: 1
           sync_error_message: sync_error_message
           parent_id: 1
           organization_id: 6
@@ -9107,9 +9456,11 @@ components:
           source_created_at: 2000-01-23T04:56:07.000+00:00
           ocr_job_started_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          embedding_storage_status: null
           generate_sparse_vectors: true
           enable_auto_sync: true
           id: 0
+          supports_cold_storage: true
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
@@ -9118,6 +9469,7 @@ components:
           ocr_properties: {}
           presigned_url: presigned_url
           tags: "{}"
+          hot_storage_time_to_live: 1
           sync_error_message: sync_error_message
           parent_id: 1
           organization_id: 6
@@ -9833,6 +10185,7 @@ components:
           - CANCEL
           - CHECKUP
           - DATA_SOURCE_READY
+          - EMBEDDING_STORAGE_MODIFIED
           - FILES_CREATED
           - FILES_SKIPPED
           - FILE_DELETED
@@ -9840,6 +10193,8 @@ components:
           - FILE_READY
           - FILE_STATISTICS_AGGREGATED
           - FILE_SYNC_LIMIT_REACHED
+          - MOVED_TO_COLD_STORAGE
+          - MOVED_TO_HOT_STORAGE
           - ORGANIZATION_USER_DELETED
           - RATE_LIMIT_ERROR
           - REVOKE
@@ -10014,6 +10369,7 @@ components:
         is set to true
       example:
         detect_audio_language: false
+        include_speaker_labels: false
         split_rows: false
         sync_attachments: false
         transcription_service: null
@@ -10055,6 +10411,15 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-detect_audio_language
         transcription_service:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          description: Detect multiple speakers and label segments of speech by speaker
+            for audio files.
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-include_speaker_labels
         split_rows:
           default: false
           description: "Whether to split tabular rows into chunks. Currently only\
@@ -10319,6 +10684,14 @@ components:
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncSlackResponse
       x-konfig-is-used-in-successful-response: true
+    FilesMoveToHotStorageResponse:
+      title: Response Files Movetohotstorage
+      type: boolean
+      x-konfig-is-used-in-successful-response: true
+    FilesModifyColdStorageParametersResponse:
+      title: Response Files Modifycoldstorageparameters
+      type: boolean
+      x-konfig-is-used-in-successful-response: true
     FilesQueryUserFilesDeprecatedResponse:
       items:
         $ref: '#/components/schemas/UserFile'
@@ -10404,7 +10777,15 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-paths--uploadfile-post-parameters-13-schema:
+    konfig-generated-schema-paths--uploadfile-post-parameters-12-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-14-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-15-schema:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -10432,6 +10813,10 @@ components:
       example: {}
       properties: {}
       type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ColdStorageProps-properties-enable_cold_storage:
+      example: false
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-DataSourceConfiguration-properties-allowed_file_formats:
       items:
@@ -10487,6 +10872,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfig-properties-detect_audio_language:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfig-properties-include_speaker_labels:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -10586,6 +10975,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-high_accuracy:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-exclude_cold_storage_files:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -11089,6 +11482,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-include_speaker_labels:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-split_rows:
       example: false
       type: boolean
@@ -11201,6 +11598,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-detect_audio_language:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-include_speaker_labels:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -11476,6 +11877,13 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync
         file_sync_config:
           $ref: '#/components/schemas/FileSyncConfigNullable'
+        automatically_open_file_picker:
+          description: |-
+            Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by
+                    BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+          nullable: true
+          title: Automatically Open File Picker
+          type: boolean
       required:
       - service
       type: object
@@ -12766,6 +13174,16 @@ components:
           nullable: true
           title: File Types At Source
           type: array
+        exclude_cold_storage_files:
+          default: false
+          description: |-
+            Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered
+                    files are in cold storage.
+          example: false
+          title: Exclude Cold Storage Files
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GetEmbeddingDocumentsBody-properties-exclude_cold_storage_files
       required:
       - k
       - query
@@ -13055,6 +13473,15 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-10-schema
         transcription_service:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          description: Detect multiple speakers and label segments of speech by speaker
+            for audio files.
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-12-schema
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:
@@ -13065,7 +13492,23 @@ components:
           title: Split Rows
           type: boolean
           x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-13-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-14-schema
+        enable_cold_storage:
+          default: false
+          description: "Enable cold storage for the file. If set to true, the file\
+            \ will be moved to cold storage after a certain period of inactivity.\
+            \ Default is false."
+          example: false
+          title: Enable Cold Storage
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-15-schema
+        hot_storage_time_to_live:
+          description: Time in seconds after which the file will be moved to cold
+            storage.
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
         file:
           format: binary
           title: File
@@ -13087,8 +13530,11 @@ components:
       - parse_pdf_tables_with_ocr
       - detect_audio_language
       - transcription_service
+      - include_speaker_labels
       - media_type
       - split_rows
+      - enable_cold_storage
+      - hot_storage_time_to_live
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:
@@ -13165,6 +13611,13 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-detect_audio_language
         transcription_service:
           $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-include_speaker_labels
         media_type:
           $ref: '#/components/schemas/FileContentTypesNullable'
         split_rows:
@@ -13174,6 +13627,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-split_rows
+        cold_storage_params:
+          $ref: '#/components/schemas/ColdStorageProps'
       required:
       - url
       type: object
@@ -13218,6 +13673,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_sparse_vectors
+        cold_storage_params:
+          $ref: '#/components/schemas/ColdStorageProps'
       required:
       - contents
       type: object
@@ -13326,6 +13783,28 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation
       required:
       - file_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--move_to_hot_storage:
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--modify_cold_storage_parameters:
+      properties:
+        filters:
+          $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
+        enable_cold_storage:
+          nullable: true
+          title: Enable Cold Storage
+          type: boolean
+        hot_storage_time_to_live:
+          nullable: true
+          title: Hot Storage Time To Live
+          type: integer
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

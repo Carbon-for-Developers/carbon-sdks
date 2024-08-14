@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.chunk_properties_nullable import ChunkPropertiesNullable
 from carbon.type.data_source_type import DataSourceType
+from carbon.type.embedding_storage_status import EmbeddingStorageStatus
 from carbon.type.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.type.file_statistics_nullable import FileStatisticsNullable
 from carbon.type.user_file_embedding_properties import UserFileEmbeddingProperties
@@ -84,6 +85,12 @@ class RequiredUserFile(TypedDict):
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     file_contents_deleted: bool
+
+    supports_cold_storage: bool
+
+    hot_storage_time_to_live: typing.Optional[int]
+
+    embedding_storage_status: EmbeddingStorageStatus
 
     created_at: datetime
 

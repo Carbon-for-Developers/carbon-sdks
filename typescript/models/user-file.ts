@@ -13,6 +13,7 @@ import type * as buffer from "buffer"
 import { ChunkPropertiesNullable } from './chunk-properties-nullable';
 import { DataSourceType } from './data-source-type';
 import { EmbeddingProperties } from './embedding-properties';
+import { EmbeddingStorageStatus } from './embedding-storage-status';
 import { ExternalFileSyncStatuses } from './external-file-sync-statuses';
 import { FileStatisticsNullable } from './file-statistics-nullable';
 
@@ -214,6 +215,24 @@ export interface UserFile {
      * @memberof UserFile
      */
     'file_contents_deleted': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserFile
+     */
+    'supports_cold_storage': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserFile
+     */
+    'hot_storage_time_to_live': number | null;
+    /**
+     * 
+     * @type {EmbeddingStorageStatus}
+     * @memberof UserFile
+     */
+    'embedding_storage_status': EmbeddingStorageStatus;
     /**
      * 
      * @type {string}

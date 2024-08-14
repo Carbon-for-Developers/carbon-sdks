@@ -39,6 +39,9 @@
 |**syncProperties** | **Object** |  |  |
 |**messagesMetadata** | **Object** |  |  |
 |**fileContentsDeleted** | **Boolean** |  |  |
+|**supportsColdStorage** | **Boolean** |  |  |
+|**hotStorageTimeToLive** | **Integer** |  |  |
+|**embeddingStorageStatus** | **EmbeddingStorageStatus** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

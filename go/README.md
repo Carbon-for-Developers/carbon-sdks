@@ -73,6 +73,8 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**DeleteV2**](docs/FilesApi.md#deletev2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint
 *FilesApi* | [**GetParsedFile**](docs/FilesApi.md#getparsedfile) | **Get** /parsed_file/{file_id} | Parsed File
 *FilesApi* | [**GetRawFile**](docs/FilesApi.md#getrawfile) | **Get** /raw_file/{file_id} | Raw File
+*FilesApi* | [**ModifyColdStorageParameters**](docs/FilesApi.md#modifycoldstorageparameters) | **Post** /modify_cold_storage_parameters | Modify Cold Storage Parameters
+*FilesApi* | [**MoveToHotStorage**](docs/FilesApi.md#movetohotstorage) | **Post** /move_to_hot_storage | Move To Hot Storage
 *FilesApi* | [**QueryUserFiles**](docs/FilesApi.md#queryuserfiles) | **Post** /user_files_v2 | User Files V2
 *FilesApi* | [**QueryUserFilesDeprecated**](docs/FilesApi.md#queryuserfilesdeprecated) | **Post** /user_files | User Files
 *FilesApi* | [**Resync**](docs/FilesApi.md#resync) | **Post** /resync_file | Resync File
@@ -134,6 +136,7 @@ Class | Method | HTTP request | Description
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
  - [ChunksAndEmbeddings](docs/ChunksAndEmbeddings.md)
  - [ChunksAndEmbeddingsUploadInput](docs/ChunksAndEmbeddingsUploadInput.md)
+ - [ColdStorageProps](docs/ColdStorageProps.md)
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
  - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
@@ -153,6 +156,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingGenerators](docs/EmbeddingGenerators.md)
  - [EmbeddingGeneratorsNullable](docs/EmbeddingGeneratorsNullable.md)
  - [EmbeddingProperties](docs/EmbeddingProperties.md)
+ - [EmbeddingStorageStatus](docs/EmbeddingStorageStatus.md)
  - [EmbeddingsAndChunksFilters](docs/EmbeddingsAndChunksFilters.md)
  - [EmbeddingsAndChunksOrderByColumns](docs/EmbeddingsAndChunksOrderByColumns.md)
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
@@ -197,7 +201,9 @@ Class | Method | HTTP request | Description
  - [ListUsersOrderByTypes](docs/ListUsersOrderByTypes.md)
  - [ListUsersRequest](docs/ListUsersRequest.md)
  - [LocationPropertyInner](docs/LocationPropertyInner.md)
+ - [ModifyColdStorageParametersQueryInput](docs/ModifyColdStorageParametersQueryInput.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
+ - [MoveToHotStorageQueryInput](docs/MoveToHotStorageQueryInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
  - [OANSCZGF](docs/OANSCZGF.md)
  - [OAuthAuthentication](docs/OAuthAuthentication.md)

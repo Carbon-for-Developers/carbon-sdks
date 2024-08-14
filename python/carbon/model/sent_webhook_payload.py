@@ -49,6 +49,7 @@ class SentWebhookPayload(
                         "CANCEL": "CANCEL",
                         "CHECKUP": "CHECKUP",
                         "DATA_SOURCE_READY": "DATA_SOURCE_READY",
+                        "EMBEDDING_STORAGE_MODIFIED": "EMBEDDING_STORAGE_MODIFIED",
                         "FILES_CREATED": "FILES_CREATED",
                         "FILES_SKIPPED": "FILES_SKIPPED",
                         "FILE_DELETED": "FILE_DELETED",
@@ -56,6 +57,8 @@ class SentWebhookPayload(
                         "FILE_READY": "FILE_READY",
                         "FILE_STATISTICS_AGGREGATED": "FILE_STATISTICS_AGGREGATED",
                         "FILE_SYNC_LIMIT_REACHED": "FILE_SYNC_LIMIT_REACHED",
+                        "MOVED_TO_COLD_STORAGE": "MOVED_TO_COLD_STORAGE",
+                        "MOVED_TO_HOT_STORAGE": "MOVED_TO_HOT_STORAGE",
                         "ORGANIZATION_USER_DELETED": "ORGANIZATION_USER_DELETED",
                         "RATE_LIMIT_ERROR": "RATE_LIMIT_ERROR",
                         "REVOKE": "REVOKE",
@@ -87,6 +90,10 @@ class SentWebhookPayload(
                     return cls("DATA_SOURCE_READY")
                 
                 @schemas.classproperty
+                def EMBEDDING_STORAGE_MODIFIED(cls):
+                    return cls("EMBEDDING_STORAGE_MODIFIED")
+                
+                @schemas.classproperty
                 def FILES_CREATED(cls):
                     return cls("FILES_CREATED")
                 
@@ -113,6 +120,14 @@ class SentWebhookPayload(
                 @schemas.classproperty
                 def FILE_SYNC_LIMIT_REACHED(cls):
                     return cls("FILE_SYNC_LIMIT_REACHED")
+                
+                @schemas.classproperty
+                def MOVED_TO_COLD_STORAGE(cls):
+                    return cls("MOVED_TO_COLD_STORAGE")
+                
+                @schemas.classproperty
+                def MOVED_TO_HOT_STORAGE(cls):
+                    return cls("MOVED_TO_HOT_STORAGE")
                 
                 @schemas.classproperty
                 def ORGANIZATION_USER_DELETED(cls):

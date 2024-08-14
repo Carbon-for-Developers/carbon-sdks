@@ -75,6 +75,12 @@ module Carbon
 
     attr_accessor :file_contents_deleted
 
+    attr_accessor :supports_cold_storage
+
+    attr_accessor :hot_storage_time_to_live
+
+    attr_accessor :embedding_storage_status
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -114,6 +120,9 @@ module Carbon
         :'sync_properties' => :'sync_properties',
         :'messages_metadata' => :'messages_metadata',
         :'file_contents_deleted' => :'file_contents_deleted',
+        :'supports_cold_storage' => :'supports_cold_storage',
+        :'hot_storage_time_to_live' => :'hot_storage_time_to_live',
+        :'embedding_storage_status' => :'embedding_storage_status',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -159,6 +168,9 @@ module Carbon
         :'sync_properties' => :'Object',
         :'messages_metadata' => :'Object',
         :'file_contents_deleted' => :'Boolean',
+        :'supports_cold_storage' => :'Boolean',
+        :'hot_storage_time_to_live' => :'Integer',
+        :'embedding_storage_status' => :'EmbeddingStorageStatus',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -188,6 +200,7 @@ module Carbon
         :'source_created_at',
         :'generate_sparse_vectors',
         :'request_id',
+        :'hot_storage_time_to_live',
       ])
     end
 
@@ -338,6 +351,18 @@ module Carbon
         self.file_contents_deleted = false
       end
 
+      if attributes.key?(:'supports_cold_storage')
+        self.supports_cold_storage = attributes[:'supports_cold_storage']
+      end
+
+      if attributes.key?(:'hot_storage_time_to_live')
+        self.hot_storage_time_to_live = attributes[:'hot_storage_time_to_live']
+      end
+
+      if attributes.key?(:'embedding_storage_status')
+        self.embedding_storage_status = attributes[:'embedding_storage_status']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -395,6 +420,14 @@ module Carbon
         invalid_properties.push('invalid value for "file_contents_deleted", file_contents_deleted cannot be nil.')
       end
 
+      if @supports_cold_storage.nil?
+        invalid_properties.push('invalid value for "supports_cold_storage", supports_cold_storage cannot be nil.')
+      end
+
+      if @embedding_storage_status.nil?
+        invalid_properties.push('invalid value for "embedding_storage_status", embedding_storage_status cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -420,6 +453,8 @@ module Carbon
       return false if @sync_properties.nil?
       return false if @messages_metadata.nil?
       return false if @file_contents_deleted.nil?
+      return false if @supports_cold_storage.nil?
+      return false if @embedding_storage_status.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -462,6 +497,9 @@ module Carbon
           sync_properties == o.sync_properties &&
           messages_metadata == o.messages_metadata &&
           file_contents_deleted == o.file_contents_deleted &&
+          supports_cold_storage == o.supports_cold_storage &&
+          hot_storage_time_to_live == o.hot_storage_time_to_live &&
+          embedding_storage_status == o.embedding_storage_status &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -475,7 +513,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, file_contents_deleted, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, file_contents_deleted, supports_cold_storage, hot_storage_time_to_live, embedding_storage_status, created_at, updated_at].hash
     end
 
     # Builds the object from hash

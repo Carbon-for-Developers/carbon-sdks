@@ -16,6 +16,8 @@ from carbon.paths.delete_files.post import DeleteManyRaw
 from carbon.paths.delete_files_v2.post import DeleteV2Raw
 from carbon.paths.parsed_file_file_id.get import GetParsedFileRaw
 from carbon.paths.raw_file_file_id.get import GetRawFileRaw
+from carbon.paths.modify_cold_storage_parameters.post import ModifyColdStorageParametersRaw
+from carbon.paths.move_to_hot_storage.post import MoveToHotStorageRaw
 from carbon.paths.user_files_v2.post import QueryUserFilesRaw
 from carbon.paths.user_files.post import QueryUserFilesDeprecatedRaw
 from carbon.paths.resync_file.post import ResyncRaw
@@ -32,6 +34,8 @@ class FilesApiRaw(
     DeleteV2Raw,
     GetParsedFileRaw,
     GetRawFileRaw,
+    ModifyColdStorageParametersRaw,
+    MoveToHotStorageRaw,
     QueryUserFilesRaw,
     QueryUserFilesDeprecatedRaw,
     ResyncRaw,

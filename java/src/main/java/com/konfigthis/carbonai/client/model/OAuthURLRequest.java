@@ -157,6 +157,10 @@ public class OAuthURLRequest {
   @SerializedName(SERIALIZED_NAME_FILE_SYNC_CONFIG)
   private FileSyncConfigNullable fileSyncConfig;
 
+  public static final String SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER = "automatically_open_file_picker";
+  @SerializedName(SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER)
+  private Boolean automaticallyOpenFilePicker;
+
   public OAuthURLRequest() {
   }
 
@@ -913,6 +917,35 @@ public class OAuthURLRequest {
     this.fileSyncConfig = fileSyncConfig;
   }
 
+
+  public OAuthURLRequest automaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
+    
+    
+    
+    
+    this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+    return this;
+  }
+
+   /**
+   * Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+   * @return automaticallyOpenFilePicker
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.")
+
+  public Boolean getAutomaticallyOpenFilePicker() {
+    return automaticallyOpenFilePicker;
+  }
+
+
+  public void setAutomaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
+    
+    
+    
+    this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -993,7 +1026,8 @@ public class OAuthURLRequest {
         Objects.equals(this.enableFilePicker, oauthURLRequest.enableFilePicker) &&
         Objects.equals(this.syncSourceItems, oauthURLRequest.syncSourceItems) &&
         Objects.equals(this.incrementalSync, oauthURLRequest.incrementalSync) &&
-        Objects.equals(this.fileSyncConfig, oauthURLRequest.fileSyncConfig)&&
+        Objects.equals(this.fileSyncConfig, oauthURLRequest.fileSyncConfig) &&
+        Objects.equals(this.automaticallyOpenFilePicker, oauthURLRequest.automaticallyOpenFilePicker)&&
         Objects.equals(this.additionalProperties, oauthURLRequest.additionalProperties);
   }
 
@@ -1003,7 +1037,7 @@ public class OAuthURLRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, additionalProperties);
+    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1043,6 +1077,7 @@ public class OAuthURLRequest {
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
     sb.append("    incrementalSync: ").append(toIndentedString(incrementalSync)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
+    sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1092,6 +1127,7 @@ public class OAuthURLRequest {
     openapiFields.add("sync_source_items");
     openapiFields.add("incremental_sync");
     openapiFields.add("file_sync_config");
+    openapiFields.add("automatically_open_file_picker");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1171,7 +1207,9 @@ public class OAuthURLRequest {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
+                 else if (entry.getValue() == null) {
+                   obj.addProperty(entry.getKey(), (String) null);
+                 } else {
                    obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }

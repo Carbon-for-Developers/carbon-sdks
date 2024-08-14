@@ -12,6 +12,7 @@ Used to configure file syncing for certain connectors when sync_files_on_connect
 |**syncAttachments** | **Boolean** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets |  [optional] |
 |**detectAudioLanguage** | **Boolean** | Detect audio language before transcription for audio files |  [optional] |
 |**transcriptionService** | **TranscriptionServiceNullable** |  |  [optional] |
+|**includeSpeakerLabels** | **Boolean** | Detect multiple speakers and label segments of speech by speaker for audio files. |  [optional] |
 |**splitRows** | **Boolean** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. |  [optional] |
 
 

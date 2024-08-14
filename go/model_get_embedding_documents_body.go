@@ -51,6 +51,8 @@ type GetEmbeddingDocumentsBody struct {
 	Rerank NullableRerankParamsNullable `json:"rerank,omitempty"`
 	// Filter files based on their type at the source (for example help center tickets and articles)
 	FileTypesAtSource []HelpdeskFileTypes `json:"file_types_at_source,omitempty"`
+	// Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
+	ExcludeColdStorageFiles *bool `json:"exclude_cold_storage_files,omitempty"`
 }
 
 // NewGetEmbeddingDocumentsBody instantiates a new GetEmbeddingDocumentsBody object
@@ -69,6 +71,8 @@ func NewGetEmbeddingDocumentsBody(query string, k int32) *GetEmbeddingDocumentsB
 	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
 	var highAccuracy bool = false
 	this.HighAccuracy = *NewNullableBool(&highAccuracy)
+	var excludeColdStorageFiles bool = false
+	this.ExcludeColdStorageFiles = &excludeColdStorageFiles
 	return &this
 }
 
@@ -85,6 +89,8 @@ func NewGetEmbeddingDocumentsBodyWithDefaults() *GetEmbeddingDocumentsBody {
 	this.IncludeFileLevelMetadata = *NewNullableBool(&includeFileLevelMetadata)
 	var highAccuracy bool = false
 	this.HighAccuracy = *NewNullableBool(&highAccuracy)
+	var excludeColdStorageFiles bool = false
+	this.ExcludeColdStorageFiles = &excludeColdStorageFiles
 	return &this
 }
 
@@ -789,6 +795,38 @@ func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSource(v []HelpdeskFileTypes) 
 	o.FileTypesAtSource = v
 }
 
+// GetExcludeColdStorageFiles returns the ExcludeColdStorageFiles field value if set, zero value otherwise.
+func (o *GetEmbeddingDocumentsBody) GetExcludeColdStorageFiles() bool {
+	if o == nil || isNil(o.ExcludeColdStorageFiles) {
+		var ret bool
+		return ret
+	}
+	return *o.ExcludeColdStorageFiles
+}
+
+// GetExcludeColdStorageFilesOk returns a tuple with the ExcludeColdStorageFiles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetEmbeddingDocumentsBody) GetExcludeColdStorageFilesOk() (*bool, bool) {
+	if o == nil || isNil(o.ExcludeColdStorageFiles) {
+    return nil, false
+	}
+	return o.ExcludeColdStorageFiles, true
+}
+
+// HasExcludeColdStorageFiles returns a boolean if a field has been set.
+func (o *GetEmbeddingDocumentsBody) HasExcludeColdStorageFiles() bool {
+	if o != nil && !isNil(o.ExcludeColdStorageFiles) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeColdStorageFiles gets a reference to the given bool and assigns it to the ExcludeColdStorageFiles field.
+func (o *GetEmbeddingDocumentsBody) SetExcludeColdStorageFiles(v bool) {
+	o.ExcludeColdStorageFiles = &v
+}
+
 func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -847,6 +885,9 @@ func (o GetEmbeddingDocumentsBody) MarshalJSON() ([]byte, error) {
 	}
 	if o.FileTypesAtSource != nil {
 		toSerialize["file_types_at_source"] = o.FileTypesAtSource
+	}
+	if !isNil(o.ExcludeColdStorageFiles) {
+		toSerialize["exclude_cold_storage_files"] = o.ExcludeColdStorageFiles
 	}
 	return json.Marshal(toSerialize)
 }
