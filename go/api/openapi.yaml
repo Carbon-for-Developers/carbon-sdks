@@ -6778,7 +6778,8 @@ components:
           type: string
         use_ocr:
           default: false
-          description: "Enable OCR for files that support it. Supported formats: pdf"
+          description: "Enable OCR for files that support it. Supported formats: jpg,\
+            \ png, pdf"
           example: false
           nullable: true
           title: Use Ocr
@@ -11647,7 +11648,8 @@ components:
           type: string
         use_ocr:
           default: false
-          description: "Enable OCR for files that support it. Supported formats: pdf"
+          description: "Enable OCR for files that support it. Supported formats: jpg,\
+            \ png, pdf"
           example: false
           nullable: true
           title: Use Ocr
