@@ -380,6 +380,7 @@ class UserWebpagesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._user_webpages_mapped_args(
             filters=filters,
             pagination=pagination,
@@ -468,6 +469,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._user_webpages_mapped_args(
             filters=filters,
             pagination=pagination,

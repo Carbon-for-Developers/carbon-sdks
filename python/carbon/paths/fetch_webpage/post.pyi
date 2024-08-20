@@ -339,6 +339,7 @@ class FetchWebpageRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._fetch_webpage_mapped_args(
             url=url,
         )
@@ -403,6 +404,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._fetch_webpage_mapped_args(
             url=url,
         )

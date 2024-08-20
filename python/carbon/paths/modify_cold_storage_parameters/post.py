@@ -365,6 +365,7 @@ class ModifyColdStorageParametersRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._modify_cold_storage_parameters_mapped_args(
             filters=filters,
             enable_cold_storage=enable_cold_storage,
@@ -445,6 +446,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._modify_cold_storage_parameters_mapped_args(
             filters=filters,
             enable_cold_storage=enable_cold_storage,

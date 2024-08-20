@@ -342,6 +342,7 @@ class CancelRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._cancel_mapped_args(
             data_source_id=data_source_id,
         )
@@ -406,6 +407,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._cancel_mapped_args(
             data_source_id=data_source_id,
         )

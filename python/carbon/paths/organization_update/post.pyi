@@ -354,6 +354,7 @@ class UpdateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_mapped_args(
             global_user_config=global_user_config,
             data_source_configs=data_source_configs,
@@ -426,6 +427,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_mapped_args(
             global_user_config=global_user_config,
             data_source_configs=data_source_configs,

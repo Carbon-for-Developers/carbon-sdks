@@ -398,6 +398,7 @@ class ListReposRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account. """
         args = self._list_repos_mapped_args(
             per_page=per_page,
             page=page,
@@ -478,6 +479,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Once you have connected your GitHub account, you can use this endpoint to list the      repositories your account has access to. You can use a data source ID or username to fetch from a specific account. """
         args = self._list_repos_mapped_args(
             per_page=per_page,
             page=page,

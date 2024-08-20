@@ -518,6 +518,7 @@ class GetOauthUrlRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state. """
         args = self._get_oauth_url_mapped_args(
             service=service,
             tags=tags,
@@ -790,6 +791,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ This endpoint can be used to generate the following URLs - An OAuth URL for OAuth based connectors - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the success state. """
         args = self._get_oauth_url_mapped_args(
             service=service,
             tags=tags,

@@ -269,6 +269,7 @@ class GetWhiteLabelingRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse """
         args = self._get_white_labeling_mapped_args(
         )
         return self._get_white_labeling_oapg(
@@ -323,6 +324,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Returns whether or not the organization is white labeled and which integrations are white labeled  :param current_user: the current user :param db: the database session :return: a WhiteLabelingResponse """
         args = self._get_white_labeling_mapped_args(
         )
         return self._get_white_labeling_oapg(

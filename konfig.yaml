@@ -58,7 +58,7 @@ generators:
       userId: Carbon-for-Developers
       repoId: carbon-sdks/tree/main/ruby
   python:
-    version: 0.2.25
+    version: 0.2.26
     packageName: carbon
     projectName: carbon-python-sdk
     outputDirectory: python

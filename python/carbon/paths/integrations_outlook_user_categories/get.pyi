@@ -366,6 +366,7 @@ class ListOutlookCategoriesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories. """
         args = self._list_outlook_categories_mapped_args(
             data_source_id=data_source_id,
         )
@@ -430,6 +431,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently support listing up to 250 categories. """
         args = self._list_outlook_categories_mapped_args(
             data_source_id=data_source_id,
         )

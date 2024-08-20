@@ -399,6 +399,7 @@ class SyncSlackRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters. """
         args = self._sync_slack_mapped_args(
             filters=filters,
             tags=tags,
@@ -535,6 +536,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ You can list all conversations using the endpoint /integrations/slack/conversations. The ID of  conversation will be used as an input for this endpoint with timestamps as optional filters. """
         args = self._sync_slack_mapped_args(
             filters=filters,
             tags=tags,

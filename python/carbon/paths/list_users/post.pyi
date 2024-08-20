@@ -378,6 +378,7 @@ class ListRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ List users within an organization """
         args = self._list_mapped_args(
             pagination=pagination,
             filters=filters,
@@ -474,6 +475,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ List users within an organization """
         args = self._list_mapped_args(
             pagination=pagination,
             filters=filters,

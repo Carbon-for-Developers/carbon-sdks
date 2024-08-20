@@ -377,6 +377,7 @@ class ListFoldersRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders. """
         args = self._list_folders_mapped_args(
             data_source_id=data_source_id,
         )
@@ -441,6 +442,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes  both system folders like \"inbox\" and user created folders. """
         args = self._list_folders_mapped_args(
             data_source_id=data_source_id,
         )

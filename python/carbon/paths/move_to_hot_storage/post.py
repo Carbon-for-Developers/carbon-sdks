@@ -353,6 +353,7 @@ class MoveToHotStorageRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._move_to_hot_storage_mapped_args(
             filters=filters,
         )
@@ -417,6 +418,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._move_to_hot_storage_mapped_args(
             filters=filters,
         )

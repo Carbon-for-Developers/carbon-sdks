@@ -399,6 +399,7 @@ class SyncGitbookRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior. """
         args = self._sync_gitbook_mapped_args(
             space_ids=space_ids,
             data_source_id=data_source_id,
@@ -535,6 +536,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate  data with the synced pages or modify the sync behavior. """
         args = self._sync_gitbook_mapped_args(
             space_ids=space_ids,
             data_source_id=data_source_id,

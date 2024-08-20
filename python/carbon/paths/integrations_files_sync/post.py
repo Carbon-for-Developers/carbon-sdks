@@ -452,6 +452,7 @@ class SyncFilesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive. """
         args = self._sync_files_mapped_args(
             data_source_id=data_source_id,
             ids=ids,
@@ -636,6 +637,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids  as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will tell the sync to assume the item is stored in the default Documents drive. """
         args = self._sync_files_mapped_args(
             data_source_id=data_source_id,
             ids=ids,

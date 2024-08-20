@@ -395,6 +395,7 @@ class ConnectDataSourceRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._connect_data_source_mapped_args(
             authentication=authentication,
             sync_options=sync_options,
@@ -467,6 +468,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._connect_data_source_mapped_args(
             authentication=authentication,
             sync_options=sync_options,

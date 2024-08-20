@@ -361,6 +361,7 @@ class ToggleUserFeaturesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._toggle_user_features_mapped_args(
             configuration_key_name=configuration_key_name,
             value=value,
@@ -437,6 +438,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._toggle_user_features_mapped_args(
             configuration_key_name=configuration_key_name,
             value=value,

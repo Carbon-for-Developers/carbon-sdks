@@ -348,6 +348,7 @@ class ListGitbookSpacesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization. """
         args = self._list_gitbook_spaces_mapped_args(
             data_source_id=data_source_id,
         )
@@ -412,6 +413,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization. """
         args = self._list_gitbook_spaces_mapped_args(
             data_source_id=data_source_id,
         )

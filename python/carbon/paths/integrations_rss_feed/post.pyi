@@ -393,6 +393,7 @@ class SyncRssFeedRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_rss_feed_mapped_args(
             url=url,
             tags=tags,
@@ -521,6 +522,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._sync_rss_feed_mapped_args(
             url=url,
             tags=tags,

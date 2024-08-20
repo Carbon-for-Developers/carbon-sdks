@@ -375,6 +375,7 @@ class UpdateUsersRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_users_mapped_args(
             customer_ids=customer_ids,
             auto_sync_enabled_sources=auto_sync_enabled_sources,
@@ -463,6 +464,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_users_mapped_args(
             customer_ids=customer_ids,
             auto_sync_enabled_sources=auto_sync_enabled_sources,

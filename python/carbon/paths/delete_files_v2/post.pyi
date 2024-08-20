@@ -357,6 +357,7 @@ class DeleteV2Raw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,
@@ -437,6 +438,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_v2_mapped_args(
             filters=filters,
             send_webhook=send_webhook,

@@ -85,6 +85,18 @@ class TestSimple(unittest.TestCase):
         pprint(file)
         self.assertIsNotNone(file)
 
+    def test_datetime_deserialization(self):
+        from datetime import datetime
+        carbon = Carbon(
+            api_key='YOUR_API_KEY',
+            customer_id='YOUR_API_KEY',
+            host="http://127.0.0.1:4010"
+        )
+        res = carbon.integrations.list_data_source_items(data_source_id=4)
+        self.assertIsNotNone(res)
+        self.assertTrue(len(res.items) > 0)
+        self.assertTrue(type(res.items[0].updated_at) is datetime)
+
     def tearDown(self):
         pass
 

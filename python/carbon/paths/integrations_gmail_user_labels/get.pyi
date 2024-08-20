@@ -366,6 +366,7 @@ class ListLabelsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\" """
         args = self._list_labels_mapped_args(
             data_source_id=data_source_id,
         )
@@ -430,6 +431,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels will have the type \"user\" and Gmail's default labels will have the type \"system\" """
         args = self._list_labels_mapped_args(
             data_source_id=data_source_id,
         )
