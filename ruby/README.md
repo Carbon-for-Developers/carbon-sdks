@@ -1695,7 +1695,7 @@ This request id will be added to all files that get synced using the generated
 OAuth URL
 
 ##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
-Enable OCR for files that support it. Supported formats: png, pdf, jpg
+Enable OCR for files that support it. Supported formats: png, jpg, pdf
 
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>

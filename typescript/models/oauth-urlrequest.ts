@@ -141,7 +141,7 @@ export interface OAuthURLRequest {
      */
     'request_id'?: string | null;
     /**
-     * Enable OCR for files that support it. Supported formats: png, pdf, jpg
+     * Enable OCR for files that support it. Supported formats: png, jpg, pdf
      * @type {boolean}
      * @memberof OAuthURLRequest
      */
