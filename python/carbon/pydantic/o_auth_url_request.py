@@ -65,7 +65,7 @@ class OAuthURLRequest(BaseModel):
     # This request id will be added to all files that get synced using the generated OAuth URL
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
-    # Enable OCR for files that support it. Supported formats: png, pdf, jpg
+    # Enable OCR for files that support it. Supported formats: png, jpg, pdf
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')

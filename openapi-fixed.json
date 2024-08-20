@@ -6205,7 +6205,7 @@
           },
           "use_ocr": {
             "title": "Use Ocr",
-            "description": "Enable OCR for files that support it. Supported formats: png, pdf, jpg",
+            "description": "Enable OCR for files that support it. Supported formats: png, jpg, pdf",
             "default": false,
             "type": "boolean",
             "nullable": true
