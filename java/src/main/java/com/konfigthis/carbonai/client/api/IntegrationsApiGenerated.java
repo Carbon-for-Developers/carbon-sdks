@@ -1529,7 +1529,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set useOcr
-         * @param useOcr Enable OCR for files that support it. Supported formats: png, jpg, pdf (optional, default to false)
+         * @param useOcr Enable OCR for files that support it. Supported formats: pdf, jpg, png (optional, default to false)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder useOcr(Boolean useOcr) {

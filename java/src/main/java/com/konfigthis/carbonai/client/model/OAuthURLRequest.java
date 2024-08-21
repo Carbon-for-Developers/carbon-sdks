@@ -754,11 +754,11 @@ public class OAuthURLRequest {
   }
 
    /**
-   * Enable OCR for files that support it. Supported formats: png, jpg, pdf
+   * Enable OCR for files that support it. Supported formats: pdf, jpg, png
    * @return useOcr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Enable OCR for files that support it. Supported formats: png, jpg, pdf")
+  @ApiModelProperty(example = "false", value = "Enable OCR for files that support it. Supported formats: pdf, jpg, png")
 
   public Boolean getUseOcr() {
     return useOcr;

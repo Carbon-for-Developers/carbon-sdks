@@ -2132,7 +2132,7 @@
             ]
           }
         ],
-        "description": "This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.\nNote that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,\nPDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates\nof the bounding box around the chunk (this can be used for things like text highlighting). Following is a description\nof all possible query parameters:\n- `chunk_size`: the chunk size (in tokens) applied when splitting the document\n- `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document\n- `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings\n- `set_page_as_boundary`: described above\n- `embedding_model`: the model used to generate embeddings for the document chunks\n- `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently)\n- `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.\n- `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text\n\n\nCarbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's\nmultimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.\nThe model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query \nparameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing\nembedding queries, embeddings from files that used the specified model will be considered in the query.\nFor example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with\n`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is\nspecified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that\nthe set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**\nset `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.",
+        "description": "This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.\nNote that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,\nPDF chunks are at most one page long. Additional information can be retrieved for each chunk, however, namely the coordinates\nof the bounding box around the chunk (this can be used for things like text highlighting). Following is a description\nof all possible query parameters:\n- `chunk_size`: the chunk size (in tokens) applied when splitting the document\n- `chunk_overlap`: the chunk overlap (in tokens) applied when splitting the document\n- `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings\n- `set_page_as_boundary`: described above\n- `embedding_model`: the model used to generate embeddings for the document chunks\n- `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks. Valid for PDFs, JPEGs, and PNGs\n- `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.\n- `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text\n\n\nCarbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's\nmultimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.\nThe model can be specified via the `embedding_model` parameter (in the POST body for `/embeddings`, and a query \nparameter in `/uploadfile`). If no model is supplied, the `text-embedding-ada-002` is used by default. When performing\nembedding queries, embeddings from files that used the specified model will be considered in the query.\nFor example, if files A and B have embeddings generated with `OPENAI`, and files C and D have embeddings generated with\n`COHERE_MULTILINGUAL_V3`, then by default, queries will only consider files A and B. If `COHERE_MULTILINGUAL_V3` is\nspecified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. Make sure that\nthe set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**\nset `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.",
         "parameters": [
           {
             "description": "Chunk size in tiktoken tokens to be used when processing file.",
@@ -2202,13 +2202,13 @@
             }
           },
           {
-            "description": "Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with\n            tables, images, and/or scanned text.",
+            "description": "Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with\n            tables, images, and/or scanned text.",
             "name": "use_ocr",
             "in": "query",
             "required": false,
             "schema": {
               "title": "Use Ocr",
-              "description": "Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with\n            tables, images, and/or scanned text.",
+              "description": "Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with\n            tables, images, and/or scanned text.",
               "type": "boolean",
               "default": false
             }
@@ -6205,7 +6205,7 @@
           },
           "use_ocr": {
             "title": "Use Ocr",
-            "description": "Enable OCR for files that support it. Supported formats: png, jpg, pdf",
+            "description": "Enable OCR for files that support it. Supported formats: pdf, jpg, png",
             "default": false,
             "type": "boolean",
             "nullable": true

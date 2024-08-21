@@ -41,7 +41,7 @@ type OAuthURLRequest struct {
 	ConnectingNewAccount NullableBool `json:"connecting_new_account,omitempty"`
 	// This request id will be added to all files that get synced using the generated OAuth URL
 	RequestId NullableString `json:"request_id,omitempty"`
-	// Enable OCR for files that support it. Supported formats: png, jpg, pdf
+	// Enable OCR for files that support it. Supported formats: pdf, jpg, png
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	// Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
