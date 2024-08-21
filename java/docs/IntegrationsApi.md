@@ -668,7 +668,7 @@ public class Example {
     Integer dataSourceId = 56; // Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
     Boolean connectingNewAccount = false; // Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
     String requestId = "requestId_example"; // This request id will be added to all files that get synced using the generated OAuth URL
-    Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: png, jpg, pdf
+    Boolean useOcr = false; // Enable OCR for files that support it. Supported formats: pdf, jpg, png
     Boolean parsePdfTablesWithOcr = false;
     Boolean enableFilePicker = true; // Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint

@@ -2097,7 +2097,7 @@ func (r *FilesApiUploadRequest) EmbeddingModel(embeddingModel TMEmbeddingGenerat
 	return r
 }
 
-// Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text.
+// Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with             tables, images, and/or scanned text.
 func (r *FilesApiUploadRequest) UseOcr(useOcr bool) *FilesApiUploadRequest {
 	r.useOcr = &useOcr
 	return r
@@ -2186,7 +2186,7 @@ of all possible query parameters:
 - `skip_embedding_generation`: whether or not to skip the generation of chunks and embeddings
 - `set_page_as_boundary`: described above
 - `embedding_model`: the model used to generate embeddings for the document chunks
-- `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks (only valid for PDFs currently)
+- `use_ocr`: whether or not to use OCR as a preprocessing step prior to generating chunks. Valid for PDFs, JPEGs, and PNGs
 - `generate_sparse_vectors`: whether or not to generate sparse vectors for the file. Required for hybrid search.
 - `prepend_filename_to_chunks`: whether or not to prepend the filename to the chunk text
 

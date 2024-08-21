@@ -2873,7 +2873,7 @@ paths:
         \ whether or not to skip the generation of chunks and embeddings\n- `set_page_as_boundary`:\
         \ described above\n- `embedding_model`: the model used to generate embeddings\
         \ for the document chunks\n- `use_ocr`: whether or not to use OCR as a preprocessing\
-        \ step prior to generating chunks (only valid for PDFs currently)\n- `generate_sparse_vectors`:\
+        \ step prior to generating chunks. Valid for PDFs, JPEGs, and PNGs\n- `generate_sparse_vectors`:\
         \ whether or not to generate sparse vectors for the file. Required for hybrid\
         \ search.\n- `prepend_filename_to_chunks`: whether or not to prepend the filename\
         \ to the chunk text\n\n\nCarbon supports multiple models for use in generating\
@@ -2964,7 +2964,7 @@ paths:
           $ref: '#/components/schemas/TMEmbeddingGenerators'
         style: form
       - description: |-
-          Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with
+          Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with
                       tables, images, and/or scanned text.
         explode: true
         in: query
@@ -2973,7 +2973,7 @@ paths:
         schema:
           default: false
           description: |-
-            Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with
+            Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with
                         tables, images, and/or scanned text.
           example: false
           title: Use Ocr
@@ -6957,8 +6957,8 @@ components:
           type: string
         use_ocr:
           default: false
-          description: "Enable OCR for files that support it. Supported formats: png,\
-            \ jpg, pdf"
+          description: "Enable OCR for files that support it. Supported formats: pdf,\
+            \ jpg, png"
           example: false
           nullable: true
           title: Use Ocr
@@ -11833,8 +11833,8 @@ components:
           type: string
         use_ocr:
           default: false
-          description: "Enable OCR for files that support it. Supported formats: png,\
-            \ jpg, pdf"
+          description: "Enable OCR for files that support it. Supported formats: pdf,\
+            \ jpg, png"
           example: false
           nullable: true
           title: Use Ocr
@@ -13425,7 +13425,7 @@ components:
         use_ocr:
           default: false
           description: |-
-            Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with
+            Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with
                         tables, images, and/or scanned text.
           example: false
           title: Use Ocr
