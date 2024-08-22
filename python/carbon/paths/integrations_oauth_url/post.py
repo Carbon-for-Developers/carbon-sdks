@@ -34,7 +34,7 @@ from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
-from carbon.model.data_source_type import DataSourceType as DataSourceTypeSchema
+from carbon.model.external_data_source_type import ExternalDataSourceType as ExternalDataSourceTypeSchema
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
 from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
@@ -43,16 +43,16 @@ from carbon.type.outh_url_response import OuthURLResponse
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
-from carbon.type.data_source_type import DataSourceType
+from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
-from carbon.pydantic.data_source_type import DataSourceType as DataSourceTypePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest as OAuthURLRequestPydantic
 from carbon.pydantic.outh_url_response import OuthURLResponse as OuthURLResponsePydantic
 from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
+from carbon.pydantic.external_data_source_type import ExternalDataSourceType as ExternalDataSourceTypePydantic
 
 from . import path
 
@@ -127,7 +127,7 @@ class BaseApi(api_client.Api):
 
     def _get_oauth_url_mapped_args(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -418,7 +418,7 @@ class GetOauthUrlRaw(BaseApi):
 
     async def aget_oauth_url(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -487,7 +487,7 @@ class GetOauthUrlRaw(BaseApi):
     
     def get_oauth_url(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -556,7 +556,7 @@ class GetOauthUrl(BaseApi):
 
     async def aget_oauth_url(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -623,7 +623,7 @@ class GetOauthUrl(BaseApi):
     
     def get_oauth_url(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -691,7 +691,7 @@ class ApiForpost(BaseApi):
 
     async def apost(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -760,7 +760,7 @@ class ApiForpost(BaseApi):
     
     def post(
         self,
-        service: DataSourceType,
+        service: ExternalDataSourceType,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,

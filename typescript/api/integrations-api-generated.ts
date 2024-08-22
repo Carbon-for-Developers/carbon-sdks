@@ -27,11 +27,11 @@ import { ConnectDataSourceInput } from '../models';
 // @ts-ignore
 import { ConnectDataSourceResponse } from '../models';
 // @ts-ignore
-import { DataSourceType } from '../models';
-// @ts-ignore
 import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
+// @ts-ignore
+import { ExternalDataSourceType } from '../models';
 // @ts-ignore
 import { ExternalSourceItemsOrderBy } from '../models';
 // @ts-ignore

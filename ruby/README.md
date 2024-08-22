@@ -1617,7 +1617,7 @@ success state.
 
 ```ruby
 result = carbon.integrations.get_oauth_url(
-  service: "GOOGLE_CLOUD_STORAGE",
+  service: "BOX",
   tags: None,
   scope: "string_example",
   chunk_size: 1500,
@@ -1657,7 +1657,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`DataSourceType`](./lib/carbon_ruby_sdk/models/data_source_type.rb)<a id="service-datasourcetypelibcarbon_ruby_sdkmodelsdata_source_typerb"></a>
+##### service: [`ExternalDataSourceType`](./lib/carbon_ruby_sdk/models/external_data_source_type.rb)<a id="service-externaldatasourcetypelibcarbon_ruby_sdkmodelsexternal_data_source_typerb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### scope: `String`<a id="scope-string"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
@@ -1695,7 +1695,7 @@ This request id will be added to all files that get synced using the generated
 OAuth URL
 
 ##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
-Enable OCR for files that support it. Supported formats: pdf, jpg, png
+Enable OCR for files that support it. Supported formats: pdf, png, jpg
 
 ##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 ##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>

@@ -1590,7 +1590,7 @@ success state.
 
 ```typescript
 const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
-  service: "GOOGLE_CLOUD_STORAGE",
+  service: "BOX",
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -1610,7 +1610,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`DataSourceType`](./models/data-source-type.ts)<a id="service-datasourcetypemodelsdata-source-typets"></a>
+##### service: [`ExternalDataSourceType`](./models/external-data-source-type.ts)<a id="service-externaldatasourcetypemodelsexternal-data-source-typets"></a>
 
 ##### tags: `any`<a id="tags-any"></a>
 
@@ -1662,7 +1662,7 @@ This request id will be added to all files that get synced using the generated O
 
 ##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
 
-Enable OCR for files that support it. Supported formats: pdf, jpg, png
+Enable OCR for files that support it. Supported formats: pdf, png, jpg
 
 ##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 

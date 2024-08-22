@@ -15,12 +15,12 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
-from carbon.pydantic.data_source_type import DataSourceType
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.pydantic.external_data_source_type import ExternalDataSourceType
 from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 
 class OAuthURLRequest(BaseModel):
-    service: DataSourceType = Field(alias='service')
+    service: ExternalDataSourceType = Field(alias='service')
 
     tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='tags')
 
@@ -65,7 +65,7 @@ class OAuthURLRequest(BaseModel):
     # This request id will be added to all files that get synced using the generated OAuth URL
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
 
-    # Enable OCR for files that support it. Supported formats: pdf, jpg, png
+    # Enable OCR for files that support it. Supported formats: pdf, png, jpg
     use_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='use_ocr')
 
     parse_pdf_tables_with_ocr: typing.Optional[typing.Optional[bool]] = Field(None, alias='parse_pdf_tables_with_ocr')

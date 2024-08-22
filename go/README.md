@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
  - [EmbeddingsAndChunksQueryInputV2](docs/EmbeddingsAndChunksQueryInputV2.md)
  - [EmbeddingsAndChunksResponse](docs/EmbeddingsAndChunksResponse.md)
+ - [ExternalDataSourceType](docs/ExternalDataSourceType.md)
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)
  - [ExternalSourceItemsOrderBy](docs/ExternalSourceItemsOrderBy.md)

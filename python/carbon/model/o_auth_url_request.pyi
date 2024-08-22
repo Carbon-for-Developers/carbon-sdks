@@ -39,8 +39,8 @@ class OAuthURLRequest(
         class properties:
         
             @staticmethod
-            def service() -> typing.Type['DataSourceType']:
-                return DataSourceType
+            def service() -> typing.Type['ExternalDataSourceType']:
+                return ExternalDataSourceType
             tags = schemas.AnyTypeSchema
             
             
@@ -464,10 +464,10 @@ class OAuthURLRequest(
                 "automatically_open_file_picker": automatically_open_file_picker,
             }
     
-    service: 'DataSourceType'
+    service: 'ExternalDataSourceType'
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["service"]) -> 'DataSourceType': ...
+    def __getitem__(self, name: typing_extensions.Literal["service"]) -> 'ExternalDataSourceType': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
@@ -556,7 +556,7 @@ class OAuthURLRequest(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["service"]) -> 'DataSourceType': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["service"]) -> 'ExternalDataSourceType': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union[MetaOapg.properties.tags, schemas.Unset]: ...
@@ -646,7 +646,7 @@ class OAuthURLRequest(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        service: 'DataSourceType',
+        service: 'ExternalDataSourceType',
         tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         scope: typing.Union[MetaOapg.properties.scope, None, str, schemas.Unset] = schemas.unset,
         chunk_size: typing.Union[MetaOapg.properties.chunk_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -710,6 +710,6 @@ class OAuthURLRequest(
             **kwargs,
         )
 
-from carbon.model.data_source_type import DataSourceType
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.model.external_data_source_type import ExternalDataSourceType
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
