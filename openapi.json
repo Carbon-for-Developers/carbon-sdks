@@ -4672,6 +4672,27 @@
         ],
         "title": "EmbeddingsAndChunksResponse"
       },
+      "ExternalDataSourceType": {
+        "type": "string",
+        "enum": [
+          "BOX",
+          "CONFLUENCE",
+          "DROPBOX",
+          "GMAIL",
+          "GOOGLE_DRIVE",
+          "GOOGLE_CLOUD_STORAGE",
+          "INTERCOM",
+          "NOTION",
+          "ONEDRIVE",
+          "OUTLOOK",
+          "SALESFORCE",
+          "SHAREPOINT",
+          "SLACK",
+          "ZENDESK",
+          "ZOTERO"
+        ],
+        "title": "ExternalDataSourceType"
+      },
       "ExternalFileSyncStatuses": {
         "type": "string",
         "enum": [
@@ -6584,7 +6605,7 @@
             "title": "Scope"
           },
           "service": {
-            "$ref": "#/components/schemas/DataSourceType"
+            "$ref": "#/components/schemas/ExternalDataSourceType"
           },
           "tags": {
             "anyOf": [
@@ -6799,7 +6820,7 @@
               }
             ],
             "title": "Use Ocr",
-            "description": "Enable OCR for files that support it. Supported formats: pdf, jpg, png",
+            "description": "Enable OCR for files that support it. Supported formats: pdf, png, jpg",
             "default": false
           },
           "parse_pdf_tables_with_ocr": {

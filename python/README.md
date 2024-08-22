@@ -1808,7 +1808,7 @@ success state.
 
 ```python
 get_oauth_url_response = carbon.integrations.get_oauth_url(
-    service="GOOGLE_CLOUD_STORAGE",
+    service="BOX",
     tags=None,
     scope="string_example",
     chunk_size=1500,
@@ -1847,7 +1847,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`DataSourceType`](./carbon/type/data_source_type.py)<a id="service-datasourcetypecarbontypedata_source_typepy"></a>
+##### service: [`ExternalDataSourceType`](./carbon/type/external_data_source_type.py)<a id="service-externaldatasourcetypecarbontypeexternal_data_source_typepy"></a>
 
 ##### tags: [`Union[bool, date, datetime, dict, float, int, list, str, None]`](./carbon/type/typing_union_bool_date_datetime_dict_float_int_list_str_none.py)<a id="tags-unionbool-date-datetime-dict-float-int-list-str-nonecarbontypetyping_union_bool_date_datetime_dict_float_int_list_str_nonepy"></a>
 
@@ -1899,7 +1899,7 @@ This request id will be added to all files that get synced using the generated O
 
 ##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
 
-Enable OCR for files that support it. Supported formats: pdf, jpg, png
+Enable OCR for files that support it. Supported formats: pdf, png, jpg
 
 ##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
 

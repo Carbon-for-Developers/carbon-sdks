@@ -14,12 +14,12 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from carbon.type.data_source_type import DataSourceType
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 
 class RequiredOAuthURLRequest(TypedDict):
-    service: DataSourceType
+    service: ExternalDataSourceType
 
 
 class OptionalOAuthURLRequest(TypedDict, total=False):
@@ -66,7 +66,7 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     # This request id will be added to all files that get synced using the generated OAuth URL
     request_id: typing.Optional[str]
 
-    # Enable OCR for files that support it. Supported formats: pdf, jpg, png
+    # Enable OCR for files that support it. Supported formats: pdf, png, jpg
     use_ocr: typing.Optional[bool]
 
     parse_pdf_tables_with_ocr: typing.Optional[bool]

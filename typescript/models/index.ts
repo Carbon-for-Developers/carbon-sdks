@@ -33,6 +33,7 @@ export * from './embeddings-and-chunks-order-by-columns';
 export * from './embeddings-and-chunks-query-input';
 export * from './embeddings-and-chunks-query-input-v2';
 export * from './embeddings-and-chunks-response';
+export * from './external-data-source-type';
 export * from './external-file-sync-statuses';
 export * from './external-source-item';
 export * from './external-source-items-order-by';

@@ -4679,6 +4679,27 @@
           "count"
         ]
       },
+      "ExternalDataSourceType": {
+        "title": "ExternalDataSourceType",
+        "type": "string",
+        "enum": [
+          "BOX",
+          "CONFLUENCE",
+          "DROPBOX",
+          "GMAIL",
+          "GOOGLE_DRIVE",
+          "GOOGLE_CLOUD_STORAGE",
+          "INTERCOM",
+          "NOTION",
+          "ONEDRIVE",
+          "OUTLOOK",
+          "SALESFORCE",
+          "SHAREPOINT",
+          "SLACK",
+          "ZENDESK",
+          "ZOTERO"
+        ]
+      },
       "ExternalFileSyncStatuses": {
         "title": "ExternalFileSyncStatuses",
         "type": "string",
@@ -6105,7 +6126,7 @@
             "nullable": true
           },
           "service": {
-            "$ref": "#/components/schemas/DataSourceType"
+            "$ref": "#/components/schemas/ExternalDataSourceType"
           },
           "chunk_size": {
             "title": "Chunk Size",
@@ -6205,7 +6226,7 @@
           },
           "use_ocr": {
             "title": "Use Ocr",
-            "description": "Enable OCR for files that support it. Supported formats: pdf, jpg, png",
+            "description": "Enable OCR for files that support it. Supported formats: pdf, png, jpg",
             "default": false,
             "type": "boolean",
             "nullable": true

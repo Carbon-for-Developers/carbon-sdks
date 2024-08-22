@@ -19,8 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.carbonai.client.model.DataSourceType;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
+import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -63,7 +63,7 @@ public class OAuthURLRequest {
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
-  private DataSourceType service;
+  private ExternalDataSourceType service;
 
   public static final String SERIALIZED_NAME_CHUNK_SIZE = "chunk_size";
   @SerializedName(SERIALIZED_NAME_CHUNK_SIZE)
@@ -222,7 +222,7 @@ public class OAuthURLRequest {
   }
 
 
-  public OAuthURLRequest service(DataSourceType service) {
+  public OAuthURLRequest service(ExternalDataSourceType service) {
     
     
     
@@ -238,12 +238,12 @@ public class OAuthURLRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DataSourceType getService() {
+  public ExternalDataSourceType getService() {
     return service;
   }
 
 
-  public void setService(DataSourceType service) {
+  public void setService(ExternalDataSourceType service) {
     
     
     
@@ -754,11 +754,11 @@ public class OAuthURLRequest {
   }
 
    /**
-   * Enable OCR for files that support it. Supported formats: pdf, jpg, png
+   * Enable OCR for files that support it. Supported formats: pdf, png, jpg
    * @return useOcr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Enable OCR for files that support it. Supported formats: pdf, jpg, png")
+  @ApiModelProperty(example = "false", value = "Enable OCR for files that support it. Supported formats: pdf, png, jpg")
 
   public Boolean getUseOcr() {
     return useOcr;

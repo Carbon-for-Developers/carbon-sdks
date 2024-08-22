@@ -56,7 +56,7 @@ module Carbon
     # This request id will be added to all files that get synced using the generated OAuth URL
     attr_accessor :request_id
 
-    # Enable OCR for files that support it. Supported formats: pdf, jpg, png
+    # Enable OCR for files that support it. Supported formats: pdf, png, jpg
     attr_accessor :use_ocr
 
     attr_accessor :parse_pdf_tables_with_ocr
@@ -118,7 +118,7 @@ module Carbon
       {
         :'tags' => :'Object',
         :'scope' => :'String',
-        :'service' => :'DataSourceType',
+        :'service' => :'ExternalDataSourceType',
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
         :'skip_embedding_generation' => :'Boolean',

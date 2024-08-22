@@ -641,7 +641,7 @@ module Carbon
     # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
     # success state.
     #
-    # @param service [DataSourceType] 
+    # @param service [ExternalDataSourceType] 
     # @param tags [Object] 
     # @param scope [String] 
     # @param chunk_size [Integer] 
@@ -661,7 +661,7 @@ module Carbon
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
-    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf, jpg, png
+    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf, png, jpg
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
@@ -711,7 +711,7 @@ module Carbon
     # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
     # success state.
     #
-    # @param service [DataSourceType] 
+    # @param service [ExternalDataSourceType] 
     # @param tags [Object] 
     # @param scope [String] 
     # @param chunk_size [Integer] 
@@ -731,7 +731,7 @@ module Carbon
     # @param data_source_id [Integer] Used to specify a data source to sync from if you have multiple connected. It can be skipped if you only have one data source of that type connected or are connecting a new account.
     # @param connecting_new_account [Boolean] Used to connect a new data source. If not specified, we will attempt to create a sync URL for an existing data source based on type and ID.
     # @param request_id [String] This request id will be added to all files that get synced using the generated OAuth URL
-    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf, jpg, png
+    # @param use_ocr [Boolean] Enable OCR for files that support it. Supported formats: pdf, png, jpg
     # @param parse_pdf_tables_with_ocr [Boolean] 
     # @param enable_file_picker [Boolean] Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint

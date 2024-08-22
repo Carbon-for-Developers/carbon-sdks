@@ -18,9 +18,9 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
-import com.konfigthis.carbonai.client.model.DataSourceType;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
+import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import com.konfigthis.carbonai.client.model.FreshDeskConnectRequest;
@@ -206,7 +206,7 @@ public class IntegrationsApiTest {
      */
     @Test
     public void getOauthUrlTest() throws ApiException {
-        DataSourceType service = null;
+        ExternalDataSourceType service = null;
         Object tags = null;
         String scope = null;
         Integer chunkSize = null;

@@ -28,9 +28,9 @@ import java.io.IOException;
 
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
-import com.konfigthis.carbonai.client.model.DataSourceType;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
+import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import com.konfigthis.carbonai.client.model.FreshDeskConnectRequest;
@@ -1305,7 +1305,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class GetOauthUrlRequestBuilderGenerated {
-        final DataSourceType service;
+        final ExternalDataSourceType service;
         Object tags;
         String scope;
         Integer chunkSize;
@@ -1333,7 +1333,7 @@ public class IntegrationsApiGenerated {
         FileSyncConfigNullable fileSyncConfig;
         Boolean automaticallyOpenFilePicker;
 
-        public GetOauthUrlRequestBuilderGenerated(DataSourceType service) {
+        public GetOauthUrlRequestBuilderGenerated(ExternalDataSourceType service) {
             this.service = service;
         }
 
@@ -1529,7 +1529,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set useOcr
-         * @param useOcr Enable OCR for files that support it. Supported formats: pdf, jpg, png (optional, default to false)
+         * @param useOcr Enable OCR for files that support it. Supported formats: pdf, png, jpg (optional, default to false)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder useOcr(Boolean useOcr) {
@@ -1704,7 +1704,7 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationsApi.GetOauthUrlRequestBuilder getOauthUrl(DataSourceType service) throws IllegalArgumentException {
+    public IntegrationsApi.GetOauthUrlRequestBuilder getOauthUrl(ExternalDataSourceType service) throws IllegalArgumentException {
         if (service == null) throw new IllegalArgumentException("\"service\" is required but got null");
         return ((IntegrationsApi) this).new GetOauthUrlRequestBuilder(service);
     }

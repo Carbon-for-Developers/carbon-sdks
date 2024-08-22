@@ -5191,6 +5191,25 @@ components:
       title: EmbeddingsAndChunksResponse
       type: object
       x-konfig-is-used-in-successful-response: true
+    ExternalDataSourceType:
+      enum:
+      - BOX
+      - CONFLUENCE
+      - DROPBOX
+      - GMAIL
+      - GOOGLE_DRIVE
+      - GOOGLE_CLOUD_STORAGE
+      - INTERCOM
+      - NOTION
+      - ONEDRIVE
+      - OUTLOOK
+      - SALESFORCE
+      - SHAREPOINT
+      - SLACK
+      - ZENDESK
+      - ZOTERO
+      title: ExternalDataSourceType
+      type: string
     ExternalFileSyncStatuses:
       enum:
       - DELAYED
@@ -6843,7 +6862,7 @@ components:
           title: Scope
           type: string
         service:
-          $ref: '#/components/schemas/DataSourceType'
+          $ref: '#/components/schemas/ExternalDataSourceType'
         chunk_size:
           default: 1500
           example: 1500
@@ -6958,7 +6977,7 @@ components:
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf,\
-            \ jpg, png"
+            \ png, jpg"
           example: false
           nullable: true
           title: Use Ocr
@@ -11719,7 +11738,7 @@ components:
           title: Scope
           type: string
         service:
-          $ref: '#/components/schemas/DataSourceType'
+          $ref: '#/components/schemas/ExternalDataSourceType'
         chunk_size:
           default: 1500
           example: 1500
@@ -11834,7 +11853,7 @@ components:
         use_ocr:
           default: false
           description: "Enable OCR for files that support it. Supported formats: pdf,\
-            \ jpg, png"
+            \ png, jpg"
           example: false
           nullable: true
           title: Use Ocr

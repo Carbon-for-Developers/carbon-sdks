@@ -18,7 +18,7 @@ import (
 type OAuthURLRequest struct {
 	Tags interface{} `json:"tags,omitempty"`
 	Scope NullableString `json:"scope,omitempty"`
-	Service DataSourceType `json:"service"`
+	Service ExternalDataSourceType `json:"service"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
 	SkipEmbeddingGeneration NullableBool `json:"skip_embedding_generation,omitempty"`
@@ -41,7 +41,7 @@ type OAuthURLRequest struct {
 	ConnectingNewAccount NullableBool `json:"connecting_new_account,omitempty"`
 	// This request id will be added to all files that get synced using the generated OAuth URL
 	RequestId NullableString `json:"request_id,omitempty"`
-	// Enable OCR for files that support it. Supported formats: pdf, jpg, png
+	// Enable OCR for files that support it. Supported formats: pdf, png, jpg
 	UseOcr NullableBool `json:"use_ocr,omitempty"`
 	ParsePdfTablesWithOcr NullableBool `json:"parse_pdf_tables_with_ocr,omitempty"`
 	// Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
@@ -59,7 +59,7 @@ type OAuthURLRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthURLRequest(service DataSourceType) *OAuthURLRequest {
+func NewOAuthURLRequest(service ExternalDataSourceType) *OAuthURLRequest {
 	this := OAuthURLRequest{}
 	this.Service = service
 	var chunkSize int32 = 1500
@@ -205,9 +205,9 @@ func (o *OAuthURLRequest) UnsetScope() {
 }
 
 // GetService returns the Service field value
-func (o *OAuthURLRequest) GetService() DataSourceType {
+func (o *OAuthURLRequest) GetService() ExternalDataSourceType {
 	if o == nil {
-		var ret DataSourceType
+		var ret ExternalDataSourceType
 		return ret
 	}
 
@@ -216,7 +216,7 @@ func (o *OAuthURLRequest) GetService() DataSourceType {
 
 // GetServiceOk returns a tuple with the Service field value
 // and a boolean to check if the value has been set.
-func (o *OAuthURLRequest) GetServiceOk() (*DataSourceType, bool) {
+func (o *OAuthURLRequest) GetServiceOk() (*ExternalDataSourceType, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *OAuthURLRequest) GetServiceOk() (*DataSourceType, bool) {
 }
 
 // SetService sets field value
-func (o *OAuthURLRequest) SetService(v DataSourceType) {
+func (o *OAuthURLRequest) SetService(v ExternalDataSourceType) {
 	o.Service = v
 }
 
