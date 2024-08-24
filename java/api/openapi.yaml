@@ -1608,7 +1608,8 @@ paths:
         \ for this user and share the credentials with us. We recommend testing this\
         \ key beforehand.  \nFor Digital Ocean Spaces, generate the above credentials\
         \ in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.\n\
-        Endpoint URL is required to connect Digital Ocean Spaces."
+        Endpoint URL is required to connect Digital Ocean Spaces. It should look like\
+        \ <<region>>.digitaloceanspaces.com"
       operationId: Integrations_createAwsIamUser
       requestBody:
         content:

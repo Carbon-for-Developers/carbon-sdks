@@ -703,7 +703,7 @@ the same permissions.</li>
 </ol>
 Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.  
 For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.
-Endpoint URL is required to connect Digital Ocean Spaces.
+Endpoint URL is required to connect Digital Ocean Spaces. It should look like <<region>>.digitaloceanspaces.com
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param s3AuthRequest
