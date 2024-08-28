@@ -115,6 +115,10 @@ public class WebscrapeRequest {
   @SerializedName(SERIALIZED_NAME_URL_PATHS_TO_INCLUDE)
   private List<String> urlPathsToInclude = null;
 
+  public static final String SERIALIZED_NAME_DOWNLOAD_CSS_AND_MEDIA = "download_css_and_media";
+  @SerializedName(SERIALIZED_NAME_DOWNLOAD_CSS_AND_MEDIA)
+  private Boolean downloadCssAndMedia = false;
+
   public WebscrapeRequest() {
   }
 
@@ -602,6 +606,35 @@ public class WebscrapeRequest {
     this.urlPathsToInclude = urlPathsToInclude;
   }
 
+
+  public WebscrapeRequest downloadCssAndMedia(Boolean downloadCssAndMedia) {
+    
+    
+    
+    
+    this.downloadCssAndMedia = downloadCssAndMedia;
+    return this;
+  }
+
+   /**
+   * Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+   * @return downloadCssAndMedia
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.")
+
+  public Boolean getDownloadCssAndMedia() {
+    return downloadCssAndMedia;
+  }
+
+
+  public void setDownloadCssAndMedia(Boolean downloadCssAndMedia) {
+    
+    
+    
+    this.downloadCssAndMedia = downloadCssAndMedia;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -671,7 +704,8 @@ public class WebscrapeRequest {
         Objects.equals(this.cssClassesToSkip, webscrapeRequest.cssClassesToSkip) &&
         Objects.equals(this.cssSelectorsToSkip, webscrapeRequest.cssSelectorsToSkip) &&
         Objects.equals(this.embeddingModel, webscrapeRequest.embeddingModel) &&
-        Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude)&&
+        Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude) &&
+        Objects.equals(this.downloadCssAndMedia, webscrapeRequest.downloadCssAndMedia)&&
         Objects.equals(this.additionalProperties, webscrapeRequest.additionalProperties);
   }
 
@@ -681,7 +715,7 @@ public class WebscrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, additionalProperties);
+    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -710,6 +744,7 @@ public class WebscrapeRequest {
     sb.append("    cssSelectorsToSkip: ").append(toIndentedString(cssSelectorsToSkip)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
+    sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -748,6 +783,7 @@ public class WebscrapeRequest {
     openapiFields.add("css_selectors_to_skip");
     openapiFields.add("embedding_model");
     openapiFields.add("url_paths_to_include");
+    openapiFields.add("download_css_and_media");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

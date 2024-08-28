@@ -8827,6 +8827,19 @@
             "title": "Urls To Scrape",
             "description": "You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,\n          you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.",
             "default": []
+          },
+          "download_css_and_media": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Download Css And Media",
+            "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
+            "default": false
           }
         },
         "type": "object",
@@ -10759,6 +10772,19 @@
             "title": "Url Paths To Include",
             "description": "URL subpaths or directories that you want to include. For example if you want to only include\n        URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input",
             "default": []
+          },
+          "download_css_and_media": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Download Css And Media",
+            "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
+            "default": false
           }
         },
         "type": "object",

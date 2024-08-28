@@ -3116,6 +3116,7 @@ result = carbon.utilities.scrape_sitemap(
   url_paths_to_include: [],
   url_paths_to_exclude: [],
   urls_to_scrape: [],
+  download_css_and_media: false,
 )
 p result
 ```
@@ -3149,6 +3150,11 @@ exclude URLs that start with /questions in stackoverflow.com, you will add
 You can submit a subset of URLs from the sitemap that should be scraped. To get
 the list of URLs, you can check out /process_sitemap endpoint. If left empty,
 all URLs from the sitemap will be scraped.
+
+##### download_css_and_media: `Boolean`<a id="download_css_and_media-boolean"></a>
+Whether the scraper should download css and media from the page (images, fonts,
+etc). Scrapes might take longer to finish with this flag enabled, but the
+success rate is improved.
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -3190,6 +3196,7 @@ result = carbon.utilities.scrape_web(
             "css_selectors_to_skip" => [],
             "embedding_model" => "OPENAI",
             "url_paths_to_include" => [],
+            "download_css_and_media" => false,
         }
     ],
 )

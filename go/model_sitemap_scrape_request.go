@@ -35,6 +35,8 @@ type SitemapScrapeRequest struct {
 	UrlPathsToExclude []string `json:"url_paths_to_exclude,omitempty"`
 	// You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
 	UrlsToScrape []string `json:"urls_to_scrape,omitempty"`
+	// Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+	DownloadCssAndMedia NullableBool `json:"download_css_and_media,omitempty"`
 }
 
 // NewSitemapScrapeRequest instantiates a new SitemapScrapeRequest object
@@ -56,6 +58,8 @@ func NewSitemapScrapeRequest(url string) *SitemapScrapeRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var downloadCssAndMedia bool = false
+	this.DownloadCssAndMedia = *NewNullableBool(&downloadCssAndMedia)
 	return &this
 }
 
@@ -76,6 +80,8 @@ func NewSitemapScrapeRequestWithDefaults() *SitemapScrapeRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var downloadCssAndMedia bool = false
+	this.DownloadCssAndMedia = *NewNullableBool(&downloadCssAndMedia)
 	return &this
 }
 
@@ -660,6 +666,48 @@ func (o *SitemapScrapeRequest) SetUrlsToScrape(v []string) {
 	o.UrlsToScrape = v
 }
 
+// GetDownloadCssAndMedia returns the DownloadCssAndMedia field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SitemapScrapeRequest) GetDownloadCssAndMedia() bool {
+	if o == nil || isNil(o.DownloadCssAndMedia.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.DownloadCssAndMedia.Get()
+}
+
+// GetDownloadCssAndMediaOk returns a tuple with the DownloadCssAndMedia field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SitemapScrapeRequest) GetDownloadCssAndMediaOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.DownloadCssAndMedia.Get(), o.DownloadCssAndMedia.IsSet()
+}
+
+// HasDownloadCssAndMedia returns a boolean if a field has been set.
+func (o *SitemapScrapeRequest) HasDownloadCssAndMedia() bool {
+	if o != nil && o.DownloadCssAndMedia.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDownloadCssAndMedia gets a reference to the given NullableBool and assigns it to the DownloadCssAndMedia field.
+func (o *SitemapScrapeRequest) SetDownloadCssAndMedia(v bool) {
+	o.DownloadCssAndMedia.Set(&v)
+}
+// SetDownloadCssAndMediaNil sets the value for DownloadCssAndMedia to be an explicit nil
+func (o *SitemapScrapeRequest) SetDownloadCssAndMediaNil() {
+	o.DownloadCssAndMedia.Set(nil)
+}
+
+// UnsetDownloadCssAndMedia ensures that no value is present for DownloadCssAndMedia, not even an explicit nil
+func (o *SitemapScrapeRequest) UnsetDownloadCssAndMedia() {
+	o.DownloadCssAndMedia.Unset()
+}
+
 func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -709,6 +757,9 @@ func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UrlsToScrape != nil {
 		toSerialize["urls_to_scrape"] = o.UrlsToScrape
+	}
+	if o.DownloadCssAndMedia.IsSet() {
+		toSerialize["download_css_and_media"] = o.DownloadCssAndMedia.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -164,4 +164,12 @@ public class WebscrapeRequestTest {
         // TODO: test urlPathsToInclude
     }
 
+    /**
+     * Test the property 'downloadCssAndMedia'
+     */
+    @Test
+    public void downloadCssAndMediaTest() {
+        // TODO: test downloadCssAndMedia
+    }
+
 }

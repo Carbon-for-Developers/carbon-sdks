@@ -246,6 +246,7 @@ func main() {
     sitemapScrapeRequest.SetUrlPathsToInclude([])
     sitemapScrapeRequest.SetUrlPathsToExclude([])
     sitemapScrapeRequest.SetUrlsToScrape([])
+    sitemapScrapeRequest.SetDownloadCssAndMedia(false)
     
     request := client.UtilitiesApi.ScrapeSitemap(
         sitemapScrapeRequest,

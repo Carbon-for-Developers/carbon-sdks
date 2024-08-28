@@ -115,5 +115,11 @@ export interface SitemapScrapeRequest {
      * @memberof SitemapScrapeRequest
      */
     'urls_to_scrape'?: Array<string> | null;
+    /**
+     * Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+     * @type {boolean}
+     * @memberof SitemapScrapeRequest
+     */
+    'download_css_and_media'?: boolean | null;
 }
 

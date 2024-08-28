@@ -437,9 +437,10 @@ module Carbon
     # @param url_paths_to_include [Array<String>] URL subpaths or directories that you want to include. For example if you want to only include URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param url_paths_to_exclude [Array<String>] URL subpaths or directories that you want to exclude. For example if you want to exclude URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param urls_to_scrape [Array<String>] You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs, you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+    # @param download_css_and_media [Boolean] Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes might take longer to finish with this flag enabled, but the success rate is improved.
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, extra: {})
+    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -457,6 +458,7 @@ module Carbon
       _body[:url_paths_to_include] = url_paths_to_include if url_paths_to_include != SENTINEL
       _body[:url_paths_to_exclude] = url_paths_to_exclude if url_paths_to_exclude != SENTINEL
       _body[:urls_to_scrape] = urls_to_scrape if urls_to_scrape != SENTINEL
+      _body[:download_css_and_media] = download_css_and_media if download_css_and_media != SENTINEL
       sitemap_scrape_request = _body
       api_response = scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
       api_response.data
@@ -488,9 +490,10 @@ module Carbon
     # @param url_paths_to_include [Array<String>] URL subpaths or directories that you want to include. For example if you want to only include URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param url_paths_to_exclude [Array<String>] URL subpaths or directories that you want to exclude. For example if you want to exclude URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     # @param urls_to_scrape [Array<String>] You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs, you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+    # @param download_css_and_media [Boolean] Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes might take longer to finish with this flag enabled, but the success rate is improved.
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, extra: {})
+    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -508,6 +511,7 @@ module Carbon
       _body[:url_paths_to_include] = url_paths_to_include if url_paths_to_include != SENTINEL
       _body[:url_paths_to_exclude] = url_paths_to_exclude if url_paths_to_exclude != SENTINEL
       _body[:urls_to_scrape] = urls_to_scrape if urls_to_scrape != SENTINEL
+      _body[:download_css_and_media] = download_css_and_media if download_css_and_media != SENTINEL
       sitemap_scrape_request = _body
       scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
     end

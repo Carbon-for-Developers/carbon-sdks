@@ -53,6 +53,9 @@ class WebscrapeRequest(BaseModel):
 
     url_paths_to_include: typing.Optional[WebscrapeRequestUrlPathsToInclude] = Field(None, alias='url_paths_to_include')
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    download_css_and_media: typing.Optional[typing.Optional[bool]] = Field(None, alias='download_css_and_media')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

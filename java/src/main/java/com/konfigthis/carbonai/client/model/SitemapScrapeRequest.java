@@ -119,6 +119,10 @@ public class SitemapScrapeRequest {
   @SerializedName(SERIALIZED_NAME_URLS_TO_SCRAPE)
   private List<String> urlsToScrape = null;
 
+  public static final String SERIALIZED_NAME_DOWNLOAD_CSS_AND_MEDIA = "download_css_and_media";
+  @SerializedName(SERIALIZED_NAME_DOWNLOAD_CSS_AND_MEDIA)
+  private Boolean downloadCssAndMedia = false;
+
   public SitemapScrapeRequest() {
   }
 
@@ -646,6 +650,35 @@ public class SitemapScrapeRequest {
     this.urlsToScrape = urlsToScrape;
   }
 
+
+  public SitemapScrapeRequest downloadCssAndMedia(Boolean downloadCssAndMedia) {
+    
+    
+    
+    
+    this.downloadCssAndMedia = downloadCssAndMedia;
+    return this;
+  }
+
+   /**
+   * Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+   * @return downloadCssAndMedia
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.")
+
+  public Boolean getDownloadCssAndMedia() {
+    return downloadCssAndMedia;
+  }
+
+
+  public void setDownloadCssAndMedia(Boolean downloadCssAndMedia) {
+    
+    
+    
+    this.downloadCssAndMedia = downloadCssAndMedia;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -716,7 +749,8 @@ public class SitemapScrapeRequest {
         Objects.equals(this.embeddingModel, sitemapScrapeRequest.embeddingModel) &&
         Objects.equals(this.urlPathsToInclude, sitemapScrapeRequest.urlPathsToInclude) &&
         Objects.equals(this.urlPathsToExclude, sitemapScrapeRequest.urlPathsToExclude) &&
-        Objects.equals(this.urlsToScrape, sitemapScrapeRequest.urlsToScrape)&&
+        Objects.equals(this.urlsToScrape, sitemapScrapeRequest.urlsToScrape) &&
+        Objects.equals(this.downloadCssAndMedia, sitemapScrapeRequest.downloadCssAndMedia)&&
         Objects.equals(this.additionalProperties, sitemapScrapeRequest.additionalProperties);
   }
 
@@ -726,7 +760,7 @@ public class SitemapScrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, urlsToScrape, additionalProperties);
+    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, urlsToScrape, downloadCssAndMedia, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -756,6 +790,7 @@ public class SitemapScrapeRequest {
     sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
     sb.append("    urlPathsToExclude: ").append(toIndentedString(urlPathsToExclude)).append("\n");
     sb.append("    urlsToScrape: ").append(toIndentedString(urlsToScrape)).append("\n");
+    sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -795,6 +830,7 @@ public class SitemapScrapeRequest {
     openapiFields.add("url_paths_to_include");
     openapiFields.add("url_paths_to_exclude");
     openapiFields.add("urls_to_scrape");
+    openapiFields.add("download_css_and_media");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

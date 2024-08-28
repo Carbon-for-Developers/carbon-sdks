@@ -1282,6 +1282,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'urls_to_scrape'
             },
+            {
+                name: 'download_css_and_media'
+            },
         ]
     },
     '/web_scrape-POST': {

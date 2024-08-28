@@ -172,4 +172,12 @@ public class SitemapScrapeRequestTest {
         // TODO: test urlsToScrape
     }
 
+    /**
+     * Test the property 'downloadCssAndMedia'
+     */
+    @Test
+    public void downloadCssAndMediaTest() {
+        // TODO: test downloadCssAndMedia
+    }
+
 }

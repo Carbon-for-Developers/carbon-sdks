@@ -42,6 +42,9 @@ module Carbon
     # URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     attr_accessor :url_paths_to_include
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    attr_accessor :download_css_and_media
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -59,7 +62,8 @@ module Carbon
         :'css_classes_to_skip' => :'css_classes_to_skip',
         :'css_selectors_to_skip' => :'css_selectors_to_skip',
         :'embedding_model' => :'embedding_model',
-        :'url_paths_to_include' => :'url_paths_to_include'
+        :'url_paths_to_include' => :'url_paths_to_include',
+        :'download_css_and_media' => :'download_css_and_media'
       }
     end
 
@@ -85,7 +89,8 @@ module Carbon
         :'css_classes_to_skip' => :'Array<String>',
         :'css_selectors_to_skip' => :'Array<String>',
         :'embedding_model' => :'EmbeddingGenerators',
-        :'url_paths_to_include' => :'Array<String>'
+        :'url_paths_to_include' => :'Array<String>',
+        :'download_css_and_media' => :'Boolean'
       }
     end
 
@@ -104,7 +109,8 @@ module Carbon
         :'html_tags_to_skip',
         :'css_classes_to_skip',
         :'css_selectors_to_skip',
-        :'url_paths_to_include'
+        :'url_paths_to_include',
+        :'download_css_and_media'
       ])
     end
 
@@ -210,6 +216,12 @@ module Carbon
           self.url_paths_to_include = value
         end
       end
+
+      if attributes.key?(:'download_css_and_media')
+        self.download_css_and_media = attributes[:'download_css_and_media']
+      else
+        self.download_css_and_media = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -294,7 +306,8 @@ module Carbon
           css_classes_to_skip == o.css_classes_to_skip &&
           css_selectors_to_skip == o.css_selectors_to_skip &&
           embedding_model == o.embedding_model &&
-          url_paths_to_include == o.url_paths_to_include
+          url_paths_to_include == o.url_paths_to_include &&
+          download_css_and_media == o.download_css_and_media
     end
 
     # @see the `==` method
@@ -306,7 +319,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include].hash
+      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, download_css_and_media].hash
     end
 
     # Builds the object from hash

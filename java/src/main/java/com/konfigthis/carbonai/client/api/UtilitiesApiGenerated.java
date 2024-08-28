@@ -838,6 +838,7 @@ public class UtilitiesApiGenerated {
         List<String> urlPathsToInclude;
         List<String> urlPathsToExclude;
         List<String> urlsToScrape;
+        Boolean downloadCssAndMedia;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -994,6 +995,16 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set downloadCssAndMedia
+         * @param downloadCssAndMedia Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. (optional, default to false)
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
+         */
+        public UtilitiesApi.ScrapeSitemapRequestBuilder downloadCssAndMedia(Boolean downloadCssAndMedia) {
+            this.downloadCssAndMedia = downloadCssAndMedia;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1027,6 +1038,7 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.urlPathsToInclude(this.urlPathsToInclude);
             sitemapScrapeRequest.urlPathsToExclude(this.urlPathsToExclude);
             sitemapScrapeRequest.urlsToScrape(this.urlsToScrape);
+            sitemapScrapeRequest.downloadCssAndMedia(this.downloadCssAndMedia);
             return sitemapScrapeRequest;
         }
 

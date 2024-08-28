@@ -3448,6 +3448,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     url_paths_to_include=[],
     url_paths_to_exclude=[],
     urls_to_scrape=[],
+    download_css_and_media=False,
 )
 ```
 
@@ -3484,6 +3485,10 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
 ##### url_paths_to_exclude: [`SitemapScrapeRequestUrlPathsToExclude`](./carbon/type/sitemap_scrape_request_url_paths_to_exclude.py)<a id="url_paths_to_exclude-sitemapscraperequesturlpathstoexcludecarbontypesitemap_scrape_request_url_paths_to_excludepy"></a>
 
 ##### urls_to_scrape: [`SitemapScrapeRequestUrlsToScrape`](./carbon/type/sitemap_scrape_request_urls_to_scrape.py)<a id="urls_to_scrape-sitemapscraperequesturlstoscrapecarbontypesitemap_scrape_request_urls_to_scrapepy"></a>
+
+##### download_css_and_media: `Optional[bool]`<a id="download_css_and_media-optionalbool"></a>
+
+Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3527,6 +3532,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "css_selectors_to_skip": [],
             "embedding_model": "OPENAI",
             "url_paths_to_include": [],
+            "download_css_and_media": False,
         }
     ],
 )

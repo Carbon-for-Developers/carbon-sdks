@@ -1276,6 +1276,9 @@ operation_parameter_map = {
             {
                 'name': 'urls_to_scrape'
             },
+            {
+                'name': 'download_css_and_media'
+            },
         ]
     },
     '/web_scrape-POST': {

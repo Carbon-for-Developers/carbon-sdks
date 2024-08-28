@@ -54,5 +54,8 @@ class OptionalWebscrapeRequest(TypedDict, total=False):
 
     url_paths_to_include: typing.Optional[WebscrapeRequestUrlPathsToInclude]
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    download_css_and_media: typing.Optional[bool]
+
 class WebscrapeRequest(RequiredWebscrapeRequest, OptionalWebscrapeRequest):
     pass

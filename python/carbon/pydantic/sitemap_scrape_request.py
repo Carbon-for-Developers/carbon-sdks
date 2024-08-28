@@ -57,6 +57,9 @@ class SitemapScrapeRequest(BaseModel):
 
     urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = Field(None, alias='urls_to_scrape')
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    download_css_and_media: typing.Optional[typing.Optional[bool]] = Field(None, alias='download_css_and_media')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

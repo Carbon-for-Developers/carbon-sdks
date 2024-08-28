@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **CssSelectorsToSkip** | Pointer to **[]string** |  | [optional] [default to []]
 **EmbeddingModel** | Pointer to [**EmbeddingGenerators**](EmbeddingGenerators.md) |  | [optional] 
 **UrlPathsToInclude** | Pointer to **[]string** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
+**DownloadCssAndMedia** | Pointer to **NullableBool** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. | [optional] [default to false]
 
 ## Methods
 
@@ -539,6 +540,41 @@ HasUrlPathsToInclude returns a boolean if a field has been set.
 `func (o *WebscrapeRequest) UnsetUrlPathsToInclude()`
 
 UnsetUrlPathsToInclude ensures that no value is present for UrlPathsToInclude, not even an explicit nil
+### GetDownloadCssAndMedia
+
+`func (o *WebscrapeRequest) GetDownloadCssAndMedia() bool`
+
+GetDownloadCssAndMedia returns the DownloadCssAndMedia field if non-nil, zero value otherwise.
+
+### GetDownloadCssAndMediaOk
+
+`func (o *WebscrapeRequest) GetDownloadCssAndMediaOk() (*bool, bool)`
+
+GetDownloadCssAndMediaOk returns a tuple with the DownloadCssAndMedia field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDownloadCssAndMedia
+
+`func (o *WebscrapeRequest) SetDownloadCssAndMedia(v bool)`
+
+SetDownloadCssAndMedia sets DownloadCssAndMedia field to given value.
+
+### HasDownloadCssAndMedia
+
+`func (o *WebscrapeRequest) HasDownloadCssAndMedia() bool`
+
+HasDownloadCssAndMedia returns a boolean if a field has been set.
+
+### SetDownloadCssAndMediaNil
+
+`func (o *WebscrapeRequest) SetDownloadCssAndMediaNil(b bool)`
+
+ SetDownloadCssAndMediaNil sets the value for DownloadCssAndMedia to be an explicit nil
+
+### UnsetDownloadCssAndMedia
+`func (o *WebscrapeRequest) UnsetDownloadCssAndMedia()`
+
+UnsetDownloadCssAndMedia ensures that no value is present for DownloadCssAndMedia, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
