@@ -22,6 +22,7 @@
 |**cssSelectorsToSkip** | **List&lt;String&gt;** |  |  [optional] |
 |**embeddingModel** | **EmbeddingGenerators** |  |  [optional] |
 |**urlPathsToInclude** | **List&lt;String&gt;** | URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input |  [optional] |
+|**downloadCssAndMedia** | **Boolean** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. |  [optional] |
 
 
 

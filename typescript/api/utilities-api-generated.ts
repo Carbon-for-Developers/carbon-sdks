@@ -555,7 +555,8 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 url_paths_to_include: requestParameters.url_paths_to_include,
                 url_paths_to_exclude: requestParameters.url_paths_to_exclude,
-                urls_to_scrape: requestParameters.urls_to_scrape
+                urls_to_scrape: requestParameters.urls_to_scrape,
+                download_css_and_media: requestParameters.download_css_and_media
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(sitemapScrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

@@ -450,6 +450,7 @@ public class Example {
     List<String> urlPathsToInclude = Arrays.asList(); // URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     List<String> urlPathsToExclude = Arrays.asList(); // URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
     List<String> urlsToScrape = Arrays.asList(); // You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
+    Boolean downloadCssAndMedia = false; // Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
     try {
       Object result = client
               .utilities
@@ -469,6 +470,7 @@ public class Example {
               .urlPathsToInclude(urlPathsToInclude)
               .urlPathsToExclude(urlPathsToExclude)
               .urlsToScrape(urlsToScrape)
+              .downloadCssAndMedia(downloadCssAndMedia)
               .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling UtilitiesApi#scrapeSitemap");
@@ -498,6 +500,7 @@ public class Example {
               .urlPathsToInclude(urlPathsToInclude)
               .urlPathsToExclude(urlPathsToExclude)
               .urlsToScrape(urlsToScrape)
+              .downloadCssAndMedia(downloadCssAndMedia)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

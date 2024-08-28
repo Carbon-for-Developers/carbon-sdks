@@ -8365,6 +8365,7 @@ components:
         css_selectors_to_skip: []
         url: url
         tags: {}
+        download_css_and_media: false
         html_tags_to_skip: []
         url_paths_to_include: []
         generate_sparse_vectors: false
@@ -8510,6 +8511,17 @@ components:
           type: array
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-urls_to_scrape
+        download_css_and_media:
+          default: false
+          description: "Whether the scraper should download css and media from the\
+            \ page (images, fonts, etc). Scrapes \n        might take longer to finish\
+            \ with this flag enabled, but the success rate is improved."
+          example: false
+          nullable: true
+          title: Download Css And Media
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media
       required:
       - url
       title: SitemapScrapeRequest
@@ -9958,6 +9970,7 @@ components:
         css_selectors_to_skip: []
         url: url
         tags: {}
+        download_css_and_media: false
         recursion_depth: 3
         html_tags_to_skip: []
         url_paths_to_include: []
@@ -10089,6 +10102,17 @@ components:
           type: array
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-url_paths_to_include
+        download_css_and_media:
+          default: false
+          description: "Whether the scraper should download css and media from the\
+            \ page (images, fonts, etc). Scrapes \n        might take longer to finish\
+            \ with this flag enabled, but the success rate is improved."
+          example: false
+          nullable: true
+          title: Download Css And Media
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-download_css_and_media
       required:
       - url
       title: WebscrapeRequest
@@ -11369,6 +11393,10 @@ components:
         type: string
       type: array
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags:
       example: {}
       properties: {}
@@ -11601,6 +11629,10 @@ components:
       items:
         type: string
       type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WebscrapeRequest-properties-download_css_and_media:
+      example: false
+      type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
       example: OPENAI
@@ -14138,6 +14170,17 @@ components:
           type: array
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-urls_to_scrape
+        download_css_and_media:
+          default: false
+          description: "Whether the scraper should download css and media from the\
+            \ page (images, fonts, etc). Scrapes \n        might take longer to finish\
+            \ with this flag enabled, but the success rate is improved."
+          example: false
+          nullable: true
+          title: Download Css And Media
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media
       required:
       - url
       type: object

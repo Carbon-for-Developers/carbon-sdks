@@ -110,6 +110,7 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         sitemapScrapeRequest.SetUrlPathsToInclude([])
         sitemapScrapeRequest.SetUrlPathsToExclude([])
         sitemapScrapeRequest.SetUrlsToScrape([])
+        sitemapScrapeRequest.SetDownloadCssAndMedia(false)
         
         request := client.UtilitiesApi.ScrapeSitemap(
             sitemapScrapeRequest,

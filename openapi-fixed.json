@@ -7654,6 +7654,13 @@
             },
             "type": "array",
             "nullable": true
+          },
+          "download_css_and_media": {
+            "title": "Download Css And Media",
+            "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -9048,6 +9055,13 @@
             },
             "type": "array",
             "maxItems": 10,
+            "nullable": true
+          },
+          "download_css_and_media": {
+            "title": "Download Css And Media",
+            "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
+            "default": false,
+            "type": "boolean",
             "nullable": true
           }
         },

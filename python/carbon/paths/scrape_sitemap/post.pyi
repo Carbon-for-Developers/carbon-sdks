@@ -144,6 +144,7 @@ class BaseApi(api_client.Api):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -179,6 +180,8 @@ class BaseApi(api_client.Api):
             _body["url_paths_to_exclude"] = url_paths_to_exclude
         if urls_to_scrape is not None:
             _body["urls_to_scrape"] = urls_to_scrape
+        if download_css_and_media is not None:
+            _body["download_css_and_media"] = download_css_and_media
         args.body = _body
         return args
 
@@ -402,6 +405,7 @@ class ScrapeSitemapRaw(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -425,6 +429,7 @@ class ScrapeSitemapRaw(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -449,6 +454,7 @@ class ScrapeSitemapRaw(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -471,6 +477,7 @@ class ScrapeSitemapRaw(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,
@@ -496,6 +503,7 @@ class ScrapeSitemap(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -516,6 +524,7 @@ class ScrapeSitemap(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
             **kwargs,
         )
         if validate:
@@ -541,6 +550,7 @@ class ScrapeSitemap(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.scrape_sitemap(
@@ -560,6 +570,7 @@ class ScrapeSitemap(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -587,6 +598,7 @@ class ApiForpost(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -610,6 +622,7 @@ class ApiForpost(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -634,6 +647,7 @@ class ApiForpost(BaseApi):
         url_paths_to_include: typing.Optional[SitemapScrapeRequestUrlPathsToInclude] = None,
         url_paths_to_exclude: typing.Optional[SitemapScrapeRequestUrlPathsToExclude] = None,
         urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape] = None,
+        download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -656,6 +670,7 @@ class ApiForpost(BaseApi):
             url_paths_to_include=url_paths_to_include,
             url_paths_to_exclude=url_paths_to_exclude,
             urls_to_scrape=urls_to_scrape,
+            download_css_and_media=download_css_and_media,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,

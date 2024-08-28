@@ -58,5 +58,8 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
 
     urls_to_scrape: typing.Optional[SitemapScrapeRequestUrlsToScrape]
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    download_css_and_media: typing.Optional[bool]
+
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

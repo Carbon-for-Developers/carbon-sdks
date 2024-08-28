@@ -46,6 +46,9 @@ module Carbon
     # You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
     attr_accessor :urls_to_scrape
 
+    # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+    attr_accessor :download_css_and_media
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -64,7 +67,8 @@ module Carbon
         :'embedding_model' => :'embedding_model',
         :'url_paths_to_include' => :'url_paths_to_include',
         :'url_paths_to_exclude' => :'url_paths_to_exclude',
-        :'urls_to_scrape' => :'urls_to_scrape'
+        :'urls_to_scrape' => :'urls_to_scrape',
+        :'download_css_and_media' => :'download_css_and_media'
       }
     end
 
@@ -91,7 +95,8 @@ module Carbon
         :'embedding_model' => :'EmbeddingGenerators',
         :'url_paths_to_include' => :'Array<String>',
         :'url_paths_to_exclude' => :'Array<String>',
-        :'urls_to_scrape' => :'Array<String>'
+        :'urls_to_scrape' => :'Array<String>',
+        :'download_css_and_media' => :'Boolean'
       }
     end
 
@@ -111,7 +116,8 @@ module Carbon
         :'css_selectors_to_skip',
         :'url_paths_to_include',
         :'url_paths_to_exclude',
-        :'urls_to_scrape'
+        :'urls_to_scrape',
+        :'download_css_and_media'
       ])
     end
 
@@ -221,6 +227,12 @@ module Carbon
           self.urls_to_scrape = value
         end
       end
+
+      if attributes.key?(:'download_css_and_media')
+        self.download_css_and_media = attributes[:'download_css_and_media']
+      else
+        self.download_css_and_media = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -306,7 +318,8 @@ module Carbon
           embedding_model == o.embedding_model &&
           url_paths_to_include == o.url_paths_to_include &&
           url_paths_to_exclude == o.url_paths_to_exclude &&
-          urls_to_scrape == o.urls_to_scrape
+          urls_to_scrape == o.urls_to_scrape &&
+          download_css_and_media == o.download_css_and_media
     end
 
     # @see the `==` method
@@ -318,7 +331,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude, urls_to_scrape].hash
+      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude, urls_to_scrape, download_css_and_media].hash
     end
 
     # Builds the object from hash

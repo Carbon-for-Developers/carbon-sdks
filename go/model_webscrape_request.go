@@ -32,6 +32,8 @@ type WebscrapeRequest struct {
 	EmbeddingModel *EmbeddingGenerators `json:"embedding_model,omitempty"`
 	// URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
 	UrlPathsToInclude []string `json:"url_paths_to_include,omitempty"`
+	// Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+	DownloadCssAndMedia NullableBool `json:"download_css_and_media,omitempty"`
 }
 
 // NewWebscrapeRequest instantiates a new WebscrapeRequest object
@@ -57,6 +59,8 @@ func NewWebscrapeRequest(url string) *WebscrapeRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var downloadCssAndMedia bool = false
+	this.DownloadCssAndMedia = *NewNullableBool(&downloadCssAndMedia)
 	return &this
 }
 
@@ -81,6 +85,8 @@ func NewWebscrapeRequestWithDefaults() *WebscrapeRequest {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var prependFilenameToChunks bool = false
 	this.PrependFilenameToChunks = *NewNullableBool(&prependFilenameToChunks)
+	var downloadCssAndMedia bool = false
+	this.DownloadCssAndMedia = *NewNullableBool(&downloadCssAndMedia)
 	return &this
 }
 
@@ -641,6 +647,48 @@ func (o *WebscrapeRequest) SetUrlPathsToInclude(v []string) {
 	o.UrlPathsToInclude = v
 }
 
+// GetDownloadCssAndMedia returns the DownloadCssAndMedia field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WebscrapeRequest) GetDownloadCssAndMedia() bool {
+	if o == nil || isNil(o.DownloadCssAndMedia.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.DownloadCssAndMedia.Get()
+}
+
+// GetDownloadCssAndMediaOk returns a tuple with the DownloadCssAndMedia field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WebscrapeRequest) GetDownloadCssAndMediaOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.DownloadCssAndMedia.Get(), o.DownloadCssAndMedia.IsSet()
+}
+
+// HasDownloadCssAndMedia returns a boolean if a field has been set.
+func (o *WebscrapeRequest) HasDownloadCssAndMedia() bool {
+	if o != nil && o.DownloadCssAndMedia.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDownloadCssAndMedia gets a reference to the given NullableBool and assigns it to the DownloadCssAndMedia field.
+func (o *WebscrapeRequest) SetDownloadCssAndMedia(v bool) {
+	o.DownloadCssAndMedia.Set(&v)
+}
+// SetDownloadCssAndMediaNil sets the value for DownloadCssAndMedia to be an explicit nil
+func (o *WebscrapeRequest) SetDownloadCssAndMediaNil() {
+	o.DownloadCssAndMedia.Set(nil)
+}
+
+// UnsetDownloadCssAndMedia ensures that no value is present for DownloadCssAndMedia, not even an explicit nil
+func (o *WebscrapeRequest) UnsetDownloadCssAndMedia() {
+	o.DownloadCssAndMedia.Unset()
+}
+
 func (o WebscrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -687,6 +735,9 @@ func (o WebscrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UrlPathsToInclude != nil {
 		toSerialize["url_paths_to_include"] = o.UrlPathsToInclude
+	}
+	if o.DownloadCssAndMedia.IsSet() {
+		toSerialize["download_css_and_media"] = o.DownloadCssAndMedia.Get()
 	}
 	return json.Marshal(toSerialize)
 }
