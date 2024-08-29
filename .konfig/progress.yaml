@@ -124,6 +124,8 @@ operationIds:
     post: Integrations_syncGmail
   /integrations/gmail/user_labels:
     get: Integrations_listLabels
+  /integrations/guru:
+    post: Integrations_connectGuru
   /integrations/items/list:
     post: Integrations_listDataSourceItems
   /integrations/items/sync:
