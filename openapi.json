@@ -527,7 +527,7 @@
           "Integrations"
         ],
         "summary": "Gmail Sync",
-        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \n<b>is</b>: Can have the following values - starred, important, snoozed, and unread  \n<b>from</b>: Email address of the sender  \n<b>to</b>: Email address of the recipient  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
+        "description": "Once you have successfully connected your gmail account, you can choose which emails to sync with us\nusing the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.\nFor now, we support a limited set of keys listed below.\n\n<b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.  \n<b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date.\nYou can also use them in combination to get emails from a certain period.  \n<b>is</b>: Can have the following values - starred, important, snoozed, and unread  \n<b>from</b>: Email address of the sender  \n<b>to</b>: Email address of the recipient  \n<b>in</b>: Can have the following values - sent (sync emails sent by the user)  \n<b>has</b>: Can have the following values - attachment (sync emails that have attachments)  \n\nUsing keys or values outside of the specified values can lead to unexpected behaviour.\n\nAn example of a basic query with filters can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails that have the label \"Test\".\n\nYou can use AND and OR operation in the following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n            {\n                \"key\": \"after\",\n                \"value\": \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n                    {\n                        \"key\": \"label\",\n                        \"value\": \"Personal\"\n                    },\n                    {\n                        \"key\": \"is\",\n                        \"value\": \"starred\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n```\nThis will return emails after 7th of Jan that are either starred or have the label \"Personal\". \nNote that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter\nin the above example.",
         "operationId": "gmail_sync_integrations_gmail_sync_post",
         "requestBody": {
           "content": {
@@ -1339,6 +1339,57 @@
             "content": {
               "application/json": {
                 "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/guru": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Guru Connect",
+        "description": "You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here\nhttps://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.",
+        "operationId": "guru_connect_integrations_guru_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuruConnectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
               }
             }
           },
@@ -3897,6 +3948,9 @@
               },
               {
                 "$ref": "#/components/schemas/GithubAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/GuruAuthentication"
               }
             ],
             "title": "Authentication"
@@ -4052,6 +4106,7 @@
           "SALESFORCE",
           "GITHUB",
           "SLACK",
+          "GURU",
           "JPG",
           "PNG",
           "JPEG",
@@ -4953,6 +5008,7 @@
           "SALESFORCE",
           "GITHUB",
           "SLACK",
+          "GURU",
           "JPG",
           "JPG",
           "PNG",
@@ -6080,6 +6136,167 @@
           "filters"
         ],
         "title": "GmailSyncInput"
+      },
+      "GuruAuthentication": {
+        "properties": {
+          "source": {
+            "const": "GURU",
+            "title": "Source"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "username": {
+            "type": "string",
+            "title": "Username"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "username"
+        ],
+        "title": "GuruAuthentication"
+      },
+      "GuruConnectRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          },
+          "sync_files_on_connection": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sync Files On Connection",
+            "default": true
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": true
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to configure file syncing when sync_files_on_connection is set to true"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "access_token"
+        ],
+        "title": "GuruConnectRequest"
       },
       "HTTPValidationError": {
         "properties": {
