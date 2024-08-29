@@ -15,6 +15,7 @@ import com.konfigthis.carbonai.client.model.GitbookSyncRequest;
 import com.konfigthis.carbonai.client.model.GithubConnectRequest;
 import com.konfigthis.carbonai.client.model.GithubFetchReposRequest;
 import com.konfigthis.carbonai.client.model.GmailSyncInput;
+import com.konfigthis.carbonai.client.model.GuruConnectRequest;
 import com.konfigthis.carbonai.client.model.ListDataSourceItemsRequest;
 import com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse;
 import com.konfigthis.carbonai.client.model.ListItemsFiltersNullable;
@@ -64,6 +65,11 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
     public class ConnectGitbookRequestBuilder extends ConnectGitbookRequestBuilderGenerated {
         public ConnectGitbookRequestBuilder(String organization, String accessToken) {
             super(organization, accessToken);
+        }
+    }
+    public class ConnectGuruRequestBuilder extends ConnectGuruRequestBuilderGenerated {
+        public ConnectGuruRequestBuilder(String username, String accessToken) {
+            super(username, accessToken);
         }
     }
     public class CreateAwsIamUserRequestBuilder extends CreateAwsIamUserRequestBuilderGenerated {

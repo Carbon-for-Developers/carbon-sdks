@@ -88,6 +88,8 @@ from carbon.model.github_connect_request import GithubConnectRequest
 from carbon.model.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.model.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.model.gmail_sync_input import GmailSyncInput
+from carbon.model.guru_authentication import GuruAuthentication
+from carbon.model.guru_connect_request import GuruConnectRequest
 from carbon.model.http_validation_error import HTTPValidationError
 from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.hybrid_search_tuning_params import HybridSearchTuningParams

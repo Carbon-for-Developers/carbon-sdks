@@ -44,6 +44,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
   * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
+  * [`carbon.integrations.connectGuru`](#carbonintegrationsconnectguru)
   * [`carbon.integrations.createAwsIamUser`](#carbonintegrationscreateawsiamuser)
   * [`carbon.integrations.getOauthUrl`](#carbonintegrationsgetoauthurl)
   * [`carbon.integrations.listConfluencePages`](#carbonintegrationslistconfluencepages)
@@ -1529,6 +1530,71 @@ Enabling this flag will fetch all available content from the source to be listed
 ---
 
 
+### `carbon.integrations.connectGuru`<a id="carbonintegrationsconnectguru"></a>
+
+You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here
+https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const connectGuruResponse = await carbon.integrations.connectGuru({
+  username: "username_example",
+  access_token: "access_token_example",
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
+  sync_source_items: true,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### username: `string`<a id="username-string"></a>
+
+##### access_token: `string`<a id="access_token-string"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### chunk_size: `number`<a id="chunk_size-number"></a>
+
+##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### skip_embedding_generation: `boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### sync_files_on_connection: `boolean`<a id="sync_files_on_connection-boolean"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/guru` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.createAwsIamUser`<a id="carbonintegrationscreateawsiamuser"></a>
 
 This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
@@ -2236,6 +2302,8 @@ You can also use them in combination to get emails from a certain period.
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
 <b>from</b>: Email address of the sender  
 <b>to</b>: Email address of the recipient  
+<b>in</b>: Can have the following values - sent (sync emails sent by the user)  
+<b>has</b>: Can have the following values - attachment (sync emails that have attachments)  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 

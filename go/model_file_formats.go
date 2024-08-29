@@ -47,6 +47,7 @@ const (
 	FILEFORMATS_SALESFORCE FileFormats = "SALESFORCE"
 	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_SLACK FileFormats = "SLACK"
+	FILEFORMATS_GURU FileFormats = "GURU"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
@@ -99,6 +100,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"SALESFORCE",
 	"GITHUB",
 	"SLACK",
+	"GURU",
 	"JPG",
 	"PNG",
 	"MP3",

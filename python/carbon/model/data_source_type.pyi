@@ -168,6 +168,10 @@ class DataSourceType(
         return cls("SLACK")
     
     @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

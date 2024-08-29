@@ -61,6 +61,7 @@ class FileFormats(
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
+            "GURU": "GURU",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -191,6 +192,10 @@ class FileFormats(
     @schemas.classproperty
     def SLACK(cls):
         return cls("SLACK")
+    
+    @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
     
     @schemas.classproperty
     def JPG(cls):

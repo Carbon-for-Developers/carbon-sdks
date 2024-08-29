@@ -81,6 +81,8 @@ import com.google.gson.stream.JsonWriter;
   
   SLACK("SLACK"),
   
+  GURU("GURU"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

@@ -57,6 +57,8 @@
 
 * `SLACK` (value: `"SLACK"`)
 
+* `GURU` (value: `"GURU"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

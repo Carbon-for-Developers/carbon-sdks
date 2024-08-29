@@ -58,6 +58,8 @@ export * from './github-authentication';
 export * from './github-connect-request';
 export * from './github-fetch-repos-request';
 export * from './gmail-sync-input';
+export * from './guru-authentication';
+export * from './guru-connect-request';
 export * from './httpvalidation-error';
 export * from './helpdesk-file-types';
 export * from './hybrid-search-tuning-params';

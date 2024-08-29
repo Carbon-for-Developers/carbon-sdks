@@ -71,6 +71,7 @@ class DataSourceTypeNullable(
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
+            "GURU": "GURU",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -230,6 +231,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def SLACK(cls):
         return cls("SLACK")
+    
+    @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
     
     @schemas.classproperty
     def JPG(cls):

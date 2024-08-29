@@ -51,6 +51,8 @@ import { GithubFetchReposRequest } from '../models';
 // @ts-ignore
 import { GmailSyncInput } from '../models';
 // @ts-ignore
+import { GuruConnectRequest } from '../models';
+// @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { IdsProperty } from '../models';
@@ -304,6 +306,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(gitbookConnectRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+         * @summary Guru Connect
+         * @param {GuruConnectRequest} guruConnectRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectGuru: async (guruConnectRequest: GuruConnectRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guruConnectRequest' is not null or undefined
+            assertParamExists('connectGuru', 'guruConnectRequest', guruConnectRequest)
+            const localVarPath = `/integrations/guru`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: guruConnectRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/guru',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(guruConnectRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -1103,7 +1157,7 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient   <b>in</b>: Can have the following values - sent (sync emails sent by the user)   <b>has</b>: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {GmailSyncInput} gmailSyncInput 
          * @param {*} [options] Override http request option.
@@ -1505,6 +1559,32 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+         * @summary Guru Connect
+         * @param {IntegrationsApiConnectGuruRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async connectGuru(requestParameters: IntegrationsApiConnectGuruRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const guruConnectRequest: GuruConnectRequest = {
+                tags: requestParameters.tags,
+                username: requestParameters.username,
+                access_token: requestParameters.access_token,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                sync_files_on_connection: requestParameters.sync_files_on_connection,
+                request_id: requestParameters.request_id,
+                sync_source_items: requestParameters.sync_source_items,
+                file_sync_config: requestParameters.file_sync_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectGuru(guruConnectRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)   For S3, create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.   For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces. Endpoint URL is required to connect Digital Ocean Spaces. It should look like <<region>>.digitaloceanspaces.com
          * @summary S3 Auth
          * @param {IntegrationsApiCreateAwsIamUserRequest} requestParameters Request parameters.
@@ -1775,7 +1855,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient   <b>in</b>: Can have the following values - sent (sync emails sent by the user)   <b>has</b>: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1966,6 +2046,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.connectGitbook(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+         * @summary Guru Connect
+         * @param {IntegrationsApiConnectGuruRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectGuru(requestParameters: IntegrationsApiConnectGuruRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.connectGuru(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)   For S3, create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.   For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces. Endpoint URL is required to connect Digital Ocean Spaces. It should look like <<region>>.digitaloceanspaces.com
          * @summary S3 Auth
          * @param {IntegrationsApiCreateAwsIamUserRequest} requestParameters Request parameters.
@@ -2118,7 +2208,7 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.syncGitbook(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+         * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient   <b>in</b>: Can have the following values - sent (sync emails sent by the user)   <b>has</b>: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
          * @summary Gmail Sync
          * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -2215,6 +2305,15 @@ export type IntegrationsApiConnectFreshdeskRequest = {
 export type IntegrationsApiConnectGitbookRequest = {
     
 } & GitbookConnectRequest
+
+/**
+ * Request parameters for connectGuru operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiConnectGuruRequest
+ */
+export type IntegrationsApiConnectGuruRequest = {
+    
+} & GuruConnectRequest
 
 /**
  * Request parameters for createAwsIamUser operation in IntegrationsApi.
@@ -2538,6 +2637,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
+     * You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+     * @summary Guru Connect
+     * @param {IntegrationsApiConnectGuruRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public connectGuru(requestParameters: IntegrationsApiConnectGuruRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).connectGuru(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)   For S3, create a new IAM user with permissions to: <ol> <li>List all buckets.</li> <li>Read from the specific buckets and objects to sync with Carbon. Ensure any future buckets or objects carry  the same permissions.</li> </ol> Once created, generate an access key for this user and share the credentials with us. We recommend testing this key beforehand.   For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces. Endpoint URL is required to connect Digital Ocean Spaces. It should look like <<region>>.digitaloceanspaces.com
      * @summary S3 Auth
      * @param {IntegrationsApiCreateAwsIamUserRequest} requestParameters Request parameters.
@@ -2720,7 +2831,7 @@ export class IntegrationsApiGenerated extends BaseAPI {
     }
 
     /**
-     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
+     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  <b>label</b>: Inbuilt Gmail labels, for example \"Important\" or a custom label you created.   <b>after</b> or <b>before</b>: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   <b>is</b>: Can have the following values - starred, important, snoozed, and unread   <b>from</b>: Email address of the sender   <b>to</b>: Email address of the recipient   <b>in</b>: Can have the following values - sent (sync emails sent by the user)   <b>has</b>: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be ```json {     \"filters\": {             \"key\": \"label\",             \"value\": \"Test\"         } } ``` Which will list all emails that have the label \"Test\".  You can use AND and OR operation in the following way: ```json {     \"filters\": {         \"AND\": [             {                 \"key\": \"after\",                 \"value\": \"2024/01/07\"             },             {                 \"OR\": [                     {                         \"key\": \"label\",                         \"value\": \"Personal\"                     },                     {                         \"key\": \"is\",                         \"value\": \"starred\"                     }                 ]             }         ]     } } ``` This will return emails after 7th of Jan that are either starred or have the label \"Personal\".  Note that this is the highest level of nesting we support, i.e. you can\'t add more AND/OR filters within the OR filter in the above example.
      * @summary Gmail Sync
      * @param {IntegrationsApiSyncGmailRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

@@ -1691,23 +1691,25 @@ paths:
         \ Gets emails after/before a certain date.\nYou can also use them in combination\
         \ to get emails from a certain period.  \n<b>is</b>: Can have the following\
         \ values - starred, important, snoozed, and unread  \n<b>from</b>: Email address\
-        \ of the sender  \n<b>to</b>: Email address of the recipient  \n\nUsing keys\
-        \ or values outside of the specified values can lead to unexpected behaviour.\n\
-        \nAn example of a basic query with filters can be\n```json\n{\n    \"filters\"\
-        : {\n            \"key\": \"label\",\n            \"value\": \"Test\"\n  \
-        \      }\n}\n```\nWhich will list all emails that have the label \"Test\"\
-        .\n\nYou can use AND and OR operation in the following way:\n```json\n{\n\
-        \    \"filters\": {\n        \"AND\": [\n            {\n                \"\
-        key\": \"after\",\n                \"value\": \"2024/01/07\"\n           \
-        \ },\n            {\n                \"OR\": [\n                    {\n  \
-        \                      \"key\": \"label\",\n                        \"value\"\
-        : \"Personal\"\n                    },\n                    {\n          \
-        \              \"key\": \"is\",\n                        \"value\": \"starred\"\
-        \n                    }\n                ]\n            }\n        ]\n   \
-        \ }\n}\n```\nThis will return emails after 7th of Jan that are either starred\
-        \ or have the label \"Personal\". \nNote that this is the highest level of\
-        \ nesting we support, i.e. you can't add more AND/OR filters within the OR\
-        \ filter\nin the above example."
+        \ of the sender  \n<b>to</b>: Email address of the recipient  \n<b>in</b>:\
+        \ Can have the following values - sent (sync emails sent by the user)  \n\
+        <b>has</b>: Can have the following values - attachment (sync emails that have\
+        \ attachments)  \n\nUsing keys or values outside of the specified values can\
+        \ lead to unexpected behaviour.\n\nAn example of a basic query with filters\
+        \ can be\n```json\n{\n    \"filters\": {\n            \"key\": \"label\",\n\
+        \            \"value\": \"Test\"\n        }\n}\n```\nWhich will list all emails\
+        \ that have the label \"Test\".\n\nYou can use AND and OR operation in the\
+        \ following way:\n```json\n{\n    \"filters\": {\n        \"AND\": [\n   \
+        \         {\n                \"key\": \"after\",\n                \"value\"\
+        : \"2024/01/07\"\n            },\n            {\n                \"OR\": [\n\
+        \                    {\n                        \"key\": \"label\",\n    \
+        \                    \"value\": \"Personal\"\n                    },\n   \
+        \                 {\n                        \"key\": \"is\",\n          \
+        \              \"value\": \"starred\"\n                    }\n           \
+        \     ]\n            }\n        ]\n    }\n}\n```\nThis will return emails\
+        \ after 7th of Jan that are either starred or have the label \"Personal\"\
+        . \nNote that this is the highest level of nesting we support, i.e. you can't\
+        \ add more AND/OR filters within the OR filter\nin the above example."
       operationId: Integrations_syncGmail
       requestBody:
         content:
@@ -2367,6 +2369,43 @@ paths:
       - Integrations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-slack-sync
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/guru:
+    post:
+      description: |-
+        You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here
+        https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+      operationId: Integrations_connectGuru
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GuruConnectRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Guru Connect
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-guru
       x-content-type: application/json
       x-accepts: application/json
   /auth/v1/access_token:
@@ -4615,6 +4654,7 @@ components:
       - SALESFORCE
       - GITHUB
       - SLACK
+      - GURU
       - JPG
       - PNG
       - JPEG
@@ -5411,6 +5451,7 @@ components:
       - SALESFORCE
       - GITHUB
       - SLACK
+      - GURU
       - JPG
       - PNG
       - MP3
@@ -6273,6 +6314,131 @@ components:
       required:
       - filters
       title: GmailSyncInput
+      type: object
+      x-konfig-properties:
+        embedding_model:
+          default: OPENAI
+    GuruAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        username:
+          title: Username
+          type: string
+      required:
+      - access_token
+      - source
+      - username
+      title: GuruAuthentication
+      type: object
+    GuruConnectRequest:
+      example:
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        embedding_model: null
+        file_sync_config:
+          detect_audio_language: false
+          include_speaker_labels: false
+          split_rows: false
+          sync_attachments: false
+          transcription_service: null
+          auto_synced_source_types:
+          - ARTICLE
+        tags: {}
+        access_token: access_token
+        sync_source_items: true
+        generate_sparse_vectors: false
+        sync_files_on_connection: true
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        request_id: request_id
+        username: username
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-tags
+        username:
+          title: Username
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+      required:
+      - access_token
+      - username
+      title: GuruConnectRequest
       type: object
       x-konfig-properties:
         embedding_model:
@@ -10307,6 +10473,7 @@ components:
       - SALESFORCE
       - GITHUB
       - SLACK
+      - GURU
       - JPG
       - PNG
       - JPEG
@@ -10385,6 +10552,7 @@ components:
       - SALESFORCE
       - GITHUB
       - SLACK
+      - GURU
       - JPG
       - PNG
       - MP3
@@ -11120,6 +11288,39 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-GmailSyncInput-properties-incremental_sync:
       example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-tags:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_files_on_connection:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_source_items:
+      example: true
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-ListUserResponse-properties-custom_limits:
@@ -13037,6 +13238,92 @@ components:
           type: string
       required:
       - filters
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-guru:
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-tags
+        username:
+          title: Username
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-GuruConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+      required:
+      - access_token
+      - username
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
