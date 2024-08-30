@@ -168,6 +168,10 @@ class DataSourceType(
         return cls("SLACK")
     
     @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     
@@ -254,3 +258,7 @@ class DataSourceType(
     @schemas.classproperty
     def EML(cls):
         return cls("EML")
+    
+    @schemas.classproperty
+    def MSG(cls):
+        return cls("MSG")

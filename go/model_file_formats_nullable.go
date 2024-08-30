@@ -47,6 +47,7 @@ const (
 	FILEFORMATSNULLABLE_SALESFORCE FileFormatsNullable = "SALESFORCE"
 	FILEFORMATSNULLABLE_GITHUB FileFormatsNullable = "GITHUB"
 	FILEFORMATSNULLABLE_SLACK FileFormatsNullable = "SLACK"
+	FILEFORMATSNULLABLE_GURU FileFormatsNullable = "GURU"
 	FILEFORMATSNULLABLE_JPG FileFormatsNullable = "JPG"
 	FILEFORMATSNULLABLE_PNG FileFormatsNullable = "PNG"
 	FILEFORMATSNULLABLE_MP3 FileFormatsNullable = "MP3"
@@ -68,6 +69,7 @@ const (
 	FILEFORMATSNULLABLE_FLV FileFormatsNullable = "FLV"
 	FILEFORMATSNULLABLE_WEBM FileFormatsNullable = "WEBM"
 	FILEFORMATSNULLABLE_EML FileFormatsNullable = "EML"
+	FILEFORMATSNULLABLE_MSG FileFormatsNullable = "MSG"
 )
 
 // All allowed values of FileFormatsNullable enum
@@ -99,6 +101,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"SALESFORCE",
 	"GITHUB",
 	"SLACK",
+	"GURU",
 	"JPG",
 	"PNG",
 	"MP3",
@@ -120,6 +123,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"FLV",
 	"WEBM",
 	"EML",
+	"MSG",
 }
 
 func (v *FileFormatsNullable) UnmarshalJSON(src []byte) error {

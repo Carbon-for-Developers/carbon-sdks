@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type FileFormats = 'TXT' | 'CSV' | 'TSV' | 'PDF' | 'DOCX' | 'PPTX' | 'XLSX' | 'MD' | 'RTF' | 'JSON' | 'HTML' | 'NOTION' | 'GOOGLE_DOCS' | 'GOOGLE_SHEETS' | 'GOOGLE_SLIDES' | 'INTERCOM' | 'CONFLUENCE' | 'RSS_FEED' | 'GMAIL' | 'OUTLOOK' | 'ZENDESK' | 'FRESHDESK' | 'WEB_SCRAPE' | 'GITBOOK' | 'SALESFORCE' | 'GITHUB' | 'SLACK' | 'JPG' | 'PNG' | 'MP3' | 'MP2' | 'AAC' | 'WAV' | 'FLAC' | 'PCM' | 'M4A' | 'OGG' | 'OPUS' | 'MPEG' | 'MPG' | 'MP4' | 'WMV' | 'AVI' | 'MOV' | 'MKV' | 'FLV' | 'WEBM' | 'EML'
+export type FileFormats = 'TXT' | 'CSV' | 'TSV' | 'PDF' | 'DOCX' | 'PPTX' | 'XLSX' | 'MD' | 'RTF' | 'JSON' | 'HTML' | 'NOTION' | 'GOOGLE_DOCS' | 'GOOGLE_SHEETS' | 'GOOGLE_SLIDES' | 'INTERCOM' | 'CONFLUENCE' | 'RSS_FEED' | 'GMAIL' | 'OUTLOOK' | 'ZENDESK' | 'FRESHDESK' | 'WEB_SCRAPE' | 'GITBOOK' | 'SALESFORCE' | 'GITHUB' | 'SLACK' | 'GURU' | 'JPG' | 'PNG' | 'MP3' | 'MP2' | 'AAC' | 'WAV' | 'FLAC' | 'PCM' | 'M4A' | 'OGG' | 'OPUS' | 'MPEG' | 'MPG' | 'MP4' | 'WMV' | 'AVI' | 'MOV' | 'MKV' | 'FLV' | 'WEBM' | 'EML' | 'MSG'
 

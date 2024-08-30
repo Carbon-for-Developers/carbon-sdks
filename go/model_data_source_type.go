@@ -54,6 +54,7 @@ const (
 	DATASOURCETYPE_SALESFORCE DataSourceType = "SALESFORCE"
 	DATASOURCETYPE_GITHUB DataSourceType = "GITHUB"
 	DATASOURCETYPE_SLACK DataSourceType = "SLACK"
+	DATASOURCETYPE_GURU DataSourceType = "GURU"
 	DATASOURCETYPE_JPG DataSourceType = "JPG"
 	DATASOURCETYPE_PNG DataSourceType = "PNG"
 	DATASOURCETYPE_JPEG DataSourceType = "JPEG"
@@ -76,6 +77,7 @@ const (
 	DATASOURCETYPE_FLV DataSourceType = "FLV"
 	DATASOURCETYPE_WEBM DataSourceType = "WEBM"
 	DATASOURCETYPE_EML DataSourceType = "EML"
+	DATASOURCETYPE_MSG DataSourceType = "MSG"
 )
 
 // All allowed values of DataSourceType enum
@@ -114,6 +116,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"SALESFORCE",
 	"GITHUB",
 	"SLACK",
+	"GURU",
 	"JPG",
 	"PNG",
 	"JPEG",
@@ -136,6 +139,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"FLV",
 	"WEBM",
 	"EML",
+	"MSG",
 }
 
 func (v *DataSourceType) UnmarshalJSON(src []byte) error {

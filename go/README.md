@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**ConnectDataSource**](docs/IntegrationsApi.md#connectdatasource) | **Post** /integrations/connect | Connect Data Source
 *IntegrationsApi* | [**ConnectFreshdesk**](docs/IntegrationsApi.md#connectfreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 *IntegrationsApi* | [**ConnectGitbook**](docs/IntegrationsApi.md#connectgitbook) | **Post** /integrations/gitbook | Gitbook Connect
+*IntegrationsApi* | [**ConnectGuru**](docs/IntegrationsApi.md#connectguru) | **Post** /integrations/guru | Guru Connect
 *IntegrationsApi* | [**CreateAwsIamUser**](docs/IntegrationsApi.md#createawsiamuser) | **Post** /integrations/s3 | S3 Auth
 *IntegrationsApi* | [**GetOauthUrl**](docs/IntegrationsApi.md#getoauthurl) | **Post** /integrations/oauth_url | Get Oauth Url
 *IntegrationsApi* | [**ListConfluencePages**](docs/IntegrationsApi.md#listconfluencepages) | **Post** /integrations/confluence/list | Confluence List
@@ -187,6 +188,8 @@ Class | Method | HTTP request | Description
  - [GithubConnectRequest](docs/GithubConnectRequest.md)
  - [GithubFetchReposRequest](docs/GithubFetchReposRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
+ - [GuruAuthentication](docs/GuruAuthentication.md)
+ - [GuruConnectRequest](docs/GuruConnectRequest.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)

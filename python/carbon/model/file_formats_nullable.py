@@ -64,6 +64,7 @@ class FileFormatsNullable(
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
+            "GURU": "GURU",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -85,6 +86,7 @@ class FileFormatsNullable(
             "FLV": "FLV",
             "WEBM": "WEBM",
             "EML": "EML",
+            "MSG": "MSG",
         }
     
     @schemas.classproperty
@@ -196,6 +198,10 @@ class FileFormatsNullable(
         return cls("SLACK")
     
     @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     
@@ -278,6 +284,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def EML(cls):
         return cls("EML")
+    
+    @schemas.classproperty
+    def MSG(cls):
+        return cls("MSG")
 
 
     def __new__(

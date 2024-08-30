@@ -563,6 +563,49 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/integrations/guru-POST': {
+        parameters: [
+            {
+                name: 'username'
+            },
+            {
+                name: 'access_token'
+            },
+            {
+                name: 'tags'
+            },
+            {
+                name: 'chunk_size'
+            },
+            {
+                name: 'chunk_overlap'
+            },
+            {
+                name: 'skip_embedding_generation'
+            },
+            {
+                name: 'embedding_model'
+            },
+            {
+                name: 'generate_sparse_vectors'
+            },
+            {
+                name: 'prepend_filename_to_chunks'
+            },
+            {
+                name: 'sync_files_on_connection'
+            },
+            {
+                name: 'request_id'
+            },
+            {
+                name: 'sync_source_items'
+            },
+            {
+                name: 'file_sync_config'
+            },
+        ]
+    },
     '/integrations/s3-POST': {
         parameters: [
             {

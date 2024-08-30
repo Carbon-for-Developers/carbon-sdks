@@ -49,6 +49,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
+  * [`carbon.integrations.connect_guru`](#carbonintegrationsconnect_guru)
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
@@ -1573,7 +1574,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication"></a>
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `GuruAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-guruauthentication"></a>
 
 
 ##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
@@ -1739,6 +1740,84 @@ Enabling this flag will fetch all available content from the source to be listed
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.connect_guru`<a id="carbonintegrationsconnect_guru"></a>
+
+You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here
+https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+connect_guru_response = carbon.integrations.connect_guru(
+    username="string_example",
+    access_token="string_example",
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+    sync_files_on_connection=True,
+    request_id="string_example",
+    sync_source_items=True,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+        "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
+        "split_rows": False,
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### username: `str`<a id="username-str"></a>
+
+##### access_token: `str`<a id="access_token-str"></a>
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`GuruConnectRequest`](./carbon/type/guru_connect_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/guru` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -2526,6 +2605,8 @@ You can also use them in combination to get emails from a certain period.
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
 <b>from</b>: Email address of the sender  
 <b>to</b>: Email address of the recipient  
+<b>in</b>: Can have the following values - sent (sync emails sent by the user)  
+<b>has</b>: Can have the following values - attachment (sync emails that have attachments)  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 

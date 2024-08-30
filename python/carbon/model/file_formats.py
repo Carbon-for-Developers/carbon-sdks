@@ -61,6 +61,7 @@ class FileFormats(
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
+            "GURU": "GURU",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -82,6 +83,7 @@ class FileFormats(
             "FLV": "FLV",
             "WEBM": "WEBM",
             "EML": "EML",
+            "MSG": "MSG",
         }
     
     @schemas.classproperty
@@ -193,6 +195,10 @@ class FileFormats(
         return cls("SLACK")
     
     @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     
@@ -275,3 +281,7 @@ class FileFormats(
     @schemas.classproperty
     def EML(cls):
         return cls("EML")
+    
+    @schemas.classproperty
+    def MSG(cls):
+        return cls("MSG")

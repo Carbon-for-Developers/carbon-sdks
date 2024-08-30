@@ -81,6 +81,8 @@ import com.google.gson.stream.JsonWriter;
   
   SLACK("SLACK"),
   
+  GURU("GURU"),
+  
   JPG("JPG"),
   
   PNG("PNG"),
@@ -121,7 +123,9 @@ import com.google.gson.stream.JsonWriter;
   
   WEBM("WEBM"),
   
-  EML("EML");
+  EML("EML"),
+  
+  MSG("MSG");
 
   private String value;
 

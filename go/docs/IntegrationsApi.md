@@ -8,6 +8,7 @@ Method | Path | Description
 [**ConnectDataSource**](IntegrationsApi.md#ConnectDataSource) | **Post** /integrations/connect | Connect Data Source
 [**ConnectFreshdesk**](IntegrationsApi.md#ConnectFreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 [**ConnectGitbook**](IntegrationsApi.md#ConnectGitbook) | **Post** /integrations/gitbook | Gitbook Connect
+[**ConnectGuru**](IntegrationsApi.md#ConnectGuru) | **Post** /integrations/guru | Guru Connect
 [**CreateAwsIamUser**](IntegrationsApi.md#CreateAwsIamUser) | **Post** /integrations/s3 | S3 Auth
 [**GetOauthUrl**](IntegrationsApi.md#GetOauthUrl) | **Post** /integrations/oauth_url | Get Oauth Url
 [**ListConfluencePages**](IntegrationsApi.md#ListConfluencePages) | **Post** /integrations/confluence/list | Confluence List
@@ -264,6 +265,69 @@ func main() {
     // response from `ConnectGitbook`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectGitbook`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.ConnectGitbook.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ConnectGuru
+
+Guru Connect
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+    
+    guruConnectRequest := *carbon.NewGuruConnectRequest(
+        "null",
+        "null",
+    )
+    guruConnectRequest.SetTags({})
+    guruConnectRequest.SetChunkSize(1500)
+    guruConnectRequest.SetChunkOverlap(20)
+    guruConnectRequest.SetSkipEmbeddingGeneration(false)
+    guruConnectRequest.SetEmbeddingModel(null)
+    guruConnectRequest.SetGenerateSparseVectors(false)
+    guruConnectRequest.SetPrependFilenameToChunks(false)
+    guruConnectRequest.SetSyncFilesOnConnection(true)
+    guruConnectRequest.SetRequestId("null")
+    guruConnectRequest.SetSyncSourceItems(true)
+    guruConnectRequest.SetFileSyncConfig(fileSyncConfig)
+    
+    request := client.IntegrationsApi.ConnectGuru(
+        guruConnectRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ConnectGuru``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ConnectGuru`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectGuru`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.ConnectGuru.Success`: %v\n", resp.Success)
 }
 ```
 

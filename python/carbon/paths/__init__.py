@@ -31,6 +31,7 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_GITHUB_SYNC_REPOS = "/integrations/github/sync_repos"
     INTEGRATIONS_SLACK_CONVERSATIONS = "/integrations/slack/conversations"
     INTEGRATIONS_SLACK_SYNC = "/integrations/slack/sync"
+    INTEGRATIONS_GURU = "/integrations/guru"
     AUTH_V1_ACCESS_TOKEN = "/auth/v1/access_token"
     AUTH_V1_WHITE_LABELING = "/auth/v1/white_labeling"
     EMBEDDINGS = "/embeddings"
