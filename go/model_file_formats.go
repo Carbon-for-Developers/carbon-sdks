@@ -47,6 +47,7 @@ const (
 	FILEFORMATS_SALESFORCE FileFormats = "SALESFORCE"
 	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_SLACK FileFormats = "SLACK"
+	FILEFORMATS_GURU FileFormats = "GURU"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
@@ -68,6 +69,7 @@ const (
 	FILEFORMATS_FLV FileFormats = "FLV"
 	FILEFORMATS_WEBM FileFormats = "WEBM"
 	FILEFORMATS_EML FileFormats = "EML"
+	FILEFORMATS_MSG FileFormats = "MSG"
 )
 
 // All allowed values of FileFormats enum
@@ -99,6 +101,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"SALESFORCE",
 	"GITHUB",
 	"SLACK",
+	"GURU",
 	"JPG",
 	"PNG",
 	"MP3",
@@ -120,6 +123,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"FLV",
 	"WEBM",
 	"EML",
+	"MSG",
 }
 
 func (v *FileFormats) UnmarshalJSON(src []byte) error {

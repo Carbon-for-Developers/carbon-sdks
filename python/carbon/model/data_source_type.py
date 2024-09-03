@@ -68,6 +68,7 @@ class DataSourceType(
             "SALESFORCE": "SALESFORCE",
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
+            "GURU": "GURU",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -90,6 +91,7 @@ class DataSourceType(
             "FLV": "FLV",
             "WEBM": "WEBM",
             "EML": "EML",
+            "MSG": "MSG",
         }
     
     @schemas.classproperty
@@ -229,6 +231,10 @@ class DataSourceType(
         return cls("SLACK")
     
     @schemas.classproperty
+    def GURU(cls):
+        return cls("GURU")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     
@@ -315,3 +321,7 @@ class DataSourceType(
     @schemas.classproperty
     def EML(cls):
         return cls("EML")
+    
+    @schemas.classproperty
+    def MSG(cls):
+        return cls("MSG")

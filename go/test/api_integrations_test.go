@@ -130,6 +130,38 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test IntegrationsApiService ConnectGuru", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+        
+        guruConnectRequest := *carbon.NewGuruConnectRequest(
+            "null",
+            "null",
+        )
+        guruConnectRequest.SetTags({})
+        guruConnectRequest.SetChunkSize(1500)
+        guruConnectRequest.SetChunkOverlap(20)
+        guruConnectRequest.SetSkipEmbeddingGeneration(false)
+        guruConnectRequest.SetEmbeddingModel(null)
+        guruConnectRequest.SetGenerateSparseVectors(false)
+        guruConnectRequest.SetPrependFilenameToChunks(false)
+        guruConnectRequest.SetSyncFilesOnConnection(true)
+        guruConnectRequest.SetRequestId("null")
+        guruConnectRequest.SetSyncSourceItems(true)
+        guruConnectRequest.SetFileSyncConfig(fileSyncConfig)
+        
+        request := client.IntegrationsApi.ConnectGuru(
+            guruConnectRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService CreateAwsIamUser", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

@@ -12,6 +12,7 @@ from carbon.paths.integrations_items_sync_cancel.post import Cancel
 from carbon.paths.integrations_connect.post import ConnectDataSource
 from carbon.paths.integrations_freshdesk.post import ConnectFreshdesk
 from carbon.paths.integrations_gitbook.post import ConnectGitbook
+from carbon.paths.integrations_guru.post import ConnectGuru
 from carbon.paths.integrations_s3.post import CreateAwsIamUser
 from carbon.paths.integrations_oauth_url.post import GetOauthUrl
 from carbon.paths.integrations_confluence_list.post import ListConfluencePages
@@ -41,6 +42,7 @@ class IntegrationsApiGenerated(
     ConnectDataSource,
     ConnectFreshdesk,
     ConnectGitbook,
+    ConnectGuru,
     CreateAwsIamUser,
     GetOauthUrl,
     ListConfluencePages,

@@ -57,6 +57,8 @@
 
 * `SLACK` (value: `"SLACK"`)
 
+* `GURU` (value: `"GURU"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)
@@ -98,6 +100,8 @@
 * `WEBM` (value: `"WEBM"`)
 
 * `EML` (value: `"EML"`)
+
+* `MSG` (value: `"MSG"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

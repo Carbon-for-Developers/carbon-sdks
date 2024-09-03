@@ -54,6 +54,7 @@ const (
 	DATASOURCETYPENULLABLE_SALESFORCE DataSourceTypeNullable = "SALESFORCE"
 	DATASOURCETYPENULLABLE_GITHUB DataSourceTypeNullable = "GITHUB"
 	DATASOURCETYPENULLABLE_SLACK DataSourceTypeNullable = "SLACK"
+	DATASOURCETYPENULLABLE_GURU DataSourceTypeNullable = "GURU"
 	DATASOURCETYPENULLABLE_JPG DataSourceTypeNullable = "JPG"
 	DATASOURCETYPENULLABLE_PNG DataSourceTypeNullable = "PNG"
 	DATASOURCETYPENULLABLE_JPEG DataSourceTypeNullable = "JPEG"
@@ -76,6 +77,7 @@ const (
 	DATASOURCETYPENULLABLE_FLV DataSourceTypeNullable = "FLV"
 	DATASOURCETYPENULLABLE_WEBM DataSourceTypeNullable = "WEBM"
 	DATASOURCETYPENULLABLE_EML DataSourceTypeNullable = "EML"
+	DATASOURCETYPENULLABLE_MSG DataSourceTypeNullable = "MSG"
 )
 
 // All allowed values of DataSourceTypeNullable enum
@@ -114,6 +116,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"SALESFORCE",
 	"GITHUB",
 	"SLACK",
+	"GURU",
 	"JPG",
 	"PNG",
 	"JPEG",
@@ -136,6 +139,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"FLV",
 	"WEBM",
 	"EML",
+	"MSG",
 }
 
 func (v *DataSourceTypeNullable) UnmarshalJSON(src []byte) error {

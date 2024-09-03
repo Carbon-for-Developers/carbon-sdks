@@ -40,6 +40,7 @@ import com.konfigthis.carbonai.client.model.GitbookSyncRequest;
 import com.konfigthis.carbonai.client.model.GithubConnectRequest;
 import com.konfigthis.carbonai.client.model.GithubFetchReposRequest;
 import com.konfigthis.carbonai.client.model.GmailSyncInput;
+import com.konfigthis.carbonai.client.model.GuruConnectRequest;
 import com.konfigthis.carbonai.client.model.ListDataSourceItemsRequest;
 import com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse;
 import com.konfigthis.carbonai.client.model.ListItemsFiltersNullable;
@@ -1037,6 +1038,309 @@ public class IntegrationsApiGenerated {
             
 
         return ((IntegrationsApi) this).new ConnectGitbookRequestBuilder(organization, accessToken);
+    }
+    private okhttp3.Call connectGuruCall(GuruConnectRequest guruConnectRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = guruConnectRequest;
+
+        // create path and map variables
+        String localVarPath = "/integrations/guru";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call connectGuruValidateBeforeCall(GuruConnectRequest guruConnectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'guruConnectRequest' is set
+        if (guruConnectRequest == null) {
+            throw new ApiException("Missing the required parameter 'guruConnectRequest' when calling connectGuru(Async)");
+        }
+
+        return connectGuruCall(guruConnectRequest, _callback);
+
+    }
+
+
+    private ApiResponse<GenericSuccessResponse> connectGuruWithHttpInfo(GuruConnectRequest guruConnectRequest) throws ApiException {
+        okhttp3.Call localVarCall = connectGuruValidateBeforeCall(guruConnectRequest, null);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call connectGuruAsync(GuruConnectRequest guruConnectRequest, final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = connectGuruValidateBeforeCall(guruConnectRequest, _callback);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ConnectGuruRequestBuilderGenerated {
+        final String username;
+        final String accessToken;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
+        FileSyncConfigNullable fileSyncConfig;
+
+        public ConnectGuruRequestBuilderGenerated(String username, String accessToken) {
+            this.username = username;
+            this.accessToken = accessToken;
+        }
+
+        /**
+         * Set tags
+         * @param tags  (optional)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder tags(Object tags) {
+            this.tags = tags;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkSize
+         * @param chunkSize  (optional, default to 1500)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder chunkSize(Integer chunkSize) {
+            this.chunkSize = chunkSize;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkOverlap
+         * @param chunkOverlap  (optional, default to 20)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder chunkOverlap(Integer chunkOverlap) {
+            this.chunkOverlap = chunkOverlap;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set skipEmbeddingGeneration
+         * @param skipEmbeddingGeneration  (optional, default to false)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+            this.skipEmbeddingGeneration = skipEmbeddingGeneration;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set embeddingModel
+         * @param embeddingModel  (optional)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+            this.embeddingModel = embeddingModel;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set generateSparseVectors
+         * @param generateSparseVectors  (optional, default to false)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+            this.generateSparseVectors = generateSparseVectors;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set prependFilenameToChunks
+         * @param prependFilenameToChunks  (optional, default to false)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+            this.prependFilenameToChunks = prependFilenameToChunks;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set syncFilesOnConnection
+         * @param syncFilesOnConnection  (optional, default to true)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
+            this.syncFilesOnConnection = syncFilesOnConnection;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set requestId
+         * @param requestId  (optional)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder requestId(String requestId) {
+            this.requestId = requestId;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set syncSourceItems
+         * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+            this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Set fileSyncConfig
+         * @param fileSyncConfig  (optional)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+            this.fileSyncConfig = fileSyncConfig;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for connectGuru
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            GuruConnectRequest guruConnectRequest = buildBodyParams();
+            return connectGuruCall(guruConnectRequest, _callback);
+        }
+
+        private GuruConnectRequest buildBodyParams() {
+            GuruConnectRequest guruConnectRequest = new GuruConnectRequest();
+            guruConnectRequest.tags(this.tags);
+            guruConnectRequest.username(this.username);
+            guruConnectRequest.accessToken(this.accessToken);
+            guruConnectRequest.chunkSize(this.chunkSize);
+            guruConnectRequest.chunkOverlap(this.chunkOverlap);
+            guruConnectRequest.skipEmbeddingGeneration(this.skipEmbeddingGeneration);
+            guruConnectRequest.embeddingModel(this.embeddingModel);
+            guruConnectRequest.generateSparseVectors(this.generateSparseVectors);
+            guruConnectRequest.prependFilenameToChunks(this.prependFilenameToChunks);
+            guruConnectRequest.syncFilesOnConnection(this.syncFilesOnConnection);
+            guruConnectRequest.requestId(this.requestId);
+            guruConnectRequest.syncSourceItems(this.syncSourceItems);
+            guruConnectRequest.fileSyncConfig(this.fileSyncConfig);
+            return guruConnectRequest;
+        }
+
+        /**
+         * Execute connectGuru request
+         * @return GenericSuccessResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GenericSuccessResponse execute() throws ApiException {
+            GuruConnectRequest guruConnectRequest = buildBodyParams();
+            ApiResponse<GenericSuccessResponse> localVarResp = connectGuruWithHttpInfo(guruConnectRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute connectGuru request with HTTP info returned
+         * @return ApiResponse&lt;GenericSuccessResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GenericSuccessResponse> executeWithHttpInfo() throws ApiException {
+            GuruConnectRequest guruConnectRequest = buildBodyParams();
+            return connectGuruWithHttpInfo(guruConnectRequest);
+        }
+
+        /**
+         * Execute connectGuru request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+            GuruConnectRequest guruConnectRequest = buildBodyParams();
+            return connectGuruAsync(guruConnectRequest, _callback);
+        }
+    }
+
+    /**
+     * Guru Connect
+     * You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+     * @param guruConnectRequest  (required)
+     * @return ConnectGuruRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.ConnectGuruRequestBuilder connectGuru(String username, String accessToken) throws IllegalArgumentException {
+        if (username == null) throw new IllegalArgumentException("\"username\" is required but got null");
+            
+
+        if (accessToken == null) throw new IllegalArgumentException("\"accessToken\" is required but got null");
+            
+
+        return ((IntegrationsApi) this).new ConnectGuruRequestBuilder(username, accessToken);
     }
     private okhttp3.Call createAwsIamUserCall(S3AuthRequest s3AuthRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4728,7 +5032,7 @@ public class IntegrationsApiGenerated {
 
     /**
      * Gmail Sync
-     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  &lt;b&gt;label&lt;/b&gt;: Inbuilt Gmail labels, for example \&quot;Important\&quot; or a custom label you created.   &lt;b&gt;after&lt;/b&gt; or &lt;b&gt;before&lt;/b&gt;: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   &lt;b&gt;is&lt;/b&gt;: Can have the following values - starred, important, snoozed, and unread   &lt;b&gt;from&lt;/b&gt;: Email address of the sender   &lt;b&gt;to&lt;/b&gt;: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {             \&quot;key\&quot;: \&quot;label\&quot;,             \&quot;value\&quot;: \&quot;Test\&quot;         } } &#x60;&#x60;&#x60; Which will list all emails that have the label \&quot;Test\&quot;.  You can use AND and OR operation in the following way: &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {         \&quot;AND\&quot;: [             {                 \&quot;key\&quot;: \&quot;after\&quot;,                 \&quot;value\&quot;: \&quot;2024/01/07\&quot;             },             {                 \&quot;OR\&quot;: [                     {                         \&quot;key\&quot;: \&quot;label\&quot;,                         \&quot;value\&quot;: \&quot;Personal\&quot;                     },                     {                         \&quot;key\&quot;: \&quot;is\&quot;,                         \&quot;value\&quot;: \&quot;starred\&quot;                     }                 ]             }         ]     } } &#x60;&#x60;&#x60; This will return emails after 7th of Jan that are either starred or have the label \&quot;Personal\&quot;.  Note that this is the highest level of nesting we support, i.e. you can&#39;t add more AND/OR filters within the OR filter in the above example.
+     * Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  &lt;b&gt;label&lt;/b&gt;: Inbuilt Gmail labels, for example \&quot;Important\&quot; or a custom label you created.   &lt;b&gt;after&lt;/b&gt; or &lt;b&gt;before&lt;/b&gt;: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   &lt;b&gt;is&lt;/b&gt;: Can have the following values - starred, important, snoozed, and unread   &lt;b&gt;from&lt;/b&gt;: Email address of the sender   &lt;b&gt;to&lt;/b&gt;: Email address of the recipient   &lt;b&gt;in&lt;/b&gt;: Can have the following values - sent (sync emails sent by the user)   &lt;b&gt;has&lt;/b&gt;: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {             \&quot;key\&quot;: \&quot;label\&quot;,             \&quot;value\&quot;: \&quot;Test\&quot;         } } &#x60;&#x60;&#x60; Which will list all emails that have the label \&quot;Test\&quot;.  You can use AND and OR operation in the following way: &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {         \&quot;AND\&quot;: [             {                 \&quot;key\&quot;: \&quot;after\&quot;,                 \&quot;value\&quot;: \&quot;2024/01/07\&quot;             },             {                 \&quot;OR\&quot;: [                     {                         \&quot;key\&quot;: \&quot;label\&quot;,                         \&quot;value\&quot;: \&quot;Personal\&quot;                     },                     {                         \&quot;key\&quot;: \&quot;is\&quot;,                         \&quot;value\&quot;: \&quot;starred\&quot;                     }                 ]             }         ]     } } &#x60;&#x60;&#x60; This will return emails after 7th of Jan that are either starred or have the label \&quot;Personal\&quot;.  Note that this is the highest level of nesting we support, i.e. you can&#39;t add more AND/OR filters within the OR filter in the above example.
      * @param gmailSyncInput  (required)
      * @return SyncGmailRequestBuilder
      * @http.response.details

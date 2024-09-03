@@ -68,6 +68,7 @@ class ConnectDataSourceInput(
                             FreskdeskAuthentication,
                             S3Authentication,
                             GithubAuthentication,
+                            GuruAuthentication,
                         ]
             
             
@@ -142,6 +143,7 @@ from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.freskdesk_authentication import FreskdeskAuthentication
 from carbon.model.gitbook_authetication import GitbookAuthetication
 from carbon.model.github_authentication import GithubAuthentication
+from carbon.model.guru_authentication import GuruAuthentication
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.s3_authentication import S3Authentication

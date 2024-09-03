@@ -8,6 +8,7 @@ All URIs are relative to *https://api.carbon.ai*
 | [**connectDataSource**](IntegrationsApi.md#connectDataSource) | **POST** /integrations/connect | Connect Data Source |
 | [**connectFreshdesk**](IntegrationsApi.md#connectFreshdesk) | **POST** /integrations/freshdesk | Freshdesk Connect |
 | [**connectGitbook**](IntegrationsApi.md#connectGitbook) | **POST** /integrations/gitbook | Gitbook Connect |
+| [**connectGuru**](IntegrationsApi.md#connectGuru) | **POST** /integrations/guru | Guru Connect |
 | [**createAwsIamUser**](IntegrationsApi.md#createAwsIamUser) | **POST** /integrations/s3 | S3 Auth |
 | [**getOauthUrl**](IntegrationsApi.md#getOauthUrl) | **POST** /integrations/oauth_url | Get Oauth Url |
 | [**listConfluencePages**](IntegrationsApi.md#listConfluencePages) | **POST** /integrations/confluence/list | Confluence List |
@@ -477,6 +478,136 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **gitbookConnectRequest** | [**GitbookConnectRequest**](GitbookConnectRequest.md)|  | |
+
+### Return type
+
+[**GenericSuccessResponse**](GenericSuccessResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="connectGuru"></a>
+# **connectGuru**
+> GenericSuccessResponse connectGuru(guruConnectRequest).execute();
+
+Guru Connect
+
+You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    String username = "username_example";
+    String accessToken = "accessToken_example";
+    Object tags = null;
+    Integer chunkSize = 1500;
+    Integer chunkOverlap = 20;
+    Boolean skipEmbeddingGeneration = false;
+    EmbeddingGenerators embeddingModel = EmbeddingGenerators.fromValue("OPENAI");
+    Boolean generateSparseVectors = false;
+    Boolean prependFilenameToChunks = false;
+    Boolean syncFilesOnConnection = true;
+    String requestId = "requestId_example";
+    Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    try {
+      GenericSuccessResponse result = client
+              .integrations
+              .connectGuru(username, accessToken)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .syncFilesOnConnection(syncFilesOnConnection)
+              .requestId(requestId)
+              .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getSuccess());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#connectGuru");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<GenericSuccessResponse> response = client
+              .integrations
+              .connectGuru(username, accessToken)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .syncFilesOnConnection(syncFilesOnConnection)
+              .requestId(requestId)
+              .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#connectGuru");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **guruConnectRequest** | [**GuruConnectRequest**](GuruConnectRequest.md)|  | |
 
 ### Return type
 
@@ -2205,7 +2336,7 @@ public class Example {
 
 Gmail Sync
 
-Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  &lt;b&gt;label&lt;/b&gt;: Inbuilt Gmail labels, for example \&quot;Important\&quot; or a custom label you created.   &lt;b&gt;after&lt;/b&gt; or &lt;b&gt;before&lt;/b&gt;: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   &lt;b&gt;is&lt;/b&gt;: Can have the following values - starred, important, snoozed, and unread   &lt;b&gt;from&lt;/b&gt;: Email address of the sender   &lt;b&gt;to&lt;/b&gt;: Email address of the recipient    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {             \&quot;key\&quot;: \&quot;label\&quot;,             \&quot;value\&quot;: \&quot;Test\&quot;         } } &#x60;&#x60;&#x60; Which will list all emails that have the label \&quot;Test\&quot;.  You can use AND and OR operation in the following way: &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {         \&quot;AND\&quot;: [             {                 \&quot;key\&quot;: \&quot;after\&quot;,                 \&quot;value\&quot;: \&quot;2024/01/07\&quot;             },             {                 \&quot;OR\&quot;: [                     {                         \&quot;key\&quot;: \&quot;label\&quot;,                         \&quot;value\&quot;: \&quot;Personal\&quot;                     },                     {                         \&quot;key\&quot;: \&quot;is\&quot;,                         \&quot;value\&quot;: \&quot;starred\&quot;                     }                 ]             }         ]     } } &#x60;&#x60;&#x60; This will return emails after 7th of Jan that are either starred or have the label \&quot;Personal\&quot;.  Note that this is the highest level of nesting we support, i.e. you can&#39;t add more AND/OR filters within the OR filter in the above example.
+Once you have successfully connected your gmail account, you can choose which emails to sync with us using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations. For now, we support a limited set of keys listed below.  &lt;b&gt;label&lt;/b&gt;: Inbuilt Gmail labels, for example \&quot;Important\&quot; or a custom label you created.   &lt;b&gt;after&lt;/b&gt; or &lt;b&gt;before&lt;/b&gt;: A date in YYYY/mm/dd format (example 2023/12/31). Gets emails after/before a certain date. You can also use them in combination to get emails from a certain period.   &lt;b&gt;is&lt;/b&gt;: Can have the following values - starred, important, snoozed, and unread   &lt;b&gt;from&lt;/b&gt;: Email address of the sender   &lt;b&gt;to&lt;/b&gt;: Email address of the recipient   &lt;b&gt;in&lt;/b&gt;: Can have the following values - sent (sync emails sent by the user)   &lt;b&gt;has&lt;/b&gt;: Can have the following values - attachment (sync emails that have attachments)    Using keys or values outside of the specified values can lead to unexpected behaviour.  An example of a basic query with filters can be &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {             \&quot;key\&quot;: \&quot;label\&quot;,             \&quot;value\&quot;: \&quot;Test\&quot;         } } &#x60;&#x60;&#x60; Which will list all emails that have the label \&quot;Test\&quot;.  You can use AND and OR operation in the following way: &#x60;&#x60;&#x60;json {     \&quot;filters\&quot;: {         \&quot;AND\&quot;: [             {                 \&quot;key\&quot;: \&quot;after\&quot;,                 \&quot;value\&quot;: \&quot;2024/01/07\&quot;             },             {                 \&quot;OR\&quot;: [                     {                         \&quot;key\&quot;: \&quot;label\&quot;,                         \&quot;value\&quot;: \&quot;Personal\&quot;                     },                     {                         \&quot;key\&quot;: \&quot;is\&quot;,                         \&quot;value\&quot;: \&quot;starred\&quot;                     }                 ]             }         ]     } } &#x60;&#x60;&#x60; This will return emails after 7th of Jan that are either starred or have the label \&quot;Personal\&quot;.  Note that this is the highest level of nesting we support, i.e. you can&#39;t add more AND/OR filters within the OR filter in the above example.
 
 ### Example
 ```java

@@ -134,6 +134,8 @@ from carbon.pydantic.github_connect_request import GithubConnectRequest
 from carbon.pydantic.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.pydantic.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.pydantic.gmail_sync_input import GmailSyncInput
+from carbon.pydantic.guru_authentication import GuruAuthentication
+from carbon.pydantic.guru_connect_request import GuruConnectRequest
 from carbon.pydantic.http_validation_error import HTTPValidationError
 from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.hybrid_search_tuning_params import HybridSearchTuningParams

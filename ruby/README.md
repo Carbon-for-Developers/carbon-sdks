@@ -45,6 +45,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
+  * [`carbon.integrations.connect_guru`](#carbonintegrationsconnect_guru)
   * [`carbon.integrations.create_aws_iam_user`](#carbonintegrationscreate_aws_iam_user)
   * [`carbon.integrations.get_oauth_url`](#carbonintegrationsget_oauth_url)
   * [`carbon.integrations.list_confluence_pages`](#carbonintegrationslist_confluence_pages)
@@ -1555,6 +1556,70 @@ via list items endpoint
 ---
 
 
+### `carbon.integrations.connect_guru`<a id="carbonintegrationsconnect_guru"></a>
+
+You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here
+https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.connect_guru(
+  username: "string_example",
+  access_token: "string_example",
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
+  request_id: "string_example",
+  sync_source_items: true,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
+        "split_rows" => false,
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### username: `String`<a id="username-string"></a>
+##### access_token: `String`<a id="access_token-string"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/guru` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.integrations.create_aws_iam_user`<a id="carbonintegrationscreate_aws_iam_user"></a>
 
 This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
@@ -2268,6 +2333,8 @@ You can also use them in combination to get emails from a certain period.
 <b>is</b>: Can have the following values - starred, important, snoozed, and unread  
 <b>from</b>: Email address of the sender  
 <b>to</b>: Email address of the recipient  
+<b>in</b>: Can have the following values - sent (sync emails sent by the user)  
+<b>has</b>: Can have the following values - attachment (sync emails that have attachments)  
 
 Using keys or values outside of the specified values can lead to unexpected behaviour.
 

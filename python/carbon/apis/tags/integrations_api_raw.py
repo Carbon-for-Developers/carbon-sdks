@@ -13,6 +13,7 @@ from carbon.paths.integrations_items_sync_cancel.post import CancelRaw
 from carbon.paths.integrations_connect.post import ConnectDataSourceRaw
 from carbon.paths.integrations_freshdesk.post import ConnectFreshdeskRaw
 from carbon.paths.integrations_gitbook.post import ConnectGitbookRaw
+from carbon.paths.integrations_guru.post import ConnectGuruRaw
 from carbon.paths.integrations_s3.post import CreateAwsIamUserRaw
 from carbon.paths.integrations_oauth_url.post import GetOauthUrlRaw
 from carbon.paths.integrations_confluence_list.post import ListConfluencePagesRaw
@@ -41,6 +42,7 @@ class IntegrationsApiRaw(
     ConnectDataSourceRaw,
     ConnectFreshdeskRaw,
     ConnectGitbookRaw,
+    ConnectGuruRaw,
     CreateAwsIamUserRaw,
     GetOauthUrlRaw,
     ListConfluencePagesRaw,

@@ -59,6 +59,8 @@
 
 * `SLACK` (value: `"SLACK"`)
 
+* `GURU` (value: `"GURU"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)
@@ -100,6 +102,8 @@
 * `WEBM` (value: `"WEBM"`)
 
 * `EML` (value: `"EML"`)
+
+* `MSG` (value: `"MSG"`)
 
 
 

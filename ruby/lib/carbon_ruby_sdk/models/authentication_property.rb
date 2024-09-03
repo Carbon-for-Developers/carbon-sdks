@@ -109,6 +109,7 @@ module Carbon
       :'FreskdeskAuthentication',
       :'GitbookAuthetication',
       :'GithubAuthentication',
+      :'GuruAuthentication',
       :'NotionAuthentication',
       :'OAuthAuthentication',
       :'S3Authentication',
