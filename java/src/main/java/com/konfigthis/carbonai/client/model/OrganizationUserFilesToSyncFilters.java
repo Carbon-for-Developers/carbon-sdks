@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes2;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -127,7 +127,7 @@ public class OrganizationUserFilesToSyncFilters {
 
   public static final String SERIALIZED_NAME_FILE_TYPES_AT_SOURCE = "file_types_at_source";
   @SerializedName(SERIALIZED_NAME_FILE_TYPES_AT_SOURCE)
-  private List<HelpdeskFileTypes> fileTypesAtSource = null;
+  private List<HSNFileTypes2> fileTypesAtSource = null;
 
   public OrganizationUserFilesToSyncFilters() {
   }
@@ -701,7 +701,7 @@ public class OrganizationUserFilesToSyncFilters {
   }
 
 
-  public OrganizationUserFilesToSyncFilters fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+  public OrganizationUserFilesToSyncFilters fileTypesAtSource(List<HSNFileTypes2> fileTypesAtSource) {
     
     
     
@@ -710,7 +710,7 @@ public class OrganizationUserFilesToSyncFilters {
     return this;
   }
 
-  public OrganizationUserFilesToSyncFilters addFileTypesAtSourceItem(HelpdeskFileTypes fileTypesAtSourceItem) {
+  public OrganizationUserFilesToSyncFilters addFileTypesAtSourceItem(HSNFileTypes2 fileTypesAtSourceItem) {
     if (this.fileTypesAtSource == null) {
       this.fileTypesAtSource = new ArrayList<>();
     }
@@ -725,12 +725,12 @@ public class OrganizationUserFilesToSyncFilters {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter files based on their type at the source (for example help center tickets and articles)")
 
-  public List<HelpdeskFileTypes> getFileTypesAtSource() {
+  public List<HSNFileTypes2> getFileTypesAtSource() {
     return fileTypesAtSource;
   }
 
 
-  public void setFileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+  public void setFileTypesAtSource(List<HSNFileTypes2> fileTypesAtSource) {
     
     
     

@@ -37,6 +37,9 @@ class RawTextInput(BaseModel):
 
     cold_storage_params: typing.Optional[ColdStorageProps] = Field(None, alias='cold_storage_params')
 
+    # If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    generate_chunks_only: typing.Optional[bool] = Field(None, alias='generate_chunks_only')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

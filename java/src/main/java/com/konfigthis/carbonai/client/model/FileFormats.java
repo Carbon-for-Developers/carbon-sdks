@@ -83,6 +83,8 @@ import com.google.gson.stream.JsonWriter;
   
   GURU("GURU"),
   
+  SERVICENOW("SERVICENOW"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

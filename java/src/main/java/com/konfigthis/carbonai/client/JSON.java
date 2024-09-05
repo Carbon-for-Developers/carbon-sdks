@@ -198,6 +198,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SentWebhookPayload.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SentWebhookPayloadObject.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SentWebhookRequestBody.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ServiceNowAuthentication.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ServiceNowCredentials.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SharepointAuthentication.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SingleChunksAndEmbeddingsUploadInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SitemapScrapeRequest.CustomTypeAdapterFactory());

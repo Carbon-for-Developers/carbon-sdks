@@ -430,6 +430,7 @@ func main() {
     client := carbon.NewAPIClient(configuration)
 
     fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+    servicenowCredentials := *carbon.NewServiceNowCredentialsNullable()
     
     oAuthURLRequest := *carbon.NewOAuthURLRequest(
         null,
@@ -460,6 +461,7 @@ func main() {
     oAuthURLRequest.SetIncrementalSync(false)
     oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
     oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
+    oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,

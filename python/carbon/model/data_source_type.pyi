@@ -92,6 +92,10 @@ class DataSourceType(
         return cls("OUTLOOK")
     
     @schemas.classproperty
+    def SERVICENOW(cls):
+        return cls("SERVICENOW")
+    
+    @schemas.classproperty
     def TEXT(cls):
         return cls("TEXT")
     

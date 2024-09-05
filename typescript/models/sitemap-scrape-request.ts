@@ -121,5 +121,11 @@ export interface SitemapScrapeRequest {
      * @memberof SitemapScrapeRequest
      */
     'download_css_and_media'?: boolean | null;
+    /**
+     * If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+     * @type {boolean}
+     * @memberof SitemapScrapeRequest
+     */
+    'generate_chunks_only'?: boolean;
 }
 

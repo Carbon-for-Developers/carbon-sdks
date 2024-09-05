@@ -40,6 +40,7 @@ from carbon.model.zendesk_authentication import ZendeskAuthentication as Zendesk
 from carbon.model.o_auth_authentication import OAuthAuthentication as OAuthAuthenticationSchema
 from carbon.model.confluence_authentication import ConfluenceAuthentication as ConfluenceAuthenticationSchema
 from carbon.model.sync_options import SyncOptions as SyncOptionsSchema
+from carbon.model.service_now_authentication import ServiceNowAuthentication as ServiceNowAuthenticationSchema
 from carbon.model.gitbook_authetication import GitbookAuthetication as GitbookAutheticationSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.s3_authentication import S3Authentication as S3AuthenticationSchema
@@ -53,6 +54,7 @@ from carbon.type.salesforce_authentication import SalesforceAuthentication
 from carbon.type.freskdesk_authentication import FreskdeskAuthentication
 from carbon.type.connect_data_source_response import ConnectDataSourceResponse
 from carbon.type.gitbook_authetication import GitbookAuthetication
+from carbon.type.service_now_authentication import ServiceNowAuthentication
 from carbon.type.notion_authentication import NotionAuthentication
 from carbon.type.zotero_authentication import ZoteroAuthentication
 from carbon.type.sharepoint_authentication import SharepointAuthentication
@@ -80,6 +82,7 @@ from carbon.pydantic.notion_authentication import NotionAuthentication as Notion
 from carbon.pydantic.github_authentication import GithubAuthentication as GithubAuthenticationPydantic
 from carbon.pydantic.freskdesk_authentication import FreskdeskAuthentication as FreskdeskAuthenticationPydantic
 from carbon.pydantic.guru_authentication import GuruAuthentication as GuruAuthenticationPydantic
+from carbon.pydantic.service_now_authentication import ServiceNowAuthentication as ServiceNowAuthenticationPydantic
 from carbon.pydantic.zotero_authentication import ZoteroAuthentication as ZoteroAuthenticationPydantic
 from carbon.pydantic.gitbook_authetication import GitbookAuthetication as GitbookAutheticationPydantic
 from carbon.pydantic.connect_data_source_input import ConnectDataSourceInput as ConnectDataSourceInputPydantic
@@ -157,7 +160,7 @@ class BaseApi(api_client.Api):
 
     def _connect_data_source_mapped_args(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -373,7 +376,7 @@ class ConnectDataSourceRaw(BaseApi):
 
     async def aconnect_data_source(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
         **kwargs,
     ) -> typing.Union[
@@ -392,7 +395,7 @@ class ConnectDataSourceRaw(BaseApi):
     
     def connect_data_source(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -411,7 +414,7 @@ class ConnectDataSource(BaseApi):
 
     async def aconnect_data_source(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
         validate: bool = False,
         **kwargs,
@@ -428,7 +431,7 @@ class ConnectDataSource(BaseApi):
     
     def connect_data_source(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
         validate: bool = False,
     ) -> ConnectDataSourceResponsePydantic:
@@ -446,7 +449,7 @@ class ApiForpost(BaseApi):
 
     async def apost(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
         **kwargs,
     ) -> typing.Union[
@@ -465,7 +468,7 @@ class ApiForpost(BaseApi):
     
     def post(
         self,
-        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication],
+        authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication],
         sync_options: typing.Optional[SyncOptions] = None,
     ) -> typing.Union[
         ApiResponseFor200,

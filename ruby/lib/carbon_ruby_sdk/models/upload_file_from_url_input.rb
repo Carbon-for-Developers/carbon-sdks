@@ -48,6 +48,9 @@ module Carbon
 
     attr_accessor :cold_storage_params
 
+    # If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    attr_accessor :generate_chunks_only
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -68,7 +71,8 @@ module Carbon
         :'include_speaker_labels' => :'include_speaker_labels',
         :'media_type' => :'media_type',
         :'split_rows' => :'split_rows',
-        :'cold_storage_params' => :'cold_storage_params'
+        :'cold_storage_params' => :'cold_storage_params',
+        :'generate_chunks_only' => :'generate_chunks_only'
       }
     end
 
@@ -97,7 +101,8 @@ module Carbon
         :'include_speaker_labels' => :'Boolean',
         :'media_type' => :'FileContentTypesNullable',
         :'split_rows' => :'Boolean',
-        :'cold_storage_params' => :'ColdStorageProps'
+        :'cold_storage_params' => :'ColdStorageProps',
+        :'generate_chunks_only' => :'Boolean'
       }
     end
 
@@ -219,6 +224,12 @@ module Carbon
       if attributes.key?(:'cold_storage_params')
         self.cold_storage_params = attributes[:'cold_storage_params']
       end
+
+      if attributes.key?(:'generate_chunks_only')
+        self.generate_chunks_only = attributes[:'generate_chunks_only']
+      else
+        self.generate_chunks_only = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -261,7 +272,8 @@ module Carbon
           include_speaker_labels == o.include_speaker_labels &&
           media_type == o.media_type &&
           split_rows == o.split_rows &&
-          cold_storage_params == o.cold_storage_params
+          cold_storage_params == o.cold_storage_params &&
+          generate_chunks_only == o.generate_chunks_only
     end
 
     # @see the `==` method
@@ -273,7 +285,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, transcription_service, include_speaker_labels, media_type, split_rows, cold_storage_params].hash
+      [url, file_name, chunk_size, chunk_overlap, skip_embedding_generation, set_page_as_boundary, embedding_model, generate_sparse_vectors, use_textract, prepend_filename_to_chunks, max_items_per_chunk, parse_pdf_tables_with_ocr, detect_audio_language, transcription_service, include_speaker_labels, media_type, split_rows, cold_storage_params, generate_chunks_only].hash
     end
 
     # Builds the object from hash

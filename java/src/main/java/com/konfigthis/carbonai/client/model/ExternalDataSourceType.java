@@ -55,7 +55,9 @@ import com.google.gson.stream.JsonWriter;
   
   ZENDESK("ZENDESK"),
   
-  ZOTERO("ZOTERO");
+  ZOTERO("ZOTERO"),
+  
+  SERVICENOW("SERVICENOW");
 
   private String value;
 

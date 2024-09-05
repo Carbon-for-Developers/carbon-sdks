@@ -18,9 +18,9 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 from carbon.pydantic.data_source_type import DataSourceType
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
-from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
 from carbon.pydantic.organization_user_files_to_sync_filters_external_urls import OrganizationUserFilesToSyncFiltersExternalUrls
+from carbon.pydantic.organization_user_files_to_sync_filters_file_types_at_source import OrganizationUserFilesToSyncFiltersFileTypesAtSource
 from carbon.pydantic.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
@@ -74,8 +74,7 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
 
     external_urls: typing.Optional[OrganizationUserFilesToSyncFiltersExternalUrls] = Field(None, alias='external_urls')
 
-    # Filter files based on their type at the source (for example help center tickets and articles)
-    file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = Field(None, alias='file_types_at_source')
+    file_types_at_source: typing.Optional[OrganizationUserFilesToSyncFiltersFileTypesAtSource] = Field(None, alias='file_types_at_source')
 
     model_config = ConfigDict(
         protected_namespaces=(),

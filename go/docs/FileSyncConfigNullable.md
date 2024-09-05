@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoSyncedSourceTypes** | Pointer to [**[]HelpdeskFileTypes**](HelpdeskFileTypes.md) | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced | [optional] [default to ["ARTICLE"]]
+**AutoSyncedSourceTypes** | Pointer to [**[]HSNFileTypes3**](HSNFileTypes3.md) | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced | [optional] [default to ["ARTICLE"]]
 **SyncAttachments** | Pointer to **bool** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets | [optional] [default to false]
 **DetectAudioLanguage** | Pointer to **bool** | Detect audio language before transcription for audio files | [optional] [default to false]
 **TranscriptionService** | Pointer to [**NullableTranscriptionServiceNullable**](TranscriptionServiceNullable.md) |  | [optional] 
 **IncludeSpeakerLabels** | Pointer to **bool** | Detect multiple speakers and label segments of speech by speaker for audio files. | [optional] [default to false]
 **SplitRows** | Pointer to **bool** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false]
+**GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
 
 ## Methods
 
@@ -32,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAutoSyncedSourceTypes
 
-`func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypes() []HelpdeskFileTypes`
+`func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypes() []HSNFileTypes3`
 
 GetAutoSyncedSourceTypes returns the AutoSyncedSourceTypes field if non-nil, zero value otherwise.
 
 ### GetAutoSyncedSourceTypesOk
 
-`func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypesOk() (*[]HelpdeskFileTypes, bool)`
+`func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypesOk() (*[]HSNFileTypes3, bool)`
 
 GetAutoSyncedSourceTypesOk returns a tuple with the AutoSyncedSourceTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoSyncedSourceTypes
 
-`func (o *FileSyncConfigNullable) SetAutoSyncedSourceTypes(v []HelpdeskFileTypes)`
+`func (o *FileSyncConfigNullable) SetAutoSyncedSourceTypes(v []HSNFileTypes3)`
 
 SetAutoSyncedSourceTypes sets AutoSyncedSourceTypes field to given value.
 
@@ -189,6 +190,31 @@ SetSplitRows sets SplitRows field to given value.
 `func (o *FileSyncConfigNullable) HasSplitRows() bool`
 
 HasSplitRows returns a boolean if a field has been set.
+
+### GetGenerateChunksOnly
+
+`func (o *FileSyncConfigNullable) GetGenerateChunksOnly() bool`
+
+GetGenerateChunksOnly returns the GenerateChunksOnly field if non-nil, zero value otherwise.
+
+### GetGenerateChunksOnlyOk
+
+`func (o *FileSyncConfigNullable) GetGenerateChunksOnlyOk() (*bool, bool)`
+
+GetGenerateChunksOnlyOk returns a tuple with the GenerateChunksOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateChunksOnly
+
+`func (o *FileSyncConfigNullable) SetGenerateChunksOnly(v bool)`
+
+SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
+
+### HasGenerateChunksOnly
+
+`func (o *FileSyncConfigNullable) HasGenerateChunksOnly() bool`
+
+HasGenerateChunksOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

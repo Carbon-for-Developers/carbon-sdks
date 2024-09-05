@@ -17,6 +17,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
 class RequiredOAuthURLRequest(TypedDict):
     service: ExternalDataSourceType
@@ -77,13 +78,15 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
     incremental_sync: bool
 
     file_sync_config: typing.Optional[FileSyncConfigNullable]
 
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     automatically_open_file_picker: typing.Optional[bool]
+
+    servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable]
 
 class OAuthURLRequest(RequiredOAuthURLRequest, OptionalOAuthURLRequest):
     pass

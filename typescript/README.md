@@ -444,7 +444,7 @@ Flag to control whether or not to perform a high accuracy embedding search. By d
 
 ##### rerank: [`RerankParamsNullable`](./models/rerank-params-nullable.ts)<a id="rerank-rerankparamsnullablemodelsrerank-params-nullablets"></a>
 
-##### file_types_at_source: [`HelpdeskFileTypes`](./models/helpdesk-file-types.ts)[]<a id="file_types_at_source-helpdeskfiletypesmodelshelpdesk-file-typests"></a>
+##### file_types_at_source: [`AutoSyncedSourceTypesPropertyInner`](./models/auto-synced-source-types-property-inner.ts)[]<a id="file_types_at_source-autosyncedsourcetypespropertyinnermodelsauto-synced-source-types-property-innerts"></a>
 
 Filter files based on their type at the source (for example help center tickets and articles)
 
@@ -1111,6 +1111,7 @@ const uploadResponse = await carbon.files.upload({
   mediaType: "TEXT",
   splitRows: false,
   enableColdStorage: false,
+  generateChunksOnly: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1187,6 +1188,10 @@ Enable cold storage for the file. If set to true, the file will be moved to cold
 
 Time in seconds after which the file will be moved to cold storage.
 
+##### generateChunksOnly: `boolean`<a id="generatechunksonly-boolean"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1221,6 +1226,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   include_speaker_labels: false,
   media_type: "TEXT",
   split_rows: false,
+  generate_chunks_only: false,
 });
 ```
 
@@ -1264,6 +1270,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### cold_storage_params: [`ColdStorageProps`](./models/cold-storage-props.ts)<a id="cold_storage_params-coldstoragepropsmodelscold-storage-propsts"></a>
 
+##### generate_chunks_only: `boolean`<a id="generate_chunks_only-boolean"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1298,6 +1308,7 @@ const uploadTextResponse = await carbon.files.uploadText({
   skip_embedding_generation: false,
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
+  generate_chunks_only: false,
 });
 ```
 
@@ -1320,6 +1331,10 @@ const uploadTextResponse = await carbon.files.uploadText({
 ##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
 
 ##### cold_storage_params: [`ColdStorageProps`](./models/cold-storage-props.ts)<a id="cold_storage_params-coldstoragepropsmodelscold-storage-propsts"></a>
+
+##### generate_chunks_only: `boolean`<a id="generate_chunks_only-boolean"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1742,13 +1757,15 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 ##### automatically_open_file_picker: `boolean`<a id="automatically_open_file_picker-boolean"></a>
 
 Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+
+##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./models/service-now-credentials-nullable.ts)<a id="servicenow_credentials-servicenowcredentialsnullablemodelsservice-now-credentials-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2076,7 +2093,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
@@ -2183,7 +2200,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `boolean`<a id="incremental_sync-boolean"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
@@ -3142,6 +3159,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   url_paths_to_exclude: [],
   urls_to_scrape: [],
   download_css_and_media: false,
+  generate_chunks_only: false,
 });
 ```
 
@@ -3189,6 +3207,10 @@ You can submit a subset of URLs from the sitemap that should be scraped. To get 
 
 Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
 
+##### generate_chunks_only: `boolean`<a id="generate_chunks_only-boolean"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -3229,6 +3251,7 @@ const scrapeWebResponse = await carbon.utilities.scrapeWeb([
     embedding_model: "OPENAI",
     url_paths_to_include: [],
     download_css_and_media: false,
+    generate_chunks_only: false,
   },
 ]);
 ```

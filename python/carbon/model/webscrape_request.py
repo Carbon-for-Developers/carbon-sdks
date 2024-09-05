@@ -250,6 +250,7 @@ class WebscrapeRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            generate_chunks_only = schemas.BoolSchema
             __annotations__ = {
                 "url": url,
                 "tags": tags,
@@ -267,6 +268,7 @@ class WebscrapeRequest(
                 "embedding_model": embedding_model,
                 "url_paths_to_include": url_paths_to_include,
                 "download_css_and_media": download_css_and_media,
+                "generate_chunks_only": generate_chunks_only,
             }
     
     url: MetaOapg.properties.url
@@ -320,9 +322,12 @@ class WebscrapeRequest(
     def __getitem__(self, name: typing_extensions.Literal["download_css_and_media"]) -> MetaOapg.properties.download_css_and_media: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["generate_chunks_only"]) -> MetaOapg.properties.generate_chunks_only: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "recursion_depth", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "download_css_and_media", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "recursion_depth", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "download_css_and_media", "generate_chunks_only", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -376,9 +381,12 @@ class WebscrapeRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["download_css_and_media"]) -> typing.Union[MetaOapg.properties.download_css_and_media, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["generate_chunks_only"]) -> typing.Union[MetaOapg.properties.generate_chunks_only, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "recursion_depth", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "download_css_and_media", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "recursion_depth", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "download_css_and_media", "generate_chunks_only", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -401,6 +409,7 @@ class WebscrapeRequest(
         embedding_model: typing.Union['EmbeddingGenerators', schemas.Unset] = schemas.unset,
         url_paths_to_include: typing.Union['WebscrapeRequestUrlPathsToInclude', schemas.Unset] = schemas.unset,
         download_css_and_media: typing.Union[MetaOapg.properties.download_css_and_media, None, bool, schemas.Unset] = schemas.unset,
+        generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WebscrapeRequest':
@@ -423,6 +432,7 @@ class WebscrapeRequest(
             embedding_model=embedding_model,
             url_paths_to_include=url_paths_to_include,
             download_css_and_media=download_css_and_media,
+            generate_chunks_only=generate_chunks_only,
             _configuration=_configuration,
             **kwargs,
         )

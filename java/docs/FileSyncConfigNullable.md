@@ -8,12 +8,13 @@ Used to configure file syncing for certain connectors when sync_files_on_connect
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**autoSyncedSourceTypes** | **List&lt;HelpdeskFileTypes&gt;** | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced |  [optional] |
+|**autoSyncedSourceTypes** | **List&lt;HSNFileTypes3&gt;** | File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced |  [optional] |
 |**syncAttachments** | **Boolean** | Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets |  [optional] |
 |**detectAudioLanguage** | **Boolean** | Detect audio language before transcription for audio files |  [optional] |
 |**transcriptionService** | **TranscriptionServiceNullable** |  |  [optional] |
 |**includeSpeakerLabels** | **Boolean** | Detect multiple speakers and label segments of speech by speaker for audio files. |  [optional] |
 |**splitRows** | **Boolean** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. |  [optional] |
+|**generateChunksOnly** | **Boolean** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. |  [optional] |
 
 
 

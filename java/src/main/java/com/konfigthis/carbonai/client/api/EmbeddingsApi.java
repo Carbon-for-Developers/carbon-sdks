@@ -13,7 +13,7 @@ import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes1;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;

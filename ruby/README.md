@@ -456,7 +456,7 @@ default, this is set to false. If true, the search may return more accurate
 results, but may take longer to complete.
 
 ##### rerank: [`RerankParamsNullable`](./lib/carbon_ruby_sdk/models/rerank_params_nullable.rb)<a id="rerank-rerankparamsnullablelibcarbon_ruby_sdkmodelsrerank_params_nullablerb"></a>
-##### file_types_at_source: Array<[`HelpdeskFileTypes`](./lib/carbon_ruby_sdk/models/helpdesk_file_types.rb)><a id="file_types_at_source-array"></a>
+##### file_types_at_source: Array<[`AutoSyncedSourceTypesPropertyInner`](./lib/carbon_ruby_sdk/models/auto_synced_source_types_property_inner.rb)><a id="file_types_at_source-array"></a>
 Filter files based on their type at the source (for example help center tickets
 and articles)
 
@@ -1153,6 +1153,7 @@ result = carbon.files.upload(
   split_rows: false,
   enable_cold_storage: false,
   hot_storage_time_to_live: 1,
+  generate_chunks_only: false,
 )
 p result
 ```
@@ -1221,6 +1222,10 @@ storage after a certain period of inactivity. Default is false.
 ##### hot_storage_time_to_live: `Integer`<a id="hot_storage_time_to_live-integer"></a>
 Time in seconds after which the file will be moved to cold storage.
 
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
+If this flag is enabled, the file will be chunked and stored with Carbon, but no
+embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1262,6 +1267,7 @@ result = carbon.files.upload_from_url(
   cold_storage_params: {
         "enable_cold_storage" => false,
     },
+  generate_chunks_only: false,
 )
 p result
 ```
@@ -1288,6 +1294,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### media_type: [`FileContentTypesNullable`](./lib/carbon_ruby_sdk/models/file_content_types_nullable.rb)<a id="media_type-filecontenttypesnullablelibcarbon_ruby_sdkmodelsfile_content_types_nullablerb"></a>
 ##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
 ##### cold_storage_params: [`ColdStorageProps`](./lib/carbon_ruby_sdk/models/cold_storage_props.rb)<a id="cold_storage_params-coldstoragepropslibcarbon_ruby_sdkmodelscold_storage_propsrb"></a>
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
+If this flag is enabled, the file will be chunked and stored with Carbon, but no
+embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1329,6 +1339,7 @@ result = carbon.files.upload_text(
   cold_storage_params: {
         "enable_cold_storage" => false,
     },
+  generate_chunks_only: false,
 )
 p result
 ```
@@ -1344,6 +1355,10 @@ p result
 ##### embedding_model: [`EmbeddingGeneratorsNullable`](./lib/carbon_ruby_sdk/models/embedding_generators_nullable.rb)<a id="embedding_model-embeddinggeneratorsnullablelibcarbon_ruby_sdkmodelsembedding_generators_nullablerb"></a>
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### cold_storage_params: [`ColdStorageProps`](./lib/carbon_ruby_sdk/models/cold_storage_props.rb)<a id="cold_storage_params-coldstoragepropslibcarbon_ruby_sdkmodelscold_storage_propsrb"></a>
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
+If this flag is enabled, the file will be chunked and stored with Carbon, but no
+embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1463,6 +1478,7 @@ result = carbon.integrations.connect_freshdesk(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
 )
 p result
@@ -1584,6 +1600,7 @@ result = carbon.integrations.connect_guru(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
 )
 p result
@@ -1714,8 +1731,15 @@ result = carbon.integrations.get_oauth_url(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
   automatically_open_file_picker: true,
+  servicenow_credentials: {
+        "instance_subdomain" => "instance_subdomain_example",
+        "client_id" => "client_id_example",
+        "client_secret" => "client_secret_example",
+        "redirect_uri" => "redirect_uri_example",
+    },
 )
 p result
 ```
@@ -1775,7 +1799,7 @@ via list items endpoint
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE,
-NOTION, SHAREPOINT. It will be ignored for other data sources.
+NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 ##### automatically_open_file_picker: `Boolean`<a id="automatically_open_file_picker-boolean"></a>
@@ -1783,6 +1807,7 @@ Automatically open source file picker after the OAuth flow is complete. This
 flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT.
 It will be ignored for other data sources.
 
+##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./lib/carbon_ruby_sdk/models/service_now_credentials_nullable.rb)<a id="servicenow_credentials-servicenowcredentialsnullablelibcarbon_ruby_sdkmodelsservice_now_credentials_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -2087,6 +2112,7 @@ result = carbon.integrations.sync_confluence(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
 )
 p result
@@ -2114,7 +2140,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE,
-NOTION, SHAREPOINT. It will be ignored for other data sources.
+NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -2194,6 +2220,7 @@ result = carbon.integrations.sync_files(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
 )
 p result
@@ -2221,7 +2248,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 Only sync files if they have not already been synced or if the embedding
 properties have changed. This flag is currently supported by ONEDRIVE,
 GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE,
-NOTION, SHAREPOINT. It will be ignored for other data sources.
+NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
@@ -2400,6 +2427,7 @@ result = carbon.integrations.sync_gmail(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
   incremental_sync: false,
 )
@@ -2521,6 +2549,7 @@ result = carbon.integrations.sync_outlook(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
   incremental_sync: false,
 )
@@ -2666,6 +2695,7 @@ result = carbon.integrations.sync_s3_files(
         "transcription_service" => "assemblyai",
         "include_speaker_labels" => false,
         "split_rows" => false,
+        "generate_chunks_only" => false,
     },
 )
 p result
@@ -3184,6 +3214,7 @@ result = carbon.utilities.scrape_sitemap(
   url_paths_to_exclude: [],
   urls_to_scrape: [],
   download_css_and_media: false,
+  generate_chunks_only: false,
 )
 p result
 ```
@@ -3222,6 +3253,10 @@ all URLs from the sitemap will be scraped.
 Whether the scraper should download css and media from the page (images, fonts,
 etc). Scrapes might take longer to finish with this flag enabled, but the
 success rate is improved.
+
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
+If this flag is enabled, the file will be chunked and stored with Carbon, but no
+embeddings will be generated. This overrides the skip_embedding_generation flag.
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
@@ -3264,6 +3299,7 @@ result = carbon.utilities.scrape_web(
             "embedding_model" => "OPENAI",
             "url_paths_to_include" => [],
             "download_css_and_media" => false,
+            "generate_chunks_only" => false,
         }
     ],
 )

@@ -119,6 +119,10 @@ public class WebscrapeRequest {
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_CSS_AND_MEDIA)
   private Boolean downloadCssAndMedia = false;
 
+  public static final String SERIALIZED_NAME_GENERATE_CHUNKS_ONLY = "generate_chunks_only";
+  @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
+  private Boolean generateChunksOnly = false;
+
   public WebscrapeRequest() {
   }
 
@@ -635,6 +639,35 @@ public class WebscrapeRequest {
     this.downloadCssAndMedia = downloadCssAndMedia;
   }
 
+
+  public WebscrapeRequest generateChunksOnly(Boolean generateChunksOnly) {
+    
+    
+    
+    
+    this.generateChunksOnly = generateChunksOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+   * @return generateChunksOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.")
+
+  public Boolean getGenerateChunksOnly() {
+    return generateChunksOnly;
+  }
+
+
+  public void setGenerateChunksOnly(Boolean generateChunksOnly) {
+    
+    
+    
+    this.generateChunksOnly = generateChunksOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -705,7 +738,8 @@ public class WebscrapeRequest {
         Objects.equals(this.cssSelectorsToSkip, webscrapeRequest.cssSelectorsToSkip) &&
         Objects.equals(this.embeddingModel, webscrapeRequest.embeddingModel) &&
         Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude) &&
-        Objects.equals(this.downloadCssAndMedia, webscrapeRequest.downloadCssAndMedia)&&
+        Objects.equals(this.downloadCssAndMedia, webscrapeRequest.downloadCssAndMedia) &&
+        Objects.equals(this.generateChunksOnly, webscrapeRequest.generateChunksOnly)&&
         Objects.equals(this.additionalProperties, webscrapeRequest.additionalProperties);
   }
 
@@ -715,7 +749,7 @@ public class WebscrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, additionalProperties);
+    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, generateChunksOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -745,6 +779,7 @@ public class WebscrapeRequest {
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
     sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
+    sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -784,6 +819,7 @@ public class WebscrapeRequest {
     openapiFields.add("embedding_model");
     openapiFields.add("url_paths_to_include");
     openapiFields.add("download_css_and_media");
+    openapiFields.add("generate_chunks_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

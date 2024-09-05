@@ -28,6 +28,9 @@ module Carbon
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     attr_accessor :split_rows
 
+    # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    attr_accessor :generate_chunks_only
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -36,7 +39,8 @@ module Carbon
         :'detect_audio_language' => :'detect_audio_language',
         :'transcription_service' => :'transcription_service',
         :'include_speaker_labels' => :'include_speaker_labels',
-        :'split_rows' => :'split_rows'
+        :'split_rows' => :'split_rows',
+        :'generate_chunks_only' => :'generate_chunks_only'
       }
     end
 
@@ -48,12 +52,13 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auto_synced_source_types' => :'Array<HelpdeskFileTypes>',
+        :'auto_synced_source_types' => :'Array<AutoSyncedSourceTypesPropertyInner>',
         :'sync_attachments' => :'Boolean',
         :'detect_audio_language' => :'Boolean',
         :'transcription_service' => :'TranscriptionServiceNullable',
         :'include_speaker_labels' => :'Boolean',
-        :'split_rows' => :'Boolean'
+        :'split_rows' => :'Boolean',
+        :'generate_chunks_only' => :'Boolean'
       }
     end
 
@@ -112,6 +117,12 @@ module Carbon
       else
         self.split_rows = false
       end
+
+      if attributes.key?(:'generate_chunks_only')
+        self.generate_chunks_only = attributes[:'generate_chunks_only']
+      else
+        self.generate_chunks_only = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +148,8 @@ module Carbon
           detect_audio_language == o.detect_audio_language &&
           transcription_service == o.transcription_service &&
           include_speaker_labels == o.include_speaker_labels &&
-          split_rows == o.split_rows
+          split_rows == o.split_rows &&
+          generate_chunks_only == o.generate_chunks_only
     end
 
     # @see the `==` method
@@ -149,7 +161,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only].hash
     end
 
     # Builds the object from hash

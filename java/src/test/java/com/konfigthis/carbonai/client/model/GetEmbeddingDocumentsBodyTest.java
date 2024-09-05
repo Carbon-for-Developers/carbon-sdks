@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes1;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import io.swagger.annotations.ApiModel;

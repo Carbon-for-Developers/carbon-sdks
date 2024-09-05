@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **UrlPathsToExclude** | Pointer to **[]string** | URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input | [optional] [default to []]
 **UrlsToScrape** | Pointer to **[]string** | You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped. | [optional] [default to []]
 **DownloadCssAndMedia** | Pointer to **NullableBool** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. | [optional] [default to false]
+**GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
 
 ## Methods
 
@@ -611,6 +612,31 @@ HasDownloadCssAndMedia returns a boolean if a field has been set.
 `func (o *SitemapScrapeRequest) UnsetDownloadCssAndMedia()`
 
 UnsetDownloadCssAndMedia ensures that no value is present for DownloadCssAndMedia, not even an explicit nil
+### GetGenerateChunksOnly
+
+`func (o *SitemapScrapeRequest) GetGenerateChunksOnly() bool`
+
+GetGenerateChunksOnly returns the GenerateChunksOnly field if non-nil, zero value otherwise.
+
+### GetGenerateChunksOnlyOk
+
+`func (o *SitemapScrapeRequest) GetGenerateChunksOnlyOk() (*bool, bool)`
+
+GetGenerateChunksOnlyOk returns a tuple with the GenerateChunksOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateChunksOnly
+
+`func (o *SitemapScrapeRequest) SetGenerateChunksOnly(v bool)`
+
+SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
+
+### HasGenerateChunksOnly
+
+`func (o *SitemapScrapeRequest) HasGenerateChunksOnly() bool`
+
+HasGenerateChunksOnly returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

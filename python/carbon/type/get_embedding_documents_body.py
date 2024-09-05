@@ -17,10 +17,10 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
 from carbon.type.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
+from carbon.type.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource
 from carbon.type.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.type.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.type.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
-from carbon.type.helpdesk_file_types import HelpdeskFileTypes
 from carbon.type.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.type.rerank_params_nullable import RerankParamsNullable
 
@@ -74,8 +74,7 @@ class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
 
     rerank: typing.Optional[RerankParamsNullable]
 
-    # Filter files based on their type at the source (for example help center tickets and articles)
-    file_types_at_source: typing.Optional[typing.List[HelpdeskFileTypes]]
+    file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource]
 
     # Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
     exclude_cold_storage_files: bool

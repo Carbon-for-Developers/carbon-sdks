@@ -19,6 +19,7 @@ import { NotionAuthentication } from './notion-authentication';
 import { OAuthAuthentication } from './oauth-authentication';
 import { S3Authentication } from './s3-authentication';
 import { SalesforceAuthentication } from './salesforce-authentication';
+import { ServiceNowAuthentication } from './service-now-authentication';
 import { SharepointAuthentication } from './sharepoint-authentication';
 import { ZendeskAuthentication } from './zendesk-authentication';
 import { ZoteroAuthentication } from './zotero-authentication';
@@ -27,6 +28,6 @@ import { ZoteroAuthentication } from './zotero-authentication';
  * @type AuthenticationProperty
  * @export
  */
-export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication | GithubAuthentication | GuruAuthentication;
+export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication | GithubAuthentication | ServiceNowAuthentication | GuruAuthentication;
 
 

@@ -225,33 +225,10 @@ class GetEmbeddingDocumentsBody(
             @staticmethod
             def rerank() -> typing.Type['RerankParamsNullable']:
                 return RerankParamsNullable
-            
-            
-            class file_types_at_source(
-                schemas.ListBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneTupleMixin
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['HelpdeskFileTypes']:
-                        return HelpdeskFileTypes
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[list, tuple, None, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'file_types_at_source':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                    )
+        
+            @staticmethod
+            def file_types_at_source() -> typing.Type['GetEmbeddingDocumentsBodyFileTypesAtSource']:
+                return GetEmbeddingDocumentsBodyFileTypesAtSource
             exclude_cold_storage_files = schemas.BoolSchema
             __annotations__ = {
                 "query": query,
@@ -334,7 +311,7 @@ class GetEmbeddingDocumentsBody(
     def __getitem__(self, name: typing_extensions.Literal["rerank"]) -> 'RerankParamsNullable': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_types_at_source"]) -> MetaOapg.properties.file_types_at_source: ...
+    def __getitem__(self, name: typing_extensions.Literal["file_types_at_source"]) -> 'GetEmbeddingDocumentsBodyFileTypesAtSource': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["exclude_cold_storage_files"]) -> MetaOapg.properties.exclude_cold_storage_files: ...
@@ -402,7 +379,7 @@ class GetEmbeddingDocumentsBody(
     def get_item_oapg(self, name: typing_extensions.Literal["rerank"]) -> typing.Union['RerankParamsNullable', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_types_at_source"]) -> typing.Union[MetaOapg.properties.file_types_at_source, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_types_at_source"]) -> typing.Union['GetEmbeddingDocumentsBodyFileTypesAtSource', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["exclude_cold_storage_files"]) -> typing.Union[MetaOapg.properties.exclude_cold_storage_files, schemas.Unset]: ...
@@ -435,7 +412,7 @@ class GetEmbeddingDocumentsBody(
         include_file_level_metadata: typing.Union[MetaOapg.properties.include_file_level_metadata, None, bool, schemas.Unset] = schemas.unset,
         high_accuracy: typing.Union[MetaOapg.properties.high_accuracy, None, bool, schemas.Unset] = schemas.unset,
         rerank: typing.Union['RerankParamsNullable', schemas.Unset] = schemas.unset,
-        file_types_at_source: typing.Union[MetaOapg.properties.file_types_at_source, list, tuple, None, schemas.Unset] = schemas.unset,
+        file_types_at_source: typing.Union['GetEmbeddingDocumentsBodyFileTypesAtSource', schemas.Unset] = schemas.unset,
         exclude_cold_storage_files: typing.Union[MetaOapg.properties.exclude_cold_storage_files, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -470,9 +447,9 @@ class GetEmbeddingDocumentsBody(
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.model.file_content_types_nullable import FileContentTypesNullable
 from carbon.model.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
+from carbon.model.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource
 from carbon.model.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.model.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.model.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
-from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.model.rerank_params_nullable import RerankParamsNullable

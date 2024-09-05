@@ -21,6 +21,8 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { AutoSyncedSourceTypesPropertyInner } from '../models';
+// @ts-ignore
 import { ChunksAndEmbeddingsUploadInput } from '../models';
 // @ts-ignore
 import { DocumentResponseList } from '../models';
@@ -46,8 +48,6 @@ import { GenericSuccessResponse } from '../models';
 import { GetEmbeddingDocumentsBody } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
-// @ts-ignore
-import { HelpdeskFileTypes } from '../models';
 // @ts-ignore
 import { HybridSearchTuningParamsNullable } from '../models';
 // @ts-ignore

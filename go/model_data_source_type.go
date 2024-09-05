@@ -35,6 +35,7 @@ const (
 	DATASOURCETYPE_S3 DataSourceType = "S3"
 	DATASOURCETYPE_GMAIL DataSourceType = "GMAIL"
 	DATASOURCETYPE_OUTLOOK DataSourceType = "OUTLOOK"
+	DATASOURCETYPE_SERVICENOW DataSourceType = "SERVICENOW"
 	DATASOURCETYPE_TEXT DataSourceType = "TEXT"
 	DATASOURCETYPE_CSV DataSourceType = "CSV"
 	DATASOURCETYPE_TSV DataSourceType = "TSV"
@@ -97,6 +98,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"S3",
 	"GMAIL",
 	"OUTLOOK",
+	"SERVICENOW",
 	"TEXT",
 	"CSV",
 	"TSV",

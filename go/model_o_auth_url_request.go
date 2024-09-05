@@ -48,11 +48,12 @@ type OAuthURLRequest struct {
 	EnableFilePicker *bool `json:"enable_file_picker,omitempty"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
-	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+	// Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 	IncrementalSync *bool `json:"incremental_sync,omitempty"`
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 	// Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 	AutomaticallyOpenFilePicker NullableBool `json:"automatically_open_file_picker,omitempty"`
+	ServicenowCredentials NullableServiceNowCredentialsNullable `json:"servicenow_credentials,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -1196,6 +1197,48 @@ func (o *OAuthURLRequest) UnsetAutomaticallyOpenFilePicker() {
 	o.AutomaticallyOpenFilePicker.Unset()
 }
 
+// GetServicenowCredentials returns the ServicenowCredentials field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetServicenowCredentials() ServiceNowCredentialsNullable {
+	if o == nil || isNil(o.ServicenowCredentials.Get()) {
+		var ret ServiceNowCredentialsNullable
+		return ret
+	}
+	return *o.ServicenowCredentials.Get()
+}
+
+// GetServicenowCredentialsOk returns a tuple with the ServicenowCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetServicenowCredentialsOk() (*ServiceNowCredentialsNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ServicenowCredentials.Get(), o.ServicenowCredentials.IsSet()
+}
+
+// HasServicenowCredentials returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasServicenowCredentials() bool {
+	if o != nil && o.ServicenowCredentials.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetServicenowCredentials gets a reference to the given NullableServiceNowCredentialsNullable and assigns it to the ServicenowCredentials field.
+func (o *OAuthURLRequest) SetServicenowCredentials(v ServiceNowCredentialsNullable) {
+	o.ServicenowCredentials.Set(&v)
+}
+// SetServicenowCredentialsNil sets the value for ServicenowCredentials to be an explicit nil
+func (o *OAuthURLRequest) SetServicenowCredentialsNil() {
+	o.ServicenowCredentials.Set(nil)
+}
+
+// UnsetServicenowCredentials ensures that no value is present for ServicenowCredentials, not even an explicit nil
+func (o *OAuthURLRequest) UnsetServicenowCredentials() {
+	o.ServicenowCredentials.Unset()
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -1278,6 +1321,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutomaticallyOpenFilePicker.IsSet() {
 		toSerialize["automatically_open_file_picker"] = o.AutomaticallyOpenFilePicker.Get()
+	}
+	if o.ServicenowCredentials.IsSet() {
+		toSerialize["servicenow_credentials"] = o.ServicenowCredentials.Get()
 	}
 	return json.Marshal(toSerialize)
 }

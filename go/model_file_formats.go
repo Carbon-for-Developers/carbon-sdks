@@ -48,6 +48,7 @@ const (
 	FILEFORMATS_GITHUB FileFormats = "GITHUB"
 	FILEFORMATS_SLACK FileFormats = "SLACK"
 	FILEFORMATS_GURU FileFormats = "GURU"
+	FILEFORMATS_SERVICENOW FileFormats = "SERVICENOW"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
@@ -102,6 +103,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"GITHUB",
 	"SLACK",
 	"GURU",
+	"SERVICENOW",
 	"JPG",
 	"PNG",
 	"MP3",

@@ -839,6 +839,7 @@ public class UtilitiesApiGenerated {
         List<String> urlPathsToExclude;
         List<String> urlsToScrape;
         Boolean downloadCssAndMedia;
+        Boolean generateChunksOnly;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -1005,6 +1006,16 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set generateChunksOnly
+         * @param generateChunksOnly If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. (optional, default to false)
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
+         */
+        public UtilitiesApi.ScrapeSitemapRequestBuilder generateChunksOnly(Boolean generateChunksOnly) {
+            this.generateChunksOnly = generateChunksOnly;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1039,6 +1050,7 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.urlPathsToExclude(this.urlPathsToExclude);
             sitemapScrapeRequest.urlsToScrape(this.urlsToScrape);
             sitemapScrapeRequest.downloadCssAndMedia(this.downloadCssAndMedia);
+            sitemapScrapeRequest.generateChunksOnly(this.generateChunksOnly);
             return sitemapScrapeRequest;
         }
 

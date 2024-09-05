@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
+import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -160,6 +161,10 @@ public class OAuthURLRequest {
   public static final String SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER = "automatically_open_file_picker";
   @SerializedName(SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER)
   private Boolean automaticallyOpenFilePicker;
+
+  public static final String SERIALIZED_NAME_SERVICENOW_CREDENTIALS = "servicenow_credentials";
+  @SerializedName(SERIALIZED_NAME_SERVICENOW_CREDENTIALS)
+  private ServiceNowCredentialsNullable servicenowCredentials;
 
   public OAuthURLRequest() {
   }
@@ -870,11 +875,11 @@ public class OAuthURLRequest {
   }
 
    /**
-   * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+   * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
    * @return incrementalSync
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.")
+  @ApiModelProperty(example = "false", value = "Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.")
 
   public Boolean getIncrementalSync() {
     return incrementalSync;
@@ -944,6 +949,35 @@ public class OAuthURLRequest {
     
     
     this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+  }
+
+
+  public OAuthURLRequest servicenowCredentials(ServiceNowCredentialsNullable servicenowCredentials) {
+    
+    
+    
+    
+    this.servicenowCredentials = servicenowCredentials;
+    return this;
+  }
+
+   /**
+   * Get servicenowCredentials
+   * @return servicenowCredentials
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ServiceNowCredentialsNullable getServicenowCredentials() {
+    return servicenowCredentials;
+  }
+
+
+  public void setServicenowCredentials(ServiceNowCredentialsNullable servicenowCredentials) {
+    
+    
+    
+    this.servicenowCredentials = servicenowCredentials;
   }
 
   /**
@@ -1027,7 +1061,8 @@ public class OAuthURLRequest {
         Objects.equals(this.syncSourceItems, oauthURLRequest.syncSourceItems) &&
         Objects.equals(this.incrementalSync, oauthURLRequest.incrementalSync) &&
         Objects.equals(this.fileSyncConfig, oauthURLRequest.fileSyncConfig) &&
-        Objects.equals(this.automaticallyOpenFilePicker, oauthURLRequest.automaticallyOpenFilePicker)&&
+        Objects.equals(this.automaticallyOpenFilePicker, oauthURLRequest.automaticallyOpenFilePicker) &&
+        Objects.equals(this.servicenowCredentials, oauthURLRequest.servicenowCredentials)&&
         Objects.equals(this.additionalProperties, oauthURLRequest.additionalProperties);
   }
 
@@ -1037,7 +1072,7 @@ public class OAuthURLRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, additionalProperties);
+    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, servicenowCredentials, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1078,6 +1113,7 @@ public class OAuthURLRequest {
     sb.append("    incrementalSync: ").append(toIndentedString(incrementalSync)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
     sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
+    sb.append("    servicenowCredentials: ").append(toIndentedString(servicenowCredentials)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1128,6 +1164,7 @@ public class OAuthURLRequest {
     openapiFields.add("incremental_sync");
     openapiFields.add("file_sync_config");
     openapiFields.add("automatically_open_file_picker");
+    openapiFields.add("servicenow_credentials");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1177,6 +1214,10 @@ public class OAuthURLRequest {
       // validate the optional field `file_sync_config`
       if (jsonObj.get("file_sync_config") != null && !jsonObj.get("file_sync_config").isJsonNull()) {
         FileSyncConfigNullable.validateJsonObject(jsonObj.getAsJsonObject("file_sync_config"));
+      }
+      // validate the optional field `servicenow_credentials`
+      if (jsonObj.get("servicenow_credentials") != null && !jsonObj.get("servicenow_credentials").isJsonNull()) {
+        ServiceNowCredentialsNullable.validateJsonObject(jsonObj.getAsJsonObject("servicenow_credentials"));
       }
   }
 

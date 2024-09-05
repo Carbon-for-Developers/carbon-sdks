@@ -35,6 +35,8 @@ type UploadFileFromUrlInput struct {
 	MediaType NullableFileContentTypesNullable `json:"media_type,omitempty"`
 	SplitRows *bool `json:"split_rows,omitempty"`
 	ColdStorageParams *ColdStorageProps `json:"cold_storage_params,omitempty"`
+	// If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
 }
 
 // NewUploadFileFromUrlInput instantiates a new UploadFileFromUrlInput object
@@ -62,6 +64,8 @@ func NewUploadFileFromUrlInput(url string) *UploadFileFromUrlInput {
 	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
+	var generateChunksOnly bool = false
+	this.GenerateChunksOnly = &generateChunksOnly
 	return &this
 }
 
@@ -88,6 +92,8 @@ func NewUploadFileFromUrlInputWithDefaults() *UploadFileFromUrlInput {
 	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
+	var generateChunksOnly bool = false
+	this.GenerateChunksOnly = &generateChunksOnly
 	return &this
 }
 
@@ -719,6 +725,38 @@ func (o *UploadFileFromUrlInput) SetColdStorageParams(v ColdStorageProps) {
 	o.ColdStorageParams = &v
 }
 
+// GetGenerateChunksOnly returns the GenerateChunksOnly field value if set, zero value otherwise.
+func (o *UploadFileFromUrlInput) GetGenerateChunksOnly() bool {
+	if o == nil || isNil(o.GenerateChunksOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateChunksOnly
+}
+
+// GetGenerateChunksOnlyOk returns a tuple with the GenerateChunksOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadFileFromUrlInput) GetGenerateChunksOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.GenerateChunksOnly) {
+    return nil, false
+	}
+	return o.GenerateChunksOnly, true
+}
+
+// HasGenerateChunksOnly returns a boolean if a field has been set.
+func (o *UploadFileFromUrlInput) HasGenerateChunksOnly() bool {
+	if o != nil && !isNil(o.GenerateChunksOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateChunksOnly gets a reference to the given bool and assigns it to the GenerateChunksOnly field.
+func (o *UploadFileFromUrlInput) SetGenerateChunksOnly(v bool) {
+	o.GenerateChunksOnly = &v
+}
+
 func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -774,6 +812,9 @@ func (o UploadFileFromUrlInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ColdStorageParams) {
 		toSerialize["cold_storage_params"] = o.ColdStorageParams
+	}
+	if !isNil(o.GenerateChunksOnly) {
+		toSerialize["generate_chunks_only"] = o.GenerateChunksOnly
 	}
 	return json.Marshal(toSerialize)
 }

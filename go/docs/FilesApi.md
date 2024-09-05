@@ -817,6 +817,7 @@ func main() {
     request.SplitRows(false)
     request.EnableColdStorage(false)
     request.HotStorageTimeToLive(56)
+    request.GenerateChunksOnly(false)
     
     resp, httpRes, err := request.Execute()
 
@@ -915,6 +916,7 @@ func main() {
     uploadFileFromUrlInput.SetMediaType(null)
     uploadFileFromUrlInput.SetSplitRows(false)
     uploadFileFromUrlInput.SetColdStorageParams(coldStorageParams)
+    uploadFileFromUrlInput.SetGenerateChunksOnly(false)
     
     request := client.FilesApi.UploadFromUrl(
         uploadFileFromUrlInput,
@@ -1010,6 +1012,7 @@ func main() {
     rawTextInput.SetEmbeddingModel(null)
     rawTextInput.SetGenerateSparseVectors(false)
     rawTextInput.SetColdStorageParams(coldStorageParams)
+    rawTextInput.SetGenerateChunksOnly(false)
     
     request := client.FilesApi.UploadText(
         rawTextInput,

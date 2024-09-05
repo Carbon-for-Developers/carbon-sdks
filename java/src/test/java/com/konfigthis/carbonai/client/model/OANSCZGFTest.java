@@ -167,4 +167,36 @@ public class OANSCZGFTest {
         // TODO: test endpointUrl
     }
 
+    /**
+     * Test the property 'instanceSubdomain'
+     */
+    @Test
+    public void instanceSubdomainTest() {
+        // TODO: test instanceSubdomain
+    }
+
+    /**
+     * Test the property 'clientId'
+     */
+    @Test
+    public void clientIdTest() {
+        // TODO: test clientId
+    }
+
+    /**
+     * Test the property 'clientSecret'
+     */
+    @Test
+    public void clientSecretTest() {
+        // TODO: test clientSecret
+    }
+
+    /**
+     * Test the property 'redirectUri'
+     */
+    @Test
+    public void redirectUriTest() {
+        // TODO: test redirectUri
+    }
+
 }

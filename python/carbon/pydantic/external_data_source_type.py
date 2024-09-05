@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
-ExternalDataSourceType = Literal["BOX", "CONFLUENCE", "DROPBOX", "GMAIL", "GOOGLE_DRIVE", "GOOGLE_CLOUD_STORAGE", "INTERCOM", "NOTION", "ONEDRIVE", "OUTLOOK", "SALESFORCE", "SHAREPOINT", "SLACK", "ZENDESK", "ZOTERO"]
+ExternalDataSourceType = Literal["BOX", "CONFLUENCE", "DROPBOX", "GMAIL", "GOOGLE_DRIVE", "GOOGLE_CLOUD_STORAGE", "INTERCOM", "NOTION", "ONEDRIVE", "OUTLOOK", "SALESFORCE", "SHAREPOINT", "SLACK", "ZENDESK", "ZOTERO", "SERVICENOW"]

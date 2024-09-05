@@ -148,6 +148,7 @@ class BaseApi(api_client.Api):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -187,6 +188,8 @@ class BaseApi(api_client.Api):
             _body["split_rows"] = split_rows
         if cold_storage_params is not None:
             _body["cold_storage_params"] = cold_storage_params
+        if generate_chunks_only is not None:
+            _body["generate_chunks_only"] = generate_chunks_only
         args.body = _body
         return args
 
@@ -412,6 +415,7 @@ class UploadFromUrlRaw(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -437,6 +441,7 @@ class UploadFromUrlRaw(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -463,6 +468,7 @@ class UploadFromUrlRaw(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -487,6 +493,7 @@ class UploadFromUrlRaw(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
         )
         return self._upload_from_url_oapg(
             body=args.body,
@@ -514,6 +521,7 @@ class UploadFromUrl(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -536,6 +544,7 @@ class UploadFromUrl(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
             **kwargs,
         )
         if validate:
@@ -563,6 +572,7 @@ class UploadFromUrl(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_from_url(
@@ -584,6 +594,7 @@ class UploadFromUrl(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -613,6 +624,7 @@ class ApiForpost(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -638,6 +650,7 @@ class ApiForpost(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
         )
         return await self._aupload_from_url_oapg(
             body=args.body,
@@ -664,6 +677,7 @@ class ApiForpost(BaseApi):
         media_type: typing.Optional[FileContentTypesNullable] = None,
         split_rows: typing.Optional[bool] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
+        generate_chunks_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -688,6 +702,7 @@ class ApiForpost(BaseApi):
             media_type=media_type,
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
+            generate_chunks_only=generate_chunks_only,
         )
         return self._upload_from_url_oapg(
             body=args.body,

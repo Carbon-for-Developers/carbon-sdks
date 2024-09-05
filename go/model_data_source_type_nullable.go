@@ -35,6 +35,7 @@ const (
 	DATASOURCETYPENULLABLE_S3 DataSourceTypeNullable = "S3"
 	DATASOURCETYPENULLABLE_GMAIL DataSourceTypeNullable = "GMAIL"
 	DATASOURCETYPENULLABLE_OUTLOOK DataSourceTypeNullable = "OUTLOOK"
+	DATASOURCETYPENULLABLE_SERVICENOW DataSourceTypeNullable = "SERVICENOW"
 	DATASOURCETYPENULLABLE_TEXT DataSourceTypeNullable = "TEXT"
 	DATASOURCETYPENULLABLE_CSV DataSourceTypeNullable = "CSV"
 	DATASOURCETYPENULLABLE_TSV DataSourceTypeNullable = "TSV"
@@ -97,6 +98,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"S3",
 	"GMAIL",
 	"OUTLOOK",
+	"SERVICENOW",
 	"TEXT",
 	"CSV",
 	"TSV",

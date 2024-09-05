@@ -172,4 +172,12 @@ public class WebscrapeRequestTest {
         // TODO: test downloadCssAndMedia
     }
 
+    /**
+     * Test the property 'generateChunksOnly'
+     */
+    @Test
+    public void generateChunksOnlyTest() {
+        // TODO: test generateChunksOnly
+    }
+
 }

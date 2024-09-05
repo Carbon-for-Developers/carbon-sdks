@@ -512,9 +512,7 @@ Flag to control whether or not to perform a high accuracy embedding search. By d
 ##### rerank: [`RerankParamsNullable`](./carbon/type/rerank_params_nullable.py)<a id="rerank-rerankparamsnullablecarbontypererank_params_nullablepy"></a>
 
 
-##### file_types_at_source: List[[`HelpdeskFileTypes`](./carbon/type/helpdesk_file_types.py)]<a id="file_types_at_source-listhelpdeskfiletypescarbontypehelpdesk_file_typespy"></a>
-
-Filter files based on their type at the source (for example help center tickets and articles)
+##### file_types_at_source: [`GetEmbeddingDocumentsBodyFileTypesAtSource`](./carbon/type/get_embedding_documents_body_file_types_at_source.py)<a id="file_types_at_source-getembeddingdocumentsbodyfiletypesatsourcecarbontypeget_embedding_documents_body_file_types_at_sourcepy"></a>
 
 ##### exclude_cold_storage_files: `bool`<a id="exclude_cold_storage_files-bool"></a>
 
@@ -1268,6 +1266,7 @@ upload_response = carbon.files.upload(
     split_rows=False,
     enable_cold_storage=False,
     hot_storage_time_to_live=1,
+    generate_chunks_only=False,
 )
 ```
 
@@ -1344,6 +1343,10 @@ Enable cold storage for the file. If set to true, the file will be moved to cold
 
 Time in seconds after which the file will be moved to cold storage.
 
+##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`BodyCreateUploadFileUploadfilePost`](./carbon/type/body_create_upload_file_uploadfile_post.py)
@@ -1387,6 +1390,7 @@ upload_from_url_response = carbon.files.upload_from_url(
     cold_storage_params={
         "enable_cold_storage": False,
     },
+    generate_chunks_only=False,
 )
 ```
 
@@ -1431,6 +1435,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### cold_storage_params: [`ColdStorageProps`](./carbon/type/cold_storage_props.py)<a id="cold_storage_params-coldstoragepropscarbontypecold_storage_propspy"></a>
 
 
+##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`UploadFileFromUrlInput`](./carbon/type/upload_file_from_url_input.py)
@@ -1474,6 +1482,7 @@ upload_text_response = carbon.files.upload_text(
     cold_storage_params={
         "enable_cold_storage": False,
     },
+    generate_chunks_only=False,
 )
 ```
 
@@ -1497,6 +1506,10 @@ upload_text_response = carbon.files.upload_text(
 
 ##### cold_storage_params: [`ColdStorageProps`](./carbon/type/cold_storage_props.py)<a id="cold_storage_params-coldstoragepropscarbontypecold_storage_propspy"></a>
 
+
+##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1574,7 +1587,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `GuruAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-guruauthentication"></a>
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `ServiceNowAuthentication`, `GuruAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-servicenowauthentication-guruauthentication"></a>
 
 
 ##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
@@ -1626,6 +1639,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
 )
 ```
@@ -1773,6 +1787,7 @@ connect_guru_response = carbon.integrations.connect_guru(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
 )
 ```
@@ -1919,8 +1934,15 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
     automatically_open_file_picker=True,
+    servicenow_credentials={
+        "instance_subdomain": "instance_subdomain_example",
+        "client_id": "client_id_example",
+        "client_secret": "client_secret_example",
+        "redirect_uri": "redirect_uri_example",
+    },
 )
 ```
 
@@ -1992,7 +2014,7 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2000,6 +2022,9 @@ Only sync files if they have not already been synced or if the embedding propert
 ##### automatically_open_file_picker: `Optional[bool]`<a id="automatically_open_file_picker-optionalbool"></a>
 
 Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+
+##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./carbon/type/service_now_credentials_nullable.py)<a id="servicenow_credentials-servicenowcredentialsnullablecarbontypeservice_now_credentials_nullablepy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2315,6 +2340,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
 )
 ```
@@ -2354,7 +2380,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2438,6 +2464,7 @@ sync_files_response = carbon.integrations.sync_files(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
 )
 ```
@@ -2477,7 +2504,7 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 ##### incremental_sync: `bool`<a id="incremental_sync-bool"></a>
 
-Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
@@ -2672,6 +2699,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
     incremental_sync=False,
 )
@@ -2808,6 +2836,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
     incremental_sync=False,
 )
@@ -2977,6 +3006,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
         "transcription_service": "assemblyai",
         "include_speaker_labels": False,
         "split_rows": False,
+        "generate_chunks_only": False,
     },
 )
 ```
@@ -3530,6 +3560,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     url_paths_to_exclude=[],
     urls_to_scrape=[],
     download_css_and_media=False,
+    generate_chunks_only=False,
 )
 ```
 
@@ -3570,6 +3601,10 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
 ##### download_css_and_media: `Optional[bool]`<a id="download_css_and_media-optionalbool"></a>
 
 Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
+
+##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
+
+If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3614,6 +3649,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "embedding_model": "OPENAI",
             "url_paths_to_include": [],
             "download_css_and_media": False,
+            "generate_chunks_only": False,
         }
     ],
 )

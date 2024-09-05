@@ -57,6 +57,8 @@ import com.google.gson.stream.JsonWriter;
   
   OUTLOOK("OUTLOOK"),
   
+  SERVICENOW("SERVICENOW"),
+  
   TEXT("TEXT"),
   
   CSV("CSV"),

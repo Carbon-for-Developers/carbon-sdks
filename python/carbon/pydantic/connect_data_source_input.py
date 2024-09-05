@@ -24,13 +24,14 @@ from carbon.pydantic.notion_authentication import NotionAuthentication
 from carbon.pydantic.o_auth_authentication import OAuthAuthentication
 from carbon.pydantic.s3_authentication import S3Authentication
 from carbon.pydantic.salesforce_authentication import SalesforceAuthentication
+from carbon.pydantic.service_now_authentication import ServiceNowAuthentication
 from carbon.pydantic.sharepoint_authentication import SharepointAuthentication
 from carbon.pydantic.sync_options import SyncOptions
 from carbon.pydantic.zendesk_authentication import ZendeskAuthentication
 from carbon.pydantic.zotero_authentication import ZoteroAuthentication
 
 class ConnectDataSourceInput(BaseModel):
-    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication] = Field(alias='authentication')
+    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication] = Field(alias='authentication')
 
     sync_options: typing.Optional[SyncOptions] = Field(None, alias='sync_options')
 

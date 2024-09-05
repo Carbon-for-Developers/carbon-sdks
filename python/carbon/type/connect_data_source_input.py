@@ -23,13 +23,14 @@ from carbon.type.notion_authentication import NotionAuthentication
 from carbon.type.o_auth_authentication import OAuthAuthentication
 from carbon.type.s3_authentication import S3Authentication
 from carbon.type.salesforce_authentication import SalesforceAuthentication
+from carbon.type.service_now_authentication import ServiceNowAuthentication
 from carbon.type.sharepoint_authentication import SharepointAuthentication
 from carbon.type.sync_options import SyncOptions
 from carbon.type.zendesk_authentication import ZendeskAuthentication
 from carbon.type.zotero_authentication import ZoteroAuthentication
 
 class RequiredConnectDataSourceInput(TypedDict):
-    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, GuruAuthentication]
+    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication]
 
 
 class OptionalConnectDataSourceInput(TypedDict, total=False):

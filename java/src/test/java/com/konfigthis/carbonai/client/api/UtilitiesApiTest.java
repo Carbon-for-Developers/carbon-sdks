@@ -137,6 +137,7 @@ public class UtilitiesApiTest {
         List<String> urlPathsToExclude = null;
         List<String> urlsToScrape = null;
         Boolean downloadCssAndMedia = null;
+        Boolean generateChunksOnly = null;
         Object response = api.scrapeSitemap(url)
                 .tags(tags)
                 .maxPagesToScrape(maxPagesToScrape)
@@ -154,6 +155,7 @@ public class UtilitiesApiTest {
                 .urlPathsToExclude(urlPathsToExclude)
                 .urlsToScrape(urlsToScrape)
                 .downloadCssAndMedia(downloadCssAndMedia)
+                .generateChunksOnly(generateChunksOnly)
                 .execute();
         // TODO: test validations
     }

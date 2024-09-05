@@ -17,7 +17,7 @@ import (
 // FileSyncConfigNullable Used to configure file syncing for certain connectors when sync_files_on_connection is set to true
 type FileSyncConfigNullable struct {
 	// File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
-	AutoSyncedSourceTypes []HelpdeskFileTypes `json:"auto_synced_source_types,omitempty"`
+	AutoSyncedSourceTypes []HSNFileTypes3 `json:"auto_synced_source_types,omitempty"`
 	// Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets
 	SyncAttachments *bool `json:"sync_attachments,omitempty"`
 	// Detect audio language before transcription for audio files
@@ -27,6 +27,8 @@ type FileSyncConfigNullable struct {
 	IncludeSpeakerLabels *bool `json:"include_speaker_labels,omitempty"`
 	// Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
 	SplitRows *bool `json:"split_rows,omitempty"`
+	// If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
 }
 
 // NewFileSyncConfigNullable instantiates a new FileSyncConfigNullable object
@@ -43,6 +45,8 @@ func NewFileSyncConfigNullable() *FileSyncConfigNullable {
 	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
+	var generateChunksOnly bool = false
+	this.GenerateChunksOnly = &generateChunksOnly
 	return &this
 }
 
@@ -59,13 +63,15 @@ func NewFileSyncConfigNullableWithDefaults() *FileSyncConfigNullable {
 	this.IncludeSpeakerLabels = &includeSpeakerLabels
 	var splitRows bool = false
 	this.SplitRows = &splitRows
+	var generateChunksOnly bool = false
+	this.GenerateChunksOnly = &generateChunksOnly
 	return &this
 }
 
 // GetAutoSyncedSourceTypes returns the AutoSyncedSourceTypes field value if set, zero value otherwise.
-func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypes() []HelpdeskFileTypes {
+func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypes() []HSNFileTypes3 {
 	if o == nil || isNil(o.AutoSyncedSourceTypes) {
-		var ret []HelpdeskFileTypes
+		var ret []HSNFileTypes3
 		return ret
 	}
 	return o.AutoSyncedSourceTypes
@@ -73,7 +79,7 @@ func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypes() []HelpdeskFileTypes 
 
 // GetAutoSyncedSourceTypesOk returns a tuple with the AutoSyncedSourceTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypesOk() ([]HelpdeskFileTypes, bool) {
+func (o *FileSyncConfigNullable) GetAutoSyncedSourceTypesOk() ([]HSNFileTypes3, bool) {
 	if o == nil || isNil(o.AutoSyncedSourceTypes) {
     return nil, false
 	}
@@ -89,8 +95,8 @@ func (o *FileSyncConfigNullable) HasAutoSyncedSourceTypes() bool {
 	return false
 }
 
-// SetAutoSyncedSourceTypes gets a reference to the given []HelpdeskFileTypes and assigns it to the AutoSyncedSourceTypes field.
-func (o *FileSyncConfigNullable) SetAutoSyncedSourceTypes(v []HelpdeskFileTypes) {
+// SetAutoSyncedSourceTypes gets a reference to the given []HSNFileTypes3 and assigns it to the AutoSyncedSourceTypes field.
+func (o *FileSyncConfigNullable) SetAutoSyncedSourceTypes(v []HSNFileTypes3) {
 	o.AutoSyncedSourceTypes = v
 }
 
@@ -264,6 +270,38 @@ func (o *FileSyncConfigNullable) SetSplitRows(v bool) {
 	o.SplitRows = &v
 }
 
+// GetGenerateChunksOnly returns the GenerateChunksOnly field value if set, zero value otherwise.
+func (o *FileSyncConfigNullable) GetGenerateChunksOnly() bool {
+	if o == nil || isNil(o.GenerateChunksOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateChunksOnly
+}
+
+// GetGenerateChunksOnlyOk returns a tuple with the GenerateChunksOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FileSyncConfigNullable) GetGenerateChunksOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.GenerateChunksOnly) {
+    return nil, false
+	}
+	return o.GenerateChunksOnly, true
+}
+
+// HasGenerateChunksOnly returns a boolean if a field has been set.
+func (o *FileSyncConfigNullable) HasGenerateChunksOnly() bool {
+	if o != nil && !isNil(o.GenerateChunksOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateChunksOnly gets a reference to the given bool and assigns it to the GenerateChunksOnly field.
+func (o *FileSyncConfigNullable) SetGenerateChunksOnly(v bool) {
+	o.GenerateChunksOnly = &v
+}
+
 func (o FileSyncConfigNullable) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AutoSyncedSourceTypes) {
@@ -283,6 +321,9 @@ func (o FileSyncConfigNullable) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SplitRows) {
 		toSerialize["split_rows"] = o.SplitRows
+	}
+	if !isNil(o.GenerateChunksOnly) {
+		toSerialize["generate_chunks_only"] = o.GenerateChunksOnly
 	}
 	return json.Marshal(toSerialize)
 }

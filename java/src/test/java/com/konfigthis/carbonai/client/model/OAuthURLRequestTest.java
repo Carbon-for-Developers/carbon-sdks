@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
+import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -256,6 +257,14 @@ public class OAuthURLRequestTest {
     @Test
     public void automaticallyOpenFilePickerTest() {
         // TODO: test automaticallyOpenFilePicker
+    }
+
+    /**
+     * Test the property 'servicenowCredentials'
+     */
+    @Test
+    public void servicenowCredentialsTest() {
+        // TODO: test servicenowCredentials
     }
 
 }

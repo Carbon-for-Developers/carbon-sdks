@@ -283,33 +283,10 @@ class OrganizationUserFilesToSyncFilters(
             @staticmethod
             def external_urls() -> typing.Type['OrganizationUserFilesToSyncFiltersExternalUrls']:
                 return OrganizationUserFilesToSyncFiltersExternalUrls
-            
-            
-            class file_types_at_source(
-                schemas.ListBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneTupleMixin
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['HelpdeskFileTypes']:
-                        return HelpdeskFileTypes
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[list, tuple, None, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'file_types_at_source':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                    )
+        
+            @staticmethod
+            def file_types_at_source() -> typing.Type['OrganizationUserFilesToSyncFiltersFileTypesAtSource']:
+                return OrganizationUserFilesToSyncFiltersFileTypesAtSource
             __annotations__ = {
                 "tags": tags,
                 "source": source,
@@ -383,7 +360,7 @@ class OrganizationUserFilesToSyncFilters(
     def __getitem__(self, name: typing_extensions.Literal["external_urls"]) -> 'OrganizationUserFilesToSyncFiltersExternalUrls': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["file_types_at_source"]) -> MetaOapg.properties.file_types_at_source: ...
+    def __getitem__(self, name: typing_extensions.Literal["file_types_at_source"]) -> 'OrganizationUserFilesToSyncFiltersFileTypesAtSource': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -445,7 +422,7 @@ class OrganizationUserFilesToSyncFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["external_urls"]) -> typing.Union['OrganizationUserFilesToSyncFiltersExternalUrls', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_types_at_source"]) -> typing.Union[MetaOapg.properties.file_types_at_source, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_types_at_source"]) -> typing.Union['OrganizationUserFilesToSyncFiltersFileTypesAtSource', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -474,7 +451,7 @@ class OrganizationUserFilesToSyncFilters(
         sync_error_message: typing.Union[MetaOapg.properties.sync_error_message, None, str, schemas.Unset] = schemas.unset,
         include_containers: typing.Union[MetaOapg.properties.include_containers, None, bool, schemas.Unset] = schemas.unset,
         external_urls: typing.Union['OrganizationUserFilesToSyncFiltersExternalUrls', schemas.Unset] = schemas.unset,
-        file_types_at_source: typing.Union[MetaOapg.properties.file_types_at_source, list, tuple, None, schemas.Unset] = schemas.unset,
+        file_types_at_source: typing.Union['OrganizationUserFilesToSyncFiltersFileTypesAtSource', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OrganizationUserFilesToSyncFilters':
@@ -506,9 +483,9 @@ class OrganizationUserFilesToSyncFilters(
 from carbon.model.data_source_type import DataSourceType
 from carbon.model.embedding_generators import EmbeddingGenerators
 from carbon.model.external_file_sync_statuses import ExternalFileSyncStatuses
-from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.organization_user_files_to_sync_filters_external_file_ids import OrganizationUserFilesToSyncFiltersExternalFileIds
 from carbon.model.organization_user_files_to_sync_filters_external_urls import OrganizationUserFilesToSyncFiltersExternalUrls
+from carbon.model.organization_user_files_to_sync_filters_file_types_at_source import OrganizationUserFilesToSyncFiltersFileTypesAtSource
 from carbon.model.organization_user_files_to_sync_filters_ids import OrganizationUserFilesToSyncFiltersIds
 from carbon.model.organization_user_files_to_sync_filters_organization_user_data_source_id import OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId
 from carbon.model.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
