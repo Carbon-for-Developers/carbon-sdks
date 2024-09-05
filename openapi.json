@@ -2299,6 +2299,18 @@
               "title": "Hot Storage Time To Live"
             },
             "description": "Time in seconds after which the file will be moved to cold storage."
+          },
+          {
+            "name": "generate_chunks_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n            but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+              "default": false,
+              "title": "Generate Chunks Only"
+            },
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n            but no embeddings will be generated. This overrides the skip_embedding_generation flag."
           }
         ],
         "requestBody": {
@@ -3950,6 +3962,9 @@
                 "$ref": "#/components/schemas/GithubAuthentication"
               },
               {
+                "$ref": "#/components/schemas/ServiceNowAuthentication"
+              },
+              {
                 "$ref": "#/components/schemas/GuruAuthentication"
               }
             ],
@@ -4087,6 +4102,7 @@
           "S3",
           "GMAIL",
           "OUTLOOK",
+          "SERVICENOW",
           "TEXT",
           "CSV",
           "TSV",
@@ -4745,7 +4761,8 @@
           "SHAREPOINT",
           "SLACK",
           "ZENDESK",
-          "ZOTERO"
+          "ZOTERO",
+          "SERVICENOW"
         ],
         "title": "ExternalDataSourceType"
       },
@@ -5010,6 +5027,7 @@
           "GITHUB",
           "SLACK",
           "GURU",
+          "SERVICENOW",
           "JPG",
           "JPG",
           "PNG",
@@ -5119,7 +5137,14 @@
         "properties": {
           "auto_synced_source_types": {
             "items": {
-              "$ref": "#/components/schemas/HelpdeskFileTypes"
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ServiceNowFileTypes"
+                }
+              ]
             },
             "type": "array",
             "title": "Auto Synced Source Types",
@@ -5161,6 +5186,12 @@
             "type": "boolean",
             "title": "Split Rows",
             "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
+            "default": false
+          },
+          "generate_chunks_only": {
+            "type": "boolean",
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
             "default": false
           }
         },
@@ -5633,7 +5664,14 @@
             "anyOf": [
               {
                 "items": {
-                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HelpdeskFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ServiceNowFileTypes"
+                    }
+                  ]
                 },
                 "type": "array"
               },
@@ -7069,7 +7107,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
@@ -7094,6 +7132,17 @@
             ],
             "title": "Automatically Open File Picker",
             "description": "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by\n        BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources."
+          },
+          "servicenow_credentials": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ServiceNowCredentials"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "ServiceNow credentials required to connect a ServiceNow account. The instance_subdomain can be extracted from\n        the url of the instance url which takes the form of \"<instance-subdomain>.service-now.com\". The client_id and client_secret are\n        values generated by creating a new OAuth API Integration in ServiceNow. When creating the OAuth API Integration, the redirect\n        uri must be \"https://api.carbon.ai/integrations/servicenow\" or a similar one using a CNAME."
           }
         },
         "type": "object",
@@ -7846,7 +7895,14 @@
             "anyOf": [
               {
                 "items": {
-                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HelpdeskFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ServiceNowFileTypes"
+                    }
+                  ]
                 },
                 "type": "array"
               },
@@ -8337,6 +8393,12 @@
             "default": {
               "enable_cold_storage": false
             }
+          },
+          "generate_chunks_only": {
+            "type": "boolean",
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n        but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "default": false
           }
         },
         "type": "object",
@@ -8714,6 +8776,92 @@
         ],
         "title": "SalesforceAuthentication"
       },
+      "ServiceNowAuthentication": {
+        "properties": {
+          "source": {
+            "const": "SERVICENOW",
+            "title": "Source"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "refresh_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Refresh Token"
+          },
+          "instance_subdomain": {
+            "type": "string",
+            "title": "Instance Subdomain"
+          },
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "client_secret": {
+            "type": "string",
+            "title": "Client Secret"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "Redirect Uri"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "instance_subdomain",
+          "client_id",
+          "client_secret",
+          "redirect_uri"
+        ],
+        "title": "ServiceNowAuthentication"
+      },
+      "ServiceNowCredentials": {
+        "properties": {
+          "instance_subdomain": {
+            "type": "string",
+            "title": "Instance Subdomain"
+          },
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "client_secret": {
+            "type": "string",
+            "title": "Client Secret"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "Redirect Uri"
+          }
+        },
+        "type": "object",
+        "required": [
+          "instance_subdomain",
+          "client_id",
+          "client_secret",
+          "redirect_uri"
+        ],
+        "title": "ServiceNowCredentials"
+      },
+      "ServiceNowFileTypes": {
+        "type": "string",
+        "enum": [
+          "TABLE",
+          "INCIDENT",
+          "ATTACHMENT"
+        ],
+        "title": "ServiceNowFileTypes"
+      },
       "SharepointAuthentication": {
         "properties": {
           "source": {
@@ -9059,6 +9207,12 @@
             "title": "Download Css And Media",
             "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
             "default": false
+          },
+          "generate_chunks_only": {
+            "type": "boolean",
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "default": false
           }
         },
         "type": "object",
@@ -9400,7 +9554,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
@@ -9560,7 +9714,7 @@
           "incremental_sync": {
             "type": "boolean",
             "title": "Incremental Sync",
-            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.",
+            "description": "Only sync files if they have not already been synced or if the embedding properties have changed.\n        This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.",
             "default": false
           },
           "file_sync_config": {
@@ -9864,6 +10018,12 @@
             "default": {
               "enable_cold_storage": false
             }
+          },
+          "generate_chunks_only": {
+            "type": "boolean",
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n        but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "default": false
           }
         },
         "type": "object",
@@ -11003,6 +11163,12 @@
             ],
             "title": "Download Css And Media",
             "description": "Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes \n        might take longer to finish with this flag enabled, but the success rate is improved.",
+            "default": false
+          },
+          "generate_chunks_only": {
+            "type": "boolean",
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
             "default": false
           }
         },
