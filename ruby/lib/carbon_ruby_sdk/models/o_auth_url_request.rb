@@ -67,13 +67,15 @@ module Carbon
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
-    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+    # Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
     attr_accessor :incremental_sync
 
     attr_accessor :file_sync_config
 
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     attr_accessor :automatically_open_file_picker
+
+    attr_accessor :servicenow_credentials
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -104,7 +106,8 @@ module Carbon
         :'sync_source_items' => :'sync_source_items',
         :'incremental_sync' => :'incremental_sync',
         :'file_sync_config' => :'file_sync_config',
-        :'automatically_open_file_picker' => :'automatically_open_file_picker'
+        :'automatically_open_file_picker' => :'automatically_open_file_picker',
+        :'servicenow_credentials' => :'servicenow_credentials'
       }
     end
 
@@ -142,7 +145,8 @@ module Carbon
         :'sync_source_items' => :'Boolean',
         :'incremental_sync' => :'Boolean',
         :'file_sync_config' => :'FileSyncConfigNullable',
-        :'automatically_open_file_picker' => :'Boolean'
+        :'automatically_open_file_picker' => :'Boolean',
+        :'servicenow_credentials' => :'ServiceNowCredentialsNullable'
       }
     end
 
@@ -170,7 +174,8 @@ module Carbon
         :'use_ocr',
         :'parse_pdf_tables_with_ocr',
         :'file_sync_config',
-        :'automatically_open_file_picker'
+        :'automatically_open_file_picker',
+        :'servicenow_credentials'
       ])
     end
 
@@ -324,6 +329,10 @@ module Carbon
       if attributes.key?(:'automatically_open_file_picker')
         self.automatically_open_file_picker = attributes[:'automatically_open_file_picker']
       end
+
+      if attributes.key?(:'servicenow_credentials')
+        self.servicenow_credentials = attributes[:'servicenow_credentials']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -375,7 +384,8 @@ module Carbon
           sync_source_items == o.sync_source_items &&
           incremental_sync == o.incremental_sync &&
           file_sync_config == o.file_sync_config &&
-          automatically_open_file_picker == o.automatically_open_file_picker
+          automatically_open_file_picker == o.automatically_open_file_picker &&
+          servicenow_credentials == o.servicenow_credentials
     end
 
     # @see the `==` method
@@ -387,7 +397,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, servicenow_credentials].hash
     end
 
     # Builds the object from hash

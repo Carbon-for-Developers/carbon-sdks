@@ -50,7 +50,7 @@ type GetEmbeddingDocumentsBody struct {
 	HighAccuracy NullableBool `json:"high_accuracy,omitempty"`
 	Rerank NullableRerankParamsNullable `json:"rerank,omitempty"`
 	// Filter files based on their type at the source (for example help center tickets and articles)
-	FileTypesAtSource []HelpdeskFileTypes `json:"file_types_at_source,omitempty"`
+	FileTypesAtSource []HSNFileTypes1 `json:"file_types_at_source,omitempty"`
 	// Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
 	ExcludeColdStorageFiles *bool `json:"exclude_cold_storage_files,omitempty"`
 }
@@ -763,9 +763,9 @@ func (o *GetEmbeddingDocumentsBody) UnsetRerank() {
 }
 
 // GetFileTypesAtSource returns the FileTypesAtSource field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSource() []HelpdeskFileTypes {
+func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSource() []HSNFileTypes1 {
 	if o == nil {
-		var ret []HelpdeskFileTypes
+		var ret []HSNFileTypes1
 		return ret
 	}
 	return o.FileTypesAtSource
@@ -774,7 +774,7 @@ func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSource() []HelpdeskFileTypes {
 // GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSourceOk() ([]HelpdeskFileTypes, bool) {
+func (o *GetEmbeddingDocumentsBody) GetFileTypesAtSourceOk() ([]HSNFileTypes1, bool) {
 	if o == nil || isNil(o.FileTypesAtSource) {
     return nil, false
 	}
@@ -790,8 +790,8 @@ func (o *GetEmbeddingDocumentsBody) HasFileTypesAtSource() bool {
 	return false
 }
 
-// SetFileTypesAtSource gets a reference to the given []HelpdeskFileTypes and assigns it to the FileTypesAtSource field.
-func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSource(v []HelpdeskFileTypes) {
+// SetFileTypesAtSource gets a reference to the given []HSNFileTypes1 and assigns it to the FileTypesAtSource field.
+func (o *GetEmbeddingDocumentsBody) SetFileTypesAtSource(v []HSNFileTypes1) {
 	o.FileTypesAtSource = v
 }
 

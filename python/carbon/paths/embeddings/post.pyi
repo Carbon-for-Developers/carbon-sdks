@@ -32,6 +32,7 @@ import frozendict  # noqa: F401
 
 from carbon import schemas  # noqa: F401
 
+from carbon.model.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource as GetEmbeddingDocumentsBodyFileTypesAtSourceSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds as GetEmbeddingDocumentsBodyParentFileIdsSchema
 from carbon.model.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable as HybridSearchTuningParamsNullableSchema
@@ -41,7 +42,6 @@ from carbon.model.get_embedding_documents_body_query_vector import GetEmbeddingD
 from carbon.model.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags as GetEmbeddingDocumentsBodyTagsSchema
 from carbon.model.document_response_list import DocumentResponseList as DocumentResponseListSchema
 from carbon.model.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds as GetEmbeddingDocumentsBodyFileIdsSchema
-from carbon.model.helpdesk_file_types import HelpdeskFileTypes as HelpdeskFileTypesSchema
 from carbon.model.get_embedding_documents_body import GetEmbeddingDocumentsBody as GetEmbeddingDocumentsBodySchema
 from carbon.model.rerank_params_nullable import RerankParamsNullable as RerankParamsNullableSchema
 
@@ -50,12 +50,12 @@ from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
 from carbon.type.document_response_list import DocumentResponseList
 from carbon.type.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
-from carbon.type.helpdesk_file_types import HelpdeskFileTypes
 from carbon.type.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
 from carbon.type.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
 from carbon.type.rerank_params_nullable import RerankParamsNullable
 from carbon.type.get_embedding_documents_body import GetEmbeddingDocumentsBody
 from carbon.type.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
+from carbon.type.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 
 from ...api_client import Dictionary
@@ -66,8 +66,8 @@ from carbon.pydantic.rerank_params_nullable import RerankParamsNullable as Reran
 from carbon.pydantic.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds as GetEmbeddingDocumentsBodyFileIdsPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector as GetEmbeddingDocumentsBodyQueryVectorPydantic
+from carbon.pydantic.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource as GetEmbeddingDocumentsBodyFileTypesAtSourcePydantic
 from carbon.pydantic.get_embedding_documents_body import GetEmbeddingDocumentsBody as GetEmbeddingDocumentsBodyPydantic
-from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes as HelpdeskFileTypesPydantic
 from carbon.pydantic.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds as GetEmbeddingDocumentsBodyParentFileIdsPydantic
 from carbon.pydantic.document_response_list import DocumentResponseList as DocumentResponseListPydantic
 from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags as GetEmbeddingDocumentsBodyTagsPydantic
@@ -152,7 +152,7 @@ class BaseApi(api_client.Api):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -422,7 +422,7 @@ class GetDocumentsRaw(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
@@ -477,7 +477,7 @@ class GetDocumentsRaw(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -532,7 +532,7 @@ class GetDocuments(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
@@ -585,7 +585,7 @@ class GetDocuments(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> DocumentResponseListPydantic:
@@ -639,7 +639,7 @@ class ApiForpost(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
@@ -694,7 +694,7 @@ class ApiForpost(BaseApi):
         include_file_level_metadata: typing.Optional[typing.Optional[bool]] = None,
         high_accuracy: typing.Optional[typing.Optional[bool]] = None,
         rerank: typing.Optional[RerankParamsNullable] = None,
-        file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = None,
+        file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = None,
         exclude_cold_storage_files: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,

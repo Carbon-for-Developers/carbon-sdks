@@ -181,4 +181,10 @@ describe Carbon::OAuthURLRequest do
     end
   end
 
+  describe 'test attribute "servicenow_credentials"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

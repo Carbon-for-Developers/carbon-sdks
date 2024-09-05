@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes3;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -57,7 +57,7 @@ import com.konfigthis.carbonai.client.JSON;
 public class FileSyncConfigNullable {
   public static final String SERIALIZED_NAME_AUTO_SYNCED_SOURCE_TYPES = "auto_synced_source_types";
   @SerializedName(SERIALIZED_NAME_AUTO_SYNCED_SOURCE_TYPES)
-  private List<HelpdeskFileTypes> autoSyncedSourceTypes = null;
+  private List<HSNFileTypes3> autoSyncedSourceTypes = null;
 
   public static final String SERIALIZED_NAME_SYNC_ATTACHMENTS = "sync_attachments";
   @SerializedName(SERIALIZED_NAME_SYNC_ATTACHMENTS)
@@ -79,10 +79,14 @@ public class FileSyncConfigNullable {
   @SerializedName(SERIALIZED_NAME_SPLIT_ROWS)
   private Boolean splitRows = false;
 
+  public static final String SERIALIZED_NAME_GENERATE_CHUNKS_ONLY = "generate_chunks_only";
+  @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
+  private Boolean generateChunksOnly = false;
+
   public FileSyncConfigNullable() {
   }
 
-  public FileSyncConfigNullable autoSyncedSourceTypes(List<HelpdeskFileTypes> autoSyncedSourceTypes) {
+  public FileSyncConfigNullable autoSyncedSourceTypes(List<HSNFileTypes3> autoSyncedSourceTypes) {
     
     
     
@@ -91,7 +95,7 @@ public class FileSyncConfigNullable {
     return this;
   }
 
-  public FileSyncConfigNullable addAutoSyncedSourceTypesItem(HelpdeskFileTypes autoSyncedSourceTypesItem) {
+  public FileSyncConfigNullable addAutoSyncedSourceTypesItem(HSNFileTypes3 autoSyncedSourceTypesItem) {
     if (this.autoSyncedSourceTypes == null) {
       this.autoSyncedSourceTypes = new ArrayList<>();
     }
@@ -106,12 +110,12 @@ public class FileSyncConfigNullable {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[\"ARTICLE\"]", value = "File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced")
 
-  public List<HelpdeskFileTypes> getAutoSyncedSourceTypes() {
+  public List<HSNFileTypes3> getAutoSyncedSourceTypes() {
     return autoSyncedSourceTypes;
   }
 
 
-  public void setAutoSyncedSourceTypes(List<HelpdeskFileTypes> autoSyncedSourceTypes) {
+  public void setAutoSyncedSourceTypes(List<HSNFileTypes3> autoSyncedSourceTypes) {
     
     
     
@@ -263,6 +267,35 @@ public class FileSyncConfigNullable {
     this.splitRows = splitRows;
   }
 
+
+  public FileSyncConfigNullable generateChunksOnly(Boolean generateChunksOnly) {
+    
+    
+    
+    
+    this.generateChunksOnly = generateChunksOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+   * @return generateChunksOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.")
+
+  public Boolean getGenerateChunksOnly() {
+    return generateChunksOnly;
+  }
+
+
+  public void setGenerateChunksOnly(Boolean generateChunksOnly) {
+    
+    
+    
+    this.generateChunksOnly = generateChunksOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -323,7 +356,8 @@ public class FileSyncConfigNullable {
         Objects.equals(this.detectAudioLanguage, fileSyncConfigNullable.detectAudioLanguage) &&
         Objects.equals(this.transcriptionService, fileSyncConfigNullable.transcriptionService) &&
         Objects.equals(this.includeSpeakerLabels, fileSyncConfigNullable.includeSpeakerLabels) &&
-        Objects.equals(this.splitRows, fileSyncConfigNullable.splitRows)&&
+        Objects.equals(this.splitRows, fileSyncConfigNullable.splitRows) &&
+        Objects.equals(this.generateChunksOnly, fileSyncConfigNullable.generateChunksOnly)&&
         Objects.equals(this.additionalProperties, fileSyncConfigNullable.additionalProperties);
   }
 
@@ -333,7 +367,7 @@ public class FileSyncConfigNullable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -353,6 +387,7 @@ public class FileSyncConfigNullable {
     sb.append("    transcriptionService: ").append(toIndentedString(transcriptionService)).append("\n");
     sb.append("    includeSpeakerLabels: ").append(toIndentedString(includeSpeakerLabels)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
+    sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -382,6 +417,7 @@ public class FileSyncConfigNullable {
     openapiFields.add("transcription_service");
     openapiFields.add("include_speaker_labels");
     openapiFields.add("split_rows");
+    openapiFields.add("generate_chunks_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

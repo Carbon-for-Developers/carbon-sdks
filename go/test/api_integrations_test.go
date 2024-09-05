@@ -187,6 +187,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
     t.Run("Test IntegrationsApiService GetOauthUrl", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+        servicenowCredentials := *carbon.NewServiceNowCredentialsNullable()
         
         oAuthURLRequest := *carbon.NewOAuthURLRequest(
             null,
@@ -217,6 +218,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetIncrementalSync(false)
         oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
         oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
+        oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,

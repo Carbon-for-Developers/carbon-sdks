@@ -2414,7 +2414,7 @@ public class FilesApiGenerated {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
         return ((FilesApi) this).new ResyncRequestBuilder(fileId);
     }
-    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, Boolean generateChunksOnly, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2511,6 +2511,10 @@ public class FilesApiGenerated {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("hot_storage_time_to_live", hotStorageTimeToLive));
         }
 
+        if (generateChunksOnly != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("generate_chunks_only", generateChunksOnly));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2532,7 +2536,7 @@ public class FilesApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadValidateBeforeCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, Boolean generateChunksOnly, final ApiCallback _callback) throws ApiException {
         // verify the required parameter '_file' is set
         if (_file == null) {
             throw new ApiException("Missing the required parameter '_file' when calling upload(Async)");
@@ -2543,20 +2547,20 @@ public class FilesApiGenerated {
             throw new ApiException("Missing the required parameter 'bodyCreateUploadFileUploadfilePost' when calling upload(Async)");
         }
 
-        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
+        return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly, _callback);
 
     }
 
 
-    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive) throws ApiException {
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, null);
+    private ApiResponse<UserFile> uploadWithHttpInfo(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, Boolean generateChunksOnly) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly, null);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, final ApiCallback<UserFile> _callback) throws ApiException {
+    private okhttp3.Call uploadAsync(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, TranscriptionServiceNullable transcriptionService, Boolean includeSpeakerLabels, FileContentTypesNullable mediaType, Boolean splitRows, Boolean enableColdStorage, Integer hotStorageTimeToLive, Boolean generateChunksOnly, final ApiCallback<UserFile> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly, _callback);
         Type localVarReturnType = new TypeToken<UserFile>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2581,6 +2585,7 @@ public class FilesApiGenerated {
         Boolean splitRows;
         Boolean enableColdStorage;
         Integer hotStorageTimeToLive;
+        Boolean generateChunksOnly;
 
         public UploadRequestBuilderGenerated(File _file) {
             this._file = _file;
@@ -2757,6 +2762,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set generateChunksOnly
+         * @param generateChunksOnly If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. (optional, default to false)
+         * @return FilesApi.UploadRequestBuilder
+         */
+        public FilesApi.UploadRequestBuilder generateChunksOnly(Boolean generateChunksOnly) {
+            this.generateChunksOnly = generateChunksOnly;
+            return (FilesApi.UploadRequestBuilder) this;
+        }
+        
+        /**
          * Build call for upload
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2769,7 +2784,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
+            return uploadCall(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly, _callback);
         }
 
         private BodyCreateUploadFileUploadfilePost buildBodyParams() {
@@ -2790,7 +2805,7 @@ public class FilesApiGenerated {
          */
         public UserFile execute() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive);
+            ApiResponse<UserFile> localVarResp = uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly);
             return localVarResp.getResponseBody();
         }
 
@@ -2806,7 +2821,7 @@ public class FilesApiGenerated {
          */
         public ApiResponse<UserFile> executeWithHttpInfo() throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive);
+            return uploadWithHttpInfo(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly);
         }
 
         /**
@@ -2822,7 +2837,7 @@ public class FilesApiGenerated {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UserFile> _callback) throws ApiException {
             BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost = buildBodyParams();
-            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, _callback);
+            return uploadAsync(_file, bodyCreateUploadFileUploadfilePost, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, useOcr, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, enableColdStorage, hotStorageTimeToLive, generateChunksOnly, _callback);
         }
     }
 
@@ -2932,6 +2947,7 @@ public class FilesApiGenerated {
         FileContentTypesNullable mediaType;
         Boolean splitRows;
         ColdStorageProps coldStorageParams;
+        Boolean generateChunksOnly;
 
         public UploadFromUrlRequestBuilderGenerated(String url) {
             this.url = url;
@@ -3108,6 +3124,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set generateChunksOnly
+         * @param generateChunksOnly If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag. (optional, default to false)
+         * @return FilesApi.UploadFromUrlRequestBuilder
+         */
+        public FilesApi.UploadFromUrlRequestBuilder generateChunksOnly(Boolean generateChunksOnly) {
+            this.generateChunksOnly = generateChunksOnly;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
+        }
+        
+        /**
          * Build call for uploadFromUrl
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3143,6 +3169,7 @@ public class FilesApiGenerated {
             uploadFileFromUrlInput.mediaType(this.mediaType);
             uploadFileFromUrlInput.splitRows(this.splitRows);
             uploadFileFromUrlInput.coldStorageParams(this.coldStorageParams);
+            uploadFileFromUrlInput.generateChunksOnly(this.generateChunksOnly);
             return uploadFileFromUrlInput;
         }
 
@@ -3292,6 +3319,7 @@ public class FilesApiGenerated {
         EmbeddingGeneratorsNullable embeddingModel;
         Boolean generateSparseVectors;
         ColdStorageProps coldStorageParams;
+        Boolean generateChunksOnly;
 
         public UploadTextRequestBuilderGenerated(String contents) {
             this.contents = contents;
@@ -3378,6 +3406,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set generateChunksOnly
+         * @param generateChunksOnly If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag. (optional, default to false)
+         * @return FilesApi.UploadTextRequestBuilder
+         */
+        public FilesApi.UploadTextRequestBuilder generateChunksOnly(Boolean generateChunksOnly) {
+            this.generateChunksOnly = generateChunksOnly;
+            return (FilesApi.UploadTextRequestBuilder) this;
+        }
+        
+        /**
          * Build call for uploadText
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3404,6 +3442,7 @@ public class FilesApiGenerated {
             rawTextInput.embeddingModel(this.embeddingModel);
             rawTextInput.generateSparseVectors(this.generateSparseVectors);
             rawTextInput.coldStorageParams(this.coldStorageParams);
+            rawTextInput.generateChunksOnly(this.generateChunksOnly);
             return rawTextInput;
         }
 

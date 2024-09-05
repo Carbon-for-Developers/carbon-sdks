@@ -49,6 +49,9 @@ module Carbon
     # Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
     attr_accessor :download_css_and_media
 
+    # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    attr_accessor :generate_chunks_only
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -68,7 +71,8 @@ module Carbon
         :'url_paths_to_include' => :'url_paths_to_include',
         :'url_paths_to_exclude' => :'url_paths_to_exclude',
         :'urls_to_scrape' => :'urls_to_scrape',
-        :'download_css_and_media' => :'download_css_and_media'
+        :'download_css_and_media' => :'download_css_and_media',
+        :'generate_chunks_only' => :'generate_chunks_only'
       }
     end
 
@@ -96,7 +100,8 @@ module Carbon
         :'url_paths_to_include' => :'Array<String>',
         :'url_paths_to_exclude' => :'Array<String>',
         :'urls_to_scrape' => :'Array<String>',
-        :'download_css_and_media' => :'Boolean'
+        :'download_css_and_media' => :'Boolean',
+        :'generate_chunks_only' => :'Boolean'
       }
     end
 
@@ -117,7 +122,7 @@ module Carbon
         :'url_paths_to_include',
         :'url_paths_to_exclude',
         :'urls_to_scrape',
-        :'download_css_and_media'
+        :'download_css_and_media',
       ])
     end
 
@@ -233,6 +238,12 @@ module Carbon
       else
         self.download_css_and_media = false
       end
+
+      if attributes.key?(:'generate_chunks_only')
+        self.generate_chunks_only = attributes[:'generate_chunks_only']
+      else
+        self.generate_chunks_only = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -319,7 +330,8 @@ module Carbon
           url_paths_to_include == o.url_paths_to_include &&
           url_paths_to_exclude == o.url_paths_to_exclude &&
           urls_to_scrape == o.urls_to_scrape &&
-          download_css_and_media == o.download_css_and_media
+          download_css_and_media == o.download_css_and_media &&
+          generate_chunks_only == o.generate_chunks_only
     end
 
     # @see the `==` method
@@ -331,7 +343,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude, urls_to_scrape, download_css_and_media].hash
+      [tags, url, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, url_paths_to_exclude, urls_to_scrape, download_css_and_media, generate_chunks_only].hash
     end
 
     # Builds the object from hash

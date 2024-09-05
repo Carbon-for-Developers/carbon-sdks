@@ -314,6 +314,7 @@ public class FilesApiTest {
         Boolean splitRows = null;
         Boolean enableColdStorage = null;
         Integer hotStorageTimeToLive = null;
+        Boolean generateChunksOnly = null;
         UserFile response = api.upload(_file)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
@@ -332,6 +333,7 @@ public class FilesApiTest {
                 .splitRows(splitRows)
                 .enableColdStorage(enableColdStorage)
                 .hotStorageTimeToLive(hotStorageTimeToLive)
+                .generateChunksOnly(generateChunksOnly)
                 .execute();
         // TODO: test validations
     }
@@ -361,6 +363,7 @@ public class FilesApiTest {
         FileContentTypesNullable mediaType = null;
         Boolean splitRows = null;
         ColdStorageProps coldStorageParams = null;
+        Boolean generateChunksOnly = null;
         UserFile response = api.uploadFromUrl(url)
                 .fileName(fileName)
                 .chunkSize(chunkSize)
@@ -379,6 +382,7 @@ public class FilesApiTest {
                 .mediaType(mediaType)
                 .splitRows(splitRows)
                 .coldStorageParams(coldStorageParams)
+                .generateChunksOnly(generateChunksOnly)
                 .execute();
         // TODO: test validations
     }
@@ -401,6 +405,7 @@ public class FilesApiTest {
         EmbeddingGeneratorsNullable embeddingModel = null;
         Boolean generateSparseVectors = null;
         ColdStorageProps coldStorageParams = null;
+        Boolean generateChunksOnly = null;
         UserFile response = api.uploadText(contents)
                 .name(name)
                 .chunkSize(chunkSize)
@@ -410,6 +415,7 @@ public class FilesApiTest {
                 .embeddingModel(embeddingModel)
                 .generateSparseVectors(generateSparseVectors)
                 .coldStorageParams(coldStorageParams)
+                .generateChunksOnly(generateChunksOnly)
                 .execute();
         // TODO: test validations
     }

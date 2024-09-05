@@ -15,12 +15,11 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
-from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
+from carbon.pydantic.file_sync_config_auto_synced_source_types import FileSyncConfigAutoSyncedSourceTypes
 from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 
 class FileSyncConfig(BaseModel):
-    # File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
-    auto_synced_source_types: typing.Optional[typing.List[HelpdeskFileTypes]] = Field(None, alias='auto_synced_source_types')
+    auto_synced_source_types: typing.Optional[FileSyncConfigAutoSyncedSourceTypes] = Field(None, alias='auto_synced_source_types')
 
     # Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets
     sync_attachments: typing.Optional[bool] = Field(None, alias='sync_attachments')
@@ -35,6 +34,9 @@ class FileSyncConfig(BaseModel):
 
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: typing.Optional[bool] = Field(None, alias='split_rows')
+
+    # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    generate_chunks_only: typing.Optional[bool] = Field(None, alias='generate_chunks_only')
 
     model_config = ConfigDict(
         protected_namespaces=(),

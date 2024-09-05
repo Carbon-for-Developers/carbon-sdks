@@ -119,7 +119,7 @@ module Carbon
         :'include_file_level_metadata' => :'Boolean',
         :'high_accuracy' => :'Boolean',
         :'rerank' => :'RerankParamsNullable',
-        :'file_types_at_source' => :'Array<HelpdeskFileTypes>',
+        :'file_types_at_source' => :'Array<AutoSyncedSourceTypesPropertyInner>',
         :'exclude_cold_storage_files' => :'Boolean'
       }
     end

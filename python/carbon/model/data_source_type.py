@@ -49,6 +49,7 @@ class DataSourceType(
             "S3": "S3",
             "GMAIL": "GMAIL",
             "OUTLOOK": "OUTLOOK",
+            "SERVICENOW": "SERVICENOW",
             "TEXT": "TEXT",
             "CSV": "CSV",
             "TSV": "TSV",
@@ -153,6 +154,10 @@ class DataSourceType(
     @schemas.classproperty
     def OUTLOOK(cls):
         return cls("OUTLOOK")
+    
+    @schemas.classproperty
+    def SERVICENOW(cls):
+        return cls("SERVICENOW")
     
     @schemas.classproperty
     def TEXT(cls):

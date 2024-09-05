@@ -39,32 +39,10 @@ class FileSyncConfigNullable(
     class MetaOapg:
         
         class properties:
-            
-            
-            class auto_synced_source_types(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['HelpdeskFileTypes']:
-                        return HelpdeskFileTypes
-            
-                def __new__(
-                    cls,
-                    arg: typing.Union[typing.Tuple['HelpdeskFileTypes'], typing.List['HelpdeskFileTypes']],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'auto_synced_source_types':
-                    return super().__new__(
-                        cls,
-                        arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> 'HelpdeskFileTypes':
-                    return super().__getitem__(i)
+        
+            @staticmethod
+            def auto_synced_source_types() -> typing.Type['FileSyncConfigNullableAutoSyncedSourceTypes']:
+                return FileSyncConfigNullableAutoSyncedSourceTypes
             sync_attachments = schemas.BoolSchema
             detect_audio_language = schemas.BoolSchema
         
@@ -73,6 +51,7 @@ class FileSyncConfigNullable(
                 return TranscriptionServiceNullable
             include_speaker_labels = schemas.BoolSchema
             split_rows = schemas.BoolSchema
+            generate_chunks_only = schemas.BoolSchema
             __annotations__ = {
                 "auto_synced_source_types": auto_synced_source_types,
                 "sync_attachments": sync_attachments,
@@ -80,11 +59,12 @@ class FileSyncConfigNullable(
                 "transcription_service": transcription_service,
                 "include_speaker_labels": include_speaker_labels,
                 "split_rows": split_rows,
+                "generate_chunks_only": generate_chunks_only,
             }
 
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["auto_synced_source_types"]) -> MetaOapg.properties.auto_synced_source_types: ...
+    def __getitem__(self, name: typing_extensions.Literal["auto_synced_source_types"]) -> 'FileSyncConfigNullableAutoSyncedSourceTypes': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["sync_attachments"]) -> MetaOapg.properties.sync_attachments: ...
@@ -102,15 +82,18 @@ class FileSyncConfigNullable(
     def __getitem__(self, name: typing_extensions.Literal["split_rows"]) -> MetaOapg.properties.split_rows: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["generate_chunks_only"]) -> MetaOapg.properties.generate_chunks_only: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["auto_synced_source_types"]) -> typing.Union[MetaOapg.properties.auto_synced_source_types, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["auto_synced_source_types"]) -> typing.Union['FileSyncConfigNullableAutoSyncedSourceTypes', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["sync_attachments"]) -> typing.Union[MetaOapg.properties.sync_attachments, schemas.Unset]: ...
@@ -128,21 +111,25 @@ class FileSyncConfigNullable(
     def get_item_oapg(self, name: typing_extensions.Literal["split_rows"]) -> typing.Union[MetaOapg.properties.split_rows, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["generate_chunks_only"]) -> typing.Union[MetaOapg.properties.generate_chunks_only, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, None, ],
-        auto_synced_source_types: typing.Union[MetaOapg.properties.auto_synced_source_types, list, tuple, schemas.Unset] = schemas.unset,
+        auto_synced_source_types: typing.Union['FileSyncConfigNullableAutoSyncedSourceTypes', schemas.Unset] = schemas.unset,
         sync_attachments: typing.Union[MetaOapg.properties.sync_attachments, bool, schemas.Unset] = schemas.unset,
         detect_audio_language: typing.Union[MetaOapg.properties.detect_audio_language, bool, schemas.Unset] = schemas.unset,
         transcription_service: typing.Union['TranscriptionServiceNullable', schemas.Unset] = schemas.unset,
         include_speaker_labels: typing.Union[MetaOapg.properties.include_speaker_labels, bool, schemas.Unset] = schemas.unset,
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
+        generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FileSyncConfigNullable':
@@ -155,9 +142,10 @@ class FileSyncConfigNullable(
             transcription_service=transcription_service,
             include_speaker_labels=include_speaker_labels,
             split_rows=split_rows,
+            generate_chunks_only=generate_chunks_only,
             _configuration=_configuration,
             **kwargs,
         )
 
-from carbon.model.helpdesk_file_types import HelpdeskFileTypes
+from carbon.model.file_sync_config_nullable_auto_synced_source_types import FileSyncConfigNullableAutoSyncedSourceTypes
 from carbon.model.transcription_service_nullable import TranscriptionServiceNullable

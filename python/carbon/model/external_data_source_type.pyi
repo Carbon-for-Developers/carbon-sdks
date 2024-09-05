@@ -90,3 +90,7 @@ class ExternalDataSourceType(
     @schemas.classproperty
     def ZOTERO(cls):
         return cls("ZOTERO")
+    
+    @schemas.classproperty
+    def SERVICENOW(cls):
+        return cls("SERVICENOW")

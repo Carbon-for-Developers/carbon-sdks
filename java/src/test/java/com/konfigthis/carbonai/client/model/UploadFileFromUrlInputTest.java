@@ -187,4 +187,12 @@ public class UploadFileFromUrlInputTest {
         // TODO: test coldStorageParams
     }
 
+    /**
+     * Test the property 'generateChunksOnly'
+     */
+    @Test
+    public void generateChunksOnlyTest() {
+        // TODO: test generateChunksOnly
+    }
+
 }

@@ -366,6 +366,9 @@ operation_parameter_map = {
             {
                 'name': 'hot_storage_time_to_live'
             },
+            {
+                'name': 'generate_chunks_only'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -424,6 +427,9 @@ operation_parameter_map = {
             {
                 'name': 'cold_storage_params'
             },
+            {
+                'name': 'generate_chunks_only'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -454,6 +460,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'cold_storage_params'
+            },
+            {
+                'name': 'generate_chunks_only'
             },
         ]
     },
@@ -698,6 +707,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'automatically_open_file_picker'
+            },
+            {
+                'name': 'servicenow_credentials'
             },
         ]
     },
@@ -1321,6 +1333,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'download_css_and_media'
+            },
+            {
+                'name': 'generate_chunks_only'
             },
         ]
     },

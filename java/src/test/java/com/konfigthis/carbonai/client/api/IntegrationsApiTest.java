@@ -47,6 +47,7 @@ import com.konfigthis.carbonai.client.model.RSSFeedInput;
 import com.konfigthis.carbonai.client.model.S3AuthRequest;
 import com.konfigthis.carbonai.client.model.S3FileSyncInput;
 import com.konfigthis.carbonai.client.model.S3GetFileInput;
+import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import com.konfigthis.carbonai.client.model.SlackFilters;
 import com.konfigthis.carbonai.client.model.SlackSyncRequest;
 import com.konfigthis.carbonai.client.model.SyncDirectoryRequest;
@@ -272,6 +273,7 @@ public class IntegrationsApiTest {
         Boolean incrementalSync = null;
         FileSyncConfigNullable fileSyncConfig = null;
         Boolean automaticallyOpenFilePicker = null;
+        ServiceNowCredentialsNullable servicenowCredentials = null;
         OuthURLResponse response = api.getOauthUrl(service)
                 .tags(tags)
                 .scope(scope)
@@ -299,6 +301,7 @@ public class IntegrationsApiTest {
                 .incrementalSync(incrementalSync)
                 .fileSyncConfig(fileSyncConfig)
                 .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
+                .servicenowCredentials(servicenowCredentials)
                 .execute();
         // TODO: test validations
     }

@@ -87,6 +87,8 @@ import { S3FileSyncInput } from '../models';
 // @ts-ignore
 import { S3GetFileInput } from '../models';
 // @ts-ignore
+import { ServiceNowCredentialsNullable } from '../models';
+// @ts-ignore
 import { SlackFilters } from '../models';
 // @ts-ignore
 import { SlackSyncRequest } from '../models';
@@ -1636,7 +1638,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_source_items: requestParameters.sync_source_items,
                 incremental_sync: requestParameters.incremental_sync,
                 file_sync_config: requestParameters.file_sync_config,
-                automatically_open_file_picker: requestParameters.automatically_open_file_picker
+                automatically_open_file_picker: requestParameters.automatically_open_file_picker,
+                servicenow_credentials: requestParameters.servicenow_credentials
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

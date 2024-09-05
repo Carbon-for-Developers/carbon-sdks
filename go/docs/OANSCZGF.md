@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **AccessKey** | Pointer to **string** |  | [optional] 
 **AccessKeySecret** | Pointer to **string** |  | [optional] 
 **EndpointUrl** | Pointer to **NullableString** | You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. | [optional] 
+**InstanceSubdomain** | Pointer to **string** |  | [optional] 
+**ClientId** | Pointer to **string** |  | [optional] 
+**ClientSecret** | Pointer to **string** |  | [optional] 
+**RedirectUri** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -455,6 +459,106 @@ HasEndpointUrl returns a boolean if a field has been set.
 `func (o *OANSCZGF) UnsetEndpointUrl()`
 
 UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
+### GetInstanceSubdomain
+
+`func (o *OANSCZGF) GetInstanceSubdomain() string`
+
+GetInstanceSubdomain returns the InstanceSubdomain field if non-nil, zero value otherwise.
+
+### GetInstanceSubdomainOk
+
+`func (o *OANSCZGF) GetInstanceSubdomainOk() (*string, bool)`
+
+GetInstanceSubdomainOk returns a tuple with the InstanceSubdomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceSubdomain
+
+`func (o *OANSCZGF) SetInstanceSubdomain(v string)`
+
+SetInstanceSubdomain sets InstanceSubdomain field to given value.
+
+### HasInstanceSubdomain
+
+`func (o *OANSCZGF) HasInstanceSubdomain() bool`
+
+HasInstanceSubdomain returns a boolean if a field has been set.
+
+### GetClientId
+
+`func (o *OANSCZGF) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *OANSCZGF) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *OANSCZGF) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *OANSCZGF) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *OANSCZGF) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *OANSCZGF) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *OANSCZGF) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *OANSCZGF) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
+
+### GetRedirectUri
+
+`func (o *OANSCZGF) GetRedirectUri() string`
+
+GetRedirectUri returns the RedirectUri field if non-nil, zero value otherwise.
+
+### GetRedirectUriOk
+
+`func (o *OANSCZGF) GetRedirectUriOk() (*string, bool)`
+
+GetRedirectUriOk returns a tuple with the RedirectUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectUri
+
+`func (o *OANSCZGF) SetRedirectUri(v string)`
+
+SetRedirectUri sets RedirectUri field to given value.
+
+### HasRedirectUri
+
+`func (o *OANSCZGF) HasRedirectUri() bool`
+
+HasRedirectUri returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

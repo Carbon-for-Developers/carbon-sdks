@@ -33,6 +33,10 @@ type OAuthAuthentication struct {
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
+	InstanceSubdomain *string `json:"instance_subdomain,omitempty"`
+	ClientId *string `json:"client_id,omitempty"`
+	ClientSecret *string `json:"client_secret,omitempty"`
+	RedirectUri *string `json:"redirect_uri,omitempty"`
 }
 
 // NewOAuthAuthentication instantiates a new OAuthAuthentication object
@@ -577,6 +581,134 @@ func (o *OAuthAuthentication) UnsetEndpointUrl() {
 	o.EndpointUrl.Unset()
 }
 
+// GetInstanceSubdomain returns the InstanceSubdomain field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetInstanceSubdomain() string {
+	if o == nil || isNil(o.InstanceSubdomain) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceSubdomain
+}
+
+// GetInstanceSubdomainOk returns a tuple with the InstanceSubdomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetInstanceSubdomainOk() (*string, bool) {
+	if o == nil || isNil(o.InstanceSubdomain) {
+    return nil, false
+	}
+	return o.InstanceSubdomain, true
+}
+
+// HasInstanceSubdomain returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasInstanceSubdomain() bool {
+	if o != nil && !isNil(o.InstanceSubdomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceSubdomain gets a reference to the given string and assigns it to the InstanceSubdomain field.
+func (o *OAuthAuthentication) SetInstanceSubdomain(v string) {
+	o.InstanceSubdomain = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetClientId() string {
+	if o == nil || isNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetClientIdOk() (*string, bool) {
+	if o == nil || isNil(o.ClientId) {
+    return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasClientId() bool {
+	if o != nil && !isNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *OAuthAuthentication) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetClientSecret() string {
+	if o == nil || isNil(o.ClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ClientSecret
+}
+
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetClientSecretOk() (*string, bool) {
+	if o == nil || isNil(o.ClientSecret) {
+    return nil, false
+	}
+	return o.ClientSecret, true
+}
+
+// HasClientSecret returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasClientSecret() bool {
+	if o != nil && !isNil(o.ClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+func (o *OAuthAuthentication) SetClientSecret(v string) {
+	o.ClientSecret = &v
+}
+
+// GetRedirectUri returns the RedirectUri field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetRedirectUri() string {
+	if o == nil || isNil(o.RedirectUri) {
+		var ret string
+		return ret
+	}
+	return *o.RedirectUri
+}
+
+// GetRedirectUriOk returns a tuple with the RedirectUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetRedirectUriOk() (*string, bool) {
+	if o == nil || isNil(o.RedirectUri) {
+    return nil, false
+	}
+	return o.RedirectUri, true
+}
+
+// HasRedirectUri returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasRedirectUri() bool {
+	if o != nil && !isNil(o.RedirectUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUri gets a reference to the given string and assigns it to the RedirectUri field.
+func (o *OAuthAuthentication) SetRedirectUri(v string) {
+	o.RedirectUri = &v
+}
+
 func (o OAuthAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -626,6 +758,18 @@ func (o OAuthAuthentication) MarshalJSON() ([]byte, error) {
 	}
 	if o.EndpointUrl.IsSet() {
 		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
+	}
+	if !isNil(o.InstanceSubdomain) {
+		toSerialize["instance_subdomain"] = o.InstanceSubdomain
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["client_id"] = o.ClientId
+	}
+	if !isNil(o.ClientSecret) {
+		toSerialize["client_secret"] = o.ClientSecret
+	}
+	if !isNil(o.RedirectUri) {
+		toSerialize["redirect_uri"] = o.RedirectUri
 	}
 	return json.Marshal(toSerialize)
 }

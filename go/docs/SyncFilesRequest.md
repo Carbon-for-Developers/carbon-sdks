@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **UseOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
 **ParsePdfTablesWithOcr** | Pointer to **NullableBool** |  | [optional] [default to false]
-**IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources. | [optional] [default to false]
+**IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. | [optional] [default to false]
 **FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods

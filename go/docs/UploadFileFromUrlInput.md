@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **MediaType** | Pointer to [**NullableFileContentTypesNullable**](FileContentTypesNullable.md) |  | [optional] 
 **SplitRows** | Pointer to **bool** |  | [optional] [default to false]
 **ColdStorageParams** | Pointer to [**ColdStorageProps**](ColdStorageProps.md) |  | [optional] 
+**GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
 
 ## Methods
 
@@ -546,6 +547,31 @@ SetColdStorageParams sets ColdStorageParams field to given value.
 `func (o *UploadFileFromUrlInput) HasColdStorageParams() bool`
 
 HasColdStorageParams returns a boolean if a field has been set.
+
+### GetGenerateChunksOnly
+
+`func (o *UploadFileFromUrlInput) GetGenerateChunksOnly() bool`
+
+GetGenerateChunksOnly returns the GenerateChunksOnly field if non-nil, zero value otherwise.
+
+### GetGenerateChunksOnlyOk
+
+`func (o *UploadFileFromUrlInput) GetGenerateChunksOnlyOk() (*bool, bool)`
+
+GetGenerateChunksOnlyOk returns a tuple with the GenerateChunksOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateChunksOnly
+
+`func (o *UploadFileFromUrlInput) SetGenerateChunksOnly(v bool)`
+
+SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
+
+### HasGenerateChunksOnly
+
+`func (o *UploadFileFromUrlInput) HasGenerateChunksOnly() bool`
+
+HasGenerateChunksOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

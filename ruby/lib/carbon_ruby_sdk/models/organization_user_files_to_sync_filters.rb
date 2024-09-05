@@ -111,7 +111,7 @@ module Carbon
         :'sync_error_message' => :'String',
         :'include_containers' => :'Boolean',
         :'external_urls' => :'Array<String>',
-        :'file_types_at_source' => :'Array<HelpdeskFileTypes>'
+        :'file_types_at_source' => :'Array<AutoSyncedSourceTypesPropertyInner>'
       }
     end
 

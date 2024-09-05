@@ -114,6 +114,22 @@ public class OAuthAuthentication {
   @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
   private String endpointUrl;
 
+  public static final String SERIALIZED_NAME_INSTANCE_SUBDOMAIN = "instance_subdomain";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_SUBDOMAIN)
+  private String instanceSubdomain;
+
+  public static final String SERIALIZED_NAME_CLIENT_ID = "client_id";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  private String clientId;
+
+  public static final String SERIALIZED_NAME_CLIENT_SECRET = "client_secret";
+  @SerializedName(SERIALIZED_NAME_CLIENT_SECRET)
+  private String clientSecret;
+
+  public static final String SERIALIZED_NAME_REDIRECT_URI = "redirect_uri";
+  @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
+  private String redirectUri;
+
   public OAuthAuthentication() {
   }
 
@@ -580,6 +596,122 @@ public class OAuthAuthentication {
     this.endpointUrl = endpointUrl;
   }
 
+
+  public OAuthAuthentication instanceSubdomain(String instanceSubdomain) {
+    
+    
+    
+    
+    this.instanceSubdomain = instanceSubdomain;
+    return this;
+  }
+
+   /**
+   * Get instanceSubdomain
+   * @return instanceSubdomain
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getInstanceSubdomain() {
+    return instanceSubdomain;
+  }
+
+
+  public void setInstanceSubdomain(String instanceSubdomain) {
+    
+    
+    
+    this.instanceSubdomain = instanceSubdomain;
+  }
+
+
+  public OAuthAuthentication clientId(String clientId) {
+    
+    
+    
+    
+    this.clientId = clientId;
+    return this;
+  }
+
+   /**
+   * Get clientId
+   * @return clientId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientId() {
+    return clientId;
+  }
+
+
+  public void setClientId(String clientId) {
+    
+    
+    
+    this.clientId = clientId;
+  }
+
+
+  public OAuthAuthentication clientSecret(String clientSecret) {
+    
+    
+    
+    
+    this.clientSecret = clientSecret;
+    return this;
+  }
+
+   /**
+   * Get clientSecret
+   * @return clientSecret
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientSecret() {
+    return clientSecret;
+  }
+
+
+  public void setClientSecret(String clientSecret) {
+    
+    
+    
+    this.clientSecret = clientSecret;
+  }
+
+
+  public OAuthAuthentication redirectUri(String redirectUri) {
+    
+    
+    
+    
+    this.redirectUri = redirectUri;
+    return this;
+  }
+
+   /**
+   * Get redirectUri
+   * @return redirectUri
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getRedirectUri() {
+    return redirectUri;
+  }
+
+
+  public void setRedirectUri(String redirectUri) {
+    
+    
+    
+    this.redirectUri = redirectUri;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -650,7 +782,11 @@ public class OAuthAuthentication {
         Objects.equals(this.apiKey, oauthAuthentication.apiKey) &&
         Objects.equals(this.accessKey, oauthAuthentication.accessKey) &&
         Objects.equals(this.accessKeySecret, oauthAuthentication.accessKeySecret) &&
-        Objects.equals(this.endpointUrl, oauthAuthentication.endpointUrl)&&
+        Objects.equals(this.endpointUrl, oauthAuthentication.endpointUrl) &&
+        Objects.equals(this.instanceSubdomain, oauthAuthentication.instanceSubdomain) &&
+        Objects.equals(this.clientId, oauthAuthentication.clientId) &&
+        Objects.equals(this.clientSecret, oauthAuthentication.clientSecret) &&
+        Objects.equals(this.redirectUri, oauthAuthentication.redirectUri)&&
         Objects.equals(this.additionalProperties, oauthAuthentication.additionalProperties);
   }
 
@@ -660,7 +796,7 @@ public class OAuthAuthentication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, additionalProperties);
+    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, instanceSubdomain, clientId, clientSecret, redirectUri, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -690,6 +826,10 @@ public class OAuthAuthentication {
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
     sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
+    sb.append("    instanceSubdomain: ").append(toIndentedString(instanceSubdomain)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+    sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
+    sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -729,6 +869,10 @@ public class OAuthAuthentication {
     openapiFields.add("access_key");
     openapiFields.add("access_key_secret");
     openapiFields.add("endpoint_url");
+    openapiFields.add("instance_subdomain");
+    openapiFields.add("client_id");
+    openapiFields.add("client_secret");
+    openapiFields.add("redirect_uri");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -798,6 +942,18 @@ public class OAuthAuthentication {
       }
       if (!jsonObj.get("endpoint_url").isJsonNull() && (jsonObj.get("endpoint_url") != null && !jsonObj.get("endpoint_url").isJsonNull()) && !jsonObj.get("endpoint_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endpoint_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint_url").toString()));
+      }
+      if ((jsonObj.get("instance_subdomain") != null && !jsonObj.get("instance_subdomain").isJsonNull()) && !jsonObj.get("instance_subdomain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instance_subdomain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance_subdomain").toString()));
+      }
+      if ((jsonObj.get("client_id") != null && !jsonObj.get("client_id").isJsonNull()) && !jsonObj.get("client_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_id").toString()));
+      }
+      if ((jsonObj.get("client_secret") != null && !jsonObj.get("client_secret").isJsonNull()) && !jsonObj.get("client_secret").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `client_secret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_secret").toString()));
+      }
+      if ((jsonObj.get("redirect_uri") != null && !jsonObj.get("redirect_uri").isJsonNull()) && !jsonObj.get("redirect_uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `redirect_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirect_uri").toString()));
       }
   }
 

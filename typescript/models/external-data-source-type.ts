@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type ExternalDataSourceType = 'BOX' | 'CONFLUENCE' | 'DROPBOX' | 'GMAIL' | 'GOOGLE_DRIVE' | 'GOOGLE_CLOUD_STORAGE' | 'INTERCOM' | 'NOTION' | 'ONEDRIVE' | 'OUTLOOK' | 'SALESFORCE' | 'SHAREPOINT' | 'SLACK' | 'ZENDESK' | 'ZOTERO'
+export type ExternalDataSourceType = 'BOX' | 'CONFLUENCE' | 'DROPBOX' | 'GMAIL' | 'GOOGLE_DRIVE' | 'GOOGLE_CLOUD_STORAGE' | 'INTERCOM' | 'NOTION' | 'ONEDRIVE' | 'OUTLOOK' | 'SALESFORCE' | 'SHAREPOINT' | 'SLACK' | 'ZENDESK' | 'ZOTERO' | 'SERVICENOW'
 

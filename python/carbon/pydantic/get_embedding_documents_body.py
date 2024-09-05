@@ -18,10 +18,10 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable
 from carbon.pydantic.get_embedding_documents_body_file_ids import GetEmbeddingDocumentsBodyFileIds
+from carbon.pydantic.get_embedding_documents_body_file_types_at_source import GetEmbeddingDocumentsBodyFileTypesAtSource
 from carbon.pydantic.get_embedding_documents_body_parent_file_ids import GetEmbeddingDocumentsBodyParentFileIds
 from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddingDocumentsBodyQueryVector
 from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
-from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
 from carbon.pydantic.rerank_params_nullable import RerankParamsNullable
 
@@ -73,8 +73,7 @@ class GetEmbeddingDocumentsBody(BaseModel):
 
     rerank: typing.Optional[RerankParamsNullable] = Field(None, alias='rerank')
 
-    # Filter files based on their type at the source (for example help center tickets and articles)
-    file_types_at_source: typing.Optional[typing.Optional[typing.List[HelpdeskFileTypes]]] = Field(None, alias='file_types_at_source')
+    file_types_at_source: typing.Optional[GetEmbeddingDocumentsBodyFileTypesAtSource] = Field(None, alias='file_types_at_source')
 
     # Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
     exclude_cold_storage_files: typing.Optional[bool] = Field(None, alias='exclude_cold_storage_files')

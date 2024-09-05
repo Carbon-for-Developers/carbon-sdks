@@ -294,6 +294,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         request.SplitRows(false)
         request.EnableColdStorage(false)
         request.HotStorageTimeToLive(56)
+        request.GenerateChunksOnly(false)
         
         resp, httpRes, err := request.Execute()
 
@@ -327,6 +328,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         uploadFileFromUrlInput.SetMediaType(null)
         uploadFileFromUrlInput.SetSplitRows(false)
         uploadFileFromUrlInput.SetColdStorageParams(coldStorageParams)
+        uploadFileFromUrlInput.SetGenerateChunksOnly(false)
         
         request := client.FilesApi.UploadFromUrl(
             uploadFileFromUrlInput,
@@ -355,6 +357,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         rawTextInput.SetEmbeddingModel(null)
         rawTextInput.SetGenerateSparseVectors(false)
         rawTextInput.SetColdStorageParams(coldStorageParams)
+        rawTextInput.SetGenerateChunksOnly(false)
         
         request := client.FilesApi.UploadText(
             rawTextInput,

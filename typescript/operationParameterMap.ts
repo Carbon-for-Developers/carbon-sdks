@@ -372,6 +372,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'hot_storage_time_to_live'
             },
+            {
+                name: 'generate_chunks_only'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -430,6 +433,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'cold_storage_params'
             },
+            {
+                name: 'generate_chunks_only'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -460,6 +466,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'cold_storage_params'
+            },
+            {
+                name: 'generate_chunks_only'
             },
         ]
     },
@@ -704,6 +713,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'automatically_open_file_picker'
+            },
+            {
+                name: 'servicenow_credentials'
             },
         ]
     },
@@ -1327,6 +1339,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'download_css_and_media'
+            },
+            {
+                name: 'generate_chunks_only'
             },
         ]
     },

@@ -35,6 +35,8 @@
 
 * `OUTLOOK` (value: `"OUTLOOK"`)
 
+* `SERVICENOW` (value: `"SERVICENOW"`)
+
 * `TEXT` (value: `"TEXT"`)
 
 * `CSV` (value: `"CSV"`)

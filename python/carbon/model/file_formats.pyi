@@ -144,6 +144,10 @@ class FileFormats(
         return cls("GURU")
     
     @schemas.classproperty
+    def SERVICENOW(cls):
+        return cls("SERVICENOW")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

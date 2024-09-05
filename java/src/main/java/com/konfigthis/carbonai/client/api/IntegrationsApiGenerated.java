@@ -57,6 +57,7 @@ import com.konfigthis.carbonai.client.model.RSSFeedInput;
 import com.konfigthis.carbonai.client.model.S3AuthRequest;
 import com.konfigthis.carbonai.client.model.S3FileSyncInput;
 import com.konfigthis.carbonai.client.model.S3GetFileInput;
+import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import com.konfigthis.carbonai.client.model.SlackFilters;
 import com.konfigthis.carbonai.client.model.SlackSyncRequest;
 import com.konfigthis.carbonai.client.model.SyncDirectoryRequest;
@@ -1636,6 +1637,7 @@ public class IntegrationsApiGenerated {
         Boolean incrementalSync;
         FileSyncConfigNullable fileSyncConfig;
         Boolean automaticallyOpenFilePicker;
+        ServiceNowCredentialsNullable servicenowCredentials;
 
         public GetOauthUrlRequestBuilderGenerated(ExternalDataSourceType service) {
             this.service = service;
@@ -1873,7 +1875,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set incrementalSync
-         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources. (optional, default to false)
+         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. (optional, default to false)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder incrementalSync(Boolean incrementalSync) {
@@ -1898,6 +1900,16 @@ public class IntegrationsApiGenerated {
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder automaticallyOpenFilePicker(Boolean automaticallyOpenFilePicker) {
             this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
+        }
+        
+        /**
+         * Set servicenowCredentials
+         * @param servicenowCredentials  (optional)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
+         */
+        public IntegrationsApi.GetOauthUrlRequestBuilder servicenowCredentials(ServiceNowCredentialsNullable servicenowCredentials) {
+            this.servicenowCredentials = servicenowCredentials;
             return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
@@ -1946,6 +1958,7 @@ public class IntegrationsApiGenerated {
             oauthURLRequest.incrementalSync(this.incrementalSync);
             oauthURLRequest.fileSyncConfig(this.fileSyncConfig);
             oauthURLRequest.automaticallyOpenFilePicker(this.automaticallyOpenFilePicker);
+            oauthURLRequest.servicenowCredentials(this.servicenowCredentials);
             return oauthURLRequest;
         }
 
@@ -3665,7 +3678,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set incrementalSync
-         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources. (optional, default to false)
+         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. (optional, default to false)
          * @return IntegrationsApi.SyncConfluenceRequestBuilder
          */
         public IntegrationsApi.SyncConfluenceRequestBuilder incrementalSync(Boolean incrementalSync) {
@@ -4173,7 +4186,7 @@ public class IntegrationsApiGenerated {
         
         /**
          * Set incrementalSync
-         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources. (optional, default to false)
+         * @param incrementalSync Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. (optional, default to false)
          * @return IntegrationsApi.SyncFilesRequestBuilder
          */
         public IntegrationsApi.SyncFilesRequestBuilder incrementalSync(Boolean incrementalSync) {

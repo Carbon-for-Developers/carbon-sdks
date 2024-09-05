@@ -50,7 +50,7 @@ type OrganizationUserFilesToSyncFilters struct {
 	// The external URLs of the files. The query will return files with these external URLs.
 	ExternalUrls []string `json:"external_urls,omitempty"`
 	// Filter files based on their type at the source (for example help center tickets and articles)
-	FileTypesAtSource []HelpdeskFileTypes `json:"file_types_at_source,omitempty"`
+	FileTypesAtSource []HSNFileTypes2 `json:"file_types_at_source,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncFilters instantiates a new OrganizationUserFilesToSyncFilters object
@@ -689,9 +689,9 @@ func (o *OrganizationUserFilesToSyncFilters) SetExternalUrls(v []string) {
 }
 
 // GetFileTypesAtSource returns the FileTypesAtSource field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSource() []HelpdeskFileTypes {
+func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSource() []HSNFileTypes2 {
 	if o == nil {
-		var ret []HelpdeskFileTypes
+		var ret []HSNFileTypes2
 		return ret
 	}
 	return o.FileTypesAtSource
@@ -700,7 +700,7 @@ func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSource() []HelpdeskFi
 // GetFileTypesAtSourceOk returns a tuple with the FileTypesAtSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSourceOk() ([]HelpdeskFileTypes, bool) {
+func (o *OrganizationUserFilesToSyncFilters) GetFileTypesAtSourceOk() ([]HSNFileTypes2, bool) {
 	if o == nil || isNil(o.FileTypesAtSource) {
     return nil, false
 	}
@@ -716,8 +716,8 @@ func (o *OrganizationUserFilesToSyncFilters) HasFileTypesAtSource() bool {
 	return false
 }
 
-// SetFileTypesAtSource gets a reference to the given []HelpdeskFileTypes and assigns it to the FileTypesAtSource field.
-func (o *OrganizationUserFilesToSyncFilters) SetFileTypesAtSource(v []HelpdeskFileTypes) {
+// SetFileTypesAtSource gets a reference to the given []HSNFileTypes2 and assigns it to the FileTypesAtSource field.
+func (o *OrganizationUserFilesToSyncFilters) SetFileTypesAtSource(v []HSNFileTypes2) {
 	o.FileTypesAtSource = v
 }
 

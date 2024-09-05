@@ -35,5 +35,7 @@
 
 * `ZOTERO` (value: `"ZOTERO"`)
 
+* `SERVICENOW` (value: `"SERVICENOW"`)
+
 
 

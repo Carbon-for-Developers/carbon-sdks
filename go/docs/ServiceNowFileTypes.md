@@ -1,0 +1,15 @@
+# ServiceNowFileTypes
+
+## Enum
+
+
+* `TABLE` (value: `"TABLE"`)
+
+* `INCIDENT` (value: `"INCIDENT"`)
+
+* `ATTACHMENT` (value: `"ATTACHMENT"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

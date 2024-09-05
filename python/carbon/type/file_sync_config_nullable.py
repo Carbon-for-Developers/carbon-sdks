@@ -14,15 +14,14 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from carbon.type.helpdesk_file_types import HelpdeskFileTypes
+from carbon.type.file_sync_config_nullable_auto_synced_source_types import FileSyncConfigNullableAutoSyncedSourceTypes
 from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 
 class RequiredFileSyncConfigNullable(TypedDict):
     pass
 
 class OptionalFileSyncConfigNullable(TypedDict, total=False):
-    # File types to automatically sync when the data source connects. Only a subset of file types can be          controlled. If not supported, then they will always be synced
-    auto_synced_source_types: typing.List[HelpdeskFileTypes]
+    auto_synced_source_types: FileSyncConfigNullableAutoSyncedSourceTypes
 
     # Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets
     sync_attachments: bool
@@ -37,6 +36,9 @@ class OptionalFileSyncConfigNullable(TypedDict, total=False):
 
     # Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     split_rows: bool
+
+    # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    generate_chunks_only: bool
 
 class FileSyncConfigNullable(RequiredFileSyncConfigNullable, OptionalFileSyncConfigNullable):
     pass

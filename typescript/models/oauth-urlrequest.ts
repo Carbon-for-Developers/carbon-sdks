@@ -13,6 +13,7 @@ import type * as buffer from "buffer"
 import { EmbeddingGeneratorsNullable } from './embedding-generators-nullable';
 import { ExternalDataSourceType } from './external-data-source-type';
 import { FileSyncConfigNullable } from './file-sync-config-nullable';
+import { ServiceNowCredentialsNullable } from './service-now-credentials-nullable';
 
 /**
  * 
@@ -165,7 +166,7 @@ export interface OAuthURLRequest {
      */
     'sync_source_items'?: boolean;
     /**
-     * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+     * Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
      * @type {boolean}
      * @memberof OAuthURLRequest
      */
@@ -182,5 +183,11 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'automatically_open_file_picker'?: boolean | null;
+    /**
+     * 
+     * @type {ServiceNowCredentialsNullable}
+     * @memberof OAuthURLRequest
+     */
+    'servicenow_credentials'?: ServiceNowCredentialsNullable | null;
 }
 

@@ -68,6 +68,7 @@ class ConnectDataSourceInput(
                             FreskdeskAuthentication,
                             S3Authentication,
                             GithubAuthentication,
+                            ServiceNowAuthentication,
                             GuruAuthentication,
                         ]
             
@@ -148,6 +149,7 @@ from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.s3_authentication import S3Authentication
 from carbon.model.salesforce_authentication import SalesforceAuthentication
+from carbon.model.service_now_authentication import ServiceNowAuthentication
 from carbon.model.sharepoint_authentication import SharepointAuthentication
 from carbon.model.sync_options import SyncOptions
 from carbon.model.zendesk_authentication import ZendeskAuthentication

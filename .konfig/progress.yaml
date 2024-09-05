@@ -303,6 +303,8 @@ securityParameters:
     query: false
   exclude_archived:
     query: false
+  generate_chunks_only:
+    query: false
   generate_sparse_vectors:
     query: false
   hot_storage_time_to_live:

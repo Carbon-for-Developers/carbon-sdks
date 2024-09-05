@@ -61,6 +61,8 @@
 
 * `GURU` (value: `"GURU"`)
 
+* `SERVICENOW` (value: `"SERVICENOW"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

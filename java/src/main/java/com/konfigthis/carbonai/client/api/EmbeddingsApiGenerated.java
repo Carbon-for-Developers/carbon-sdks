@@ -38,7 +38,7 @@ import com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.GetEmbeddingDocumentsBody;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes1;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.OrderDir;
 import com.konfigthis.carbonai.client.model.OrganizationUserFilesToSyncFilters;
@@ -181,7 +181,7 @@ public class EmbeddingsApiGenerated {
         Boolean includeFileLevelMetadata;
         Boolean highAccuracy;
         RerankParamsNullable rerank;
-        List<HelpdeskFileTypes> fileTypesAtSource;
+        List<HSNFileTypes1> fileTypesAtSource;
         Boolean excludeColdStorageFiles;
 
         public GetDocumentsRequestBuilderGenerated(String query, Integer k) {
@@ -354,7 +354,7 @@ public class EmbeddingsApiGenerated {
          * @param fileTypesAtSource Filter files based on their type at the source (for example help center tickets and articles) (optional)
          * @return EmbeddingsApi.GetDocumentsRequestBuilder
          */
-        public EmbeddingsApi.GetDocumentsRequestBuilder fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+        public EmbeddingsApi.GetDocumentsRequestBuilder fileTypesAtSource(List<HSNFileTypes1> fileTypesAtSource) {
             this.fileTypesAtSource = fileTypesAtSource;
             return (EmbeddingsApi.GetDocumentsRequestBuilder) this;
         }

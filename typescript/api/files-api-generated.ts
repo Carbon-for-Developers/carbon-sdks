@@ -726,10 +726,11 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [splitRows] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
          * @param {boolean} [enableColdStorage] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
          * @param {number} [hotStorageTimeToLive] Time in seconds after which the file will be moved to cold storage.
+         * @param {boolean} [generateChunksOnly] If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, transcriptionService?: TranscriptionServiceNullable, includeSpeakerLabels?: boolean, mediaType?: FileContentTypesNullable, splitRows?: boolean, enableColdStorage?: boolean, hotStorageTimeToLive?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        upload: async (file: Uint8Array | File | buffer.File, bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost, chunkSize?: number, chunkOverlap?: number, skipEmbeddingGeneration?: boolean, setPageAsBoundary?: boolean, embeddingModel?: EmbeddingModel, useOcr?: boolean, generateSparseVectors?: boolean, prependFilenameToChunks?: boolean, maxItemsPerChunk?: number, parsePdfTablesWithOcr?: boolean, detectAudioLanguage?: boolean, transcriptionService?: TranscriptionServiceNullable, includeSpeakerLabels?: boolean, mediaType?: FileContentTypesNullable, splitRows?: boolean, enableColdStorage?: boolean, hotStorageTimeToLive?: number, generateChunksOnly?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'file' is not null or undefined
             assertParamExists('upload', 'file', file)
             // verify required parameter 'bodyCreateUploadFileUploadfilePost' is not null or undefined
@@ -863,6 +864,10 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (hotStorageTimeToLive !== undefined) {
                 localVarQueryParameter['hot_storage_time_to_live'] = hotStorageTimeToLive;
+            }
+
+            if (generateChunksOnly !== undefined) {
+                localVarQueryParameter['generate_chunks_only'] = generateChunksOnly;
             }
 
 
@@ -1208,7 +1213,7 @@ export const FilesApiFp = function(configuration?: Configuration) {
             const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
                 file: requestParameters.file
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.transcriptionService, requestParameters.includeSpeakerLabels, requestParameters.mediaType, requestParameters.splitRows, requestParameters.enableColdStorage, requestParameters.hotStorageTimeToLive, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, requestParameters.parsePdfTablesWithOcr, requestParameters.detectAudioLanguage, requestParameters.transcriptionService, requestParameters.includeSpeakerLabels, requestParameters.mediaType, requestParameters.splitRows, requestParameters.enableColdStorage, requestParameters.hotStorageTimeToLive, requestParameters.generateChunksOnly, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1237,7 +1242,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 include_speaker_labels: requestParameters.include_speaker_labels,
                 media_type: requestParameters.media_type,
                 split_rows: requestParameters.split_rows,
-                cold_storage_params: requestParameters.cold_storage_params
+                cold_storage_params: requestParameters.cold_storage_params,
+                generate_chunks_only: requestParameters.generate_chunks_only
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1259,7 +1265,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 overwrite_file_id: requestParameters.overwrite_file_id,
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
-                cold_storage_params: requestParameters.cold_storage_params
+                cold_storage_params: requestParameters.cold_storage_params,
+                generate_chunks_only: requestParameters.generate_chunks_only
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(rawTextInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1693,6 +1700,13 @@ export type FilesApiUploadRequest = {
     * @memberof FilesApiUpload
     */
     readonly hotStorageTimeToLive?: number
+    
+    /**
+    * If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    * @type {boolean}
+    * @memberof FilesApiUpload
+    */
+    readonly generateChunksOnly?: boolean
     
 } & BodyCreateUploadFileUploadfilePost
 

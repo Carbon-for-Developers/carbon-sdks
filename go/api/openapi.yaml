@@ -3069,6 +3069,24 @@ paths:
           title: Hot Storage Time To Live
           type: integer
         style: form
+      - description: |-
+          If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+        explode: true
+        in: query
+        name: generate_chunks_only
+        required: false
+        schema:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                        but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-17-schema
+        style: form
       requestBody:
         content:
           multipart/form-data:
@@ -4299,6 +4317,7 @@ components:
             transcription_service: null
             auto_synced_source_types:
             - ARTICLE
+            generate_chunks_only: false
           automatically_open_file_picker: true
           tags: ""
           sync_source_items: true
@@ -4313,17 +4332,21 @@ components:
           tenant_name: tenant_name
           source: null
           organization_name: organization_name
+          client_id: client_id
           access_token: access_token
           workspace_id: workspace_id
           site_name: site_name
           refresh_token: refresh_token
           zotero_id: zotero_id
+          instance_subdomain: instance_subdomain
           endpoint_url: endpoint_url
           api_key: api_key
           domain: domain
           access_key: access_key
           access_key_secret: access_key_secret
           subdomain: subdomain
+          client_secret: client_secret
+          redirect_uri: redirect_uri
           access_token_secret: access_token_secret
           username: username
       properties:
@@ -4452,6 +4475,7 @@ components:
       - S3
       - GMAIL
       - OUTLOOK
+      - SERVICENOW
       - TEXT
       - CSV
       - TSV
@@ -5067,6 +5091,7 @@ components:
       - SLACK
       - ZENDESK
       - ZOTERO
+      - SERVICENOW
       title: ExternalDataSourceType
       type: string
     ExternalFileSyncStatuses:
@@ -5269,6 +5294,7 @@ components:
       - GITHUB
       - SLACK
       - GURU
+      - SERVICENOW
       - JPG
       - PNG
       - MP3
@@ -5337,7 +5363,7 @@ components:
           example:
           - ARTICLE
           items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
+            $ref: '#/components/schemas/HSNFileTypes'
           title: Auto Synced Source Types
           type: array
           x-konfig-original-example:
@@ -5380,6 +5406,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-split_rows
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-generate_chunks_only
       title: FileSyncConfig
       type: object
     FreshDeskConnectRequest:
@@ -5395,6 +5431,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         tags: {}
         sync_source_items: true
         api_key: api_key
@@ -5741,7 +5778,7 @@ components:
           description: Filter files based on their type at the source (for example
             help center tickets and articles)
           items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
+            $ref: '#/components/schemas/HSNFileTypes1'
           nullable: true
           title: File Types At Source
           type: array
@@ -6045,6 +6082,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         filters: "{}"
         tags: {}
         incremental_sync: false
@@ -6169,6 +6207,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         tags: {}
         access_token: access_token
         sync_source_items: true
@@ -6801,6 +6840,18 @@ components:
           nullable: true
           title: Endpoint Url
           type: string
+        instance_subdomain:
+          title: Instance Subdomain
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
       required:
       - source
       title: OAuthAuthentication
@@ -6821,6 +6872,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         use_ocr: false
         generate_sparse_vectors: false
         scope: scope
@@ -6829,6 +6881,11 @@ components:
         sharepoint_site_name: sharepoint_site_name
         confluence_subdomain: confluence_subdomain
         parse_pdf_tables_with_ocr: false
+        servicenow_credentials:
+          instance_subdomain: instance_subdomain
+          client_secret: client_secret
+          redirect_uri: redirect_uri
+          client_id: client_id
         automatically_open_file_picker: true
         tags: ""
         sync_source_items: true
@@ -7002,7 +7059,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -7017,6 +7074,8 @@ components:
           nullable: true
           title: Automatically Open File Picker
           type: boolean
+        servicenow_credentials:
+          $ref: '#/components/schemas/ServiceNowCredentialsNullable'
       required:
       - service
       title: OAuthURLRequest
@@ -7599,7 +7658,7 @@ components:
           description: Filter files based on their type at the source (for example
             help center tickets and articles)
           items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
+            $ref: '#/components/schemas/HSNFileTypes2'
           nullable: true
           title: File Types At Source
           type: array
@@ -7726,6 +7785,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         filters: "{}"
         tags: {}
         incremental_sync: false
@@ -7951,6 +8011,7 @@ components:
         embedding_model: OPENAI
         chunk_overlap: 6
         skip_embedding_generation: false
+        generate_chunks_only: false
       properties:
         contents:
           minLength: 5
@@ -7991,6 +8052,16 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_sparse_vectors
         cold_storage_params:
           $ref: '#/components/schemas/ColdStorageProps'
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                    but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_chunks_only
       required:
       - contents
       title: RawTextInput
@@ -8120,6 +8191,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         tags: {}
         use_ocr: false
         generate_sparse_vectors: false
@@ -8270,6 +8342,66 @@ components:
       - source
       title: SalesforceAuthentication
       type: object
+    ServiceNowAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        instance_subdomain:
+          title: Instance Subdomain
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+      required:
+      - access_token
+      - client_id
+      - client_secret
+      - instance_subdomain
+      - redirect_uri
+      - source
+      title: ServiceNowAuthentication
+      type: object
+    ServiceNowCredentials:
+      properties:
+        instance_subdomain:
+          title: Instance Subdomain
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - instance_subdomain
+      - redirect_uri
+      title: ServiceNowCredentials
+      type: object
+    ServiceNowFileTypes:
+      enum:
+      - TABLE
+      - INCIDENT
+      - ATTACHMENT
+      title: ServiceNowFileTypes
+      type: string
     SharepointAuthentication:
       properties:
         source:
@@ -8356,6 +8488,7 @@ components:
         css_selectors_to_skip: []
         url: url
         tags: {}
+        generate_chunks_only: false
         download_css_and_media: false
         html_tags_to_skip: []
         url_paths_to_include: []
@@ -8515,6 +8648,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only
       required:
       - url
       title: SitemapScrapeRequest
@@ -8664,6 +8807,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         tags: {}
         incremental_sync: false
         use_ocr: false
@@ -8771,7 +8915,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -8799,6 +8943,7 @@ components:
           transcription_service: null
           auto_synced_source_types:
           - ARTICLE
+          generate_chunks_only: false
         automatically_open_file_picker: true
         tags: ""
         sync_source_items: true
@@ -8904,7 +9049,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -9043,6 +9188,7 @@ components:
           enable_cold_storage: false
         embedding_model: null
         url: url
+        generate_chunks_only: false
         media_type: null
         generate_sparse_vectors: false
         set_page_as_boundary: false
@@ -9142,6 +9288,16 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-split_rows
         cold_storage_params:
           $ref: '#/components/schemas/ColdStorageProps'
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                    but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-generate_chunks_only
       required:
       - url
       title: UploadFileFromUrlInput
@@ -9966,6 +10122,7 @@ components:
         css_selectors_to_skip: []
         url: url
         tags: {}
+        generate_chunks_only: false
         download_css_and_media: false
         recursion_depth: 3
         html_tags_to_skip: []
@@ -10111,6 +10268,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-download_css_and_media
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-generate_chunks_only
       required:
       - url
       title: WebscrapeRequest
@@ -10285,6 +10452,7 @@ components:
       - S3
       - GMAIL
       - OUTLOOK
+      - SERVICENOW
       - TEXT
       - CSV
       - TSV
@@ -10385,6 +10553,7 @@ components:
       - GITHUB
       - SLACK
       - GURU
+      - SERVICENOW
       - JPG
       - PNG
       - MP3
@@ -10421,6 +10590,7 @@ components:
         transcription_service: null
         auto_synced_source_types:
         - ARTICLE
+        generate_chunks_only: false
       nullable: true
       properties:
         auto_synced_source_types:
@@ -10432,7 +10602,7 @@ components:
           example:
           - ARTICLE
           items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
+            $ref: '#/components/schemas/HSNFileTypes3'
           title: Auto Synced Source Types
           type: array
           x-konfig-original-example:
@@ -10475,6 +10645,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-split_rows
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only
       title: FileSyncConfig
       type: object
     HybridSearchTuningParamsNullable:
@@ -10558,6 +10738,38 @@ components:
           title: Root Files Only
           type: boolean
       title: ListItemsFilters
+      type: object
+    ServiceNowCredentialsNullable:
+      description: |-
+        ServiceNow credentials required to connect a ServiceNow account. The instance_subdomain can be extracted from
+                the url of the instance url which takes the form of "<instance-subdomain>.service-now.com". The client_id and client_secret are
+                values generated by creating a new OAuth API Integration in ServiceNow. When creating the OAuth API Integration, the redirect
+                uri must be "https://api.carbon.ai/integrations/servicenow" or a similar one using a CNAME.
+      example:
+        instance_subdomain: instance_subdomain
+        client_secret: client_secret
+        redirect_uri: redirect_uri
+        client_id: client_id
+      nullable: true
+      properties:
+        instance_subdomain:
+          title: Instance Subdomain
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - instance_subdomain
+      - redirect_uri
+      title: ServiceNowCredentials
       type: object
     UserConfigurationNullable:
       description: |-
@@ -10819,6 +11031,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-17-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-paths--fetch_youtube_transcript-get-parameters-1-schema:
       example: false
       type: boolean
@@ -10910,6 +11126,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfig-properties-split_rows:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfig-properties-generate_chunks_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -11307,6 +11527,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-RawTextInput-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation:
       example: false
       type: boolean
@@ -11412,6 +11636,10 @@ components:
       type: array
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -11557,6 +11785,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties:
       example: {}
       properties: {}
@@ -11652,6 +11884,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WebscrapeRequest-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
       example: OPENAI
       type: string
@@ -11677,6 +11913,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-split_rows:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -11941,7 +12181,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -11956,6 +12196,8 @@ components:
           nullable: true
           title: Automatically Open File Picker
           type: boolean
+        servicenow_credentials:
+          $ref: '#/components/schemas/ServiceNowCredentialsNullable'
       required:
       - service
       type: object
@@ -12123,7 +12365,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -12260,7 +12502,7 @@ components:
           default: false
           description: |-
             Only sync files if they have not already been synced or if the embedding properties have changed.
-                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT. It will be ignored for other data sources.
+                    This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
           example: false
           title: Incremental Sync
           type: boolean
@@ -13380,7 +13622,7 @@ components:
           description: Filter files based on their type at the source (for example
             help center tickets and articles)
           items:
-            $ref: '#/components/schemas/HelpdeskFileTypes'
+            $ref: '#/components/schemas/HSNFileTypes1'
           nullable: true
           title: File Types At Source
           type: array
@@ -13730,6 +13972,16 @@ components:
           nullable: true
           title: Hot Storage Time To Live
           type: integer
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                        but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-17-schema
         file:
           format: binary
           title: File
@@ -13756,6 +14008,7 @@ components:
       - split_rows
       - enable_cold_storage
       - hot_storage_time_to_live
+      - generate_chunks_only
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:
@@ -13850,6 +14103,16 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-split_rows
         cold_storage_params:
           $ref: '#/components/schemas/ColdStorageProps'
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                    but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-generate_chunks_only
       required:
       - url
       type: object
@@ -13896,6 +14159,16 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_sparse_vectors
         cold_storage_params:
           $ref: '#/components/schemas/ColdStorageProps'
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                    but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_chunks_only
       required:
       - contents
       type: object
@@ -14375,6 +14648,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-download_css_and_media
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only
       required:
       - url
       type: object
@@ -14467,17 +14750,21 @@ components:
         tenant_name: tenant_name
         source: null
         organization_name: organization_name
+        client_id: client_id
         access_token: access_token
         workspace_id: workspace_id
         site_name: site_name
         refresh_token: refresh_token
         zotero_id: zotero_id
+        instance_subdomain: instance_subdomain
         endpoint_url: endpoint_url
         api_key: api_key
         domain: domain
         access_key: access_key
         access_key_secret: access_key_secret
         subdomain: subdomain
+        client_secret: client_secret
+        redirect_uri: redirect_uri
         access_token_secret: access_token_secret
         username: username
       properties:
@@ -14533,10 +14820,46 @@ components:
           nullable: true
           title: Endpoint Url
           type: string
+        instance_subdomain:
+          title: Instance Subdomain
+          type: string
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          title: Client Secret
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
       required:
       - source
       title: OAuthAuthentication
       type: object
+    HSNFileTypes:
+      enum:
+      - TICKET
+      - ARTICLE
+      title: HelpdeskFileTypes
+      type: string
+    HSNFileTypes1:
+      enum:
+      - TICKET
+      - ARTICLE
+      title: HelpdeskFileTypes
+      type: string
+    HSNFileTypes2:
+      enum:
+      - TICKET
+      - ARTICLE
+      title: HelpdeskFileTypes
+      type: string
+    HSNFileTypes3:
+      enum:
+      - TICKET
+      - ARTICLE
+      title: HelpdeskFileTypes
+      type: string
     Tags:
       anyOf:
       - type: string
@@ -14589,6 +14912,7 @@ components:
         - GOOGLE_CLOUD_STORAGE
         title: SimpleOAuthDataSources
         type: string
+      - title: Source
       - title: Source
       - title: Source
       - title: Source

@@ -62,6 +62,7 @@ class FileFormats(
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
             "GURU": "GURU",
+            "SERVICENOW": "SERVICENOW",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -197,6 +198,10 @@ class FileFormats(
     @schemas.classproperty
     def GURU(cls):
         return cls("GURU")
+    
+    @schemas.classproperty
+    def SERVICENOW(cls):
+        return cls("SERVICENOW")
     
     @schemas.classproperty
     def JPG(cls):

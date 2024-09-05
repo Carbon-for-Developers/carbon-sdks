@@ -44,6 +44,14 @@ module Carbon
     # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     attr_accessor :endpoint_url
 
+    attr_accessor :instance_subdomain
+
+    attr_accessor :client_id
+
+    attr_accessor :client_secret
+
+    attr_accessor :redirect_uri
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -62,7 +70,11 @@ module Carbon
         :'api_key' => :'api_key',
         :'access_key' => :'access_key',
         :'access_key_secret' => :'access_key_secret',
-        :'endpoint_url' => :'endpoint_url'
+        :'endpoint_url' => :'endpoint_url',
+        :'instance_subdomain' => :'instance_subdomain',
+        :'client_id' => :'client_id',
+        :'client_secret' => :'client_secret',
+        :'redirect_uri' => :'redirect_uri'
       }
     end
 
@@ -89,7 +101,11 @@ module Carbon
         :'api_key' => :'String',
         :'access_key' => :'String',
         :'access_key_secret' => :'String',
-        :'endpoint_url' => :'String'
+        :'endpoint_url' => :'String',
+        :'instance_subdomain' => :'String',
+        :'client_id' => :'String',
+        :'client_secret' => :'String',
+        :'redirect_uri' => :'String'
       }
     end
 
@@ -98,7 +114,7 @@ module Carbon
       Set.new([
         :'source',
         :'refresh_token',
-        :'endpoint_url'
+        :'endpoint_url',
       ])
     end
 
@@ -114,6 +130,7 @@ module Carbon
       :'OAuthAuthentication',
       :'S3Authentication',
       :'SalesforceAuthentication',
+      :'ServiceNowAuthentication',
       :'SharepointAuthentication',
       :'ZendeskAuthentication',
       :'ZoteroAuthentication'
@@ -198,6 +215,22 @@ module Carbon
       if attributes.key?(:'endpoint_url')
         self.endpoint_url = attributes[:'endpoint_url']
       end
+
+      if attributes.key?(:'instance_subdomain')
+        self.instance_subdomain = attributes[:'instance_subdomain']
+      end
+
+      if attributes.key?(:'client_id')
+        self.client_id = attributes[:'client_id']
+      end
+
+      if attributes.key?(:'client_secret')
+        self.client_secret = attributes[:'client_secret']
+      end
+
+      if attributes.key?(:'redirect_uri')
+        self.redirect_uri = attributes[:'redirect_uri']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -256,6 +289,22 @@ module Carbon
         invalid_properties.push('invalid value for "access_key_secret", access_key_secret cannot be nil.')
       end
 
+      if @instance_subdomain.nil?
+        invalid_properties.push('invalid value for "instance_subdomain", instance_subdomain cannot be nil.')
+      end
+
+      if @client_id.nil?
+        invalid_properties.push('invalid value for "client_id", client_id cannot be nil.')
+      end
+
+      if @client_secret.nil?
+        invalid_properties.push('invalid value for "client_secret", client_secret cannot be nil.')
+      end
+
+      if @redirect_uri.nil?
+        invalid_properties.push('invalid value for "redirect_uri", redirect_uri cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -275,6 +324,10 @@ module Carbon
       return false if @api_key.nil?
       return false if @access_key.nil?
       return false if @access_key_secret.nil?
+      return false if @instance_subdomain.nil?
+      return false if @client_id.nil?
+      return false if @client_secret.nil?
+      return false if @redirect_uri.nil?
       _any_of_found = false
       self.class.openapi_any_of.each do |_class|
         _any_of = Carbon.const_get(_class).build_from_hash(self.to_hash)
@@ -310,7 +363,11 @@ module Carbon
           api_key == o.api_key &&
           access_key == o.access_key &&
           access_key_secret == o.access_key_secret &&
-          endpoint_url == o.endpoint_url
+          endpoint_url == o.endpoint_url &&
+          instance_subdomain == o.instance_subdomain &&
+          client_id == o.client_id &&
+          client_secret == o.client_secret &&
+          redirect_uri == o.redirect_uri
     end
 
     # @see the `==` method
@@ -322,7 +379,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url].hash
+      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url, instance_subdomain, client_id, client_secret, redirect_uri].hash
     end
 
     # Builds the object from hash

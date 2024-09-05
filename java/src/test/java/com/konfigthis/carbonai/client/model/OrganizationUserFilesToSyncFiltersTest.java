@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.ExternalFileSyncStatuses;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes2;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;

@@ -129,5 +129,11 @@ export interface UploadFileFromUrlInput {
      * @memberof UploadFileFromUrlInput
      */
     'cold_storage_params'?: ColdStorageProps;
+    /**
+     * If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+     * @type {boolean}
+     * @memberof UploadFileFromUrlInput
+     */
+    'generate_chunks_only'?: boolean;
 }
 

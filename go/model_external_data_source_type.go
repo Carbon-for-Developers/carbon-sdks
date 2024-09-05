@@ -35,6 +35,7 @@ const (
 	EXTERNALDATASOURCETYPE_SLACK ExternalDataSourceType = "SLACK"
 	EXTERNALDATASOURCETYPE_ZENDESK ExternalDataSourceType = "ZENDESK"
 	EXTERNALDATASOURCETYPE_ZOTERO ExternalDataSourceType = "ZOTERO"
+	EXTERNALDATASOURCETYPE_SERVICENOW ExternalDataSourceType = "SERVICENOW"
 )
 
 // All allowed values of ExternalDataSourceType enum
@@ -54,6 +55,7 @@ var AllowedExternalDataSourceTypeEnumValues = []ExternalDataSourceType{
 	"SLACK",
 	"ZENDESK",
 	"ZOTERO",
+	"SERVICENOW",
 }
 
 func (v *ExternalDataSourceType) UnmarshalJSON(src []byte) error {

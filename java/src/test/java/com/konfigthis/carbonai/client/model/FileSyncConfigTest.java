@@ -17,7 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -89,6 +89,14 @@ public class FileSyncConfigTest {
     @Test
     public void splitRowsTest() {
         // TODO: test splitRows
+    }
+
+    /**
+     * Test the property 'generateChunksOnly'
+     */
+    @Test
+    public void generateChunksOnlyTest() {
+        // TODO: test generateChunksOnly
     }
 
 }

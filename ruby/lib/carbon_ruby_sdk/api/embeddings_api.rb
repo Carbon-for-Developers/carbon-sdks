@@ -131,7 +131,7 @@ module Carbon
     # @param include_file_level_metadata [Boolean] Flag to control whether or not to include file-level metadata in the response. This metadata will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     # @param high_accuracy [Boolean] Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false. If true, the search may return more accurate results, but may take longer to complete.
     # @param rerank [RerankParamsNullable] 
-    # @param file_types_at_source [Array<HelpdeskFileTypes>] Filter files based on their type at the source (for example help center tickets and articles)
+    # @param file_types_at_source [Array<AutoSyncedSourceTypesPropertyInner>] Filter files based on their type at the source (for example help center tickets and articles)
     # @param exclude_cold_storage_files [Boolean] Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered files are in cold storage.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -277,7 +277,7 @@ module Carbon
     # @param include_file_level_metadata [Boolean] Flag to control whether or not to include file-level metadata in the response. This metadata will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
     # @param high_accuracy [Boolean] Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false. If true, the search may return more accurate results, but may take longer to complete.
     # @param rerank [RerankParamsNullable] 
-    # @param file_types_at_source [Array<HelpdeskFileTypes>] Filter files based on their type at the source (for example help center tickets and articles)
+    # @param file_types_at_source [Array<AutoSyncedSourceTypesPropertyInner>] Filter files based on their type at the source (for example help center tickets and articles)
     # @param exclude_cold_storage_files [Boolean] Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered files are in cold storage.
     # @param body [GetEmbeddingDocumentsBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name

@@ -34,6 +34,7 @@ from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
+from carbon.model.service_now_credentials_nullable import ServiceNowCredentialsNullable as ServiceNowCredentialsNullableSchema
 from carbon.model.external_data_source_type import ExternalDataSourceType as ExternalDataSourceTypeSchema
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
 from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
@@ -45,9 +46,11 @@ from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
+from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
+from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentialsNullable as ServiceNowCredentialsNullablePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest as OAuthURLRequestPydantic
 from carbon.pydantic.outh_url_response import OuthURLResponse as OuthURLResponsePydantic
@@ -154,6 +157,7 @@ class BaseApi(api_client.Api):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -211,6 +215,8 @@ class BaseApi(api_client.Api):
             _body["file_sync_config"] = file_sync_config
         if automatically_open_file_picker is not None:
             _body["automatically_open_file_picker"] = automatically_open_file_picker
+        if servicenow_credentials is not None:
+            _body["servicenow_credentials"] = servicenow_credentials
         args.body = _body
         return args
 
@@ -445,6 +451,7 @@ class GetOauthUrlRaw(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -479,6 +486,7 @@ class GetOauthUrlRaw(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -514,6 +522,7 @@ class GetOauthUrlRaw(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -547,6 +556,7 @@ class GetOauthUrlRaw(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -583,6 +593,7 @@ class GetOauthUrl(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -614,6 +625,7 @@ class GetOauthUrl(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
             **kwargs,
         )
         if validate:
@@ -650,6 +662,7 @@ class GetOauthUrl(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -680,6 +693,7 @@ class GetOauthUrl(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -718,6 +732,7 @@ class ApiForpost(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -752,6 +767,7 @@ class ApiForpost(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -787,6 +803,7 @@ class ApiForpost(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -820,6 +837,7 @@ class ApiForpost(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            servicenow_credentials=servicenow_credentials,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

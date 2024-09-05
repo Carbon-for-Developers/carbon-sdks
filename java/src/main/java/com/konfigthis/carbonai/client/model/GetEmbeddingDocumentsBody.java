@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.FileContentTypesNullable;
-import com.konfigthis.carbonai.client.model.HelpdeskFileTypes;
+import com.konfigthis.carbonai.client.model.HSNFileTypes1;
 import com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable;
 import com.konfigthis.carbonai.client.model.RerankParamsNullable;
 import io.swagger.annotations.ApiModel;
@@ -133,7 +133,7 @@ public class GetEmbeddingDocumentsBody {
 
   public static final String SERIALIZED_NAME_FILE_TYPES_AT_SOURCE = "file_types_at_source";
   @SerializedName(SERIALIZED_NAME_FILE_TYPES_AT_SOURCE)
-  private List<HelpdeskFileTypes> fileTypesAtSource = null;
+  private List<HSNFileTypes1> fileTypesAtSource = null;
 
   public static final String SERIALIZED_NAME_EXCLUDE_COLD_STORAGE_FILES = "exclude_cold_storage_files";
   @SerializedName(SERIALIZED_NAME_EXCLUDE_COLD_STORAGE_FILES)
@@ -707,7 +707,7 @@ public class GetEmbeddingDocumentsBody {
   }
 
 
-  public GetEmbeddingDocumentsBody fileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+  public GetEmbeddingDocumentsBody fileTypesAtSource(List<HSNFileTypes1> fileTypesAtSource) {
     
     
     
@@ -716,7 +716,7 @@ public class GetEmbeddingDocumentsBody {
     return this;
   }
 
-  public GetEmbeddingDocumentsBody addFileTypesAtSourceItem(HelpdeskFileTypes fileTypesAtSourceItem) {
+  public GetEmbeddingDocumentsBody addFileTypesAtSourceItem(HSNFileTypes1 fileTypesAtSourceItem) {
     if (this.fileTypesAtSource == null) {
       this.fileTypesAtSource = new ArrayList<>();
     }
@@ -731,12 +731,12 @@ public class GetEmbeddingDocumentsBody {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter files based on their type at the source (for example help center tickets and articles)")
 
-  public List<HelpdeskFileTypes> getFileTypesAtSource() {
+  public List<HSNFileTypes1> getFileTypesAtSource() {
     return fileTypesAtSource;
   }
 
 
-  public void setFileTypesAtSource(List<HelpdeskFileTypes> fileTypesAtSource) {
+  public void setFileTypesAtSource(List<HSNFileTypes1> fileTypesAtSource) {
     
     
     
