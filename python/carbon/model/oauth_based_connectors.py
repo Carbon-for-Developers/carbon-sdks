@@ -23,7 +23,7 @@ import frozendict  # noqa: F401
 from carbon import schemas  # noqa: F401
 
 
-class ExternalDataSourceType(
+class OauthBasedConnectors(
     schemas.EnumBase,
     schemas.StrSchema
 ):
@@ -49,6 +49,7 @@ class ExternalDataSourceType(
             "SLACK": "SLACK",
             "ZENDESK": "ZENDESK",
             "ZOTERO": "ZOTERO",
+            "GONG": "GONG",
             "SERVICENOW": "SERVICENOW",
         }
     
@@ -111,6 +112,10 @@ class ExternalDataSourceType(
     @schemas.classproperty
     def ZOTERO(cls):
         return cls("ZOTERO")
+    
+    @schemas.classproperty
+    def GONG(cls):
+        return cls("GONG")
     
     @schemas.classproperty
     def SERVICENOW(cls):

@@ -2,7 +2,7 @@
 
 [![Visit Carbon](https://raw.githubusercontent.com/Carbon-for-Developers/carbon-sdks/HEAD/java/header.png)](https://carbon.ai)
 
-# [Carbon](https://carbon.ai)
+# [Carbon](https://carbon.ai)<a id="carbon"></a>
 
 Connect external data to LLMs, no matter the source.
 
@@ -10,11 +10,90 @@ Connect external data to LLMs, no matter the source.
 
 </div>
 
-## Table of Contents
+## Table of Contents<a id="table-of-contents"></a>
 
 <!-- toc -->
 
-## Requirements
+- [Requirements](#requirements)
+- [Installation](#installation)
+  * [Maven users](#maven-users)
+  * [Gradle users](#gradle-users)
+  * [Android users](#android-users)
+  * [Others](#others)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+  * [`carbon.auth.getAccessToken`](#carbonauthgetaccesstoken)
+  * [`carbon.auth.getWhiteLabeling`](#carbonauthgetwhitelabeling)
+  * [`carbon.dataSources.queryUserDataSources`](#carbondatasourcesqueryuserdatasources)
+  * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
+  * [`carbon.embeddings.getDocuments`](#carbonembeddingsgetdocuments)
+  * [`carbon.embeddings.getEmbeddingsAndChunks`](#carbonembeddingsgetembeddingsandchunks)
+  * [`carbon.embeddings.list`](#carbonembeddingslist)
+  * [`carbon.embeddings.uploadChunksAndEmbeddings`](#carbonembeddingsuploadchunksandembeddings)
+  * [`carbon.files.createUserFileTags`](#carbonfilescreateuserfiletags)
+  * [`carbon.files.delete`](#carbonfilesdelete)
+  * [`carbon.files.deleteFileTags`](#carbonfilesdeletefiletags)
+  * [`carbon.files.deleteMany`](#carbonfilesdeletemany)
+  * [`carbon.files.deleteV2`](#carbonfilesdeletev2)
+  * [`carbon.files.getParsedFile`](#carbonfilesgetparsedfile)
+  * [`carbon.files.getRawFile`](#carbonfilesgetrawfile)
+  * [`carbon.files.modifyColdStorageParameters`](#carbonfilesmodifycoldstorageparameters)
+  * [`carbon.files.moveToHotStorage`](#carbonfilesmovetohotstorage)
+  * [`carbon.files.queryUserFiles`](#carbonfilesqueryuserfiles)
+  * [`carbon.files.queryUserFilesDeprecated`](#carbonfilesqueryuserfilesdeprecated)
+  * [`carbon.files.resync`](#carbonfilesresync)
+  * [`carbon.files.upload`](#carbonfilesupload)
+  * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
+  * [`carbon.files.uploadText`](#carbonfilesuploadtext)
+  * [`carbon.integrations.cancel`](#carbonintegrationscancel)
+  * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
+  * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
+  * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
+  * [`carbon.integrations.connectGuru`](#carbonintegrationsconnectguru)
+  * [`carbon.integrations.createAwsIamUser`](#carbonintegrationscreateawsiamuser)
+  * [`carbon.integrations.getOauthUrl`](#carbonintegrationsgetoauthurl)
+  * [`carbon.integrations.listConfluencePages`](#carbonintegrationslistconfluencepages)
+  * [`carbon.integrations.listConversations`](#carbonintegrationslistconversations)
+  * [`carbon.integrations.listDataSourceItems`](#carbonintegrationslistdatasourceitems)
+  * [`carbon.integrations.listFolders`](#carbonintegrationslistfolders)
+  * [`carbon.integrations.listGitbookSpaces`](#carbonintegrationslistgitbookspaces)
+  * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
+  * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
+  * [`carbon.integrations.listRepos`](#carbonintegrationslistrepos)
+  * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
+  * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
+  * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
+  * [`carbon.integrations.syncGitHub`](#carbonintegrationssyncgithub)
+  * [`carbon.integrations.syncGitbook`](#carbonintegrationssyncgitbook)
+  * [`carbon.integrations.syncGmail`](#carbonintegrationssyncgmail)
+  * [`carbon.integrations.syncOutlook`](#carbonintegrationssyncoutlook)
+  * [`carbon.integrations.syncRepos`](#carbonintegrationssyncrepos)
+  * [`carbon.integrations.syncRssFeed`](#carbonintegrationssyncrssfeed)
+  * [`carbon.integrations.syncS3Files`](#carbonintegrationssyncs3files)
+  * [`carbon.integrations.syncSlack`](#carbonintegrationssyncslack)
+  * [`carbon.organizations.get`](#carbonorganizationsget)
+  * [`carbon.organizations.update`](#carbonorganizationsupdate)
+  * [`carbon.organizations.updateStats`](#carbonorganizationsupdatestats)
+  * [`carbon.users.delete`](#carbonusersdelete)
+  * [`carbon.users.get`](#carbonusersget)
+  * [`carbon.users.list`](#carbonuserslist)
+  * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
+  * [`carbon.users.updateUsers`](#carbonusersupdateusers)
+  * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
+  * [`carbon.utilities.fetchWebpage`](#carbonutilitiesfetchwebpage)
+  * [`carbon.utilities.fetchYoutubeTranscripts`](#carbonutilitiesfetchyoutubetranscripts)
+  * [`carbon.utilities.processSitemap`](#carbonutilitiesprocesssitemap)
+  * [`carbon.utilities.scrapeSitemap`](#carbonutilitiesscrapesitemap)
+  * [`carbon.utilities.scrapeWeb`](#carbonutilitiesscrapeweb)
+  * [`carbon.utilities.searchUrls`](#carbonutilitiessearchurls)
+  * [`carbon.utilities.userWebpages`](#carbonutilitiesuserwebpages)
+  * [`carbon.webhooks.addUrl`](#carbonwebhooksaddurl)
+  * [`carbon.webhooks.deleteUrl`](#carbonwebhooksdeleteurl)
+  * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+
+<!-- tocstop -->
+
+## Requirements<a id="requirements"></a>
 
 Building the API client library requires:
 
@@ -25,7 +104,7 @@ If you are adding this library to an Android Application or Library:
 
 3. Android 8.0+ (API Level 26+)
 
-## Installation
+## Installation<a id="installation"></a>
 
 To install the API client library to your local Maven repository, simply execute:
 
@@ -41,7 +120,7 @@ mvn clean deploy
 
 Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
 
-### Maven users
+### Maven users<a id="maven-users"></a>
 
 Add this dependency to your project's POM:
 
@@ -54,7 +133,7 @@ Add this dependency to your project's POM:
 </dependency>
 ```
 
-### Gradle users
+### Gradle users<a id="gradle-users"></a>
 
 Add this dependency to your `build.gradle`:
 
@@ -69,7 +148,7 @@ dependencies {
 }
 ```
 
-### Android users
+### Android users<a id="android-users"></a>
 
 Make sure your `build.gradle` file as a `minSdk` version of at least 26:
 ```groovy
@@ -92,7 +171,7 @@ Also make sure your library or application has internet permissions in your `And
 </manifest>
 ```
 
-### Others
+### Others<a id="others"></a>
 
 At first generate the JAR by executing:
 
@@ -105,7 +184,7 @@ Then manually install the following JARs:
 * `target/carbonai-java-sdk-0.1.30.jar`
 * `target/lib/*.jar`
 
-## Getting Started
+## Getting Started<a id="getting-started"></a>
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
@@ -143,14 +222,14 @@ public class GettingStarted {
     }
 }
 ```
-## Reference
+## Reference<a id="reference"></a>
 
 
-### `carbon.auth.getAccessToken`
+### `carbon.auth.getAccessToken`<a id="carbonauthgetaccesstoken"></a>
 
 Get Access Token
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 TokenResponse result = client
@@ -159,11 +238,11 @@ TokenResponse result = client
         .execute();
 ```
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [TokenResponse](./src/main/java/com/konfigthis/client/model/TokenResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/auth/v1/access_token` `GET`
 
@@ -172,7 +251,7 @@ TokenResponse result = client
 ---
 
 
-### `carbon.auth.getWhiteLabeling`
+### `carbon.auth.getWhiteLabeling`<a id="carbonauthgetwhitelabeling"></a>
 
 Returns whether or not the organization is white labeled and which integrations are white labeled
 
@@ -180,7 +259,7 @@ Returns whether or not the organization is white labeled and which integrations 
 :param db: the database session
 :return: a WhiteLabelingResponse
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 WhiteLabelingResponse result = client
@@ -189,11 +268,11 @@ WhiteLabelingResponse result = client
         .execute();
 ```
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [WhiteLabelingResponse](./src/main/java/com/konfigthis/client/model/WhiteLabelingResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/auth/v1/white_labeling` `GET`
 
@@ -202,11 +281,11 @@ WhiteLabelingResponse result = client
 ---
 
 
-### `carbon.dataSources.queryUserDataSources`
+### `carbon.dataSources.queryUserDataSources`<a id="carbondatasourcesqueryuserdatasources"></a>
 
 User Data Sources
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OrganizationUserDataSourceResponse result = client
@@ -219,21 +298,21 @@ OrganizationUserDataSourceResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### filters: [`OrganizationUserDataSourceFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceFilters.java)
+##### filters: [`OrganizationUserDataSourceFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceFilters.java)<a id="filters-organizationuserdatasourcefilterssrcmainjavacomkonfigthisclientmodelorganizationuserdatasourcefiltersjava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceResponse](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_data_sources` `POST`
 
@@ -242,11 +321,11 @@ OrganizationUserDataSourceResponse result = client
 ---
 
 
-### `carbon.dataSources.revokeAccessToken`
+### `carbon.dataSources.revokeAccessToken`<a id="carbondatasourcesrevokeaccesstoken"></a>
 
 Revoke Access Token
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -255,15 +334,15 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/revoke_access_token` `POST`
 
@@ -272,7 +351,7 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.embeddings.getDocuments`
+### `carbon.embeddings.getDocuments`<a id="carbonembeddingsgetdocuments"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
 and `tags` are specified, `tags` is ignored. `tags_v2` enables
@@ -369,7 +448,7 @@ specified as the `embedding_model` in `/embeddings`, then only files C and D wil
 the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
 set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 DocumentResponseList result = client
@@ -396,85 +475,85 @@ DocumentResponseList result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### query: `String`
+##### query: `String`<a id="query-string"></a>
 
 Query for which to get related chunks and embeddings.
 
-##### k: `Integer`
+##### k: `Integer`<a id="k-integer"></a>
 
 Number of related chunks to return.
 
-##### tags: `Map<String, Object>`
+##### tags: `Map<String, Object>`<a id="tags-map"></a>
 
 A set of tags to limit the search to. Deprecated and may be removed in the future.
 
-##### query_vector: List<`Double`>
+##### query_vector: List<`Double`><a id="query_vector-list"></a>
 
 Optional query vector for which to get related chunks and embeddings. It must have been         generated by the same model used to generate the embeddings across which the search is being conducted. Cannot         provide both `query` and `query_vector`.
 
-##### file_ids: List<`Integer`>
+##### file_ids: List<`Integer`><a id="file_ids-list"></a>
 
 Optional list of file IDs to limit the search to
 
-##### parent_file_ids: List<`Integer`>
+##### parent_file_ids: List<`Integer`><a id="parent_file_ids-list"></a>
 
 Optional list of parent file IDs to limit the search to. A parent file describes a file to which         another file belongs (e.g. a folder)
 
-##### include_all_children: `Boolean`
+##### include_all_children: `Boolean`<a id="include_all_children-boolean"></a>
 
 Flag to control whether or not to include all children of filtered files in the embedding search.
 
-##### tags_v2: `Object`
+##### tags_v2: `Object`<a id="tags_v2-object"></a>
 
 A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
 
-##### include_tags: `Boolean`
+##### include_tags: `Boolean`<a id="include_tags-boolean"></a>
 
 Flag to control whether or not to include tags for each chunk in the response.
 
-##### include_vectors: `Boolean`
+##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
 
 Flag to control whether or not to include embedding vectors in the response.
 
-##### include_raw_file: `Boolean`
+##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
 Flag to control whether or not to include a signed URL to the raw file containing each chunk         in the response.
 
-##### hybrid_search: `Boolean`
+##### hybrid_search: `Boolean`<a id="hybrid_search-boolean"></a>
 
 Flag to control whether or not to perform hybrid search.
 
-##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./src/main/java/com/konfigthis/client/model/HybridSearchTuningParamsNullable.java)
+##### hybrid_search_tuning_parameters: [`HybridSearchTuningParamsNullable`](./src/main/java/com/konfigthis/client/model/HybridSearchTuningParamsNullable.java)<a id="hybrid_search_tuning_parameters-hybridsearchtuningparamsnullablesrcmainjavacomkonfigthisclientmodelhybridsearchtuningparamsnullablejava"></a>
 
-##### media_type:
+##### media_type:<a id="media_type"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### include_file_level_metadata: `Boolean`
+##### include_file_level_metadata: `Boolean`<a id="include_file_level_metadata-boolean"></a>
 
 Flag to control whether or not to include file-level metadata in the response. This metadata         will be included in the `content_metadata` field of each document along with chunk/embedding level metadata.
 
-##### high_accuracy: `Boolean`
+##### high_accuracy: `Boolean`<a id="high_accuracy-boolean"></a>
 
 Flag to control whether or not to perform a high accuracy embedding search. By default, this is set to false.         If true, the search may return more accurate results, but may take longer to complete.
 
-##### rerank: [`RerankParamsNullable`](./src/main/java/com/konfigthis/client/model/RerankParamsNullable.java)
+##### rerank: [`RerankParamsNullable`](./src/main/java/com/konfigthis/client/model/RerankParamsNullable.java)<a id="rerank-rerankparamsnullablesrcmainjavacomkonfigthisclientmodelrerankparamsnullablejava"></a>
 
-##### file_types_at_source: List>
+##### file_types_at_source: List><a id="file_types_at_source-list"></a>
 
 Filter files based on their type at the source (for example help center tickets and articles)
 
-##### exclude_cold_storage_files: `Boolean`
+##### exclude_cold_storage_files: `Boolean`<a id="exclude_cold_storage_files-boolean"></a>
 
 Flag to control whether or not to exclude files that are not in hot storage. If set to False, then an error will be returned if any filtered         files are in cold storage.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [DocumentResponseList](./src/main/java/com/konfigthis/client/model/DocumentResponseList.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/embeddings` `POST`
 
@@ -483,11 +562,11 @@ Flag to control whether or not to exclude files that are not in hot storage. If 
 ---
 
 
-### `carbon.embeddings.getEmbeddingsAndChunks`
+### `carbon.embeddings.getEmbeddingsAndChunks`<a id="carbonembeddingsgetembeddingsandchunks"></a>
 
 Retrieve Embeddings And Content
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 EmbeddingsAndChunksResponse result = client
@@ -500,23 +579,23 @@ EmbeddingsAndChunksResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`EmbeddingsAndChunksFilters`](./src/main/java/com/konfigthis/client/model/EmbeddingsAndChunksFilters.java)
+##### filters: [`EmbeddingsAndChunksFilters`](./src/main/java/com/konfigthis/client/model/EmbeddingsAndChunksFilters.java)<a id="filters-embeddingsandchunksfilterssrcmainjavacomkonfigthisclientmodelembeddingsandchunksfiltersjava"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### include_vectors: `Boolean`
+##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [EmbeddingsAndChunksResponse](./src/main/java/com/konfigthis/client/model/EmbeddingsAndChunksResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/text_chunks` `POST`
 
@@ -525,11 +604,11 @@ EmbeddingsAndChunksResponse result = client
 ---
 
 
-### `carbon.embeddings.list`
+### `carbon.embeddings.list`<a id="carbonembeddingslist"></a>
 
 Retrieve Embeddings And Content V2
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 EmbeddingsAndChunksResponse result = client
@@ -542,23 +621,23 @@ EmbeddingsAndChunksResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### include_vectors: `Boolean`
+##### include_vectors: `Boolean`<a id="include_vectors-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [EmbeddingsAndChunksResponse](./src/main/java/com/konfigthis/client/model/EmbeddingsAndChunksResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/list_chunks_and_embeddings` `POST`
 
@@ -567,11 +646,11 @@ EmbeddingsAndChunksResponse result = client
 ---
 
 
-### `carbon.embeddings.uploadChunksAndEmbeddings`
+### `carbon.embeddings.uploadChunksAndEmbeddings`<a id="carbonembeddingsuploadchunksandembeddings"></a>
 
 Upload Chunks And Embeddings
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -583,23 +662,23 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### chunks_and_embeddings: List<[`SingleChunksAndEmbeddingsUploadInput`](./src/main/java/com/konfigthis/client/model/SingleChunksAndEmbeddingsUploadInput.java)>
+##### chunks_and_embeddings: List<[`SingleChunksAndEmbeddingsUploadInput`](./src/main/java/com/konfigthis/client/model/SingleChunksAndEmbeddingsUploadInput.java)><a id="chunks_and_embeddings-list"></a>
 
-##### overwrite_existing: `Boolean`
+##### overwrite_existing: `Boolean`<a id="overwrite_existing-boolean"></a>
 
-##### chunks_only: `Boolean`
+##### chunks_only: `Boolean`<a id="chunks_only-boolean"></a>
 
-##### custom_credentials: `Map<String, Object>`
+##### custom_credentials: `Map<String, Object>`<a id="custom_credentials-map"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_chunks_and_embeddings` `POST`
 
@@ -608,7 +687,7 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.files.createUserFileTags`
+### `carbon.files.createUserFileTags`<a id="carbonfilescreateuserfiletags"></a>
 
 A tag is a key-value pair that can be added to a file. This pair can then be used
 for searches (e.g. embedding searches) in order to narrow down the scope of the search.
@@ -622,7 +701,7 @@ Carbon currently supports two data types for tag values - `string` and `list<str
 Keys can only be `string`. If values other than `string` and `list<string>` are used,
 they're automatically converted to strings (e.g. 4 will become "4").
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -631,17 +710,17 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### tags: `Map<String, Object>`
+##### tags: `Map<String, Object>`<a id="tags-map"></a>
 
-##### organization_user_file_id: `Integer`
+##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/create_user_file_tags` `POST`
 
@@ -650,12 +729,12 @@ UserFile result = client
 ---
 
 
-### `carbon.files.delete`
+### `carbon.files.delete`<a id="carbonfilesdelete"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete File Endpoint
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -664,15 +743,15 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### fileId: `Integer`
+##### fileId: `Integer`<a id="fileid-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/deletefile/{file_id}` `DELETE`
 
@@ -681,11 +760,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.files.deleteFileTags`
+### `carbon.files.deleteFileTags`<a id="carbonfilesdeletefiletags"></a>
 
 Delete File Tags
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -694,17 +773,17 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### tags: List<`String`>
+##### tags: List<`String`><a id="tags-list"></a>
 
-##### organization_user_file_id: `Integer`
+##### organization_user_file_id: `Integer`<a id="organization_user_file_id-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_user_file_tags` `POST`
 
@@ -713,12 +792,12 @@ UserFile result = client
 ---
 
 
-### `carbon.files.deleteMany`
+### `carbon.files.deleteMany`<a id="carbonfilesdeletemany"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete Files Endpoint
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -732,23 +811,23 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### file_ids: List<`Integer`>
+##### file_ids: List<`Integer`><a id="file_ids-list"></a>
 
-##### sync_statuses: List>
+##### sync_statuses: List><a id="sync_statuses-list"></a>
 
-##### delete_non_synced_only: `Boolean`
+##### delete_non_synced_only: `Boolean`<a id="delete_non_synced_only-boolean"></a>
 
-##### send_webhook: `Boolean`
+##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
 
-##### delete_child_files: `Boolean`
+##### delete_child_files: `Boolean`<a id="delete_child_files-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_files` `POST`
 
@@ -757,11 +836,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.files.deleteV2`
+### `carbon.files.deleteV2`<a id="carbonfilesdeletev2"></a>
 
 Delete Files V2 Endpoint
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -773,21 +852,21 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-##### send_webhook: `Boolean`
+##### send_webhook: `Boolean`<a id="send_webhook-boolean"></a>
 
-##### preserve_file_record: `Boolean`
+##### preserve_file_record: `Boolean`<a id="preserve_file_record-boolean"></a>
 
 Whether or not to delete all data related to the file from the database, BUT to preserve the file metadata, allowing for         resyncs. By default `preserve_file_record` is false, which means that all data related to the file *as well as* its metadata will be deleted. Note that         even if `preserve_file_record` is true, raw files uploaded via the `uploadfile` endpoint still cannot be resynced.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_files_v2` `POST`
 
@@ -796,12 +875,12 @@ Whether or not to delete all data related to the file from the database, BUT to 
 ---
 
 
-### `carbon.files.getParsedFile`
+### `carbon.files.getParsedFile`<a id="carbonfilesgetparsedfile"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 PresignedURLResponse result = client
@@ -810,15 +889,15 @@ PresignedURLResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### fileId: `Integer`
+##### fileId: `Integer`<a id="fileid-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [PresignedURLResponse](./src/main/java/com/konfigthis/client/model/PresignedURLResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/parsed_file/{file_id}` `GET`
 
@@ -827,12 +906,12 @@ PresignedURLResponse result = client
 ---
 
 
-### `carbon.files.getRawFile`
+### `carbon.files.getRawFile`<a id="carbonfilesgetrawfile"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 PresignedURLResponse result = client
@@ -841,15 +920,15 @@ PresignedURLResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### fileId: `Integer`
+##### fileId: `Integer`<a id="fileid-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [PresignedURLResponse](./src/main/java/com/konfigthis/client/model/PresignedURLResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/raw_file/{file_id}` `GET`
 
@@ -858,11 +937,11 @@ PresignedURLResponse result = client
 ---
 
 
-### `carbon.files.modifyColdStorageParameters`
+### `carbon.files.modifyColdStorageParameters`<a id="carbonfilesmodifycoldstorageparameters"></a>
 
 Modify Cold Storage Parameters
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Boolean result = client
@@ -874,15 +953,15 @@ Boolean result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-##### enable_cold_storage: `Boolean`
+##### enable_cold_storage: `Boolean`<a id="enable_cold_storage-boolean"></a>
 
-##### hot_storage_time_to_live: `Integer`
+##### hot_storage_time_to_live: `Integer`<a id="hot_storage_time_to_live-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/modify_cold_storage_parameters` `POST`
 
@@ -891,11 +970,11 @@ Boolean result = client
 ---
 
 
-### `carbon.files.moveToHotStorage`
+### `carbon.files.moveToHotStorage`<a id="carbonfilesmovetohotstorage"></a>
 
 Move To Hot Storage
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Boolean result = client
@@ -905,11 +984,11 @@ Boolean result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/move_to_hot_storage` `POST`
 
@@ -918,7 +997,7 @@ Boolean result = client
 ---
 
 
-### `carbon.files.queryUserFiles`
+### `carbon.files.queryUserFiles`<a id="carbonfilesqueryuserfiles"></a>
 
 For pre-filtering documents, using `tags_v2` is preferred to using `tags` (which is now deprecated). If both `tags_v2`
 and `tags` are specified, `tags` is ignored. `tags_v2` enables
@@ -971,7 +1050,7 @@ For tag blocks (those with "key", "value", and "negate" keys), the following typ
 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
 the resulting query. It is `false` by default.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFilesV2 result = client
@@ -987,27 +1066,27 @@ UserFilesV2 result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-##### include_raw_file: `Boolean`
+##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
-##### include_parsed_text_file: `Boolean`
+##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 
-##### include_additional_files: `Boolean`
+##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFilesV2](./src/main/java/com/konfigthis/client/model/UserFilesV2.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_files_v2` `POST`
 
@@ -1016,12 +1095,12 @@ UserFilesV2 result = client
 ---
 
 
-### `carbon.files.queryUserFilesDeprecated`
+### `carbon.files.queryUserFilesDeprecated`<a id="carbonfilesqueryuserfilesdeprecated"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 List<UserFile> result = client
@@ -1037,27 +1116,27 @@ List<UserFile> result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)
+##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
 
-##### include_raw_file: `Boolean`
+##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
-##### include_parsed_text_file: `Boolean`
+##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 
-##### include_additional_files: `Boolean`
+##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_files` `POST`
 
@@ -1066,11 +1145,11 @@ List<UserFile> result = client
 ---
 
 
-### `carbon.files.resync`
+### `carbon.files.resync`<a id="carbonfilesresync"></a>
 
 Resync File
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -1082,21 +1161,21 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### file_id: `Integer`
+##### file_id: `Integer`<a id="file_id-integer"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### force_embedding_generation: `Boolean`
+##### force_embedding_generation: `Boolean`<a id="force_embedding_generation-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/resync_file` `POST`
 
@@ -1105,7 +1184,7 @@ UserFile result = client
 ---
 
 
-### `carbon.files.upload`
+### `carbon.files.upload`<a id="carbonfilesupload"></a>
 
 This endpoint is used to directly upload local files to Carbon. The `POST` request should be a multipart form request.
 Note that the `set_page_as_boundary` query parameter is applicable only to PDFs for now. When this value is set,
@@ -1133,7 +1212,7 @@ specified as the `embedding_model` in `/embeddings`, then only files C and D wil
 the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
 set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -1160,87 +1239,87 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### _file: `File`
+##### _file: `File`<a id="_file-file"></a>
 
-##### chunkSize: `Integer`
+##### chunkSize: `Integer`<a id="chunksize-integer"></a>
 
 Chunk size in tiktoken tokens to be used when processing file.
 
-##### chunkOverlap: `Integer`
+##### chunkOverlap: `Integer`<a id="chunkoverlap-integer"></a>
 
 Chunk overlap in tiktoken tokens to be used when processing file.
 
-##### skipEmbeddingGeneration: `Boolean`
+##### skipEmbeddingGeneration: `Boolean`<a id="skipembeddinggeneration-boolean"></a>
 
 Flag to control whether or not embeddings should be generated and stored             when processing file.
 
-##### setPageAsBoundary: `Boolean`
+##### setPageAsBoundary: `Boolean`<a id="setpageasboundary-boolean"></a>
 
 Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
 
-##### embeddingModel:
+##### embeddingModel:<a id="embeddingmodel"></a>
 
 Embedding model that will be used to embed file chunks.
 
-##### useOcr: `Boolean`
+##### useOcr: `Boolean`<a id="useocr-boolean"></a>
 
 Whether or not to use OCR when processing files. Valid for PDFs, JPEGs, and PNGs. Useful for documents with             tables, images, and/or scanned text.
 
-##### generateSparseVectors: `Boolean`
+##### generateSparseVectors: `Boolean`<a id="generatesparsevectors-boolean"></a>
 
 Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search.
 
-##### prependFilenameToChunks: `Boolean`
+##### prependFilenameToChunks: `Boolean`<a id="prependfilenametochunks-boolean"></a>
 
 Whether or not to prepend the file's name to chunks.
 
-##### maxItemsPerChunk: `Integer`
+##### maxItemsPerChunk: `Integer`<a id="maxitemsperchunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### parsePdfTablesWithOcr: `Boolean`
+##### parsePdfTablesWithOcr: `Boolean`<a id="parsepdftableswithocr-boolean"></a>
 
 Whether to use rich table parsing when `use_ocr` is enabled.
 
-##### detectAudioLanguage: `Boolean`
+##### detectAudioLanguage: `Boolean`<a id="detectaudiolanguage-boolean"></a>
 
 Whether to automatically detect the language of the uploaded audio file.
 
-##### transcriptionService:
+##### transcriptionService:<a id="transcriptionservice"></a>
 
 The transcription service to use for audio files. If no service is specified, 'deepgram' will be used.
 
-##### includeSpeakerLabels: `Boolean`
+##### includeSpeakerLabels: `Boolean`<a id="includespeakerlabels-boolean"></a>
 
 Detect multiple speakers and label segments of speech by speaker for audio files.
 
-##### mediaType:
+##### mediaType:<a id="mediatype"></a>
 
 The media type of the file. If not provided, it will be inferred from the file extension.
 
-##### splitRows: `Boolean`
+##### splitRows: `Boolean`<a id="splitrows-boolean"></a>
 
 Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
 
-##### enableColdStorage: `Boolean`
+##### enableColdStorage: `Boolean`<a id="enablecoldstorage-boolean"></a>
 
 Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
 
-##### hotStorageTimeToLive: `Integer`
+##### hotStorageTimeToLive: `Integer`<a id="hotstoragetimetolive-integer"></a>
 
 Time in seconds after which the file will be moved to cold storage.
 
-##### generateChunksOnly: `Boolean`
+##### generateChunksOnly: `Boolean`<a id="generatechunksonly-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/uploadfile` `POST`
 
@@ -1249,11 +1328,11 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 ---
 
 
-### `carbon.files.uploadFromUrl`
+### `carbon.files.uploadFromUrl`<a id="carbonfilesuploadfromurl"></a>
 
 Create Upload File From Url
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -1280,55 +1359,55 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-##### file_name: `String`
+##### file_name: `String`<a id="file_name-string"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### set_page_as_boundary: `Boolean`
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### use_textract: `Boolean`
+##### use_textract: `Boolean`<a id="use_textract-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### max_items_per_chunk: `Integer`
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### parse_pdf_tables_with_ocr: `Boolean`
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
-##### detect_audio_language: `Boolean`
+##### detect_audio_language: `Boolean`<a id="detect_audio_language-boolean"></a>
 
-##### transcription_service:
+##### transcription_service:<a id="transcription_service"></a>
 
-##### include_speaker_labels: `Boolean`
+##### include_speaker_labels: `Boolean`<a id="include_speaker_labels-boolean"></a>
 
-##### media_type:
+##### media_type:<a id="media_type"></a>
 
-##### split_rows: `Boolean`
+##### split_rows: `Boolean`<a id="split_rows-boolean"></a>
 
-##### cold_storage_params: [`ColdStorageProps`](./src/main/java/com/konfigthis/client/model/ColdStorageProps.java)
+##### cold_storage_params: [`ColdStorageProps`](./src/main/java/com/konfigthis/client/model/ColdStorageProps.java)<a id="cold_storage_params-coldstoragepropssrcmainjavacomkonfigthisclientmodelcoldstoragepropsjava"></a>
 
-##### generate_chunks_only: `Boolean`
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_file_from_url` `POST`
 
@@ -1337,7 +1416,7 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 ---
 
 
-### `carbon.files.uploadText`
+### `carbon.files.uploadText`<a id="carbonfilesuploadtext"></a>
 
 Carbon supports multiple models for use in generating embeddings for files. For images, we support Vertex AI's
 multimodal model; for text, we support OpenAI's `text-embedding-ada-002` and Cohere's embed-multilingual-v3.0.
@@ -1350,7 +1429,7 @@ specified as the `embedding_model` in `/embeddings`, then only files C and D wil
 the set of all files you want considered for a query have embeddings generated via the same model. For now, **do not**
 set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automatically by Carbon when it detects an image file.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserFile result = client
@@ -1368,35 +1447,35 @@ UserFile result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### contents: `String`
+##### contents: `String`<a id="contents-string"></a>
 
-##### name: `String`
+##### name: `String`<a id="name-string"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### overwrite_file_id: `Integer`
+##### overwrite_file_id: `Integer`<a id="overwrite_file_id-integer"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### cold_storage_params: [`ColdStorageProps`](./src/main/java/com/konfigthis/client/model/ColdStorageProps.java)
+##### cold_storage_params: [`ColdStorageProps`](./src/main/java/com/konfigthis/client/model/ColdStorageProps.java)<a id="cold_storage_params-coldstoragepropssrcmainjavacomkonfigthisclientmodelcoldstoragepropsjava"></a>
 
-##### generate_chunks_only: `Boolean`
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_text` `POST`
 
@@ -1405,11 +1484,11 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 ---
 
 
-### `carbon.integrations.cancel`
+### `carbon.integrations.cancel`<a id="carbonintegrationscancel"></a>
 
 Cancel Data Source Items Sync
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OrganizationUserDataSourceAPI result = client
@@ -1418,15 +1497,15 @@ OrganizationUserDataSourceAPI result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceAPI.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/items/sync/cancel` `POST`
 
@@ -1435,11 +1514,11 @@ OrganizationUserDataSourceAPI result = client
 ---
 
 
-### `carbon.integrations.connectDataSource`
+### `carbon.integrations.connectDataSource`<a id="carbonintegrationsconnectdatasource"></a>
 
 Connect Data Source
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 ConnectDataSourceResponse result = client
@@ -1449,17 +1528,17 @@ ConnectDataSourceResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: [`OANSCZGF`](./src/main/java/com/konfigthis/client/model/OANSCZGF.java)
+##### authentication: [`OANSCZGF`](./src/main/java/com/konfigthis/client/model/OANSCZGF.java)<a id="authentication-oansczgfsrcmainjavacomkonfigthisclientmodeloansczgfjava"></a>
 
-##### sync_options: [`SyncOptions`](./src/main/java/com/konfigthis/client/model/SyncOptions.java)
+##### sync_options: [`SyncOptions`](./src/main/java/com/konfigthis/client/model/SyncOptions.java)<a id="sync_options-syncoptionssrcmainjavacomkonfigthisclientmodelsyncoptionsjava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [ConnectDataSourceResponse](./src/main/java/com/konfigthis/client/model/ConnectDataSourceResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/connect` `POST`
 
@@ -1468,7 +1547,7 @@ ConnectDataSourceResponse result = client
 ---
 
 
-### `carbon.integrations.connectFreshdesk`
+### `carbon.integrations.connectFreshdesk`<a id="carbonintegrationsconnectfreshdesk"></a>
 
 Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.
 Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan.
@@ -1476,7 +1555,7 @@ Once you have an API key, you can make a request to this endpoint along with you
 trigger an automatic sync of the articles in your "solutions" tab. Additional parameters below can be used to associate 
 data with the synced articles or modify the sync behavior.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -1496,41 +1575,41 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### domain: `String`
+##### domain: `String`<a id="domain-string"></a>
 
-##### api_key: `String`
+##### api_key: `String`<a id="api_key-string"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### sync_files_on_connection: `Boolean`
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/freshdesk` `POST`
 
@@ -1539,14 +1618,14 @@ Enabling this flag will fetch all available content from the source to be listed
 ---
 
 
-### `carbon.integrations.connectGitbook`
+### `carbon.integrations.connectGitbook`<a id="carbonintegrationsconnectgitbook"></a>
 
 You will need an access token to connect your Gitbook account. Note that the permissions will be defined by the user 
 generating access token so make sure you have the permission to access spaces you will be syncing. 
 Refer this article for more details https://developer.gitbook.com/gitbook-api/authentication. Additionally, you
 need to specify the name of organization you will be syncing data from.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -1565,39 +1644,39 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### organization: `String`
+##### organization: `String`<a id="organization-string"></a>
 
-##### access_token: `String`
+##### access_token: `String`<a id="access_token-string"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### sync_files_on_connection: `Boolean`
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook` `POST`
 
@@ -1606,12 +1685,12 @@ Enabling this flag will fetch all available content from the source to be listed
 ---
 
 
-### `carbon.integrations.connectGuru`
+### `carbon.integrations.connectGuru`<a id="carbonintegrationsconnectguru"></a>
 
 You will need an access token to connect your Guru account. To obtain an access token, follow the steps highlighted here
 https://help.getguru.com/docs/gurus-api#obtaining-a-user-token. The username should be your Guru username.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -1631,41 +1710,41 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### username: `String`
+##### username: `String`<a id="username-string"></a>
 
-##### access_token: `String`
+##### access_token: `String`<a id="access_token-string"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### sync_files_on_connection: `Boolean`
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/guru` `POST`
 
@@ -1674,7 +1753,7 @@ Enabling this flag will fetch all available content from the source to be listed
 ---
 
 
-### `carbon.integrations.createAwsIamUser`
+### `carbon.integrations.createAwsIamUser`<a id="carbonintegrationscreateawsiamuser"></a>
 
 This endpoint can be used to connect S3 as well as Digital Ocean Spaces (S3 compatible)  
 For S3, create a new IAM user with permissions to:
@@ -1687,7 +1766,7 @@ Once created, generate an access key for this user and share the credentials wit
 For Digital Ocean Spaces, generate the above credentials in your Applications and API page here https://cloud.digitalocean.com/account/api/spaces.
 Endpoint URL is required to connect Digital Ocean Spaces. It should look like <<region>>.digitaloceanspaces.com
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OrganizationUserDataSourceAPI result = client
@@ -1698,25 +1777,25 @@ OrganizationUserDataSourceAPI result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### access_key: `String`
+##### access_key: `String`<a id="access_key-string"></a>
 
-##### access_key_secret: `String`
+##### access_key_secret: `String`<a id="access_key_secret-string"></a>
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### endpoint_url: `String`
+##### endpoint_url: `String`<a id="endpoint_url-string"></a>
 
 You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceAPI.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/s3` `POST`
 
@@ -1725,14 +1804,14 @@ You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space th
 ---
 
 
-### `carbon.integrations.getOauthUrl`
+### `carbon.integrations.getOauthUrl`<a id="carbonintegrationsgetoauthurl"></a>
 
 This endpoint can be used to generate the following URLs
 - An OAuth URL for OAuth based connectors
 - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
 success state.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OuthURLResponse result = client
@@ -1764,93 +1843,98 @@ OuthURLResponse result = client
         .incrementalSync(incrementalSync)
         .fileSyncConfig(fileSyncConfig)
         .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
+        .gongAccountEmail(gongAccountEmail)
         .servicenowCredentials(servicenowCredentials)
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service:
+##### service:<a id="service"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### scope: `String`
+##### scope: `String`<a id="scope-string"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### zendesk_subdomain: `String`
+##### zendesk_subdomain: `String`<a id="zendesk_subdomain-string"></a>
 
-##### microsoft_tenant: `String`
+##### microsoft_tenant: `String`<a id="microsoft_tenant-string"></a>
 
-##### sharepoint_site_name: `String`
+##### sharepoint_site_name: `String`<a id="sharepoint_site_name-string"></a>
 
-##### confluence_subdomain: `String`
+##### confluence_subdomain: `String`<a id="confluence_subdomain-string"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### max_items_per_chunk: `Integer`
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### salesforce_domain: `String`
+##### salesforce_domain: `String`<a id="salesforce_domain-string"></a>
 
-##### sync_files_on_connection: `Boolean`
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
 
 Used to specify whether Carbon should attempt to sync all your files automatically when authorization         is complete. This is only supported for a subset of connectors and will be ignored for the rest. Supported         connectors: Intercom, Zendesk, Gitbook, Confluence, Salesforce, Freshdesk
 
-##### set_page_as_boundary: `Boolean`
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
 Used to specify a data source to sync from if you have multiple connected. It can be skipped if          you only have one data source of that type connected or are connecting a new account.
 
-##### connecting_new_account: `Boolean`
+##### connecting_new_account: `Boolean`<a id="connecting_new_account-boolean"></a>
 
 Used to connect a new data source. If not specified, we will attempt to create a sync URL         for an existing data source based on type and ID.
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
 This request id will be added to all files that get synced using the generated OAuth URL
 
-##### use_ocr: `Boolean`
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
 
 Enable OCR for files that support it. Supported formats: pdf, png, jpg
 
-##### parse_pdf_tables_with_ocr: `Boolean`
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
-##### enable_file_picker: `Boolean`
+##### enable_file_picker: `Boolean`<a id="enable_file_picker-boolean"></a>
 
 Enable integration's file picker for sources that support it. Supported sources: BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-##### incremental_sync: `Boolean`
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-##### automatically_open_file_picker: `Boolean`
+##### automatically_open_file_picker: `Boolean`<a id="automatically_open_file_picker-boolean"></a>
 
 Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 
-##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./src/main/java/com/konfigthis/client/model/ServiceNowCredentialsNullable.java)
+##### gong_account_email: `String`<a id="gong_account_email-string"></a>
 
-#### 🔄 Return
+If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+
+##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./src/main/java/com/konfigthis/client/model/ServiceNowCredentialsNullable.java)<a id="servicenow_credentials-servicenowcredentialsnullablesrcmainjavacomkonfigthisclientmodelservicenowcredentialsnullablejava"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./src/main/java/com/konfigthis/client/model/OuthURLResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/oauth_url` `POST`
 
@@ -1859,7 +1943,7 @@ Automatically open source file picker after the OAuth flow is complete. This fla
 ---
 
 
-### `carbon.integrations.listConfluencePages`
+### `carbon.integrations.listConfluencePages`<a id="carbonintegrationslistconfluencepages"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This endpoint has been deprecated. Use /integrations/items/list instead.
@@ -1872,7 +1956,7 @@ the user's page directory, additional requests to this endpoint can be made with
 convenience, the `has_children` property in each directory item in the response list will
 flag which pages will return non-empty lists of pages when set as the `parent_id`.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 ListResponse result = client
@@ -1882,17 +1966,17 @@ ListResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### parent_id: `String`
+##### parent_id: `String`<a id="parent_id-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [ListResponse](./src/main/java/com/konfigthis/client/model/ListResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/confluence/list` `POST`
 
@@ -1901,7 +1985,7 @@ ListResponse result = client
 ---
 
 
-### `carbon.integrations.listConversations`
+### `carbon.integrations.listConversations`<a id="carbonintegrationslistconversations"></a>
 
 List all of your public and private channels, DMs, and Group DMs. The ID from response 
 can be used as a filter to sync messages to Carbon   
@@ -1911,7 +1995,7 @@ cursor: Used for pagination. If next_cursor is returned in response, you need to
 data_source_id: Data source needs to be specified if you have linked multiple slack accounts  
 exclude_archived: Should archived conversations be excluded, defaults to true
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -1924,17 +2008,17 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### types: `String`
+##### types: `String`<a id="types-string"></a>
 
-##### cursor: `String`
+##### cursor: `String`<a id="cursor-string"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-##### excludeArchived: `Boolean`
+##### excludeArchived: `Boolean`<a id="excludearchived-boolean"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/slack/conversations` `GET`
 
@@ -1943,11 +2027,11 @@ Object result = client
 ---
 
 
-### `carbon.integrations.listDataSourceItems`
+### `carbon.integrations.listDataSourceItems`<a id="carbonintegrationslistdatasourceitems"></a>
 
 List Data Source Items
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 ListDataSourceItemsResponse result = client
@@ -1961,25 +2045,25 @@ ListDataSourceItemsResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### parent_id: `String`
+##### parent_id: `String`<a id="parent_id-string"></a>
 
-##### filters: [`ListItemsFiltersNullable`](./src/main/java/com/konfigthis/client/model/ListItemsFiltersNullable.java)
+##### filters: [`ListItemsFiltersNullable`](./src/main/java/com/konfigthis/client/model/ListItemsFiltersNullable.java)<a id="filters-listitemsfiltersnullablesrcmainjavacomkonfigthisclientmodellistitemsfiltersnullablejava"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [ListDataSourceItemsResponse](./src/main/java/com/konfigthis/client/model/ListDataSourceItemsResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/items/list` `POST`
 
@@ -1988,12 +2072,12 @@ ListDataSourceItemsResponse result = client
 ---
 
 
-### `carbon.integrations.listFolders`
+### `carbon.integrations.listFolders`<a id="carbonintegrationslistfolders"></a>
 
 After connecting your Outlook account, you can use this endpoint to list all of your folders on outlook. This includes 
 both system folders like "inbox" and user created folders.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2003,11 +2087,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/user_folders` `GET`
 
@@ -2016,11 +2100,11 @@ Object result = client
 ---
 
 
-### `carbon.integrations.listGitbookSpaces`
+### `carbon.integrations.listGitbookSpaces`<a id="carbonintegrationslistgitbookspaces"></a>
 
 After connecting your Gitbook account, you can use this endpoint to list all of your spaces under current organization.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2029,11 +2113,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook/spaces` `GET`
 
@@ -2042,12 +2126,12 @@ Object result = client
 ---
 
 
-### `carbon.integrations.listLabels`
+### `carbon.integrations.listLabels`<a id="carbonintegrationslistlabels"></a>
 
 After connecting your Gmail account, you can use this endpoint to list all of your labels. User created labels
 will have the type "user" and Gmail's default labels will have the type "system"
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2057,11 +2141,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gmail/user_labels` `GET`
 
@@ -2070,12 +2154,12 @@ Object result = client
 ---
 
 
-### `carbon.integrations.listOutlookCategories`
+### `carbon.integrations.listOutlookCategories`<a id="carbonintegrationslistoutlookcategories"></a>
 
 After connecting your Outlook account, you can use this endpoint to list all of your categories on outlook. We currently
 support listing up to 250 categories.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2085,11 +2169,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/user_categories` `GET`
 
@@ -2098,12 +2182,12 @@ Object result = client
 ---
 
 
-### `carbon.integrations.listRepos`
+### `carbon.integrations.listRepos`<a id="carbonintegrationslistrepos"></a>
 
 Once you have connected your GitHub account, you can use this endpoint to list the 
     repositories your account has access to. You can use a data source ID or username to fetch from a specific account.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2115,15 +2199,15 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### perPage: `Integer`
+##### perPage: `Integer`<a id="perpage-integer"></a>
 
-##### page: `Integer`
+##### page: `Integer`<a id="page-integer"></a>
 
-##### dataSourceId: `Integer`
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `GET`
 
@@ -2132,7 +2216,7 @@ Object result = client
 ---
 
 
-### `carbon.integrations.syncConfluence`
+### `carbon.integrations.syncConfluence`<a id="carbonintegrationssyncconfluence"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This endpoint has been deprecated. Use /integrations/files/sync instead.
@@ -2142,7 +2226,7 @@ connected account's `data_source_id` can be passed into this endpoint to sync th
 Carbon. Additional parameters listed below can be used to associate data to the selected
 pages or alter the behavior of the sync.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2165,50 +2249,50 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### ids: List<`Object`
+##### ids: List<`Object`<a id="ids-listobject"></a>
                 `Object`>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### max_items_per_chunk: `Integer`
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### set_page_as_boundary: `Boolean`
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### use_ocr: `Boolean`
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
 
-##### parse_pdf_tables_with_ocr: `Boolean`
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
-##### incremental_sync: `Boolean`
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/confluence/sync` `POST`
 
@@ -2217,11 +2301,11 @@ Only sync files if they have not already been synced or if the embedding propert
 ---
 
 
-### `carbon.integrations.syncDataSourceItems`
+### `carbon.integrations.syncDataSourceItems`<a id="carbonintegrationssyncdatasourceitems"></a>
 
 Sync Data Source Items
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OrganizationUserDataSourceAPI result = client
@@ -2230,15 +2314,15 @@ OrganizationUserDataSourceAPI result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceAPI.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/items/sync` `POST`
 
@@ -2247,14 +2331,14 @@ OrganizationUserDataSourceAPI result = client
 ---
 
 
-### `carbon.integrations.syncFiles`
+### `carbon.integrations.syncFiles`<a id="carbonintegrationssyncfiles"></a>
 
 After listing files and folders via /integrations/items/sync and integrations/items/list, use the selected items' external ids 
 as the ids in this endpoint to sync them into Carbon. Sharepoint items take an additional parameter root_id, which identifies
 the drive the file or folder is in and is stored in root_external_id. That additional paramter is optional and excluding it will
 tell the sync to assume the item is stored in the default Documents drive.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2277,50 +2361,50 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### ids: List<`Object`
+##### ids: List<`Object`<a id="ids-listobject"></a>
                 `Object`>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### max_items_per_chunk: `Integer`
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### set_page_as_boundary: `Boolean`
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### use_ocr: `Boolean`
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
 
-##### parse_pdf_tables_with_ocr: `Boolean`
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
-##### incremental_sync: `Boolean`
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 
 Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/files/sync` `POST`
 
@@ -2329,13 +2413,13 @@ Only sync files if they have not already been synced or if the embedding propert
 ---
 
 
-### `carbon.integrations.syncGitHub`
+### `carbon.integrations.syncGitHub`<a id="carbonintegrationssyncgithub"></a>
 
 Refer this article to obtain an access token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.
 Make sure that your access token has the permission to read content from your desired repos. Note that if your access token
 expires you will need to manually update it through this endpoint.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2345,21 +2429,21 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### username: `String`
+##### username: `String`<a id="username-string"></a>
 
-##### access_token: `String`
+##### access_token: `String`<a id="access_token-string"></a>
 
-##### sync_source_items: `Boolean`
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github` `POST`
 
@@ -2368,12 +2452,12 @@ Enabling this flag will fetch all available content from the source to be listed
 ---
 
 
-### `carbon.integrations.syncGitbook`
+### `carbon.integrations.syncGitbook`<a id="carbonintegrationssyncgitbook"></a>
 
 You can sync upto 20 Gitbook spaces at a time using this endpoint. Additional parameters below can be used to associate 
 data with the synced pages or modify the sync behavior.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2390,29 +2474,29 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### space_ids: List<`String`>
+##### space_ids: List<`String`><a id="space_ids-list"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook/sync` `POST`
 
@@ -2421,7 +2505,7 @@ Object result = client
 ---
 
 
-### `carbon.integrations.syncGmail`
+### `carbon.integrations.syncGmail`<a id="carbonintegrationssyncgmail"></a>
 
 Once you have successfully connected your gmail account, you can choose which emails to sync with us
 using the filters parameter. Filters is a JSON object with key value pairs. It also supports AND and OR operations.
@@ -2478,7 +2562,7 @@ This will return emails after 7th of Jan that are either starred or have the lab
 Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
 in the above example.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2499,39 +2583,39 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: `Object`
+##### filters: `Object`<a id="filters-object"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### sync_attachments: `Boolean`
+##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-##### incremental_sync: `Boolean`
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gmail/sync` `POST`
 
@@ -2540,7 +2624,7 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.integrations.syncOutlook`
+### `carbon.integrations.syncOutlook`<a id="carbonintegrationssyncoutlook"></a>
 
 Once you have successfully connected your Outlook account, you can choose which emails to sync with us
 using the filters and folder parameter. "folder" should be the folder you want to sync from Outlook. By default
@@ -2604,7 +2688,7 @@ This will return emails after 7th of Jan that have either Personal or Test as ca
 Note that this is the highest level of nesting we support, i.e. you can't add more AND/OR filters within the OR filter
 in the above example.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2626,41 +2710,41 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: `Object`
+##### filters: `Object`<a id="filters-object"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### folder: `String`
+##### folder: `String`<a id="folder-string"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### sync_attachments: `Boolean`
+##### sync_attachments: `Boolean`<a id="sync_attachments-boolean"></a>
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-##### incremental_sync: `Boolean`
+##### incremental_sync: `Boolean`<a id="incremental_sync-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/outlook/sync` `POST`
 
@@ -2669,13 +2753,13 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.integrations.syncRepos`
+### `carbon.integrations.syncRepos`<a id="carbonintegrationssyncrepos"></a>
 
 You can retreive repos your token has access to using /integrations/github/repos and sync their content. 
 You can also pass full name of any public repository (username/repo-name). This will store the repo content with 
 carbon which can be accessed through /integrations/items/list endpoint. Maximum of 25 repositories are accepted per request.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2685,13 +2769,13 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### repos: List<`String`>
+##### repos: List<`String`><a id="repos-list"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/sync_repos` `POST`
 
@@ -2700,11 +2784,11 @@ Object result = client
 ---
 
 
-### `carbon.integrations.syncRssFeed`
+### `carbon.integrations.syncRssFeed`<a id="carbonintegrationssyncrssfeed"></a>
 
 Rss Feed
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2721,31 +2805,31 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/rss_feed` `POST`
 
@@ -2754,13 +2838,13 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.integrations.syncS3Files`
+### `carbon.integrations.syncS3Files`<a id="carbonintegrationssyncs3files"></a>
 
 After optionally loading the items via /integrations/items/sync and integrations/items/list, use the bucket name 
 and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
 data with the selected items or modify the sync behavior
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2783,45 +2867,45 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### ids: List<[`S3GetFileInput`](./src/main/java/com/konfigthis/client/model/S3GetFileInput.java)>
+##### ids: List<[`S3GetFileInput`](./src/main/java/com/konfigthis/client/model/S3GetFileInput.java)><a id="ids-list"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### max_items_per_chunk: `Integer`
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
 
 Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
-##### set_page_as_boundary: `Boolean`
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-##### use_ocr: `Boolean`
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
 
-##### parse_pdf_tables_with_ocr: `Boolean`
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
 
-##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/s3/files` `POST`
 
@@ -2830,12 +2914,12 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ---
 
 
-### `carbon.integrations.syncSlack`
+### `carbon.integrations.syncSlack`<a id="carbonintegrationssyncslack"></a>
 
 You can list all conversations using the endpoint /integrations/slack/conversations. The ID of 
 conversation will be used as an input for this endpoint with timestamps as optional filters.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -2853,29 +2937,29 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`SlackFilters`](./src/main/java/com/konfigthis/client/model/SlackFilters.java)
+##### filters: [`SlackFilters`](./src/main/java/com/konfigthis/client/model/SlackFilters.java)<a id="filters-slackfilterssrcmainjavacomkonfigthisclientmodelslackfiltersjava"></a>
 
-##### tags: `Object`
+##### tags: `Object`<a id="tags-object"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### data_source_id: `Integer`
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
 
-##### request_id: `String`
+##### request_id: `String`<a id="request_id-string"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/slack/sync` `POST`
 
@@ -2884,11 +2968,11 @@ Object result = client
 ---
 
 
-### `carbon.organizations.get`
+### `carbon.organizations.get`<a id="carbonorganizationsget"></a>
 
 Get Organization
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 OrganizationResponse result = client
@@ -2897,11 +2981,11 @@ OrganizationResponse result = client
         .execute();
 ```
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationResponse](./src/main/java/com/konfigthis/client/model/OrganizationResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization` `GET`
 
@@ -2910,11 +2994,11 @@ OrganizationResponse result = client
 ---
 
 
-### `carbon.organizations.update`
+### `carbon.organizations.update`<a id="carbonorganizationsupdate"></a>
 
 Update Organization
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2925,19 +3009,19 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### global_user_config: [`UserConfigurationNullable`](./src/main/java/com/konfigthis/client/model/UserConfigurationNullable.java)
+##### global_user_config: [`UserConfigurationNullable`](./src/main/java/com/konfigthis/client/model/UserConfigurationNullable.java)<a id="global_user_config-userconfigurationnullablesrcmainjavacomkonfigthisclientmodeluserconfigurationnullablejava"></a>
 
-##### data_source_configs: Map<string, [`DataSourceConfiguration`](./src/main/java/com/konfigthis/client/model/DataSourceConfiguration.java)>
+##### data_source_configs: Map<string, [`DataSourceConfiguration`](./src/main/java/com/konfigthis/client/model/DataSourceConfiguration.java)><a id="data_source_configs-map"></a>
 
 Used to set organization level defaults for configuration related to data sources.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization/update` `POST`
 
@@ -2946,14 +3030,14 @@ Used to set organization level defaults for configuration related to data source
 ---
 
 
-### `carbon.organizations.updateStats`
+### `carbon.organizations.updateStats`<a id="carbonorganizationsupdatestats"></a>
 
 Use this endpoint to reaggregate the statistics for an organization, for example aggregate_file_size. The reaggregation
 process is asyncronous so a webhook will be sent with the event type being FILE_STATISTICS_AGGREGATED to notify when the
 process is complee. After this aggregation is complete, the updated statistics can be retrieved using the /organization
 endpoint. The response of /organization willalso contain a timestamp of the last time the statistics were reaggregated.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2962,11 +3046,11 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/organization/statistics` `POST`
 
@@ -2975,11 +3059,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.users.delete`
+### `carbon.users.delete`<a id="carbonusersdelete"></a>
 
 Delete Users
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -2988,15 +3072,15 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### customer_ids: List<`String`>
+##### customer_ids: List<`String`><a id="customer_ids-list"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_users` `POST`
 
@@ -3005,11 +3089,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.users.get`
+### `carbon.users.get`<a id="carbonusersget"></a>
 
 User Endpoint
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserResponse result = client
@@ -3018,15 +3102,15 @@ UserResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### customer_id: `String`
+##### customer_id: `String`<a id="customer_id-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserResponse](./src/main/java/com/konfigthis/client/model/UserResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user` `POST`
 
@@ -3035,11 +3119,11 @@ UserResponse result = client
 ---
 
 
-### `carbon.users.list`
+### `carbon.users.list`<a id="carbonuserslist"></a>
 
 List users within an organization
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 UserListResponse result = client
@@ -3053,23 +3137,23 @@ UserListResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### filters: [`ListUsersFilters`](./src/main/java/com/konfigthis/client/model/ListUsersFilters.java)
+##### filters: [`ListUsersFilters`](./src/main/java/com/konfigthis/client/model/ListUsersFilters.java)<a id="filters-listusersfilterssrcmainjavacomkonfigthisclientmodellistusersfiltersjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### include_count: `Boolean`
+##### include_count: `Boolean`<a id="include_count-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [UserListResponse](./src/main/java/com/konfigthis/client/model/UserListResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/list_users` `POST`
 
@@ -3078,12 +3162,12 @@ UserListResponse result = client
 ---
 
 
-### `carbon.users.toggleUserFeatures`
+### `carbon.users.toggleUserFeatures`<a id="carbonuserstoggleuserfeatures"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Toggle User Features
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -3092,17 +3176,17 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### configuration_key_name: `String`
+##### configuration_key_name: `String`<a id="configuration_key_name-string"></a>
 
-##### value: `Object`
+##### value: `Object`<a id="value-object"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/modify_user_configuration` `POST`
 
@@ -3111,11 +3195,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.users.updateUsers`
+### `carbon.users.updateUsers`<a id="carbonusersupdateusers"></a>
 
 Update Users
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -3127,27 +3211,27 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### customer_ids: List<`String`>
+##### customer_ids: List<`String`><a id="customer_ids-list"></a>
 
 List of organization supplied user IDs
 
-##### auto_sync_enabled_sources: `Object`
+##### auto_sync_enabled_sources: `Object`<a id="auto_sync_enabled_sources-object"></a>
 
-##### max_files: `Integer`
+##### max_files: `Integer`<a id="max_files-integer"></a>
 
 Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
 
-##### max_files_per_upload: `Integer`
+##### max_files_per_upload: `Integer`<a id="max_files_per_upload-integer"></a>
 
 Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/update_users` `POST`
 
@@ -3156,7 +3240,7 @@ Custom file upload limit for the user across a single upload.         If set, th
 ---
 
 
-### `carbon.utilities.fetchUrls`
+### `carbon.utilities.fetchUrls`<a id="carbonutilitiesfetchurls"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Extracts all URLs from a webpage. 
@@ -3167,7 +3251,7 @@ Args:
 Returns:
     FetchURLsResponse: A response object with a list of URLs extracted from the webpage and the webpage content.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 FetchURLsResponse result = client
@@ -3176,15 +3260,15 @@ FetchURLsResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [FetchURLsResponse](./src/main/java/com/konfigthis/client/model/FetchURLsResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_urls` `GET`
 
@@ -3193,11 +3277,11 @@ FetchURLsResponse result = client
 ---
 
 
-### `carbon.utilities.fetchWebpage`
+### `carbon.utilities.fetchWebpage`<a id="carbonutilitiesfetchwebpage"></a>
 
 Fetch Urls V2
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -3206,11 +3290,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_webpage` `POST`
 
@@ -3219,7 +3303,7 @@ Object result = client
 ---
 
 
-### `carbon.utilities.fetchYoutubeTranscripts`
+### `carbon.utilities.fetchYoutubeTranscripts`<a id="carbonutilitiesfetchyoutubetranscripts"></a>
 
 Fetches english transcripts from YouTube videos.
 
@@ -3230,7 +3314,7 @@ Args:
 Returns:
     dict: A dictionary with the transcript of the YouTube video.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 YoutubeTranscriptResponse result = client
@@ -3240,17 +3324,17 @@ YoutubeTranscriptResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### id: `String`
+##### id: `String`<a id="id-string"></a>
 
-##### raw: `Boolean`
+##### raw: `Boolean`<a id="raw-boolean"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [YoutubeTranscriptResponse](./src/main/java/com/konfigthis/client/model/YoutubeTranscriptResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/fetch_youtube_transcript` `GET`
 
@@ -3259,7 +3343,7 @@ YoutubeTranscriptResponse result = client
 ---
 
 
-### `carbon.utilities.processSitemap`
+### `carbon.utilities.processSitemap`<a id="carbonutilitiesprocesssitemap"></a>
 
 Retrieves all URLs from a sitemap, which can subsequently be utilized with our `web_scrape` endpoint.
 
@@ -3269,7 +3353,7 @@ Retrieves all URLs from a sitemap, which can subsequently be utilized with our `
 Returns:
     dict: A dictionary with a list of URLs extracted from the sitemap.-->
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -3278,11 +3362,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/process_sitemap` `GET`
 
@@ -3291,7 +3375,7 @@ Object result = client
 ---
 
 
-### `carbon.utilities.scrapeSitemap`
+### `carbon.utilities.scrapeSitemap`<a id="carbonutilitiesscrapesitemap"></a>
 
 Extracts all URLs from a sitemap and performs a web scrape on each of them.
 
@@ -3301,7 +3385,7 @@ Args:
 Returns:
     dict: A response object with the status of the scraping job message.-->
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -3327,55 +3411,55 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-##### tags: `Map<String, Object>`
+##### tags: `Map<String, Object>`<a id="tags-map"></a>
 
-##### max_pages_to_scrape: `Integer`
+##### max_pages_to_scrape: `Integer`<a id="max_pages_to_scrape-integer"></a>
 
-##### chunk_size: `Integer`
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 
-##### chunk_overlap: `Integer`
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
-##### skip_embedding_generation: `Boolean`
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
 
-##### enable_auto_sync: `Boolean`
+##### enable_auto_sync: `Boolean`<a id="enable_auto_sync-boolean"></a>
 
-##### generate_sparse_vectors: `Boolean`
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 
-##### prepend_filename_to_chunks: `Boolean`
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
-##### html_tags_to_skip: List<`String`>
+##### html_tags_to_skip: List<`String`><a id="html_tags_to_skip-list"></a>
 
-##### css_classes_to_skip: List<`String`>
+##### css_classes_to_skip: List<`String`><a id="css_classes_to_skip-list"></a>
 
-##### css_selectors_to_skip: List<`String`>
+##### css_selectors_to_skip: List<`String`><a id="css_selectors_to_skip-list"></a>
 
-##### embedding_model:
+##### embedding_model:<a id="embedding_model"></a>
 
-##### url_paths_to_include: List<`String`>
+##### url_paths_to_include: List<`String`><a id="url_paths_to_include-list"></a>
 
 URL subpaths or directories that you want to include. For example if you want to only include         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
 
-##### url_paths_to_exclude: List<`String`>
+##### url_paths_to_exclude: List<`String`><a id="url_paths_to_exclude-list"></a>
 
 URL subpaths or directories that you want to exclude. For example if you want to exclude         URLs that start with /questions in stackoverflow.com, you will add /questions/ in this input
 
-##### urls_to_scrape: List<`String`>
+##### urls_to_scrape: List<`String`><a id="urls_to_scrape-list"></a>
 
 You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
 
-##### download_css_and_media: `Boolean`
+##### download_css_and_media: `Boolean`<a id="download_css_and_media-boolean"></a>
 
 Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
 
-##### generate_chunks_only: `Boolean`
+##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
 
@@ -3384,7 +3468,7 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 ---
 
 
-### `carbon.utilities.scrapeWeb`
+### `carbon.utilities.scrapeWeb`<a id="carbonutilitiesscrapeweb"></a>
 
 Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible with JavaScript and supports recursion depth, enabling you to efficiently extract all content from the target website.
 
@@ -3395,7 +3479,7 @@ Conduct a web scrape on a given webpage URL. Our web scraper is fully compatible
 Returns:
     dict: A response object with the status of the scraping job message.-->
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -3404,11 +3488,11 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Request Body
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 List<[`WebscrapeRequest`](./src/main/java/com/konfigthis/client/model/WebscrapeRequest.java)>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/web_scrape` `POST`
 
@@ -3417,7 +3501,7 @@ List<[`WebscrapeRequest`](./src/main/java/com/konfigthis/client/model/WebscrapeR
 ---
 
 
-### `carbon.utilities.searchUrls`
+### `carbon.utilities.searchUrls`<a id="carbonutilitiessearchurls"></a>
 
 Perform a web search and obtain a list of relevant URLs.
 
@@ -3439,7 +3523,7 @@ Args:
 Returns:
     FetchURLsResponse: A response object with a list of URLs for a given search query.
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 FetchURLsResponse result = client
@@ -3448,15 +3532,15 @@ FetchURLsResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### query: `String`
+##### query: `String`<a id="query-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [FetchURLsResponse](./src/main/java/com/konfigthis/client/model/FetchURLsResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/search_urls` `GET`
 
@@ -3465,11 +3549,11 @@ FetchURLsResponse result = client
 ---
 
 
-### `carbon.utilities.userWebpages`
+### `carbon.utilities.userWebpages`<a id="carbonutilitiesuserwebpages"></a>
 
 User Web Pages
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Object result = client
@@ -3482,17 +3566,17 @@ Object result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### filters: [`UserWebPagesFilters`](./src/main/java/com/konfigthis/client/model/UserWebPagesFilters.java)
+##### filters: [`UserWebPagesFilters`](./src/main/java/com/konfigthis/client/model/UserWebPagesFilters.java)<a id="filters-userwebpagesfilterssrcmainjavacomkonfigthisclientmodeluserwebpagesfiltersjava"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_webpages` `POST`
 
@@ -3501,11 +3585,11 @@ Object result = client
 ---
 
 
-### `carbon.webhooks.addUrl`
+### `carbon.webhooks.addUrl`<a id="carbonwebhooksaddurl"></a>
 
 Add Webhook Url
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 Webhook result = client
@@ -3514,15 +3598,15 @@ Webhook result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### url: `String`
+##### url: `String`<a id="url-string"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [Webhook](./src/main/java/com/konfigthis/client/model/Webhook.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/add_webhook` `POST`
 
@@ -3531,11 +3615,11 @@ Webhook result = client
 ---
 
 
-### `carbon.webhooks.deleteUrl`
+### `carbon.webhooks.deleteUrl`<a id="carbonwebhooksdeleteurl"></a>
 
 Delete Webhook Url
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 GenericSuccessResponse result = client
@@ -3544,15 +3628,15 @@ GenericSuccessResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### webhookId: `Integer`
+##### webhookId: `Integer`<a id="webhookid-integer"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/delete_webhook/{webhook_id}` `DELETE`
 
@@ -3561,11 +3645,11 @@ GenericSuccessResponse result = client
 ---
 
 
-### `carbon.webhooks.urls`
+### `carbon.webhooks.urls`<a id="carbonwebhooksurls"></a>
 
 Webhook Urls
 
-#### 🛠️ Usage
+#### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```java
 WebhookQueryResponse result = client
@@ -3578,21 +3662,21 @@ WebhookQueryResponse result = client
         .execute();
 ```
 
-#### ⚙️ Parameters
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-##### order_by:
+##### order_by:<a id="order_by"></a>
 
-##### order_dir:
+##### order_dir:<a id="order_dir"></a>
 
-##### filters: [`WebhookFilters`](./src/main/java/com/konfigthis/client/model/WebhookFilters.java)
+##### filters: [`WebhookFilters`](./src/main/java/com/konfigthis/client/model/WebhookFilters.java)<a id="filters-webhookfilterssrcmainjavacomkonfigthisclientmodelwebhookfiltersjava"></a>
 
-#### 🔄 Return
+#### 🔄 Return<a id="🔄-return"></a>
 
 [WebhookQueryResponse](./src/main/java/com/konfigthis/client/model/WebhookQueryResponse.java)
 
-#### 🌐 Endpoint
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/webhooks` `POST`
 
@@ -3601,5 +3685,5 @@ WebhookQueryResponse result = client
 ---
 
 
-## Author
+## Author<a id="author"></a>
 This Java package is automatically generated by [Konfig](https://konfigthis.com)

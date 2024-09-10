@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
 **RedirectUri** | Pointer to **string** |  | [optional] 
+**GongAccountEmail** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -558,6 +559,31 @@ SetRedirectUri sets RedirectUri field to given value.
 `func (o *OAuthAuthentication) HasRedirectUri() bool`
 
 HasRedirectUri returns a boolean if a field has been set.
+
+### GetGongAccountEmail
+
+`func (o *OAuthAuthentication) GetGongAccountEmail() string`
+
+GetGongAccountEmail returns the GongAccountEmail field if non-nil, zero value otherwise.
+
+### GetGongAccountEmailOk
+
+`func (o *OAuthAuthentication) GetGongAccountEmailOk() (*string, bool)`
+
+GetGongAccountEmailOk returns a tuple with the GongAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGongAccountEmail
+
+`func (o *OAuthAuthentication) SetGongAccountEmail(v string)`
+
+SetGongAccountEmail sets GongAccountEmail field to given value.
+
+### HasGongAccountEmail
+
+`func (o *OAuthAuthentication) HasGongAccountEmail() bool`
+
+HasGongAccountEmail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

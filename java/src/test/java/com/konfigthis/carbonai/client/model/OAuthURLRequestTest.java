@@ -18,8 +18,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
-import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
+import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -257,6 +257,14 @@ public class OAuthURLRequestTest {
     @Test
     public void automaticallyOpenFilePickerTest() {
         // TODO: test automaticallyOpenFilePicker
+    }
+
+    /**
+     * Test the property 'gongAccountEmail'
+     */
+    @Test
+    public void gongAccountEmailTest() {
+        // TODO: test gongAccountEmail
     }
 
     /**

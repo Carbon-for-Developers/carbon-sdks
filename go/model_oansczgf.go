@@ -37,6 +37,7 @@ type OANSCZGF struct {
 	ClientId *string `json:"client_id,omitempty"`
 	ClientSecret *string `json:"client_secret,omitempty"`
 	RedirectUri *string `json:"redirect_uri,omitempty"`
+	GongAccountEmail *string `json:"gong_account_email,omitempty"`
 }
 
 // NewOANSCZGF instantiates a new OANSCZGF object
@@ -709,6 +710,38 @@ func (o *OANSCZGF) SetRedirectUri(v string) {
 	o.RedirectUri = &v
 }
 
+// GetGongAccountEmail returns the GongAccountEmail field value if set, zero value otherwise.
+func (o *OANSCZGF) GetGongAccountEmail() string {
+	if o == nil || isNil(o.GongAccountEmail) {
+		var ret string
+		return ret
+	}
+	return *o.GongAccountEmail
+}
+
+// GetGongAccountEmailOk returns a tuple with the GongAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OANSCZGF) GetGongAccountEmailOk() (*string, bool) {
+	if o == nil || isNil(o.GongAccountEmail) {
+    return nil, false
+	}
+	return o.GongAccountEmail, true
+}
+
+// HasGongAccountEmail returns a boolean if a field has been set.
+func (o *OANSCZGF) HasGongAccountEmail() bool {
+	if o != nil && !isNil(o.GongAccountEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetGongAccountEmail gets a reference to the given string and assigns it to the GongAccountEmail field.
+func (o *OANSCZGF) SetGongAccountEmail(v string) {
+	o.GongAccountEmail = &v
+}
+
 func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -770,6 +803,9 @@ func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.RedirectUri) {
 		toSerialize["redirect_uri"] = o.RedirectUri
+	}
+	if !isNil(o.GongAccountEmail) {
+		toSerialize["gong_account_email"] = o.GongAccountEmail
 	}
 	return json.Marshal(toSerialize)
 }

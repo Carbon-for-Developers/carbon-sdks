@@ -789,7 +789,7 @@ module Carbon
     # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
     # success state.
     #
-    # @param service [ExternalDataSourceType] 
+    # @param service [OauthBasedConnectors] 
     # @param tags [Object] 
     # @param scope [String] 
     # @param chunk_size [Integer] 
@@ -816,10 +816,11 @@ module Carbon
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param automatically_open_file_picker [Boolean] Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+    # @param gong_account_email [String] If you are connecting a Gong account, you need to input the email of the account you wish to connect. This email will be used to identify your carbon data source.
     # @param servicenow_credentials [ServiceNowCredentialsNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -848,6 +849,7 @@ module Carbon
       _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       _body[:automatically_open_file_picker] = automatically_open_file_picker if automatically_open_file_picker != SENTINEL
+      _body[:gong_account_email] = gong_account_email if gong_account_email != SENTINEL
       _body[:servicenow_credentials] = servicenow_credentials if servicenow_credentials != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
@@ -861,7 +863,7 @@ module Carbon
     # - A file syncing URL which skips the OAuth flow if the user already has a valid access token and takes them to the
     # success state.
     #
-    # @param service [ExternalDataSourceType] 
+    # @param service [OauthBasedConnectors] 
     # @param tags [Object] 
     # @param scope [String] 
     # @param chunk_size [Integer] 
@@ -888,10 +890,11 @@ module Carbon
     # @param incremental_sync [Boolean] Only sync files if they have not already been synced or if the embedding properties have changed. This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
     # @param file_sync_config [FileSyncConfigNullable] 
     # @param automatically_open_file_picker [Boolean] Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+    # @param gong_account_email [String] If you are connecting a Gong account, you need to input the email of the account you wish to connect. This email will be used to identify your carbon data source.
     # @param servicenow_credentials [ServiceNowCredentialsNullable] 
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -920,6 +923,7 @@ module Carbon
       _body[:incremental_sync] = incremental_sync if incremental_sync != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       _body[:automatically_open_file_picker] = automatically_open_file_picker if automatically_open_file_picker != SENTINEL
+      _body[:gong_account_email] = gong_account_email if gong_account_email != SENTINEL
       _body[:servicenow_credentials] = servicenow_credentials if servicenow_credentials != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)

@@ -1734,6 +1734,7 @@ result = carbon.integrations.get_oauth_url(
         "generate_chunks_only" => false,
     },
   automatically_open_file_picker: true,
+  gong_account_email: "string_example",
   servicenow_credentials: {
         "instance_subdomain" => "instance_subdomain_example",
         "client_id" => "client_id_example",
@@ -1746,7 +1747,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`ExternalDataSourceType`](./lib/carbon_ruby_sdk/models/external_data_source_type.rb)<a id="service-externaldatasourcetypelibcarbon_ruby_sdkmodelsexternal_data_source_typerb"></a>
+##### service: [`OauthBasedConnectors`](./lib/carbon_ruby_sdk/models/oauth_based_connectors.rb)<a id="service-oauthbasedconnectorslibcarbon_ruby_sdkmodelsoauth_based_connectorsrb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### scope: `String`<a id="scope-string"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
@@ -1806,6 +1807,11 @@ NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
 Automatically open source file picker after the OAuth flow is complete. This
 flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT.
 It will be ignored for other data sources.
+
+##### gong_account_email: `String`<a id="gong_account_email-string"></a>
+If you are connecting a Gong account, you need to input the email of the account
+you wish to connect. This email will be used to identify your carbon data
+source.
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./lib/carbon_ruby_sdk/models/service_now_credentials_nullable.rb)<a id="servicenow_credentials-servicenowcredentialsnullablelibcarbon_ruby_sdkmodelsservice_now_credentials_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>

@@ -31,8 +31,6 @@ import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
-import { ExternalDataSourceType } from '../models';
-// @ts-ignore
 import { ExternalSourceItemsOrderBy } from '../models';
 // @ts-ignore
 import { FileSyncConfigNullable } from '../models';
@@ -68,6 +66,8 @@ import { ListRequest } from '../models';
 import { ListResponse } from '../models';
 // @ts-ignore
 import { OAuthURLRequest } from '../models';
+// @ts-ignore
+import { OauthBasedConnectors } from '../models';
 // @ts-ignore
 import { OrderDirV2 } from '../models';
 // @ts-ignore
@@ -1639,6 +1639,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 incremental_sync: requestParameters.incremental_sync,
                 file_sync_config: requestParameters.file_sync_config,
                 automatically_open_file_picker: requestParameters.automatically_open_file_picker,
+                gong_account_email: requestParameters.gong_account_email,
                 servicenow_credentials: requestParameters.servicenow_credentials
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);

@@ -20,7 +20,6 @@ import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
-import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import com.konfigthis.carbonai.client.model.FreshDeskConnectRequest;
@@ -38,6 +37,7 @@ import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
 import com.konfigthis.carbonai.client.model.OANSCZGF;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
+import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI;
 import com.konfigthis.carbonai.client.model.OuthURLResponse;
@@ -246,7 +246,7 @@ public class IntegrationsApiTest {
      */
     @Test
     public void getOauthUrlTest() throws ApiException {
-        ExternalDataSourceType service = null;
+        OauthBasedConnectors service = null;
         Object tags = null;
         String scope = null;
         Integer chunkSize = null;
@@ -273,6 +273,7 @@ public class IntegrationsApiTest {
         Boolean incrementalSync = null;
         FileSyncConfigNullable fileSyncConfig = null;
         Boolean automaticallyOpenFilePicker = null;
+        String gongAccountEmail = null;
         ServiceNowCredentialsNullable servicenowCredentials = null;
         OuthURLResponse response = api.getOauthUrl(service)
                 .tags(tags)
@@ -301,6 +302,7 @@ public class IntegrationsApiTest {
                 .incrementalSync(incrementalSync)
                 .fileSyncConfig(fileSyncConfig)
                 .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
+                .gongAccountEmail(gongAccountEmail)
                 .servicenowCredentials(servicenowCredentials)
                 .execute();
         // TODO: test validations

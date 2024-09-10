@@ -70,6 +70,7 @@ class DataSourceType(
             "GITHUB": "GITHUB",
             "SLACK": "SLACK",
             "GURU": "GURU",
+            "GONG": "GONG",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -238,6 +239,10 @@ class DataSourceType(
     @schemas.classproperty
     def GURU(cls):
         return cls("GURU")
+    
+    @schemas.classproperty
+    def GONG(cls):
+        return cls("GONG")
     
     @schemas.classproperty
     def JPG(cls):

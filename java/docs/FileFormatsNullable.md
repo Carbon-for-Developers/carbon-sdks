@@ -63,6 +63,8 @@
 
 * `SERVICENOW` (value: `"SERVICENOW"`)
 
+* `GONG` (value: `"GONG"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

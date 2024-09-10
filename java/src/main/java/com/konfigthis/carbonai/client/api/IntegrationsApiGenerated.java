@@ -30,7 +30,6 @@ import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
-import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import com.konfigthis.carbonai.client.model.FreshDeskConnectRequest;
@@ -48,6 +47,7 @@ import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
 import com.konfigthis.carbonai.client.model.OANSCZGF;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
+import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI;
 import com.konfigthis.carbonai.client.model.OuthURLResponse;
@@ -1610,7 +1610,7 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class GetOauthUrlRequestBuilderGenerated {
-        final ExternalDataSourceType service;
+        final OauthBasedConnectors service;
         Object tags;
         String scope;
         Integer chunkSize;
@@ -1637,9 +1637,10 @@ public class IntegrationsApiGenerated {
         Boolean incrementalSync;
         FileSyncConfigNullable fileSyncConfig;
         Boolean automaticallyOpenFilePicker;
+        String gongAccountEmail;
         ServiceNowCredentialsNullable servicenowCredentials;
 
-        public GetOauthUrlRequestBuilderGenerated(ExternalDataSourceType service) {
+        public GetOauthUrlRequestBuilderGenerated(OauthBasedConnectors service) {
             this.service = service;
         }
 
@@ -1904,6 +1905,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set gongAccountEmail
+         * @param gongAccountEmail If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source. (optional)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
+         */
+        public IntegrationsApi.GetOauthUrlRequestBuilder gongAccountEmail(String gongAccountEmail) {
+            this.gongAccountEmail = gongAccountEmail;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
+        }
+        
+        /**
          * Set servicenowCredentials
          * @param servicenowCredentials  (optional)
          * @return IntegrationsApi.GetOauthUrlRequestBuilder
@@ -1958,6 +1969,7 @@ public class IntegrationsApiGenerated {
             oauthURLRequest.incrementalSync(this.incrementalSync);
             oauthURLRequest.fileSyncConfig(this.fileSyncConfig);
             oauthURLRequest.automaticallyOpenFilePicker(this.automaticallyOpenFilePicker);
+            oauthURLRequest.gongAccountEmail(this.gongAccountEmail);
             oauthURLRequest.servicenowCredentials(this.servicenowCredentials);
             return oauthURLRequest;
         }
@@ -2021,7 +2033,7 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationsApi.GetOauthUrlRequestBuilder getOauthUrl(ExternalDataSourceType service) throws IllegalArgumentException {
+    public IntegrationsApi.GetOauthUrlRequestBuilder getOauthUrl(OauthBasedConnectors service) throws IllegalArgumentException {
         if (service == null) throw new IllegalArgumentException("\"service\" is required but got null");
         return ((IntegrationsApi) this).new GetOauthUrlRequestBuilder(service);
     }

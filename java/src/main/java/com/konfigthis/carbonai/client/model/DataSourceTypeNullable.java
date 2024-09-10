@@ -99,6 +99,8 @@ import com.google.gson.stream.JsonWriter;
   
   GURU("GURU"),
   
+  GONG("GONG"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

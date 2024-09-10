@@ -14,6 +14,7 @@ import { ConfluenceAuthentication } from './confluence-authentication';
 import { FreskdeskAuthentication } from './freskdesk-authentication';
 import { GitbookAuthetication } from './gitbook-authetication';
 import { GithubAuthentication } from './github-authentication';
+import { GongAuthentication } from './gong-authentication';
 import { GuruAuthentication } from './guru-authentication';
 import { NotionAuthentication } from './notion-authentication';
 import { OAuthAuthentication } from './oauth-authentication';
@@ -28,6 +29,6 @@ import { ZoteroAuthentication } from './zotero-authentication';
  * @type AuthenticationProperty
  * @export
  */
-export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication | GithubAuthentication | ServiceNowAuthentication | GuruAuthentication;
+export type AuthenticationProperty = OAuthAuthentication | NotionAuthentication | SharepointAuthentication | ConfluenceAuthentication | ZendeskAuthentication | ZoteroAuthentication | GitbookAuthetication | SalesforceAuthentication | FreskdeskAuthentication | S3Authentication | GithubAuthentication | ServiceNowAuthentication | GuruAuthentication | GongAuthentication;
 
 

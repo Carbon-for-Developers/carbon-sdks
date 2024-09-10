@@ -15,12 +15,12 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.type.oauth_based_connectors import OauthBasedConnectors
 from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
 class RequiredOAuthURLRequest(TypedDict):
-    service: ExternalDataSourceType
+    service: OauthBasedConnectors
 
 
 class OptionalOAuthURLRequest(TypedDict, total=False):
@@ -85,6 +85,9 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
 
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     automatically_open_file_picker: typing.Optional[bool]
+
+    # If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+    gong_account_email: typing.Optional[str]
 
     servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable]
 

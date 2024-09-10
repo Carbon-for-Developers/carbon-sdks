@@ -715,6 +715,9 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'automatically_open_file_picker'
             },
             {
+                name: 'gong_account_email'
+            },
+            {
                 name: 'servicenow_credentials'
             },
         ]

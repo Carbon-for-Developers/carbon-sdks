@@ -1587,7 +1587,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `ServiceNowAuthentication`, `GuruAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-servicenowauthentication-guruauthentication"></a>
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `ServiceNowAuthentication`, `GuruAuthentication`, `GongAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-servicenowauthentication-guruauthentication-gongauthentication"></a>
 
 
 ##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
@@ -1937,6 +1937,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "generate_chunks_only": False,
     },
     automatically_open_file_picker=True,
+    gong_account_email="string_example",
     servicenow_credentials={
         "instance_subdomain": "instance_subdomain_example",
         "client_id": "client_id_example",
@@ -1948,7 +1949,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`ExternalDataSourceType`](./carbon/type/external_data_source_type.py)<a id="service-externaldatasourcetypecarbontypeexternal_data_source_typepy"></a>
+##### service: [`OauthBasedConnectors`](./carbon/type/oauth_based_connectors.py)<a id="service-oauthbasedconnectorscarbontypeoauth_based_connectorspy"></a>
 
 ##### tags: [`Union[bool, date, datetime, dict, float, int, list, str, None]`](./carbon/type/typing_union_bool_date_datetime_dict_float_int_list_str_none.py)<a id="tags-unionbool-date-datetime-dict-float-int-list-str-nonecarbontypetyping_union_bool_date_datetime_dict_float_int_list_str_nonepy"></a>
 
@@ -2022,6 +2023,10 @@ Only sync files if they have not already been synced or if the embedding propert
 ##### automatically_open_file_picker: `Optional[bool]`<a id="automatically_open_file_picker-optionalbool"></a>
 
 Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+
+##### gong_account_email: `Optional[str]`<a id="gong_account_email-optionalstr"></a>
+
+If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./carbon/type/service_now_credentials_nullable.py)<a id="servicenow_credentials-servicenowcredentialsnullablecarbontypeservice_now_credentials_nullablepy"></a>
 

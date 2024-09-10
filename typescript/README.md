@@ -1691,7 +1691,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service: [`ExternalDataSourceType`](./models/external-data-source-type.ts)<a id="service-externaldatasourcetypemodelsexternal-data-source-typets"></a>
+##### service: [`OauthBasedConnectors`](./models/oauth-based-connectors.ts)<a id="service-oauthbasedconnectorsmodelsoauth-based-connectorsts"></a>
 
 ##### tags: `any`<a id="tags-any"></a>
 
@@ -1764,6 +1764,10 @@ Only sync files if they have not already been synced or if the embedding propert
 ##### automatically_open_file_picker: `boolean`<a id="automatically_open_file_picker-boolean"></a>
 
 Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+
+##### gong_account_email: `string`<a id="gong_account_email-string"></a>
+
+If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./models/service-now-credentials-nullable.ts)<a id="servicenow_credentials-servicenowcredentialsnullablemodelsservice-now-credentials-nullablets"></a>
 

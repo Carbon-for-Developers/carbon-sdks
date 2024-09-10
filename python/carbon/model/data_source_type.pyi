@@ -176,6 +176,10 @@ class DataSourceType(
         return cls("GURU")
     
     @schemas.classproperty
+    def GONG(cls):
+        return cls("GONG")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

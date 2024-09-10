@@ -4109,6 +4109,9 @@
               },
               {
                 "$ref": "#/components/schemas/GuruAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/GongAuthentication"
               }
             ]
           },
@@ -4254,6 +4257,7 @@
           "GITHUB",
           "SLACK",
           "GURU",
+          "GONG",
           "JPG",
           "PNG",
           "JPEG",
@@ -4754,28 +4758,6 @@
           "count"
         ]
       },
-      "ExternalDataSourceType": {
-        "title": "ExternalDataSourceType",
-        "type": "string",
-        "enum": [
-          "BOX",
-          "CONFLUENCE",
-          "DROPBOX",
-          "GMAIL",
-          "GOOGLE_DRIVE",
-          "GOOGLE_CLOUD_STORAGE",
-          "INTERCOM",
-          "NOTION",
-          "ONEDRIVE",
-          "OUTLOOK",
-          "SALESFORCE",
-          "SHAREPOINT",
-          "SLACK",
-          "ZENDESK",
-          "ZOTERO",
-          "SERVICENOW"
-        ]
-      },
       "ExternalFileSyncStatuses": {
         "title": "ExternalFileSyncStatuses",
         "type": "string",
@@ -4990,6 +4972,7 @@
           "SLACK",
           "GURU",
           "SERVICENOW",
+          "GONG",
           "JPG",
           "PNG",
           "MP3",
@@ -5793,6 +5776,34 @@
           }
         }
       },
+      "GongAuthentication": {
+        "title": "GongAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "GONG"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string",
+            "nullable": true
+          },
+          "gong_account_email": {
+            "title": "Gong Account Email",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "gong_account_email"
+        ]
+      },
       "GuruAuthentication": {
         "title": "GuruAuthentication",
         "properties": {
@@ -6331,7 +6342,7 @@
             "nullable": true
           },
           "service": {
-            "$ref": "#/components/schemas/ExternalDataSourceType"
+            "$ref": "#/components/schemas/OauthBasedConnectors"
           },
           "chunk_size": {
             "title": "Chunk Size",
@@ -6469,6 +6480,12 @@
             "type": "boolean",
             "nullable": true
           },
+          "gong_account_email": {
+            "title": "Gong Account Email",
+            "description": "If you are connecting a Gong account, you need to input the email of the account you\n        wish to connect. This email will be used to identify your carbon data source.",
+            "type": "string",
+            "nullable": true
+          },
           "servicenow_credentials": {
             "$ref": "#/components/schemas/ServiceNowCredentialsNullable"
           }
@@ -6476,6 +6493,29 @@
         "type": "object",
         "required": [
           "service"
+        ]
+      },
+      "OauthBasedConnectors": {
+        "title": "OauthBasedConnectors",
+        "type": "string",
+        "enum": [
+          "BOX",
+          "CONFLUENCE",
+          "DROPBOX",
+          "GMAIL",
+          "GOOGLE_DRIVE",
+          "GOOGLE_CLOUD_STORAGE",
+          "INTERCOM",
+          "NOTION",
+          "ONEDRIVE",
+          "OUTLOOK",
+          "SALESFORCE",
+          "SHAREPOINT",
+          "SLACK",
+          "ZENDESK",
+          "ZOTERO",
+          "GONG",
+          "SERVICENOW"
         ]
       },
       "OrderDir": {
@@ -9674,6 +9714,7 @@
           "GITHUB",
           "SLACK",
           "GURU",
+          "GONG",
           "JPG",
           "PNG",
           "JPEG",
@@ -9756,6 +9797,7 @@
           "SLACK",
           "GURU",
           "SERVICENOW",
+          "GONG",
           "JPG",
           "PNG",
           "MP3",

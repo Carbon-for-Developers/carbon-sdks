@@ -52,6 +52,8 @@ module Carbon
 
     attr_accessor :redirect_uri
 
+    attr_accessor :gong_account_email
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -74,7 +76,8 @@ module Carbon
         :'instance_subdomain' => :'instance_subdomain',
         :'client_id' => :'client_id',
         :'client_secret' => :'client_secret',
-        :'redirect_uri' => :'redirect_uri'
+        :'redirect_uri' => :'redirect_uri',
+        :'gong_account_email' => :'gong_account_email'
       }
     end
 
@@ -105,7 +108,8 @@ module Carbon
         :'instance_subdomain' => :'String',
         :'client_id' => :'String',
         :'client_secret' => :'String',
-        :'redirect_uri' => :'String'
+        :'redirect_uri' => :'String',
+        :'gong_account_email' => :'String'
       }
     end
 
@@ -125,6 +129,7 @@ module Carbon
       :'FreskdeskAuthentication',
       :'GitbookAuthetication',
       :'GithubAuthentication',
+      :'GongAuthentication',
       :'GuruAuthentication',
       :'NotionAuthentication',
       :'OAuthAuthentication',
@@ -231,6 +236,10 @@ module Carbon
       if attributes.key?(:'redirect_uri')
         self.redirect_uri = attributes[:'redirect_uri']
       end
+
+      if attributes.key?(:'gong_account_email')
+        self.gong_account_email = attributes[:'gong_account_email']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -305,6 +314,10 @@ module Carbon
         invalid_properties.push('invalid value for "redirect_uri", redirect_uri cannot be nil.')
       end
 
+      if @gong_account_email.nil?
+        invalid_properties.push('invalid value for "gong_account_email", gong_account_email cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -328,6 +341,7 @@ module Carbon
       return false if @client_id.nil?
       return false if @client_secret.nil?
       return false if @redirect_uri.nil?
+      return false if @gong_account_email.nil?
       _any_of_found = false
       self.class.openapi_any_of.each do |_class|
         _any_of = Carbon.const_get(_class).build_from_hash(self.to_hash)
@@ -367,7 +381,8 @@ module Carbon
           instance_subdomain == o.instance_subdomain &&
           client_id == o.client_id &&
           client_secret == o.client_secret &&
-          redirect_uri == o.redirect_uri
+          redirect_uri == o.redirect_uri &&
+          gong_account_email == o.gong_account_email
     end
 
     # @see the `==` method
@@ -379,7 +394,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url, instance_subdomain, client_id, client_secret, redirect_uri].hash
+      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url, instance_subdomain, client_id, client_secret, redirect_uri, gong_account_email].hash
     end
 
     # Builds the object from hash

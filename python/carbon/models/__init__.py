@@ -53,7 +53,6 @@ from carbon.model.embeddings_and_chunks_order_by_columns import EmbeddingsAndChu
 from carbon.model.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
 from carbon.model.embeddings_and_chunks_query_input_v2 import EmbeddingsAndChunksQueryInputV2
 from carbon.model.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
-from carbon.model.external_data_source_type import ExternalDataSourceType
 from carbon.model.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.model.external_source_item import ExternalSourceItem
 from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy
@@ -91,6 +90,7 @@ from carbon.model.github_connect_request import GithubConnectRequest
 from carbon.model.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.model.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.model.gmail_sync_input import GmailSyncInput
+from carbon.model.gong_authentication import GongAuthentication
 from carbon.model.guru_authentication import GuruAuthentication
 from carbon.model.guru_connect_request import GuruConnectRequest
 from carbon.model.http_validation_error import HTTPValidationError
@@ -121,6 +121,7 @@ from carbon.model.multi_modal_embedding_generators import MultiModalEmbeddingGen
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
+from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.order_dir import OrderDir
 from carbon.model.order_dir_v2 import OrderDirV2
 from carbon.model.organization_response import OrganizationResponse

@@ -70,6 +70,7 @@ class ConnectDataSourceInput(
                             GithubAuthentication,
                             ServiceNowAuthentication,
                             GuruAuthentication,
+                            GongAuthentication,
                         ]
             
             
@@ -144,6 +145,7 @@ from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.freskdesk_authentication import FreskdeskAuthentication
 from carbon.model.gitbook_authetication import GitbookAuthetication
 from carbon.model.github_authentication import GithubAuthentication
+from carbon.model.gong_authentication import GongAuthentication
 from carbon.model.guru_authentication import GuruAuthentication
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication

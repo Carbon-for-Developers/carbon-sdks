@@ -49,6 +49,7 @@ const (
 	FILEFORMATSNULLABLE_SLACK FileFormatsNullable = "SLACK"
 	FILEFORMATSNULLABLE_GURU FileFormatsNullable = "GURU"
 	FILEFORMATSNULLABLE_SERVICENOW FileFormatsNullable = "SERVICENOW"
+	FILEFORMATSNULLABLE_GONG FileFormatsNullable = "GONG"
 	FILEFORMATSNULLABLE_JPG FileFormatsNullable = "JPG"
 	FILEFORMATSNULLABLE_PNG FileFormatsNullable = "PNG"
 	FILEFORMATSNULLABLE_MP3 FileFormatsNullable = "MP3"
@@ -104,6 +105,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"SLACK",
 	"GURU",
 	"SERVICENOW",
+	"GONG",
 	"JPG",
 	"PNG",
 	"MP3",

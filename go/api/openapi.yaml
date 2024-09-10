@@ -4347,6 +4347,7 @@ components:
           subdomain: subdomain
           client_secret: client_secret
           redirect_uri: redirect_uri
+          gong_account_email: gong_account_email
           access_token_secret: access_token_secret
           username: username
       properties:
@@ -4496,6 +4497,7 @@ components:
       - GITHUB
       - SLACK
       - GURU
+      - GONG
       - JPG
       - PNG
       - JPEG
@@ -5074,26 +5076,6 @@ components:
       - results
       title: EmbeddingsAndChunksResponse
       type: object
-    ExternalDataSourceType:
-      enum:
-      - BOX
-      - CONFLUENCE
-      - DROPBOX
-      - GMAIL
-      - GOOGLE_DRIVE
-      - GOOGLE_CLOUD_STORAGE
-      - INTERCOM
-      - NOTION
-      - ONEDRIVE
-      - OUTLOOK
-      - SALESFORCE
-      - SHAREPOINT
-      - SLACK
-      - ZENDESK
-      - ZOTERO
-      - SERVICENOW
-      title: ExternalDataSourceType
-      type: string
     ExternalFileSyncStatuses:
       enum:
       - DELAYED
@@ -5295,6 +5277,7 @@ components:
       - SLACK
       - GURU
       - SERVICENOW
+      - GONG
       - JPG
       - PNG
       - MP3
@@ -6178,6 +6161,26 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    GongAuthentication:
+      properties:
+        source:
+          title: Source
+        access_token:
+          title: Access Token
+          type: string
+        refresh_token:
+          nullable: true
+          title: Refresh Token
+          type: string
+        gong_account_email:
+          title: Gong Account Email
+          type: string
+      required:
+      - access_token
+      - gong_account_email
+      - source
+      title: GongAuthentication
+      type: object
     GuruAuthentication:
       properties:
         source:
@@ -6852,6 +6855,9 @@ components:
         redirect_uri:
           title: Redirect Uri
           type: string
+        gong_account_email:
+          title: Gong Account Email
+          type: string
       required:
       - source
       title: OAuthAuthentication
@@ -6876,6 +6882,7 @@ components:
         use_ocr: false
         generate_sparse_vectors: false
         scope: scope
+        gong_account_email: gong_account_email
         data_source_id: 6
         microsoft_tenant: microsoft_tenant
         sharepoint_site_name: sharepoint_site_name
@@ -6907,7 +6914,7 @@ components:
           title: Scope
           type: string
         service:
-          $ref: '#/components/schemas/ExternalDataSourceType'
+          $ref: '#/components/schemas/OauthBasedConnectors'
         chunk_size:
           default: 1500
           example: 1500
@@ -7074,12 +7081,40 @@ components:
           nullable: true
           title: Automatically Open File Picker
           type: boolean
+        gong_account_email:
+          description: |-
+            If you are connecting a Gong account, you need to input the email of the account you
+                    wish to connect. This email will be used to identify your carbon data source.
+          nullable: true
+          title: Gong Account Email
+          type: string
         servicenow_credentials:
           $ref: '#/components/schemas/ServiceNowCredentialsNullable'
       required:
       - service
       title: OAuthURLRequest
       type: object
+    OauthBasedConnectors:
+      enum:
+      - BOX
+      - CONFLUENCE
+      - DROPBOX
+      - GMAIL
+      - GOOGLE_DRIVE
+      - GOOGLE_CLOUD_STORAGE
+      - INTERCOM
+      - NOTION
+      - ONEDRIVE
+      - OUTLOOK
+      - SALESFORCE
+      - SHAREPOINT
+      - SLACK
+      - ZENDESK
+      - ZOTERO
+      - GONG
+      - SERVICENOW
+      title: OauthBasedConnectors
+      type: string
     OrderDir:
       enum:
       - desc
@@ -10473,6 +10508,7 @@ components:
       - GITHUB
       - SLACK
       - GURU
+      - GONG
       - JPG
       - PNG
       - JPEG
@@ -10554,6 +10590,7 @@ components:
       - SLACK
       - GURU
       - SERVICENOW
+      - GONG
       - JPG
       - PNG
       - MP3
@@ -12029,7 +12066,7 @@ components:
           title: Scope
           type: string
         service:
-          $ref: '#/components/schemas/ExternalDataSourceType'
+          $ref: '#/components/schemas/OauthBasedConnectors'
         chunk_size:
           default: 1500
           example: 1500
@@ -12196,6 +12233,13 @@ components:
           nullable: true
           title: Automatically Open File Picker
           type: boolean
+        gong_account_email:
+          description: |-
+            If you are connecting a Gong account, you need to input the email of the account you
+                    wish to connect. This email will be used to identify your carbon data source.
+          nullable: true
+          title: Gong Account Email
+          type: string
         servicenow_credentials:
           $ref: '#/components/schemas/ServiceNowCredentialsNullable'
       required:
@@ -14765,6 +14809,7 @@ components:
         subdomain: subdomain
         client_secret: client_secret
         redirect_uri: redirect_uri
+        gong_account_email: gong_account_email
         access_token_secret: access_token_secret
         username: username
       properties:
@@ -14831,6 +14876,9 @@ components:
           type: string
         redirect_uri:
           title: Redirect Uri
+          type: string
+        gong_account_email:
+          title: Gong Account Email
           type: string
       required:
       - source
@@ -14912,6 +14960,7 @@ components:
         - GOOGLE_CLOUD_STORAGE
         title: SimpleOAuthDataSources
         type: string
+      - title: Source
       - title: Source
       - title: Source
       - title: Source

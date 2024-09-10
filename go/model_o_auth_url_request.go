@@ -18,7 +18,7 @@ import (
 type OAuthURLRequest struct {
 	Tags interface{} `json:"tags,omitempty"`
 	Scope NullableString `json:"scope,omitempty"`
-	Service ExternalDataSourceType `json:"service"`
+	Service OauthBasedConnectors `json:"service"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
 	SkipEmbeddingGeneration NullableBool `json:"skip_embedding_generation,omitempty"`
@@ -53,6 +53,8 @@ type OAuthURLRequest struct {
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 	// Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 	AutomaticallyOpenFilePicker NullableBool `json:"automatically_open_file_picker,omitempty"`
+	// If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+	GongAccountEmail NullableString `json:"gong_account_email,omitempty"`
 	ServicenowCredentials NullableServiceNowCredentialsNullable `json:"servicenow_credentials,omitempty"`
 }
 
@@ -60,7 +62,7 @@ type OAuthURLRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthURLRequest(service ExternalDataSourceType) *OAuthURLRequest {
+func NewOAuthURLRequest(service OauthBasedConnectors) *OAuthURLRequest {
 	this := OAuthURLRequest{}
 	this.Service = service
 	var chunkSize int32 = 1500
@@ -206,9 +208,9 @@ func (o *OAuthURLRequest) UnsetScope() {
 }
 
 // GetService returns the Service field value
-func (o *OAuthURLRequest) GetService() ExternalDataSourceType {
+func (o *OAuthURLRequest) GetService() OauthBasedConnectors {
 	if o == nil {
-		var ret ExternalDataSourceType
+		var ret OauthBasedConnectors
 		return ret
 	}
 
@@ -217,7 +219,7 @@ func (o *OAuthURLRequest) GetService() ExternalDataSourceType {
 
 // GetServiceOk returns a tuple with the Service field value
 // and a boolean to check if the value has been set.
-func (o *OAuthURLRequest) GetServiceOk() (*ExternalDataSourceType, bool) {
+func (o *OAuthURLRequest) GetServiceOk() (*OauthBasedConnectors, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -225,7 +227,7 @@ func (o *OAuthURLRequest) GetServiceOk() (*ExternalDataSourceType, bool) {
 }
 
 // SetService sets field value
-func (o *OAuthURLRequest) SetService(v ExternalDataSourceType) {
+func (o *OAuthURLRequest) SetService(v OauthBasedConnectors) {
 	o.Service = v
 }
 
@@ -1197,6 +1199,48 @@ func (o *OAuthURLRequest) UnsetAutomaticallyOpenFilePicker() {
 	o.AutomaticallyOpenFilePicker.Unset()
 }
 
+// GetGongAccountEmail returns the GongAccountEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetGongAccountEmail() string {
+	if o == nil || isNil(o.GongAccountEmail.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GongAccountEmail.Get()
+}
+
+// GetGongAccountEmailOk returns a tuple with the GongAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetGongAccountEmailOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.GongAccountEmail.Get(), o.GongAccountEmail.IsSet()
+}
+
+// HasGongAccountEmail returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasGongAccountEmail() bool {
+	if o != nil && o.GongAccountEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGongAccountEmail gets a reference to the given NullableString and assigns it to the GongAccountEmail field.
+func (o *OAuthURLRequest) SetGongAccountEmail(v string) {
+	o.GongAccountEmail.Set(&v)
+}
+// SetGongAccountEmailNil sets the value for GongAccountEmail to be an explicit nil
+func (o *OAuthURLRequest) SetGongAccountEmailNil() {
+	o.GongAccountEmail.Set(nil)
+}
+
+// UnsetGongAccountEmail ensures that no value is present for GongAccountEmail, not even an explicit nil
+func (o *OAuthURLRequest) UnsetGongAccountEmail() {
+	o.GongAccountEmail.Unset()
+}
+
 // GetServicenowCredentials returns the ServicenowCredentials field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OAuthURLRequest) GetServicenowCredentials() ServiceNowCredentialsNullable {
 	if o == nil || isNil(o.ServicenowCredentials.Get()) {
@@ -1321,6 +1365,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutomaticallyOpenFilePicker.IsSet() {
 		toSerialize["automatically_open_file_picker"] = o.AutomaticallyOpenFilePicker.Get()
+	}
+	if o.GongAccountEmail.IsSet() {
+		toSerialize["gong_account_email"] = o.GongAccountEmail.Get()
 	}
 	if o.ServicenowCredentials.IsSet() {
 		toSerialize["servicenow_credentials"] = o.ServicenowCredentials.Get()
