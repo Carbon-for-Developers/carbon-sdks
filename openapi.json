@@ -3966,6 +3966,9 @@
               },
               {
                 "$ref": "#/components/schemas/GuruAuthentication"
+              },
+              {
+                "$ref": "#/components/schemas/GongAuthentication"
               }
             ],
             "title": "Authentication"
@@ -4123,6 +4126,7 @@
           "GITHUB",
           "SLACK",
           "GURU",
+          "GONG",
           "JPG",
           "PNG",
           "JPEG",
@@ -4744,28 +4748,6 @@
         ],
         "title": "EmbeddingsAndChunksResponse"
       },
-      "ExternalDataSourceType": {
-        "type": "string",
-        "enum": [
-          "BOX",
-          "CONFLUENCE",
-          "DROPBOX",
-          "GMAIL",
-          "GOOGLE_DRIVE",
-          "GOOGLE_CLOUD_STORAGE",
-          "INTERCOM",
-          "NOTION",
-          "ONEDRIVE",
-          "OUTLOOK",
-          "SALESFORCE",
-          "SHAREPOINT",
-          "SLACK",
-          "ZENDESK",
-          "ZOTERO",
-          "SERVICENOW"
-        ],
-        "title": "ExternalDataSourceType"
-      },
       "ExternalFileSyncStatuses": {
         "type": "string",
         "enum": [
@@ -5028,6 +5010,7 @@
           "SLACK",
           "GURU",
           "SERVICENOW",
+          "GONG",
           "JPG",
           "JPG",
           "PNG",
@@ -6177,6 +6160,40 @@
         ],
         "title": "GmailSyncInput"
       },
+      "GongAuthentication": {
+        "properties": {
+          "source": {
+            "const": "GONG",
+            "title": "Source"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "refresh_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Refresh Token"
+          },
+          "gong_account_email": {
+            "type": "string",
+            "title": "Gong Account Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token",
+          "gong_account_email"
+        ],
+        "title": "GongAuthentication"
+      },
       "GuruAuthentication": {
         "properties": {
           "source": {
@@ -6862,7 +6879,7 @@
             "title": "Scope"
           },
           "service": {
-            "$ref": "#/components/schemas/ExternalDataSourceType"
+            "$ref": "#/components/schemas/OauthBasedConnectors"
           },
           "tags": {
             "anyOf": [
@@ -7133,6 +7150,18 @@
             "title": "Automatically Open File Picker",
             "description": "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by\n        BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources."
           },
+          "gong_account_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gong Account Email",
+            "description": "If you are connecting a Gong account, you need to input the email of the account you\n        wish to connect. This email will be used to identify your carbon data source."
+          },
           "servicenow_credentials": {
             "anyOf": [
               {
@@ -7150,6 +7179,29 @@
           "service"
         ],
         "title": "OAuthURLRequest"
+      },
+      "OauthBasedConnectors": {
+        "type": "string",
+        "enum": [
+          "BOX",
+          "CONFLUENCE",
+          "DROPBOX",
+          "GMAIL",
+          "GOOGLE_DRIVE",
+          "GOOGLE_CLOUD_STORAGE",
+          "INTERCOM",
+          "NOTION",
+          "ONEDRIVE",
+          "OUTLOOK",
+          "SALESFORCE",
+          "SHAREPOINT",
+          "SLACK",
+          "ZENDESK",
+          "ZOTERO",
+          "GONG",
+          "SERVICENOW"
+        ],
+        "title": "OauthBasedConnectors"
       },
       "OrderDir": {
         "type": "string",
