@@ -12,12 +12,12 @@
 import unittest
 
 import carbon
-from carbon.model.external_data_source_type import ExternalDataSourceType
+from carbon.model.gong_authentication import GongAuthentication
 from carbon import configuration
 
 
-class TestExternalDataSourceType(unittest.TestCase):
-    """ExternalDataSourceType unit test stubs"""
+class TestGongAuthentication(unittest.TestCase):
+    """GongAuthentication unit test stubs"""
     pass
 
 

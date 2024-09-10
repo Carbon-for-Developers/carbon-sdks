@@ -461,6 +461,7 @@ func main() {
     oAuthURLRequest.SetIncrementalSync(false)
     oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
     oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
+    oAuthURLRequest.SetGongAccountEmail("null")
     oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
     
     request := client.IntegrationsApi.GetOauthUrl(

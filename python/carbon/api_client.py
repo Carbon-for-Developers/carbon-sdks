@@ -99,7 +99,6 @@ from carbon.pydantic.embeddings_and_chunks_order_by_columns import EmbeddingsAnd
 from carbon.pydantic.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
 from carbon.pydantic.embeddings_and_chunks_query_input_v2 import EmbeddingsAndChunksQueryInputV2
 from carbon.pydantic.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
-from carbon.pydantic.external_data_source_type import ExternalDataSourceType
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.external_source_item import ExternalSourceItem
 from carbon.pydantic.external_source_items_order_by import ExternalSourceItemsOrderBy
@@ -137,6 +136,7 @@ from carbon.pydantic.github_connect_request import GithubConnectRequest
 from carbon.pydantic.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.pydantic.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.pydantic.gmail_sync_input import GmailSyncInput
+from carbon.pydantic.gong_authentication import GongAuthentication
 from carbon.pydantic.guru_authentication import GuruAuthentication
 from carbon.pydantic.guru_connect_request import GuruConnectRequest
 from carbon.pydantic.http_validation_error import HTTPValidationError
@@ -167,6 +167,7 @@ from carbon.pydantic.multi_modal_embedding_generators import MultiModalEmbedding
 from carbon.pydantic.notion_authentication import NotionAuthentication
 from carbon.pydantic.o_auth_authentication import OAuthAuthentication
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest
+from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.order_dir import OrderDir
 from carbon.pydantic.order_dir_v2 import OrderDirV2
 from carbon.pydantic.organization_response import OrganizationResponse

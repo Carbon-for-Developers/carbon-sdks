@@ -16,12 +16,12 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.pydantic.external_data_source_type import ExternalDataSourceType
 from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
 class OAuthURLRequest(BaseModel):
-    service: ExternalDataSourceType = Field(alias='service')
+    service: OauthBasedConnectors = Field(alias='service')
 
     tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='tags')
 
@@ -84,6 +84,9 @@ class OAuthURLRequest(BaseModel):
 
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = Field(None, alias='automatically_open_file_picker')
+
+    # If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+    gong_account_email: typing.Optional[typing.Optional[str]] = Field(None, alias='gong_account_email')
 
     servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = Field(None, alias='servicenow_credentials')
 

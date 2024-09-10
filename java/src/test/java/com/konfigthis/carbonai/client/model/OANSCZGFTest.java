@@ -199,4 +199,12 @@ public class OANSCZGFTest {
         // TODO: test redirectUri
     }
 
+    /**
+     * Test the property 'gongAccountEmail'
+     */
+    @Test
+    public void gongAccountEmailTest() {
+        // TODO: test gongAccountEmail
+    }
+
 }

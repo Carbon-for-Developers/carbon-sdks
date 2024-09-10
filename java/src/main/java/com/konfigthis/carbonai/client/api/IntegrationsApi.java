@@ -5,7 +5,6 @@ import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
-import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import com.konfigthis.carbonai.client.model.FreshDeskConnectRequest;
@@ -23,6 +22,7 @@ import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
 import com.konfigthis.carbonai.client.model.OANSCZGF;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
+import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI;
 import com.konfigthis.carbonai.client.model.OuthURLResponse;
@@ -79,7 +79,7 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
         }
     }
     public class GetOauthUrlRequestBuilder extends GetOauthUrlRequestBuilderGenerated {
-        public GetOauthUrlRequestBuilder(ExternalDataSourceType service) {
+        public GetOauthUrlRequestBuilder(OauthBasedConnectors service) {
             super(service);
         }
     }

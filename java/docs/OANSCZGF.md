@@ -27,6 +27,7 @@
 |**clientId** | **String** |  |  [optional] |
 |**clientSecret** | **String** |  |  [optional] |
 |**redirectUri** | **String** |  |  [optional] |
+|**gongAccountEmail** | **String** |  |  [optional] |
 
 
 

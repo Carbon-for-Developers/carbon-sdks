@@ -218,6 +218,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetIncrementalSync(false)
         oAuthURLRequest.SetFileSyncConfig(fileSyncConfig)
         oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
+        oAuthURLRequest.SetGongAccountEmail("null")
         oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
         
         request := client.IntegrationsApi.GetOauthUrl(

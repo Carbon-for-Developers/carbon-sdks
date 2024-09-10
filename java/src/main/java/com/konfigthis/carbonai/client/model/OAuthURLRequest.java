@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
-import com.konfigthis.carbonai.client.model.ExternalDataSourceType;
 import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
+import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -64,7 +64,7 @@ public class OAuthURLRequest {
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
-  private ExternalDataSourceType service;
+  private OauthBasedConnectors service;
 
   public static final String SERIALIZED_NAME_CHUNK_SIZE = "chunk_size";
   @SerializedName(SERIALIZED_NAME_CHUNK_SIZE)
@@ -162,6 +162,10 @@ public class OAuthURLRequest {
   @SerializedName(SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER)
   private Boolean automaticallyOpenFilePicker;
 
+  public static final String SERIALIZED_NAME_GONG_ACCOUNT_EMAIL = "gong_account_email";
+  @SerializedName(SERIALIZED_NAME_GONG_ACCOUNT_EMAIL)
+  private String gongAccountEmail;
+
   public static final String SERIALIZED_NAME_SERVICENOW_CREDENTIALS = "servicenow_credentials";
   @SerializedName(SERIALIZED_NAME_SERVICENOW_CREDENTIALS)
   private ServiceNowCredentialsNullable servicenowCredentials;
@@ -227,7 +231,7 @@ public class OAuthURLRequest {
   }
 
 
-  public OAuthURLRequest service(ExternalDataSourceType service) {
+  public OAuthURLRequest service(OauthBasedConnectors service) {
     
     
     
@@ -243,12 +247,12 @@ public class OAuthURLRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public ExternalDataSourceType getService() {
+  public OauthBasedConnectors getService() {
     return service;
   }
 
 
-  public void setService(ExternalDataSourceType service) {
+  public void setService(OauthBasedConnectors service) {
     
     
     
@@ -952,6 +956,35 @@ public class OAuthURLRequest {
   }
 
 
+  public OAuthURLRequest gongAccountEmail(String gongAccountEmail) {
+    
+    
+    
+    
+    this.gongAccountEmail = gongAccountEmail;
+    return this;
+  }
+
+   /**
+   * If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+   * @return gongAccountEmail
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.")
+
+  public String getGongAccountEmail() {
+    return gongAccountEmail;
+  }
+
+
+  public void setGongAccountEmail(String gongAccountEmail) {
+    
+    
+    
+    this.gongAccountEmail = gongAccountEmail;
+  }
+
+
   public OAuthURLRequest servicenowCredentials(ServiceNowCredentialsNullable servicenowCredentials) {
     
     
@@ -1062,6 +1095,7 @@ public class OAuthURLRequest {
         Objects.equals(this.incrementalSync, oauthURLRequest.incrementalSync) &&
         Objects.equals(this.fileSyncConfig, oauthURLRequest.fileSyncConfig) &&
         Objects.equals(this.automaticallyOpenFilePicker, oauthURLRequest.automaticallyOpenFilePicker) &&
+        Objects.equals(this.gongAccountEmail, oauthURLRequest.gongAccountEmail) &&
         Objects.equals(this.servicenowCredentials, oauthURLRequest.servicenowCredentials)&&
         Objects.equals(this.additionalProperties, oauthURLRequest.additionalProperties);
   }
@@ -1072,7 +1106,7 @@ public class OAuthURLRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, servicenowCredentials, additionalProperties);
+    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, gongAccountEmail, servicenowCredentials, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1113,6 +1147,7 @@ public class OAuthURLRequest {
     sb.append("    incrementalSync: ").append(toIndentedString(incrementalSync)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
     sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
+    sb.append("    gongAccountEmail: ").append(toIndentedString(gongAccountEmail)).append("\n");
     sb.append("    servicenowCredentials: ").append(toIndentedString(servicenowCredentials)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -1164,6 +1199,7 @@ public class OAuthURLRequest {
     openapiFields.add("incremental_sync");
     openapiFields.add("file_sync_config");
     openapiFields.add("automatically_open_file_picker");
+    openapiFields.add("gong_account_email");
     openapiFields.add("servicenow_credentials");
 
     // a set of required properties/fields (JSON key names)
@@ -1214,6 +1250,9 @@ public class OAuthURLRequest {
       // validate the optional field `file_sync_config`
       if (jsonObj.get("file_sync_config") != null && !jsonObj.get("file_sync_config").isJsonNull()) {
         FileSyncConfigNullable.validateJsonObject(jsonObj.getAsJsonObject("file_sync_config"));
+      }
+      if (!jsonObj.get("gong_account_email").isJsonNull() && (jsonObj.get("gong_account_email") != null && !jsonObj.get("gong_account_email").isJsonNull()) && !jsonObj.get("gong_account_email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gong_account_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gong_account_email").toString()));
       }
       // validate the optional field `servicenow_credentials`
       if (jsonObj.get("servicenow_credentials") != null && !jsonObj.get("servicenow_credentials").isJsonNull()) {

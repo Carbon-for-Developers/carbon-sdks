@@ -49,6 +49,7 @@ const (
 	FILEFORMATS_SLACK FileFormats = "SLACK"
 	FILEFORMATS_GURU FileFormats = "GURU"
 	FILEFORMATS_SERVICENOW FileFormats = "SERVICENOW"
+	FILEFORMATS_GONG FileFormats = "GONG"
 	FILEFORMATS_JPG FileFormats = "JPG"
 	FILEFORMATS_PNG FileFormats = "PNG"
 	FILEFORMATS_MP3 FileFormats = "MP3"
@@ -104,6 +105,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"SLACK",
 	"GURU",
 	"SERVICENOW",
+	"GONG",
 	"JPG",
 	"PNG",
 	"MP3",

@@ -85,6 +85,8 @@ import com.google.gson.stream.JsonWriter;
   
   SERVICENOW("SERVICENOW"),
   
+  GONG("GONG"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

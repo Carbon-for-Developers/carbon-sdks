@@ -779,7 +779,7 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    ExternalDataSourceType service = ExternalDataSourceType.fromValue("BOX");
+    OauthBasedConnectors service = OauthBasedConnectors.fromValue("BOX");
     Object tags = null;
     String scope = "scope_example";
     Integer chunkSize = 1500;
@@ -806,6 +806,7 @@ public class Example {
     Boolean incrementalSync = false; // Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources.
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
     Boolean automaticallyOpenFilePicker = true; // Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
+    String gongAccountEmail = "gongAccountEmail_example"; // If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
     ServiceNowCredentialsNullable servicenowCredentials = new ServiceNowCredentialsNullable();
     try {
       OuthURLResponse result = client
@@ -837,6 +838,7 @@ public class Example {
               .incrementalSync(incrementalSync)
               .fileSyncConfig(fileSyncConfig)
               .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
+              .gongAccountEmail(gongAccountEmail)
               .servicenowCredentials(servicenowCredentials)
               .execute();
       System.out.println(result);
@@ -880,6 +882,7 @@ public class Example {
               .incrementalSync(incrementalSync)
               .fileSyncConfig(fileSyncConfig)
               .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
+              .gongAccountEmail(gongAccountEmail)
               .servicenowCredentials(servicenowCredentials)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());

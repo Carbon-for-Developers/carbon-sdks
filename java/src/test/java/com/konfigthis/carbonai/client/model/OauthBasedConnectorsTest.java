@@ -18,15 +18,15 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for ExternalDataSourceType
+ * Model tests for OauthBasedConnectors
  */
-public class ExternalDataSourceTypeTest {
+public class OauthBasedConnectorsTest {
     /**
-     * Model tests for ExternalDataSourceType
+     * Model tests for OauthBasedConnectors
      */
     @Test
-    public void testExternalDataSourceType() {
-        // TODO: test ExternalDataSourceType
+    public void testOauthBasedConnectors() {
+        // TODO: test OauthBasedConnectors
     }
 
 }

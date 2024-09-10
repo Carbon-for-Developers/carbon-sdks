@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**tags** | **Object** |  |  [optional] |
 |**scope** | **String** |  |  [optional] |
-|**service** | **ExternalDataSourceType** |  |  |
+|**service** | **OauthBasedConnectors** |  |  |
 |**chunkSize** | **Integer** |  |  [optional] |
 |**chunkOverlap** | **Integer** |  |  [optional] |
 |**skipEmbeddingGeneration** | **Boolean** |  |  [optional] |
@@ -34,6 +34,7 @@
 |**incrementalSync** | **Boolean** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. |  [optional] |
 |**fileSyncConfig** | [**FileSyncConfigNullable**](FileSyncConfigNullable.md) |  |  [optional] |
 |**automaticallyOpenFilePicker** | **Boolean** | Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. |  [optional] |
+|**gongAccountEmail** | **String** | If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source. |  [optional] |
 |**servicenowCredentials** | [**ServiceNowCredentialsNullable**](ServiceNowCredentialsNullable.md) |  |  [optional] |
 
 

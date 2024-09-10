@@ -148,6 +148,10 @@ class FileFormats(
         return cls("SERVICENOW")
     
     @schemas.classproperty
+    def GONG(cls):
+        return cls("GONG")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

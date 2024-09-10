@@ -23,9 +23,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets ExternalDataSourceType
+ * Gets or Sets OauthBasedConnectors
  */
-@JsonAdapter(ExternalDataSourceType.Adapter.class)public enum ExternalDataSourceType {
+@JsonAdapter(OauthBasedConnectors.Adapter.class)public enum OauthBasedConnectors {
   
   BOX("BOX"),
   
@@ -57,11 +57,13 @@ import com.google.gson.stream.JsonWriter;
   
   ZOTERO("ZOTERO"),
   
+  GONG("GONG"),
+  
   SERVICENOW("SERVICENOW");
 
   private String value;
 
-  ExternalDataSourceType(String value) {
+  OauthBasedConnectors(String value) {
     this.value = value;
   }
 
@@ -74,8 +76,8 @@ import com.google.gson.stream.JsonWriter;
     return String.valueOf(value);
   }
 
-  public static ExternalDataSourceType fromValue(String value) {
-    for (ExternalDataSourceType b : ExternalDataSourceType.values()) {
+  public static OauthBasedConnectors fromValue(String value) {
+    for (OauthBasedConnectors b : OauthBasedConnectors.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -83,16 +85,16 @@ import com.google.gson.stream.JsonWriter;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<ExternalDataSourceType> {
+  public static class Adapter extends TypeAdapter<OauthBasedConnectors> {
     @Override
-    public void write(final JsonWriter jsonWriter, final ExternalDataSourceType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final OauthBasedConnectors enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public ExternalDataSourceType read(final JsonReader jsonReader) throws IOException {
+    public OauthBasedConnectors read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return ExternalDataSourceType.fromValue(value);
+      return OauthBasedConnectors.fromValue(value);
     }
   }
 }

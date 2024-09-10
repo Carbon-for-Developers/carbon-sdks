@@ -75,6 +75,9 @@ module Carbon
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     attr_accessor :automatically_open_file_picker
 
+    # If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
+    attr_accessor :gong_account_email
+
     attr_accessor :servicenow_credentials
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -107,6 +110,7 @@ module Carbon
         :'incremental_sync' => :'incremental_sync',
         :'file_sync_config' => :'file_sync_config',
         :'automatically_open_file_picker' => :'automatically_open_file_picker',
+        :'gong_account_email' => :'gong_account_email',
         :'servicenow_credentials' => :'servicenow_credentials'
       }
     end
@@ -121,7 +125,7 @@ module Carbon
       {
         :'tags' => :'Object',
         :'scope' => :'String',
-        :'service' => :'ExternalDataSourceType',
+        :'service' => :'OauthBasedConnectors',
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
         :'skip_embedding_generation' => :'Boolean',
@@ -146,6 +150,7 @@ module Carbon
         :'incremental_sync' => :'Boolean',
         :'file_sync_config' => :'FileSyncConfigNullable',
         :'automatically_open_file_picker' => :'Boolean',
+        :'gong_account_email' => :'String',
         :'servicenow_credentials' => :'ServiceNowCredentialsNullable'
       }
     end
@@ -175,6 +180,7 @@ module Carbon
         :'parse_pdf_tables_with_ocr',
         :'file_sync_config',
         :'automatically_open_file_picker',
+        :'gong_account_email',
         :'servicenow_credentials'
       ])
     end
@@ -330,6 +336,10 @@ module Carbon
         self.automatically_open_file_picker = attributes[:'automatically_open_file_picker']
       end
 
+      if attributes.key?(:'gong_account_email')
+        self.gong_account_email = attributes[:'gong_account_email']
+      end
+
       if attributes.key?(:'servicenow_credentials')
         self.servicenow_credentials = attributes[:'servicenow_credentials']
       end
@@ -385,6 +395,7 @@ module Carbon
           incremental_sync == o.incremental_sync &&
           file_sync_config == o.file_sync_config &&
           automatically_open_file_picker == o.automatically_open_file_picker &&
+          gong_account_email == o.gong_account_email &&
           servicenow_credentials == o.servicenow_credentials
     end
 
@@ -397,7 +408,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, servicenow_credentials].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, gong_account_email, servicenow_credentials].hash
     end
 
     # Builds the object from hash

@@ -75,6 +75,8 @@
 
 * `GURU` (value: `"GURU"`)
 
+* `GONG` (value: `"GONG"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

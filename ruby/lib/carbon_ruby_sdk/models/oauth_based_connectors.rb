@@ -10,7 +10,7 @@ require 'date'
 require 'time'
 
 module Carbon
-  class ExternalDataSourceType
+  class OauthBasedConnectors
     BOX = "BOX".freeze
     CONFLUENCE = "CONFLUENCE".freeze
     DROPBOX = "DROPBOX".freeze
@@ -26,10 +26,11 @@ module Carbon
     SLACK = "SLACK".freeze
     ZENDESK = "ZENDESK".freeze
     ZOTERO = "ZOTERO".freeze
+    GONG = "GONG".freeze
     SERVICENOW = "SERVICENOW".freeze
 
     def self.all_vars
-      @all_vars ||= [BOX, CONFLUENCE, DROPBOX, GMAIL, GOOGLE_DRIVE, GOOGLE_CLOUD_STORAGE, INTERCOM, NOTION, ONEDRIVE, OUTLOOK, SALESFORCE, SHAREPOINT, SLACK, ZENDESK, ZOTERO, SERVICENOW].freeze
+      @all_vars ||= [BOX, CONFLUENCE, DROPBOX, GMAIL, GOOGLE_DRIVE, GOOGLE_CLOUD_STORAGE, INTERCOM, NOTION, ONEDRIVE, OUTLOOK, SALESFORCE, SHAREPOINT, SLACK, ZENDESK, ZOTERO, GONG, SERVICENOW].freeze
     end
 
     # Builds the enum from string
@@ -43,8 +44,8 @@ module Carbon
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if ExternalDataSourceType.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #ExternalDataSourceType"
+      return value if OauthBasedConnectors.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #OauthBasedConnectors"
     end
   end
 end

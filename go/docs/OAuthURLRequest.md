@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to **interface{}** |  | [optional] 
 **Scope** | Pointer to **NullableString** |  | [optional] 
-**Service** | [**ExternalDataSourceType**](ExternalDataSourceType.md) |  | 
+**Service** | [**OauthBasedConnectors**](OauthBasedConnectors.md) |  | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] [default to 1500]
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] [default to 20]
 **SkipEmbeddingGeneration** | Pointer to **NullableBool** |  | [optional] [default to false]
@@ -31,13 +31,14 @@ Name | Type | Description | Notes
 **IncrementalSync** | Pointer to **bool** | Only sync files if they have not already been synced or if the embedding properties have changed.         This flag is currently supported by ONEDRIVE, GOOGLE_DRIVE, BOX, DROPBOX, INTERCOM, GMAIL, OUTLOOK, ZENDESK, CONFLUENCE, NOTION, SHAREPOINT, SERVICENOW. It will be ignored for other data sources. | [optional] [default to false]
 **FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 **AutomaticallyOpenFilePicker** | Pointer to **NullableBool** | Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. | [optional] 
+**GongAccountEmail** | Pointer to **NullableString** | If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source. | [optional] 
 **ServicenowCredentials** | Pointer to [**NullableServiceNowCredentialsNullable**](ServiceNowCredentialsNullable.md) |  | [optional] 
 
 ## Methods
 
 ### NewOAuthURLRequest
 
-`func NewOAuthURLRequest(service ExternalDataSourceType, ) *OAuthURLRequest`
+`func NewOAuthURLRequest(service OauthBasedConnectors, ) *OAuthURLRequest`
 
 NewOAuthURLRequest instantiates a new OAuthURLRequest object
 This constructor will assign default values to properties that have it defined,
@@ -124,20 +125,20 @@ HasScope returns a boolean if a field has been set.
 UnsetScope ensures that no value is present for Scope, not even an explicit nil
 ### GetService
 
-`func (o *OAuthURLRequest) GetService() ExternalDataSourceType`
+`func (o *OAuthURLRequest) GetService() OauthBasedConnectors`
 
 GetService returns the Service field if non-nil, zero value otherwise.
 
 ### GetServiceOk
 
-`func (o *OAuthURLRequest) GetServiceOk() (*ExternalDataSourceType, bool)`
+`func (o *OAuthURLRequest) GetServiceOk() (*OauthBasedConnectors, bool)`
 
 GetServiceOk returns a tuple with the Service field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetService
 
-`func (o *OAuthURLRequest) SetService(v ExternalDataSourceType)`
+`func (o *OAuthURLRequest) SetService(v OauthBasedConnectors)`
 
 SetService sets Service field to given value.
 
@@ -942,6 +943,41 @@ HasAutomaticallyOpenFilePicker returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetAutomaticallyOpenFilePicker()`
 
 UnsetAutomaticallyOpenFilePicker ensures that no value is present for AutomaticallyOpenFilePicker, not even an explicit nil
+### GetGongAccountEmail
+
+`func (o *OAuthURLRequest) GetGongAccountEmail() string`
+
+GetGongAccountEmail returns the GongAccountEmail field if non-nil, zero value otherwise.
+
+### GetGongAccountEmailOk
+
+`func (o *OAuthURLRequest) GetGongAccountEmailOk() (*string, bool)`
+
+GetGongAccountEmailOk returns a tuple with the GongAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGongAccountEmail
+
+`func (o *OAuthURLRequest) SetGongAccountEmail(v string)`
+
+SetGongAccountEmail sets GongAccountEmail field to given value.
+
+### HasGongAccountEmail
+
+`func (o *OAuthURLRequest) HasGongAccountEmail() bool`
+
+HasGongAccountEmail returns a boolean if a field has been set.
+
+### SetGongAccountEmailNil
+
+`func (o *OAuthURLRequest) SetGongAccountEmailNil(b bool)`
+
+ SetGongAccountEmailNil sets the value for GongAccountEmail to be an explicit nil
+
+### UnsetGongAccountEmail
+`func (o *OAuthURLRequest) UnsetGongAccountEmail()`
+
+UnsetGongAccountEmail ensures that no value is present for GongAccountEmail, not even an explicit nil
 ### GetServicenowCredentials
 
 `func (o *OAuthURLRequest) GetServicenowCredentials() ServiceNowCredentialsNullable`

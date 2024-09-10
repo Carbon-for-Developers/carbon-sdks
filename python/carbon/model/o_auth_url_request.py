@@ -39,8 +39,8 @@ class OAuthURLRequest(
         class properties:
         
             @staticmethod
-            def service() -> typing.Type['ExternalDataSourceType']:
-                return ExternalDataSourceType
+            def service() -> typing.Type['OauthBasedConnectors']:
+                return OauthBasedConnectors
             tags = schemas.AnyTypeSchema
             
             
@@ -434,6 +434,26 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class gong_account_email(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'gong_account_email':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
         
             @staticmethod
             def servicenow_credentials() -> typing.Type['ServiceNowCredentialsNullable']:
@@ -466,13 +486,14 @@ class OAuthURLRequest(
                 "incremental_sync": incremental_sync,
                 "file_sync_config": file_sync_config,
                 "automatically_open_file_picker": automatically_open_file_picker,
+                "gong_account_email": gong_account_email,
                 "servicenow_credentials": servicenow_credentials,
             }
     
-    service: 'ExternalDataSourceType'
+    service: 'OauthBasedConnectors'
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["service"]) -> 'ExternalDataSourceType': ...
+    def __getitem__(self, name: typing_extensions.Literal["service"]) -> 'OauthBasedConnectors': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
@@ -553,18 +574,21 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["automatically_open_file_picker"]) -> MetaOapg.properties.automatically_open_file_picker: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["gong_account_email"]) -> MetaOapg.properties.gong_account_email: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["servicenow_credentials"]) -> 'ServiceNowCredentialsNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "servicenow_credentials", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["service"]) -> 'ExternalDataSourceType': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["service"]) -> 'OauthBasedConnectors': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union[MetaOapg.properties.tags, schemas.Unset]: ...
@@ -645,19 +669,22 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["automatically_open_file_picker"]) -> typing.Union[MetaOapg.properties.automatically_open_file_picker, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["gong_account_email"]) -> typing.Union[MetaOapg.properties.gong_account_email, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["servicenow_credentials"]) -> typing.Union['ServiceNowCredentialsNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "servicenow_credentials", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        service: 'ExternalDataSourceType',
+        service: 'OauthBasedConnectors',
         tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         scope: typing.Union[MetaOapg.properties.scope, None, str, schemas.Unset] = schemas.unset,
         chunk_size: typing.Union[MetaOapg.properties.chunk_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
@@ -684,6 +711,7 @@ class OAuthURLRequest(
         incremental_sync: typing.Union[MetaOapg.properties.incremental_sync, bool, schemas.Unset] = schemas.unset,
         file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
         automatically_open_file_picker: typing.Union[MetaOapg.properties.automatically_open_file_picker, None, bool, schemas.Unset] = schemas.unset,
+        gong_account_email: typing.Union[MetaOapg.properties.gong_account_email, None, str, schemas.Unset] = schemas.unset,
         servicenow_credentials: typing.Union['ServiceNowCredentialsNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -718,12 +746,13 @@ class OAuthURLRequest(
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
-from carbon.model.external_data_source_type import ExternalDataSourceType
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.service_now_credentials_nullable import ServiceNowCredentialsNullable

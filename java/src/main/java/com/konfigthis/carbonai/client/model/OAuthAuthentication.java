@@ -130,6 +130,10 @@ public class OAuthAuthentication {
   @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
   private String redirectUri;
 
+  public static final String SERIALIZED_NAME_GONG_ACCOUNT_EMAIL = "gong_account_email";
+  @SerializedName(SERIALIZED_NAME_GONG_ACCOUNT_EMAIL)
+  private String gongAccountEmail;
+
   public OAuthAuthentication() {
   }
 
@@ -712,6 +716,35 @@ public class OAuthAuthentication {
     this.redirectUri = redirectUri;
   }
 
+
+  public OAuthAuthentication gongAccountEmail(String gongAccountEmail) {
+    
+    
+    
+    
+    this.gongAccountEmail = gongAccountEmail;
+    return this;
+  }
+
+   /**
+   * Get gongAccountEmail
+   * @return gongAccountEmail
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getGongAccountEmail() {
+    return gongAccountEmail;
+  }
+
+
+  public void setGongAccountEmail(String gongAccountEmail) {
+    
+    
+    
+    this.gongAccountEmail = gongAccountEmail;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -786,7 +819,8 @@ public class OAuthAuthentication {
         Objects.equals(this.instanceSubdomain, oauthAuthentication.instanceSubdomain) &&
         Objects.equals(this.clientId, oauthAuthentication.clientId) &&
         Objects.equals(this.clientSecret, oauthAuthentication.clientSecret) &&
-        Objects.equals(this.redirectUri, oauthAuthentication.redirectUri)&&
+        Objects.equals(this.redirectUri, oauthAuthentication.redirectUri) &&
+        Objects.equals(this.gongAccountEmail, oauthAuthentication.gongAccountEmail)&&
         Objects.equals(this.additionalProperties, oauthAuthentication.additionalProperties);
   }
 
@@ -796,7 +830,7 @@ public class OAuthAuthentication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, instanceSubdomain, clientId, clientSecret, redirectUri, additionalProperties);
+    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, instanceSubdomain, clientId, clientSecret, redirectUri, gongAccountEmail, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -830,6 +864,7 @@ public class OAuthAuthentication {
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    gongAccountEmail: ").append(toIndentedString(gongAccountEmail)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -873,6 +908,7 @@ public class OAuthAuthentication {
     openapiFields.add("client_id");
     openapiFields.add("client_secret");
     openapiFields.add("redirect_uri");
+    openapiFields.add("gong_account_email");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -954,6 +990,9 @@ public class OAuthAuthentication {
       }
       if ((jsonObj.get("redirect_uri") != null && !jsonObj.get("redirect_uri").isJsonNull()) && !jsonObj.get("redirect_uri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirect_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirect_uri").toString()));
+      }
+      if ((jsonObj.get("gong_account_email") != null && !jsonObj.get("gong_account_email").isJsonNull()) && !jsonObj.get("gong_account_email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gong_account_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gong_account_email").toString()));
       }
   }
 

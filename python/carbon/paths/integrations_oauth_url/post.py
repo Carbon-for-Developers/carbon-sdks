@@ -35,7 +35,7 @@ from carbon import schemas  # noqa: F401
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullableSchema
 from carbon.model.service_now_credentials_nullable import ServiceNowCredentialsNullable as ServiceNowCredentialsNullableSchema
-from carbon.model.external_data_source_type import ExternalDataSourceType as ExternalDataSourceTypeSchema
+from carbon.model.oauth_based_connectors import OauthBasedConnectors as OauthBasedConnectorsSchema
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
 from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
@@ -44,9 +44,9 @@ from carbon.type.outh_url_response import OuthURLResponse
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
-from carbon.type.external_data_source_type import ExternalDataSourceType
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
+from carbon.type.oauth_based_connectors import OauthBasedConnectors
 
 from ...api_client import Dictionary
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
@@ -54,8 +54,8 @@ from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentia
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest as OAuthURLRequestPydantic
 from carbon.pydantic.outh_url_response import OuthURLResponse as OuthURLResponsePydantic
+from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors as OauthBasedConnectorsPydantic
 from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
-from carbon.pydantic.external_data_source_type import ExternalDataSourceType as ExternalDataSourceTypePydantic
 
 from . import path
 
@@ -130,7 +130,7 @@ class BaseApi(api_client.Api):
 
     def _get_oauth_url_mapped_args(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -157,6 +157,7 @@ class BaseApi(api_client.Api):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -215,6 +216,8 @@ class BaseApi(api_client.Api):
             _body["file_sync_config"] = file_sync_config
         if automatically_open_file_picker is not None:
             _body["automatically_open_file_picker"] = automatically_open_file_picker
+        if gong_account_email is not None:
+            _body["gong_account_email"] = gong_account_email
         if servicenow_credentials is not None:
             _body["servicenow_credentials"] = servicenow_credentials
         args.body = _body
@@ -424,7 +427,7 @@ class GetOauthUrlRaw(BaseApi):
 
     async def aget_oauth_url(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -451,6 +454,7 @@ class GetOauthUrlRaw(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         **kwargs,
     ) -> typing.Union[
@@ -486,6 +490,7 @@ class GetOauthUrlRaw(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
         )
         return await self._aget_oauth_url_oapg(
@@ -495,7 +500,7 @@ class GetOauthUrlRaw(BaseApi):
     
     def get_oauth_url(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -522,6 +527,7 @@ class GetOauthUrlRaw(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -556,6 +562,7 @@ class GetOauthUrlRaw(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
         )
         return self._get_oauth_url_oapg(
@@ -566,7 +573,7 @@ class GetOauthUrl(BaseApi):
 
     async def aget_oauth_url(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -593,6 +600,7 @@ class GetOauthUrl(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         validate: bool = False,
         **kwargs,
@@ -625,6 +633,7 @@ class GetOauthUrl(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
             **kwargs,
         )
@@ -635,7 +644,7 @@ class GetOauthUrl(BaseApi):
     
     def get_oauth_url(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -662,6 +671,7 @@ class GetOauthUrl(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
@@ -693,6 +703,7 @@ class GetOauthUrl(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
         )
         if validate:
@@ -705,7 +716,7 @@ class ApiForpost(BaseApi):
 
     async def apost(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -732,6 +743,7 @@ class ApiForpost(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
         **kwargs,
     ) -> typing.Union[
@@ -767,6 +779,7 @@ class ApiForpost(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
         )
         return await self._aget_oauth_url_oapg(
@@ -776,7 +789,7 @@ class ApiForpost(BaseApi):
     
     def post(
         self,
-        service: ExternalDataSourceType,
+        service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
@@ -803,6 +816,7 @@ class ApiForpost(BaseApi):
         incremental_sync: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
+        gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -837,6 +851,7 @@ class ApiForpost(BaseApi):
             incremental_sync=incremental_sync,
             file_sync_config=file_sync_config,
             automatically_open_file_picker=automatically_open_file_picker,
+            gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
         )
         return self._get_oauth_url_oapg(

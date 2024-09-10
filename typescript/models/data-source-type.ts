@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type DataSourceType = 'GOOGLE_CLOUD_STORAGE' | 'GOOGLE_DRIVE' | 'NOTION' | 'NOTION_DATABASE' | 'INTERCOM' | 'DROPBOX' | 'ONEDRIVE' | 'SHAREPOINT' | 'CONFLUENCE' | 'BOX' | 'ZENDESK' | 'ZOTERO' | 'S3' | 'GMAIL' | 'OUTLOOK' | 'SERVICENOW' | 'TEXT' | 'CSV' | 'TSV' | 'PDF' | 'DOCX' | 'PPTX' | 'XLSX' | 'MD' | 'RTF' | 'JSON' | 'HTML' | 'RAW_TEXT' | 'WEB_SCRAPE' | 'RSS_FEED' | 'FRESHDESK' | 'GITBOOK' | 'SALESFORCE' | 'GITHUB' | 'SLACK' | 'GURU' | 'JPG' | 'PNG' | 'JPEG' | 'MP3' | 'MP2' | 'AAC' | 'WAV' | 'FLAC' | 'PCM' | 'M4A' | 'OGG' | 'OPUS' | 'MPEG' | 'MPG' | 'MP4' | 'WMV' | 'AVI' | 'MOV' | 'MKV' | 'FLV' | 'WEBM' | 'EML' | 'MSG'
+export type DataSourceType = 'GOOGLE_CLOUD_STORAGE' | 'GOOGLE_DRIVE' | 'NOTION' | 'NOTION_DATABASE' | 'INTERCOM' | 'DROPBOX' | 'ONEDRIVE' | 'SHAREPOINT' | 'CONFLUENCE' | 'BOX' | 'ZENDESK' | 'ZOTERO' | 'S3' | 'GMAIL' | 'OUTLOOK' | 'SERVICENOW' | 'TEXT' | 'CSV' | 'TSV' | 'PDF' | 'DOCX' | 'PPTX' | 'XLSX' | 'MD' | 'RTF' | 'JSON' | 'HTML' | 'RAW_TEXT' | 'WEB_SCRAPE' | 'RSS_FEED' | 'FRESHDESK' | 'GITBOOK' | 'SALESFORCE' | 'GITHUB' | 'SLACK' | 'GURU' | 'GONG' | 'JPG' | 'PNG' | 'JPEG' | 'MP3' | 'MP2' | 'AAC' | 'WAV' | 'FLAC' | 'PCM' | 'M4A' | 'OGG' | 'OPUS' | 'MPEG' | 'MPG' | 'MP4' | 'WMV' | 'AVI' | 'MOV' | 'MKV' | 'FLV' | 'WEBM' | 'EML' | 'MSG'
 
