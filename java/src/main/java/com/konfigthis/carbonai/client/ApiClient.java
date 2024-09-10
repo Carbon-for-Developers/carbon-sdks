@@ -184,7 +184,7 @@ public class ApiClient extends ApiClientCustom {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Konfig/0.1.30/java");
+        setUserAgent("Konfig/0.1.31/java");
 
         authentications = new HashMap<String, Authentication>();
     }
