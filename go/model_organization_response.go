@@ -35,6 +35,7 @@ type OrganizationResponse struct {
 	ConnectorSettings map[string]interface{} `json:"connector_settings"`
 	GlobalUserConfig map[string]interface{} `json:"global_user_config"`
 	FileSyncUsage map[string]interface{} `json:"file_sync_usage"`
+	LoggingSettings map[string]interface{} `json:"logging_settings"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -43,7 +44,7 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
+func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, loggingSettings map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.Name = name
@@ -63,6 +64,7 @@ func NewOrganizationResponse(id int32, name string, nickname NullableString, rem
 	this.ConnectorSettings = connectorSettings
 	this.GlobalUserConfig = globalUserConfig
 	this.FileSyncUsage = fileSyncUsage
+	this.LoggingSettings = loggingSettings
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -520,6 +522,30 @@ func (o *OrganizationResponse) SetFileSyncUsage(v map[string]interface{}) {
 	o.FileSyncUsage = v
 }
 
+// GetLoggingSettings returns the LoggingSettings field value
+func (o *OrganizationResponse) GetLoggingSettings() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.LoggingSettings
+}
+
+// GetLoggingSettingsOk returns a tuple with the LoggingSettings field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetLoggingSettingsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.LoggingSettings, true
+}
+
+// SetLoggingSettings sets field value
+func (o *OrganizationResponse) SetLoggingSettings(v map[string]interface{}) {
+	o.LoggingSettings = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *OrganizationResponse) GetCreatedAt() time.Time {
 	if o == nil {
@@ -623,6 +649,9 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["file_sync_usage"] = o.FileSyncUsage
+	}
+	if true {
+		toSerialize["logging_settings"] = o.LoggingSettings
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

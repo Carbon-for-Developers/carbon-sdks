@@ -6623,6 +6623,12 @@
             "default": {
             }
           },
+          "logging_settings": {
+            "title": "Logging Settings",
+            "type": "object",
+            "default": {
+            }
+          },
           "created_at": {
             "title": "Created At",
             "type": "string",
@@ -6654,6 +6660,7 @@
           "connector_settings",
           "global_user_config",
           "file_sync_usage",
+          "logging_settings",
           "created_at",
           "updated_at"
         ]

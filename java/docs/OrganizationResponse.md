@@ -25,6 +25,7 @@
 |**connectorSettings** | **Object** |  |  |
 |**globalUserConfig** | **Object** |  |  |
 |**fileSyncUsage** | **Object** |  |  |
+|**loggingSettings** | **Object** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

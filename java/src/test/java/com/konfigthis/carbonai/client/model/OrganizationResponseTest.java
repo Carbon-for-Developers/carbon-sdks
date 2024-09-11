@@ -184,6 +184,14 @@ public class OrganizationResponseTest {
     }
 
     /**
+     * Test the property 'loggingSettings'
+     */
+    @Test
+    public void loggingSettingsTest() {
+        // TODO: test loggingSettings
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

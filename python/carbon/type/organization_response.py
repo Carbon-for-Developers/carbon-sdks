@@ -52,6 +52,8 @@ class RequiredOrganizationResponse(TypedDict):
 
     file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+    logging_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
     created_at: datetime
 
     updated_at: datetime

@@ -7340,6 +7340,11 @@
             "title": "File Sync Usage",
             "default": {}
           },
+          "logging_settings": {
+            "type": "object",
+            "title": "Logging Settings",
+            "default": {}
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -7371,6 +7376,7 @@
           "connector_settings",
           "global_user_config",
           "file_sync_usage",
+          "logging_settings",
           "created_at",
           "updated_at"
         ],

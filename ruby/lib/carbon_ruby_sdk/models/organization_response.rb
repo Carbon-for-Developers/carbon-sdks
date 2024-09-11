@@ -47,6 +47,8 @@ module Carbon
 
     attr_accessor :file_sync_usage
 
+    attr_accessor :logging_settings
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -72,6 +74,7 @@ module Carbon
         :'connector_settings' => :'connector_settings',
         :'global_user_config' => :'global_user_config',
         :'file_sync_usage' => :'file_sync_usage',
+        :'logging_settings' => :'logging_settings',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -103,6 +106,7 @@ module Carbon
         :'connector_settings' => :'Object',
         :'global_user_config' => :'Object',
         :'file_sync_usage' => :'Object',
+        :'logging_settings' => :'Object',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -207,6 +211,10 @@ module Carbon
         self.file_sync_usage = attributes[:'file_sync_usage']
       end
 
+      if attributes.key?(:'logging_settings')
+        self.logging_settings = attributes[:'logging_settings']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -268,6 +276,10 @@ module Carbon
         invalid_properties.push('invalid value for "file_sync_usage", file_sync_usage cannot be nil.')
       end
 
+      if @logging_settings.nil?
+        invalid_properties.push('invalid value for "logging_settings", logging_settings cannot be nil.')
+      end
+
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -294,6 +306,7 @@ module Carbon
       return false if @connector_settings.nil?
       return false if @global_user_config.nil?
       return false if @file_sync_usage.nil?
+      return false if @logging_settings.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true
@@ -322,6 +335,7 @@ module Carbon
           connector_settings == o.connector_settings &&
           global_user_config == o.global_user_config &&
           file_sync_usage == o.file_sync_usage &&
+          logging_settings == o.logging_settings &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -335,7 +349,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, connector_settings, global_user_config, file_sync_usage, created_at, updated_at].hash
+      [id, name, nickname, remove_branding, custom_branding, custom_limits, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, file_statistics_aggregated_at, period_ends_at, cancel_at_period_end, connector_settings, global_user_config, file_sync_usage, logging_settings, created_at, updated_at].hash
     end
 
     # Builds the object from hash

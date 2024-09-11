@@ -60,6 +60,7 @@ public class Example {
       System.out.println(result.getConnectorSettings());
       System.out.println(result.getGlobalUserConfig());
       System.out.println(result.getFileSyncUsage());
+      System.out.println(result.getLoggingSettings());
       System.out.println(result.getCreatedAt());
       System.out.println(result.getUpdatedAt());
     } catch (ApiException e) {
