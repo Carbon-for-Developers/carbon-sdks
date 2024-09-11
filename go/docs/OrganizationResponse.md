@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
 **GlobalUserConfig** | **map[string]interface{}** |  | [default to {}]
 **FileSyncUsage** | **map[string]interface{}** |  | [default to {}]
+**LoggingSettings** | **map[string]interface{}** |  | [default to {}]
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
+`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, loggingSettings map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -462,6 +463,26 @@ and a boolean to check if the value has been set.
 `func (o *OrganizationResponse) SetFileSyncUsage(v map[string]interface{})`
 
 SetFileSyncUsage sets FileSyncUsage field to given value.
+
+
+### GetLoggingSettings
+
+`func (o *OrganizationResponse) GetLoggingSettings() map[string]interface{}`
+
+GetLoggingSettings returns the LoggingSettings field if non-nil, zero value otherwise.
+
+### GetLoggingSettingsOk
+
+`func (o *OrganizationResponse) GetLoggingSettingsOk() (*map[string]interface{}, bool)`
+
+GetLoggingSettingsOk returns a tuple with the LoggingSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoggingSettings
+
+`func (o *OrganizationResponse) SetLoggingSettings(v map[string]interface{})`
+
+SetLoggingSettings sets LoggingSettings field to given value.
 
 
 ### GetCreatedAt

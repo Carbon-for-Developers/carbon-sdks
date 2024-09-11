@@ -122,6 +122,10 @@ public class OrganizationResponse {
   @SerializedName(SERIALIZED_NAME_FILE_SYNC_USAGE)
   private Object fileSyncUsage;
 
+  public static final String SERIALIZED_NAME_LOGGING_SETTINGS = "logging_settings";
+  @SerializedName(SERIALIZED_NAME_LOGGING_SETTINGS)
+  private Object loggingSettings;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
@@ -655,6 +659,35 @@ public class OrganizationResponse {
   }
 
 
+  public OrganizationResponse loggingSettings(Object loggingSettings) {
+    
+    
+    
+    
+    this.loggingSettings = loggingSettings;
+    return this;
+  }
+
+   /**
+   * Get loggingSettings
+   * @return loggingSettings
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getLoggingSettings() {
+    return loggingSettings;
+  }
+
+
+  public void setLoggingSettings(Object loggingSettings) {
+    
+    
+    
+    this.loggingSettings = loggingSettings;
+  }
+
+
   public OrganizationResponse createdAt(OffsetDateTime createdAt) {
     
     
@@ -785,6 +818,7 @@ public class OrganizationResponse {
         Objects.equals(this.connectorSettings, organizationResponse.connectorSettings) &&
         Objects.equals(this.globalUserConfig, organizationResponse.globalUserConfig) &&
         Objects.equals(this.fileSyncUsage, organizationResponse.fileSyncUsage) &&
+        Objects.equals(this.loggingSettings, organizationResponse.loggingSettings) &&
         Objects.equals(this.createdAt, organizationResponse.createdAt) &&
         Objects.equals(this.updatedAt, organizationResponse.updatedAt)&&
         Objects.equals(this.additionalProperties, organizationResponse.additionalProperties);
@@ -792,7 +826,7 @@ public class OrganizationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, connectorSettings, globalUserConfig, fileSyncUsage, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, connectorSettings, globalUserConfig, fileSyncUsage, loggingSettings, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -817,6 +851,7 @@ public class OrganizationResponse {
     sb.append("    connectorSettings: ").append(toIndentedString(connectorSettings)).append("\n");
     sb.append("    globalUserConfig: ").append(toIndentedString(globalUserConfig)).append("\n");
     sb.append("    fileSyncUsage: ").append(toIndentedString(fileSyncUsage)).append("\n");
+    sb.append("    loggingSettings: ").append(toIndentedString(loggingSettings)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -860,6 +895,7 @@ public class OrganizationResponse {
     openapiFields.add("connector_settings");
     openapiFields.add("global_user_config");
     openapiFields.add("file_sync_usage");
+    openapiFields.add("logging_settings");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -883,6 +919,7 @@ public class OrganizationResponse {
     openapiRequiredFields.add("connector_settings");
     openapiRequiredFields.add("global_user_config");
     openapiRequiredFields.add("file_sync_usage");
+    openapiRequiredFields.add("logging_settings");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }

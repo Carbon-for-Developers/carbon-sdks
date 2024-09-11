@@ -127,6 +127,12 @@ export interface OrganizationResponse {
     'file_sync_usage': object;
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationResponse
+     */
+    'logging_settings': object;
+    /**
+     * 
      * @type {string}
      * @memberof OrganizationResponse
      */

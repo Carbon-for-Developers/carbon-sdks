@@ -7321,6 +7321,7 @@ components:
         custom_branding: "{}"
         global_user_config: {}
         updated_at: 2000-01-23T04:56:07.000+00:00
+        logging_settings: {}
         aggregate_num_embeddings: "{}"
         aggregate_num_files_by_source: "{}"
         name: name
@@ -7402,6 +7403,12 @@ components:
           type: object
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationResponse-properties-file_sync_usage
+        logging_settings:
+          example: {}
+          title: Logging Settings
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationResponse-properties-logging_settings
         created_at:
           format: date-time
           title: Created At
@@ -7426,6 +7433,7 @@ components:
       - file_sync_usage
       - global_user_config
       - id
+      - logging_settings
       - name
       - nickname
       - period_ends_at
@@ -11661,6 +11669,11 @@ components:
       type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationResponse-properties-file_sync_usage:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationResponse-properties-logging_settings:
       example: {}
       properties: {}
       type: object
