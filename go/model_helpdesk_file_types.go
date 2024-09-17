@@ -22,12 +22,14 @@ type HelpdeskFileTypes string
 const (
 	HELPDESKFILETYPES_TICKET HelpdeskFileTypes = "TICKET"
 	HELPDESKFILETYPES_ARTICLE HelpdeskFileTypes = "ARTICLE"
+	HELPDESKFILETYPES_CONVERSATION HelpdeskFileTypes = "CONVERSATION"
 )
 
 // All allowed values of HelpdeskFileTypes enum
 var AllowedHelpdeskFileTypesEnumValues = []HelpdeskFileTypes{
 	"TICKET",
 	"ARTICLE",
+	"CONVERSATION",
 }
 
 func (v *HelpdeskFileTypes) UnmarshalJSON(src []byte) error {

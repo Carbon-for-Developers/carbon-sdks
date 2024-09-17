@@ -36,6 +36,7 @@ class HelpdeskFileTypes(
         enum_value_to_name = {
             "TICKET": "TICKET",
             "ARTICLE": "ARTICLE",
+            "CONVERSATION": "CONVERSATION",
         }
     
     @schemas.classproperty
@@ -45,3 +46,7 @@ class HelpdeskFileTypes(
     @schemas.classproperty
     def ARTICLE(cls):
         return cls("ARTICLE")
+    
+    @schemas.classproperty
+    def CONVERSATION(cls):
+        return cls("CONVERSATION")

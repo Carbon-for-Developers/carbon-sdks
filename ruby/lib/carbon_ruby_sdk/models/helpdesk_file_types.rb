@@ -13,9 +13,10 @@ module Carbon
   class HelpdeskFileTypes
     TICKET = "TICKET".freeze
     ARTICLE = "ARTICLE".freeze
+    CONVERSATION = "CONVERSATION".freeze
 
     def self.all_vars
-      @all_vars ||= [TICKET, ARTICLE].freeze
+      @all_vars ||= [TICKET, ARTICLE, CONVERSATION].freeze
     end
 
     # Builds the enum from string

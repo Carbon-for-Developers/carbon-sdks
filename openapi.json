@@ -6372,7 +6372,8 @@
         "type": "string",
         "enum": [
           "TICKET",
-          "ARTICLE"
+          "ARTICLE",
+          "CONVERSATION"
         ],
         "title": "HelpdeskFileTypes"
       },

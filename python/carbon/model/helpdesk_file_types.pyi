@@ -38,3 +38,7 @@ class HelpdeskFileTypes(
     @schemas.classproperty
     def ARTICLE(cls):
         return cls("ARTICLE")
+    
+    @schemas.classproperty
+    def CONVERSATION(cls):
+        return cls("CONVERSATION")
