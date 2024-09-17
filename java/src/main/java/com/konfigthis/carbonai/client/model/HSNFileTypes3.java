@@ -29,7 +29,9 @@ import com.google.gson.stream.JsonWriter;
   
   TICKET("TICKET"),
   
-  ARTICLE("ARTICLE");
+  ARTICLE("ARTICLE"),
+  
+  CONVERSATION("CONVERSATION");
 
   private String value;
 

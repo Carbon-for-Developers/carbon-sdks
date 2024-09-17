@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type HelpdeskFileTypes = 'TICKET' | 'ARTICLE'
+export type HelpdeskFileTypes = 'TICKET' | 'ARTICLE' | 'CONVERSATION'
 

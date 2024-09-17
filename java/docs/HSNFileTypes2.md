@@ -9,5 +9,7 @@
 
 * `ARTICLE` (value: `"ARTICLE"`)
 
+* `CONVERSATION` (value: `"CONVERSATION"`)
+
 
 

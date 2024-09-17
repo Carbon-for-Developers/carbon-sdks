@@ -22,12 +22,14 @@ type HSNFileTypes2 string
 const (
 	HSNFILETYPES2_TICKET HSNFileTypes2 = "TICKET"
 	HSNFILETYPES2_ARTICLE HSNFileTypes2 = "ARTICLE"
+	HSNFILETYPES2_CONVERSATION HSNFileTypes2 = "CONVERSATION"
 )
 
 // All allowed values of HSNFileTypes2 enum
 var AllowedHSNFileTypes2EnumValues = []HSNFileTypes2{
 	"TICKET",
 	"ARTICLE",
+	"CONVERSATION",
 }
 
 func (v *HSNFileTypes2) UnmarshalJSON(src []byte) error {

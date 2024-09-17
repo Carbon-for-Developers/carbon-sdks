@@ -22,12 +22,14 @@ type HSNFileTypes3 string
 const (
 	HSNFILETYPES3_TICKET HSNFileTypes3 = "TICKET"
 	HSNFILETYPES3_ARTICLE HSNFileTypes3 = "ARTICLE"
+	HSNFILETYPES3_CONVERSATION HSNFileTypes3 = "CONVERSATION"
 )
 
 // All allowed values of HSNFileTypes3 enum
 var AllowedHSNFileTypes3EnumValues = []HSNFileTypes3{
 	"TICKET",
 	"ARTICLE",
+	"CONVERSATION",
 }
 
 func (v *HSNFileTypes3) UnmarshalJSON(src []byte) error {

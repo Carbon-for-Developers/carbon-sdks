@@ -6502,6 +6502,7 @@ components:
       enum:
       - TICKET
       - ARTICLE
+      - CONVERSATION
       title: HelpdeskFileTypes
       type: string
     HybridSearchTuningParams:
@@ -14997,24 +14998,28 @@ components:
       enum:
       - TICKET
       - ARTICLE
+      - CONVERSATION
       title: HelpdeskFileTypes
       type: string
     HSNFileTypes1:
       enum:
       - TICKET
       - ARTICLE
+      - CONVERSATION
       title: HelpdeskFileTypes
       type: string
     HSNFileTypes2:
       enum:
       - TICKET
       - ARTICLE
+      - CONVERSATION
       title: HelpdeskFileTypes
       type: string
     HSNFileTypes3:
       enum:
       - TICKET
       - ARTICLE
+      - CONVERSATION
       title: HelpdeskFileTypes
       type: string
     SentWebhookPayload_object:
