@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
 
 class RequiredGitbookSyncRequest(TypedDict):
@@ -39,6 +40,8 @@ class OptionalGitbookSyncRequest(TypedDict, total=False):
     prepend_filename_to_chunks: typing.Optional[bool]
 
     request_id: typing.Optional[str]
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable]
 
 class GitbookSyncRequest(RequiredGitbookSyncRequest, OptionalGitbookSyncRequest):
     pass

@@ -1188,6 +1188,7 @@ resync_response = carbon.files.resync(
     chunk_size=1,
     chunk_overlap=1,
     force_embedding_generation=False,
+    skip_file_processing=False,
 )
 ```
 
@@ -1200,6 +1201,8 @@ resync_response = carbon.files.resync(
 ##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
 
 ##### force_embedding_generation: `bool`<a id="force_embedding_generation-bool"></a>
+
+##### skip_file_processing: `Optional[bool]`<a id="skip_file_processing-optionalbool"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1640,6 +1643,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
 )
 ```
@@ -1713,6 +1717,16 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
     sync_files_on_connection=True,
     request_id="string_example",
     sync_source_items=True,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+        "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
+        "split_rows": False,
+        "generate_chunks_only": False,
+        "skip_file_processing": False,
+    },
 )
 ```
 
@@ -1743,6 +1757,9 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1788,6 +1805,7 @@ connect_guru_response = carbon.integrations.connect_guru(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
 )
 ```
@@ -1935,6 +1953,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
     automatically_open_file_picker=True,
     gong_account_email="string_example",
@@ -2346,6 +2365,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
 )
 ```
@@ -2470,6 +2490,7 @@ sync_files_response = carbon.integrations.sync_files(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
 )
 ```
@@ -2589,6 +2610,16 @@ sync_gitbook_response = carbon.integrations.sync_gitbook(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     request_id="string_example",
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+        "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
+        "split_rows": False,
+        "generate_chunks_only": False,
+        "skip_file_processing": False,
+    },
 )
 ```
 
@@ -2613,6 +2644,9 @@ sync_gitbook_response = carbon.integrations.sync_gitbook(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2705,6 +2739,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
     incremental_sync=False,
 )
@@ -2842,6 +2877,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
     incremental_sync=False,
 )
@@ -3012,6 +3048,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "skip_file_processing": False,
     },
 )
 ```

@@ -79,11 +79,32 @@ class ResyncFileQueryInput(
                         _configuration=_configuration,
                     )
             force_embedding_generation = schemas.BoolSchema
+            
+            
+            class skip_file_processing(
+                schemas.BoolBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneBoolMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, bool, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'skip_file_processing':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "file_id": file_id,
                 "chunk_size": chunk_size,
                 "chunk_overlap": chunk_overlap,
                 "force_embedding_generation": force_embedding_generation,
+                "skip_file_processing": skip_file_processing,
             }
     
     file_id: MetaOapg.properties.file_id
@@ -101,9 +122,12 @@ class ResyncFileQueryInput(
     def __getitem__(self, name: typing_extensions.Literal["force_embedding_generation"]) -> MetaOapg.properties.force_embedding_generation: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["skip_file_processing"]) -> MetaOapg.properties.skip_file_processing: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_id", "chunk_size", "chunk_overlap", "force_embedding_generation", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["file_id", "chunk_size", "chunk_overlap", "force_embedding_generation", "skip_file_processing", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -121,9 +145,12 @@ class ResyncFileQueryInput(
     def get_item_oapg(self, name: typing_extensions.Literal["force_embedding_generation"]) -> typing.Union[MetaOapg.properties.force_embedding_generation, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["skip_file_processing"]) -> typing.Union[MetaOapg.properties.skip_file_processing, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_id", "chunk_size", "chunk_overlap", "force_embedding_generation", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["file_id", "chunk_size", "chunk_overlap", "force_embedding_generation", "skip_file_processing", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -134,6 +161,7 @@ class ResyncFileQueryInput(
         chunk_size: typing.Union[MetaOapg.properties.chunk_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         chunk_overlap: typing.Union[MetaOapg.properties.chunk_overlap, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         force_embedding_generation: typing.Union[MetaOapg.properties.force_embedding_generation, bool, schemas.Unset] = schemas.unset,
+        skip_file_processing: typing.Union[MetaOapg.properties.skip_file_processing, None, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ResyncFileQueryInput':
@@ -144,6 +172,7 @@ class ResyncFileQueryInput(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             force_embedding_generation=force_embedding_generation,
+            skip_file_processing=skip_file_processing,
             _configuration=_configuration,
             **kwargs,
         )

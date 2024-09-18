@@ -47,6 +47,7 @@ class FileSyncConfig(
             include_speaker_labels = schemas.BoolSchema
             split_rows = schemas.BoolSchema
             generate_chunks_only = schemas.BoolSchema
+            skip_file_processing = schemas.BoolSchema
             __annotations__ = {
                 "auto_synced_source_types": auto_synced_source_types,
                 "sync_attachments": sync_attachments,
@@ -55,6 +56,7 @@ class FileSyncConfig(
                 "include_speaker_labels": include_speaker_labels,
                 "split_rows": split_rows,
                 "generate_chunks_only": generate_chunks_only,
+                "skip_file_processing": skip_file_processing,
             }
     
     @typing.overload
@@ -79,9 +81,12 @@ class FileSyncConfig(
     def __getitem__(self, name: typing_extensions.Literal["generate_chunks_only"]) -> MetaOapg.properties.generate_chunks_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["skip_file_processing"]) -> MetaOapg.properties.skip_file_processing: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "skip_file_processing", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -108,9 +113,12 @@ class FileSyncConfig(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_chunks_only"]) -> typing.Union[MetaOapg.properties.generate_chunks_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["skip_file_processing"]) -> typing.Union[MetaOapg.properties.skip_file_processing, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "skip_file_processing", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -124,6 +132,7 @@ class FileSyncConfig(
         include_speaker_labels: typing.Union[MetaOapg.properties.include_speaker_labels, bool, schemas.Unset] = schemas.unset,
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
         generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
+        skip_file_processing: typing.Union[MetaOapg.properties.skip_file_processing, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FileSyncConfig':
@@ -137,6 +146,7 @@ class FileSyncConfig(
             include_speaker_labels=include_speaker_labels,
             split_rows=split_rows,
             generate_chunks_only=generate_chunks_only,
+            skip_file_processing=skip_file_processing,
             _configuration=_configuration,
             **kwargs,
         )

@@ -43,7 +43,9 @@ import com.google.gson.stream.JsonWriter;
   
   SYNC_ABORTED("SYNC_ABORTED"),
   
-  QUEUED_FOR_OCR("QUEUED_FOR_OCR");
+  QUEUED_FOR_OCR("QUEUED_FOR_OCR"),
+  
+  READY_TO_SYNC("READY_TO_SYNC");
 
   private String value;
 

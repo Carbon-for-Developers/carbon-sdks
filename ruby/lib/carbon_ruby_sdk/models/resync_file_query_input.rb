@@ -19,13 +19,16 @@ module Carbon
 
     attr_accessor :force_embedding_generation
 
+    attr_accessor :skip_file_processing
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'file_id' => :'file_id',
         :'chunk_size' => :'chunk_size',
         :'chunk_overlap' => :'chunk_overlap',
-        :'force_embedding_generation' => :'force_embedding_generation'
+        :'force_embedding_generation' => :'force_embedding_generation',
+        :'skip_file_processing' => :'skip_file_processing'
       }
     end
 
@@ -40,7 +43,8 @@ module Carbon
         :'file_id' => :'Integer',
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
-        :'force_embedding_generation' => :'Boolean'
+        :'force_embedding_generation' => :'Boolean',
+        :'skip_file_processing' => :'Boolean'
       }
     end
 
@@ -49,6 +53,7 @@ module Carbon
       Set.new([
         :'chunk_size',
         :'chunk_overlap',
+        :'skip_file_processing'
       ])
     end
 
@@ -84,6 +89,12 @@ module Carbon
       else
         self.force_embedding_generation = false
       end
+
+      if attributes.key?(:'skip_file_processing')
+        self.skip_file_processing = attributes[:'skip_file_processing']
+      else
+        self.skip_file_processing = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +123,8 @@ module Carbon
           file_id == o.file_id &&
           chunk_size == o.chunk_size &&
           chunk_overlap == o.chunk_overlap &&
-          force_embedding_generation == o.force_embedding_generation
+          force_embedding_generation == o.force_embedding_generation &&
+          skip_file_processing == o.skip_file_processing
     end
 
     # @see the `==` method
@@ -124,7 +136,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [file_id, chunk_size, chunk_overlap, force_embedding_generation].hash
+      [file_id, chunk_size, chunk_overlap, force_embedding_generation, skip_file_processing].hash
     end
 
     # Builds the object from hash

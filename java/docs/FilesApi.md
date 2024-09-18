@@ -1242,6 +1242,7 @@ public class Example {
     Integer chunkSize = 56;
     Integer chunkOverlap = 56;
     Boolean forceEmbeddingGeneration = false;
+    Boolean skipFileProcessing = false;
     try {
       UserFile result = client
               .files
@@ -1249,6 +1250,7 @@ public class Example {
               .chunkSize(chunkSize)
               .chunkOverlap(chunkOverlap)
               .forceEmbeddingGeneration(forceEmbeddingGeneration)
+              .skipFileProcessing(skipFileProcessing)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1304,6 +1306,7 @@ public class Example {
               .chunkSize(chunkSize)
               .chunkOverlap(chunkOverlap)
               .forceEmbeddingGeneration(forceEmbeddingGeneration)
+              .skipFileProcessing(skipFileProcessing)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

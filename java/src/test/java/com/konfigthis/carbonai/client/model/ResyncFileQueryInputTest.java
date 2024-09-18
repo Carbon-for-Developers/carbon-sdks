@@ -71,4 +71,12 @@ public class ResyncFileQueryInputTest {
         // TODO: test forceEmbeddingGeneration
     }
 
+    /**
+     * Test the property 'skipFileProcessing'
+     */
+    @Test
+    public void skipFileProcessingTest() {
+        // TODO: test skipFileProcessing
+    }
+
 }

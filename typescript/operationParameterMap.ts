@@ -314,6 +314,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'force_embedding_generation'
             },
+            {
+                name: 'skip_file_processing'
+            },
         ]
     },
     '/uploadfile-POST': {
@@ -569,6 +572,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'sync_source_items'
+            },
+            {
+                name: 'file_sync_config'
             },
         ]
     },
@@ -966,6 +972,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'request_id'
+            },
+            {
+                name: 'file_sync_config'
             },
         ]
     },

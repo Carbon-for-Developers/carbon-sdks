@@ -17,6 +17,7 @@
 |**generateSparseVectors** | **Boolean** |  |  [optional] |
 |**prependFilenameToChunks** | **Boolean** |  |  [optional] |
 |**requestId** | **String** |  |  [optional] |
+|**fileSyncConfig** | [**FileSyncConfigNullable**](FileSyncConfigNullable.md) |  |  [optional] |
 
 
 

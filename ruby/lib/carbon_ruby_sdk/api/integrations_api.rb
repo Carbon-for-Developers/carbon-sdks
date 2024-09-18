@@ -377,9 +377,10 @@ module Carbon
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
+    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -393,6 +394,7 @@ module Carbon
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       gitbook_connect_request = _body
       api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
       api_response.data
@@ -417,9 +419,10 @@ module Carbon
     # @param sync_files_on_connection [Boolean] 
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, extra: {})
+    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -433,6 +436,7 @@ module Carbon
       _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       gitbook_connect_request = _body
       connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
     end
@@ -2338,9 +2342,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param request_id [String] 
+    # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [GitbookSyncRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gitbook(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
+    def sync_gitbook(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:space_ids] = space_ids if space_ids != SENTINEL
@@ -2352,6 +2357,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       gitbook_sync_request = _body
       api_response = sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
       api_response.data
@@ -2372,9 +2378,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param request_id [String] 
+    # @param file_sync_config [FileSyncConfigNullable] 
     # @param body [GitbookSyncRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_gitbook_with_http_info(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
+    def sync_gitbook_with_http_info(space_ids:, data_source_id:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, file_sync_config: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:space_ids] = space_ids if space_ids != SENTINEL
@@ -2386,6 +2393,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
       gitbook_sync_request = _body
       sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
     end

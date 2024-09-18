@@ -26,5 +26,7 @@ class OptionalResyncFileQueryInput(TypedDict, total=False):
 
     force_embedding_generation: bool
 
+    skip_file_processing: typing.Optional[bool]
+
 class ResyncFileQueryInput(RequiredResyncFileQueryInput, OptionalResyncFileQueryInput):
     pass

@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 
 class GitbookConnectRequest(BaseModel):
     organization: str = Field(alias='organization')
@@ -42,6 +43,8 @@ class GitbookConnectRequest(BaseModel):
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: typing.Optional[bool] = Field(None, alias='sync_source_items')
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     model_config = ConfigDict(
         protected_namespaces=(),

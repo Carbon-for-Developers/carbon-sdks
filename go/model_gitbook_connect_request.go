@@ -29,6 +29,7 @@ type GitbookConnectRequest struct {
 	RequestId NullableString `json:"request_id,omitempty"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
+	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 }
 
 // NewGitbookConnectRequest instantiates a new GitbookConnectRequest object
@@ -517,6 +518,48 @@ func (o *GitbookConnectRequest) SetSyncSourceItems(v bool) {
 	o.SyncSourceItems = &v
 }
 
+// GetFileSyncConfig returns the FileSyncConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GitbookConnectRequest) GetFileSyncConfig() FileSyncConfigNullable {
+	if o == nil || isNil(o.FileSyncConfig.Get()) {
+		var ret FileSyncConfigNullable
+		return ret
+	}
+	return *o.FileSyncConfig.Get()
+}
+
+// GetFileSyncConfigOk returns a tuple with the FileSyncConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GitbookConnectRequest) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileSyncConfig.Get(), o.FileSyncConfig.IsSet()
+}
+
+// HasFileSyncConfig returns a boolean if a field has been set.
+func (o *GitbookConnectRequest) HasFileSyncConfig() bool {
+	if o != nil && o.FileSyncConfig.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSyncConfig gets a reference to the given NullableFileSyncConfigNullable and assigns it to the FileSyncConfig field.
+func (o *GitbookConnectRequest) SetFileSyncConfig(v FileSyncConfigNullable) {
+	o.FileSyncConfig.Set(&v)
+}
+// SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+func (o *GitbookConnectRequest) SetFileSyncConfigNil() {
+	o.FileSyncConfig.Set(nil)
+}
+
+// UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+func (o *GitbookConnectRequest) UnsetFileSyncConfig() {
+	o.FileSyncConfig.Unset()
+}
+
 func (o GitbookConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -554,6 +597,9 @@ func (o GitbookConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SyncSourceItems) {
 		toSerialize["sync_source_items"] = o.SyncSourceItems
+	}
+	if o.FileSyncConfig.IsSet() {
+		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
 	}
 	return json.Marshal(toSerialize)
 }

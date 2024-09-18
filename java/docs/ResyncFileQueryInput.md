@@ -11,6 +11,7 @@
 |**chunkSize** | **Integer** |  |  [optional] |
 |**chunkOverlap** | **Integer** |  |  [optional] |
 |**forceEmbeddingGeneration** | **Boolean** |  |  [optional] |
+|**skipFileProcessing** | **Boolean** |  |  [optional] |
 
 
 

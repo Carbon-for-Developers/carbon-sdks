@@ -66,6 +66,10 @@ public class ResyncFileQueryInput {
   @SerializedName(SERIALIZED_NAME_FORCE_EMBEDDING_GENERATION)
   private Boolean forceEmbeddingGeneration = false;
 
+  public static final String SERIALIZED_NAME_SKIP_FILE_PROCESSING = "skip_file_processing";
+  @SerializedName(SERIALIZED_NAME_SKIP_FILE_PROCESSING)
+  private Boolean skipFileProcessing = false;
+
   public ResyncFileQueryInput() {
   }
 
@@ -184,6 +188,35 @@ public class ResyncFileQueryInput {
     this.forceEmbeddingGeneration = forceEmbeddingGeneration;
   }
 
+
+  public ResyncFileQueryInput skipFileProcessing(Boolean skipFileProcessing) {
+    
+    
+    
+    
+    this.skipFileProcessing = skipFileProcessing;
+    return this;
+  }
+
+   /**
+   * Get skipFileProcessing
+   * @return skipFileProcessing
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
+
+  public Boolean getSkipFileProcessing() {
+    return skipFileProcessing;
+  }
+
+
+  public void setSkipFileProcessing(Boolean skipFileProcessing) {
+    
+    
+    
+    this.skipFileProcessing = skipFileProcessing;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -242,7 +275,8 @@ public class ResyncFileQueryInput {
     return Objects.equals(this.fileId, resyncFileQueryInput.fileId) &&
         Objects.equals(this.chunkSize, resyncFileQueryInput.chunkSize) &&
         Objects.equals(this.chunkOverlap, resyncFileQueryInput.chunkOverlap) &&
-        Objects.equals(this.forceEmbeddingGeneration, resyncFileQueryInput.forceEmbeddingGeneration)&&
+        Objects.equals(this.forceEmbeddingGeneration, resyncFileQueryInput.forceEmbeddingGeneration) &&
+        Objects.equals(this.skipFileProcessing, resyncFileQueryInput.skipFileProcessing)&&
         Objects.equals(this.additionalProperties, resyncFileQueryInput.additionalProperties);
   }
 
@@ -252,7 +286,7 @@ public class ResyncFileQueryInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileId, chunkSize, chunkOverlap, forceEmbeddingGeneration, additionalProperties);
+    return Objects.hash(fileId, chunkSize, chunkOverlap, forceEmbeddingGeneration, skipFileProcessing, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -270,6 +304,7 @@ public class ResyncFileQueryInput {
     sb.append("    chunkSize: ").append(toIndentedString(chunkSize)).append("\n");
     sb.append("    chunkOverlap: ").append(toIndentedString(chunkOverlap)).append("\n");
     sb.append("    forceEmbeddingGeneration: ").append(toIndentedString(forceEmbeddingGeneration)).append("\n");
+    sb.append("    skipFileProcessing: ").append(toIndentedString(skipFileProcessing)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,6 +332,7 @@ public class ResyncFileQueryInput {
     openapiFields.add("chunk_size");
     openapiFields.add("chunk_overlap");
     openapiFields.add("force_embedding_generation");
+    openapiFields.add("skip_file_processing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

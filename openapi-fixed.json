@@ -4770,7 +4770,8 @@
           "EVALUATING_RESYNC",
           "RATE_LIMITED",
           "SYNC_ABORTED",
-          "QUEUED_FOR_OCR"
+          "QUEUED_FOR_OCR",
+          "READY_TO_SYNC"
         ]
       },
       "ExternalSourceItem": {
@@ -5090,6 +5091,12 @@
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "skip_file_processing": {
+            "title": "Skip File Processing",
+            "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "type": "boolean",
             "default": false
           }
@@ -5539,6 +5546,9 @@
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "type": "boolean",
             "default": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -5611,6 +5621,9 @@
             "title": "Request Id",
             "type": "string",
             "nullable": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
           }
         },
         "type": "object",
@@ -7469,6 +7482,12 @@
             "title": "Force Embedding Generation",
             "type": "boolean",
             "default": false
+          },
+          "skip_file_processing": {
+            "title": "Skip File Processing",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
           }
         },
         "type": "object",
@@ -9883,6 +9902,12 @@
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "skip_file_processing": {
+            "title": "Skip File Processing",
+            "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "type": "boolean",
             "default": false
           }

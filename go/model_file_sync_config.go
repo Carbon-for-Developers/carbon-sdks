@@ -29,6 +29,8 @@ type FileSyncConfig struct {
 	SplitRows *bool `json:"split_rows,omitempty"`
 	// If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
+	// Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
+	SkipFileProcessing *bool `json:"skip_file_processing,omitempty"`
 }
 
 // NewFileSyncConfig instantiates a new FileSyncConfig object
@@ -47,6 +49,8 @@ func NewFileSyncConfig() *FileSyncConfig {
 	this.SplitRows = &splitRows
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var skipFileProcessing bool = false
+	this.SkipFileProcessing = &skipFileProcessing
 	return &this
 }
 
@@ -65,6 +69,8 @@ func NewFileSyncConfigWithDefaults() *FileSyncConfig {
 	this.SplitRows = &splitRows
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var skipFileProcessing bool = false
+	this.SkipFileProcessing = &skipFileProcessing
 	return &this
 }
 
@@ -302,6 +308,38 @@ func (o *FileSyncConfig) SetGenerateChunksOnly(v bool) {
 	o.GenerateChunksOnly = &v
 }
 
+// GetSkipFileProcessing returns the SkipFileProcessing field value if set, zero value otherwise.
+func (o *FileSyncConfig) GetSkipFileProcessing() bool {
+	if o == nil || isNil(o.SkipFileProcessing) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipFileProcessing
+}
+
+// GetSkipFileProcessingOk returns a tuple with the SkipFileProcessing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FileSyncConfig) GetSkipFileProcessingOk() (*bool, bool) {
+	if o == nil || isNil(o.SkipFileProcessing) {
+    return nil, false
+	}
+	return o.SkipFileProcessing, true
+}
+
+// HasSkipFileProcessing returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasSkipFileProcessing() bool {
+	if o != nil && !isNil(o.SkipFileProcessing) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipFileProcessing gets a reference to the given bool and assigns it to the SkipFileProcessing field.
+func (o *FileSyncConfig) SetSkipFileProcessing(v bool) {
+	o.SkipFileProcessing = &v
+}
+
 func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AutoSyncedSourceTypes) {
@@ -324,6 +362,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.GenerateChunksOnly) {
 		toSerialize["generate_chunks_only"] = o.GenerateChunksOnly
+	}
+	if !isNil(o.SkipFileProcessing) {
+		toSerialize["skip_file_processing"] = o.SkipFileProcessing
 	}
 	return json.Marshal(toSerialize)
 }

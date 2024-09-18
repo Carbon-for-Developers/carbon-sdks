@@ -20,9 +20,10 @@ module Carbon
     RATE_LIMITED = "RATE_LIMITED".freeze
     SYNC_ABORTED = "SYNC_ABORTED".freeze
     QUEUED_FOR_OCR = "QUEUED_FOR_OCR".freeze
+    READY_TO_SYNC = "READY_TO_SYNC".freeze
 
     def self.all_vars
-      @all_vars ||= [DELAYED, QUEUED_FOR_SYNC, SYNCING, READY, SYNC_ERROR, EVALUATING_RESYNC, RATE_LIMITED, SYNC_ABORTED, QUEUED_FOR_OCR].freeze
+      @all_vars ||= [DELAYED, QUEUED_FOR_SYNC, SYNCING, READY, SYNC_ERROR, EVALUATING_RESYNC, RATE_LIMITED, SYNC_ABORTED, QUEUED_FOR_OCR, READY_TO_SYNC].freeze
     end
 
     # Builds the enum from string

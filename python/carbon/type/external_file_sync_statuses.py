@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-ExternalFileSyncStatuses = Literal["DELAYED", "QUEUED_FOR_SYNC", "SYNCING", "READY", "SYNC_ERROR", "EVALUATING_RESYNC", "RATE_LIMITED", "SYNC_ABORTED", "QUEUED_FOR_OCR"]
+ExternalFileSyncStatuses = Literal["DELAYED", "QUEUED_FOR_SYNC", "SYNCING", "READY", "SYNC_ERROR", "EVALUATING_RESYNC", "RATE_LIMITED", "SYNC_ABORTED", "QUEUED_FOR_OCR", "READY_TO_SYNC"]

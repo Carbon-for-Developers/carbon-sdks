@@ -32,6 +32,9 @@ module Carbon
     # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     attr_accessor :generate_chunks_only
 
+    # Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
+    attr_accessor :skip_file_processing
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -41,7 +44,8 @@ module Carbon
         :'transcription_service' => :'transcription_service',
         :'include_speaker_labels' => :'include_speaker_labels',
         :'split_rows' => :'split_rows',
-        :'generate_chunks_only' => :'generate_chunks_only'
+        :'generate_chunks_only' => :'generate_chunks_only',
+        :'skip_file_processing' => :'skip_file_processing'
       }
     end
 
@@ -59,7 +63,8 @@ module Carbon
         :'transcription_service' => :'TranscriptionServiceNullable',
         :'include_speaker_labels' => :'Boolean',
         :'split_rows' => :'Boolean',
-        :'generate_chunks_only' => :'Boolean'
+        :'generate_chunks_only' => :'Boolean',
+        :'skip_file_processing' => :'Boolean'
       }
     end
 
@@ -124,6 +129,12 @@ module Carbon
       else
         self.generate_chunks_only = false
       end
+
+      if attributes.key?(:'skip_file_processing')
+        self.skip_file_processing = attributes[:'skip_file_processing']
+      else
+        self.skip_file_processing = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -150,7 +161,8 @@ module Carbon
           transcription_service == o.transcription_service &&
           include_speaker_labels == o.include_speaker_labels &&
           split_rows == o.split_rows &&
-          generate_chunks_only == o.generate_chunks_only
+          generate_chunks_only == o.generate_chunks_only &&
+          skip_file_processing == o.skip_file_processing
     end
 
     # @see the `==` method
@@ -162,7 +174,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only, skip_file_processing].hash
     end
 
     # Builds the object from hash

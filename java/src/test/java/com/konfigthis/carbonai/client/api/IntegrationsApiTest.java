@@ -164,6 +164,7 @@ public class IntegrationsApiTest {
         Boolean syncFilesOnConnection = null;
         String requestId = null;
         Boolean syncSourceItems = null;
+        FileSyncConfigNullable fileSyncConfig = null;
         GenericSuccessResponse response = api.connectGitbook(organization, accessToken)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -175,6 +176,7 @@ public class IntegrationsApiTest {
                 .syncFilesOnConnection(syncFilesOnConnection)
                 .requestId(requestId)
                 .syncSourceItems(syncSourceItems)
+                .fileSyncConfig(fileSyncConfig)
                 .execute();
         // TODO: test validations
     }
@@ -591,6 +593,7 @@ public class IntegrationsApiTest {
         Boolean generateSparseVectors = null;
         Boolean prependFilenameToChunks = null;
         String requestId = null;
+        FileSyncConfigNullable fileSyncConfig = null;
         Object response = api.syncGitbook(spaceIds, dataSourceId)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -600,6 +603,7 @@ public class IntegrationsApiTest {
                 .generateSparseVectors(generateSparseVectors)
                 .prependFilenameToChunks(prependFilenameToChunks)
                 .requestId(requestId)
+                .fileSyncConfig(fileSyncConfig)
                 .execute();
         // TODO: test validations
     }

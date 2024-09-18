@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -92,6 +93,10 @@ public class GitbookSyncRequest {
   public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
+
+  public static final String SERIALIZED_NAME_FILE_SYNC_CONFIG = "file_sync_config";
+  @SerializedName(SERIALIZED_NAME_FILE_SYNC_CONFIG)
+  private FileSyncConfigNullable fileSyncConfig;
 
   public GitbookSyncRequest() {
   }
@@ -390,6 +395,35 @@ public class GitbookSyncRequest {
     this.requestId = requestId;
   }
 
+
+  public GitbookSyncRequest fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+    
+    
+    
+    
+    this.fileSyncConfig = fileSyncConfig;
+    return this;
+  }
+
+   /**
+   * Get fileSyncConfig
+   * @return fileSyncConfig
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public FileSyncConfigNullable getFileSyncConfig() {
+    return fileSyncConfig;
+  }
+
+
+  public void setFileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+    
+    
+    
+    this.fileSyncConfig = fileSyncConfig;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -454,7 +488,8 @@ public class GitbookSyncRequest {
         Objects.equals(this.embeddingModel, gitbookSyncRequest.embeddingModel) &&
         Objects.equals(this.generateSparseVectors, gitbookSyncRequest.generateSparseVectors) &&
         Objects.equals(this.prependFilenameToChunks, gitbookSyncRequest.prependFilenameToChunks) &&
-        Objects.equals(this.requestId, gitbookSyncRequest.requestId)&&
+        Objects.equals(this.requestId, gitbookSyncRequest.requestId) &&
+        Objects.equals(this.fileSyncConfig, gitbookSyncRequest.fileSyncConfig)&&
         Objects.equals(this.additionalProperties, gitbookSyncRequest.additionalProperties);
   }
 
@@ -464,7 +499,7 @@ public class GitbookSyncRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, spaceIds, dataSourceId, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, requestId, additionalProperties);
+    return Objects.hash(tags, spaceIds, dataSourceId, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, requestId, fileSyncConfig, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -488,6 +523,7 @@ public class GitbookSyncRequest {
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
     sb.append("    prependFilenameToChunks: ").append(toIndentedString(prependFilenameToChunks)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -521,6 +557,7 @@ public class GitbookSyncRequest {
     openapiFields.add("generate_sparse_vectors");
     openapiFields.add("prepend_filename_to_chunks");
     openapiFields.add("request_id");
+    openapiFields.add("file_sync_config");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -555,6 +592,10 @@ public class GitbookSyncRequest {
       }
       if (!jsonObj.get("request_id").isJsonNull() && (jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
+      }
+      // validate the optional field `file_sync_config`
+      if (jsonObj.get("file_sync_config") != null && !jsonObj.get("file_sync_config").isJsonNull()) {
+        FileSyncConfigNullable.validateJsonObject(jsonObj.getAsJsonObject("file_sync_config"));
       }
   }
 

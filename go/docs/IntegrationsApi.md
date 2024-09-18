@@ -236,6 +236,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     gitbookConnectRequest := *carbon.NewGitbookConnectRequest(
         "null",
@@ -251,6 +252,7 @@ func main() {
     gitbookConnectRequest.SetSyncFilesOnConnection(true)
     gitbookConnectRequest.SetRequestId("null")
     gitbookConnectRequest.SetSyncSourceItems(true)
+    gitbookConnectRequest.SetFileSyncConfig(fileSyncConfig)
     
     request := client.IntegrationsApi.ConnectGitbook(
         gitbookConnectRequest,
@@ -1135,6 +1137,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
     
     gitbookSyncRequest := *carbon.NewGitbookSyncRequest(
         null,
@@ -1148,6 +1151,7 @@ func main() {
     gitbookSyncRequest.SetGenerateSparseVectors(false)
     gitbookSyncRequest.SetPrependFilenameToChunks(false)
     gitbookSyncRequest.SetRequestId("null")
+    gitbookSyncRequest.SetFileSyncConfig(fileSyncConfig)
     
     request := client.IntegrationsApi.SyncGitbook(
         gitbookSyncRequest,

@@ -82,6 +82,10 @@ public class FileSyncConfig {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_SKIP_FILE_PROCESSING = "skip_file_processing";
+  @SerializedName(SERIALIZED_NAME_SKIP_FILE_PROCESSING)
+  private Boolean skipFileProcessing = false;
+
   public FileSyncConfig() {
   }
 
@@ -295,6 +299,35 @@ public class FileSyncConfig {
     this.generateChunksOnly = generateChunksOnly;
   }
 
+
+  public FileSyncConfig skipFileProcessing(Boolean skipFileProcessing) {
+    
+    
+    
+    
+    this.skipFileProcessing = skipFileProcessing;
+    return this;
+  }
+
+   /**
+   * Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
+   * @return skipFileProcessing
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.")
+
+  public Boolean getSkipFileProcessing() {
+    return skipFileProcessing;
+  }
+
+
+  public void setSkipFileProcessing(Boolean skipFileProcessing) {
+    
+    
+    
+    this.skipFileProcessing = skipFileProcessing;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -356,7 +389,8 @@ public class FileSyncConfig {
         Objects.equals(this.transcriptionService, fileSyncConfig.transcriptionService) &&
         Objects.equals(this.includeSpeakerLabels, fileSyncConfig.includeSpeakerLabels) &&
         Objects.equals(this.splitRows, fileSyncConfig.splitRows) &&
-        Objects.equals(this.generateChunksOnly, fileSyncConfig.generateChunksOnly)&&
+        Objects.equals(this.generateChunksOnly, fileSyncConfig.generateChunksOnly) &&
+        Objects.equals(this.skipFileProcessing, fileSyncConfig.skipFileProcessing)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
 
@@ -366,7 +400,7 @@ public class FileSyncConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, skipFileProcessing, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +421,7 @@ public class FileSyncConfig {
     sb.append("    includeSpeakerLabels: ").append(toIndentedString(includeSpeakerLabels)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    skipFileProcessing: ").append(toIndentedString(skipFileProcessing)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -417,6 +452,7 @@ public class FileSyncConfig {
     openapiFields.add("include_speaker_labels");
     openapiFields.add("split_rows");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("skip_file_processing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

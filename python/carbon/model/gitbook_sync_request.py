@@ -189,6 +189,10 @@ class GitbookSyncRequest(
                         *args,
                         _configuration=_configuration,
                     )
+        
+            @staticmethod
+            def file_sync_config() -> typing.Type['FileSyncConfigNullable']:
+                return FileSyncConfigNullable
             __annotations__ = {
                 "space_ids": space_ids,
                 "data_source_id": data_source_id,
@@ -200,6 +204,7 @@ class GitbookSyncRequest(
                 "generate_sparse_vectors": generate_sparse_vectors,
                 "prepend_filename_to_chunks": prepend_filename_to_chunks,
                 "request_id": request_id,
+                "file_sync_config": file_sync_config,
             }
     
     space_ids: 'GitbookSyncRequestSpaceIds'
@@ -236,9 +241,12 @@ class GitbookSyncRequest(
     def __getitem__(self, name: typing_extensions.Literal["request_id"]) -> MetaOapg.properties.request_id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'FileSyncConfigNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["space_ids", "data_source_id", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "request_id", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["space_ids", "data_source_id", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "request_id", "file_sync_config", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -274,9 +282,12 @@ class GitbookSyncRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["request_id"]) -> typing.Union[MetaOapg.properties.request_id, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['FileSyncConfigNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["space_ids", "data_source_id", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "request_id", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["space_ids", "data_source_id", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "request_id", "file_sync_config", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -293,6 +304,7 @@ class GitbookSyncRequest(
         generate_sparse_vectors: typing.Union[MetaOapg.properties.generate_sparse_vectors, None, bool, schemas.Unset] = schemas.unset,
         prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, None, bool, schemas.Unset] = schemas.unset,
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
+        file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GitbookSyncRequest':
@@ -309,9 +321,11 @@ class GitbookSyncRequest(
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.embedding_generators import EmbeddingGenerators
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.model.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds

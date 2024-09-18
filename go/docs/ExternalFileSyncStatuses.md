@@ -21,6 +21,8 @@
 
 * `QUEUED_FOR_OCR` (value: `"QUEUED_FOR_OCR"`)
 
+* `READY_TO_SYNC` (value: `"READY_TO_SYNC"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

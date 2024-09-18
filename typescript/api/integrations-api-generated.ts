@@ -1555,7 +1555,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 request_id: requestParameters.request_id,
-                sync_source_items: requestParameters.sync_source_items
+                sync_source_items: requestParameters.sync_source_items,
+                file_sync_config: requestParameters.file_sync_config
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1853,7 +1854,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                file_sync_config: requestParameters.file_sync_config
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitbook(gitbookSyncRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

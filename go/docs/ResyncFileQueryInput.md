@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] 
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] 
 **ForceEmbeddingGeneration** | Pointer to **bool** |  | [optional] [default to false]
+**SkipFileProcessing** | Pointer to **NullableBool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -143,6 +144,41 @@ SetForceEmbeddingGeneration sets ForceEmbeddingGeneration field to given value.
 
 HasForceEmbeddingGeneration returns a boolean if a field has been set.
 
+### GetSkipFileProcessing
+
+`func (o *ResyncFileQueryInput) GetSkipFileProcessing() bool`
+
+GetSkipFileProcessing returns the SkipFileProcessing field if non-nil, zero value otherwise.
+
+### GetSkipFileProcessingOk
+
+`func (o *ResyncFileQueryInput) GetSkipFileProcessingOk() (*bool, bool)`
+
+GetSkipFileProcessingOk returns a tuple with the SkipFileProcessing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipFileProcessing
+
+`func (o *ResyncFileQueryInput) SetSkipFileProcessing(v bool)`
+
+SetSkipFileProcessing sets SkipFileProcessing field to given value.
+
+### HasSkipFileProcessing
+
+`func (o *ResyncFileQueryInput) HasSkipFileProcessing() bool`
+
+HasSkipFileProcessing returns a boolean if a field has been set.
+
+### SetSkipFileProcessingNil
+
+`func (o *ResyncFileQueryInput) SetSkipFileProcessingNil(b bool)`
+
+ SetSkipFileProcessingNil sets the value for SkipFileProcessing to be an explicit nil
+
+### UnsetSkipFileProcessing
+`func (o *ResyncFileQueryInput) UnsetSkipFileProcessing()`
+
+UnsetSkipFileProcessing ensures that no value is present for SkipFileProcessing, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

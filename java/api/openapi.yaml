@@ -4497,6 +4497,7 @@ components:
             split_rows: false
             sync_attachments: false
             transcription_service: null
+            skip_file_processing: false
             auto_synced_source_types:
             - ARTICLE
             generate_chunks_only: false
@@ -5270,6 +5271,7 @@ components:
       - RATE_LIMITED
       - SYNC_ABORTED
       - QUEUED_FOR_OCR
+      - READY_TO_SYNC
       title: ExternalFileSyncStatuses
       type: string
     ExternalSourceItem:
@@ -5583,6 +5585,20 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-generate_chunks_only
+        skip_file_processing:
+          default: false
+          description: "Setting this flag will create a new file record with Carbon\
+            \ but skip any and all processing. \n        This means that we do not\
+            \ download the remote file content or generate any chunks or embeddings.\
+            \ We will store\n        some metadata like name, external id, and external\
+            \ URL depending on the source you are syncing from. Note that this \n\
+            \        flag overrides both skip_embedding_generation and generate_chunks_only\
+            \ flags. The file will be moved to \n        READY_TO_SYNC status."
+          example: false
+          title: Skip File Processing
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-skip_file_processing
       title: FileSyncConfig
       type: object
     FreshDeskConnectRequest:
@@ -5596,6 +5612,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -5981,18 +5998,28 @@ components:
       type: object
     GitbookConnectRequest:
       example:
-        access_token: access_token
-        sync_source_items: true
         chunk_size: 1500
         prepend_filename_to_chunks: false
+        embedding_model: null
+        file_sync_config:
+          detect_audio_language: false
+          include_speaker_labels: false
+          split_rows: false
+          sync_attachments: false
+          transcription_service: null
+          skip_file_processing: false
+          auto_synced_source_types:
+          - ARTICLE
+          generate_chunks_only: false
+        tags: {}
+        access_token: access_token
+        sync_source_items: true
         generate_sparse_vectors: false
         organization: organization
         sync_files_on_connection: true
-        embedding_model: null
         chunk_overlap: 20
         skip_embedding_generation: false
         request_id: request_id
-        tags: {}
       properties:
         tags:
           example: {}
@@ -6070,6 +6097,8 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
       required:
       - access_token
       - organization
@@ -6090,6 +6119,16 @@ components:
         - space_ids
         generate_sparse_vectors: false
         embedding_model: null
+        file_sync_config:
+          detect_audio_language: false
+          include_speaker_labels: false
+          split_rows: false
+          sync_attachments: false
+          transcription_service: null
+          skip_file_processing: false
+          auto_synced_source_types:
+          - ARTICLE
+          generate_chunks_only: false
         chunk_overlap: 20
         skip_embedding_generation: false
         request_id: request_id
@@ -6158,6 +6197,8 @@ components:
           nullable: true
           title: Request Id
           type: string
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
       required:
       - data_source_id
       - space_ids
@@ -6244,6 +6285,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -6388,6 +6430,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -7058,6 +7101,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -8006,6 +8050,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -8307,6 +8352,7 @@ components:
         chunk_size: 6
         file_id: 0
         chunk_overlap: 1
+        skip_file_processing: false
       properties:
         file_id:
           title: File Id
@@ -8326,6 +8372,14 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation
+        skip_file_processing:
+          default: false
+          example: false
+          nullable: true
+          title: Skip File Processing
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-skip_file_processing
       required:
       - file_id
       title: ResyncFileQueryInput
@@ -8411,6 +8465,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -9023,6 +9078,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -9157,6 +9213,7 @@ components:
           split_rows: false
           sync_attachments: false
           transcription_service: null
+          skip_file_processing: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -10805,6 +10862,7 @@ components:
         split_rows: false
         sync_attachments: false
         transcription_service: null
+        skip_file_processing: false
         auto_synced_source_types:
         - ARTICLE
         generate_chunks_only: false
@@ -10872,6 +10930,20 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only
+        skip_file_processing:
+          default: false
+          description: "Setting this flag will create a new file record with Carbon\
+            \ but skip any and all processing. \n        This means that we do not\
+            \ download the remote file content or generate any chunks or embeddings.\
+            \ We will store\n        some metadata like name, external id, and external\
+            \ URL depending on the source you are syncing from. Note that this \n\
+            \        flag overrides both skip_embedding_generation and generate_chunks_only\
+            \ flags. The file will be moved to \n        READY_TO_SYNC status."
+          example: false
+          title: Skip File Processing
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
       title: FileSyncConfig
       type: object
     HybridSearchTuningParamsNullable:
@@ -11366,6 +11438,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfig-properties-skip_file_processing:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-tags:
       example: {}
       properties: {}
@@ -11773,6 +11849,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-skip_file_processing:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-S3AuthRequest-properties-sync_source_items:
       example: true
       type: boolean
@@ -12155,6 +12235,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -13294,6 +13378,8 @@ components:
           type: boolean
           x-konfig-original-example: true
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-GitbookConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
       required:
       - access_token
       - organization
@@ -13375,6 +13461,8 @@ components:
           nullable: true
           title: Request Id
           type: string
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
       required:
       - data_source_id
       - space_ids
@@ -14457,6 +14545,14 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation
+        skip_file_processing:
+          default: false
+          example: false
+          nullable: true
+          title: Skip File Processing
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-skip_file_processing
       required:
       - file_id
       type: object

@@ -29,6 +29,7 @@ const (
 	EXTERNALFILESYNCSTATUSES_RATE_LIMITED ExternalFileSyncStatuses = "RATE_LIMITED"
 	EXTERNALFILESYNCSTATUSES_SYNC_ABORTED ExternalFileSyncStatuses = "SYNC_ABORTED"
 	EXTERNALFILESYNCSTATUSES_QUEUED_FOR_OCR ExternalFileSyncStatuses = "QUEUED_FOR_OCR"
+	EXTERNALFILESYNCSTATUSES_READY_TO_SYNC ExternalFileSyncStatuses = "READY_TO_SYNC"
 )
 
 // All allowed values of ExternalFileSyncStatuses enum
@@ -42,6 +43,7 @@ var AllowedExternalFileSyncStatusesEnumValues = []ExternalFileSyncStatuses{
 	"RATE_LIMITED",
 	"SYNC_ABORTED",
 	"QUEUED_FOR_OCR",
+	"READY_TO_SYNC",
 }
 
 func (v *ExternalFileSyncStatuses) UnmarshalJSON(src []byte) error {
