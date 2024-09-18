@@ -1197,7 +1197,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 file_id: requestParameters.file_id,
                 chunk_size: requestParameters.chunk_size,
                 chunk_overlap: requestParameters.chunk_overlap,
-                force_embedding_generation: requestParameters.force_embedding_generation
+                force_embedding_generation: requestParameters.force_embedding_generation,
+                skip_file_processing: requestParameters.skip_file_processing
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.resync(resyncFileQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

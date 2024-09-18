@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SyncFilesOnConnection** | Pointer to **NullableBool** |  | [optional] [default to true]
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
+**FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -406,6 +407,41 @@ SetSyncSourceItems sets SyncSourceItems field to given value.
 
 HasSyncSourceItems returns a boolean if a field has been set.
 
+### GetFileSyncConfig
+
+`func (o *GitbookConnectRequest) GetFileSyncConfig() FileSyncConfigNullable`
+
+GetFileSyncConfig returns the FileSyncConfig field if non-nil, zero value otherwise.
+
+### GetFileSyncConfigOk
+
+`func (o *GitbookConnectRequest) GetFileSyncConfigOk() (*FileSyncConfigNullable, bool)`
+
+GetFileSyncConfigOk returns a tuple with the FileSyncConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSyncConfig
+
+`func (o *GitbookConnectRequest) SetFileSyncConfig(v FileSyncConfigNullable)`
+
+SetFileSyncConfig sets FileSyncConfig field to given value.
+
+### HasFileSyncConfig
+
+`func (o *GitbookConnectRequest) HasFileSyncConfig() bool`
+
+HasFileSyncConfig returns a boolean if a field has been set.
+
+### SetFileSyncConfigNil
+
+`func (o *GitbookConnectRequest) SetFileSyncConfigNil(b bool)`
+
+ SetFileSyncConfigNil sets the value for FileSyncConfig to be an explicit nil
+
+### UnsetFileSyncConfig
+`func (o *GitbookConnectRequest) UnsetFileSyncConfig()`
+
+UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

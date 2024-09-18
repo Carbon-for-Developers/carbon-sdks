@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type ExternalFileSyncStatuses = 'DELAYED' | 'QUEUED_FOR_SYNC' | 'SYNCING' | 'READY' | 'SYNC_ERROR' | 'EVALUATING_RESYNC' | 'RATE_LIMITED' | 'SYNC_ABORTED' | 'QUEUED_FOR_OCR'
+export type ExternalFileSyncStatuses = 'DELAYED' | 'QUEUED_FOR_SYNC' | 'SYNCING' | 'READY' | 'SYNC_ERROR' | 'EVALUATING_RESYNC' | 'RATE_LIMITED' | 'SYNC_ABORTED' | 'QUEUED_FOR_OCR' | 'READY_TO_SYNC'
 

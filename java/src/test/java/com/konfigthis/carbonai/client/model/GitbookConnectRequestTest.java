@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
+import com.konfigthis.carbonai.client.model.FileSyncConfigNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -134,6 +135,14 @@ public class GitbookConnectRequestTest {
     @Test
     public void syncSourceItemsTest() {
         // TODO: test syncSourceItems
+    }
+
+    /**
+     * Test the property 'fileSyncConfig'
+     */
+    @Test
+    public void fileSyncConfigTest() {
+        // TODO: test fileSyncConfig
     }
 
 }

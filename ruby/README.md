@@ -1080,6 +1080,7 @@ result = carbon.files.resync(
   chunk_size: 1,
   chunk_overlap: 1,
   force_embedding_generation: false,
+  skip_file_processing: false,
 )
 p result
 ```
@@ -1090,6 +1091,7 @@ p result
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### force_embedding_generation: `Boolean`<a id="force_embedding_generation-boolean"></a>
+##### skip_file_processing: `Boolean`<a id="skip_file_processing-boolean"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1479,6 +1481,7 @@ result = carbon.integrations.connect_freshdesk(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
 )
 p result
@@ -1538,6 +1541,16 @@ result = carbon.integrations.connect_gitbook(
   sync_files_on_connection: true,
   request_id: "string_example",
   sync_source_items: true,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
+        "split_rows" => false,
+        "generate_chunks_only" => false,
+        "skip_file_processing" => false,
+    },
 )
 p result
 ```
@@ -1559,6 +1572,7 @@ p result
 Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -1601,6 +1615,7 @@ result = carbon.integrations.connect_guru(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
 )
 p result
@@ -1732,6 +1747,7 @@ result = carbon.integrations.get_oauth_url(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
   automatically_open_file_picker: true,
   gong_account_email: "string_example",
@@ -2119,6 +2135,7 @@ result = carbon.integrations.sync_confluence(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
 )
 p result
@@ -2227,6 +2244,7 @@ result = carbon.integrations.sync_files(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
 )
 p result
@@ -2329,6 +2347,16 @@ result = carbon.integrations.sync_gitbook(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   request_id: "string_example",
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
+        "split_rows" => false,
+        "generate_chunks_only" => false,
+        "skip_file_processing" => false,
+    },
 )
 p result
 ```
@@ -2345,6 +2373,7 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/gitbook/sync` `POST`
@@ -2434,6 +2463,7 @@ result = carbon.integrations.sync_gmail(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
   incremental_sync: false,
 )
@@ -2556,6 +2586,7 @@ result = carbon.integrations.sync_outlook(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
   incremental_sync: false,
 )
@@ -2702,6 +2733,7 @@ result = carbon.integrations.sync_s3_files(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "skip_file_processing" => false,
     },
 )
 p result

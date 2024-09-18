@@ -308,6 +308,9 @@ operation_parameter_map = {
             {
                 'name': 'force_embedding_generation'
             },
+            {
+                'name': 'skip_file_processing'
+            },
         ]
     },
     '/uploadfile-POST': {
@@ -563,6 +566,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_source_items'
+            },
+            {
+                'name': 'file_sync_config'
             },
         ]
     },
@@ -960,6 +966,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'request_id'
+            },
+            {
+                'name': 'file_sync_config'
             },
         ]
     },

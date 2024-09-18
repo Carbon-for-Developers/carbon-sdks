@@ -20,6 +20,7 @@ type ResyncFileQueryInput struct {
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
 	ForceEmbeddingGeneration *bool `json:"force_embedding_generation,omitempty"`
+	SkipFileProcessing NullableBool `json:"skip_file_processing,omitempty"`
 }
 
 // NewResyncFileQueryInput instantiates a new ResyncFileQueryInput object
@@ -31,6 +32,8 @@ func NewResyncFileQueryInput(fileId int32) *ResyncFileQueryInput {
 	this.FileId = fileId
 	var forceEmbeddingGeneration bool = false
 	this.ForceEmbeddingGeneration = &forceEmbeddingGeneration
+	var skipFileProcessing bool = false
+	this.SkipFileProcessing = *NewNullableBool(&skipFileProcessing)
 	return &this
 }
 
@@ -41,6 +44,8 @@ func NewResyncFileQueryInputWithDefaults() *ResyncFileQueryInput {
 	this := ResyncFileQueryInput{}
 	var forceEmbeddingGeneration bool = false
 	this.ForceEmbeddingGeneration = &forceEmbeddingGeneration
+	var skipFileProcessing bool = false
+	this.SkipFileProcessing = *NewNullableBool(&skipFileProcessing)
 	return &this
 }
 
@@ -184,6 +189,48 @@ func (o *ResyncFileQueryInput) SetForceEmbeddingGeneration(v bool) {
 	o.ForceEmbeddingGeneration = &v
 }
 
+// GetSkipFileProcessing returns the SkipFileProcessing field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResyncFileQueryInput) GetSkipFileProcessing() bool {
+	if o == nil || isNil(o.SkipFileProcessing.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipFileProcessing.Get()
+}
+
+// GetSkipFileProcessingOk returns a tuple with the SkipFileProcessing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResyncFileQueryInput) GetSkipFileProcessingOk() (*bool, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.SkipFileProcessing.Get(), o.SkipFileProcessing.IsSet()
+}
+
+// HasSkipFileProcessing returns a boolean if a field has been set.
+func (o *ResyncFileQueryInput) HasSkipFileProcessing() bool {
+	if o != nil && o.SkipFileProcessing.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipFileProcessing gets a reference to the given NullableBool and assigns it to the SkipFileProcessing field.
+func (o *ResyncFileQueryInput) SetSkipFileProcessing(v bool) {
+	o.SkipFileProcessing.Set(&v)
+}
+// SetSkipFileProcessingNil sets the value for SkipFileProcessing to be an explicit nil
+func (o *ResyncFileQueryInput) SetSkipFileProcessingNil() {
+	o.SkipFileProcessing.Set(nil)
+}
+
+// UnsetSkipFileProcessing ensures that no value is present for SkipFileProcessing, not even an explicit nil
+func (o *ResyncFileQueryInput) UnsetSkipFileProcessing() {
+	o.SkipFileProcessing.Unset()
+}
+
 func (o ResyncFileQueryInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -197,6 +244,9 @@ func (o ResyncFileQueryInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ForceEmbeddingGeneration) {
 		toSerialize["force_embedding_generation"] = o.ForceEmbeddingGeneration
+	}
+	if o.SkipFileProcessing.IsSet() {
+		toSerialize["skip_file_processing"] = o.SkipFileProcessing.Get()
 	}
 	return json.Marshal(toSerialize)
 }

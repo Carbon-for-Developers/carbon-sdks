@@ -36,9 +36,11 @@ from carbon.model.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceI
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.gitbook_sync_request import GitbookSyncRequest as GitbookSyncRequestSchema
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
 from carbon.type.gitbook_sync_request import GitbookSyncRequest
 
@@ -46,6 +48,7 @@ from ...api_client import Dictionary
 from carbon.pydantic.gitbook_sync_request import GitbookSyncRequest as GitbookSyncRequestPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
 from carbon.pydantic.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds as GitbookSyncRequestSpaceIdsPydantic
 
 from . import path
@@ -131,6 +134,7 @@ class BaseApi(api_client.Api):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -154,6 +158,8 @@ class BaseApi(api_client.Api):
             _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
         if request_id is not None:
             _body["request_id"] = request_id
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         args.body = _body
         return args
 
@@ -371,6 +377,7 @@ class SyncGitbookRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -388,6 +395,7 @@ class SyncGitbookRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
         )
         return await self._async_gitbook_oapg(
             body=args.body,
@@ -406,6 +414,7 @@ class SyncGitbookRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -422,6 +431,7 @@ class SyncGitbookRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
         )
         return self._sync_gitbook_oapg(
             body=args.body,
@@ -441,6 +451,7 @@ class SyncGitbook(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -455,6 +466,7 @@ class SyncGitbook(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
             **kwargs,
         )
         if validate:
@@ -474,6 +486,7 @@ class SyncGitbook(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.sync_gitbook(
@@ -487,6 +500,7 @@ class SyncGitbook(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -508,6 +522,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -525,6 +540,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
         )
         return await self._async_gitbook_oapg(
             body=args.body,
@@ -543,6 +559,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -559,6 +576,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            file_sync_config=file_sync_config,
         )
         return self._sync_gitbook_oapg(
             body=args.body,

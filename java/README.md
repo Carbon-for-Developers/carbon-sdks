@@ -1158,6 +1158,7 @@ UserFile result = client
         .chunkSize(chunkSize)
         .chunkOverlap(chunkOverlap)
         .forceEmbeddingGeneration(forceEmbeddingGeneration)
+        .skipFileProcessing(skipFileProcessing)
         .execute();
 ```
 
@@ -1170,6 +1171,8 @@ UserFile result = client
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 
 ##### force_embedding_generation: `Boolean`<a id="force_embedding_generation-boolean"></a>
+
+##### skip_file_processing: `Boolean`<a id="skip_file_processing-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1641,6 +1644,7 @@ GenericSuccessResponse result = client
         .syncFilesOnConnection(syncFilesOnConnection)
         .requestId(requestId)
         .syncSourceItems(syncSourceItems)
+        .fileSyncConfig(fileSyncConfig)
         .execute();
 ```
 
@@ -1671,6 +1675,8 @@ GenericSuccessResponse result = client
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2471,6 +2477,7 @@ Object result = client
         .generateSparseVectors(generateSparseVectors)
         .prependFilenameToChunks(prependFilenameToChunks)
         .requestId(requestId)
+        .fileSyncConfig(fileSyncConfig)
         .execute();
 ```
 
@@ -2495,6 +2502,8 @@ Object result = client
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### request_id: `String`<a id="request_id-string"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

@@ -2291,6 +2291,7 @@ public class FilesApiGenerated {
         Integer chunkSize;
         Integer chunkOverlap;
         Boolean forceEmbeddingGeneration;
+        Boolean skipFileProcessing;
 
         public ResyncRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
@@ -2327,6 +2328,16 @@ public class FilesApiGenerated {
         }
         
         /**
+         * Set skipFileProcessing
+         * @param skipFileProcessing  (optional, default to false)
+         * @return FilesApi.ResyncRequestBuilder
+         */
+        public FilesApi.ResyncRequestBuilder skipFileProcessing(Boolean skipFileProcessing) {
+            this.skipFileProcessing = skipFileProcessing;
+            return (FilesApi.ResyncRequestBuilder) this;
+        }
+        
+        /**
          * Build call for resync
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2348,6 +2359,7 @@ public class FilesApiGenerated {
             resyncFileQueryInput.chunkSize(this.chunkSize);
             resyncFileQueryInput.chunkOverlap(this.chunkOverlap);
             resyncFileQueryInput.forceEmbeddingGeneration(this.forceEmbeddingGeneration);
+            resyncFileQueryInput.skipFileProcessing(this.skipFileProcessing);
             return resyncFileQueryInput;
         }
 

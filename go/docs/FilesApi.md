@@ -709,6 +709,7 @@ func main() {
     resyncFileQueryInput.SetChunkSize(null)
     resyncFileQueryInput.SetChunkOverlap(null)
     resyncFileQueryInput.SetForceEmbeddingGeneration(false)
+    resyncFileQueryInput.SetSkipFileProcessing(false)
     
     request := client.FilesApi.Resync(
         resyncFileQueryInput,

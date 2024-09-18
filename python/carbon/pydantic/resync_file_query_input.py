@@ -25,6 +25,8 @@ class ResyncFileQueryInput(BaseModel):
 
     force_embedding_generation: typing.Optional[bool] = Field(None, alias='force_embedding_generation')
 
+    skip_file_processing: typing.Optional[typing.Optional[bool]] = Field(None, alias='skip_file_processing')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

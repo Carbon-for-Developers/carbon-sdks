@@ -99,4 +99,12 @@ public class FileSyncConfigTest {
         // TODO: test generateChunksOnly
     }
 
+    /**
+     * Test the property 'skipFileProcessing'
+     */
+    @Test
+    public void skipFileProcessingTest() {
+        // TODO: test skipFileProcessing
+    }
+
 }

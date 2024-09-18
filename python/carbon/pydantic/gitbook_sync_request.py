@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.pydantic.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
 
 class GitbookSyncRequest(BaseModel):
@@ -38,6 +39,8 @@ class GitbookSyncRequest(BaseModel):
     prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = Field(None, alias='prepend_filename_to_chunks')
 
     request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable] = Field(None, alias='file_sync_config')
 
     model_config = ConfigDict(
         protected_namespaces=(),

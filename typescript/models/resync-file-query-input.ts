@@ -41,5 +41,11 @@ export interface ResyncFileQueryInput {
      * @memberof ResyncFileQueryInput
      */
     'force_embedding_generation'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ResyncFileQueryInput
+     */
+    'skip_file_processing'?: boolean | null;
 }
 

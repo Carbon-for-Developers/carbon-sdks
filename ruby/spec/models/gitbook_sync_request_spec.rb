@@ -79,4 +79,10 @@ describe Carbon::GitbookSyncRequest do
     end
   end
 
+  describe 'test attribute "file_sync_config"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

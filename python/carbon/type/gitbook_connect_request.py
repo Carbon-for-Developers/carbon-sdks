@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators import EmbeddingGenerators
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 
 class RequiredGitbookConnectRequest(TypedDict):
     organization: str
@@ -43,6 +44,8 @@ class OptionalGitbookConnectRequest(TypedDict, total=False):
 
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
+
+    file_sync_config: typing.Optional[FileSyncConfigNullable]
 
 class GitbookConnectRequest(RequiredGitbookConnectRequest, OptionalGitbookConnectRequest):
     pass

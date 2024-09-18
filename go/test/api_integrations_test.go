@@ -102,6 +102,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService ConnectGitbook", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         gitbookConnectRequest := *carbon.NewGitbookConnectRequest(
             "null",
@@ -117,6 +118,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookConnectRequest.SetSyncFilesOnConnection(true)
         gitbookConnectRequest.SetRequestId("null")
         gitbookConnectRequest.SetSyncSourceItems(true)
+        gitbookConnectRequest.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.ConnectGitbook(
             gitbookConnectRequest,
@@ -480,6 +482,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService SyncGitbook", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
         
         gitbookSyncRequest := *carbon.NewGitbookSyncRequest(
             null,
@@ -493,6 +496,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookSyncRequest.SetGenerateSparseVectors(false)
         gitbookSyncRequest.SetPrependFilenameToChunks(false)
         gitbookSyncRequest.SetRequestId("null")
+        gitbookSyncRequest.SetFileSyncConfig(fileSyncConfig)
         
         request := client.IntegrationsApi.SyncGitbook(
             gitbookSyncRequest,

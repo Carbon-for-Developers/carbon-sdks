@@ -43,6 +43,7 @@ class ExternalFileSyncStatuses(
             "RATE_LIMITED": "RATE_LIMITED",
             "SYNC_ABORTED": "SYNC_ABORTED",
             "QUEUED_FOR_OCR": "QUEUED_FOR_OCR",
+            "READY_TO_SYNC": "READY_TO_SYNC",
         }
     
     @schemas.classproperty
@@ -80,3 +81,7 @@ class ExternalFileSyncStatuses(
     @schemas.classproperty
     def QUEUED_FOR_OCR(cls):
         return cls("QUEUED_FOR_OCR")
+    
+    @schemas.classproperty
+    def READY_TO_SYNC(cls):
+        return cls("READY_TO_SYNC")

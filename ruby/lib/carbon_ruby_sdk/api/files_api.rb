@@ -1231,14 +1231,16 @@ module Carbon
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
     # @param force_embedding_generation [Boolean] 
+    # @param skip_file_processing [Boolean] 
     # @param body [ResyncFileQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def resync(file_id:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, force_embedding_generation: false, extra: {})
+    def resync(file_id:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, force_embedding_generation: false, skip_file_processing: false, extra: {})
       _body = {}
       _body[:file_id] = file_id if file_id != SENTINEL
       _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
       _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
       _body[:force_embedding_generation] = force_embedding_generation if force_embedding_generation != SENTINEL
+      _body[:skip_file_processing] = skip_file_processing if skip_file_processing != SENTINEL
       resync_file_query_input = _body
       api_response = resync_with_http_info_impl(resync_file_query_input, extra)
       api_response.data
@@ -1250,14 +1252,16 @@ module Carbon
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
     # @param force_embedding_generation [Boolean] 
+    # @param skip_file_processing [Boolean] 
     # @param body [ResyncFileQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def resync_with_http_info(file_id:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, force_embedding_generation: false, extra: {})
+    def resync_with_http_info(file_id:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, force_embedding_generation: false, skip_file_processing: false, extra: {})
       _body = {}
       _body[:file_id] = file_id if file_id != SENTINEL
       _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
       _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
       _body[:force_embedding_generation] = force_embedding_generation if force_embedding_generation != SENTINEL
+      _body[:skip_file_processing] = skip_file_processing if skip_file_processing != SENTINEL
       resync_file_query_input = _body
       resync_with_http_info_impl(resync_file_query_input, extra)
     end

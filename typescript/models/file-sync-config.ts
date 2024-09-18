@@ -61,5 +61,11 @@ export interface FileSyncConfig {
      * @memberof FileSyncConfig
      */
     'generate_chunks_only'?: boolean;
+    /**
+     * Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
+     * @type {boolean}
+     * @memberof FileSyncConfig
+     */
+    'skip_file_processing'?: boolean;
 }
 

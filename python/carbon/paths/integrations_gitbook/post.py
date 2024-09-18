@@ -36,9 +36,11 @@ from carbon.model.http_validation_error import HTTPValidationError as HTTPValida
 from carbon.model.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsSchema
 from carbon.model.gitbook_connect_request import GitbookConnectRequest as GitbookConnectRequestSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
+from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
 
 from carbon.type.embedding_generators import EmbeddingGenerators
 from carbon.type.http_validation_error import HTTPValidationError
+from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.gitbook_connect_request import GitbookConnectRequest
 
@@ -47,6 +49,7 @@ from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPVal
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.gitbook_connect_request import GitbookConnectRequest as GitbookConnectRequestPydantic
 from carbon.pydantic.embedding_generators import EmbeddingGenerators as EmbeddingGeneratorsPydantic
+from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullablePydantic
 
 from . import path
 
@@ -133,6 +136,7 @@ class BaseApi(api_client.Api):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -160,6 +164,8 @@ class BaseApi(api_client.Api):
             _body["request_id"] = request_id
         if sync_source_items is not None:
             _body["sync_source_items"] = sync_source_items
+        if file_sync_config is not None:
+            _body["file_sync_config"] = file_sync_config
         args.body = _body
         return args
 
@@ -379,6 +385,7 @@ class ConnectGitbookRaw(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -398,6 +405,7 @@ class ConnectGitbookRaw(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return await self._aconnect_gitbook_oapg(
             body=args.body,
@@ -418,6 +426,7 @@ class ConnectGitbookRaw(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -436,6 +445,7 @@ class ConnectGitbookRaw(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return self._connect_gitbook_oapg(
             body=args.body,
@@ -457,6 +467,7 @@ class ConnectGitbook(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -473,6 +484,7 @@ class ConnectGitbook(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
             **kwargs,
         )
         if validate:
@@ -494,6 +506,7 @@ class ConnectGitbook(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.connect_gitbook(
@@ -509,6 +522,7 @@ class ConnectGitbook(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -532,6 +546,7 @@ class ApiForpost(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -551,6 +566,7 @@ class ApiForpost(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return await self._aconnect_gitbook_oapg(
             body=args.body,
@@ -571,6 +587,7 @@ class ApiForpost(BaseApi):
         sync_files_on_connection: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
+        file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -589,6 +606,7 @@ class ApiForpost(BaseApi):
             sync_files_on_connection=sync_files_on_connection,
             request_id=request_id,
             sync_source_items=sync_source_items,
+            file_sync_config=file_sync_config,
         )
         return self._connect_gitbook_oapg(
             body=args.body,

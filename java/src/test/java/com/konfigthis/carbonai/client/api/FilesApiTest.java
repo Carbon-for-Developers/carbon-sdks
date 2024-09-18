@@ -279,10 +279,12 @@ public class FilesApiTest {
         Integer chunkSize = null;
         Integer chunkOverlap = null;
         Boolean forceEmbeddingGeneration = null;
+        Boolean skipFileProcessing = null;
         UserFile response = api.resync(fileId)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
                 .forceEmbeddingGeneration(forceEmbeddingGeneration)
+                .skipFileProcessing(skipFileProcessing)
                 .execute();
         // TODO: test validations
     }

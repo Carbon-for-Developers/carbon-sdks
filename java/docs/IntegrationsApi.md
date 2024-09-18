@@ -415,6 +415,7 @@ public class Example {
     Boolean syncFilesOnConnection = true;
     String requestId = "requestId_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
     try {
       GenericSuccessResponse result = client
               .integrations
@@ -429,6 +430,7 @@ public class Example {
               .syncFilesOnConnection(syncFilesOnConnection)
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -455,6 +457,7 @@ public class Example {
               .syncFilesOnConnection(syncFilesOnConnection)
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -2260,6 +2263,7 @@ public class Example {
     Boolean generateSparseVectors = false;
     Boolean prependFilenameToChunks = false;
     String requestId = "requestId_example";
+    FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
     try {
       Object result = client
               .integrations
@@ -2272,6 +2276,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .prependFilenameToChunks(prependFilenameToChunks)
               .requestId(requestId)
+              .fileSyncConfig(fileSyncConfig)
               .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationsApi#syncGitbook");
@@ -2294,6 +2299,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .prependFilenameToChunks(prependFilenameToChunks)
               .requestId(requestId)
+              .fileSyncConfig(fileSyncConfig)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

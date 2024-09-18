@@ -1041,6 +1041,7 @@ Resync File
 const resyncResponse = await carbon.files.resync({
   file_id: 1,
   force_embedding_generation: false,
+  skip_file_processing: false,
 });
 ```
 
@@ -1053,6 +1054,8 @@ const resyncResponse = await carbon.files.resync({
 ##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
 
 ##### force_embedding_generation: `boolean`<a id="force_embedding_generation-boolean"></a>
+
+##### skip_file_processing: `boolean`<a id="skip_file_processing-boolean"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1531,6 +1534,8 @@ const connectGitbookResponse = await carbon.integrations.connectGitbook({
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2301,6 +2306,8 @@ const syncGitbookResponse = await carbon.integrations.syncGitbook({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

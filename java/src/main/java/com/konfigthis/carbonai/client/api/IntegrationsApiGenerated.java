@@ -833,6 +833,7 @@ public class IntegrationsApiGenerated {
         Boolean syncFilesOnConnection;
         String requestId;
         Boolean syncSourceItems;
+        FileSyncConfigNullable fileSyncConfig;
 
         public ConnectGitbookRequestBuilderGenerated(String organization, String accessToken) {
             this.organization = organization;
@@ -940,6 +941,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set fileSyncConfig
+         * @param fileSyncConfig  (optional)
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
+         */
+        public IntegrationsApi.ConnectGitbookRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+            this.fileSyncConfig = fileSyncConfig;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
+        }
+        
+        /**
          * Build call for connectGitbook
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -969,6 +980,7 @@ public class IntegrationsApiGenerated {
             gitbookConnectRequest.syncFilesOnConnection(this.syncFilesOnConnection);
             gitbookConnectRequest.requestId(this.requestId);
             gitbookConnectRequest.syncSourceItems(this.syncSourceItems);
+            gitbookConnectRequest.fileSyncConfig(this.fileSyncConfig);
             return gitbookConnectRequest;
         }
 
@@ -4582,6 +4594,7 @@ public class IntegrationsApiGenerated {
         Boolean generateSparseVectors;
         Boolean prependFilenameToChunks;
         String requestId;
+        FileSyncConfigNullable fileSyncConfig;
 
         public SyncGitbookRequestBuilderGenerated(List<String> spaceIds, Integer dataSourceId) {
             this.spaceIds = spaceIds;
@@ -4669,6 +4682,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set fileSyncConfig
+         * @param fileSyncConfig  (optional)
+         * @return IntegrationsApi.SyncGitbookRequestBuilder
+         */
+        public IntegrationsApi.SyncGitbookRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+            this.fileSyncConfig = fileSyncConfig;
+            return (IntegrationsApi.SyncGitbookRequestBuilder) this;
+        }
+        
+        /**
          * Build call for syncGitbook
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4696,6 +4719,7 @@ public class IntegrationsApiGenerated {
             gitbookSyncRequest.generateSparseVectors(this.generateSparseVectors);
             gitbookSyncRequest.prependFilenameToChunks(this.prependFilenameToChunks);
             gitbookSyncRequest.requestId(this.requestId);
+            gitbookSyncRequest.fileSyncConfig(this.fileSyncConfig);
             return gitbookSyncRequest;
         }
 
