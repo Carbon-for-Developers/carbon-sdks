@@ -4759,7 +4759,8 @@
           "EVALUATING_RESYNC",
           "RATE_LIMITED",
           "SYNC_ABORTED",
-          "QUEUED_FOR_OCR"
+          "QUEUED_FOR_OCR",
+          "READY_TO_SYNC"
         ],
         "title": "ExternalFileSyncStatuses"
       },
@@ -5175,6 +5176,12 @@
             "type": "boolean",
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "default": false
+          },
+          "skip_file_processing": {
+            "type": "boolean",
+            "title": "Skip File Processing",
+            "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "default": false
           }
         },
@@ -5820,6 +5827,16 @@
             "title": "Sync Source Items",
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": true
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -5933,6 +5950,16 @@
               }
             ],
             "title": "Request Id"
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -8510,6 +8537,18 @@
           "force_embedding_generation": {
             "type": "boolean",
             "title": "Force Embedding Generation",
+            "default": false
+          },
+          "skip_file_processing": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip File Processing",
             "default": false
           }
         },
