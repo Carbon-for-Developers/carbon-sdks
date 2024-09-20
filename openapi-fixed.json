@@ -500,6 +500,60 @@
         "deprecated": true
       }
     },
+    "/integrations/azure_blob_storage": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Azure Blob Storage Auth",
+        "operationId": "Integrations_syncAzureBlobStorage",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "description": "This endpoint can be used to connect Azure Blob Storage.\n\nFor Azure Blob Storage, follow these steps:\n<ol>\n  <li>Create a new Azure Storage account and grant the following permissions:\n    <ul>\n      <li>List containers.</li>\n      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>\n    </ul>\n  </li>\n  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>\n</ol>\n\nOnce created, provide us with the following details to generate the connection URL:\n<ol>\n  <li>Storage Account KeyName.</li>\n  <li>Storage Account Name.</li>\n</ol>",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AzureBlobAuthRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/integrations/s3": {
       "post": {
         "tags": [
@@ -579,6 +633,60 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/S3FileSyncInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/azure_blob_storage/files": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Azure Blob Files",
+        "operationId": "Integrations_syncAzureBlobFiles",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "description": "After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name \nand file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate \ndata with the selected items or modify the sync behavior",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AzureBlobFileSyncInput"
               }
             }
           },
@@ -3907,6 +4015,166 @@
           "url"
         ]
       },
+      "AzureBlobAuthRequest": {
+        "title": "AzureBlobAuthRequest",
+        "properties": {
+          "account_name": {
+            "title": "Account Name",
+            "type": "string"
+          },
+          "account_key": {
+            "title": "Account Key",
+            "type": "string"
+          },
+          "sync_source_items": {
+            "title": "Sync Source Items",
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "account_name",
+          "account_key"
+        ]
+      },
+      "AzureBlobFileSyncInput": {
+        "title": "AzureBlobFileSyncInput",
+        "properties": {
+          "tags": {
+            "title": "Tags",
+            "default": {
+            },
+            "type": "object",
+            "nullable": true
+          },
+          "ids": {
+            "title": "Ids",
+            "items": {
+              "$ref": "#/components/schemas/AzureBlobGetFileInput"
+            },
+            "type": "array"
+          },
+          "chunk_size": {
+            "title": "Chunk Size",
+            "default": 1500,
+            "type": "integer",
+            "nullable": true
+          },
+          "chunk_overlap": {
+            "title": "Chunk Overlap",
+            "default": 20,
+            "type": "integer",
+            "nullable": true
+          },
+          "skip_embedding_generation": {
+            "title": "Skip Embedding Generation",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "embedding_model": {
+            "$ref": "#/components/schemas/EmbeddingGenerators"
+          },
+          "generate_sparse_vectors": {
+            "title": "Generate Sparse Vectors",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "prepend_filename_to_chunks": {
+            "title": "Prepend Filename To Chunks",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "max_items_per_chunk": {
+            "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only.",
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "nullable": true
+          },
+          "set_page_as_boundary": {
+            "title": "Set Page As Boundary",
+            "type": "boolean",
+            "default": false
+          },
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
+          },
+          "use_ocr": {
+            "title": "Use Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "parse_pdf_tables_with_ocr": {
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
+      },
+      "AzureBlobGetFileInput": {
+        "title": "AzureBlobGetFileInput",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          },
+          "container": {
+            "title": "Container",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "AzureBlobStorageAuthentication": {
+        "title": "AzureBlobStorageAuthentication",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "const": "AZURE_BLOB_STORAGE"
+          },
+          "account_name": {
+            "title": "Account Name",
+            "type": "string"
+          },
+          "account_key": {
+            "title": "Account Key",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "account_name",
+          "account_key"
+        ]
+      },
       "Body_create_upload_file_uploadfile_post": {
         "title": "Body_create_upload_file_uploadfile_post",
         "properties": {
@@ -4102,6 +4370,9 @@
                 "$ref": "#/components/schemas/S3Authentication"
               },
               {
+                "$ref": "#/components/schemas/AzureBlobStorageAuthentication"
+              },
+              {
                 "$ref": "#/components/schemas/GithubAuthentication"
               },
               {
@@ -4234,6 +4505,7 @@
           "ZENDESK",
           "ZOTERO",
           "S3",
+          "AZURE_BLOB_STORAGE",
           "GMAIL",
           "OUTLOOK",
           "SERVICENOW",
@@ -9701,6 +9973,71 @@
         ],
         "nullable": true
       },
+      "FileSyncConfigNullable": {
+        "title": "FileSyncConfig",
+        "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
+        "properties": {
+          "auto_synced_source_types": {
+            "title": "Auto Synced Source Types",
+            "description": "File types to automatically sync when the data source connects. Only a subset of file types can be \n        controlled. If not supported, then they will always be synced",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ServiceNowFileTypes"
+                }
+              ]
+            },
+            "type": "array",
+            "default": [
+              "ARTICLE"
+            ]
+          },
+          "sync_attachments": {
+            "title": "Sync Attachments",
+            "description": "Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets",
+            "type": "boolean",
+            "default": false
+          },
+          "detect_audio_language": {
+            "title": "Detect Audio Language",
+            "description": "Detect audio language before transcription for audio files",
+            "type": "boolean",
+            "default": false
+          },
+          "transcription_service": {
+            "$ref": "#/components/schemas/TranscriptionServiceNullable"
+          },
+          "include_speaker_labels": {
+            "title": "Include Speaker Labels",
+            "description": "Detect multiple speakers and label segments of speech by speaker for audio files.",
+            "type": "boolean",
+            "default": false
+          },
+          "split_rows": {
+            "title": "Split Rows",
+            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
+            "type": "boolean",
+            "default": false
+          },
+          "generate_chunks_only": {
+            "title": "Generate Chunks Only",
+            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "skip_file_processing": {
+            "title": "Skip File Processing",
+            "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "type": "object",
+        "nullable": true
+      },
       "DataSourceTypeNullable": {
         "title": "DataSourceType",
         "type": "string",
@@ -9718,6 +10055,7 @@
           "ZENDESK",
           "ZOTERO",
           "S3",
+          "AZURE_BLOB_STORAGE",
           "GMAIL",
           "OUTLOOK",
           "SERVICENOW",
@@ -9848,71 +10186,6 @@
           "EML",
           "MSG"
         ],
-        "nullable": true
-      },
-      "FileSyncConfigNullable": {
-        "title": "FileSyncConfig",
-        "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
-        "properties": {
-          "auto_synced_source_types": {
-            "title": "Auto Synced Source Types",
-            "description": "File types to automatically sync when the data source connects. Only a subset of file types can be \n        controlled. If not supported, then they will always be synced",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/HelpdeskFileTypes"
-                },
-                {
-                  "$ref": "#/components/schemas/ServiceNowFileTypes"
-                }
-              ]
-            },
-            "type": "array",
-            "default": [
-              "ARTICLE"
-            ]
-          },
-          "sync_attachments": {
-            "title": "Sync Attachments",
-            "description": "Automatically sync attachments from files where supported. Currently applies to Helpdesk Tickets",
-            "type": "boolean",
-            "default": false
-          },
-          "detect_audio_language": {
-            "title": "Detect Audio Language",
-            "description": "Detect audio language before transcription for audio files",
-            "type": "boolean",
-            "default": false
-          },
-          "transcription_service": {
-            "$ref": "#/components/schemas/TranscriptionServiceNullable"
-          },
-          "include_speaker_labels": {
-            "title": "Include Speaker Labels",
-            "description": "Detect multiple speakers and label segments of speech by speaker for audio files.",
-            "type": "boolean",
-            "default": false
-          },
-          "split_rows": {
-            "title": "Split Rows",
-            "description": "Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.",
-            "type": "boolean",
-            "default": false
-          },
-          "generate_chunks_only": {
-            "title": "Generate Chunks Only",
-            "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
-            "type": "boolean",
-            "default": false
-          },
-          "skip_file_processing": {
-            "title": "Skip File Processing",
-            "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "type": "object",
         "nullable": true
       },
       "HybridSearchTuningParamsNullable": {

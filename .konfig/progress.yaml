@@ -98,6 +98,10 @@ operationIds:
     get: Utilities_fetchYoutubeTranscripts
   /health:
     get: Health_check
+  /integrations/azure_blob_storage:
+    post: Integrations_syncAzureBlobStorage
+  /integrations/azure_blob_storage/files:
+    post: Integrations_syncAzureBlobFiles
   /integrations/confluence/list:
     post: Integrations_listConfluencePages
   /integrations/confluence/sync:
