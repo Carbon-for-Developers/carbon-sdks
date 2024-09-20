@@ -23,6 +23,12 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { AuthenticationProperty } from '../models';
 // @ts-ignore
+import { AzureBlobAuthRequest } from '../models';
+// @ts-ignore
+import { AzureBlobFileSyncInput } from '../models';
+// @ts-ignore
+import { AzureBlobGetFileInput } from '../models';
+// @ts-ignore
 import { ConnectDataSourceInput } from '../models';
 // @ts-ignore
 import { ConnectDataSourceResponse } from '../models';
@@ -898,6 +904,110 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
+         * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+         * @summary Azure Blob Files
+         * @param {AzureBlobFileSyncInput} azureBlobFileSyncInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncAzureBlobFiles: async (azureBlobFileSyncInput: AzureBlobFileSyncInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'azureBlobFileSyncInput' is not null or undefined
+            assertParamExists('syncAzureBlobFiles', 'azureBlobFileSyncInput', azureBlobFileSyncInput)
+            const localVarPath = `/integrations/azure_blob_storage/files`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: azureBlobFileSyncInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/azure_blob_storage/files',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(azureBlobFileSyncInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: <ol>   <li>Create a new Azure Storage account and grant the following permissions:     <ul>       <li>List containers.</li>       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>     </ul>   </li>   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li> </ol>  Once created, provide us with the following details to generate the connection URL: <ol>   <li>Storage Account KeyName.</li>   <li>Storage Account Name.</li> </ol>
+         * @summary Azure Blob Storage Auth
+         * @param {AzureBlobAuthRequest} azureBlobAuthRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncAzureBlobStorage: async (azureBlobAuthRequest: AzureBlobAuthRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'azureBlobAuthRequest' is not null or undefined
+            assertParamExists('syncAzureBlobStorage', 'azureBlobAuthRequest', azureBlobAuthRequest)
+            const localVarPath = `/integrations/azure_blob_storage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: azureBlobAuthRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/azure_blob_storage',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(azureBlobAuthRequest, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {SyncFilesRequest} syncFilesRequest 
@@ -1748,6 +1858,50 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+         * @summary Azure Blob Files
+         * @param {IntegrationsApiSyncAzureBlobFilesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncAzureBlobFiles(requestParameters: IntegrationsApiSyncAzureBlobFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const azureBlobFileSyncInput: AzureBlobFileSyncInput = {
+                tags: requestParameters.tags,
+                ids: requestParameters.ids,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk,
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                data_source_id: requestParameters.data_source_id,
+                request_id: requestParameters.request_id,
+                use_ocr: requestParameters.use_ocr,
+                parse_pdf_tables_with_ocr: requestParameters.parse_pdf_tables_with_ocr,
+                file_sync_config: requestParameters.file_sync_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncAzureBlobFiles(azureBlobFileSyncInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: <ol>   <li>Create a new Azure Storage account and grant the following permissions:     <ul>       <li>List containers.</li>       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>     </ul>   </li>   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li> </ol>  Once created, provide us with the following details to generate the connection URL: <ol>   <li>Storage Account KeyName.</li>   <li>Storage Account Name.</li> </ol>
+         * @summary Azure Blob Storage Auth
+         * @param {IntegrationsApiSyncAzureBlobStorageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async syncAzureBlobStorage(requestParameters: IntegrationsApiSyncAzureBlobStorageRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
+            const azureBlobAuthRequest: AzureBlobAuthRequest = {
+                account_name: requestParameters.account_name,
+                account_key: requestParameters.account_key,
+                sync_source_items: requestParameters.sync_source_items
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncAzureBlobStorage(azureBlobAuthRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
@@ -2163,6 +2317,26 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.listRepos(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+         * @summary Azure Blob Files
+         * @param {IntegrationsApiSyncAzureBlobFilesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncAzureBlobFiles(requestParameters: IntegrationsApiSyncAzureBlobFilesRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.syncAzureBlobFiles(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: <ol>   <li>Create a new Azure Storage account and grant the following permissions:     <ul>       <li>List containers.</li>       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>     </ul>   </li>   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li> </ol>  Once created, provide us with the following details to generate the connection URL: <ol>   <li>Storage Account KeyName.</li>   <li>Storage Account Name.</li> </ol>
+         * @summary Azure Blob Storage Auth
+         * @param {IntegrationsApiSyncAzureBlobStorageRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        syncAzureBlobStorage(requestParameters: IntegrationsApiSyncAzureBlobStorageRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceAPI> {
+            return localVarFp.syncAzureBlobStorage(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint has been deprecated. Use /integrations/files/sync instead.  After listing pages in a user\'s Confluence account, the set of selected page `ids` and the connected account\'s `data_source_id` can be passed into this endpoint to sync them into Carbon. Additional parameters listed below can be used to associate data to the selected pages or alter the behavior of the sync.
          * @summary Confluence Sync
          * @param {IntegrationsApiSyncConfluenceRequest} requestParameters Request parameters.
@@ -2489,6 +2663,24 @@ export type IntegrationsApiListReposRequest = {
 }
 
 /**
+ * Request parameters for syncAzureBlobFiles operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncAzureBlobFilesRequest
+ */
+export type IntegrationsApiSyncAzureBlobFilesRequest = {
+    
+} & AzureBlobFileSyncInput
+
+/**
+ * Request parameters for syncAzureBlobStorage operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiSyncAzureBlobStorageRequest
+ */
+export type IntegrationsApiSyncAzureBlobStorageRequest = {
+    
+} & AzureBlobAuthRequest
+
+/**
  * Request parameters for syncConfluence operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiSyncConfluenceRequest
@@ -2773,6 +2965,30 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public listRepos(requestParameters: IntegrationsApiListReposRequest = {}, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).listRepos(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+     * @summary Azure Blob Files
+     * @param {IntegrationsApiSyncAzureBlobFilesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncAzureBlobFiles(requestParameters: IntegrationsApiSyncAzureBlobFilesRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncAzureBlobFiles(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: <ol>   <li>Create a new Azure Storage account and grant the following permissions:     <ul>       <li>List containers.</li>       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>     </ul>   </li>   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li> </ol>  Once created, provide us with the following details to generate the connection URL: <ol>   <li>Storage Account KeyName.</li>   <li>Storage Account Name.</li> </ol>
+     * @summary Azure Blob Storage Auth
+     * @param {IntegrationsApiSyncAzureBlobStorageRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public syncAzureBlobStorage(requestParameters: IntegrationsApiSyncAzureBlobStorageRequest, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).syncAzureBlobStorage(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
 from carbon.pydantic.freskdesk_authentication import FreskdeskAuthentication
 from carbon.pydantic.gitbook_authetication import GitbookAuthetication
@@ -32,7 +33,7 @@ from carbon.pydantic.zendesk_authentication import ZendeskAuthentication
 from carbon.pydantic.zotero_authentication import ZoteroAuthentication
 
 class ConnectDataSourceInput(BaseModel):
-    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication, GongAuthentication] = Field(alias='authentication')
+    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, AzureBlobStorageAuthentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication, GongAuthentication] = Field(alias='authentication')
 
     sync_options: typing.Optional[SyncOptions] = Field(None, alias='sync_options')
 

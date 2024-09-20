@@ -58,6 +58,10 @@ from carbon.schemas import (
 # import all pydantic classes so that any type hints which are quoted due to circular imports
 # are still available in the global namespace
 from carbon.pydantic.add_webhook_props import AddWebhookProps
+from carbon.pydantic.azure_blob_auth_request import AzureBlobAuthRequest
+from carbon.pydantic.azure_blob_file_sync_input import AzureBlobFileSyncInput
+from carbon.pydantic.azure_blob_get_file_input import AzureBlobGetFileInput
+from carbon.pydantic.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.pydantic.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.pydantic.chunk_properties import ChunkProperties
 from carbon.pydantic.chunk_properties_nullable import ChunkPropertiesNullable

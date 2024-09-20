@@ -26,17 +26,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for OANSCZGF
+ * Model tests for OANSCZGFB
  */
-public class OANSCZGFTest {
-    private final OANSCZGF model = new OANSCZGF();
+public class OANSCZGFBTest {
+    private final OANSCZGFB model = new OANSCZGFB();
 
     /**
-     * Model tests for OANSCZGF
+     * Model tests for OANSCZGFB
      */
     @Test
-    public void testOANSCZGF() {
-        // TODO: test OANSCZGF
+    public void testOANSCZGFB() {
+        // TODO: test OANSCZGFB
     }
 
     /**
@@ -165,6 +165,22 @@ public class OANSCZGFTest {
     @Test
     public void endpointUrlTest() {
         // TODO: test endpointUrl
+    }
+
+    /**
+     * Test the property 'accountName'
+     */
+    @Test
+    public void accountNameTest() {
+        // TODO: test accountName
+    }
+
+    /**
+     * Test the property 'accountKey'
+     */
+    @Test
+    public void accountKeyTest() {
+        // TODO: test accountKey
     }
 
     /**

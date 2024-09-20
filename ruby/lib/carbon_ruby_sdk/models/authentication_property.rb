@@ -44,6 +44,10 @@ module Carbon
     # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     attr_accessor :endpoint_url
 
+    attr_accessor :account_name
+
+    attr_accessor :account_key
+
     attr_accessor :instance_subdomain
 
     attr_accessor :client_id
@@ -73,6 +77,8 @@ module Carbon
         :'access_key' => :'access_key',
         :'access_key_secret' => :'access_key_secret',
         :'endpoint_url' => :'endpoint_url',
+        :'account_name' => :'account_name',
+        :'account_key' => :'account_key',
         :'instance_subdomain' => :'instance_subdomain',
         :'client_id' => :'client_id',
         :'client_secret' => :'client_secret',
@@ -105,6 +111,8 @@ module Carbon
         :'access_key' => :'String',
         :'access_key_secret' => :'String',
         :'endpoint_url' => :'String',
+        :'account_name' => :'String',
+        :'account_key' => :'String',
         :'instance_subdomain' => :'String',
         :'client_id' => :'String',
         :'client_secret' => :'String',
@@ -125,6 +133,7 @@ module Carbon
     # List of class defined in anyOf (OpenAPI v3)
     def self.openapi_any_of
       [
+      :'AzureBlobStorageAuthentication',
       :'ConfluenceAuthentication',
       :'FreskdeskAuthentication',
       :'GitbookAuthetication',
@@ -221,6 +230,14 @@ module Carbon
         self.endpoint_url = attributes[:'endpoint_url']
       end
 
+      if attributes.key?(:'account_name')
+        self.account_name = attributes[:'account_name']
+      end
+
+      if attributes.key?(:'account_key')
+        self.account_key = attributes[:'account_key']
+      end
+
       if attributes.key?(:'instance_subdomain')
         self.instance_subdomain = attributes[:'instance_subdomain']
       end
@@ -298,6 +315,14 @@ module Carbon
         invalid_properties.push('invalid value for "access_key_secret", access_key_secret cannot be nil.')
       end
 
+      if @account_name.nil?
+        invalid_properties.push('invalid value for "account_name", account_name cannot be nil.')
+      end
+
+      if @account_key.nil?
+        invalid_properties.push('invalid value for "account_key", account_key cannot be nil.')
+      end
+
       if @instance_subdomain.nil?
         invalid_properties.push('invalid value for "instance_subdomain", instance_subdomain cannot be nil.')
       end
@@ -337,6 +362,8 @@ module Carbon
       return false if @api_key.nil?
       return false if @access_key.nil?
       return false if @access_key_secret.nil?
+      return false if @account_name.nil?
+      return false if @account_key.nil?
       return false if @instance_subdomain.nil?
       return false if @client_id.nil?
       return false if @client_secret.nil?
@@ -378,6 +405,8 @@ module Carbon
           access_key == o.access_key &&
           access_key_secret == o.access_key_secret &&
           endpoint_url == o.endpoint_url &&
+          account_name == o.account_name &&
+          account_key == o.account_key &&
           instance_subdomain == o.instance_subdomain &&
           client_id == o.client_id &&
           client_secret == o.client_secret &&
@@ -394,7 +423,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url, instance_subdomain, client_id, client_secret, redirect_uri, gong_account_email].hash
+      [source, access_token, refresh_token, workspace_id, tenant_name, site_name, subdomain, access_token_secret, username, zotero_id, organization_name, domain, api_key, access_key, access_key_secret, endpoint_url, account_name, account_key, instance_subdomain, client_id, client_secret, redirect_uri, gong_account_email].hash
     end
 
     # Builds the object from hash

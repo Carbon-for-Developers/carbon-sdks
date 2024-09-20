@@ -48,7 +48,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
 
     t.Run("Test IntegrationsApiService ConnectDataSource", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        authentication := *carbon.NewOANSCZGF()
+        authentication := *carbon.NewOANSCZGFB()
         syncOptions := *carbon.NewSyncOptions()
         
         connectDataSourceInput := *carbon.NewConnectDataSourceInput(
@@ -361,6 +361,61 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         request.PerPage(30)
         request.Page(1)
         request.DataSourceId(56)
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test IntegrationsApiService SyncAzureBlobFiles", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+        
+        azureBlobFileSyncInput := *carbon.NewAzureBlobFileSyncInput(
+            null,
+        )
+        azureBlobFileSyncInput.SetTags({})
+        azureBlobFileSyncInput.SetChunkSize(1500)
+        azureBlobFileSyncInput.SetChunkOverlap(20)
+        azureBlobFileSyncInput.SetSkipEmbeddingGeneration(false)
+        azureBlobFileSyncInput.SetEmbeddingModel(null)
+        azureBlobFileSyncInput.SetGenerateSparseVectors(false)
+        azureBlobFileSyncInput.SetPrependFilenameToChunks(false)
+        azureBlobFileSyncInput.SetMaxItemsPerChunk(null)
+        azureBlobFileSyncInput.SetSetPageAsBoundary(false)
+        azureBlobFileSyncInput.SetDataSourceId(null)
+        azureBlobFileSyncInput.SetRequestId("null")
+        azureBlobFileSyncInput.SetUseOcr(false)
+        azureBlobFileSyncInput.SetParsePdfTablesWithOcr(false)
+        azureBlobFileSyncInput.SetFileSyncConfig(fileSyncConfig)
+        
+        request := client.IntegrationsApi.SyncAzureBlobFiles(
+            azureBlobFileSyncInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test IntegrationsApiService SyncAzureBlobStorage", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        azureBlobAuthRequest := *carbon.NewAzureBlobAuthRequest(
+            "null",
+            "null",
+        )
+        azureBlobAuthRequest.SetSyncSourceItems(true)
+        
+        request := client.IntegrationsApi.SyncAzureBlobStorage(
+            azureBlobAuthRequest,
+        )
         
         resp, httpRes, err := request.Execute()
 

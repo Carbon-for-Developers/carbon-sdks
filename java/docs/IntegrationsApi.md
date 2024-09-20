@@ -19,6 +19,8 @@ All URIs are relative to *https://api.carbon.ai*
 | [**listLabels**](IntegrationsApi.md#listLabels) | **GET** /integrations/gmail/user_labels | Gmail Labels |
 | [**listOutlookCategories**](IntegrationsApi.md#listOutlookCategories) | **GET** /integrations/outlook/user_categories | Outlook Categories |
 | [**listRepos**](IntegrationsApi.md#listRepos) | **GET** /integrations/github/repos | Github List Repos |
+| [**syncAzureBlobFiles**](IntegrationsApi.md#syncAzureBlobFiles) | **POST** /integrations/azure_blob_storage/files | Azure Blob Files |
+| [**syncAzureBlobStorage**](IntegrationsApi.md#syncAzureBlobStorage) | **POST** /integrations/azure_blob_storage | Azure Blob Storage Auth |
 | [**syncConfluence**](IntegrationsApi.md#syncConfluence) | **POST** /integrations/confluence/sync | Confluence Sync |
 | [**syncDataSourceItems**](IntegrationsApi.md#syncDataSourceItems) | **POST** /integrations/items/sync | Sync Data Source Items |
 | [**syncFiles**](IntegrationsApi.md#syncFiles) | **POST** /integrations/files/sync | Sync Files |
@@ -173,7 +175,7 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    OANSCZGF authentication = new OANSCZGF();
+    OANSCZGFB authentication = new OANSCZGFB();
     SyncOptions syncOptions = new SyncOptions();
     try {
       ConnectDataSourceResponse result = client
@@ -1725,6 +1727,260 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="syncAzureBlobFiles"></a>
+# **syncAzureBlobFiles**
+> GenericSuccessResponse syncAzureBlobFiles(azureBlobFileSyncInput).execute();
+
+Azure Blob Files
+
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    List<AzureBlobGetFileInput> ids = Arrays.asList();
+    Object tags = null;
+    Integer chunkSize = 1500;
+    Integer chunkOverlap = 20;
+    Boolean skipEmbeddingGeneration = false;
+    EmbeddingGenerators embeddingModel = EmbeddingGenerators.fromValue("OPENAI");
+    Boolean generateSparseVectors = false;
+    Boolean prependFilenameToChunks = false;
+    Integer maxItemsPerChunk = 56; // Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+    Boolean setPageAsBoundary = false;
+    Integer dataSourceId = 56;
+    String requestId = "requestId_example";
+    Boolean useOcr = false;
+    Boolean parsePdfTablesWithOcr = false;
+    FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    try {
+      GenericSuccessResponse result = client
+              .integrations
+              .syncAzureBlobFiles(ids)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .maxItemsPerChunk(maxItemsPerChunk)
+              .setPageAsBoundary(setPageAsBoundary)
+              .dataSourceId(dataSourceId)
+              .requestId(requestId)
+              .useOcr(useOcr)
+              .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
+              .fileSyncConfig(fileSyncConfig)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getSuccess());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncAzureBlobFiles");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<GenericSuccessResponse> response = client
+              .integrations
+              .syncAzureBlobFiles(ids)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .maxItemsPerChunk(maxItemsPerChunk)
+              .setPageAsBoundary(setPageAsBoundary)
+              .dataSourceId(dataSourceId)
+              .requestId(requestId)
+              .useOcr(useOcr)
+              .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
+              .fileSyncConfig(fileSyncConfig)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncAzureBlobFiles");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **azureBlobFileSyncInput** | [**AzureBlobFileSyncInput**](AzureBlobFileSyncInput.md)|  | |
+
+### Return type
+
+[**GenericSuccessResponse**](GenericSuccessResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="syncAzureBlobStorage"></a>
+# **syncAzureBlobStorage**
+> OrganizationUserDataSourceAPI syncAzureBlobStorage(azureBlobAuthRequest).execute();
+
+Azure Blob Storage Auth
+
+This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: &lt;ol&gt;   &lt;li&gt;Create a new Azure Storage account and grant the following permissions:     &lt;ul&gt;       &lt;li&gt;List containers.&lt;/li&gt;       &lt;li&gt;Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.&lt;/li&gt;     &lt;/ul&gt;   &lt;/li&gt;   &lt;li&gt;Generate a shared access signature (SAS) token or an access key for the storage account.&lt;/li&gt; &lt;/ol&gt;  Once created, provide us with the following details to generate the connection URL: &lt;ol&gt;   &lt;li&gt;Storage Account KeyName.&lt;/li&gt;   &lt;li&gt;Storage Account Name.&lt;/li&gt; &lt;/ol&gt;
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    String accountName = "accountName_example";
+    String accountKey = "accountKey_example";
+    Boolean syncSourceItems = true;
+    try {
+      OrganizationUserDataSourceAPI result = client
+              .integrations
+              .syncAzureBlobStorage(accountName, accountKey)
+              .syncSourceItems(syncSourceItems)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getId());
+      System.out.println(result.getDataSourceExternalId());
+      System.out.println(result.getDataSourceType());
+      System.out.println(result.getToken());
+      System.out.println(result.getSyncStatus());
+      System.out.println(result.getSourceItemsSyncedAt());
+      System.out.println(result.getOrganizationUserId());
+      System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationSuppliedUserId());
+      System.out.println(result.getRevokedAccess());
+      System.out.println(result.getLastSyncedAt());
+      System.out.println(result.getLastSyncAction());
+      System.out.println(result.getEnableAutoSync());
+      System.out.println(result.getCreatedAt());
+      System.out.println(result.getUpdatedAt());
+      System.out.println(result.getFilesSyncedAt());
+      System.out.println(result.getDataSourceMetadata());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncAzureBlobStorage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<OrganizationUserDataSourceAPI> response = client
+              .integrations
+              .syncAzureBlobStorage(accountName, accountKey)
+              .syncSourceItems(syncSourceItems)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#syncAzureBlobStorage");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **azureBlobAuthRequest** | [**AzureBlobAuthRequest**](AzureBlobAuthRequest.md)|  | |
+
+### Return type
+
+[**OrganizationUserDataSourceAPI**](OrganizationUserDataSourceAPI.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

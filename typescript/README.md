@@ -55,6 +55,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
   * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
   * [`carbon.integrations.listRepos`](#carbonintegrationslistrepos)
+  * [`carbon.integrations.syncAzureBlobFiles`](#carbonintegrationssyncazureblobfiles)
+  * [`carbon.integrations.syncAzureBlobStorage`](#carbonintegrationssyncazureblobstorage)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
   * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
   * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
@@ -2033,6 +2035,131 @@ const listReposResponse = await carbon.integrations.listRepos({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncAzureBlobFiles`<a id="carbonintegrationssyncazureblobfiles"></a>
+
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+data with the selected items or modify the sync behavior
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const syncAzureBlobFilesResponse = await carbon.integrations.syncAzureBlobFiles(
+  {
+    ids: [{}],
+    chunk_size: 1500,
+    chunk_overlap: 20,
+    skip_embedding_generation: false,
+    embedding_model: "OPENAI",
+    generate_sparse_vectors: false,
+    prepend_filename_to_chunks: false,
+    set_page_as_boundary: false,
+    use_ocr: false,
+    parse_pdf_tables_with_ocr: false,
+  }
+);
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: [`AzureBlobGetFileInput`](./models/azure-blob-get-file-input.ts)[]<a id="ids-azureblobgetfileinputmodelsazure-blob-get-file-inputts"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### chunk_size: `number`<a id="chunk_size-number"></a>
+
+##### chunk_overlap: `number`<a id="chunk_overlap-number"></a>
+
+##### skip_embedding_generation: `boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./models/embedding-generators.ts)<a id="embedding_model-embeddinggeneratorsmodelsembedding-generatorsts"></a>
+
+##### generate_sparse_vectors: `boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### max_items_per_chunk: `number`<a id="max_items_per_chunk-number"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### set_page_as_boundary: `boolean`<a id="set_page_as_boundary-boolean"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### request_id: `string`<a id="request_id-string"></a>
+
+##### use_ocr: `boolean`<a id="use_ocr-boolean"></a>
+
+##### parse_pdf_tables_with_ocr: `boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./models/generic-success-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncAzureBlobStorage`<a id="carbonintegrationssyncazureblobstorage"></a>
+
+This endpoint can be used to connect Azure Blob Storage.
+
+For Azure Blob Storage, follow these steps:
+<ol>
+  <li>Create a new Azure Storage account and grant the following permissions:
+    <ul>
+      <li>List containers.</li>
+      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    </ul>
+  </li>
+  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+</ol>
+
+Once created, provide us with the following details to generate the connection URL:
+<ol>
+  <li>Storage Account KeyName.</li>
+  <li>Storage Account Name.</li>
+</ol>
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const syncAzureBlobStorageResponse =
+  await carbon.integrations.syncAzureBlobStorage({
+    account_name: "account_name_example",
+    account_key: "account_key_example",
+    sync_source_items: true,
+  });
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_name: `string`<a id="account_name-string"></a>
+
+##### account_key: `string`<a id="account_key-string"></a>
+
+##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./models/organization-user-data-source-api.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

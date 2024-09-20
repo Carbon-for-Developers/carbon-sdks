@@ -16,7 +16,7 @@ import (
 
 // ConnectDataSourceInput struct for ConnectDataSourceInput
 type ConnectDataSourceInput struct {
-	Authentication OANSCZGF `json:"authentication"`
+	Authentication OANSCZGFB `json:"authentication"`
 	SyncOptions *SyncOptions `json:"sync_options,omitempty"`
 }
 
@@ -24,7 +24,7 @@ type ConnectDataSourceInput struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectDataSourceInput(authentication OANSCZGF) *ConnectDataSourceInput {
+func NewConnectDataSourceInput(authentication OANSCZGFB) *ConnectDataSourceInput {
 	this := ConnectDataSourceInput{}
 	this.Authentication = authentication
 	return &this
@@ -39,9 +39,9 @@ func NewConnectDataSourceInputWithDefaults() *ConnectDataSourceInput {
 }
 
 // GetAuthentication returns the Authentication field value
-func (o *ConnectDataSourceInput) GetAuthentication() OANSCZGF {
+func (o *ConnectDataSourceInput) GetAuthentication() OANSCZGFB {
 	if o == nil {
-		var ret OANSCZGF
+		var ret OANSCZGFB
 		return ret
 	}
 
@@ -50,7 +50,7 @@ func (o *ConnectDataSourceInput) GetAuthentication() OANSCZGF {
 
 // GetAuthenticationOk returns a tuple with the Authentication field value
 // and a boolean to check if the value has been set.
-func (o *ConnectDataSourceInput) GetAuthenticationOk() (*OANSCZGF, bool) {
+func (o *ConnectDataSourceInput) GetAuthenticationOk() (*OANSCZGFB, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *ConnectDataSourceInput) GetAuthenticationOk() (*OANSCZGF, bool) {
 }
 
 // SetAuthentication sets field value
-func (o *ConnectDataSourceInput) SetAuthentication(v OANSCZGF) {
+func (o *ConnectDataSourceInput) SetAuthentication(v OANSCZGFB) {
 	o.Authentication = v
 }
 

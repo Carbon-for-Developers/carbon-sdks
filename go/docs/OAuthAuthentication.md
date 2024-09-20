@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **AccessKey** | Pointer to **string** |  | [optional] 
 **AccessKeySecret** | Pointer to **string** |  | [optional] 
 **EndpointUrl** | Pointer to **NullableString** | You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. | [optional] 
+**AccountName** | Pointer to **string** |  | [optional] 
+**AccountKey** | Pointer to **string** |  | [optional] 
 **InstanceSubdomain** | Pointer to **string** |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
@@ -460,6 +462,56 @@ HasEndpointUrl returns a boolean if a field has been set.
 `func (o *OAuthAuthentication) UnsetEndpointUrl()`
 
 UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
+### GetAccountName
+
+`func (o *OAuthAuthentication) GetAccountName() string`
+
+GetAccountName returns the AccountName field if non-nil, zero value otherwise.
+
+### GetAccountNameOk
+
+`func (o *OAuthAuthentication) GetAccountNameOk() (*string, bool)`
+
+GetAccountNameOk returns a tuple with the AccountName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountName
+
+`func (o *OAuthAuthentication) SetAccountName(v string)`
+
+SetAccountName sets AccountName field to given value.
+
+### HasAccountName
+
+`func (o *OAuthAuthentication) HasAccountName() bool`
+
+HasAccountName returns a boolean if a field has been set.
+
+### GetAccountKey
+
+`func (o *OAuthAuthentication) GetAccountKey() string`
+
+GetAccountKey returns the AccountKey field if non-nil, zero value otherwise.
+
+### GetAccountKeyOk
+
+`func (o *OAuthAuthentication) GetAccountKeyOk() (*string, bool)`
+
+GetAccountKeyOk returns a tuple with the AccountKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountKey
+
+`func (o *OAuthAuthentication) SetAccountKey(v string)`
+
+SetAccountKey sets AccountKey field to given value.
+
+### HasAccountKey
+
+`func (o *OAuthAuthentication) HasAccountKey() bool`
+
+HasAccountKey returns a boolean if a field has been set.
+
 ### GetInstanceSubdomain
 
 `func (o *OAuthAuthentication) GetInstanceSubdomain() string`

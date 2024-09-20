@@ -1,6 +1,9 @@
 package com.konfigthis.carbonai.client.api;
 
 import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.model.AzureBlobAuthRequest;
+import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
+import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -20,7 +23,7 @@ import com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse;
 import com.konfigthis.carbonai.client.model.ListItemsFiltersNullable;
 import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
-import com.konfigthis.carbonai.client.model.OANSCZGF;
+import com.konfigthis.carbonai.client.model.OANSCZGFB;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
 import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
@@ -54,7 +57,7 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
         }
     }
     public class ConnectDataSourceRequestBuilder extends ConnectDataSourceRequestBuilderGenerated {
-        public ConnectDataSourceRequestBuilder(OANSCZGF authentication) {
+        public ConnectDataSourceRequestBuilder(OANSCZGFB authentication) {
             super(authentication);
         }
     }
@@ -121,6 +124,16 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
     public class ListReposRequestBuilder extends ListReposRequestBuilderGenerated {
         public ListReposRequestBuilder() {
             super();
+        }
+    }
+    public class SyncAzureBlobFilesRequestBuilder extends SyncAzureBlobFilesRequestBuilderGenerated {
+        public SyncAzureBlobFilesRequestBuilder(List<AzureBlobGetFileInput> ids) {
+            super(ids);
+        }
+    }
+    public class SyncAzureBlobStorageRequestBuilder extends SyncAzureBlobStorageRequestBuilderGenerated {
+        public SyncAzureBlobStorageRequestBuilder(String accountName, String accountKey) {
+            super(accountName, accountKey);
         }
     }
     public class SyncConfluenceRequestBuilder extends SyncConfluenceRequestBuilderGenerated {

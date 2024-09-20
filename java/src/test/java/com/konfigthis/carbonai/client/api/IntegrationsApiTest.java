@@ -16,6 +16,9 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.model.AzureBlobAuthRequest;
+import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
+import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -35,7 +38,7 @@ import com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse;
 import com.konfigthis.carbonai.client.model.ListItemsFiltersNullable;
 import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
-import com.konfigthis.carbonai.client.model.OANSCZGF;
+import com.konfigthis.carbonai.client.model.OANSCZGFB;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
 import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
@@ -97,7 +100,7 @@ public class IntegrationsApiTest {
      */
     @Test
     public void connectDataSourceTest() throws ApiException {
-        OANSCZGF authentication = null;
+        OANSCZGFB authentication = null;
         SyncOptions syncOptions = null;
         ConnectDataSourceResponse response = api.connectDataSource(authentication)
                 .syncOptions(syncOptions)
@@ -451,6 +454,67 @@ public class IntegrationsApiTest {
                 .perPage(perPage)
                 .page(page)
                 .dataSourceId(dataSourceId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Azure Blob Files
+     *
+     * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void syncAzureBlobFilesTest() throws ApiException {
+        List<AzureBlobGetFileInput> ids = null;
+        Object tags = null;
+        Integer chunkSize = null;
+        Integer chunkOverlap = null;
+        Boolean skipEmbeddingGeneration = null;
+        EmbeddingGenerators embeddingModel = null;
+        Boolean generateSparseVectors = null;
+        Boolean prependFilenameToChunks = null;
+        Integer maxItemsPerChunk = null;
+        Boolean setPageAsBoundary = null;
+        Integer dataSourceId = null;
+        String requestId = null;
+        Boolean useOcr = null;
+        Boolean parsePdfTablesWithOcr = null;
+        FileSyncConfigNullable fileSyncConfig = null;
+        GenericSuccessResponse response = api.syncAzureBlobFiles(ids)
+                .tags(tags)
+                .chunkSize(chunkSize)
+                .chunkOverlap(chunkOverlap)
+                .skipEmbeddingGeneration(skipEmbeddingGeneration)
+                .embeddingModel(embeddingModel)
+                .generateSparseVectors(generateSparseVectors)
+                .prependFilenameToChunks(prependFilenameToChunks)
+                .maxItemsPerChunk(maxItemsPerChunk)
+                .setPageAsBoundary(setPageAsBoundary)
+                .dataSourceId(dataSourceId)
+                .requestId(requestId)
+                .useOcr(useOcr)
+                .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
+                .fileSyncConfig(fileSyncConfig)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Azure Blob Storage Auth
+     *
+     * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: &lt;ol&gt;   &lt;li&gt;Create a new Azure Storage account and grant the following permissions:     &lt;ul&gt;       &lt;li&gt;List containers.&lt;/li&gt;       &lt;li&gt;Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.&lt;/li&gt;     &lt;/ul&gt;   &lt;/li&gt;   &lt;li&gt;Generate a shared access signature (SAS) token or an access key for the storage account.&lt;/li&gt; &lt;/ol&gt;  Once created, provide us with the following details to generate the connection URL: &lt;ol&gt;   &lt;li&gt;Storage Account KeyName.&lt;/li&gt;   &lt;li&gt;Storage Account Name.&lt;/li&gt; &lt;/ol&gt;
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void syncAzureBlobStorageTest() throws ApiException {
+        String accountName = null;
+        String accountKey = null;
+        Boolean syncSourceItems = null;
+        OrganizationUserDataSourceAPI response = api.syncAzureBlobStorage(accountName, accountKey)
+                .syncSourceItems(syncSourceItems)
                 .execute();
         // TODO: test validations
     }

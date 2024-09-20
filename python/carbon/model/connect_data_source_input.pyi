@@ -67,6 +67,7 @@ class ConnectDataSourceInput(
                             SalesforceAuthentication,
                             FreskdeskAuthentication,
                             S3Authentication,
+                            AzureBlobStorageAuthentication,
                             GithubAuthentication,
                             ServiceNowAuthentication,
                             GuruAuthentication,
@@ -141,6 +142,7 @@ class ConnectDataSourceInput(
             **kwargs,
         )
 
+from carbon.model.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.freskdesk_authentication import FreskdeskAuthentication
 from carbon.model.gitbook_authetication import GitbookAuthetication

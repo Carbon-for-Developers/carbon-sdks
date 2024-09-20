@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// OANSCZGF struct for OANSCZGF
-type OANSCZGF struct {
+// OANSCZGFB struct for OANSCZGFB
+type OANSCZGFB struct {
 	Source OAuthAuthenticationSource `json:"source"`
 	AccessToken *string `json:"access_token,omitempty"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
@@ -33,6 +33,8 @@ type OANSCZGF struct {
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
+	AccountName *string `json:"account_name,omitempty"`
+	AccountKey *string `json:"account_key,omitempty"`
 	InstanceSubdomain *string `json:"instance_subdomain,omitempty"`
 	ClientId *string `json:"client_id,omitempty"`
 	ClientSecret *string `json:"client_secret,omitempty"`
@@ -40,26 +42,26 @@ type OANSCZGF struct {
 	GongAccountEmail *string `json:"gong_account_email,omitempty"`
 }
 
-// NewOANSCZGF instantiates a new OANSCZGF object
+// NewOANSCZGFB instantiates a new OANSCZGFB object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOANSCZGF(source OAuthAuthenticationSource) *OANSCZGF {
-	this := OANSCZGF{}
+func NewOANSCZGFB(source OAuthAuthenticationSource) *OANSCZGFB {
+	this := OANSCZGFB{}
 	this.Source = source
 	return &this
 }
 
-// NewOANSCZGFWithDefaults instantiates a new OANSCZGF object
+// NewOANSCZGFBWithDefaults instantiates a new OANSCZGFB object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOANSCZGFWithDefaults() *OANSCZGF {
-	this := OANSCZGF{}
+func NewOANSCZGFBWithDefaults() *OANSCZGFB {
+	this := OANSCZGFB{}
 	return &this
 }
 
 // GetSource returns the Source field value
-func (o *OANSCZGF) GetSource() OAuthAuthenticationSource {
+func (o *OANSCZGFB) GetSource() OAuthAuthenticationSource {
 	if o == nil {
 		var ret OAuthAuthenticationSource
 		return ret
@@ -70,7 +72,7 @@ func (o *OANSCZGF) GetSource() OAuthAuthenticationSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetSourceOk() (*OAuthAuthenticationSource, bool) {
+func (o *OANSCZGFB) GetSourceOk() (*OAuthAuthenticationSource, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -78,12 +80,12 @@ func (o *OANSCZGF) GetSourceOk() (*OAuthAuthenticationSource, bool) {
 }
 
 // SetSource sets field value
-func (o *OANSCZGF) SetSource(v OAuthAuthenticationSource) {
+func (o *OANSCZGFB) SetSource(v OAuthAuthenticationSource) {
 	o.Source = v
 }
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
-func (o *OANSCZGF) GetAccessToken() string {
+func (o *OANSCZGFB) GetAccessToken() string {
 	if o == nil || isNil(o.AccessToken) {
 		var ret string
 		return ret
@@ -93,7 +95,7 @@ func (o *OANSCZGF) GetAccessToken() string {
 
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetAccessTokenOk() (*string, bool) {
+func (o *OANSCZGFB) GetAccessTokenOk() (*string, bool) {
 	if o == nil || isNil(o.AccessToken) {
     return nil, false
 	}
@@ -101,7 +103,7 @@ func (o *OANSCZGF) GetAccessTokenOk() (*string, bool) {
 }
 
 // HasAccessToken returns a boolean if a field has been set.
-func (o *OANSCZGF) HasAccessToken() bool {
+func (o *OANSCZGFB) HasAccessToken() bool {
 	if o != nil && !isNil(o.AccessToken) {
 		return true
 	}
@@ -110,12 +112,12 @@ func (o *OANSCZGF) HasAccessToken() bool {
 }
 
 // SetAccessToken gets a reference to the given string and assigns it to the AccessToken field.
-func (o *OANSCZGF) SetAccessToken(v string) {
+func (o *OANSCZGFB) SetAccessToken(v string) {
 	o.AccessToken = &v
 }
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OANSCZGF) GetRefreshToken() string {
+func (o *OANSCZGFB) GetRefreshToken() string {
 	if o == nil || isNil(o.RefreshToken.Get()) {
 		var ret string
 		return ret
@@ -126,7 +128,7 @@ func (o *OANSCZGF) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OANSCZGF) GetRefreshTokenOk() (*string, bool) {
+func (o *OANSCZGFB) GetRefreshTokenOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -134,7 +136,7 @@ func (o *OANSCZGF) GetRefreshTokenOk() (*string, bool) {
 }
 
 // HasRefreshToken returns a boolean if a field has been set.
-func (o *OANSCZGF) HasRefreshToken() bool {
+func (o *OANSCZGFB) HasRefreshToken() bool {
 	if o != nil && o.RefreshToken.IsSet() {
 		return true
 	}
@@ -143,21 +145,21 @@ func (o *OANSCZGF) HasRefreshToken() bool {
 }
 
 // SetRefreshToken gets a reference to the given NullableString and assigns it to the RefreshToken field.
-func (o *OANSCZGF) SetRefreshToken(v string) {
+func (o *OANSCZGFB) SetRefreshToken(v string) {
 	o.RefreshToken.Set(&v)
 }
 // SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
-func (o *OANSCZGF) SetRefreshTokenNil() {
+func (o *OANSCZGFB) SetRefreshTokenNil() {
 	o.RefreshToken.Set(nil)
 }
 
 // UnsetRefreshToken ensures that no value is present for RefreshToken, not even an explicit nil
-func (o *OANSCZGF) UnsetRefreshToken() {
+func (o *OANSCZGFB) UnsetRefreshToken() {
 	o.RefreshToken.Unset()
 }
 
 // GetWorkspaceId returns the WorkspaceId field value if set, zero value otherwise.
-func (o *OANSCZGF) GetWorkspaceId() string {
+func (o *OANSCZGFB) GetWorkspaceId() string {
 	if o == nil || isNil(o.WorkspaceId) {
 		var ret string
 		return ret
@@ -167,7 +169,7 @@ func (o *OANSCZGF) GetWorkspaceId() string {
 
 // GetWorkspaceIdOk returns a tuple with the WorkspaceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetWorkspaceIdOk() (*string, bool) {
+func (o *OANSCZGFB) GetWorkspaceIdOk() (*string, bool) {
 	if o == nil || isNil(o.WorkspaceId) {
     return nil, false
 	}
@@ -175,7 +177,7 @@ func (o *OANSCZGF) GetWorkspaceIdOk() (*string, bool) {
 }
 
 // HasWorkspaceId returns a boolean if a field has been set.
-func (o *OANSCZGF) HasWorkspaceId() bool {
+func (o *OANSCZGFB) HasWorkspaceId() bool {
 	if o != nil && !isNil(o.WorkspaceId) {
 		return true
 	}
@@ -184,12 +186,12 @@ func (o *OANSCZGF) HasWorkspaceId() bool {
 }
 
 // SetWorkspaceId gets a reference to the given string and assigns it to the WorkspaceId field.
-func (o *OANSCZGF) SetWorkspaceId(v string) {
+func (o *OANSCZGFB) SetWorkspaceId(v string) {
 	o.WorkspaceId = &v
 }
 
 // GetTenantName returns the TenantName field value if set, zero value otherwise.
-func (o *OANSCZGF) GetTenantName() string {
+func (o *OANSCZGFB) GetTenantName() string {
 	if o == nil || isNil(o.TenantName) {
 		var ret string
 		return ret
@@ -199,7 +201,7 @@ func (o *OANSCZGF) GetTenantName() string {
 
 // GetTenantNameOk returns a tuple with the TenantName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetTenantNameOk() (*string, bool) {
+func (o *OANSCZGFB) GetTenantNameOk() (*string, bool) {
 	if o == nil || isNil(o.TenantName) {
     return nil, false
 	}
@@ -207,7 +209,7 @@ func (o *OANSCZGF) GetTenantNameOk() (*string, bool) {
 }
 
 // HasTenantName returns a boolean if a field has been set.
-func (o *OANSCZGF) HasTenantName() bool {
+func (o *OANSCZGFB) HasTenantName() bool {
 	if o != nil && !isNil(o.TenantName) {
 		return true
 	}
@@ -216,12 +218,12 @@ func (o *OANSCZGF) HasTenantName() bool {
 }
 
 // SetTenantName gets a reference to the given string and assigns it to the TenantName field.
-func (o *OANSCZGF) SetTenantName(v string) {
+func (o *OANSCZGFB) SetTenantName(v string) {
 	o.TenantName = &v
 }
 
 // GetSiteName returns the SiteName field value if set, zero value otherwise.
-func (o *OANSCZGF) GetSiteName() string {
+func (o *OANSCZGFB) GetSiteName() string {
 	if o == nil || isNil(o.SiteName) {
 		var ret string
 		return ret
@@ -231,7 +233,7 @@ func (o *OANSCZGF) GetSiteName() string {
 
 // GetSiteNameOk returns a tuple with the SiteName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetSiteNameOk() (*string, bool) {
+func (o *OANSCZGFB) GetSiteNameOk() (*string, bool) {
 	if o == nil || isNil(o.SiteName) {
     return nil, false
 	}
@@ -239,7 +241,7 @@ func (o *OANSCZGF) GetSiteNameOk() (*string, bool) {
 }
 
 // HasSiteName returns a boolean if a field has been set.
-func (o *OANSCZGF) HasSiteName() bool {
+func (o *OANSCZGFB) HasSiteName() bool {
 	if o != nil && !isNil(o.SiteName) {
 		return true
 	}
@@ -248,12 +250,12 @@ func (o *OANSCZGF) HasSiteName() bool {
 }
 
 // SetSiteName gets a reference to the given string and assigns it to the SiteName field.
-func (o *OANSCZGF) SetSiteName(v string) {
+func (o *OANSCZGFB) SetSiteName(v string) {
 	o.SiteName = &v
 }
 
 // GetSubdomain returns the Subdomain field value if set, zero value otherwise.
-func (o *OANSCZGF) GetSubdomain() string {
+func (o *OANSCZGFB) GetSubdomain() string {
 	if o == nil || isNil(o.Subdomain) {
 		var ret string
 		return ret
@@ -263,7 +265,7 @@ func (o *OANSCZGF) GetSubdomain() string {
 
 // GetSubdomainOk returns a tuple with the Subdomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetSubdomainOk() (*string, bool) {
+func (o *OANSCZGFB) GetSubdomainOk() (*string, bool) {
 	if o == nil || isNil(o.Subdomain) {
     return nil, false
 	}
@@ -271,7 +273,7 @@ func (o *OANSCZGF) GetSubdomainOk() (*string, bool) {
 }
 
 // HasSubdomain returns a boolean if a field has been set.
-func (o *OANSCZGF) HasSubdomain() bool {
+func (o *OANSCZGFB) HasSubdomain() bool {
 	if o != nil && !isNil(o.Subdomain) {
 		return true
 	}
@@ -280,12 +282,12 @@ func (o *OANSCZGF) HasSubdomain() bool {
 }
 
 // SetSubdomain gets a reference to the given string and assigns it to the Subdomain field.
-func (o *OANSCZGF) SetSubdomain(v string) {
+func (o *OANSCZGFB) SetSubdomain(v string) {
 	o.Subdomain = &v
 }
 
 // GetAccessTokenSecret returns the AccessTokenSecret field value if set, zero value otherwise.
-func (o *OANSCZGF) GetAccessTokenSecret() string {
+func (o *OANSCZGFB) GetAccessTokenSecret() string {
 	if o == nil || isNil(o.AccessTokenSecret) {
 		var ret string
 		return ret
@@ -295,7 +297,7 @@ func (o *OANSCZGF) GetAccessTokenSecret() string {
 
 // GetAccessTokenSecretOk returns a tuple with the AccessTokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetAccessTokenSecretOk() (*string, bool) {
+func (o *OANSCZGFB) GetAccessTokenSecretOk() (*string, bool) {
 	if o == nil || isNil(o.AccessTokenSecret) {
     return nil, false
 	}
@@ -303,7 +305,7 @@ func (o *OANSCZGF) GetAccessTokenSecretOk() (*string, bool) {
 }
 
 // HasAccessTokenSecret returns a boolean if a field has been set.
-func (o *OANSCZGF) HasAccessTokenSecret() bool {
+func (o *OANSCZGFB) HasAccessTokenSecret() bool {
 	if o != nil && !isNil(o.AccessTokenSecret) {
 		return true
 	}
@@ -312,12 +314,12 @@ func (o *OANSCZGF) HasAccessTokenSecret() bool {
 }
 
 // SetAccessTokenSecret gets a reference to the given string and assigns it to the AccessTokenSecret field.
-func (o *OANSCZGF) SetAccessTokenSecret(v string) {
+func (o *OANSCZGFB) SetAccessTokenSecret(v string) {
 	o.AccessTokenSecret = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
-func (o *OANSCZGF) GetUsername() string {
+func (o *OANSCZGFB) GetUsername() string {
 	if o == nil || isNil(o.Username) {
 		var ret string
 		return ret
@@ -327,7 +329,7 @@ func (o *OANSCZGF) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetUsernameOk() (*string, bool) {
+func (o *OANSCZGFB) GetUsernameOk() (*string, bool) {
 	if o == nil || isNil(o.Username) {
     return nil, false
 	}
@@ -335,7 +337,7 @@ func (o *OANSCZGF) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *OANSCZGF) HasUsername() bool {
+func (o *OANSCZGFB) HasUsername() bool {
 	if o != nil && !isNil(o.Username) {
 		return true
 	}
@@ -344,12 +346,12 @@ func (o *OANSCZGF) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *OANSCZGF) SetUsername(v string) {
+func (o *OANSCZGFB) SetUsername(v string) {
 	o.Username = &v
 }
 
 // GetZoteroId returns the ZoteroId field value if set, zero value otherwise.
-func (o *OANSCZGF) GetZoteroId() string {
+func (o *OANSCZGFB) GetZoteroId() string {
 	if o == nil || isNil(o.ZoteroId) {
 		var ret string
 		return ret
@@ -359,7 +361,7 @@ func (o *OANSCZGF) GetZoteroId() string {
 
 // GetZoteroIdOk returns a tuple with the ZoteroId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetZoteroIdOk() (*string, bool) {
+func (o *OANSCZGFB) GetZoteroIdOk() (*string, bool) {
 	if o == nil || isNil(o.ZoteroId) {
     return nil, false
 	}
@@ -367,7 +369,7 @@ func (o *OANSCZGF) GetZoteroIdOk() (*string, bool) {
 }
 
 // HasZoteroId returns a boolean if a field has been set.
-func (o *OANSCZGF) HasZoteroId() bool {
+func (o *OANSCZGFB) HasZoteroId() bool {
 	if o != nil && !isNil(o.ZoteroId) {
 		return true
 	}
@@ -376,12 +378,12 @@ func (o *OANSCZGF) HasZoteroId() bool {
 }
 
 // SetZoteroId gets a reference to the given string and assigns it to the ZoteroId field.
-func (o *OANSCZGF) SetZoteroId(v string) {
+func (o *OANSCZGFB) SetZoteroId(v string) {
 	o.ZoteroId = &v
 }
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
-func (o *OANSCZGF) GetOrganizationName() string {
+func (o *OANSCZGFB) GetOrganizationName() string {
 	if o == nil || isNil(o.OrganizationName) {
 		var ret string
 		return ret
@@ -391,7 +393,7 @@ func (o *OANSCZGF) GetOrganizationName() string {
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetOrganizationNameOk() (*string, bool) {
+func (o *OANSCZGFB) GetOrganizationNameOk() (*string, bool) {
 	if o == nil || isNil(o.OrganizationName) {
     return nil, false
 	}
@@ -399,7 +401,7 @@ func (o *OANSCZGF) GetOrganizationNameOk() (*string, bool) {
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
-func (o *OANSCZGF) HasOrganizationName() bool {
+func (o *OANSCZGFB) HasOrganizationName() bool {
 	if o != nil && !isNil(o.OrganizationName) {
 		return true
 	}
@@ -408,12 +410,12 @@ func (o *OANSCZGF) HasOrganizationName() bool {
 }
 
 // SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
-func (o *OANSCZGF) SetOrganizationName(v string) {
+func (o *OANSCZGFB) SetOrganizationName(v string) {
 	o.OrganizationName = &v
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *OANSCZGF) GetDomain() string {
+func (o *OANSCZGFB) GetDomain() string {
 	if o == nil || isNil(o.Domain) {
 		var ret string
 		return ret
@@ -423,7 +425,7 @@ func (o *OANSCZGF) GetDomain() string {
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetDomainOk() (*string, bool) {
+func (o *OANSCZGFB) GetDomainOk() (*string, bool) {
 	if o == nil || isNil(o.Domain) {
     return nil, false
 	}
@@ -431,7 +433,7 @@ func (o *OANSCZGF) GetDomainOk() (*string, bool) {
 }
 
 // HasDomain returns a boolean if a field has been set.
-func (o *OANSCZGF) HasDomain() bool {
+func (o *OANSCZGFB) HasDomain() bool {
 	if o != nil && !isNil(o.Domain) {
 		return true
 	}
@@ -440,12 +442,12 @@ func (o *OANSCZGF) HasDomain() bool {
 }
 
 // SetDomain gets a reference to the given string and assigns it to the Domain field.
-func (o *OANSCZGF) SetDomain(v string) {
+func (o *OANSCZGFB) SetDomain(v string) {
 	o.Domain = &v
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
-func (o *OANSCZGF) GetApiKey() string {
+func (o *OANSCZGFB) GetApiKey() string {
 	if o == nil || isNil(o.ApiKey) {
 		var ret string
 		return ret
@@ -455,7 +457,7 @@ func (o *OANSCZGF) GetApiKey() string {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetApiKeyOk() (*string, bool) {
+func (o *OANSCZGFB) GetApiKeyOk() (*string, bool) {
 	if o == nil || isNil(o.ApiKey) {
     return nil, false
 	}
@@ -463,7 +465,7 @@ func (o *OANSCZGF) GetApiKeyOk() (*string, bool) {
 }
 
 // HasApiKey returns a boolean if a field has been set.
-func (o *OANSCZGF) HasApiKey() bool {
+func (o *OANSCZGFB) HasApiKey() bool {
 	if o != nil && !isNil(o.ApiKey) {
 		return true
 	}
@@ -472,12 +474,12 @@ func (o *OANSCZGF) HasApiKey() bool {
 }
 
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
-func (o *OANSCZGF) SetApiKey(v string) {
+func (o *OANSCZGFB) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
 // GetAccessKey returns the AccessKey field value if set, zero value otherwise.
-func (o *OANSCZGF) GetAccessKey() string {
+func (o *OANSCZGFB) GetAccessKey() string {
 	if o == nil || isNil(o.AccessKey) {
 		var ret string
 		return ret
@@ -487,7 +489,7 @@ func (o *OANSCZGF) GetAccessKey() string {
 
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetAccessKeyOk() (*string, bool) {
+func (o *OANSCZGFB) GetAccessKeyOk() (*string, bool) {
 	if o == nil || isNil(o.AccessKey) {
     return nil, false
 	}
@@ -495,7 +497,7 @@ func (o *OANSCZGF) GetAccessKeyOk() (*string, bool) {
 }
 
 // HasAccessKey returns a boolean if a field has been set.
-func (o *OANSCZGF) HasAccessKey() bool {
+func (o *OANSCZGFB) HasAccessKey() bool {
 	if o != nil && !isNil(o.AccessKey) {
 		return true
 	}
@@ -504,12 +506,12 @@ func (o *OANSCZGF) HasAccessKey() bool {
 }
 
 // SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
-func (o *OANSCZGF) SetAccessKey(v string) {
+func (o *OANSCZGFB) SetAccessKey(v string) {
 	o.AccessKey = &v
 }
 
 // GetAccessKeySecret returns the AccessKeySecret field value if set, zero value otherwise.
-func (o *OANSCZGF) GetAccessKeySecret() string {
+func (o *OANSCZGFB) GetAccessKeySecret() string {
 	if o == nil || isNil(o.AccessKeySecret) {
 		var ret string
 		return ret
@@ -519,7 +521,7 @@ func (o *OANSCZGF) GetAccessKeySecret() string {
 
 // GetAccessKeySecretOk returns a tuple with the AccessKeySecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetAccessKeySecretOk() (*string, bool) {
+func (o *OANSCZGFB) GetAccessKeySecretOk() (*string, bool) {
 	if o == nil || isNil(o.AccessKeySecret) {
     return nil, false
 	}
@@ -527,7 +529,7 @@ func (o *OANSCZGF) GetAccessKeySecretOk() (*string, bool) {
 }
 
 // HasAccessKeySecret returns a boolean if a field has been set.
-func (o *OANSCZGF) HasAccessKeySecret() bool {
+func (o *OANSCZGFB) HasAccessKeySecret() bool {
 	if o != nil && !isNil(o.AccessKeySecret) {
 		return true
 	}
@@ -536,12 +538,12 @@ func (o *OANSCZGF) HasAccessKeySecret() bool {
 }
 
 // SetAccessKeySecret gets a reference to the given string and assigns it to the AccessKeySecret field.
-func (o *OANSCZGF) SetAccessKeySecret(v string) {
+func (o *OANSCZGFB) SetAccessKeySecret(v string) {
 	o.AccessKeySecret = &v
 }
 
 // GetEndpointUrl returns the EndpointUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OANSCZGF) GetEndpointUrl() string {
+func (o *OANSCZGFB) GetEndpointUrl() string {
 	if o == nil || isNil(o.EndpointUrl.Get()) {
 		var ret string
 		return ret
@@ -552,7 +554,7 @@ func (o *OANSCZGF) GetEndpointUrl() string {
 // GetEndpointUrlOk returns a tuple with the EndpointUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OANSCZGF) GetEndpointUrlOk() (*string, bool) {
+func (o *OANSCZGFB) GetEndpointUrlOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -560,7 +562,7 @@ func (o *OANSCZGF) GetEndpointUrlOk() (*string, bool) {
 }
 
 // HasEndpointUrl returns a boolean if a field has been set.
-func (o *OANSCZGF) HasEndpointUrl() bool {
+func (o *OANSCZGFB) HasEndpointUrl() bool {
 	if o != nil && o.EndpointUrl.IsSet() {
 		return true
 	}
@@ -569,21 +571,85 @@ func (o *OANSCZGF) HasEndpointUrl() bool {
 }
 
 // SetEndpointUrl gets a reference to the given NullableString and assigns it to the EndpointUrl field.
-func (o *OANSCZGF) SetEndpointUrl(v string) {
+func (o *OANSCZGFB) SetEndpointUrl(v string) {
 	o.EndpointUrl.Set(&v)
 }
 // SetEndpointUrlNil sets the value for EndpointUrl to be an explicit nil
-func (o *OANSCZGF) SetEndpointUrlNil() {
+func (o *OANSCZGFB) SetEndpointUrlNil() {
 	o.EndpointUrl.Set(nil)
 }
 
 // UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
-func (o *OANSCZGF) UnsetEndpointUrl() {
+func (o *OANSCZGFB) UnsetEndpointUrl() {
 	o.EndpointUrl.Unset()
 }
 
+// GetAccountName returns the AccountName field value if set, zero value otherwise.
+func (o *OANSCZGFB) GetAccountName() string {
+	if o == nil || isNil(o.AccountName) {
+		var ret string
+		return ret
+	}
+	return *o.AccountName
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OANSCZGFB) GetAccountNameOk() (*string, bool) {
+	if o == nil || isNil(o.AccountName) {
+    return nil, false
+	}
+	return o.AccountName, true
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *OANSCZGFB) HasAccountName() bool {
+	if o != nil && !isNil(o.AccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given string and assigns it to the AccountName field.
+func (o *OANSCZGFB) SetAccountName(v string) {
+	o.AccountName = &v
+}
+
+// GetAccountKey returns the AccountKey field value if set, zero value otherwise.
+func (o *OANSCZGFB) GetAccountKey() string {
+	if o == nil || isNil(o.AccountKey) {
+		var ret string
+		return ret
+	}
+	return *o.AccountKey
+}
+
+// GetAccountKeyOk returns a tuple with the AccountKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OANSCZGFB) GetAccountKeyOk() (*string, bool) {
+	if o == nil || isNil(o.AccountKey) {
+    return nil, false
+	}
+	return o.AccountKey, true
+}
+
+// HasAccountKey returns a boolean if a field has been set.
+func (o *OANSCZGFB) HasAccountKey() bool {
+	if o != nil && !isNil(o.AccountKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountKey gets a reference to the given string and assigns it to the AccountKey field.
+func (o *OANSCZGFB) SetAccountKey(v string) {
+	o.AccountKey = &v
+}
+
 // GetInstanceSubdomain returns the InstanceSubdomain field value if set, zero value otherwise.
-func (o *OANSCZGF) GetInstanceSubdomain() string {
+func (o *OANSCZGFB) GetInstanceSubdomain() string {
 	if o == nil || isNil(o.InstanceSubdomain) {
 		var ret string
 		return ret
@@ -593,7 +659,7 @@ func (o *OANSCZGF) GetInstanceSubdomain() string {
 
 // GetInstanceSubdomainOk returns a tuple with the InstanceSubdomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetInstanceSubdomainOk() (*string, bool) {
+func (o *OANSCZGFB) GetInstanceSubdomainOk() (*string, bool) {
 	if o == nil || isNil(o.InstanceSubdomain) {
     return nil, false
 	}
@@ -601,7 +667,7 @@ func (o *OANSCZGF) GetInstanceSubdomainOk() (*string, bool) {
 }
 
 // HasInstanceSubdomain returns a boolean if a field has been set.
-func (o *OANSCZGF) HasInstanceSubdomain() bool {
+func (o *OANSCZGFB) HasInstanceSubdomain() bool {
 	if o != nil && !isNil(o.InstanceSubdomain) {
 		return true
 	}
@@ -610,12 +676,12 @@ func (o *OANSCZGF) HasInstanceSubdomain() bool {
 }
 
 // SetInstanceSubdomain gets a reference to the given string and assigns it to the InstanceSubdomain field.
-func (o *OANSCZGF) SetInstanceSubdomain(v string) {
+func (o *OANSCZGFB) SetInstanceSubdomain(v string) {
 	o.InstanceSubdomain = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
-func (o *OANSCZGF) GetClientId() string {
+func (o *OANSCZGFB) GetClientId() string {
 	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
@@ -625,7 +691,7 @@ func (o *OANSCZGF) GetClientId() string {
 
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetClientIdOk() (*string, bool) {
+func (o *OANSCZGFB) GetClientIdOk() (*string, bool) {
 	if o == nil || isNil(o.ClientId) {
     return nil, false
 	}
@@ -633,7 +699,7 @@ func (o *OANSCZGF) GetClientIdOk() (*string, bool) {
 }
 
 // HasClientId returns a boolean if a field has been set.
-func (o *OANSCZGF) HasClientId() bool {
+func (o *OANSCZGFB) HasClientId() bool {
 	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
@@ -642,12 +708,12 @@ func (o *OANSCZGF) HasClientId() bool {
 }
 
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *OANSCZGF) SetClientId(v string) {
+func (o *OANSCZGFB) SetClientId(v string) {
 	o.ClientId = &v
 }
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
-func (o *OANSCZGF) GetClientSecret() string {
+func (o *OANSCZGFB) GetClientSecret() string {
 	if o == nil || isNil(o.ClientSecret) {
 		var ret string
 		return ret
@@ -657,7 +723,7 @@ func (o *OANSCZGF) GetClientSecret() string {
 
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetClientSecretOk() (*string, bool) {
+func (o *OANSCZGFB) GetClientSecretOk() (*string, bool) {
 	if o == nil || isNil(o.ClientSecret) {
     return nil, false
 	}
@@ -665,7 +731,7 @@ func (o *OANSCZGF) GetClientSecretOk() (*string, bool) {
 }
 
 // HasClientSecret returns a boolean if a field has been set.
-func (o *OANSCZGF) HasClientSecret() bool {
+func (o *OANSCZGFB) HasClientSecret() bool {
 	if o != nil && !isNil(o.ClientSecret) {
 		return true
 	}
@@ -674,12 +740,12 @@ func (o *OANSCZGF) HasClientSecret() bool {
 }
 
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
-func (o *OANSCZGF) SetClientSecret(v string) {
+func (o *OANSCZGFB) SetClientSecret(v string) {
 	o.ClientSecret = &v
 }
 
 // GetRedirectUri returns the RedirectUri field value if set, zero value otherwise.
-func (o *OANSCZGF) GetRedirectUri() string {
+func (o *OANSCZGFB) GetRedirectUri() string {
 	if o == nil || isNil(o.RedirectUri) {
 		var ret string
 		return ret
@@ -689,7 +755,7 @@ func (o *OANSCZGF) GetRedirectUri() string {
 
 // GetRedirectUriOk returns a tuple with the RedirectUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetRedirectUriOk() (*string, bool) {
+func (o *OANSCZGFB) GetRedirectUriOk() (*string, bool) {
 	if o == nil || isNil(o.RedirectUri) {
     return nil, false
 	}
@@ -697,7 +763,7 @@ func (o *OANSCZGF) GetRedirectUriOk() (*string, bool) {
 }
 
 // HasRedirectUri returns a boolean if a field has been set.
-func (o *OANSCZGF) HasRedirectUri() bool {
+func (o *OANSCZGFB) HasRedirectUri() bool {
 	if o != nil && !isNil(o.RedirectUri) {
 		return true
 	}
@@ -706,12 +772,12 @@ func (o *OANSCZGF) HasRedirectUri() bool {
 }
 
 // SetRedirectUri gets a reference to the given string and assigns it to the RedirectUri field.
-func (o *OANSCZGF) SetRedirectUri(v string) {
+func (o *OANSCZGFB) SetRedirectUri(v string) {
 	o.RedirectUri = &v
 }
 
 // GetGongAccountEmail returns the GongAccountEmail field value if set, zero value otherwise.
-func (o *OANSCZGF) GetGongAccountEmail() string {
+func (o *OANSCZGFB) GetGongAccountEmail() string {
 	if o == nil || isNil(o.GongAccountEmail) {
 		var ret string
 		return ret
@@ -721,7 +787,7 @@ func (o *OANSCZGF) GetGongAccountEmail() string {
 
 // GetGongAccountEmailOk returns a tuple with the GongAccountEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OANSCZGF) GetGongAccountEmailOk() (*string, bool) {
+func (o *OANSCZGFB) GetGongAccountEmailOk() (*string, bool) {
 	if o == nil || isNil(o.GongAccountEmail) {
     return nil, false
 	}
@@ -729,7 +795,7 @@ func (o *OANSCZGF) GetGongAccountEmailOk() (*string, bool) {
 }
 
 // HasGongAccountEmail returns a boolean if a field has been set.
-func (o *OANSCZGF) HasGongAccountEmail() bool {
+func (o *OANSCZGFB) HasGongAccountEmail() bool {
 	if o != nil && !isNil(o.GongAccountEmail) {
 		return true
 	}
@@ -738,11 +804,11 @@ func (o *OANSCZGF) HasGongAccountEmail() bool {
 }
 
 // SetGongAccountEmail gets a reference to the given string and assigns it to the GongAccountEmail field.
-func (o *OANSCZGF) SetGongAccountEmail(v string) {
+func (o *OANSCZGFB) SetGongAccountEmail(v string) {
 	o.GongAccountEmail = &v
 }
 
-func (o OANSCZGF) MarshalJSON() ([]byte, error) {
+func (o OANSCZGFB) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["source"] = o.Source
@@ -792,6 +858,12 @@ func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	if o.EndpointUrl.IsSet() {
 		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
 	}
+	if !isNil(o.AccountName) {
+		toSerialize["account_name"] = o.AccountName
+	}
+	if !isNil(o.AccountKey) {
+		toSerialize["account_key"] = o.AccountKey
+	}
 	if !isNil(o.InstanceSubdomain) {
 		toSerialize["instance_subdomain"] = o.InstanceSubdomain
 	}
@@ -810,38 +882,38 @@ func (o OANSCZGF) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableOANSCZGF struct {
-	value *OANSCZGF
+type NullableOANSCZGFB struct {
+	value *OANSCZGFB
 	isSet bool
 }
 
-func (v NullableOANSCZGF) Get() *OANSCZGF {
+func (v NullableOANSCZGFB) Get() *OANSCZGFB {
 	return v.value
 }
 
-func (v *NullableOANSCZGF) Set(val *OANSCZGF) {
+func (v *NullableOANSCZGFB) Set(val *OANSCZGFB) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOANSCZGF) IsSet() bool {
+func (v NullableOANSCZGFB) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOANSCZGF) Unset() {
+func (v *NullableOANSCZGFB) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOANSCZGF(val *OANSCZGF) *NullableOANSCZGF {
-	return &NullableOANSCZGF{value: val, isSet: true}
+func NewNullableOANSCZGFB(val *OANSCZGFB) *NullableOANSCZGFB {
+	return &NullableOANSCZGFB{value: val, isSet: true}
 }
 
-func (v NullableOANSCZGF) MarshalJSON() ([]byte, error) {
+func (v NullableOANSCZGFB) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOANSCZGF) UnmarshalJSON(src []byte) error {
+func (v *NullableOANSCZGFB) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

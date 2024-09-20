@@ -33,6 +33,8 @@ type OAuthAuthentication struct {
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
+	AccountName *string `json:"account_name,omitempty"`
+	AccountKey *string `json:"account_key,omitempty"`
 	InstanceSubdomain *string `json:"instance_subdomain,omitempty"`
 	ClientId *string `json:"client_id,omitempty"`
 	ClientSecret *string `json:"client_secret,omitempty"`
@@ -582,6 +584,70 @@ func (o *OAuthAuthentication) UnsetEndpointUrl() {
 	o.EndpointUrl.Unset()
 }
 
+// GetAccountName returns the AccountName field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetAccountName() string {
+	if o == nil || isNil(o.AccountName) {
+		var ret string
+		return ret
+	}
+	return *o.AccountName
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetAccountNameOk() (*string, bool) {
+	if o == nil || isNil(o.AccountName) {
+    return nil, false
+	}
+	return o.AccountName, true
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccountName() bool {
+	if o != nil && !isNil(o.AccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given string and assigns it to the AccountName field.
+func (o *OAuthAuthentication) SetAccountName(v string) {
+	o.AccountName = &v
+}
+
+// GetAccountKey returns the AccountKey field value if set, zero value otherwise.
+func (o *OAuthAuthentication) GetAccountKey() string {
+	if o == nil || isNil(o.AccountKey) {
+		var ret string
+		return ret
+	}
+	return *o.AccountKey
+}
+
+// GetAccountKeyOk returns a tuple with the AccountKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthAuthentication) GetAccountKeyOk() (*string, bool) {
+	if o == nil || isNil(o.AccountKey) {
+    return nil, false
+	}
+	return o.AccountKey, true
+}
+
+// HasAccountKey returns a boolean if a field has been set.
+func (o *OAuthAuthentication) HasAccountKey() bool {
+	if o != nil && !isNil(o.AccountKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountKey gets a reference to the given string and assigns it to the AccountKey field.
+func (o *OAuthAuthentication) SetAccountKey(v string) {
+	o.AccountKey = &v
+}
+
 // GetInstanceSubdomain returns the InstanceSubdomain field value if set, zero value otherwise.
 func (o *OAuthAuthentication) GetInstanceSubdomain() string {
 	if o == nil || isNil(o.InstanceSubdomain) {
@@ -791,6 +857,12 @@ func (o OAuthAuthentication) MarshalJSON() ([]byte, error) {
 	}
 	if o.EndpointUrl.IsSet() {
 		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
+	}
+	if !isNil(o.AccountName) {
+		toSerialize["account_name"] = o.AccountName
+	}
+	if !isNil(o.AccountKey) {
+		toSerialize["account_key"] = o.AccountKey
 	}
 	if !isNil(o.InstanceSubdomain) {
 		toSerialize["instance_subdomain"] = o.InstanceSubdomain

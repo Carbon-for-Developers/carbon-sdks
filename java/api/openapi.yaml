@@ -1598,6 +1598,59 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-confluence-sync
       x-content-type: application/json
       x-accepts: application/json
+  /integrations/azure_blob_storage:
+    post:
+      description: |-
+        This endpoint can be used to connect Azure Blob Storage.
+
+        For Azure Blob Storage, follow these steps:
+        <ol>
+          <li>Create a new Azure Storage account and grant the following permissions:
+            <ul>
+              <li>List containers.</li>
+              <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+            </ul>
+          </li>
+          <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+        </ol>
+
+        Once created, provide us with the following details to generate the connection URL:
+        <ol>
+          <li>Storage Account KeyName.</li>
+          <li>Storage Account Name.</li>
+        </ol>
+      operationId: Integrations_syncAzureBlobStorage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureBlobAuthRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserDataSourceAPI'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Azure Blob Storage Auth
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-azure_blob_storage
+      x-content-type: application/json
+      x-accepts: application/json
   /integrations/s3:
     post:
       description: "This endpoint can be used to connect S3 as well as Digital Ocean\
@@ -1678,6 +1731,44 @@ paths:
       - Integrations
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-s3-files
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/azure_blob_storage/files:
+    post:
+      description: "After optionally loading the items via /integrations/items/sync\
+        \ and integrations/items/list, use the container name \nand file name as the\
+        \ ID in this endpoint to sync them into Carbon. Additional parameters below\
+        \ can associate \ndata with the selected items or modify the sync behavior"
+      operationId: Integrations_syncAzureBlobFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureBlobFileSyncInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Azure Blob Files
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-azure_blob_storage-files
       x-content-type: application/json
       x-accepts: application/json
   /integrations/gmail/sync:
@@ -4305,6 +4396,192 @@ components:
       - url
       title: AddWebhookProps
       type: object
+    AzureBlobAuthRequest:
+      example:
+        sync_source_items: true
+        account_name: account_name
+        account_key: account_key
+      properties:
+        account_name:
+          title: Account Name
+          type: string
+        account_key:
+          title: Account Key
+          type: string
+        sync_source_items:
+          default: true
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobAuthRequest-properties-sync_source_items
+      required:
+      - account_key
+      - account_name
+      title: AzureBlobAuthRequest
+      type: object
+    AzureBlobFileSyncInput:
+      example:
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        max_items_per_chunk: 0
+        parse_pdf_tables_with_ocr: false
+        embedding_model: null
+        file_sync_config:
+          detect_audio_language: false
+          include_speaker_labels: false
+          split_rows: false
+          sync_attachments: false
+          transcription_service: null
+          skip_file_processing: false
+          auto_synced_source_types:
+          - ARTICLE
+          generate_chunks_only: false
+        tags: {}
+        use_ocr: false
+        generate_sparse_vectors: false
+        set_page_as_boundary: false
+        ids:
+        - container: container
+          id: id
+        - container: container
+          id: id
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        request_id: request_id
+        data_source_id: 6
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-tags
+        ids:
+          items:
+            $ref: '#/components/schemas/AzureBlobGetFileInput'
+          title: Ids
+          type: array
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-prepend_filename_to_chunks
+        max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
+          nullable: true
+          title: Max Items Per Chunk
+          type: integer
+        set_page_as_boundary:
+          default: false
+          example: false
+          title: Set Page As Boundary
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-set_page_as_boundary
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-parse_pdf_tables_with_ocr
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+      required:
+      - ids
+      title: AzureBlobFileSyncInput
+      type: object
+      x-konfig-properties:
+        embedding_model:
+          default: OPENAI
+    AzureBlobGetFileInput:
+      example:
+        container: container
+        id: id
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+        container:
+          nullable: true
+          title: Container
+          type: string
+      title: AzureBlobGetFileInput
+      type: object
+    AzureBlobStorageAuthentication:
+      properties:
+        source:
+          title: Source
+        account_name:
+          title: Account Name
+          type: string
+        account_key:
+          title: Account Key
+          type: string
+      required:
+      - account_key
+      - account_name
+      - source
+      title: AzureBlobStorageAuthentication
+      type: object
     Body_create_upload_file_uploadfile_post:
       properties:
         file:
@@ -4513,6 +4790,7 @@ components:
           request_id: request_id
         authentication:
           tenant_name: tenant_name
+          account_key: account_key
           source: ""
           organization_name: organization_name
           client_id: client_id
@@ -4526,6 +4804,7 @@ components:
           api_key: api_key
           domain: domain
           access_key: access_key
+          account_name: account_name
           access_key_secret: access_key_secret
           subdomain: subdomain
           client_secret: client_secret
@@ -4535,7 +4814,7 @@ components:
           username: username
       properties:
         authentication:
-          $ref: '#/components/schemas/OANSCZGF'
+          $ref: '#/components/schemas/OANSCZGFB'
         sync_options:
           $ref: '#/components/schemas/SyncOptions'
       required:
@@ -4658,6 +4937,7 @@ components:
       - ZENDESK
       - ZOTERO
       - S3
+      - AZURE_BLOB_STORAGE
       - GMAIL
       - OUTLOOK
       - SERVICENOW
@@ -7067,6 +7347,12 @@ components:
                     The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
           nullable: true
           title: Endpoint Url
+          type: string
+        account_name:
+          title: Account Name
+          type: string
+        account_key:
+          title: Account Key
           type: string
         instance_subdomain:
           title: Instance Subdomain
@@ -10707,6 +10993,99 @@ components:
       nullable: true
       title: FileContentTypes
       type: string
+    FileSyncConfigNullable:
+      description: Used to configure file syncing for certain connectors when sync_files_on_connection
+        is set to true
+      example:
+        detect_audio_language: false
+        include_speaker_labels: false
+        split_rows: false
+        sync_attachments: false
+        transcription_service: null
+        skip_file_processing: false
+        auto_synced_source_types:
+        - ARTICLE
+        generate_chunks_only: false
+      nullable: true
+      properties:
+        auto_synced_source_types:
+          default:
+          - ARTICLE
+          description: "File types to automatically sync when the data source connects.\
+            \ Only a subset of file types can be \n        controlled. If not supported,\
+            \ then they will always be synced"
+          example:
+          - ARTICLE
+          items:
+            $ref: '#/components/schemas/HSNFileTypes3'
+          title: Auto Synced Source Types
+          type: array
+          x-konfig-original-example:
+          - ARTICLE
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-auto_synced_source_types
+        sync_attachments:
+          default: false
+          description: Automatically sync attachments from files where supported.
+            Currently applies to Helpdesk Tickets
+          example: false
+          title: Sync Attachments
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-sync_attachments
+        detect_audio_language:
+          default: false
+          description: Detect audio language before transcription for audio files
+          example: false
+          title: Detect Audio Language
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-detect_audio_language
+        transcription_service:
+          $ref: '#/components/schemas/TranscriptionServiceNullable'
+        include_speaker_labels:
+          default: false
+          description: Detect multiple speakers and label segments of speech by speaker
+            for audio files.
+          example: false
+          title: Include Speaker Labels
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-include_speaker_labels
+        split_rows:
+          default: false
+          description: "Whether to split tabular rows into chunks. Currently only\
+            \ valid for CSV, TSV, and XLSX files."
+          example: false
+          title: Split Rows
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-split_rows
+        generate_chunks_only:
+          default: false
+          description: |-
+            If this flag is enabled, the file will be chunked and stored with Carbon,
+                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+          example: false
+          title: Generate Chunks Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only
+        skip_file_processing:
+          default: false
+          description: "Setting this flag will create a new file record with Carbon\
+            \ but skip any and all processing. \n        This means that we do not\
+            \ download the remote file content or generate any chunks or embeddings.\
+            \ We will store\n        some metadata like name, external id, and external\
+            \ URL depending on the source you are syncing from. Note that this \n\
+            \        flag overrides both skip_embedding_generation and generate_chunks_only\
+            \ flags. The file will be moved to \n        READY_TO_SYNC status."
+          example: false
+          title: Skip File Processing
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
+      title: FileSyncConfig
+      type: object
     DataSourceTypeNullable:
       enum:
       - GOOGLE_CLOUD_STORAGE
@@ -10722,6 +11101,7 @@ components:
       - ZENDESK
       - ZOTERO
       - S3
+      - AZURE_BLOB_STORAGE
       - GMAIL
       - OUTLOOK
       - SERVICENOW
@@ -10853,99 +11233,6 @@ components:
       nullable: true
       title: FileFormats
       type: string
-    FileSyncConfigNullable:
-      description: Used to configure file syncing for certain connectors when sync_files_on_connection
-        is set to true
-      example:
-        detect_audio_language: false
-        include_speaker_labels: false
-        split_rows: false
-        sync_attachments: false
-        transcription_service: null
-        skip_file_processing: false
-        auto_synced_source_types:
-        - ARTICLE
-        generate_chunks_only: false
-      nullable: true
-      properties:
-        auto_synced_source_types:
-          default:
-          - ARTICLE
-          description: "File types to automatically sync when the data source connects.\
-            \ Only a subset of file types can be \n        controlled. If not supported,\
-            \ then they will always be synced"
-          example:
-          - ARTICLE
-          items:
-            $ref: '#/components/schemas/HSNFileTypes3'
-          title: Auto Synced Source Types
-          type: array
-          x-konfig-original-example:
-          - ARTICLE
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-auto_synced_source_types
-        sync_attachments:
-          default: false
-          description: Automatically sync attachments from files where supported.
-            Currently applies to Helpdesk Tickets
-          example: false
-          title: Sync Attachments
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-sync_attachments
-        detect_audio_language:
-          default: false
-          description: Detect audio language before transcription for audio files
-          example: false
-          title: Detect Audio Language
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-detect_audio_language
-        transcription_service:
-          $ref: '#/components/schemas/TranscriptionServiceNullable'
-        include_speaker_labels:
-          default: false
-          description: Detect multiple speakers and label segments of speech by speaker
-            for audio files.
-          example: false
-          title: Include Speaker Labels
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-include_speaker_labels
-        split_rows:
-          default: false
-          description: "Whether to split tabular rows into chunks. Currently only\
-            \ valid for CSV, TSV, and XLSX files."
-          example: false
-          title: Split Rows
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-split_rows
-        generate_chunks_only:
-          default: false
-          description: |-
-            If this flag is enabled, the file will be chunked and stored with Carbon,
-                      but no embeddings will be generated. This overrides the skip_embedding_generation flag.
-          example: false
-          title: Generate Chunks Only
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only
-        skip_file_processing:
-          default: false
-          description: "Setting this flag will create a new file record with Carbon\
-            \ but skip any and all processing. \n        This means that we do not\
-            \ download the remote file content or generate any chunks or embeddings.\
-            \ We will store\n        some metadata like name, external id, and external\
-            \ URL depending on the source you are syncing from. Note that this \n\
-            \        flag overrides both skip_embedding_generation and generate_chunks_only\
-            \ flags. The file will be moved to \n        READY_TO_SYNC status."
-          example: false
-          title: Skip File Processing
-          type: boolean
-          x-konfig-original-example: false
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
-      title: FileSyncConfig
-      type: object
     HybridSearchTuningParamsNullable:
       description: Hybrid search tuning parameters. See the endpoint description for
         more details.
@@ -11341,6 +11628,47 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-paths--fetch_youtube_transcript-get-parameters-1-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobAuthRequest-properties-sync_source_items:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-tags:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-set_page_as_boundary:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-use_ocr:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-parse_pdf_tables_with_ocr:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -12206,10 +12534,6 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
-      example: OPENAI
-      type: string
-      x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-auto_synced_source_types:
       example:
       - ARTICLE
@@ -12241,6 +12565,10 @@ components:
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable:
+      example: OPENAI
+      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-HybridSearchTuningParamsNullable:
       example:
@@ -12535,7 +12863,7 @@ components:
     konfig-generated-schema-single-parameter-schema-post--integrations-connect:
       properties:
         authentication:
-          $ref: '#/components/schemas/OANSCZGF'
+          $ref: '#/components/schemas/OANSCZGFB'
         sync_options:
           $ref: '#/components/schemas/SyncOptions'
       required:
@@ -12815,6 +13143,27 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-azure_blob_storage:
+      properties:
+        account_name:
+          title: Account Name
+          type: string
+        account_key:
+          title: Account Key
+          type: string
+        sync_source_items:
+          default: true
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobAuthRequest-properties-sync_source_items
+      required:
+      - account_key
+      - account_name
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--integrations-s3:
       properties:
         access_key:
@@ -12938,6 +13287,106 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-parse_pdf_tables_with_ocr
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+      required:
+      - ids
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-azure_blob_storage-files:
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-tags
+        ids:
+          items:
+            $ref: '#/components/schemas/AzureBlobGetFileInput'
+          title: Ids
+          type: array
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-prepend_filename_to_chunks
+        max_items_per_chunk:
+          description: "Number of objects per chunk. For csv, tsv, xlsx, and json\
+            \ files only."
+          nullable: true
+          title: Max Items Per Chunk
+          type: integer
+        set_page_as_boundary:
+          default: false
+          example: false
+          title: Set Page As Boundary
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-set_page_as_boundary
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        use_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Use Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-use_ocr
+        parse_pdf_tables_with_ocr:
+          default: false
+          example: false
+          nullable: true
+          title: Parse Pdf Tables With Ocr
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AzureBlobFileSyncInput-properties-parse_pdf_tables_with_ocr
         file_sync_config:
           $ref: '#/components/schemas/FileSyncConfigNullable'
       required:
@@ -14996,9 +15445,10 @@ components:
       - SOLAR_1_MINI
       title: TextEmbeddingGenerators
       type: string
-    OANSCZGF:
+    OANSCZGFB:
       example:
         tenant_name: tenant_name
+        account_key: account_key
         source: ""
         organization_name: organization_name
         client_id: client_id
@@ -15012,6 +15462,7 @@ components:
         api_key: api_key
         domain: domain
         access_key: access_key
+        account_name: account_name
         access_key_secret: access_key_secret
         subdomain: subdomain
         client_secret: client_secret
@@ -15070,6 +15521,12 @@ components:
                     The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
           nullable: true
           title: Endpoint Url
+          type: string
+        account_name:
+          title: Account Name
+          type: string
+        account_key:
+          title: Account Key
           type: string
         instance_subdomain:
           title: Instance Subdomain

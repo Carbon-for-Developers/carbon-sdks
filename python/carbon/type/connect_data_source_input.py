@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.type.confluence_authentication import ConfluenceAuthentication
 from carbon.type.freskdesk_authentication import FreskdeskAuthentication
 from carbon.type.gitbook_authetication import GitbookAuthetication
@@ -31,7 +32,7 @@ from carbon.type.zendesk_authentication import ZendeskAuthentication
 from carbon.type.zotero_authentication import ZoteroAuthentication
 
 class RequiredConnectDataSourceInput(TypedDict):
-    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication, GongAuthentication]
+    authentication: typing.Union[OAuthAuthentication, NotionAuthentication, SharepointAuthentication, ConfluenceAuthentication, ZendeskAuthentication, ZoteroAuthentication, GitbookAuthetication, SalesforceAuthentication, FreskdeskAuthentication, S3Authentication, AzureBlobStorageAuthentication, GithubAuthentication, ServiceNowAuthentication, GuruAuthentication, GongAuthentication]
 
 
 class OptionalConnectDataSourceInput(TypedDict, total=False):

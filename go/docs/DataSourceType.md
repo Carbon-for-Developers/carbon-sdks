@@ -29,6 +29,8 @@
 
 * `S3` (value: `"S3"`)
 
+* `AZURE_BLOB_STORAGE` (value: `"AZURE_BLOB_STORAGE"`)
+
 * `GMAIL` (value: `"GMAIL"`)
 
 * `OUTLOOK` (value: `"OUTLOOK"`)

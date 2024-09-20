@@ -23,6 +23,8 @@ from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpaces
 from carbon.paths.integrations_gmail_user_labels.get import ListLabels
 from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCategories
 from carbon.paths.integrations_github_repos.get import ListRepos
+from carbon.paths.integrations_azure_blob_storage_files.post import SyncAzureBlobFiles
+from carbon.paths.integrations_azure_blob_storage.post import SyncAzureBlobStorage
 from carbon.paths.integrations_confluence_sync.post import SyncConfluence
 from carbon.paths.integrations_items_sync.post import SyncDataSourceItems
 from carbon.paths.integrations_files_sync.post import SyncFiles
@@ -53,6 +55,8 @@ class IntegrationsApiGenerated(
     ListLabels,
     ListOutlookCategories,
     ListRepos,
+    SyncAzureBlobFiles,
+    SyncAzureBlobStorage,
     SyncConfluence,
     SyncDataSourceItems,
     SyncFiles,
