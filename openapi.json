@@ -419,6 +419,57 @@
         ]
       }
     },
+    "/integrations/azure_blob_storage": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Azure Blob Storage Auth",
+        "description": "This endpoint can be used to connect Azure Blob Storage.\n\nFor Azure Blob Storage, follow these steps:\n<ol>\n  <li>Create a new Azure Storage account and grant the following permissions:\n    <ul>\n      <li>List containers.</li>\n      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>\n    </ul>\n  </li>\n  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>\n</ol>\n\nOnce created, provide us with the following details to generate the connection URL:\n<ol>\n  <li>Storage Account KeyName.</li>\n  <li>Storage Account Name.</li>\n</ol>",
+        "operationId": "azure_blob_storage_auth_integrations_azure_blob_storage_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AzureBlobAuthRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/integrations/s3": {
       "post": {
         "tags": [
@@ -483,6 +534,57 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/S3FileSyncInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/azure_blob_storage/files": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Azure Blob Files",
+        "description": "After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name \nand file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate \ndata with the selected items or modify the sync behavior",
+        "operationId": "azure_blob_files_integrations_azure_blob_storage_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AzureBlobFileSyncInput"
               }
             }
           },
@@ -3737,6 +3839,250 @@
         ],
         "title": "AddWebhookProps"
       },
+      "AzureBlobAuthRequest": {
+        "properties": {
+          "account_name": {
+            "type": "string",
+            "title": "Account Name"
+          },
+          "account_key": {
+            "type": "string",
+            "title": "Account Key"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "account_name",
+          "account_key"
+        ],
+        "title": "AzureBlobAuthRequest"
+      },
+      "AzureBlobFileSyncInput": {
+        "properties": {
+          "ids": {
+            "items": {
+              "$ref": "#/components/schemas/AzureBlobGetFileInput"
+            },
+            "type": "array",
+            "title": "Ids"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddingGenerators"
+              }
+            ],
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          },
+          "max_items_per_chunk": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Items Per Chunk",
+            "description": "Number of objects per chunk. For csv, tsv, xlsx, and json files only."
+          },
+          "set_page_as_boundary": {
+            "type": "boolean",
+            "title": "Set Page As Boundary",
+            "default": false
+          },
+          "data_source_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Id"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          },
+          "use_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Use Ocr",
+            "default": false
+          },
+          "parse_pdf_tables_with_ocr": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parse Pdf Tables With Ocr",
+            "default": false
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "title": "AzureBlobFileSyncInput"
+      },
+      "AzureBlobGetFileInput": {
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "container": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Container"
+          }
+        },
+        "type": "object",
+        "title": "AzureBlobGetFileInput"
+      },
+      "AzureBlobStorageAuthentication": {
+        "properties": {
+          "source": {
+            "const": "AZURE_BLOB_STORAGE",
+            "title": "Source"
+          },
+          "account_name": {
+            "type": "string",
+            "title": "Account Name"
+          },
+          "account_key": {
+            "type": "string",
+            "title": "Account Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "account_name",
+          "account_key"
+        ],
+        "title": "AzureBlobStorageAuthentication"
+      },
       "Body_create_upload_file_uploadfile_post": {
         "properties": {
           "file": {
@@ -3935,6 +4281,9 @@
                 "$ref": "#/components/schemas/NotionAuthentication"
               },
               {
+                "$ref": "#/components/schemas/OneDriveAuthentication"
+              },
+              {
                 "$ref": "#/components/schemas/SharepointAuthentication"
               },
               {
@@ -3957,6 +4306,9 @@
               },
               {
                 "$ref": "#/components/schemas/S3Authentication"
+              },
+              {
+                "$ref": "#/components/schemas/AzureBlobStorageAuthentication"
               },
               {
                 "$ref": "#/components/schemas/GithubAuthentication"
@@ -4103,6 +4455,7 @@
           "ZENDESK",
           "ZOTERO",
           "S3",
+          "AZURE_BLOB_STORAGE",
           "GMAIL",
           "OUTLOOK",
           "SERVICENOW",
@@ -7231,6 +7584,46 @@
         ],
         "title": "OauthBasedConnectors"
       },
+      "OneDriveAuthentication": {
+        "properties": {
+          "source": {
+            "const": "ONEDRIVE",
+            "title": "Source"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "refresh_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Refresh Token"
+          },
+          "tenant_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tenant Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "access_token"
+        ],
+        "title": "OneDriveAuthentication"
+      },
       "OrderDir": {
         "type": "string",
         "enum": [
@@ -8982,7 +9375,14 @@
             "title": "Refresh Token"
           },
           "tenant_name": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Tenant Name"
           },
           "site_name": {
@@ -8994,7 +9394,6 @@
         "required": [
           "source",
           "access_token",
-          "tenant_name",
           "site_name"
         ],
         "title": "SharepointAuthentication"
