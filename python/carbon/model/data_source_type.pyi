@@ -84,6 +84,10 @@ class DataSourceType(
         return cls("S3")
     
     @schemas.classproperty
+    def AZURE_BLOB_STORAGE(cls):
+        return cls("AZURE_BLOB_STORAGE")
+    
+    @schemas.classproperty
     def GMAIL(cls):
         return cls("GMAIL")
     

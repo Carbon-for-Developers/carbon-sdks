@@ -10,7 +10,7 @@
 |**source** | **Object** |  |  |
 |**accessToken** | **String** |  |  |
 |**refreshToken** | **String** |  |  [optional] |
-|**tenantName** | **String** |  |  |
+|**tenantName** | **String** |  |  [optional] |
 |**siteName** | **String** |  |  |
 
 

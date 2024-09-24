@@ -60,6 +60,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
   * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
   * [`carbon.integrations.listRepos`](#carbonintegrationslistrepos)
+  * [`carbon.integrations.syncAzureBlobFiles`](#carbonintegrationssyncazureblobfiles)
+  * [`carbon.integrations.syncAzureBlobStorage`](#carbonintegrationssyncazureblobstorage)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
   * [`carbon.integrations.syncDataSourceItems`](#carbonintegrationssyncdatasourceitems)
   * [`carbon.integrations.syncFiles`](#carbonintegrationssyncfiles)
@@ -1533,7 +1535,7 @@ ConnectDataSourceResponse result = client
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: [`OANSCZGF`](./src/main/java/com/konfigthis/client/model/OANSCZGF.java)<a id="authentication-oansczgfsrcmainjavacomkonfigthisclientmodeloansczgfjava"></a>
+##### authentication: [`OANDSCZGFB`](./src/main/java/com/konfigthis/client/model/OANDSCZGFB.java)<a id="authentication-oandsczgfbsrcmainjavacomkonfigthisclientmodeloandsczgfbjava"></a>
 
 ##### sync_options: [`SyncOptions`](./src/main/java/com/konfigthis/client/model/SyncOptions.java)<a id="sync_options-syncoptionssrcmainjavacomkonfigthisclientmodelsyncoptionsjava"></a>
 
@@ -2216,6 +2218,134 @@ Object result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncAzureBlobFiles`<a id="carbonintegrationssyncazureblobfiles"></a>
+
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+data with the selected items or modify the sync behavior
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+GenericSuccessResponse result = client
+        .integrations
+        .syncAzureBlobFiles(ids)
+        .tags(tags)
+        .chunkSize(chunkSize)
+        .chunkOverlap(chunkOverlap)
+        .skipEmbeddingGeneration(skipEmbeddingGeneration)
+        .embeddingModel(embeddingModel)
+        .generateSparseVectors(generateSparseVectors)
+        .prependFilenameToChunks(prependFilenameToChunks)
+        .maxItemsPerChunk(maxItemsPerChunk)
+        .setPageAsBoundary(setPageAsBoundary)
+        .dataSourceId(dataSourceId)
+        .requestId(requestId)
+        .useOcr(useOcr)
+        .parsePdfTablesWithOcr(parsePdfTablesWithOcr)
+        .fileSyncConfig(fileSyncConfig)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: List<[`AzureBlobGetFileInput`](./src/main/java/com/konfigthis/client/model/AzureBlobGetFileInput.java)><a id="ids-list"></a>
+
+##### tags: `Object`<a id="tags-object"></a>
+
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model:<a id="embedding_model"></a>
+
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### request_id: `String`<a id="request_id-string"></a>
+
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.syncAzureBlobStorage`<a id="carbonintegrationssyncazureblobstorage"></a>
+
+This endpoint can be used to connect Azure Blob Storage.
+
+For Azure Blob Storage, follow these steps:
+<ol>
+  <li>Create a new Azure Storage account and grant the following permissions:
+    <ul>
+      <li>List containers.</li>
+      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    </ul>
+  </li>
+  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+</ol>
+
+Once created, provide us with the following details to generate the connection URL:
+<ol>
+  <li>Storage Account KeyName.</li>
+  <li>Storage Account Name.</li>
+</ol>
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+OrganizationUserDataSourceAPI result = client
+        .integrations
+        .syncAzureBlobStorage(accountName, accountKey)
+        .syncSourceItems(syncSourceItems)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_name: `String`<a id="account_name-string"></a>
+
+##### account_key: `String`<a id="account_key-string"></a>
+
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceAPI.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -40,7 +40,7 @@ export interface SharepointAuthentication {
      * @type {string}
      * @memberof SharepointAuthentication
      */
-    'tenant_name': string;
+    'tenant_name'?: string | null;
     /**
      * 
      * @type {string}

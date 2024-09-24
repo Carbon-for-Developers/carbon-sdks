@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Source** | **interface{}** |  | 
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
-**TenantName** | **string** |  | 
+**TenantName** | Pointer to **NullableString** |  | [optional] 
 **SiteName** | **string** |  | 
 
 ## Methods
 
 ### NewSharepointAuthentication
 
-`func NewSharepointAuthentication(source interface{}, accessToken string, tenantName string, siteName string, ) *SharepointAuthentication`
+`func NewSharepointAuthentication(source interface{}, accessToken string, siteName string, ) *SharepointAuthentication`
 
 NewSharepointAuthentication instantiates a new SharepointAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -133,7 +133,22 @@ and a boolean to check if the value has been set.
 
 SetTenantName sets TenantName field to given value.
 
+### HasTenantName
 
+`func (o *SharepointAuthentication) HasTenantName() bool`
+
+HasTenantName returns a boolean if a field has been set.
+
+### SetTenantNameNil
+
+`func (o *SharepointAuthentication) SetTenantNameNil(b bool)`
+
+ SetTenantNameNil sets the value for TenantName to be an explicit nil
+
+### UnsetTenantName
+`func (o *SharepointAuthentication) UnsetTenantName()`
+
+UnsetTenantName ensures that no value is present for TenantName, not even an explicit nil
 ### GetSiteName
 
 `func (o *SharepointAuthentication) GetSiteName() string`

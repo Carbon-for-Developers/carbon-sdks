@@ -114,6 +114,14 @@ public class OAuthAuthentication {
   @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
   private String endpointUrl;
 
+  public static final String SERIALIZED_NAME_ACCOUNT_NAME = "account_name";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_NAME)
+  private String accountName;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_KEY = "account_key";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_KEY)
+  private String accountKey;
+
   public static final String SERIALIZED_NAME_INSTANCE_SUBDOMAIN = "instance_subdomain";
   @SerializedName(SERIALIZED_NAME_INSTANCE_SUBDOMAIN)
   private String instanceSubdomain;
@@ -601,6 +609,64 @@ public class OAuthAuthentication {
   }
 
 
+  public OAuthAuthentication accountName(String accountName) {
+    
+    
+    
+    
+    this.accountName = accountName;
+    return this;
+  }
+
+   /**
+   * Get accountName
+   * @return accountName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAccountName() {
+    return accountName;
+  }
+
+
+  public void setAccountName(String accountName) {
+    
+    
+    
+    this.accountName = accountName;
+  }
+
+
+  public OAuthAuthentication accountKey(String accountKey) {
+    
+    
+    
+    
+    this.accountKey = accountKey;
+    return this;
+  }
+
+   /**
+   * Get accountKey
+   * @return accountKey
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAccountKey() {
+    return accountKey;
+  }
+
+
+  public void setAccountKey(String accountKey) {
+    
+    
+    
+    this.accountKey = accountKey;
+  }
+
+
   public OAuthAuthentication instanceSubdomain(String instanceSubdomain) {
     
     
@@ -816,6 +882,8 @@ public class OAuthAuthentication {
         Objects.equals(this.accessKey, oauthAuthentication.accessKey) &&
         Objects.equals(this.accessKeySecret, oauthAuthentication.accessKeySecret) &&
         Objects.equals(this.endpointUrl, oauthAuthentication.endpointUrl) &&
+        Objects.equals(this.accountName, oauthAuthentication.accountName) &&
+        Objects.equals(this.accountKey, oauthAuthentication.accountKey) &&
         Objects.equals(this.instanceSubdomain, oauthAuthentication.instanceSubdomain) &&
         Objects.equals(this.clientId, oauthAuthentication.clientId) &&
         Objects.equals(this.clientSecret, oauthAuthentication.clientSecret) &&
@@ -830,7 +898,7 @@ public class OAuthAuthentication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, instanceSubdomain, clientId, clientSecret, redirectUri, gongAccountEmail, additionalProperties);
+    return Objects.hash(source, accessToken, refreshToken, workspaceId, tenantName, siteName, subdomain, accessTokenSecret, username, zoteroId, organizationName, domain, apiKey, accessKey, accessKeySecret, endpointUrl, accountName, accountKey, instanceSubdomain, clientId, clientSecret, redirectUri, gongAccountEmail, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -860,6 +928,8 @@ public class OAuthAuthentication {
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
     sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
+    sb.append("    accountName: ").append(toIndentedString(accountName)).append("\n");
+    sb.append("    accountKey: ").append(toIndentedString(accountKey)).append("\n");
     sb.append("    instanceSubdomain: ").append(toIndentedString(instanceSubdomain)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    clientSecret: ").append(toIndentedString(clientSecret)).append("\n");
@@ -904,6 +974,8 @@ public class OAuthAuthentication {
     openapiFields.add("access_key");
     openapiFields.add("access_key_secret");
     openapiFields.add("endpoint_url");
+    openapiFields.add("account_name");
+    openapiFields.add("account_key");
     openapiFields.add("instance_subdomain");
     openapiFields.add("client_id");
     openapiFields.add("client_secret");
@@ -943,7 +1015,7 @@ public class OAuthAuthentication {
       if ((jsonObj.get("workspace_id") != null && !jsonObj.get("workspace_id").isJsonNull()) && !jsonObj.get("workspace_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `workspace_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("workspace_id").toString()));
       }
-      if ((jsonObj.get("tenant_name") != null && !jsonObj.get("tenant_name").isJsonNull()) && !jsonObj.get("tenant_name").isJsonPrimitive()) {
+      if (!jsonObj.get("tenant_name").isJsonNull() && (jsonObj.get("tenant_name") != null && !jsonObj.get("tenant_name").isJsonNull()) && !jsonObj.get("tenant_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tenant_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenant_name").toString()));
       }
       if ((jsonObj.get("site_name") != null && !jsonObj.get("site_name").isJsonNull()) && !jsonObj.get("site_name").isJsonPrimitive()) {
@@ -978,6 +1050,12 @@ public class OAuthAuthentication {
       }
       if (!jsonObj.get("endpoint_url").isJsonNull() && (jsonObj.get("endpoint_url") != null && !jsonObj.get("endpoint_url").isJsonNull()) && !jsonObj.get("endpoint_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endpoint_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint_url").toString()));
+      }
+      if ((jsonObj.get("account_name") != null && !jsonObj.get("account_name").isJsonNull()) && !jsonObj.get("account_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `account_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account_name").toString()));
+      }
+      if ((jsonObj.get("account_key") != null && !jsonObj.get("account_key").isJsonNull()) && !jsonObj.get("account_key").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `account_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account_key").toString()));
       }
       if ((jsonObj.get("instance_subdomain") != null && !jsonObj.get("instance_subdomain").isJsonNull()) && !jsonObj.get("instance_subdomain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instance_subdomain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance_subdomain").toString()));

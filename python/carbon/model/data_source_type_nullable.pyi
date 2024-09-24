@@ -50,6 +50,7 @@ class DataSourceTypeNullable(
             "ZENDESK": "ZENDESK",
             "ZOTERO": "ZOTERO",
             "S3": "S3",
+            "AZURE_BLOB_STORAGE": "AZURE_BLOB_STORAGE",
             "GMAIL": "GMAIL",
             "OUTLOOK": "OUTLOOK",
             "SERVICENOW": "SERVICENOW",
@@ -150,6 +151,10 @@ class DataSourceTypeNullable(
     @schemas.classproperty
     def S3(cls):
         return cls("S3")
+    
+    @schemas.classproperty
+    def AZURE_BLOB_STORAGE(cls):
+        return cls("AZURE_BLOB_STORAGE")
     
     @schemas.classproperty
     def GMAIL(cls):

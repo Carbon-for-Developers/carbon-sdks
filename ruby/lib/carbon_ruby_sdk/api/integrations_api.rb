@@ -1793,6 +1793,304 @@ module Carbon
     end
 
 
+    # Azure Blob Files
+    #
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+    # and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+    # data with the selected items or modify the sync behavior
+    #
+    # @param ids [Array<AzureBlobGetFileInput>] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+    # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] 
+    # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param file_sync_config [FileSyncConfigNullable] 
+    # @param body [AzureBlobFileSyncInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_azure_blob_files(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, file_sync_config: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:ids] = ids if ids != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      azure_blob_file_sync_input = _body
+      api_response = sync_azure_blob_files_with_http_info_impl(azure_blob_file_sync_input, extra)
+      api_response.data
+    end
+
+    # Azure Blob Files
+    #
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+    # and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+    # data with the selected items or modify the sync behavior
+    #
+    # @param ids [Array<AzureBlobGetFileInput>] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param max_items_per_chunk [Integer] Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+    # @param set_page_as_boundary [Boolean] 
+    # @param data_source_id [Integer] 
+    # @param request_id [String] 
+    # @param use_ocr [Boolean] 
+    # @param parse_pdf_tables_with_ocr [Boolean] 
+    # @param file_sync_config [FileSyncConfigNullable] 
+    # @param body [AzureBlobFileSyncInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_azure_blob_files_with_http_info(ids:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, set_page_as_boundary: false, data_source_id: SENTINEL, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, file_sync_config: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:ids] = ids if ids != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
+      _body[:set_page_as_boundary] = set_page_as_boundary if set_page_as_boundary != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:use_ocr] = use_ocr if use_ocr != SENTINEL
+      _body[:parse_pdf_tables_with_ocr] = parse_pdf_tables_with_ocr if parse_pdf_tables_with_ocr != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      azure_blob_file_sync_input = _body
+      sync_azure_blob_files_with_http_info_impl(azure_blob_file_sync_input, extra)
+    end
+
+    # Azure Blob Files
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+    # @param azure_blob_file_sync_input [AzureBlobFileSyncInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def sync_azure_blob_files_impl(azure_blob_file_sync_input, opts = {})
+      data, _status_code, _headers = sync_azure_blob_files_with_http_info(azure_blob_file_sync_input, opts)
+      data
+    end
+
+    # Azure Blob Files
+    # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+    # @param azure_blob_file_sync_input [AzureBlobFileSyncInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def sync_azure_blob_files_with_http_info_impl(azure_blob_file_sync_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_azure_blob_files ...'
+      end
+      # verify the required parameter 'azure_blob_file_sync_input' is set
+      if @api_client.config.client_side_validation && azure_blob_file_sync_input.nil?
+        fail ArgumentError, "Missing the required parameter 'azure_blob_file_sync_input' when calling IntegrationsApi.sync_azure_blob_files"
+      end
+      # resource path
+      local_var_path = '/integrations/azure_blob_storage/files'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(azure_blob_file_sync_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_azure_blob_files",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_azure_blob_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Azure Blob Storage Auth
+    #
+    # This endpoint can be used to connect Azure Blob Storage.
+    # 
+    # For Azure Blob Storage, follow these steps:
+    # <ol>
+    #   <li>Create a new Azure Storage account and grant the following permissions:
+    #     <ul>
+    #       <li>List containers.</li>
+    #       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    #     </ul>
+    #   </li>
+    #   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+    # </ol>
+    # 
+    # Once created, provide us with the following details to generate the connection URL:
+    # <ol>
+    #   <li>Storage Account KeyName.</li>
+    #   <li>Storage Account Name.</li>
+    # </ol>
+    #
+    # @param account_name [String] 
+    # @param account_key [String] 
+    # @param sync_source_items [Boolean] 
+    # @param body [AzureBlobAuthRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_azure_blob_storage(account_name:, account_key:, sync_source_items: true, extra: {})
+      _body = {}
+      _body[:account_name] = account_name if account_name != SENTINEL
+      _body[:account_key] = account_key if account_key != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      azure_blob_auth_request = _body
+      api_response = sync_azure_blob_storage_with_http_info_impl(azure_blob_auth_request, extra)
+      api_response.data
+    end
+
+    # Azure Blob Storage Auth
+    #
+    # This endpoint can be used to connect Azure Blob Storage.
+    # 
+    # For Azure Blob Storage, follow these steps:
+    # <ol>
+    #   <li>Create a new Azure Storage account and grant the following permissions:
+    #     <ul>
+    #       <li>List containers.</li>
+    #       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    #     </ul>
+    #   </li>
+    #   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+    # </ol>
+    # 
+    # Once created, provide us with the following details to generate the connection URL:
+    # <ol>
+    #   <li>Storage Account KeyName.</li>
+    #   <li>Storage Account Name.</li>
+    # </ol>
+    #
+    # @param account_name [String] 
+    # @param account_key [String] 
+    # @param sync_source_items [Boolean] 
+    # @param body [AzureBlobAuthRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def sync_azure_blob_storage_with_http_info(account_name:, account_key:, sync_source_items: true, extra: {})
+      _body = {}
+      _body[:account_name] = account_name if account_name != SENTINEL
+      _body[:account_key] = account_key if account_key != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      azure_blob_auth_request = _body
+      sync_azure_blob_storage_with_http_info_impl(azure_blob_auth_request, extra)
+    end
+
+    # Azure Blob Storage Auth
+    # This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: <ol>   <li>Create a new Azure Storage account and grant the following permissions:     <ul>       <li>List containers.</li>       <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>     </ul>   </li>   <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li> </ol>  Once created, provide us with the following details to generate the connection URL: <ol>   <li>Storage Account KeyName.</li>   <li>Storage Account Name.</li> </ol>
+    # @param azure_blob_auth_request [AzureBlobAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [OrganizationUserDataSourceAPI]
+    private def sync_azure_blob_storage_impl(azure_blob_auth_request, opts = {})
+      data, _status_code, _headers = sync_azure_blob_storage_with_http_info(azure_blob_auth_request, opts)
+      data
+    end
+
+    # Azure Blob Storage Auth
+    # This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: &lt;ol&gt;   &lt;li&gt;Create a new Azure Storage account and grant the following permissions:     &lt;ul&gt;       &lt;li&gt;List containers.&lt;/li&gt;       &lt;li&gt;Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.&lt;/li&gt;     &lt;/ul&gt;   &lt;/li&gt;   &lt;li&gt;Generate a shared access signature (SAS) token or an access key for the storage account.&lt;/li&gt; &lt;/ol&gt;  Once created, provide us with the following details to generate the connection URL: &lt;ol&gt;   &lt;li&gt;Storage Account KeyName.&lt;/li&gt;   &lt;li&gt;Storage Account Name.&lt;/li&gt; &lt;/ol&gt;
+    # @param azure_blob_auth_request [AzureBlobAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is OrganizationUserDataSourceAPI, status code, headers and response
+    private def sync_azure_blob_storage_with_http_info_impl(azure_blob_auth_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.sync_azure_blob_storage ...'
+      end
+      # verify the required parameter 'azure_blob_auth_request' is set
+      if @api_client.config.client_side_validation && azure_blob_auth_request.nil?
+        fail ArgumentError, "Missing the required parameter 'azure_blob_auth_request' when calling IntegrationsApi.sync_azure_blob_storage"
+      end
+      # resource path
+      local_var_path = '/integrations/azure_blob_storage'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(azure_blob_auth_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrganizationUserDataSourceAPI'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.sync_azure_blob_storage",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#sync_azure_blob_storage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Confluence Sync
     #
     # This endpoint has been deprecated. Use /integrations/files/sync instead.

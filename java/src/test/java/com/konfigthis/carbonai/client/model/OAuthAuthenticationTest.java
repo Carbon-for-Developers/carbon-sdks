@@ -168,6 +168,22 @@ public class OAuthAuthenticationTest {
     }
 
     /**
+     * Test the property 'accountName'
+     */
+    @Test
+    public void accountNameTest() {
+        // TODO: test accountName
+    }
+
+    /**
+     * Test the property 'accountKey'
+     */
+    @Test
+    public void accountKeyTest() {
+        // TODO: test accountKey
+    }
+
+    /**
      * Test the property 'instanceSubdomain'
      */
     @Test

@@ -12,6 +12,10 @@
 # sys.setrecursionlimit(n)
 
 from carbon.model.add_webhook_props import AddWebhookProps
+from carbon.model.azure_blob_auth_request import AzureBlobAuthRequest
+from carbon.model.azure_blob_file_sync_input import AzureBlobFileSyncInput
+from carbon.model.azure_blob_get_file_input import AzureBlobGetFileInput
+from carbon.model.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.model.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.model.chunk_properties import ChunkProperties
 from carbon.model.chunk_properties_nullable import ChunkPropertiesNullable
@@ -122,6 +126,7 @@ from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
 from carbon.model.oauth_based_connectors import OauthBasedConnectors
+from carbon.model.one_drive_authentication import OneDriveAuthentication
 from carbon.model.order_dir import OrderDir
 from carbon.model.order_dir_v2 import OrderDirV2
 from carbon.model.organization_response import OrganizationResponse

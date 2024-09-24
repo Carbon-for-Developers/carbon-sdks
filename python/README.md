@@ -60,6 +60,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
   * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
   * [`carbon.integrations.list_repos`](#carbonintegrationslist_repos)
+  * [`carbon.integrations.sync_azure_blob_files`](#carbonintegrationssync_azure_blob_files)
+  * [`carbon.integrations.sync_azure_blob_storage`](#carbonintegrationssync_azure_blob_storage)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -1590,7 +1592,7 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `GithubAuthentication`, `ServiceNowAuthentication`, `GuruAuthentication`, `GongAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-githubauthentication-servicenowauthentication-guruauthentication-gongauthentication"></a>
+##### authentication: Union[`OAuthAuthentication`, `NotionAuthentication`, `OneDriveAuthentication`, `SharepointAuthentication`, `ConfluenceAuthentication`, `ZendeskAuthentication`, `ZoteroAuthentication`, `GitbookAuthetication`, `SalesforceAuthentication`, `FreskdeskAuthentication`, `S3Authentication`, `AzureBlobStorageAuthentication`, `GithubAuthentication`, `ServiceNowAuthentication`, `GuruAuthentication`, `GongAuthentication`]<a id="authentication-unionoauthauthentication-notionauthentication-onedriveauthentication-sharepointauthentication-confluenceauthentication-zendeskauthentication-zoteroauthentication-gitbookauthetication-salesforceauthentication-freskdeskauthentication-s3authentication-azureblobstorageauthentication-githubauthentication-servicenowauthentication-guruauthentication-gongauthentication"></a>
 
 
 ##### sync_options: [`SyncOptions`](./carbon/type/sync_options.py)<a id="sync_options-syncoptionscarbontypesync_optionspy"></a>
@@ -2323,6 +2325,147 @@ list_repos_response = carbon.integrations.list_repos(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_azure_blob_files`<a id="carbonintegrationssync_azure_blob_files"></a>
+
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+data with the selected items or modify the sync behavior
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_azure_blob_files_response = carbon.integrations.sync_azure_blob_files(
+    ids=[{}],
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+    max_items_per_chunk=1,
+    set_page_as_boundary=False,
+    data_source_id=1,
+    request_id="string_example",
+    use_ocr=False,
+    parse_pdf_tables_with_ocr=False,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+        "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
+        "split_rows": False,
+        "generate_chunks_only": False,
+        "skip_file_processing": False,
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: List[`AzureBlobGetFileInput`]<a id="ids-listazureblobgetfileinput"></a>
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### max_items_per_chunk: `Optional[int]`<a id="max_items_per_chunk-optionalint"></a>
+
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### set_page_as_boundary: `bool`<a id="set_page_as_boundary-bool"></a>
+
+##### data_source_id: `Optional[int]`<a id="data_source_id-optionalint"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### use_ocr: `Optional[bool]`<a id="use_ocr-optionalbool"></a>
+
+##### parse_pdf_tables_with_ocr: `Optional[bool]`<a id="parse_pdf_tables_with_ocr-optionalbool"></a>
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`AzureBlobFileSyncInput`](./carbon/type/azure_blob_file_sync_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage/files` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.sync_azure_blob_storage`<a id="carbonintegrationssync_azure_blob_storage"></a>
+
+This endpoint can be used to connect Azure Blob Storage.
+
+For Azure Blob Storage, follow these steps:
+<ol>
+  <li>Create a new Azure Storage account and grant the following permissions:
+    <ul>
+      <li>List containers.</li>
+      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    </ul>
+  </li>
+  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+</ol>
+
+Once created, provide us with the following details to generate the connection URL:
+<ol>
+  <li>Storage Account KeyName.</li>
+  <li>Storage Account Name.</li>
+</ol>
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+sync_azure_blob_storage_response = carbon.integrations.sync_azure_blob_storage(
+    account_name="string_example",
+    account_key="string_example",
+    sync_source_items=True,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_name: `str`<a id="account_name-str"></a>
+
+##### account_key: `str`<a id="account_key-str"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`AzureBlobAuthRequest`](./carbon/type/azure_blob_auth_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OrganizationUserDataSourceAPI`](./carbon/pydantic/organization_user_data_source_api.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

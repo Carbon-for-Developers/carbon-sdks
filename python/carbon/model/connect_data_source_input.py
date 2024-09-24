@@ -59,6 +59,7 @@ class ConnectDataSourceInput(
                         return [
                             OAuthAuthentication,
                             NotionAuthentication,
+                            OneDriveAuthentication,
                             SharepointAuthentication,
                             ConfluenceAuthentication,
                             ZendeskAuthentication,
@@ -67,6 +68,7 @@ class ConnectDataSourceInput(
                             SalesforceAuthentication,
                             FreskdeskAuthentication,
                             S3Authentication,
+                            AzureBlobStorageAuthentication,
                             GithubAuthentication,
                             ServiceNowAuthentication,
                             GuruAuthentication,
@@ -141,6 +143,7 @@ class ConnectDataSourceInput(
             **kwargs,
         )
 
+from carbon.model.azure_blob_storage_authentication import AzureBlobStorageAuthentication
 from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.freskdesk_authentication import FreskdeskAuthentication
 from carbon.model.gitbook_authetication import GitbookAuthetication
@@ -149,6 +152,7 @@ from carbon.model.gong_authentication import GongAuthentication
 from carbon.model.guru_authentication import GuruAuthentication
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
+from carbon.model.one_drive_authentication import OneDriveAuthentication
 from carbon.model.s3_authentication import S3Authentication
 from carbon.model.salesforce_authentication import SalesforceAuthentication
 from carbon.model.service_now_authentication import ServiceNowAuthentication

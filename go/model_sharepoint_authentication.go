@@ -19,7 +19,7 @@ type SharepointAuthentication struct {
 	Source interface{} `json:"source"`
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
-	TenantName string `json:"tenant_name"`
+	TenantName NullableString `json:"tenant_name,omitempty"`
 	SiteName string `json:"site_name"`
 }
 
@@ -27,11 +27,10 @@ type SharepointAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSharepointAuthentication(source interface{}, accessToken string, tenantName string, siteName string) *SharepointAuthentication {
+func NewSharepointAuthentication(source interface{}, accessToken string, siteName string) *SharepointAuthentication {
 	this := SharepointAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
-	this.TenantName = tenantName
 	this.SiteName = siteName
 	return &this
 }
@@ -136,28 +135,46 @@ func (o *SharepointAuthentication) UnsetRefreshToken() {
 	o.RefreshToken.Unset()
 }
 
-// GetTenantName returns the TenantName field value
+// GetTenantName returns the TenantName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SharepointAuthentication) GetTenantName() string {
-	if o == nil {
+	if o == nil || isNil(o.TenantName.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.TenantName
+	return *o.TenantName.Get()
 }
 
-// GetTenantNameOk returns a tuple with the TenantName field value
+// GetTenantNameOk returns a tuple with the TenantName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SharepointAuthentication) GetTenantNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
-	return &o.TenantName, true
+	return o.TenantName.Get(), o.TenantName.IsSet()
 }
 
-// SetTenantName sets field value
+// HasTenantName returns a boolean if a field has been set.
+func (o *SharepointAuthentication) HasTenantName() bool {
+	if o != nil && o.TenantName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantName gets a reference to the given NullableString and assigns it to the TenantName field.
 func (o *SharepointAuthentication) SetTenantName(v string) {
-	o.TenantName = v
+	o.TenantName.Set(&v)
+}
+// SetTenantNameNil sets the value for TenantName to be an explicit nil
+func (o *SharepointAuthentication) SetTenantNameNil() {
+	o.TenantName.Set(nil)
+}
+
+// UnsetTenantName ensures that no value is present for TenantName, not even an explicit nil
+func (o *SharepointAuthentication) UnsetTenantName() {
+	o.TenantName.Unset()
 }
 
 // GetSiteName returns the SiteName field value
@@ -195,8 +212,8 @@ func (o SharepointAuthentication) MarshalJSON() ([]byte, error) {
 	if o.RefreshToken.IsSet() {
 		toSerialize["refresh_token"] = o.RefreshToken.Get()
 	}
-	if true {
-		toSerialize["tenant_name"] = o.TenantName
+	if o.TenantName.IsSet() {
+		toSerialize["tenant_name"] = o.TenantName.Get()
 	}
 	if true {
 		toSerialize["site_name"] = o.SiteName
