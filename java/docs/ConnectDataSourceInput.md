@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**authentication** | [**OANSCZGF**](OANSCZGF.md) |  |  |
+|**authentication** | [**OANDSCZGFB**](OANDSCZGFB.md) |  |  |
 |**syncOptions** | [**SyncOptions**](SyncOptions.md) |  |  [optional] |
 
 

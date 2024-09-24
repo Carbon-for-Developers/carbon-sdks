@@ -9,8 +9,10 @@ from carbon.apis.paths.integrations_items_list import IntegrationsItemsList
 from carbon.apis.paths.integrations_files_sync import IntegrationsFilesSync
 from carbon.apis.paths.integrations_confluence_list import IntegrationsConfluenceList
 from carbon.apis.paths.integrations_confluence_sync import IntegrationsConfluenceSync
+from carbon.apis.paths.integrations_azure_blob_storage import IntegrationsAzureBlobStorage
 from carbon.apis.paths.integrations_s3 import IntegrationsS3
 from carbon.apis.paths.integrations_s3_files import IntegrationsS3Files
+from carbon.apis.paths.integrations_azure_blob_storage_files import IntegrationsAzureBlobStorageFiles
 from carbon.apis.paths.integrations_gmail_sync import IntegrationsGmailSync
 from carbon.apis.paths.integrations_rss_feed import IntegrationsRssFeed
 from carbon.apis.paths.integrations_outlook_sync import IntegrationsOutlookSync
@@ -81,8 +83,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,
         PathValues.INTEGRATIONS_CONFLUENCE_LIST: IntegrationsConfluenceList,
         PathValues.INTEGRATIONS_CONFLUENCE_SYNC: IntegrationsConfluenceSync,
+        PathValues.INTEGRATIONS_AZURE_BLOB_STORAGE: IntegrationsAzureBlobStorage,
         PathValues.INTEGRATIONS_S3: IntegrationsS3,
         PathValues.INTEGRATIONS_S3_FILES: IntegrationsS3Files,
+        PathValues.INTEGRATIONS_AZURE_BLOB_STORAGE_FILES: IntegrationsAzureBlobStorageFiles,
         PathValues.INTEGRATIONS_GMAIL_SYNC: IntegrationsGmailSync,
         PathValues.INTEGRATIONS_RSS_FEED: IntegrationsRssFeed,
         PathValues.INTEGRATIONS_OUTLOOK_SYNC: IntegrationsOutlookSync,
@@ -154,8 +158,10 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_FILES_SYNC: IntegrationsFilesSync,
         PathValues.INTEGRATIONS_CONFLUENCE_LIST: IntegrationsConfluenceList,
         PathValues.INTEGRATIONS_CONFLUENCE_SYNC: IntegrationsConfluenceSync,
+        PathValues.INTEGRATIONS_AZURE_BLOB_STORAGE: IntegrationsAzureBlobStorage,
         PathValues.INTEGRATIONS_S3: IntegrationsS3,
         PathValues.INTEGRATIONS_S3_FILES: IntegrationsS3Files,
+        PathValues.INTEGRATIONS_AZURE_BLOB_STORAGE_FILES: IntegrationsAzureBlobStorageFiles,
         PathValues.INTEGRATIONS_GMAIL_SYNC: IntegrationsGmailSync,
         PathValues.INTEGRATIONS_RSS_FEED: IntegrationsRssFeed,
         PathValues.INTEGRATIONS_OUTLOOK_SYNC: IntegrationsOutlookSync,

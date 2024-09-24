@@ -19,6 +19,8 @@ Method | Path | Description
 [**ListLabels**](IntegrationsApi.md#ListLabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 [**ListOutlookCategories**](IntegrationsApi.md#ListOutlookCategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
 [**ListRepos**](IntegrationsApi.md#ListRepos) | **Get** /integrations/github/repos | Github List Repos
+[**SyncAzureBlobFiles**](IntegrationsApi.md#SyncAzureBlobFiles) | **Post** /integrations/azure_blob_storage/files | Azure Blob Files
+[**SyncAzureBlobStorage**](IntegrationsApi.md#SyncAzureBlobStorage) | **Post** /integrations/azure_blob_storage | Azure Blob Storage Auth
 [**SyncConfluence**](IntegrationsApi.md#SyncConfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 [**SyncDataSourceItems**](IntegrationsApi.md#SyncDataSourceItems) | **Post** /integrations/items/sync | Sync Data Source Items
 [**SyncFiles**](IntegrationsApi.md#SyncFiles) | **Post** /integrations/files/sync | Sync Files
@@ -119,7 +121,7 @@ func main() {
     configuration.SetCustomerId("CUSTOMER_ID")
     client := carbon.NewAPIClient(configuration)
 
-    authentication := *carbon.NewOANSCZGF()
+    authentication := *carbon.NewOANDSCZGFB()
     syncOptions := *carbon.NewSyncOptions()
     
     connectDataSourceInput := *carbon.NewConnectDataSourceInput(
@@ -856,6 +858,139 @@ func main() {
     }
     // response from `ListRepos`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListRepos`: %v\n", resp)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncAzureBlobFiles
+
+Azure Blob Files
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+    
+    azureBlobFileSyncInput := *carbon.NewAzureBlobFileSyncInput(
+        null,
+    )
+    azureBlobFileSyncInput.SetTags({})
+    azureBlobFileSyncInput.SetChunkSize(1500)
+    azureBlobFileSyncInput.SetChunkOverlap(20)
+    azureBlobFileSyncInput.SetSkipEmbeddingGeneration(false)
+    azureBlobFileSyncInput.SetEmbeddingModel(null)
+    azureBlobFileSyncInput.SetGenerateSparseVectors(false)
+    azureBlobFileSyncInput.SetPrependFilenameToChunks(false)
+    azureBlobFileSyncInput.SetMaxItemsPerChunk(null)
+    azureBlobFileSyncInput.SetSetPageAsBoundary(false)
+    azureBlobFileSyncInput.SetDataSourceId(null)
+    azureBlobFileSyncInput.SetRequestId("null")
+    azureBlobFileSyncInput.SetUseOcr(false)
+    azureBlobFileSyncInput.SetParsePdfTablesWithOcr(false)
+    azureBlobFileSyncInput.SetFileSyncConfig(fileSyncConfig)
+    
+    request := client.IntegrationsApi.SyncAzureBlobFiles(
+        azureBlobFileSyncInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.SyncAzureBlobFiles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `SyncAzureBlobFiles`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncAzureBlobFiles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.SyncAzureBlobFiles.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncAzureBlobStorage
+
+Azure Blob Storage Auth
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    
+    azureBlobAuthRequest := *carbon.NewAzureBlobAuthRequest(
+        "null",
+        "null",
+    )
+    azureBlobAuthRequest.SetSyncSourceItems(true)
+    
+    request := client.IntegrationsApi.SyncAzureBlobStorage(
+        azureBlobAuthRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.SyncAzureBlobStorage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `SyncAzureBlobStorage`: OrganizationUserDataSourceAPI
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncAzureBlobStorage`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.Id`: %v\n", resp.Id)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.DataSourceType`: %v\n", resp.DataSourceType)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.Token`: %v\n", resp.Token)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.SyncStatus`: %v\n", resp.SyncStatus)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.SourceItemsSyncedAt`: %v\n", resp.SourceItemsSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.OrganizationUserId`: %v\n", resp.OrganizationUserId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.OrganizationId`: %v\n", resp.OrganizationId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.OrganizationSuppliedUserId`: %v\n", resp.OrganizationSuppliedUserId)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.RevokedAccess`: %v\n", resp.RevokedAccess)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.LastSyncedAt`: %v\n", resp.LastSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.LastSyncAction`: %v\n", resp.LastSyncAction)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.EnableAutoSync`: %v\n", resp.EnableAutoSync)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.CreatedAt`: %v\n", resp.CreatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.UpdatedAt`: %v\n", resp.UpdatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.DataSourceMetadata`: %v\n", resp.DataSourceMetadata)
 }
 ```
 

@@ -26,6 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.carbonai.client.model.AzureBlobAuthRequest;
+import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
+import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
@@ -45,7 +48,7 @@ import com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse;
 import com.konfigthis.carbonai.client.model.ListItemsFiltersNullable;
 import com.konfigthis.carbonai.client.model.ListRequest;
 import com.konfigthis.carbonai.client.model.ListResponse;
-import com.konfigthis.carbonai.client.model.OANSCZGF;
+import com.konfigthis.carbonai.client.model.OANDSCZGFB;
 import com.konfigthis.carbonai.client.model.OAuthURLRequest;
 import com.konfigthis.carbonai.client.model.OauthBasedConnectors;
 import com.konfigthis.carbonai.client.model.OrderDirV2;
@@ -343,10 +346,10 @@ public class IntegrationsApiGenerated {
     }
 
     public abstract class ConnectDataSourceRequestBuilderGenerated {
-        final OANSCZGF authentication;
+        final OANDSCZGFB authentication;
         SyncOptions syncOptions;
 
-        public ConnectDataSourceRequestBuilderGenerated(OANSCZGF authentication) {
+        public ConnectDataSourceRequestBuilderGenerated(OANDSCZGFB authentication) {
             this.authentication = authentication;
         }
 
@@ -442,7 +445,7 @@ public class IntegrationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationsApi.ConnectDataSourceRequestBuilder connectDataSource(OANSCZGF authentication) throws IllegalArgumentException {
+    public IntegrationsApi.ConnectDataSourceRequestBuilder connectDataSource(OANDSCZGFB authentication) throws IllegalArgumentException {
         if (authentication == null) throw new IllegalArgumentException("\"authentication\" is required but got null");
         return ((IntegrationsApi) this).new ConnectDataSourceRequestBuilder(authentication);
     }
@@ -3484,6 +3487,520 @@ public class IntegrationsApiGenerated {
      */
     public IntegrationsApi.ListReposRequestBuilder listRepos() throws IllegalArgumentException {
         return ((IntegrationsApi) this).new ListReposRequestBuilder();
+    }
+    private okhttp3.Call syncAzureBlobFilesCall(AzureBlobFileSyncInput azureBlobFileSyncInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = azureBlobFileSyncInput;
+
+        // create path and map variables
+        String localVarPath = "/integrations/azure_blob_storage/files";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call syncAzureBlobFilesValidateBeforeCall(AzureBlobFileSyncInput azureBlobFileSyncInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'azureBlobFileSyncInput' is set
+        if (azureBlobFileSyncInput == null) {
+            throw new ApiException("Missing the required parameter 'azureBlobFileSyncInput' when calling syncAzureBlobFiles(Async)");
+        }
+
+        return syncAzureBlobFilesCall(azureBlobFileSyncInput, _callback);
+
+    }
+
+
+    private ApiResponse<GenericSuccessResponse> syncAzureBlobFilesWithHttpInfo(AzureBlobFileSyncInput azureBlobFileSyncInput) throws ApiException {
+        okhttp3.Call localVarCall = syncAzureBlobFilesValidateBeforeCall(azureBlobFileSyncInput, null);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call syncAzureBlobFilesAsync(AzureBlobFileSyncInput azureBlobFileSyncInput, final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = syncAzureBlobFilesValidateBeforeCall(azureBlobFileSyncInput, _callback);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class SyncAzureBlobFilesRequestBuilderGenerated {
+        final List<AzureBlobGetFileInput> ids;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Integer maxItemsPerChunk;
+        Boolean setPageAsBoundary;
+        Integer dataSourceId;
+        String requestId;
+        Boolean useOcr;
+        Boolean parsePdfTablesWithOcr;
+        FileSyncConfigNullable fileSyncConfig;
+
+        public SyncAzureBlobFilesRequestBuilderGenerated(List<AzureBlobGetFileInput> ids) {
+            this.ids = ids;
+        }
+
+        /**
+         * Set tags
+         * @param tags  (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder tags(Object tags) {
+            this.tags = tags;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkSize
+         * @param chunkSize  (optional, default to 1500)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder chunkSize(Integer chunkSize) {
+            this.chunkSize = chunkSize;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkOverlap
+         * @param chunkOverlap  (optional, default to 20)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder chunkOverlap(Integer chunkOverlap) {
+            this.chunkOverlap = chunkOverlap;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set skipEmbeddingGeneration
+         * @param skipEmbeddingGeneration  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+            this.skipEmbeddingGeneration = skipEmbeddingGeneration;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set embeddingModel
+         * @param embeddingModel  (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+            this.embeddingModel = embeddingModel;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set generateSparseVectors
+         * @param generateSparseVectors  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+            this.generateSparseVectors = generateSparseVectors;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set prependFilenameToChunks
+         * @param prependFilenameToChunks  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+            this.prependFilenameToChunks = prependFilenameToChunks;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set maxItemsPerChunk
+         * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+            this.maxItemsPerChunk = maxItemsPerChunk;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set setPageAsBoundary
+         * @param setPageAsBoundary  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+            this.setPageAsBoundary = setPageAsBoundary;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceId
+         * @param dataSourceId  (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder dataSourceId(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set requestId
+         * @param requestId  (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder requestId(String requestId) {
+            this.requestId = requestId;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set useOcr
+         * @param useOcr  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder useOcr(Boolean useOcr) {
+            this.useOcr = useOcr;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set parsePdfTablesWithOcr
+         * @param parsePdfTablesWithOcr  (optional, default to false)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+            this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set fileSyncConfig
+         * @param fileSyncConfig  (optional)
+         * @return IntegrationsApi.SyncAzureBlobFilesRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobFilesRequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+            this.fileSyncConfig = fileSyncConfig;
+            return (IntegrationsApi.SyncAzureBlobFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for syncAzureBlobFiles
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            AzureBlobFileSyncInput azureBlobFileSyncInput = buildBodyParams();
+            return syncAzureBlobFilesCall(azureBlobFileSyncInput, _callback);
+        }
+
+        private AzureBlobFileSyncInput buildBodyParams() {
+            AzureBlobFileSyncInput azureBlobFileSyncInput = new AzureBlobFileSyncInput();
+            azureBlobFileSyncInput.tags(this.tags);
+            azureBlobFileSyncInput.ids(this.ids);
+            azureBlobFileSyncInput.chunkSize(this.chunkSize);
+            azureBlobFileSyncInput.chunkOverlap(this.chunkOverlap);
+            azureBlobFileSyncInput.skipEmbeddingGeneration(this.skipEmbeddingGeneration);
+            azureBlobFileSyncInput.embeddingModel(this.embeddingModel);
+            azureBlobFileSyncInput.generateSparseVectors(this.generateSparseVectors);
+            azureBlobFileSyncInput.prependFilenameToChunks(this.prependFilenameToChunks);
+            azureBlobFileSyncInput.maxItemsPerChunk(this.maxItemsPerChunk);
+            azureBlobFileSyncInput.setPageAsBoundary(this.setPageAsBoundary);
+            azureBlobFileSyncInput.dataSourceId(this.dataSourceId);
+            azureBlobFileSyncInput.requestId(this.requestId);
+            azureBlobFileSyncInput.useOcr(this.useOcr);
+            azureBlobFileSyncInput.parsePdfTablesWithOcr(this.parsePdfTablesWithOcr);
+            azureBlobFileSyncInput.fileSyncConfig(this.fileSyncConfig);
+            return azureBlobFileSyncInput;
+        }
+
+        /**
+         * Execute syncAzureBlobFiles request
+         * @return GenericSuccessResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GenericSuccessResponse execute() throws ApiException {
+            AzureBlobFileSyncInput azureBlobFileSyncInput = buildBodyParams();
+            ApiResponse<GenericSuccessResponse> localVarResp = syncAzureBlobFilesWithHttpInfo(azureBlobFileSyncInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute syncAzureBlobFiles request with HTTP info returned
+         * @return ApiResponse&lt;GenericSuccessResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GenericSuccessResponse> executeWithHttpInfo() throws ApiException {
+            AzureBlobFileSyncInput azureBlobFileSyncInput = buildBodyParams();
+            return syncAzureBlobFilesWithHttpInfo(azureBlobFileSyncInput);
+        }
+
+        /**
+         * Execute syncAzureBlobFiles request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+            AzureBlobFileSyncInput azureBlobFileSyncInput = buildBodyParams();
+            return syncAzureBlobFilesAsync(azureBlobFileSyncInput, _callback);
+        }
+    }
+
+    /**
+     * Azure Blob Files
+     * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
+     * @param azureBlobFileSyncInput  (required)
+     * @return SyncAzureBlobFilesRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.SyncAzureBlobFilesRequestBuilder syncAzureBlobFiles(List<AzureBlobGetFileInput> ids) throws IllegalArgumentException {
+        if (ids == null) throw new IllegalArgumentException("\"ids\" is required but got null");
+        return ((IntegrationsApi) this).new SyncAzureBlobFilesRequestBuilder(ids);
+    }
+    private okhttp3.Call syncAzureBlobStorageCall(AzureBlobAuthRequest azureBlobAuthRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = azureBlobAuthRequest;
+
+        // create path and map variables
+        String localVarPath = "/integrations/azure_blob_storage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call syncAzureBlobStorageValidateBeforeCall(AzureBlobAuthRequest azureBlobAuthRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'azureBlobAuthRequest' is set
+        if (azureBlobAuthRequest == null) {
+            throw new ApiException("Missing the required parameter 'azureBlobAuthRequest' when calling syncAzureBlobStorage(Async)");
+        }
+
+        return syncAzureBlobStorageCall(azureBlobAuthRequest, _callback);
+
+    }
+
+
+    private ApiResponse<OrganizationUserDataSourceAPI> syncAzureBlobStorageWithHttpInfo(AzureBlobAuthRequest azureBlobAuthRequest) throws ApiException {
+        okhttp3.Call localVarCall = syncAzureBlobStorageValidateBeforeCall(azureBlobAuthRequest, null);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call syncAzureBlobStorageAsync(AzureBlobAuthRequest azureBlobAuthRequest, final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = syncAzureBlobStorageValidateBeforeCall(azureBlobAuthRequest, _callback);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class SyncAzureBlobStorageRequestBuilderGenerated {
+        final String accountName;
+        final String accountKey;
+        Boolean syncSourceItems;
+
+        public SyncAzureBlobStorageRequestBuilderGenerated(String accountName, String accountKey) {
+            this.accountName = accountName;
+            this.accountKey = accountKey;
+        }
+
+        /**
+         * Set syncSourceItems
+         * @param syncSourceItems  (optional, default to true)
+         * @return IntegrationsApi.SyncAzureBlobStorageRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobStorageRequestBuilder syncSourceItems(Boolean syncSourceItems) {
+            this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.SyncAzureBlobStorageRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for syncAzureBlobStorage
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            AzureBlobAuthRequest azureBlobAuthRequest = buildBodyParams();
+            return syncAzureBlobStorageCall(azureBlobAuthRequest, _callback);
+        }
+
+        private AzureBlobAuthRequest buildBodyParams() {
+            AzureBlobAuthRequest azureBlobAuthRequest = new AzureBlobAuthRequest();
+            azureBlobAuthRequest.accountName(this.accountName);
+            azureBlobAuthRequest.accountKey(this.accountKey);
+            azureBlobAuthRequest.syncSourceItems(this.syncSourceItems);
+            return azureBlobAuthRequest;
+        }
+
+        /**
+         * Execute syncAzureBlobStorage request
+         * @return OrganizationUserDataSourceAPI
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrganizationUserDataSourceAPI execute() throws ApiException {
+            AzureBlobAuthRequest azureBlobAuthRequest = buildBodyParams();
+            ApiResponse<OrganizationUserDataSourceAPI> localVarResp = syncAzureBlobStorageWithHttpInfo(azureBlobAuthRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute syncAzureBlobStorage request with HTTP info returned
+         * @return ApiResponse&lt;OrganizationUserDataSourceAPI&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrganizationUserDataSourceAPI> executeWithHttpInfo() throws ApiException {
+            AzureBlobAuthRequest azureBlobAuthRequest = buildBodyParams();
+            return syncAzureBlobStorageWithHttpInfo(azureBlobAuthRequest);
+        }
+
+        /**
+         * Execute syncAzureBlobStorage request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+            AzureBlobAuthRequest azureBlobAuthRequest = buildBodyParams();
+            return syncAzureBlobStorageAsync(azureBlobAuthRequest, _callback);
+        }
+    }
+
+    /**
+     * Azure Blob Storage Auth
+     * This endpoint can be used to connect Azure Blob Storage.  For Azure Blob Storage, follow these steps: &lt;ol&gt;   &lt;li&gt;Create a new Azure Storage account and grant the following permissions:     &lt;ul&gt;       &lt;li&gt;List containers.&lt;/li&gt;       &lt;li&gt;Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.&lt;/li&gt;     &lt;/ul&gt;   &lt;/li&gt;   &lt;li&gt;Generate a shared access signature (SAS) token or an access key for the storage account.&lt;/li&gt; &lt;/ol&gt;  Once created, provide us with the following details to generate the connection URL: &lt;ol&gt;   &lt;li&gt;Storage Account KeyName.&lt;/li&gt;   &lt;li&gt;Storage Account Name.&lt;/li&gt; &lt;/ol&gt;
+     * @param azureBlobAuthRequest  (required)
+     * @return SyncAzureBlobStorageRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.SyncAzureBlobStorageRequestBuilder syncAzureBlobStorage(String accountName, String accountKey) throws IllegalArgumentException {
+        if (accountName == null) throw new IllegalArgumentException("\"accountName\" is required but got null");
+            
+
+        if (accountKey == null) throw new IllegalArgumentException("\"accountKey\" is required but got null");
+            
+
+        return ((IntegrationsApi) this).new SyncAzureBlobStorageRequestBuilder(accountName, accountKey);
     }
     private okhttp3.Call syncConfluenceCall(SyncFilesRequest syncFilesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

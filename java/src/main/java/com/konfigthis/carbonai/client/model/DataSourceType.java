@@ -53,6 +53,8 @@ import com.google.gson.stream.JsonWriter;
   
   S3("S3"),
   
+  AZURE_BLOB_STORAGE("AZURE_BLOB_STORAGE"),
+  
   GMAIL("GMAIL"),
   
   OUTLOOK("OUTLOOK"),

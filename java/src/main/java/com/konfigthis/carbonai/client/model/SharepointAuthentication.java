@@ -173,8 +173,8 @@ public class SharepointAuthentication {
    * Get tenantName
    * @return tenantName
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getTenantName() {
     return tenantName;
@@ -338,7 +338,6 @@ public class SharepointAuthentication {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("source");
     openapiRequiredFields.add("access_token");
-    openapiRequiredFields.add("tenant_name");
     openapiRequiredFields.add("site_name");
   }
 
@@ -367,7 +366,7 @@ public class SharepointAuthentication {
       if (!jsonObj.get("refresh_token").isJsonNull() && (jsonObj.get("refresh_token") != null && !jsonObj.get("refresh_token").isJsonNull()) && !jsonObj.get("refresh_token").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
       }
-      if (!jsonObj.get("tenant_name").isJsonPrimitive()) {
+      if (!jsonObj.get("tenant_name").isJsonNull() && (jsonObj.get("tenant_name") != null && !jsonObj.get("tenant_name").isJsonNull()) && !jsonObj.get("tenant_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tenant_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenant_name").toString()));
       }
       if (!jsonObj.get("site_name").isJsonPrimitive()) {

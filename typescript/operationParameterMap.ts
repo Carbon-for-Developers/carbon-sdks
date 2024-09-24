@@ -817,6 +817,68 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/integrations/azure_blob_storage/files-POST': {
+        parameters: [
+            {
+                name: 'ids'
+            },
+            {
+                name: 'tags'
+            },
+            {
+                name: 'chunk_size'
+            },
+            {
+                name: 'chunk_overlap'
+            },
+            {
+                name: 'skip_embedding_generation'
+            },
+            {
+                name: 'embedding_model'
+            },
+            {
+                name: 'generate_sparse_vectors'
+            },
+            {
+                name: 'prepend_filename_to_chunks'
+            },
+            {
+                name: 'max_items_per_chunk'
+            },
+            {
+                name: 'set_page_as_boundary'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'request_id'
+            },
+            {
+                name: 'use_ocr'
+            },
+            {
+                name: 'parse_pdf_tables_with_ocr'
+            },
+            {
+                name: 'file_sync_config'
+            },
+        ]
+    },
+    '/integrations/azure_blob_storage-POST': {
+        parameters: [
+            {
+                name: 'account_name'
+            },
+            {
+                name: 'account_key'
+            },
+            {
+                name: 'sync_source_items'
+            },
+        ]
+    },
     '/integrations/confluence/sync-POST': {
         parameters: [
             {

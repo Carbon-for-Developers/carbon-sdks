@@ -20,13 +20,13 @@ class RequiredSharepointAuthentication(TypedDict):
 
     access_token: str
 
-    tenant_name: str
-
     site_name: str
 
 
 class OptionalSharepointAuthentication(TypedDict, total=False):
     refresh_token: typing.Optional[str]
+
+    tenant_name: typing.Optional[str]
 
 class SharepointAuthentication(RequiredSharepointAuthentication, OptionalSharepointAuthentication):
     pass

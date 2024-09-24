@@ -35,14 +35,12 @@ class SharepointAuthentication(
         required = {
             "access_token",
             "site_name",
-            "tenant_name",
             "source",
         }
         
         class properties:
             source = schemas.AnyTypeSchema
             access_token = schemas.StrSchema
-            tenant_name = schemas.StrSchema
             site_name = schemas.StrSchema
             
             
@@ -64,17 +62,36 @@ class SharepointAuthentication(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class tenant_name(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'tenant_name':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "source": source,
                 "access_token": access_token,
-                "tenant_name": tenant_name,
                 "site_name": site_name,
                 "refresh_token": refresh_token,
+                "tenant_name": tenant_name,
             }
     
     access_token: MetaOapg.properties.access_token
     site_name: MetaOapg.properties.site_name
-    tenant_name: MetaOapg.properties.tenant_name
     source: MetaOapg.properties.source
     
     @typing.overload
@@ -84,18 +101,18 @@ class SharepointAuthentication(
     def __getitem__(self, name: typing_extensions.Literal["access_token"]) -> MetaOapg.properties.access_token: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["tenant_name"]) -> MetaOapg.properties.tenant_name: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["site_name"]) -> MetaOapg.properties.site_name: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["refresh_token"]) -> MetaOapg.properties.refresh_token: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tenant_name"]) -> MetaOapg.properties.tenant_name: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["source", "access_token", "tenant_name", "site_name", "refresh_token", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["source", "access_token", "site_name", "refresh_token", "tenant_name", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -107,18 +124,18 @@ class SharepointAuthentication(
     def get_item_oapg(self, name: typing_extensions.Literal["access_token"]) -> MetaOapg.properties.access_token: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tenant_name"]) -> MetaOapg.properties.tenant_name: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["site_name"]) -> MetaOapg.properties.site_name: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["refresh_token"]) -> typing.Union[MetaOapg.properties.refresh_token, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tenant_name"]) -> typing.Union[MetaOapg.properties.tenant_name, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["source", "access_token", "tenant_name", "site_name", "refresh_token", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["source", "access_token", "site_name", "refresh_token", "tenant_name", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -127,9 +144,9 @@ class SharepointAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
         site_name: typing.Union[MetaOapg.properties.site_name, str, ],
-        tenant_name: typing.Union[MetaOapg.properties.tenant_name, str, ],
         source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         refresh_token: typing.Union[MetaOapg.properties.refresh_token, None, str, schemas.Unset] = schemas.unset,
+        tenant_name: typing.Union[MetaOapg.properties.tenant_name, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SharepointAuthentication':
@@ -138,9 +155,9 @@ class SharepointAuthentication(
             *args,
             access_token=access_token,
             site_name=site_name,
-            tenant_name=tenant_name,
             source=source,
             refresh_token=refresh_token,
+            tenant_name=tenant_name,
             _configuration=_configuration,
             **kwargs,
         )

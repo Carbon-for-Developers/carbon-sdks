@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.carbonai.client.model.OANSCZGF;
+import com.konfigthis.carbonai.client.model.OANDSCZGFB;
 import com.konfigthis.carbonai.client.model.SyncOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -53,7 +53,7 @@ import com.konfigthis.carbonai.client.JSON;
 public class ConnectDataSourceInput {
   public static final String SERIALIZED_NAME_AUTHENTICATION = "authentication";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION)
-  private OANSCZGF authentication;
+  private OANDSCZGFB authentication;
 
   public static final String SERIALIZED_NAME_SYNC_OPTIONS = "sync_options";
   @SerializedName(SERIALIZED_NAME_SYNC_OPTIONS)
@@ -62,7 +62,7 @@ public class ConnectDataSourceInput {
   public ConnectDataSourceInput() {
   }
 
-  public ConnectDataSourceInput authentication(OANSCZGF authentication) {
+  public ConnectDataSourceInput authentication(OANDSCZGFB authentication) {
     
     
     
@@ -78,12 +78,12 @@ public class ConnectDataSourceInput {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public OANSCZGF getAuthentication() {
+  public OANDSCZGFB getAuthentication() {
     return authentication;
   }
 
 
-  public void setAuthentication(OANSCZGF authentication) {
+  public void setAuthentication(OANDSCZGFB authentication) {
     
     
     
@@ -241,7 +241,7 @@ public class ConnectDataSourceInput {
         }
       }
       // validate the required field `authentication`
-      OANSCZGF.validateJsonObject(jsonObj.getAsJsonObject("authentication"));
+      OANDSCZGFB.validateJsonObject(jsonObj.getAsJsonObject("authentication"));
       // validate the optional field `sync_options`
       if (jsonObj.get("sync_options") != null && !jsonObj.get("sync_options").isJsonNull()) {
         SyncOptions.validateJsonObject(jsonObj.getAsJsonObject("sync_options"));

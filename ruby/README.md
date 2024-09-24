@@ -56,6 +56,8 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.list_labels`](#carbonintegrationslist_labels)
   * [`carbon.integrations.list_outlook_categories`](#carbonintegrationslist_outlook_categories)
   * [`carbon.integrations.list_repos`](#carbonintegrationslist_repos)
+  * [`carbon.integrations.sync_azure_blob_files`](#carbonintegrationssync_azure_blob_files)
+  * [`carbon.integrations.sync_azure_blob_storage`](#carbonintegrationssync_azure_blob_storage)
   * [`carbon.integrations.sync_confluence`](#carbonintegrationssync_confluence)
   * [`carbon.integrations.sync_data_source_items`](#carbonintegrationssync_data_source_items)
   * [`carbon.integrations.sync_files`](#carbonintegrationssync_files)
@@ -2090,6 +2092,129 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.sync_azure_blob_files`<a id="carbonintegrationssync_azure_blob_files"></a>
+
+After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 
+and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
+data with the selected items or modify the sync behavior
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.sync_azure_blob_files(
+  ids: [
+        {
+        }
+    ],
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  max_items_per_chunk: 1,
+  set_page_as_boundary: false,
+  data_source_id: 1,
+  request_id: "string_example",
+  use_ocr: false,
+  parse_pdf_tables_with_ocr: false,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
+        "split_rows" => false,
+        "generate_chunks_only" => false,
+        "skip_file_processing" => false,
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: Array<[`AzureBlobGetFileInput`](./lib/carbon_ruby_sdk/models/azure_blob_get_file_input.rb)><a id="ids-array"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### max_items_per_chunk: `Integer`<a id="max_items_per_chunk-integer"></a>
+Number of objects per chunk. For csv, tsv, xlsx, and json files only.
+
+##### set_page_as_boundary: `Boolean`<a id="set_page_as_boundary-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### request_id: `String`<a id="request_id-string"></a>
+##### use_ocr: `Boolean`<a id="use_ocr-boolean"></a>
+##### parse_pdf_tables_with_ocr: `Boolean`<a id="parse_pdf_tables_with_ocr-boolean"></a>
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.sync_azure_blob_storage`<a id="carbonintegrationssync_azure_blob_storage"></a>
+
+This endpoint can be used to connect Azure Blob Storage.
+
+For Azure Blob Storage, follow these steps:
+<ol>
+  <li>Create a new Azure Storage account and grant the following permissions:
+    <ul>
+      <li>List containers.</li>
+      <li>Read from specific containers and blobs to sync with Carbon. Ensure any future containers or blobs carry the same permissions.</li>
+    </ul>
+  </li>
+  <li>Generate a shared access signature (SAS) token or an access key for the storage account.</li>
+</ol>
+
+Once created, provide us with the following details to generate the connection URL:
+<ol>
+  <li>Storage Account KeyName.</li>
+  <li>Storage Account Name.</li>
+</ol>
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.sync_azure_blob_storage(
+  account_name: "string_example",
+  account_key: "string_example",
+  sync_source_items: true,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_name: `String`<a id="account_name-string"></a>
+##### account_key: `String`<a id="account_key-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/azure_blob_storage` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

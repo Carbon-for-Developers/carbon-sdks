@@ -96,6 +96,8 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**ListLabels**](docs/IntegrationsApi.md#listlabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 *IntegrationsApi* | [**ListOutlookCategories**](docs/IntegrationsApi.md#listoutlookcategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
 *IntegrationsApi* | [**ListRepos**](docs/IntegrationsApi.md#listrepos) | **Get** /integrations/github/repos | Github List Repos
+*IntegrationsApi* | [**SyncAzureBlobFiles**](docs/IntegrationsApi.md#syncazureblobfiles) | **Post** /integrations/azure_blob_storage/files | Azure Blob Files
+*IntegrationsApi* | [**SyncAzureBlobStorage**](docs/IntegrationsApi.md#syncazureblobstorage) | **Post** /integrations/azure_blob_storage | Azure Blob Storage Auth
 *IntegrationsApi* | [**SyncConfluence**](docs/IntegrationsApi.md#syncconfluence) | **Post** /integrations/confluence/sync | Confluence Sync
 *IntegrationsApi* | [**SyncDataSourceItems**](docs/IntegrationsApi.md#syncdatasourceitems) | **Post** /integrations/items/sync | Sync Data Source Items
 *IntegrationsApi* | [**SyncFiles**](docs/IntegrationsApi.md#syncfiles) | **Post** /integrations/files/sync | Sync Files
@@ -132,6 +134,10 @@ Class | Method | HTTP request | Description
 
  - [AddWebhookProps](docs/AddWebhookProps.md)
  - [AutoSyncEnabledSourcesProperty](docs/AutoSyncEnabledSourcesProperty.md)
+ - [AzureBlobAuthRequest](docs/AzureBlobAuthRequest.md)
+ - [AzureBlobFileSyncInput](docs/AzureBlobFileSyncInput.md)
+ - [AzureBlobGetFileInput](docs/AzureBlobGetFileInput.md)
+ - [AzureBlobStorageAuthentication](docs/AzureBlobStorageAuthentication.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
@@ -213,11 +219,12 @@ Class | Method | HTTP request | Description
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
  - [MoveToHotStorageQueryInput](docs/MoveToHotStorageQueryInput.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
- - [OANSCZGF](docs/OANSCZGF.md)
+ - [OANDSCZGFB](docs/OANDSCZGFB.md)
  - [OAuthAuthentication](docs/OAuthAuthentication.md)
  - [OAuthAuthenticationSource](docs/OAuthAuthenticationSource.md)
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OauthBasedConnectors](docs/OauthBasedConnectors.md)
+ - [OneDriveAuthentication](docs/OneDriveAuthentication.md)
  - [OrderDir](docs/OrderDir.md)
  - [OrderDirV2](docs/OrderDirV2.md)
  - [OrganizationResponse](docs/OrganizationResponse.md)
