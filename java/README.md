@@ -6,7 +6,7 @@
 
 Connect external data to LLMs, no matter the source.
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.34-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.34)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v0.1.35-blue)](https://central.sonatype.com/artifact/com.konfigthis.carbonai/carbonai-java-sdk/0.1.35)
 
 </div>
 
@@ -130,7 +130,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis.carbonai</groupId>
   <artifactId>carbonai-java-sdk</artifactId>
-  <version>0.1.34</version>
+  <version>0.1.35</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -146,7 +146,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.34"
+   implementation "com.konfigthis.carbonai:carbonai-java-sdk:0.1.35"
 }
 ```
 
@@ -183,7 +183,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/carbonai-java-sdk-0.1.34.jar`
+* `target/carbonai-java-sdk-0.1.35.jar`
 * `target/lib/*.jar`
 
 ## Getting Started<a id="getting-started"></a>
