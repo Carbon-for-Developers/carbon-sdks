@@ -71,6 +71,14 @@ from carbon.apis.paths.fetch_webpage import FetchWebpage
 from carbon.apis.paths.user_webpages import UserWebpages
 from carbon.apis.paths.search_urls import SearchUrls
 from carbon.apis.paths.fetch_youtube_transcript import FetchYoutubeTranscript
+from carbon.apis.paths.integrations_data_crm_accounts import IntegrationsDataCrmAccounts
+from carbon.apis.paths.integrations_data_crm_accounts_id import IntegrationsDataCrmAccountsId
+from carbon.apis.paths.integrations_data_crm_leads import IntegrationsDataCrmLeads
+from carbon.apis.paths.integrations_data_crm_leads_id import IntegrationsDataCrmLeadsId
+from carbon.apis.paths.integrations_data_crm_contacts import IntegrationsDataCrmContacts
+from carbon.apis.paths.integrations_data_crm_contacts_id import IntegrationsDataCrmContactsId
+from carbon.apis.paths.integrations_data_crm_opportunities import IntegrationsDataCrmOpportunities
+from carbon.apis.paths.integrations_data_crm_opportunities_id import IntegrationsDataCrmOpportunitiesId
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -145,6 +153,14 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.USER_WEBPAGES: UserWebpages,
         PathValues.SEARCH_URLS: SearchUrls,
         PathValues.FETCH_YOUTUBE_TRANSCRIPT: FetchYoutubeTranscript,
+        PathValues.INTEGRATIONS_DATA_CRM_ACCOUNTS: IntegrationsDataCrmAccounts,
+        PathValues.INTEGRATIONS_DATA_CRM_ACCOUNTS_ID: IntegrationsDataCrmAccountsId,
+        PathValues.INTEGRATIONS_DATA_CRM_LEADS: IntegrationsDataCrmLeads,
+        PathValues.INTEGRATIONS_DATA_CRM_LEADS_ID: IntegrationsDataCrmLeadsId,
+        PathValues.INTEGRATIONS_DATA_CRM_CONTACTS: IntegrationsDataCrmContacts,
+        PathValues.INTEGRATIONS_DATA_CRM_CONTACTS_ID: IntegrationsDataCrmContactsId,
+        PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES: IntegrationsDataCrmOpportunities,
+        PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES_ID: IntegrationsDataCrmOpportunitiesId,
     }
 )
 
@@ -220,5 +236,13 @@ path_to_api = PathToApi(
         PathValues.USER_WEBPAGES: UserWebpages,
         PathValues.SEARCH_URLS: SearchUrls,
         PathValues.FETCH_YOUTUBE_TRANSCRIPT: FetchYoutubeTranscript,
+        PathValues.INTEGRATIONS_DATA_CRM_ACCOUNTS: IntegrationsDataCrmAccounts,
+        PathValues.INTEGRATIONS_DATA_CRM_ACCOUNTS_ID: IntegrationsDataCrmAccountsId,
+        PathValues.INTEGRATIONS_DATA_CRM_LEADS: IntegrationsDataCrmLeads,
+        PathValues.INTEGRATIONS_DATA_CRM_LEADS_ID: IntegrationsDataCrmLeadsId,
+        PathValues.INTEGRATIONS_DATA_CRM_CONTACTS: IntegrationsDataCrmContacts,
+        PathValues.INTEGRATIONS_DATA_CRM_CONTACTS_ID: IntegrationsDataCrmContactsId,
+        PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES: IntegrationsDataCrmOpportunities,
+        PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES_ID: IntegrationsDataCrmOpportunitiesId,
     }
 )

@@ -20,6 +20,14 @@ Connect external data to LLMs, no matter the source.
 - [Reference](#reference)
   * [`carbon.auth.get_access_token`](#carbonauthget_access_token)
   * [`carbon.auth.get_white_labeling`](#carbonauthget_white_labeling)
+  * [`carbon.crm.get_account`](#carboncrmget_account)
+  * [`carbon.crm.get_accounts`](#carboncrmget_accounts)
+  * [`carbon.crm.get_contact`](#carboncrmget_contact)
+  * [`carbon.crm.get_contacts`](#carboncrmget_contacts)
+  * [`carbon.crm.get_lead`](#carboncrmget_lead)
+  * [`carbon.crm.get_leads`](#carboncrmget_leads)
+  * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
+  * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
@@ -182,6 +190,331 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/auth/v1/white_labeling` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_account`<a id="carboncrmget_account"></a>
+
+Get Account
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_account(
+  id: "id_example",
+  data_source_id: 1,
+  include_remote_data: false,
+  includes: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Account](./lib/carbon_ruby_sdk/models/account.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_accounts`<a id="carboncrmget_accounts"></a>
+
+Get Accounts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_accounts(
+  data_source_id: 1,
+  include_remote_data: false,
+  next_cursor: "string_example",
+  page_size: 1,
+  order_dir: "asc",
+  includes: [],
+  filters: {
+    },
+  order_by: "created_at",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+##### filters: [`AccountFilters`](./lib/carbon_ruby_sdk/models/account_filters.rb)<a id="filters-accountfilterslibcarbon_ruby_sdkmodelsaccount_filtersrb"></a>
+##### order_by: [`AccountsOrderByNullable`](./lib/carbon_ruby_sdk/models/accounts_order_by_nullable.rb)<a id="order_by-accountsorderbynullablelibcarbon_ruby_sdkmodelsaccounts_order_by_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountResponse](./lib/carbon_ruby_sdk/models/account_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_contact`<a id="carboncrmget_contact"></a>
+
+Get Contact
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_contact(
+  id: "id_example",
+  data_source_id: 1,
+  include_remote_data: false,
+  includes: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Contact](./lib/carbon_ruby_sdk/models/contact.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_contacts`<a id="carboncrmget_contacts"></a>
+
+Get Contacts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_contacts(
+  data_source_id: 1,
+  include_remote_data: false,
+  next_cursor: "string_example",
+  page_size: 1,
+  order_dir: "asc",
+  includes: [],
+  filters: {
+    },
+  order_by: "created_at",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+##### filters: [`ContactFilters`](./lib/carbon_ruby_sdk/models/contact_filters.rb)<a id="filters-contactfilterslibcarbon_ruby_sdkmodelscontact_filtersrb"></a>
+##### order_by: [`ContactsOrderByNullable`](./lib/carbon_ruby_sdk/models/contacts_order_by_nullable.rb)<a id="order_by-contactsorderbynullablelibcarbon_ruby_sdkmodelscontacts_order_by_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ContactsResponse](./lib/carbon_ruby_sdk/models/contacts_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_lead`<a id="carboncrmget_lead"></a>
+
+Get Lead
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_lead(
+  id: "id_example",
+  data_source_id: 1,
+  include_remote_data: false,
+  includes: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Lead](./lib/carbon_ruby_sdk/models/lead.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_leads`<a id="carboncrmget_leads"></a>
+
+Get Leads
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_leads(
+  data_source_id: 1,
+  include_remote_data: false,
+  next_cursor: "string_example",
+  page_size: 1,
+  order_dir: "asc",
+  includes: [],
+  filters: {
+    },
+  order_by: "created_at",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+##### filters: [`LeadFilters`](./lib/carbon_ruby_sdk/models/lead_filters.rb)<a id="filters-leadfilterslibcarbon_ruby_sdkmodelslead_filtersrb"></a>
+##### order_by: [`LeadsOrderByNullable`](./lib/carbon_ruby_sdk/models/leads_order_by_nullable.rb)<a id="order_by-leadsorderbynullablelibcarbon_ruby_sdkmodelsleads_order_by_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[LeadsResponse](./lib/carbon_ruby_sdk/models/leads_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_opportunities`<a id="carboncrmget_opportunities"></a>
+
+Get Opportunities
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_opportunities(
+  data_source_id: 1,
+  include_remote_data: false,
+  next_cursor: "string_example",
+  page_size: 1,
+  order_dir: "asc",
+  includes: [],
+  filters: {
+        "status" => "WON",
+    },
+  order_by: "created_at",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+##### filters: [`OpportunityFilters`](./lib/carbon_ruby_sdk/models/opportunity_filters.rb)<a id="filters-opportunityfilterslibcarbon_ruby_sdkmodelsopportunity_filtersrb"></a>
+##### order_by: [`OpportunitiesOrderByNullable`](./lib/carbon_ruby_sdk/models/opportunities_order_by_nullable.rb)<a id="order_by-opportunitiesorderbynullablelibcarbon_ruby_sdkmodelsopportunities_order_by_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OpportunitiesResponse](./lib/carbon_ruby_sdk/models/opportunities_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.get_opportunity`<a id="carboncrmget_opportunity"></a>
+
+Get Opportunity
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.crm.get_opportunity(
+  id: "id_example",
+  data_source_id: 1,
+  include_remote_data: false,
+  includes: [
+        "string_example"
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### includes: Array<[`BaseIncludes`](./lib/carbon_ruby_sdk/models/base_includes.rb)><a id="includes-array"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Opportunity](./lib/carbon_ruby_sdk/models/opportunity.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities/{id}` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -1,6 +1,7 @@
 package com.konfigthis.carbonai.client;
 
 import com.konfigthis.carbonai.client.api.AuthApi;
+import com.konfigthis.carbonai.client.api.CrmApi;
 import com.konfigthis.carbonai.client.api.DataSourcesApi;
 import com.konfigthis.carbonai.client.api.EmbeddingsApi;
 import com.konfigthis.carbonai.client.api.FilesApi;
@@ -13,6 +14,7 @@ import com.konfigthis.carbonai.client.api.WebhooksApi;
 public class Carbon {
     private ApiClient apiClient;
     public final AuthApi auth;
+    public final CrmApi crm;
     public final DataSourcesApi dataSources;
     public final EmbeddingsApi embeddings;
     public final FilesApi files;
@@ -29,6 +31,7 @@ public class Carbon {
     public Carbon(Configuration configuration) {
         this.apiClient = new ApiClient(null, configuration);
         this.auth = new AuthApi(this.apiClient);
+        this.crm = new CrmApi(this.apiClient);
         this.dataSources = new DataSourcesApi(this.apiClient);
         this.embeddings = new EmbeddingsApi(this.apiClient);
         this.files = new FilesApi(this.apiClient);

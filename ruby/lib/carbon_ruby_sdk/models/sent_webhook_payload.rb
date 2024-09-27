@@ -114,7 +114,7 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      webhook_type_validator = EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "EMBEDDING_STORAGE_MODIFIED", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNC_LIMIT_REACHED", "MOVED_TO_COLD_STORAGE", "MOVED_TO_HOT_STORAGE", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
+      webhook_type_validator = EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "EMBEDDING_STORAGE_MODIFIED", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNCING", "FILE_SYNC_LIMIT_REACHED", "MOVED_TO_COLD_STORAGE", "MOVED_TO_HOT_STORAGE", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
       return false unless webhook_type_validator.valid?(@webhook_type)
       true
     end
@@ -122,7 +122,7 @@ module Carbon
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] webhook_type Object to be assigned
     def webhook_type=(webhook_type)
-      validator = EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "EMBEDDING_STORAGE_MODIFIED", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNC_LIMIT_REACHED", "MOVED_TO_COLD_STORAGE", "MOVED_TO_HOT_STORAGE", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
+      validator = EnumAttributeValidator.new('String', ["ADD", "ALL_UPLOADED_FILES_QUEUED", "CANCEL", "CHECKUP", "DATA_SOURCE_READY", "EMBEDDING_STORAGE_MODIFIED", "FILES_CREATED", "FILES_SKIPPED", "FILE_DELETED", "FILE_ERROR", "FILE_READY", "FILE_STATISTICS_AGGREGATED", "FILE_SYNCING", "FILE_SYNC_LIMIT_REACHED", "MOVED_TO_COLD_STORAGE", "MOVED_TO_HOT_STORAGE", "ORGANIZATION_USER_DELETED", "RATE_LIMIT_ERROR", "REVOKE", "SPARSE_VECTOR_QUEUE_STATUS", "UPDATE", "WEBPAGE_ERROR", "WEBPAGE_READY", "WEBSCRAPE_URLS_READY"])
       unless validator.valid?(webhook_type)
         fail ArgumentError, "invalid value for \"webhook_type\", must be one of #{validator.allowable_values}."
       end

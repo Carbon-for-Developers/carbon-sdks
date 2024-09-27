@@ -56,6 +56,7 @@ class SentWebhookPayload(
                         "FILE_ERROR": "FILE_ERROR",
                         "FILE_READY": "FILE_READY",
                         "FILE_STATISTICS_AGGREGATED": "FILE_STATISTICS_AGGREGATED",
+                        "FILE_SYNCING": "FILE_SYNCING",
                         "FILE_SYNC_LIMIT_REACHED": "FILE_SYNC_LIMIT_REACHED",
                         "MOVED_TO_COLD_STORAGE": "MOVED_TO_COLD_STORAGE",
                         "MOVED_TO_HOT_STORAGE": "MOVED_TO_HOT_STORAGE",
@@ -116,6 +117,10 @@ class SentWebhookPayload(
                 @schemas.classproperty
                 def FILE_STATISTICS_AGGREGATED(cls):
                     return cls("FILE_STATISTICS_AGGREGATED")
+                
+                @schemas.classproperty
+                def FILE_SYNCING(cls):
+                    return cls("FILE_SYNCING")
                 
                 @schemas.classproperty
                 def FILE_SYNC_LIMIT_REACHED(cls):

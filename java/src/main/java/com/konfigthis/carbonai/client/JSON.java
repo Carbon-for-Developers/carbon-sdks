@@ -110,7 +110,12 @@ public class JSON {
                 return new JsonPrimitive(src);
             }
         });
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Account.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AccountFilters.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AccountResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AccountsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AddWebhookProps.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Address.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AzureBlobAuthRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.AzureBlobGetFileInput.CustomTypeAdapterFactory());
@@ -124,6 +129,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ConfluenceAuthentication.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ConnectDataSourceInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ConnectDataSourceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Contact.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ContactFilters.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ContactsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ContactsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DataSourceConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DeleteFilesQueryInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DeleteFilesV2QueryInput.CustomTypeAdapterFactory());
@@ -131,12 +140,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DirectoryItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DocumentResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.DocumentResponseList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Email.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingAndChunk.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingProperties.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksFilters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksQueryInputV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.EmbeddingsAndChunksResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Event.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ExternalSourceItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.FetchURLsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.FetchURLsResponse.CustomTypeAdapterFactory());
@@ -160,6 +171,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.GuruConnectRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.HybridSearchTuningParams.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.HybridSearchTuningParamsNullable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Lead.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.LeadFilters.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.LeadsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.LeadsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ListDataSourceItemsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ListDataSourceItemsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.ListItemsFilters.CustomTypeAdapterFactory());
@@ -177,6 +192,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OAuthAuthentication.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OAuthURLRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OneDriveAuthentication.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OpportunitiesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OpportunitiesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Opportunity.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OpportunityFilters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OrganizationResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OrganizationUserDataSourceFilters.CustomTypeAdapterFactory());
@@ -189,6 +208,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OuthURLResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.OutlookSyncInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Pagination.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialAccount.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialAccountNullable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialContact.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialContactNullable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialOwner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PartialOwnerNullable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PhoneNumber.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.PresignedURLResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RSSFeedInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.RawTextInput.CustomTypeAdapterFactory());
@@ -216,6 +242,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SyncFilesIds.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SyncFilesRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.SyncOptions.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.Task.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.TokenResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.UpdateOrganizationInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.carbonai.client.model.UpdateUsersInput.CustomTypeAdapterFactory());

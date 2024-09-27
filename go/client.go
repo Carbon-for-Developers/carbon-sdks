@@ -51,6 +51,8 @@ type APIClient struct {
 
 	AuthApi *AuthApiService
 
+	CRMApi *CRMApiService
+
 	DataSourcesApi *DataSourcesApiService
 
 	EmbeddingsApi *EmbeddingsApiService
@@ -85,6 +87,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AuthApi = (*AuthApiService)(&c.common)
+	c.CRMApi = (*CRMApiService)(&c.common)
 	c.DataSourcesApi = (*DataSourcesApiService)(&c.common)
 	c.EmbeddingsApi = (*EmbeddingsApiService)(&c.common)
 	c.FilesApi = (*FilesApiService)(&c.common)

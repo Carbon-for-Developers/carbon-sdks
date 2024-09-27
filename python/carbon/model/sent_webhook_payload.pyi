@@ -90,6 +90,10 @@ class SentWebhookPayload(
                     return cls("FILE_STATISTICS_AGGREGATED")
                 
                 @schemas.classproperty
+                def FILE_SYNCING(cls):
+                    return cls("FILE_SYNCING")
+                
+                @schemas.classproperty
                 def FILE_SYNC_LIMIT_REACHED(cls):
                     return cls("FILE_SYNC_LIMIT_REACHED")
                 

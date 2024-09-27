@@ -4,6 +4,7 @@ from carbon.apis.tags import TagValues
 from carbon.apis.tags.integrations_api import IntegrationsApi
 from carbon.apis.tags.files_api import FilesApi
 from carbon.apis.tags.utilities_api import UtilitiesApi
+from carbon.apis.tags.crm_api import CRMApi
 from carbon.apis.tags.users_api import UsersApi
 from carbon.apis.tags.embeddings_api import EmbeddingsApi
 from carbon.apis.tags.webhooks_api import WebhooksApi
@@ -21,6 +22,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.INTEGRATIONS: IntegrationsApi,
         TagValues.FILES: FilesApi,
         TagValues.UTILITIES: UtilitiesApi,
+        TagValues.CRM: CRMApi,
         TagValues.USERS: UsersApi,
         TagValues.EMBEDDINGS: EmbeddingsApi,
         TagValues.WEBHOOKS: WebhooksApi,
@@ -39,6 +41,7 @@ tag_to_api = TagToApi(
         TagValues.INTEGRATIONS: IntegrationsApi,
         TagValues.FILES: FilesApi,
         TagValues.UTILITIES: UtilitiesApi,
+        TagValues.CRM: CRMApi,
         TagValues.USERS: UsersApi,
         TagValues.EMBEDDINGS: EmbeddingsApi,
         TagValues.WEBHOOKS: WebhooksApi,

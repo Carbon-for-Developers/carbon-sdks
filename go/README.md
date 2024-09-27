@@ -60,6 +60,14 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthApi* | [**GetAccessToken**](docs/AuthApi.md#getaccesstoken) | **Get** /auth/v1/access_token | Get Access Token
 *AuthApi* | [**GetWhiteLabeling**](docs/AuthApi.md#getwhitelabeling) | **Get** /auth/v1/white_labeling | Get White Labeling
+*CRMApi* | [**GetAccount**](docs/CRMApi.md#getaccount) | **Get** /integrations/data/crm/accounts/{id} | Get Account
+*CRMApi* | [**GetAccounts**](docs/CRMApi.md#getaccounts) | **Post** /integrations/data/crm/accounts | Get Accounts
+*CRMApi* | [**GetContact**](docs/CRMApi.md#getcontact) | **Get** /integrations/data/crm/contacts/{id} | Get Contact
+*CRMApi* | [**GetContacts**](docs/CRMApi.md#getcontacts) | **Post** /integrations/data/crm/contacts | Get Contacts
+*CRMApi* | [**GetLead**](docs/CRMApi.md#getlead) | **Get** /integrations/data/crm/leads/{id} | Get Lead
+*CRMApi* | [**GetLeads**](docs/CRMApi.md#getleads) | **Post** /integrations/data/crm/leads | Get Leads
+*CRMApi* | [**GetOpportunities**](docs/CRMApi.md#getopportunities) | **Post** /integrations/data/crm/opportunities | Get Opportunities
+*CRMApi* | [**GetOpportunity**](docs/CRMApi.md#getopportunity) | **Get** /integrations/data/crm/opportunities/{id} | Get Opportunity
 *DataSourcesApi* | [**QueryUserDataSources**](docs/DataSourcesApi.md#queryuserdatasources) | **Post** /user_data_sources | User Data Sources
 *DataSourcesApi* | [**RevokeAccessToken**](docs/DataSourcesApi.md#revokeaccesstoken) | **Post** /revoke_access_token | Revoke Access Token
 *EmbeddingsApi* | [**GetDocuments**](docs/EmbeddingsApi.md#getdocuments) | **Post** /embeddings | Embeddings
@@ -132,12 +140,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Account](docs/Account.md)
+ - [AccountFilters](docs/AccountFilters.md)
+ - [AccountResponse](docs/AccountResponse.md)
+ - [AccountsOrderBy](docs/AccountsOrderBy.md)
+ - [AccountsOrderByNullable](docs/AccountsOrderByNullable.md)
+ - [AccountsRequest](docs/AccountsRequest.md)
  - [AddWebhookProps](docs/AddWebhookProps.md)
+ - [Address](docs/Address.md)
  - [AutoSyncEnabledSourcesProperty](docs/AutoSyncEnabledSourcesProperty.md)
  - [AzureBlobAuthRequest](docs/AzureBlobAuthRequest.md)
  - [AzureBlobFileSyncInput](docs/AzureBlobFileSyncInput.md)
  - [AzureBlobGetFileInput](docs/AzureBlobGetFileInput.md)
  - [AzureBlobStorageAuthentication](docs/AzureBlobStorageAuthentication.md)
+ - [BaseIncludes](docs/BaseIncludes.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
  - [ChunkPropertiesNullable](docs/ChunkPropertiesNullable.md)
@@ -147,6 +163,12 @@ Class | Method | HTTP request | Description
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
  - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
+ - [Contact](docs/Contact.md)
+ - [ContactFilters](docs/ContactFilters.md)
+ - [ContactsOrderBy](docs/ContactsOrderBy.md)
+ - [ContactsOrderByNullable](docs/ContactsOrderByNullable.md)
+ - [ContactsRequest](docs/ContactsRequest.md)
+ - [ContactsResponse](docs/ContactsResponse.md)
  - [CustomCredentialsType](docs/CustomCredentialsType.md)
  - [DataSourceConfiguration](docs/DataSourceConfiguration.md)
  - [DataSourceLastSyncActions](docs/DataSourceLastSyncActions.md)
@@ -159,6 +181,7 @@ Class | Method | HTTP request | Description
  - [DirectoryItem](docs/DirectoryItem.md)
  - [DocumentResponse](docs/DocumentResponse.md)
  - [DocumentResponseList](docs/DocumentResponseList.md)
+ - [Email](docs/Email.md)
  - [EmbeddingAndChunk](docs/EmbeddingAndChunk.md)
  - [EmbeddingGenerators](docs/EmbeddingGenerators.md)
  - [EmbeddingGeneratorsNullable](docs/EmbeddingGeneratorsNullable.md)
@@ -169,6 +192,7 @@ Class | Method | HTTP request | Description
  - [EmbeddingsAndChunksQueryInput](docs/EmbeddingsAndChunksQueryInput.md)
  - [EmbeddingsAndChunksQueryInputV2](docs/EmbeddingsAndChunksQueryInputV2.md)
  - [EmbeddingsAndChunksResponse](docs/EmbeddingsAndChunksResponse.md)
+ - [Event](docs/Event.md)
  - [ExternalFileSyncStatuses](docs/ExternalFileSyncStatuses.md)
  - [ExternalSourceItem](docs/ExternalSourceItem.md)
  - [ExternalSourceItemsOrderBy](docs/ExternalSourceItemsOrderBy.md)
@@ -204,6 +228,12 @@ Class | Method | HTTP request | Description
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
+ - [Lead](docs/Lead.md)
+ - [LeadFilters](docs/LeadFilters.md)
+ - [LeadsOrderBy](docs/LeadsOrderBy.md)
+ - [LeadsOrderByNullable](docs/LeadsOrderByNullable.md)
+ - [LeadsRequest](docs/LeadsRequest.md)
+ - [LeadsResponse](docs/LeadsResponse.md)
  - [ListDataSourceItemsRequest](docs/ListDataSourceItemsRequest.md)
  - [ListDataSourceItemsResponse](docs/ListDataSourceItemsResponse.md)
  - [ListItemsFilters](docs/ListItemsFilters.md)
@@ -225,8 +255,17 @@ Class | Method | HTTP request | Description
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OauthBasedConnectors](docs/OauthBasedConnectors.md)
  - [OneDriveAuthentication](docs/OneDriveAuthentication.md)
+ - [OpportunitiesOrderBy](docs/OpportunitiesOrderBy.md)
+ - [OpportunitiesOrderByNullable](docs/OpportunitiesOrderByNullable.md)
+ - [OpportunitiesRequest](docs/OpportunitiesRequest.md)
+ - [OpportunitiesResponse](docs/OpportunitiesResponse.md)
+ - [Opportunity](docs/Opportunity.md)
+ - [OpportunityFilters](docs/OpportunityFilters.md)
+ - [OpportunityStatus](docs/OpportunityStatus.md)
+ - [OpportunityStatusNullable](docs/OpportunityStatusNullable.md)
  - [OrderDir](docs/OrderDir.md)
  - [OrderDirV2](docs/OrderDirV2.md)
+ - [OrderDirV2Nullable](docs/OrderDirV2Nullable.md)
  - [OrganizationResponse](docs/OrganizationResponse.md)
  - [OrganizationUserDataSourceAPI](docs/OrganizationUserDataSourceAPI.md)
  - [OrganizationUserDataSourceFilters](docs/OrganizationUserDataSourceFilters.md)
@@ -241,6 +280,13 @@ Class | Method | HTTP request | Description
  - [OuthURLResponse](docs/OuthURLResponse.md)
  - [OutlookSyncInput](docs/OutlookSyncInput.md)
  - [Pagination](docs/Pagination.md)
+ - [PartialAccount](docs/PartialAccount.md)
+ - [PartialAccountNullable](docs/PartialAccountNullable.md)
+ - [PartialContact](docs/PartialContact.md)
+ - [PartialContactNullable](docs/PartialContactNullable.md)
+ - [PartialOwner](docs/PartialOwner.md)
+ - [PartialOwnerNullable](docs/PartialOwnerNullable.md)
+ - [PhoneNumber](docs/PhoneNumber.md)
  - [PresignedURLResponse](docs/PresignedURLResponse.md)
  - [RSSFeedInput](docs/RSSFeedInput.md)
  - [RankProperty](docs/RankProperty.md)
@@ -280,6 +326,7 @@ Class | Method | HTTP request | Description
  - [TMEmbeddingGenerators](docs/TMEmbeddingGenerators.md)
  - [Tags](docs/Tags.md)
  - [Tags1](docs/Tags1.md)
+ - [Task](docs/Task.md)
  - [TextEmbeddingGenerators](docs/TextEmbeddingGenerators.md)
  - [TokenResponse](docs/TokenResponse.md)
  - [TranscriptionService](docs/TranscriptionService.md)

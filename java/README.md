@@ -24,6 +24,14 @@ Connect external data to LLMs, no matter the source.
 - [Reference](#reference)
   * [`carbon.auth.getAccessToken`](#carbonauthgetaccesstoken)
   * [`carbon.auth.getWhiteLabeling`](#carbonauthgetwhitelabeling)
+  * [`carbon.crm.getAccount`](#carboncrmgetaccount)
+  * [`carbon.crm.getAccounts`](#carboncrmgetaccounts)
+  * [`carbon.crm.getContact`](#carboncrmgetcontact)
+  * [`carbon.crm.getContacts`](#carboncrmgetcontacts)
+  * [`carbon.crm.getLead`](#carboncrmgetlead)
+  * [`carbon.crm.getLeads`](#carboncrmgetleads)
+  * [`carbon.crm.getOpportunities`](#carboncrmgetopportunities)
+  * [`carbon.crm.getOpportunity`](#carboncrmgetopportunity)
   * [`carbon.dataSources.queryUserDataSources`](#carbondatasourcesqueryuserdatasources)
   * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
   * [`carbon.embeddings.getDocuments`](#carbonembeddingsgetdocuments)
@@ -277,6 +285,362 @@ WhiteLabelingResponse result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/auth/v1/white_labeling` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getAccount`<a id="carboncrmgetaccount"></a>
+
+Get Account
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Account result = client
+        .crm
+        .getAccount(id, dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .includes(includes)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Account](./src/main/java/com/konfigthis/client/model/Account.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getAccounts`<a id="carboncrmgetaccounts"></a>
+
+Get Accounts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+AccountResponse result = client
+        .crm
+        .getAccounts(dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .nextCursor(nextCursor)
+        .pageSize(pageSize)
+        .orderDir(orderDir)
+        .includes(includes)
+        .filters(filters)
+        .orderBy(orderBy)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+##### filters: [`AccountFilters`](./src/main/java/com/konfigthis/client/model/AccountFilters.java)<a id="filters-accountfilterssrcmainjavacomkonfigthisclientmodelaccountfiltersjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountResponse](./src/main/java/com/konfigthis/client/model/AccountResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getContact`<a id="carboncrmgetcontact"></a>
+
+Get Contact
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Contact result = client
+        .crm
+        .getContact(id, dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .includes(includes)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Contact](./src/main/java/com/konfigthis/client/model/Contact.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getContacts`<a id="carboncrmgetcontacts"></a>
+
+Get Contacts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+ContactsResponse result = client
+        .crm
+        .getContacts(dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .nextCursor(nextCursor)
+        .pageSize(pageSize)
+        .orderDir(orderDir)
+        .includes(includes)
+        .filters(filters)
+        .orderBy(orderBy)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+##### filters: [`ContactFilters`](./src/main/java/com/konfigthis/client/model/ContactFilters.java)<a id="filters-contactfilterssrcmainjavacomkonfigthisclientmodelcontactfiltersjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ContactsResponse](./src/main/java/com/konfigthis/client/model/ContactsResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getLead`<a id="carboncrmgetlead"></a>
+
+Get Lead
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Lead result = client
+        .crm
+        .getLead(id, dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .includes(includes)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Lead](./src/main/java/com/konfigthis/client/model/Lead.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads/{id}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getLeads`<a id="carboncrmgetleads"></a>
+
+Get Leads
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+LeadsResponse result = client
+        .crm
+        .getLeads(dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .nextCursor(nextCursor)
+        .pageSize(pageSize)
+        .orderDir(orderDir)
+        .includes(includes)
+        .filters(filters)
+        .orderBy(orderBy)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+##### filters: [`LeadFilters`](./src/main/java/com/konfigthis/client/model/LeadFilters.java)<a id="filters-leadfilterssrcmainjavacomkonfigthisclientmodelleadfiltersjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[LeadsResponse](./src/main/java/com/konfigthis/client/model/LeadsResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getOpportunities`<a id="carboncrmgetopportunities"></a>
+
+Get Opportunities
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+OpportunitiesResponse result = client
+        .crm
+        .getOpportunities(dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .nextCursor(nextCursor)
+        .pageSize(pageSize)
+        .orderDir(orderDir)
+        .includes(includes)
+        .filters(filters)
+        .orderBy(orderBy)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+##### filters: [`OpportunityFilters`](./src/main/java/com/konfigthis/client/model/OpportunityFilters.java)<a id="filters-opportunityfilterssrcmainjavacomkonfigthisclientmodelopportunityfiltersjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OpportunitiesResponse](./src/main/java/com/konfigthis/client/model/OpportunitiesResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.crm.getOpportunity`<a id="carboncrmgetopportunity"></a>
+
+Get Opportunity
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Opportunity result = client
+        .crm
+        .getOpportunity(id, dataSourceId)
+        .includeRemoteData(includeRemoteData)
+        .includes(includes)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `String`<a id="id-string"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### includes: List><a id="includes-list"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Opportunity](./src/main/java/com/konfigthis/client/model/Opportunity.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities/{id}` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -24,6 +24,14 @@ Connect external data to LLMs, no matter the source.
 - [Reference](#reference)
   * [`carbon.auth.get_access_token`](#carbonauthget_access_token)
   * [`carbon.auth.get_white_labeling`](#carbonauthget_white_labeling)
+  * [`carbon.crm.get_account`](#carboncrmget_account)
+  * [`carbon.crm.get_accounts`](#carboncrmget_accounts)
+  * [`carbon.crm.get_contact`](#carboncrmget_contact)
+  * [`carbon.crm.get_contacts`](#carboncrmget_contacts)
+  * [`carbon.crm.get_lead`](#carboncrmget_lead)
+  * [`carbon.crm.get_leads`](#carboncrmget_leads)
+  * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
+  * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
@@ -240,6 +248,368 @@ get_white_labeling_response = carbon.auth.get_white_labeling()
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/auth/v1/white_labeling` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_account`<a id="carboncrmget_account"></a>
+
+Get Account
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_account_response = carbon.crm.get_account(
+    id="id_example",
+    data_source_id=1,
+    include_remote_data=False,
+    includes=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `str`<a id="id-str"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`Account`](./carbon/pydantic/account.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts/{id}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_accounts`<a id="carboncrmget_accounts"></a>
+
+Get Accounts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_accounts_response = carbon.crm.get_accounts(
+    data_source_id=1,
+    include_remote_data=False,
+    next_cursor="string_example",
+    page_size=1,
+    order_dir="asc",
+    includes=[],
+    filters={},
+    order_by="created_at",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### page_size: `Optional[int]`<a id="page_size-optionalint"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+##### filters: [`AccountFilters`](./carbon/type/account_filters.py)<a id="filters-accountfilterscarbontypeaccount_filterspy"></a>
+
+
+##### order_by: [`AccountsOrderByNullable`](./carbon/type/accounts_order_by_nullable.py)<a id="order_by-accountsorderbynullablecarbontypeaccounts_order_by_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`AccountsRequest`](./carbon/type/accounts_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`AccountResponse`](./carbon/pydantic/account_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/accounts` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_contact`<a id="carboncrmget_contact"></a>
+
+Get Contact
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_contact_response = carbon.crm.get_contact(
+    id="id_example",
+    data_source_id=1,
+    include_remote_data=False,
+    includes=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `str`<a id="id-str"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`Contact`](./carbon/pydantic/contact.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts/{id}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_contacts`<a id="carboncrmget_contacts"></a>
+
+Get Contacts
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_contacts_response = carbon.crm.get_contacts(
+    data_source_id=1,
+    include_remote_data=False,
+    next_cursor="string_example",
+    page_size=1,
+    order_dir="asc",
+    includes=[],
+    filters={},
+    order_by="created_at",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### page_size: `Optional[int]`<a id="page_size-optionalint"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+##### filters: [`ContactFilters`](./carbon/type/contact_filters.py)<a id="filters-contactfilterscarbontypecontact_filterspy"></a>
+
+
+##### order_by: [`ContactsOrderByNullable`](./carbon/type/contacts_order_by_nullable.py)<a id="order_by-contactsorderbynullablecarbontypecontacts_order_by_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`ContactsRequest`](./carbon/type/contacts_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`ContactsResponse`](./carbon/pydantic/contacts_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/contacts` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_lead`<a id="carboncrmget_lead"></a>
+
+Get Lead
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_lead_response = carbon.crm.get_lead(
+    id="id_example",
+    data_source_id=1,
+    include_remote_data=False,
+    includes=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `str`<a id="id-str"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`Lead`](./carbon/pydantic/lead.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads/{id}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_leads`<a id="carboncrmget_leads"></a>
+
+Get Leads
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_leads_response = carbon.crm.get_leads(
+    data_source_id=1,
+    include_remote_data=False,
+    next_cursor="string_example",
+    page_size=1,
+    order_dir="asc",
+    includes=[],
+    filters={},
+    order_by="created_at",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### page_size: `Optional[int]`<a id="page_size-optionalint"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+##### filters: [`LeadFilters`](./carbon/type/lead_filters.py)<a id="filters-leadfilterscarbontypelead_filterspy"></a>
+
+
+##### order_by: [`LeadsOrderByNullable`](./carbon/type/leads_order_by_nullable.py)<a id="order_by-leadsorderbynullablecarbontypeleads_order_by_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`LeadsRequest`](./carbon/type/leads_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`LeadsResponse`](./carbon/pydantic/leads_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/leads` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_opportunities`<a id="carboncrmget_opportunities"></a>
+
+Get Opportunities
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_opportunities_response = carbon.crm.get_opportunities(
+    data_source_id=1,
+    include_remote_data=False,
+    next_cursor="string_example",
+    page_size=1,
+    order_dir="asc",
+    includes=[],
+    filters={
+        "status": "WON",
+    },
+    order_by="created_at",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### page_size: `Optional[int]`<a id="page_size-optionalint"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+##### filters: [`OpportunityFilters`](./carbon/type/opportunity_filters.py)<a id="filters-opportunityfilterscarbontypeopportunity_filterspy"></a>
+
+
+##### order_by: [`OpportunitiesOrderByNullable`](./carbon/type/opportunities_order_by_nullable.py)<a id="order_by-opportunitiesorderbynullablecarbontypeopportunities_order_by_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`OpportunitiesRequest`](./carbon/type/opportunities_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OpportunitiesResponse`](./carbon/pydantic/opportunities_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.crm.get_opportunity`<a id="carboncrmget_opportunity"></a>
+
+Get Opportunity
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_opportunity_response = carbon.crm.get_opportunity(
+    id="id_example",
+    data_source_id=1,
+    include_remote_data=False,
+    includes=["string_example"],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### id: `str`<a id="id-str"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### includes: List[[`BaseIncludes`](./carbon/type/base_includes.py)]<a id="includes-listbaseincludescarbontypebase_includespy"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`Opportunity`](./carbon/pydantic/opportunity.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/crm/opportunities/{id}` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
