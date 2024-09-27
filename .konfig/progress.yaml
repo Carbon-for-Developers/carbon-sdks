@@ -108,6 +108,22 @@ operationIds:
     post: Integrations_syncConfluence
   /integrations/connect:
     post: Integrations_connectDataSource
+  /integrations/data/crm/accounts:
+    post: Crm_getAccounts
+  /integrations/data/crm/accounts/{id}:
+    get: Crm_getAccount
+  /integrations/data/crm/contacts:
+    post: Crm_getContacts
+  /integrations/data/crm/contacts/{id}:
+    get: Crm_getContact
+  /integrations/data/crm/leads:
+    post: Crm_getLeads
+  /integrations/data/crm/leads/{id}:
+    get: Crm_getLead
+  /integrations/data/crm/opportunities:
+    post: Crm_getOpportunities
+  /integrations/data/crm/opportunities/{id}:
+    get: Crm_getOpportunity
   /integrations/files/sync:
     post: Integrations_syncFiles
   /integrations/freshdesk:
@@ -315,7 +331,11 @@ securityParameters:
     query: false
   id:
     query: false
+  include_remote_data:
+    query: false
   include_speaker_labels:
+    query: false
+  includes:
     query: false
   max_items_per_chunk:
     query: false

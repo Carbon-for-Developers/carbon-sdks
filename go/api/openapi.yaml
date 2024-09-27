@@ -56,6 +56,7 @@ tags:
     ---
     Leverage these `Utilities` endpoints to execute a wide range of helpful actions, including initiating web scraping, processing sitemaps, retrieving URLs from a specific webpage, obtaining relevant URLs based on a search query, fetching YouTube video transcripts, and many other functionalities.
   name: Utilities
+- name: CRM
 - description: |2
 
     ---
@@ -4194,8 +4195,872 @@ paths:
       - Utilities
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--fetch_youtube_transcript
+  /integrations/data/crm/accounts:
+    post:
+      operationId: Crm_getAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Accounts
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-accounts
+  /integrations/data/crm/accounts/{id}:
+    get:
+      operationId: Crm_getAccount
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          title: Id
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: data_source_id
+        required: true
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-accounts-id-get-parameters-2-schema
+        style: form
+      - explode: true
+        in: query
+        name: includes
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Account
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-accounts-id
+  /integrations/data/crm/leads:
+    post:
+      operationId: Crm_getLeads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadsResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Leads
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-leads
+  /integrations/data/crm/leads/{id}:
+    get:
+      operationId: Crm_getLead
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          title: Id
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: data_source_id
+        required: true
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-leads-id-get-parameters-2-schema
+        style: form
+      - explode: true
+        in: query
+        name: includes
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lead'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Lead
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-leads-id
+  /integrations/data/crm/contacts:
+    post:
+      operationId: Crm_getContacts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Contacts
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-contacts
+  /integrations/data/crm/contacts/{id}:
+    get:
+      operationId: Crm_getContact
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          title: Id
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: data_source_id
+        required: true
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-contacts-id-get-parameters-2-schema
+        style: form
+      - explode: true
+        in: query
+        name: includes
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Contact
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-contacts-id
+  /integrations/data/crm/opportunities:
+    post:
+      operationId: Crm_getOpportunities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunitiesRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunitiesResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Opportunities
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-opportunities
+  /integrations/data/crm/opportunities/{id}:
+    get:
+      operationId: Crm_getOpportunity
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          title: Id
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: data_source_id
+        required: true
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-opportunities-id-get-parameters-2-schema
+        style: form
+      - explode: true
+        in: query
+        name: includes
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Opportunity'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Opportunity
+      tags:
+      - CRM
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-opportunities-id
 components:
   schemas:
+    Account:
+      example:
+        owner:
+          id: id
+        website: website
+        addresses:
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        description: description
+        created_at: created_at
+        industry: industry
+        remote_data: "{}"
+        phone_numbers:
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        number_of_employees: 6
+        is_deleted: true
+        updated_at: updated_at
+        last_activity_at: last_activity_at
+        name: name
+        id: id
+        tasks:
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        events:
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+      properties:
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwnerNullable'
+        name:
+          nullable: true
+          title: Name
+          type: string
+        industry:
+          nullable: true
+          title: Industry
+          type: string
+        website:
+          nullable: true
+          title: Website
+          type: string
+        number_of_employees:
+          nullable: true
+          title: Number Of Employees
+          type: integer
+        addresses:
+          items:
+            $ref: '#/components/schemas/Address'
+          title: Addresses
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+          title: Phone Numbers
+          type: array
+        last_activity_at:
+          nullable: true
+          title: Last Activity At
+          type: string
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          nullable: true
+          title: Tasks
+          type: array
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          nullable: true
+          title: Events
+          type: array
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - addresses
+      - created_at
+      - description
+      - events
+      - id
+      - industry
+      - is_deleted
+      - last_activity_at
+      - name
+      - number_of_employees
+      - owner
+      - phone_numbers
+      - remote_data
+      - tasks
+      - updated_at
+      - website
+      title: Account
+      type: object
+    AccountFilters:
+      example:
+        owner_id: owner_id
+        name: name
+      properties:
+        owner_id:
+          nullable: true
+          title: Owner Id
+          type: string
+        name:
+          nullable: true
+          title: Name
+          type: string
+      title: AccountFilters
+      type: object
+    AccountResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - owner:
+            id: id
+          website: website
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          description: description
+          created_at: created_at
+          industry: industry
+          remote_data: "{}"
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          number_of_employees: 6
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+        - owner:
+            id: id
+          website: website
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          description: description
+          created_at: created_at
+          industry: industry
+          remote_data: "{}"
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          number_of_employees: 6
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+        count: 0
+      properties:
+        count:
+          title: Count
+          type: integer
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/Account'
+          title: Data
+          type: array
+      required:
+      - count
+      - data
+      - next_cursor
+      title: AccountResponse
+      type: object
+    AccountsOrderBy:
+      enum:
+      - created_at
+      - updated_at
+      - number_of_employees
+      - name
+      - last_activity_at
+      title: AccountsOrderBy
+      type: string
+    AccountsRequest:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        includes: []
+        filters:
+          owner_id: owner_id
+          name: name
+        include_remote_data: false
+        data_source_id: 0
+        page_size: 6
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AccountsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AccountsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/AccountFilters'
+        order_by:
+          $ref: '#/components/schemas/AccountsOrderByNullable'
+      required:
+      - data_source_id
+      title: AccountsRequest
+      type: object
+      x-konfig-properties:
+        filters:
+          default: {}
     AddWebhookProps:
       example:
         url: url
@@ -4206,6 +5071,54 @@ components:
       required:
       - url
       title: AddWebhookProps
+      type: object
+    Address:
+      example:
+        country: country
+        street_1: street_1
+        address_type: address_type
+        city: city
+        street_2: street_2
+        state: state
+        postal_code: postal_code
+      properties:
+        street_1:
+          nullable: true
+          title: Street 1
+          type: string
+        street_2:
+          nullable: true
+          title: Street 2
+          type: string
+        city:
+          nullable: true
+          title: City
+          type: string
+        state:
+          nullable: true
+          title: State
+          type: string
+        postal_code:
+          nullable: true
+          title: Postal Code
+          type: string
+        country:
+          nullable: true
+          title: Country
+          type: string
+        address_type:
+          nullable: true
+          title: Address Type
+          type: string
+      required:
+      - address_type
+      - city
+      - country
+      - postal_code
+      - state
+      - street_1
+      - street_2
+      title: Address
       type: object
     AzureBlobAuthRequest:
       example:
@@ -4394,6 +5307,13 @@ components:
       - source
       title: AzureBlobStorageAuthentication
       type: object
+    BaseIncludes:
+      description: 'These can be included as children when requesting parent entities '
+      enum:
+      - Tasks
+      - Events
+      title: BaseIncludes
+      type: string
     Body_create_upload_file_uploadfile_post:
       properties:
         file:
@@ -4680,6 +5600,534 @@ components:
       - data_source
       - sync_url
       title: ConnectDataSourceResponse
+      type: object
+    Contact:
+      example:
+        owner:
+          id: id
+        addresses:
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        description: description
+        last_name: last_name
+        created_at: created_at
+        title: title
+        remote_data: "{}"
+        emails:
+        - email_type: email_type
+          email: email
+        - email_type: email_type
+          email: email
+        phone_numbers:
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        is_deleted: true
+        updated_at: updated_at
+        last_activity_at: last_activity_at
+        name: name
+        id: id
+        department: department
+        first_name: first_name
+        account:
+          id: id
+        tasks:
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        events:
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+      properties:
+        title:
+          nullable: true
+          title: Title
+          type: string
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwnerNullable'
+        first_name:
+          nullable: true
+          title: First Name
+          type: string
+        last_name:
+          nullable: true
+          title: Last Name
+          type: string
+        name:
+          nullable: true
+          title: Name
+          type: string
+        department:
+          nullable: true
+          title: Department
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Address'
+          title: Addresses
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+          title: Phone Numbers
+          type: array
+        emails:
+          items:
+            $ref: '#/components/schemas/Email'
+          title: Emails
+          type: array
+        account:
+          $ref: '#/components/schemas/PartialAccountNullable'
+        last_activity_at:
+          nullable: true
+          title: Last Activity At
+          type: string
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          nullable: true
+          title: Tasks
+          type: array
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          nullable: true
+          title: Events
+          type: array
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - account
+      - addresses
+      - created_at
+      - department
+      - description
+      - emails
+      - events
+      - first_name
+      - id
+      - is_deleted
+      - last_activity_at
+      - last_name
+      - name
+      - owner
+      - phone_numbers
+      - remote_data
+      - tasks
+      - title
+      - updated_at
+      title: Contact
+      type: object
+    ContactFilters:
+      example:
+        account_id: account_id
+        owner_id: owner_id
+        name: name
+      properties:
+        owner_id:
+          nullable: true
+          title: Owner Id
+          type: string
+        name:
+          nullable: true
+          title: Name
+          type: string
+        account_id:
+          nullable: true
+          title: Account Id
+          type: string
+      title: ContactFilters
+      type: object
+    ContactsOrderBy:
+      enum:
+      - created_at
+      - updated_at
+      - title
+      - name
+      - last_activity_at
+      title: ContactsOrderBy
+      type: string
+    ContactsRequest:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        includes: []
+        filters:
+          account_id: account_id
+          owner_id: owner_id
+          name: name
+        include_remote_data: false
+        data_source_id: 0
+        page_size: 6
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ContactsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ContactsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/ContactFilters'
+        order_by:
+          $ref: '#/components/schemas/ContactsOrderByNullable'
+      required:
+      - data_source_id
+      title: ContactsRequest
+      type: object
+      x-konfig-properties:
+        filters:
+          default: {}
+    ContactsResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - owner:
+            id: id
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          description: description
+          last_name: last_name
+          created_at: created_at
+          title: title
+          remote_data: "{}"
+          emails:
+          - email_type: email_type
+            email: email
+          - email_type: email_type
+            email: email
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          department: department
+          first_name: first_name
+          account:
+            id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+        - owner:
+            id: id
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          description: description
+          last_name: last_name
+          created_at: created_at
+          title: title
+          remote_data: "{}"
+          emails:
+          - email_type: email_type
+            email: email
+          - email_type: email_type
+            email: email
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          department: department
+          first_name: first_name
+          account:
+            id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+        count: 0
+      properties:
+        count:
+          title: Count
+          type: integer
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/Contact'
+          title: Data
+          type: array
+      required:
+      - count
+      - data
+      - next_cursor
+      title: ContactsResponse
       type: object
     CustomCredentialsType:
       enum:
@@ -5098,6 +6546,23 @@ components:
       - documents
       title: DocumentResponseList
       type: object
+    Email:
+      example:
+        email_type: email_type
+        email: email
+      properties:
+        email:
+          title: Email
+          type: string
+        email_type:
+          nullable: true
+          title: Email Type
+          type: string
+      required:
+      - email
+      - email_type
+      title: Email
+      type: object
     EmbeddingAndChunk:
       example:
         chunk_index: 6
@@ -5351,6 +6816,88 @@ components:
       - count
       - results
       title: EmbeddingsAndChunksResponse
+      type: object
+    Event:
+      example:
+        owner:
+          id: id
+        end_date: end_date
+        subject: subject
+        description: description
+        created_at: created_at
+        remote_data: "{}"
+        is_deleted: true
+        updated_at: updated_at
+        contact:
+          id: id
+        location: location
+        is_all_day: true
+        id: id
+        account:
+          id: id
+        start_date: start_date
+      properties:
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwner'
+        subject:
+          nullable: true
+          title: Subject
+          type: string
+        location:
+          nullable: true
+          title: Location
+          type: string
+        is_all_day:
+          title: Is All Day
+          type: boolean
+        start_date:
+          nullable: true
+          title: Start Date
+          type: string
+        end_date:
+          nullable: true
+          title: End Date
+          type: string
+        account:
+          $ref: '#/components/schemas/PartialAccountNullable'
+        contact:
+          $ref: '#/components/schemas/PartialContactNullable'
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - account
+      - contact
+      - created_at
+      - description
+      - end_date
+      - id
+      - is_all_day
+      - is_deleted
+      - location
+      - owner
+      - remote_data
+      - start_date
+      - subject
+      - updated_at
+      title: Event
       type: object
     ExternalFileSyncStatuses:
       enum:
@@ -6655,6 +8202,564 @@ components:
       - weight_b
       title: HybridSearchTuningParams
       type: object
+    Lead:
+      example:
+        owner:
+          id: id
+        addresses:
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        - country: country
+          street_1: street_1
+          address_type: address_type
+          city: city
+          street_2: street_2
+          state: state
+          postal_code: postal_code
+        converted_at: converted_at
+        description: description
+        last_name: last_name
+        created_at: created_at
+        source: source
+        title: title
+        converted_contact:
+          id: id
+        remote_data: "{}"
+        emails:
+        - email_type: email_type
+          email: email
+        - email_type: email_type
+          email: email
+        phone_numbers:
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        - phone_number_type: phone_number_type
+          phone_number: phone_number
+        is_deleted: true
+        updated_at: updated_at
+        last_activity_at: last_activity_at
+        converted_account:
+          id: id
+        company: company
+        id: id
+        first_name: first_name
+        tasks:
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        events:
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        status: status
+      properties:
+        title:
+          nullable: true
+          title: Title
+          type: string
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwner'
+        source:
+          nullable: true
+          title: Source
+          type: string
+        status:
+          nullable: true
+          title: Status
+          type: string
+        company:
+          nullable: true
+          title: Company
+          type: string
+        first_name:
+          nullable: true
+          title: First Name
+          type: string
+        last_name:
+          nullable: true
+          title: Last Name
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Address'
+          title: Addresses
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+          title: Phone Numbers
+          type: array
+        emails:
+          items:
+            $ref: '#/components/schemas/Email'
+          title: Emails
+          type: array
+        converted_at:
+          nullable: true
+          title: Converted At
+          type: string
+        converted_account:
+          $ref: '#/components/schemas/PartialAccountNullable'
+        converted_contact:
+          $ref: '#/components/schemas/PartialContactNullable'
+        last_activity_at:
+          nullable: true
+          title: Last Activity At
+          type: string
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          nullable: true
+          title: Tasks
+          type: array
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          nullable: true
+          title: Events
+          type: array
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - addresses
+      - company
+      - converted_account
+      - converted_at
+      - converted_contact
+      - created_at
+      - description
+      - emails
+      - events
+      - first_name
+      - id
+      - is_deleted
+      - last_activity_at
+      - last_name
+      - owner
+      - phone_numbers
+      - remote_data
+      - source
+      - status
+      - tasks
+      - title
+      - updated_at
+      title: Lead
+      type: object
+    LeadFilters:
+      example:
+        owner_id: owner_id
+        name: name
+        converted_contact_id: converted_contact_id
+        converted_account_id: converted_account_id
+      properties:
+        owner_id:
+          nullable: true
+          title: Owner Id
+          type: string
+        name:
+          nullable: true
+          title: Name
+          type: string
+        converted_account_id:
+          nullable: true
+          title: Converted Account Id
+          type: string
+        converted_contact_id:
+          nullable: true
+          title: Converted Contact Id
+          type: string
+      title: LeadFilters
+      type: object
+    LeadsOrderBy:
+      enum:
+      - created_at
+      - updated_at
+      - name
+      - last_activity_at
+      title: LeadsOrderBy
+      type: string
+    LeadsRequest:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        includes: []
+        filters:
+          owner_id: owner_id
+          name: name
+          converted_contact_id: converted_contact_id
+          converted_account_id: converted_account_id
+        include_remote_data: false
+        data_source_id: 0
+        page_size: 6
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LeadsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LeadsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/LeadFilters'
+        order_by:
+          $ref: '#/components/schemas/LeadsOrderByNullable'
+      required:
+      - data_source_id
+      title: LeadsRequest
+      type: object
+      x-konfig-properties:
+        filters:
+          default: {}
+    LeadsResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - owner:
+            id: id
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          converted_at: converted_at
+          description: description
+          last_name: last_name
+          created_at: created_at
+          source: source
+          title: title
+          converted_contact:
+            id: id
+          remote_data: "{}"
+          emails:
+          - email_type: email_type
+            email: email
+          - email_type: email_type
+            email: email
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          converted_account:
+            id: id
+          company: company
+          id: id
+          first_name: first_name
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          status: status
+        - owner:
+            id: id
+          addresses:
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          - country: country
+            street_1: street_1
+            address_type: address_type
+            city: city
+            street_2: street_2
+            state: state
+            postal_code: postal_code
+          converted_at: converted_at
+          description: description
+          last_name: last_name
+          created_at: created_at
+          source: source
+          title: title
+          converted_contact:
+            id: id
+          remote_data: "{}"
+          emails:
+          - email_type: email_type
+            email: email
+          - email_type: email_type
+            email: email
+          phone_numbers:
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          - phone_number_type: phone_number_type
+            phone_number: phone_number
+          is_deleted: true
+          updated_at: updated_at
+          last_activity_at: last_activity_at
+          converted_account:
+            id: id
+          company: company
+          id: id
+          first_name: first_name
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          status: status
+        count: 0
+      properties:
+        count:
+          title: Count
+          type: integer
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/Lead'
+          title: Data
+          type: array
+      required:
+      - count
+      - data
+      - next_cursor
+      title: LeadsResponse
+      type: object
     ListDataSourceItemsRequest:
       example:
         order_dir: null
@@ -7462,6 +9567,459 @@ components:
       - source
       title: OneDriveAuthentication
       type: object
+    OpportunitiesOrderBy:
+      enum:
+      - created_at
+      - updated_at
+      - amount
+      - name
+      - last_activity_at
+      - close_date
+      title: OpportunitiesOrderBy
+      type: string
+    OpportunitiesRequest:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        includes: []
+        filters:
+          account_id: account_id
+          stage: stage
+          owner_id: owner_id
+          status: null
+        include_remote_data: false
+        data_source_id: 0
+        page_size: 6
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/OpportunityFilters'
+        order_by:
+          $ref: '#/components/schemas/OpportunitiesOrderByNullable'
+      required:
+      - data_source_id
+      title: OpportunitiesRequest
+      type: object
+      x-konfig-properties:
+        filters:
+          default: {}
+    OpportunitiesResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - owner:
+            id: id
+          amount: 6
+          close_date: close_date
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          stage: stage
+          updated_at: updated_at
+          contact:
+            id: id
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          account:
+            id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          status: null
+        - owner:
+            id: id
+          amount: 6
+          close_date: close_date
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          stage: stage
+          updated_at: updated_at
+          contact:
+            id: id
+          last_activity_at: last_activity_at
+          name: name
+          id: id
+          account:
+            id: id
+          tasks:
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          - owner:
+              id: id
+            is_deleted: true
+            updated_at: updated_at
+            subject: subject
+            contact:
+              id: id
+            description: description
+            created_at: created_at
+            id: id
+            priority: priority
+            account:
+              id: id
+            status: status
+            remote_data: "{}"
+          events:
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          - owner:
+              id: id
+            end_date: end_date
+            subject: subject
+            description: description
+            created_at: created_at
+            remote_data: "{}"
+            is_deleted: true
+            updated_at: updated_at
+            contact:
+              id: id
+            location: location
+            is_all_day: true
+            id: id
+            account:
+              id: id
+            start_date: start_date
+          status: null
+        count: 0
+      properties:
+        count:
+          title: Count
+          type: integer
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/Opportunity'
+          title: Data
+          type: array
+      required:
+      - count
+      - data
+      - next_cursor
+      title: OpportunitiesResponse
+      type: object
+    Opportunity:
+      example:
+        owner:
+          id: id
+        amount: 6
+        close_date: close_date
+        description: description
+        created_at: created_at
+        remote_data: "{}"
+        is_deleted: true
+        stage: stage
+        updated_at: updated_at
+        contact:
+          id: id
+        last_activity_at: last_activity_at
+        name: name
+        id: id
+        account:
+          id: id
+        tasks:
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        - owner:
+            id: id
+          is_deleted: true
+          updated_at: updated_at
+          subject: subject
+          contact:
+            id: id
+          description: description
+          created_at: created_at
+          id: id
+          priority: priority
+          account:
+            id: id
+          status: status
+          remote_data: "{}"
+        events:
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        - owner:
+            id: id
+          end_date: end_date
+          subject: subject
+          description: description
+          created_at: created_at
+          remote_data: "{}"
+          is_deleted: true
+          updated_at: updated_at
+          contact:
+            id: id
+          location: location
+          is_all_day: true
+          id: id
+          account:
+            id: id
+          start_date: start_date
+        status: null
+      properties:
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwner'
+        name:
+          nullable: true
+          title: Name
+          type: string
+        amount:
+          nullable: true
+          title: Amount
+          type: integer
+        account:
+          $ref: '#/components/schemas/PartialAccountNullable'
+        contact:
+          $ref: '#/components/schemas/PartialContactNullable'
+        stage:
+          nullable: true
+          title: Stage
+          type: string
+        status:
+          $ref: '#/components/schemas/OpportunityStatusNullable'
+        close_date:
+          nullable: true
+          title: Close Date
+          type: string
+        last_activity_at:
+          nullable: true
+          title: Last Activity At
+          type: string
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          nullable: true
+          title: Tasks
+          type: array
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          nullable: true
+          title: Events
+          type: array
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - account
+      - amount
+      - close_date
+      - contact
+      - created_at
+      - description
+      - events
+      - id
+      - is_deleted
+      - last_activity_at
+      - name
+      - owner
+      - remote_data
+      - stage
+      - status
+      - tasks
+      - updated_at
+      title: Opportunity
+      type: object
+    OpportunityFilters:
+      example:
+        account_id: account_id
+        stage: stage
+        owner_id: owner_id
+        status: null
+      properties:
+        owner_id:
+          nullable: true
+          title: Owner Id
+          type: string
+        account_id:
+          nullable: true
+          title: Account Id
+          type: string
+        status:
+          $ref: '#/components/schemas/OpportunityStatusNullable'
+        stage:
+          nullable: true
+          title: Stage
+          type: string
+      title: OpportunityFilters
+      type: object
+    OpportunityStatus:
+      enum:
+      - WON
+      - OPEN
+      title: OpportunityStatus
+      type: string
     OrderDir:
       enum:
       - desc
@@ -8302,6 +10860,55 @@ components:
           x-konfig-original-example: 0
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Pagination-properties-offset
       title: Pagination
+      type: object
+    PartialAccount:
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialAccount
+      type: object
+    PartialContact:
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialContact
+      type: object
+    PartialOwner:
+      example:
+        id: id
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialOwner
+      type: object
+    PhoneNumber:
+      example:
+        phone_number_type: phone_number_type
+        phone_number: phone_number
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        phone_number_type:
+          nullable: true
+          title: Phone Number Type
+          type: string
+      required:
+      - phone_number
+      - phone_number_type
+      title: PhoneNumber
       type: object
     PresignedURLResponse:
       example:
@@ -9469,6 +12076,77 @@ components:
           title: Automatically Open File Picker
           type: boolean
       title: SyncOptions
+      type: object
+    Task:
+      example:
+        owner:
+          id: id
+        is_deleted: true
+        updated_at: updated_at
+        subject: subject
+        contact:
+          id: id
+        description: description
+        created_at: created_at
+        id: id
+        priority: priority
+        account:
+          id: id
+        status: status
+        remote_data: "{}"
+      properties:
+        description:
+          nullable: true
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        owner:
+          $ref: '#/components/schemas/PartialOwner'
+        subject:
+          nullable: true
+          title: Subject
+          type: string
+        status:
+          nullable: true
+          title: Status
+          type: string
+        priority:
+          nullable: true
+          title: Priority
+          type: string
+        account:
+          $ref: '#/components/schemas/PartialAccountNullable'
+        contact:
+          $ref: '#/components/schemas/PartialContactNullable'
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        is_deleted:
+          title: Is Deleted
+          type: boolean
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - account
+      - contact
+      - created_at
+      - description
+      - id
+      - is_deleted
+      - owner
+      - priority
+      - remote_data
+      - status
+      - subject
+      - updated_at
+      title: Task
       type: object
     TextEmbeddingGenerators:
       enum:
@@ -10805,6 +13483,7 @@ components:
           - FILE_ERROR
           - FILE_READY
           - FILE_STATISTICS_AGGREGATED
+          - FILE_SYNCING
           - FILE_SYNC_LIMIT_REACHED
           - MOVED_TO_COLD_STORAGE
           - MOVED_TO_HOT_STORAGE
@@ -10838,6 +13517,40 @@ components:
       - VIDEO
       nullable: true
       title: FileContentTypes
+      type: string
+    PartialOwnerNullable:
+      example:
+        id: id
+      nullable: true
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialOwner
+      type: object
+    OrderDirV2Nullable:
+      default: asc
+      enum:
+      - asc
+      - desc
+      example: asc
+      nullable: true
+      title: OrderDirV2
+      type: string
+      x-konfig-original-example: asc
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrderDirV2Nullable
+    AccountsOrderByNullable:
+      enum:
+      - created_at
+      - updated_at
+      - number_of_employees
+      - name
+      - last_activity_at
+      nullable: true
+      title: AccountsOrderBy
       type: string
     FileSyncConfigNullable:
       description: Used to configure file syncing for certain connectors when sync_files_on_connection
@@ -10932,6 +13645,29 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
       title: FileSyncConfig
       type: object
+    PartialAccountNullable:
+      example:
+        id: id
+      nullable: true
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialAccount
+      type: object
+    ContactsOrderByNullable:
+      enum:
+      - created_at
+      - updated_at
+      - title
+      - name
+      - last_activity_at
+      nullable: true
+      title: ContactsOrderBy
+      type: string
     DataSourceTypeNullable:
       enum:
       - GOOGLE_CLOUD_STORAGE
@@ -11022,6 +13758,19 @@ components:
       type: string
       x-konfig-original-example: OPENAI
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-EmbeddingGeneratorsNullable
+    PartialContactNullable:
+      example:
+        id: id
+      nullable: true
+      properties:
+        id:
+          nullable: true
+          title: Id
+          type: string
+      required:
+      - id
+      title: PartialContact
+      type: object
     FileFormatsNullable:
       enum:
       - TXT
@@ -11127,6 +13876,15 @@ components:
       - model
       title: RerankParams
       type: object
+    LeadsOrderByNullable:
+      enum:
+      - created_at
+      - updated_at
+      - name
+      - last_activity_at
+      nullable: true
+      title: LeadsOrderBy
+      type: string
     ListItemsFiltersNullable:
       example:
         root_files_only: true
@@ -11193,6 +13951,24 @@ components:
       - redirect_uri
       title: ServiceNowCredentials
       type: object
+    OpportunitiesOrderByNullable:
+      enum:
+      - created_at
+      - updated_at
+      - amount
+      - name
+      - last_activity_at
+      - close_date
+      nullable: true
+      title: OpportunitiesOrderBy
+      type: string
+    OpportunityStatusNullable:
+      enum:
+      - WON
+      - OPEN
+      nullable: true
+      title: OpportunityStatus
+      type: string
     UserConfigurationNullable:
       description: |-
         Used to set organization level defaults for user settings. These settings will apply to all users under
@@ -11461,6 +14237,31 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-crm-accounts-id-get-parameters-2-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-crm-leads-id-get-parameters-2-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-crm-contacts-id-get-parameters-2-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-crm-opportunities-id-get-parameters-2-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AccountsRequest-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-AccountsRequest-properties-includes:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-AzureBlobAuthRequest-properties-sync_source_items:
       example: true
       type: boolean
@@ -11526,6 +14327,15 @@ components:
     konfig-generated-schema-components-schemas-ColdStorageProps-properties-enable_cold_storage:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ContactsRequest-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ContactsRequest-properties-includes:
+      items:
+        type: string
+      type: array
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-DataSourceConfiguration-properties-allowed_file_formats:
       items:
@@ -11827,6 +14637,15 @@ components:
       example: true
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LeadsRequest-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-LeadsRequest-properties-includes:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-ListUserResponse-properties-custom_limits:
       example: {}
       properties: {}
@@ -11892,6 +14711,15 @@ components:
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-incremental_sync:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-includes:
+      items:
+        type: string
+      type: array
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrganizationResponse-properties-connector_settings:
       example: {}
@@ -12363,6 +15191,10 @@ components:
     konfig-generated-schema-components-schemas-WebscrapeRequest-properties-generate_chunks_only:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrderDirV2Nullable:
+      example: asc
+      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-auto_synced_source_types:
       example:
@@ -15348,6 +18180,286 @@ components:
       x-konfig-is-parameter:
       - id
       - raw
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-accounts:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AccountsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-AccountsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/AccountFilters'
+        order_by:
+          $ref: '#/components/schemas/AccountsOrderByNullable'
+      required:
+      - data_source_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-accounts-id:
+      properties:
+        id:
+          title: Id
+          type: string
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-accounts-id-get-parameters-2-schema
+        includes:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+      required:
+      - data_source_id
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - data_source_id
+      - include_remote_data
+      - includes
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-leads:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LeadsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-LeadsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/LeadFilters'
+        order_by:
+          $ref: '#/components/schemas/LeadsOrderByNullable'
+      required:
+      - data_source_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-leads-id:
+      properties:
+        id:
+          title: Id
+          type: string
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-leads-id-get-parameters-2-schema
+        includes:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+      required:
+      - data_source_id
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - data_source_id
+      - include_remote_data
+      - includes
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-contacts:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ContactsRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ContactsRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/ContactFilters'
+        order_by:
+          $ref: '#/components/schemas/ContactsOrderByNullable'
+      required:
+      - data_source_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-contacts-id:
+      properties:
+        id:
+          title: Id
+          type: string
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-contacts-id-get-parameters-2-schema
+        includes:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+      required:
+      - data_source_id
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - data_source_id
+      - include_remote_data
+      - includes
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-crm-opportunities:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-include_remote_data
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        page_size:
+          nullable: true
+          title: Page Size
+          type: integer
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+        includes:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OpportunitiesRequest-properties-includes
+        filters:
+          $ref: '#/components/schemas/OpportunityFilters'
+        order_by:
+          $ref: '#/components/schemas/OpportunitiesOrderByNullable'
+      required:
+      - data_source_id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-opportunities-id:
+      properties:
+        id:
+          title: Id
+          type: string
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-crm-opportunities-id-get-parameters-2-schema
+        includes:
+          items:
+            $ref: '#/components/schemas/BaseIncludes'
+          title: Includes
+          type: array
+      required:
+      - data_source_id
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - data_source_id
+      - include_remote_data
+      - includes
     TMEmbeddingGenerators:
       enum:
       - OPENAI

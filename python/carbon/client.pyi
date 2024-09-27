@@ -16,6 +16,7 @@ from carbon.configuration import Configuration
 from carbon.api_client import ApiClient
 from carbon.type_util import copy_signature
 from carbon.apis.tags.auth_api import AuthApi
+from carbon.apis.tags.crm_api import CRMApi
 from carbon.apis.tags.data_sources_api import DataSourcesApi
 from carbon.apis.tags.embeddings_api import EmbeddingsApi
 from carbon.apis.tags.files_api import FilesApi
@@ -37,6 +38,7 @@ class Carbon(ClientCustom):
             raise Exception("configuration is required")
         api_client = ApiClient(configuration)
         self.auth: AuthApi = AuthApi(api_client)
+        self.crm: CRMApi = CRMApi(api_client)
         self.data_sources: DataSourcesApi = DataSourcesApi(api_client)
         self.embeddings: EmbeddingsApi = EmbeddingsApi(api_client)
         self.files: FilesApi = FilesApi(api_client)

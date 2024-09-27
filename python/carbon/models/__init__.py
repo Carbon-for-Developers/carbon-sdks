@@ -11,11 +11,19 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from carbon.model.account import Account
+from carbon.model.account_filters import AccountFilters
+from carbon.model.account_response import AccountResponse
+from carbon.model.accounts_order_by import AccountsOrderBy
+from carbon.model.accounts_order_by_nullable import AccountsOrderByNullable
+from carbon.model.accounts_request import AccountsRequest
 from carbon.model.add_webhook_props import AddWebhookProps
+from carbon.model.address import Address
 from carbon.model.azure_blob_auth_request import AzureBlobAuthRequest
 from carbon.model.azure_blob_file_sync_input import AzureBlobFileSyncInput
 from carbon.model.azure_blob_get_file_input import AzureBlobGetFileInput
 from carbon.model.azure_blob_storage_authentication import AzureBlobStorageAuthentication
+from carbon.model.base_includes import BaseIncludes
 from carbon.model.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.model.chunk_properties import ChunkProperties
 from carbon.model.chunk_properties_nullable import ChunkPropertiesNullable
@@ -28,6 +36,12 @@ from carbon.model.configuration_keys import ConfigurationKeys
 from carbon.model.confluence_authentication import ConfluenceAuthentication
 from carbon.model.connect_data_source_input import ConnectDataSourceInput
 from carbon.model.connect_data_source_response import ConnectDataSourceResponse
+from carbon.model.contact import Contact
+from carbon.model.contact_filters import ContactFilters
+from carbon.model.contacts_order_by import ContactsOrderBy
+from carbon.model.contacts_order_by_nullable import ContactsOrderByNullable
+from carbon.model.contacts_request import ContactsRequest
+from carbon.model.contacts_response import ContactsResponse
 from carbon.model.custom_credentials_type import CustomCredentialsType
 from carbon.model.data_source_configuration import DataSourceConfiguration
 from carbon.model.data_source_configuration_allowed_file_formats import DataSourceConfigurationAllowedFileFormats
@@ -46,6 +60,7 @@ from carbon.model.document_response import DocumentResponse
 from carbon.model.document_response_list import DocumentResponseList
 from carbon.model.document_response_tags import DocumentResponseTags
 from carbon.model.document_response_vector import DocumentResponseVector
+from carbon.model.email import Email
 from carbon.model.embedding_and_chunk import EmbeddingAndChunk
 from carbon.model.embedding_and_chunk_embedding import EmbeddingAndChunkEmbedding
 from carbon.model.embedding_generators import EmbeddingGenerators
@@ -57,6 +72,7 @@ from carbon.model.embeddings_and_chunks_order_by_columns import EmbeddingsAndChu
 from carbon.model.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
 from carbon.model.embeddings_and_chunks_query_input_v2 import EmbeddingsAndChunksQueryInputV2
 from carbon.model.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
+from carbon.model.event import Event
 from carbon.model.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.model.external_source_item import ExternalSourceItem
 from carbon.model.external_source_items_order_by import ExternalSourceItemsOrderBy
@@ -101,6 +117,12 @@ from carbon.model.http_validation_error import HTTPValidationError
 from carbon.model.helpdesk_file_types import HelpdeskFileTypes
 from carbon.model.hybrid_search_tuning_params import HybridSearchTuningParams
 from carbon.model.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.model.lead import Lead
+from carbon.model.lead_filters import LeadFilters
+from carbon.model.leads_order_by import LeadsOrderBy
+from carbon.model.leads_order_by_nullable import LeadsOrderByNullable
+from carbon.model.leads_request import LeadsRequest
+from carbon.model.leads_response import LeadsResponse
 from carbon.model.list_data_source_items_request import ListDataSourceItemsRequest
 from carbon.model.list_data_source_items_response import ListDataSourceItemsResponse
 from carbon.model.list_items_filters import ListItemsFilters
@@ -127,8 +149,17 @@ from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
 from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.one_drive_authentication import OneDriveAuthentication
+from carbon.model.opportunities_order_by import OpportunitiesOrderBy
+from carbon.model.opportunities_order_by_nullable import OpportunitiesOrderByNullable
+from carbon.model.opportunities_request import OpportunitiesRequest
+from carbon.model.opportunities_response import OpportunitiesResponse
+from carbon.model.opportunity import Opportunity
+from carbon.model.opportunity_filters import OpportunityFilters
+from carbon.model.opportunity_status import OpportunityStatus
+from carbon.model.opportunity_status_nullable import OpportunityStatusNullable
 from carbon.model.order_dir import OrderDir
 from carbon.model.order_dir_v2 import OrderDirV2
+from carbon.model.order_dir_v2_nullable import OrderDirV2Nullable
 from carbon.model.organization_response import OrganizationResponse
 from carbon.model.organization_user_data_source_api import OrganizationUserDataSourceAPI
 from carbon.model.organization_user_data_source_filters import OrganizationUserDataSourceFilters
@@ -154,6 +185,13 @@ from carbon.model.organization_user_files_to_sync_query_input import Organizatio
 from carbon.model.outh_url_response import OuthURLResponse
 from carbon.model.outlook_sync_input import OutlookSyncInput
 from carbon.model.pagination import Pagination
+from carbon.model.partial_account import PartialAccount
+from carbon.model.partial_account_nullable import PartialAccountNullable
+from carbon.model.partial_contact import PartialContact
+from carbon.model.partial_contact_nullable import PartialContactNullable
+from carbon.model.partial_owner import PartialOwner
+from carbon.model.partial_owner_nullable import PartialOwnerNullable
+from carbon.model.phone_number import PhoneNumber
 from carbon.model.presigned_url_response import PresignedURLResponse
 from carbon.model.rss_feed_input import RSSFeedInput
 from carbon.model.raw_text_input import RawTextInput
@@ -189,6 +227,7 @@ from carbon.model.sync_directory_request import SyncDirectoryRequest
 from carbon.model.sync_files_ids import SyncFilesIds
 from carbon.model.sync_files_request import SyncFilesRequest
 from carbon.model.sync_options import SyncOptions
+from carbon.model.task import Task
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators
 from carbon.model.token_response import TokenResponse
 from carbon.model.transcription_service import TranscriptionService

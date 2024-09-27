@@ -9,6 +9,7 @@ class TagValues(str, enum.Enum):
     INTEGRATIONS = "Integrations"
     FILES = "Files"
     UTILITIES = "Utilities"
+    CRM = "CRM"
     USERS = "Users"
     EMBEDDINGS = "Embeddings"
     WEBHOOKS = "Webhooks"

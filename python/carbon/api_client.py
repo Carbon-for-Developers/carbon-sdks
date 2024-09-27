@@ -57,11 +57,19 @@ from carbon.schemas import (
 
 # import all pydantic classes so that any type hints which are quoted due to circular imports
 # are still available in the global namespace
+from carbon.pydantic.account import Account
+from carbon.pydantic.account_filters import AccountFilters
+from carbon.pydantic.account_response import AccountResponse
+from carbon.pydantic.accounts_order_by import AccountsOrderBy
+from carbon.pydantic.accounts_order_by_nullable import AccountsOrderByNullable
+from carbon.pydantic.accounts_request import AccountsRequest
 from carbon.pydantic.add_webhook_props import AddWebhookProps
+from carbon.pydantic.address import Address
 from carbon.pydantic.azure_blob_auth_request import AzureBlobAuthRequest
 from carbon.pydantic.azure_blob_file_sync_input import AzureBlobFileSyncInput
 from carbon.pydantic.azure_blob_get_file_input import AzureBlobGetFileInput
 from carbon.pydantic.azure_blob_storage_authentication import AzureBlobStorageAuthentication
+from carbon.pydantic.base_includes import BaseIncludes
 from carbon.pydantic.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.pydantic.chunk_properties import ChunkProperties
 from carbon.pydantic.chunk_properties_nullable import ChunkPropertiesNullable
@@ -74,6 +82,12 @@ from carbon.pydantic.configuration_keys import ConfigurationKeys
 from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
 from carbon.pydantic.connect_data_source_input import ConnectDataSourceInput
 from carbon.pydantic.connect_data_source_response import ConnectDataSourceResponse
+from carbon.pydantic.contact import Contact
+from carbon.pydantic.contact_filters import ContactFilters
+from carbon.pydantic.contacts_order_by import ContactsOrderBy
+from carbon.pydantic.contacts_order_by_nullable import ContactsOrderByNullable
+from carbon.pydantic.contacts_request import ContactsRequest
+from carbon.pydantic.contacts_response import ContactsResponse
 from carbon.pydantic.custom_credentials_type import CustomCredentialsType
 from carbon.pydantic.data_source_configuration import DataSourceConfiguration
 from carbon.pydantic.data_source_configuration_allowed_file_formats import DataSourceConfigurationAllowedFileFormats
@@ -92,6 +106,7 @@ from carbon.pydantic.document_response import DocumentResponse
 from carbon.pydantic.document_response_list import DocumentResponseList
 from carbon.pydantic.document_response_tags import DocumentResponseTags
 from carbon.pydantic.document_response_vector import DocumentResponseVector
+from carbon.pydantic.email import Email
 from carbon.pydantic.embedding_and_chunk import EmbeddingAndChunk
 from carbon.pydantic.embedding_and_chunk_embedding import EmbeddingAndChunkEmbedding
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
@@ -103,6 +118,7 @@ from carbon.pydantic.embeddings_and_chunks_order_by_columns import EmbeddingsAnd
 from carbon.pydantic.embeddings_and_chunks_query_input import EmbeddingsAndChunksQueryInput
 from carbon.pydantic.embeddings_and_chunks_query_input_v2 import EmbeddingsAndChunksQueryInputV2
 from carbon.pydantic.embeddings_and_chunks_response import EmbeddingsAndChunksResponse
+from carbon.pydantic.event import Event
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
 from carbon.pydantic.external_source_item import ExternalSourceItem
 from carbon.pydantic.external_source_items_order_by import ExternalSourceItemsOrderBy
@@ -147,6 +163,12 @@ from carbon.pydantic.http_validation_error import HTTPValidationError
 from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.hybrid_search_tuning_params import HybridSearchTuningParams
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.pydantic.lead import Lead
+from carbon.pydantic.lead_filters import LeadFilters
+from carbon.pydantic.leads_order_by import LeadsOrderBy
+from carbon.pydantic.leads_order_by_nullable import LeadsOrderByNullable
+from carbon.pydantic.leads_request import LeadsRequest
+from carbon.pydantic.leads_response import LeadsResponse
 from carbon.pydantic.list_data_source_items_request import ListDataSourceItemsRequest
 from carbon.pydantic.list_data_source_items_response import ListDataSourceItemsResponse
 from carbon.pydantic.list_items_filters import ListItemsFilters
@@ -173,8 +195,17 @@ from carbon.pydantic.o_auth_authentication import OAuthAuthentication
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest
 from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.one_drive_authentication import OneDriveAuthentication
+from carbon.pydantic.opportunities_order_by import OpportunitiesOrderBy
+from carbon.pydantic.opportunities_order_by_nullable import OpportunitiesOrderByNullable
+from carbon.pydantic.opportunities_request import OpportunitiesRequest
+from carbon.pydantic.opportunities_response import OpportunitiesResponse
+from carbon.pydantic.opportunity import Opportunity
+from carbon.pydantic.opportunity_filters import OpportunityFilters
+from carbon.pydantic.opportunity_status import OpportunityStatus
+from carbon.pydantic.opportunity_status_nullable import OpportunityStatusNullable
 from carbon.pydantic.order_dir import OrderDir
 from carbon.pydantic.order_dir_v2 import OrderDirV2
+from carbon.pydantic.order_dir_v2_nullable import OrderDirV2Nullable
 from carbon.pydantic.organization_response import OrganizationResponse
 from carbon.pydantic.organization_user_data_source_api import OrganizationUserDataSourceAPI
 from carbon.pydantic.organization_user_data_source_filters import OrganizationUserDataSourceFilters
@@ -200,6 +231,13 @@ from carbon.pydantic.organization_user_files_to_sync_query_input import Organiza
 from carbon.pydantic.outh_url_response import OuthURLResponse
 from carbon.pydantic.outlook_sync_input import OutlookSyncInput
 from carbon.pydantic.pagination import Pagination
+from carbon.pydantic.partial_account import PartialAccount
+from carbon.pydantic.partial_account_nullable import PartialAccountNullable
+from carbon.pydantic.partial_contact import PartialContact
+from carbon.pydantic.partial_contact_nullable import PartialContactNullable
+from carbon.pydantic.partial_owner import PartialOwner
+from carbon.pydantic.partial_owner_nullable import PartialOwnerNullable
+from carbon.pydantic.phone_number import PhoneNumber
 from carbon.pydantic.presigned_url_response import PresignedURLResponse
 from carbon.pydantic.rss_feed_input import RSSFeedInput
 from carbon.pydantic.raw_text_input import RawTextInput
@@ -235,6 +273,7 @@ from carbon.pydantic.sync_directory_request import SyncDirectoryRequest
 from carbon.pydantic.sync_files_ids import SyncFilesIds
 from carbon.pydantic.sync_files_request import SyncFilesRequest
 from carbon.pydantic.sync_options import SyncOptions
+from carbon.pydantic.task import Task
 from carbon.pydantic.text_embedding_generators import TextEmbeddingGenerators
 from carbon.pydantic.token_response import TokenResponse
 from carbon.pydantic.transcription_service import TranscriptionService

@@ -13,6 +13,182 @@ export const operationParameterMap: Record<string, Entry> = {
         parameters: [
         ]
     },
+    '/integrations/data/crm/accounts/{id}-GET': {
+        parameters: [
+            {
+                name: 'id'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'includes'
+            },
+        ]
+    },
+    '/integrations/data/crm/accounts-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'includes'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+        ]
+    },
+    '/integrations/data/crm/contacts/{id}-GET': {
+        parameters: [
+            {
+                name: 'id'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'includes'
+            },
+        ]
+    },
+    '/integrations/data/crm/contacts-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'includes'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+        ]
+    },
+    '/integrations/data/crm/leads/{id}-GET': {
+        parameters: [
+            {
+                name: 'id'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'includes'
+            },
+        ]
+    },
+    '/integrations/data/crm/leads-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'includes'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+        ]
+    },
+    '/integrations/data/crm/opportunities-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'includes'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+        ]
+    },
+    '/integrations/data/crm/opportunities/{id}-GET': {
+        parameters: [
+            {
+                name: 'id'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'includes'
+            },
+        ]
+    },
     '/user_data_sources-POST': {
         parameters: [
             {

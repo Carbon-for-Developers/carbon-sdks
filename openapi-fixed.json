@@ -30,6 +30,9 @@
       "name": "Utilities"
     },
     {
+      "name": "CRM"
+    },
+    {
       "description": "\n---\n",
       "name": "Users"
     },
@@ -3998,10 +4001,776 @@
           }
         }
       }
+    },
+    "/integrations/data/crm/accounts": {
+      "post": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Accounts",
+        "operationId": "Crm_getAccounts",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/accounts/{id}": {
+      "get": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Account",
+        "operationId": "Crm_getAccount",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Include Remote Data",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Includes",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BaseIncludes"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/leads": {
+      "post": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Leads",
+        "operationId": "Crm_getLeads",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeadsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/leads/{id}": {
+      "get": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Lead",
+        "operationId": "Crm_getLead",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Include Remote Data",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Includes",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BaseIncludes"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/contacts": {
+      "post": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Contacts",
+        "operationId": "Crm_getContacts",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/contacts/{id}": {
+      "get": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Contact",
+        "operationId": "Crm_getContact",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Include Remote Data",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Includes",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BaseIncludes"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/opportunities": {
+      "post": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Opportunities",
+        "operationId": "Crm_getOpportunities",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpportunitiesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunitiesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/crm/opportunities/{id}": {
+      "get": {
+        "tags": [
+          "CRM"
+        ],
+        "summary": "Get Opportunity",
+        "operationId": "Crm_getOpportunity",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Include Remote Data",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Includes",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BaseIncludes"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Opportunity"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "Account": {
+        "title": "Account",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwnerNullable"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "industry": {
+            "title": "Industry",
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "title": "Website",
+            "type": "string",
+            "nullable": true
+          },
+          "number_of_employees": {
+            "title": "Number Of Employees",
+            "type": "integer",
+            "nullable": true
+          },
+          "addresses": {
+            "title": "Addresses",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "type": "array"
+          },
+          "phone_numbers": {
+            "title": "Phone Numbers",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumber"
+            },
+            "type": "array"
+          },
+          "last_activity_at": {
+            "title": "Last Activity At",
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "tasks": {
+            "title": "Tasks",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "events": {
+            "title": "Events",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "name",
+          "description",
+          "industry",
+          "website",
+          "number_of_employees",
+          "addresses",
+          "phone_numbers",
+          "last_activity_at",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "tasks",
+          "events",
+          "remote_data"
+        ]
+      },
+      "AccountFilters": {
+        "title": "AccountFilters",
+        "properties": {
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "AccountResponse": {
+        "title": "AccountResponse",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "title": "Data",
+            "items": {
+              "$ref": "#/components/schemas/Account"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "required": [
+          "count",
+          "next_cursor",
+          "data"
+        ]
+      },
+      "AccountsOrderBy": {
+        "title": "AccountsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "number_of_employees",
+          "name",
+          "last_activity_at"
+        ]
+      },
+      "AccountsRequest": {
+        "title": "AccountsRequest",
+        "properties": {
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer"
+          },
+          "include_remote_data": {
+            "title": "Include Remote Data",
+            "type": "boolean",
+            "default": false
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer",
+            "nullable": true
+          },
+          "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2Nullable"
+          },
+          "includes": {
+            "title": "Includes",
+            "items": {
+              "$ref": "#/components/schemas/BaseIncludes"
+            },
+            "type": "array",
+            "default": [
+            ]
+          },
+          "filters": {
+            "$ref": "#/components/schemas/AccountFilters"
+          },
+          "order_by": {
+            "$ref": "#/components/schemas/AccountsOrderByNullable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ],
+        "x-konfig-properties": {
+          "filters": {
+            "default": {
+            }
+          }
+        }
+      },
       "AddWebhookProps": {
         "title": "AddWebhookProps",
         "properties": {
@@ -4013,6 +4782,56 @@
         "type": "object",
         "required": [
           "url"
+        ]
+      },
+      "Address": {
+        "title": "Address",
+        "properties": {
+          "street_1": {
+            "title": "Street 1",
+            "type": "string",
+            "nullable": true
+          },
+          "street_2": {
+            "title": "Street 2",
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "title": "City",
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "title": "State",
+            "type": "string",
+            "nullable": true
+          },
+          "postal_code": {
+            "title": "Postal Code",
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "title": "Country",
+            "type": "string",
+            "nullable": true
+          },
+          "address_type": {
+            "title": "Address Type",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "street_1",
+          "street_2",
+          "city",
+          "state",
+          "postal_code",
+          "country",
+          "address_type"
         ]
       },
       "AzureBlobAuthRequest": {
@@ -4173,6 +4992,15 @@
           "source",
           "account_name",
           "account_key"
+        ]
+      },
+      "BaseIncludes": {
+        "title": "BaseIncludes",
+        "description": "These can be included as children when requesting parent entities ",
+        "type": "string",
+        "enum": [
+          "Tasks",
+          "Events"
         ]
       },
       "Body_create_upload_file_uploadfile_post": {
@@ -4431,6 +5259,243 @@
         "required": [
           "data_source",
           "sync_url"
+        ]
+      },
+      "Contact": {
+        "title": "Contact",
+        "properties": {
+          "title": {
+            "title": "Title",
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwnerNullable"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "nullable": true
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "title": "Department",
+            "type": "string",
+            "nullable": true
+          },
+          "addresses": {
+            "title": "Addresses",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "type": "array"
+          },
+          "phone_numbers": {
+            "title": "Phone Numbers",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumber"
+            },
+            "type": "array"
+          },
+          "emails": {
+            "title": "Emails",
+            "items": {
+              "$ref": "#/components/schemas/Email"
+            },
+            "type": "array"
+          },
+          "account": {
+            "$ref": "#/components/schemas/PartialAccountNullable"
+          },
+          "last_activity_at": {
+            "title": "Last Activity At",
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "tasks": {
+            "title": "Tasks",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "events": {
+            "title": "Events",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "first_name",
+          "last_name",
+          "name",
+          "description",
+          "title",
+          "department",
+          "addresses",
+          "phone_numbers",
+          "emails",
+          "account",
+          "last_activity_at",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "tasks",
+          "events",
+          "remote_data"
+        ]
+      },
+      "ContactFilters": {
+        "title": "ContactFilters",
+        "properties": {
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "ContactsOrderBy": {
+        "title": "ContactsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "title",
+          "name",
+          "last_activity_at"
+        ]
+      },
+      "ContactsRequest": {
+        "title": "ContactsRequest",
+        "properties": {
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer"
+          },
+          "include_remote_data": {
+            "title": "Include Remote Data",
+            "type": "boolean",
+            "default": false
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer",
+            "nullable": true
+          },
+          "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2Nullable"
+          },
+          "includes": {
+            "title": "Includes",
+            "items": {
+              "$ref": "#/components/schemas/BaseIncludes"
+            },
+            "type": "array",
+            "default": [
+            ]
+          },
+          "filters": {
+            "$ref": "#/components/schemas/ContactFilters"
+          },
+          "order_by": {
+            "$ref": "#/components/schemas/ContactsOrderByNullable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ],
+        "x-konfig-properties": {
+          "filters": {
+            "default": {
+            }
+          }
+        }
+      },
+      "ContactsResponse": {
+        "title": "ContactsResponse",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "title": "Data",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "required": [
+          "count",
+          "next_cursor",
+          "data"
         ]
       },
       "CustomCredentialsType": {
@@ -4817,6 +5882,25 @@
           "documents"
         ]
       },
+      "Email": {
+        "title": "Email",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "email_type": {
+            "title": "Email Type",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "email",
+          "email_type"
+        ]
+      },
       "EmbeddingAndChunk": {
         "title": "EmbeddingAndChunk",
         "properties": {
@@ -5031,6 +6115,87 @@
         "required": [
           "results",
           "count"
+        ]
+      },
+      "Event": {
+        "title": "Event",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwner"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "title": "Location",
+            "type": "string",
+            "nullable": true
+          },
+          "is_all_day": {
+            "title": "Is All Day",
+            "type": "boolean"
+          },
+          "start_date": {
+            "title": "Start Date",
+            "type": "string",
+            "nullable": true
+          },
+          "end_date": {
+            "title": "End Date",
+            "type": "string",
+            "nullable": true
+          },
+          "account": {
+            "$ref": "#/components/schemas/PartialAccountNullable"
+          },
+          "contact": {
+            "$ref": "#/components/schemas/PartialContactNullable"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "subject",
+          "location",
+          "is_all_day",
+          "start_date",
+          "end_date",
+          "description",
+          "account",
+          "contact",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "remote_data"
         ]
       },
       "ExternalFileSyncStatuses": {
@@ -6238,6 +7403,263 @@
           "weight_b"
         ]
       },
+      "Lead": {
+        "title": "Lead",
+        "properties": {
+          "title": {
+            "title": "Title",
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwner"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "title": "Status",
+            "type": "string",
+            "nullable": true
+          },
+          "company": {
+            "title": "Company",
+            "type": "string",
+            "nullable": true
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "nullable": true
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "nullable": true
+          },
+          "addresses": {
+            "title": "Addresses",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "type": "array"
+          },
+          "phone_numbers": {
+            "title": "Phone Numbers",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumber"
+            },
+            "type": "array"
+          },
+          "emails": {
+            "title": "Emails",
+            "items": {
+              "$ref": "#/components/schemas/Email"
+            },
+            "type": "array"
+          },
+          "converted_at": {
+            "title": "Converted At",
+            "type": "string",
+            "nullable": true
+          },
+          "converted_account": {
+            "$ref": "#/components/schemas/PartialAccountNullable"
+          },
+          "converted_contact": {
+            "$ref": "#/components/schemas/PartialContactNullable"
+          },
+          "last_activity_at": {
+            "title": "Last Activity At",
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "tasks": {
+            "title": "Tasks",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "events": {
+            "title": "Events",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "source",
+          "status",
+          "title",
+          "company",
+          "first_name",
+          "last_name",
+          "description",
+          "addresses",
+          "phone_numbers",
+          "emails",
+          "converted_at",
+          "converted_account",
+          "converted_contact",
+          "last_activity_at",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "tasks",
+          "events",
+          "remote_data"
+        ]
+      },
+      "LeadFilters": {
+        "title": "LeadFilters",
+        "properties": {
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "converted_account_id": {
+            "title": "Converted Account Id",
+            "type": "string",
+            "nullable": true
+          },
+          "converted_contact_id": {
+            "title": "Converted Contact Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "LeadsOrderBy": {
+        "title": "LeadsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "name",
+          "last_activity_at"
+        ]
+      },
+      "LeadsRequest": {
+        "title": "LeadsRequest",
+        "properties": {
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer"
+          },
+          "include_remote_data": {
+            "title": "Include Remote Data",
+            "type": "boolean",
+            "default": false
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer",
+            "nullable": true
+          },
+          "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2Nullable"
+          },
+          "includes": {
+            "title": "Includes",
+            "items": {
+              "$ref": "#/components/schemas/BaseIncludes"
+            },
+            "type": "array",
+            "default": [
+            ]
+          },
+          "filters": {
+            "$ref": "#/components/schemas/LeadFilters"
+          },
+          "order_by": {
+            "$ref": "#/components/schemas/LeadsOrderByNullable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ],
+        "x-konfig-properties": {
+          "filters": {
+            "default": {
+            }
+          }
+        }
+      },
+      "LeadsResponse": {
+        "title": "LeadsResponse",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "title": "Data",
+            "items": {
+              "$ref": "#/components/schemas/Lead"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "required": [
+          "count",
+          "next_cursor",
+          "data"
+        ]
+      },
       "ListDataSourceItemsRequest": {
         "title": "ListDataSourceItemsRequest",
         "properties": {
@@ -6833,6 +8255,233 @@
         "required": [
           "source",
           "access_token"
+        ]
+      },
+      "OpportunitiesOrderBy": {
+        "title": "OpportunitiesOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "amount",
+          "name",
+          "last_activity_at",
+          "close_date"
+        ]
+      },
+      "OpportunitiesRequest": {
+        "title": "OpportunitiesRequest",
+        "properties": {
+          "data_source_id": {
+            "title": "Data Source Id",
+            "type": "integer"
+          },
+          "include_remote_data": {
+            "title": "Include Remote Data",
+            "type": "boolean",
+            "default": false
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer",
+            "nullable": true
+          },
+          "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2Nullable"
+          },
+          "includes": {
+            "title": "Includes",
+            "items": {
+              "$ref": "#/components/schemas/BaseIncludes"
+            },
+            "type": "array",
+            "default": [
+            ]
+          },
+          "filters": {
+            "$ref": "#/components/schemas/OpportunityFilters"
+          },
+          "order_by": {
+            "$ref": "#/components/schemas/OpportunitiesOrderByNullable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ],
+        "x-konfig-properties": {
+          "filters": {
+            "default": {
+            }
+          }
+        }
+      },
+      "OpportunitiesResponse": {
+        "title": "OpportunitiesResponse",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "next_cursor": {
+            "title": "Next Cursor",
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "title": "Data",
+            "items": {
+              "$ref": "#/components/schemas/Opportunity"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "required": [
+          "count",
+          "next_cursor",
+          "data"
+        ]
+      },
+      "Opportunity": {
+        "title": "Opportunity",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwner"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "title": "Amount",
+            "type": "integer",
+            "nullable": true
+          },
+          "account": {
+            "$ref": "#/components/schemas/PartialAccountNullable"
+          },
+          "contact": {
+            "$ref": "#/components/schemas/PartialContactNullable"
+          },
+          "stage": {
+            "title": "Stage",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/OpportunityStatusNullable"
+          },
+          "close_date": {
+            "title": "Close Date",
+            "type": "string",
+            "nullable": true
+          },
+          "last_activity_at": {
+            "title": "Last Activity At",
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "tasks": {
+            "title": "Tasks",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "events": {
+            "title": "Events",
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "name",
+          "description",
+          "amount",
+          "account",
+          "contact",
+          "stage",
+          "status",
+          "close_date",
+          "last_activity_at",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "tasks",
+          "events",
+          "remote_data"
+        ]
+      },
+      "OpportunityFilters": {
+        "title": "OpportunityFilters",
+        "properties": {
+          "owner_id": {
+            "title": "Owner Id",
+            "type": "string",
+            "nullable": true
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/OpportunityStatusNullable"
+          },
+          "stage": {
+            "title": "Stage",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "OpportunityStatus": {
+        "title": "OpportunityStatus",
+        "type": "string",
+        "enum": [
+          "WON",
+          "OPEN"
         ]
       },
       "OrderDir": {
@@ -7610,6 +9259,67 @@
           }
         },
         "type": "object"
+      },
+      "PartialAccount": {
+        "title": "PartialAccount",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ]
+      },
+      "PartialContact": {
+        "title": "PartialContact",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ]
+      },
+      "PartialOwner": {
+        "title": "PartialOwner",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ]
+      },
+      "PhoneNumber": {
+        "title": "PhoneNumber",
+        "properties": {
+          "phone_number": {
+            "title": "Phone Number",
+            "type": "string"
+          },
+          "phone_number_type": {
+            "title": "Phone Number Type",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "phone_number",
+          "phone_number_type"
+        ]
       },
       "PresignedURLResponse": {
         "title": "PresignedURLResponse",
@@ -8669,6 +10379,76 @@
           }
         },
         "type": "object"
+      },
+      "Task": {
+        "title": "Task",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/PartialOwner"
+          },
+          "subject": {
+            "title": "Subject",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "title": "Status",
+            "type": "string",
+            "nullable": true
+          },
+          "priority": {
+            "title": "Priority",
+            "type": "string",
+            "nullable": true
+          },
+          "account": {
+            "$ref": "#/components/schemas/PartialAccountNullable"
+          },
+          "contact": {
+            "$ref": "#/components/schemas/PartialContactNullable"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          },
+          "is_deleted": {
+            "title": "Is Deleted",
+            "type": "boolean"
+          },
+          "remote_data": {
+            "title": "Remote Data",
+            "type": "object",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "owner",
+          "subject",
+          "status",
+          "priority",
+          "description",
+          "account",
+          "contact",
+          "created_at",
+          "updated_at",
+          "is_deleted",
+          "remote_data"
+        ]
       },
       "TextEmbeddingGenerators": {
         "title": "TextEmbeddingGenerators",
@@ -9911,6 +11691,7 @@
               "FILE_ERROR",
               "FILE_READY",
               "FILE_STATISTICS_AGGREGATED",
+              "FILE_SYNCING",
               "FILE_SYNC_LIMIT_REACHED",
               "MOVED_TO_COLD_STORAGE",
               "MOVED_TO_HOT_STORAGE",
@@ -10004,6 +11785,43 @@
         ],
         "nullable": true
       },
+      "PartialOwnerNullable": {
+        "title": "PartialOwner",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "nullable": true
+      },
+      "OrderDirV2Nullable": {
+        "title": "OrderDirV2",
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "default": "asc",
+        "nullable": true
+      },
+      "AccountsOrderByNullable": {
+        "title": "AccountsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "number_of_employees",
+          "name",
+          "last_activity_at"
+        ],
+        "nullable": true
+      },
       "FileSyncConfigNullable": {
         "title": "FileSyncConfig",
         "description": "Used to configure file syncing for certain connectors when sync_files_on_connection is set to true",
@@ -10067,6 +11885,33 @@
           }
         },
         "type": "object",
+        "nullable": true
+      },
+      "PartialAccountNullable": {
+        "title": "PartialAccount",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "nullable": true
+      },
+      "ContactsOrderByNullable": {
+        "title": "ContactsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "title",
+          "name",
+          "last_activity_at"
+        ],
         "nullable": true
       },
       "DataSourceTypeNullable": {
@@ -10158,6 +12003,21 @@
           "SOLAR_1_MINI"
         ],
         "default": "OPENAI",
+        "nullable": true
+      },
+      "PartialContactNullable": {
+        "title": "PartialContact",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
         "nullable": true
       },
       "FileFormatsNullable": {
@@ -10268,6 +12128,17 @@
         ],
         "nullable": true
       },
+      "LeadsOrderByNullable": {
+        "title": "LeadsOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "name",
+          "last_activity_at"
+        ],
+        "nullable": true
+      },
       "ListItemsFiltersNullable": {
         "title": "ListItemsFilters",
         "properties": {
@@ -10328,6 +12199,28 @@
           "client_id",
           "client_secret",
           "redirect_uri"
+        ],
+        "nullable": true
+      },
+      "OpportunitiesOrderByNullable": {
+        "title": "OpportunitiesOrderBy",
+        "type": "string",
+        "enum": [
+          "created_at",
+          "updated_at",
+          "amount",
+          "name",
+          "last_activity_at",
+          "close_date"
+        ],
+        "nullable": true
+      },
+      "OpportunityStatusNullable": {
+        "title": "OpportunityStatus",
+        "type": "string",
+        "enum": [
+          "WON",
+          "OPEN"
         ],
         "nullable": true
       },
