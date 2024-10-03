@@ -41,6 +41,7 @@ class FileFormats(
             "DOCX": "DOCX",
             "PPTX": "PPTX",
             "XLSX": "XLSX",
+            "XLSM": "XLSM",
             "MD": "MD",
             "RTF": "RTF",
             "JSON": "JSON",
@@ -115,6 +116,10 @@ class FileFormats(
     @schemas.classproperty
     def XLSX(cls):
         return cls("XLSX")
+    
+    @schemas.classproperty
+    def XLSM(cls):
+        return cls("XLSM")
     
     @schemas.classproperty
     def MD(cls):

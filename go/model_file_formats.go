@@ -27,6 +27,7 @@ const (
 	FILEFORMATS_DOCX FileFormats = "DOCX"
 	FILEFORMATS_PPTX FileFormats = "PPTX"
 	FILEFORMATS_XLSX FileFormats = "XLSX"
+	FILEFORMATS_XLSM FileFormats = "XLSM"
 	FILEFORMATS_MD FileFormats = "MD"
 	FILEFORMATS_RTF FileFormats = "RTF"
 	FILEFORMATS_JSON FileFormats = "JSON"
@@ -83,6 +84,7 @@ var AllowedFileFormatsEnumValues = []FileFormats{
 	"DOCX",
 	"PPTX",
 	"XLSX",
+	"XLSM",
 	"MD",
 	"RTF",
 	"JSON",

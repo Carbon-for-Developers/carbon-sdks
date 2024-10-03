@@ -75,6 +75,8 @@ import com.google.gson.stream.JsonWriter;
   
   XLSX("XLSX"),
   
+  XLSM("XLSM"),
+  
   MD("MD"),
   
   RTF("RTF"),

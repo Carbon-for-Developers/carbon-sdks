@@ -6208,6 +6208,7 @@ components:
       - DOCX
       - PPTX
       - XLSX
+      - XLSM
       - MD
       - RTF
       - JSON
@@ -7079,6 +7080,7 @@ components:
       - DOCX
       - PPTX
       - XLSX
+      - XLSM
       - MD
       - RTF
       - JSON
@@ -13694,6 +13696,7 @@ components:
       - DOCX
       - PPTX
       - XLSX
+      - XLSM
       - MD
       - RTF
       - JSON
@@ -13780,6 +13783,7 @@ components:
       - DOCX
       - PPTX
       - XLSX
+      - XLSM
       - MD
       - RTF
       - JSON

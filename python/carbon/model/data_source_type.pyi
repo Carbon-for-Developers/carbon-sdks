@@ -128,6 +128,10 @@ class DataSourceType(
         return cls("XLSX")
     
     @schemas.classproperty
+    def XLSM(cls):
+        return cls("XLSM")
+    
+    @schemas.classproperty
     def MD(cls):
         return cls("MD")
     

@@ -27,6 +27,7 @@ const (
 	FILEFORMATSNULLABLE_DOCX FileFormatsNullable = "DOCX"
 	FILEFORMATSNULLABLE_PPTX FileFormatsNullable = "PPTX"
 	FILEFORMATSNULLABLE_XLSX FileFormatsNullable = "XLSX"
+	FILEFORMATSNULLABLE_XLSM FileFormatsNullable = "XLSM"
 	FILEFORMATSNULLABLE_MD FileFormatsNullable = "MD"
 	FILEFORMATSNULLABLE_RTF FileFormatsNullable = "RTF"
 	FILEFORMATSNULLABLE_JSON FileFormatsNullable = "JSON"
@@ -83,6 +84,7 @@ var AllowedFileFormatsNullableEnumValues = []FileFormatsNullable{
 	"DOCX",
 	"PPTX",
 	"XLSX",
+	"XLSM",
 	"MD",
 	"RTF",
 	"JSON",

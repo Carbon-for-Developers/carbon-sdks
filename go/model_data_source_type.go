@@ -44,6 +44,7 @@ const (
 	DATASOURCETYPE_DOCX DataSourceType = "DOCX"
 	DATASOURCETYPE_PPTX DataSourceType = "PPTX"
 	DATASOURCETYPE_XLSX DataSourceType = "XLSX"
+	DATASOURCETYPE_XLSM DataSourceType = "XLSM"
 	DATASOURCETYPE_MD DataSourceType = "MD"
 	DATASOURCETYPE_RTF DataSourceType = "RTF"
 	DATASOURCETYPE_JSON DataSourceType = "JSON"
@@ -109,6 +110,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"DOCX",
 	"PPTX",
 	"XLSX",
+	"XLSM",
 	"MD",
 	"RTF",
 	"JSON",
