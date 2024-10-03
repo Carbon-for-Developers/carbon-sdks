@@ -17,6 +17,8 @@
 
 * `XLSX` (value: `"XLSX"`)
 
+* `XLSM` (value: `"XLSM"`)
+
 * `MD` (value: `"MD"`)
 
 * `RTF` (value: `"RTF"`)

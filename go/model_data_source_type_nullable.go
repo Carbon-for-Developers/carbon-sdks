@@ -44,6 +44,7 @@ const (
 	DATASOURCETYPENULLABLE_DOCX DataSourceTypeNullable = "DOCX"
 	DATASOURCETYPENULLABLE_PPTX DataSourceTypeNullable = "PPTX"
 	DATASOURCETYPENULLABLE_XLSX DataSourceTypeNullable = "XLSX"
+	DATASOURCETYPENULLABLE_XLSM DataSourceTypeNullable = "XLSM"
 	DATASOURCETYPENULLABLE_MD DataSourceTypeNullable = "MD"
 	DATASOURCETYPENULLABLE_RTF DataSourceTypeNullable = "RTF"
 	DATASOURCETYPENULLABLE_JSON DataSourceTypeNullable = "JSON"
@@ -109,6 +110,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"DOCX",
 	"PPTX",
 	"XLSX",
+	"XLSM",
 	"MD",
 	"RTF",
 	"JSON",
