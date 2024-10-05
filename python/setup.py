@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "carbon-python-sdk"
-VERSION = "0.2.39"
+VERSION = "0.2.40"
 # To install the library, run the following
 #
 # python setup.py install
