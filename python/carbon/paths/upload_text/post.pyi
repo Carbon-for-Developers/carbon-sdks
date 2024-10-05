@@ -123,6 +123,7 @@ class BaseApi(api_client.Api):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -146,6 +147,8 @@ class BaseApi(api_client.Api):
             _body["cold_storage_params"] = cold_storage_params
         if generate_chunks_only is not None:
             _body["generate_chunks_only"] = generate_chunks_only
+        if store_file_only is not None:
+            _body["store_file_only"] = store_file_only
         args.body = _body
         return args
 
@@ -363,6 +366,7 @@ class UploadTextRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -380,6 +384,7 @@ class UploadTextRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return await self._aupload_text_oapg(
             body=args.body,
@@ -398,6 +403,7 @@ class UploadTextRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -414,6 +420,7 @@ class UploadTextRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return self._upload_text_oapg(
             body=args.body,
@@ -433,6 +440,7 @@ class UploadText(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -447,6 +455,7 @@ class UploadText(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
             **kwargs,
         )
         if validate:
@@ -466,6 +475,7 @@ class UploadText(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload_text(
@@ -479,6 +489,7 @@ class UploadText(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -500,6 +511,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -517,6 +529,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return await self._aupload_text_oapg(
             body=args.body,
@@ -535,6 +548,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         cold_storage_params: typing.Optional[ColdStorageProps] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -551,6 +565,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return self._upload_text_oapg(
             body=args.body,

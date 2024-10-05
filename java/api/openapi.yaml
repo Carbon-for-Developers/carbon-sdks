@@ -3286,6 +3286,22 @@ paths:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-17-schema
         style: form
+      - description: "If this flag is enabled, the file will be stored with Carbon,\
+          \ but no processing will be done."
+        explode: true
+        in: query
+        name: store_file_only
+        required: false
+        schema:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-18-schema
+        style: form
       requestBody:
         content:
           multipart/form-data:
@@ -5369,6 +5385,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -5717,6 +5734,7 @@ components:
             sync_attachments: false
             transcription_service: null
             skip_file_processing: false
+            store_file_only: false
             auto_synced_source_types:
             - ARTICLE
             generate_chunks_only: false
@@ -7438,6 +7456,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no chunks or embeddings will be generated. \n          This overrides\
+            \ the skip_embedding_generation and generate_chunks_only flags."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-store_file_only
         skip_file_processing:
           default: false
           description: "Setting this flag will create a new file record with Carbon\
@@ -7466,6 +7494,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -7861,6 +7890,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -7979,6 +8009,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -8139,6 +8170,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -8284,6 +8316,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -9522,6 +9555,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -10946,6 +10980,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -11222,6 +11257,7 @@ components:
         embedding_model: OPENAI
         chunk_overlap: 6
         skip_embedding_generation: false
+        store_file_only: false
         generate_chunks_only: false
       properties:
         contents:
@@ -11273,6 +11309,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-store_file_only
       required:
       - contents
       title: RawTextInput
@@ -11410,6 +11455,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -11707,6 +11753,7 @@ components:
         embedding_model: null
         css_selectors_to_skip: []
         url: url
+        store_file_only: false
         tags: {}
         generate_chunks_only: false
         download_css_and_media: false
@@ -11876,6 +11923,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-store_file_only
       required:
       - url
       title: SitemapScrapeRequest
@@ -12023,6 +12079,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -12158,6 +12215,7 @@ components:
           sync_attachments: false
           transcription_service: null
           skip_file_processing: false
+          store_file_only: false
           auto_synced_source_types:
           - ARTICLE
           generate_chunks_only: false
@@ -12476,6 +12534,7 @@ components:
           enable_cold_storage: false
         embedding_model: null
         url: url
+        store_file_only: false
         generate_chunks_only: false
         media_type: null
         generate_sparse_vectors: false
@@ -12586,6 +12645,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-store_file_only
       required:
       - url
       title: UploadFileFromUrlInput
@@ -13409,6 +13477,7 @@ components:
         embedding_model: null
         css_selectors_to_skip: []
         url: url
+        store_file_only: false
         tags: {}
         generate_chunks_only: false
         download_css_and_media: false
@@ -13564,6 +13633,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-store_file_only
       required:
       - url
       title: WebscrapeRequest
@@ -13767,6 +13845,7 @@ components:
         sync_attachments: false
         transcription_service: null
         skip_file_processing: false
+        store_file_only: false
         auto_synced_source_types:
         - ARTICLE
         generate_chunks_only: false
@@ -13834,6 +13913,16 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no chunks or embeddings will be generated. \n          This overrides\
+            \ the skip_embedding_generation and generate_chunks_only flags."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-store_file_only
         skip_file_processing:
           default: false
           description: "Setting this flag will create a new file record with Carbon\
@@ -14456,6 +14545,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--uploadfile-post-parameters-18-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-paths--fetch_youtube_transcript-get-parameters-1-schema:
       example: false
       type: boolean
@@ -14626,6 +14719,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfig-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfig-properties-store_file_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -15054,6 +15151,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-RawTextInput-properties-store_file_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-ResyncFileQueryInput-properties-force_embedding_generation:
       example: false
       type: boolean
@@ -15167,6 +15268,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-store_file_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -15316,6 +15421,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-store_file_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-UserFile-properties-ocr_properties:
       example: {}
       properties: {}
@@ -15415,6 +15524,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WebscrapeRequest-properties-store_file_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrderDirV2Nullable:
       example: asc
       type: string
@@ -15444,6 +15557,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-generate_chunks_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-store_file_only:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -17586,6 +17703,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-17-schema
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--uploadfile-post-parameters-18-schema
         file:
           format: binary
           title: File
@@ -17613,6 +17739,7 @@ components:
       - enable_cold_storage
       - hot_storage_time_to_live
       - generate_chunks_only
+      - store_file_only
     konfig-generated-schema-single-parameter-schema-post--upload_file_from_url:
       properties:
         url:
@@ -17717,6 +17844,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UploadFileFromUrlInput-properties-store_file_only
       required:
       - url
       type: object
@@ -17773,6 +17909,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-RawTextInput-properties-store_file_only
       required:
       - contents
       type: object
@@ -18243,6 +18388,15 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-generate_chunks_only
+        store_file_only:
+          default: false
+          description: "If this flag is enabled, the file will be stored with Carbon,\
+            \ but no processing will be done."
+          example: false
+          title: Store File Only
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-store_file_only
       required:
       - url
       type: object

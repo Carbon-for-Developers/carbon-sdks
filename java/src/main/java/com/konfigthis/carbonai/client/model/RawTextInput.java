@@ -92,6 +92,10 @@ public class RawTextInput {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_STORE_FILE_ONLY = "store_file_only";
+  @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
+  private Boolean storeFileOnly = false;
+
   public RawTextInput() {
   }
 
@@ -388,6 +392,35 @@ public class RawTextInput {
     this.generateChunksOnly = generateChunksOnly;
   }
 
+
+  public RawTextInput storeFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+   * @return storeFileOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.")
+
+  public Boolean getStoreFileOnly() {
+    return storeFileOnly;
+  }
+
+
+  public void setStoreFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -452,7 +485,8 @@ public class RawTextInput {
         Objects.equals(this.embeddingModel, rawTextInput.embeddingModel) &&
         Objects.equals(this.generateSparseVectors, rawTextInput.generateSparseVectors) &&
         Objects.equals(this.coldStorageParams, rawTextInput.coldStorageParams) &&
-        Objects.equals(this.generateChunksOnly, rawTextInput.generateChunksOnly)&&
+        Objects.equals(this.generateChunksOnly, rawTextInput.generateChunksOnly) &&
+        Objects.equals(this.storeFileOnly, rawTextInput.storeFileOnly)&&
         Objects.equals(this.additionalProperties, rawTextInput.additionalProperties);
   }
 
@@ -462,7 +496,7 @@ public class RawTextInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contents, name, chunkSize, chunkOverlap, skipEmbeddingGeneration, overwriteFileId, embeddingModel, generateSparseVectors, coldStorageParams, generateChunksOnly, additionalProperties);
+    return Objects.hash(contents, name, chunkSize, chunkOverlap, skipEmbeddingGeneration, overwriteFileId, embeddingModel, generateSparseVectors, coldStorageParams, generateChunksOnly, storeFileOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -486,6 +520,7 @@ public class RawTextInput {
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
     sb.append("    coldStorageParams: ").append(toIndentedString(coldStorageParams)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -519,6 +554,7 @@ public class RawTextInput {
     openapiFields.add("generate_sparse_vectors");
     openapiFields.add("cold_storage_params");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("store_file_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

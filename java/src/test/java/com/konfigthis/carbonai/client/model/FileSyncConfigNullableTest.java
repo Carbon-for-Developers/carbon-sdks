@@ -100,6 +100,14 @@ public class FileSyncConfigNullableTest {
     }
 
     /**
+     * Test the property 'storeFileOnly'
+     */
+    @Test
+    public void storeFileOnlyTest() {
+        // TODO: test storeFileOnly
+    }
+
+    /**
      * Test the property 'skipFileProcessing'
      */
     @Test

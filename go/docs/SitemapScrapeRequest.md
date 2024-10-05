@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **UrlsToScrape** | Pointer to **[]string** | You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped. | [optional] [default to []]
 **DownloadCssAndMedia** | Pointer to **NullableBool** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. | [optional] [default to false]
 **GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
+**StoreFileOnly** | Pointer to **bool** | If this flag is enabled, the file will be stored with Carbon, but no processing will be done. | [optional] [default to false]
 
 ## Methods
 
@@ -636,6 +637,31 @@ SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
 `func (o *SitemapScrapeRequest) HasGenerateChunksOnly() bool`
 
 HasGenerateChunksOnly returns a boolean if a field has been set.
+
+### GetStoreFileOnly
+
+`func (o *SitemapScrapeRequest) GetStoreFileOnly() bool`
+
+GetStoreFileOnly returns the StoreFileOnly field if non-nil, zero value otherwise.
+
+### GetStoreFileOnlyOk
+
+`func (o *SitemapScrapeRequest) GetStoreFileOnlyOk() (*bool, bool)`
+
+GetStoreFileOnlyOk returns a tuple with the StoreFileOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreFileOnly
+
+`func (o *SitemapScrapeRequest) SetStoreFileOnly(v bool)`
+
+SetStoreFileOnly sets StoreFileOnly field to given value.
+
+### HasStoreFileOnly
+
+`func (o *SitemapScrapeRequest) HasStoreFileOnly() bool`
+
+HasStoreFileOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

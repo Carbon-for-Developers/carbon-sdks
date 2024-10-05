@@ -1380,9 +1380,10 @@ module Carbon
     # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
     # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1404,6 +1405,7 @@ module Carbon
       extra[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
       extra[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
       extra[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      extra[:store_file_only] = store_file_only if store_file_only != SENTINEL
       api_response = upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
       api_response.data
     end
@@ -1455,9 +1457,10 @@ module Carbon
     # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
     # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [BodyCreateUploadFileUploadfilePost] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload_with_http_info(file:, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', use_ocr: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, enable_cold_storage: false, hot_storage_time_to_live: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:file] = file if file != SENTINEL
       body_create_upload_file_uploadfile_post = _body
@@ -1479,6 +1482,7 @@ module Carbon
       extra[:enable_cold_storage] = enable_cold_storage if enable_cold_storage != SENTINEL
       extra[:hot_storage_time_to_live] = hot_storage_time_to_live if hot_storage_time_to_live != SENTINEL
       extra[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      extra[:store_file_only] = store_file_only if store_file_only != SENTINEL
       upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
     end
 
@@ -1505,6 +1509,7 @@ module Carbon
     # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
     # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
     # @option opts [Boolean] :generate_chunks_only If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. (default to false)
+    # @option opts [Boolean] :store_file_only If this flag is enabled, the file will be stored with Carbon, but no processing will be done. (default to false)
     # @return [UserFile]
     private def upload_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       data, _status_code, _headers = upload_with_http_info(file, body_create_upload_file_uploadfile_post, opts)
@@ -1534,6 +1539,7 @@ module Carbon
     # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
     # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
     # @option opts [Boolean] :generate_chunks_only If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. (default to false)
+    # @option opts [Boolean] :store_file_only If this flag is enabled, the file will be stored with Carbon, but no processing will be done. (default to false)
     # @return [APIResponse] data is UserFile, status code, headers and response
     private def upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, opts = {})
       if @api_client.config.debugging
@@ -1570,6 +1576,7 @@ module Carbon
       query_params[:'enable_cold_storage'] = opts[:'enable_cold_storage'] if !opts[:'enable_cold_storage'].nil?
       query_params[:'hot_storage_time_to_live'] = opts[:'hot_storage_time_to_live'] if !opts[:'hot_storage_time_to_live'].nil?
       query_params[:'generate_chunks_only'] = opts[:'generate_chunks_only'] if !opts[:'generate_chunks_only'].nil?
+      query_params[:'store_file_only'] = opts[:'store_file_only'] if !opts[:'store_file_only'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1633,9 +1640,10 @@ module Carbon
     # @param split_rows [Boolean] 
     # @param cold_storage_params [ColdStorageProps] 
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload_from_url(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1656,6 +1664,7 @@ module Carbon
       _body[:split_rows] = split_rows if split_rows != SENTINEL
       _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       _body[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      _body[:store_file_only] = store_file_only if store_file_only != SENTINEL
       upload_file_from_url_input = _body
       api_response = upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
       api_response.data
@@ -1682,9 +1691,10 @@ module Carbon
     # @param split_rows [Boolean] 
     # @param cold_storage_params [ColdStorageProps] 
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [UploadFileFromUrlInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload_from_url_with_http_info(url:, file_name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, set_page_as_boundary: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, use_textract: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, parse_pdf_tables_with_ocr: false, detect_audio_language: false, transcription_service: SENTINEL, include_speaker_labels: false, media_type: SENTINEL, split_rows: false, cold_storage_params: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:url] = url if url != SENTINEL
       _body[:file_name] = file_name if file_name != SENTINEL
@@ -1705,6 +1715,7 @@ module Carbon
       _body[:split_rows] = split_rows if split_rows != SENTINEL
       _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       _body[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      _body[:store_file_only] = store_file_only if store_file_only != SENTINEL
       upload_file_from_url_input = _body
       upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
     end
@@ -1799,9 +1810,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param cold_storage_params [ColdStorageProps] 
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [RawTextInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_text(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload_text(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:contents] = contents if contents != SENTINEL
       _body[:name] = name if name != SENTINEL
@@ -1813,6 +1825,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       _body[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      _body[:store_file_only] = store_file_only if store_file_only != SENTINEL
       raw_text_input = _body
       api_response = upload_text_with_http_info_impl(raw_text_input, extra)
       api_response.data
@@ -1841,9 +1854,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param cold_storage_params [ColdStorageProps] 
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [RawTextInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def upload_text_with_http_info(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, generate_chunks_only: false, extra: {})
+    def upload_text_with_http_info(contents:, name: SENTINEL, chunk_size: SENTINEL, chunk_overlap: SENTINEL, skip_embedding_generation: false, overwrite_file_id: SENTINEL, embedding_model: 'OPENAI', generate_sparse_vectors: false, cold_storage_params: SENTINEL, generate_chunks_only: false, store_file_only: false, extra: {})
       _body = {}
       _body[:contents] = contents if contents != SENTINEL
       _body[:name] = name if name != SENTINEL
@@ -1855,6 +1869,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:cold_storage_params] = cold_storage_params if cold_storage_params != SENTINEL
       _body[:generate_chunks_only] = generate_chunks_only if generate_chunks_only != SENTINEL
+      _body[:store_file_only] = store_file_only if store_file_only != SENTINEL
       raw_text_input = _body
       upload_text_with_http_info_impl(raw_text_input, extra)
     end

@@ -1491,6 +1491,7 @@ result = carbon.files.upload(
   enable_cold_storage: false,
   hot_storage_time_to_live: 1,
   generate_chunks_only: false,
+  store_file_only: false,
 )
 p result
 ```
@@ -1563,6 +1564,10 @@ Time in seconds after which the file will be moved to cold storage.
 If this flag is enabled, the file will be chunked and stored with Carbon, but no
 embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+If this flag is enabled, the file will be stored with Carbon, but no processing
+will be done.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -1605,6 +1610,7 @@ result = carbon.files.upload_from_url(
         "enable_cold_storage" => false,
     },
   generate_chunks_only: false,
+  store_file_only: false,
 )
 p result
 ```
@@ -1634,6 +1640,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 ##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 If this flag is enabled, the file will be chunked and stored with Carbon, but no
 embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+If this flag is enabled, the file will be stored with Carbon, but no processing
+will be done.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1677,6 +1687,7 @@ result = carbon.files.upload_text(
         "enable_cold_storage" => false,
     },
   generate_chunks_only: false,
+  store_file_only: false,
 )
 p result
 ```
@@ -1695,6 +1706,10 @@ p result
 ##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 If this flag is enabled, the file will be chunked and stored with Carbon, but no
 embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+If this flag is enabled, the file will be stored with Carbon, but no processing
+will be done.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1816,6 +1831,7 @@ result = carbon.integrations.connect_freshdesk(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -1884,6 +1900,7 @@ result = carbon.integrations.connect_gitbook(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -1950,6 +1967,7 @@ result = carbon.integrations.connect_guru(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -2082,6 +2100,7 @@ result = carbon.integrations.get_oauth_url(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
   automatically_open_file_picker: true,
@@ -2466,6 +2485,7 @@ result = carbon.integrations.sync_azure_blob_files(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -2593,6 +2613,7 @@ result = carbon.integrations.sync_confluence(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -2702,6 +2723,7 @@ result = carbon.integrations.sync_files(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -2813,6 +2835,7 @@ result = carbon.integrations.sync_gitbook(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -2921,6 +2944,7 @@ result = carbon.integrations.sync_gmail(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
   incremental_sync: false,
@@ -3044,6 +3068,7 @@ result = carbon.integrations.sync_outlook(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
   incremental_sync: false,
@@ -3191,6 +3216,7 @@ result = carbon.integrations.sync_s3_files(
         "include_speaker_labels" => false,
         "split_rows" => false,
         "generate_chunks_only" => false,
+        "store_file_only" => false,
         "skip_file_processing" => false,
     },
 )
@@ -3711,6 +3737,7 @@ result = carbon.utilities.scrape_sitemap(
   urls_to_scrape: [],
   download_css_and_media: false,
   generate_chunks_only: false,
+  store_file_only: false,
 )
 p result
 ```
@@ -3754,6 +3781,10 @@ success rate is improved.
 If this flag is enabled, the file will be chunked and stored with Carbon, but no
 embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+If this flag is enabled, the file will be stored with Carbon, but no processing
+will be done.
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -3796,6 +3827,7 @@ result = carbon.utilities.scrape_web(
             "url_paths_to_include" => [],
             "download_css_and_media" => false,
             "generate_chunks_only" => false,
+            "store_file_only" => false,
         }
     ],
 )

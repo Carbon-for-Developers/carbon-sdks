@@ -130,6 +130,10 @@ public class UploadFileFromUrlInput {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_STORE_FILE_ONLY = "store_file_only";
+  @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
+  private Boolean storeFileOnly = false;
+
   public UploadFileFromUrlInput() {
   }
 
@@ -683,6 +687,35 @@ public class UploadFileFromUrlInput {
     this.generateChunksOnly = generateChunksOnly;
   }
 
+
+  public UploadFileFromUrlInput storeFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+   * @return storeFileOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.")
+
+  public Boolean getStoreFileOnly() {
+    return storeFileOnly;
+  }
+
+
+  public void setStoreFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -756,7 +789,8 @@ public class UploadFileFromUrlInput {
         Objects.equals(this.mediaType, uploadFileFromUrlInput.mediaType) &&
         Objects.equals(this.splitRows, uploadFileFromUrlInput.splitRows) &&
         Objects.equals(this.coldStorageParams, uploadFileFromUrlInput.coldStorageParams) &&
-        Objects.equals(this.generateChunksOnly, uploadFileFromUrlInput.generateChunksOnly)&&
+        Objects.equals(this.generateChunksOnly, uploadFileFromUrlInput.generateChunksOnly) &&
+        Objects.equals(this.storeFileOnly, uploadFileFromUrlInput.storeFileOnly)&&
         Objects.equals(this.additionalProperties, uploadFileFromUrlInput.additionalProperties);
   }
 
@@ -766,7 +800,7 @@ public class UploadFileFromUrlInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, coldStorageParams, generateChunksOnly, additionalProperties);
+    return Objects.hash(url, fileName, chunkSize, chunkOverlap, skipEmbeddingGeneration, setPageAsBoundary, embeddingModel, generateSparseVectors, useTextract, prependFilenameToChunks, maxItemsPerChunk, parsePdfTablesWithOcr, detectAudioLanguage, transcriptionService, includeSpeakerLabels, mediaType, splitRows, coldStorageParams, generateChunksOnly, storeFileOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -799,6 +833,7 @@ public class UploadFileFromUrlInput {
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    coldStorageParams: ").append(toIndentedString(coldStorageParams)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -841,6 +876,7 @@ public class UploadFileFromUrlInput {
     openapiFields.add("split_rows");
     openapiFields.add("cold_storage_params");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("store_file_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -1605,6 +1605,7 @@ UserFile result = client
         .enableColdStorage(enableColdStorage)
         .hotStorageTimeToLive(hotStorageTimeToLive)
         .generateChunksOnly(generateChunksOnly)
+        .storeFileOnly(storeFileOnly)
         .execute();
 ```
 
@@ -1684,6 +1685,10 @@ Time in seconds after which the file will be moved to cold storage.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### storeFileOnly: `Boolean`<a id="storefileonly-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
@@ -1725,6 +1730,7 @@ UserFile result = client
         .splitRows(splitRows)
         .coldStorageParams(coldStorageParams)
         .generateChunksOnly(generateChunksOnly)
+        .storeFileOnly(storeFileOnly)
         .execute();
 ```
 
@@ -1772,6 +1778,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./src/main/java/com/konfigthis/client/model/UserFile.java)
@@ -1813,6 +1823,7 @@ UserFile result = client
         .generateSparseVectors(generateSparseVectors)
         .coldStorageParams(coldStorageParams)
         .generateChunksOnly(generateChunksOnly)
+        .storeFileOnly(storeFileOnly)
         .execute();
 ```
 
@@ -1839,6 +1850,10 @@ UserFile result = client
 ##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3911,6 +3926,7 @@ Object result = client
         .urlsToScrape(urlsToScrape)
         .downloadCssAndMedia(downloadCssAndMedia)
         .generateChunksOnly(generateChunksOnly)
+        .storeFileOnly(storeFileOnly)
         .execute();
 ```
 
@@ -3961,6 +3977,10 @@ Whether the scraper should download css and media from the page (images, fonts, 
 ##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

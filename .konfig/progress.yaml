@@ -359,6 +359,8 @@ securityParameters:
     query: false
   split_rows:
     query: false
+  store_file_only:
+    query: false
   transcription_service:
     query: false
   types:

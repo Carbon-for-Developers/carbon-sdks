@@ -1642,6 +1642,7 @@ upload_response = carbon.files.upload(
     enable_cold_storage=False,
     hot_storage_time_to_live=1,
     generate_chunks_only=False,
+    store_file_only=False,
 )
 ```
 
@@ -1722,6 +1723,10 @@ Time in seconds after which the file will be moved to cold storage.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `bool`<a id="store_file_only-bool"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`BodyCreateUploadFileUploadfilePost`](./carbon/type/body_create_upload_file_uploadfile_post.py)
@@ -1766,6 +1771,7 @@ upload_from_url_response = carbon.files.upload_from_url(
         "enable_cold_storage": False,
     },
     generate_chunks_only=False,
+    store_file_only=False,
 )
 ```
 
@@ -1814,6 +1820,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `bool`<a id="store_file_only-bool"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`UploadFileFromUrlInput`](./carbon/type/upload_file_from_url_input.py)
@@ -1858,6 +1868,7 @@ upload_text_response = carbon.files.upload_text(
         "enable_cold_storage": False,
     },
     generate_chunks_only=False,
+    store_file_only=False,
 )
 ```
 
@@ -1885,6 +1896,10 @@ upload_text_response = carbon.files.upload_text(
 ##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `bool`<a id="store_file_only-bool"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2015,6 +2030,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -2097,6 +2113,7 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -2177,6 +2194,7 @@ connect_guru_response = carbon.integrations.connect_guru(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -2325,6 +2343,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
     automatically_open_file_picker=True,
@@ -2732,6 +2751,7 @@ sync_azure_blob_files_response = carbon.integrations.sync_azure_blob_files(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -2878,6 +2898,7 @@ sync_confluence_response = carbon.integrations.sync_confluence(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -3003,6 +3024,7 @@ sync_files_response = carbon.integrations.sync_files(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -3131,6 +3153,7 @@ sync_gitbook_response = carbon.integrations.sync_gitbook(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -3252,6 +3275,7 @@ sync_gmail_response = carbon.integrations.sync_gmail(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
     incremental_sync=False,
@@ -3390,6 +3414,7 @@ sync_outlook_response = carbon.integrations.sync_outlook(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
     incremental_sync=False,
@@ -3561,6 +3586,7 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
         "include_speaker_labels": False,
         "split_rows": False,
         "generate_chunks_only": False,
+        "store_file_only": False,
         "skip_file_processing": False,
     },
 )
@@ -4116,6 +4142,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     urls_to_scrape=[],
     download_css_and_media=False,
     generate_chunks_only=False,
+    store_file_only=False,
 )
 ```
 
@@ -4161,6 +4188,10 @@ Whether the scraper should download css and media from the page (images, fonts, 
 
 If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `bool`<a id="store_file_only-bool"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`SitemapScrapeRequest`](./carbon/type/sitemap_scrape_request.py)
@@ -4205,6 +4236,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "url_paths_to_include": [],
             "download_css_and_media": False,
             "generate_chunks_only": False,
+            "store_file_only": False,
         }
     ],
 )

@@ -1351,7 +1351,7 @@ public class Example {
 
 <a name="upload"></a>
 # **upload**
-> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).transcriptionService(transcriptionService).includeSpeakerLabels(includeSpeakerLabels).mediaType(mediaType).splitRows(splitRows).enableColdStorage(enableColdStorage).hotStorageTimeToLive(hotStorageTimeToLive).generateChunksOnly(generateChunksOnly).execute();
+> UserFile upload(_file, bodyCreateUploadFileUploadfilePost).chunkSize(chunkSize).chunkOverlap(chunkOverlap).skipEmbeddingGeneration(skipEmbeddingGeneration).setPageAsBoundary(setPageAsBoundary).embeddingModel(embeddingModel).useOcr(useOcr).generateSparseVectors(generateSparseVectors).prependFilenameToChunks(prependFilenameToChunks).maxItemsPerChunk(maxItemsPerChunk).parsePdfTablesWithOcr(parsePdfTablesWithOcr).detectAudioLanguage(detectAudioLanguage).transcriptionService(transcriptionService).includeSpeakerLabels(includeSpeakerLabels).mediaType(mediaType).splitRows(splitRows).enableColdStorage(enableColdStorage).hotStorageTimeToLive(hotStorageTimeToLive).generateChunksOnly(generateChunksOnly).storeFileOnly(storeFileOnly).execute();
 
 Create Upload File
 
@@ -1401,6 +1401,7 @@ public class Example {
     Boolean enableColdStorage = false; // Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
     Integer hotStorageTimeToLive = 56; // Time in seconds after which the file will be moved to cold storage.
     Boolean generateChunksOnly = false; // If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    Boolean storeFileOnly = false; // If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     try {
       UserFile result = client
               .files
@@ -1423,6 +1424,7 @@ public class Example {
               .enableColdStorage(enableColdStorage)
               .hotStorageTimeToLive(hotStorageTimeToLive)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1493,6 +1495,7 @@ public class Example {
               .enableColdStorage(enableColdStorage)
               .hotStorageTimeToLive(hotStorageTimeToLive)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1535,6 +1538,7 @@ public class Example {
 | **enableColdStorage** | **Boolean**| Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. | [optional] [default to false] |
 | **hotStorageTimeToLive** | **Integer**| Time in seconds after which the file will be moved to cold storage. | [optional] |
 | **generateChunksOnly** | **Boolean**| If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false] |
+| **storeFileOnly** | **Boolean**| If this flag is enabled, the file will be stored with Carbon, but no processing will be done. | [optional] [default to false] |
 
 ### Return type
 
@@ -1604,6 +1608,7 @@ public class Example {
     Boolean splitRows = false;
     ColdStorageProps coldStorageParams = new ColdStorageProps();
     Boolean generateChunksOnly = false; // If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    Boolean storeFileOnly = false; // If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     try {
       UserFile result = client
               .files
@@ -1626,6 +1631,7 @@ public class Example {
               .splitRows(splitRows)
               .coldStorageParams(coldStorageParams)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1696,6 +1702,7 @@ public class Example {
               .splitRows(splitRows)
               .coldStorageParams(coldStorageParams)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1781,6 +1788,7 @@ public class Example {
     Boolean generateSparseVectors = false;
     ColdStorageProps coldStorageParams = new ColdStorageProps();
     Boolean generateChunksOnly = false; // If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    Boolean storeFileOnly = false; // If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     try {
       UserFile result = client
               .files
@@ -1794,6 +1802,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .coldStorageParams(coldStorageParams)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .execute();
       System.out.println(result);
       System.out.println(result.getTags());
@@ -1855,6 +1864,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .coldStorageParams(coldStorageParams)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

@@ -121,4 +121,12 @@ public class RawTextInputTest {
         // TODO: test generateChunksOnly
     }
 
+    /**
+     * Test the property 'storeFileOnly'
+     */
+    @Test
+    public void storeFileOnlyTest() {
+        // TODO: test storeFileOnly
+    }
+
 }

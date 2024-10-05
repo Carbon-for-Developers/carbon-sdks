@@ -234,6 +234,7 @@ class SitemapScrapeRequest(
                         _configuration=_configuration,
                     )
             generate_chunks_only = schemas.BoolSchema
+            store_file_only = schemas.BoolSchema
             __annotations__ = {
                 "url": url,
                 "tags": tags,
@@ -253,6 +254,7 @@ class SitemapScrapeRequest(
                 "urls_to_scrape": urls_to_scrape,
                 "download_css_and_media": download_css_and_media,
                 "generate_chunks_only": generate_chunks_only,
+                "store_file_only": store_file_only,
             }
     
     url: MetaOapg.properties.url
@@ -312,9 +314,12 @@ class SitemapScrapeRequest(
     def __getitem__(self, name: typing_extensions.Literal["generate_chunks_only"]) -> MetaOapg.properties.generate_chunks_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["store_file_only"]) -> MetaOapg.properties.store_file_only: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", "download_css_and_media", "generate_chunks_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", "download_css_and_media", "generate_chunks_only", "store_file_only", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -374,9 +379,12 @@ class SitemapScrapeRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_chunks_only"]) -> typing.Union[MetaOapg.properties.generate_chunks_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["store_file_only"]) -> typing.Union[MetaOapg.properties.store_file_only, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", "download_css_and_media", "generate_chunks_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "tags", "max_pages_to_scrape", "chunk_size", "chunk_overlap", "skip_embedding_generation", "enable_auto_sync", "generate_sparse_vectors", "prepend_filename_to_chunks", "html_tags_to_skip", "css_classes_to_skip", "css_selectors_to_skip", "embedding_model", "url_paths_to_include", "url_paths_to_exclude", "urls_to_scrape", "download_css_and_media", "generate_chunks_only", "store_file_only", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -401,6 +409,7 @@ class SitemapScrapeRequest(
         urls_to_scrape: typing.Union['SitemapScrapeRequestUrlsToScrape', schemas.Unset] = schemas.unset,
         download_css_and_media: typing.Union[MetaOapg.properties.download_css_and_media, None, bool, schemas.Unset] = schemas.unset,
         generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
+        store_file_only: typing.Union[MetaOapg.properties.store_file_only, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SitemapScrapeRequest':
@@ -425,6 +434,7 @@ class SitemapScrapeRequest(
             urls_to_scrape=urls_to_scrape,
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
             _configuration=_configuration,
             **kwargs,
         )

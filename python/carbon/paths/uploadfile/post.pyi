@@ -186,6 +186,7 @@ class HotStorageTimeToLiveSchema(
             _configuration=_configuration,
         )
 GenerateChunksOnlySchema = schemas.BoolSchema
+StoreFileOnlySchema = schemas.BoolSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -212,6 +213,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'enable_cold_storage': typing.Union[EnableColdStorageSchema, bool, ],
         'hot_storage_time_to_live': typing.Union[HotStorageTimeToLiveSchema, None, decimal.Decimal, int, ],
         'generate_chunks_only': typing.Union[GenerateChunksOnlySchema, bool, ],
+        'store_file_only': typing.Union[StoreFileOnlySchema, bool, ],
     },
     total=False
 )
@@ -329,6 +331,12 @@ request_query_generate_chunks_only = api_client.QueryParameter(
     schema=GenerateChunksOnlySchema,
     explode=True,
 )
+request_query_store_file_only = api_client.QueryParameter(
+    name="store_file_only",
+    style=api_client.ParameterStyle.FORM,
+    schema=StoreFileOnlySchema,
+    explode=True,
+)
 # body param
 SchemaForRequestBodyMultipartFormData = BodyCreateUploadFileUploadfilePostSchema
 
@@ -410,6 +418,7 @@ class BaseApi(api_client.Api):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _query_params = {}
@@ -453,6 +462,8 @@ class BaseApi(api_client.Api):
             _query_params["hot_storage_time_to_live"] = hot_storage_time_to_live
         if generate_chunks_only is not None:
             _query_params["generate_chunks_only"] = generate_chunks_only
+        if store_file_only is not None:
+            _query_params["store_file_only"] = store_file_only
         args.query = _query_params
         return args
 
@@ -500,6 +511,7 @@ class BaseApi(api_client.Api):
             request_query_enable_cold_storage,
             request_query_hot_storage_time_to_live,
             request_query_generate_chunks_only,
+            request_query_store_file_only,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -647,6 +659,7 @@ class BaseApi(api_client.Api):
             request_query_enable_cold_storage,
             request_query_hot_storage_time_to_live,
             request_query_generate_chunks_only,
+            request_query_store_file_only,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -745,6 +758,7 @@ class UploadRaw(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -771,6 +785,7 @@ class UploadRaw(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -799,6 +814,7 @@ class UploadRaw(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -824,6 +840,7 @@ class UploadRaw(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return self._upload_oapg(
             body=args.body,
@@ -853,6 +870,7 @@ class Upload(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilePydantic:
@@ -876,6 +894,7 @@ class Upload(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
             **kwargs,
         )
         if validate:
@@ -904,6 +923,7 @@ class Upload(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> UserFilePydantic:
         raw_response = self.raw.upload(
@@ -926,6 +946,7 @@ class Upload(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         if validate:
             return UserFilePydantic(**raw_response.body)
@@ -956,6 +977,7 @@ class ApiForpost(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -982,6 +1004,7 @@ class ApiForpost(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return await self._aupload_oapg(
             body=args.body,
@@ -1010,6 +1033,7 @@ class ApiForpost(BaseApi):
         enable_cold_storage: typing.Optional[bool] = None,
         hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
+        store_file_only: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -1035,6 +1059,7 @@ class ApiForpost(BaseApi):
             enable_cold_storage=enable_cold_storage,
             hot_storage_time_to_live=hot_storage_time_to_live,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
         )
         return self._upload_oapg(
             body=args.body,

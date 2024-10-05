@@ -31,6 +31,9 @@ module Carbon
     # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     attr_accessor :generate_chunks_only
 
+    # If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags.
+    attr_accessor :store_file_only
+
     # Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
     attr_accessor :skip_file_processing
 
@@ -44,6 +47,7 @@ module Carbon
         :'include_speaker_labels' => :'include_speaker_labels',
         :'split_rows' => :'split_rows',
         :'generate_chunks_only' => :'generate_chunks_only',
+        :'store_file_only' => :'store_file_only',
         :'skip_file_processing' => :'skip_file_processing'
       }
     end
@@ -63,6 +67,7 @@ module Carbon
         :'include_speaker_labels' => :'Boolean',
         :'split_rows' => :'Boolean',
         :'generate_chunks_only' => :'Boolean',
+        :'store_file_only' => :'Boolean',
         :'skip_file_processing' => :'Boolean'
       }
     end
@@ -129,6 +134,12 @@ module Carbon
         self.generate_chunks_only = false
       end
 
+      if attributes.key?(:'store_file_only')
+        self.store_file_only = attributes[:'store_file_only']
+      else
+        self.store_file_only = false
+      end
+
       if attributes.key?(:'skip_file_processing')
         self.skip_file_processing = attributes[:'skip_file_processing']
       else
@@ -161,6 +172,7 @@ module Carbon
           include_speaker_labels == o.include_speaker_labels &&
           split_rows == o.split_rows &&
           generate_chunks_only == o.generate_chunks_only &&
+          store_file_only == o.store_file_only &&
           skip_file_processing == o.skip_file_processing
     end
 
@@ -173,7 +185,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only, skip_file_processing].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only, store_file_only, skip_file_processing].hash
     end
 
     # Builds the object from hash

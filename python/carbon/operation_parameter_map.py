@@ -548,6 +548,9 @@ operation_parameter_map = {
             {
                 'name': 'generate_chunks_only'
             },
+            {
+                'name': 'store_file_only'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -609,6 +612,9 @@ operation_parameter_map = {
             {
                 'name': 'generate_chunks_only'
             },
+            {
+                'name': 'store_file_only'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -642,6 +648,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'generate_chunks_only'
+            },
+            {
+                'name': 'store_file_only'
             },
         ]
     },
@@ -1586,6 +1595,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'generate_chunks_only'
+            },
+            {
+                'name': 'store_file_only'
             },
         ]
     },
