@@ -195,4 +195,12 @@ public class UploadFileFromUrlInputTest {
         // TODO: test generateChunksOnly
     }
 
+    /**
+     * Test the property 'storeFileOnly'
+     */
+    @Test
+    public void storeFileOnlyTest() {
+        // TODO: test storeFileOnly
+    }
+
 }

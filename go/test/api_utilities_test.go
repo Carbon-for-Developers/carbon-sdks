@@ -112,6 +112,7 @@ func Test_carbon_UtilitiesApiService(t *testing.T) {
         sitemapScrapeRequest.SetUrlsToScrape([])
         sitemapScrapeRequest.SetDownloadCssAndMedia(false)
         sitemapScrapeRequest.SetGenerateChunksOnly(false)
+        sitemapScrapeRequest.SetStoreFileOnly(false)
         
         request := client.UtilitiesApi.ScrapeSitemap(
             sitemapScrapeRequest,

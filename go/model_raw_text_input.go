@@ -27,6 +27,8 @@ type RawTextInput struct {
 	ColdStorageParams *ColdStorageProps `json:"cold_storage_params,omitempty"`
 	// If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
+	// If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+	StoreFileOnly *bool `json:"store_file_only,omitempty"`
 }
 
 // NewRawTextInput instantiates a new RawTextInput object
@@ -44,6 +46,8 @@ func NewRawTextInput(contents string) *RawTextInput {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var storeFileOnly bool = false
+	this.StoreFileOnly = &storeFileOnly
 	return &this
 }
 
@@ -60,6 +64,8 @@ func NewRawTextInputWithDefaults() *RawTextInput {
 	this.GenerateSparseVectors = *NewNullableBool(&generateSparseVectors)
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var storeFileOnly bool = false
+	this.StoreFileOnly = &storeFileOnly
 	return &this
 }
 
@@ -435,6 +441,38 @@ func (o *RawTextInput) SetGenerateChunksOnly(v bool) {
 	o.GenerateChunksOnly = &v
 }
 
+// GetStoreFileOnly returns the StoreFileOnly field value if set, zero value otherwise.
+func (o *RawTextInput) GetStoreFileOnly() bool {
+	if o == nil || isNil(o.StoreFileOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.StoreFileOnly
+}
+
+// GetStoreFileOnlyOk returns a tuple with the StoreFileOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RawTextInput) GetStoreFileOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.StoreFileOnly) {
+    return nil, false
+	}
+	return o.StoreFileOnly, true
+}
+
+// HasStoreFileOnly returns a boolean if a field has been set.
+func (o *RawTextInput) HasStoreFileOnly() bool {
+	if o != nil && !isNil(o.StoreFileOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreFileOnly gets a reference to the given bool and assigns it to the StoreFileOnly field.
+func (o *RawTextInput) SetStoreFileOnly(v bool) {
+	o.StoreFileOnly = &v
+}
+
 func (o RawTextInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -466,6 +504,9 @@ func (o RawTextInput) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.GenerateChunksOnly) {
 		toSerialize["generate_chunks_only"] = o.GenerateChunksOnly
+	}
+	if !isNil(o.StoreFileOnly) {
+		toSerialize["store_file_only"] = o.StoreFileOnly
 	}
 	return json.Marshal(toSerialize)
 }

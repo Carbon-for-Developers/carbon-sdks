@@ -1461,6 +1461,7 @@ const uploadResponse = await carbon.files.upload({
   splitRows: false,
   enableColdStorage: false,
   generateChunksOnly: false,
+  storeFileOnly: false,
   file: fs.readFileSync("/path/to/file"),
 });
 ```
@@ -1541,6 +1542,10 @@ Time in seconds after which the file will be moved to cold storage.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### storeFileOnly: `boolean`<a id="storefileonly-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1576,6 +1581,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   media_type: "TEXT",
   split_rows: false,
   generate_chunks_only: false,
+  store_file_only: false,
 });
 ```
 
@@ -1623,6 +1629,10 @@ Number of objects per chunk. For csv, tsv, xlsx, and json files only.
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./models/user-file.ts)
@@ -1658,6 +1668,7 @@ const uploadTextResponse = await carbon.files.uploadText({
   embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   generate_chunks_only: false,
+  store_file_only: false,
 });
 ```
 
@@ -1684,6 +1695,10 @@ const uploadTextResponse = await carbon.files.uploadText({
 ##### generate_chunks_only: `boolean`<a id="generate_chunks_only-boolean"></a>
 
 If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+
+##### store_file_only: `boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3642,6 +3657,7 @@ const scrapeSitemapResponse = await carbon.utilities.scrapeSitemap({
   urls_to_scrape: [],
   download_css_and_media: false,
   generate_chunks_only: false,
+  store_file_only: false,
 });
 ```
 
@@ -3693,6 +3709,10 @@ Whether the scraper should download css and media from the page (images, fonts, 
 
 If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 
+##### store_file_only: `boolean`<a id="store_file_only-boolean"></a>
+
+If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -3734,6 +3754,7 @@ const scrapeWebResponse = await carbon.utilities.scrapeWeb([
     url_paths_to_include: [],
     download_css_and_media: false,
     generate_chunks_only: false,
+    store_file_only: false,
   },
 ]);
 ```

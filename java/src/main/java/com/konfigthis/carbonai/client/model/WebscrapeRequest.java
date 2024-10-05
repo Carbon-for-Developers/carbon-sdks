@@ -123,6 +123,10 @@ public class WebscrapeRequest {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_STORE_FILE_ONLY = "store_file_only";
+  @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
+  private Boolean storeFileOnly = false;
+
   public WebscrapeRequest() {
   }
 
@@ -668,6 +672,35 @@ public class WebscrapeRequest {
     this.generateChunksOnly = generateChunksOnly;
   }
 
+
+  public WebscrapeRequest storeFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+   * @return storeFileOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.")
+
+  public Boolean getStoreFileOnly() {
+    return storeFileOnly;
+  }
+
+
+  public void setStoreFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -739,7 +772,8 @@ public class WebscrapeRequest {
         Objects.equals(this.embeddingModel, webscrapeRequest.embeddingModel) &&
         Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude) &&
         Objects.equals(this.downloadCssAndMedia, webscrapeRequest.downloadCssAndMedia) &&
-        Objects.equals(this.generateChunksOnly, webscrapeRequest.generateChunksOnly)&&
+        Objects.equals(this.generateChunksOnly, webscrapeRequest.generateChunksOnly) &&
+        Objects.equals(this.storeFileOnly, webscrapeRequest.storeFileOnly)&&
         Objects.equals(this.additionalProperties, webscrapeRequest.additionalProperties);
   }
 
@@ -749,7 +783,7 @@ public class WebscrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, generateChunksOnly, additionalProperties);
+    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, generateChunksOnly, storeFileOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -780,6 +814,7 @@ public class WebscrapeRequest {
     sb.append("    urlPathsToInclude: ").append(toIndentedString(urlPathsToInclude)).append("\n");
     sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -820,6 +855,7 @@ public class WebscrapeRequest {
     openapiFields.add("url_paths_to_include");
     openapiFields.add("download_css_and_media");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("store_file_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

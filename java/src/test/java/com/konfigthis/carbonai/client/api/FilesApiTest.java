@@ -317,6 +317,7 @@ public class FilesApiTest {
         Boolean enableColdStorage = null;
         Integer hotStorageTimeToLive = null;
         Boolean generateChunksOnly = null;
+        Boolean storeFileOnly = null;
         UserFile response = api.upload(_file)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
@@ -336,6 +337,7 @@ public class FilesApiTest {
                 .enableColdStorage(enableColdStorage)
                 .hotStorageTimeToLive(hotStorageTimeToLive)
                 .generateChunksOnly(generateChunksOnly)
+                .storeFileOnly(storeFileOnly)
                 .execute();
         // TODO: test validations
     }
@@ -366,6 +368,7 @@ public class FilesApiTest {
         Boolean splitRows = null;
         ColdStorageProps coldStorageParams = null;
         Boolean generateChunksOnly = null;
+        Boolean storeFileOnly = null;
         UserFile response = api.uploadFromUrl(url)
                 .fileName(fileName)
                 .chunkSize(chunkSize)
@@ -385,6 +388,7 @@ public class FilesApiTest {
                 .splitRows(splitRows)
                 .coldStorageParams(coldStorageParams)
                 .generateChunksOnly(generateChunksOnly)
+                .storeFileOnly(storeFileOnly)
                 .execute();
         // TODO: test validations
     }
@@ -408,6 +412,7 @@ public class FilesApiTest {
         Boolean generateSparseVectors = null;
         ColdStorageProps coldStorageParams = null;
         Boolean generateChunksOnly = null;
+        Boolean storeFileOnly = null;
         UserFile response = api.uploadText(contents)
                 .name(name)
                 .chunkSize(chunkSize)
@@ -418,6 +423,7 @@ public class FilesApiTest {
                 .generateSparseVectors(generateSparseVectors)
                 .coldStorageParams(coldStorageParams)
                 .generateChunksOnly(generateChunksOnly)
+                .storeFileOnly(storeFileOnly)
                 .execute();
         // TODO: test validations
     }

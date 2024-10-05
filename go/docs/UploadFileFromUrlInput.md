@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **SplitRows** | Pointer to **bool** |  | [optional] [default to false]
 **ColdStorageParams** | Pointer to [**ColdStorageProps**](ColdStorageProps.md) |  | [optional] 
 **GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
+**StoreFileOnly** | Pointer to **bool** | If this flag is enabled, the file will be stored with Carbon, but no processing will be done. | [optional] [default to false]
 
 ## Methods
 
@@ -572,6 +573,31 @@ SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
 `func (o *UploadFileFromUrlInput) HasGenerateChunksOnly() bool`
 
 HasGenerateChunksOnly returns a boolean if a field has been set.
+
+### GetStoreFileOnly
+
+`func (o *UploadFileFromUrlInput) GetStoreFileOnly() bool`
+
+GetStoreFileOnly returns the StoreFileOnly field if non-nil, zero value otherwise.
+
+### GetStoreFileOnlyOk
+
+`func (o *UploadFileFromUrlInput) GetStoreFileOnlyOk() (*bool, bool)`
+
+GetStoreFileOnlyOk returns a tuple with the StoreFileOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreFileOnly
+
+`func (o *UploadFileFromUrlInput) SetStoreFileOnly(v bool)`
+
+SetStoreFileOnly sets StoreFileOnly field to given value.
+
+### HasStoreFileOnly
+
+`func (o *UploadFileFromUrlInput) HasStoreFileOnly() bool`
+
+HasStoreFileOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

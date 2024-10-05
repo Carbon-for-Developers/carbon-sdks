@@ -48,6 +48,9 @@ module Carbon
     # If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     attr_accessor :generate_chunks_only
 
+    # If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+    attr_accessor :store_file_only
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -67,7 +70,8 @@ module Carbon
         :'embedding_model' => :'embedding_model',
         :'url_paths_to_include' => :'url_paths_to_include',
         :'download_css_and_media' => :'download_css_and_media',
-        :'generate_chunks_only' => :'generate_chunks_only'
+        :'generate_chunks_only' => :'generate_chunks_only',
+        :'store_file_only' => :'store_file_only'
       }
     end
 
@@ -95,7 +99,8 @@ module Carbon
         :'embedding_model' => :'EmbeddingGenerators',
         :'url_paths_to_include' => :'Array<String>',
         :'download_css_and_media' => :'Boolean',
-        :'generate_chunks_only' => :'Boolean'
+        :'generate_chunks_only' => :'Boolean',
+        :'store_file_only' => :'Boolean'
       }
     end
 
@@ -233,6 +238,12 @@ module Carbon
       else
         self.generate_chunks_only = false
       end
+
+      if attributes.key?(:'store_file_only')
+        self.store_file_only = attributes[:'store_file_only']
+      else
+        self.store_file_only = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -319,7 +330,8 @@ module Carbon
           embedding_model == o.embedding_model &&
           url_paths_to_include == o.url_paths_to_include &&
           download_css_and_media == o.download_css_and_media &&
-          generate_chunks_only == o.generate_chunks_only
+          generate_chunks_only == o.generate_chunks_only &&
+          store_file_only == o.store_file_only
     end
 
     # @see the `==` method
@@ -331,7 +343,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, download_css_and_media, generate_chunks_only].hash
+      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, download_css_and_media, generate_chunks_only, store_file_only].hash
     end
 
     # Builds the object from hash

@@ -452,6 +452,7 @@ public class Example {
     List<String> urlsToScrape = Arrays.asList(); // You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped.
     Boolean downloadCssAndMedia = false; // Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved.
     Boolean generateChunksOnly = false; // If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+    Boolean storeFileOnly = false; // If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     try {
       Object result = client
               .utilities
@@ -473,6 +474,7 @@ public class Example {
               .urlsToScrape(urlsToScrape)
               .downloadCssAndMedia(downloadCssAndMedia)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .execute();
     } catch (ApiException e) {
       System.err.println("Exception when calling UtilitiesApi#scrapeSitemap");
@@ -504,6 +506,7 @@ public class Example {
               .urlsToScrape(urlsToScrape)
               .downloadCssAndMedia(downloadCssAndMedia)
               .generateChunksOnly(generateChunksOnly)
+              .storeFileOnly(storeFileOnly)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

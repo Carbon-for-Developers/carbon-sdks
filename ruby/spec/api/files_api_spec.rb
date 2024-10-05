@@ -187,6 +187,7 @@ describe 'FilesApi' do
   # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
   # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
   # @option opts [Boolean] :generate_chunks_only If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
+  # @option opts [Boolean] :store_file_only If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
   # @return [UserFile]
   describe 'upload test' do
     it 'should work' do

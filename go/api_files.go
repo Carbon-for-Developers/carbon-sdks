@@ -2066,6 +2066,7 @@ type FilesApiUploadRequest struct {
 	enableColdStorage *bool
 	hotStorageTimeToLive *int32
 	generateChunksOnly *bool
+	storeFileOnly *bool
 }
 
 // Chunk size in tiktoken tokens to be used when processing file.
@@ -2173,6 +2174,12 @@ func (r *FilesApiUploadRequest) HotStorageTimeToLive(hotStorageTimeToLive int32)
 // If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 func (r *FilesApiUploadRequest) GenerateChunksOnly(generateChunksOnly bool) *FilesApiUploadRequest {
 	r.generateChunksOnly = &generateChunksOnly
+	return r
+}
+
+// If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+func (r *FilesApiUploadRequest) StoreFileOnly(storeFileOnly bool) *FilesApiUploadRequest {
+	r.storeFileOnly = &storeFileOnly
 	return r
 }
 
@@ -2301,6 +2308,9 @@ func (a *FilesApiService) UploadExecute(r FilesApiUploadRequest) (*UserFile, *ht
 	}
 	if r.generateChunksOnly != nil {
 		localVarQueryParams.Add("generate_chunks_only", parameterToString(*r.generateChunksOnly, ""))
+	}
+	if r.storeFileOnly != nil {
+		localVarQueryParams.Add("store_file_only", parameterToString(*r.storeFileOnly, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

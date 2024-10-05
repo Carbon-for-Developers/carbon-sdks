@@ -25,6 +25,7 @@
 |**urlsToScrape** | **List&lt;String&gt;** | You can submit a subset of URLs from the sitemap that should be scraped. To get the list of URLs,           you can check out /process_sitemap endpoint. If left empty, all URLs from the sitemap will be scraped. |  [optional] |
 |**downloadCssAndMedia** | **Boolean** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. |  [optional] |
 |**generateChunksOnly** | **Boolean** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. |  [optional] |
+|**storeFileOnly** | **Boolean** | If this flag is enabled, the file will be stored with Carbon, but no processing will be done. |  [optional] |
 
 
 

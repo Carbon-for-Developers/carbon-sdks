@@ -144,6 +144,7 @@ class UploadFileFromUrlInput(
             def cold_storage_params() -> typing.Type['ColdStorageProps']:
                 return ColdStorageProps
             generate_chunks_only = schemas.BoolSchema
+            store_file_only = schemas.BoolSchema
             __annotations__ = {
                 "url": url,
                 "file_name": file_name,
@@ -164,6 +165,7 @@ class UploadFileFromUrlInput(
                 "split_rows": split_rows,
                 "cold_storage_params": cold_storage_params,
                 "generate_chunks_only": generate_chunks_only,
+                "store_file_only": store_file_only,
             }
     
     url: MetaOapg.properties.url
@@ -226,9 +228,12 @@ class UploadFileFromUrlInput(
     def __getitem__(self, name: typing_extensions.Literal["generate_chunks_only"]) -> MetaOapg.properties.generate_chunks_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["store_file_only"]) -> MetaOapg.properties.store_file_only: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "include_speaker_labels", "media_type", "split_rows", "cold_storage_params", "generate_chunks_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "include_speaker_labels", "media_type", "split_rows", "cold_storage_params", "generate_chunks_only", "store_file_only", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -291,9 +296,12 @@ class UploadFileFromUrlInput(
     def get_item_oapg(self, name: typing_extensions.Literal["generate_chunks_only"]) -> typing.Union[MetaOapg.properties.generate_chunks_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["store_file_only"]) -> typing.Union[MetaOapg.properties.store_file_only, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "include_speaker_labels", "media_type", "split_rows", "cold_storage_params", "generate_chunks_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["url", "file_name", "chunk_size", "chunk_overlap", "skip_embedding_generation", "set_page_as_boundary", "embedding_model", "generate_sparse_vectors", "use_textract", "prepend_filename_to_chunks", "max_items_per_chunk", "parse_pdf_tables_with_ocr", "detect_audio_language", "transcription_service", "include_speaker_labels", "media_type", "split_rows", "cold_storage_params", "generate_chunks_only", "store_file_only", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -319,6 +327,7 @@ class UploadFileFromUrlInput(
         split_rows: typing.Union[MetaOapg.properties.split_rows, bool, schemas.Unset] = schemas.unset,
         cold_storage_params: typing.Union['ColdStorageProps', schemas.Unset] = schemas.unset,
         generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
+        store_file_only: typing.Union[MetaOapg.properties.store_file_only, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UploadFileFromUrlInput':
@@ -344,6 +353,7 @@ class UploadFileFromUrlInput(
             split_rows=split_rows,
             cold_storage_params=cold_storage_params,
             generate_chunks_only=generate_chunks_only,
+            store_file_only=store_file_only,
             _configuration=_configuration,
             **kwargs,
         )

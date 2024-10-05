@@ -61,6 +61,9 @@ class UploadFileFromUrlInput(BaseModel):
     # If this flag is enabled, the file will be chunked and stored with Carbon,         but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     generate_chunks_only: typing.Optional[bool] = Field(None, alias='generate_chunks_only')
 
+    # If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+    store_file_only: typing.Optional[bool] = Field(None, alias='store_file_only')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

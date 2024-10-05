@@ -2517,6 +2517,18 @@
               "type": "boolean",
               "default": false
             }
+          },
+          {
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
+            "name": "store_file_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Store File Only",
+              "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "requestBody": {
@@ -6536,6 +6548,12 @@
             "type": "boolean",
             "default": false
           },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated. \n          This overrides the skip_embedding_generation and generate_chunks_only flags.",
+            "type": "boolean",
+            "default": false
+          },
           "skip_file_processing": {
             "title": "Skip File Processing",
             "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
@@ -9449,6 +9467,12 @@
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n        but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
             "type": "boolean",
             "default": false
+          },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -10048,6 +10072,12 @@
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
             "type": "boolean",
             "default": false
           }
@@ -10653,6 +10683,12 @@
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n        but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
             "type": "boolean",
             "default": false
           }
@@ -11534,6 +11570,12 @@
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
             "type": "boolean",
             "default": false
+          },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -11876,6 +11918,12 @@
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
             "description": "If this flag is enabled, the file will be chunked and stored with Carbon,\n          but no embeddings will be generated. This overrides the skip_embedding_generation flag.",
+            "type": "boolean",
+            "default": false
+          },
+          "store_file_only": {
+            "title": "Store File Only",
+            "description": "If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated. \n          This overrides the skip_embedding_generation and generate_chunks_only flags.",
             "type": "boolean",
             "default": false
           },

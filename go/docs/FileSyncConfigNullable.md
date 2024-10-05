@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **IncludeSpeakerLabels** | Pointer to **bool** | Detect multiple speakers and label segments of speech by speaker for audio files. | [optional] [default to false]
 **SplitRows** | Pointer to **bool** | Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false]
 **GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
+**StoreFileOnly** | Pointer to **bool** | If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags. | [optional] [default to false]
 **SkipFileProcessing** | Pointer to **bool** | Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status. | [optional] [default to false]
 
 ## Methods
@@ -216,6 +217,31 @@ SetGenerateChunksOnly sets GenerateChunksOnly field to given value.
 `func (o *FileSyncConfigNullable) HasGenerateChunksOnly() bool`
 
 HasGenerateChunksOnly returns a boolean if a field has been set.
+
+### GetStoreFileOnly
+
+`func (o *FileSyncConfigNullable) GetStoreFileOnly() bool`
+
+GetStoreFileOnly returns the StoreFileOnly field if non-nil, zero value otherwise.
+
+### GetStoreFileOnlyOk
+
+`func (o *FileSyncConfigNullable) GetStoreFileOnlyOk() (*bool, bool)`
+
+GetStoreFileOnlyOk returns a tuple with the StoreFileOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreFileOnly
+
+`func (o *FileSyncConfigNullable) SetStoreFileOnly(v bool)`
+
+SetStoreFileOnly sets StoreFileOnly field to given value.
+
+### HasStoreFileOnly
+
+`func (o *FileSyncConfigNullable) HasStoreFileOnly() bool`
+
+HasStoreFileOnly returns a boolean if a field has been set.
 
 ### GetSkipFileProcessing
 

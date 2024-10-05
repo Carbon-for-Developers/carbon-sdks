@@ -840,6 +840,7 @@ public class UtilitiesApiGenerated {
         List<String> urlsToScrape;
         Boolean downloadCssAndMedia;
         Boolean generateChunksOnly;
+        Boolean storeFileOnly;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -1016,6 +1017,16 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set storeFileOnly
+         * @param storeFileOnly If this flag is enabled, the file will be stored with Carbon, but no processing will be done. (optional, default to false)
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
+         */
+        public UtilitiesApi.ScrapeSitemapRequestBuilder storeFileOnly(Boolean storeFileOnly) {
+            this.storeFileOnly = storeFileOnly;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1051,6 +1062,7 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.urlsToScrape(this.urlsToScrape);
             sitemapScrapeRequest.downloadCssAndMedia(this.downloadCssAndMedia);
             sitemapScrapeRequest.generateChunksOnly(this.generateChunksOnly);
+            sitemapScrapeRequest.storeFileOnly(this.storeFileOnly);
             return sitemapScrapeRequest;
         }
 

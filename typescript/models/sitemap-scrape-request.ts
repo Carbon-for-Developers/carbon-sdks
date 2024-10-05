@@ -127,5 +127,11 @@ export interface SitemapScrapeRequest {
      * @memberof SitemapScrapeRequest
      */
     'generate_chunks_only'?: boolean;
+    /**
+     * If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+     * @type {boolean}
+     * @memberof SitemapScrapeRequest
+     */
+    'store_file_only'?: boolean;
 }
 

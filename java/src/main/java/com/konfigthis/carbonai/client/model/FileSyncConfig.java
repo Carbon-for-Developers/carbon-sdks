@@ -82,6 +82,10 @@ public class FileSyncConfig {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_STORE_FILE_ONLY = "store_file_only";
+  @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
+  private Boolean storeFileOnly = false;
+
   public static final String SERIALIZED_NAME_SKIP_FILE_PROCESSING = "skip_file_processing";
   @SerializedName(SERIALIZED_NAME_SKIP_FILE_PROCESSING)
   private Boolean skipFileProcessing = false;
@@ -300,6 +304,35 @@ public class FileSyncConfig {
   }
 
 
+  public FileSyncConfig storeFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags.
+   * @return storeFileOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags.")
+
+  public Boolean getStoreFileOnly() {
+    return storeFileOnly;
+  }
+
+
+  public void setStoreFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+  }
+
+
   public FileSyncConfig skipFileProcessing(Boolean skipFileProcessing) {
     
     
@@ -390,6 +423,7 @@ public class FileSyncConfig {
         Objects.equals(this.includeSpeakerLabels, fileSyncConfig.includeSpeakerLabels) &&
         Objects.equals(this.splitRows, fileSyncConfig.splitRows) &&
         Objects.equals(this.generateChunksOnly, fileSyncConfig.generateChunksOnly) &&
+        Objects.equals(this.storeFileOnly, fileSyncConfig.storeFileOnly) &&
         Objects.equals(this.skipFileProcessing, fileSyncConfig.skipFileProcessing)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
@@ -400,7 +434,7 @@ public class FileSyncConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, skipFileProcessing, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, storeFileOnly, skipFileProcessing, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -421,6 +455,7 @@ public class FileSyncConfig {
     sb.append("    includeSpeakerLabels: ").append(toIndentedString(includeSpeakerLabels)).append("\n");
     sb.append("    splitRows: ").append(toIndentedString(splitRows)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    skipFileProcessing: ").append(toIndentedString(skipFileProcessing)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -452,6 +487,7 @@ public class FileSyncConfig {
     openapiFields.add("include_speaker_labels");
     openapiFields.add("split_rows");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("store_file_only");
     openapiFields.add("skip_file_processing");
 
     // a set of required properties/fields (JSON key names)

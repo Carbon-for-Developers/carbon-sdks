@@ -29,6 +29,8 @@ type FileSyncConfig struct {
 	SplitRows *bool `json:"split_rows,omitempty"`
 	// If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag.
 	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
+	// If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags.
+	StoreFileOnly *bool `json:"store_file_only,omitempty"`
 	// Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
 	SkipFileProcessing *bool `json:"skip_file_processing,omitempty"`
 }
@@ -49,6 +51,8 @@ func NewFileSyncConfig() *FileSyncConfig {
 	this.SplitRows = &splitRows
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var storeFileOnly bool = false
+	this.StoreFileOnly = &storeFileOnly
 	var skipFileProcessing bool = false
 	this.SkipFileProcessing = &skipFileProcessing
 	return &this
@@ -69,6 +73,8 @@ func NewFileSyncConfigWithDefaults() *FileSyncConfig {
 	this.SplitRows = &splitRows
 	var generateChunksOnly bool = false
 	this.GenerateChunksOnly = &generateChunksOnly
+	var storeFileOnly bool = false
+	this.StoreFileOnly = &storeFileOnly
 	var skipFileProcessing bool = false
 	this.SkipFileProcessing = &skipFileProcessing
 	return &this
@@ -308,6 +314,38 @@ func (o *FileSyncConfig) SetGenerateChunksOnly(v bool) {
 	o.GenerateChunksOnly = &v
 }
 
+// GetStoreFileOnly returns the StoreFileOnly field value if set, zero value otherwise.
+func (o *FileSyncConfig) GetStoreFileOnly() bool {
+	if o == nil || isNil(o.StoreFileOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.StoreFileOnly
+}
+
+// GetStoreFileOnlyOk returns a tuple with the StoreFileOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FileSyncConfig) GetStoreFileOnlyOk() (*bool, bool) {
+	if o == nil || isNil(o.StoreFileOnly) {
+    return nil, false
+	}
+	return o.StoreFileOnly, true
+}
+
+// HasStoreFileOnly returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasStoreFileOnly() bool {
+	if o != nil && !isNil(o.StoreFileOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreFileOnly gets a reference to the given bool and assigns it to the StoreFileOnly field.
+func (o *FileSyncConfig) SetStoreFileOnly(v bool) {
+	o.StoreFileOnly = &v
+}
+
 // GetSkipFileProcessing returns the SkipFileProcessing field value if set, zero value otherwise.
 func (o *FileSyncConfig) GetSkipFileProcessing() bool {
 	if o == nil || isNil(o.SkipFileProcessing) {
@@ -362,6 +400,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.GenerateChunksOnly) {
 		toSerialize["generate_chunks_only"] = o.GenerateChunksOnly
+	}
+	if !isNil(o.StoreFileOnly) {
+		toSerialize["store_file_only"] = o.StoreFileOnly
 	}
 	if !isNil(o.SkipFileProcessing) {
 		toSerialize["skip_file_processing"] = o.SkipFileProcessing

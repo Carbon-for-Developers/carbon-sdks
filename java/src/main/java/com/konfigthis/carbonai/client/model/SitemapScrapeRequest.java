@@ -127,6 +127,10 @@ public class SitemapScrapeRequest {
   @SerializedName(SERIALIZED_NAME_GENERATE_CHUNKS_ONLY)
   private Boolean generateChunksOnly = false;
 
+  public static final String SERIALIZED_NAME_STORE_FILE_ONLY = "store_file_only";
+  @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
+  private Boolean storeFileOnly = false;
+
   public SitemapScrapeRequest() {
   }
 
@@ -712,6 +716,35 @@ public class SitemapScrapeRequest {
     this.generateChunksOnly = generateChunksOnly;
   }
 
+
+  public SitemapScrapeRequest storeFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+    return this;
+  }
+
+   /**
+   * If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+   * @return storeFileOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.")
+
+  public Boolean getStoreFileOnly() {
+    return storeFileOnly;
+  }
+
+
+  public void setStoreFileOnly(Boolean storeFileOnly) {
+    
+    
+    
+    this.storeFileOnly = storeFileOnly;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -784,7 +817,8 @@ public class SitemapScrapeRequest {
         Objects.equals(this.urlPathsToExclude, sitemapScrapeRequest.urlPathsToExclude) &&
         Objects.equals(this.urlsToScrape, sitemapScrapeRequest.urlsToScrape) &&
         Objects.equals(this.downloadCssAndMedia, sitemapScrapeRequest.downloadCssAndMedia) &&
-        Objects.equals(this.generateChunksOnly, sitemapScrapeRequest.generateChunksOnly)&&
+        Objects.equals(this.generateChunksOnly, sitemapScrapeRequest.generateChunksOnly) &&
+        Objects.equals(this.storeFileOnly, sitemapScrapeRequest.storeFileOnly)&&
         Objects.equals(this.additionalProperties, sitemapScrapeRequest.additionalProperties);
   }
 
@@ -794,7 +828,7 @@ public class SitemapScrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, urlsToScrape, downloadCssAndMedia, generateChunksOnly, additionalProperties);
+    return Objects.hash(tags, url, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, urlPathsToExclude, urlsToScrape, downloadCssAndMedia, generateChunksOnly, storeFileOnly, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -826,6 +860,7 @@ public class SitemapScrapeRequest {
     sb.append("    urlsToScrape: ").append(toIndentedString(urlsToScrape)).append("\n");
     sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
+    sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -867,6 +902,7 @@ public class SitemapScrapeRequest {
     openapiFields.add("urls_to_scrape");
     openapiFields.add("download_css_and_media");
     openapiFields.add("generate_chunks_only");
+    openapiFields.add("store_file_only");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

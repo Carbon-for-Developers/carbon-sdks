@@ -248,6 +248,7 @@ func main() {
     sitemapScrapeRequest.SetUrlsToScrape([])
     sitemapScrapeRequest.SetDownloadCssAndMedia(false)
     sitemapScrapeRequest.SetGenerateChunksOnly(false)
+    sitemapScrapeRequest.SetStoreFileOnly(false)
     
     request := client.UtilitiesApi.ScrapeSitemap(
         sitemapScrapeRequest,

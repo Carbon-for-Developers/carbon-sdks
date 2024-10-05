@@ -554,6 +554,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'generate_chunks_only'
             },
+            {
+                name: 'store_file_only'
+            },
         ]
     },
     '/upload_file_from_url-POST': {
@@ -615,6 +618,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'generate_chunks_only'
             },
+            {
+                name: 'store_file_only'
+            },
         ]
     },
     '/upload_text-POST': {
@@ -648,6 +654,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'generate_chunks_only'
+            },
+            {
+                name: 'store_file_only'
             },
         ]
     },
@@ -1592,6 +1601,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'generate_chunks_only'
+            },
+            {
+                name: 'store_file_only'
             },
         ]
     },
