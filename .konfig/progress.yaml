@@ -124,6 +124,20 @@ operationIds:
     post: Crm_getOpportunities
   /integrations/data/crm/opportunities/{id}:
     get: Crm_getOpportunity
+  /integrations/data/github/issues:
+    post: Github_getIssues
+  /integrations/data/github/issues/{issue_number}:
+    get: Github_getIssue
+  /integrations/data/github/pull_requests:
+    post: Github_getPullRequests
+  /integrations/data/github/pull_requests/comments:
+    post: Github_getPrComments
+  /integrations/data/github/pull_requests/commits:
+    post: Github_getPrCommits
+  /integrations/data/github/pull_requests/files:
+    post: Github_getPrFiles
+  /integrations/data/github/pull_requests/{pull_number}:
+    get: Github_getPr
   /integrations/files/sync:
     post: Integrations_syncFiles
   /integrations/freshdesk:
@@ -352,6 +366,8 @@ securityParameters:
   query:
     query: false
   raw:
+    query: false
+  repository:
     query: false
   set_page_as_boundary:
     query: false

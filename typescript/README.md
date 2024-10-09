@@ -48,6 +48,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
+  * [`carbon.github.getIssue`](#carbongithubgetissue)
+  * [`carbon.github.getIssues`](#carbongithubgetissues)
+  * [`carbon.github.getPr`](#carbongithubgetpr)
+  * [`carbon.github.getPrComments`](#carbongithubgetprcomments)
+  * [`carbon.github.getPrCommits`](#carbongithubgetprcommits)
+  * [`carbon.github.getPrFiles`](#carbongithubgetprfiles)
+  * [`carbon.github.getPullRequests`](#carbongithubgetpullrequests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
@@ -1707,6 +1714,334 @@ If this flag is enabled, the file will be stored with Carbon, but no processing 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_text` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getIssue`<a id="carbongithubgetissue"></a>
+
+Issue
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getIssueResponse = await carbon.github.getIssue({
+  issueNumber: 1,
+  includeRemoteData: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### issueNumber: `number`<a id="issuenumber-number"></a>
+
+##### includeRemoteData: `boolean`<a id="includeremotedata-boolean"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Issue](./models/issue.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues/{issue_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getIssues`<a id="carbongithubgetissues"></a>
+
+Issues
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getIssuesResponse = await carbon.github.getIssues({
+  data_source_id: 1,
+  include_remote_data: false,
+  repository: "repository_example",
+  page: 1,
+  page_size: 30,
+  order_by: "created",
+  order_dir: "asc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### page_size: `number`<a id="page_size-number"></a>
+
+##### next_cursor: `string`<a id="next_cursor-string"></a>
+
+##### filters: [`IssuesFilter`](./models/issues-filter.ts)<a id="filters-issuesfiltermodelsissues-filterts"></a>
+
+##### order_by: [`IssuesOrderBy`](./models/issues-order-by.ts)<a id="order_by-issuesorderbymodelsissues-order-byts"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./models/order-dir-v2-nullable.ts)<a id="order_dir-orderdirv2nullablemodelsorder-dir-v2-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[IssuesResponse](./models/issues-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPr`<a id="carbongithubgetpr"></a>
+
+Get Pr
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getPrResponse = await carbon.github.getPr({
+  pullNumber: 1,
+  includeRemoteData: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pullNumber: `number`<a id="pullnumber-number"></a>
+
+##### includeRemoteData: `boolean`<a id="includeremotedata-boolean"></a>
+
+##### dataSourceId: `number`<a id="datasourceid-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestExtended](./models/pull-request-extended.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/{pull_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrComments`<a id="carbongithubgetprcomments"></a>
+
+Pr Comments
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getPrCommentsResponse = await carbon.github.getPrComments({
+  data_source_id: 1,
+  include_remote_data: false,
+  repository: "repository_example",
+  page: 1,
+  page_size: 30,
+  pull_number: 1,
+  order_by: "created",
+  order_dir: "asc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `number`<a id="pull_number-number"></a>
+
+##### include_remote_data: `boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### page_size: `number`<a id="page_size-number"></a>
+
+##### next_cursor: `string`<a id="next_cursor-string"></a>
+
+##### order_by: [`CommentsOrderBy`](./models/comments-order-by.ts)<a id="order_by-commentsorderbymodelscomments-order-byts"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./models/order-dir-v2-nullable.ts)<a id="order_dir-orderdirv2nullablemodelsorder-dir-v2-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommentsResponse](./models/comments-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/comments` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrCommits`<a id="carbongithubgetprcommits"></a>
+
+Pr Commits
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getPrCommitsResponse = await carbon.github.getPrCommits({
+  data_source_id: 1,
+  include_remote_data: false,
+  repository: "repository_example",
+  page: 1,
+  page_size: 30,
+  pull_number: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `number`<a id="pull_number-number"></a>
+
+##### include_remote_data: `boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### page_size: `number`<a id="page_size-number"></a>
+
+##### next_cursor: `string`<a id="next_cursor-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommitsResponse](./models/commits-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/commits` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrFiles`<a id="carbongithubgetprfiles"></a>
+
+Pr Files
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getPrFilesResponse = await carbon.github.getPrFiles({
+  data_source_id: 1,
+  include_remote_data: false,
+  repository: "repository_example",
+  page: 1,
+  page_size: 30,
+  pull_number: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `number`<a id="pull_number-number"></a>
+
+##### include_remote_data: `boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### page_size: `number`<a id="page_size-number"></a>
+
+##### next_cursor: `string`<a id="next_cursor-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FilesResponse](./models/files-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPullRequests`<a id="carbongithubgetpullrequests"></a>
+
+Get Prs
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const getPullRequestsResponse = await carbon.github.getPullRequests({
+  data_source_id: 1,
+  include_remote_data: false,
+  repository: "repository_example",
+  page: 1,
+  page_size: 30,
+  order_by: "created",
+  order_dir: "asc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### repository: `string`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `number`<a id="page-number"></a>
+
+##### page_size: `number`<a id="page_size-number"></a>
+
+##### next_cursor: `string`<a id="next_cursor-string"></a>
+
+##### filters: [`PullRequestFilters`](./models/pull-request-filters.ts)<a id="filters-pullrequestfiltersmodelspull-request-filtersts"></a>
+
+##### order_by: [`PROrderBy`](./models/prorder-by.ts)<a id="order_by-prorderbymodelsprorder-byts"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./models/order-dir-v2-nullable.ts)<a id="order_dir-orderdirv2nullablemodelsorder-dir-v2-nullablets"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestResponse](./models/pull-request-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

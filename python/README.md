@@ -53,6 +53,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
+  * [`carbon.github.get_issue`](#carbongithubget_issue)
+  * [`carbon.github.get_issues`](#carbongithubget_issues)
+  * [`carbon.github.get_pr`](#carbongithubget_pr)
+  * [`carbon.github.get_pr_comments`](#carbongithubget_pr_comments)
+  * [`carbon.github.get_pr_commits`](#carbongithubget_pr_commits)
+  * [`carbon.github.get_pr_files`](#carbongithubget_pr_files)
+  * [`carbon.github.get_pull_requests`](#carbongithubget_pull_requests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
@@ -1911,6 +1918,359 @@ If this flag is enabled, the file will be stored with Carbon, but no processing 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_text` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_issue`<a id="carbongithubget_issue"></a>
+
+Issue
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_issue_response = carbon.github.get_issue(
+    issue_number=1,
+    include_remote_data=False,
+    data_source_id=1,
+    repository="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### issue_number: `int`<a id="issue_number-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`Issue`](./carbon/pydantic/issue.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues/{issue_number}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_issues`<a id="carbongithubget_issues"></a>
+
+Issues
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_issues_response = carbon.github.get_issues(
+    data_source_id=1,
+    repository="string_example",
+    include_remote_data=False,
+    page=1,
+    page_size=30,
+    next_cursor="string_example",
+    filters={
+        "state": "closed",
+    },
+    order_by="created",
+    order_dir="asc",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### page_size: `int`<a id="page_size-int"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### filters: [`IssuesFilter`](./carbon/type/issues_filter.py)<a id="filters-issuesfiltercarbontypeissues_filterpy"></a>
+
+
+##### order_by: [`IssuesOrderBy`](./carbon/type/issues_order_by.py)<a id="order_by-issuesorderbycarbontypeissues_order_bypy"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`IssuesInput`](./carbon/type/issues_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`IssuesResponse`](./carbon/pydantic/issues_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_pr`<a id="carbongithubget_pr"></a>
+
+Get Pr
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_pr_response = carbon.github.get_pr(
+    pull_number=1,
+    include_remote_data=False,
+    data_source_id=1,
+    repository="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pull_number: `int`<a id="pull_number-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`PullRequestExtended`](./carbon/pydantic/pull_request_extended.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/{pull_number}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_pr_comments`<a id="carbongithubget_pr_comments"></a>
+
+Pr Comments
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_pr_comments_response = carbon.github.get_pr_comments(
+    data_source_id=1,
+    repository="string_example",
+    pull_number=1,
+    include_remote_data=False,
+    page=1,
+    page_size=30,
+    next_cursor="string_example",
+    order_by="created",
+    order_dir="asc",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `int`<a id="pull_number-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### page_size: `int`<a id="page_size-int"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### order_by: [`CommentsOrderBy`](./carbon/type/comments_order_by.py)<a id="order_by-commentsorderbycarbontypecomments_order_bypy"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`CommentsInput`](./carbon/type/comments_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`CommentsResponse`](./carbon/pydantic/comments_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/comments` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_pr_commits`<a id="carbongithubget_pr_commits"></a>
+
+Pr Commits
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_pr_commits_response = carbon.github.get_pr_commits(
+    data_source_id=1,
+    repository="string_example",
+    pull_number=1,
+    include_remote_data=False,
+    page=1,
+    page_size=30,
+    next_cursor="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `int`<a id="pull_number-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### page_size: `int`<a id="page_size-int"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`CommitsInput`](./carbon/type/commits_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`CommitsResponse`](./carbon/pydantic/commits_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/commits` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_pr_files`<a id="carbongithubget_pr_files"></a>
+
+Pr Files
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_pr_files_response = carbon.github.get_pr_files(
+    data_source_id=1,
+    repository="string_example",
+    pull_number=1,
+    include_remote_data=False,
+    page=1,
+    page_size=30,
+    next_cursor="string_example",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `int`<a id="pull_number-int"></a>
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### page_size: `int`<a id="page_size-int"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`FilesInput`](./carbon/type/files_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`FilesResponse`](./carbon/pydantic/files_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/files` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.github.get_pull_requests`<a id="carbongithubget_pull_requests"></a>
+
+Get Prs
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_pull_requests_response = carbon.github.get_pull_requests(
+    data_source_id=1,
+    repository="string_example",
+    include_remote_data=False,
+    page=1,
+    page_size=30,
+    next_cursor="string_example",
+    filters={
+        "state": "closed",
+    },
+    order_by="created",
+    order_dir="asc",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### repository: `str`<a id="repository-str"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `bool`<a id="include_remote_data-bool"></a>
+
+##### page: `int`<a id="page-int"></a>
+
+##### page_size: `int`<a id="page_size-int"></a>
+
+##### next_cursor: `Optional[str]`<a id="next_cursor-optionalstr"></a>
+
+##### filters: [`PullRequestFilters`](./carbon/type/pull_request_filters.py)<a id="filters-pullrequestfilterscarbontypepull_request_filterspy"></a>
+
+
+##### order_by: [`PROrderBy`](./carbon/type/pr_order_by.py)<a id="order_by-prorderbycarbontypepr_order_bypy"></a>
+
+##### order_dir: [`OrderDirV2Nullable`](./carbon/type/order_dir_v2_nullable.py)<a id="order_dir-orderdirv2nullablecarbontypeorder_dir_v2_nullablepy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`PullRequestsInput`](./carbon/type/pull_requests_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`PullRequestResponse`](./carbon/pydantic/pull_request_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

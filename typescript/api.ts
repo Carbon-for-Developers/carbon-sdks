@@ -17,6 +17,7 @@ export * from './api/crmapi';
 export * from './api/data-sources-api';
 export * from './api/embeddings-api';
 export * from './api/files-api';
+export * from './api/github-api';
 export * from './api/integrations-api';
 export * from './api/organizations-api';
 export * from './api/users-api';

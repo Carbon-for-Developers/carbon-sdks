@@ -53,6 +53,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.uploadFromUrl`](#carbonfilesuploadfromurl)
   * [`carbon.files.uploadText`](#carbonfilesuploadtext)
+  * [`carbon.github.getIssue`](#carbongithubgetissue)
+  * [`carbon.github.getIssues`](#carbongithubgetissues)
+  * [`carbon.github.getPr`](#carbongithubgetpr)
+  * [`carbon.github.getPrComments`](#carbongithubgetprcomments)
+  * [`carbon.github.getPrCommits`](#carbongithubgetprcommits)
+  * [`carbon.github.getPrFiles`](#carbongithubgetprfiles)
+  * [`carbon.github.getPullRequests`](#carbongithubgetpullrequests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
@@ -1862,6 +1869,344 @@ If this flag is enabled, the file will be stored with Carbon, but no processing 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_text` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getIssue`<a id="carbongithubgetissue"></a>
+
+Issue
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Issue result = client
+        .github
+        .getIssue(issueNumber)
+        .includeRemoteData(includeRemoteData)
+        .dataSourceId(dataSourceId)
+        .repository(repository)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### issueNumber: `Integer`<a id="issuenumber-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Issue](./src/main/java/com/konfigthis/client/model/Issue.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues/{issue_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getIssues`<a id="carbongithubgetissues"></a>
+
+Issues
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+IssuesResponse result = client
+        .github
+        .getIssues(dataSourceId, repository)
+        .includeRemoteData(includeRemoteData)
+        .page(page)
+        .pageSize(pageSize)
+        .nextCursor(nextCursor)
+        .filters(filters)
+        .orderBy(orderBy)
+        .orderDir(orderDir)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### filters: [`IssuesFilter`](./src/main/java/com/konfigthis/client/model/IssuesFilter.java)<a id="filters-issuesfiltersrcmainjavacomkonfigthisclientmodelissuesfilterjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[IssuesResponse](./src/main/java/com/konfigthis/client/model/IssuesResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPr`<a id="carbongithubgetpr"></a>
+
+Get Pr
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+PullRequestExtended result = client
+        .github
+        .getPr(pullNumber)
+        .includeRemoteData(includeRemoteData)
+        .dataSourceId(dataSourceId)
+        .repository(repository)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pullNumber: `Integer`<a id="pullnumber-integer"></a>
+
+##### includeRemoteData: `Boolean`<a id="includeremotedata-boolean"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestExtended](./src/main/java/com/konfigthis/client/model/PullRequestExtended.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/{pull_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrComments`<a id="carbongithubgetprcomments"></a>
+
+Pr Comments
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CommentsResponse result = client
+        .github
+        .getPrComments(dataSourceId, repository, pullNumber)
+        .includeRemoteData(includeRemoteData)
+        .page(page)
+        .pageSize(pageSize)
+        .nextCursor(nextCursor)
+        .orderBy(orderBy)
+        .orderDir(orderDir)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### order_by:<a id="order_by"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommentsResponse](./src/main/java/com/konfigthis/client/model/CommentsResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/comments` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrCommits`<a id="carbongithubgetprcommits"></a>
+
+Pr Commits
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+CommitsResponse result = client
+        .github
+        .getPrCommits(dataSourceId, repository, pullNumber)
+        .includeRemoteData(includeRemoteData)
+        .page(page)
+        .pageSize(pageSize)
+        .nextCursor(nextCursor)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommitsResponse](./src/main/java/com/konfigthis/client/model/CommitsResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/commits` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPrFiles`<a id="carbongithubgetprfiles"></a>
+
+Pr Files
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+FilesResponse result = client
+        .github
+        .getPrFiles(dataSourceId, repository, pullNumber)
+        .includeRemoteData(includeRemoteData)
+        .page(page)
+        .pageSize(pageSize)
+        .nextCursor(nextCursor)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FilesResponse](./src/main/java/com/konfigthis/client/model/FilesResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.getPullRequests`<a id="carbongithubgetpullrequests"></a>
+
+Get Prs
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+PullRequestResponse result = client
+        .github
+        .getPullRequests(dataSourceId, repository)
+        .includeRemoteData(includeRemoteData)
+        .page(page)
+        .pageSize(pageSize)
+        .nextCursor(nextCursor)
+        .filters(filters)
+        .orderBy(orderBy)
+        .orderDir(orderDir)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+
+##### repository: `String`<a id="repository-string"></a>
+
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+
+##### page: `Integer`<a id="page-integer"></a>
+
+##### page_size: `Integer`<a id="page_size-integer"></a>
+
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+
+##### filters: [`PullRequestFilters`](./src/main/java/com/konfigthis/client/model/PullRequestFilters.java)<a id="filters-pullrequestfilterssrcmainjavacomkonfigthisclientmodelpullrequestfiltersjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestResponse](./src/main/java/com/konfigthis/client/model/PullRequestResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
