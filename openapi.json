@@ -4362,6 +4362,414 @@
           }
         }
       }
+    },
+    "/integrations/data/github/pull_requests": {
+      "post": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Get Prs",
+        "operationId": "get_prs_integrations_data_github_pull_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PullRequestsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PullRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/data/github/pull_requests/{pull_number}": {
+      "get": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Get Pr",
+        "operationId": "get_pr_integrations_data_github_pull_requests__pull_number__get",
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pull_number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Pull Number"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Remote Data"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Data Source Id"
+            }
+          },
+          {
+            "name": "repository",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Repository"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PullRequestExtended"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/data/github/pull_requests/comments": {
+      "post": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Pr Comments",
+        "operationId": "pr_comments_integrations_data_github_pull_requests_comments_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/data/github/pull_requests/files": {
+      "post": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Pr Files",
+        "operationId": "pr_files_integrations_data_github_pull_requests_files_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilesInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/data/github/pull_requests/commits": {
+      "post": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Pr Commits",
+        "operationId": "pr_commits_integrations_data_github_pull_requests_commits_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommitsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/data/github/issues": {
+      "post": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Issues",
+        "operationId": "issues_integrations_data_github_issues_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssuesInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssuesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/integrations/data/github/issues/{issue_number}": {
+      "get": {
+        "tags": [
+          "Github"
+        ],
+        "summary": "Issue",
+        "operationId": "issue_integrations_data_github_issues__issue_number__get",
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "issue_number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Issue Number"
+            }
+          },
+          {
+            "name": "include_remote_data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Remote Data"
+            }
+          },
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Data Source Id"
+            }
+          },
+          {
+            "name": "repository",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Repository"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -5189,6 +5597,258 @@
         },
         "type": "object",
         "title": "ColdStorageProps"
+      },
+      "CommentsInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "include_remote_data": {
+            "type": "boolean",
+            "title": "Include Remote Data",
+            "default": false
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository",
+            "description": "Full name of the repository, denoted as {owner}/{repo}"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "default": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100,
+            "title": "Page Size",
+            "default": 30
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "pull_number": {
+            "type": "integer",
+            "title": "Pull Number"
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CommentsOrderBy"
+              }
+            ],
+            "default": "created"
+          },
+          "order_dir": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OrderDirV2"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "asc"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "repository",
+          "pull_number"
+        ],
+        "title": "CommentsInput"
+      },
+      "CommentsOrderBy": {
+        "type": "string",
+        "enum": [
+          "created",
+          "updated"
+        ],
+        "title": "CommentsOrderBy"
+      },
+      "CommentsResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/PRComment"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "title": "CommentsResponse"
+      },
+      "Commit": {
+        "properties": {
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommitUser"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "committer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommitUser"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "tree": {
+            "$ref": "#/components/schemas/Tree"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "comment_count": {
+            "type": "integer",
+            "title": "Comment Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "author",
+          "committer",
+          "message",
+          "tree",
+          "url",
+          "comment_count"
+        ],
+        "title": "Commit"
+      },
+      "CommitUser": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "email"
+        ],
+        "title": "CommitUser"
+      },
+      "CommitsInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "include_remote_data": {
+            "type": "boolean",
+            "title": "Include Remote Data",
+            "default": false
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository",
+            "description": "Full name of the repository, denoted as {owner}/{repo}"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "default": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100,
+            "title": "Page Size",
+            "default": 30
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "pull_number": {
+            "type": "integer",
+            "title": "Pull Number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "repository",
+          "pull_number"
+        ],
+        "title": "CommitsInput"
+      },
+      "CommitsResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/PRCommit"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "title": "CommitsResponse"
       },
       "ConfigurationKeys": {
         "type": "string",
@@ -6947,6 +7607,19 @@
         ],
         "title": "FileStatistics"
       },
+      "FileStatus": {
+        "type": "string",
+        "enum": [
+          "added",
+          "removed",
+          "modified",
+          "renamed",
+          "copied",
+          "changed",
+          "unchanged"
+        ],
+        "title": "FileStatus"
+      },
       "FileSyncConfig": {
         "properties": {
           "auto_synced_source_types": {
@@ -7023,6 +7696,85 @@
         },
         "type": "object",
         "title": "FileSyncConfig"
+      },
+      "FilesInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "include_remote_data": {
+            "type": "boolean",
+            "title": "Include Remote Data",
+            "default": false
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository",
+            "description": "Full name of the repository, denoted as {owner}/{repo}"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "default": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100,
+            "title": "Page Size",
+            "default": 30
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "pull_number": {
+            "type": "integer",
+            "title": "Pull Number"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "repository",
+          "pull_number"
+        ],
+        "title": "FilesInput"
+      },
+      "FilesResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/PRFile"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "title": "FilesResponse"
       },
       "FreshDeskConnectRequest": {
         "properties": {
@@ -8231,6 +8983,29 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HeadOrBase": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "ref": {
+            "type": "string",
+            "title": "Ref"
+          },
+          "sha": {
+            "type": "string",
+            "title": "Sha"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "ref",
+          "sha"
+        ],
+        "title": "HeadOrBase"
+      },
       "HelpdeskFileTypes": {
         "type": "string",
         "enum": [
@@ -8257,6 +9032,288 @@
           "weight_b"
         ],
         "title": "HybridSearchTuningParams"
+      },
+      "Issue": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "html_url": {
+            "type": "string",
+            "title": "Html Url"
+          },
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "labels": {
+            "items": {
+              "$ref": "#/components/schemas/Label"
+            },
+            "type": "array",
+            "title": "Labels"
+          },
+          "state": {
+            "$ref": "#/components/schemas/PRState"
+          },
+          "locked": {
+            "type": "boolean",
+            "title": "Locked"
+          },
+          "num_comments": {
+            "type": "integer",
+            "title": "Num Comments"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "closed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closed At"
+          },
+          "draft": {
+            "type": "boolean",
+            "title": "Draft"
+          },
+          "pull_request": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/IssuePR"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "closed_by": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "url",
+          "html_url",
+          "number",
+          "user",
+          "labels",
+          "state",
+          "locked",
+          "num_comments",
+          "created_at",
+          "updated_at",
+          "closed_at",
+          "draft",
+          "pull_request",
+          "body",
+          "closed_by"
+        ],
+        "title": "Issue"
+      },
+      "IssuePR": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "merged_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "merged_at"
+        ],
+        "title": "IssuePR"
+      },
+      "IssuesFilter": {
+        "properties": {
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PRStateInput"
+              }
+            ],
+            "default": "open"
+          }
+        },
+        "type": "object",
+        "title": "IssuesFilter"
+      },
+      "IssuesInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "include_remote_data": {
+            "type": "boolean",
+            "title": "Include Remote Data",
+            "default": false
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository",
+            "description": "Full name of the repository, denoted as {owner}/{repo}"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "default": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100,
+            "title": "Page Size",
+            "default": 30
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IssuesFilter"
+              }
+            ],
+            "default": {
+              "state": "open"
+            }
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IssuesOrderBy"
+              }
+            ],
+            "default": "created"
+          },
+          "order_dir": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OrderDirV2"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "asc"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "repository"
+        ],
+        "title": "IssuesInput"
+      },
+      "IssuesOrderBy": {
+        "type": "string",
+        "enum": [
+          "created",
+          "updated",
+          "comments"
+        ],
+        "title": "IssuesOrderBy"
+      },
+      "IssuesResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "title": "IssuesResponse"
+      },
+      "Label": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Label"
       },
       "Lead": {
         "properties": {
@@ -10891,6 +11948,242 @@
         ],
         "title": "OutlookSyncInput"
       },
+      "PRComment": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "pull_request_review_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pull Request Review Id"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "diff_hunk": {
+            "type": "string",
+            "title": "Diff Hunk"
+          },
+          "path": {
+            "type": "string",
+            "title": "Path"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "start_line": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Line"
+          },
+          "line": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line"
+          },
+          "remote_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "pull_request_review_id",
+          "url",
+          "diff_hunk",
+          "path",
+          "user",
+          "body",
+          "created_at",
+          "updated_at",
+          "start_line",
+          "line",
+          "remote_data"
+        ],
+        "title": "PRComment"
+      },
+      "PRCommit": {
+        "properties": {
+          "commit": {
+            "$ref": "#/components/schemas/Commit"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "committer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "remote_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "commit",
+          "url",
+          "author",
+          "committer",
+          "remote_data"
+        ],
+        "title": "PRCommit"
+      },
+      "PRFile": {
+        "properties": {
+          "sha": {
+            "type": "string",
+            "title": "Sha"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "status": {
+            "$ref": "#/components/schemas/FileStatus"
+          },
+          "additions": {
+            "type": "integer",
+            "title": "Additions"
+          },
+          "deletions": {
+            "type": "integer",
+            "title": "Deletions"
+          },
+          "changes": {
+            "type": "integer",
+            "title": "Changes"
+          },
+          "blob_url": {
+            "type": "string",
+            "title": "Blob Url"
+          },
+          "raw_url": {
+            "type": "string",
+            "title": "Raw Url"
+          },
+          "contents_url": {
+            "type": "string",
+            "title": "Contents Url"
+          },
+          "remote_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sha",
+          "filename",
+          "status",
+          "additions",
+          "deletions",
+          "changes",
+          "blob_url",
+          "raw_url",
+          "contents_url",
+          "remote_data"
+        ],
+        "title": "PRFile"
+      },
+      "PROrderBy": {
+        "type": "string",
+        "enum": [
+          "created",
+          "updated",
+          "popularity"
+        ],
+        "title": "PROrderBy"
+      },
+      "PRState": {
+        "type": "string",
+        "enum": [
+          "closed",
+          "open"
+        ],
+        "title": "PRState"
+      },
+      "PRStateInput": {
+        "type": "string",
+        "enum": [
+          "closed",
+          "open",
+          "all"
+        ],
+        "title": "PRStateInput"
+      },
       "Pagination": {
         "properties": {
           "limit": {
@@ -11004,6 +12297,420 @@
           "presigned_url"
         ],
         "title": "PresignedURLResponse"
+      },
+      "PullRequest": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "state": {
+            "$ref": "#/components/schemas/PRState"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "closed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closed At"
+          },
+          "merged_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged At"
+          },
+          "requested_reviewers": {
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "type": "array",
+            "title": "Requested Reviewers"
+          },
+          "requested_teams": {
+            "items": {
+              "$ref": "#/components/schemas/Team"
+            },
+            "type": "array",
+            "title": "Requested Teams"
+          },
+          "labels": {
+            "items": {
+              "$ref": "#/components/schemas/Label"
+            },
+            "type": "array",
+            "title": "Labels"
+          },
+          "draft": {
+            "type": "boolean",
+            "title": "Draft"
+          },
+          "head": {
+            "$ref": "#/components/schemas/HeadOrBase"
+          },
+          "base": {
+            "$ref": "#/components/schemas/HeadOrBase"
+          },
+          "remote_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "number",
+          "state",
+          "title",
+          "user",
+          "created_at",
+          "updated_at",
+          "closed_at",
+          "merged_at",
+          "requested_reviewers",
+          "requested_teams",
+          "labels",
+          "draft",
+          "head",
+          "base",
+          "remote_data"
+        ],
+        "title": "PullRequest"
+      },
+      "PullRequestExtended": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "state": {
+            "$ref": "#/components/schemas/PRState"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "closed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closed At"
+          },
+          "merged_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged At"
+          },
+          "requested_reviewers": {
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "type": "array",
+            "title": "Requested Reviewers"
+          },
+          "requested_teams": {
+            "items": {
+              "$ref": "#/components/schemas/Team"
+            },
+            "type": "array",
+            "title": "Requested Teams"
+          },
+          "labels": {
+            "items": {
+              "$ref": "#/components/schemas/Label"
+            },
+            "type": "array",
+            "title": "Labels"
+          },
+          "draft": {
+            "type": "boolean",
+            "title": "Draft"
+          },
+          "head": {
+            "$ref": "#/components/schemas/HeadOrBase"
+          },
+          "base": {
+            "$ref": "#/components/schemas/HeadOrBase"
+          },
+          "remote_data": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Data"
+          },
+          "merged": {
+            "type": "boolean",
+            "title": "Merged"
+          },
+          "num_comments": {
+            "type": "integer",
+            "title": "Num Comments"
+          },
+          "num_review_comments": {
+            "type": "integer",
+            "title": "Num Review Comments"
+          },
+          "num_commits": {
+            "type": "integer",
+            "title": "Num Commits"
+          },
+          "num_additions": {
+            "type": "integer",
+            "title": "Num Additions"
+          },
+          "num_deletions": {
+            "type": "integer",
+            "title": "Num Deletions"
+          },
+          "num_changed_files": {
+            "type": "integer",
+            "title": "Num Changed Files"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "number",
+          "state",
+          "title",
+          "user",
+          "created_at",
+          "updated_at",
+          "closed_at",
+          "merged_at",
+          "requested_reviewers",
+          "requested_teams",
+          "labels",
+          "draft",
+          "head",
+          "base",
+          "remote_data",
+          "merged",
+          "num_comments",
+          "num_review_comments",
+          "num_commits",
+          "num_additions",
+          "num_deletions",
+          "num_changed_files"
+        ],
+        "title": "PullRequestExtended"
+      },
+      "PullRequestFilters": {
+        "properties": {
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PRStateInput"
+              }
+            ],
+            "default": "open"
+          },
+          "base": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base",
+            "description": "Filter pulls by base branch name"
+          },
+          "head": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Head",
+            "description": "Filter pulls by head user or head organization and branch name in the format of user:ref-name or organization:ref-name"
+          }
+        },
+        "type": "object",
+        "title": "PullRequestFilters"
+      },
+      "PullRequestResponse": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/PullRequest"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "next_cursor"
+        ],
+        "title": "PullRequestResponse"
+      },
+      "PullRequestsInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "include_remote_data": {
+            "type": "boolean",
+            "title": "Include Remote Data",
+            "default": false
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository",
+            "description": "Full name of the repository, denoted as {owner}/{repo}"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "default": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100,
+            "title": "Page Size",
+            "default": 30
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PullRequestFilters"
+              }
+            ],
+            "default": {
+              "state": "open"
+            }
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PROrderBy"
+              }
+            ],
+            "default": "created"
+          },
+          "order_dir": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OrderDirV2"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "asc"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "repository"
+        ],
+        "title": "PullRequestsInput"
       },
       "RSSFeedInput": {
         "properties": {
@@ -12691,6 +14398,24 @@
         ],
         "title": "Task"
       },
+      "Team": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Team"
+      },
       "TextEmbeddingGenerators": {
         "type": "string",
         "enum": [
@@ -12736,6 +14461,24 @@
           "deepgram"
         ],
         "title": "TranscriptionService"
+      },
+      "Tree": {
+        "properties": {
+          "sha": {
+            "type": "string",
+            "title": "Sha"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sha",
+          "url"
+        ],
+        "title": "Tree"
       },
       "UpdateOrganizationInput": {
         "properties": {
@@ -12984,6 +14727,24 @@
           "url"
         ],
         "title": "UploadFileFromUrlInput"
+      },
+      "User": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "login": {
+            "type": "string",
+            "title": "Login"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "login"
+        ],
+        "title": "User"
       },
       "UserConfiguration": {
         "properties": {
