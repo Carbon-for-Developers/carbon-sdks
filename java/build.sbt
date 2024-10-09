@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.konfigthis.carbonai",
     name := "carbonai-java-sdk",
-    version := "0.1.38",
+    version := "0.1.39",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
