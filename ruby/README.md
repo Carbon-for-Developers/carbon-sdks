@@ -49,6 +49,13 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.files.upload`](#carbonfilesupload)
   * [`carbon.files.upload_from_url`](#carbonfilesupload_from_url)
   * [`carbon.files.upload_text`](#carbonfilesupload_text)
+  * [`carbon.github.get_issue`](#carbongithubget_issue)
+  * [`carbon.github.get_issues`](#carbongithubget_issues)
+  * [`carbon.github.get_pr`](#carbongithubget_pr)
+  * [`carbon.github.get_pr_comments`](#carbongithubget_pr_comments)
+  * [`carbon.github.get_pr_commits`](#carbongithubget_pr_commits)
+  * [`carbon.github.get_pr_files`](#carbongithubget_pr_files)
+  * [`carbon.github.get_pull_requests`](#carbongithubget_pull_requests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
@@ -1718,6 +1725,307 @@ will be done.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/upload_text` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_issue`<a id="carbongithubget_issue"></a>
+
+Issue
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_issue(
+  issue_number: 1,
+  include_remote_data: false,
+  data_source_id: 1,
+  repository: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### issue_number: `Integer`<a id="issue_number-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Issue](./lib/carbon_ruby_sdk/models/issue.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues/{issue_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_issues`<a id="carbongithubget_issues"></a>
+
+Issues
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_issues(
+  data_source_id: 1,
+  repository: "string_example",
+  include_remote_data: false,
+  page: 1,
+  page_size: 30,
+  next_cursor: "string_example",
+  filters: {
+        "state" => "closed",
+    },
+  order_by: "created",
+  order_dir: "asc",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### filters: [`IssuesFilter`](./lib/carbon_ruby_sdk/models/issues_filter.rb)<a id="filters-issuesfilterlibcarbon_ruby_sdkmodelsissues_filterrb"></a>
+##### order_by: [`IssuesOrderBy`](./lib/carbon_ruby_sdk/models/issues_order_by.rb)<a id="order_by-issuesorderbylibcarbon_ruby_sdkmodelsissues_order_byrb"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[IssuesResponse](./lib/carbon_ruby_sdk/models/issues_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/issues` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_pr`<a id="carbongithubget_pr"></a>
+
+Get Pr
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_pr(
+  pull_number: 1,
+  include_remote_data: false,
+  data_source_id: 1,
+  repository: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestExtended](./lib/carbon_ruby_sdk/models/pull_request_extended.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/{pull_number}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_pr_comments`<a id="carbongithubget_pr_comments"></a>
+
+Pr Comments
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_pr_comments(
+  data_source_id: 1,
+  repository: "string_example",
+  pull_number: 1,
+  include_remote_data: false,
+  page: 1,
+  page_size: 30,
+  next_cursor: "string_example",
+  order_by: "created",
+  order_dir: "asc",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### order_by: [`CommentsOrderBy`](./lib/carbon_ruby_sdk/models/comments_order_by.rb)<a id="order_by-commentsorderbylibcarbon_ruby_sdkmodelscomments_order_byrb"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommentsResponse](./lib/carbon_ruby_sdk/models/comments_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/comments` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_pr_commits`<a id="carbongithubget_pr_commits"></a>
+
+Pr Commits
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_pr_commits(
+  data_source_id: 1,
+  repository: "string_example",
+  pull_number: 1,
+  include_remote_data: false,
+  page: 1,
+  page_size: 30,
+  next_cursor: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[CommitsResponse](./lib/carbon_ruby_sdk/models/commits_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/commits` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_pr_files`<a id="carbongithubget_pr_files"></a>
+
+Pr Files
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_pr_files(
+  data_source_id: 1,
+  repository: "string_example",
+  pull_number: 1,
+  include_remote_data: false,
+  page: 1,
+  page_size: 30,
+  next_cursor: "string_example",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+Full name of the repository, denoted as {owner}/{repo}
+
+##### pull_number: `Integer`<a id="pull_number-integer"></a>
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[FilesResponse](./lib/carbon_ruby_sdk/models/files_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests/files` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.github.get_pull_requests`<a id="carbongithubget_pull_requests"></a>
+
+Get Prs
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.github.get_pull_requests(
+  data_source_id: 1,
+  repository: "string_example",
+  include_remote_data: false,
+  page: 1,
+  page_size: 30,
+  next_cursor: "string_example",
+  filters: {
+        "state" => "closed",
+    },
+  order_by: "created",
+  order_dir: "asc",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### repository: `String`<a id="repository-string"></a>
+Full name of the repository, denoted as {owner}/{repo}
+
+##### include_remote_data: `Boolean`<a id="include_remote_data-boolean"></a>
+##### page: `Integer`<a id="page-integer"></a>
+##### page_size: `Integer`<a id="page_size-integer"></a>
+##### next_cursor: `String`<a id="next_cursor-string"></a>
+##### filters: [`PullRequestFilters`](./lib/carbon_ruby_sdk/models/pull_request_filters.rb)<a id="filters-pullrequestfilterslibcarbon_ruby_sdkmodelspull_request_filtersrb"></a>
+##### order_by: [`PROrderBy`](./lib/carbon_ruby_sdk/models/pr_order_by.rb)<a id="order_by-prorderbylibcarbon_ruby_sdkmodelspr_order_byrb"></a>
+##### order_dir: [`OrderDirV2Nullable`](./lib/carbon_ruby_sdk/models/order_dir_v2_nullable.rb)<a id="order_dir-orderdirv2nullablelibcarbon_ruby_sdkmodelsorder_dir_v2_nullablerb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PullRequestResponse](./lib/carbon_ruby_sdk/models/pull_request_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/data/github/pull_requests` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

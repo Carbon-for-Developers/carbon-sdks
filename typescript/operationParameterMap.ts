@@ -660,6 +660,181 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/integrations/data/github/issues/{issue_number}-GET': {
+        parameters: [
+            {
+                name: 'issue_number'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+        ]
+    },
+    '/integrations/data/github/issues-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'page'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
+        ]
+    },
+    '/integrations/data/github/pull_requests/{pull_number}-GET': {
+        parameters: [
+            {
+                name: 'pull_number'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+        ]
+    },
+    '/integrations/data/github/pull_requests/comments-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+            {
+                name: 'pull_number'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'page'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
+        ]
+    },
+    '/integrations/data/github/pull_requests/commits-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+            {
+                name: 'pull_number'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'page'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'next_cursor'
+            },
+        ]
+    },
+    '/integrations/data/github/pull_requests/files-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+            {
+                name: 'pull_number'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'page'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'next_cursor'
+            },
+        ]
+    },
+    '/integrations/data/github/pull_requests-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'repository'
+            },
+            {
+                name: 'include_remote_data'
+            },
+            {
+                name: 'page'
+            },
+            {
+                name: 'page_size'
+            },
+            {
+                name: 'next_cursor'
+            },
+            {
+                name: 'filters'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
+        ]
+    },
     '/integrations/items/sync/cancel-POST': {
         parameters: [
             {

@@ -20,6 +20,7 @@ from carbon.apis.tags.crm_api import CRMApi
 from carbon.apis.tags.data_sources_api import DataSourcesApi
 from carbon.apis.tags.embeddings_api import EmbeddingsApi
 from carbon.apis.tags.files_api import FilesApi
+from carbon.apis.tags.github_api import GithubApi
 from carbon.apis.tags.integrations_api import IntegrationsApi
 from carbon.apis.tags.organizations_api import OrganizationsApi
 from carbon.apis.tags.users_api import UsersApi
@@ -42,6 +43,7 @@ class Carbon(ClientCustom):
         self.data_sources: DataSourcesApi = DataSourcesApi(api_client)
         self.embeddings: EmbeddingsApi = EmbeddingsApi(api_client)
         self.files: FilesApi = FilesApi(api_client)
+        self.github: GithubApi = GithubApi(api_client)
         self.integrations: IntegrationsApi = IntegrationsApi(api_client)
         self.organizations: OrganizationsApi = OrganizationsApi(api_client)
         self.users: UsersApi = UsersApi(api_client)

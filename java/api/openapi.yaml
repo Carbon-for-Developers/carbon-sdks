@@ -57,6 +57,7 @@ tags:
     Leverage these `Utilities` endpoints to execute a wide range of helpful actions, including initiating web scraping, processing sitemaps, retrieving URLs from a specific webpage, obtaining relevant URLs based on a search query, fetching YouTube video transcripts, and many other functionalities.
   name: Utilities
 - name: CRM
+- name: Github
 - description: |2
 
     ---
@@ -4800,6 +4801,304 @@ paths:
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-crm-opportunities-id
       x-accepts: application/json
+  /integrations/data/github/pull_requests:
+    post:
+      operationId: Github_getPullRequests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PullRequestsInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PullRequestResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Prs
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/data/github/pull_requests/{pull_number}:
+    get:
+      operationId: Github_getPr
+      parameters:
+      - explode: false
+        in: path
+        name: pull_number
+        required: true
+        schema:
+          title: Pull Number
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-github-pull_requests-pull_number-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: repository
+        required: false
+        schema:
+          title: Repository
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PullRequestExtended'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Get Pr
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-github-pull_requests-pull_number
+      x-accepts: application/json
+  /integrations/data/github/pull_requests/comments:
+    post:
+      operationId: Github_getPrComments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentsInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentsResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Pr Comments
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-comments
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/data/github/pull_requests/files:
+    post:
+      operationId: Github_getPrFiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilesInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilesResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Pr Files
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-files
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/data/github/pull_requests/commits:
+    post:
+      operationId: Github_getPrCommits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitsInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitsResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Pr Commits
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-commits
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/data/github/issues:
+    post:
+      operationId: Github_getIssues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssuesInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssuesResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Issues
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-data-github-issues
+      x-content-type: application/json
+      x-accepts: application/json
+  /integrations/data/github/issues/{issue_number}:
+    get:
+      operationId: Github_getIssue
+      parameters:
+      - explode: false
+        in: path
+        name: issue_number
+        required: true
+        schema:
+          title: Issue Number
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: include_remote_data
+        required: false
+        schema:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-github-issues-issue_number-get-parameters-1-schema
+        style: form
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: repository
+        required: false
+        schema:
+          title: Repository
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Issue'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Issue
+      tags:
+      - Github
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-github-issues-issue_number
+      x-accepts: application/json
 components:
   schemas:
     Account:
@@ -5696,6 +5995,287 @@ components:
           type: integer
       title: ColdStorageProps
       type: object
+    CommentsInput:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        pull_number: 6
+        order_by: null
+        page: 1
+        include_remote_data: false
+        repository: repository
+        data_source_id: 0
+        page_size: 30
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+        order_by:
+          $ref: '#/components/schemas/CommentsOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      title: CommentsInput
+      type: object
+      x-konfig-properties:
+        order_by:
+          default: created
+    CommentsOrderBy:
+      enum:
+      - created
+      - updated
+      title: CommentsOrderBy
+      type: string
+    CommentsResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - path: path
+          updated_at: updated_at
+          line: 5
+          pull_request_review_id: 6
+          diff_hunk: diff_hunk
+          created_at: created_at
+          start_line: 1
+          id: 0
+          body: body
+          user:
+            id: 1
+            login: login
+          url: url
+          remote_data: "{}"
+        - path: path
+          updated_at: updated_at
+          line: 5
+          pull_request_review_id: 6
+          diff_hunk: diff_hunk
+          created_at: created_at
+          start_line: 1
+          id: 0
+          body: body
+          user:
+            id: 1
+            login: login
+          url: url
+          remote_data: "{}"
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PRComment'
+          title: Data
+          type: array
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+      required:
+      - data
+      - next_cursor
+      title: CommentsResponse
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    Commit:
+      example:
+        comment_count: 0
+        committer:
+          name: name
+          email: email
+        author:
+          name: name
+          email: email
+        tree:
+          sha: sha
+          url: url
+        message: message
+        url: url
+      properties:
+        author:
+          $ref: '#/components/schemas/CommitUserNullable'
+        committer:
+          $ref: '#/components/schemas/CommitUserNullable'
+        message:
+          title: Message
+          type: string
+        tree:
+          $ref: '#/components/schemas/Tree'
+        url:
+          title: Url
+          type: string
+        comment_count:
+          title: Comment Count
+          type: integer
+      required:
+      - author
+      - comment_count
+      - committer
+      - message
+      - tree
+      - url
+      title: Commit
+      type: object
+    CommitUser:
+      properties:
+        name:
+          title: Name
+          type: string
+        email:
+          title: Email
+          type: string
+      required:
+      - email
+      - name
+      title: CommitUser
+      type: object
+    CommitsInput:
+      example:
+        next_cursor: next_cursor
+        pull_number: 6
+        page: 1
+        include_remote_data: false
+        repository: repository
+        data_source_id: 0
+        page_size: 30
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      title: CommitsInput
+      type: object
+    CommitsResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - committer:
+            id: 6
+            login: login
+          author:
+            id: 6
+            login: login
+          commit:
+            comment_count: 0
+            committer:
+              name: name
+              email: email
+            author:
+              name: name
+              email: email
+            tree:
+              sha: sha
+              url: url
+            message: message
+            url: url
+          url: url
+          remote_data: "{}"
+        - committer:
+            id: 6
+            login: login
+          author:
+            id: 6
+            login: login
+          commit:
+            comment_count: 0
+            committer:
+              name: name
+              email: email
+            author:
+              name: name
+              email: email
+            tree:
+              sha: sha
+              url: url
+            message: message
+            url: url
+          url: url
+          remote_data: "{}"
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PRCommit'
+          title: Data
+          type: array
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+      required:
+      - data
+      - next_cursor
+      title: CommitsResponse
+      type: object
+      x-konfig-is-used-in-successful-response: true
     ConfigurationKeys:
       title: ConfigurationKeys
       type: string
@@ -7392,6 +7972,17 @@ components:
       - num_tokens
       title: FileStatistics
       type: object
+    FileStatus:
+      enum:
+      - added
+      - removed
+      - modified
+      - renamed
+      - copied
+      - changed
+      - unchanged
+      title: FileStatus
+      type: string
     FileSyncConfig:
       properties:
         auto_synced_source_types:
@@ -7482,6 +8073,98 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-skip_file_processing
       title: FileSyncConfig
       type: object
+    FilesInput:
+      example:
+        next_cursor: next_cursor
+        pull_number: 6
+        page: 1
+        include_remote_data: false
+        repository: repository
+        data_source_id: 0
+        page_size: 30
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      title: FilesInput
+      type: object
+    FilesResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - filename: filename
+          additions: 0
+          deletions: 6
+          changes: 1
+          sha: sha
+          blob_url: blob_url
+          raw_url: raw_url
+          status: null
+          contents_url: contents_url
+          remote_data: "{}"
+        - filename: filename
+          additions: 0
+          deletions: 6
+          changes: 1
+          sha: sha
+          blob_url: blob_url
+          raw_url: raw_url
+          status: null
+          contents_url: contents_url
+          remote_data: "{}"
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PRFile'
+          title: Data
+          type: array
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+      required:
+      - data
+      - next_cursor
+      title: FilesResponse
+      type: object
+      x-konfig-is-used-in-successful-response: true
     FreshDeskConnectRequest:
       example:
         chunk_size: 1500
@@ -8427,6 +9110,27 @@ components:
       type: object
       x-konfig-is-used-in-non-successful-response: true
       x-do-not-generate: true
+    HeadOrBase:
+      example:
+        ref: ref
+        label: label
+        sha: sha
+      properties:
+        label:
+          title: Label
+          type: string
+        ref:
+          title: Ref
+          type: string
+        sha:
+          title: Sha
+          type: string
+      required:
+      - label
+      - ref
+      - sha
+      title: HeadOrBase
+      type: object
     HelpdeskFileTypes:
       enum:
       - TICKET
@@ -8446,6 +9150,292 @@ components:
       - weight_a
       - weight_b
       title: HybridSearchTuningParams
+      type: object
+    Issue:
+      example:
+        pull_request:
+          merged_at: merged_at
+          url: url
+        closed_at: closed_at
+        created_at: created_at
+        title: title
+        body: body
+        url: url
+        labels:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        closed_by:
+          id: 6
+          login: login
+        number: 6
+        num_comments: 1
+        updated_at: updated_at
+        html_url: html_url
+        draft: true
+        id: 0
+        state: null
+        locked: true
+        user:
+          id: 1
+          login: login
+      properties:
+        title:
+          title: Title
+          type: string
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        html_url:
+          title: Html Url
+          type: string
+        number:
+          title: Number
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        labels:
+          items:
+            $ref: '#/components/schemas/Label'
+          title: Labels
+          type: array
+        state:
+          $ref: '#/components/schemas/PRState'
+        locked:
+          title: Locked
+          type: boolean
+        num_comments:
+          title: Num Comments
+          type: integer
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        closed_at:
+          nullable: true
+          title: Closed At
+          type: string
+        draft:
+          title: Draft
+          type: boolean
+        pull_request:
+          $ref: '#/components/schemas/IssuePRNullable'
+        body:
+          title: Body
+          type: string
+        closed_by:
+          $ref: '#/components/schemas/UserNullable'
+      required:
+      - body
+      - closed_at
+      - closed_by
+      - created_at
+      - draft
+      - html_url
+      - id
+      - labels
+      - locked
+      - num_comments
+      - number
+      - pull_request
+      - state
+      - title
+      - updated_at
+      - url
+      - user
+      title: Issue
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    IssuePR:
+      properties:
+        url:
+          title: Url
+          type: string
+        merged_at:
+          nullable: true
+          title: Merged At
+          type: string
+      required:
+      - merged_at
+      - url
+      title: IssuePR
+      type: object
+    IssuesFilter:
+      example:
+        state: null
+      properties:
+        state:
+          $ref: '#/components/schemas/PRStateInput'
+      title: IssuesFilter
+      type: object
+      x-konfig-properties:
+        state:
+          default: open
+    IssuesInput:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        page: 1
+        filters:
+          state: null
+        include_remote_data: false
+        repository: repository
+        data_source_id: 0
+        page_size: 30
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        filters:
+          $ref: '#/components/schemas/IssuesFilter'
+        order_by:
+          $ref: '#/components/schemas/IssuesOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - repository
+      title: IssuesInput
+      type: object
+      x-konfig-properties:
+        filters:
+          default:
+            state: open
+        order_by:
+          default: created
+    IssuesOrderBy:
+      enum:
+      - created
+      - updated
+      - comments
+      title: IssuesOrderBy
+      type: string
+    IssuesResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - pull_request:
+            merged_at: merged_at
+            url: url
+          closed_at: closed_at
+          created_at: created_at
+          title: title
+          body: body
+          url: url
+          labels:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          closed_by:
+            id: 6
+            login: login
+          number: 6
+          num_comments: 1
+          updated_at: updated_at
+          html_url: html_url
+          draft: true
+          id: 0
+          state: null
+          locked: true
+          user:
+            id: 1
+            login: login
+        - pull_request:
+            merged_at: merged_at
+            url: url
+          closed_at: closed_at
+          created_at: created_at
+          title: title
+          body: body
+          url: url
+          labels:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          closed_by:
+            id: 6
+            login: login
+          number: 6
+          num_comments: 1
+          updated_at: updated_at
+          html_url: html_url
+          draft: true
+          id: 0
+          state: null
+          locked: true
+          user:
+            id: 1
+            login: login
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Issue'
+          title: Data
+          type: array
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+      required:
+      - data
+      - next_cursor
+      title: IssuesResponse
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    Label:
+      example:
+        name: name
+        id: 5
+      properties:
+        id:
+          title: Id
+          type: integer
+        name:
+          title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: Label
       type: object
     Lead:
       example:
@@ -11087,6 +12077,198 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    PRComment:
+      example:
+        path: path
+        updated_at: updated_at
+        line: 5
+        pull_request_review_id: 6
+        diff_hunk: diff_hunk
+        created_at: created_at
+        start_line: 1
+        id: 0
+        body: body
+        user:
+          id: 1
+          login: login
+        url: url
+        remote_data: "{}"
+      properties:
+        id:
+          title: Id
+          type: integer
+        pull_request_review_id:
+          nullable: true
+          title: Pull Request Review Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        diff_hunk:
+          title: Diff Hunk
+          type: string
+        path:
+          title: Path
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        body:
+          title: Body
+          type: string
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        start_line:
+          nullable: true
+          title: Start Line
+          type: integer
+        line:
+          nullable: true
+          title: Line
+          type: integer
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - body
+      - created_at
+      - diff_hunk
+      - id
+      - line
+      - path
+      - pull_request_review_id
+      - remote_data
+      - start_line
+      - updated_at
+      - url
+      - user
+      title: PRComment
+      type: object
+    PRCommit:
+      example:
+        committer:
+          id: 6
+          login: login
+        author:
+          id: 6
+          login: login
+        commit:
+          comment_count: 0
+          committer:
+            name: name
+            email: email
+          author:
+            name: name
+            email: email
+          tree:
+            sha: sha
+            url: url
+          message: message
+          url: url
+        url: url
+        remote_data: "{}"
+      properties:
+        commit:
+          $ref: '#/components/schemas/Commit'
+        url:
+          title: Url
+          type: string
+        author:
+          $ref: '#/components/schemas/UserNullable'
+        committer:
+          $ref: '#/components/schemas/UserNullable'
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - author
+      - commit
+      - committer
+      - remote_data
+      - url
+      title: PRCommit
+      type: object
+    PRFile:
+      example:
+        filename: filename
+        additions: 0
+        deletions: 6
+        changes: 1
+        sha: sha
+        blob_url: blob_url
+        raw_url: raw_url
+        status: null
+        contents_url: contents_url
+        remote_data: "{}"
+      properties:
+        sha:
+          title: Sha
+          type: string
+        filename:
+          title: Filename
+          type: string
+        status:
+          $ref: '#/components/schemas/FileStatus'
+        additions:
+          title: Additions
+          type: integer
+        deletions:
+          title: Deletions
+          type: integer
+        changes:
+          title: Changes
+          type: integer
+        blob_url:
+          title: Blob Url
+          type: string
+        raw_url:
+          title: Raw Url
+          type: string
+        contents_url:
+          title: Contents Url
+          type: string
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - additions
+      - blob_url
+      - changes
+      - contents_url
+      - deletions
+      - filename
+      - raw_url
+      - remote_data
+      - sha
+      - status
+      title: PRFile
+      type: object
+    PROrderBy:
+      enum:
+      - created
+      - updated
+      - popularity
+      title: PROrderBy
+      type: string
+    PRState:
+      enum:
+      - closed
+      - open
+      title: PRState
+      type: string
+    PRStateInput:
+      enum:
+      - closed
+      - open
+      - all
+      title: PRStateInput
+      type: string
     Pagination:
       example:
         offset: 0
@@ -11169,6 +12351,457 @@ components:
       title: PresignedURLResponse
       type: object
       x-konfig-is-used-in-successful-response: true
+    PullRequest:
+      example:
+        closed_at: closed_at
+        merged_at: merged_at
+        created_at: created_at
+        requested_reviewers:
+        - id: 1
+          login: login
+        - id: 1
+          login: login
+        title: title
+        url: url
+        requested_teams:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        labels:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        remote_data: "{}"
+        head:
+          ref: ref
+          label: label
+          sha: sha
+        number: 6
+        updated_at: updated_at
+        draft: true
+        id: 0
+        state: null
+        user:
+          id: 1
+          login: login
+        base:
+          ref: ref
+          label: label
+          sha: sha
+      properties:
+        title:
+          title: Title
+          type: string
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        number:
+          title: Number
+          type: integer
+        state:
+          $ref: '#/components/schemas/PRState'
+        user:
+          $ref: '#/components/schemas/User'
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        closed_at:
+          nullable: true
+          title: Closed At
+          type: string
+        merged_at:
+          nullable: true
+          title: Merged At
+          type: string
+        requested_reviewers:
+          items:
+            $ref: '#/components/schemas/User'
+          title: Requested Reviewers
+          type: array
+        requested_teams:
+          items:
+            $ref: '#/components/schemas/Team'
+          title: Requested Teams
+          type: array
+        labels:
+          items:
+            $ref: '#/components/schemas/Label'
+          title: Labels
+          type: array
+        draft:
+          title: Draft
+          type: boolean
+        head:
+          $ref: '#/components/schemas/HeadOrBase'
+        base:
+          $ref: '#/components/schemas/HeadOrBase'
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+      required:
+      - base
+      - closed_at
+      - created_at
+      - draft
+      - head
+      - id
+      - labels
+      - merged_at
+      - number
+      - remote_data
+      - requested_reviewers
+      - requested_teams
+      - state
+      - title
+      - updated_at
+      - url
+      - user
+      title: PullRequest
+      type: object
+    PullRequestExtended:
+      example:
+        closed_at: closed_at
+        merged_at: merged_at
+        merged: true
+        num_review_comments: 5
+        created_at: created_at
+        requested_reviewers:
+        - id: 1
+          login: login
+        - id: 1
+          login: login
+        title: title
+        num_additions: 2
+        num_commits: 5
+        url: url
+        requested_teams:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        labels:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        remote_data: "{}"
+        head:
+          ref: ref
+          label: label
+          sha: sha
+        number: 6
+        num_comments: 1
+        num_deletions: 7
+        updated_at: updated_at
+        draft: true
+        id: 0
+        state: null
+        num_changed_files: 9
+        user:
+          id: 1
+          login: login
+        base:
+          ref: ref
+          label: label
+          sha: sha
+      properties:
+        title:
+          title: Title
+          type: string
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        number:
+          title: Number
+          type: integer
+        state:
+          $ref: '#/components/schemas/PRState'
+        user:
+          $ref: '#/components/schemas/User'
+        created_at:
+          title: Created At
+          type: string
+        updated_at:
+          title: Updated At
+          type: string
+        closed_at:
+          nullable: true
+          title: Closed At
+          type: string
+        merged_at:
+          nullable: true
+          title: Merged At
+          type: string
+        requested_reviewers:
+          items:
+            $ref: '#/components/schemas/User'
+          title: Requested Reviewers
+          type: array
+        requested_teams:
+          items:
+            $ref: '#/components/schemas/Team'
+          title: Requested Teams
+          type: array
+        labels:
+          items:
+            $ref: '#/components/schemas/Label'
+          title: Labels
+          type: array
+        draft:
+          title: Draft
+          type: boolean
+        head:
+          $ref: '#/components/schemas/HeadOrBase'
+        base:
+          $ref: '#/components/schemas/HeadOrBase'
+        remote_data:
+          nullable: true
+          title: Remote Data
+          type: object
+        merged:
+          title: Merged
+          type: boolean
+        num_comments:
+          title: Num Comments
+          type: integer
+        num_review_comments:
+          title: Num Review Comments
+          type: integer
+        num_commits:
+          title: Num Commits
+          type: integer
+        num_additions:
+          title: Num Additions
+          type: integer
+        num_deletions:
+          title: Num Deletions
+          type: integer
+        num_changed_files:
+          title: Num Changed Files
+          type: integer
+      required:
+      - base
+      - closed_at
+      - created_at
+      - draft
+      - head
+      - id
+      - labels
+      - merged
+      - merged_at
+      - num_additions
+      - num_changed_files
+      - num_comments
+      - num_commits
+      - num_deletions
+      - num_review_comments
+      - number
+      - remote_data
+      - requested_reviewers
+      - requested_teams
+      - state
+      - title
+      - updated_at
+      - url
+      - user
+      title: PullRequestExtended
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    PullRequestFilters:
+      example:
+        head: head
+        state: null
+        base: base
+      properties:
+        state:
+          $ref: '#/components/schemas/PRStateInput'
+        base:
+          description: Filter pulls by base branch name
+          nullable: true
+          title: Base
+          type: string
+        head:
+          description: Filter pulls by head user or head organization and branch name
+            in the format of user:ref-name or organization:ref-name
+          nullable: true
+          title: Head
+          type: string
+      title: PullRequestFilters
+      type: object
+      x-konfig-properties:
+        state:
+          default: open
+    PullRequestResponse:
+      example:
+        next_cursor: next_cursor
+        data:
+        - closed_at: closed_at
+          merged_at: merged_at
+          created_at: created_at
+          requested_reviewers:
+          - id: 1
+            login: login
+          - id: 1
+            login: login
+          title: title
+          url: url
+          requested_teams:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          labels:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          remote_data: "{}"
+          head:
+            ref: ref
+            label: label
+            sha: sha
+          number: 6
+          updated_at: updated_at
+          draft: true
+          id: 0
+          state: null
+          user:
+            id: 1
+            login: login
+          base:
+            ref: ref
+            label: label
+            sha: sha
+        - closed_at: closed_at
+          merged_at: merged_at
+          created_at: created_at
+          requested_reviewers:
+          - id: 1
+            login: login
+          - id: 1
+            login: login
+          title: title
+          url: url
+          requested_teams:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          labels:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          remote_data: "{}"
+          head:
+            ref: ref
+            label: label
+            sha: sha
+          number: 6
+          updated_at: updated_at
+          draft: true
+          id: 0
+          state: null
+          user:
+            id: 1
+            login: login
+          base:
+            ref: ref
+            label: label
+            sha: sha
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PullRequest'
+          title: Data
+          type: array
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+      required:
+      - data
+      - next_cursor
+      title: PullRequestResponse
+      type: object
+      x-konfig-is-used-in-successful-response: true
+    PullRequestsInput:
+      example:
+        order_dir: asc
+        next_cursor: next_cursor
+        order_by: null
+        page: 1
+        filters:
+          head: head
+          state: null
+          base: base
+        include_remote_data: false
+        repository: repository
+        data_source_id: 0
+        page_size: 30
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        filters:
+          $ref: '#/components/schemas/PullRequestFilters'
+        order_by:
+          $ref: '#/components/schemas/PROrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - repository
+      title: PullRequestsInput
+      type: object
+      x-konfig-properties:
+        filters:
+          default:
+            state: open
+        order_by:
+          default: created
     RSSFeedInput:
       example:
         chunk_size: 1500
@@ -12412,6 +14045,22 @@ components:
       - updated_at
       title: Task
       type: object
+    Team:
+      example:
+        name: name
+        id: 5
+      properties:
+        id:
+          title: Id
+          type: integer
+        name:
+          title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: Team
+      type: object
     TextEmbeddingGenerators:
       enum:
       - OPENAI
@@ -12453,6 +14102,22 @@ components:
       - deepgram
       title: TranscriptionService
       type: string
+    Tree:
+      example:
+        sha: sha
+        url: url
+      properties:
+        sha:
+          title: Sha
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - sha
+      - url
+      title: Tree
+      type: object
     UpdateOrganizationInput:
       example:
         global_user_config:
@@ -12664,6 +14329,22 @@ components:
         cold_storage_params:
           default:
             enable_cold_storage: false
+    User:
+      example:
+        id: 1
+        login: login
+      properties:
+        id:
+          title: Id
+          type: integer
+        login:
+          title: Login
+          type: string
+      required:
+      - id
+      - login
+      title: User
+      type: object
     UserConfiguration:
       properties:
         auto_sync_enabled_sources: {}
@@ -13939,6 +15620,23 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
       title: FileSyncConfig
       type: object
+    CommitUserNullable:
+      example:
+        name: name
+        email: email
+      nullable: true
+      properties:
+        name:
+          title: Name
+          type: string
+        email:
+          title: Email
+          type: string
+      required:
+      - email
+      - name
+      title: CommitUser
+      type: object
     PartialAccountNullable:
       example:
         id: id
@@ -14171,6 +15869,41 @@ components:
       required:
       - model
       title: RerankParams
+      type: object
+    IssuePRNullable:
+      example:
+        merged_at: merged_at
+        url: url
+      nullable: true
+      properties:
+        url:
+          title: Url
+          type: string
+        merged_at:
+          nullable: true
+          title: Merged At
+          type: string
+      required:
+      - merged_at
+      - url
+      title: IssuePR
+      type: object
+    UserNullable:
+      example:
+        id: 6
+        login: login
+      nullable: true
+      properties:
+        id:
+          title: Id
+          type: integer
+        login:
+          title: Login
+          type: string
+      required:
+      - id
+      - login
+      title: User
       type: object
     LeadsOrderByNullable:
       enum:
@@ -14569,6 +16302,14 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-github-pull_requests-pull_number-get-parameters-1-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-paths--integrations-data-github-issues-issue_number-get-parameters-1-schema:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-AccountsRequest-properties-include_remote_data:
       example: false
       type: boolean
@@ -14643,6 +16384,30 @@ components:
     konfig-generated-schema-components-schemas-ColdStorageProps-properties-enable_cold_storage:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommentsInput-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommentsInput-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommentsInput-properties-page_size:
+      example: 30
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommitsInput-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommitsInput-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-CommitsInput-properties-page_size:
+      example: 30
+      type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-ContactsRequest-properties-include_remote_data:
       example: false
@@ -14729,6 +16494,18 @@ components:
     konfig-generated-schema-components-schemas-FileSyncConfig-properties-skip_file_processing:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FilesInput-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FilesInput-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-FilesInput-properties-page_size:
+      example: 30
+      type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-FreshDeskConnectRequest-properties-tags:
       example: {}
@@ -14957,6 +16734,18 @@ components:
       example: true
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssuesInput-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssuesInput-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IssuesInput-properties-page_size:
+      example: 30
+      type: number
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-LeadsRequest-properties-include_remote_data:
       example: false
       type: boolean
@@ -15112,6 +16901,18 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Pagination-properties-offset:
       example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-PullRequestsInput-properties-include_remote_data:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-PullRequestsInput-properties-page:
+      example: 1
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-PullRequestsInput-properties-page_size:
+      example: 30
       type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-RSSFeedInput-properties-tags:
@@ -18746,6 +20547,293 @@ components:
       - data_source_id
       - include_remote_data
       - includes
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-PullRequestsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        filters:
+          $ref: '#/components/schemas/PullRequestFilters'
+        order_by:
+          $ref: '#/components/schemas/PROrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - repository
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-github-pull_requests-pull_number:
+      properties:
+        pull_number:
+          title: Pull Number
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-github-pull_requests-pull_number-get-parameters-1-schema
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        repository:
+          title: Repository
+          type: string
+      required:
+      - pull_number
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - pull_number
+      - include_remote_data
+      - data_source_id
+      - repository
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-comments:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommentsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+        order_by:
+          $ref: '#/components/schemas/CommentsOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-files:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-FilesInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-github-pull_requests-commits:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-CommitsInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        pull_number:
+          title: Pull Number
+          type: integer
+      required:
+      - data_source_id
+      - pull_number
+      - repository
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--integrations-data-github-issues:
+      properties:
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-include_remote_data
+        repository:
+          description: "Full name of the repository, denoted as {owner}/{repo}"
+          title: Repository
+          type: string
+        page:
+          default: 1
+          example: 1
+          title: Page
+          type: integer
+          x-konfig-original-example: 1
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-page
+        page_size:
+          default: 30
+          example: 30
+          maximum: 100
+          title: Page Size
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-IssuesInput-properties-page_size
+        next_cursor:
+          nullable: true
+          title: Next Cursor
+          type: string
+        filters:
+          $ref: '#/components/schemas/IssuesFilter'
+        order_by:
+          $ref: '#/components/schemas/IssuesOrderBy'
+        order_dir:
+          $ref: '#/components/schemas/OrderDirV2Nullable'
+      required:
+      - data_source_id
+      - repository
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-data-github-issues-issue_number:
+      properties:
+        issue_number:
+          title: Issue Number
+          type: integer
+        include_remote_data:
+          default: false
+          example: false
+          title: Include Remote Data
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-paths--integrations-data-github-issues-issue_number-get-parameters-1-schema
+        data_source_id:
+          title: Data Source Id
+          type: integer
+        repository:
+          title: Repository
+          type: string
+      required:
+      - issue_number
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - issue_number
+      - include_remote_data
+      - data_source_id
+      - repository
     TMEmbeddingGenerators:
       enum:
       - OPENAI

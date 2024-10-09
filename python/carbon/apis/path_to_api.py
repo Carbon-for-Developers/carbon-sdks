@@ -79,6 +79,13 @@ from carbon.apis.paths.integrations_data_crm_contacts import IntegrationsDataCrm
 from carbon.apis.paths.integrations_data_crm_contacts_id import IntegrationsDataCrmContactsId
 from carbon.apis.paths.integrations_data_crm_opportunities import IntegrationsDataCrmOpportunities
 from carbon.apis.paths.integrations_data_crm_opportunities_id import IntegrationsDataCrmOpportunitiesId
+from carbon.apis.paths.integrations_data_github_pull_requests import IntegrationsDataGithubPullRequests
+from carbon.apis.paths.integrations_data_github_pull_requests_pull_number import IntegrationsDataGithubPullRequestsPullNumber
+from carbon.apis.paths.integrations_data_github_pull_requests_comments import IntegrationsDataGithubPullRequestsComments
+from carbon.apis.paths.integrations_data_github_pull_requests_files import IntegrationsDataGithubPullRequestsFiles
+from carbon.apis.paths.integrations_data_github_pull_requests_commits import IntegrationsDataGithubPullRequestsCommits
+from carbon.apis.paths.integrations_data_github_issues import IntegrationsDataGithubIssues
+from carbon.apis.paths.integrations_data_github_issues_issue_number import IntegrationsDataGithubIssuesIssueNumber
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -161,6 +168,13 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_DATA_CRM_CONTACTS_ID: IntegrationsDataCrmContactsId,
         PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES: IntegrationsDataCrmOpportunities,
         PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES_ID: IntegrationsDataCrmOpportunitiesId,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS: IntegrationsDataGithubPullRequests,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_PULL_NUMBER: IntegrationsDataGithubPullRequestsPullNumber,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMENTS: IntegrationsDataGithubPullRequestsComments,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_FILES: IntegrationsDataGithubPullRequestsFiles,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMITS: IntegrationsDataGithubPullRequestsCommits,
+        PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES: IntegrationsDataGithubIssues,
+        PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES_ISSUE_NUMBER: IntegrationsDataGithubIssuesIssueNumber,
     }
 )
 
@@ -244,5 +258,12 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_DATA_CRM_CONTACTS_ID: IntegrationsDataCrmContactsId,
         PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES: IntegrationsDataCrmOpportunities,
         PathValues.INTEGRATIONS_DATA_CRM_OPPORTUNITIES_ID: IntegrationsDataCrmOpportunitiesId,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS: IntegrationsDataGithubPullRequests,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_PULL_NUMBER: IntegrationsDataGithubPullRequestsPullNumber,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMENTS: IntegrationsDataGithubPullRequestsComments,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_FILES: IntegrationsDataGithubPullRequestsFiles,
+        PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMITS: IntegrationsDataGithubPullRequestsCommits,
+        PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES: IntegrationsDataGithubIssues,
+        PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES_ISSUE_NUMBER: IntegrationsDataGithubIssuesIssueNumber,
     }
 )
