@@ -11627,6 +11627,22 @@
             "title": "Request Ids",
             "description": "Filter by request ID(s) which were used to sync the files"
           },
+          "upload_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "maxItems": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Upload Ids",
+            "description": "Filter by upload ID(s) which were used to sync the files"
+          },
           "sync_error_message": {
             "anyOf": [
               {
@@ -15064,6 +15080,17 @@
             ],
             "title": "Request Id"
           },
+          "upload_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Upload Id"
+          },
           "sync_properties": {
             "type": "object",
             "title": "Sync Properties",
@@ -15139,6 +15166,7 @@
           "source_created_at",
           "generate_sparse_vectors",
           "request_id",
+          "upload_id",
           "sync_properties",
           "messages_metadata",
           "file_contents_deleted",
@@ -16052,6 +16080,7 @@
             "type": "string",
             "enum": [
               "ADD",
+              "ALL_FILES_PROCESSED",
               "ALL_UPLOADED_FILES_QUEUED",
               "CANCEL",
               "CHECKUP",

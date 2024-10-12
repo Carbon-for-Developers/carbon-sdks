@@ -69,6 +69,8 @@ module Carbon
 
     attr_accessor :request_id
 
+    attr_accessor :upload_id
+
     attr_accessor :sync_properties
 
     attr_accessor :messages_metadata
@@ -117,6 +119,7 @@ module Carbon
         :'source_created_at' => :'source_created_at',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'request_id' => :'request_id',
+        :'upload_id' => :'upload_id',
         :'sync_properties' => :'sync_properties',
         :'messages_metadata' => :'messages_metadata',
         :'file_contents_deleted' => :'file_contents_deleted',
@@ -165,6 +168,7 @@ module Carbon
         :'source_created_at' => :'Time',
         :'generate_sparse_vectors' => :'Boolean',
         :'request_id' => :'String',
+        :'upload_id' => :'String',
         :'sync_properties' => :'Object',
         :'messages_metadata' => :'Object',
         :'file_contents_deleted' => :'Boolean',
@@ -200,6 +204,7 @@ module Carbon
         :'source_created_at',
         :'generate_sparse_vectors',
         :'request_id',
+        :'upload_id',
         :'hot_storage_time_to_live',
       ])
     end
@@ -335,6 +340,10 @@ module Carbon
 
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
+      end
+
+      if attributes.key?(:'upload_id')
+        self.upload_id = attributes[:'upload_id']
       end
 
       if attributes.key?(:'sync_properties')
@@ -494,6 +503,7 @@ module Carbon
           source_created_at == o.source_created_at &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
           request_id == o.request_id &&
+          upload_id == o.upload_id &&
           sync_properties == o.sync_properties &&
           messages_metadata == o.messages_metadata &&
           file_contents_deleted == o.file_contents_deleted &&
@@ -513,7 +523,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, sync_properties, messages_metadata, file_contents_deleted, supports_cold_storage, hot_storage_time_to_live, embedding_storage_status, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, upload_id, sync_properties, messages_metadata, file_contents_deleted, supports_cold_storage, hot_storage_time_to_live, embedding_storage_status, created_at, updated_at].hash
     end
 
     # Builds the object from hash

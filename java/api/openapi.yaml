@@ -7143,6 +7143,12 @@ components:
           - external_file_ids
           include_containers: true
           non_synced_only: false
+          upload_ids:
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
           external_urls:
           - external_urls
           - external_urls
@@ -7560,6 +7566,12 @@ components:
           - external_file_ids
           include_containers: true
           non_synced_only: false
+          upload_ids:
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
           external_urls:
           - external_urls
           - external_urls
@@ -10338,6 +10350,12 @@ components:
           - external_file_ids
           include_containers: true
           non_synced_only: false
+          upload_ids:
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
           external_urls:
           - external_urls
           - external_urls
@@ -10416,6 +10434,12 @@ components:
           - external_file_ids
           include_containers: true
           non_synced_only: false
+          upload_ids:
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
           external_urls:
           - external_urls
           - external_urls
@@ -11695,6 +11719,12 @@ components:
         - external_file_ids
         include_containers: true
         non_synced_only: false
+        upload_ids:
+        - upload_ids
+        - upload_ids
+        - upload_ids
+        - upload_ids
+        - upload_ids
         external_urls:
         - external_urls
         - external_urls
@@ -11817,6 +11847,14 @@ components:
           nullable: true
           title: Request Ids
           type: array
+        upload_ids:
+          description: Filter by upload ID(s) which were used to sync the files
+          items:
+            type: string
+          maxItems: 100
+          nullable: true
+          title: Upload Ids
+          type: array
         sync_error_message:
           description: "The error message of the file. The query will return files\
             \ with error messages that contain this string. To search for files with\
@@ -11904,6 +11942,12 @@ components:
           - external_file_ids
           include_containers: true
           non_synced_only: false
+          upload_ids:
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
+          - upload_ids
           external_urls:
           - external_urls
           - external_urls
@@ -14372,6 +14416,7 @@ components:
       example:
         additional_presigned_urls: "{}"
         chunk_size: 2
+        upload_id: upload_id
         organization_user_data_source_id: 1
         embedding_properties:
           key:
@@ -14530,6 +14575,10 @@ components:
           nullable: true
           title: Request Id
           type: string
+        upload_id:
+          nullable: true
+          title: Upload Id
+          type: string
         sync_properties:
           example: {}
           title: Sync Properties
@@ -14604,6 +14653,7 @@ components:
       - sync_status
       - tags
       - updated_at
+      - upload_id
       title: UserFile
       type: object
       x-konfig-is-used-in-successful-response: true
@@ -14613,6 +14663,7 @@ components:
         results:
         - additional_presigned_urls: "{}"
           chunk_size: 2
+          upload_id: upload_id
           organization_user_data_source_id: 1
           embedding_properties:
             key:
@@ -14662,6 +14713,7 @@ components:
           messages_metadata: {}
         - additional_presigned_urls: "{}"
           chunk_size: 2
+          upload_id: upload_id
           organization_user_data_source_id: 1
           embedding_properties:
             key:
@@ -15436,6 +15488,7 @@ components:
         webhook_type:
           enum:
           - ADD
+          - ALL_FILES_PROCESSED
           - ALL_UPLOADED_FILES_QUEUED
           - CANCEL
           - CHECKUP

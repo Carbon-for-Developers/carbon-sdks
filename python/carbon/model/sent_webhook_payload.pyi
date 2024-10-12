@@ -46,6 +46,10 @@ class SentWebhookPayload(
                     return cls("ADD")
                 
                 @schemas.classproperty
+                def ALL_FILES_PROCESSED(cls):
+                    return cls("ALL_FILES_PROCESSED")
+                
+                @schemas.classproperty
                 def ALL_UPLOADED_FILES_QUEUED(cls):
                     return cls("ALL_UPLOADED_FILES_QUEUED")
                 

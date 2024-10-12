@@ -50,6 +50,9 @@ module Carbon
     # Filter by request ID(s) which were used to sync the files
     attr_accessor :request_ids
 
+    # Filter by upload ID(s) which were used to sync the files
+    attr_accessor :upload_ids
+
     # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
     attr_accessor :sync_error_message
 
@@ -79,6 +82,7 @@ module Carbon
         :'include_all_children' => :'include_all_children',
         :'non_synced_only' => :'non_synced_only',
         :'request_ids' => :'request_ids',
+        :'upload_ids' => :'upload_ids',
         :'sync_error_message' => :'sync_error_message',
         :'include_containers' => :'include_containers',
         :'external_urls' => :'external_urls',
@@ -108,6 +112,7 @@ module Carbon
         :'include_all_children' => :'Boolean',
         :'non_synced_only' => :'Boolean',
         :'request_ids' => :'Array<String>',
+        :'upload_ids' => :'Array<String>',
         :'sync_error_message' => :'String',
         :'include_containers' => :'Boolean',
         :'external_urls' => :'Array<String>',
@@ -130,6 +135,7 @@ module Carbon
         :'embedding_generators',
         :'root_files_only',
         :'request_ids',
+        :'upload_ids',
         :'sync_error_message',
         :'include_containers',
         :'external_urls',
@@ -228,6 +234,12 @@ module Carbon
         end
       end
 
+      if attributes.key?(:'upload_ids')
+        if (value = attributes[:'upload_ids']).is_a?(Array)
+          self.upload_ids = value
+        end
+      end
+
       if attributes.key?(:'sync_error_message')
         self.sync_error_message = attributes[:'sync_error_message']
       end
@@ -257,6 +269,10 @@ module Carbon
         invalid_properties.push('invalid value for "request_ids", number of items must be less than or equal to 100.')
       end
 
+      if !@upload_ids.nil? && @upload_ids.length > 100
+        invalid_properties.push('invalid value for "upload_ids", number of items must be less than or equal to 100.')
+      end
+
       invalid_properties
     end
 
@@ -264,6 +280,7 @@ module Carbon
     # @return true if the model is valid
     def valid?
       return false if !@request_ids.nil? && @request_ids.length > 100
+      return false if !@upload_ids.nil? && @upload_ids.length > 100
       true
     end
 
@@ -275,6 +292,16 @@ module Carbon
       end
 
       @request_ids = request_ids
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] upload_ids Value to be assigned
+    def upload_ids=(upload_ids)
+      if !upload_ids.nil? && upload_ids.length > 100
+        fail ArgumentError, 'invalid value for "upload_ids", number of items must be less than or equal to 100.'
+      end
+
+      @upload_ids = upload_ids
     end
 
     # Checks equality by comparing each attribute.
@@ -296,6 +323,7 @@ module Carbon
           include_all_children == o.include_all_children &&
           non_synced_only == o.non_synced_only &&
           request_ids == o.request_ids &&
+          upload_ids == o.upload_ids &&
           sync_error_message == o.sync_error_message &&
           include_containers == o.include_containers &&
           external_urls == o.external_urls &&
@@ -311,7 +339,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids, sync_error_message, include_containers, external_urls, file_types_at_source].hash
+      [tags, source, name, tags_v2, ids, external_file_ids, sync_statuses, parent_file_ids, organization_user_data_source_id, embedding_generators, root_files_only, include_all_children, non_synced_only, request_ids, upload_ids, sync_error_message, include_containers, external_urls, file_types_at_source].hash
     end
 
     # Builds the object from hash

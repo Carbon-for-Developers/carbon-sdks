@@ -109,6 +109,12 @@ export interface OrganizationUserFilesToSyncFilters {
      */
     'request_ids'?: Array<string> | null;
     /**
+     * Filter by upload ID(s) which were used to sync the files
+     * @type {Array<string>}
+     * @memberof OrganizationUserFilesToSyncFilters
+     */
+    'upload_ids'?: Array<string> | null;
+    /**
      * The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
      * @type {string}
      * @memberof OrganizationUserFilesToSyncFilters

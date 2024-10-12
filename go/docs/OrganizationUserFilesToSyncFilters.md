@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **IncludeAllChildren** | Pointer to **bool** | If true, the query will return all descendents of the specified parent_file_ids. | [optional] [default to false]
 **NonSyncedOnly** | Pointer to **bool** | If true, the query will return only files that have not been synced yet. | [optional] [default to false]
 **RequestIds** | Pointer to **[]string** | Filter by request ID(s) which were used to sync the files | [optional] 
+**UploadIds** | Pointer to **[]string** | Filter by upload ID(s) which were used to sync the files | [optional] 
 **SyncErrorMessage** | Pointer to **NullableString** | The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string. | [optional] 
 **IncludeContainers** | Pointer to **NullableBool** | If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers. | [optional] 
 **ExternalUrls** | Pointer to **[]string** | The external URLs of the files. The query will return files with these external URLs. | [optional] 
@@ -512,6 +513,41 @@ HasRequestIds returns a boolean if a field has been set.
 `func (o *OrganizationUserFilesToSyncFilters) UnsetRequestIds()`
 
 UnsetRequestIds ensures that no value is present for RequestIds, not even an explicit nil
+### GetUploadIds
+
+`func (o *OrganizationUserFilesToSyncFilters) GetUploadIds() []string`
+
+GetUploadIds returns the UploadIds field if non-nil, zero value otherwise.
+
+### GetUploadIdsOk
+
+`func (o *OrganizationUserFilesToSyncFilters) GetUploadIdsOk() (*[]string, bool)`
+
+GetUploadIdsOk returns a tuple with the UploadIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUploadIds
+
+`func (o *OrganizationUserFilesToSyncFilters) SetUploadIds(v []string)`
+
+SetUploadIds sets UploadIds field to given value.
+
+### HasUploadIds
+
+`func (o *OrganizationUserFilesToSyncFilters) HasUploadIds() bool`
+
+HasUploadIds returns a boolean if a field has been set.
+
+### SetUploadIdsNil
+
+`func (o *OrganizationUserFilesToSyncFilters) SetUploadIdsNil(b bool)`
+
+ SetUploadIdsNil sets the value for UploadIds to be an explicit nil
+
+### UnsetUploadIds
+`func (o *OrganizationUserFilesToSyncFilters) UnsetUploadIds()`
+
+UnsetUploadIds ensures that no value is present for UploadIds, not even an explicit nil
 ### GetSyncErrorMessage
 
 `func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessage() string`

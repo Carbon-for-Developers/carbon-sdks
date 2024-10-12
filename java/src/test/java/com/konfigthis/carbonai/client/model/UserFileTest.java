@@ -280,6 +280,14 @@ public class UserFileTest {
     }
 
     /**
+     * Test the property 'uploadId'
+     */
+    @Test
+    public void uploadIdTest() {
+        // TODO: test uploadId
+    }
+
+    /**
      * Test the property 'syncProperties'
      */
     @Test

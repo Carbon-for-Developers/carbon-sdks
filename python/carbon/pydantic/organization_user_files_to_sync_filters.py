@@ -26,6 +26,7 @@ from carbon.pydantic.organization_user_files_to_sync_filters_organization_user_d
 from carbon.pydantic.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
 from carbon.pydantic.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.pydantic.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
+from carbon.pydantic.organization_user_files_to_sync_filters_upload_ids import OrganizationUserFilesToSyncFiltersUploadIds
 
 class OrganizationUserFilesToSyncFilters(BaseModel):
     # WARNING: This property is deprecated
@@ -65,6 +66,8 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
     non_synced_only: typing.Optional[bool] = Field(None, alias='non_synced_only')
 
     request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds] = Field(None, alias='request_ids')
+
+    upload_ids: typing.Optional[OrganizationUserFilesToSyncFiltersUploadIds] = Field(None, alias='upload_ids')
 
     # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
     sync_error_message: typing.Optional[typing.Optional[str]] = Field(None, alias='sync_error_message')

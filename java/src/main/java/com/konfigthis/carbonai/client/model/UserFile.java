@@ -174,6 +174,10 @@ public class UserFile {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
 
+  public static final String SERIALIZED_NAME_UPLOAD_ID = "upload_id";
+  @SerializedName(SERIALIZED_NAME_UPLOAD_ID)
+  private String uploadId;
+
   public static final String SERIALIZED_NAME_SYNC_PROPERTIES = "sync_properties";
   @SerializedName(SERIALIZED_NAME_SYNC_PROPERTIES)
   private Object syncProperties;
@@ -1055,6 +1059,35 @@ public class UserFile {
   }
 
 
+  public UserFile uploadId(String uploadId) {
+    
+    
+    
+    
+    this.uploadId = uploadId;
+    return this;
+  }
+
+   /**
+   * Get uploadId
+   * @return uploadId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(required = true, value = "")
+
+  public String getUploadId() {
+    return uploadId;
+  }
+
+
+  public void setUploadId(String uploadId) {
+    
+    
+    
+    this.uploadId = uploadId;
+  }
+
+
   public UserFile syncProperties(Object syncProperties) {
     
     
@@ -1370,6 +1403,7 @@ public class UserFile {
         Objects.equals(this.sourceCreatedAt, userFile.sourceCreatedAt) &&
         Objects.equals(this.generateSparseVectors, userFile.generateSparseVectors) &&
         Objects.equals(this.requestId, userFile.requestId) &&
+        Objects.equals(this.uploadId, userFile.uploadId) &&
         Objects.equals(this.syncProperties, userFile.syncProperties) &&
         Objects.equals(this.messagesMetadata, userFile.messagesMetadata) &&
         Objects.equals(this.fileContentsDeleted, userFile.fileContentsDeleted) &&
@@ -1383,7 +1417,7 @@ public class UserFile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, uploadId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1419,6 +1453,7 @@ public class UserFile {
     sb.append("    sourceCreatedAt: ").append(toIndentedString(sourceCreatedAt)).append("\n");
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    uploadId: ").append(toIndentedString(uploadId)).append("\n");
     sb.append("    syncProperties: ").append(toIndentedString(syncProperties)).append("\n");
     sb.append("    messagesMetadata: ").append(toIndentedString(messagesMetadata)).append("\n");
     sb.append("    fileContentsDeleted: ").append(toIndentedString(fileContentsDeleted)).append("\n");
@@ -1479,6 +1514,7 @@ public class UserFile {
     openapiFields.add("source_created_at");
     openapiFields.add("generate_sparse_vectors");
     openapiFields.add("request_id");
+    openapiFields.add("upload_id");
     openapiFields.add("sync_properties");
     openapiFields.add("messages_metadata");
     openapiFields.add("file_contents_deleted");
@@ -1519,6 +1555,7 @@ public class UserFile {
     openapiRequiredFields.add("source_created_at");
     openapiRequiredFields.add("generate_sparse_vectors");
     openapiRequiredFields.add("request_id");
+    openapiRequiredFields.add("upload_id");
     openapiRequiredFields.add("sync_properties");
     openapiRequiredFields.add("messages_metadata");
     openapiRequiredFields.add("file_contents_deleted");
@@ -1579,6 +1616,9 @@ public class UserFile {
       }
       if (!jsonObj.get("request_id").isJsonNull() && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
+      }
+      if (!jsonObj.get("upload_id").isJsonNull() && !jsonObj.get("upload_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `upload_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("upload_id").toString()));
       }
   }
 
