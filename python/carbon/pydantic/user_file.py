@@ -81,6 +81,8 @@ class UserFile(BaseModel):
 
     request_id: typing.Optional[str] = Field(alias='request_id')
 
+    upload_id: typing.Optional[str] = Field(alias='upload_id')
+
     sync_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='sync_properties')
 
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='messages_metadata')

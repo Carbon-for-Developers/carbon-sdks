@@ -239,6 +239,10 @@ class OrganizationUserFilesToSyncFilters(
             @staticmethod
             def request_ids() -> typing.Type['OrganizationUserFilesToSyncFiltersRequestIds']:
                 return OrganizationUserFilesToSyncFiltersRequestIds
+        
+            @staticmethod
+            def upload_ids() -> typing.Type['OrganizationUserFilesToSyncFiltersUploadIds']:
+                return OrganizationUserFilesToSyncFiltersUploadIds
             
             
             class sync_error_message(
@@ -302,6 +306,7 @@ class OrganizationUserFilesToSyncFilters(
                 "include_all_children": include_all_children,
                 "non_synced_only": non_synced_only,
                 "request_ids": request_ids,
+                "upload_ids": upload_ids,
                 "sync_error_message": sync_error_message,
                 "include_containers": include_containers,
                 "external_urls": external_urls,
@@ -351,6 +356,9 @@ class OrganizationUserFilesToSyncFilters(
     def __getitem__(self, name: typing_extensions.Literal["request_ids"]) -> 'OrganizationUserFilesToSyncFiltersRequestIds': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["upload_ids"]) -> 'OrganizationUserFilesToSyncFiltersUploadIds': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["sync_error_message"]) -> MetaOapg.properties.sync_error_message: ...
     
     @typing.overload
@@ -365,7 +373,7 @@ class OrganizationUserFilesToSyncFilters(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "sync_error_message", "include_containers", "external_urls", "file_types_at_source", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "upload_ids", "sync_error_message", "include_containers", "external_urls", "file_types_at_source", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -413,6 +421,9 @@ class OrganizationUserFilesToSyncFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["request_ids"]) -> typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["upload_ids"]) -> typing.Union['OrganizationUserFilesToSyncFiltersUploadIds', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["sync_error_message"]) -> typing.Union[MetaOapg.properties.sync_error_message, schemas.Unset]: ...
     
     @typing.overload
@@ -427,7 +438,7 @@ class OrganizationUserFilesToSyncFilters(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "sync_error_message", "include_containers", "external_urls", "file_types_at_source", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "name", "tags_v2", "ids", "external_file_ids", "sync_statuses", "parent_file_ids", "organization_user_data_source_id", "embedding_generators", "root_files_only", "include_all_children", "non_synced_only", "request_ids", "upload_ids", "sync_error_message", "include_containers", "external_urls", "file_types_at_source", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -448,6 +459,7 @@ class OrganizationUserFilesToSyncFilters(
         include_all_children: typing.Union[MetaOapg.properties.include_all_children, bool, schemas.Unset] = schemas.unset,
         non_synced_only: typing.Union[MetaOapg.properties.non_synced_only, bool, schemas.Unset] = schemas.unset,
         request_ids: typing.Union['OrganizationUserFilesToSyncFiltersRequestIds', schemas.Unset] = schemas.unset,
+        upload_ids: typing.Union['OrganizationUserFilesToSyncFiltersUploadIds', schemas.Unset] = schemas.unset,
         sync_error_message: typing.Union[MetaOapg.properties.sync_error_message, None, str, schemas.Unset] = schemas.unset,
         include_containers: typing.Union[MetaOapg.properties.include_containers, None, bool, schemas.Unset] = schemas.unset,
         external_urls: typing.Union['OrganizationUserFilesToSyncFiltersExternalUrls', schemas.Unset] = schemas.unset,
@@ -472,6 +484,7 @@ class OrganizationUserFilesToSyncFilters(
             include_all_children=include_all_children,
             non_synced_only=non_synced_only,
             request_ids=request_ids,
+            upload_ids=upload_ids,
             sync_error_message=sync_error_message,
             include_containers=include_containers,
             external_urls=external_urls,
@@ -491,3 +504,4 @@ from carbon.model.organization_user_files_to_sync_filters_organization_user_data
 from carbon.model.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
 from carbon.model.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.model.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
+from carbon.model.organization_user_files_to_sync_filters_upload_ids import OrganizationUserFilesToSyncFiltersUploadIds

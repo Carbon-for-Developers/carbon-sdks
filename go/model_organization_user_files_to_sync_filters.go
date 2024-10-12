@@ -43,6 +43,8 @@ type OrganizationUserFilesToSyncFilters struct {
 	NonSyncedOnly *bool `json:"non_synced_only,omitempty"`
 	// Filter by request ID(s) which were used to sync the files
 	RequestIds []string `json:"request_ids,omitempty"`
+	// Filter by upload ID(s) which were used to sync the files
+	UploadIds []string `json:"upload_ids,omitempty"`
 	// The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
 	SyncErrorMessage NullableString `json:"sync_error_message,omitempty"`
 	// If true, the query will return containers in the response. Containers are files that group other files together and have no content themselves. Default behavior is to include containers.
@@ -571,6 +573,39 @@ func (o *OrganizationUserFilesToSyncFilters) SetRequestIds(v []string) {
 	o.RequestIds = v
 }
 
+// GetUploadIds returns the UploadIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserFilesToSyncFilters) GetUploadIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.UploadIds
+}
+
+// GetUploadIdsOk returns a tuple with the UploadIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserFilesToSyncFilters) GetUploadIdsOk() ([]string, bool) {
+	if o == nil || isNil(o.UploadIds) {
+    return nil, false
+	}
+	return o.UploadIds, true
+}
+
+// HasUploadIds returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncFilters) HasUploadIds() bool {
+	if o != nil && isNil(o.UploadIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetUploadIds gets a reference to the given []string and assigns it to the UploadIds field.
+func (o *OrganizationUserFilesToSyncFilters) SetUploadIds(v []string) {
+	o.UploadIds = v
+}
+
 // GetSyncErrorMessage returns the SyncErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationUserFilesToSyncFilters) GetSyncErrorMessage() string {
 	if o == nil || isNil(o.SyncErrorMessage.Get()) {
@@ -764,6 +799,9 @@ func (o OrganizationUserFilesToSyncFilters) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestIds != nil {
 		toSerialize["request_ids"] = o.RequestIds
+	}
+	if o.UploadIds != nil {
+		toSerialize["upload_ids"] = o.UploadIds
 	}
 	if o.SyncErrorMessage.IsSet() {
 		toSerialize["sync_error_message"] = o.SyncErrorMessage.Get()

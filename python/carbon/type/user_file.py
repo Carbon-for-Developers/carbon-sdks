@@ -80,6 +80,8 @@ class RequiredUserFile(TypedDict):
 
     request_id: typing.Optional[str]
 
+    upload_id: typing.Optional[str]
+
     sync_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]

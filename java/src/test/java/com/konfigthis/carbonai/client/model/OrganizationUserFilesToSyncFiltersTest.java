@@ -159,6 +159,14 @@ public class OrganizationUserFilesToSyncFiltersTest {
     }
 
     /**
+     * Test the property 'uploadIds'
+     */
+    @Test
+    public void uploadIdsTest() {
+        // TODO: test uploadIds
+    }
+
+    /**
      * Test the property 'syncErrorMessage'
      */
     @Test

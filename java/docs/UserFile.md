@@ -36,6 +36,7 @@
 |**sourceCreatedAt** | **OffsetDateTime** |  |  |
 |**generateSparseVectors** | **Boolean** |  |  |
 |**requestId** | **String** |  |  |
+|**uploadId** | **String** |  |  |
 |**syncProperties** | **Object** |  |  |
 |**messagesMetadata** | **Object** |  |  |
 |**fileContentsDeleted** | **Boolean** |  |  |

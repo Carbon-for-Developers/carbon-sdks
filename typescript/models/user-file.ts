@@ -199,6 +199,12 @@ export interface UserFile {
     'request_id': string | null;
     /**
      * 
+     * @type {string}
+     * @memberof UserFile
+     */
+    'upload_id': string | null;
+    /**
+     * 
      * @type {object}
      * @memberof UserFile
      */

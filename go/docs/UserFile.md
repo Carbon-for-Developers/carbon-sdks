@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **SourceCreatedAt** | **NullableTime** |  | 
 **GenerateSparseVectors** | **NullableBool** |  | 
 **RequestId** | **NullableString** |  | 
+**UploadId** | **NullableString** |  | 
 **SyncProperties** | **map[string]interface{}** |  | [default to {}]
 **MessagesMetadata** | **map[string]interface{}** |  | [default to {}]
 **FileContentsDeleted** | **bool** |  | [default to false]
@@ -46,7 +47,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -851,6 +852,36 @@ SetRequestId sets RequestId field to given value.
 `func (o *UserFile) UnsetRequestId()`
 
 UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+### GetUploadId
+
+`func (o *UserFile) GetUploadId() string`
+
+GetUploadId returns the UploadId field if non-nil, zero value otherwise.
+
+### GetUploadIdOk
+
+`func (o *UserFile) GetUploadIdOk() (*string, bool)`
+
+GetUploadIdOk returns a tuple with the UploadId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUploadId
+
+`func (o *UserFile) SetUploadId(v string)`
+
+SetUploadId sets UploadId field to given value.
+
+
+### SetUploadIdNil
+
+`func (o *UserFile) SetUploadIdNil(b bool)`
+
+ SetUploadIdNil sets the value for UploadId to be an explicit nil
+
+### UnsetUploadId
+`func (o *UserFile) UnsetUploadId()`
+
+UnsetUploadId ensures that no value is present for UploadId, not even an explicit nil
 ### GetSyncProperties
 
 `func (o *UserFile) GetSyncProperties() map[string]interface{}`

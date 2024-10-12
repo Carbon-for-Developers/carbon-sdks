@@ -10033,6 +10033,16 @@
             "maxItems": 100,
             "nullable": true
           },
+          "upload_ids": {
+            "title": "Upload Ids",
+            "description": "Filter by upload ID(s) which were used to sync the files",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "nullable": true
+          },
           "sync_error_message": {
             "title": "Sync Error Message",
             "description": "The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.",
@@ -12445,6 +12455,11 @@
             "type": "string",
             "nullable": true
           },
+          "upload_id": {
+            "title": "Upload Id",
+            "type": "string",
+            "nullable": true
+          },
           "sync_properties": {
             "title": "Sync Properties",
             "type": "object",
@@ -12516,6 +12531,7 @@
           "source_created_at",
           "generate_sparse_vectors",
           "request_id",
+          "upload_id",
           "sync_properties",
           "messages_metadata",
           "file_contents_deleted",
@@ -13283,6 +13299,7 @@
             "type": "string",
             "enum": [
               "ADD",
+              "ALL_FILES_PROCESSED",
               "ALL_UPLOADED_FILES_QUEUED",
               "CANCEL",
               "CHECKUP",

@@ -45,6 +45,7 @@ class SentWebhookPayload(
                 class MetaOapg:
                     enum_value_to_name = {
                         "ADD": "ADD",
+                        "ALL_FILES_PROCESSED": "ALL_FILES_PROCESSED",
                         "ALL_UPLOADED_FILES_QUEUED": "ALL_UPLOADED_FILES_QUEUED",
                         "CANCEL": "CANCEL",
                         "CHECKUP": "CHECKUP",
@@ -73,6 +74,10 @@ class SentWebhookPayload(
                 @schemas.classproperty
                 def ADD(cls):
                     return cls("ADD")
+                
+                @schemas.classproperty
+                def ALL_FILES_PROCESSED(cls):
+                    return cls("ALL_FILES_PROCESSED")
                 
                 @schemas.classproperty
                 def ALL_UPLOADED_FILES_QUEUED(cls):

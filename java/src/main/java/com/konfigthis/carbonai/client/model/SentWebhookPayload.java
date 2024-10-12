@@ -57,6 +57,8 @@ public class SentWebhookPayload {
  public enum WebhookTypeEnum {
     ADD("ADD"),
     
+    ALL_FILES_PROCESSED("ALL_FILES_PROCESSED"),
+    
     ALL_UPLOADED_FILES_QUEUED("ALL_UPLOADED_FILES_QUEUED"),
     
     CANCEL("CANCEL"),

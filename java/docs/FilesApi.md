@@ -91,6 +91,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
@@ -316,6 +317,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
@@ -1282,6 +1284,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
@@ -1456,6 +1459,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
@@ -1663,6 +1667,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());
@@ -1834,6 +1839,7 @@ public class Example {
       System.out.println(result.getSourceCreatedAt());
       System.out.println(result.getGenerateSparseVectors());
       System.out.println(result.getRequestId());
+      System.out.println(result.getUploadId());
       System.out.println(result.getSyncProperties());
       System.out.println(result.getMessagesMetadata());
       System.out.println(result.getFileContentsDeleted());

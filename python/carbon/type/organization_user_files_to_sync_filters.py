@@ -25,6 +25,7 @@ from carbon.type.organization_user_files_to_sync_filters_organization_user_data_
 from carbon.type.organization_user_files_to_sync_filters_parent_file_ids import OrganizationUserFilesToSyncFiltersParentFileIds
 from carbon.type.organization_user_files_to_sync_filters_request_ids import OrganizationUserFilesToSyncFiltersRequestIds
 from carbon.type.organization_user_files_to_sync_filters_tags import OrganizationUserFilesToSyncFiltersTags
+from carbon.type.organization_user_files_to_sync_filters_upload_ids import OrganizationUserFilesToSyncFiltersUploadIds
 
 class RequiredOrganizationUserFilesToSyncFilters(TypedDict):
     pass
@@ -67,6 +68,8 @@ class OptionalOrganizationUserFilesToSyncFilters(TypedDict, total=False):
     non_synced_only: bool
 
     request_ids: typing.Optional[OrganizationUserFilesToSyncFiltersRequestIds]
+
+    upload_ids: typing.Optional[OrganizationUserFilesToSyncFiltersUploadIds]
 
     # The error message of the file. The query will return files with error messages that contain this string. To search for files with no error message, use an empty string.
     sync_error_message: typing.Optional[str]

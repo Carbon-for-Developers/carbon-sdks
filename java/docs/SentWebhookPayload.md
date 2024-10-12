@@ -19,6 +19,7 @@
 | Name | Value |
 |---- | -----|
 | ADD | &quot;ADD&quot; |
+| ALL_FILES_PROCESSED | &quot;ALL_FILES_PROCESSED&quot; |
 | ALL_UPLOADED_FILES_QUEUED | &quot;ALL_UPLOADED_FILES_QUEUED&quot; |
 | CANCEL | &quot;CANCEL&quot; |
 | CHECKUP | &quot;CHECKUP&quot; |
