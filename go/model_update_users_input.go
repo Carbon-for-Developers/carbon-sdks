@@ -21,6 +21,12 @@ type UpdateUsersInput struct {
 	MaxFiles NullableInt32 `json:"max_files,omitempty"`
 	// Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
 	MaxFilesPerUpload NullableInt32 `json:"max_files_per_upload,omitempty"`
+	// Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+	MaxCharacters NullableInt32 `json:"max_characters,omitempty"`
+	// A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+	MaxCharactersPerFile NullableInt32 `json:"max_characters_per_file,omitempty"`
+	// Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+	MaxCharactersPerUpload NullableInt32 `json:"max_characters_per_upload,omitempty"`
 	// List of organization supplied user IDs
 	CustomerIds []string `json:"customer_ids"`
 }
@@ -169,6 +175,132 @@ func (o *UpdateUsersInput) UnsetMaxFilesPerUpload() {
 	o.MaxFilesPerUpload.Unset()
 }
 
+// GetMaxCharacters returns the MaxCharacters field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetMaxCharacters() int32 {
+	if o == nil || isNil(o.MaxCharacters.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MaxCharacters.Get()
+}
+
+// GetMaxCharactersOk returns a tuple with the MaxCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetMaxCharactersOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MaxCharacters.Get(), o.MaxCharacters.IsSet()
+}
+
+// HasMaxCharacters returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasMaxCharacters() bool {
+	if o != nil && o.MaxCharacters.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxCharacters gets a reference to the given NullableInt32 and assigns it to the MaxCharacters field.
+func (o *UpdateUsersInput) SetMaxCharacters(v int32) {
+	o.MaxCharacters.Set(&v)
+}
+// SetMaxCharactersNil sets the value for MaxCharacters to be an explicit nil
+func (o *UpdateUsersInput) SetMaxCharactersNil() {
+	o.MaxCharacters.Set(nil)
+}
+
+// UnsetMaxCharacters ensures that no value is present for MaxCharacters, not even an explicit nil
+func (o *UpdateUsersInput) UnsetMaxCharacters() {
+	o.MaxCharacters.Unset()
+}
+
+// GetMaxCharactersPerFile returns the MaxCharactersPerFile field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetMaxCharactersPerFile() int32 {
+	if o == nil || isNil(o.MaxCharactersPerFile.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MaxCharactersPerFile.Get()
+}
+
+// GetMaxCharactersPerFileOk returns a tuple with the MaxCharactersPerFile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetMaxCharactersPerFileOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MaxCharactersPerFile.Get(), o.MaxCharactersPerFile.IsSet()
+}
+
+// HasMaxCharactersPerFile returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasMaxCharactersPerFile() bool {
+	if o != nil && o.MaxCharactersPerFile.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxCharactersPerFile gets a reference to the given NullableInt32 and assigns it to the MaxCharactersPerFile field.
+func (o *UpdateUsersInput) SetMaxCharactersPerFile(v int32) {
+	o.MaxCharactersPerFile.Set(&v)
+}
+// SetMaxCharactersPerFileNil sets the value for MaxCharactersPerFile to be an explicit nil
+func (o *UpdateUsersInput) SetMaxCharactersPerFileNil() {
+	o.MaxCharactersPerFile.Set(nil)
+}
+
+// UnsetMaxCharactersPerFile ensures that no value is present for MaxCharactersPerFile, not even an explicit nil
+func (o *UpdateUsersInput) UnsetMaxCharactersPerFile() {
+	o.MaxCharactersPerFile.Unset()
+}
+
+// GetMaxCharactersPerUpload returns the MaxCharactersPerUpload field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetMaxCharactersPerUpload() int32 {
+	if o == nil || isNil(o.MaxCharactersPerUpload.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.MaxCharactersPerUpload.Get()
+}
+
+// GetMaxCharactersPerUploadOk returns a tuple with the MaxCharactersPerUpload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetMaxCharactersPerUploadOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.MaxCharactersPerUpload.Get(), o.MaxCharactersPerUpload.IsSet()
+}
+
+// HasMaxCharactersPerUpload returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasMaxCharactersPerUpload() bool {
+	if o != nil && o.MaxCharactersPerUpload.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxCharactersPerUpload gets a reference to the given NullableInt32 and assigns it to the MaxCharactersPerUpload field.
+func (o *UpdateUsersInput) SetMaxCharactersPerUpload(v int32) {
+	o.MaxCharactersPerUpload.Set(&v)
+}
+// SetMaxCharactersPerUploadNil sets the value for MaxCharactersPerUpload to be an explicit nil
+func (o *UpdateUsersInput) SetMaxCharactersPerUploadNil() {
+	o.MaxCharactersPerUpload.Set(nil)
+}
+
+// UnsetMaxCharactersPerUpload ensures that no value is present for MaxCharactersPerUpload, not even an explicit nil
+func (o *UpdateUsersInput) UnsetMaxCharactersPerUpload() {
+	o.MaxCharactersPerUpload.Unset()
+}
+
 // GetCustomerIds returns the CustomerIds field value
 func (o *UpdateUsersInput) GetCustomerIds() []string {
 	if o == nil {
@@ -203,6 +335,15 @@ func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxFilesPerUpload.IsSet() {
 		toSerialize["max_files_per_upload"] = o.MaxFilesPerUpload.Get()
+	}
+	if o.MaxCharacters.IsSet() {
+		toSerialize["max_characters"] = o.MaxCharacters.Get()
+	}
+	if o.MaxCharactersPerFile.IsSet() {
+		toSerialize["max_characters_per_file"] = o.MaxCharactersPerFile.Get()
+	}
+	if o.MaxCharactersPerUpload.IsSet() {
+		toSerialize["max_characters_per_upload"] = o.MaxCharactersPerUpload.Get()
 	}
 	if true {
 		toSerialize["customer_ids"] = o.CustomerIds

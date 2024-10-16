@@ -13187,6 +13187,7 @@ components:
       type: object
     SitemapScrapeRequest:
       example:
+        use_premium_proxies: false
         chunk_size: 1500
         prepend_filename_to_chunks: false
         urls_to_scrape: []
@@ -13376,6 +13377,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-store_file_only
+        use_premium_proxies:
+          default: false
+          description: "If the default proxies are blocked and not returning results,\
+            \ this flag can be enabled to use \n            alternate proxies (residential\
+            \ and office). Scrapes might take longer to finish with this flag enabled.\n\
+            \        "
+          example: false
+          title: Use Premium Proxies
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-use_premium_proxies
       required:
       - url
       title: SitemapScrapeRequest
@@ -13935,6 +13947,9 @@ components:
       example:
         global_user_config:
           max_files: 0
+          max_characters_per_file: 0
+          max_characters: 0
+          max_characters_per_upload: 0
           auto_sync_enabled_sources: null
           max_files_per_upload: 0
         data_source_configs:
@@ -13957,12 +13972,15 @@ components:
     UpdateUsersInput:
       example:
         max_files: 0
+        max_characters_per_file: 0
+        max_characters: 0
         customer_ids:
         - customer_ids
         - customer_ids
         - customer_ids
         - customer_ids
         - customer_ids
+        max_characters_per_upload: 0
         auto_sync_enabled_sources: null
         max_files_per_upload: 0
       properties:
@@ -13985,6 +14003,33 @@ components:
           minimum: -1
           nullable: true
           title: Max Files Per Upload
+          type: integer
+        max_characters:
+          description: "Custom character upload limit for the user over *all* user's\
+            \ files across all uploads. \n        If set, then the user will not be\
+            \ allowed to upload more characters than this limit. If not set, or if\
+            \ set to -1,\n        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters
+          type: integer
+        max_characters_per_file:
+          description: "A single file upload from the user can not exceed this character\
+            \ limit.\n        If set, then the file will not be synced if it exceeds\
+            \ this limit. If not set, or if set to -1, then the \n        user will\
+            \ have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per File
+          type: integer
+        max_characters_per_upload:
+          description: "Custom character upload limit for the user across a single\
+            \ upload.\n        If set, then the user won't be able to sync more than\
+            \ this many characters in one upload. \n        If not set, or if set\
+            \ to -1, then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per Upload
           type: integer
         customer_ids:
           description: List of organization supplied user IDs
@@ -14180,6 +14225,33 @@ components:
           minimum: -1
           nullable: true
           title: Max Files Per Upload
+          type: integer
+        max_characters:
+          description: "Custom character upload limit for the user over *all* user's\
+            \ files across all uploads. \n        If set, then the user will not be\
+            \ allowed to upload more characters than this limit. If not set, or if\
+            \ set to -1,\n        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters
+          type: integer
+        max_characters_per_file:
+          description: "A single file upload from the user can not exceed this character\
+            \ limit.\n        If set, then the file will not be synced if it exceeds\
+            \ this limit. If not set, or if set to -1, then the \n        user will\
+            \ have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per File
+          type: integer
+        max_characters_per_upload:
+          description: "Custom character upload limit for the user across a single\
+            \ upload.\n        If set, then the user won't be able to sync more than\
+            \ this many characters in one upload. \n        If not set, or if set\
+            \ to -1, then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per Upload
           type: integer
       title: UserConfiguration
       type: object
@@ -14973,6 +15045,7 @@ components:
       type: string
     WebscrapeRequest:
       example:
+        use_premium_proxies: false
         chunk_size: 1500
         prepend_filename_to_chunks: false
         max_pages_to_scrape: 100
@@ -15147,6 +15220,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-store_file_only
+        use_premium_proxies:
+          default: false
+          description: "If the default proxies are blocked and not returning results,\
+            \ this flag can be enabled to use \n            alternate proxies (residential\
+            \ and office). Scrapes might take longer to finish with this flag enabled.\n\
+            \        "
+          example: false
+          title: Use Premium Proxies
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WebscrapeRequest-properties-use_premium_proxies
       required:
       - url
       title: WebscrapeRequest
@@ -15828,6 +15912,9 @@ components:
                 the organization that don't have them defined.
       example:
         max_files: 0
+        max_characters_per_file: 0
+        max_characters: 0
+        max_characters_per_upload: 0
         auto_sync_enabled_sources: null
         max_files_per_upload: 0
       nullable: true
@@ -15851,6 +15938,33 @@ components:
           minimum: -1
           nullable: true
           title: Max Files Per Upload
+          type: integer
+        max_characters:
+          description: "Custom character upload limit for the user over *all* user's\
+            \ files across all uploads. \n        If set, then the user will not be\
+            \ allowed to upload more characters than this limit. If not set, or if\
+            \ set to -1,\n        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters
+          type: integer
+        max_characters_per_file:
+          description: "A single file upload from the user can not exceed this character\
+            \ limit.\n        If set, then the file will not be synced if it exceeds\
+            \ this limit. If not set, or if set to -1, then the \n        user will\
+            \ have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per File
+          type: integer
+        max_characters_per_upload:
+          description: "Custom character upload limit for the user across a single\
+            \ upload.\n        If set, then the user won't be able to sync more than\
+            \ this many characters in one upload. \n        If not set, or if set\
+            \ to -1, then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per Upload
           type: integer
       title: UserConfiguration
       type: object
@@ -16884,6 +16998,10 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-use_premium_proxies:
+      example: false
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-SlackSyncRequest-properties-tags:
       example: {}
       properties: {}
@@ -17134,6 +17252,10 @@ components:
       type: boolean
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-WebscrapeRequest-properties-store_file_only:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WebscrapeRequest-properties-use_premium_proxies:
       example: false
       type: boolean
       x-do-not-generate: true
@@ -19209,6 +19331,33 @@ components:
           nullable: true
           title: Max Files Per Upload
           type: integer
+        max_characters:
+          description: "Custom character upload limit for the user over *all* user's\
+            \ files across all uploads. \n        If set, then the user will not be\
+            \ allowed to upload more characters than this limit. If not set, or if\
+            \ set to -1,\n        then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters
+          type: integer
+        max_characters_per_file:
+          description: "A single file upload from the user can not exceed this character\
+            \ limit.\n        If set, then the file will not be synced if it exceeds\
+            \ this limit. If not set, or if set to -1, then the \n        user will\
+            \ have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per File
+          type: integer
+        max_characters_per_upload:
+          description: "Custom character upload limit for the user across a single\
+            \ upload.\n        If set, then the user won't be able to sync more than\
+            \ this many characters in one upload. \n        If not set, or if set\
+            \ to -1, then the user will have no limit."
+          minimum: -1
+          nullable: true
+          title: Max Characters Per Upload
+          type: integer
         customer_ids:
           description: List of organization supplied user IDs
           items:
@@ -20097,6 +20246,17 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-store_file_only
+        use_premium_proxies:
+          default: false
+          description: "If the default proxies are blocked and not returning results,\
+            \ this flag can be enabled to use \n            alternate proxies (residential\
+            \ and office). Scrapes might take longer to finish with this flag enabled.\n\
+            \        "
+          example: false
+          title: Use Premium Proxies
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-SitemapScrapeRequest-properties-use_premium_proxies
       required:
       - url
       type: object

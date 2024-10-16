@@ -1682,6 +1682,15 @@ operation_parameter_map = {
             {
                 'name': 'max_files_per_upload'
             },
+            {
+                'name': 'max_characters'
+            },
+            {
+                'name': 'max_characters_per_file'
+            },
+            {
+                'name': 'max_characters_per_upload'
+            },
         ]
     },
     '/fetch_urls-GET': {
@@ -1773,6 +1782,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'store_file_only'
+            },
+            {
+                'name': 'use_premium_proxies'
             },
         ]
     },

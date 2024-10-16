@@ -1688,6 +1688,15 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'max_files_per_upload'
             },
+            {
+                name: 'max_characters'
+            },
+            {
+                name: 'max_characters_per_file'
+            },
+            {
+                name: 'max_characters_per_upload'
+            },
         ]
     },
     '/fetch_urls-GET': {
@@ -1779,6 +1788,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'store_file_only'
+            },
+            {
+                name: 'use_premium_proxies'
             },
         ]
     },

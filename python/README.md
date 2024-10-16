@@ -4303,6 +4303,9 @@ update_users_response = carbon.users.update_users(
     auto_sync_enabled_sources=["string_example"],
     max_files=-1,
     max_files_per_upload=-1,
+    max_characters=-1,
+    max_characters_per_file=-1,
+    max_characters_per_upload=-1,
 )
 ```
 
@@ -4322,6 +4325,18 @@ Custom file upload limit for the user over *all* user's files across all uploads
 ##### max_files_per_upload: `Optional[int]`<a id="max_files_per_upload-optionalint"></a>
 
 Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
+
+##### max_characters: `Optional[int]`<a id="max_characters-optionalint"></a>
+
+Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+
+##### max_characters_per_file: `Optional[int]`<a id="max_characters_per_file-optionalint"></a>
+
+A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+
+##### max_characters_per_upload: `Optional[int]`<a id="max_characters_per_upload-optionalint"></a>
+
+Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -4503,6 +4518,7 @@ scrape_sitemap_response = carbon.utilities.scrape_sitemap(
     download_css_and_media=False,
     generate_chunks_only=False,
     store_file_only=False,
+    use_premium_proxies=False,
 )
 ```
 
@@ -4552,6 +4568,10 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 
 If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 
+##### use_premium_proxies: `bool`<a id="use_premium_proxies-bool"></a>
+
+If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
 [`SitemapScrapeRequest`](./carbon/type/sitemap_scrape_request.py)
@@ -4597,6 +4617,7 @@ scrape_web_response = carbon.utilities.scrape_web(
             "download_css_and_media": False,
             "generate_chunks_only": False,
             "store_file_only": False,
+            "use_premium_proxies": False,
         }
     ],
 )

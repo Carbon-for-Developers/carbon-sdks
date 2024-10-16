@@ -41,6 +41,8 @@ type SitemapScrapeRequest struct {
 	GenerateChunksOnly *bool `json:"generate_chunks_only,omitempty"`
 	// If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
 	StoreFileOnly *bool `json:"store_file_only,omitempty"`
+	// If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+	UsePremiumProxies *bool `json:"use_premium_proxies,omitempty"`
 }
 
 // NewSitemapScrapeRequest instantiates a new SitemapScrapeRequest object
@@ -68,6 +70,8 @@ func NewSitemapScrapeRequest(url string) *SitemapScrapeRequest {
 	this.GenerateChunksOnly = &generateChunksOnly
 	var storeFileOnly bool = false
 	this.StoreFileOnly = &storeFileOnly
+	var usePremiumProxies bool = false
+	this.UsePremiumProxies = &usePremiumProxies
 	return &this
 }
 
@@ -94,6 +98,8 @@ func NewSitemapScrapeRequestWithDefaults() *SitemapScrapeRequest {
 	this.GenerateChunksOnly = &generateChunksOnly
 	var storeFileOnly bool = false
 	this.StoreFileOnly = &storeFileOnly
+	var usePremiumProxies bool = false
+	this.UsePremiumProxies = &usePremiumProxies
 	return &this
 }
 
@@ -784,6 +790,38 @@ func (o *SitemapScrapeRequest) SetStoreFileOnly(v bool) {
 	o.StoreFileOnly = &v
 }
 
+// GetUsePremiumProxies returns the UsePremiumProxies field value if set, zero value otherwise.
+func (o *SitemapScrapeRequest) GetUsePremiumProxies() bool {
+	if o == nil || isNil(o.UsePremiumProxies) {
+		var ret bool
+		return ret
+	}
+	return *o.UsePremiumProxies
+}
+
+// GetUsePremiumProxiesOk returns a tuple with the UsePremiumProxies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SitemapScrapeRequest) GetUsePremiumProxiesOk() (*bool, bool) {
+	if o == nil || isNil(o.UsePremiumProxies) {
+    return nil, false
+	}
+	return o.UsePremiumProxies, true
+}
+
+// HasUsePremiumProxies returns a boolean if a field has been set.
+func (o *SitemapScrapeRequest) HasUsePremiumProxies() bool {
+	if o != nil && !isNil(o.UsePremiumProxies) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsePremiumProxies gets a reference to the given bool and assigns it to the UsePremiumProxies field.
+func (o *SitemapScrapeRequest) SetUsePremiumProxies(v bool) {
+	o.UsePremiumProxies = &v
+}
+
 func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -842,6 +880,9 @@ func (o SitemapScrapeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.StoreFileOnly) {
 		toSerialize["store_file_only"] = o.StoreFileOnly
+	}
+	if !isNil(o.UsePremiumProxies) {
+		toSerialize["use_premium_proxies"] = o.UsePremiumProxies
 	}
 	return json.Marshal(toSerialize)
 }

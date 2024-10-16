@@ -11595,6 +11595,12 @@
             "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
             "type": "boolean",
             "default": false
+          },
+          "use_premium_proxies": {
+            "title": "Use Premium Proxies",
+            "description": "If the default proxies are blocked and not returning results, this flag can be enabled to use \n            alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.\n        ",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -12130,6 +12136,27 @@
             "minimum": -1,
             "nullable": true
           },
+          "max_characters": {
+            "title": "Max Characters",
+            "description": "Custom character upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_file": {
+            "title": "Max Characters Per File",
+            "description": "A single file upload from the user can not exceed this character limit.\n        If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the \n        user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_upload": {
+            "title": "Max Characters Per Upload",
+            "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
           "customer_ids": {
             "title": "Customer Ids",
             "description": "List of organization supplied user IDs",
@@ -12306,6 +12333,27 @@
           "max_files_per_upload": {
             "title": "Max Files Per Upload",
             "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters": {
+            "title": "Max Characters",
+            "description": "Custom character upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_file": {
+            "title": "Max Characters Per File",
+            "description": "A single file upload from the user can not exceed this character limit.\n        If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the \n        user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_upload": {
+            "title": "Max Characters Per Upload",
+            "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit.",
             "type": "integer",
             "minimum": -1,
             "nullable": true
@@ -13151,6 +13199,12 @@
             "description": "If this flag is enabled, the file will be stored with Carbon, but no processing will be done.",
             "type": "boolean",
             "default": false
+          },
+          "use_premium_proxies": {
+            "title": "Use Premium Proxies",
+            "description": "If the default proxies are blocked and not returning results, this flag can be enabled to use \n            alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.\n        ",
+            "type": "boolean",
+            "default": false
           }
         },
         "type": "object",
@@ -13940,6 +13994,27 @@
           "max_files_per_upload": {
             "title": "Max Files Per Upload",
             "description": "Custom file upload limit for the user across a single upload.\n        If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,\n        or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters": {
+            "title": "Max Characters",
+            "description": "Custom character upload limit for the user over *all* user's files across all uploads. \n        If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,\n        then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_file": {
+            "title": "Max Characters Per File",
+            "description": "A single file upload from the user can not exceed this character limit.\n        If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the \n        user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "max_characters_per_upload": {
+            "title": "Max Characters Per Upload",
+            "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit.",
             "type": "integer",
             "minimum": -1,
             "nullable": true

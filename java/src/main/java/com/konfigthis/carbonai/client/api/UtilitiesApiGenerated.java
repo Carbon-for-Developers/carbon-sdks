@@ -841,6 +841,7 @@ public class UtilitiesApiGenerated {
         Boolean downloadCssAndMedia;
         Boolean generateChunksOnly;
         Boolean storeFileOnly;
+        Boolean usePremiumProxies;
 
         public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
@@ -1027,6 +1028,16 @@ public class UtilitiesApiGenerated {
         }
         
         /**
+         * Set usePremiumProxies
+         * @param usePremiumProxies If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.          (optional, default to false)
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
+         */
+        public UtilitiesApi.ScrapeSitemapRequestBuilder usePremiumProxies(Boolean usePremiumProxies) {
+            this.usePremiumProxies = usePremiumProxies;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
+        }
+        
+        /**
          * Build call for scrapeSitemap
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1063,6 +1074,7 @@ public class UtilitiesApiGenerated {
             sitemapScrapeRequest.downloadCssAndMedia(this.downloadCssAndMedia);
             sitemapScrapeRequest.generateChunksOnly(this.generateChunksOnly);
             sitemapScrapeRequest.storeFileOnly(this.storeFileOnly);
+            sitemapScrapeRequest.usePremiumProxies(this.usePremiumProxies);
             return sitemapScrapeRequest;
         }
 

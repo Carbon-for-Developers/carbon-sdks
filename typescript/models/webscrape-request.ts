@@ -127,5 +127,11 @@ export interface WebscrapeRequest {
      * @memberof WebscrapeRequest
      */
     'store_file_only'?: boolean;
+    /**
+     * If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+     * @type {boolean}
+     * @memberof WebscrapeRequest
+     */
+    'use_premium_proxies'?: boolean;
 }
 

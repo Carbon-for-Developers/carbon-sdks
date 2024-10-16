@@ -416,13 +416,19 @@ module Carbon
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
     # @param max_files [Integer] Custom file upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1, then the user will have no limit.
     # @param max_files_per_upload [Integer] Custom file upload limit for the user across a single upload. If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters [Integer] Custom character upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters_per_file [Integer] A single file upload from the user can not exceed this character limit. If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters_per_upload [Integer] Custom character upload limit for the user across a single upload. If set, then the user won't be able to sync more than this many characters in one upload. If not set, or if set to -1, then the user will have no limit.
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
+    def update_users(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, max_characters: SENTINEL, max_characters_per_file: SENTINEL, max_characters_per_upload: SENTINEL, extra: {})
       _body = {}
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
       _body[:max_files] = max_files if max_files != SENTINEL
       _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
+      _body[:max_characters] = max_characters if max_characters != SENTINEL
+      _body[:max_characters_per_file] = max_characters_per_file if max_characters_per_file != SENTINEL
+      _body[:max_characters_per_upload] = max_characters_per_upload if max_characters_per_upload != SENTINEL
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       update_users_input = _body
       api_response = update_users_with_http_info_impl(update_users_input, extra)
@@ -435,13 +441,19 @@ module Carbon
     # @param auto_sync_enabled_sources [AutoSyncEnabledSourcesProperty] 
     # @param max_files [Integer] Custom file upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1, then the user will have no limit.
     # @param max_files_per_upload [Integer] Custom file upload limit for the user across a single upload. If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters [Integer] Custom character upload limit for the user over *all* user's files across all uploads. If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters_per_file [Integer] A single file upload from the user can not exceed this character limit. If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the user will have no limit.
+    # @param max_characters_per_upload [Integer] Custom character upload limit for the user across a single upload. If set, then the user won't be able to sync more than this many characters in one upload. If not set, or if set to -1, then the user will have no limit.
     # @param body [UpdateUsersInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, extra: {})
+    def update_users_with_http_info(customer_ids:, auto_sync_enabled_sources: SENTINEL, max_files: SENTINEL, max_files_per_upload: SENTINEL, max_characters: SENTINEL, max_characters_per_file: SENTINEL, max_characters_per_upload: SENTINEL, extra: {})
       _body = {}
       _body[:auto_sync_enabled_sources] = auto_sync_enabled_sources if auto_sync_enabled_sources != SENTINEL
       _body[:max_files] = max_files if max_files != SENTINEL
       _body[:max_files_per_upload] = max_files_per_upload if max_files_per_upload != SENTINEL
+      _body[:max_characters] = max_characters if max_characters != SENTINEL
+      _body[:max_characters_per_file] = max_characters_per_file if max_characters_per_file != SENTINEL
+      _body[:max_characters_per_upload] = max_characters_per_upload if max_characters_per_upload != SENTINEL
       _body[:customer_ids] = customer_ids if customer_ids != SENTINEL
       update_users_input = _body
       update_users_with_http_info_impl(update_users_input, extra)

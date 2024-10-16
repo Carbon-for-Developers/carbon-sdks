@@ -254,6 +254,9 @@ func main() {
     updateUsersInput.SetAutoSyncEnabledSources(autoSyncEnabledSources)
     updateUsersInput.SetMaxFiles(null)
     updateUsersInput.SetMaxFilesPerUpload(null)
+    updateUsersInput.SetMaxCharacters(null)
+    updateUsersInput.SetMaxCharactersPerFile(null)
+    updateUsersInput.SetMaxCharactersPerUpload(null)
     
     request := client.UsersApi.UpdateUsers(
         updateUsersInput,

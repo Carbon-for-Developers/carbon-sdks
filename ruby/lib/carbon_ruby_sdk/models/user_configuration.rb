@@ -19,12 +19,24 @@ module Carbon
     # Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
     attr_accessor :max_files_per_upload
 
+    # Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+    attr_accessor :max_characters
+
+    # A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+    attr_accessor :max_characters_per_file
+
+    # Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+    attr_accessor :max_characters_per_upload
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources',
         :'max_files' => :'max_files',
-        :'max_files_per_upload' => :'max_files_per_upload'
+        :'max_files_per_upload' => :'max_files_per_upload',
+        :'max_characters' => :'max_characters',
+        :'max_characters_per_file' => :'max_characters_per_file',
+        :'max_characters_per_upload' => :'max_characters_per_upload'
       }
     end
 
@@ -38,7 +50,10 @@ module Carbon
       {
         :'auto_sync_enabled_sources' => :'AutoSyncEnabledSourcesProperty',
         :'max_files' => :'Integer',
-        :'max_files_per_upload' => :'Integer'
+        :'max_files_per_upload' => :'Integer',
+        :'max_characters' => :'Integer',
+        :'max_characters_per_file' => :'Integer',
+        :'max_characters_per_upload' => :'Integer'
       }
     end
 
@@ -47,7 +62,10 @@ module Carbon
       Set.new([
         :'auto_sync_enabled_sources',
         :'max_files',
-        :'max_files_per_upload'
+        :'max_files_per_upload',
+        :'max_characters',
+        :'max_characters_per_file',
+        :'max_characters_per_upload'
       ])
     end
 
@@ -77,6 +95,18 @@ module Carbon
       if attributes.key?(:'max_files_per_upload')
         self.max_files_per_upload = attributes[:'max_files_per_upload']
       end
+
+      if attributes.key?(:'max_characters')
+        self.max_characters = attributes[:'max_characters']
+      end
+
+      if attributes.key?(:'max_characters_per_file')
+        self.max_characters_per_file = attributes[:'max_characters_per_file']
+      end
+
+      if attributes.key?(:'max_characters_per_upload')
+        self.max_characters_per_upload = attributes[:'max_characters_per_upload']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,6 +121,18 @@ module Carbon
         invalid_properties.push('invalid value for "max_files_per_upload", must be greater than or equal to -1.')
       end
 
+      if !@max_characters.nil? && @max_characters < -1
+        invalid_properties.push('invalid value for "max_characters", must be greater than or equal to -1.')
+      end
+
+      if !@max_characters_per_file.nil? && @max_characters_per_file < -1
+        invalid_properties.push('invalid value for "max_characters_per_file", must be greater than or equal to -1.')
+      end
+
+      if !@max_characters_per_upload.nil? && @max_characters_per_upload < -1
+        invalid_properties.push('invalid value for "max_characters_per_upload", must be greater than or equal to -1.')
+      end
+
       invalid_properties
     end
 
@@ -99,6 +141,9 @@ module Carbon
     def valid?
       return false if !@max_files.nil? && @max_files < -1
       return false if !@max_files_per_upload.nil? && @max_files_per_upload < -1
+      return false if !@max_characters.nil? && @max_characters < -1
+      return false if !@max_characters_per_file.nil? && @max_characters_per_file < -1
+      return false if !@max_characters_per_upload.nil? && @max_characters_per_upload < -1
       true
     end
 
@@ -122,6 +167,36 @@ module Carbon
       @max_files_per_upload = max_files_per_upload
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] max_characters Value to be assigned
+    def max_characters=(max_characters)
+      if !max_characters.nil? && max_characters < -1
+        fail ArgumentError, 'invalid value for "max_characters", must be greater than or equal to -1.'
+      end
+
+      @max_characters = max_characters
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_characters_per_file Value to be assigned
+    def max_characters_per_file=(max_characters_per_file)
+      if !max_characters_per_file.nil? && max_characters_per_file < -1
+        fail ArgumentError, 'invalid value for "max_characters_per_file", must be greater than or equal to -1.'
+      end
+
+      @max_characters_per_file = max_characters_per_file
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] max_characters_per_upload Value to be assigned
+    def max_characters_per_upload=(max_characters_per_upload)
+      if !max_characters_per_upload.nil? && max_characters_per_upload < -1
+        fail ArgumentError, 'invalid value for "max_characters_per_upload", must be greater than or equal to -1.'
+      end
+
+      @max_characters_per_upload = max_characters_per_upload
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -129,7 +204,10 @@ module Carbon
       self.class == o.class &&
           auto_sync_enabled_sources == o.auto_sync_enabled_sources &&
           max_files == o.max_files &&
-          max_files_per_upload == o.max_files_per_upload
+          max_files_per_upload == o.max_files_per_upload &&
+          max_characters == o.max_characters &&
+          max_characters_per_file == o.max_characters_per_file &&
+          max_characters_per_upload == o.max_characters_per_upload
     end
 
     # @see the `==` method
@@ -141,7 +219,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_sync_enabled_sources, max_files, max_files_per_upload].hash
+      [auto_sync_enabled_sources, max_files, max_files_per_upload, max_characters, max_characters_per_file, max_characters_per_upload].hash
     end
 
     # Builds the object from hash
