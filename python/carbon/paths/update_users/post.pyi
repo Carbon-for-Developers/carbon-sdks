@@ -117,6 +117,9 @@ class BaseApi(api_client.Api):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -126,6 +129,12 @@ class BaseApi(api_client.Api):
             _body["max_files"] = max_files
         if max_files_per_upload is not None:
             _body["max_files_per_upload"] = max_files_per_upload
+        if max_characters is not None:
+            _body["max_characters"] = max_characters
+        if max_characters_per_file is not None:
+            _body["max_characters_per_file"] = max_characters_per_file
+        if max_characters_per_upload is not None:
+            _body["max_characters_per_upload"] = max_characters_per_upload
         if customer_ids is not None:
             _body["customer_ids"] = customer_ids
         args.body = _body
@@ -339,6 +348,9 @@ class UpdateUsersRaw(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -350,6 +362,9 @@ class UpdateUsersRaw(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
         )
         return await self._aupdate_users_oapg(
             body=args.body,
@@ -362,6 +377,9 @@ class UpdateUsersRaw(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -372,6 +390,9 @@ class UpdateUsersRaw(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
         )
         return self._update_users_oapg(
             body=args.body,
@@ -385,6 +406,9 @@ class UpdateUsers(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -393,6 +417,9 @@ class UpdateUsers(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
             **kwargs,
         )
         if validate:
@@ -406,6 +433,9 @@ class UpdateUsers(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.update_users(
@@ -413,6 +443,9 @@ class UpdateUsers(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -428,6 +461,9 @@ class ApiForpost(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -439,6 +475,9 @@ class ApiForpost(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
         )
         return await self._aupdate_users_oapg(
             body=args.body,
@@ -451,6 +490,9 @@ class ApiForpost(BaseApi):
         auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
+        max_characters: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
+        max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -461,6 +503,9 @@ class ApiForpost(BaseApi):
             auto_sync_enabled_sources=auto_sync_enabled_sources,
             max_files=max_files,
             max_files_per_upload=max_files_per_upload,
+            max_characters=max_characters,
+            max_characters_per_file=max_characters_per_file,
+            max_characters_per_upload=max_characters_per_upload,
         )
         return self._update_users_oapg(
             body=args.body,

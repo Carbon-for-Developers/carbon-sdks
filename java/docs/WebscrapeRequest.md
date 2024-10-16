@@ -25,6 +25,7 @@
 |**downloadCssAndMedia** | **Boolean** | Whether the scraper should download css and media from the page (images, fonts, etc). Scrapes          might take longer to finish with this flag enabled, but the success rate is improved. |  [optional] |
 |**generateChunksOnly** | **Boolean** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. |  [optional] |
 |**storeFileOnly** | **Boolean** | If this flag is enabled, the file will be stored with Carbon, but no processing will be done. |  [optional] |
+|**usePremiumProxies** | **Boolean** | If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.          |  [optional] |
 
 
 

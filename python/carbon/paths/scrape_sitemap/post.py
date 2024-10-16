@@ -158,6 +158,7 @@ class BaseApi(api_client.Api):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -199,6 +200,8 @@ class BaseApi(api_client.Api):
             _body["generate_chunks_only"] = generate_chunks_only
         if store_file_only is not None:
             _body["store_file_only"] = store_file_only
+        if use_premium_proxies is not None:
+            _body["use_premium_proxies"] = use_premium_proxies
         args.body = _body
         return args
 
@@ -425,6 +428,7 @@ class ScrapeSitemapRaw(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -451,6 +455,7 @@ class ScrapeSitemapRaw(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -478,6 +483,7 @@ class ScrapeSitemapRaw(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -503,6 +509,7 @@ class ScrapeSitemapRaw(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,
@@ -531,6 +538,7 @@ class ScrapeSitemap(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
         validate: bool = False,
         **kwargs,
     ) -> Dictionary:
@@ -554,6 +562,7 @@ class ScrapeSitemap(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
             **kwargs,
         )
         if validate:
@@ -582,6 +591,7 @@ class ScrapeSitemap(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
         validate: bool = False,
     ) -> Dictionary:
         raw_response = self.raw.scrape_sitemap(
@@ -604,6 +614,7 @@ class ScrapeSitemap(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
         )
         if validate:
             return Dictionary(**raw_response.body)
@@ -634,6 +645,7 @@ class ApiForpost(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -660,6 +672,7 @@ class ApiForpost(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
         )
         return await self._ascrape_sitemap_oapg(
             body=args.body,
@@ -687,6 +700,7 @@ class ApiForpost(BaseApi):
         download_css_and_media: typing.Optional[typing.Optional[bool]] = None,
         generate_chunks_only: typing.Optional[bool] = None,
         store_file_only: typing.Optional[bool] = None,
+        use_premium_proxies: typing.Optional[bool] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -712,6 +726,7 @@ class ApiForpost(BaseApi):
             download_css_and_media=download_css_and_media,
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
+            use_premium_proxies=use_premium_proxies,
         )
         return self._scrape_sitemap_oapg(
             body=args.body,

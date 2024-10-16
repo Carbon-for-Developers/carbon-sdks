@@ -4071,6 +4071,9 @@ GenericSuccessResponse result = client
         .autoSyncEnabledSources(autoSyncEnabledSources)
         .maxFiles(maxFiles)
         .maxFilesPerUpload(maxFilesPerUpload)
+        .maxCharacters(maxCharacters)
+        .maxCharactersPerFile(maxCharactersPerFile)
+        .maxCharactersPerUpload(maxCharactersPerUpload)
         .execute();
 ```
 
@@ -4089,6 +4092,18 @@ Custom file upload limit for the user over *all* user's files across all uploads
 ##### max_files_per_upload: `Integer`<a id="max_files_per_upload-integer"></a>
 
 Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
+
+##### max_characters: `Integer`<a id="max_characters-integer"></a>
+
+Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+
+##### max_characters_per_file: `Integer`<a id="max_characters_per_file-integer"></a>
+
+A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+
+##### max_characters_per_upload: `Integer`<a id="max_characters_per_upload-integer"></a>
+
+Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4272,6 +4287,7 @@ Object result = client
         .downloadCssAndMedia(downloadCssAndMedia)
         .generateChunksOnly(generateChunksOnly)
         .storeFileOnly(storeFileOnly)
+        .usePremiumProxies(usePremiumProxies)
         .execute();
 ```
 
@@ -4326,6 +4342,10 @@ If this flag is enabled, the file will be chunked and stored with Carbon,       
 ##### store_file_only: `Boolean`<a id="store_file_only-boolean"></a>
 
 If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
+
+##### use_premium_proxies: `Boolean`<a id="use_premium_proxies-boolean"></a>
+
+If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

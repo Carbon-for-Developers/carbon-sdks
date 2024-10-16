@@ -51,6 +51,9 @@ module Carbon
     # If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     attr_accessor :store_file_only
 
+    # If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+    attr_accessor :use_premium_proxies
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -71,7 +74,8 @@ module Carbon
         :'url_paths_to_include' => :'url_paths_to_include',
         :'download_css_and_media' => :'download_css_and_media',
         :'generate_chunks_only' => :'generate_chunks_only',
-        :'store_file_only' => :'store_file_only'
+        :'store_file_only' => :'store_file_only',
+        :'use_premium_proxies' => :'use_premium_proxies'
       }
     end
 
@@ -100,7 +104,8 @@ module Carbon
         :'url_paths_to_include' => :'Array<String>',
         :'download_css_and_media' => :'Boolean',
         :'generate_chunks_only' => :'Boolean',
-        :'store_file_only' => :'Boolean'
+        :'store_file_only' => :'Boolean',
+        :'use_premium_proxies' => :'Boolean'
       }
     end
 
@@ -244,6 +249,12 @@ module Carbon
       else
         self.store_file_only = false
       end
+
+      if attributes.key?(:'use_premium_proxies')
+        self.use_premium_proxies = attributes[:'use_premium_proxies']
+      else
+        self.use_premium_proxies = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -331,7 +342,8 @@ module Carbon
           url_paths_to_include == o.url_paths_to_include &&
           download_css_and_media == o.download_css_and_media &&
           generate_chunks_only == o.generate_chunks_only &&
-          store_file_only == o.store_file_only
+          store_file_only == o.store_file_only &&
+          use_premium_proxies == o.use_premium_proxies
     end
 
     # @see the `==` method
@@ -343,7 +355,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, download_css_and_media, generate_chunks_only, store_file_only].hash
+      [tags, url, recursion_depth, max_pages_to_scrape, chunk_size, chunk_overlap, skip_embedding_generation, enable_auto_sync, generate_sparse_vectors, prepend_filename_to_chunks, html_tags_to_skip, css_classes_to_skip, css_selectors_to_skip, embedding_model, url_paths_to_include, download_css_and_media, generate_chunks_only, store_file_only, use_premium_proxies].hash
     end
 
     # Builds the object from hash

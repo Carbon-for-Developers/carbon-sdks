@@ -127,10 +127,16 @@ public class UsersApiTest {
         Object autoSyncEnabledSources = null;
         Integer maxFiles = null;
         Integer maxFilesPerUpload = null;
+        Integer maxCharacters = null;
+        Integer maxCharactersPerFile = null;
+        Integer maxCharactersPerUpload = null;
         GenericSuccessResponse response = api.updateUsers(customerIds)
                 .autoSyncEnabledSources(autoSyncEnabledSources)
                 .maxFiles(maxFiles)
                 .maxFilesPerUpload(maxFilesPerUpload)
+                .maxCharacters(maxCharacters)
+                .maxCharactersPerFile(maxCharactersPerFile)
+                .maxCharactersPerUpload(maxCharactersPerUpload)
                 .execute();
         // TODO: test validations
     }

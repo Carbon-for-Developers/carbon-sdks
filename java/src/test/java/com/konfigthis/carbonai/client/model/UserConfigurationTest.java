@@ -63,4 +63,28 @@ public class UserConfigurationTest {
         // TODO: test maxFilesPerUpload
     }
 
+    /**
+     * Test the property 'maxCharacters'
+     */
+    @Test
+    public void maxCharactersTest() {
+        // TODO: test maxCharacters
+    }
+
+    /**
+     * Test the property 'maxCharactersPerFile'
+     */
+    @Test
+    public void maxCharactersPerFileTest() {
+        // TODO: test maxCharactersPerFile
+    }
+
+    /**
+     * Test the property 'maxCharactersPerUpload'
+     */
+    @Test
+    public void maxCharactersPerUploadTest() {
+        // TODO: test maxCharactersPerUpload
+    }
+
 }

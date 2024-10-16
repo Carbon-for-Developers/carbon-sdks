@@ -139,6 +139,7 @@ public class UtilitiesApiTest {
         Boolean downloadCssAndMedia = null;
         Boolean generateChunksOnly = null;
         Boolean storeFileOnly = null;
+        Boolean usePremiumProxies = null;
         Object response = api.scrapeSitemap(url)
                 .tags(tags)
                 .maxPagesToScrape(maxPagesToScrape)
@@ -158,6 +159,7 @@ public class UtilitiesApiTest {
                 .downloadCssAndMedia(downloadCssAndMedia)
                 .generateChunksOnly(generateChunksOnly)
                 .storeFileOnly(storeFileOnly)
+                .usePremiumProxies(usePremiumProxies)
                 .execute();
         // TODO: test validations
     }

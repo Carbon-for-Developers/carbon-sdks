@@ -386,6 +386,9 @@ export const UsersApiFp = function(configuration?: Configuration) {
                 auto_sync_enabled_sources: requestParameters.auto_sync_enabled_sources,
                 max_files: requestParameters.max_files,
                 max_files_per_upload: requestParameters.max_files_per_upload,
+                max_characters: requestParameters.max_characters,
+                max_characters_per_file: requestParameters.max_characters_per_file,
+                max_characters_per_upload: requestParameters.max_characters_per_upload,
                 customer_ids: requestParameters.customer_ids
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);

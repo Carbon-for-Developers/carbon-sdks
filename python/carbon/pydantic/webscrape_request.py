@@ -62,6 +62,9 @@ class WebscrapeRequest(BaseModel):
     # If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     store_file_only: typing.Optional[bool] = Field(None, alias='store_file_only')
 
+    # If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+    use_premium_proxies: typing.Optional[bool] = Field(None, alias='use_premium_proxies')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

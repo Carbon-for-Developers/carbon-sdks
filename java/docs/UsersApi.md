@@ -442,6 +442,9 @@ public class Example {
     Object autoSyncEnabledSources = null;
     Integer maxFiles = 56; // Custom file upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit.
     Integer maxFilesPerUpload = 56; // Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
+    Integer maxCharacters = 56; // Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+    Integer maxCharactersPerFile = 56; // A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+    Integer maxCharactersPerUpload = 56; // Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
     try {
       GenericSuccessResponse result = client
               .users
@@ -449,6 +452,9 @@ public class Example {
               .autoSyncEnabledSources(autoSyncEnabledSources)
               .maxFiles(maxFiles)
               .maxFilesPerUpload(maxFilesPerUpload)
+              .maxCharacters(maxCharacters)
+              .maxCharactersPerFile(maxCharactersPerFile)
+              .maxCharactersPerUpload(maxCharactersPerUpload)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -468,6 +474,9 @@ public class Example {
               .autoSyncEnabledSources(autoSyncEnabledSources)
               .maxFiles(maxFiles)
               .maxFilesPerUpload(maxFilesPerUpload)
+              .maxCharacters(maxCharacters)
+              .maxCharactersPerFile(maxCharactersPerFile)
+              .maxCharactersPerUpload(maxCharactersPerUpload)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

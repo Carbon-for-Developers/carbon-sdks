@@ -886,6 +886,9 @@ public class UsersApiGenerated {
         Object autoSyncEnabledSources;
         Integer maxFiles;
         Integer maxFilesPerUpload;
+        Integer maxCharacters;
+        Integer maxCharactersPerFile;
+        Integer maxCharactersPerUpload;
 
         public UpdateUsersRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;
@@ -922,6 +925,36 @@ public class UsersApiGenerated {
         }
         
         /**
+         * Set maxCharacters
+         * @param maxCharacters Custom character upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit. (optional)
+         * @return UsersApi.UpdateUsersRequestBuilder
+         */
+        public UsersApi.UpdateUsersRequestBuilder maxCharacters(Integer maxCharacters) {
+            this.maxCharacters = maxCharacters;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
+        }
+        
+        /**
+         * Set maxCharactersPerFile
+         * @param maxCharactersPerFile A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit. (optional)
+         * @return UsersApi.UpdateUsersRequestBuilder
+         */
+        public UsersApi.UpdateUsersRequestBuilder maxCharactersPerFile(Integer maxCharactersPerFile) {
+            this.maxCharactersPerFile = maxCharactersPerFile;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
+        }
+        
+        /**
+         * Set maxCharactersPerUpload
+         * @param maxCharactersPerUpload Custom character upload limit for the user across a single upload.         If set, then the user won&#39;t be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit. (optional)
+         * @return UsersApi.UpdateUsersRequestBuilder
+         */
+        public UsersApi.UpdateUsersRequestBuilder maxCharactersPerUpload(Integer maxCharactersPerUpload) {
+            this.maxCharactersPerUpload = maxCharactersPerUpload;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
+        }
+        
+        /**
          * Build call for updateUsers
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -942,6 +975,9 @@ public class UsersApiGenerated {
             updateUsersInput.autoSyncEnabledSources(this.autoSyncEnabledSources);
             updateUsersInput.maxFiles(this.maxFiles);
             updateUsersInput.maxFilesPerUpload(this.maxFilesPerUpload);
+            updateUsersInput.maxCharacters(this.maxCharacters);
+            updateUsersInput.maxCharactersPerFile(this.maxCharactersPerFile);
+            updateUsersInput.maxCharactersPerUpload(this.maxCharactersPerUpload);
             updateUsersInput.customerIds(this.customerIds);
             return updateUsersInput;
         }

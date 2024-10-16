@@ -127,6 +127,10 @@ public class WebscrapeRequest {
   @SerializedName(SERIALIZED_NAME_STORE_FILE_ONLY)
   private Boolean storeFileOnly = false;
 
+  public static final String SERIALIZED_NAME_USE_PREMIUM_PROXIES = "use_premium_proxies";
+  @SerializedName(SERIALIZED_NAME_USE_PREMIUM_PROXIES)
+  private Boolean usePremiumProxies = false;
+
   public WebscrapeRequest() {
   }
 
@@ -701,6 +705,35 @@ public class WebscrapeRequest {
     this.storeFileOnly = storeFileOnly;
   }
 
+
+  public WebscrapeRequest usePremiumProxies(Boolean usePremiumProxies) {
+    
+    
+    
+    
+    this.usePremiumProxies = usePremiumProxies;
+    return this;
+  }
+
+   /**
+   * If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+   * @return usePremiumProxies
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         ")
+
+  public Boolean getUsePremiumProxies() {
+    return usePremiumProxies;
+  }
+
+
+  public void setUsePremiumProxies(Boolean usePremiumProxies) {
+    
+    
+    
+    this.usePremiumProxies = usePremiumProxies;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -773,7 +806,8 @@ public class WebscrapeRequest {
         Objects.equals(this.urlPathsToInclude, webscrapeRequest.urlPathsToInclude) &&
         Objects.equals(this.downloadCssAndMedia, webscrapeRequest.downloadCssAndMedia) &&
         Objects.equals(this.generateChunksOnly, webscrapeRequest.generateChunksOnly) &&
-        Objects.equals(this.storeFileOnly, webscrapeRequest.storeFileOnly)&&
+        Objects.equals(this.storeFileOnly, webscrapeRequest.storeFileOnly) &&
+        Objects.equals(this.usePremiumProxies, webscrapeRequest.usePremiumProxies)&&
         Objects.equals(this.additionalProperties, webscrapeRequest.additionalProperties);
   }
 
@@ -783,7 +817,7 @@ public class WebscrapeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, generateChunksOnly, storeFileOnly, additionalProperties);
+    return Objects.hash(tags, url, recursionDepth, maxPagesToScrape, chunkSize, chunkOverlap, skipEmbeddingGeneration, enableAutoSync, generateSparseVectors, prependFilenameToChunks, htmlTagsToSkip, cssClassesToSkip, cssSelectorsToSkip, embeddingModel, urlPathsToInclude, downloadCssAndMedia, generateChunksOnly, storeFileOnly, usePremiumProxies, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -815,6 +849,7 @@ public class WebscrapeRequest {
     sb.append("    downloadCssAndMedia: ").append(toIndentedString(downloadCssAndMedia)).append("\n");
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
     sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
+    sb.append("    usePremiumProxies: ").append(toIndentedString(usePremiumProxies)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -856,6 +891,7 @@ public class WebscrapeRequest {
     openapiFields.add("download_css_and_media");
     openapiFields.add("generate_chunks_only");
     openapiFields.add("store_file_only");
+    openapiFields.add("use_premium_proxies");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

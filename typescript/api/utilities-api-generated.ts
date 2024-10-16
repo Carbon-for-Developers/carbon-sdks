@@ -558,7 +558,8 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
                 urls_to_scrape: requestParameters.urls_to_scrape,
                 download_css_and_media: requestParameters.download_css_and_media,
                 generate_chunks_only: requestParameters.generate_chunks_only,
-                store_file_only: requestParameters.store_file_only
+                store_file_only: requestParameters.store_file_only,
+                use_premium_proxies: requestParameters.use_premium_proxies
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(sitemapScrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

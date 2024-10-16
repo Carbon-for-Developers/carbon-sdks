@@ -67,5 +67,8 @@ class OptionalSitemapScrapeRequest(TypedDict, total=False):
     # If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     store_file_only: bool
 
+    # If the default proxies are blocked and not returning results, this flag can be enabled to use              alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled.         
+    use_premium_proxies: bool
+
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

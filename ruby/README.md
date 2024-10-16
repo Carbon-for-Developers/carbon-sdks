@@ -3848,6 +3848,9 @@ result = carbon.users.update_users(
     ],
   max_files: -1,
   max_files_per_upload: -1,
+  max_characters: -1,
+  max_characters_per_file: -1,
+  max_characters_per_upload: -1,
 )
 p result
 ```
@@ -3867,6 +3870,21 @@ this limit. If not set, or if set to -1, then the user will have no limit.
 Custom file upload limit for the user across a single upload. If set, then the
 user will not be allowed to upload more files than this limit in a single
 upload. If not set, or if set to -1, then the user will have no limit.
+
+##### max_characters: `Integer`<a id="max_characters-integer"></a>
+Custom character upload limit for the user over *all* user's files across all
+uploads. If set, then the user will not be allowed to upload more characters
+than this limit. If not set, or if set to -1, then the user will have no limit.
+
+##### max_characters_per_file: `Integer`<a id="max_characters_per_file-integer"></a>
+A single file upload from the user can not exceed this character limit. If set,
+then the file will not be synced if it exceeds this limit. If not set, or if set
+to -1, then the user will have no limit.
+
+##### max_characters_per_upload: `Integer`<a id="max_characters_per_upload-integer"></a>
+Custom character upload limit for the user across a single upload. If set, then
+the user won't be able to sync more than this many characters in one upload. If
+not set, or if set to -1, then the user will have no limit.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4046,6 +4064,7 @@ result = carbon.utilities.scrape_sitemap(
   download_css_and_media: false,
   generate_chunks_only: false,
   store_file_only: false,
+  use_premium_proxies: false,
 )
 p result
 ```
@@ -4093,6 +4112,11 @@ embeddings will be generated. This overrides the skip_embedding_generation flag.
 If this flag is enabled, the file will be stored with Carbon, but no processing
 will be done.
 
+##### use_premium_proxies: `Boolean`<a id="use_premium_proxies-boolean"></a>
+If the default proxies are blocked and not returning results, this flag can be
+enabled to use alternate proxies (residential and office). Scrapes might take
+longer to finish with this flag enabled.
+
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/scrape_sitemap` `POST`
@@ -4136,6 +4160,7 @@ result = carbon.utilities.scrape_web(
             "download_css_and_media" => false,
             "generate_chunks_only" => false,
             "store_file_only" => false,
+            "use_premium_proxies" => false,
         }
     ],
 )

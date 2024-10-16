@@ -30,6 +30,15 @@ class UpdateUsersInput(BaseModel):
     # Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit.
     max_files_per_upload: typing.Optional[typing.Optional[int]] = Field(None, alias='max_files_per_upload')
 
+    # Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+    max_characters: typing.Optional[typing.Optional[int]] = Field(None, alias='max_characters')
+
+    # A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+    max_characters_per_file: typing.Optional[typing.Optional[int]] = Field(None, alias='max_characters_per_file')
+
+    # Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+    max_characters_per_upload: typing.Optional[typing.Optional[int]] = Field(None, alias='max_characters_per_upload')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -62,6 +62,18 @@ public class UserConfiguration {
   @SerializedName(SERIALIZED_NAME_MAX_FILES_PER_UPLOAD)
   private Integer maxFilesPerUpload;
 
+  public static final String SERIALIZED_NAME_MAX_CHARACTERS = "max_characters";
+  @SerializedName(SERIALIZED_NAME_MAX_CHARACTERS)
+  private Integer maxCharacters;
+
+  public static final String SERIALIZED_NAME_MAX_CHARACTERS_PER_FILE = "max_characters_per_file";
+  @SerializedName(SERIALIZED_NAME_MAX_CHARACTERS_PER_FILE)
+  private Integer maxCharactersPerFile;
+
+  public static final String SERIALIZED_NAME_MAX_CHARACTERS_PER_UPLOAD = "max_characters_per_upload";
+  @SerializedName(SERIALIZED_NAME_MAX_CHARACTERS_PER_UPLOAD)
+  private Integer maxCharactersPerUpload;
+
   public UserConfiguration() {
   }
 
@@ -161,6 +173,108 @@ public class UserConfiguration {
     this.maxFilesPerUpload = maxFilesPerUpload;
   }
 
+
+  public UserConfiguration maxCharacters(Integer maxCharacters) {
+    if (maxCharacters != null && maxCharacters < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharacters. Must be greater than or equal to -1.");
+    }
+    
+    
+    
+    this.maxCharacters = maxCharacters;
+    return this;
+  }
+
+   /**
+   * Custom character upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
+   * minimum: -1
+   * @return maxCharacters
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.")
+
+  public Integer getMaxCharacters() {
+    return maxCharacters;
+  }
+
+
+  public void setMaxCharacters(Integer maxCharacters) {
+    if (maxCharacters != null && maxCharacters < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharacters. Must be greater than or equal to -1.");
+    }
+    
+    
+    this.maxCharacters = maxCharacters;
+  }
+
+
+  public UserConfiguration maxCharactersPerFile(Integer maxCharactersPerFile) {
+    if (maxCharactersPerFile != null && maxCharactersPerFile < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharactersPerFile. Must be greater than or equal to -1.");
+    }
+    
+    
+    
+    this.maxCharactersPerFile = maxCharactersPerFile;
+    return this;
+  }
+
+   /**
+   * A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
+   * minimum: -1
+   * @return maxCharactersPerFile
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.")
+
+  public Integer getMaxCharactersPerFile() {
+    return maxCharactersPerFile;
+  }
+
+
+  public void setMaxCharactersPerFile(Integer maxCharactersPerFile) {
+    if (maxCharactersPerFile != null && maxCharactersPerFile < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharactersPerFile. Must be greater than or equal to -1.");
+    }
+    
+    
+    this.maxCharactersPerFile = maxCharactersPerFile;
+  }
+
+
+  public UserConfiguration maxCharactersPerUpload(Integer maxCharactersPerUpload) {
+    if (maxCharactersPerUpload != null && maxCharactersPerUpload < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharactersPerUpload. Must be greater than or equal to -1.");
+    }
+    
+    
+    
+    this.maxCharactersPerUpload = maxCharactersPerUpload;
+    return this;
+  }
+
+   /**
+   * Custom character upload limit for the user across a single upload.         If set, then the user won&#39;t be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+   * minimum: -1
+   * @return maxCharactersPerUpload
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.")
+
+  public Integer getMaxCharactersPerUpload() {
+    return maxCharactersPerUpload;
+  }
+
+
+  public void setMaxCharactersPerUpload(Integer maxCharactersPerUpload) {
+    if (maxCharactersPerUpload != null && maxCharactersPerUpload < -1) {
+      throw new IllegalArgumentException("Invalid value for maxCharactersPerUpload. Must be greater than or equal to -1.");
+    }
+    
+    
+    this.maxCharactersPerUpload = maxCharactersPerUpload;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -218,7 +332,10 @@ public class UserConfiguration {
     UserConfiguration userConfiguration = (UserConfiguration) o;
     return Objects.equals(this.autoSyncEnabledSources, userConfiguration.autoSyncEnabledSources) &&
         Objects.equals(this.maxFiles, userConfiguration.maxFiles) &&
-        Objects.equals(this.maxFilesPerUpload, userConfiguration.maxFilesPerUpload)&&
+        Objects.equals(this.maxFilesPerUpload, userConfiguration.maxFilesPerUpload) &&
+        Objects.equals(this.maxCharacters, userConfiguration.maxCharacters) &&
+        Objects.equals(this.maxCharactersPerFile, userConfiguration.maxCharactersPerFile) &&
+        Objects.equals(this.maxCharactersPerUpload, userConfiguration.maxCharactersPerUpload)&&
         Objects.equals(this.additionalProperties, userConfiguration.additionalProperties);
   }
 
@@ -228,7 +345,7 @@ public class UserConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncEnabledSources, maxFiles, maxFilesPerUpload, additionalProperties);
+    return Objects.hash(autoSyncEnabledSources, maxFiles, maxFilesPerUpload, maxCharacters, maxCharactersPerFile, maxCharactersPerUpload, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -245,6 +362,9 @@ public class UserConfiguration {
     sb.append("    autoSyncEnabledSources: ").append(toIndentedString(autoSyncEnabledSources)).append("\n");
     sb.append("    maxFiles: ").append(toIndentedString(maxFiles)).append("\n");
     sb.append("    maxFilesPerUpload: ").append(toIndentedString(maxFilesPerUpload)).append("\n");
+    sb.append("    maxCharacters: ").append(toIndentedString(maxCharacters)).append("\n");
+    sb.append("    maxCharactersPerFile: ").append(toIndentedString(maxCharactersPerFile)).append("\n");
+    sb.append("    maxCharactersPerUpload: ").append(toIndentedString(maxCharactersPerUpload)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -271,6 +391,9 @@ public class UserConfiguration {
     openapiFields.add("auto_sync_enabled_sources");
     openapiFields.add("max_files");
     openapiFields.add("max_files_per_upload");
+    openapiFields.add("max_characters");
+    openapiFields.add("max_characters_per_file");
+    openapiFields.add("max_characters_per_upload");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

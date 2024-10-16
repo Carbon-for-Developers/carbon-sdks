@@ -196,4 +196,12 @@ public class SitemapScrapeRequestTest {
         // TODO: test storeFileOnly
     }
 
+    /**
+     * Test the property 'usePremiumProxies'
+     */
+    @Test
+    public void usePremiumProxiesTest() {
+        // TODO: test usePremiumProxies
+    }
+
 }
