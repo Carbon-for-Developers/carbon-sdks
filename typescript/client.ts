@@ -22,6 +22,7 @@ import {
   UsersApi,
   UtilitiesApi,
   WebhooksApi,
+  WhiteLabelApi,
 } from "./api";
 import { Configuration, ConfigurationParameters } from "./configuration";
 import { CarbonCustom } from "./client-custom";
@@ -38,6 +39,7 @@ export class Carbon extends CarbonCustom {
   readonly users: UsersApi;
   readonly utilities: UtilitiesApi;
   readonly webhooks: WebhooksApi;
+  readonly whiteLabel: WhiteLabelApi;
 
   constructor(configurationParameters: ConfigurationParameters = {}) {
     super(configurationParameters);
@@ -53,6 +55,7 @@ export class Carbon extends CarbonCustom {
     this.users = new UsersApi(configuration);
     this.utilities = new UtilitiesApi(configuration);
     this.webhooks = new WebhooksApi(configuration);
+    this.whiteLabel = new WhiteLabelApi(configuration);
   }
 
 }

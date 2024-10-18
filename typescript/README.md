@@ -102,6 +102,10 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.webhooks.addUrl`](#carbonwebhooksaddurl)
   * [`carbon.webhooks.deleteUrl`](#carbonwebhooksdeleteurl)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+  * [`carbon.whiteLabel.create`](#carbonwhitelabelcreate)
+  * [`carbon.whiteLabel.delete`](#carbonwhitelabeldelete)
+  * [`carbon.whiteLabel.list`](#carbonwhitelabellist)
+  * [`carbon.whiteLabel.update`](#carbonwhitelabelupdate)
 
 <!-- tocstop -->
 
@@ -4292,6 +4296,125 @@ const urlsResponse = await carbon.webhooks.urls({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/webhooks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.create`<a id="carbonwhitelabelcreate"></a>
+
+Create White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const createResponse = await carbon.whiteLabel.create([
+  {
+    data_source_type: null,
+    credentials: {
+      client_id: "client_id_example",
+      redirect_uri: "redirect_uri_example",
+    },
+  },
+]);
+```
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`WhiteLabelCreateRequestInner`](./models/white-label-create-request-inner.ts)[]
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/create` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.delete`<a id="carbonwhitelabeldelete"></a>
+
+Delete White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const deleteResponse = await carbon.whiteLabel.delete({
+  ids: [1],
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: `number`[]<a id="ids-number"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/delete` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.list`<a id="carbonwhitelabellist"></a>
+
+List White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const listResponse = await carbon.whiteLabel.list({
+  order_by: "created_at",
+  order_dir: "desc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### order_by: [`WhiteLabelOrderByColumns`](./models/white-label-order-by-columns.ts)<a id="order_by-whitelabelorderbycolumnsmodelswhite-label-order-by-columnsts"></a>
+
+##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
+
+##### filters: [`WhiteLabelFilters`](./models/white-label-filters.ts)<a id="filters-whitelabelfiltersmodelswhite-label-filtersts"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.update`<a id="carbonwhitelabelupdate"></a>
+
+Update White Label
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const updateResponse = await carbon.whiteLabel.update({
+  data_source_type: null,
+  credentials: {
+    client_id: "client_id_example",
+    redirect_uri: "redirect_uri_example",
+  },
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_type: `string`<a id="data_source_type-string"></a>
+
+##### credentials: [`Credentials`](./models/credentials.ts)<a id="credentials-credentialsmodelscredentialsts"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/update` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

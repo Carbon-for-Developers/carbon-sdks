@@ -67,6 +67,7 @@ tags:
     ---
     Employ these endpoints for direct vector searches within our managed vector database or to fetch embeddings for storage in your custom vector store. Additionally, we offer hybrid support for keyword-based searches.
   name: Embeddings
+- name: White Label
 - description: "\n---\nCarbon offers a set of webhooks for a variety of events, listed\
     \ below. Currently, there is no way to choose\nwhich events to receive webhooks\
     \ for - it's on our roadmap to allow for more fine-grained filtering. The steps\n\
@@ -4871,6 +4872,122 @@ paths:
       - Github
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-data-github-issues-issue_number
+  /white_label/create:
+    post:
+      operationId: WhiteLabel_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WhiteLabelCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhiteLabelCreateResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: Create White Labels
+      tags:
+      - White Label
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--white_label-create
+  /white_label/list:
+    post:
+      operationId: WhiteLabel_list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListWhiteLabelRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhiteLabelListResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: List White Labels
+      tags:
+      - White Label
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--white_label-list
+  /white_label/delete:
+    post:
+      operationId: WhiteLabel_delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteWhiteLabelRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhiteLabelDeleteResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: Delete White Labels
+      tags:
+      - White Label
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--white_label-delete
+  /white_label/update:
+    post:
+      operationId: WhiteLabel_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WhiteLabelUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhiteLabelUpdateResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - apiKey: []
+      summary: Update White Label
+      tags:
+      - White Label
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--white_label-update
 components:
   schemas:
     Account:
@@ -6706,6 +6823,23 @@ components:
       - next_cursor
       title: ContactsResponse
       type: object
+    Credentials:
+      properties:
+        client_id:
+          title: Client Id
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+        client_secret:
+          nullable: true
+          title: Client Secret
+          type: string
+      required:
+      - client_id
+      - redirect_uri
+      title: Credentials
+      type: object
     CustomCredentialsType:
       enum:
       - OPENAI
@@ -6965,6 +7099,21 @@ components:
       required:
       - customer_ids
       title: DeleteUsersInput
+      type: object
+    DeleteWhiteLabelRequest:
+      example:
+        ids:
+        - 0
+        - 0
+      properties:
+        ids:
+          items:
+            type: integer
+          title: Ids
+          type: array
+      required:
+      - ids
+      title: DeleteWhiteLabelRequest
       type: object
     DirectoryItem:
       example:
@@ -8752,6 +8901,46 @@ components:
       - source
       title: GongAuthentication
       type: object
+    GoogleDriveCredentials:
+      properties:
+        client_id:
+          title: Client Id
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+        client_secret:
+          nullable: true
+          title: Client Secret
+          type: string
+        api_key:
+          nullable: true
+          title: Api Key
+          type: string
+        file_picker_client_id:
+          nullable: true
+          title: File Picker Client Id
+          type: string
+        file_picker_redirect_uri:
+          nullable: true
+          title: File Picker Redirect Uri
+          type: string
+      required:
+      - client_id
+      - redirect_uri
+      title: GoogleDriveCredentials
+      type: object
+    GoogleDriveWhiteLabelInput:
+      properties:
+        data_source_type:
+          $ref: '#/components/schemas/GoogleDriveWhiteLabelInput_data_source_type'
+        credentials:
+          $ref: '#/components/schemas/GoogleDriveCredentials_Property'
+      required:
+      - credentials
+      - data_source_type
+      title: GoogleDriveWhiteLabelInput
+      type: object
     GuruAuthentication:
       properties:
         source:
@@ -10075,6 +10264,40 @@ components:
           default: created_at
         order_dir:
           default: desc
+    ListWhiteLabelRequest:
+      example:
+        order_dir: null
+        pagination:
+          offset: 0
+          limit: 10
+        order_by: null
+        filters:
+          ids: []
+          data_source_type: []
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/WhiteLabelOrderByColumns'
+        order_dir:
+          $ref: '#/components/schemas/OrderDir'
+        filters:
+          $ref: '#/components/schemas/WhiteLabelFilters'
+      title: ListWhiteLabelRequest
+      type: object
+      x-konfig-properties:
+        pagination:
+          default:
+            limit: 10
+            offset: 0
+        order_by:
+          default: created_at
+        order_dir:
+          default: asc
+        filters:
+          default:
+            data_source_type: []
+            ids: []
     ModifyColdStorageParametersQueryInput:
       example:
         hot_storage_time_to_live: 0
@@ -10592,6 +10815,46 @@ components:
       - access_token
       - source
       title: OneDriveAuthentication
+      type: object
+    OneDriveSharepointCredentials:
+      properties:
+        client_id:
+          title: Client Id
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+        client_secret:
+          nullable: true
+          title: Client Secret
+          type: string
+        file_picker_client_id:
+          nullable: true
+          title: File Picker Client Id
+          type: string
+        file_picker_redirect_uri:
+          nullable: true
+          title: File Picker Redirect Uri
+          type: string
+      required:
+      - client_id
+      - redirect_uri
+      title: OneDriveSharepointCredentials
+      type: object
+    OneDriveSharepointWhiteLabelInput:
+      properties:
+        data_source_type:
+          enum:
+          - ONEDRIVE
+          - SHAREPOINT
+          title: Data Source Type
+          type: string
+        credentials:
+          $ref: '#/components/schemas/OneDriveSharepointCredentials'
+      required:
+      - credentials
+      - data_source_type
+      title: OneDriveSharepointWhiteLabelInput
       type: object
     OpportunitiesOrderBy:
       enum:
@@ -15238,6 +15501,66 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    WhiteLabelFilters:
+      example:
+        ids: []
+        data_source_type: []
+      properties:
+        ids:
+          default: []
+          example: []
+          items:
+            type: integer
+          nullable: true
+          title: Ids
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelFilters-properties-ids
+        data_source_type:
+          default: []
+          example: []
+          items:
+            $ref: '#/components/schemas/OauthBasedConnectors'
+          nullable: true
+          title: Data Source Type
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelFilters-properties-data_source_type
+      title: WhiteLabelFilters
+      type: object
+    WhiteLabelInput:
+      properties:
+        data_source_type:
+          enum:
+          - INTERCOM
+          - NOTION
+          - SLACK
+          - ZENDESK
+          - OUTLOOK
+          - GMAIL
+          - SERVICENOW
+          - SALESFORCE
+          - ZOTERO
+          - BOX
+          - CONFLUENCE
+          - DROPBOX
+          - GOOGLE_CLOUD_STORAGE
+          - GONG
+          title: Data Source Type
+          type: string
+        credentials:
+          $ref: '#/components/schemas/Credentials'
+      required:
+      - credentials
+      - data_source_type
+      title: WhiteLabelInput
+      type: object
+    WhiteLabelOrderByColumns:
+      enum:
+      - created_at
+      - data_source_type
+      title: WhiteLabelOrderByColumns
+      type: string
     WhiteLabelingResponse:
       example:
         custom_limits: "{}"
@@ -16045,6 +16368,13 @@ components:
         $ref: '#/components/schemas/WebscrapeRequest'
       title: Scraping Requests
       type: array
+    WhiteLabelCreateRequest:
+      items:
+        $ref: '#/components/schemas/GDOSWhiteLabelInput'
+      title: White Label Inputs
+      type: array
+    WhiteLabelUpdateRequest:
+      $ref: '#/components/schemas/GDOSWhiteLabelInput1'
     IntegrationsListFoldersResponse:
       example: {}
       properties: {}
@@ -16140,6 +16470,30 @@ components:
       type: object
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-UtilitiesUserWebpagesResponse
+    WhiteLabelCreateResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelCreateResponse
+    WhiteLabelListResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelListResponse
+    WhiteLabelDeleteResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelDeleteResponse
+    WhiteLabelUpdateResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelUpdateResponse
     konfig-generated-schema-paths--integrations-github-repos-get-parameters-0-schema:
       example: 30
       type: number
@@ -17259,6 +17613,16 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelFilters-properties-ids:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelFilters-properties-data_source_type:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OrderDirV2Nullable:
       example: asc
       type: string
@@ -17398,6 +17762,26 @@ components:
       type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UtilitiesUserWebpagesResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelCreateResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelListResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelDeleteResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-WhiteLabelUpdateResponse:
       example: {}
       properties: {}
       type: object
@@ -20893,6 +21277,48 @@ components:
       - include_remote_data
       - data_source_id
       - repository
+    konfig-generated-schema-single-parameter-schema-post--white_label-create:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--white_label-list:
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/WhiteLabelOrderByColumns'
+        order_dir:
+          $ref: '#/components/schemas/OrderDir'
+        filters:
+          $ref: '#/components/schemas/WhiteLabelFilters'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--white_label-delete:
+      properties:
+        ids:
+          items:
+            type: integer
+          title: Ids
+          type: array
+      required:
+      - ids
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-post--white_label-update:
+      properties:
+        data_source_type:
+          title: Data Source Type
+        credentials:
+          $ref: '#/components/schemas/GoogleDriveCredentials'
+      required:
+      - credentials
+      - data_source_type
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     TMEmbeddingGenerators:
       enum:
       - OPENAI
@@ -21043,6 +21469,46 @@ components:
       - CONVERSATION
       title: HelpdeskFileTypes
       type: string
+    GDOSWhiteLabelInput:
+      example:
+        credentials:
+          api_key: api_key
+          file_picker_client_id: file_picker_client_id
+          redirect_uri: redirect_uri
+          client_secret: client_secret
+          client_id: client_id
+          file_picker_redirect_uri: file_picker_redirect_uri
+        data_source_type: null
+      properties:
+        data_source_type:
+          $ref: '#/components/schemas/GoogleDriveWhiteLabelInput_data_source_type'
+        credentials:
+          $ref: '#/components/schemas/GoogleDriveCredentials_Property'
+      required:
+      - credentials
+      - data_source_type
+      title: GoogleDriveWhiteLabelInput
+      type: object
+    GDOSWhiteLabelInput1:
+      example:
+        credentials:
+          api_key: api_key
+          file_picker_client_id: file_picker_client_id
+          redirect_uri: redirect_uri
+          client_secret: client_secret
+          client_id: client_id
+          file_picker_redirect_uri: file_picker_redirect_uri
+        data_source_type: null
+      properties:
+        data_source_type:
+          $ref: '#/components/schemas/GoogleDriveWhiteLabelInput_data_source_type'
+        credentials:
+          $ref: '#/components/schemas/GoogleDriveCredentials_Property'
+      required:
+      - credentials
+      - data_source_type
+      title: GoogleDriveWhiteLabelInput
+      type: object
     Tags:
       anyOf:
       - type: string
@@ -21081,6 +21547,50 @@ components:
       - items:
           type: boolean
         type: array
+    GoogleDriveWhiteLabelInput_data_source_type:
+      oneOf:
+      - title: Data Source Type
+      - enum:
+        - ONEDRIVE
+        - SHAREPOINT
+        title: Data Source Type
+        type: string
+    GoogleDriveCredentials_Property:
+      example:
+        api_key: api_key
+        file_picker_client_id: file_picker_client_id
+        redirect_uri: redirect_uri
+        client_secret: client_secret
+        client_id: client_id
+        file_picker_redirect_uri: file_picker_redirect_uri
+      properties:
+        client_id:
+          title: Client Id
+          type: string
+        redirect_uri:
+          title: Redirect Uri
+          type: string
+        client_secret:
+          nullable: true
+          title: Client Secret
+          type: string
+        api_key:
+          nullable: true
+          title: Api Key
+          type: string
+        file_picker_client_id:
+          nullable: true
+          title: File Picker Client Id
+          type: string
+        file_picker_redirect_uri:
+          nullable: true
+          title: File Picker Redirect Uri
+          type: string
+      required:
+      - client_id
+      - redirect_uri
+      title: GoogleDriveCredentials
+      type: object
     OAuthAuthentication_source:
       oneOf:
       - enum:

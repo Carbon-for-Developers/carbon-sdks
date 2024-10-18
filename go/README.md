@@ -143,6 +143,10 @@ Class | Method | HTTP request | Description
 *WebhooksApi* | [**AddUrl**](docs/WebhooksApi.md#addurl) | **Post** /add_webhook | Add Webhook Url
 *WebhooksApi* | [**DeleteUrl**](docs/WebhooksApi.md#deleteurl) | **Delete** /delete_webhook/{webhook_id} | Delete Webhook Url
 *WebhooksApi* | [**Urls**](docs/WebhooksApi.md#urls) | **Post** /webhooks | Webhook Urls
+*WhiteLabelApi* | [**Create**](docs/WhiteLabelApi.md#create) | **Post** /white_label/create | Create White Labels
+*WhiteLabelApi* | [**Delete**](docs/WhiteLabelApi.md#delete) | **Post** /white_label/delete | Delete White Labels
+*WhiteLabelApi* | [**List**](docs/WhiteLabelApi.md#list) | **Post** /white_label/list | List White Labels
+*WhiteLabelApi* | [**Update**](docs/WhiteLabelApi.md#update) | **Post** /white_label/update | Update White Label
 
 
 ## Documentation For Models
@@ -184,6 +188,7 @@ Class | Method | HTTP request | Description
  - [ContactsOrderByNullable](docs/ContactsOrderByNullable.md)
  - [ContactsRequest](docs/ContactsRequest.md)
  - [ContactsResponse](docs/ContactsResponse.md)
+ - [Credentials](docs/Credentials.md)
  - [CustomCredentialsType](docs/CustomCredentialsType.md)
  - [DataSourceConfiguration](docs/DataSourceConfiguration.md)
  - [DataSourceLastSyncActions](docs/DataSourceLastSyncActions.md)
@@ -193,6 +198,7 @@ Class | Method | HTTP request | Description
  - [DeleteFilesQueryInput](docs/DeleteFilesQueryInput.md)
  - [DeleteFilesV2QueryInput](docs/DeleteFilesV2QueryInput.md)
  - [DeleteUsersInput](docs/DeleteUsersInput.md)
+ - [DeleteWhiteLabelRequest](docs/DeleteWhiteLabelRequest.md)
  - [DirectoryItem](docs/DirectoryItem.md)
  - [DocumentResponse](docs/DocumentResponse.md)
  - [DocumentResponseList](docs/DocumentResponseList.md)
@@ -226,6 +232,8 @@ Class | Method | HTTP request | Description
  - [FilesResponse](docs/FilesResponse.md)
  - [FreshDeskConnectRequest](docs/FreshDeskConnectRequest.md)
  - [FreskdeskAuthentication](docs/FreskdeskAuthentication.md)
+ - [GDOSWhiteLabelInput](docs/GDOSWhiteLabelInput.md)
+ - [GDOSWhiteLabelInput1](docs/GDOSWhiteLabelInput1.md)
  - [GenericSuccessResponse](docs/GenericSuccessResponse.md)
  - [GetEmbeddingDocumentsBody](docs/GetEmbeddingDocumentsBody.md)
  - [GitbookAuthetication](docs/GitbookAuthetication.md)
@@ -236,6 +244,10 @@ Class | Method | HTTP request | Description
  - [GithubFetchReposRequest](docs/GithubFetchReposRequest.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
  - [GongAuthentication](docs/GongAuthentication.md)
+ - [GoogleDriveCredentials](docs/GoogleDriveCredentials.md)
+ - [GoogleDriveCredentialsProperty](docs/GoogleDriveCredentialsProperty.md)
+ - [GoogleDriveWhiteLabelInput](docs/GoogleDriveWhiteLabelInput.md)
+ - [GoogleDriveWhiteLabelInputDataSourceType](docs/GoogleDriveWhiteLabelInputDataSourceType.md)
  - [GuruAuthentication](docs/GuruAuthentication.md)
  - [GuruConnectRequest](docs/GuruConnectRequest.md)
  - [HSNFileTypes](docs/HSNFileTypes.md)
@@ -271,6 +283,7 @@ Class | Method | HTTP request | Description
  - [ListUsersFilters](docs/ListUsersFilters.md)
  - [ListUsersOrderByTypes](docs/ListUsersOrderByTypes.md)
  - [ListUsersRequest](docs/ListUsersRequest.md)
+ - [ListWhiteLabelRequest](docs/ListWhiteLabelRequest.md)
  - [LocationPropertyInner](docs/LocationPropertyInner.md)
  - [ModifyColdStorageParametersQueryInput](docs/ModifyColdStorageParametersQueryInput.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
@@ -282,6 +295,8 @@ Class | Method | HTTP request | Description
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OauthBasedConnectors](docs/OauthBasedConnectors.md)
  - [OneDriveAuthentication](docs/OneDriveAuthentication.md)
+ - [OneDriveSharepointCredentials](docs/OneDriveSharepointCredentials.md)
+ - [OneDriveSharepointWhiteLabelInput](docs/OneDriveSharepointWhiteLabelInput.md)
  - [OpportunitiesOrderBy](docs/OpportunitiesOrderBy.md)
  - [OpportunitiesOrderByNullable](docs/OpportunitiesOrderByNullable.md)
  - [OpportunitiesRequest](docs/OpportunitiesRequest.md)
@@ -395,6 +410,9 @@ Class | Method | HTTP request | Description
  - [WebhookQueryResponse](docs/WebhookQueryResponse.md)
  - [WebhookStatus](docs/WebhookStatus.md)
  - [WebscrapeRequest](docs/WebscrapeRequest.md)
+ - [WhiteLabelFilters](docs/WhiteLabelFilters.md)
+ - [WhiteLabelInput](docs/WhiteLabelInput.md)
+ - [WhiteLabelOrderByColumns](docs/WhiteLabelOrderByColumns.md)
  - [WhiteLabelingResponse](docs/WhiteLabelingResponse.md)
  - [YoutubeTranscriptResponse](docs/YoutubeTranscriptResponse.md)
  - [ZendeskAuthentication](docs/ZendeskAuthentication.md)

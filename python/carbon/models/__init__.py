@@ -50,6 +50,7 @@ from carbon.model.contacts_order_by import ContactsOrderBy
 from carbon.model.contacts_order_by_nullable import ContactsOrderByNullable
 from carbon.model.contacts_request import ContactsRequest
 from carbon.model.contacts_response import ContactsResponse
+from carbon.model.credentials import Credentials
 from carbon.model.custom_credentials_type import CustomCredentialsType
 from carbon.model.data_source_configuration import DataSourceConfiguration
 from carbon.model.data_source_configuration_allowed_file_formats import DataSourceConfigurationAllowedFileFormats
@@ -63,6 +64,8 @@ from carbon.model.delete_files_query_input_file_ids import DeleteFilesQueryInput
 from carbon.model.delete_files_v2_query_input import DeleteFilesV2QueryInput
 from carbon.model.delete_users_input import DeleteUsersInput
 from carbon.model.delete_users_input_customer_ids import DeleteUsersInputCustomerIds
+from carbon.model.delete_white_label_request import DeleteWhiteLabelRequest
+from carbon.model.delete_white_label_request_ids import DeleteWhiteLabelRequestIds
 from carbon.model.directory_item import DirectoryItem
 from carbon.model.document_response import DocumentResponse
 from carbon.model.document_response_list import DocumentResponseList
@@ -122,6 +125,8 @@ from carbon.model.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.model.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.model.gmail_sync_input import GmailSyncInput
 from carbon.model.gong_authentication import GongAuthentication
+from carbon.model.google_drive_credentials import GoogleDriveCredentials
+from carbon.model.google_drive_white_label_input import GoogleDriveWhiteLabelInput
 from carbon.model.guru_authentication import GuruAuthentication
 from carbon.model.guru_connect_request import GuruConnectRequest
 from carbon.model.http_validation_error import HTTPValidationError
@@ -160,6 +165,7 @@ from carbon.model.list_users_filters_carbon_user_ids import ListUsersFiltersCarb
 from carbon.model.list_users_filters_customer_ids import ListUsersFiltersCustomerIds
 from carbon.model.list_users_order_by_types import ListUsersOrderByTypes
 from carbon.model.list_users_request import ListUsersRequest
+from carbon.model.list_white_label_request import ListWhiteLabelRequest
 from carbon.model.modify_cold_storage_parameters_query_input import ModifyColdStorageParametersQueryInput
 from carbon.model.modify_user_configuration_input import ModifyUserConfigurationInput
 from carbon.model.move_to_hot_storage_query_input import MoveToHotStorageQueryInput
@@ -169,6 +175,8 @@ from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
 from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.one_drive_authentication import OneDriveAuthentication
+from carbon.model.one_drive_sharepoint_credentials import OneDriveSharepointCredentials
+from carbon.model.one_drive_sharepoint_white_label_input import OneDriveSharepointWhiteLabelInput
 from carbon.model.opportunities_order_by import OpportunitiesOrderBy
 from carbon.model.opportunities_order_by_nullable import OpportunitiesOrderByNullable
 from carbon.model.opportunities_request import OpportunitiesRequest
@@ -304,6 +312,12 @@ from carbon.model.webscrape_request_css_selectors_to_skip import WebscrapeReques
 from carbon.model.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
 from carbon.model.webscrape_request_tags import WebscrapeRequestTags
 from carbon.model.webscrape_request_url_paths_to_include import WebscrapeRequestUrlPathsToInclude
+from carbon.model.white_label_create_request import WhiteLabelCreateRequest
+from carbon.model.white_label_filters import WhiteLabelFilters
+from carbon.model.white_label_filters_ids import WhiteLabelFiltersIds
+from carbon.model.white_label_input import WhiteLabelInput
+from carbon.model.white_label_order_by_columns import WhiteLabelOrderByColumns
+from carbon.model.white_label_update_request import WhiteLabelUpdateRequest
 from carbon.model.white_labeling_response import WhiteLabelingResponse
 from carbon.model.youtube_transcript_response import YoutubeTranscriptResponse
 from carbon.model.youtube_transcript_response_raw_transcript import YoutubeTranscriptResponseRawTranscript

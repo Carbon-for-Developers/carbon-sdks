@@ -70,6 +70,8 @@ type APIClient struct {
 	UtilitiesApi *UtilitiesApiService
 
 	WebhooksApi *WebhooksApiService
+
+	WhiteLabelApi *WhiteLabelApiService
 }
 
 type service struct {
@@ -99,6 +101,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UsersApi = (*UsersApiService)(&c.common)
 	c.UtilitiesApi = (*UtilitiesApiService)(&c.common)
 	c.WebhooksApi = (*WebhooksApiService)(&c.common)
+	c.WhiteLabelApi = (*WhiteLabelApiService)(&c.common)
 
 	return c
 }

@@ -103,6 +103,10 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.webhooks.add_url`](#carbonwebhooksadd_url)
   * [`carbon.webhooks.delete_url`](#carbonwebhooksdelete_url)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+  * [`carbon.white_label.create`](#carbonwhite_labelcreate)
+  * [`carbon.white_label.delete`](#carbonwhite_labeldelete)
+  * [`carbon.white_label.list`](#carbonwhite_labellist)
+  * [`carbon.white_label.update`](#carbonwhite_labelupdate)
 
 <!-- tocstop -->
 
@@ -4353,6 +4357,140 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/webhooks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.white_label.create`<a id="carbonwhite_labelcreate"></a>
+
+Create White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.white_label.create(
+  body: [
+        {
+            "data_source_type" => None,
+            "credentials" => {
+                "client_id" => "client_id_example",
+                "redirect_uri" => "redirect_uri_example",
+            },
+        }
+    ],
+)
+p result
+```
+
+#### ⚙️ body<a id="⚙️-body"></a>
+
+Array<[`WhiteLabelCreateRequestInner`](./lib/carbon_ruby_sdk/models/white_label_create_request_inner.rb)>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/create` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.white_label.delete`<a id="carbonwhite_labeldelete"></a>
+
+Delete White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.white_label.delete(
+  ids: [
+        1
+    ],
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: Array<`Integer`><a id="ids-array"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/delete` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.white_label.list`<a id="carbonwhite_labellist"></a>
+
+List White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.white_label.list(
+  pagination: {
+        "limit" => 10,
+        "offset" => 0,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
+        "ids" => [],
+        "data_source_type" => [],
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`WhiteLabelOrderByColumns`](./lib/carbon_ruby_sdk/models/white_label_order_by_columns.rb)<a id="order_by-whitelabelorderbycolumnslibcarbon_ruby_sdkmodelswhite_label_order_by_columnsrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`WhiteLabelFilters`](./lib/carbon_ruby_sdk/models/white_label_filters.rb)<a id="filters-whitelabelfilterslibcarbon_ruby_sdkmodelswhite_label_filtersrb"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.white_label.update`<a id="carbonwhite_labelupdate"></a>
+
+Update White Label
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.white_label.update(
+  data_source_type: "INTERCOM",
+  credentials: {
+        "client_id" => "client_id_example",
+        "redirect_uri" => "redirect_uri_example",
+    },
+  body: {
+        "data_source_type" => None,
+        "credentials" => {
+            "client_id" => "client_id_example",
+            "redirect_uri" => "redirect_uri_example",
+        },
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_type: [`WhiteLabelInputDataSourceType`](./lib/carbon_ruby_sdk/models/white_label_input_data_source_type.rb)<a id="data_source_type-whitelabelinputdatasourcetypelibcarbon_ruby_sdkmodelswhite_label_input_data_source_typerb"></a>
+##### credentials: [`Credentials`](./lib/carbon_ruby_sdk/models/credentials.rb)<a id="credentials-credentialslibcarbon_ruby_sdkmodelscredentialsrb"></a>
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/update` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

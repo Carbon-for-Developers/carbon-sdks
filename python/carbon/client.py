@@ -26,6 +26,7 @@ from carbon.apis.tags.organizations_api import OrganizationsApi
 from carbon.apis.tags.users_api import UsersApi
 from carbon.apis.tags.utilities_api import UtilitiesApi
 from carbon.apis.tags.webhooks_api import WebhooksApi
+from carbon.apis.tags.white_label_api import WhiteLabelApi
 
 
 
@@ -49,3 +50,4 @@ class Carbon(ClientCustom):
         self.users: UsersApi = UsersApi(api_client)
         self.utilities: UtilitiesApi = UtilitiesApi(api_client)
         self.webhooks: WebhooksApi = WebhooksApi(api_client)
+        self.white_label: WhiteLabelApi = WhiteLabelApi(api_client)
