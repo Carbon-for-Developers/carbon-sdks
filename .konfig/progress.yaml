@@ -66,6 +66,22 @@ examples_3:
     post:
       '200':
         application/json: {}
+  /white_label/create:
+    post:
+      '200':
+        application/json: {}
+  /white_label/delete:
+    post:
+      '200':
+        application/json: {}
+  /white_label/list:
+    post:
+      '200':
+        application/json: {}
+  /white_label/update:
+    post:
+      '200':
+        application/json: {}
 ignoreObjectsWithNoProperties: true
 operationIds:
   /add_webhook:
@@ -236,12 +252,26 @@ operationIds:
     post: Utilities_scrapeWeb
   /webhooks:
     post: Webhooks_urls
+  /white_label/create:
+    post: WhiteLabel_create
+  /white_label/delete:
+    post: WhiteLabel_delete
+  /white_label/list:
+    post: WhiteLabel_list
+  /white_label/update:
+    post: WhiteLabel_update
 operationTags: {}
 renameTags: {}
 requestSchemaNames:
   /web_scrape:
     post:
       application/json: UtilitiesScrapeWebRequest
+  /white_label/create:
+    post:
+      application/json: WhiteLabelCreateRequest
+  /white_label/update:
+    post:
+      application/json: WhiteLabelUpdateRequest
 responseDescriptions: {}
 responseSchemaNames:
   /fetch_webpage:
@@ -320,6 +350,22 @@ responseSchemaNames:
     post:
       '200':
         application/json: UtilitiesScrapeWebResponse
+  /white_label/create:
+    post:
+      '200':
+        application/json: WhiteLabelCreateResponse
+  /white_label/delete:
+    post:
+      '200':
+        application/json: WhiteLabelDeleteResponse
+  /white_label/list:
+    post:
+      '200':
+        application/json: WhiteLabelListResponse
+  /white_label/update:
+    post:
+      '200':
+        application/json: WhiteLabelUpdateResponse
 securityParameters:
   chunk_overlap:
     query: false
