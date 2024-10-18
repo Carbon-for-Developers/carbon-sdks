@@ -4770,6 +4770,207 @@
           }
         }
       }
+    },
+    "/white_label/create": {
+      "post": {
+        "tags": [
+          "White Label"
+        ],
+        "summary": "Create White Labels",
+        "operationId": "create_white_labels_white_label_create_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GoogleDriveWhiteLabelInput"
+                    },
+                    {
+                      "$ref": "#/components/schemas/OneDriveSharepointWhiteLabelInput"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WhiteLabelInput"
+                    }
+                  ]
+                },
+                "type": "array",
+                "title": "White Label Inputs"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/white_label/list": {
+      "post": {
+        "tags": [
+          "White Label"
+        ],
+        "summary": "List White Labels",
+        "operationId": "list_white_labels_white_label_list_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListWhiteLabelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/white_label/delete": {
+      "post": {
+        "tags": [
+          "White Label"
+        ],
+        "summary": "Delete White Labels",
+        "operationId": "delete_white_labels_white_label_delete_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteWhiteLabelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/white_label/update": {
+      "post": {
+        "tags": [
+          "White Label"
+        ],
+        "summary": "Update White Label",
+        "operationId": "update_white_label_white_label_update_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/GoogleDriveWhiteLabelInput"
+                  },
+                  {
+                    "$ref": "#/components/schemas/OneDriveSharepointWhiteLabelInput"
+                  },
+                  {
+                    "$ref": "#/components/schemas/WhiteLabelInput"
+                  }
+                ],
+                "title": "Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -6355,6 +6556,35 @@
         ],
         "title": "ContactsResponse"
       },
+      "Credentials": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "Redirect Uri"
+          },
+          "client_secret": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Secret"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_id",
+          "redirect_uri"
+        ],
+        "title": "Credentials"
+      },
       "CustomCredentialsType": {
         "type": "string",
         "enum": [
@@ -6578,6 +6808,22 @@
           "customer_ids"
         ],
         "title": "DeleteUsersInput"
+      },
+      "DeleteWhiteLabelRequest": {
+        "properties": {
+          "ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "title": "DeleteWhiteLabelRequest"
       },
       "DirectoryItem": {
         "properties": {
@@ -8809,6 +9055,63 @@
         ],
         "title": "GongAuthentication"
       },
+      "GoogleDriveCredentials": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "Redirect Uri"
+          },
+          "client_secret": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Secret"
+          },
+          "api_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Api Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_id",
+          "redirect_uri"
+        ],
+        "title": "GoogleDriveCredentials"
+      },
+      "GoogleDriveWhiteLabelInput": {
+        "properties": {
+          "data_source_type": {
+            "const": "GOOGLE_DRIVE",
+            "title": "Data Source Type"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/GoogleDriveCredentials"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_type",
+          "credentials"
+        ],
+        "title": "GoogleDriveWhiteLabelInput"
+      },
       "GuruAuthentication": {
         "properties": {
           "source": {
@@ -10054,6 +10357,50 @@
         "type": "object",
         "title": "ListUsersRequest"
       },
+      "ListWhiteLabelRequest": {
+        "properties": {
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Pagination"
+              }
+            ],
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WhiteLabelOrderByColumns"
+              }
+            ],
+            "default": "created_at"
+          },
+          "order_dir": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrderDir"
+              }
+            ],
+            "default": "asc"
+          },
+          "filters": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WhiteLabelFilters"
+              }
+            ],
+            "default": {
+              "data_source_type": [],
+              "ids": []
+            }
+          }
+        },
+        "type": "object",
+        "title": "ListWhiteLabelRequest"
+      },
       "ModifyColdStorageParametersQueryInput": {
         "properties": {
           "filters": {
@@ -10561,6 +10908,78 @@
           "access_token"
         ],
         "title": "OneDriveAuthentication"
+      },
+      "OneDriveSharepointCredentials": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "Redirect Uri"
+          },
+          "client_secret": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Secret"
+          },
+          "file_picker_client_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Picker Client Id"
+          },
+          "file_picker_redirect_uri": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Picker Redirect Uri"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_id",
+          "redirect_uri"
+        ],
+        "title": "OneDriveSharepointCredentials"
+      },
+      "OneDriveSharepointWhiteLabelInput": {
+        "properties": {
+          "data_source_type": {
+            "type": "string",
+            "enum": [
+              "ONEDRIVE",
+              "SHAREPOINT"
+            ],
+            "title": "Data Source Type"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/OneDriveSharepointCredentials"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_type",
+          "credentials"
+        ],
+        "title": "OneDriveSharepointWhiteLabelInput"
       },
       "OpportunitiesOrderBy": {
         "type": "string",
@@ -16015,6 +16434,83 @@
           "url"
         ],
         "title": "WebscrapeRequest"
+      },
+      "WhiteLabelFilters": {
+        "properties": {
+          "ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ids",
+            "default": []
+          },
+          "data_source_type": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/OauthBasedConnectors"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Source Type",
+            "default": []
+          }
+        },
+        "type": "object",
+        "title": "WhiteLabelFilters"
+      },
+      "WhiteLabelInput": {
+        "properties": {
+          "data_source_type": {
+            "type": "string",
+            "enum": [
+              "INTERCOM",
+              "NOTION",
+              "SLACK",
+              "ZENDESK",
+              "OUTLOOK",
+              "GMAIL",
+              "SERVICENOW",
+              "SALESFORCE",
+              "ZOTERO",
+              "BOX",
+              "CONFLUENCE",
+              "DROPBOX",
+              "GOOGLE_CLOUD_STORAGE",
+              "GONG"
+            ],
+            "title": "Data Source Type"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/Credentials"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_type",
+          "credentials"
+        ],
+        "title": "WhiteLabelInput"
+      },
+      "WhiteLabelOrderByColumns": {
+        "type": "string",
+        "enum": [
+          "created_at",
+          "data_source_type"
+        ],
+        "title": "WhiteLabelOrderByColumns"
       },
       "WhiteLabelingResponse": {
         "properties": {
