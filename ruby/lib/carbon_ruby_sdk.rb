@@ -54,6 +54,7 @@ require 'carbon_ruby_sdk/models/contacts_order_by'
 require 'carbon_ruby_sdk/models/contacts_order_by_nullable'
 require 'carbon_ruby_sdk/models/contacts_request'
 require 'carbon_ruby_sdk/models/contacts_response'
+require 'carbon_ruby_sdk/models/credentials'
 require 'carbon_ruby_sdk/models/custom_credentials_type'
 require 'carbon_ruby_sdk/models/data_source_configuration'
 require 'carbon_ruby_sdk/models/data_source_last_sync_actions'
@@ -63,6 +64,7 @@ require 'carbon_ruby_sdk/models/data_source_type_nullable'
 require 'carbon_ruby_sdk/models/delete_files_query_input'
 require 'carbon_ruby_sdk/models/delete_files_v2_query_input'
 require 'carbon_ruby_sdk/models/delete_users_input'
+require 'carbon_ruby_sdk/models/delete_white_label_request'
 require 'carbon_ruby_sdk/models/directory_item'
 require 'carbon_ruby_sdk/models/document_response'
 require 'carbon_ruby_sdk/models/document_response_list'
@@ -107,6 +109,8 @@ require 'carbon_ruby_sdk/models/github_connect_request'
 require 'carbon_ruby_sdk/models/github_fetch_repos_request'
 require 'carbon_ruby_sdk/models/gmail_sync_input'
 require 'carbon_ruby_sdk/models/gong_authentication'
+require 'carbon_ruby_sdk/models/google_drive_credentials'
+require 'carbon_ruby_sdk/models/google_drive_white_label_input'
 require 'carbon_ruby_sdk/models/guru_authentication'
 require 'carbon_ruby_sdk/models/guru_connect_request'
 require 'carbon_ruby_sdk/models/http_validation_error'
@@ -139,6 +143,7 @@ require 'carbon_ruby_sdk/models/list_user_response'
 require 'carbon_ruby_sdk/models/list_users_filters'
 require 'carbon_ruby_sdk/models/list_users_order_by_types'
 require 'carbon_ruby_sdk/models/list_users_request'
+require 'carbon_ruby_sdk/models/list_white_label_request'
 require 'carbon_ruby_sdk/models/location_property_inner'
 require 'carbon_ruby_sdk/models/modify_cold_storage_parameters_query_input'
 require 'carbon_ruby_sdk/models/modify_user_configuration_input'
@@ -149,6 +154,9 @@ require 'carbon_ruby_sdk/models/o_auth_url_request'
 require 'carbon_ruby_sdk/models/oauth_based_connectors'
 require 'carbon_ruby_sdk/models/object_type'
 require 'carbon_ruby_sdk/models/one_drive_authentication'
+require 'carbon_ruby_sdk/models/one_drive_sharepoint_credentials'
+require 'carbon_ruby_sdk/models/one_drive_sharepoint_white_label_input'
+require 'carbon_ruby_sdk/models/one_drive_sharepoint_white_label_input_data_source_type'
 require 'carbon_ruby_sdk/models/opportunities_order_by'
 require 'carbon_ruby_sdk/models/opportunities_order_by_nullable'
 require 'carbon_ruby_sdk/models/opportunities_request'
@@ -259,6 +267,12 @@ require 'carbon_ruby_sdk/models/webhook_query_input'
 require 'carbon_ruby_sdk/models/webhook_query_response'
 require 'carbon_ruby_sdk/models/webhook_status'
 require 'carbon_ruby_sdk/models/webscrape_request'
+require 'carbon_ruby_sdk/models/white_label_create_request_inner'
+require 'carbon_ruby_sdk/models/white_label_filters'
+require 'carbon_ruby_sdk/models/white_label_input'
+require 'carbon_ruby_sdk/models/white_label_input_data_source_type'
+require 'carbon_ruby_sdk/models/white_label_order_by_columns'
+require 'carbon_ruby_sdk/models/white_label_update_request'
 require 'carbon_ruby_sdk/models/white_labeling_response'
 require 'carbon_ruby_sdk/models/youtube_transcript_response'
 require 'carbon_ruby_sdk/models/zendesk_authentication'
@@ -276,6 +290,7 @@ require 'carbon_ruby_sdk/api/organizations_api'
 require 'carbon_ruby_sdk/api/users_api'
 require 'carbon_ruby_sdk/api/utilities_api'
 require 'carbon_ruby_sdk/api/webhooks_api'
+require 'carbon_ruby_sdk/api/white_label_api'
 
 module Carbon
   @config = Configuration.default
@@ -344,6 +359,7 @@ module Carbon
     attr_reader :users
     attr_reader :utilities
     attr_reader :webhooks
+    attr_reader :white_label
 
     def initialize(config = Configuration.default)
       @api_client = ApiClient::new(config)
@@ -358,6 +374,7 @@ module Carbon
       @users = Carbon::UsersApi.new(@api_client)
       @utilities = Carbon::UtilitiesApi.new(@api_client)
       @webhooks = Carbon::WebhooksApi.new(@api_client)
+      @white_label = Carbon::WhiteLabelApi.new(@api_client)
     end
   end
 end

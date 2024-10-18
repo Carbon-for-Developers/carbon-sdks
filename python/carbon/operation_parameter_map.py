@@ -1845,4 +1845,41 @@ operation_parameter_map = {
             },
         ]
     },
+    '/white_label/create-POST': {
+        'parameters': [
+        ]
+    },
+    '/white_label/delete-POST': {
+        'parameters': [
+            {
+                'name': 'ids'
+            },
+        ]
+    },
+    '/white_label/list-POST': {
+        'parameters': [
+            {
+                'name': 'pagination'
+            },
+            {
+                'name': 'order_by'
+            },
+            {
+                'name': 'order_dir'
+            },
+            {
+                'name': 'filters'
+            },
+        ]
+    },
+    '/white_label/update-POST': {
+        'parameters': [
+            {
+                'name': 'data_source_type'
+            },
+            {
+                'name': 'credentials'
+            },
+        ]
+    },
 };

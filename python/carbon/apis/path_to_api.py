@@ -86,6 +86,10 @@ from carbon.apis.paths.integrations_data_github_pull_requests_files import Integ
 from carbon.apis.paths.integrations_data_github_pull_requests_commits import IntegrationsDataGithubPullRequestsCommits
 from carbon.apis.paths.integrations_data_github_issues import IntegrationsDataGithubIssues
 from carbon.apis.paths.integrations_data_github_issues_issue_number import IntegrationsDataGithubIssuesIssueNumber
+from carbon.apis.paths.white_label_create import WhiteLabelCreate
+from carbon.apis.paths.white_label_list import WhiteLabelList
+from carbon.apis.paths.white_label_delete import WhiteLabelDelete
+from carbon.apis.paths.white_label_update import WhiteLabelUpdate
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -175,6 +179,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMITS: IntegrationsDataGithubPullRequestsCommits,
         PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES: IntegrationsDataGithubIssues,
         PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES_ISSUE_NUMBER: IntegrationsDataGithubIssuesIssueNumber,
+        PathValues.WHITE_LABEL_CREATE: WhiteLabelCreate,
+        PathValues.WHITE_LABEL_LIST: WhiteLabelList,
+        PathValues.WHITE_LABEL_DELETE: WhiteLabelDelete,
+        PathValues.WHITE_LABEL_UPDATE: WhiteLabelUpdate,
     }
 )
 
@@ -265,5 +273,9 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMITS: IntegrationsDataGithubPullRequestsCommits,
         PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES: IntegrationsDataGithubIssues,
         PathValues.INTEGRATIONS_DATA_GITHUB_ISSUES_ISSUE_NUMBER: IntegrationsDataGithubIssuesIssueNumber,
+        PathValues.WHITE_LABEL_CREATE: WhiteLabelCreate,
+        PathValues.WHITE_LABEL_LIST: WhiteLabelList,
+        PathValues.WHITE_LABEL_DELETE: WhiteLabelDelete,
+        PathValues.WHITE_LABEL_UPDATE: WhiteLabelUpdate,
     }
 )

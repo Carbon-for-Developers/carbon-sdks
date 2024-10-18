@@ -96,6 +96,7 @@ from carbon.pydantic.contacts_order_by import ContactsOrderBy
 from carbon.pydantic.contacts_order_by_nullable import ContactsOrderByNullable
 from carbon.pydantic.contacts_request import ContactsRequest
 from carbon.pydantic.contacts_response import ContactsResponse
+from carbon.pydantic.credentials import Credentials
 from carbon.pydantic.custom_credentials_type import CustomCredentialsType
 from carbon.pydantic.data_source_configuration import DataSourceConfiguration
 from carbon.pydantic.data_source_configuration_allowed_file_formats import DataSourceConfigurationAllowedFileFormats
@@ -109,6 +110,8 @@ from carbon.pydantic.delete_files_query_input_file_ids import DeleteFilesQueryIn
 from carbon.pydantic.delete_files_v2_query_input import DeleteFilesV2QueryInput
 from carbon.pydantic.delete_users_input import DeleteUsersInput
 from carbon.pydantic.delete_users_input_customer_ids import DeleteUsersInputCustomerIds
+from carbon.pydantic.delete_white_label_request import DeleteWhiteLabelRequest
+from carbon.pydantic.delete_white_label_request_ids import DeleteWhiteLabelRequestIds
 from carbon.pydantic.directory_item import DirectoryItem
 from carbon.pydantic.document_response import DocumentResponse
 from carbon.pydantic.document_response_list import DocumentResponseList
@@ -168,6 +171,8 @@ from carbon.pydantic.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.pydantic.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
 from carbon.pydantic.gmail_sync_input import GmailSyncInput
 from carbon.pydantic.gong_authentication import GongAuthentication
+from carbon.pydantic.google_drive_credentials import GoogleDriveCredentials
+from carbon.pydantic.google_drive_white_label_input import GoogleDriveWhiteLabelInput
 from carbon.pydantic.guru_authentication import GuruAuthentication
 from carbon.pydantic.guru_connect_request import GuruConnectRequest
 from carbon.pydantic.http_validation_error import HTTPValidationError
@@ -206,6 +211,7 @@ from carbon.pydantic.list_users_filters_carbon_user_ids import ListUsersFiltersC
 from carbon.pydantic.list_users_filters_customer_ids import ListUsersFiltersCustomerIds
 from carbon.pydantic.list_users_order_by_types import ListUsersOrderByTypes
 from carbon.pydantic.list_users_request import ListUsersRequest
+from carbon.pydantic.list_white_label_request import ListWhiteLabelRequest
 from carbon.pydantic.modify_cold_storage_parameters_query_input import ModifyColdStorageParametersQueryInput
 from carbon.pydantic.modify_user_configuration_input import ModifyUserConfigurationInput
 from carbon.pydantic.move_to_hot_storage_query_input import MoveToHotStorageQueryInput
@@ -215,6 +221,8 @@ from carbon.pydantic.o_auth_authentication import OAuthAuthentication
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest
 from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.one_drive_authentication import OneDriveAuthentication
+from carbon.pydantic.one_drive_sharepoint_credentials import OneDriveSharepointCredentials
+from carbon.pydantic.one_drive_sharepoint_white_label_input import OneDriveSharepointWhiteLabelInput
 from carbon.pydantic.opportunities_order_by import OpportunitiesOrderBy
 from carbon.pydantic.opportunities_order_by_nullable import OpportunitiesOrderByNullable
 from carbon.pydantic.opportunities_request import OpportunitiesRequest
@@ -350,6 +358,12 @@ from carbon.pydantic.webscrape_request_css_selectors_to_skip import WebscrapeReq
 from carbon.pydantic.webscrape_request_html_tags_to_skip import WebscrapeRequestHtmlTagsToSkip
 from carbon.pydantic.webscrape_request_tags import WebscrapeRequestTags
 from carbon.pydantic.webscrape_request_url_paths_to_include import WebscrapeRequestUrlPathsToInclude
+from carbon.pydantic.white_label_create_request import WhiteLabelCreateRequest
+from carbon.pydantic.white_label_filters import WhiteLabelFilters
+from carbon.pydantic.white_label_filters_ids import WhiteLabelFiltersIds
+from carbon.pydantic.white_label_input import WhiteLabelInput
+from carbon.pydantic.white_label_order_by_columns import WhiteLabelOrderByColumns
+from carbon.pydantic.white_label_update_request import WhiteLabelUpdateRequest
 from carbon.pydantic.white_labeling_response import WhiteLabelingResponse
 from carbon.pydantic.youtube_transcript_response import YoutubeTranscriptResponse
 from carbon.pydantic.youtube_transcript_response_raw_transcript import YoutubeTranscriptResponseRawTranscript

@@ -107,6 +107,10 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.webhooks.addUrl`](#carbonwebhooksaddurl)
   * [`carbon.webhooks.deleteUrl`](#carbonwebhooksdeleteurl)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+  * [`carbon.whiteLabel.create`](#carbonwhitelabelcreate)
+  * [`carbon.whiteLabel.delete`](#carbonwhitelabeldelete)
+  * [`carbon.whiteLabel.list`](#carbonwhitelabellist)
+  * [`carbon.whiteLabel.update`](#carbonwhitelabelupdate)
 
 <!-- tocstop -->
 
@@ -4567,6 +4571,124 @@ WebhookQueryResponse result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/webhooks` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.create`<a id="carbonwhitelabelcreate"></a>
+
+Create White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Object result = client
+        .whiteLabel
+        .create()
+        .execute();
+```
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+List<[`GDOSWhiteLabelInput`](./src/main/java/com/konfigthis/client/model/GDOSWhiteLabelInput.java)>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/create` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.delete`<a id="carbonwhitelabeldelete"></a>
+
+Delete White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Object result = client
+        .whiteLabel
+        .delete(ids)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: List<`Integer`><a id="ids-list"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/delete` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.list`<a id="carbonwhitelabellist"></a>
+
+List White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Object result = client
+        .whiteLabel
+        .list()
+        .pagination(pagination)
+        .orderBy(orderBy)
+        .orderDir(orderDir)
+        .filters(filters)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### filters: [`WhiteLabelFilters`](./src/main/java/com/konfigthis/client/model/WhiteLabelFilters.java)<a id="filters-whitelabelfilterssrcmainjavacomkonfigthisclientmodelwhitelabelfiltersjava"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/list` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.whiteLabel.update`<a id="carbonwhitelabelupdate"></a>
+
+Update White Label
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Object result = client
+        .whiteLabel
+        .update()
+        .dataSourceType(dataSourceType)
+        .credentials(credentials)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_type: `Object`<a id="data_source_type-object"></a>
+
+##### credentials: [`GoogleDriveCredentialsProperty`](./src/main/java/com/konfigthis/client/model/GoogleDriveCredentialsProperty.java)<a id="credentials-googledrivecredentialspropertysrcmainjavacomkonfigthisclientmodelgoogledrivecredentialspropertyjava"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/update` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

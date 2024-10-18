@@ -23,4 +23,5 @@ export * from './api/organizations-api';
 export * from './api/users-api';
 export * from './api/utilities-api';
 export * from './api/webhooks-api';
+export * from './api/white-label-api';
 

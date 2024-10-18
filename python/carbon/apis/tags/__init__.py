@@ -13,6 +13,7 @@ class TagValues(str, enum.Enum):
     GITHUB = "Github"
     USERS = "Users"
     EMBEDDINGS = "Embeddings"
+    WHITE_LABEL = "White Label"
     WEBHOOKS = "Webhooks"
     ORGANIZATIONS = "Organizations"
     AUTH = "Auth"

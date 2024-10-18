@@ -91,3 +91,7 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_DATA_GITHUB_PULL_REQUESTS_COMMITS = "/integrations/data/github/pull_requests/commits"
     INTEGRATIONS_DATA_GITHUB_ISSUES = "/integrations/data/github/issues"
     INTEGRATIONS_DATA_GITHUB_ISSUES_ISSUE_NUMBER = "/integrations/data/github/issues/{issue_number}"
+    WHITE_LABEL_CREATE = "/white_label/create"
+    WHITE_LABEL_LIST = "/white_label/list"
+    WHITE_LABEL_DELETE = "/white_label/delete"
+    WHITE_LABEL_UPDATE = "/white_label/update"

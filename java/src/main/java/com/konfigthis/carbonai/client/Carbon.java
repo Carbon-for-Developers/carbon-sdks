@@ -11,6 +11,7 @@ import com.konfigthis.carbonai.client.api.OrganizationsApi;
 import com.konfigthis.carbonai.client.api.UsersApi;
 import com.konfigthis.carbonai.client.api.UtilitiesApi;
 import com.konfigthis.carbonai.client.api.WebhooksApi;
+import com.konfigthis.carbonai.client.api.WhiteLabelApi;
 
 public class Carbon {
     private ApiClient apiClient;
@@ -25,6 +26,7 @@ public class Carbon {
     public final UsersApi users;
     public final UtilitiesApi utilities;
     public final WebhooksApi webhooks;
+    public final WhiteLabelApi whiteLabel;
 
     public Carbon() {
         this(null);
@@ -43,6 +45,7 @@ public class Carbon {
         this.users = new UsersApi(this.apiClient);
         this.utilities = new UtilitiesApi(this.apiClient);
         this.webhooks = new WebhooksApi(this.apiClient);
+        this.whiteLabel = new WhiteLabelApi(this.apiClient);
     }
 
 }

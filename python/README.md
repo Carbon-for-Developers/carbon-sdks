@@ -107,6 +107,10 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.webhooks.add_url`](#carbonwebhooksadd_url)
   * [`carbon.webhooks.delete_url`](#carbonwebhooksdelete_url)
   * [`carbon.webhooks.urls`](#carbonwebhooksurls)
+  * [`carbon.white_label.create`](#carbonwhite_labelcreate)
+  * [`carbon.white_label.delete`](#carbonwhite_labeldelete)
+  * [`carbon.white_label.list`](#carbonwhite_labellist)
+  * [`carbon.white_label.update`](#carbonwhite_labelupdate)
 
 <!-- tocstop -->
 
@@ -4822,6 +4826,149 @@ urls_response = carbon.webhooks.urls(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/webhooks` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.white_label.create`<a id="carbonwhite_labelcreate"></a>
+
+Create White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+create_response = carbon.white_label.create(
+    body=[
+        {
+            "data_source_type": None,
+            "credentials": {
+                "client_id": "client_id_example",
+                "redirect_uri": "redirect_uri_example",
+            },
+        }
+    ],
+)
+```
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`WhiteLabelCreateRequest`](./carbon/type/white_label_create_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/create` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.white_label.delete`<a id="carbonwhite_labeldelete"></a>
+
+Delete White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+delete_response = carbon.white_label.delete(
+    ids=[1],
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ids: [`DeleteWhiteLabelRequestIds`](./carbon/type/delete_white_label_request_ids.py)<a id="ids-deletewhitelabelrequestidscarbontypedelete_white_label_request_idspy"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`DeleteWhiteLabelRequest`](./carbon/type/delete_white_label_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/delete` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.white_label.list`<a id="carbonwhite_labellist"></a>
+
+List White Labels
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+list_response = carbon.white_label.list(
+    pagination={
+        "limit": 10,
+        "offset": 0,
+    },
+    order_by="created_at",
+    order_dir="desc",
+    filters={
+        "ids": [],
+        "data_source_type": [],
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
+
+
+##### order_by: [`WhiteLabelOrderByColumns`](./carbon/type/white_label_order_by_columns.py)<a id="order_by-whitelabelorderbycolumnscarbontypewhite_label_order_by_columnspy"></a>
+
+##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
+
+##### filters: [`WhiteLabelFilters`](./carbon/type/white_label_filters.py)<a id="filters-whitelabelfilterscarbontypewhite_label_filterspy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`ListWhiteLabelRequest`](./carbon/type/list_white_label_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/list` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.white_label.update`<a id="carbonwhite_labelupdate"></a>
+
+Update White Label
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+update_response = carbon.white_label.update(
+    body={
+        "data_source_type": None,
+        "credentials": {
+            "client_id": "client_id_example",
+            "redirect_uri": "redirect_uri_example",
+        },
+    },
+    data_source_type="INTERCOM",
+    credentials={
+        "client_id": "client_id_example",
+        "redirect_uri": "redirect_uri_example",
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_type: `str`<a id="data_source_type-str"></a>
+
+##### credentials: [`Credentials`](./carbon/type/credentials.py)<a id="credentials-credentialscarbontypecredentialspy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`WhiteLabelUpdateRequest`](./carbon/type/white_label_update_request.py)
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/white_label/update` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

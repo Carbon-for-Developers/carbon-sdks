@@ -8,6 +8,7 @@ from carbon.apis.tags.crm_api import CRMApi
 from carbon.apis.tags.github_api import GithubApi
 from carbon.apis.tags.users_api import UsersApi
 from carbon.apis.tags.embeddings_api import EmbeddingsApi
+from carbon.apis.tags.white_label_api import WhiteLabelApi
 from carbon.apis.tags.webhooks_api import WebhooksApi
 from carbon.apis.tags.organizations_api import OrganizationsApi
 from carbon.apis.tags.auth_api import AuthApi
@@ -27,6 +28,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.GITHUB: GithubApi,
         TagValues.USERS: UsersApi,
         TagValues.EMBEDDINGS: EmbeddingsApi,
+        TagValues.WHITE_LABEL: WhiteLabelApi,
         TagValues.WEBHOOKS: WebhooksApi,
         TagValues.ORGANIZATIONS: OrganizationsApi,
         TagValues.AUTH: AuthApi,
@@ -47,6 +49,7 @@ tag_to_api = TagToApi(
         TagValues.GITHUB: GithubApi,
         TagValues.USERS: UsersApi,
         TagValues.EMBEDDINGS: EmbeddingsApi,
+        TagValues.WHITE_LABEL: WhiteLabelApi,
         TagValues.WEBHOOKS: WebhooksApi,
         TagValues.ORGANIZATIONS: OrganizationsApi,
         TagValues.AUTH: AuthApi,
