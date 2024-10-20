@@ -1945,6 +1945,36 @@
         ]
       }
     },
+    "/whoami": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Me Endpoint",
+        "operationId": "me_endpoint_whoami_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/modify_user_configuration": {
       "post": {
         "tags": [
@@ -7614,6 +7644,17 @@
             ],
             "title": "External Url"
           },
+          "file_format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Format"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -7643,6 +7684,7 @@
           "item_type",
           "root_external_id",
           "external_url",
+          "file_format",
           "created_at",
           "updated_at"
         ],
@@ -15843,6 +15885,11 @@
             "type": "array",
             "title": "Auto Sync Enabled Sources",
             "default": []
+          },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
           }
         },
         "type": "object",
@@ -15865,7 +15912,8 @@
           "unique_file_tags",
           "enabled_features",
           "custom_limits",
-          "auto_sync_enabled_sources"
+          "auto_sync_enabled_sources",
+          "connector_settings"
         ],
         "title": "UserResponse"
       },
@@ -16525,13 +16573,19 @@
           "custom_limits": {
             "type": "object",
             "title": "Custom Limits"
+          },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
           }
         },
         "type": "object",
         "required": [
           "remove_branding",
           "integrations",
-          "custom_limits"
+          "custom_limits",
+          "connector_settings"
         ],
         "title": "WhiteLabelingResponse"
       },
