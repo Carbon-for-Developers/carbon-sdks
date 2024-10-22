@@ -61,6 +61,10 @@ public class GithubConnectRequest {
   @SerializedName(SERIALIZED_NAME_SYNC_SOURCE_ITEMS)
   private Boolean syncSourceItems = false;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public GithubConnectRequest() {
   }
 
@@ -150,6 +154,35 @@ public class GithubConnectRequest {
     this.syncSourceItems = syncSourceItems;
   }
 
+
+  public GithubConnectRequest dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -207,13 +240,14 @@ public class GithubConnectRequest {
     GithubConnectRequest githubConnectRequest = (GithubConnectRequest) o;
     return Objects.equals(this.username, githubConnectRequest.username) &&
         Objects.equals(this.accessToken, githubConnectRequest.accessToken) &&
-        Objects.equals(this.syncSourceItems, githubConnectRequest.syncSourceItems)&&
+        Objects.equals(this.syncSourceItems, githubConnectRequest.syncSourceItems) &&
+        Objects.equals(this.dataSourceTags, githubConnectRequest.dataSourceTags)&&
         Objects.equals(this.additionalProperties, githubConnectRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, accessToken, syncSourceItems, additionalProperties);
+    return Objects.hash(username, accessToken, syncSourceItems, dataSourceTags, additionalProperties);
   }
 
   @Override
@@ -223,6 +257,7 @@ public class GithubConnectRequest {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,6 +284,7 @@ public class GithubConnectRequest {
     openapiFields.add("username");
     openapiFields.add("access_token");
     openapiFields.add("sync_source_items");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

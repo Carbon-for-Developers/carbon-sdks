@@ -49,6 +49,8 @@ module Carbon
 
     attr_accessor :auto_sync_enabled_sources
 
+    attr_accessor :connector_settings
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -70,7 +72,8 @@ module Carbon
         :'unique_file_tags' => :'unique_file_tags',
         :'enabled_features' => :'enabled_features',
         :'custom_limits' => :'custom_limits',
-        :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources'
+        :'auto_sync_enabled_sources' => :'auto_sync_enabled_sources',
+        :'connector_settings' => :'connector_settings'
       }
     end
 
@@ -100,7 +103,8 @@ module Carbon
         :'unique_file_tags' => :'Array<Object>',
         :'enabled_features' => :'Object',
         :'custom_limits' => :'Object',
-        :'auto_sync_enabled_sources' => :'Array<Object>'
+        :'auto_sync_enabled_sources' => :'Array<Object>',
+        :'connector_settings' => :'Object'
       }
     end
 
@@ -206,6 +210,10 @@ module Carbon
           self.auto_sync_enabled_sources = value
         end
       end
+
+      if attributes.key?(:'connector_settings')
+        self.connector_settings = attributes[:'connector_settings']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -280,6 +288,10 @@ module Carbon
         invalid_properties.push('invalid value for "auto_sync_enabled_sources", auto_sync_enabled_sources cannot be nil.')
       end
 
+      if @connector_settings.nil?
+        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -303,6 +315,7 @@ module Carbon
       return false if @unique_file_tags.nil?
       return false if @custom_limits.nil?
       return false if @auto_sync_enabled_sources.nil?
+      return false if @connector_settings.nil?
       true
     end
 
@@ -329,7 +342,8 @@ module Carbon
           unique_file_tags == o.unique_file_tags &&
           enabled_features == o.enabled_features &&
           custom_limits == o.custom_limits &&
-          auto_sync_enabled_sources == o.auto_sync_enabled_sources
+          auto_sync_enabled_sources == o.auto_sync_enabled_sources &&
+          connector_settings == o.connector_settings
     end
 
     # @see the `==` method
@@ -341,7 +355,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, unique_file_tags, enabled_features, custom_limits, auto_sync_enabled_sources].hash
+      [id, organization_id, organization_supplied_user_id, created_at, updated_at, deleted_at, num_files_synced, num_characters_synced, num_tokens_synced, aggregate_file_size, aggregate_num_characters, aggregate_num_tokens, aggregate_num_embeddings, aggregate_num_files_by_source, aggregate_num_files_by_file_format, unique_file_tags, enabled_features, custom_limits, auto_sync_enabled_sources, connector_settings].hash
     end
 
     # Builds the object from hash

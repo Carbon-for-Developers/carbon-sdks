@@ -116,6 +116,10 @@ public class SyncOptions {
   @SerializedName(SERIALIZED_NAME_AUTOMATICALLY_OPEN_FILE_PICKER)
   private Boolean automaticallyOpenFilePicker;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public SyncOptions() {
   }
 
@@ -582,6 +586,35 @@ public class SyncOptions {
     this.automaticallyOpenFilePicker = automaticallyOpenFilePicker;
   }
 
+
+  public SyncOptions dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -652,7 +685,8 @@ public class SyncOptions {
         Objects.equals(this.syncSourceItems, syncOptions.syncSourceItems) &&
         Objects.equals(this.incrementalSync, syncOptions.incrementalSync) &&
         Objects.equals(this.fileSyncConfig, syncOptions.fileSyncConfig) &&
-        Objects.equals(this.automaticallyOpenFilePicker, syncOptions.automaticallyOpenFilePicker)&&
+        Objects.equals(this.automaticallyOpenFilePicker, syncOptions.automaticallyOpenFilePicker) &&
+        Objects.equals(this.dataSourceTags, syncOptions.dataSourceTags)&&
         Objects.equals(this.additionalProperties, syncOptions.additionalProperties);
   }
 
@@ -662,7 +696,7 @@ public class SyncOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, syncFilesOnConnection, setPageAsBoundary, requestId, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, additionalProperties);
+    return Objects.hash(tags, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, syncFilesOnConnection, setPageAsBoundary, requestId, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -692,6 +726,7 @@ public class SyncOptions {
     sb.append("    incrementalSync: ").append(toIndentedString(incrementalSync)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
     sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -731,6 +766,7 @@ public class SyncOptions {
     openapiFields.add("incremental_sync");
     openapiFields.add("file_sync_config");
     openapiFields.add("automatically_open_file_picker");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

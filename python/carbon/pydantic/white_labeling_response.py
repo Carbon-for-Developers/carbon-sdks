@@ -23,6 +23,8 @@ class WhiteLabelingResponse(BaseModel):
 
     custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='custom_limits')
 
+    connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='connector_settings')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

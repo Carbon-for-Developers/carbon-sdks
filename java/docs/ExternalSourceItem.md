@@ -23,6 +23,7 @@
 |**itemType** | **String** |  |  |
 |**rootExternalId** | **String** |  |  |
 |**externalUrl** | **String** |  |  |
+|**fileFormat** | **String** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

@@ -170,6 +170,10 @@ public class OAuthURLRequest {
   @SerializedName(SERIALIZED_NAME_SERVICENOW_CREDENTIALS)
   private ServiceNowCredentialsNullable servicenowCredentials;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public OAuthURLRequest() {
   }
 
@@ -1013,6 +1017,35 @@ public class OAuthURLRequest {
     this.servicenowCredentials = servicenowCredentials;
   }
 
+
+  public OAuthURLRequest dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -1096,7 +1129,8 @@ public class OAuthURLRequest {
         Objects.equals(this.fileSyncConfig, oauthURLRequest.fileSyncConfig) &&
         Objects.equals(this.automaticallyOpenFilePicker, oauthURLRequest.automaticallyOpenFilePicker) &&
         Objects.equals(this.gongAccountEmail, oauthURLRequest.gongAccountEmail) &&
-        Objects.equals(this.servicenowCredentials, oauthURLRequest.servicenowCredentials)&&
+        Objects.equals(this.servicenowCredentials, oauthURLRequest.servicenowCredentials) &&
+        Objects.equals(this.dataSourceTags, oauthURLRequest.dataSourceTags)&&
         Objects.equals(this.additionalProperties, oauthURLRequest.additionalProperties);
   }
 
@@ -1106,7 +1140,7 @@ public class OAuthURLRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, gongAccountEmail, servicenowCredentials, additionalProperties);
+    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, gongAccountEmail, servicenowCredentials, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1149,6 +1183,7 @@ public class OAuthURLRequest {
     sb.append("    automaticallyOpenFilePicker: ").append(toIndentedString(automaticallyOpenFilePicker)).append("\n");
     sb.append("    gongAccountEmail: ").append(toIndentedString(gongAccountEmail)).append("\n");
     sb.append("    servicenowCredentials: ").append(toIndentedString(servicenowCredentials)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1201,6 +1236,7 @@ public class OAuthURLRequest {
     openapiFields.add("automatically_open_file_picker");
     openapiFields.add("gong_account_email");
     openapiFields.add("servicenow_credentials");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

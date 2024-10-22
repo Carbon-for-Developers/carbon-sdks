@@ -1640,7 +1640,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 request_id: requestParameters.request_id,
                 sync_source_items: requestParameters.sync_source_items,
-                file_sync_config: requestParameters.file_sync_config
+                file_sync_config: requestParameters.file_sync_config,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1666,7 +1667,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 request_id: requestParameters.request_id,
                 sync_source_items: requestParameters.sync_source_items,
-                file_sync_config: requestParameters.file_sync_config
+                file_sync_config: requestParameters.file_sync_config,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGitbook(gitbookConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1692,7 +1694,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 sync_files_on_connection: requestParameters.sync_files_on_connection,
                 request_id: requestParameters.request_id,
                 sync_source_items: requestParameters.sync_source_items,
-                file_sync_config: requestParameters.file_sync_config
+                file_sync_config: requestParameters.file_sync_config,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.connectGuru(guruConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1709,7 +1712,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 access_key: requestParameters.access_key,
                 access_key_secret: requestParameters.access_key_secret,
                 sync_source_items: requestParameters.sync_source_items,
-                endpoint_url: requestParameters.endpoint_url
+                endpoint_url: requestParameters.endpoint_url,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(s3AuthRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1751,7 +1755,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 file_sync_config: requestParameters.file_sync_config,
                 automatically_open_file_picker: requestParameters.automatically_open_file_picker,
                 gong_account_email: requestParameters.gong_account_email,
-                servicenow_credentials: requestParameters.servicenow_credentials
+                servicenow_credentials: requestParameters.servicenow_credentials,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1896,7 +1901,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             const azureBlobAuthRequest: AzureBlobAuthRequest = {
                 account_name: requestParameters.account_name,
                 account_key: requestParameters.account_key,
-                sync_source_items: requestParameters.sync_source_items
+                sync_source_items: requestParameters.sync_source_items,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncAzureBlobStorage(azureBlobAuthRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1985,7 +1991,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             const githubConnectRequest: GithubConnectRequest = {
                 username: requestParameters.username,
                 access_token: requestParameters.access_token,
-                sync_source_items: requestParameters.sync_source_items
+                sync_source_items: requestParameters.sync_source_items,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncGitHub(githubConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -2099,7 +2106,8 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
                 embedding_model: requestParameters.embedding_model,
                 generate_sparse_vectors: requestParameters.generate_sparse_vectors,
                 prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
-                request_id: requestParameters.request_id
+                request_id: requestParameters.request_id,
+                data_source_tags: requestParameters.data_source_tags
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(rSSFeedInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

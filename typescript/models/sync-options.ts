@@ -115,5 +115,11 @@ export interface SyncOptions {
      * @memberof SyncOptions
      */
     'automatically_open_file_picker'?: boolean | null;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof SyncOptions
+     */
+    'data_source_tags'?: object;
 }
 

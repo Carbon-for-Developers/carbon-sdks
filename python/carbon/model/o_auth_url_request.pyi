@@ -458,6 +458,7 @@ class OAuthURLRequest(
             @staticmethod
             def servicenow_credentials() -> typing.Type['ServiceNowCredentialsNullable']:
                 return ServiceNowCredentialsNullable
+            data_source_tags = schemas.DictSchema
             __annotations__ = {
                 "service": service,
                 "tags": tags,
@@ -488,6 +489,7 @@ class OAuthURLRequest(
                 "automatically_open_file_picker": automatically_open_file_picker,
                 "gong_account_email": gong_account_email,
                 "servicenow_credentials": servicenow_credentials,
+                "data_source_tags": data_source_tags,
             }
     
     service: 'OauthBasedConnectors'
@@ -580,9 +582,12 @@ class OAuthURLRequest(
     def __getitem__(self, name: typing_extensions.Literal["servicenow_credentials"]) -> 'ServiceNowCredentialsNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["data_source_tags"]) -> MetaOapg.properties.data_source_tags: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -675,9 +680,12 @@ class OAuthURLRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["servicenow_credentials"]) -> typing.Union['ServiceNowCredentialsNullable', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["data_source_tags"]) -> typing.Union[MetaOapg.properties.data_source_tags, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -713,6 +721,7 @@ class OAuthURLRequest(
         automatically_open_file_picker: typing.Union[MetaOapg.properties.automatically_open_file_picker, None, bool, schemas.Unset] = schemas.unset,
         gong_account_email: typing.Union[MetaOapg.properties.gong_account_email, None, str, schemas.Unset] = schemas.unset,
         servicenow_credentials: typing.Union['ServiceNowCredentialsNullable', schemas.Unset] = schemas.unset,
+        data_source_tags: typing.Union[MetaOapg.properties.data_source_tags, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OAuthURLRequest':
@@ -748,6 +757,7 @@ class OAuthURLRequest(
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
             _configuration=_configuration,
             **kwargs,
         )

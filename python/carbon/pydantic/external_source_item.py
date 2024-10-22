@@ -50,6 +50,8 @@ class ExternalSourceItem(BaseModel):
 
     external_url: typing.Optional[str] = Field(alias='external_url')
 
+    file_format: typing.Optional[str] = Field(alias='file_format')
+
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')

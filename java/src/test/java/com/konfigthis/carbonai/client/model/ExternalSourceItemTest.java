@@ -169,6 +169,14 @@ public class ExternalSourceItemTest {
     }
 
     /**
+     * Test the property 'fileFormat'
+     */
+    @Test
+    public void fileFormatTest() {
+        // TODO: test fileFormat
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

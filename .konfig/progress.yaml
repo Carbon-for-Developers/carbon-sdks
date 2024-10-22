@@ -92,6 +92,10 @@ operationIds:
     get: Auth_getWhiteLabeling
   /create_user_file_tags:
     post: Files_createUserFileTags
+  /data_sources/tags/add:
+    post: DataSources_addTags
+  /data_sources/tags/remove:
+    post: DataSources_removeTags
   /delete_files:
     post: Files_deleteMany
   /delete_files_v2:
@@ -260,6 +264,8 @@ operationIds:
     post: WhiteLabel_list
   /white_label/update:
     post: WhiteLabel_update
+  /whoami:
+    get: Users_whoAmI
 operationTags: {}
 renameTags: {}
 requestSchemaNames:

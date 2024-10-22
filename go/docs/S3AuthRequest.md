@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccessKeySecret** | **string** |  | 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 **EndpointUrl** | Pointer to **NullableString** | You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. | [optional] 
+**DataSourceTags** | Pointer to **map[string]interface{}** | Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. | [optional] [default to {}]
 
 ## Methods
 
@@ -128,6 +129,31 @@ HasEndpointUrl returns a boolean if a field has been set.
 `func (o *S3AuthRequest) UnsetEndpointUrl()`
 
 UnsetEndpointUrl ensures that no value is present for EndpointUrl, not even an explicit nil
+### GetDataSourceTags
+
+`func (o *S3AuthRequest) GetDataSourceTags() map[string]interface{}`
+
+GetDataSourceTags returns the DataSourceTags field if non-nil, zero value otherwise.
+
+### GetDataSourceTagsOk
+
+`func (o *S3AuthRequest) GetDataSourceTagsOk() (*map[string]interface{}, bool)`
+
+GetDataSourceTagsOk returns a tuple with the DataSourceTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceTags
+
+`func (o *S3AuthRequest) SetDataSourceTags(v map[string]interface{})`
+
+SetDataSourceTags sets DataSourceTags field to given value.
+
+### HasDataSourceTags
+
+`func (o *S3AuthRequest) HasDataSourceTags() bool`
+
+HasDataSourceTags returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

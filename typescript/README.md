@@ -27,7 +27,9 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.cRM.getLeads`](#carboncrmgetleads)
   * [`carbon.cRM.getOpportunities`](#carboncrmgetopportunities)
   * [`carbon.cRM.getOpportunity`](#carboncrmgetopportunity)
+  * [`carbon.dataSources.addTags`](#carbondatasourcesaddtags)
   * [`carbon.dataSources.queryUserDataSources`](#carbondatasourcesqueryuserdatasources)
+  * [`carbon.dataSources.removeTags`](#carbondatasourcesremovetags)
   * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
   * [`carbon.embeddings.getDocuments`](#carbonembeddingsgetdocuments)
   * [`carbon.embeddings.getEmbeddingsAndChunks`](#carbonembeddingsgetembeddingsandchunks)
@@ -91,6 +93,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggleUserFeatures`](#carbonuserstoggleuserfeatures)
   * [`carbon.users.updateUsers`](#carbonusersupdateusers)
+  * [`carbon.users.whoAmI`](#carbonuserswhoami)
   * [`carbon.utilities.fetchUrls`](#carbonutilitiesfetchurls)
   * [`carbon.utilities.fetchWebpage`](#carbonutilitiesfetchwebpage)
   * [`carbon.utilities.fetchYoutubeTranscripts`](#carbonutilitiesfetchyoutubetranscripts)
@@ -557,6 +560,38 @@ const getOpportunityResponse = await carbon.cRM.getOpportunity({
 ---
 
 
+### `carbon.dataSources.addTags`<a id="carbondatasourcesaddtags"></a>
+
+Add Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const addTagsResponse = await carbon.dataSources.addTags({
+  tags: {},
+  data_source_id: 1,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### tags: `object`<a id="tags-object"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./models/organization-user-data-source-api.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/add` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.dataSources.queryUserDataSources`<a id="carbondatasourcesqueryuserdatasources"></a>
 
 User Data Sources
@@ -588,6 +623,41 @@ const queryUserDataSourcesResponse =
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_data_sources` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.dataSources.removeTags`<a id="carbondatasourcesremovetags"></a>
+
+Remove Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const removeTagsResponse = await carbon.dataSources.removeTags({
+  data_source_id: 1,
+  tags_to_remove: [],
+  remove_all_tags: false,
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `number`<a id="data_source_id-number"></a>
+
+##### tags_to_remove: `string`[]<a id="tags_to_remove-string"></a>
+
+##### remove_all_tags: `boolean`<a id="remove_all_tags-boolean"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./models/organization-user-data-source-api.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/remove` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1547,7 +1617,7 @@ Enable cold storage for the file. If set to true, the file will be moved to cold
 
 ##### hotStorageTimeToLive: `number`<a id="hotstoragetimetolive-number"></a>
 
-Time in seconds after which the file will be moved to cold storage.
+Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
 
 ##### generateChunksOnly: `boolean`<a id="generatechunksonly-boolean"></a>
 
@@ -2170,6 +2240,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -2237,6 +2311,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -2302,6 +2380,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./models/file-sync-config-nullable.ts)<a id="file_sync_config-filesyncconfignullablemodelsfile-sync-config-nullablets"></a>
 
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./models/generic-success-response.ts)
@@ -2351,6 +2433,10 @@ Enabling this flag will fetch all available content from the source to be listed
 ##### endpoint_url: `string`<a id="endpoint_url-string"></a>
 
 You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It\\\'s not required for S3 buckets.
+
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2475,6 +2561,10 @@ Automatically open source file picker after the OAuth flow is complete. This fla
 If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./models/service-now-credentials-nullable.ts)<a id="servicenow_credentials-servicenowcredentialsnullablemodelsservice-now-credentials-nullablets"></a>
+
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2851,6 +2941,10 @@ const syncAzureBlobStorageResponse =
 
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./models/organization-user-data-source-api.ts)
@@ -3076,6 +3170,10 @@ const syncGitHubResponse = await carbon.integrations.syncGitHub({
 ##### sync_source_items: `boolean`<a id="sync_source_items-boolean"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3447,6 +3545,10 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
 ##### prepend_filename_to_chunks: `boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 
 ##### request_id: `string`<a id="request_id-string"></a>
+
+##### data_source_tags: `object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3840,6 +3942,29 @@ Custom character upload limit for the user across a single upload.         If se
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/update_users` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.whoAmI`<a id="carbonuserswhoami"></a>
+
+Me Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const whoAmIResponse = await carbon.users.whoAmI();
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserResponse](./models/user-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/whoami` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

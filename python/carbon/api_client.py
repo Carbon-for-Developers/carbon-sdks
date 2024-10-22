@@ -63,6 +63,7 @@ from carbon.pydantic.account_response import AccountResponse
 from carbon.pydantic.accounts_order_by import AccountsOrderBy
 from carbon.pydantic.accounts_order_by_nullable import AccountsOrderByNullable
 from carbon.pydantic.accounts_request import AccountsRequest
+from carbon.pydantic.add_data_source_tags_input import AddDataSourceTagsInput
 from carbon.pydantic.add_webhook_props import AddWebhookProps
 from carbon.pydantic.address import Address
 from carbon.pydantic.azure_blob_auth_request import AzureBlobAuthRequest
@@ -281,6 +282,8 @@ from carbon.pydantic.pull_request_response import PullRequestResponse
 from carbon.pydantic.pull_requests_input import PullRequestsInput
 from carbon.pydantic.rss_feed_input import RSSFeedInput
 from carbon.pydantic.raw_text_input import RawTextInput
+from carbon.pydantic.remove_data_source_tags_input import RemoveDataSourceTagsInput
+from carbon.pydantic.remove_data_source_tags_input_tags_to_remove import RemoveDataSourceTagsInputTagsToRemove
 from carbon.pydantic.rerank_params import RerankParams
 from carbon.pydantic.rerank_params_nullable import RerankParamsNullable
 from carbon.pydantic.resync_file_query_input import ResyncFileQueryInput

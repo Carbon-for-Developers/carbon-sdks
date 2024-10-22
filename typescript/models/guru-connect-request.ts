@@ -97,5 +97,11 @@ export interface GuruConnectRequest {
      * @memberof GuruConnectRequest
      */
     'file_sync_config'?: FileSyncConfigNullable | null;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof GuruConnectRequest
+     */
+    'data_source_tags'?: object;
 }
 

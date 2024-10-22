@@ -1945,6 +1945,36 @@
         ]
       }
     },
+    "/whoami": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Me Endpoint",
+        "operationId": "me_endpoint_whoami_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/modify_user_configuration": {
       "post": {
         "tags": [
@@ -2396,11 +2426,11 @@
                   "type": "null"
                 }
               ],
-              "description": "Time in seconds after which the file will be moved to cold storage.",
-              "gte": 60,
+              "description": "Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].",
+              "gte": 1,
               "title": "Hot Storage Time To Live"
             },
-            "description": "Time in seconds after which the file will be moved to cold storage."
+            "description": "Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30]."
           },
           {
             "name": "generate_chunks_only",
@@ -3394,6 +3424,106 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/data_sources/tags/add": {
+      "post": {
+        "tags": [
+          "Data Sources"
+        ],
+        "summary": "Add Data Source Tags",
+        "operationId": "add_data_source_tags_data_sources_tags_add_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddDataSourceTagsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
+    "/data_sources/tags/remove": {
+      "post": {
+        "tags": [
+          "Data Sources"
+        ],
+        "summary": "Remove Data Source Tags",
+        "operationId": "remove_data_source_tags_data_sources_tags_remove_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveDataSourceTagsInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceAPI"
                 }
               }
             }
@@ -5293,6 +5423,24 @@
         ],
         "title": "AccountsRequest"
       },
+      "AddDataSourceTagsInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "tags": {
+            "type": "object",
+            "title": "Tags"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id",
+          "tags"
+        ],
+        "title": "AddDataSourceTagsInput"
+      },
       "AddWebhookProps": {
         "properties": {
           "url": {
@@ -5412,6 +5560,12 @@
             "type": "boolean",
             "title": "Sync Source Items",
             "default": true
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -5792,8 +5946,8 @@
               }
             ],
             "title": "Hot Storage Time To Live",
-            "description": "Time in seconds after which the file will be moved to cold storage.",
-            "gte": 60
+            "description": "Time in days after which the file will be moved to cold storage. Valid values are [1, 3, 7, 14, 30]",
+            "gte": 1
           }
         },
         "type": "object",
@@ -6154,6 +6308,7 @@
             "default": {
               "chunk_overlap": 20,
               "chunk_size": 1500,
+              "data_source_tags": {},
               "embedding_model": "OPENAI",
               "enable_file_picker": true,
               "generate_sparse_vectors": false,
@@ -7614,6 +7769,17 @@
             ],
             "title": "External Url"
           },
+          "file_format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Format"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -7643,6 +7809,7 @@
           "item_type",
           "root_external_id",
           "external_url",
+          "file_format",
           "created_at",
           "updated_at"
         ],
@@ -8154,6 +8321,12 @@
               }
             ],
             "description": "Used to configure file syncing when sync_files_on_connection is set to true"
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -8671,6 +8844,12 @@
                 "type": "null"
               }
             ]
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -8841,6 +9020,12 @@
             "title": "Sync Source Items",
             "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
             "default": false
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -9264,6 +9449,12 @@
               }
             ],
             "description": "Used to configure file syncing when sync_files_on_connection is set to true"
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -10435,7 +10626,7 @@
               }
             ],
             "title": "Hot Storage Time To Live",
-            "gte": 60
+            "gte": 1
           }
         },
         "type": "object",
@@ -10838,6 +11029,12 @@
               }
             ],
             "description": "ServiceNow credentials required to connect a ServiceNow account. The instance_subdomain can be extracted from\n        the url of the instance url which takes the form of \"<instance-subdomain>.service-now.com\". The client_id and client_secret are\n        values generated by creating a new OAuth API Integration in ServiceNow. When creating the OAuth API Integration, the redirect\n        uri must be \"https://api.carbon.ai/integrations/servicenow\" or a similar one using a CNAME."
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -11624,6 +11821,10 @@
           "data_source_metadata": {
             "type": "object",
             "title": "Data Source Metadata"
+          },
+          "tags": {
+            "type": "object",
+            "title": "Tags"
           }
         },
         "type": "object",
@@ -11644,7 +11845,8 @@
           "created_at",
           "updated_at",
           "files_synced_at",
-          "data_source_metadata"
+          "data_source_metadata",
+          "tags"
         ],
         "title": "OrganizationUserDataSourceAPI"
       },
@@ -11684,6 +11886,18 @@
               }
             ],
             "title": "Revoked Access"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "description": "\n        Tags to filter by. Supports logical AND and OR operations. Input should be like below:\n        {\n            \"OR\": [\n                {\n                \"key\": \"subject\",\n                \"value\": \"holy-bible\",\n                \"negate\": false\n                },\n                {\n                    \"key\": \"person-of-interest\",\n                    \"value\": \"jesus christ\",\n                    \"negate\": false\n                },\n                {\n                    \"key\": \"genre\",\n                    \"value\": \"fiction\",\n                    \"negate\": true\n                }\n                {\n                    \"AND\": [\n                        {\n                            \"key\": \"subject\",\n                            \"value\": \"tao-te-ching\",\n                            \"negate\": true\n                        },\n                        {\n                            \"key\": \"author\",\n                            \"value\": \"lao-tzu\",\n                            \"negate\": false\n                        }\n                    ]\n                }\n            ]\n        }\n        For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.\n        "
           }
         },
         "type": "object",
@@ -13243,6 +13457,12 @@
               }
             ],
             "title": "Request Id"
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -13358,6 +13578,32 @@
         ],
         "title": "RawTextInput"
       },
+      "RemoveDataSourceTagsInput": {
+        "properties": {
+          "data_source_id": {
+            "type": "integer",
+            "title": "Data Source Id"
+          },
+          "tags_to_remove": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tags To Remove",
+            "default": []
+          },
+          "remove_all_tags": {
+            "type": "boolean",
+            "title": "Remove All Tags",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ],
+        "title": "RemoveDataSourceTagsInput"
+      },
       "RerankParams": {
         "properties": {
           "model": {
@@ -13463,6 +13709,12 @@
             ],
             "title": "Endpoint Url",
             "description": "You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.\n        The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets."
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -14720,6 +14972,12 @@
             ],
             "title": "Automatically Open File Picker",
             "description": "Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by\n        BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources."
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
           }
         },
         "type": "object",
@@ -15843,6 +16101,11 @@
             "type": "array",
             "title": "Auto Sync Enabled Sources",
             "default": []
+          },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
           }
         },
         "type": "object",
@@ -15865,7 +16128,8 @@
           "unique_file_tags",
           "enabled_features",
           "custom_limits",
-          "auto_sync_enabled_sources"
+          "auto_sync_enabled_sources",
+          "connector_settings"
         ],
         "title": "UserResponse"
       },
@@ -16525,13 +16789,19 @@
           "custom_limits": {
             "type": "object",
             "title": "Custom Limits"
+          },
+          "connector_settings": {
+            "type": "object",
+            "title": "Connector Settings",
+            "default": {}
           }
         },
         "type": "object",
         "required": [
           "remove_branding",
           "integrations",
-          "custom_limits"
+          "custom_limits",
+          "connector_settings"
         ],
         "title": "WhiteLabelingResponse"
       },

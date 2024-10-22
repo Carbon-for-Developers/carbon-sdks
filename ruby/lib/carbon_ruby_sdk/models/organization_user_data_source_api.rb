@@ -11,6 +11,8 @@ require 'time'
 
 module Carbon
   class OrganizationUserDataSourceAPI
+    attr_accessor :tags
+
     attr_accessor :id
 
     attr_accessor :data_source_external_id
@@ -48,6 +50,7 @@ module Carbon
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'tags' => :'tags',
         :'id' => :'id',
         :'data_source_external_id' => :'data_source_external_id',
         :'data_source_type' => :'data_source_type',
@@ -76,6 +79,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'tags' => :'Object',
         :'id' => :'Integer',
         :'data_source_external_id' => :'String',
         :'data_source_type' => :'DataSourceType',
@@ -121,6 +125,10 @@ module Carbon
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'tags')
+        self.tags = attributes[:'tags']
+      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -195,6 +203,10 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @tags.nil?
+        invalid_properties.push('invalid value for "tags", tags cannot be nil.')
+      end
+
       if @id.nil?
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
@@ -249,6 +261,7 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @tags.nil?
       return false if @id.nil?
       return false if @data_source_type.nil?
       return false if @sync_status.nil?
@@ -269,6 +282,7 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          tags == o.tags &&
           id == o.id &&
           data_source_external_id == o.data_source_external_id &&
           data_source_type == o.data_source_type &&
@@ -297,7 +311,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, enable_auto_sync, created_at, updated_at, files_synced_at, data_source_metadata].hash
+      [tags, id, data_source_external_id, data_source_type, token, sync_status, source_items_synced_at, organization_user_id, organization_id, organization_supplied_user_id, revoked_access, last_synced_at, last_sync_action, enable_auto_sync, created_at, updated_at, files_synced_at, data_source_metadata].hash
     end
 
     # Builds the object from hash

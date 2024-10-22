@@ -62,4 +62,12 @@ public class AzureBlobAuthRequestTest {
         // TODO: test syncSourceItems
     }
 
+    /**
+     * Test the property 'dataSourceTags'
+     */
+    @Test
+    public void dataSourceTagsTest() {
+        // TODO: test dataSourceTags
+    }
+
 }

@@ -211,6 +211,7 @@ class FreshDeskConnectRequest(
             @staticmethod
             def file_sync_config() -> typing.Type['FileSyncConfigNullable']:
                 return FileSyncConfigNullable
+            data_source_tags = schemas.DictSchema
             __annotations__ = {
                 "domain": domain,
                 "api_key": api_key,
@@ -225,6 +226,7 @@ class FreshDeskConnectRequest(
                 "request_id": request_id,
                 "sync_source_items": sync_source_items,
                 "file_sync_config": file_sync_config,
+                "data_source_tags": data_source_tags,
             }
     
     api_key: MetaOapg.properties.api_key
@@ -270,9 +272,12 @@ class FreshDeskConnectRequest(
     def __getitem__(self, name: typing_extensions.Literal["file_sync_config"]) -> 'FileSyncConfigNullable': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["data_source_tags"]) -> MetaOapg.properties.data_source_tags: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", "file_sync_config", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", "file_sync_config", "data_source_tags", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -317,9 +322,12 @@ class FreshDeskConnectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["file_sync_config"]) -> typing.Union['FileSyncConfigNullable', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["data_source_tags"]) -> typing.Union[MetaOapg.properties.data_source_tags, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", "file_sync_config", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["domain", "api_key", "tags", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "generate_sparse_vectors", "prepend_filename_to_chunks", "sync_files_on_connection", "request_id", "sync_source_items", "file_sync_config", "data_source_tags", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -339,6 +347,7 @@ class FreshDeskConnectRequest(
         request_id: typing.Union[MetaOapg.properties.request_id, None, str, schemas.Unset] = schemas.unset,
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
         file_sync_config: typing.Union['FileSyncConfigNullable', schemas.Unset] = schemas.unset,
+        data_source_tags: typing.Union[MetaOapg.properties.data_source_tags, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FreshDeskConnectRequest':
@@ -358,6 +367,7 @@ class FreshDeskConnectRequest(
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
             _configuration=_configuration,
             **kwargs,
         )

@@ -90,6 +90,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.RemoveBranding`: %v\n", resp.RemoveBranding)
     fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.Integrations`: %v\n", resp.Integrations)
     fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.CustomLimits`: %v\n", resp.CustomLimits)
+    fmt.Fprintf(os.Stdout, "Response from `WhiteLabelingResponse.GetWhiteLabeling.ConnectorSettings`: %v\n", resp.ConnectorSettings)
 }
 ```
 

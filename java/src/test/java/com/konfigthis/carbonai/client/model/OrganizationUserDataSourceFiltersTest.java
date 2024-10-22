@@ -43,6 +43,14 @@ public class OrganizationUserDataSourceFiltersTest {
     }
 
     /**
+     * Test the property 'tags'
+     */
+    @Test
+    public void tagsTest() {
+        // TODO: test tags
+    }
+
+    /**
      * Test the property 'source'
      */
     @Test

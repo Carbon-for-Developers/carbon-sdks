@@ -189,6 +189,16 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/data_sources/tags/add-POST': {
+        parameters: [
+            {
+                name: 'tags'
+            },
+            {
+                name: 'data_source_id'
+            },
+        ]
+    },
     '/user_data_sources-POST': {
         parameters: [
             {
@@ -202,6 +212,19 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'filters'
+            },
+        ]
+    },
+    '/data_sources/tags/remove-POST': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'tags_to_remove'
+            },
+            {
+                name: 'remove_all_tags'
             },
         ]
     },
@@ -893,6 +916,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'file_sync_config'
             },
+            {
+                name: 'data_source_tags'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -935,6 +961,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'file_sync_config'
+            },
+            {
+                name: 'data_source_tags'
             },
         ]
     },
@@ -979,6 +1008,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'file_sync_config'
             },
+            {
+                name: 'data_source_tags'
+            },
         ]
     },
     '/integrations/s3-POST': {
@@ -994,6 +1026,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'endpoint_url'
+            },
+            {
+                name: 'data_source_tags'
             },
         ]
     },
@@ -1085,6 +1120,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'servicenow_credentials'
+            },
+            {
+                name: 'data_source_tags'
             },
         ]
     },
@@ -1237,6 +1275,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'sync_source_items'
             },
+            {
+                name: 'data_source_tags'
+            },
         ]
     },
     '/integrations/confluence/sync-POST': {
@@ -1360,6 +1401,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'sync_source_items'
+            },
+            {
+                name: 'data_source_tags'
             },
         ]
     },
@@ -1527,6 +1571,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'request_id'
+            },
+            {
+                name: 'data_source_tags'
             },
         ]
     },
@@ -1697,6 +1744,10 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'max_characters_per_upload'
             },
+        ]
+    },
+    '/whoami-GET': {
+        parameters: [
         ]
     },
     '/fetch_urls-GET': {

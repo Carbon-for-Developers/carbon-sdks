@@ -130,6 +130,7 @@ class BaseApi(api_client.Api):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -151,6 +152,8 @@ class BaseApi(api_client.Api):
             _body["prepend_filename_to_chunks"] = prepend_filename_to_chunks
         if request_id is not None:
             _body["request_id"] = request_id
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -367,6 +370,7 @@ class SyncRssFeedRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -383,6 +387,7 @@ class SyncRssFeedRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
         )
         return await self._async_rss_feed_oapg(
             body=args.body,
@@ -400,6 +405,7 @@ class SyncRssFeedRaw(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -415,6 +421,7 @@ class SyncRssFeedRaw(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
         )
         return self._sync_rss_feed_oapg(
             body=args.body,
@@ -433,6 +440,7 @@ class SyncRssFeed(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -446,6 +454,7 @@ class SyncRssFeed(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -464,6 +473,7 @@ class SyncRssFeed(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_rss_feed(
@@ -476,6 +486,7 @@ class SyncRssFeed(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -496,6 +507,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -512,6 +524,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
         )
         return await self._async_rss_feed_oapg(
             body=args.body,
@@ -529,6 +542,7 @@ class ApiForpost(BaseApi):
         generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = None,
         prepend_filename_to_chunks: typing.Optional[typing.Optional[bool]] = None,
         request_id: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -544,6 +558,7 @@ class ApiForpost(BaseApi):
             generate_sparse_vectors=generate_sparse_vectors,
             prepend_filename_to_chunks=prepend_filename_to_chunks,
             request_id=request_id,
+            data_source_tags=data_source_tags,
         )
         return self._sync_rss_feed_oapg(
             body=args.body,

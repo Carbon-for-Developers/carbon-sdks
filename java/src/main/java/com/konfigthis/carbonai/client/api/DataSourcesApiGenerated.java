@@ -26,13 +26,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.carbonai.client.model.AddDataSourceTagsInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.OrderDir;
+import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceFilters;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceOrderByColumns;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceQueryInput;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceResponse;
 import com.konfigthis.carbonai.client.model.Pagination;
+import com.konfigthis.carbonai.client.model.RemoveDataSourceTagsInput;
 import com.konfigthis.carbonai.client.model.RevokeAccessTokenInput;
 
 import java.lang.reflect.Type;
@@ -79,6 +82,173 @@ public class DataSourcesApiGenerated {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call addTagsCall(AddDataSourceTagsInput addDataSourceTagsInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = addDataSourceTagsInput;
+
+        // create path and map variables
+        String localVarPath = "/data_sources/tags/add";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addTagsValidateBeforeCall(AddDataSourceTagsInput addDataSourceTagsInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'addDataSourceTagsInput' is set
+        if (addDataSourceTagsInput == null) {
+            throw new ApiException("Missing the required parameter 'addDataSourceTagsInput' when calling addTags(Async)");
+        }
+
+        return addTagsCall(addDataSourceTagsInput, _callback);
+
+    }
+
+
+    private ApiResponse<OrganizationUserDataSourceAPI> addTagsWithHttpInfo(AddDataSourceTagsInput addDataSourceTagsInput) throws ApiException {
+        okhttp3.Call localVarCall = addTagsValidateBeforeCall(addDataSourceTagsInput, null);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call addTagsAsync(AddDataSourceTagsInput addDataSourceTagsInput, final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addTagsValidateBeforeCall(addDataSourceTagsInput, _callback);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class AddTagsRequestBuilderGenerated {
+        final Object tags;
+        final Integer dataSourceId;
+
+        public AddTagsRequestBuilderGenerated(Object tags, Integer dataSourceId) {
+            this.tags = tags;
+            this.dataSourceId = dataSourceId;
+        }
+
+        /**
+         * Build call for addTags
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            AddDataSourceTagsInput addDataSourceTagsInput = buildBodyParams();
+            return addTagsCall(addDataSourceTagsInput, _callback);
+        }
+
+        private AddDataSourceTagsInput buildBodyParams() {
+            AddDataSourceTagsInput addDataSourceTagsInput = new AddDataSourceTagsInput();
+            addDataSourceTagsInput.tags(this.tags);
+            addDataSourceTagsInput.dataSourceId(this.dataSourceId);
+            return addDataSourceTagsInput;
+        }
+
+        /**
+         * Execute addTags request
+         * @return OrganizationUserDataSourceAPI
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrganizationUserDataSourceAPI execute() throws ApiException {
+            AddDataSourceTagsInput addDataSourceTagsInput = buildBodyParams();
+            ApiResponse<OrganizationUserDataSourceAPI> localVarResp = addTagsWithHttpInfo(addDataSourceTagsInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute addTags request with HTTP info returned
+         * @return ApiResponse&lt;OrganizationUserDataSourceAPI&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrganizationUserDataSourceAPI> executeWithHttpInfo() throws ApiException {
+            AddDataSourceTagsInput addDataSourceTagsInput = buildBodyParams();
+            return addTagsWithHttpInfo(addDataSourceTagsInput);
+        }
+
+        /**
+         * Execute addTags request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+            AddDataSourceTagsInput addDataSourceTagsInput = buildBodyParams();
+            return addTagsAsync(addDataSourceTagsInput, _callback);
+        }
+    }
+
+    /**
+     * Add Data Source Tags
+     * 
+     * @param addDataSourceTagsInput  (required)
+     * @return AddTagsRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public DataSourcesApi.AddTagsRequestBuilder addTags(Object tags, Integer dataSourceId) throws IllegalArgumentException {
+        if (tags == null) throw new IllegalArgumentException("\"tags\" is required but got null");
+        if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
+        return ((DataSourcesApi) this).new AddTagsRequestBuilder(tags, dataSourceId);
+    }
     private okhttp3.Call queryUserDataSourcesCall(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -285,6 +455,193 @@ public class DataSourcesApiGenerated {
      */
     public DataSourcesApi.QueryUserDataSourcesRequestBuilder queryUserDataSources() throws IllegalArgumentException {
         return ((DataSourcesApi) this).new QueryUserDataSourcesRequestBuilder();
+    }
+    private okhttp3.Call removeTagsCall(RemoveDataSourceTagsInput removeDataSourceTagsInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = removeDataSourceTagsInput;
+
+        // create path and map variables
+        String localVarPath = "/data_sources/tags/remove";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call removeTagsValidateBeforeCall(RemoveDataSourceTagsInput removeDataSourceTagsInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'removeDataSourceTagsInput' is set
+        if (removeDataSourceTagsInput == null) {
+            throw new ApiException("Missing the required parameter 'removeDataSourceTagsInput' when calling removeTags(Async)");
+        }
+
+        return removeTagsCall(removeDataSourceTagsInput, _callback);
+
+    }
+
+
+    private ApiResponse<OrganizationUserDataSourceAPI> removeTagsWithHttpInfo(RemoveDataSourceTagsInput removeDataSourceTagsInput) throws ApiException {
+        okhttp3.Call localVarCall = removeTagsValidateBeforeCall(removeDataSourceTagsInput, null);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call removeTagsAsync(RemoveDataSourceTagsInput removeDataSourceTagsInput, final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = removeTagsValidateBeforeCall(removeDataSourceTagsInput, _callback);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceAPI>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class RemoveTagsRequestBuilderGenerated {
+        final Integer dataSourceId;
+        List<String> tagsToRemove;
+        Boolean removeAllTags;
+
+        public RemoveTagsRequestBuilderGenerated(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+        }
+
+        /**
+         * Set tagsToRemove
+         * @param tagsToRemove  (optional)
+         * @return DataSourcesApi.RemoveTagsRequestBuilder
+         */
+        public DataSourcesApi.RemoveTagsRequestBuilder tagsToRemove(List<String> tagsToRemove) {
+            this.tagsToRemove = tagsToRemove;
+            return (DataSourcesApi.RemoveTagsRequestBuilder) this;
+        }
+        
+        /**
+         * Set removeAllTags
+         * @param removeAllTags  (optional, default to false)
+         * @return DataSourcesApi.RemoveTagsRequestBuilder
+         */
+        public DataSourcesApi.RemoveTagsRequestBuilder removeAllTags(Boolean removeAllTags) {
+            this.removeAllTags = removeAllTags;
+            return (DataSourcesApi.RemoveTagsRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for removeTags
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            RemoveDataSourceTagsInput removeDataSourceTagsInput = buildBodyParams();
+            return removeTagsCall(removeDataSourceTagsInput, _callback);
+        }
+
+        private RemoveDataSourceTagsInput buildBodyParams() {
+            RemoveDataSourceTagsInput removeDataSourceTagsInput = new RemoveDataSourceTagsInput();
+            removeDataSourceTagsInput.dataSourceId(this.dataSourceId);
+            removeDataSourceTagsInput.tagsToRemove(this.tagsToRemove);
+            removeDataSourceTagsInput.removeAllTags(this.removeAllTags);
+            return removeDataSourceTagsInput;
+        }
+
+        /**
+         * Execute removeTags request
+         * @return OrganizationUserDataSourceAPI
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrganizationUserDataSourceAPI execute() throws ApiException {
+            RemoveDataSourceTagsInput removeDataSourceTagsInput = buildBodyParams();
+            ApiResponse<OrganizationUserDataSourceAPI> localVarResp = removeTagsWithHttpInfo(removeDataSourceTagsInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute removeTags request with HTTP info returned
+         * @return ApiResponse&lt;OrganizationUserDataSourceAPI&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrganizationUserDataSourceAPI> executeWithHttpInfo() throws ApiException {
+            RemoveDataSourceTagsInput removeDataSourceTagsInput = buildBodyParams();
+            return removeTagsWithHttpInfo(removeDataSourceTagsInput);
+        }
+
+        /**
+         * Execute removeTags request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrganizationUserDataSourceAPI> _callback) throws ApiException {
+            RemoveDataSourceTagsInput removeDataSourceTagsInput = buildBodyParams();
+            return removeTagsAsync(removeDataSourceTagsInput, _callback);
+        }
+    }
+
+    /**
+     * Remove Data Source Tags
+     * 
+     * @param removeDataSourceTagsInput  (required)
+     * @return RemoveTagsRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public DataSourcesApi.RemoveTagsRequestBuilder removeTags(Integer dataSourceId) throws IllegalArgumentException {
+        if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
+        return ((DataSourcesApi) this).new RemoveTagsRequestBuilder(dataSourceId);
     }
     private okhttp3.Call revokeAccessTokenCall(RevokeAccessTokenInput revokeAccessTokenInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;

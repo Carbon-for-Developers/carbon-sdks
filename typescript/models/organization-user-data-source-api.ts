@@ -22,6 +22,12 @@ import { DataSourceType } from './data-source-type';
 export interface OrganizationUserDataSourceAPI {
     /**
      * 
+     * @type {object}
+     * @memberof OrganizationUserDataSourceAPI
+     */
+    'tags': object;
+    /**
+     * 
      * @type {number}
      * @memberof OrganizationUserDataSourceAPI
      */

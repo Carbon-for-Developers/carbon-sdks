@@ -35,5 +35,11 @@ export interface AzureBlobAuthRequest {
      * @memberof AzureBlobAuthRequest
      */
     'sync_source_items'?: boolean;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof AzureBlobAuthRequest
+     */
+    'data_source_tags'?: object;
 }
 

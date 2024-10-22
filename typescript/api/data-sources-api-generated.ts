@@ -21,11 +21,15 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { AddDataSourceTagsInput } from '../models';
+// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
+// @ts-ignore
+import { OrganizationUserDataSourceAPI } from '../models';
 // @ts-ignore
 import { OrganizationUserDataSourceFilters } from '../models';
 // @ts-ignore
@@ -37,6 +41,8 @@ import { OrganizationUserDataSourceResponse } from '../models';
 // @ts-ignore
 import { Pagination } from '../models';
 // @ts-ignore
+import { RemoveDataSourceTagsInput } from '../models';
+// @ts-ignore
 import { RevokeAccessTokenInput } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
@@ -47,6 +53,58 @@ import { requestBeforeHook } from '../requestBeforeHook';
  */
 export const DataSourcesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Add Data Source Tags
+         * @param {AddDataSourceTagsInput} addDataSourceTagsInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addTags: async (addDataSourceTagsInput: AddDataSourceTagsInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'addDataSourceTagsInput' is not null or undefined
+            assertParamExists('addTags', 'addDataSourceTagsInput', addDataSourceTagsInput)
+            const localVarPath = `/data_sources/tags/add`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: addDataSourceTagsInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/data_sources/tags/add',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(addDataSourceTagsInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary User Data Sources
@@ -92,6 +150,58 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserDataSourceQueryInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Remove Data Source Tags
+         * @param {RemoveDataSourceTagsInput} removeDataSourceTagsInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        removeTags: async (removeDataSourceTagsInput: RemoveDataSourceTagsInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'removeDataSourceTagsInput' is not null or undefined
+            assertParamExists('removeTags', 'removeDataSourceTagsInput', removeDataSourceTagsInput)
+            const localVarPath = `/data_sources/tags/remove`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: removeDataSourceTagsInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/data_sources/tags/remove',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(removeDataSourceTagsInput, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -163,6 +273,21 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Add Data Source Tags
+         * @param {DataSourcesApiAddTagsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addTags(requestParameters: DataSourcesApiAddTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
+            const addDataSourceTagsInput: AddDataSourceTagsInput = {
+                tags: requestParameters.tags,
+                data_source_id: requestParameters.data_source_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addTags(addDataSourceTagsInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary User Data Sources
          * @param {DataSourcesApiQueryUserDataSourcesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -176,6 +301,22 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
                 filters: requestParameters.filters
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserDataSources(organizationUserDataSourceQueryInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Remove Data Source Tags
+         * @param {DataSourcesApiRemoveTagsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async removeTags(requestParameters: DataSourcesApiRemoveTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
+            const removeDataSourceTagsInput: RemoveDataSourceTagsInput = {
+                data_source_id: requestParameters.data_source_id,
+                tags_to_remove: requestParameters.tags_to_remove,
+                remove_all_tags: requestParameters.remove_all_tags
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.removeTags(removeDataSourceTagsInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -204,6 +345,16 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
     return {
         /**
          * 
+         * @summary Add Data Source Tags
+         * @param {DataSourcesApiAddTagsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addTags(requestParameters: DataSourcesApiAddTagsRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceAPI> {
+            return localVarFp.addTags(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary User Data Sources
          * @param {DataSourcesApiQueryUserDataSourcesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -211,6 +362,16 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
          */
         queryUserDataSources(requestParameters: DataSourcesApiQueryUserDataSourcesRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceResponse> {
             return localVarFp.queryUserDataSources(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Remove Data Source Tags
+         * @param {DataSourcesApiRemoveTagsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        removeTags(requestParameters: DataSourcesApiRemoveTagsRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceAPI> {
+            return localVarFp.removeTags(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -226,6 +387,15 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
 };
 
 /**
+ * Request parameters for addTags operation in DataSourcesApi.
+ * @export
+ * @interface DataSourcesApiAddTagsRequest
+ */
+export type DataSourcesApiAddTagsRequest = {
+    
+} & AddDataSourceTagsInput
+
+/**
  * Request parameters for queryUserDataSources operation in DataSourcesApi.
  * @export
  * @interface DataSourcesApiQueryUserDataSourcesRequest
@@ -233,6 +403,15 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
 export type DataSourcesApiQueryUserDataSourcesRequest = {
     
 } & OrganizationUserDataSourceQueryInput
+
+/**
+ * Request parameters for removeTags operation in DataSourcesApi.
+ * @export
+ * @interface DataSourcesApiRemoveTagsRequest
+ */
+export type DataSourcesApiRemoveTagsRequest = {
+    
+} & RemoveDataSourceTagsInput
 
 /**
  * Request parameters for revokeAccessToken operation in DataSourcesApi.
@@ -252,6 +431,18 @@ export type DataSourcesApiRevokeAccessTokenRequest = {
 export class DataSourcesApiGenerated extends BaseAPI {
     /**
      * 
+     * @summary Add Data Source Tags
+     * @param {DataSourcesApiAddTagsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DataSourcesApiGenerated
+     */
+    public addTags(requestParameters: DataSourcesApiAddTagsRequest, options?: AxiosRequestConfig) {
+        return DataSourcesApiFp(this.configuration).addTags(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary User Data Sources
      * @param {DataSourcesApiQueryUserDataSourcesRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -260,6 +451,18 @@ export class DataSourcesApiGenerated extends BaseAPI {
      */
     public queryUserDataSources(requestParameters: DataSourcesApiQueryUserDataSourcesRequest, options?: AxiosRequestConfig) {
         return DataSourcesApiFp(this.configuration).queryUserDataSources(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Remove Data Source Tags
+     * @param {DataSourcesApiRemoveTagsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DataSourcesApiGenerated
+     */
+    public removeTags(requestParameters: DataSourcesApiRemoveTagsRequest, options?: AxiosRequestConfig) {
+        return DataSourcesApiFp(this.configuration).removeTags(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

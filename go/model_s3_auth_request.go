@@ -22,6 +22,8 @@ type S3AuthRequest struct {
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
 	EndpointUrl NullableString `json:"endpoint_url,omitempty"`
+	// Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+	DataSourceTags map[string]interface{} `json:"data_source_tags,omitempty"`
 }
 
 // NewS3AuthRequest instantiates a new S3AuthRequest object
@@ -169,6 +171,38 @@ func (o *S3AuthRequest) UnsetEndpointUrl() {
 	o.EndpointUrl.Unset()
 }
 
+// GetDataSourceTags returns the DataSourceTags field value if set, zero value otherwise.
+func (o *S3AuthRequest) GetDataSourceTags() map[string]interface{} {
+	if o == nil || isNil(o.DataSourceTags) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.DataSourceTags
+}
+
+// GetDataSourceTagsOk returns a tuple with the DataSourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *S3AuthRequest) GetDataSourceTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.DataSourceTags) {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceTags, true
+}
+
+// HasDataSourceTags returns a boolean if a field has been set.
+func (o *S3AuthRequest) HasDataSourceTags() bool {
+	if o != nil && !isNil(o.DataSourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceTags gets a reference to the given map[string]interface{} and assigns it to the DataSourceTags field.
+func (o *S3AuthRequest) SetDataSourceTags(v map[string]interface{}) {
+	o.DataSourceTags = v
+}
+
 func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -182,6 +216,9 @@ func (o S3AuthRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EndpointUrl.IsSet() {
 		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
+	}
+	if !isNil(o.DataSourceTags) {
+		toSerialize["data_source_tags"] = o.DataSourceTags
 	}
 	return json.Marshal(toSerialize)
 }

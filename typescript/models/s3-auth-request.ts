@@ -41,5 +41,11 @@ export interface S3AuthRequest {
      * @memberof S3AuthRequest
      */
     'endpoint_url'?: string | null;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof S3AuthRequest
+     */
+    'data_source_tags'?: object;
 }
 

@@ -66,6 +66,10 @@ public class S3AuthRequest {
   @SerializedName(SERIALIZED_NAME_ENDPOINT_URL)
   private String endpointUrl;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public S3AuthRequest() {
   }
 
@@ -184,6 +188,35 @@ public class S3AuthRequest {
     this.endpointUrl = endpointUrl;
   }
 
+
+  public S3AuthRequest dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -242,7 +275,8 @@ public class S3AuthRequest {
     return Objects.equals(this.accessKey, s3AuthRequest.accessKey) &&
         Objects.equals(this.accessKeySecret, s3AuthRequest.accessKeySecret) &&
         Objects.equals(this.syncSourceItems, s3AuthRequest.syncSourceItems) &&
-        Objects.equals(this.endpointUrl, s3AuthRequest.endpointUrl)&&
+        Objects.equals(this.endpointUrl, s3AuthRequest.endpointUrl) &&
+        Objects.equals(this.dataSourceTags, s3AuthRequest.dataSourceTags)&&
         Objects.equals(this.additionalProperties, s3AuthRequest.additionalProperties);
   }
 
@@ -252,7 +286,7 @@ public class S3AuthRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessKeySecret, syncSourceItems, endpointUrl, additionalProperties);
+    return Objects.hash(accessKey, accessKeySecret, syncSourceItems, endpointUrl, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -270,6 +304,7 @@ public class S3AuthRequest {
     sb.append("    accessKeySecret: ").append(toIndentedString(accessKeySecret)).append("\n");
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
     sb.append("    endpointUrl: ").append(toIndentedString(endpointUrl)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,6 +332,7 @@ public class S3AuthRequest {
     openapiFields.add("access_key_secret");
     openapiFields.add("sync_source_items");
     openapiFields.add("endpoint_url");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

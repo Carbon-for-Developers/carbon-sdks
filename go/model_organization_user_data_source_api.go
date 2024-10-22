@@ -17,6 +17,7 @@ import (
 
 // OrganizationUserDataSourceAPI struct for OrganizationUserDataSourceAPI
 type OrganizationUserDataSourceAPI struct {
+	Tags map[string]interface{} `json:"tags"`
 	Id int32 `json:"id"`
 	DataSourceExternalId NullableString `json:"data_source_external_id"`
 	DataSourceType DataSourceType `json:"data_source_type"`
@@ -40,8 +41,9 @@ type OrganizationUserDataSourceAPI struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}) *OrganizationUserDataSourceAPI {
+func NewOrganizationUserDataSourceAPI(tags map[string]interface{}, id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}) *OrganizationUserDataSourceAPI {
 	this := OrganizationUserDataSourceAPI{}
+	this.Tags = tags
 	this.Id = id
 	this.DataSourceExternalId = dataSourceExternalId
 	this.DataSourceType = dataSourceType
@@ -68,6 +70,30 @@ func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableStr
 func NewOrganizationUserDataSourceAPIWithDefaults() *OrganizationUserDataSourceAPI {
 	this := OrganizationUserDataSourceAPI{}
 	return &this
+}
+
+// GetTags returns the Tags field value
+func (o *OrganizationUserDataSourceAPI) GetTags() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationUserDataSourceAPI) GetTagsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.Tags, true
+}
+
+// SetTags sets field value
+func (o *OrganizationUserDataSourceAPI) SetTags(v map[string]interface{}) {
+	o.Tags = v
 }
 
 // GetId returns the Id field value
@@ -490,6 +516,9 @@ func (o *OrganizationUserDataSourceAPI) SetDataSourceMetadata(v map[string]inter
 
 func (o OrganizationUserDataSourceAPI) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["tags"] = o.Tags
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}

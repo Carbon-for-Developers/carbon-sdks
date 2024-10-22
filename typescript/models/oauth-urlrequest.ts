@@ -195,5 +195,11 @@ export interface OAuthURLRequest {
      * @memberof OAuthURLRequest
      */
     'servicenow_credentials'?: ServiceNowCredentialsNullable | null;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof OAuthURLRequest
+     */
+    'data_source_tags'?: object;
 }
 

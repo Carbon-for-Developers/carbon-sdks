@@ -14,7 +14,7 @@ module Carbon
     # Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
     attr_accessor :enable_cold_storage
 
-    # Time in seconds after which the file will be moved to cold storage.
+    # Time in days after which the file will be moved to cold storage. Valid values are [1, 3, 7, 14, 30]
     attr_accessor :hot_storage_time_to_live
 
     # Attribute mapping from ruby-style variable name to JSON key.

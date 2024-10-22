@@ -23,12 +23,13 @@ Name | Type | Description | Notes
 **EnabledFeatures** | **map[string]interface{}** |  | 
 **CustomLimits** | **map[string]interface{}** |  | [default to {}]
 **AutoSyncEnabledSources** | **[]interface{}** |  | [default to []]
+**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
 
 ## Methods
 
 ### NewUserResponse
 
-`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, ) *UserResponse`
+`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, connectorSettings map[string]interface{}, ) *UserResponse`
 
 NewUserResponse instantiates a new UserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -441,6 +442,26 @@ and a boolean to check if the value has been set.
 `func (o *UserResponse) SetAutoSyncEnabledSources(v []interface{})`
 
 SetAutoSyncEnabledSources sets AutoSyncEnabledSources field to given value.
+
+
+### GetConnectorSettings
+
+`func (o *UserResponse) GetConnectorSettings() map[string]interface{}`
+
+GetConnectorSettings returns the ConnectorSettings field if non-nil, zero value otherwise.
+
+### GetConnectorSettingsOk
+
+`func (o *UserResponse) GetConnectorSettingsOk() (*map[string]interface{}, bool)`
+
+GetConnectorSettingsOk returns a tuple with the ConnectorSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectorSettings
+
+`func (o *UserResponse) SetConnectorSettings(v map[string]interface{})`
+
+SetConnectorSettings sets ConnectorSettings field to given value.
 
 
 

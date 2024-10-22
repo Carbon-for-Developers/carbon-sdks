@@ -19,6 +19,8 @@ from carbon.type.data_source_sync_statuses import DataSourceSyncStatuses
 from carbon.type.data_source_type import DataSourceType
 
 class RequiredOrganizationUserDataSourceAPI(TypedDict):
+    tags: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
     id: int
 
     data_source_external_id: typing.Optional[str]

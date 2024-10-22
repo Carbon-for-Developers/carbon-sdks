@@ -26,6 +26,7 @@
 |**enabledFeatures** | **Object** |  |  |
 |**customLimits** | **Object** |  |  |
 |**autoSyncEnabledSources** | **List&lt;Object&gt;** |  |  |
+|**connectorSettings** | **Object** |  |  |
 
 
 

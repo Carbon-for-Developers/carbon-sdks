@@ -33,6 +33,7 @@ type ExternalSourceItem struct {
 	ItemType NullableString `json:"item_type"`
 	RootExternalId NullableString `json:"root_external_id"`
 	ExternalUrl NullableString `json:"external_url"`
+	FileFormat NullableString `json:"file_format"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -41,7 +42,7 @@ type ExternalSourceItem struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, externalUrl NullableString, createdAt time.Time, updatedAt time.Time) *ExternalSourceItem {
+func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, externalUrl NullableString, fileFormat NullableString, createdAt time.Time, updatedAt time.Time) *ExternalSourceItem {
 	this := ExternalSourceItem{}
 	this.Id = id
 	this.ExternalId = externalId
@@ -59,6 +60,7 @@ func NewExternalSourceItem(id int32, externalId string, source DataSourceType, n
 	this.ItemType = itemType
 	this.RootExternalId = rootExternalId
 	this.ExternalUrl = externalUrl
+	this.FileFormat = fileFormat
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -470,6 +472,32 @@ func (o *ExternalSourceItem) SetExternalUrl(v string) {
 	o.ExternalUrl.Set(&v)
 }
 
+// GetFileFormat returns the FileFormat field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ExternalSourceItem) GetFileFormat() string {
+	if o == nil || o.FileFormat.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.FileFormat.Get()
+}
+
+// GetFileFormatOk returns a tuple with the FileFormat field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ExternalSourceItem) GetFileFormatOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.FileFormat.Get(), o.FileFormat.IsSet()
+}
+
+// SetFileFormat sets field value
+func (o *ExternalSourceItem) SetFileFormat(v string) {
+	o.FileFormat.Set(&v)
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *ExternalSourceItem) GetCreatedAt() time.Time {
 	if o == nil {
@@ -567,6 +595,9 @@ func (o ExternalSourceItem) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["external_url"] = o.ExternalUrl.Get()
+	}
+	if true {
+		toSerialize["file_format"] = o.FileFormat.Get()
 	}
 	if true {
 		toSerialize["created_at"] = o.CreatedAt

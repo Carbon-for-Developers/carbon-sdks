@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableColdStorage** | Pointer to **bool** | Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. | [optional] [default to false]
-**HotStorageTimeToLive** | Pointer to **NullableInt32** | Time in seconds after which the file will be moved to cold storage. | [optional] 
+**HotStorageTimeToLive** | Pointer to **NullableInt32** | Time in days after which the file will be moved to cold storage. Valid values are [1, 3, 7, 14, 30] | [optional] 
 
 ## Methods
 

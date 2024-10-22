@@ -275,4 +275,12 @@ public class OAuthURLRequestTest {
         // TODO: test servicenowCredentials
     }
 
+    /**
+     * Test the property 'dataSourceTags'
+     */
+    @Test
+    public void dataSourceTagsTest() {
+        // TODO: test dataSourceTags
+    }
+
 }

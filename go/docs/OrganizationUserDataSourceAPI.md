@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Tags** | **map[string]interface{}** |  | 
 **Id** | **int32** |  | 
 **DataSourceExternalId** | **NullableString** |  | 
 **DataSourceType** | [**DataSourceType**](DataSourceType.md) |  | 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationUserDataSourceAPI
 
-`func NewOrganizationUserDataSourceAPI(id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}, ) *OrganizationUserDataSourceAPI`
+`func NewOrganizationUserDataSourceAPI(tags map[string]interface{}, id int32, dataSourceExternalId NullableString, dataSourceType DataSourceType, token map[string]interface{}, syncStatus DataSourceSyncStatuses, sourceItemsSyncedAt NullableTime, organizationUserId int32, organizationId int32, organizationSuppliedUserId string, revokedAccess bool, lastSyncedAt time.Time, lastSyncAction DataSourceLastSyncActions, enableAutoSync NullableBool, createdAt time.Time, updatedAt time.Time, filesSyncedAt NullableTime, dataSourceMetadata map[string]interface{}, ) *OrganizationUserDataSourceAPI`
 
 NewOrganizationUserDataSourceAPI instantiates a new OrganizationUserDataSourceAPI object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +41,26 @@ will change when the set of required properties is changed
 NewOrganizationUserDataSourceAPIWithDefaults instantiates a new OrganizationUserDataSourceAPI object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTags
+
+`func (o *OrganizationUserDataSourceAPI) GetTags() map[string]interface{}`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *OrganizationUserDataSourceAPI) GetTagsOk() (*map[string]interface{}, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *OrganizationUserDataSourceAPI) SetTags(v map[string]interface{})`
+
+SetTags sets Tags field to given value.
+
 
 ### GetId
 

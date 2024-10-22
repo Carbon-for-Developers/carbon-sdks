@@ -41,10 +41,12 @@ class GithubConnectRequest(
             username = schemas.StrSchema
             access_token = schemas.StrSchema
             sync_source_items = schemas.BoolSchema
+            data_source_tags = schemas.DictSchema
             __annotations__ = {
                 "username": username,
                 "access_token": access_token,
                 "sync_source_items": sync_source_items,
+                "data_source_tags": data_source_tags,
             }
     
     access_token: MetaOapg.properties.access_token
@@ -60,9 +62,12 @@ class GithubConnectRequest(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["data_source_tags"]) -> MetaOapg.properties.data_source_tags: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["username", "access_token", "sync_source_items", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["username", "access_token", "sync_source_items", "data_source_tags", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -77,9 +82,12 @@ class GithubConnectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["data_source_tags"]) -> typing.Union[MetaOapg.properties.data_source_tags, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["username", "access_token", "sync_source_items", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["username", "access_token", "sync_source_items", "data_source_tags", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -89,6 +97,7 @@ class GithubConnectRequest(
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
         username: typing.Union[MetaOapg.properties.username, str, ],
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
+        data_source_tags: typing.Union[MetaOapg.properties.data_source_tags, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GithubConnectRequest':
@@ -98,6 +107,7 @@ class GithubConnectRequest(
             access_token=access_token,
             username=username,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
             _configuration=_configuration,
             **kwargs,
         )

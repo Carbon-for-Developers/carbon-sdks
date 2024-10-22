@@ -11,6 +11,9 @@ require 'time'
 
 module Carbon
   class OrganizationUserDataSourceFilters
+    #          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
+    attr_accessor :tags
+
     attr_accessor :source
 
     attr_accessor :ids
@@ -20,6 +23,7 @@ module Carbon
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'tags' => :'tags',
         :'source' => :'source',
         :'ids' => :'ids',
         :'revoked_access' => :'revoked_access'
@@ -34,6 +38,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'tags' => :'Object',
         :'source' => :'DataSourceTypeNullable',
         :'ids' => :'Array<Integer>',
         :'revoked_access' => :'Boolean'
@@ -43,6 +48,7 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'tags',
         :'source',
         :'ids',
         :'revoked_access'
@@ -63,6 +69,10 @@ module Carbon
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'tags')
+        self.tags = attributes[:'tags']
+      end
 
       if attributes.key?(:'source')
         self.source = attributes[:'source']
@@ -97,6 +107,7 @@ module Carbon
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          tags == o.tags &&
           source == o.source &&
           ids == o.ids &&
           revoked_access == o.revoked_access
@@ -111,7 +122,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [source, ids, revoked_access].hash
+      [tags, source, ids, revoked_access].hash
     end
 
     # Builds the object from hash

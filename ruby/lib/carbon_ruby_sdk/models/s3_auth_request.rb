@@ -21,13 +21,17 @@ module Carbon
     # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     attr_accessor :endpoint_url
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'access_key' => :'access_key',
         :'access_key_secret' => :'access_key_secret',
         :'sync_source_items' => :'sync_source_items',
-        :'endpoint_url' => :'endpoint_url'
+        :'endpoint_url' => :'endpoint_url',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -42,14 +46,15 @@ module Carbon
         :'access_key' => :'String',
         :'access_key_secret' => :'String',
         :'sync_source_items' => :'Boolean',
-        :'endpoint_url' => :'String'
+        :'endpoint_url' => :'String',
+        :'data_source_tags' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'endpoint_url'
+        :'endpoint_url',
       ])
     end
 
@@ -85,6 +90,10 @@ module Carbon
       if attributes.key?(:'endpoint_url')
         self.endpoint_url = attributes[:'endpoint_url']
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -118,7 +127,8 @@ module Carbon
           access_key == o.access_key &&
           access_key_secret == o.access_key_secret &&
           sync_source_items == o.sync_source_items &&
-          endpoint_url == o.endpoint_url
+          endpoint_url == o.endpoint_url &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -130,7 +140,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_key, access_key_secret, sync_source_items, endpoint_url].hash
+      [access_key, access_key_secret, sync_source_items, endpoint_url, data_source_tags].hash
     end
 
     # Builds the object from hash

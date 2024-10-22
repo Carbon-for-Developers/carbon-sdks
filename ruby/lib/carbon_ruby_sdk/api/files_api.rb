@@ -1378,7 +1378,7 @@ module Carbon
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param split_rows [Boolean] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
-    # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
+    # @param hot_storage_time_to_live [Integer] Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [BodyCreateUploadFileUploadfilePost] 
@@ -1455,7 +1455,7 @@ module Carbon
     # @param media_type [FileContentTypesNullable] The media type of the file. If not provided, it will be inferred from the file extension.
     # @param split_rows [Boolean] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     # @param enable_cold_storage [Boolean] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
-    # @param hot_storage_time_to_live [Integer] Time in seconds after which the file will be moved to cold storage.
+    # @param hot_storage_time_to_live [Integer] Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     # @param generate_chunks_only [Boolean] If this flag is enabled, the file will be chunked and stored with Carbon, but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     # @param store_file_only [Boolean] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     # @param body [BodyCreateUploadFileUploadfilePost] 
@@ -1507,7 +1507,7 @@ module Carbon
     # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
     # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. (default to false)
     # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
-    # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
+    # @option opts [Integer] :hot_storage_time_to_live Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     # @option opts [Boolean] :generate_chunks_only If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. (default to false)
     # @option opts [Boolean] :store_file_only If this flag is enabled, the file will be stored with Carbon, but no processing will be done. (default to false)
     # @return [UserFile]
@@ -1537,7 +1537,7 @@ module Carbon
     # @option opts [FileContentTypesNullable] :media_type The media type of the file. If not provided, it will be inferred from the file extension.
     # @option opts [Boolean] :split_rows Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. (default to false)
     # @option opts [Boolean] :enable_cold_storage Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. (default to false)
-    # @option opts [Integer] :hot_storage_time_to_live Time in seconds after which the file will be moved to cold storage.
+    # @option opts [Integer] :hot_storage_time_to_live Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     # @option opts [Boolean] :generate_chunks_only If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. (default to false)
     # @option opts [Boolean] :store_file_only If this flag is enabled, the file will be stored with Carbon, but no processing will be done. (default to false)
     # @return [APIResponse] data is UserFile, status code, headers and response

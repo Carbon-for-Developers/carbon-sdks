@@ -225,9 +225,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_freshdesk(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -242,6 +243,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       fresh_desk_connect_request = _body
       api_response = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
       api_response.data
@@ -268,9 +270,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [FreshDeskConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_freshdesk_with_http_info(domain:, api_key:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:domain] = domain if domain != SENTINEL
@@ -285,6 +288,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       fresh_desk_connect_request = _body
       connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
     end
@@ -378,9 +382,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_gitbook(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -395,6 +400,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       gitbook_connect_request = _body
       api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
       api_response.data
@@ -420,9 +426,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GitbookConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_gitbook_with_http_info(organization:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization] = organization if organization != SENTINEL
@@ -437,6 +444,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       gitbook_connect_request = _body
       connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
     end
@@ -528,9 +536,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GuruConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_guru(username:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_guru(username:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:username] = username if username != SENTINEL
@@ -545,6 +554,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       guru_connect_request = _body
       api_response = connect_guru_with_http_info_impl(guru_connect_request, extra)
       api_response.data
@@ -568,9 +578,10 @@ module Carbon
     # @param request_id [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GuruConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def connect_guru_with_http_info(username:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, extra: {})
+    def connect_guru_with_http_info(username:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:username] = username if username != SENTINEL
@@ -585,6 +596,7 @@ module Carbon
       _body[:request_id] = request_id if request_id != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       guru_connect_request = _body
       connect_guru_with_http_info_impl(guru_connect_request, extra)
     end
@@ -675,14 +687,16 @@ module Carbon
     # @param access_key_secret [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param endpoint_url [String] You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint. The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [S3AuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def create_aws_iam_user(access_key:, access_key_secret:, sync_source_items: true, endpoint_url: SENTINEL, extra: {})
+    def create_aws_iam_user(access_key:, access_key_secret:, sync_source_items: true, endpoint_url: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:access_key] = access_key if access_key != SENTINEL
       _body[:access_key_secret] = access_key_secret if access_key_secret != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:endpoint_url] = endpoint_url if endpoint_url != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       s3_auth_request = _body
       api_response = create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
       api_response.data
@@ -705,14 +719,16 @@ module Carbon
     # @param access_key_secret [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     # @param endpoint_url [String] You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint. The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [S3AuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def create_aws_iam_user_with_http_info(access_key:, access_key_secret:, sync_source_items: true, endpoint_url: SENTINEL, extra: {})
+    def create_aws_iam_user_with_http_info(access_key:, access_key_secret:, sync_source_items: true, endpoint_url: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:access_key] = access_key if access_key != SENTINEL
       _body[:access_key_secret] = access_key_secret if access_key_secret != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
       _body[:endpoint_url] = endpoint_url if endpoint_url != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       s3_auth_request = _body
       create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
     end
@@ -822,9 +838,10 @@ module Carbon
     # @param automatically_open_file_picker [Boolean] Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     # @param gong_account_email [String] If you are connecting a Gong account, you need to input the email of the account you wish to connect. This email will be used to identify your carbon data source.
     # @param servicenow_credentials [ServiceNowCredentialsNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -855,6 +872,7 @@ module Carbon
       _body[:automatically_open_file_picker] = automatically_open_file_picker if automatically_open_file_picker != SENTINEL
       _body[:gong_account_email] = gong_account_email if gong_account_email != SENTINEL
       _body[:servicenow_credentials] = servicenow_credentials if servicenow_credentials != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       o_auth_url_request = _body
       api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
       api_response.data
@@ -896,9 +914,10 @@ module Carbon
     # @param automatically_open_file_picker [Boolean] Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     # @param gong_account_email [String] If you are connecting a Gong account, you need to input the email of the account you wish to connect. This email will be used to identify your carbon data source.
     # @param servicenow_credentials [ServiceNowCredentialsNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
@@ -929,6 +948,7 @@ module Carbon
       _body[:automatically_open_file_picker] = automatically_open_file_picker if automatically_open_file_picker != SENTINEL
       _body[:gong_account_email] = gong_account_email if gong_account_email != SENTINEL
       _body[:servicenow_credentials] = servicenow_credentials if servicenow_credentials != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       o_auth_url_request = _body
       get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
     end
@@ -1975,13 +1995,15 @@ module Carbon
     # @param account_name [String] 
     # @param account_key [String] 
     # @param sync_source_items [Boolean] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [AzureBlobAuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_azure_blob_storage(account_name:, account_key:, sync_source_items: true, extra: {})
+    def sync_azure_blob_storage(account_name:, account_key:, sync_source_items: true, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:account_name] = account_name if account_name != SENTINEL
       _body[:account_key] = account_key if account_key != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       azure_blob_auth_request = _body
       api_response = sync_azure_blob_storage_with_http_info_impl(azure_blob_auth_request, extra)
       api_response.data
@@ -2011,13 +2033,15 @@ module Carbon
     # @param account_name [String] 
     # @param account_key [String] 
     # @param sync_source_items [Boolean] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [AzureBlobAuthRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_azure_blob_storage_with_http_info(account_name:, account_key:, sync_source_items: true, extra: {})
+    def sync_azure_blob_storage_with_http_info(account_name:, account_key:, sync_source_items: true, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:account_name] = account_name if account_name != SENTINEL
       _body[:account_key] = account_key if account_key != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       azure_blob_auth_request = _body
       sync_azure_blob_storage_with_http_info_impl(azure_blob_auth_request, extra)
     end
@@ -2524,13 +2548,15 @@ module Carbon
     # @param username [String] 
     # @param access_token [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GithubConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_git_hub(username:, access_token:, sync_source_items: false, extra: {})
+    def sync_git_hub(username:, access_token:, sync_source_items: false, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:username] = username if username != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       github_connect_request = _body
       api_response = sync_git_hub_with_http_info_impl(github_connect_request, extra)
       api_response.data
@@ -2545,13 +2571,15 @@ module Carbon
     # @param username [String] 
     # @param access_token [String] 
     # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [GithubConnectRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_git_hub_with_http_info(username:, access_token:, sync_source_items: false, extra: {})
+    def sync_git_hub_with_http_info(username:, access_token:, sync_source_items: false, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:username] = username if username != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
       _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       github_connect_request = _body
       sync_git_hub_with_http_info_impl(github_connect_request, extra)
     end
@@ -3404,9 +3432,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param request_id [String] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
+    def sync_rss_feed(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -3417,6 +3446,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       rss_feed_input = _body
       api_response = sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
       api_response.data
@@ -3433,9 +3463,10 @@ module Carbon
     # @param generate_sparse_vectors [Boolean] 
     # @param prepend_filename_to_chunks [Boolean] 
     # @param request_id [String] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [RSSFeedInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, extra: {})
+    def sync_rss_feed_with_http_info(url:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', generate_sparse_vectors: false, prepend_filename_to_chunks: false, request_id: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -3446,6 +3477,7 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
       rss_feed_input = _body
       sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
     end

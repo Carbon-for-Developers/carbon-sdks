@@ -87,6 +87,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         freshDeskConnectRequest.SetRequestId("null")
         freshDeskConnectRequest.SetSyncSourceItems(true)
         freshDeskConnectRequest.SetFileSyncConfig(fileSyncConfig)
+        freshDeskConnectRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.ConnectFreshdesk(
             freshDeskConnectRequest,
@@ -119,6 +120,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         gitbookConnectRequest.SetRequestId("null")
         gitbookConnectRequest.SetSyncSourceItems(true)
         gitbookConnectRequest.SetFileSyncConfig(fileSyncConfig)
+        gitbookConnectRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.ConnectGitbook(
             gitbookConnectRequest,
@@ -151,6 +153,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         guruConnectRequest.SetRequestId("null")
         guruConnectRequest.SetSyncSourceItems(true)
         guruConnectRequest.SetFileSyncConfig(fileSyncConfig)
+        guruConnectRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.ConnectGuru(
             guruConnectRequest,
@@ -173,6 +176,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         )
         s3AuthRequest.SetSyncSourceItems(true)
         s3AuthRequest.SetEndpointUrl("null")
+        s3AuthRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.CreateAwsIamUser(
             s3AuthRequest,
@@ -222,6 +226,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
         oAuthURLRequest.SetGongAccountEmail("null")
         oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
+        oAuthURLRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.GetOauthUrl(
             oAuthURLRequest,
@@ -412,6 +417,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
             "null",
         )
         azureBlobAuthRequest.SetSyncSourceItems(true)
+        azureBlobAuthRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.SyncAzureBlobStorage(
             azureBlobAuthRequest,
@@ -522,6 +528,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
             "null",
         )
         githubConnectRequest.SetSyncSourceItems(false)
+        githubConnectRequest.SetDataSourceTags({})
         
         request := client.IntegrationsApi.SyncGitHub(
             githubConnectRequest,
@@ -664,6 +671,7 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         rSSFeedInput.SetGenerateSparseVectors(false)
         rSSFeedInput.SetPrependFilenameToChunks(false)
         rSSFeedInput.SetRequestId("null")
+        rSSFeedInput.SetDataSourceTags({})
         
         request := client.IntegrationsApi.SyncRssFeed(
             rSSFeedInput,

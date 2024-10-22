@@ -7,6 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**tags** | **Object** |  |  |
 |**id** | **Integer** |  |  |
 |**dataSourceExternalId** | **String** |  |  |
 |**dataSourceType** | **DataSourceType** |  |  |

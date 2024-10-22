@@ -16,6 +16,8 @@ import (
 
 // OrganizationUserDataSourceFilters struct for OrganizationUserDataSourceFilters
 type OrganizationUserDataSourceFilters struct {
+	//          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
+	Tags map[string]interface{} `json:"tags,omitempty"`
 	Source NullableDataSourceTypeNullable `json:"source,omitempty"`
 	Ids []int32 `json:"ids,omitempty"`
 	RevokedAccess NullableBool `json:"revoked_access,omitempty"`
@@ -36,6 +38,39 @@ func NewOrganizationUserDataSourceFilters() *OrganizationUserDataSourceFilters {
 func NewOrganizationUserDataSourceFiltersWithDefaults() *OrganizationUserDataSourceFilters {
 	this := OrganizationUserDataSourceFilters{}
 	return &this
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationUserDataSourceFilters) GetTags() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationUserDataSourceFilters) GetTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.Tags) {
+    return map[string]interface{}{}, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *OrganizationUserDataSourceFilters) HasTags() bool {
+	if o != nil && isNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
+func (o *OrganizationUserDataSourceFilters) SetTags(v map[string]interface{}) {
+	o.Tags = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -157,6 +192,9 @@ func (o *OrganizationUserDataSourceFilters) UnsetRevokedAccess() {
 
 func (o OrganizationUserDataSourceFilters) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
+	}
 	if o.Source.IsSet() {
 		toSerialize["source"] = o.Source.Get()
 	}

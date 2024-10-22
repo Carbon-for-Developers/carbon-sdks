@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **RemoveBranding** | **bool** |  | 
 **Integrations** | **map[string]interface{}** |  | 
 **CustomLimits** | **map[string]interface{}** |  | 
+**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
 
 ## Methods
 
 ### NewWhiteLabelingResponse
 
-`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, ) *WhiteLabelingResponse`
+`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, connectorSettings map[string]interface{}, ) *WhiteLabelingResponse`
 
 NewWhiteLabelingResponse instantiates a new WhiteLabelingResponse object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *WhiteLabelingResponse) SetCustomLimits(v map[string]interface{})`
 
 SetCustomLimits sets CustomLimits field to given value.
+
+
+### GetConnectorSettings
+
+`func (o *WhiteLabelingResponse) GetConnectorSettings() map[string]interface{}`
+
+GetConnectorSettings returns the ConnectorSettings field if non-nil, zero value otherwise.
+
+### GetConnectorSettingsOk
+
+`func (o *WhiteLabelingResponse) GetConnectorSettingsOk() (*map[string]interface{}, bool)`
+
+GetConnectorSettingsOk returns a tuple with the ConnectorSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectorSettings
+
+`func (o *WhiteLabelingResponse) SetConnectorSettings(v map[string]interface{})`
+
+SetConnectorSettings sets ConnectorSettings field to given value.
 
 
 

@@ -47,5 +47,8 @@ class OptionalGitbookConnectRequest(TypedDict, total=False):
 
     file_sync_config: typing.Optional[FileSyncConfigNullable]
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    data_source_tags: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class GitbookConnectRequest(RequiredGitbookConnectRequest, OptionalGitbookConnectRequest):
     pass

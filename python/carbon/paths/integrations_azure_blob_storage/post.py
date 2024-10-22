@@ -121,6 +121,7 @@ class BaseApi(api_client.Api):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -130,6 +131,8 @@ class BaseApi(api_client.Api):
             _body["account_key"] = account_key
         if sync_source_items is not None:
             _body["sync_source_items"] = sync_source_items
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -340,6 +343,7 @@ class SyncAzureBlobStorageRaw(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -350,6 +354,7 @@ class SyncAzureBlobStorageRaw(BaseApi):
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return await self._async_azure_blob_storage_oapg(
             body=args.body,
@@ -361,6 +366,7 @@ class SyncAzureBlobStorageRaw(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -370,6 +376,7 @@ class SyncAzureBlobStorageRaw(BaseApi):
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return self._sync_azure_blob_storage_oapg(
             body=args.body,
@@ -382,6 +389,7 @@ class SyncAzureBlobStorage(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OrganizationUserDataSourceAPIPydantic:
@@ -389,6 +397,7 @@ class SyncAzureBlobStorage(BaseApi):
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -401,12 +410,14 @@ class SyncAzureBlobStorage(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> OrganizationUserDataSourceAPIPydantic:
         raw_response = self.raw.sync_azure_blob_storage(
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return OrganizationUserDataSourceAPIPydantic(**raw_response.body)
@@ -421,6 +432,7 @@ class ApiForpost(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -431,6 +443,7 @@ class ApiForpost(BaseApi):
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return await self._async_azure_blob_storage_oapg(
             body=args.body,
@@ -442,6 +455,7 @@ class ApiForpost(BaseApi):
         account_name: str,
         account_key: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -451,6 +465,7 @@ class ApiForpost(BaseApi):
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return self._sync_azure_blob_storage_oapg(
             body=args.body,

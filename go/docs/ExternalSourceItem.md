@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ItemType** | **NullableString** |  | 
 **RootExternalId** | **NullableString** |  | 
 **ExternalUrl** | **NullableString** |  | 
+**FileFormat** | **NullableString** |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewExternalSourceItem
 
-`func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, externalUrl NullableString, createdAt time.Time, updatedAt time.Time, ) *ExternalSourceItem`
+`func NewExternalSourceItem(id int32, externalId string, source DataSourceType, name string, syncedAt time.Time, isSelectable NullableBool, isExpandable NullableBool, organizationId int32, organizationSuppliedUserId string, organizationUserId int32, organizationUserDataSourceId int32, organizationUserFileToSyncId NullableInt32, parentExternalId NullableString, itemType NullableString, rootExternalId NullableString, externalUrl NullableString, fileFormat NullableString, createdAt time.Time, updatedAt time.Time, ) *ExternalSourceItem`
 
 NewExternalSourceItem instantiates a new ExternalSourceItem object
 This constructor will assign default values to properties that have it defined,
@@ -432,6 +433,36 @@ SetExternalUrl sets ExternalUrl field to given value.
 `func (o *ExternalSourceItem) UnsetExternalUrl()`
 
 UnsetExternalUrl ensures that no value is present for ExternalUrl, not even an explicit nil
+### GetFileFormat
+
+`func (o *ExternalSourceItem) GetFileFormat() string`
+
+GetFileFormat returns the FileFormat field if non-nil, zero value otherwise.
+
+### GetFileFormatOk
+
+`func (o *ExternalSourceItem) GetFileFormatOk() (*string, bool)`
+
+GetFileFormatOk returns a tuple with the FileFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileFormat
+
+`func (o *ExternalSourceItem) SetFileFormat(v string)`
+
+SetFileFormat sets FileFormat field to given value.
+
+
+### SetFileFormatNil
+
+`func (o *ExternalSourceItem) SetFileFormatNil(b bool)`
+
+ SetFileFormatNil sets the value for FileFormat to be an explicit nil
+
+### UnsetFileFormat
+`func (o *ExternalSourceItem) UnsetFileFormat()`
+
+UnsetFileFormat ensures that no value is present for FileFormat, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *ExternalSourceItem) GetCreatedAt() time.Time`

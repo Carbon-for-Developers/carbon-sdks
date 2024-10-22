@@ -61,6 +61,10 @@ public class AzureBlobAuthRequest {
   @SerializedName(SERIALIZED_NAME_SYNC_SOURCE_ITEMS)
   private Boolean syncSourceItems = true;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public AzureBlobAuthRequest() {
   }
 
@@ -150,6 +154,35 @@ public class AzureBlobAuthRequest {
     this.syncSourceItems = syncSourceItems;
   }
 
+
+  public AzureBlobAuthRequest dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -207,13 +240,14 @@ public class AzureBlobAuthRequest {
     AzureBlobAuthRequest azureBlobAuthRequest = (AzureBlobAuthRequest) o;
     return Objects.equals(this.accountName, azureBlobAuthRequest.accountName) &&
         Objects.equals(this.accountKey, azureBlobAuthRequest.accountKey) &&
-        Objects.equals(this.syncSourceItems, azureBlobAuthRequest.syncSourceItems)&&
+        Objects.equals(this.syncSourceItems, azureBlobAuthRequest.syncSourceItems) &&
+        Objects.equals(this.dataSourceTags, azureBlobAuthRequest.dataSourceTags)&&
         Objects.equals(this.additionalProperties, azureBlobAuthRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountName, accountKey, syncSourceItems, additionalProperties);
+    return Objects.hash(accountName, accountKey, syncSourceItems, dataSourceTags, additionalProperties);
   }
 
   @Override
@@ -223,6 +257,7 @@ public class AzureBlobAuthRequest {
     sb.append("    accountName: ").append(toIndentedString(accountName)).append("\n");
     sb.append("    accountKey: ").append(toIndentedString(accountKey)).append("\n");
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,6 +284,7 @@ public class AzureBlobAuthRequest {
     openapiFields.add("account_name");
     openapiFields.add("account_key");
     openapiFields.add("sync_source_items");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

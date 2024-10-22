@@ -87,6 +87,10 @@ public class RSSFeedInput {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
   private String requestId;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public RSSFeedInput() {
   }
 
@@ -350,6 +354,35 @@ public class RSSFeedInput {
     this.requestId = requestId;
   }
 
+
+  public RSSFeedInput dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -413,7 +446,8 @@ public class RSSFeedInput {
         Objects.equals(this.embeddingModel, rsSFeedInput.embeddingModel) &&
         Objects.equals(this.generateSparseVectors, rsSFeedInput.generateSparseVectors) &&
         Objects.equals(this.prependFilenameToChunks, rsSFeedInput.prependFilenameToChunks) &&
-        Objects.equals(this.requestId, rsSFeedInput.requestId)&&
+        Objects.equals(this.requestId, rsSFeedInput.requestId) &&
+        Objects.equals(this.dataSourceTags, rsSFeedInput.dataSourceTags)&&
         Objects.equals(this.additionalProperties, rsSFeedInput.additionalProperties);
   }
 
@@ -423,7 +457,7 @@ public class RSSFeedInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, url, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, requestId, additionalProperties);
+    return Objects.hash(tags, url, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, requestId, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -446,6 +480,7 @@ public class RSSFeedInput {
     sb.append("    generateSparseVectors: ").append(toIndentedString(generateSparseVectors)).append("\n");
     sb.append("    prependFilenameToChunks: ").append(toIndentedString(prependFilenameToChunks)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -478,6 +513,7 @@ public class RSSFeedInput {
     openapiFields.add("generate_sparse_vectors");
     openapiFields.add("prepend_filename_to_chunks");
     openapiFields.add("request_id");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

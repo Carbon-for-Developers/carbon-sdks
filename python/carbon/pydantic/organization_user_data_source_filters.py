@@ -19,6 +19,9 @@ from carbon.pydantic.data_source_type_nullable import DataSourceTypeNullable
 from carbon.pydantic.organization_user_data_source_filters_ids import OrganizationUserDataSourceFiltersIds
 
 class OrganizationUserDataSourceFilters(BaseModel):
+    #          Tags to filter by. Supports logical AND and OR operations. Input should be like below:         {             \"OR\": [                 {                 \"key\": \"subject\",                 \"value\": \"holy-bible\",                 \"negate\": false                 },                 {                     \"key\": \"person-of-interest\",                     \"value\": \"jesus christ\",                     \"negate\": false                 },                 {                     \"key\": \"genre\",                     \"value\": \"fiction\",                     \"negate\": true                 }                 {                     \"AND\": [                         {                             \"key\": \"subject\",                             \"value\": \"tao-te-ching\",                             \"negate\": true                         },                         {                             \"key\": \"author\",                             \"value\": \"lao-tzu\",                             \"negate\": false                         }                     ]                 }             ]         }         For a single filter, the filter block can be placed within either an \"AND\" or \"OR\" block.         
+    tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags')
+
     source: typing.Optional[DataSourceTypeNullable] = Field(None, alias='source')
 
     ids: typing.Optional[OrganizationUserDataSourceFiltersIds] = Field(None, alias='ids')

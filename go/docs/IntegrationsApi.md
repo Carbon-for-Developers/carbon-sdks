@@ -74,6 +74,7 @@ func main() {
     }
     // response from `Cancel`: OrganizationUserDataSourceAPI
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.Cancel`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.Tags`: %v\n", resp.Tags)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.Cancel.DataSourceType`: %v\n", resp.DataSourceType)
@@ -192,6 +193,7 @@ func main() {
     freshDeskConnectRequest.SetRequestId("null")
     freshDeskConnectRequest.SetSyncSourceItems(true)
     freshDeskConnectRequest.SetFileSyncConfig(fileSyncConfig)
+    freshDeskConnectRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.ConnectFreshdesk(
         freshDeskConnectRequest,
@@ -255,6 +257,7 @@ func main() {
     gitbookConnectRequest.SetRequestId("null")
     gitbookConnectRequest.SetSyncSourceItems(true)
     gitbookConnectRequest.SetFileSyncConfig(fileSyncConfig)
+    gitbookConnectRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.ConnectGitbook(
         gitbookConnectRequest,
@@ -318,6 +321,7 @@ func main() {
     guruConnectRequest.SetRequestId("null")
     guruConnectRequest.SetSyncSourceItems(true)
     guruConnectRequest.SetFileSyncConfig(fileSyncConfig)
+    guruConnectRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.ConnectGuru(
         guruConnectRequest,
@@ -371,6 +375,7 @@ func main() {
     )
     s3AuthRequest.SetSyncSourceItems(true)
     s3AuthRequest.SetEndpointUrl("null")
+    s3AuthRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.CreateAwsIamUser(
         s3AuthRequest,
@@ -384,6 +389,7 @@ func main() {
     }
     // response from `CreateAwsIamUser`: OrganizationUserDataSourceAPI
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.CreateAwsIamUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.Tags`: %v\n", resp.Tags)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.CreateAwsIamUser.DataSourceType`: %v\n", resp.DataSourceType)
@@ -467,6 +473,7 @@ func main() {
     oAuthURLRequest.SetAutomaticallyOpenFilePicker(null)
     oAuthURLRequest.SetGongAccountEmail("null")
     oAuthURLRequest.SetServicenowCredentials(servicenowCredentials)
+    oAuthURLRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.GetOauthUrl(
         oAuthURLRequest,
@@ -961,6 +968,7 @@ func main() {
         "null",
     )
     azureBlobAuthRequest.SetSyncSourceItems(true)
+    azureBlobAuthRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.SyncAzureBlobStorage(
         azureBlobAuthRequest,
@@ -974,6 +982,7 @@ func main() {
     }
     // response from `SyncAzureBlobStorage`: OrganizationUserDataSourceAPI
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncAzureBlobStorage`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.Tags`: %v\n", resp.Tags)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncAzureBlobStorage.DataSourceType`: %v\n", resp.DataSourceType)
@@ -1105,6 +1114,7 @@ func main() {
     }
     // response from `SyncDataSourceItems`: OrganizationUserDataSourceAPI
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.SyncDataSourceItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.Tags`: %v\n", resp.Tags)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.Id`: %v\n", resp.Id)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.DataSourceExternalId`: %v\n", resp.DataSourceExternalId)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.SyncDataSourceItems.DataSourceType`: %v\n", resp.DataSourceType)
@@ -1226,6 +1236,7 @@ func main() {
         "null",
     )
     githubConnectRequest.SetSyncSourceItems(false)
+    githubConnectRequest.SetDataSourceTags({})
     
     request := client.IntegrationsApi.SyncGitHub(
         githubConnectRequest,
@@ -1519,6 +1530,7 @@ func main() {
     rSSFeedInput.SetGenerateSparseVectors(false)
     rSSFeedInput.SetPrependFilenameToChunks(false)
     rSSFeedInput.SetRequestId("null")
+    rSSFeedInput.SetDataSourceTags({})
     
     request := client.IntegrationsApi.SyncRssFeed(
         rSSFeedInput,

@@ -48,6 +48,9 @@ module Carbon
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     attr_accessor :automatically_open_file_picker
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -66,7 +69,8 @@ module Carbon
         :'sync_source_items' => :'sync_source_items',
         :'incremental_sync' => :'incremental_sync',
         :'file_sync_config' => :'file_sync_config',
-        :'automatically_open_file_picker' => :'automatically_open_file_picker'
+        :'automatically_open_file_picker' => :'automatically_open_file_picker',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -93,7 +97,8 @@ module Carbon
         :'sync_source_items' => :'Boolean',
         :'incremental_sync' => :'Boolean',
         :'file_sync_config' => :'FileSyncConfigNullable',
-        :'automatically_open_file_picker' => :'Boolean'
+        :'automatically_open_file_picker' => :'Boolean',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -111,7 +116,7 @@ module Carbon
         :'sync_files_on_connection',
         :'request_id',
         :'file_sync_config',
-        :'automatically_open_file_picker'
+        :'automatically_open_file_picker',
       ])
     end
 
@@ -215,6 +220,10 @@ module Carbon
       if attributes.key?(:'automatically_open_file_picker')
         self.automatically_open_file_picker = attributes[:'automatically_open_file_picker']
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -250,7 +259,8 @@ module Carbon
           sync_source_items == o.sync_source_items &&
           incremental_sync == o.incremental_sync &&
           file_sync_config == o.file_sync_config &&
-          automatically_open_file_picker == o.automatically_open_file_picker
+          automatically_open_file_picker == o.automatically_open_file_picker &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -262,7 +272,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker].hash
+      [tags, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, sync_files_on_connection, set_page_as_boundary, request_id, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, data_source_tags].hash
     end
 
     # Builds the object from hash

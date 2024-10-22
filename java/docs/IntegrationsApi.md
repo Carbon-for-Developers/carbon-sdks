@@ -72,6 +72,7 @@ public class Example {
               .cancel(dataSourceId)
               .execute();
       System.out.println(result);
+      System.out.println(result.getTags());
       System.out.println(result.getId());
       System.out.println(result.getDataSourceExternalId());
       System.out.println(result.getDataSourceType());
@@ -288,6 +289,7 @@ public class Example {
     String requestId = "requestId_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       GenericSuccessResponse result = client
               .integrations
@@ -303,6 +305,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -330,6 +333,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -418,6 +422,7 @@ public class Example {
     String requestId = "requestId_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       GenericSuccessResponse result = client
               .integrations
@@ -433,6 +438,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -460,6 +466,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -548,6 +555,7 @@ public class Example {
     String requestId = "requestId_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       GenericSuccessResponse result = client
               .integrations
@@ -563,6 +571,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -590,6 +599,7 @@ public class Example {
               .requestId(requestId)
               .syncSourceItems(syncSourceItems)
               .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -669,14 +679,17 @@ public class Example {
     String accessKeySecret = "accessKeySecret_example";
     Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     String endpointUrl = "endpointUrl_example"; // You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       OrganizationUserDataSourceAPI result = client
               .integrations
               .createAwsIamUser(accessKey, accessKeySecret)
               .syncSourceItems(syncSourceItems)
               .endpointUrl(endpointUrl)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
+      System.out.println(result.getTags());
       System.out.println(result.getId());
       System.out.println(result.getDataSourceExternalId());
       System.out.println(result.getDataSourceType());
@@ -709,6 +722,7 @@ public class Example {
               .createAwsIamUser(accessKey, accessKeySecret)
               .syncSourceItems(syncSourceItems)
               .endpointUrl(endpointUrl)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -813,6 +827,7 @@ public class Example {
     Boolean automaticallyOpenFilePicker = true; // Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     String gongAccountEmail = "gongAccountEmail_example"; // If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
     ServiceNowCredentialsNullable servicenowCredentials = new ServiceNowCredentialsNullable();
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       OuthURLResponse result = client
               .integrations
@@ -845,6 +860,7 @@ public class Example {
               .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
               .gongAccountEmail(gongAccountEmail)
               .servicenowCredentials(servicenowCredentials)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getOauthUrl());
@@ -889,6 +905,7 @@ public class Example {
               .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
               .gongAccountEmail(gongAccountEmail)
               .servicenowCredentials(servicenowCredentials)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1908,13 +1925,16 @@ public class Example {
     String accountName = "accountName_example";
     String accountKey = "accountKey_example";
     Boolean syncSourceItems = true;
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       OrganizationUserDataSourceAPI result = client
               .integrations
               .syncAzureBlobStorage(accountName, accountKey)
               .syncSourceItems(syncSourceItems)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
+      System.out.println(result.getTags());
       System.out.println(result.getId());
       System.out.println(result.getDataSourceExternalId());
       System.out.println(result.getDataSourceType());
@@ -1946,6 +1966,7 @@ public class Example {
               .integrations
               .syncAzureBlobStorage(accountName, accountKey)
               .syncSourceItems(syncSourceItems)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -2165,6 +2186,7 @@ public class Example {
               .syncDataSourceItems(dataSourceId)
               .execute();
       System.out.println(result);
+      System.out.println(result.getTags());
       System.out.println(result.getId());
       System.out.println(result.getDataSourceExternalId());
       System.out.println(result.getDataSourceType());
@@ -2412,11 +2434,13 @@ public class Example {
     String username = "username_example";
     String accessToken = "accessToken_example";
     Boolean syncSourceItems = false; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       GenericSuccessResponse result = client
               .integrations
               .syncGitHub(username, accessToken)
               .syncSourceItems(syncSourceItems)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -2434,6 +2458,7 @@ public class Example {
               .integrations
               .syncGitHub(username, accessToken)
               .syncSourceItems(syncSourceItems)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -3002,6 +3027,7 @@ public class Example {
     Boolean generateSparseVectors = false;
     Boolean prependFilenameToChunks = false;
     String requestId = "requestId_example";
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     try {
       GenericSuccessResponse result = client
               .integrations
@@ -3014,6 +3040,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .prependFilenameToChunks(prependFilenameToChunks)
               .requestId(requestId)
+              .dataSourceTags(dataSourceTags)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -3038,6 +3065,7 @@ public class Example {
               .generateSparseVectors(generateSparseVectors)
               .prependFilenameToChunks(prependFilenameToChunks)
               .requestId(requestId)
+              .dataSourceTags(dataSourceTags)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

@@ -80,6 +80,9 @@ module Carbon
 
     attr_accessor :servicenow_credentials
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -111,7 +114,8 @@ module Carbon
         :'file_sync_config' => :'file_sync_config',
         :'automatically_open_file_picker' => :'automatically_open_file_picker',
         :'gong_account_email' => :'gong_account_email',
-        :'servicenow_credentials' => :'servicenow_credentials'
+        :'servicenow_credentials' => :'servicenow_credentials',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -151,7 +155,8 @@ module Carbon
         :'file_sync_config' => :'FileSyncConfigNullable',
         :'automatically_open_file_picker' => :'Boolean',
         :'gong_account_email' => :'String',
-        :'servicenow_credentials' => :'ServiceNowCredentialsNullable'
+        :'servicenow_credentials' => :'ServiceNowCredentialsNullable',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -181,7 +186,7 @@ module Carbon
         :'file_sync_config',
         :'automatically_open_file_picker',
         :'gong_account_email',
-        :'servicenow_credentials'
+        :'servicenow_credentials',
       ])
     end
 
@@ -343,6 +348,10 @@ module Carbon
       if attributes.key?(:'servicenow_credentials')
         self.servicenow_credentials = attributes[:'servicenow_credentials']
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -396,7 +405,8 @@ module Carbon
           file_sync_config == o.file_sync_config &&
           automatically_open_file_picker == o.automatically_open_file_picker &&
           gong_account_email == o.gong_account_email &&
-          servicenow_credentials == o.servicenow_credentials
+          servicenow_credentials == o.servicenow_credentials &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -408,7 +418,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, gong_account_email, servicenow_credentials].hash
+      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, gong_account_email, servicenow_credentials, data_source_tags].hash
     end
 
     # Builds the object from hash

@@ -39,6 +39,7 @@ class OrganizationUserDataSourceAPI(
             "data_source_type",
             "data_source_metadata",
             "organization_supplied_user_id",
+            "tags",
             "token",
             "updated_at",
             "files_synced_at",
@@ -53,6 +54,7 @@ class OrganizationUserDataSourceAPI(
         }
         
         class properties:
+            tags = schemas.DictSchema
             id = schemas.IntSchema
             
             
@@ -187,6 +189,7 @@ class OrganizationUserDataSourceAPI(
                     )
             data_source_metadata = schemas.DictSchema
             __annotations__ = {
+                "tags": tags,
                 "id": id,
                 "data_source_external_id": data_source_external_id,
                 "data_source_type": data_source_type,
@@ -212,6 +215,7 @@ class OrganizationUserDataSourceAPI(
     data_source_type: 'DataSourceType'
     data_source_metadata: MetaOapg.properties.data_source_metadata
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
+    tags: MetaOapg.properties.tags
     token: MetaOapg.properties.token
     updated_at: MetaOapg.properties.updated_at
     files_synced_at: MetaOapg.properties.files_synced_at
@@ -223,6 +227,9 @@ class OrganizationUserDataSourceAPI(
     sync_status: 'DataSourceSyncStatuses'
     id: MetaOapg.properties.id
     data_source_external_id: MetaOapg.properties.data_source_external_id
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -278,10 +285,13 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", "files_synced_at", "data_source_metadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", "files_synced_at", "data_source_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -337,7 +347,7 @@ class OrganizationUserDataSourceAPI(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", "files_synced_at", "data_source_metadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "id", "data_source_external_id", "data_source_type", "token", "sync_status", "source_items_synced_at", "organization_user_id", "organization_id", "organization_supplied_user_id", "revoked_access", "last_synced_at", "last_sync_action", "enable_auto_sync", "created_at", "updated_at", "files_synced_at", "data_source_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -350,6 +360,7 @@ class OrganizationUserDataSourceAPI(
         data_source_type: 'DataSourceType',
         data_source_metadata: typing.Union[MetaOapg.properties.data_source_metadata, dict, frozendict.frozendict, ],
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
+        tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, ],
         token: typing.Union[MetaOapg.properties.token, dict, frozendict.frozendict, None, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         files_synced_at: typing.Union[MetaOapg.properties.files_synced_at, None, str, datetime, ],
@@ -373,6 +384,7 @@ class OrganizationUserDataSourceAPI(
             data_source_type=data_source_type,
             data_source_metadata=data_source_metadata,
             organization_supplied_user_id=organization_supplied_user_id,
+            tags=tags,
             token=token,
             updated_at=updated_at,
             files_synced_at=files_synced_at,

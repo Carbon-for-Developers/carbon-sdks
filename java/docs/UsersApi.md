@@ -9,6 +9,7 @@ All URIs are relative to *https://api.carbon.ai*
 | [**list**](UsersApi.md#list) | **POST** /list_users | List Users Endpoint |
 | [**toggleUserFeatures**](UsersApi.md#toggleUserFeatures) | **POST** /modify_user_configuration | Toggle User Features |
 | [**updateUsers**](UsersApi.md#updateUsers) | **POST** /update_users | Update Users |
+| [**whoAmI**](UsersApi.md#whoAmI) | **GET** /whoami | Me Endpoint |
 
 
 <a name="delete"></a>
@@ -154,6 +155,7 @@ public class Example {
       System.out.println(result.getEnabledFeatures());
       System.out.println(result.getCustomLimits());
       System.out.println(result.getAutoSyncEnabledSources());
+      System.out.println(result.getConnectorSettings());
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#get");
       System.err.println("Status code: " + e.getStatusCode());
@@ -512,6 +514,115 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="whoAmI"></a>
+# **whoAmI**
+> UserResponse whoAmI().execute();
+
+Me Endpoint
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.UsersApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    try {
+      UserResponse result = client
+              .users
+              .whoAmI()
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getId());
+      System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationSuppliedUserId());
+      System.out.println(result.getCreatedAt());
+      System.out.println(result.getUpdatedAt());
+      System.out.println(result.getDeletedAt());
+      System.out.println(result.getNumFilesSynced());
+      System.out.println(result.getNumCharactersSynced());
+      System.out.println(result.getNumTokensSynced());
+      System.out.println(result.getAggregateFileSize());
+      System.out.println(result.getAggregateNumCharacters());
+      System.out.println(result.getAggregateNumTokens());
+      System.out.println(result.getAggregateNumEmbeddings());
+      System.out.println(result.getAggregateNumFilesBySource());
+      System.out.println(result.getAggregateNumFilesByFileFormat());
+      System.out.println(result.getUniqueFileTags());
+      System.out.println(result.getEnabledFeatures());
+      System.out.println(result.getCustomLimits());
+      System.out.println(result.getAutoSyncEnabledSources());
+      System.out.println(result.getConnectorSettings());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#whoAmI");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<UserResponse> response = client
+              .users
+              .whoAmI()
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#whoAmI");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**UserResponse**](UserResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
