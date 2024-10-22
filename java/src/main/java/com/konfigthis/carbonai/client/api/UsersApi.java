@@ -48,4 +48,9 @@ public class UsersApi extends UsersApiGenerated {
             super(customerIds);
         }
     }
+    public class WhoAmIRequestBuilder extends WhoAmIRequestBuilderGenerated {
+        public WhoAmIRequestBuilder() {
+            super();
+        }
+    }
 }

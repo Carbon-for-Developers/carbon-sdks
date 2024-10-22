@@ -29,6 +29,9 @@ module Carbon
 
     attr_accessor :request_id
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module Carbon
         :'embedding_model' => :'embedding_model',
         :'generate_sparse_vectors' => :'generate_sparse_vectors',
         :'prepend_filename_to_chunks' => :'prepend_filename_to_chunks',
-        :'request_id' => :'request_id'
+        :'request_id' => :'request_id',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -60,7 +64,8 @@ module Carbon
         :'embedding_model' => :'EmbeddingGenerators',
         :'generate_sparse_vectors' => :'Boolean',
         :'prepend_filename_to_chunks' => :'Boolean',
-        :'request_id' => :'String'
+        :'request_id' => :'String',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -73,7 +78,7 @@ module Carbon
         :'skip_embedding_generation',
         :'generate_sparse_vectors',
         :'prepend_filename_to_chunks',
-        :'request_id'
+        :'request_id',
       ])
     end
 
@@ -139,6 +144,10 @@ module Carbon
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -172,7 +181,8 @@ module Carbon
           embedding_model == o.embedding_model &&
           generate_sparse_vectors == o.generate_sparse_vectors &&
           prepend_filename_to_chunks == o.prepend_filename_to_chunks &&
-          request_id == o.request_id
+          request_id == o.request_id &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -184,7 +194,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, url, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, request_id].hash
+      [tags, url, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, request_id, data_source_tags].hash
     end
 
     # Builds the object from hash

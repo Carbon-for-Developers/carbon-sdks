@@ -20,6 +20,8 @@ from carbon.pydantic.data_source_sync_statuses import DataSourceSyncStatuses
 from carbon.pydantic.data_source_type import DataSourceType
 
 class OrganizationUserDataSourceAPI(BaseModel):
+    tags: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='tags')
+
     id: int = Field(alias='id')
 
     data_source_external_id: typing.Optional[str] = Field(alias='data_source_external_id')

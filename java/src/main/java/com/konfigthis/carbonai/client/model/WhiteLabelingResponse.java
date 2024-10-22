@@ -61,6 +61,10 @@ public class WhiteLabelingResponse {
   @SerializedName(SERIALIZED_NAME_CUSTOM_LIMITS)
   private Object customLimits;
 
+  public static final String SERIALIZED_NAME_CONNECTOR_SETTINGS = "connector_settings";
+  @SerializedName(SERIALIZED_NAME_CONNECTOR_SETTINGS)
+  private Object connectorSettings;
+
   public WhiteLabelingResponse() {
   }
 
@@ -150,6 +154,35 @@ public class WhiteLabelingResponse {
     this.customLimits = customLimits;
   }
 
+
+  public WhiteLabelingResponse connectorSettings(Object connectorSettings) {
+    
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+    return this;
+  }
+
+   /**
+   * Get connectorSettings
+   * @return connectorSettings
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getConnectorSettings() {
+    return connectorSettings;
+  }
+
+
+  public void setConnectorSettings(Object connectorSettings) {
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -207,13 +240,14 @@ public class WhiteLabelingResponse {
     WhiteLabelingResponse whiteLabelingResponse = (WhiteLabelingResponse) o;
     return Objects.equals(this.removeBranding, whiteLabelingResponse.removeBranding) &&
         Objects.equals(this.integrations, whiteLabelingResponse.integrations) &&
-        Objects.equals(this.customLimits, whiteLabelingResponse.customLimits)&&
+        Objects.equals(this.customLimits, whiteLabelingResponse.customLimits) &&
+        Objects.equals(this.connectorSettings, whiteLabelingResponse.connectorSettings)&&
         Objects.equals(this.additionalProperties, whiteLabelingResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(removeBranding, integrations, customLimits, additionalProperties);
+    return Objects.hash(removeBranding, integrations, customLimits, connectorSettings, additionalProperties);
   }
 
   @Override
@@ -223,6 +257,7 @@ public class WhiteLabelingResponse {
     sb.append("    removeBranding: ").append(toIndentedString(removeBranding)).append("\n");
     sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
     sb.append("    customLimits: ").append(toIndentedString(customLimits)).append("\n");
+    sb.append("    connectorSettings: ").append(toIndentedString(connectorSettings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,12 +284,14 @@ public class WhiteLabelingResponse {
     openapiFields.add("remove_branding");
     openapiFields.add("integrations");
     openapiFields.add("custom_limits");
+    openapiFields.add("connector_settings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("remove_branding");
     openapiRequiredFields.add("integrations");
     openapiRequiredFields.add("custom_limits");
+    openapiRequiredFields.add("connector_settings");
   }
 
  /**

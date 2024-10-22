@@ -148,6 +148,7 @@ class BaseApi(api_client.Api):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -209,6 +210,8 @@ class BaseApi(api_client.Api):
             _body["gong_account_email"] = gong_account_email
         if servicenow_credentials is not None:
             _body["servicenow_credentials"] = servicenow_credentials
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -445,6 +448,7 @@ class GetOauthUrlRaw(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -481,6 +485,7 @@ class GetOauthUrlRaw(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -518,6 +523,7 @@ class GetOauthUrlRaw(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -553,6 +559,7 @@ class GetOauthUrlRaw(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
         )
         return self._get_oauth_url_oapg(
             body=args.body,
@@ -591,6 +598,7 @@ class GetOauthUrl(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OuthURLResponsePydantic:
@@ -624,6 +632,7 @@ class GetOauthUrl(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -662,6 +671,7 @@ class GetOauthUrl(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> OuthURLResponsePydantic:
         raw_response = self.raw.get_oauth_url(
@@ -694,6 +704,7 @@ class GetOauthUrl(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return OuthURLResponsePydantic(**raw_response.body)
@@ -734,6 +745,7 @@ class ApiForpost(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -770,6 +782,7 @@ class ApiForpost(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
         )
         return await self._aget_oauth_url_oapg(
             body=args.body,
@@ -807,6 +820,7 @@ class ApiForpost(BaseApi):
         automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = None,
         gong_account_email: typing.Optional[typing.Optional[str]] = None,
         servicenow_credentials: typing.Optional[ServiceNowCredentialsNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -842,6 +856,7 @@ class ApiForpost(BaseApi):
             automatically_open_file_picker=automatically_open_file_picker,
             gong_account_email=gong_account_email,
             servicenow_credentials=servicenow_credentials,
+            data_source_tags=data_source_tags,
         )
         return self._get_oauth_url_oapg(
             body=args.body,

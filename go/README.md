@@ -68,7 +68,9 @@ Class | Method | HTTP request | Description
 *CRMApi* | [**GetLeads**](docs/CRMApi.md#getleads) | **Post** /integrations/data/crm/leads | Get Leads
 *CRMApi* | [**GetOpportunities**](docs/CRMApi.md#getopportunities) | **Post** /integrations/data/crm/opportunities | Get Opportunities
 *CRMApi* | [**GetOpportunity**](docs/CRMApi.md#getopportunity) | **Get** /integrations/data/crm/opportunities/{id} | Get Opportunity
+*DataSourcesApi* | [**AddTags**](docs/DataSourcesApi.md#addtags) | **Post** /data_sources/tags/add | Add Data Source Tags
 *DataSourcesApi* | [**QueryUserDataSources**](docs/DataSourcesApi.md#queryuserdatasources) | **Post** /user_data_sources | User Data Sources
+*DataSourcesApi* | [**RemoveTags**](docs/DataSourcesApi.md#removetags) | **Post** /data_sources/tags/remove | Remove Data Source Tags
 *DataSourcesApi* | [**RevokeAccessToken**](docs/DataSourcesApi.md#revokeaccesstoken) | **Post** /revoke_access_token | Revoke Access Token
 *EmbeddingsApi* | [**GetDocuments**](docs/EmbeddingsApi.md#getdocuments) | **Post** /embeddings | Embeddings
 *EmbeddingsApi* | [**GetEmbeddingsAndChunks**](docs/EmbeddingsApi.md#getembeddingsandchunks) | **Post** /text_chunks | Retrieve Embeddings And Content
@@ -132,6 +134,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**List**](docs/UsersApi.md#list) | **Post** /list_users | List Users Endpoint
 *UsersApi* | [**ToggleUserFeatures**](docs/UsersApi.md#toggleuserfeatures) | **Post** /modify_user_configuration | Toggle User Features
 *UsersApi* | [**UpdateUsers**](docs/UsersApi.md#updateusers) | **Post** /update_users | Update Users
+*UsersApi* | [**WhoAmI**](docs/UsersApi.md#whoami) | **Get** /whoami | Me Endpoint
 *UtilitiesApi* | [**FetchUrls**](docs/UtilitiesApi.md#fetchurls) | **Get** /fetch_urls | Fetch Urls
 *UtilitiesApi* | [**FetchWebpage**](docs/UtilitiesApi.md#fetchwebpage) | **Post** /fetch_webpage | Fetch Urls V2
 *UtilitiesApi* | [**FetchYoutubeTranscripts**](docs/UtilitiesApi.md#fetchyoutubetranscripts) | **Get** /fetch_youtube_transcript | Fetch Youtube Transcripts
@@ -157,6 +160,7 @@ Class | Method | HTTP request | Description
  - [AccountsOrderBy](docs/AccountsOrderBy.md)
  - [AccountsOrderByNullable](docs/AccountsOrderByNullable.md)
  - [AccountsRequest](docs/AccountsRequest.md)
+ - [AddDataSourceTagsInput](docs/AddDataSourceTagsInput.md)
  - [AddWebhookProps](docs/AddWebhookProps.md)
  - [Address](docs/Address.md)
  - [AutoSyncEnabledSourcesProperty](docs/AutoSyncEnabledSourcesProperty.md)
@@ -345,6 +349,7 @@ Class | Method | HTTP request | Description
  - [RankProperty](docs/RankProperty.md)
  - [RawTextInput](docs/RawTextInput.md)
  - [RawTranscriptPropertyInnerValue](docs/RawTranscriptPropertyInnerValue.md)
+ - [RemoveDataSourceTagsInput](docs/RemoveDataSourceTagsInput.md)
  - [RerankParams](docs/RerankParams.md)
  - [RerankParamsNullable](docs/RerankParamsNullable.md)
  - [ResyncFileQueryInput](docs/ResyncFileQueryInput.md)

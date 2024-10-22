@@ -128,6 +128,10 @@ public class UserResponse {
   @SerializedName(SERIALIZED_NAME_AUTO_SYNC_ENABLED_SOURCES)
   private List<Object> autoSyncEnabledSources = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_CONNECTOR_SETTINGS = "connector_settings";
+  @SerializedName(SERIALIZED_NAME_CONNECTOR_SETTINGS)
+  private Object connectorSettings;
+
   public UserResponse() {
   }
 
@@ -691,6 +695,35 @@ public class UserResponse {
     this.autoSyncEnabledSources = autoSyncEnabledSources;
   }
 
+
+  public UserResponse connectorSettings(Object connectorSettings) {
+    
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+    return this;
+  }
+
+   /**
+   * Get connectorSettings
+   * @return connectorSettings
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "{}", required = true, value = "")
+
+  public Object getConnectorSettings() {
+    return connectorSettings;
+  }
+
+
+  public void setConnectorSettings(Object connectorSettings) {
+    
+    
+    
+    this.connectorSettings = connectorSettings;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -764,13 +797,14 @@ public class UserResponse {
         Objects.equals(this.uniqueFileTags, userResponse.uniqueFileTags) &&
         Objects.equals(this.enabledFeatures, userResponse.enabledFeatures) &&
         Objects.equals(this.customLimits, userResponse.customLimits) &&
-        Objects.equals(this.autoSyncEnabledSources, userResponse.autoSyncEnabledSources)&&
+        Objects.equals(this.autoSyncEnabledSources, userResponse.autoSyncEnabledSources) &&
+        Objects.equals(this.connectorSettings, userResponse.connectorSettings)&&
         Objects.equals(this.additionalProperties, userResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, organizationId, organizationSuppliedUserId, createdAt, updatedAt, deletedAt, numFilesSynced, numCharactersSynced, numTokensSynced, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, uniqueFileTags, enabledFeatures, customLimits, autoSyncEnabledSources, additionalProperties);
+    return Objects.hash(id, organizationId, organizationSuppliedUserId, createdAt, updatedAt, deletedAt, numFilesSynced, numCharactersSynced, numTokensSynced, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, uniqueFileTags, enabledFeatures, customLimits, autoSyncEnabledSources, connectorSettings, additionalProperties);
   }
 
   @Override
@@ -796,6 +830,7 @@ public class UserResponse {
     sb.append("    enabledFeatures: ").append(toIndentedString(enabledFeatures)).append("\n");
     sb.append("    customLimits: ").append(toIndentedString(customLimits)).append("\n");
     sb.append("    autoSyncEnabledSources: ").append(toIndentedString(autoSyncEnabledSources)).append("\n");
+    sb.append("    connectorSettings: ").append(toIndentedString(connectorSettings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -838,6 +873,7 @@ public class UserResponse {
     openapiFields.add("enabled_features");
     openapiFields.add("custom_limits");
     openapiFields.add("auto_sync_enabled_sources");
+    openapiFields.add("connector_settings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -860,6 +896,7 @@ public class UserResponse {
     openapiRequiredFields.add("enabled_features");
     openapiRequiredFields.add("custom_limits");
     openapiRequiredFields.add("auto_sync_enabled_sources");
+    openapiRequiredFields.add("connector_settings");
   }
 
  /**

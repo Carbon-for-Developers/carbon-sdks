@@ -36,6 +36,7 @@
 |**automaticallyOpenFilePicker** | **Boolean** | Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. |  [optional] |
 |**gongAccountEmail** | **String** | If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source. |  [optional] |
 |**servicenowCredentials** | [**ServiceNowCredentialsNullable**](ServiceNowCredentialsNullable.md) |  |  [optional] |
+|**dataSourceTags** | **Object** | Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. |  [optional] |
 
 
 

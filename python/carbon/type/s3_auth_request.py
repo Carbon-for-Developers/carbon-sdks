@@ -28,5 +28,8 @@ class OptionalS3AuthRequest(TypedDict, total=False):
     # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     endpoint_url: typing.Optional[str]
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    data_source_tags: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class S3AuthRequest(RequiredS3AuthRequest, OptionalS3AuthRequest):
     pass

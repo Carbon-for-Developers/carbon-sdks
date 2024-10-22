@@ -82,4 +82,14 @@ describe 'UsersApi' do
     end
   end
 
+  # unit tests for who_am_i
+  # Me Endpoint
+  # @param [Hash] opts the optional parameters
+  # @return [UserResponse]
+  describe 'who_am_i test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

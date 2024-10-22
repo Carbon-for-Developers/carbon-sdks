@@ -41,10 +41,12 @@ class AzureBlobAuthRequest(
             account_name = schemas.StrSchema
             account_key = schemas.StrSchema
             sync_source_items = schemas.BoolSchema
+            data_source_tags = schemas.DictSchema
             __annotations__ = {
                 "account_name": account_name,
                 "account_key": account_key,
                 "sync_source_items": sync_source_items,
+                "data_source_tags": data_source_tags,
             }
     
     account_name: MetaOapg.properties.account_name
@@ -60,9 +62,12 @@ class AzureBlobAuthRequest(
     def __getitem__(self, name: typing_extensions.Literal["sync_source_items"]) -> MetaOapg.properties.sync_source_items: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["data_source_tags"]) -> MetaOapg.properties.data_source_tags: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["account_name", "account_key", "sync_source_items", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["account_name", "account_key", "sync_source_items", "data_source_tags", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -77,9 +82,12 @@ class AzureBlobAuthRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["sync_source_items"]) -> typing.Union[MetaOapg.properties.sync_source_items, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["data_source_tags"]) -> typing.Union[MetaOapg.properties.data_source_tags, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["account_name", "account_key", "sync_source_items", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["account_name", "account_key", "sync_source_items", "data_source_tags", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -89,6 +97,7 @@ class AzureBlobAuthRequest(
         account_name: typing.Union[MetaOapg.properties.account_name, str, ],
         account_key: typing.Union[MetaOapg.properties.account_key, str, ],
         sync_source_items: typing.Union[MetaOapg.properties.sync_source_items, bool, schemas.Unset] = schemas.unset,
+        data_source_tags: typing.Union[MetaOapg.properties.data_source_tags, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'AzureBlobAuthRequest':
@@ -98,6 +107,7 @@ class AzureBlobAuthRequest(
             account_name=account_name,
             account_key=account_key,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
             _configuration=_configuration,
             **kwargs,
         )

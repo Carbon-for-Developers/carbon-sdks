@@ -1402,7 +1402,7 @@ public class Example {
     FileContentTypesNullable mediaType = FileContentTypesNullable.fromValue("TEXT"); // The media type of the file. If not provided, it will be inferred from the file extension.
     Boolean splitRows = false; // Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
     Boolean enableColdStorage = false; // Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
-    Integer hotStorageTimeToLive = 56; // Time in seconds after which the file will be moved to cold storage.
+    Integer hotStorageTimeToLive = 56; // Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     Boolean generateChunksOnly = false; // If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
     Boolean storeFileOnly = false; // If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
     try {
@@ -1540,7 +1540,7 @@ public class Example {
 | **mediaType** | [**FileContentTypesNullable**](.md)| The media type of the file. If not provided, it will be inferred from the file extension. | [optional] [enum: TEXT, IMAGE, AUDIO, VIDEO] |
 | **splitRows** | **Boolean**| Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files. | [optional] [default to false] |
 | **enableColdStorage** | **Boolean**| Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false. | [optional] [default to false] |
-| **hotStorageTimeToLive** | **Integer**| Time in seconds after which the file will be moved to cold storage. | [optional] |
+| **hotStorageTimeToLive** | **Integer**| Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30]. | [optional] |
 | **generateChunksOnly** | **Boolean**| If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false] |
 | **storeFileOnly** | **Boolean**| If this flag is enabled, the file will be stored with Carbon, but no processing will be done. | [optional] [default to false] |
 

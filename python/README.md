@@ -32,7 +32,9 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.crm.get_leads`](#carboncrmget_leads)
   * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
   * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
+  * [`carbon.data_sources.add_tags`](#carbondata_sourcesadd_tags)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
+  * [`carbon.data_sources.remove_tags`](#carbondata_sourcesremove_tags)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
   * [`carbon.embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
@@ -96,6 +98,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
+  * [`carbon.users.who_am_i`](#carbonuserswho_am_i)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
   * [`carbon.utilities.fetch_webpage`](#carbonutilitiesfetch_webpage)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
@@ -626,6 +629,40 @@ get_opportunity_response = carbon.crm.get_opportunity(
 
 ---
 
+### `carbon.data_sources.add_tags`<a id="carbondata_sourcesadd_tags"></a>
+
+Add Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+add_tags_response = carbon.data_sources.add_tags(
+    tags={},
+    data_source_id=1,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`AddDataSourceTagsInput`](./carbon/type/add_data_source_tags_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OrganizationUserDataSourceAPI`](./carbon/pydantic/organization_user_data_source_api.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/add` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
 ### `carbon.data_sources.query_user_data_sources`<a id="carbondata_sourcesquery_user_data_sources"></a>
 
 User Data Sources
@@ -668,6 +705,43 @@ query_user_data_sources_response = carbon.data_sources.query_user_data_sources(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_data_sources` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.data_sources.remove_tags`<a id="carbondata_sourcesremove_tags"></a>
+
+Remove Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+remove_tags_response = carbon.data_sources.remove_tags(
+    data_source_id=1,
+    tags_to_remove=[],
+    remove_all_tags=False,
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `int`<a id="data_source_id-int"></a>
+
+##### tags_to_remove: [`RemoveDataSourceTagsInputTagsToRemove`](./carbon/type/remove_data_source_tags_input_tags_to_remove.py)<a id="tags_to_remove-removedatasourcetagsinputtagstoremovecarbontyperemove_data_source_tags_input_tags_to_removepy"></a>
+
+##### remove_all_tags: `bool`<a id="remove_all_tags-bool"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`RemoveDataSourceTagsInput`](./carbon/type/remove_data_source_tags_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OrganizationUserDataSourceAPI`](./carbon/pydantic/organization_user_data_source_api.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/remove` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1728,7 +1802,7 @@ Enable cold storage for the file. If set to true, the file will be moved to cold
 
 ##### hot_storage_time_to_live: `Optional[int]`<a id="hot_storage_time_to_live-optionalint"></a>
 
-Time in seconds after which the file will be moved to cold storage.
+Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
 
 ##### generate_chunks_only: `bool`<a id="generate_chunks_only-bool"></a>
 
@@ -2397,6 +2471,7 @@ connect_freshdesk_response = carbon.integrations.connect_freshdesk(
         "store_file_only": False,
         "skip_file_processing": False,
     },
+    data_source_tags={},
 )
 ```
 
@@ -2430,6 +2505,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2480,6 +2559,7 @@ connect_gitbook_response = carbon.integrations.connect_gitbook(
         "store_file_only": False,
         "skip_file_processing": False,
     },
+    data_source_tags={},
 )
 ```
 
@@ -2513,6 +2593,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2561,6 +2645,7 @@ connect_guru_response = carbon.integrations.connect_guru(
         "store_file_only": False,
         "skip_file_processing": False,
     },
+    data_source_tags={},
 )
 ```
 
@@ -2594,6 +2679,10 @@ Enabling this flag will fetch all available content from the source to be listed
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
 
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2631,6 +2720,7 @@ create_aws_iam_user_response = carbon.integrations.create_aws_iam_user(
     access_key_secret="string_example",
     sync_source_items=True,
     endpoint_url="string_example",
+    data_source_tags={},
 )
 ```
 
@@ -2647,6 +2737,10 @@ Enabling this flag will fetch all available content from the source to be listed
 ##### endpoint_url: `Optional[str]`<a id="endpoint_url-optionalstr"></a>
 
 You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2718,6 +2812,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
         "client_secret": "client_secret_example",
         "redirect_uri": "redirect_uri_example",
     },
+    data_source_tags={},
 )
 ```
 
@@ -2804,6 +2899,10 @@ If you are connecting a Gong account, you need to input the email of the account
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./carbon/type/service_now_credentials_nullable.py)<a id="servicenow_credentials-servicenowcredentialsnullablecarbontypeservice_now_credentials_nullablepy"></a>
 
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3199,6 +3298,7 @@ sync_azure_blob_storage_response = carbon.integrations.sync_azure_blob_storage(
     account_name="string_example",
     account_key="string_example",
     sync_source_items=True,
+    data_source_tags={},
 )
 ```
 
@@ -3209,6 +3309,10 @@ sync_azure_blob_storage_response = carbon.integrations.sync_azure_blob_storage(
 ##### account_key: `str`<a id="account_key-str"></a>
 
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3462,6 +3566,7 @@ sync_git_hub_response = carbon.integrations.sync_git_hub(
     username="string_example",
     access_token="string_example",
     sync_source_items=False,
+    data_source_tags={},
 )
 ```
 
@@ -3474,6 +3579,10 @@ sync_git_hub_response = carbon.integrations.sync_git_hub(
 ##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
 
 Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3880,6 +3989,7 @@ sync_rss_feed_response = carbon.integrations.sync_rss_feed(
     generate_sparse_vectors=False,
     prepend_filename_to_chunks=False,
     request_id="string_example",
+    data_source_tags={},
 )
 ```
 
@@ -3902,6 +4012,10 @@ sync_rss_feed_response = carbon.integrations.sync_rss_feed(
 ##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
 
 ##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -4352,6 +4466,28 @@ Custom character upload limit for the user across a single upload.         If se
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/update_users` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.users.who_am_i`<a id="carbonuserswho_am_i"></a>
+
+Me Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+who_am_i_response = carbon.users.who_am_i()
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`UserResponse`](./carbon/pydantic/user_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/whoami` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

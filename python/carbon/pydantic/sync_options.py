@@ -56,6 +56,9 @@ class SyncOptions(BaseModel):
     # Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
     automatically_open_file_picker: typing.Optional[typing.Optional[bool]] = Field(None, alias='automatically_open_file_picker')
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='data_source_tags')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

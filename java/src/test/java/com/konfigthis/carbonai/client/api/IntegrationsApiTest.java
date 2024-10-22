@@ -130,6 +130,7 @@ public class IntegrationsApiTest {
         String requestId = null;
         Boolean syncSourceItems = null;
         FileSyncConfigNullable fileSyncConfig = null;
+        Object dataSourceTags = null;
         GenericSuccessResponse response = api.connectFreshdesk(domain, apiKey)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -142,6 +143,7 @@ public class IntegrationsApiTest {
                 .requestId(requestId)
                 .syncSourceItems(syncSourceItems)
                 .fileSyncConfig(fileSyncConfig)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -168,6 +170,7 @@ public class IntegrationsApiTest {
         String requestId = null;
         Boolean syncSourceItems = null;
         FileSyncConfigNullable fileSyncConfig = null;
+        Object dataSourceTags = null;
         GenericSuccessResponse response = api.connectGitbook(organization, accessToken)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -180,6 +183,7 @@ public class IntegrationsApiTest {
                 .requestId(requestId)
                 .syncSourceItems(syncSourceItems)
                 .fileSyncConfig(fileSyncConfig)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -206,6 +210,7 @@ public class IntegrationsApiTest {
         String requestId = null;
         Boolean syncSourceItems = null;
         FileSyncConfigNullable fileSyncConfig = null;
+        Object dataSourceTags = null;
         GenericSuccessResponse response = api.connectGuru(username, accessToken)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -218,6 +223,7 @@ public class IntegrationsApiTest {
                 .requestId(requestId)
                 .syncSourceItems(syncSourceItems)
                 .fileSyncConfig(fileSyncConfig)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -235,9 +241,11 @@ public class IntegrationsApiTest {
         String accessKeySecret = null;
         Boolean syncSourceItems = null;
         String endpointUrl = null;
+        Object dataSourceTags = null;
         OrganizationUserDataSourceAPI response = api.createAwsIamUser(accessKey, accessKeySecret)
                 .syncSourceItems(syncSourceItems)
                 .endpointUrl(endpointUrl)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -280,6 +288,7 @@ public class IntegrationsApiTest {
         Boolean automaticallyOpenFilePicker = null;
         String gongAccountEmail = null;
         ServiceNowCredentialsNullable servicenowCredentials = null;
+        Object dataSourceTags = null;
         OuthURLResponse response = api.getOauthUrl(service)
                 .tags(tags)
                 .scope(scope)
@@ -309,6 +318,7 @@ public class IntegrationsApiTest {
                 .automaticallyOpenFilePicker(automaticallyOpenFilePicker)
                 .gongAccountEmail(gongAccountEmail)
                 .servicenowCredentials(servicenowCredentials)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -513,8 +523,10 @@ public class IntegrationsApiTest {
         String accountName = null;
         String accountKey = null;
         Boolean syncSourceItems = null;
+        Object dataSourceTags = null;
         OrganizationUserDataSourceAPI response = api.syncAzureBlobStorage(accountName, accountKey)
                 .syncSourceItems(syncSourceItems)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -632,8 +644,10 @@ public class IntegrationsApiTest {
         String username = null;
         String accessToken = null;
         Boolean syncSourceItems = null;
+        Object dataSourceTags = null;
         GenericSuccessResponse response = api.syncGitHub(username, accessToken)
                 .syncSourceItems(syncSourceItems)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }
@@ -785,6 +799,7 @@ public class IntegrationsApiTest {
         Boolean generateSparseVectors = null;
         Boolean prependFilenameToChunks = null;
         String requestId = null;
+        Object dataSourceTags = null;
         GenericSuccessResponse response = api.syncRssFeed(url)
                 .tags(tags)
                 .chunkSize(chunkSize)
@@ -794,6 +809,7 @@ public class IntegrationsApiTest {
                 .generateSparseVectors(generateSparseVectors)
                 .prependFilenameToChunks(prependFilenameToChunks)
                 .requestId(requestId)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }

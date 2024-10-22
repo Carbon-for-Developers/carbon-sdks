@@ -36,13 +36,14 @@ type UserResponse struct {
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
 	CustomLimits map[string]interface{} `json:"custom_limits"`
 	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources"`
+	ConnectorSettings map[string]interface{} `json:"connector_settings"`
 }
 
 // NewUserResponse instantiates a new UserResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}) *UserResponse {
+func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, connectorSettings map[string]interface{}) *UserResponse {
 	this := UserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -63,6 +64,7 @@ func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId 
 	this.EnabledFeatures = enabledFeatures
 	this.CustomLimits = customLimits
 	this.AutoSyncEnabledSources = autoSyncEnabledSources
+	this.ConnectorSettings = connectorSettings
 	return &this
 }
 
@@ -534,6 +536,30 @@ func (o *UserResponse) SetAutoSyncEnabledSources(v []interface{}) {
 	o.AutoSyncEnabledSources = v
 }
 
+// GetConnectorSettings returns the ConnectorSettings field value
+func (o *UserResponse) GetConnectorSettings() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.ConnectorSettings
+}
+
+// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value
+// and a boolean to check if the value has been set.
+func (o *UserResponse) GetConnectorSettingsOk() (map[string]interface{}, bool) {
+	if o == nil {
+    return map[string]interface{}{}, false
+	}
+	return o.ConnectorSettings, true
+}
+
+// SetConnectorSettings sets field value
+func (o *UserResponse) SetConnectorSettings(v map[string]interface{}) {
+	o.ConnectorSettings = v
+}
+
 func (o UserResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -592,6 +618,9 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources
+	}
+	if true {
+		toSerialize["connector_settings"] = o.ConnectorSettings
 	}
 	return json.Marshal(toSerialize)
 }

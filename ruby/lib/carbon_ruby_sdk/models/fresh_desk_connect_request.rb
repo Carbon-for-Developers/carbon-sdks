@@ -38,6 +38,9 @@ module Carbon
 
     attr_accessor :file_sync_config
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +56,8 @@ module Carbon
         :'sync_files_on_connection' => :'sync_files_on_connection',
         :'request_id' => :'request_id',
         :'sync_source_items' => :'sync_source_items',
-        :'file_sync_config' => :'file_sync_config'
+        :'file_sync_config' => :'file_sync_config',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -77,7 +81,8 @@ module Carbon
         :'sync_files_on_connection' => :'Boolean',
         :'request_id' => :'String',
         :'sync_source_items' => :'Boolean',
-        :'file_sync_config' => :'FileSyncConfigNullable'
+        :'file_sync_config' => :'FileSyncConfigNullable',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -93,7 +98,7 @@ module Carbon
         :'prepend_filename_to_chunks',
         :'sync_files_on_connection',
         :'request_id',
-        :'file_sync_config'
+        :'file_sync_config',
       ])
     end
 
@@ -179,6 +184,10 @@ module Carbon
       if attributes.key?(:'file_sync_config')
         self.file_sync_config = attributes[:'file_sync_config']
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -221,7 +230,8 @@ module Carbon
           sync_files_on_connection == o.sync_files_on_connection &&
           request_id == o.request_id &&
           sync_source_items == o.sync_source_items &&
-          file_sync_config == o.file_sync_config
+          file_sync_config == o.file_sync_config &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -233,7 +243,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, domain, api_key, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, sync_files_on_connection, request_id, sync_source_items, file_sync_config].hash
+      [tags, domain, api_key, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, generate_sparse_vectors, prepend_filename_to_chunks, sync_files_on_connection, request_id, sync_source_items, file_sync_config, data_source_tags].hash
     end
 
     # Builds the object from hash

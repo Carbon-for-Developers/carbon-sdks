@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **AutomaticallyOpenFilePicker** | Pointer to **NullableBool** | Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources. | [optional] 
 **GongAccountEmail** | Pointer to **NullableString** | If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source. | [optional] 
 **ServicenowCredentials** | Pointer to [**NullableServiceNowCredentialsNullable**](ServiceNowCredentialsNullable.md) |  | [optional] 
+**DataSourceTags** | Pointer to **map[string]interface{}** | Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. | [optional] [default to {}]
 
 ## Methods
 
@@ -1013,6 +1014,31 @@ HasServicenowCredentials returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetServicenowCredentials()`
 
 UnsetServicenowCredentials ensures that no value is present for ServicenowCredentials, not even an explicit nil
+### GetDataSourceTags
+
+`func (o *OAuthURLRequest) GetDataSourceTags() map[string]interface{}`
+
+GetDataSourceTags returns the DataSourceTags field if non-nil, zero value otherwise.
+
+### GetDataSourceTagsOk
+
+`func (o *OAuthURLRequest) GetDataSourceTagsOk() (*map[string]interface{}, bool)`
+
+GetDataSourceTagsOk returns a tuple with the DataSourceTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceTags
+
+`func (o *OAuthURLRequest) SetDataSourceTags(v map[string]interface{})`
+
+SetDataSourceTags sets DataSourceTags field to given value.
+
+### HasDataSourceTags
+
+`func (o *OAuthURLRequest) HasDataSourceTags() bool`
+
+HasDataSourceTags returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

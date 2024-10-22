@@ -25,5 +25,8 @@ class OptionalGithubConnectRequest(TypedDict, total=False):
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     sync_source_items: bool
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    data_source_tags: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 class GithubConnectRequest(RequiredGithubConnectRequest, OptionalGithubConnectRequest):
     pass

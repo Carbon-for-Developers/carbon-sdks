@@ -17,12 +17,15 @@ module Carbon
 
     attr_accessor :custom_limits
 
+    attr_accessor :connector_settings
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'remove_branding' => :'remove_branding',
         :'integrations' => :'integrations',
-        :'custom_limits' => :'custom_limits'
+        :'custom_limits' => :'custom_limits',
+        :'connector_settings' => :'connector_settings'
       }
     end
 
@@ -36,7 +39,8 @@ module Carbon
       {
         :'remove_branding' => :'Boolean',
         :'integrations' => :'Object',
-        :'custom_limits' => :'Object'
+        :'custom_limits' => :'Object',
+        :'connector_settings' => :'Object'
       }
     end
 
@@ -72,6 +76,10 @@ module Carbon
       if attributes.key?(:'custom_limits')
         self.custom_limits = attributes[:'custom_limits']
       end
+
+      if attributes.key?(:'connector_settings')
+        self.connector_settings = attributes[:'connector_settings']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -90,6 +98,10 @@ module Carbon
         invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
       end
 
+      if @connector_settings.nil?
+        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -99,6 +111,7 @@ module Carbon
       return false if @remove_branding.nil?
       return false if @integrations.nil?
       return false if @custom_limits.nil?
+      return false if @connector_settings.nil?
       true
     end
 
@@ -109,7 +122,8 @@ module Carbon
       self.class == o.class &&
           remove_branding == o.remove_branding &&
           integrations == o.integrations &&
-          custom_limits == o.custom_limits
+          custom_limits == o.custom_limits &&
+          connector_settings == o.connector_settings
     end
 
     # @see the `==` method
@@ -121,7 +135,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remove_branding, integrations, custom_limits].hash
+      [remove_branding, integrations, custom_limits, connector_settings].hash
     end
 
     # Builds the object from hash

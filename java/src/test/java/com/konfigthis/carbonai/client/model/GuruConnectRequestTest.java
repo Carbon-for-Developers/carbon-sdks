@@ -145,4 +145,12 @@ public class GuruConnectRequestTest {
         // TODO: test fileSyncConfig
     }
 
+    /**
+     * Test the property 'dataSourceTags'
+     */
+    @Test
+    public void dataSourceTagsTest() {
+        // TODO: test dataSourceTags
+    }
+
 }

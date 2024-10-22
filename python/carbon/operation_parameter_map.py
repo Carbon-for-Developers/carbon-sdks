@@ -183,6 +183,16 @@ operation_parameter_map = {
             },
         ]
     },
+    '/data_sources/tags/add-POST': {
+        'parameters': [
+            {
+                'name': 'tags'
+            },
+            {
+                'name': 'data_source_id'
+            },
+        ]
+    },
     '/user_data_sources-POST': {
         'parameters': [
             {
@@ -196,6 +206,19 @@ operation_parameter_map = {
             },
             {
                 'name': 'filters'
+            },
+        ]
+    },
+    '/data_sources/tags/remove-POST': {
+        'parameters': [
+            {
+                'name': 'data_source_id'
+            },
+            {
+                'name': 'tags_to_remove'
+            },
+            {
+                'name': 'remove_all_tags'
             },
         ]
     },
@@ -887,6 +910,9 @@ operation_parameter_map = {
             {
                 'name': 'file_sync_config'
             },
+            {
+                'name': 'data_source_tags'
+            },
         ]
     },
     '/integrations/gitbook-POST': {
@@ -929,6 +955,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'file_sync_config'
+            },
+            {
+                'name': 'data_source_tags'
             },
         ]
     },
@@ -973,6 +1002,9 @@ operation_parameter_map = {
             {
                 'name': 'file_sync_config'
             },
+            {
+                'name': 'data_source_tags'
+            },
         ]
     },
     '/integrations/s3-POST': {
@@ -988,6 +1020,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'endpoint_url'
+            },
+            {
+                'name': 'data_source_tags'
             },
         ]
     },
@@ -1079,6 +1114,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'servicenow_credentials'
+            },
+            {
+                'name': 'data_source_tags'
             },
         ]
     },
@@ -1231,6 +1269,9 @@ operation_parameter_map = {
             {
                 'name': 'sync_source_items'
             },
+            {
+                'name': 'data_source_tags'
+            },
         ]
     },
     '/integrations/confluence/sync-POST': {
@@ -1354,6 +1395,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'sync_source_items'
+            },
+            {
+                'name': 'data_source_tags'
             },
         ]
     },
@@ -1521,6 +1565,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'request_id'
+            },
+            {
+                'name': 'data_source_tags'
             },
         ]
     },
@@ -1691,6 +1738,10 @@ operation_parameter_map = {
             {
                 'name': 'max_characters_per_upload'
             },
+        ]
+    },
+    '/whoami-GET': {
+        'parameters': [
         ]
     },
     '/fetch_urls-GET': {

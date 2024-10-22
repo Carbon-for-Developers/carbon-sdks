@@ -17,6 +17,7 @@ from carbon.model.account_response import AccountResponse
 from carbon.model.accounts_order_by import AccountsOrderBy
 from carbon.model.accounts_order_by_nullable import AccountsOrderByNullable
 from carbon.model.accounts_request import AccountsRequest
+from carbon.model.add_data_source_tags_input import AddDataSourceTagsInput
 from carbon.model.add_webhook_props import AddWebhookProps
 from carbon.model.address import Address
 from carbon.model.azure_blob_auth_request import AzureBlobAuthRequest
@@ -235,6 +236,8 @@ from carbon.model.pull_request_response import PullRequestResponse
 from carbon.model.pull_requests_input import PullRequestsInput
 from carbon.model.rss_feed_input import RSSFeedInput
 from carbon.model.raw_text_input import RawTextInput
+from carbon.model.remove_data_source_tags_input import RemoveDataSourceTagsInput
+from carbon.model.remove_data_source_tags_input_tags_to_remove import RemoveDataSourceTagsInputTagsToRemove
 from carbon.model.rerank_params import RerankParams
 from carbon.model.rerank_params_nullable import RerankParamsNullable
 from carbon.model.resync_file_query_input import ResyncFileQueryInput

@@ -18,12 +18,16 @@ module Carbon
     # Enabling this flag will fetch all available content from the source to be listed via list items endpoint
     attr_accessor :sync_source_items
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'username' => :'username',
         :'access_token' => :'access_token',
-        :'sync_source_items' => :'sync_source_items'
+        :'sync_source_items' => :'sync_source_items',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -37,7 +41,8 @@ module Carbon
       {
         :'username' => :'String',
         :'access_token' => :'String',
-        :'sync_source_items' => :'Boolean'
+        :'sync_source_items' => :'Boolean',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -75,6 +80,10 @@ module Carbon
       else
         self.sync_source_items = false
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -107,7 +116,8 @@ module Carbon
       self.class == o.class &&
           username == o.username &&
           access_token == o.access_token &&
-          sync_source_items == o.sync_source_items
+          sync_source_items == o.sync_source_items &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -119,7 +129,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [username, access_token, sync_source_items].hash
+      [username, access_token, sync_source_items, data_source_tags].hash
     end
 
     # Builds the object from hash

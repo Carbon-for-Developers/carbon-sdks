@@ -56,6 +56,8 @@ type OAuthURLRequest struct {
 	// If you are connecting a Gong account, you need to input the email of the account you         wish to connect. This email will be used to identify your carbon data source.
 	GongAccountEmail NullableString `json:"gong_account_email,omitempty"`
 	ServicenowCredentials NullableServiceNowCredentialsNullable `json:"servicenow_credentials,omitempty"`
+	// Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+	DataSourceTags map[string]interface{} `json:"data_source_tags,omitempty"`
 }
 
 // NewOAuthURLRequest instantiates a new OAuthURLRequest object
@@ -1283,6 +1285,38 @@ func (o *OAuthURLRequest) UnsetServicenowCredentials() {
 	o.ServicenowCredentials.Unset()
 }
 
+// GetDataSourceTags returns the DataSourceTags field value if set, zero value otherwise.
+func (o *OAuthURLRequest) GetDataSourceTags() map[string]interface{} {
+	if o == nil || isNil(o.DataSourceTags) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.DataSourceTags
+}
+
+// GetDataSourceTagsOk returns a tuple with the DataSourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthURLRequest) GetDataSourceTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.DataSourceTags) {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceTags, true
+}
+
+// HasDataSourceTags returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasDataSourceTags() bool {
+	if o != nil && !isNil(o.DataSourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceTags gets a reference to the given map[string]interface{} and assigns it to the DataSourceTags field.
+func (o *OAuthURLRequest) SetDataSourceTags(v map[string]interface{}) {
+	o.DataSourceTags = v
+}
+
 func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -1371,6 +1405,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServicenowCredentials.IsSet() {
 		toSerialize["servicenow_credentials"] = o.ServicenowCredentials.Get()
+	}
+	if !isNil(o.DataSourceTags) {
+		toSerialize["data_source_tags"] = o.DataSourceTags
 	}
 	return json.Marshal(toSerialize)
 }

@@ -302,6 +302,50 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Me Endpoint
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        whoAmI: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/whoami`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/whoami',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -394,6 +438,16 @@ export const UsersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary Me Endpoint
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async whoAmI(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.whoAmI(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -454,6 +508,15 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
             return localVarFp.updateUsers(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Me Endpoint
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        whoAmI(options?: AxiosRequestConfig): AxiosPromise<UserResponse> {
+            return localVarFp.whoAmI(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -569,5 +632,16 @@ export class UsersApiGenerated extends BaseAPI {
      */
     public updateUsers(requestParameters: UsersApiUpdateUsersRequest, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).updateUsers(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Me Endpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApiGenerated
+     */
+    public whoAmI(options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).whoAmI(options).then((request) => request(this.axios, this.basePath));
     }
 }

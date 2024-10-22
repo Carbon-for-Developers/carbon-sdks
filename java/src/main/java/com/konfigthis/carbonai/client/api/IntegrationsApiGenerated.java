@@ -534,6 +534,7 @@ public class IntegrationsApiGenerated {
         String requestId;
         Boolean syncSourceItems;
         FileSyncConfigNullable fileSyncConfig;
+        Object dataSourceTags;
 
         public ConnectFreshdeskRequestBuilderGenerated(String domain, String apiKey) {
             this.domain = domain;
@@ -651,6 +652,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.ConnectFreshdeskRequestBuilder
+         */
+        public IntegrationsApi.ConnectFreshdeskRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.ConnectFreshdeskRequestBuilder) this;
+        }
+        
+        /**
          * Build call for connectFreshdesk
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -681,6 +692,7 @@ public class IntegrationsApiGenerated {
             freshDeskConnectRequest.requestId(this.requestId);
             freshDeskConnectRequest.syncSourceItems(this.syncSourceItems);
             freshDeskConnectRequest.fileSyncConfig(this.fileSyncConfig);
+            freshDeskConnectRequest.dataSourceTags(this.dataSourceTags);
             return freshDeskConnectRequest;
         }
 
@@ -837,6 +849,7 @@ public class IntegrationsApiGenerated {
         String requestId;
         Boolean syncSourceItems;
         FileSyncConfigNullable fileSyncConfig;
+        Object dataSourceTags;
 
         public ConnectGitbookRequestBuilderGenerated(String organization, String accessToken) {
             this.organization = organization;
@@ -954,6 +967,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.ConnectGitbookRequestBuilder
+         */
+        public IntegrationsApi.ConnectGitbookRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.ConnectGitbookRequestBuilder) this;
+        }
+        
+        /**
          * Build call for connectGitbook
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -984,6 +1007,7 @@ public class IntegrationsApiGenerated {
             gitbookConnectRequest.requestId(this.requestId);
             gitbookConnectRequest.syncSourceItems(this.syncSourceItems);
             gitbookConnectRequest.fileSyncConfig(this.fileSyncConfig);
+            gitbookConnectRequest.dataSourceTags(this.dataSourceTags);
             return gitbookConnectRequest;
         }
 
@@ -1140,6 +1164,7 @@ public class IntegrationsApiGenerated {
         String requestId;
         Boolean syncSourceItems;
         FileSyncConfigNullable fileSyncConfig;
+        Object dataSourceTags;
 
         public ConnectGuruRequestBuilderGenerated(String username, String accessToken) {
             this.username = username;
@@ -1257,6 +1282,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.ConnectGuruRequestBuilder
+         */
+        public IntegrationsApi.ConnectGuruRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.ConnectGuruRequestBuilder) this;
+        }
+        
+        /**
          * Build call for connectGuru
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1287,6 +1322,7 @@ public class IntegrationsApiGenerated {
             guruConnectRequest.requestId(this.requestId);
             guruConnectRequest.syncSourceItems(this.syncSourceItems);
             guruConnectRequest.fileSyncConfig(this.fileSyncConfig);
+            guruConnectRequest.dataSourceTags(this.dataSourceTags);
             return guruConnectRequest;
         }
 
@@ -1434,6 +1470,7 @@ public class IntegrationsApiGenerated {
         final String accessKeySecret;
         Boolean syncSourceItems;
         String endpointUrl;
+        Object dataSourceTags;
 
         public CreateAwsIamUserRequestBuilderGenerated(String accessKey, String accessKeySecret) {
             this.accessKey = accessKey;
@@ -1461,6 +1498,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.CreateAwsIamUserRequestBuilder
+         */
+        public IntegrationsApi.CreateAwsIamUserRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.CreateAwsIamUserRequestBuilder) this;
+        }
+        
+        /**
          * Build call for createAwsIamUser
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1482,6 +1529,7 @@ public class IntegrationsApiGenerated {
             s3AuthRequest.accessKeySecret(this.accessKeySecret);
             s3AuthRequest.syncSourceItems(this.syncSourceItems);
             s3AuthRequest.endpointUrl(this.endpointUrl);
+            s3AuthRequest.dataSourceTags(this.dataSourceTags);
             return s3AuthRequest;
         }
 
@@ -1654,6 +1702,7 @@ public class IntegrationsApiGenerated {
         Boolean automaticallyOpenFilePicker;
         String gongAccountEmail;
         ServiceNowCredentialsNullable servicenowCredentials;
+        Object dataSourceTags;
 
         public GetOauthUrlRequestBuilderGenerated(OauthBasedConnectors service) {
             this.service = service;
@@ -1940,6 +1989,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
+         */
+        public IntegrationsApi.GetOauthUrlRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
+        }
+        
+        /**
          * Build call for getOauthUrl
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1986,6 +2045,7 @@ public class IntegrationsApiGenerated {
             oauthURLRequest.automaticallyOpenFilePicker(this.automaticallyOpenFilePicker);
             oauthURLRequest.gongAccountEmail(this.gongAccountEmail);
             oauthURLRequest.servicenowCredentials(this.servicenowCredentials);
+            oauthURLRequest.dataSourceTags(this.dataSourceTags);
             return oauthURLRequest;
         }
 
@@ -3894,6 +3954,7 @@ public class IntegrationsApiGenerated {
         final String accountName;
         final String accountKey;
         Boolean syncSourceItems;
+        Object dataSourceTags;
 
         public SyncAzureBlobStorageRequestBuilderGenerated(String accountName, String accountKey) {
             this.accountName = accountName;
@@ -3907,6 +3968,16 @@ public class IntegrationsApiGenerated {
          */
         public IntegrationsApi.SyncAzureBlobStorageRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.SyncAzureBlobStorageRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.SyncAzureBlobStorageRequestBuilder
+         */
+        public IntegrationsApi.SyncAzureBlobStorageRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
             return (IntegrationsApi.SyncAzureBlobStorageRequestBuilder) this;
         }
         
@@ -3931,6 +4002,7 @@ public class IntegrationsApiGenerated {
             azureBlobAuthRequest.accountName(this.accountName);
             azureBlobAuthRequest.accountKey(this.accountKey);
             azureBlobAuthRequest.syncSourceItems(this.syncSourceItems);
+            azureBlobAuthRequest.dataSourceTags(this.dataSourceTags);
             return azureBlobAuthRequest;
         }
 
@@ -4921,6 +4993,7 @@ public class IntegrationsApiGenerated {
         final String username;
         final String accessToken;
         Boolean syncSourceItems;
+        Object dataSourceTags;
 
         public SyncGitHubRequestBuilderGenerated(String username, String accessToken) {
             this.username = username;
@@ -4934,6 +5007,16 @@ public class IntegrationsApiGenerated {
          */
         public IntegrationsApi.SyncGitHubRequestBuilder syncSourceItems(Boolean syncSourceItems) {
             this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.SyncGitHubRequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.SyncGitHubRequestBuilder
+         */
+        public IntegrationsApi.SyncGitHubRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
             return (IntegrationsApi.SyncGitHubRequestBuilder) this;
         }
         
@@ -4958,6 +5041,7 @@ public class IntegrationsApiGenerated {
             githubConnectRequest.username(this.username);
             githubConnectRequest.accessToken(this.accessToken);
             githubConnectRequest.syncSourceItems(this.syncSourceItems);
+            githubConnectRequest.dataSourceTags(this.dataSourceTags);
             return githubConnectRequest;
         }
 
@@ -6186,6 +6270,7 @@ public class IntegrationsApiGenerated {
         Boolean generateSparseVectors;
         Boolean prependFilenameToChunks;
         String requestId;
+        Object dataSourceTags;
 
         public SyncRssFeedRequestBuilderGenerated(String url) {
             this.url = url;
@@ -6272,6 +6357,16 @@ public class IntegrationsApiGenerated {
         }
         
         /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.SyncRssFeedRequestBuilder
+         */
+        public IntegrationsApi.SyncRssFeedRequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.SyncRssFeedRequestBuilder) this;
+        }
+        
+        /**
          * Build call for syncRssFeed
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6298,6 +6393,7 @@ public class IntegrationsApiGenerated {
             rsSFeedInput.generateSparseVectors(this.generateSparseVectors);
             rsSFeedInput.prependFilenameToChunks(this.prependFilenameToChunks);
             rsSFeedInput.requestId(this.requestId);
+            rsSFeedInput.dataSourceTags(this.dataSourceTags);
             return rsSFeedInput;
         }
 

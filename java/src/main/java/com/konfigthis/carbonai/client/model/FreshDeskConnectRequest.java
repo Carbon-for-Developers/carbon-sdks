@@ -104,6 +104,10 @@ public class FreshDeskConnectRequest {
   @SerializedName(SERIALIZED_NAME_FILE_SYNC_CONFIG)
   private FileSyncConfigNullable fileSyncConfig;
 
+  public static final String SERIALIZED_NAME_DATA_SOURCE_TAGS = "data_source_tags";
+  @SerializedName(SERIALIZED_NAME_DATA_SOURCE_TAGS)
+  private Object dataSourceTags;
+
   public FreshDeskConnectRequest() {
   }
 
@@ -483,6 +487,35 @@ public class FreshDeskConnectRequest {
     this.fileSyncConfig = fileSyncConfig;
   }
 
+
+  public FreshDeskConnectRequest dataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+    return this;
+  }
+
+   /**
+   * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+   * @return dataSourceTags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.")
+
+  public Object getDataSourceTags() {
+    return dataSourceTags;
+  }
+
+
+  public void setDataSourceTags(Object dataSourceTags) {
+    
+    
+    
+    this.dataSourceTags = dataSourceTags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -550,7 +583,8 @@ public class FreshDeskConnectRequest {
         Objects.equals(this.syncFilesOnConnection, freshDeskConnectRequest.syncFilesOnConnection) &&
         Objects.equals(this.requestId, freshDeskConnectRequest.requestId) &&
         Objects.equals(this.syncSourceItems, freshDeskConnectRequest.syncSourceItems) &&
-        Objects.equals(this.fileSyncConfig, freshDeskConnectRequest.fileSyncConfig)&&
+        Objects.equals(this.fileSyncConfig, freshDeskConnectRequest.fileSyncConfig) &&
+        Objects.equals(this.dataSourceTags, freshDeskConnectRequest.dataSourceTags)&&
         Objects.equals(this.additionalProperties, freshDeskConnectRequest.additionalProperties);
   }
 
@@ -560,7 +594,7 @@ public class FreshDeskConnectRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, domain, apiKey, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, syncFilesOnConnection, requestId, syncSourceItems, fileSyncConfig, additionalProperties);
+    return Objects.hash(tags, domain, apiKey, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, generateSparseVectors, prependFilenameToChunks, syncFilesOnConnection, requestId, syncSourceItems, fileSyncConfig, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -587,6 +621,7 @@ public class FreshDeskConnectRequest {
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    syncSourceItems: ").append(toIndentedString(syncSourceItems)).append("\n");
     sb.append("    fileSyncConfig: ").append(toIndentedString(fileSyncConfig)).append("\n");
+    sb.append("    dataSourceTags: ").append(toIndentedString(dataSourceTags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -623,6 +658,7 @@ public class FreshDeskConnectRequest {
     openapiFields.add("request_id");
     openapiFields.add("sync_source_items");
     openapiFields.add("file_sync_config");
+    openapiFields.add("data_source_tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

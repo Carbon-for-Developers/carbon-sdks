@@ -137,6 +137,7 @@ class BaseApi(api_client.Api):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -166,6 +167,8 @@ class BaseApi(api_client.Api):
             _body["sync_source_items"] = sync_source_items
         if file_sync_config is not None:
             _body["file_sync_config"] = file_sync_config
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -386,6 +389,7 @@ class ConnectGuruRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -406,6 +410,7 @@ class ConnectGuruRaw(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
         )
         return await self._aconnect_guru_oapg(
             body=args.body,
@@ -427,6 +432,7 @@ class ConnectGuruRaw(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -446,6 +452,7 @@ class ConnectGuruRaw(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
         )
         return self._connect_guru_oapg(
             body=args.body,
@@ -468,6 +475,7 @@ class ConnectGuru(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -485,6 +493,7 @@ class ConnectGuru(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -507,6 +516,7 @@ class ConnectGuru(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.connect_guru(
@@ -523,6 +533,7 @@ class ConnectGuru(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -547,6 +558,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -567,6 +579,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
         )
         return await self._aconnect_guru_oapg(
             body=args.body,
@@ -588,6 +601,7 @@ class ApiForpost(BaseApi):
         request_id: typing.Optional[typing.Optional[str]] = None,
         sync_source_items: typing.Optional[bool] = None,
         file_sync_config: typing.Optional[FileSyncConfigNullable] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -607,6 +621,7 @@ class ApiForpost(BaseApi):
             request_id=request_id,
             sync_source_items=sync_source_items,
             file_sync_config=file_sync_config,
+            data_source_tags=data_source_tags,
         )
         return self._connect_guru_oapg(
             body=args.body,

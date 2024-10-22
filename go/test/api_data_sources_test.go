@@ -27,6 +27,26 @@ func Test_carbon_DataSourcesApiService(t *testing.T) {
     client := carbon.NewAPIClient(configuration)
     */
 
+    t.Run("Test DataSourcesApiService AddTags", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        addDataSourceTagsInput := *carbon.NewAddDataSourceTagsInput(
+            null,
+            null,
+        )
+        
+        request := client.DataSourcesApi.AddTags(
+            addDataSourceTagsInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test DataSourcesApiService QueryUserDataSources", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         pagination := *carbon.NewPagination()
@@ -40,6 +60,27 @@ func Test_carbon_DataSourcesApiService(t *testing.T) {
         
         request := client.DataSourcesApi.QueryUserDataSources(
             organizationUserDataSourceQueryInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
+    t.Run("Test DataSourcesApiService RemoveTags", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        
+        removeDataSourceTagsInput := *carbon.NewRemoveDataSourceTagsInput(
+            null,
+        )
+        removeDataSourceTagsInput.SetTagsToRemove([])
+        removeDataSourceTagsInput.SetRemoveAllTags(false)
+        
+        request := client.DataSourcesApi.RemoveTags(
+            removeDataSourceTagsInput,
         )
         
         resp, httpRes, err := request.Execute()

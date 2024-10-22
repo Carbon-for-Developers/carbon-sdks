@@ -34,6 +34,28 @@ class OrganizationUserDataSourceFilters(
     class MetaOapg:
         
         class properties:
+            
+            
+            class tags(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'tags':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
         
             @staticmethod
             def source() -> typing.Type['DataSourceTypeNullable']:
@@ -63,10 +85,14 @@ class OrganizationUserDataSourceFilters(
                         _configuration=_configuration,
                     )
             __annotations__ = {
+                "tags": tags,
                 "source": source,
                 "ids": ids,
                 "revoked_access": revoked_access,
             }
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["source"]) -> 'DataSourceTypeNullable': ...
@@ -80,10 +106,13 @@ class OrganizationUserDataSourceFilters(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["source", "ids", "revoked_access", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "source", "ids", "revoked_access", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union[MetaOapg.properties.tags, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["source"]) -> typing.Union['DataSourceTypeNullable', schemas.Unset]: ...
@@ -97,13 +126,14 @@ class OrganizationUserDataSourceFilters(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["source", "ids", "revoked_access", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "source", "ids", "revoked_access", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         source: typing.Union['DataSourceTypeNullable', schemas.Unset] = schemas.unset,
         ids: typing.Union['OrganizationUserDataSourceFiltersIds', schemas.Unset] = schemas.unset,
         revoked_access: typing.Union[MetaOapg.properties.revoked_access, None, bool, schemas.Unset] = schemas.unset,
@@ -113,6 +143,7 @@ class OrganizationUserDataSourceFilters(
         return super().__new__(
             cls,
             *args,
+            tags=tags,
             source=source,
             ids=ids,
             revoked_access=revoked_access,

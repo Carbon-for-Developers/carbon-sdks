@@ -39,6 +39,7 @@ from carbon.apis.paths.organization import Organization
 from carbon.apis.paths.organization_update import OrganizationUpdate
 from carbon.apis.paths.organization_statistics import OrganizationStatistics
 from carbon.apis.paths.user import User
+from carbon.apis.paths.whoami import Whoami
 from carbon.apis.paths.modify_user_configuration import ModifyUserConfiguration
 from carbon.apis.paths.delete_users import DeleteUsers
 from carbon.apis.paths.update_users import UpdateUsers
@@ -63,6 +64,8 @@ from carbon.apis.paths.add_webhook import AddWebhook
 from carbon.apis.paths.delete_webhook_webhook_id import DeleteWebhookWebhookId
 from carbon.apis.paths.user_data_sources import UserDataSources
 from carbon.apis.paths.revoke_access_token import RevokeAccessToken
+from carbon.apis.paths.data_sources_tags_add import DataSourcesTagsAdd
+from carbon.apis.paths.data_sources_tags_remove import DataSourcesTagsRemove
 from carbon.apis.paths.web_scrape import WebScrape
 from carbon.apis.paths.process_sitemap import ProcessSitemap
 from carbon.apis.paths.scrape_sitemap import ScrapeSitemap
@@ -132,6 +135,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,
         PathValues.ORGANIZATION_STATISTICS: OrganizationStatistics,
         PathValues.USER: User,
+        PathValues.WHOAMI: Whoami,
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,
         PathValues.UPDATE_USERS: UpdateUsers,
@@ -156,6 +160,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,
         PathValues.USER_DATA_SOURCES: UserDataSources,
         PathValues.REVOKE_ACCESS_TOKEN: RevokeAccessToken,
+        PathValues.DATA_SOURCES_TAGS_ADD: DataSourcesTagsAdd,
+        PathValues.DATA_SOURCES_TAGS_REMOVE: DataSourcesTagsRemove,
         PathValues.WEB_SCRAPE: WebScrape,
         PathValues.PROCESS_SITEMAP: ProcessSitemap,
         PathValues.SCRAPE_SITEMAP: ScrapeSitemap,
@@ -226,6 +232,7 @@ path_to_api = PathToApi(
         PathValues.ORGANIZATION_UPDATE: OrganizationUpdate,
         PathValues.ORGANIZATION_STATISTICS: OrganizationStatistics,
         PathValues.USER: User,
+        PathValues.WHOAMI: Whoami,
         PathValues.MODIFY_USER_CONFIGURATION: ModifyUserConfiguration,
         PathValues.DELETE_USERS: DeleteUsers,
         PathValues.UPDATE_USERS: UpdateUsers,
@@ -250,6 +257,8 @@ path_to_api = PathToApi(
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,
         PathValues.USER_DATA_SOURCES: UserDataSources,
         PathValues.REVOKE_ACCESS_TOKEN: RevokeAccessToken,
+        PathValues.DATA_SOURCES_TAGS_ADD: DataSourcesTagsAdd,
+        PathValues.DATA_SOURCES_TAGS_REMOVE: DataSourcesTagsRemove,
         PathValues.WEB_SCRAPE: WebScrape,
         PathValues.PROCESS_SITEMAP: ProcessSitemap,
         PathValues.SCRAPE_SITEMAP: ScrapeSitemap,

@@ -62,4 +62,12 @@ public class WhiteLabelingResponseTest {
         // TODO: test customLimits
     }
 
+    /**
+     * Test the property 'connectorSettings'
+     */
+    @Test
+    public void connectorSettingsTest() {
+        // TODO: test connectorSettings
+    }
+
 }

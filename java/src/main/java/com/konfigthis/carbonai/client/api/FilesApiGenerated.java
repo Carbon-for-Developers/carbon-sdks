@@ -2770,7 +2770,7 @@ public class FilesApiGenerated {
         
         /**
          * Set hotStorageTimeToLive
-         * @param hotStorageTimeToLive Time in seconds after which the file will be moved to cold storage. (optional)
+         * @param hotStorageTimeToLive Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30]. (optional)
          * @return FilesApi.UploadRequestBuilder
          */
         public FilesApi.UploadRequestBuilder hotStorageTimeToLive(Integer hotStorageTimeToLive) {

@@ -49,6 +49,8 @@ class RequiredExternalSourceItem(TypedDict):
 
     external_url: typing.Optional[str]
 
+    file_format: typing.Optional[str]
+
     created_at: datetime
 
     updated_at: datetime

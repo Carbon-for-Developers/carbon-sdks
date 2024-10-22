@@ -27,6 +27,9 @@ class S3AuthRequest(BaseModel):
     # You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
     endpoint_url: typing.Optional[typing.Optional[str]] = Field(None, alias='endpoint_url')
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='data_source_tags')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

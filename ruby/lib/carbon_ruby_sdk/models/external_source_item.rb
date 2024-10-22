@@ -43,6 +43,8 @@ module Carbon
 
     attr_accessor :external_url
 
+    attr_accessor :file_format
+
     attr_accessor :created_at
 
     attr_accessor :updated_at
@@ -66,6 +68,7 @@ module Carbon
         :'item_type' => :'item_type',
         :'root_external_id' => :'root_external_id',
         :'external_url' => :'external_url',
+        :'file_format' => :'file_format',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -95,6 +98,7 @@ module Carbon
         :'item_type' => :'String',
         :'root_external_id' => :'String',
         :'external_url' => :'String',
+        :'file_format' => :'String',
         :'created_at' => :'Time',
         :'updated_at' => :'Time'
       }
@@ -110,6 +114,7 @@ module Carbon
         :'item_type',
         :'root_external_id',
         :'external_url',
+        :'file_format',
       ])
     end
 
@@ -190,6 +195,10 @@ module Carbon
 
       if attributes.key?(:'external_url')
         self.external_url = attributes[:'external_url']
+      end
+
+      if attributes.key?(:'file_format')
+        self.file_format = attributes[:'file_format']
       end
 
       if attributes.key?(:'created_at')
@@ -290,6 +299,7 @@ module Carbon
           item_type == o.item_type &&
           root_external_id == o.root_external_id &&
           external_url == o.external_url &&
+          file_format == o.file_format &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -303,7 +313,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, external_id, source, name, synced_at, is_selectable, is_expandable, organization_id, organization_supplied_user_id, organization_user_id, organization_user_data_source_id, organization_user_file_to_sync_id, parent_external_id, item_type, root_external_id, external_url, created_at, updated_at].hash
+      [id, external_id, source, name, synced_at, is_selectable, is_expandable, organization_id, organization_supplied_user_id, organization_user_id, organization_user_data_source_id, organization_user_file_to_sync_id, parent_external_id, item_type, root_external_id, external_url, file_format, created_at, updated_at].hash
     end
 
     # Builds the object from hash

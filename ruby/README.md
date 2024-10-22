@@ -28,7 +28,9 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.crm.get_leads`](#carboncrmget_leads)
   * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
   * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
+  * [`carbon.data_sources.add_tags`](#carbondata_sourcesadd_tags)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
+  * [`carbon.data_sources.remove_tags`](#carbondata_sourcesremove_tags)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
   * [`carbon.embeddings.get_documents`](#carbonembeddingsget_documents)
   * [`carbon.embeddings.get_embeddings_and_chunks`](#carbonembeddingsget_embeddings_and_chunks)
@@ -92,6 +94,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.users.list`](#carbonuserslist)
   * [`carbon.users.toggle_user_features`](#carbonuserstoggle_user_features)
   * [`carbon.users.update_users`](#carbonusersupdate_users)
+  * [`carbon.users.who_am_i`](#carbonuserswho_am_i)
   * [`carbon.utilities.fetch_urls`](#carbonutilitiesfetch_urls)
   * [`carbon.utilities.fetch_webpage`](#carbonutilitiesfetch_webpage)
   * [`carbon.utilities.fetch_youtube_transcripts`](#carbonutilitiesfetch_youtube_transcripts)
@@ -532,6 +535,37 @@ p result
 ---
 
 
+### `carbon.data_sources.add_tags`<a id="carbondata_sourcesadd_tags"></a>
+
+Add Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.data_sources.add_tags(
+  tags: {},
+  data_source_id: 1,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### tags: `Object`<a id="tags-object"></a>
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/add` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `carbon.data_sources.query_user_data_sources`<a id="carbondata_sourcesquery_user_data_sources"></a>
 
 User Data Sources
@@ -566,6 +600,39 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/user_data_sources` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.data_sources.remove_tags`<a id="carbondata_sourcesremove_tags"></a>
+
+Remove Data Source Tags
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.data_sources.remove_tags(
+  data_source_id: 1,
+  tags_to_remove: [],
+  remove_all_tags: false,
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### data_source_id: `Integer`<a id="data_source_id-integer"></a>
+##### tags_to_remove: Array<`String`><a id="tags_to_remove-array"></a>
+##### remove_all_tags: `Boolean`<a id="remove_all_tags-boolean"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources/tags/remove` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1569,7 +1636,8 @@ Enable cold storage for the file. If set to true, the file will be moved to cold
 storage after a certain period of inactivity. Default is false.
 
 ##### hot_storage_time_to_live: `Integer`<a id="hot_storage_time_to_live-integer"></a>
-Time in seconds after which the file will be moved to cold storage.
+Time in days after which the file will be moved to cold storage. Must be one of
+[1, 3, 7, 14, 30].
 
 ##### generate_chunks_only: `Boolean`<a id="generate_chunks_only-boolean"></a>
 If this flag is enabled, the file will be chunked and stored with Carbon, but no
@@ -2146,6 +2214,7 @@ result = carbon.integrations.connect_freshdesk(
         "store_file_only" => false,
         "skip_file_processing" => false,
     },
+  data_source_tags: {},
 )
 p result
 ```
@@ -2168,6 +2237,10 @@ Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2215,6 +2288,7 @@ result = carbon.integrations.connect_gitbook(
         "store_file_only" => false,
         "skip_file_processing" => false,
     },
+  data_source_tags: {},
 )
 p result
 ```
@@ -2237,6 +2311,10 @@ Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2282,6 +2360,7 @@ result = carbon.integrations.connect_guru(
         "store_file_only" => false,
         "skip_file_processing" => false,
     },
+  data_source_tags: {},
 )
 p result
 ```
@@ -2304,6 +2383,10 @@ Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
 
 ##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -2338,6 +2421,7 @@ result = carbon.integrations.create_aws_iam_user(
   access_key_secret: "string_example",
   sync_source_items: true,
   endpoint_url: "string_example",
+  data_source_tags: {},
 )
 p result
 ```
@@ -2354,6 +2438,10 @@ via list items endpoint
 You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space
 through this endpoint. The URL should be of format
 <region>.digitaloceanspaces.com. It's not required for S3 buckets.
+
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2423,6 +2511,7 @@ result = carbon.integrations.get_oauth_url(
         "client_secret" => "client_secret_example",
         "redirect_uri" => "redirect_uri_example",
     },
+  data_source_tags: {},
 )
 p result
 ```
@@ -2496,6 +2585,10 @@ you wish to connect. This email will be used to identify your carbon data
 source.
 
 ##### servicenow_credentials: [`ServiceNowCredentialsNullable`](./lib/carbon_ruby_sdk/models/service_now_credentials_nullable.rb)<a id="servicenow_credentials-servicenowcredentialsnullablelibcarbon_ruby_sdkmodelsservice_now_credentials_nullablerb"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OuthURLResponse](./lib/carbon_ruby_sdk/models/outh_url_response.rb)
@@ -2864,6 +2957,7 @@ result = carbon.integrations.sync_azure_blob_storage(
   account_name: "string_example",
   account_key: "string_example",
   sync_source_items: true,
+  data_source_tags: {},
 )
 p result
 ```
@@ -2873,6 +2967,10 @@ p result
 ##### account_name: `String`<a id="account_name-string"></a>
 ##### account_key: `String`<a id="account_key-string"></a>
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [OrganizationUserDataSourceAPI](./lib/carbon_ruby_sdk/models/organization_user_data_source_api.rb)
@@ -3093,6 +3191,7 @@ result = carbon.integrations.sync_git_hub(
   username: "string_example",
   access_token: "string_example",
   sync_source_items: false,
+  data_source_tags: {},
 )
 p result
 ```
@@ -3104,6 +3203,10 @@ p result
 ##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
 Enabling this flag will fetch all available content from the source to be listed
 via list items endpoint
+
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3465,6 +3568,7 @@ result = carbon.integrations.sync_rss_feed(
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
   request_id: "string_example",
+  data_source_tags: {},
 )
 p result
 ```
@@ -3480,6 +3584,10 @@ p result
 ##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
 ##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
 ##### request_id: `String`<a id="request_id-string"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
@@ -3897,6 +4005,30 @@ not set, or if set to -1, then the user will have no limit.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/update_users` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.users.who_am_i`<a id="carbonuserswho_am_i"></a>
+
+Me Endpoint
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.users.who_am_i
+p result
+```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserResponse](./lib/carbon_ruby_sdk/models/user_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/whoami` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

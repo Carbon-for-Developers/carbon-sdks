@@ -115,6 +115,10 @@ public class ExternalSourceItem {
   @SerializedName(SERIALIZED_NAME_EXTERNAL_URL)
   private String externalUrl;
 
+  public static final String SERIALIZED_NAME_FILE_FORMAT = "file_format";
+  @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+  private String fileFormat;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
@@ -590,6 +594,35 @@ public class ExternalSourceItem {
   }
 
 
+  public ExternalSourceItem fileFormat(String fileFormat) {
+    
+    
+    
+    
+    this.fileFormat = fileFormat;
+    return this;
+  }
+
+   /**
+   * Get fileFormat
+   * @return fileFormat
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(required = true, value = "")
+
+  public String getFileFormat() {
+    return fileFormat;
+  }
+
+
+  public void setFileFormat(String fileFormat) {
+    
+    
+    
+    this.fileFormat = fileFormat;
+  }
+
+
   public ExternalSourceItem createdAt(OffsetDateTime createdAt) {
     
     
@@ -718,6 +751,7 @@ public class ExternalSourceItem {
         Objects.equals(this.itemType, externalSourceItem.itemType) &&
         Objects.equals(this.rootExternalId, externalSourceItem.rootExternalId) &&
         Objects.equals(this.externalUrl, externalSourceItem.externalUrl) &&
+        Objects.equals(this.fileFormat, externalSourceItem.fileFormat) &&
         Objects.equals(this.createdAt, externalSourceItem.createdAt) &&
         Objects.equals(this.updatedAt, externalSourceItem.updatedAt)&&
         Objects.equals(this.additionalProperties, externalSourceItem.additionalProperties);
@@ -725,7 +759,7 @@ public class ExternalSourceItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalId, source, name, syncedAt, isSelectable, isExpandable, organizationId, organizationSuppliedUserId, organizationUserId, organizationUserDataSourceId, organizationUserFileToSyncId, parentExternalId, itemType, rootExternalId, externalUrl, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, externalId, source, name, syncedAt, isSelectable, isExpandable, organizationId, organizationSuppliedUserId, organizationUserId, organizationUserDataSourceId, organizationUserFileToSyncId, parentExternalId, itemType, rootExternalId, externalUrl, fileFormat, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -748,6 +782,7 @@ public class ExternalSourceItem {
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    rootExternalId: ").append(toIndentedString(rootExternalId)).append("\n");
     sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
+    sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -789,6 +824,7 @@ public class ExternalSourceItem {
     openapiFields.add("item_type");
     openapiFields.add("root_external_id");
     openapiFields.add("external_url");
+    openapiFields.add("file_format");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
 
@@ -810,6 +846,7 @@ public class ExternalSourceItem {
     openapiRequiredFields.add("item_type");
     openapiRequiredFields.add("root_external_id");
     openapiRequiredFields.add("external_url");
+    openapiRequiredFields.add("file_format");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }
@@ -853,6 +890,9 @@ public class ExternalSourceItem {
       }
       if (!jsonObj.get("external_url").isJsonNull() && !jsonObj.get("external_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `external_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("external_url").toString()));
+      }
+      if (!jsonObj.get("file_format").isJsonNull() && !jsonObj.get("file_format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `file_format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_format").toString()));
       }
   }
 

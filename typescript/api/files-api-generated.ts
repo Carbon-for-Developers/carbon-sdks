@@ -725,7 +725,7 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {FileContentTypesNullable} [mediaType] The media type of the file. If not provided, it will be inferred from the file extension.
          * @param {boolean} [splitRows] Whether to split tabular rows into chunks. Currently only valid for CSV, TSV, and XLSX files.
          * @param {boolean} [enableColdStorage] Enable cold storage for the file. If set to true, the file will be moved to cold storage after a certain period of inactivity. Default is false.
-         * @param {number} [hotStorageTimeToLive] Time in seconds after which the file will be moved to cold storage.
+         * @param {number} [hotStorageTimeToLive] Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
          * @param {boolean} [generateChunksOnly] If this flag is enabled, the file will be chunked and stored with Carbon,             but no embeddings will be generated. This overrides the skip_embedding_generation flag.
          * @param {boolean} [storeFileOnly] If this flag is enabled, the file will be stored with Carbon, but no processing will be done.
          * @param {*} [options] Override http request option.
@@ -1703,7 +1703,7 @@ export type FilesApiUploadRequest = {
     readonly enableColdStorage?: boolean
     
     /**
-    * Time in seconds after which the file will be moved to cold storage.
+    * Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
     * @type {number}
     * @memberof FilesApiUpload
     */

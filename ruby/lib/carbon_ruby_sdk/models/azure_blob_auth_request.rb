@@ -17,12 +17,16 @@ module Carbon
 
     attr_accessor :sync_source_items
 
+    # Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    attr_accessor :data_source_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_name' => :'account_name',
         :'account_key' => :'account_key',
-        :'sync_source_items' => :'sync_source_items'
+        :'sync_source_items' => :'sync_source_items',
+        :'data_source_tags' => :'data_source_tags'
       }
     end
 
@@ -36,7 +40,8 @@ module Carbon
       {
         :'account_name' => :'String',
         :'account_key' => :'String',
-        :'sync_source_items' => :'Boolean'
+        :'sync_source_items' => :'Boolean',
+        :'data_source_tags' => :'Object'
       }
     end
 
@@ -74,6 +79,10 @@ module Carbon
       else
         self.sync_source_items = true
       end
+
+      if attributes.key?(:'data_source_tags')
+        self.data_source_tags = attributes[:'data_source_tags']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -106,7 +115,8 @@ module Carbon
       self.class == o.class &&
           account_name == o.account_name &&
           account_key == o.account_key &&
-          sync_source_items == o.sync_source_items
+          sync_source_items == o.sync_source_items &&
+          data_source_tags == o.data_source_tags
     end
 
     # @see the `==` method
@@ -118,7 +128,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_name, account_key, sync_source_items].hash
+      [account_name, account_key, sync_source_items, data_source_tags].hash
     end
 
     # Builds the object from hash

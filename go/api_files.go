@@ -2165,7 +2165,7 @@ func (r *FilesApiUploadRequest) EnableColdStorage(enableColdStorage bool) *Files
 	return r
 }
 
-// Time in seconds after which the file will be moved to cold storage.
+// Time in days after which the file will be moved to cold storage. Must be one of [1, 3, 7, 14, 30].
 func (r *FilesApiUploadRequest) HotStorageTimeToLive(hotStorageTimeToLive int32) *FilesApiUploadRequest {
 	r.hotStorageTimeToLive = &hotStorageTimeToLive
 	return r

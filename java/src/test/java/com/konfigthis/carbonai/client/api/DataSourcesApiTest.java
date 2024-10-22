@@ -16,13 +16,16 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.model.AddDataSourceTagsInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.OrderDir;
+import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceAPI;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceFilters;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceOrderByColumns;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceQueryInput;
 import com.konfigthis.carbonai.client.model.OrganizationUserDataSourceResponse;
 import com.konfigthis.carbonai.client.model.Pagination;
+import com.konfigthis.carbonai.client.model.RemoveDataSourceTagsInput;
 import com.konfigthis.carbonai.client.model.RevokeAccessTokenInput;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -49,6 +52,20 @@ public class DataSourcesApiTest {
     }
 
     /**
+     * Add Data Source Tags
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void addTagsTest() throws ApiException {
+        Object tags = null;
+        Integer dataSourceId = null;
+        OrganizationUserDataSourceAPI response = api.addTags(tags, dataSourceId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
      * User Data Sources
      *
      * @throws ApiException if the Api call fails
@@ -64,6 +81,23 @@ public class DataSourcesApiTest {
                 .orderBy(orderBy)
                 .orderDir(orderDir)
                 .filters(filters)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Remove Data Source Tags
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void removeTagsTest() throws ApiException {
+        Integer dataSourceId = null;
+        List<String> tagsToRemove = null;
+        Boolean removeAllTags = null;
+        OrganizationUserDataSourceAPI response = api.removeTags(dataSourceId)
+                .tagsToRemove(tagsToRemove)
+                .removeAllTags(removeAllTags)
                 .execute();
         // TODO: test validations
     }

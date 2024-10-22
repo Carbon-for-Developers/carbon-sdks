@@ -9,6 +9,7 @@ Method | Path | Description
 [**List**](UsersApi.md#List) | **Post** /list_users | List Users Endpoint
 [**ToggleUserFeatures**](UsersApi.md#ToggleUserFeatures) | **Post** /modify_user_configuration | Toggle User Features
 [**UpdateUsers**](UsersApi.md#UpdateUsers) | **Post** /update_users | Update Users
+[**WhoAmI**](UsersApi.md#WhoAmI) | **Get** /whoami | Me Endpoint
 
 
 
@@ -114,6 +115,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.EnabledFeatures`: %v\n", resp.EnabledFeatures)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", resp.CustomLimits)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.ConnectorSettings`: %v\n", resp.ConnectorSettings)
 }
 ```
 
@@ -271,6 +273,67 @@ func main() {
     // response from `UpdateUsers`: GenericSuccessResponse
     fmt.Fprintf(os.Stdout, "Response from `UsersApi.UpdateUsers`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.UpdateUsers.Success`: %v\n", resp.Success)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WhoAmI
+
+Me Endpoint
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    request := client.UsersApi.WhoAmI(
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.WhoAmI``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `WhoAmI`: UserResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.WhoAmI`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.Id`: %v\n", resp.Id)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.OrganizationId`: %v\n", resp.OrganizationId)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.OrganizationSuppliedUserId`: %v\n", resp.OrganizationSuppliedUserId)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.CreatedAt`: %v\n", resp.CreatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.UpdatedAt`: %v\n", resp.UpdatedAt)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.DeletedAt`: %v\n", resp.DeletedAt)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.NumFilesSynced`: %v\n", resp.NumFilesSynced)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.NumCharactersSynced`: %v\n", resp.NumCharactersSynced)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.NumTokensSynced`: %v\n", resp.NumTokensSynced)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateFileSize`: %v\n", resp.AggregateFileSize)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumCharacters`: %v\n", resp.AggregateNumCharacters)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumTokens`: %v\n", resp.AggregateNumTokens)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumEmbeddings`: %v\n", resp.AggregateNumEmbeddings)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumFilesBySource`: %v\n", resp.AggregateNumFilesBySource)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumFilesByFileFormat`: %v\n", resp.AggregateNumFilesByFileFormat)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.UniqueFileTags`: %v\n", resp.UniqueFileTags)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.EnabledFeatures`: %v\n", resp.EnabledFeatures)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.CustomLimits`: %v\n", resp.CustomLimits)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.ConnectorSettings`: %v\n", resp.ConnectorSettings)
 }
 ```
 

@@ -193,4 +193,12 @@ public class UserResponseTest {
         // TODO: test autoSyncEnabledSources
     }
 
+    /**
+     * Test the property 'connectorSettings'
+     */
+    @Test
+    public void connectorSettingsTest() {
+        // TODO: test connectorSettings
+    }
+
 }

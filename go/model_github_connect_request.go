@@ -20,6 +20,8 @@ type GithubConnectRequest struct {
 	AccessToken string `json:"access_token"`
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
+	// Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+	DataSourceTags map[string]interface{} `json:"data_source_tags,omitempty"`
 }
 
 // NewGithubConnectRequest instantiates a new GithubConnectRequest object
@@ -125,6 +127,38 @@ func (o *GithubConnectRequest) SetSyncSourceItems(v bool) {
 	o.SyncSourceItems = &v
 }
 
+// GetDataSourceTags returns the DataSourceTags field value if set, zero value otherwise.
+func (o *GithubConnectRequest) GetDataSourceTags() map[string]interface{} {
+	if o == nil || isNil(o.DataSourceTags) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.DataSourceTags
+}
+
+// GetDataSourceTagsOk returns a tuple with the DataSourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubConnectRequest) GetDataSourceTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.DataSourceTags) {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceTags, true
+}
+
+// HasDataSourceTags returns a boolean if a field has been set.
+func (o *GithubConnectRequest) HasDataSourceTags() bool {
+	if o != nil && !isNil(o.DataSourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceTags gets a reference to the given map[string]interface{} and assigns it to the DataSourceTags field.
+func (o *GithubConnectRequest) SetDataSourceTags(v map[string]interface{}) {
+	o.DataSourceTags = v
+}
+
 func (o GithubConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -135,6 +169,9 @@ func (o GithubConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SyncSourceItems) {
 		toSerialize["sync_source_items"] = o.SyncSourceItems
+	}
+	if !isNil(o.DataSourceTags) {
+		toSerialize["data_source_tags"] = o.DataSourceTags
 	}
 	return json.Marshal(toSerialize)
 }

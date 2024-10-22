@@ -97,5 +97,11 @@ export interface FreshDeskConnectRequest {
      * @memberof FreshDeskConnectRequest
      */
     'file_sync_config'?: FileSyncConfigNullable | null;
+    /**
+     * Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+     * @type {object}
+     * @memberof FreshDeskConnectRequest
+     */
+    'data_source_tags'?: object;
 }
 

@@ -30,6 +30,8 @@ type FreshDeskConnectRequest struct {
 	// Enabling this flag will fetch all available content from the source to be listed via list items endpoint
 	SyncSourceItems *bool `json:"sync_source_items,omitempty"`
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
+	// Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+	DataSourceTags map[string]interface{} `json:"data_source_tags,omitempty"`
 }
 
 // NewFreshDeskConnectRequest instantiates a new FreshDeskConnectRequest object
@@ -574,6 +576,38 @@ func (o *FreshDeskConnectRequest) UnsetFileSyncConfig() {
 	o.FileSyncConfig.Unset()
 }
 
+// GetDataSourceTags returns the DataSourceTags field value if set, zero value otherwise.
+func (o *FreshDeskConnectRequest) GetDataSourceTags() map[string]interface{} {
+	if o == nil || isNil(o.DataSourceTags) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.DataSourceTags
+}
+
+// GetDataSourceTagsOk returns a tuple with the DataSourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FreshDeskConnectRequest) GetDataSourceTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.DataSourceTags) {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceTags, true
+}
+
+// HasDataSourceTags returns a boolean if a field has been set.
+func (o *FreshDeskConnectRequest) HasDataSourceTags() bool {
+	if o != nil && !isNil(o.DataSourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceTags gets a reference to the given map[string]interface{} and assigns it to the DataSourceTags field.
+func (o *FreshDeskConnectRequest) SetDataSourceTags(v map[string]interface{}) {
+	o.DataSourceTags = v
+}
+
 func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -614,6 +648,9 @@ func (o FreshDeskConnectRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FileSyncConfig.IsSet() {
 		toSerialize["file_sync_config"] = o.FileSyncConfig.Get()
+	}
+	if !isNil(o.DataSourceTags) {
+		toSerialize["data_source_tags"] = o.DataSourceTags
 	}
 	return json.Marshal(toSerialize)
 }

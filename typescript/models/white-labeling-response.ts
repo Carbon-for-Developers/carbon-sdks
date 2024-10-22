@@ -35,5 +35,11 @@ export interface WhiteLabelingResponse {
      * @memberof WhiteLabelingResponse
      */
     'custom_limits': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof WhiteLabelingResponse
+     */
+    'connector_settings': object;
 }
 

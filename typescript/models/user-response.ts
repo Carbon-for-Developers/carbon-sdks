@@ -131,5 +131,11 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     'auto_sync_enabled_sources': Array<any>;
+    /**
+     * 
+     * @type {object}
+     * @memberof UserResponse
+     */
+    'connector_settings': object;
 }
 

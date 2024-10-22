@@ -141,4 +141,16 @@ public class UsersApiTest {
         // TODO: test validations
     }
 
+    /**
+     * Me Endpoint
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void whoAmITest() throws ApiException {
+        UserResponse response = api.whoAmI()
+                .execute();
+        // TODO: test validations
+    }
+
 }

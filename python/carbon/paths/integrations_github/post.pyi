@@ -110,6 +110,7 @@ class BaseApi(api_client.Api):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -119,6 +120,8 @@ class BaseApi(api_client.Api):
             _body["access_token"] = access_token
         if sync_source_items is not None:
             _body["sync_source_items"] = sync_source_items
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -329,6 +332,7 @@ class SyncGitHubRaw(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -339,6 +343,7 @@ class SyncGitHubRaw(BaseApi):
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return await self._async_git_hub_oapg(
             body=args.body,
@@ -350,6 +355,7 @@ class SyncGitHubRaw(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -359,6 +365,7 @@ class SyncGitHubRaw(BaseApi):
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return self._sync_git_hub_oapg(
             body=args.body,
@@ -371,6 +378,7 @@ class SyncGitHub(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -378,6 +386,7 @@ class SyncGitHub(BaseApi):
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -390,12 +399,14 @@ class SyncGitHub(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.sync_git_hub(
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -410,6 +421,7 @@ class ApiForpost(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -420,6 +432,7 @@ class ApiForpost(BaseApi):
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return await self._async_git_hub_oapg(
             body=args.body,
@@ -431,6 +444,7 @@ class ApiForpost(BaseApi):
         username: str,
         access_token: str,
         sync_source_items: typing.Optional[bool] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -440,6 +454,7 @@ class ApiForpost(BaseApi):
             username=username,
             access_token=access_token,
             sync_source_items=sync_source_items,
+            data_source_tags=data_source_tags,
         )
         return self._sync_git_hub_oapg(
             body=args.body,

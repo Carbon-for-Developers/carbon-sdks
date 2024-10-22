@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **NullableString** |  | [optional] 
 **SyncSourceItems** | Pointer to **bool** | Enabling this flag will fetch all available content from the source to be listed via list items endpoint | [optional] [default to true]
 **FileSyncConfig** | Pointer to [**NullableFileSyncConfigNullable**](FileSyncConfigNullable.md) |  | [optional] 
+**DataSourceTags** | Pointer to **map[string]interface{}** | Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. | [optional] [default to {}]
 
 ## Methods
 
@@ -442,6 +443,31 @@ HasFileSyncConfig returns a boolean if a field has been set.
 `func (o *GuruConnectRequest) UnsetFileSyncConfig()`
 
 UnsetFileSyncConfig ensures that no value is present for FileSyncConfig, not even an explicit nil
+### GetDataSourceTags
+
+`func (o *GuruConnectRequest) GetDataSourceTags() map[string]interface{}`
+
+GetDataSourceTags returns the DataSourceTags field if non-nil, zero value otherwise.
+
+### GetDataSourceTagsOk
+
+`func (o *GuruConnectRequest) GetDataSourceTagsOk() (*map[string]interface{}, bool)`
+
+GetDataSourceTagsOk returns a tuple with the DataSourceTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceTags
+
+`func (o *GuruConnectRequest) SetDataSourceTags(v map[string]interface{})`
+
+SetDataSourceTags sets DataSourceTags field to given value.
+
+### HasDataSourceTags
+
+`func (o *GuruConnectRequest) HasDataSourceTags() bool`
+
+HasDataSourceTags returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

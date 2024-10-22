@@ -37,6 +37,8 @@ type SyncOptions struct {
 	FileSyncConfig NullableFileSyncConfigNullable `json:"file_sync_config,omitempty"`
 	// Automatically open source file picker after the OAuth flow is complete. This flag is currently supported by         BOX, DROPBOX, GOOGLE_DRIVE, ONEDRIVE, SHAREPOINT. It will be ignored for other data sources.
 	AutomaticallyOpenFilePicker NullableBool `json:"automatically_open_file_picker,omitempty"`
+	// Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+	DataSourceTags map[string]interface{} `json:"data_source_tags,omitempty"`
 }
 
 // NewSyncOptions instantiates a new SyncOptions object
@@ -723,6 +725,38 @@ func (o *SyncOptions) UnsetAutomaticallyOpenFilePicker() {
 	o.AutomaticallyOpenFilePicker.Unset()
 }
 
+// GetDataSourceTags returns the DataSourceTags field value if set, zero value otherwise.
+func (o *SyncOptions) GetDataSourceTags() map[string]interface{} {
+	if o == nil || isNil(o.DataSourceTags) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.DataSourceTags
+}
+
+// GetDataSourceTagsOk returns a tuple with the DataSourceTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyncOptions) GetDataSourceTagsOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.DataSourceTags) {
+    return map[string]interface{}{}, false
+	}
+	return o.DataSourceTags, true
+}
+
+// HasDataSourceTags returns a boolean if a field has been set.
+func (o *SyncOptions) HasDataSourceTags() bool {
+	if o != nil && !isNil(o.DataSourceTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceTags gets a reference to the given map[string]interface{} and assigns it to the DataSourceTags field.
+func (o *SyncOptions) SetDataSourceTags(v map[string]interface{}) {
+	o.DataSourceTags = v
+}
+
 func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tags != nil {
@@ -772,6 +806,9 @@ func (o SyncOptions) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutomaticallyOpenFilePicker.IsSet() {
 		toSerialize["automatically_open_file_picker"] = o.AutomaticallyOpenFilePicker.Get()
+	}
+	if !isNil(o.DataSourceTags) {
+		toSerialize["data_source_tags"] = o.DataSourceTags
 	}
 	return json.Marshal(toSerialize)
 }

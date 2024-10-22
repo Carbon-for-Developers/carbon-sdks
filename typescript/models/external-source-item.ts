@@ -119,6 +119,12 @@ export interface ExternalSourceItem {
      * @type {string}
      * @memberof ExternalSourceItem
      */
+    'file_format': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExternalSourceItem
+     */
     'created_at': string;
     /**
      * 

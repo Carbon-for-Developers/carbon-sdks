@@ -122,6 +122,7 @@ class BaseApi(api_client.Api):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -133,6 +134,8 @@ class BaseApi(api_client.Api):
             _body["sync_source_items"] = sync_source_items
         if endpoint_url is not None:
             _body["endpoint_url"] = endpoint_url
+        if data_source_tags is not None:
+            _body["data_source_tags"] = data_source_tags
         args.body = _body
         return args
 
@@ -344,6 +347,7 @@ class CreateAwsIamUserRaw(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -355,6 +359,7 @@ class CreateAwsIamUserRaw(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
         )
         return await self._acreate_aws_iam_user_oapg(
             body=args.body,
@@ -367,6 +372,7 @@ class CreateAwsIamUserRaw(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -377,6 +383,7 @@ class CreateAwsIamUserRaw(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
         )
         return self._create_aws_iam_user_oapg(
             body=args.body,
@@ -390,6 +397,7 @@ class CreateAwsIamUser(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
         **kwargs,
     ) -> OrganizationUserDataSourceAPIPydantic:
@@ -398,6 +406,7 @@ class CreateAwsIamUser(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
             **kwargs,
         )
         if validate:
@@ -411,6 +420,7 @@ class CreateAwsIamUser(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         validate: bool = False,
     ) -> OrganizationUserDataSourceAPIPydantic:
         raw_response = self.raw.create_aws_iam_user(
@@ -418,6 +428,7 @@ class CreateAwsIamUser(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
         )
         if validate:
             return OrganizationUserDataSourceAPIPydantic(**raw_response.body)
@@ -433,6 +444,7 @@ class ApiForpost(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -444,6 +456,7 @@ class ApiForpost(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
         )
         return await self._acreate_aws_iam_user_oapg(
             body=args.body,
@@ -456,6 +469,7 @@ class ApiForpost(BaseApi):
         access_key_secret: str,
         sync_source_items: typing.Optional[bool] = None,
         endpoint_url: typing.Optional[typing.Optional[str]] = None,
+        data_source_tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -466,6 +480,7 @@ class ApiForpost(BaseApi):
             access_key_secret=access_key_secret,
             sync_source_items=sync_source_items,
             endpoint_url=endpoint_url,
+            data_source_tags=data_source_tags,
         )
         return self._create_aws_iam_user_oapg(
             body=args.body,

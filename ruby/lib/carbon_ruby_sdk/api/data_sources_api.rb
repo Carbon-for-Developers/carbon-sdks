@@ -16,6 +16,102 @@ module Carbon
       @api_client = api_client
     end
 
+    # Add Data Source Tags
+    #
+    # @param tags [Object] 
+    # @param data_source_id [Integer] 
+    # @param body [AddDataSourceTagsInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def add_tags(tags:, data_source_id:, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      add_data_source_tags_input = _body
+      api_response = add_tags_with_http_info_impl(add_data_source_tags_input, extra)
+      api_response.data
+    end
+
+    # Add Data Source Tags
+    #
+    # @param tags [Object] 
+    # @param data_source_id [Integer] 
+    # @param body [AddDataSourceTagsInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def add_tags_with_http_info(tags:, data_source_id:, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      add_data_source_tags_input = _body
+      add_tags_with_http_info_impl(add_data_source_tags_input, extra)
+    end
+
+    # Add Data Source Tags
+    # @param add_data_source_tags_input [AddDataSourceTagsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [OrganizationUserDataSourceAPI]
+    private def add_tags_impl(add_data_source_tags_input, opts = {})
+      data, _status_code, _headers = add_tags_with_http_info(add_data_source_tags_input, opts)
+      data
+    end
+
+    # Add Data Source Tags
+    # @param add_data_source_tags_input [AddDataSourceTagsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is OrganizationUserDataSourceAPI, status code, headers and response
+    private def add_tags_with_http_info_impl(add_data_source_tags_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DataSourcesApi.add_tags ...'
+      end
+      # verify the required parameter 'add_data_source_tags_input' is set
+      if @api_client.config.client_side_validation && add_data_source_tags_input.nil?
+        fail ArgumentError, "Missing the required parameter 'add_data_source_tags_input' when calling DataSourcesApi.add_tags"
+      end
+      # resource path
+      local_var_path = '/data_sources/tags/add'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(add_data_source_tags_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrganizationUserDataSourceAPI'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"DataSourcesApi.add_tags",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DataSourcesApi#add_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # User Data Sources
     #
     # @param pagination [Pagination] 
@@ -115,6 +211,106 @@ module Carbon
       data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DataSourcesApi#query_user_data_sources\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
+    # Remove Data Source Tags
+    #
+    # @param data_source_id [Integer] 
+    # @param tags_to_remove [Array<String>] 
+    # @param remove_all_tags [Boolean] 
+    # @param body [RemoveDataSourceTagsInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def remove_tags(data_source_id:, tags_to_remove: SENTINEL, remove_all_tags: false, extra: {})
+      _body = {}
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:tags_to_remove] = tags_to_remove if tags_to_remove != SENTINEL
+      _body[:remove_all_tags] = remove_all_tags if remove_all_tags != SENTINEL
+      remove_data_source_tags_input = _body
+      api_response = remove_tags_with_http_info_impl(remove_data_source_tags_input, extra)
+      api_response.data
+    end
+
+    # Remove Data Source Tags
+    #
+    # @param data_source_id [Integer] 
+    # @param tags_to_remove [Array<String>] 
+    # @param remove_all_tags [Boolean] 
+    # @param body [RemoveDataSourceTagsInput] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def remove_tags_with_http_info(data_source_id:, tags_to_remove: SENTINEL, remove_all_tags: false, extra: {})
+      _body = {}
+      _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      _body[:tags_to_remove] = tags_to_remove if tags_to_remove != SENTINEL
+      _body[:remove_all_tags] = remove_all_tags if remove_all_tags != SENTINEL
+      remove_data_source_tags_input = _body
+      remove_tags_with_http_info_impl(remove_data_source_tags_input, extra)
+    end
+
+    # Remove Data Source Tags
+    # @param remove_data_source_tags_input [RemoveDataSourceTagsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [OrganizationUserDataSourceAPI]
+    private def remove_tags_impl(remove_data_source_tags_input, opts = {})
+      data, _status_code, _headers = remove_tags_with_http_info(remove_data_source_tags_input, opts)
+      data
+    end
+
+    # Remove Data Source Tags
+    # @param remove_data_source_tags_input [RemoveDataSourceTagsInput] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is OrganizationUserDataSourceAPI, status code, headers and response
+    private def remove_tags_with_http_info_impl(remove_data_source_tags_input, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DataSourcesApi.remove_tags ...'
+      end
+      # verify the required parameter 'remove_data_source_tags_input' is set
+      if @api_client.config.client_side_validation && remove_data_source_tags_input.nil?
+        fail ArgumentError, "Missing the required parameter 'remove_data_source_tags_input' when calling DataSourcesApi.remove_tags"
+      end
+      # resource path
+      local_var_path = '/data_sources/tags/remove'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(remove_data_source_tags_input)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrganizationUserDataSourceAPI'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"DataSourcesApi.remove_tags",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DataSourcesApi#remove_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       APIResponse::new(data, status_code, headers, response)
     end
