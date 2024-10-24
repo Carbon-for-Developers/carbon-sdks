@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **WorkspaceId** | Pointer to **string** |  | [optional] 
 **TenantName** | Pointer to **NullableString** |  | [optional] 
-**SiteName** | Pointer to **string** |  | [optional] 
+**SiteName** | Pointer to **NullableString** |  | [optional] 
 **Subdomain** | Pointer to **string** |  | [optional] 
 **AccessTokenSecret** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
@@ -212,6 +212,16 @@ SetSiteName sets SiteName field to given value.
 
 HasSiteName returns a boolean if a field has been set.
 
+### SetSiteNameNil
+
+`func (o *OANDSCZGFB) SetSiteNameNil(b bool)`
+
+ SetSiteNameNil sets the value for SiteName to be an explicit nil
+
+### UnsetSiteName
+`func (o *OANDSCZGFB) UnsetSiteName()`
+
+UnsetSiteName ensures that no value is present for SiteName, not even an explicit nil
 ### GetSubdomain
 
 `func (o *OANDSCZGFB) GetSubdomain() string`

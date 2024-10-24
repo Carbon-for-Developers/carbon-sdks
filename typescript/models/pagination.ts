@@ -29,5 +29,11 @@ export interface Pagination {
      * @memberof Pagination
      */
     'offset'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Pagination
+     */
+    'starting_id'?: number;
 }
 

@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **TenantName** | Pointer to **NullableString** |  | [optional] 
-**SiteName** | **string** |  | 
+**SiteName** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewSharepointAuthentication
 
-`func NewSharepointAuthentication(source interface{}, accessToken string, siteName string, ) *SharepointAuthentication`
+`func NewSharepointAuthentication(source interface{}, accessToken string, ) *SharepointAuthentication`
 
 NewSharepointAuthentication instantiates a new SharepointAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -168,7 +168,22 @@ and a boolean to check if the value has been set.
 
 SetSiteName sets SiteName field to given value.
 
+### HasSiteName
 
+`func (o *SharepointAuthentication) HasSiteName() bool`
+
+HasSiteName returns a boolean if a field has been set.
+
+### SetSiteNameNil
+
+`func (o *SharepointAuthentication) SetSiteNameNil(b bool)`
+
+ SetSiteNameNil sets the value for SiteName to be an explicit nil
+
+### UnsetSiteName
+`func (o *SharepointAuthentication) UnsetSiteName()`
+
+UnsetSiteName ensures that no value is present for SiteName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

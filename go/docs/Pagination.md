@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Limit** | Pointer to **int32** |  | [optional] [default to 10]
 **Offset** | Pointer to **int32** |  | [optional] [default to 0]
+**StartingId** | Pointer to **int32** |  | [optional] [default to 0]
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetOffset sets Offset field to given value.
 `func (o *Pagination) HasOffset() bool`
 
 HasOffset returns a boolean if a field has been set.
+
+### GetStartingId
+
+`func (o *Pagination) GetStartingId() int32`
+
+GetStartingId returns the StartingId field if non-nil, zero value otherwise.
+
+### GetStartingIdOk
+
+`func (o *Pagination) GetStartingIdOk() (*int32, bool)`
+
+GetStartingIdOk returns a tuple with the StartingId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartingId
+
+`func (o *Pagination) SetStartingId(v int32)`
+
+SetStartingId sets StartingId field to given value.
+
+### HasStartingId
+
+`func (o *Pagination) HasStartingId() bool`
+
+HasStartingId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -674,6 +674,7 @@ query_user_data_sources_response = carbon.data_sources.query_user_data_sources(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -1005,6 +1006,7 @@ get_embeddings_and_chunks_response = carbon.embeddings.get_embeddings_and_chunks
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -1056,6 +1058,7 @@ list_response = carbon.embeddings.list(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -1529,6 +1532,7 @@ query_user_files_response = carbon.files.query_user_files(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -1587,6 +1591,7 @@ query_user_files_deprecated_response = carbon.files.query_user_files_deprecated(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -3015,6 +3020,7 @@ list_data_source_items_response = carbon.integrations.list_data_source_items(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="name",
     order_dir="asc",
@@ -4337,6 +4343,7 @@ list_response = carbon.users.list(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     filters={},
     order_by="created_at",
@@ -4832,6 +4839,7 @@ user_webpages_response = carbon.utilities.user_webpages(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="asc",
@@ -4931,6 +4939,7 @@ urls_response = carbon.webhooks.urls(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",
@@ -5036,6 +5045,7 @@ list_response = carbon.white_label.list(
     pagination={
         "limit": 10,
         "offset": 0,
+        "starting_id": 0,
     },
     order_by="created_at",
     order_dir="desc",

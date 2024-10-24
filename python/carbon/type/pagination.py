@@ -23,5 +23,7 @@ class OptionalPagination(TypedDict, total=False):
 
     offset: int
 
+    starting_id: int
+
 class Pagination(RequiredPagination, OptionalPagination):
     pass

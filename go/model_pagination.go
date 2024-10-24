@@ -18,6 +18,7 @@ import (
 type Pagination struct {
 	Limit *int32 `json:"limit,omitempty"`
 	Offset *int32 `json:"offset,omitempty"`
+	StartingId *int32 `json:"starting_id,omitempty"`
 }
 
 // NewPagination instantiates a new Pagination object
@@ -30,6 +31,8 @@ func NewPagination() *Pagination {
 	this.Limit = &limit
 	var offset int32 = 0
 	this.Offset = &offset
+	var startingId int32 = 0
+	this.StartingId = &startingId
 	return &this
 }
 
@@ -42,6 +45,8 @@ func NewPaginationWithDefaults() *Pagination {
 	this.Limit = &limit
 	var offset int32 = 0
 	this.Offset = &offset
+	var startingId int32 = 0
+	this.StartingId = &startingId
 	return &this
 }
 
@@ -109,6 +114,38 @@ func (o *Pagination) SetOffset(v int32) {
 	o.Offset = &v
 }
 
+// GetStartingId returns the StartingId field value if set, zero value otherwise.
+func (o *Pagination) GetStartingId() int32 {
+	if o == nil || isNil(o.StartingId) {
+		var ret int32
+		return ret
+	}
+	return *o.StartingId
+}
+
+// GetStartingIdOk returns a tuple with the StartingId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Pagination) GetStartingIdOk() (*int32, bool) {
+	if o == nil || isNil(o.StartingId) {
+    return nil, false
+	}
+	return o.StartingId, true
+}
+
+// HasStartingId returns a boolean if a field has been set.
+func (o *Pagination) HasStartingId() bool {
+	if o != nil && !isNil(o.StartingId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartingId gets a reference to the given int32 and assigns it to the StartingId field.
+func (o *Pagination) SetStartingId(v int32) {
+	o.StartingId = &v
+}
+
 func (o Pagination) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Limit) {
@@ -116,6 +153,9 @@ func (o Pagination) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Offset) {
 		toSerialize["offset"] = o.Offset
+	}
+	if !isNil(o.StartingId) {
+		toSerialize["starting_id"] = o.StartingId
 	}
 	return json.Marshal(toSerialize)
 }

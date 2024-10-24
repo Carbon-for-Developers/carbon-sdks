@@ -7517,6 +7517,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         include_vectors: false
         filters:
@@ -7547,6 +7548,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -7557,6 +7559,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         include_vectors: false
         filters:
@@ -7631,6 +7634,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -10125,6 +10129,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         parent_id: parent_id
         order_by: null
         filters:
@@ -10162,6 +10167,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: name
         order_dir:
@@ -10385,6 +10391,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         filters:
           customer_ids:
@@ -10417,6 +10424,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         filters:
           default: {}
         order_by:
@@ -10429,6 +10437,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         filters:
           ids: []
@@ -10449,6 +10458,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: created_at
         order_dir:
@@ -10639,6 +10649,7 @@ components:
           title: Tenant Name
           type: string
         site_name:
+          nullable: true
           title: Site Name
           type: string
         subdomain:
@@ -11788,6 +11799,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         filters:
           revoked_access: true
@@ -11812,6 +11824,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -12135,6 +12148,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         include_parsed_text_file: true
         order_by: null
         filters:
@@ -12212,6 +12226,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -12547,6 +12562,7 @@ components:
       example:
         offset: 0
         limit: 10
+        starting_id: 0
       properties:
         limit:
           default: 10
@@ -12562,6 +12578,13 @@ components:
           type: integer
           x-konfig-original-example: 0
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Pagination-properties-offset
+        starting_id:
+          default: 0
+          example: 0
+          title: Starting Id
+          type: integer
+          x-konfig-original-example: 0
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Pagination-properties-starting_id
       title: Pagination
       type: object
     PartialAccount:
@@ -13639,11 +13662,11 @@ components:
           title: Tenant Name
           type: string
         site_name:
+          nullable: true
           title: Site Name
           type: string
       required:
       - access_token
-      - site_name
       - source
       title: SharepointAuthentication
       type: object
@@ -15346,6 +15369,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         filters:
           ids:
@@ -15369,6 +15393,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -15511,6 +15536,7 @@ components:
         pagination:
           offset: 0
           limit: 10
+          starting_id: 0
         order_by: null
         filters:
           ids: []
@@ -15530,6 +15556,7 @@ components:
           default:
             limit: 10
             offset: 0
+            starting_id: 0
         order_by:
           default: updated_at
         order_dir:
@@ -17484,6 +17511,10 @@ components:
       type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Pagination-properties-offset:
+      example: 0
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Pagination-properties-starting_id:
       example: 0
       type: number
       x-do-not-generate: true
@@ -21839,6 +21870,7 @@ components:
           title: Tenant Name
           type: string
         site_name:
+          nullable: true
           title: Site Name
           type: string
         subdomain:

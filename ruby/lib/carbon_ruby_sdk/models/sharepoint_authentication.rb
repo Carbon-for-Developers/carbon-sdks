@@ -54,6 +54,7 @@ module Carbon
         :'source',
         :'refresh_token',
         :'tenant_name',
+        :'site_name'
       ])
     end
 
@@ -101,10 +102,6 @@ module Carbon
         invalid_properties.push('invalid value for "access_token", access_token cannot be nil.')
       end
 
-      if @site_name.nil?
-        invalid_properties.push('invalid value for "site_name", site_name cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -112,7 +109,6 @@ module Carbon
     # @return true if the model is valid
     def valid?
       return false if @access_token.nil?
-      return false if @site_name.nil?
       true
     end
 

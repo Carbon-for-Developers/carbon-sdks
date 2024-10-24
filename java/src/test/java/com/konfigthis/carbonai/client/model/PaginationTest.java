@@ -54,4 +54,12 @@ public class PaginationTest {
         // TODO: test offset
     }
 
+    /**
+     * Test the property 'startingId'
+     */
+    @Test
+    public void startingIdTest() {
+        // TODO: test startingId
+    }
+
 }
