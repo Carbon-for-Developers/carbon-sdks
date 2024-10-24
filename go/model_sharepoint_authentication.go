@@ -20,18 +20,17 @@ type SharepointAuthentication struct {
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	TenantName NullableString `json:"tenant_name,omitempty"`
-	SiteName string `json:"site_name"`
+	SiteName NullableString `json:"site_name,omitempty"`
 }
 
 // NewSharepointAuthentication instantiates a new SharepointAuthentication object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSharepointAuthentication(source interface{}, accessToken string, siteName string) *SharepointAuthentication {
+func NewSharepointAuthentication(source interface{}, accessToken string) *SharepointAuthentication {
 	this := SharepointAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
-	this.SiteName = siteName
 	return &this
 }
 
@@ -177,28 +176,46 @@ func (o *SharepointAuthentication) UnsetTenantName() {
 	o.TenantName.Unset()
 }
 
-// GetSiteName returns the SiteName field value
+// GetSiteName returns the SiteName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SharepointAuthentication) GetSiteName() string {
-	if o == nil {
+	if o == nil || isNil(o.SiteName.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.SiteName
+	return *o.SiteName.Get()
 }
 
-// GetSiteNameOk returns a tuple with the SiteName field value
+// GetSiteNameOk returns a tuple with the SiteName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SharepointAuthentication) GetSiteNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
-	return &o.SiteName, true
+	return o.SiteName.Get(), o.SiteName.IsSet()
 }
 
-// SetSiteName sets field value
+// HasSiteName returns a boolean if a field has been set.
+func (o *SharepointAuthentication) HasSiteName() bool {
+	if o != nil && o.SiteName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteName gets a reference to the given NullableString and assigns it to the SiteName field.
 func (o *SharepointAuthentication) SetSiteName(v string) {
-	o.SiteName = v
+	o.SiteName.Set(&v)
+}
+// SetSiteNameNil sets the value for SiteName to be an explicit nil
+func (o *SharepointAuthentication) SetSiteNameNil() {
+	o.SiteName.Set(nil)
+}
+
+// UnsetSiteName ensures that no value is present for SiteName, not even an explicit nil
+func (o *SharepointAuthentication) UnsetSiteName() {
+	o.SiteName.Unset()
 }
 
 func (o SharepointAuthentication) MarshalJSON() ([]byte, error) {
@@ -215,8 +232,8 @@ func (o SharepointAuthentication) MarshalJSON() ([]byte, error) {
 	if o.TenantName.IsSet() {
 		toSerialize["tenant_name"] = o.TenantName.Get()
 	}
-	if true {
-		toSerialize["site_name"] = o.SiteName
+	if o.SiteName.IsSet() {
+		toSerialize["site_name"] = o.SiteName.Get()
 	}
 	return json.Marshal(toSerialize)
 }

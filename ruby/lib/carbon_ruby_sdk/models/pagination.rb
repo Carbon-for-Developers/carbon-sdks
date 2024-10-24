@@ -15,11 +15,14 @@ module Carbon
 
     attr_accessor :offset
 
+    attr_accessor :starting_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'limit' => :'limit',
-        :'offset' => :'offset'
+        :'offset' => :'offset',
+        :'starting_id' => :'starting_id'
       }
     end
 
@@ -32,7 +35,8 @@ module Carbon
     def self.openapi_types
       {
         :'limit' => :'Integer',
-        :'offset' => :'Integer'
+        :'offset' => :'Integer',
+        :'starting_id' => :'Integer'
       }
     end
 
@@ -68,6 +72,12 @@ module Carbon
       else
         self.offset = 0
       end
+
+      if attributes.key?(:'starting_id')
+        self.starting_id = attributes[:'starting_id']
+      else
+        self.starting_id = 0
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +99,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           limit == o.limit &&
-          offset == o.offset
+          offset == o.offset &&
+          starting_id == o.starting_id
     end
 
     # @see the `==` method
@@ -101,7 +112,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [limit, offset].hash
+      [limit, offset, starting_id].hash
     end
 
     # Builds the object from hash

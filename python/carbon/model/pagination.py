@@ -36,9 +36,11 @@ class Pagination(
         class properties:
             limit = schemas.IntSchema
             offset = schemas.IntSchema
+            starting_id = schemas.IntSchema
             __annotations__ = {
                 "limit": limit,
                 "offset": offset,
+                "starting_id": starting_id,
             }
     
     @typing.overload
@@ -48,9 +50,12 @@ class Pagination(
     def __getitem__(self, name: typing_extensions.Literal["offset"]) -> MetaOapg.properties.offset: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["starting_id"]) -> MetaOapg.properties.starting_id: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["limit", "offset", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["limit", "offset", "starting_id", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -62,9 +67,12 @@ class Pagination(
     def get_item_oapg(self, name: typing_extensions.Literal["offset"]) -> typing.Union[MetaOapg.properties.offset, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["starting_id"]) -> typing.Union[MetaOapg.properties.starting_id, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["limit", "offset", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["limit", "offset", "starting_id", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -73,6 +81,7 @@ class Pagination(
         *args: typing.Union[dict, frozendict.frozendict, ],
         limit: typing.Union[MetaOapg.properties.limit, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         offset: typing.Union[MetaOapg.properties.offset, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        starting_id: typing.Union[MetaOapg.properties.starting_id, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Pagination':
@@ -81,6 +90,7 @@ class Pagination(
             *args,
             limit=limit,
             offset=offset,
+            starting_id=starting_id,
             _configuration=_configuration,
             **kwargs,
         )

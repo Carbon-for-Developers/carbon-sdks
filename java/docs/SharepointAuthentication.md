@@ -11,7 +11,7 @@
 |**accessToken** | **String** |  |  |
 |**refreshToken** | **String** |  |  [optional] |
 |**tenantName** | **String** |  |  [optional] |
-|**siteName** | **String** |  |  |
+|**siteName** | **String** |  |  [optional] |
 
 
 

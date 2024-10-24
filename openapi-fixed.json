@@ -7092,7 +7092,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -7132,7 +7133,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -9163,7 +9165,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -9383,7 +9386,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "filters": {
@@ -9419,7 +9423,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -10364,7 +10369,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -10718,7 +10724,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -11032,6 +11039,11 @@
           },
           "offset": {
             "title": "Offset",
+            "type": "integer",
+            "default": 0
+          },
+          "starting_id": {
+            "title": "Starting Id",
             "type": "integer",
             "default": 0
           }
@@ -11994,14 +12006,14 @@
           },
           "site_name": {
             "title": "Site Name",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object",
         "required": [
           "source",
-          "access_token",
-          "site_name"
+          "access_token"
         ]
       },
       "SimpleOAuthDataSources": {
@@ -13453,7 +13465,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {
@@ -13637,7 +13650,8 @@
           "pagination": {
             "default": {
               "limit": 10,
-              "offset": 0
+              "offset": 0,
+              "starting_id": 0
             }
           },
           "order_by": {

@@ -21,6 +21,8 @@ class Pagination(BaseModel):
 
     offset: typing.Optional[int] = Field(None, alias='offset')
 
+    starting_id: typing.Optional[int] = Field(None, alias='starting_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

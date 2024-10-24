@@ -577,6 +577,7 @@ result = carbon.data_sources.query_user_data_sources(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -906,6 +907,7 @@ result = carbon.embeddings.get_embeddings_and_chunks(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -949,6 +951,7 @@ result = carbon.embeddings.list(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -1397,6 +1400,7 @@ result = carbon.files.query_user_files(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -1445,6 +1449,7 @@ result = carbon.files.query_user_files_deprecated(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -2694,6 +2699,7 @@ result = carbon.integrations.list_data_source_items(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "name",
   order_dir: "asc",
@@ -3882,6 +3888,7 @@ result = carbon.users.list(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   filters: {
     },
@@ -4375,6 +4382,7 @@ result = carbon.utilities.user_webpages(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "asc",
@@ -4466,6 +4474,7 @@ result = carbon.webhooks.urls(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",
@@ -4566,6 +4575,7 @@ result = carbon.white_label.list(
   pagination: {
         "limit" => 10,
         "offset" => 0,
+        "starting_id" => 0,
     },
   order_by: "created_at",
   order_dir: "desc",

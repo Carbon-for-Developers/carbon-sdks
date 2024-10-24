@@ -1018,7 +1018,7 @@ public class OANDSCZGFB {
       if (!jsonObj.get("tenant_name").isJsonNull() && (jsonObj.get("tenant_name") != null && !jsonObj.get("tenant_name").isJsonNull()) && !jsonObj.get("tenant_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tenant_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenant_name").toString()));
       }
-      if ((jsonObj.get("site_name") != null && !jsonObj.get("site_name").isJsonNull()) && !jsonObj.get("site_name").isJsonPrimitive()) {
+      if (!jsonObj.get("site_name").isJsonNull() && (jsonObj.get("site_name") != null && !jsonObj.get("site_name").isJsonNull()) && !jsonObj.get("site_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `site_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("site_name").toString()));
       }
       if ((jsonObj.get("subdomain") != null && !jsonObj.get("subdomain").isJsonNull()) && !jsonObj.get("subdomain").isJsonPrimitive()) {

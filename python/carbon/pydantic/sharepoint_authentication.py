@@ -21,11 +21,11 @@ class SharepointAuthentication(BaseModel):
 
     access_token: str = Field(alias='access_token')
 
-    site_name: str = Field(alias='site_name')
-
     refresh_token: typing.Optional[typing.Optional[str]] = Field(None, alias='refresh_token')
 
     tenant_name: typing.Optional[typing.Optional[str]] = Field(None, alias='tenant_name')
+
+    site_name: typing.Optional[typing.Optional[str]] = Field(None, alias='site_name')
 
     model_config = ConfigDict(
         protected_namespaces=(),

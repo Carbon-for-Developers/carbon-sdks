@@ -46,6 +46,6 @@ export interface SharepointAuthentication {
      * @type {string}
      * @memberof SharepointAuthentication
      */
-    'site_name': string;
+    'site_name'?: string | null;
 }
 
