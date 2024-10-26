@@ -1010,13 +1010,14 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    Pagination pagination = new Pagination();
-    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at");
-    OrderDir orderDir = OrderDir.fromValue("desc");
-    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
-    Boolean includeRawFile = true;
-    Boolean includeParsedTextFile = true;
-    Boolean includeAdditionalFiles = true;
+    Pagination pagination = new Pagination(); // Pagination parameters for the query.
+    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at"); // The field on OrganizationUserFilesToSYnc to order the results by.
+    OrderDir orderDir = OrderDir.fromValue("desc"); // The direction to order the results by.
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters(); // Filters to apply to the query.
+    Boolean includeRawFile = true; // If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    Boolean includeParsedTextFile = true; // If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    Boolean includeAdditionalFiles = true; // If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    Integer presignedUrlExpiryTimeSeconds = 3600; // The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     try {
       UserFilesV2 result = client
               .files
@@ -1028,6 +1029,7 @@ public class Example {
               .includeRawFile(includeRawFile)
               .includeParsedTextFile(includeParsedTextFile)
               .includeAdditionalFiles(includeAdditionalFiles)
+              .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
               .execute();
       System.out.println(result);
       System.out.println(result.getResults());
@@ -1052,6 +1054,7 @@ public class Example {
               .includeRawFile(includeRawFile)
               .includeParsedTextFile(includeParsedTextFile)
               .includeAdditionalFiles(includeAdditionalFiles)
+              .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -1127,13 +1130,14 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    Pagination pagination = new Pagination();
-    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at");
-    OrderDir orderDir = OrderDir.fromValue("desc");
-    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
-    Boolean includeRawFile = true;
-    Boolean includeParsedTextFile = true;
-    Boolean includeAdditionalFiles = true;
+    Pagination pagination = new Pagination(); // Pagination parameters for the query.
+    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at"); // The field on OrganizationUserFilesToSYnc to order the results by.
+    OrderDir orderDir = OrderDir.fromValue("desc"); // The direction to order the results by.
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters(); // Filters to apply to the query.
+    Boolean includeRawFile = true; // If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    Boolean includeParsedTextFile = true; // If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    Boolean includeAdditionalFiles = true; // If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    Integer presignedUrlExpiryTimeSeconds = 3600; // The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     try {
       List<UserFile> result = client
               .files
@@ -1145,6 +1149,7 @@ public class Example {
               .includeRawFile(includeRawFile)
               .includeParsedTextFile(includeParsedTextFile)
               .includeAdditionalFiles(includeAdditionalFiles)
+              .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
               .execute();
       System.out.println(result);
     } catch (ApiException e) {
@@ -1167,6 +1172,7 @@ public class Example {
               .includeRawFile(includeRawFile)
               .includeParsedTextFile(includeParsedTextFile)
               .includeAdditionalFiles(includeAdditionalFiles)
+              .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

@@ -1411,6 +1411,7 @@ result = carbon.files.query_user_files(
   include_raw_file: true,
   include_parsed_text_file: true,
   include_additional_files: true,
+  presigned_url_expiry_time_seconds: 3600,
 )
 p result
 ```
@@ -1418,12 +1419,33 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
+The field on OrganizationUserFilesToSYnc to order the results by.
+
 ##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+Filters to apply to the query.
+
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
+If true, the query will return presigned URLs for the raw file. Only relevant
+for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
+If true, the query will return presigned URLs for the parsed text file. Only
+relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
+If true, the query will return presigned URLs for additional files. Only
+relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `Integer`<a id="presigned_url_expiry_time_seconds-integer"></a>
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2
+endpoint.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFilesV2](./lib/carbon_ruby_sdk/models/user_files_v2.rb)
@@ -1460,6 +1482,7 @@ result = carbon.files.query_user_files_deprecated(
   include_raw_file: true,
   include_parsed_text_file: true,
   include_additional_files: true,
+  presigned_url_expiry_time_seconds: 3600,
 )
 p result
 ```
@@ -1467,12 +1490,33 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
+The field on OrganizationUserFilesToSYnc to order the results by.
+
 ##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
+Filters to apply to the query.
+
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
+If true, the query will return presigned URLs for the raw file. Only relevant
+for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
+If true, the query will return presigned URLs for the parsed text file. Only
+relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
+If true, the query will return presigned URLs for additional files. Only
+relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `Integer`<a id="presigned_url_expiry_time_seconds-integer"></a>
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2
+endpoint.
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [UserFile](./lib/carbon_ruby_sdk/models/user_file.rb)
@@ -2475,6 +2519,7 @@ result = carbon.integrations.get_oauth_url(
   service: "BOX",
   tags: None,
   scope: "string_example",
+  scopes: [],
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
@@ -2526,6 +2571,11 @@ p result
 ##### service: [`OauthBasedConnectors`](./lib/carbon_ruby_sdk/models/oauth_based_connectors.rb)<a id="service-oauthbasedconnectorslibcarbon_ruby_sdkmodelsoauth_based_connectorsrb"></a>
 ##### tags: `Object`<a id="tags-object"></a>
 ##### scope: `String`<a id="scope-string"></a>
+##### scopes: Array<`String`><a id="scopes-array"></a>
+List of scopes to request from the OAuth provider. Please that the scopes will
+be used as it is, not combined with the default props that Carbon uses. One
+scope should be one array element.
+
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
 ##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>

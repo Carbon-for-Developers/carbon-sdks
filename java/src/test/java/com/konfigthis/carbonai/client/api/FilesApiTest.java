@@ -228,6 +228,7 @@ public class FilesApiTest {
         Boolean includeRawFile = null;
         Boolean includeParsedTextFile = null;
         Boolean includeAdditionalFiles = null;
+        Integer presignedUrlExpiryTimeSeconds = null;
         UserFilesV2 response = api.queryUserFiles()
                 .pagination(pagination)
                 .orderBy(orderBy)
@@ -236,6 +237,7 @@ public class FilesApiTest {
                 .includeRawFile(includeRawFile)
                 .includeParsedTextFile(includeParsedTextFile)
                 .includeAdditionalFiles(includeAdditionalFiles)
+                .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
                 .execute();
         // TODO: test validations
     }
@@ -256,6 +258,7 @@ public class FilesApiTest {
         Boolean includeRawFile = null;
         Boolean includeParsedTextFile = null;
         Boolean includeAdditionalFiles = null;
+        Integer presignedUrlExpiryTimeSeconds = null;
         List<UserFile> response = api.queryUserFilesDeprecated()
                 .pagination(pagination)
                 .orderBy(orderBy)
@@ -264,6 +267,7 @@ public class FilesApiTest {
                 .includeRawFile(includeRawFile)
                 .includeParsedTextFile(includeParsedTextFile)
                 .includeAdditionalFiles(includeAdditionalFiles)
+                .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
                 .execute();
         // TODO: test validations
     }

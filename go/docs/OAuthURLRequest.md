@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to **interface{}** |  | [optional] 
 **Scope** | Pointer to **NullableString** |  | [optional] 
+**Scopes** | Pointer to **[]string** | List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element. | [optional] [default to []]
 **Service** | [**OauthBasedConnectors**](OauthBasedConnectors.md) |  | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] [default to 1500]
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] [default to 20]
@@ -124,6 +125,41 @@ HasScope returns a boolean if a field has been set.
 `func (o *OAuthURLRequest) UnsetScope()`
 
 UnsetScope ensures that no value is present for Scope, not even an explicit nil
+### GetScopes
+
+`func (o *OAuthURLRequest) GetScopes() []string`
+
+GetScopes returns the Scopes field if non-nil, zero value otherwise.
+
+### GetScopesOk
+
+`func (o *OAuthURLRequest) GetScopesOk() (*[]string, bool)`
+
+GetScopesOk returns a tuple with the Scopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopes
+
+`func (o *OAuthURLRequest) SetScopes(v []string)`
+
+SetScopes sets Scopes field to given value.
+
+### HasScopes
+
+`func (o *OAuthURLRequest) HasScopes() bool`
+
+HasScopes returns a boolean if a field has been set.
+
+### SetScopesNil
+
+`func (o *OAuthURLRequest) SetScopesNil(b bool)`
+
+ SetScopesNil sets the value for Scopes to be an explicit nil
+
+### UnsetScopes
+`func (o *OAuthURLRequest) UnsetScopes()`
+
+UnsetScopes ensures that no value is present for Scopes, not even an explicit nil
 ### GetService
 
 `func (o *OAuthURLRequest) GetService() OauthBasedConnectors`

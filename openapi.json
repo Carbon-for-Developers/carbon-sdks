@@ -10740,6 +10740,22 @@
             ],
             "title": "Scope"
           },
+          "scopes": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scopes",
+            "description": "List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not \n        combined with the default props that Carbon uses. One scope should be one array element.",
+            "default": []
+          },
           "service": {
             "$ref": "#/components/schemas/OauthBasedConnectors"
           },
@@ -12367,6 +12383,7 @@
                 "$ref": "#/components/schemas/Pagination"
               }
             ],
+            "description": "Pagination parameters for the query.",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -12379,6 +12396,7 @@
                 "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
               }
             ],
+            "description": "The field on OrganizationUserFilesToSYnc to order the results by.",
             "default": "updated_at"
           },
           "order_dir": {
@@ -12387,6 +12405,7 @@
                 "$ref": "#/components/schemas/OrderDir"
               }
             ],
+            "description": "The direction to order the results by.",
             "default": "asc"
           },
           "filters": {
@@ -12395,6 +12414,7 @@
                 "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
               }
             ],
+            "description": "Filters to apply to the query.",
             "default": {
               "include_all_children": false,
               "non_synced_only": false
@@ -12409,7 +12429,8 @@
                 "type": "null"
               }
             ],
-            "title": "Include Raw File"
+            "title": "Include Raw File",
+            "description": "If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint."
           },
           "include_parsed_text_file": {
             "anyOf": [
@@ -12420,7 +12441,8 @@
                 "type": "null"
               }
             ],
-            "title": "Include Parsed Text File"
+            "title": "Include Parsed Text File",
+            "description": "If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint."
           },
           "include_additional_files": {
             "anyOf": [
@@ -12431,7 +12453,14 @@
                 "type": "null"
               }
             ],
-            "title": "Include Additional Files"
+            "title": "Include Additional Files",
+            "description": "If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint."
+          },
+          "presigned_url_expiry_time_seconds": {
+            "type": "integer",
+            "title": "Presigned Url Expiry Time Seconds",
+            "description": "The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.",
+            "default": 3600
           }
         },
         "type": "object",

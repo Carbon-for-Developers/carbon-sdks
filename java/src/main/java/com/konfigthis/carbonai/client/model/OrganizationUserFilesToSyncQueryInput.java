@@ -82,6 +82,10 @@ public class OrganizationUserFilesToSyncQueryInput {
   @SerializedName(SERIALIZED_NAME_INCLUDE_ADDITIONAL_FILES)
   private Boolean includeAdditionalFiles;
 
+  public static final String SERIALIZED_NAME_PRESIGNED_URL_EXPIRY_TIME_SECONDS = "presigned_url_expiry_time_seconds";
+  @SerializedName(SERIALIZED_NAME_PRESIGNED_URL_EXPIRY_TIME_SECONDS)
+  private Integer presignedUrlExpiryTimeSeconds = 3600;
+
   public OrganizationUserFilesToSyncQueryInput() {
   }
 
@@ -95,11 +99,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get pagination
+   * Pagination parameters for the query.
    * @return pagination
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Pagination parameters for the query.")
 
   public Pagination getPagination() {
     return pagination;
@@ -124,11 +128,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get orderBy
+   * The field on OrganizationUserFilesToSYnc to order the results by.
    * @return orderBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The field on OrganizationUserFilesToSYnc to order the results by.")
 
   public OrganizationUserFilesToSyncOrderByTypes getOrderBy() {
     return orderBy;
@@ -153,11 +157,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get orderDir
+   * The direction to order the results by.
    * @return orderDir
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The direction to order the results by.")
 
   public OrderDir getOrderDir() {
     return orderDir;
@@ -182,11 +186,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get filters
+   * Filters to apply to the query.
    * @return filters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Filters to apply to the query.")
 
   public OrganizationUserFilesToSyncFilters getFilters() {
     return filters;
@@ -211,11 +215,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get includeRawFile
+   * If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
    * @return includeRawFile
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.")
 
   public Boolean getIncludeRawFile() {
     return includeRawFile;
@@ -240,11 +244,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get includeParsedTextFile
+   * If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
    * @return includeParsedTextFile
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.")
 
   public Boolean getIncludeParsedTextFile() {
     return includeParsedTextFile;
@@ -269,11 +273,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Get includeAdditionalFiles
+   * If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
    * @return includeAdditionalFiles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.")
 
   public Boolean getIncludeAdditionalFiles() {
     return includeAdditionalFiles;
@@ -285,6 +289,35 @@ public class OrganizationUserFilesToSyncQueryInput {
     
     
     this.includeAdditionalFiles = includeAdditionalFiles;
+  }
+
+
+  public OrganizationUserFilesToSyncQueryInput presignedUrlExpiryTimeSeconds(Integer presignedUrlExpiryTimeSeconds) {
+    
+    
+    
+    
+    this.presignedUrlExpiryTimeSeconds = presignedUrlExpiryTimeSeconds;
+    return this;
+  }
+
+   /**
+   * The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+   * @return presignedUrlExpiryTimeSeconds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3600", value = "The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.")
+
+  public Integer getPresignedUrlExpiryTimeSeconds() {
+    return presignedUrlExpiryTimeSeconds;
+  }
+
+
+  public void setPresignedUrlExpiryTimeSeconds(Integer presignedUrlExpiryTimeSeconds) {
+    
+    
+    
+    this.presignedUrlExpiryTimeSeconds = presignedUrlExpiryTimeSeconds;
   }
 
   /**
@@ -348,7 +381,8 @@ public class OrganizationUserFilesToSyncQueryInput {
         Objects.equals(this.filters, organizationUserFilesToSyncQueryInput.filters) &&
         Objects.equals(this.includeRawFile, organizationUserFilesToSyncQueryInput.includeRawFile) &&
         Objects.equals(this.includeParsedTextFile, organizationUserFilesToSyncQueryInput.includeParsedTextFile) &&
-        Objects.equals(this.includeAdditionalFiles, organizationUserFilesToSyncQueryInput.includeAdditionalFiles)&&
+        Objects.equals(this.includeAdditionalFiles, organizationUserFilesToSyncQueryInput.includeAdditionalFiles) &&
+        Objects.equals(this.presignedUrlExpiryTimeSeconds, organizationUserFilesToSyncQueryInput.presignedUrlExpiryTimeSeconds)&&
         Objects.equals(this.additionalProperties, organizationUserFilesToSyncQueryInput.additionalProperties);
   }
 
@@ -358,7 +392,7 @@ public class OrganizationUserFilesToSyncQueryInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pagination, orderBy, orderDir, filters, includeRawFile, includeParsedTextFile, includeAdditionalFiles, additionalProperties);
+    return Objects.hash(pagination, orderBy, orderDir, filters, includeRawFile, includeParsedTextFile, includeAdditionalFiles, presignedUrlExpiryTimeSeconds, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -379,6 +413,7 @@ public class OrganizationUserFilesToSyncQueryInput {
     sb.append("    includeRawFile: ").append(toIndentedString(includeRawFile)).append("\n");
     sb.append("    includeParsedTextFile: ").append(toIndentedString(includeParsedTextFile)).append("\n");
     sb.append("    includeAdditionalFiles: ").append(toIndentedString(includeAdditionalFiles)).append("\n");
+    sb.append("    presignedUrlExpiryTimeSeconds: ").append(toIndentedString(presignedUrlExpiryTimeSeconds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -409,6 +444,7 @@ public class OrganizationUserFilesToSyncQueryInput {
     openapiFields.add("include_raw_file");
     openapiFields.add("include_parsed_text_file");
     openapiFields.add("include_additional_files");
+    openapiFields.add("presigned_url_expiry_time_seconds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

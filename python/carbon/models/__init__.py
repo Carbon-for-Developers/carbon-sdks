@@ -174,6 +174,7 @@ from carbon.model.multi_modal_embedding_generators import MultiModalEmbeddingGen
 from carbon.model.notion_authentication import NotionAuthentication
 from carbon.model.o_auth_authentication import OAuthAuthentication
 from carbon.model.o_auth_url_request import OAuthURLRequest
+from carbon.model.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.one_drive_authentication import OneDriveAuthentication
 from carbon.model.one_drive_sharepoint_credentials import OneDriveSharepointCredentials

@@ -62,6 +62,10 @@ class OAuthURLRequest(
                         *args,
                         _configuration=_configuration,
                     )
+        
+            @staticmethod
+            def scopes() -> typing.Type['OAuthURLRequestScopes']:
+                return OAuthURLRequestScopes
             
             
             class chunk_size(
@@ -463,6 +467,7 @@ class OAuthURLRequest(
                 "service": service,
                 "tags": tags,
                 "scope": scope,
+                "scopes": scopes,
                 "chunk_size": chunk_size,
                 "chunk_overlap": chunk_overlap,
                 "skip_embedding_generation": skip_embedding_generation,
@@ -502,6 +507,9 @@ class OAuthURLRequest(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["scope"]) -> MetaOapg.properties.scope: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["scopes"]) -> 'OAuthURLRequestScopes': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["chunk_size"]) -> MetaOapg.properties.chunk_size: ...
@@ -587,7 +595,7 @@ class OAuthURLRequest(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "scopes", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -600,6 +608,9 @@ class OAuthURLRequest(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["scope"]) -> typing.Union[MetaOapg.properties.scope, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["scopes"]) -> typing.Union['OAuthURLRequestScopes', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["chunk_size"]) -> typing.Union[MetaOapg.properties.chunk_size, schemas.Unset]: ...
@@ -685,7 +696,7 @@ class OAuthURLRequest(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["service", "tags", "scope", "scopes", "chunk_size", "chunk_overlap", "skip_embedding_generation", "embedding_model", "zendesk_subdomain", "microsoft_tenant", "sharepoint_site_name", "confluence_subdomain", "generate_sparse_vectors", "prepend_filename_to_chunks", "max_items_per_chunk", "salesforce_domain", "sync_files_on_connection", "set_page_as_boundary", "data_source_id", "connecting_new_account", "request_id", "use_ocr", "parse_pdf_tables_with_ocr", "enable_file_picker", "sync_source_items", "incremental_sync", "file_sync_config", "automatically_open_file_picker", "gong_account_email", "servicenow_credentials", "data_source_tags", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -695,6 +706,7 @@ class OAuthURLRequest(
         service: 'OauthBasedConnectors',
         tags: typing.Union[MetaOapg.properties.tags, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         scope: typing.Union[MetaOapg.properties.scope, None, str, schemas.Unset] = schemas.unset,
+        scopes: typing.Union['OAuthURLRequestScopes', schemas.Unset] = schemas.unset,
         chunk_size: typing.Union[MetaOapg.properties.chunk_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         chunk_overlap: typing.Union[MetaOapg.properties.chunk_overlap, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         skip_embedding_generation: typing.Union[MetaOapg.properties.skip_embedding_generation, None, bool, schemas.Unset] = schemas.unset,
@@ -731,6 +743,7 @@ class OAuthURLRequest(
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -764,5 +777,6 @@ class OAuthURLRequest(
 
 from carbon.model.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.model.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.model.oauth_based_connectors import OauthBasedConnectors
 from carbon.model.service_now_credentials_nullable import ServiceNowCredentialsNullable

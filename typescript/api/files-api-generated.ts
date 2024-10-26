@@ -1164,7 +1164,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 filters: requestParameters.filters,
                 include_raw_file: requestParameters.include_raw_file,
                 include_parsed_text_file: requestParameters.include_parsed_text_file,
-                include_additional_files: requestParameters.include_additional_files
+                include_additional_files: requestParameters.include_additional_files,
+                presigned_url_expiry_time_seconds: requestParameters.presigned_url_expiry_time_seconds
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFiles(organizationUserFilesToSyncQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -1185,7 +1186,8 @@ export const FilesApiFp = function(configuration?: Configuration) {
                 filters: requestParameters.filters,
                 include_raw_file: requestParameters.include_raw_file,
                 include_parsed_text_file: requestParameters.include_parsed_text_file,
-                include_additional_files: requestParameters.include_additional_files
+                include_additional_files: requestParameters.include_additional_files,
+                presigned_url_expiry_time_seconds: requestParameters.presigned_url_expiry_time_seconds
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFilesDeprecated(organizationUserFilesToSyncQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);

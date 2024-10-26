@@ -34,6 +34,12 @@ export interface OAuthURLRequest {
      */
     'scope'?: string | null;
     /**
+     * List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
+     * @type {Array<string>}
+     * @memberof OAuthURLRequest
+     */
+    'scopes'?: Array<string> | null;
+    /**
      * 
      * @type {OauthBasedConnectors}
      * @memberof OAuthURLRequest

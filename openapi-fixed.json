@@ -9567,6 +9567,17 @@
             "type": "string",
             "nullable": true
           },
+          "scopes": {
+            "title": "Scopes",
+            "description": "List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not \n        combined with the default props that Carbon uses. One scope should be one array element.",
+            "default": [
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
           "service": {
             "$ref": "#/components/schemas/OauthBasedConnectors"
           },
@@ -10705,23 +10716,33 @@
           },
           "include_raw_file": {
             "title": "Include Raw File",
+            "description": "If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.",
             "type": "boolean",
             "nullable": true
           },
           "include_parsed_text_file": {
             "title": "Include Parsed Text File",
+            "description": "If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.",
             "type": "boolean",
             "nullable": true
           },
           "include_additional_files": {
             "title": "Include Additional Files",
+            "description": "If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.",
             "type": "boolean",
             "nullable": true
+          },
+          "presigned_url_expiry_time_seconds": {
+            "title": "Presigned Url Expiry Time Seconds",
+            "description": "The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.",
+            "type": "integer",
+            "default": 3600
           }
         },
         "type": "object",
         "x-konfig-properties": {
           "pagination": {
+            "description": "Pagination parameters for the query.",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -10729,12 +10750,15 @@
             }
           },
           "order_by": {
+            "description": "The field on OrganizationUserFilesToSYnc to order the results by.",
             "default": "updated_at"
           },
           "order_dir": {
+            "description": "The direction to order the results by.",
             "default": "asc"
           },
           "filters": {
+            "description": "Filters to apply to the query.",
             "default": {
               "include_all_children": false,
               "non_synced_only": false

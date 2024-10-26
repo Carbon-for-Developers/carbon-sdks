@@ -126,6 +126,7 @@ class BaseApi(api_client.Api):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -143,6 +144,8 @@ class BaseApi(api_client.Api):
             _body["include_parsed_text_file"] = include_parsed_text_file
         if include_additional_files is not None:
             _body["include_additional_files"] = include_additional_files
+        if presigned_url_expiry_time_seconds is not None:
+            _body["presigned_url_expiry_time_seconds"] = presigned_url_expiry_time_seconds
         args.body = _body
         return args
 
@@ -357,6 +360,7 @@ class QueryUserFilesRaw(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -371,6 +375,7 @@ class QueryUserFilesRaw(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
         )
         return await self._aquery_user_files_oapg(
             body=args.body,
@@ -386,6 +391,7 @@ class QueryUserFilesRaw(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -399,6 +405,7 @@ class QueryUserFilesRaw(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
         )
         return self._query_user_files_oapg(
             body=args.body,
@@ -415,6 +422,7 @@ class QueryUserFiles(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
         validate: bool = False,
         **kwargs,
     ) -> UserFilesV2Pydantic:
@@ -426,6 +434,7 @@ class QueryUserFiles(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
             **kwargs,
         )
         if validate:
@@ -442,6 +451,7 @@ class QueryUserFiles(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
         validate: bool = False,
     ) -> UserFilesV2Pydantic:
         raw_response = self.raw.query_user_files(
@@ -452,6 +462,7 @@ class QueryUserFiles(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
         )
         if validate:
             return UserFilesV2Pydantic(**raw_response.body)
@@ -470,6 +481,7 @@ class ApiForpost(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -484,6 +496,7 @@ class ApiForpost(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
         )
         return await self._aquery_user_files_oapg(
             body=args.body,
@@ -499,6 +512,7 @@ class ApiForpost(BaseApi):
         include_raw_file: typing.Optional[typing.Optional[bool]] = None,
         include_parsed_text_file: typing.Optional[typing.Optional[bool]] = None,
         include_additional_files: typing.Optional[typing.Optional[bool]] = None,
+        presigned_url_expiry_time_seconds: typing.Optional[int] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -512,6 +526,7 @@ class ApiForpost(BaseApi):
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
         )
         return self._query_user_files_oapg(
             body=args.body,

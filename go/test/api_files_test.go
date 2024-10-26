@@ -205,6 +205,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         organizationUserFilesToSyncQueryInput.SetIncludeRawFile(null)
         organizationUserFilesToSyncQueryInput.SetIncludeParsedTextFile(null)
         organizationUserFilesToSyncQueryInput.SetIncludeAdditionalFiles(null)
+        organizationUserFilesToSyncQueryInput.SetPresignedUrlExpiryTimeSeconds(3600)
         
         request := client.FilesApi.QueryUserFiles(
             organizationUserFilesToSyncQueryInput,
@@ -231,6 +232,7 @@ func Test_carbon_FilesApiService(t *testing.T) {
         organizationUserFilesToSyncQueryInput.SetIncludeRawFile(null)
         organizationUserFilesToSyncQueryInput.SetIncludeParsedTextFile(null)
         organizationUserFilesToSyncQueryInput.SetIncludeAdditionalFiles(null)
+        organizationUserFilesToSyncQueryInput.SetPresignedUrlExpiryTimeSeconds(3600)
         
         request := client.FilesApi.QueryUserFilesDeprecated(
             organizationUserFilesToSyncQueryInput,

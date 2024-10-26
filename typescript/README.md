@@ -1382,6 +1382,7 @@ the resulting query. It is `false` by default.
 const queryUserFilesResponse = await carbon.files.queryUserFiles({
   order_by: "created_at",
   order_dir: "desc",
+  presigned_url_expiry_time_seconds: 3600,
 });
 ```
 
@@ -1389,17 +1390,35 @@ const queryUserFilesResponse = await carbon.files.queryUserFiles({
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
 
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./models/organization-user-files-to-sync-order-by-types.ts)<a id="order_by-organizationuserfilestosyncorderbytypesmodelsorganization-user-files-to-sync-order-by-typests"></a>
+
+The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
 
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+Filters to apply to the query.
 
 ##### include_raw_file: `boolean`<a id="include_raw_file-boolean"></a>
 
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `boolean`<a id="include_parsed_text_file-boolean"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `boolean`<a id="include_additional_files-boolean"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `number`<a id="presigned_url_expiry_time_seconds-number"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1426,6 +1445,7 @@ const queryUserFilesDeprecatedResponse =
   await carbon.files.queryUserFilesDeprecated({
     order_by: "created_at",
     order_dir: "desc",
+    presigned_url_expiry_time_seconds: 3600,
   });
 ```
 
@@ -1433,17 +1453,35 @@ const queryUserFilesDeprecatedResponse =
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
 
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./models/organization-user-files-to-sync-order-by-types.ts)<a id="order_by-organizationuserfilestosyncorderbytypesmodelsorganization-user-files-to-sync-order-by-typests"></a>
+
+The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
 
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
+
+Filters to apply to the query.
 
 ##### include_raw_file: `boolean`<a id="include_raw_file-boolean"></a>
 
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `boolean`<a id="include_parsed_text_file-boolean"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `boolean`<a id="include_additional_files-boolean"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `number`<a id="presigned_url_expiry_time_seconds-number"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2462,6 +2500,7 @@ success state.
 
 ```typescript
 const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
+  scopes: [],
   service: "BOX",
   chunk_size: 1500,
   chunk_overlap: 20,
@@ -2487,6 +2526,10 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 ##### tags: `any`<a id="tags-any"></a>
 
 ##### scope: `string`<a id="scope-string"></a>
+
+##### scopes: `string`[]<a id="scopes-string"></a>
+
+List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
 
 ##### chunk_size: `number`<a id="chunk_size-number"></a>
 

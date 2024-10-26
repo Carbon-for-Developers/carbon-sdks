@@ -936,16 +936,17 @@ module Carbon
     # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
     # the resulting query. It is `false` by default.
     #
-    # @param pagination [Pagination] 
-    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
-    # @param order_dir [OrderDir] 
-    # @param filters [OrganizationUserFilesToSyncFilters] 
-    # @param include_raw_file [Boolean] 
-    # @param include_parsed_text_file [Boolean] 
-    # @param include_additional_files [Boolean] 
+    # @param pagination [Pagination] Pagination parameters for the query.
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] The field on OrganizationUserFilesToSYnc to order the results by.
+    # @param order_dir [OrderDir] The direction to order the results by.
+    # @param filters [OrganizationUserFilesToSyncFilters] Filters to apply to the query.
+    # @param include_raw_file [Boolean] If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_parsed_text_file [Boolean] If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_additional_files [Boolean] If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    # @param presigned_url_expiry_time_seconds [Integer] The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, presigned_url_expiry_time_seconds: 3600, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -954,6 +955,7 @@ module Carbon
       _body[:include_raw_file] = include_raw_file if include_raw_file != SENTINEL
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
+      _body[:presigned_url_expiry_time_seconds] = presigned_url_expiry_time_seconds if presigned_url_expiry_time_seconds != SENTINEL
       organization_user_files_to_sync_query_input = _body
       api_response = query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
       api_response.data
@@ -1012,16 +1014,17 @@ module Carbon
     # 3. "negate" is optional and must be `true` or `false`. If present and `true`, then the filter block is negated in
     # the resulting query. It is `false` by default.
     #
-    # @param pagination [Pagination] 
-    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
-    # @param order_dir [OrderDir] 
-    # @param filters [OrganizationUserFilesToSyncFilters] 
-    # @param include_raw_file [Boolean] 
-    # @param include_parsed_text_file [Boolean] 
-    # @param include_additional_files [Boolean] 
+    # @param pagination [Pagination] Pagination parameters for the query.
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] The field on OrganizationUserFilesToSYnc to order the results by.
+    # @param order_dir [OrderDir] The direction to order the results by.
+    # @param filters [OrganizationUserFilesToSyncFilters] Filters to apply to the query.
+    # @param include_raw_file [Boolean] If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_parsed_text_file [Boolean] If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_additional_files [Boolean] If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    # @param presigned_url_expiry_time_seconds [Integer] The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, presigned_url_expiry_time_seconds: 3600, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -1030,6 +1033,7 @@ module Carbon
       _body[:include_raw_file] = include_raw_file if include_raw_file != SENTINEL
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
+      _body[:presigned_url_expiry_time_seconds] = presigned_url_expiry_time_seconds if presigned_url_expiry_time_seconds != SENTINEL
       organization_user_files_to_sync_query_input = _body
       query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
     end
@@ -1107,16 +1111,17 @@ module Carbon
     #
     # This route is deprecated. Use `/user_files_v2` instead.
     #
-    # @param pagination [Pagination] 
-    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
-    # @param order_dir [OrderDir] 
-    # @param filters [OrganizationUserFilesToSyncFilters] 
-    # @param include_raw_file [Boolean] 
-    # @param include_parsed_text_file [Boolean] 
-    # @param include_additional_files [Boolean] 
+    # @param pagination [Pagination] Pagination parameters for the query.
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] The field on OrganizationUserFilesToSYnc to order the results by.
+    # @param order_dir [OrderDir] The direction to order the results by.
+    # @param filters [OrganizationUserFilesToSyncFilters] Filters to apply to the query.
+    # @param include_raw_file [Boolean] If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_parsed_text_file [Boolean] If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_additional_files [Boolean] If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    # @param presigned_url_expiry_time_seconds [Integer] The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_deprecated(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_deprecated(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, presigned_url_expiry_time_seconds: 3600, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -1125,6 +1130,7 @@ module Carbon
       _body[:include_raw_file] = include_raw_file if include_raw_file != SENTINEL
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
+      _body[:presigned_url_expiry_time_seconds] = presigned_url_expiry_time_seconds if presigned_url_expiry_time_seconds != SENTINEL
       organization_user_files_to_sync_query_input = _body
       api_response = query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
       api_response.data
@@ -1134,16 +1140,17 @@ module Carbon
     #
     # This route is deprecated. Use `/user_files_v2` instead.
     #
-    # @param pagination [Pagination] 
-    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] 
-    # @param order_dir [OrderDir] 
-    # @param filters [OrganizationUserFilesToSyncFilters] 
-    # @param include_raw_file [Boolean] 
-    # @param include_parsed_text_file [Boolean] 
-    # @param include_additional_files [Boolean] 
+    # @param pagination [Pagination] Pagination parameters for the query.
+    # @param order_by [OrganizationUserFilesToSyncOrderByTypes] The field on OrganizationUserFilesToSYnc to order the results by.
+    # @param order_dir [OrderDir] The direction to order the results by.
+    # @param filters [OrganizationUserFilesToSyncFilters] Filters to apply to the query.
+    # @param include_raw_file [Boolean] If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_parsed_text_file [Boolean] If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+    # @param include_additional_files [Boolean] If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+    # @param presigned_url_expiry_time_seconds [Integer] The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
     # @param body [OrganizationUserFilesToSyncQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def query_user_files_deprecated_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, extra: {})
+    def query_user_files_deprecated_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, include_raw_file: SENTINEL, include_parsed_text_file: SENTINEL, include_additional_files: SENTINEL, presigned_url_expiry_time_seconds: 3600, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -1152,6 +1159,7 @@ module Carbon
       _body[:include_raw_file] = include_raw_file if include_raw_file != SENTINEL
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
+      _body[:presigned_url_expiry_time_seconds] = presigned_url_expiry_time_seconds if presigned_url_expiry_time_seconds != SENTINEL
       organization_user_files_to_sync_query_input = _body
       query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
     end

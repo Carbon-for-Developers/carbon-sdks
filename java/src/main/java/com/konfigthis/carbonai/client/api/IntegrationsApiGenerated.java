@@ -1676,6 +1676,7 @@ public class IntegrationsApiGenerated {
         final OauthBasedConnectors service;
         Object tags;
         String scope;
+        List<String> scopes;
         Integer chunkSize;
         Integer chunkOverlap;
         Boolean skipEmbeddingGeneration;
@@ -1725,6 +1726,16 @@ public class IntegrationsApiGenerated {
          */
         public IntegrationsApi.GetOauthUrlRequestBuilder scope(String scope) {
             this.scope = scope;
+            return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
+        }
+        
+        /**
+         * Set scopes
+         * @param scopes List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element. (optional)
+         * @return IntegrationsApi.GetOauthUrlRequestBuilder
+         */
+        public IntegrationsApi.GetOauthUrlRequestBuilder scopes(List<String> scopes) {
+            this.scopes = scopes;
             return (IntegrationsApi.GetOauthUrlRequestBuilder) this;
         }
         
@@ -2018,6 +2029,7 @@ public class IntegrationsApiGenerated {
             OAuthURLRequest oauthURLRequest = new OAuthURLRequest();
             oauthURLRequest.tags(this.tags);
             oauthURLRequest.scope(this.scope);
+            oauthURLRequest.scopes(this.scopes);
             oauthURLRequest.service(this.service);
             oauthURLRequest.chunkSize(this.chunkSize);
             oauthURLRequest.chunkOverlap(this.chunkOverlap);

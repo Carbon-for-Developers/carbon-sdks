@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**tags** | **Object** |  |  [optional] |
 |**scope** | **String** |  |  [optional] |
+|**scopes** | **List&lt;String&gt;** | List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element. |  [optional] |
 |**service** | **OauthBasedConnectors** |  |  |
 |**chunkSize** | **Integer** |  |  [optional] |
 |**chunkOverlap** | **Integer** |  |  [optional] |

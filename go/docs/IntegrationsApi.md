@@ -447,6 +447,7 @@ func main() {
     )
     oAuthURLRequest.SetTags(null)
     oAuthURLRequest.SetScope("null")
+    oAuthURLRequest.SetScopes([])
     oAuthURLRequest.SetChunkSize(1500)
     oAuthURLRequest.SetChunkOverlap(20)
     oAuthURLRequest.SetSkipEmbeddingGeneration(false)

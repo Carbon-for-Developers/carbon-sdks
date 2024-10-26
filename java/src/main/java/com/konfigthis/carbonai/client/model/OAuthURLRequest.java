@@ -26,6 +26,8 @@ import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -61,6 +63,10 @@ public class OAuthURLRequest {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
+
+  public static final String SERIALIZED_NAME_SCOPES = "scopes";
+  @SerializedName(SERIALIZED_NAME_SCOPES)
+  private List<String> scopes = null;
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
@@ -232,6 +238,43 @@ public class OAuthURLRequest {
     
     
     this.scope = scope;
+  }
+
+
+  public OAuthURLRequest scopes(List<String> scopes) {
+    
+    
+    
+    
+    this.scopes = scopes;
+    return this;
+  }
+
+  public OAuthURLRequest addScopesItem(String scopesItem) {
+    if (this.scopes == null) {
+      this.scopes = new ArrayList<>();
+    }
+    this.scopes.add(scopesItem);
+    return this;
+  }
+
+   /**
+   * List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
+   * @return scopes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.")
+
+  public List<String> getScopes() {
+    return scopes;
+  }
+
+
+  public void setScopes(List<String> scopes) {
+    
+    
+    
+    this.scopes = scopes;
   }
 
 
@@ -1103,6 +1146,7 @@ public class OAuthURLRequest {
     OAuthURLRequest oauthURLRequest = (OAuthURLRequest) o;
     return Objects.equals(this.tags, oauthURLRequest.tags) &&
         Objects.equals(this.scope, oauthURLRequest.scope) &&
+        Objects.equals(this.scopes, oauthURLRequest.scopes) &&
         Objects.equals(this.service, oauthURLRequest.service) &&
         Objects.equals(this.chunkSize, oauthURLRequest.chunkSize) &&
         Objects.equals(this.chunkOverlap, oauthURLRequest.chunkOverlap) &&
@@ -1140,7 +1184,7 @@ public class OAuthURLRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, scope, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, gongAccountEmail, servicenowCredentials, dataSourceTags, additionalProperties);
+    return Objects.hash(tags, scope, scopes, service, chunkSize, chunkOverlap, skipEmbeddingGeneration, embeddingModel, zendeskSubdomain, microsoftTenant, sharepointSiteName, confluenceSubdomain, generateSparseVectors, prependFilenameToChunks, maxItemsPerChunk, salesforceDomain, syncFilesOnConnection, setPageAsBoundary, dataSourceId, connectingNewAccount, requestId, useOcr, parsePdfTablesWithOcr, enableFilePicker, syncSourceItems, incrementalSync, fileSyncConfig, automaticallyOpenFilePicker, gongAccountEmail, servicenowCredentials, dataSourceTags, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1156,6 +1200,7 @@ public class OAuthURLRequest {
     sb.append("class OAuthURLRequest {\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
     sb.append("    service: ").append(toIndentedString(service)).append("\n");
     sb.append("    chunkSize: ").append(toIndentedString(chunkSize)).append("\n");
     sb.append("    chunkOverlap: ").append(toIndentedString(chunkOverlap)).append("\n");
@@ -1209,6 +1254,7 @@ public class OAuthURLRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("tags");
     openapiFields.add("scope");
+    openapiFields.add("scopes");
     openapiFields.add("service");
     openapiFields.add("chunk_size");
     openapiFields.add("chunk_overlap");
@@ -1264,6 +1310,10 @@ public class OAuthURLRequest {
       }
       if (!jsonObj.get("scope").isJsonNull() && (jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("scopes") != null && !jsonObj.get("scopes").isJsonNull() && !jsonObj.get("scopes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scopes` to be an array in the JSON string or null but got `%s`", jsonObj.get("scopes").toString()));
       }
       if (!jsonObj.get("zendesk_subdomain").isJsonNull() && (jsonObj.get("zendesk_subdomain") != null && !jsonObj.get("zendesk_subdomain").isJsonNull()) && !jsonObj.get("zendesk_subdomain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `zendesk_subdomain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("zendesk_subdomain").toString()));

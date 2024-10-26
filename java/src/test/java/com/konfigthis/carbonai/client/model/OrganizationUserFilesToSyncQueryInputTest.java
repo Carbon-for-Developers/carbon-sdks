@@ -99,4 +99,12 @@ public class OrganizationUserFilesToSyncQueryInputTest {
         // TODO: test includeAdditionalFiles
     }
 
+    /**
+     * Test the property 'presignedUrlExpiryTimeSeconds'
+     */
+    @Test
+    public void presignedUrlExpiryTimeSecondsTest() {
+        // TODO: test presignedUrlExpiryTimeSeconds
+    }
+
 }

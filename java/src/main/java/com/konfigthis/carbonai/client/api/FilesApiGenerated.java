@@ -1797,13 +1797,14 @@ public class FilesApiGenerated {
         Boolean includeRawFile;
         Boolean includeParsedTextFile;
         Boolean includeAdditionalFiles;
+        Integer presignedUrlExpiryTimeSeconds;
 
         public QueryUserFilesRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
-         * @param pagination  (optional)
+         * @param pagination Pagination parameters for the query. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder pagination(Pagination pagination) {
@@ -1813,7 +1814,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderBy
-         * @param orderBy  (optional)
+         * @param orderBy The field on OrganizationUserFilesToSYnc to order the results by. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
@@ -1823,7 +1824,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderDir
-         * @param orderDir  (optional)
+         * @param orderDir The direction to order the results by. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder orderDir(OrderDir orderDir) {
@@ -1833,7 +1834,7 @@ public class FilesApiGenerated {
         
         /**
          * Set filters
-         * @param filters  (optional)
+         * @param filters Filters to apply to the query. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
@@ -1843,7 +1844,7 @@ public class FilesApiGenerated {
         
         /**
          * Set includeRawFile
-         * @param includeRawFile  (optional)
+         * @param includeRawFile If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder includeRawFile(Boolean includeRawFile) {
@@ -1853,7 +1854,7 @@ public class FilesApiGenerated {
         
         /**
          * Set includeParsedTextFile
-         * @param includeParsedTextFile  (optional)
+         * @param includeParsedTextFile If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
@@ -1863,11 +1864,21 @@ public class FilesApiGenerated {
         
         /**
          * Set includeAdditionalFiles
-         * @param includeAdditionalFiles  (optional)
+         * @param includeAdditionalFiles If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
             this.includeAdditionalFiles = includeAdditionalFiles;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
+        }
+        
+        /**
+         * Set presignedUrlExpiryTimeSeconds
+         * @param presignedUrlExpiryTimeSeconds The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint. (optional, default to 3600)
+         * @return FilesApi.QueryUserFilesRequestBuilder
+         */
+        public FilesApi.QueryUserFilesRequestBuilder presignedUrlExpiryTimeSeconds(Integer presignedUrlExpiryTimeSeconds) {
+            this.presignedUrlExpiryTimeSeconds = presignedUrlExpiryTimeSeconds;
             return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
@@ -1896,6 +1907,7 @@ public class FilesApiGenerated {
             organizationUserFilesToSyncQueryInput.includeRawFile(this.includeRawFile);
             organizationUserFilesToSyncQueryInput.includeParsedTextFile(this.includeParsedTextFile);
             organizationUserFilesToSyncQueryInput.includeAdditionalFiles(this.includeAdditionalFiles);
+            organizationUserFilesToSyncQueryInput.presignedUrlExpiryTimeSeconds(this.presignedUrlExpiryTimeSeconds);
             return organizationUserFilesToSyncQueryInput;
         }
 
@@ -2041,13 +2053,14 @@ public class FilesApiGenerated {
         Boolean includeRawFile;
         Boolean includeParsedTextFile;
         Boolean includeAdditionalFiles;
+        Integer presignedUrlExpiryTimeSeconds;
 
         public QueryUserFilesDeprecatedRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
-         * @param pagination  (optional)
+         * @param pagination Pagination parameters for the query. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder pagination(Pagination pagination) {
@@ -2057,7 +2070,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderBy
-         * @param orderBy  (optional)
+         * @param orderBy The field on OrganizationUserFilesToSYnc to order the results by. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
@@ -2067,7 +2080,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderDir
-         * @param orderDir  (optional)
+         * @param orderDir The direction to order the results by. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderDir(OrderDir orderDir) {
@@ -2077,7 +2090,7 @@ public class FilesApiGenerated {
         
         /**
          * Set filters
-         * @param filters  (optional)
+         * @param filters Filters to apply to the query. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
@@ -2087,7 +2100,7 @@ public class FilesApiGenerated {
         
         /**
          * Set includeRawFile
-         * @param includeRawFile  (optional)
+         * @param includeRawFile If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeRawFile(Boolean includeRawFile) {
@@ -2097,7 +2110,7 @@ public class FilesApiGenerated {
         
         /**
          * Set includeParsedTextFile
-         * @param includeParsedTextFile  (optional)
+         * @param includeParsedTextFile If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
@@ -2107,11 +2120,21 @@ public class FilesApiGenerated {
         
         /**
          * Set includeAdditionalFiles
-         * @param includeAdditionalFiles  (optional)
+         * @param includeAdditionalFiles If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint. (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
             this.includeAdditionalFiles = includeAdditionalFiles;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
+        }
+        
+        /**
+         * Set presignedUrlExpiryTimeSeconds
+         * @param presignedUrlExpiryTimeSeconds The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint. (optional, default to 3600)
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
+         */
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder presignedUrlExpiryTimeSeconds(Integer presignedUrlExpiryTimeSeconds) {
+            this.presignedUrlExpiryTimeSeconds = presignedUrlExpiryTimeSeconds;
             return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
@@ -2142,6 +2165,7 @@ public class FilesApiGenerated {
             organizationUserFilesToSyncQueryInput.includeRawFile(this.includeRawFile);
             organizationUserFilesToSyncQueryInput.includeParsedTextFile(this.includeParsedTextFile);
             organizationUserFilesToSyncQueryInput.includeAdditionalFiles(this.includeAdditionalFiles);
+            organizationUserFilesToSyncQueryInput.presignedUrlExpiryTimeSeconds(this.presignedUrlExpiryTimeSeconds);
             return organizationUserFilesToSyncQueryInput;
         }
 

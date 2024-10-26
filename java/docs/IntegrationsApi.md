@@ -801,6 +801,7 @@ public class Example {
     OauthBasedConnectors service = OauthBasedConnectors.fromValue("BOX");
     Object tags = null;
     String scope = "scope_example";
+    List<String> scopes = Arrays.asList(); // List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
     Integer chunkSize = 1500;
     Integer chunkOverlap = 20;
     Boolean skipEmbeddingGeneration = false;
@@ -834,6 +835,7 @@ public class Example {
               .getOauthUrl(service)
               .tags(tags)
               .scope(scope)
+              .scopes(scopes)
               .chunkSize(chunkSize)
               .chunkOverlap(chunkOverlap)
               .skipEmbeddingGeneration(skipEmbeddingGeneration)
@@ -879,6 +881,7 @@ public class Example {
               .getOauthUrl(service)
               .tags(tags)
               .scope(scope)
+              .scopes(scopes)
               .chunkSize(chunkSize)
               .chunkOverlap(chunkOverlap)
               .skipEmbeddingGeneration(skipEmbeddingGeneration)

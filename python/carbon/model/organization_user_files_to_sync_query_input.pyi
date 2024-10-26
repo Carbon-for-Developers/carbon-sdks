@@ -110,6 +110,7 @@ class OrganizationUserFilesToSyncQueryInput(
                         *args,
                         _configuration=_configuration,
                     )
+            presigned_url_expiry_time_seconds = schemas.IntSchema
             __annotations__ = {
                 "pagination": pagination,
                 "order_by": order_by,
@@ -118,6 +119,7 @@ class OrganizationUserFilesToSyncQueryInput(
                 "include_raw_file": include_raw_file,
                 "include_parsed_text_file": include_parsed_text_file,
                 "include_additional_files": include_additional_files,
+                "presigned_url_expiry_time_seconds": presigned_url_expiry_time_seconds,
             }
     
     @typing.overload
@@ -142,9 +144,12 @@ class OrganizationUserFilesToSyncQueryInput(
     def __getitem__(self, name: typing_extensions.Literal["include_additional_files"]) -> MetaOapg.properties.include_additional_files: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["presigned_url_expiry_time_seconds"]) -> MetaOapg.properties.presigned_url_expiry_time_seconds: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["pagination", "order_by", "order_dir", "filters", "include_raw_file", "include_parsed_text_file", "include_additional_files", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["pagination", "order_by", "order_dir", "filters", "include_raw_file", "include_parsed_text_file", "include_additional_files", "presigned_url_expiry_time_seconds", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -171,9 +176,12 @@ class OrganizationUserFilesToSyncQueryInput(
     def get_item_oapg(self, name: typing_extensions.Literal["include_additional_files"]) -> typing.Union[MetaOapg.properties.include_additional_files, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["presigned_url_expiry_time_seconds"]) -> typing.Union[MetaOapg.properties.presigned_url_expiry_time_seconds, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["pagination", "order_by", "order_dir", "filters", "include_raw_file", "include_parsed_text_file", "include_additional_files", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["pagination", "order_by", "order_dir", "filters", "include_raw_file", "include_parsed_text_file", "include_additional_files", "presigned_url_expiry_time_seconds", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -187,6 +195,7 @@ class OrganizationUserFilesToSyncQueryInput(
         include_raw_file: typing.Union[MetaOapg.properties.include_raw_file, None, bool, schemas.Unset] = schemas.unset,
         include_parsed_text_file: typing.Union[MetaOapg.properties.include_parsed_text_file, None, bool, schemas.Unset] = schemas.unset,
         include_additional_files: typing.Union[MetaOapg.properties.include_additional_files, None, bool, schemas.Unset] = schemas.unset,
+        presigned_url_expiry_time_seconds: typing.Union[MetaOapg.properties.presigned_url_expiry_time_seconds, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'OrganizationUserFilesToSyncQueryInput':
@@ -200,6 +209,7 @@ class OrganizationUserFilesToSyncQueryInput(
             include_raw_file=include_raw_file,
             include_parsed_text_file=include_parsed_text_file,
             include_additional_files=include_additional_files,
+            presigned_url_expiry_time_seconds=presigned_url_expiry_time_seconds,
             _configuration=_configuration,
             **kwargs,
         )
