@@ -11,19 +11,29 @@ require 'time'
 
 module Carbon
   class OrganizationUserFilesToSyncQueryInput
+    # Pagination parameters for the query.
     attr_accessor :pagination
 
+    # The field on OrganizationUserFilesToSYnc to order the results by.
     attr_accessor :order_by
 
+    # The direction to order the results by.
     attr_accessor :order_dir
 
+    # Filters to apply to the query.
     attr_accessor :filters
 
+    # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
     attr_accessor :include_raw_file
 
+    # If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
     attr_accessor :include_parsed_text_file
 
+    # If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
     attr_accessor :include_additional_files
+
+    # The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+    attr_accessor :presigned_url_expiry_time_seconds
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -34,7 +44,8 @@ module Carbon
         :'filters' => :'filters',
         :'include_raw_file' => :'include_raw_file',
         :'include_parsed_text_file' => :'include_parsed_text_file',
-        :'include_additional_files' => :'include_additional_files'
+        :'include_additional_files' => :'include_additional_files',
+        :'presigned_url_expiry_time_seconds' => :'presigned_url_expiry_time_seconds'
       }
     end
 
@@ -52,7 +63,8 @@ module Carbon
         :'filters' => :'OrganizationUserFilesToSyncFilters',
         :'include_raw_file' => :'Boolean',
         :'include_parsed_text_file' => :'Boolean',
-        :'include_additional_files' => :'Boolean'
+        :'include_additional_files' => :'Boolean',
+        :'presigned_url_expiry_time_seconds' => :'Integer'
       }
     end
 
@@ -61,7 +73,7 @@ module Carbon
       Set.new([
         :'include_raw_file',
         :'include_parsed_text_file',
-        :'include_additional_files'
+        :'include_additional_files',
       ])
     end
 
@@ -111,6 +123,12 @@ module Carbon
       if attributes.key?(:'include_additional_files')
         self.include_additional_files = attributes[:'include_additional_files']
       end
+
+      if attributes.key?(:'presigned_url_expiry_time_seconds')
+        self.presigned_url_expiry_time_seconds = attributes[:'presigned_url_expiry_time_seconds']
+      else
+        self.presigned_url_expiry_time_seconds = 3600
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +155,8 @@ module Carbon
           filters == o.filters &&
           include_raw_file == o.include_raw_file &&
           include_parsed_text_file == o.include_parsed_text_file &&
-          include_additional_files == o.include_additional_files
+          include_additional_files == o.include_additional_files &&
+          presigned_url_expiry_time_seconds == o.presigned_url_expiry_time_seconds
     end
 
     # @see the `==` method
@@ -149,7 +168,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pagination, order_by, order_dir, filters, include_raw_file, include_parsed_text_file, include_additional_files].hash
+      [pagination, order_by, order_dir, filters, include_raw_file, include_parsed_text_file, include_additional_files, presigned_url_expiry_time_seconds].hash
     end
 
     # Builds the object from hash

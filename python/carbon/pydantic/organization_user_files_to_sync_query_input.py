@@ -21,19 +21,29 @@ from carbon.pydantic.organization_user_files_to_sync_order_by_types import Organ
 from carbon.pydantic.pagination import Pagination
 
 class OrganizationUserFilesToSyncQueryInput(BaseModel):
+    # Pagination parameters for the query.
     pagination: typing.Optional[Pagination] = Field(None, alias='pagination')
 
+    # The field on OrganizationUserFilesToSYnc to order the results by.
     order_by: typing.Optional[OrganizationUserFilesToSyncOrderByTypes] = Field(None, alias='order_by')
 
+    # The direction to order the results by.
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
+    # Filters to apply to the query.
     filters: typing.Optional[OrganizationUserFilesToSyncFilters] = Field(None, alias='filters')
 
+    # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
     include_raw_file: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_raw_file')
 
+    # If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
     include_parsed_text_file: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_parsed_text_file')
 
+    # If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
     include_additional_files: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_additional_files')
+
+    # The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+    presigned_url_expiry_time_seconds: typing.Optional[int] = Field(None, alias='presigned_url_expiry_time_seconds')
 
     model_config = ConfigDict(
         protected_namespaces=(),

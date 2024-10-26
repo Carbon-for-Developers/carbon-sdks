@@ -11001,6 +11001,7 @@ components:
         service: null
         sync_files_on_connection: true
         set_page_as_boundary: false
+        scopes: []
         chunk_overlap: 20
         salesforce_domain: salesforce_domain
         skip_embedding_generation: false
@@ -11014,6 +11015,19 @@ components:
           nullable: true
           title: Scope
           type: string
+        scopes:
+          default: []
+          description: "List of scopes to request from the OAuth provider. Please\
+            \ that the scopes will be used as it is, not \n        combined with the\
+            \ default props that Carbon uses. One scope should be one array element."
+          example: []
+          items:
+            type: string
+          nullable: true
+          title: Scopes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-scopes
         service:
           $ref: '#/components/schemas/OauthBasedConnectors'
         chunk_size:
@@ -12396,6 +12410,7 @@ components:
           limit: 10
           starting_id: 0
         include_parsed_text_file: true
+        presigned_url_expiry_time_seconds: 3600
         order_by: null
         filters:
           organization_user_data_source_id:
@@ -12454,30 +12469,50 @@ components:
         filters:
           $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
         include_raw_file:
+          description: "If true, the query will return presigned URLs for the raw\
+            \ file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Raw File
           type: boolean
         include_parsed_text_file:
+          description: "If true, the query will return presigned URLs for the parsed\
+            \ text file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Parsed Text File
           type: boolean
         include_additional_files:
+          description: "If true, the query will return presigned URLs for additional\
+            \ files. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Additional Files
           type: boolean
+        presigned_url_expiry_time_seconds:
+          default: 3600
+          description: The expiry time for the presigned URLs. Only relevant for the
+            /user_files_v2 endpoint.
+          example: 3600
+          title: Presigned Url Expiry Time Seconds
+          type: integer
+          x-konfig-original-example: 3600
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncQueryInput-properties-presigned_url_expiry_time_seconds
       title: OrganizationUserFilesToSyncQueryInput
       type: object
       x-konfig-properties:
         pagination:
+          description: Pagination parameters for the query.
           default:
             limit: 10
             offset: 0
             starting_id: 0
         order_by:
+          description: The field on OrganizationUserFilesToSYnc to order the results
+            by.
           default: updated_at
         order_dir:
+          description: The direction to order the results by.
           default: asc
         filters:
+          description: Filters to apply to the query.
           default:
             include_all_children: false
             non_synced_only: false
@@ -17631,6 +17666,11 @@ components:
       example: false
       type: boolean
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OAuthURLRequest-properties-scopes:
+      items:
+        type: string
+      type: array
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-OAuthURLRequest-properties-chunk_size:
       example: 1500
       type: number
@@ -17724,6 +17764,10 @@ components:
     konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncFilters-properties-non_synced_only:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncQueryInput-properties-presigned_url_expiry_time_seconds:
+      example: 3600
+      type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OutlookSyncInput-properties-tags:
       example: {}
@@ -18424,6 +18468,19 @@ components:
           nullable: true
           title: Scope
           type: string
+        scopes:
+          default: []
+          description: "List of scopes to request from the OAuth provider. Please\
+            \ that the scopes will be used as it is, not \n        combined with the\
+            \ default props that Carbon uses. One scope should be one array element."
+          example: []
+          items:
+            type: string
+          nullable: true
+          title: Scopes
+          type: array
+          x-konfig-original-example: []
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OAuthURLRequest-properties-scopes
         service:
           $ref: '#/components/schemas/OauthBasedConnectors'
         chunk_size:
@@ -20799,17 +20856,32 @@ components:
         filters:
           $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
         include_raw_file:
+          description: "If true, the query will return presigned URLs for the raw\
+            \ file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Raw File
           type: boolean
         include_parsed_text_file:
+          description: "If true, the query will return presigned URLs for the parsed\
+            \ text file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Parsed Text File
           type: boolean
         include_additional_files:
+          description: "If true, the query will return presigned URLs for additional\
+            \ files. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Additional Files
           type: boolean
+        presigned_url_expiry_time_seconds:
+          default: 3600
+          description: The expiry time for the presigned URLs. Only relevant for the
+            /user_files_v2 endpoint.
+          example: 3600
+          title: Presigned Url Expiry Time Seconds
+          type: integer
+          x-konfig-original-example: 3600
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncQueryInput-properties-presigned_url_expiry_time_seconds
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
@@ -20932,17 +21004,32 @@ components:
         filters:
           $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
         include_raw_file:
+          description: "If true, the query will return presigned URLs for the raw\
+            \ file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Raw File
           type: boolean
         include_parsed_text_file:
+          description: "If true, the query will return presigned URLs for the parsed\
+            \ text file. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Parsed Text File
           type: boolean
         include_additional_files:
+          description: "If true, the query will return presigned URLs for additional\
+            \ files. Only relevant for the /user_files_v2 endpoint."
           nullable: true
           title: Include Additional Files
           type: boolean
+        presigned_url_expiry_time_seconds:
+          default: 3600
+          description: The expiry time for the presigned URLs. Only relevant for the
+            /user_files_v2 endpoint.
+          example: 3600
+          title: Presigned Url Expiry Time Seconds
+          type: integer
+          x-konfig-original-example: 3600
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncQueryInput-properties-presigned_url_expiry_time_seconds
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []

@@ -15,6 +15,9 @@ module Carbon
 
     attr_accessor :scope
 
+    # List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
+    attr_accessor :scopes
+
     attr_accessor :service
 
     attr_accessor :chunk_size
@@ -88,6 +91,7 @@ module Carbon
       {
         :'tags' => :'tags',
         :'scope' => :'scope',
+        :'scopes' => :'scopes',
         :'service' => :'service',
         :'chunk_size' => :'chunk_size',
         :'chunk_overlap' => :'chunk_overlap',
@@ -129,6 +133,7 @@ module Carbon
       {
         :'tags' => :'Object',
         :'scope' => :'String',
+        :'scopes' => :'Array<String>',
         :'service' => :'OauthBasedConnectors',
         :'chunk_size' => :'Integer',
         :'chunk_overlap' => :'Integer',
@@ -165,6 +170,7 @@ module Carbon
       Set.new([
         :'tags',
         :'scope',
+        :'scopes',
         :'chunk_size',
         :'chunk_overlap',
         :'skip_embedding_generation',
@@ -211,6 +217,12 @@ module Carbon
 
       if attributes.key?(:'scope')
         self.scope = attributes[:'scope']
+      end
+
+      if attributes.key?(:'scopes')
+        if (value = attributes[:'scopes']).is_a?(Array)
+          self.scopes = value
+        end
       end
 
       if attributes.key?(:'service')
@@ -379,6 +391,7 @@ module Carbon
       self.class == o.class &&
           tags == o.tags &&
           scope == o.scope &&
+          scopes == o.scopes &&
           service == o.service &&
           chunk_size == o.chunk_size &&
           chunk_overlap == o.chunk_overlap &&
@@ -418,7 +431,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, scope, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, gong_account_email, servicenow_credentials, data_source_tags].hash
+      [tags, scope, scopes, service, chunk_size, chunk_overlap, skip_embedding_generation, embedding_model, zendesk_subdomain, microsoft_tenant, sharepoint_site_name, confluence_subdomain, generate_sparse_vectors, prepend_filename_to_chunks, max_items_per_chunk, salesforce_domain, sync_files_on_connection, set_page_as_boundary, data_source_id, connecting_new_account, request_id, use_ocr, parse_pdf_tables_with_ocr, enable_file_picker, sync_source_items, incremental_sync, file_sync_config, automatically_open_file_picker, gong_account_email, servicenow_credentials, data_source_tags].hash
     end
 
     # Builds the object from hash

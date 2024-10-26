@@ -220,6 +220,7 @@ from carbon.pydantic.multi_modal_embedding_generators import MultiModalEmbedding
 from carbon.pydantic.notion_authentication import NotionAuthentication
 from carbon.pydantic.o_auth_authentication import OAuthAuthentication
 from carbon.pydantic.o_auth_url_request import OAuthURLRequest
+from carbon.pydantic.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.one_drive_authentication import OneDriveAuthentication
 from carbon.pydantic.one_drive_sharepoint_credentials import OneDriveSharepointCredentials

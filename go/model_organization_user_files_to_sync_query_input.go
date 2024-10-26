@@ -16,13 +16,22 @@ import (
 
 // OrganizationUserFilesToSyncQueryInput struct for OrganizationUserFilesToSyncQueryInput
 type OrganizationUserFilesToSyncQueryInput struct {
+	// Pagination parameters for the query.
 	Pagination *Pagination `json:"pagination,omitempty"`
+	// The field on OrganizationUserFilesToSYnc to order the results by.
 	OrderBy *OrganizationUserFilesToSyncOrderByTypes `json:"order_by,omitempty"`
+	// The direction to order the results by.
 	OrderDir *OrderDir `json:"order_dir,omitempty"`
+	// Filters to apply to the query.
 	Filters *OrganizationUserFilesToSyncFilters `json:"filters,omitempty"`
+	// If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
 	IncludeRawFile NullableBool `json:"include_raw_file,omitempty"`
+	// If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
 	IncludeParsedTextFile NullableBool `json:"include_parsed_text_file,omitempty"`
+	// If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
 	IncludeAdditionalFiles NullableBool `json:"include_additional_files,omitempty"`
+	// The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+	PresignedUrlExpiryTimeSeconds *int32 `json:"presigned_url_expiry_time_seconds,omitempty"`
 }
 
 // NewOrganizationUserFilesToSyncQueryInput instantiates a new OrganizationUserFilesToSyncQueryInput object
@@ -31,6 +40,8 @@ type OrganizationUserFilesToSyncQueryInput struct {
 // will change when the set of required properties is changed
 func NewOrganizationUserFilesToSyncQueryInput() *OrganizationUserFilesToSyncQueryInput {
 	this := OrganizationUserFilesToSyncQueryInput{}
+	var presignedUrlExpiryTimeSeconds int32 = 3600
+	this.PresignedUrlExpiryTimeSeconds = &presignedUrlExpiryTimeSeconds
 	return &this
 }
 
@@ -39,6 +50,8 @@ func NewOrganizationUserFilesToSyncQueryInput() *OrganizationUserFilesToSyncQuer
 // but it doesn't guarantee that properties required by API are set
 func NewOrganizationUserFilesToSyncQueryInputWithDefaults() *OrganizationUserFilesToSyncQueryInput {
 	this := OrganizationUserFilesToSyncQueryInput{}
+	var presignedUrlExpiryTimeSeconds int32 = 3600
+	this.PresignedUrlExpiryTimeSeconds = &presignedUrlExpiryTimeSeconds
 	return &this
 }
 
@@ -296,6 +309,38 @@ func (o *OrganizationUserFilesToSyncQueryInput) UnsetIncludeAdditionalFiles() {
 	o.IncludeAdditionalFiles.Unset()
 }
 
+// GetPresignedUrlExpiryTimeSeconds returns the PresignedUrlExpiryTimeSeconds field value if set, zero value otherwise.
+func (o *OrganizationUserFilesToSyncQueryInput) GetPresignedUrlExpiryTimeSeconds() int32 {
+	if o == nil || isNil(o.PresignedUrlExpiryTimeSeconds) {
+		var ret int32
+		return ret
+	}
+	return *o.PresignedUrlExpiryTimeSeconds
+}
+
+// GetPresignedUrlExpiryTimeSecondsOk returns a tuple with the PresignedUrlExpiryTimeSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationUserFilesToSyncQueryInput) GetPresignedUrlExpiryTimeSecondsOk() (*int32, bool) {
+	if o == nil || isNil(o.PresignedUrlExpiryTimeSeconds) {
+    return nil, false
+	}
+	return o.PresignedUrlExpiryTimeSeconds, true
+}
+
+// HasPresignedUrlExpiryTimeSeconds returns a boolean if a field has been set.
+func (o *OrganizationUserFilesToSyncQueryInput) HasPresignedUrlExpiryTimeSeconds() bool {
+	if o != nil && !isNil(o.PresignedUrlExpiryTimeSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPresignedUrlExpiryTimeSeconds gets a reference to the given int32 and assigns it to the PresignedUrlExpiryTimeSeconds field.
+func (o *OrganizationUserFilesToSyncQueryInput) SetPresignedUrlExpiryTimeSeconds(v int32) {
+	o.PresignedUrlExpiryTimeSeconds = &v
+}
+
 func (o OrganizationUserFilesToSyncQueryInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Pagination) {
@@ -318,6 +363,9 @@ func (o OrganizationUserFilesToSyncQueryInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.IncludeAdditionalFiles.IsSet() {
 		toSerialize["include_additional_files"] = o.IncludeAdditionalFiles.Get()
+	}
+	if !isNil(o.PresignedUrlExpiryTimeSeconds) {
+		toSerialize["presigned_url_expiry_time_seconds"] = o.PresignedUrlExpiryTimeSeconds
 	}
 	return json.Marshal(toSerialize)
 }

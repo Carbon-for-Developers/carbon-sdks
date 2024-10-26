@@ -812,6 +812,7 @@ module Carbon
     # @param service [OauthBasedConnectors] 
     # @param tags [Object] 
     # @param scope [String] 
+    # @param scopes [Array<String>] List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not combined with the default props that Carbon uses. One scope should be one array element.
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
     # @param skip_embedding_generation [Boolean] 
@@ -841,10 +842,11 @@ module Carbon
     # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
+    def get_oauth_url(service:, tags: SENTINEL, scope: SENTINEL, scopes: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
+      _body[:scopes] = scopes if scopes != SENTINEL
       _body[:service] = service if service != SENTINEL
       _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
       _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
@@ -888,6 +890,7 @@ module Carbon
     # @param service [OauthBasedConnectors] 
     # @param tags [Object] 
     # @param scope [String] 
+    # @param scopes [Array<String>] List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not combined with the default props that Carbon uses. One scope should be one array element.
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
     # @param skip_embedding_generation [Boolean] 
@@ -917,10 +920,11 @@ module Carbon
     # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
     # @param body [OAuthURLRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
+    def get_oauth_url_with_http_info(service:, tags: SENTINEL, scope: SENTINEL, scopes: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: 'OPENAI', zendesk_subdomain: SENTINEL, microsoft_tenant: SENTINEL, sharepoint_site_name: SENTINEL, confluence_subdomain: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, max_items_per_chunk: SENTINEL, salesforce_domain: SENTINEL, sync_files_on_connection: true, set_page_as_boundary: false, data_source_id: SENTINEL, connecting_new_account: false, request_id: SENTINEL, use_ocr: false, parse_pdf_tables_with_ocr: false, enable_file_picker: true, sync_source_items: true, incremental_sync: false, file_sync_config: SENTINEL, automatically_open_file_picker: SENTINEL, gong_account_email: SENTINEL, servicenow_credentials: SENTINEL, data_source_tags: SENTINEL, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:scope] = scope if scope != SENTINEL
+      _body[:scopes] = scopes if scopes != SENTINEL
       _body[:service] = service if service != SENTINEL
       _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
       _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL

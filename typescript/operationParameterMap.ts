@@ -472,6 +472,9 @@ export const operationParameterMap: Record<string, Entry> = {
             {
                 name: 'include_additional_files'
             },
+            {
+                name: 'presigned_url_expiry_time_seconds'
+            },
         ]
     },
     '/user_files-POST': {
@@ -496,6 +499,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'include_additional_files'
+            },
+            {
+                name: 'presigned_url_expiry_time_seconds'
             },
         ]
     },
@@ -1042,6 +1048,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'scope'
+            },
+            {
+                name: 'scopes'
             },
             {
                 name: 'chunk_size'

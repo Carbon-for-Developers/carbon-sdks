@@ -22,46 +22,52 @@ import { Pagination } from './pagination';
  */
 export interface OrganizationUserFilesToSyncQueryInput {
     /**
-     * 
+     * Pagination parameters for the query.
      * @type {Pagination}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'pagination'?: Pagination;
     /**
-     * 
+     * The field on OrganizationUserFilesToSYnc to order the results by.
      * @type {OrganizationUserFilesToSyncOrderByTypes}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'order_by'?: OrganizationUserFilesToSyncOrderByTypes;
     /**
-     * 
+     * The direction to order the results by.
      * @type {OrderDir}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'order_dir'?: OrderDir;
     /**
-     * 
+     * Filters to apply to the query.
      * @type {OrganizationUserFilesToSyncFilters}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'filters'?: OrganizationUserFilesToSyncFilters;
     /**
-     * 
+     * If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
      * @type {boolean}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'include_raw_file'?: boolean | null;
     /**
-     * 
+     * If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
      * @type {boolean}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'include_parsed_text_file'?: boolean | null;
     /**
-     * 
+     * If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
      * @type {boolean}
      * @memberof OrganizationUserFilesToSyncQueryInput
      */
     'include_additional_files'?: boolean | null;
+    /**
+     * The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+     * @type {number}
+     * @memberof OrganizationUserFilesToSyncQueryInput
+     */
+    'presigned_url_expiry_time_seconds'?: number;
 }
 

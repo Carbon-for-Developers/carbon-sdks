@@ -262,6 +262,7 @@ public class IntegrationsApiTest {
         OauthBasedConnectors service = null;
         Object tags = null;
         String scope = null;
+        List<String> scopes = null;
         Integer chunkSize = null;
         Integer chunkOverlap = null;
         Boolean skipEmbeddingGeneration = null;
@@ -292,6 +293,7 @@ public class IntegrationsApiTest {
         OuthURLResponse response = api.getOauthUrl(service)
                 .tags(tags)
                 .scope(scope)
+                .scopes(scopes)
                 .chunkSize(chunkSize)
                 .chunkOverlap(chunkOverlap)
                 .skipEmbeddingGeneration(skipEmbeddingGeneration)

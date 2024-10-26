@@ -18,6 +18,8 @@ import (
 type OAuthURLRequest struct {
 	Tags interface{} `json:"tags,omitempty"`
 	Scope NullableString `json:"scope,omitempty"`
+	// List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
+	Scopes []string `json:"scopes,omitempty"`
 	Service OauthBasedConnectors `json:"service"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
@@ -207,6 +209,39 @@ func (o *OAuthURLRequest) SetScopeNil() {
 // UnsetScope ensures that no value is present for Scope, not even an explicit nil
 func (o *OAuthURLRequest) UnsetScope() {
 	o.Scope.Unset()
+}
+
+// GetScopes returns the Scopes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthURLRequest) GetScopes() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Scopes
+}
+
+// GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthURLRequest) GetScopesOk() ([]string, bool) {
+	if o == nil || isNil(o.Scopes) {
+    return nil, false
+	}
+	return o.Scopes, true
+}
+
+// HasScopes returns a boolean if a field has been set.
+func (o *OAuthURLRequest) HasScopes() bool {
+	if o != nil && isNil(o.Scopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetScopes gets a reference to the given []string and assigns it to the Scopes field.
+func (o *OAuthURLRequest) SetScopes(v []string) {
+	o.Scopes = v
 }
 
 // GetService returns the Service field value
@@ -1324,6 +1359,9 @@ func (o OAuthURLRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Scope.IsSet() {
 		toSerialize["scope"] = o.Scope.Get()
+	}
+	if o.Scopes != nil {
+		toSerialize["scopes"] = o.Scopes
 	}
 	if true {
 		toSerialize["service"] = o.Service

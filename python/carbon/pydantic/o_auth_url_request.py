@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.pydantic.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.pydantic.oauth_based_connectors import OauthBasedConnectors
 from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
@@ -26,6 +27,8 @@ class OAuthURLRequest(BaseModel):
     tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='tags')
 
     scope: typing.Optional[typing.Optional[str]] = Field(None, alias='scope')
+
+    scopes: typing.Optional[OAuthURLRequestScopes] = Field(None, alias='scopes')
 
     chunk_size: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_size')
 

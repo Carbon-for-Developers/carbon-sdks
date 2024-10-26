@@ -61,4 +61,10 @@ describe Carbon::OrganizationUserFilesToSyncQueryInput do
     end
   end
 
+  describe 'test attribute "presigned_url_expiry_time_seconds"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

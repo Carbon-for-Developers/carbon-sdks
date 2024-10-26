@@ -39,16 +39,19 @@ from carbon.model.oauth_based_connectors import OauthBasedConnectors as OauthBas
 from carbon.model.o_auth_url_request import OAuthURLRequest as OAuthURLRequestSchema
 from carbon.model.outh_url_response import OuthURLResponse as OuthURLResponseSchema
 from carbon.model.file_sync_config_nullable import FileSyncConfigNullable as FileSyncConfigNullableSchema
+from carbon.model.o_auth_url_request_scopes import OAuthURLRequestScopes as OAuthURLRequestScopesSchema
 
 from carbon.type.outh_url_response import OuthURLResponse
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.o_auth_url_request import OAuthURLRequest
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.type.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
 from carbon.type.oauth_based_connectors import OauthBasedConnectors
 
 from ...api_client import Dictionary
+from carbon.pydantic.o_auth_url_request_scopes import OAuthURLRequestScopes as OAuthURLRequestScopesPydantic
 from carbon.pydantic.embedding_generators_nullable import EmbeddingGeneratorsNullable as EmbeddingGeneratorsNullablePydantic
 from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentialsNullable as ServiceNowCredentialsNullablePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
@@ -133,6 +136,7 @@ class BaseApi(api_client.Api):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -167,6 +171,8 @@ class BaseApi(api_client.Api):
             _body["tags"] = tags
         if scope is not None:
             _body["scope"] = scope
+        if scopes is not None:
+            _body["scopes"] = scopes
         if service is not None:
             _body["service"] = service
         if chunk_size is not None:
@@ -433,6 +439,7 @@ class GetOauthUrlRaw(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -470,6 +477,7 @@ class GetOauthUrlRaw(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -508,6 +516,7 @@ class GetOauthUrlRaw(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -544,6 +553,7 @@ class GetOauthUrlRaw(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -583,6 +593,7 @@ class GetOauthUrl(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -617,6 +628,7 @@ class GetOauthUrl(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -656,6 +668,7 @@ class GetOauthUrl(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -689,6 +702,7 @@ class GetOauthUrl(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -730,6 +744,7 @@ class ApiForpost(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -767,6 +782,7 @@ class ApiForpost(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,
@@ -805,6 +821,7 @@ class ApiForpost(BaseApi):
         service: OauthBasedConnectors,
         tags: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = None,
         scope: typing.Optional[typing.Optional[str]] = None,
+        scopes: typing.Optional[OAuthURLRequestScopes] = None,
         chunk_size: typing.Optional[typing.Optional[int]] = None,
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[typing.Optional[bool]] = None,
@@ -841,6 +858,7 @@ class ApiForpost(BaseApi):
             service=service,
             tags=tags,
             scope=scope,
+            scopes=scopes,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             skip_embedding_generation=skip_embedding_generation,

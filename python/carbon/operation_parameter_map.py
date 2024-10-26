@@ -466,6 +466,9 @@ operation_parameter_map = {
             {
                 'name': 'include_additional_files'
             },
+            {
+                'name': 'presigned_url_expiry_time_seconds'
+            },
         ]
     },
     '/user_files-POST': {
@@ -490,6 +493,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'include_additional_files'
+            },
+            {
+                'name': 'presigned_url_expiry_time_seconds'
             },
         ]
     },
@@ -1036,6 +1042,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'scope'
+            },
+            {
+                'name': 'scopes'
             },
             {
                 'name': 'chunk_size'

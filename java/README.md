@@ -1511,6 +1511,7 @@ UserFilesV2 result = client
         .includeRawFile(includeRawFile)
         .includeParsedTextFile(includeParsedTextFile)
         .includeAdditionalFiles(includeAdditionalFiles)
+        .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
         .execute();
 ```
 
@@ -1518,17 +1519,35 @@ UserFilesV2 result = client
 
 ##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
+Pagination parameters for the query.
+
 ##### order_by:<a id="order_by"></a>
+
+The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir:<a id="order_dir"></a>
 
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
+
+Filters to apply to the query.
 
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `Integer`<a id="presigned_url_expiry_time_seconds-integer"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1561,6 +1580,7 @@ List<UserFile> result = client
         .includeRawFile(includeRawFile)
         .includeParsedTextFile(includeParsedTextFile)
         .includeAdditionalFiles(includeAdditionalFiles)
+        .presignedUrlExpiryTimeSeconds(presignedUrlExpiryTimeSeconds)
         .execute();
 ```
 
@@ -1568,17 +1588,35 @@ List<UserFile> result = client
 
 ##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
+Pagination parameters for the query.
+
 ##### order_by:<a id="order_by"></a>
+
+The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir:<a id="order_dir"></a>
 
+The direction to order the results by.
+
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
+
+Filters to apply to the query.
 
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_parsed_text_file: `Boolean`<a id="include_parsed_text_file-boolean"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Boolean`<a id="include_additional_files-boolean"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `Integer`<a id="presigned_url_expiry_time_seconds-integer"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2646,6 +2684,7 @@ OuthURLResponse result = client
         .getOauthUrl(service)
         .tags(tags)
         .scope(scope)
+        .scopes(scopes)
         .chunkSize(chunkSize)
         .chunkOverlap(chunkOverlap)
         .skipEmbeddingGeneration(skipEmbeddingGeneration)
@@ -2683,6 +2722,10 @@ OuthURLResponse result = client
 ##### tags: `Object`<a id="tags-object"></a>
 
 ##### scope: `String`<a id="scope-string"></a>
+
+##### scopes: List<`String`><a id="scopes-list"></a>
+
+List of scopes to request from the OAuth provider. Please that the scopes will be used as it is, not          combined with the default props that Carbon uses. One scope should be one array element.
 
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 

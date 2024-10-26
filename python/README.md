@@ -1543,6 +1543,7 @@ query_user_files_response = carbon.files.query_user_files(
     include_raw_file=True,
     include_parsed_text_file=True,
     include_additional_files=True,
+    presigned_url_expiry_time_seconds=3600,
 )
 ```
 
@@ -1551,18 +1552,36 @@ query_user_files_response = carbon.files.query_user_files(
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 
 
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./carbon/type/organization_user_files_to_sync_order_by_types.py)<a id="order_by-organizationuserfilestosyncorderbytypescarbontypeorganization_user_files_to_sync_order_by_typespy"></a>
 
+The field on OrganizationUserFilesToSYnc to order the results by.
+
 ##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
+
+The direction to order the results by.
 
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
 
 
+Filters to apply to the query.
+
 ##### include_raw_file: `Optional[bool]`<a id="include_raw_file-optionalbool"></a>
+
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
 
 ##### include_parsed_text_file: `Optional[bool]`<a id="include_parsed_text_file-optionalbool"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Optional[bool]`<a id="include_additional_files-optionalbool"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `int`<a id="presigned_url_expiry_time_seconds-int"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -1602,6 +1621,7 @@ query_user_files_deprecated_response = carbon.files.query_user_files_deprecated(
     include_raw_file=True,
     include_parsed_text_file=True,
     include_additional_files=True,
+    presigned_url_expiry_time_seconds=3600,
 )
 ```
 
@@ -1610,18 +1630,36 @@ query_user_files_deprecated_response = carbon.files.query_user_files_deprecated(
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 
 
+Pagination parameters for the query.
+
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./carbon/type/organization_user_files_to_sync_order_by_types.py)<a id="order_by-organizationuserfilestosyncorderbytypescarbontypeorganization_user_files_to_sync_order_by_typespy"></a>
 
+The field on OrganizationUserFilesToSYnc to order the results by.
+
 ##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
+
+The direction to order the results by.
 
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
 
 
+Filters to apply to the query.
+
 ##### include_raw_file: `Optional[bool]`<a id="include_raw_file-optionalbool"></a>
+
+If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
 
 ##### include_parsed_text_file: `Optional[bool]`<a id="include_parsed_text_file-optionalbool"></a>
 
+If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
+
 ##### include_additional_files: `Optional[bool]`<a id="include_additional_files-optionalbool"></a>
+
+If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
+
+##### presigned_url_expiry_time_seconds: `int`<a id="presigned_url_expiry_time_seconds-int"></a>
+
+The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -2776,6 +2814,7 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
     service="BOX",
     tags=None,
     scope="string_example",
+    scopes=[],
     chunk_size=1500,
     chunk_overlap=20,
     skip_embedding_generation=False,
@@ -2828,6 +2867,8 @@ get_oauth_url_response = carbon.integrations.get_oauth_url(
 ##### tags: [`Union[bool, date, datetime, dict, float, int, list, str, None]`](./carbon/type/typing_union_bool_date_datetime_dict_float_int_list_str_none.py)<a id="tags-unionbool-date-datetime-dict-float-int-list-str-nonecarbontypetyping_union_bool_date_datetime_dict_float_int_list_str_nonepy"></a>
 
 ##### scope: `Optional[str]`<a id="scope-optionalstr"></a>
+
+##### scopes: [`OAuthURLRequestScopes`](./carbon/type/o_auth_url_request_scopes.py)<a id="scopes-oauthurlrequestscopescarbontypeo_auth_url_request_scopespy"></a>
 
 ##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
 

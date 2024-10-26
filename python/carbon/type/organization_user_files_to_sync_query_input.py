@@ -23,19 +23,29 @@ class RequiredOrganizationUserFilesToSyncQueryInput(TypedDict):
     pass
 
 class OptionalOrganizationUserFilesToSyncQueryInput(TypedDict, total=False):
+    # Pagination parameters for the query.
     pagination: Pagination
 
+    # The field on OrganizationUserFilesToSYnc to order the results by.
     order_by: OrganizationUserFilesToSyncOrderByTypes
 
+    # The direction to order the results by.
     order_dir: OrderDir
 
+    # Filters to apply to the query.
     filters: OrganizationUserFilesToSyncFilters
 
+    # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
     include_raw_file: typing.Optional[bool]
 
+    # If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
     include_parsed_text_file: typing.Optional[bool]
 
+    # If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
     include_additional_files: typing.Optional[bool]
+
+    # The expiry time for the presigned URLs. Only relevant for the /user_files_v2 endpoint.
+    presigned_url_expiry_time_seconds: int
 
 class OrganizationUserFilesToSyncQueryInput(RequiredOrganizationUserFilesToSyncQueryInput, OptionalOrganizationUserFilesToSyncQueryInput):
     pass

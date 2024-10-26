@@ -24,6 +24,8 @@ import com.konfigthis.carbonai.client.model.ServiceNowCredentialsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -57,6 +59,14 @@ public class OAuthURLRequestTest {
     @Test
     public void scopeTest() {
         // TODO: test scope
+    }
+
+    /**
+     * Test the property 'scopes'
+     */
+    @Test
+    public void scopesTest() {
+        // TODO: test scopes
     }
 
     /**

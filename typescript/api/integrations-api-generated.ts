@@ -1729,6 +1729,7 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             const oAuthURLRequest: OAuthURLRequest = {
                 tags: requestParameters.tags,
                 scope: requestParameters.scope,
+                scopes: requestParameters.scopes,
                 service: requestParameters.service,
                 chunk_size: requestParameters.chunk_size,
                 chunk_overlap: requestParameters.chunk_overlap,

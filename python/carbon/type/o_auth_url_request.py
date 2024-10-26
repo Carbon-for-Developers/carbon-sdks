@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullable
 from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
+from carbon.type.o_auth_url_request_scopes import OAuthURLRequestScopes
 from carbon.type.oauth_based_connectors import OauthBasedConnectors
 from carbon.type.service_now_credentials_nullable import ServiceNowCredentialsNullable
 
@@ -27,6 +28,8 @@ class OptionalOAuthURLRequest(TypedDict, total=False):
     tags: typing.Union[bool, date, datetime, dict, float, int, list, str, None]
 
     scope: typing.Optional[str]
+
+    scopes: typing.Optional[OAuthURLRequestScopes]
 
     chunk_size: typing.Optional[int]
 
