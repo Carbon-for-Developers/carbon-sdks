@@ -13331,6 +13331,8 @@ components:
     RerankParams:
       properties:
         model:
+          description: "The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3',\
+            \ 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER']."
           title: Model
           type: string
       required:
@@ -16435,6 +16437,8 @@ components:
       nullable: true
       properties:
         model:
+          description: "The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3',\
+            \ 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER']."
           title: Model
           type: string
       required:

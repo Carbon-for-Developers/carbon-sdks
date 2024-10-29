@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class RerankParams(BaseModel):
+    # The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].
     model: str = Field(alias='model')
 
     model_config = ConfigDict(

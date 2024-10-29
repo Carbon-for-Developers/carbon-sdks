@@ -11664,6 +11664,7 @@
         "properties": {
           "model": {
             "title": "Model",
+            "description": "The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].",
             "type": "string"
           }
         },
@@ -14574,6 +14575,7 @@
         "properties": {
           "model": {
             "title": "Model",
+            "description": "The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].",
             "type": "string"
           }
         },

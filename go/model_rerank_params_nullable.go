@@ -16,6 +16,7 @@ import (
 
 // RerankParamsNullable Parameters for reranking the chunks using a specified model. This field accepts an object with details of the reranking model to be used; either 'Cohere' or 'Jina'. If provided, the specified reranking model will reorder the retrieved chunks based on their relevance to the query.
 type RerankParamsNullable struct {
+	// The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].
 	Model string `json:"model"`
 }
 
