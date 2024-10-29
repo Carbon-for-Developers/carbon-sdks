@@ -67,11 +67,11 @@ public class RerankParamsNullable {
   }
 
    /**
-   * Get model
+   * The name of the model to use for reranking. Options: [&#39;COHERE_RERANK_MULTILINGUAL_V3&#39;, &#39;JINA_RERANKER_MULTILINGUAL_V2&#39;, &#39;PONGO_RERANKER&#39;].
    * @return model
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].")
 
   public String getModel() {
     return model;

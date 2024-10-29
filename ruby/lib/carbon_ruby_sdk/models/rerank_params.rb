@@ -11,6 +11,7 @@ require 'time'
 
 module Carbon
   class RerankParams
+    # The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].
     attr_accessor :model
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -18,7 +18,7 @@ import type * as buffer from "buffer"
  */
 export interface RerankParams {
     /**
-     * 
+     * The name of the model to use for reranking. Options: [\'COHERE_RERANK_MULTILINGUAL_V3\', \'JINA_RERANKER_MULTILINGUAL_V2\', \'PONGO_RERANKER\'].
      * @type {string}
      * @memberof RerankParams
      */

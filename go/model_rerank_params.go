@@ -16,6 +16,7 @@ import (
 
 // RerankParams struct for RerankParams
 type RerankParams struct {
+	// The name of the model to use for reranking. Options: ['COHERE_RERANK_MULTILINGUAL_V3', 'JINA_RERANKER_MULTILINGUAL_V2', 'PONGO_RERANKER'].
 	Model string `json:"model"`
 }
 
