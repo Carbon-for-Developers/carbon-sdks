@@ -1,6 +1,6 @@
 {
   "name": "carbon-typescript-sdk",
-  "version": "0.2.45",
+  "version": "0.2.46",
   "description": "Client for Carbon",
   "author": "Konfig",
   "engines": {
