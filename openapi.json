@@ -1517,6 +1517,79 @@
         ]
       }
     },
+    "/integrations/sharepoint/sites/list": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "List Sharepoint Sites",
+        "description": "List all Sharepoint sites in the connected tenant. The site names from the response can be\nused as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should\nbe left null when connecting to the site.\n\nThis endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default\nSharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default\nSharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].\n \ndata_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts\ncursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request",
+        "operationId": "list_sharepoint_sites_integrations_sharepoint_sites_list_get",
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Data Source Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -5796,6 +5869,11 @@
         ],
         "title": "AzureBlobStorageAuthentication"
       },
+      "AzureBlobStorageTypes": {
+        "type": "string",
+        "const": "Container",
+        "title": "AzureBlobStorageTypes"
+      },
       "BaseIncludes": {
         "type": "string",
         "enum": [
@@ -6243,6 +6321,14 @@
           "subdomain"
         ],
         "title": "ConfluenceAuthentication"
+      },
+      "ConfluenceFileTypes": {
+        "type": "string",
+        "enum": [
+          "SPACE",
+          "PAGE"
+        ],
+        "title": "ConfluenceFileTypes"
       },
       "ConnectDataSourceInput": {
         "properties": {
@@ -8861,6 +8947,16 @@
         ],
         "title": "GitbookConnectRequest"
       },
+      "GitbookFileTypes": {
+        "type": "string",
+        "enum": [
+          "SPACE",
+          "SHEET",
+          "GROUP",
+          "LINK"
+        ],
+        "title": "GitbookFileTypes"
+      },
       "GitbookSyncRequest": {
         "properties": {
           "space_ids": {
@@ -9066,6 +9162,15 @@
         ],
         "title": "GithubFetchReposRequest"
       },
+      "GithubFileTypes": {
+        "type": "string",
+        "enum": [
+          "REPOSITORY",
+          "DIRECTORY",
+          "FILE"
+        ],
+        "title": "GithubFileTypes"
+      },
       "GmailSyncInput": {
         "properties": {
           "filters": {
@@ -9241,6 +9346,15 @@
           "gong_account_email"
         ],
         "title": "GongAuthentication"
+      },
+      "GongFileTypes": {
+        "type": "string",
+        "enum": [
+          "WORKSPACE",
+          "FOLDER",
+          "CALL"
+        ],
+        "title": "GongFileTypes"
       },
       "GoogleDriveCredentials": {
         "properties": {
@@ -9466,6 +9580,15 @@
         ],
         "title": "GuruConnectRequest"
       },
+      "GuruFileTypes": {
+        "type": "string",
+        "enum": [
+          "COLLECTION",
+          "FOLDER",
+          "CARD"
+        ],
+        "title": "GuruFileTypes"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -9528,6 +9651,21 @@
           "weight_b"
         ],
         "title": "HybridSearchTuningParams"
+      },
+      "IntercomFileTypes": {
+        "type": "string",
+        "enum": [
+          "ARTICLE",
+          "COLLECTION",
+          "HELP_CENTER",
+          "TICKET",
+          "TICKET_ATTACHMENT",
+          "CONTACT",
+          "ADMIN",
+          "TEAM",
+          "CONVERSATION"
+        ],
+        "title": "IntercomFileTypes"
       },
       "Issue": {
         "properties": {
@@ -10343,6 +10481,70 @@
               }
             ],
             "title": "Root Files Only"
+          },
+          "file_formats": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/FileFormats"
+                },
+                "type": "array",
+                "maxItems": 50
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Formats"
+          },
+          "item_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/SharedSourceItemTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HelpdeskFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ServiceNowFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ZendeskFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/IntercomFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ConfluenceFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GitbookFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GithubFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GuruFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GongFileTypes"
+                    },
+                    {
+                      "$ref": "#/components/schemas/AzureBlobStorageTypes"
+                    }
+                  ]
+                },
+                "type": "array",
+                "maxItems": 50
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Types"
           }
         },
         "type": "object",
@@ -14119,6 +14321,14 @@
         ],
         "title": "ServiceNowFileTypes"
       },
+      "SharedSourceItemTypes": {
+        "type": "string",
+        "enum": [
+          "FILE",
+          "FOLDER"
+        ],
+        "title": "SharedSourceItemTypes"
+      },
       "SharepointAuthentication": {
         "properties": {
           "source": {
@@ -16939,6 +17149,17 @@
           "subdomain"
         ],
         "title": "ZendeskAuthentication"
+      },
+      "ZendeskFileTypes": {
+        "type": "string",
+        "enum": [
+          "TICKET",
+          "ARTICLE",
+          "TICKET_ATTACHMENT",
+          "SECTION",
+          "CATEGORY"
+        ],
+        "title": "ZendeskFileTypes"
       },
       "ZoteroAuthentication": {
         "properties": {
