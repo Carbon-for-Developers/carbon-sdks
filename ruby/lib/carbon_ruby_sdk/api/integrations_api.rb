@@ -1817,6 +1817,115 @@ module Carbon
     end
 
 
+    # List Sharepoint Sites
+    #
+    # List all Sharepoint sites in the connected tenant. The site names from the response can be
+    # used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should
+    # be left null when connecting to the site.
+    # 
+    # This endpoint requires an additional Sharepoint scope: "Sites.Read.All". Include this scope along with the default
+    # Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default
+    # Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].
+    #  
+    # data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts
+    # cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+    #
+    # @param data_source_id [Integer] 
+    # @param cursor [String] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_sharepoint_sites(data_source_id: SENTINEL, cursor: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      extra[:cursor] = cursor if cursor != SENTINEL
+      api_response = list_sharepoint_sites_with_http_info_impl(extra)
+      api_response.data
+    end
+
+    # List Sharepoint Sites
+    #
+    # List all Sharepoint sites in the connected tenant. The site names from the response can be
+    # used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should
+    # be left null when connecting to the site.
+    # 
+    # This endpoint requires an additional Sharepoint scope: "Sites.Read.All". Include this scope along with the default
+    # Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default
+    # Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].
+    #  
+    # data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts
+    # cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+    #
+    # @param data_source_id [Integer] 
+    # @param cursor [String] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def list_sharepoint_sites_with_http_info(data_source_id: SENTINEL, cursor: SENTINEL, extra: {})
+      extra[:data_source_id] = data_source_id if data_source_id != SENTINEL
+      extra[:cursor] = cursor if cursor != SENTINEL
+      list_sharepoint_sites_with_http_info_impl(extra)
+    end
+
+    # List Sharepoint Sites
+    # List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
+    # @option opts [String] :cursor 
+    # @return [Object]
+    private def list_sharepoint_sites_impl(opts = {})
+      data, _status_code, _headers = list_sharepoint_sites_with_http_info(opts)
+      data
+    end
+
+    # List Sharepoint Sites
+    # List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \&quot;Sites.Read.All\&quot;. Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :data_source_id 
+    # @option opts [String] :cursor 
+    # @return [APIResponse] data is Object, status code, headers and response
+    private def list_sharepoint_sites_with_http_info_impl(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.list_sharepoint_sites ...'
+      end
+      # resource path
+      local_var_path = '/integrations/sharepoint/sites/list'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'data_source_id'] = opts[:'data_source_id'] if !opts[:'data_source_id'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.list_sharepoint_sites",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#list_sharepoint_sites\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Azure Blob Files
     #
     # After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name 

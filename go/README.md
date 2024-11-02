@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**ListLabels**](docs/IntegrationsApi.md#listlabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 *IntegrationsApi* | [**ListOutlookCategories**](docs/IntegrationsApi.md#listoutlookcategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
 *IntegrationsApi* | [**ListRepos**](docs/IntegrationsApi.md#listrepos) | **Get** /integrations/github/repos | Github List Repos
+*IntegrationsApi* | [**ListSharepointSites**](docs/IntegrationsApi.md#listsharepointsites) | **Get** /integrations/sharepoint/sites/list | List Sharepoint Sites
 *IntegrationsApi* | [**SyncAzureBlobFiles**](docs/IntegrationsApi.md#syncazureblobfiles) | **Post** /integrations/azure_blob_storage/files | Azure Blob Files
 *IntegrationsApi* | [**SyncAzureBlobStorage**](docs/IntegrationsApi.md#syncazureblobstorage) | **Post** /integrations/azure_blob_storage | Azure Blob Storage Auth
 *IntegrationsApi* | [**SyncConfluence**](docs/IntegrationsApi.md#syncconfluence) | **Post** /integrations/confluence/sync | Confluence Sync
@@ -184,6 +185,7 @@ Class | Method | HTTP request | Description
  - [CommitsInput](docs/CommitsInput.md)
  - [CommitsResponse](docs/CommitsResponse.md)
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
+ - [ConfluenceFileTypes](docs/ConfluenceFileTypes.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
  - [ConnectDataSourceResponse](docs/ConnectDataSourceResponse.md)
  - [Contact](docs/Contact.md)
@@ -242,18 +244,22 @@ Class | Method | HTTP request | Description
  - [GetEmbeddingDocumentsBody](docs/GetEmbeddingDocumentsBody.md)
  - [GitbookAuthetication](docs/GitbookAuthetication.md)
  - [GitbookConnectRequest](docs/GitbookConnectRequest.md)
+ - [GitbookFileTypes](docs/GitbookFileTypes.md)
  - [GitbookSyncRequest](docs/GitbookSyncRequest.md)
  - [GithubAuthentication](docs/GithubAuthentication.md)
  - [GithubConnectRequest](docs/GithubConnectRequest.md)
  - [GithubFetchReposRequest](docs/GithubFetchReposRequest.md)
+ - [GithubFileTypes](docs/GithubFileTypes.md)
  - [GmailSyncInput](docs/GmailSyncInput.md)
  - [GongAuthentication](docs/GongAuthentication.md)
+ - [GongFileTypes](docs/GongFileTypes.md)
  - [GoogleDriveCredentials](docs/GoogleDriveCredentials.md)
  - [GoogleDriveCredentialsProperty](docs/GoogleDriveCredentialsProperty.md)
  - [GoogleDriveWhiteLabelInput](docs/GoogleDriveWhiteLabelInput.md)
  - [GoogleDriveWhiteLabelInputDataSourceType](docs/GoogleDriveWhiteLabelInputDataSourceType.md)
  - [GuruAuthentication](docs/GuruAuthentication.md)
  - [GuruConnectRequest](docs/GuruConnectRequest.md)
+ - [GuruFileTypes](docs/GuruFileTypes.md)
  - [HSNFileTypes](docs/HSNFileTypes.md)
  - [HSNFileTypes1](docs/HSNFileTypes1.md)
  - [HSNFileTypes2](docs/HSNFileTypes2.md)
@@ -263,6 +269,7 @@ Class | Method | HTTP request | Description
  - [HelpdeskFileTypes](docs/HelpdeskFileTypes.md)
  - [HybridSearchTuningParams](docs/HybridSearchTuningParams.md)
  - [HybridSearchTuningParamsNullable](docs/HybridSearchTuningParamsNullable.md)
+ - [IntercomFileTypes](docs/IntercomFileTypes.md)
  - [Issue](docs/Issue.md)
  - [IssuePR](docs/IssuePR.md)
  - [IssuePRNullable](docs/IssuePRNullable.md)
@@ -358,6 +365,8 @@ Class | Method | HTTP request | Description
  - [S3Authentication](docs/S3Authentication.md)
  - [S3FileSyncInput](docs/S3FileSyncInput.md)
  - [S3GetFileInput](docs/S3GetFileInput.md)
+ - [SIHFNZCGABTypes](docs/SIHFNZCGABTypes.md)
+ - [SIHFNZCGABTypes1](docs/SIHFNZCGABTypes1.md)
  - [SalesforceAuthentication](docs/SalesforceAuthentication.md)
  - [SentWebhookPayload](docs/SentWebhookPayload.md)
  - [SentWebhookPayloadObject](docs/SentWebhookPayloadObject.md)
@@ -368,6 +377,7 @@ Class | Method | HTTP request | Description
  - [ServiceNowCredentials](docs/ServiceNowCredentials.md)
  - [ServiceNowCredentialsNullable](docs/ServiceNowCredentialsNullable.md)
  - [ServiceNowFileTypes](docs/ServiceNowFileTypes.md)
+ - [SharedSourceItemTypes](docs/SharedSourceItemTypes.md)
  - [SharepointAuthentication](docs/SharepointAuthentication.md)
  - [SimpleOAuthDataSources](docs/SimpleOAuthDataSources.md)
  - [SingleChunksAndEmbeddingsUploadInput](docs/SingleChunksAndEmbeddingsUploadInput.md)
@@ -375,6 +385,7 @@ Class | Method | HTTP request | Description
  - [SlackFilters](docs/SlackFilters.md)
  - [SlackSyncRequest](docs/SlackSyncRequest.md)
  - [SourceProperty](docs/SourceProperty.md)
+ - [StorageFileFormats](docs/StorageFileFormats.md)
  - [SyncDirectoryRequest](docs/SyncDirectoryRequest.md)
  - [SyncFilesIds](docs/SyncFilesIds.md)
  - [SyncFilesIds1](docs/SyncFilesIds1.md)
@@ -421,4 +432,5 @@ Class | Method | HTTP request | Description
  - [WhiteLabelingResponse](docs/WhiteLabelingResponse.md)
  - [YoutubeTranscriptResponse](docs/YoutubeTranscriptResponse.md)
  - [ZendeskAuthentication](docs/ZendeskAuthentication.md)
+ - [ZendeskFileTypes](docs/ZendeskFileTypes.md)
  - [ZoteroAuthentication](docs/ZoteroAuthentication.md)

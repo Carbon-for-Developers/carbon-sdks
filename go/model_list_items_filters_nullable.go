@@ -20,6 +20,8 @@ type ListItemsFiltersNullable struct {
 	Ids []int32 `json:"ids,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	RootFilesOnly NullableBool `json:"root_files_only,omitempty"`
+	FileFormats []StorageFileFormats `json:"file_formats,omitempty"`
+	ItemTypes []SIHFNZCGABTypes1 `json:"item_types,omitempty"`
 }
 
 // NewListItemsFiltersNullable instantiates a new ListItemsFiltersNullable object
@@ -189,6 +191,72 @@ func (o *ListItemsFiltersNullable) UnsetRootFilesOnly() {
 	o.RootFilesOnly.Unset()
 }
 
+// GetFileFormats returns the FileFormats field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListItemsFiltersNullable) GetFileFormats() []StorageFileFormats {
+	if o == nil {
+		var ret []StorageFileFormats
+		return ret
+	}
+	return o.FileFormats
+}
+
+// GetFileFormatsOk returns a tuple with the FileFormats field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListItemsFiltersNullable) GetFileFormatsOk() ([]StorageFileFormats, bool) {
+	if o == nil || isNil(o.FileFormats) {
+    return nil, false
+	}
+	return o.FileFormats, true
+}
+
+// HasFileFormats returns a boolean if a field has been set.
+func (o *ListItemsFiltersNullable) HasFileFormats() bool {
+	if o != nil && isNil(o.FileFormats) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileFormats gets a reference to the given []StorageFileFormats and assigns it to the FileFormats field.
+func (o *ListItemsFiltersNullable) SetFileFormats(v []StorageFileFormats) {
+	o.FileFormats = v
+}
+
+// GetItemTypes returns the ItemTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListItemsFiltersNullable) GetItemTypes() []SIHFNZCGABTypes1 {
+	if o == nil {
+		var ret []SIHFNZCGABTypes1
+		return ret
+	}
+	return o.ItemTypes
+}
+
+// GetItemTypesOk returns a tuple with the ItemTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListItemsFiltersNullable) GetItemTypesOk() ([]SIHFNZCGABTypes1, bool) {
+	if o == nil || isNil(o.ItemTypes) {
+    return nil, false
+	}
+	return o.ItemTypes, true
+}
+
+// HasItemTypes returns a boolean if a field has been set.
+func (o *ListItemsFiltersNullable) HasItemTypes() bool {
+	if o != nil && isNil(o.ItemTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemTypes gets a reference to the given []SIHFNZCGABTypes1 and assigns it to the ItemTypes field.
+func (o *ListItemsFiltersNullable) SetItemTypes(v []SIHFNZCGABTypes1) {
+	o.ItemTypes = v
+}
+
 func (o ListItemsFiltersNullable) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ExternalIds != nil {
@@ -202,6 +270,12 @@ func (o ListItemsFiltersNullable) MarshalJSON() ([]byte, error) {
 	}
 	if o.RootFilesOnly.IsSet() {
 		toSerialize["root_files_only"] = o.RootFilesOnly.Get()
+	}
+	if o.FileFormats != nil {
+		toSerialize["file_formats"] = o.FileFormats
+	}
+	if o.ItemTypes != nil {
+		toSerialize["item_types"] = o.ItemTypes
 	}
 	return json.Marshal(toSerialize)
 }

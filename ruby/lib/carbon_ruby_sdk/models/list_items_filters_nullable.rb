@@ -19,13 +19,19 @@ module Carbon
 
     attr_accessor :root_files_only
 
+    attr_accessor :file_formats
+
+    attr_accessor :item_types
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'external_ids' => :'external_ids',
         :'ids' => :'ids',
         :'name' => :'name',
-        :'root_files_only' => :'root_files_only'
+        :'root_files_only' => :'root_files_only',
+        :'file_formats' => :'file_formats',
+        :'item_types' => :'item_types'
       }
     end
 
@@ -40,7 +46,9 @@ module Carbon
         :'external_ids' => :'Array<String>',
         :'ids' => :'Array<Integer>',
         :'name' => :'String',
-        :'root_files_only' => :'Boolean'
+        :'root_files_only' => :'Boolean',
+        :'file_formats' => :'Array<StorageFileFormats>',
+        :'item_types' => :'Array<ItemTypesPropertyInner>'
       }
     end
 
@@ -50,7 +58,9 @@ module Carbon
         :'external_ids',
         :'ids',
         :'name',
-        :'root_files_only'
+        :'root_files_only',
+        :'file_formats',
+        :'item_types'
       ])
     end
 
@@ -88,19 +98,61 @@ module Carbon
       if attributes.key?(:'root_files_only')
         self.root_files_only = attributes[:'root_files_only']
       end
+
+      if attributes.key?(:'file_formats')
+        if (value = attributes[:'file_formats']).is_a?(Array)
+          self.file_formats = value
+        end
+      end
+
+      if attributes.key?(:'item_types')
+        if (value = attributes[:'item_types']).is_a?(Array)
+          self.item_types = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@file_formats.nil? && @file_formats.length > 50
+        invalid_properties.push('invalid value for "file_formats", number of items must be less than or equal to 50.')
+      end
+
+      if !@item_types.nil? && @item_types.length > 50
+        invalid_properties.push('invalid value for "item_types", number of items must be less than or equal to 50.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@file_formats.nil? && @file_formats.length > 50
+      return false if !@item_types.nil? && @item_types.length > 50
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] file_formats Value to be assigned
+    def file_formats=(file_formats)
+      if !file_formats.nil? && file_formats.length > 50
+        fail ArgumentError, 'invalid value for "file_formats", number of items must be less than or equal to 50.'
+      end
+
+      @file_formats = file_formats
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] item_types Value to be assigned
+    def item_types=(item_types)
+      if !item_types.nil? && item_types.length > 50
+        fail ArgumentError, 'invalid value for "item_types", number of items must be less than or equal to 50.'
+      end
+
+      @item_types = item_types
     end
 
     # Checks equality by comparing each attribute.
@@ -111,7 +163,9 @@ module Carbon
           external_ids == o.external_ids &&
           ids == o.ids &&
           name == o.name &&
-          root_files_only == o.root_files_only
+          root_files_only == o.root_files_only &&
+          file_formats == o.file_formats &&
+          item_types == o.item_types
     end
 
     # @see the `==` method
@@ -123,7 +177,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [external_ids, ids, name, root_files_only].hash
+      [external_ids, ids, name, root_files_only, file_formats, item_types].hash
     end
 
     # Builds the object from hash

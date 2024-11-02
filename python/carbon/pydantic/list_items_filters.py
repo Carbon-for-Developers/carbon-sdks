@@ -17,6 +17,8 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.list_items_filters_external_ids import ListItemsFiltersExternalIds
 from carbon.pydantic.list_items_filters_ids import ListItemsFiltersIds
+from carbon.pydantic.list_items_filters_item_types import ListItemsFiltersItemTypes
+from carbon.pydantic.storage_file_formats import StorageFileFormats
 
 class ListItemsFilters(BaseModel):
     external_ids: typing.Optional[ListItemsFiltersExternalIds] = Field(None, alias='external_ids')
@@ -26,6 +28,10 @@ class ListItemsFilters(BaseModel):
     name: typing.Optional[typing.Optional[str]] = Field(None, alias='name')
 
     root_files_only: typing.Optional[typing.Optional[bool]] = Field(None, alias='root_files_only')
+
+    file_formats: typing.Optional[typing.Optional[typing.List[StorageFileFormats]]] = Field(None, alias='file_formats')
+
+    item_types: typing.Optional[ListItemsFiltersItemTypes] = Field(None, alias='item_types')
 
     model_config = ConfigDict(
         protected_namespaces=(),

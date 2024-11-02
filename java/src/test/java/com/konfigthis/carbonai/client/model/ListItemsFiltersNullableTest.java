@@ -17,6 +17,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.SIHFNZCGABTypes1;
+import com.konfigthis.carbonai.client.model.StorageFileFormats;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -71,6 +73,22 @@ public class ListItemsFiltersNullableTest {
     @Test
     public void rootFilesOnlyTest() {
         // TODO: test rootFilesOnly
+    }
+
+    /**
+     * Test the property 'fileFormats'
+     */
+    @Test
+    public void fileFormatsTest() {
+        // TODO: test fileFormats
+    }
+
+    /**
+     * Test the property 'itemTypes'
+     */
+    @Test
+    public void itemTypesTest() {
+        // TODO: test itemTypes
     }
 
 }

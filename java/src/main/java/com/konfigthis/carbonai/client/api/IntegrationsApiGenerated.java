@@ -3560,6 +3560,180 @@ public class IntegrationsApiGenerated {
     public IntegrationsApi.ListReposRequestBuilder listRepos() throws IllegalArgumentException {
         return ((IntegrationsApi) this).new ListReposRequestBuilder();
     }
+    private okhttp3.Call listSharepointSitesCall(Integer dataSourceId, String cursor, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/integrations/sharepoint/sites/list";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (dataSourceId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("data_source_id", dataSourceId));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSharepointSitesValidateBeforeCall(Integer dataSourceId, String cursor, final ApiCallback _callback) throws ApiException {
+        return listSharepointSitesCall(dataSourceId, cursor, _callback);
+
+    }
+
+
+    private ApiResponse<Object> listSharepointSitesWithHttpInfo(Integer dataSourceId, String cursor) throws ApiException {
+        okhttp3.Call localVarCall = listSharepointSitesValidateBeforeCall(dataSourceId, cursor, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listSharepointSitesAsync(Integer dataSourceId, String cursor, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSharepointSitesValidateBeforeCall(dataSourceId, cursor, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ListSharepointSitesRequestBuilderGenerated {
+        Integer dataSourceId;
+        String cursor;
+
+        public ListSharepointSitesRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set dataSourceId
+         * @param dataSourceId  (optional)
+         * @return IntegrationsApi.ListSharepointSitesRequestBuilder
+         */
+        public IntegrationsApi.ListSharepointSitesRequestBuilder dataSourceId(Integer dataSourceId) {
+            this.dataSourceId = dataSourceId;
+            return (IntegrationsApi.ListSharepointSitesRequestBuilder) this;
+        }
+        
+        /**
+         * Set cursor
+         * @param cursor  (optional)
+         * @return IntegrationsApi.ListSharepointSitesRequestBuilder
+         */
+        public IntegrationsApi.ListSharepointSitesRequestBuilder cursor(String cursor) {
+            this.cursor = cursor;
+            return (IntegrationsApi.ListSharepointSitesRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for listSharepointSites
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listSharepointSitesCall(dataSourceId, cursor, _callback);
+        }
+
+
+        /**
+         * Execute listSharepointSites request
+         * @return Object
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Object execute() throws ApiException {
+            ApiResponse<Object> localVarResp = listSharepointSitesWithHttpInfo(dataSourceId, cursor);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute listSharepointSites request with HTTP info returned
+         * @return ApiResponse&lt;Object&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Object> executeWithHttpInfo() throws ApiException {
+            return listSharepointSitesWithHttpInfo(dataSourceId, cursor);
+        }
+
+        /**
+         * Execute listSharepointSites request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Object> _callback) throws ApiException {
+            return listSharepointSitesAsync(dataSourceId, cursor, _callback);
+        }
+    }
+
+    /**
+     * List Sharepoint Sites
+     * List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \&quot;Sites.Read.All\&quot;. Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+     * @return ListSharepointSitesRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.ListSharepointSitesRequestBuilder listSharepointSites() throws IllegalArgumentException {
+        return ((IntegrationsApi) this).new ListSharepointSitesRequestBuilder();
+    }
     private okhttp3.Call syncAzureBlobFilesCall(AzureBlobFileSyncInput azureBlobFileSyncInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers

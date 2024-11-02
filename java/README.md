@@ -77,6 +77,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.integrations.listLabels`](#carbonintegrationslistlabels)
   * [`carbon.integrations.listOutlookCategories`](#carbonintegrationslistoutlookcategories)
   * [`carbon.integrations.listRepos`](#carbonintegrationslistrepos)
+  * [`carbon.integrations.listSharepointSites`](#carbonintegrationslistsharepointsites)
   * [`carbon.integrations.syncAzureBlobFiles`](#carbonintegrationssyncazureblobfiles)
   * [`carbon.integrations.syncAzureBlobStorage`](#carbonintegrationssyncazureblobstorage)
   * [`carbon.integrations.syncConfluence`](#carbonintegrationssyncconfluence)
@@ -3085,6 +3086,45 @@ Object result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/github/repos` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.listSharepointSites`<a id="carbonintegrationslistsharepointsites"></a>
+
+List all Sharepoint sites in the connected tenant. The site names from the response can be
+used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should
+be left null when connecting to the site.
+
+This endpoint requires an additional Sharepoint scope: "Sites.Read.All". Include this scope along with the default
+Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default
+Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].
+ 
+data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts
+cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+Object result = client
+        .integrations
+        .listSharepointSites()
+        .dataSourceId(dataSourceId)
+        .cursor(cursor)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### dataSourceId: `Integer`<a id="datasourceid-integer"></a>
+
+##### cursor: `String`<a id="cursor-string"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/sharepoint/sites/list` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

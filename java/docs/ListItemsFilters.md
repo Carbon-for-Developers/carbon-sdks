@@ -11,6 +11,8 @@
 |**ids** | **List&lt;Integer&gt;** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**rootFilesOnly** | **Boolean** |  |  [optional] |
+|**fileFormats** | **List&lt;StorageFileFormats&gt;** |  |  [optional] |
+|**itemTypes** | **List&lt;SIHFNZCGABTypes&gt;** |  |  [optional] |
 
 
 

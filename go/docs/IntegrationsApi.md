@@ -19,6 +19,7 @@ Method | Path | Description
 [**ListLabels**](IntegrationsApi.md#ListLabels) | **Get** /integrations/gmail/user_labels | Gmail Labels
 [**ListOutlookCategories**](IntegrationsApi.md#ListOutlookCategories) | **Get** /integrations/outlook/user_categories | Outlook Categories
 [**ListRepos**](IntegrationsApi.md#ListRepos) | **Get** /integrations/github/repos | Github List Repos
+[**ListSharepointSites**](IntegrationsApi.md#ListSharepointSites) | **Get** /integrations/sharepoint/sites/list | List Sharepoint Sites
 [**SyncAzureBlobFiles**](IntegrationsApi.md#SyncAzureBlobFiles) | **Post** /integrations/azure_blob_storage/files | Azure Blob Files
 [**SyncAzureBlobStorage**](IntegrationsApi.md#SyncAzureBlobStorage) | **Post** /integrations/azure_blob_storage | Azure Blob Storage Auth
 [**SyncConfluence**](IntegrationsApi.md#SyncConfluence) | **Post** /integrations/confluence/sync | Confluence Sync
@@ -866,6 +867,51 @@ func main() {
     }
     // response from `ListRepos`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListRepos`: %v\n", resp)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSharepointSites
+
+List Sharepoint Sites
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    request := client.IntegrationsApi.ListSharepointSites(
+    )
+    request.DataSourceId(56)
+    request.Cursor("cursor_example")
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ListSharepointSites``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ListSharepointSites`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ListSharepointSites`: %v\n", resp)
 }
 ```
 

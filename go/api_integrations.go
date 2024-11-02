@@ -2569,6 +2569,190 @@ func (a *IntegrationsApiService) ListReposExecute(r IntegrationsApiListReposRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type IntegrationsApiListSharepointSitesRequest struct {
+	ctx context.Context
+	ApiService *IntegrationsApiService
+	dataSourceId *int32
+	cursor *string
+}
+
+func (r *IntegrationsApiListSharepointSitesRequest) DataSourceId(dataSourceId int32) *IntegrationsApiListSharepointSitesRequest {
+	r.dataSourceId = &dataSourceId
+	return r
+}
+
+func (r *IntegrationsApiListSharepointSitesRequest) Cursor(cursor string) *IntegrationsApiListSharepointSitesRequest {
+	r.cursor = &cursor
+	return r
+}
+
+func (r IntegrationsApiListSharepointSitesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ListSharepointSitesExecute(r)
+}
+
+/*
+ListSharepointSites List Sharepoint Sites
+
+List all Sharepoint sites in the connected tenant. The site names from the response can be
+used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should
+be left null when connecting to the site.
+
+This endpoint requires an additional Sharepoint scope: "Sites.Read.All". Include this scope along with the default
+Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default
+Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].
+ 
+data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts
+cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return IntegrationsApiListSharepointSitesRequest
+*/
+func (a *IntegrationsApiService) ListSharepointSites() IntegrationsApiListSharepointSitesRequest {
+	return IntegrationsApiListSharepointSitesRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *IntegrationsApiService) ListSharepointSitesExecute(r IntegrationsApiListSharepointSitesRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IntegrationsApiService.ListSharepointSites")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+    subpath := "/integrations/sharepoint/sites/list"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.dataSourceId != nil {
+		localVarQueryParams.Add("data_source_id", parameterToString(*r.dataSourceId, ""))
+	}
+	if r.cursor != nil {
+		localVarQueryParams.Add("cursor", parameterToString(*r.cursor, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["accessToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["apiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["authorization"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["customerId"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["customer-id"] = key
+			}
+		}
+	}
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type IntegrationsApiSyncAzureBlobFilesRequest struct {
 	ctx context.Context
 	ApiService *IntegrationsApiService

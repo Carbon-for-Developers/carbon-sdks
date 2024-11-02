@@ -904,6 +904,60 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
+         * List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+         * @summary List Sharepoint Sites
+         * @param {number} [dataSourceId] 
+         * @param {string} [cursor] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSharepointSites: async (dataSourceId?: number, cursor?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/integrations/sharepoint/sites/list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+            if (dataSourceId !== undefined) {
+                localVarQueryParameter['data_source_id'] = dataSourceId;
+            }
+
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
+            }
+
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/sharepoint/sites/list',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
          * @summary Azure Blob Files
          * @param {AzureBlobFileSyncInput} azureBlobFileSyncInput 
@@ -1864,6 +1918,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+         * @summary List Sharepoint Sites
+         * @param {IntegrationsApiListSharepointSitesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listSharepointSites(requestParameters: IntegrationsApiListSharepointSitesRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSharepointSites(requestParameters.dataSourceId, requestParameters.cursor, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
          * @summary Azure Blob Files
          * @param {IntegrationsApiSyncAzureBlobFilesRequest} requestParameters Request parameters.
@@ -2326,6 +2391,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.listRepos(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+         * @summary List Sharepoint Sites
+         * @param {IntegrationsApiListSharepointSitesRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSharepointSites(requestParameters: IntegrationsApiListSharepointSitesRequest = {}, options?: AxiosRequestConfig): AxiosPromise<object> {
+            return localVarFp.listSharepointSites(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * After optionally loading the items via /integrations/items/sync and integrations/items/list, use the container name  and file name as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate  data with the selected items or modify the sync behavior
          * @summary Azure Blob Files
          * @param {IntegrationsApiSyncAzureBlobFilesRequest} requestParameters Request parameters.
@@ -2672,6 +2747,29 @@ export type IntegrationsApiListReposRequest = {
 }
 
 /**
+ * Request parameters for listSharepointSites operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiListSharepointSitesRequest
+ */
+export type IntegrationsApiListSharepointSitesRequest = {
+    
+    /**
+    * 
+    * @type {number}
+    * @memberof IntegrationsApiListSharepointSites
+    */
+    readonly dataSourceId?: number
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof IntegrationsApiListSharepointSites
+    */
+    readonly cursor?: string
+    
+}
+
+/**
  * Request parameters for syncAzureBlobFiles operation in IntegrationsApi.
  * @export
  * @interface IntegrationsApiSyncAzureBlobFilesRequest
@@ -2974,6 +3072,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public listRepos(requestParameters: IntegrationsApiListReposRequest = {}, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).listRepos(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+     * @summary List Sharepoint Sites
+     * @param {IntegrationsApiListSharepointSitesRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public listSharepointSites(requestParameters: IntegrationsApiListSharepointSitesRequest = {}, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).listSharepointSites(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

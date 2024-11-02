@@ -16,6 +16,8 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.list_items_filters_external_ids import ListItemsFiltersExternalIds
 from carbon.type.list_items_filters_ids import ListItemsFiltersIds
+from carbon.type.list_items_filters_item_types import ListItemsFiltersItemTypes
+from carbon.type.storage_file_formats import StorageFileFormats
 
 class RequiredListItemsFilters(TypedDict):
     pass
@@ -28,6 +30,10 @@ class OptionalListItemsFilters(TypedDict, total=False):
     name: typing.Optional[str]
 
     root_files_only: typing.Optional[bool]
+
+    file_formats: typing.Optional[typing.List[StorageFileFormats]]
+
+    item_types: typing.Optional[ListItemsFiltersItemTypes]
 
 class ListItemsFilters(RequiredListItemsFilters, OptionalListItemsFilters):
     pass

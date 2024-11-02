@@ -126,6 +126,11 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
             super();
         }
     }
+    public class ListSharepointSitesRequestBuilder extends ListSharepointSitesRequestBuilderGenerated {
+        public ListSharepointSitesRequestBuilder() {
+            super();
+        }
+    }
     public class SyncAzureBlobFilesRequestBuilder extends SyncAzureBlobFilesRequestBuilderGenerated {
         public SyncAzureBlobFilesRequestBuilder(List<AzureBlobGetFileInput> ids) {
             super(ids);
