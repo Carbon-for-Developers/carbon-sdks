@@ -19,6 +19,7 @@ All URIs are relative to *https://api.carbon.ai*
 | [**listLabels**](IntegrationsApi.md#listLabels) | **GET** /integrations/gmail/user_labels | Gmail Labels |
 | [**listOutlookCategories**](IntegrationsApi.md#listOutlookCategories) | **GET** /integrations/outlook/user_categories | Outlook Categories |
 | [**listRepos**](IntegrationsApi.md#listRepos) | **GET** /integrations/github/repos | Github List Repos |
+| [**listSharepointSites**](IntegrationsApi.md#listSharepointSites) | **GET** /integrations/sharepoint/sites/list | List Sharepoint Sites |
 | [**syncAzureBlobFiles**](IntegrationsApi.md#syncAzureBlobFiles) | **POST** /integrations/azure_blob_storage/files | Azure Blob Files |
 | [**syncAzureBlobStorage**](IntegrationsApi.md#syncAzureBlobStorage) | **POST** /integrations/azure_blob_storage | Azure Blob Storage Auth |
 | [**syncConfluence**](IntegrationsApi.md#syncConfluence) | **POST** /integrations/confluence/sync | Confluence Sync |
@@ -1735,6 +1736,106 @@ public class Example {
 | **perPage** | **Integer**|  | [optional] [default to 30] |
 | **page** | **Integer**|  | [optional] [default to 1] |
 | **dataSourceId** | **Integer**|  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="listSharepointSites"></a>
+# **listSharepointSites**
+> Object listSharepointSites().dataSourceId(dataSourceId).cursor(cursor).execute();
+
+List Sharepoint Sites
+
+List all Sharepoint sites in the connected tenant. The site names from the response can be used as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should be left null when connecting to the site.  This endpoint requires an additional Sharepoint scope: \&quot;Sites.Read.All\&quot;. Include this scope along with the default Sharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default Sharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].   data_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts cursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    Integer dataSourceId = 56;
+    String cursor = "cursor_example";
+    try {
+      Object result = client
+              .integrations
+              .listSharepointSites()
+              .dataSourceId(dataSourceId)
+              .cursor(cursor)
+              .execute();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#listSharepointSites");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<Object> response = client
+              .integrations
+              .listSharepointSites()
+              .dataSourceId(dataSourceId)
+              .cursor(cursor)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#listSharepointSites");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dataSourceId** | **Integer**|  | [optional] |
+| **cursor** | **String**|  | [optional] |
 
 ### Return type
 

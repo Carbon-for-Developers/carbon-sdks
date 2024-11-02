@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.SIHFNZCGABTypes;
+import com.konfigthis.carbonai.client.model.StorageFileFormats;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -67,6 +69,14 @@ public class ListItemsFilters {
   public static final String SERIALIZED_NAME_ROOT_FILES_ONLY = "root_files_only";
   @SerializedName(SERIALIZED_NAME_ROOT_FILES_ONLY)
   private Boolean rootFilesOnly;
+
+  public static final String SERIALIZED_NAME_FILE_FORMATS = "file_formats";
+  @SerializedName(SERIALIZED_NAME_FILE_FORMATS)
+  private List<StorageFileFormats> fileFormats = null;
+
+  public static final String SERIALIZED_NAME_ITEM_TYPES = "item_types";
+  @SerializedName(SERIALIZED_NAME_ITEM_TYPES)
+  private List<SIHFNZCGABTypes> itemTypes = null;
 
   public ListItemsFilters() {
   }
@@ -202,6 +212,80 @@ public class ListItemsFilters {
     this.rootFilesOnly = rootFilesOnly;
   }
 
+
+  public ListItemsFilters fileFormats(List<StorageFileFormats> fileFormats) {
+    
+    
+    
+    
+    this.fileFormats = fileFormats;
+    return this;
+  }
+
+  public ListItemsFilters addFileFormatsItem(StorageFileFormats fileFormatsItem) {
+    if (this.fileFormats == null) {
+      this.fileFormats = new ArrayList<>();
+    }
+    this.fileFormats.add(fileFormatsItem);
+    return this;
+  }
+
+   /**
+   * Get fileFormats
+   * @return fileFormats
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<StorageFileFormats> getFileFormats() {
+    return fileFormats;
+  }
+
+
+  public void setFileFormats(List<StorageFileFormats> fileFormats) {
+    
+    
+    
+    this.fileFormats = fileFormats;
+  }
+
+
+  public ListItemsFilters itemTypes(List<SIHFNZCGABTypes> itemTypes) {
+    
+    
+    
+    
+    this.itemTypes = itemTypes;
+    return this;
+  }
+
+  public ListItemsFilters addItemTypesItem(SIHFNZCGABTypes itemTypesItem) {
+    if (this.itemTypes == null) {
+      this.itemTypes = new ArrayList<>();
+    }
+    this.itemTypes.add(itemTypesItem);
+    return this;
+  }
+
+   /**
+   * Get itemTypes
+   * @return itemTypes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<SIHFNZCGABTypes> getItemTypes() {
+    return itemTypes;
+  }
+
+
+  public void setItemTypes(List<SIHFNZCGABTypes> itemTypes) {
+    
+    
+    
+    this.itemTypes = itemTypes;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -260,7 +344,9 @@ public class ListItemsFilters {
     return Objects.equals(this.externalIds, listItemsFilters.externalIds) &&
         Objects.equals(this.ids, listItemsFilters.ids) &&
         Objects.equals(this.name, listItemsFilters.name) &&
-        Objects.equals(this.rootFilesOnly, listItemsFilters.rootFilesOnly)&&
+        Objects.equals(this.rootFilesOnly, listItemsFilters.rootFilesOnly) &&
+        Objects.equals(this.fileFormats, listItemsFilters.fileFormats) &&
+        Objects.equals(this.itemTypes, listItemsFilters.itemTypes)&&
         Objects.equals(this.additionalProperties, listItemsFilters.additionalProperties);
   }
 
@@ -270,7 +356,7 @@ public class ListItemsFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalIds, ids, name, rootFilesOnly, additionalProperties);
+    return Objects.hash(externalIds, ids, name, rootFilesOnly, fileFormats, itemTypes, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -288,6 +374,8 @@ public class ListItemsFilters {
     sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rootFilesOnly: ").append(toIndentedString(rootFilesOnly)).append("\n");
+    sb.append("    fileFormats: ").append(toIndentedString(fileFormats)).append("\n");
+    sb.append("    itemTypes: ").append(toIndentedString(itemTypes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -315,6 +403,8 @@ public class ListItemsFilters {
     openapiFields.add("ids");
     openapiFields.add("name");
     openapiFields.add("root_files_only");
+    openapiFields.add("file_formats");
+    openapiFields.add("item_types");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -342,6 +432,14 @@ public class ListItemsFilters {
       }
       if (!jsonObj.get("name").isJsonNull() && (jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("file_formats") != null && !jsonObj.get("file_formats").isJsonNull() && !jsonObj.get("file_formats").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `file_formats` to be an array in the JSON string or null but got `%s`", jsonObj.get("file_formats").toString()));
+      }
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("item_types") != null && !jsonObj.get("item_types").isJsonNull() && !jsonObj.get("item_types").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `item_types` to be an array in the JSON string or null but got `%s`", jsonObj.get("item_types").toString()));
       }
   }
 

@@ -82,11 +82,45 @@ class ListItemsFilters(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class file_formats(
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['StorageFileFormats']:
+                        return StorageFileFormats
+                    max_items = 50
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[list, tuple, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'file_formats':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
+        
+            @staticmethod
+            def item_types() -> typing.Type['ListItemsFiltersItemTypes']:
+                return ListItemsFiltersItemTypes
             __annotations__ = {
                 "external_ids": external_ids,
                 "ids": ids,
                 "name": name,
                 "root_files_only": root_files_only,
+                "file_formats": file_formats,
+                "item_types": item_types,
             }
     
     @typing.overload
@@ -102,9 +136,15 @@ class ListItemsFilters(
     def __getitem__(self, name: typing_extensions.Literal["root_files_only"]) -> MetaOapg.properties.root_files_only: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["file_formats"]) -> MetaOapg.properties.file_formats: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["item_types"]) -> 'ListItemsFiltersItemTypes': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["external_ids", "ids", "name", "root_files_only", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["external_ids", "ids", "name", "root_files_only", "file_formats", "item_types", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -122,9 +162,15 @@ class ListItemsFilters(
     def get_item_oapg(self, name: typing_extensions.Literal["root_files_only"]) -> typing.Union[MetaOapg.properties.root_files_only, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["file_formats"]) -> typing.Union[MetaOapg.properties.file_formats, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["item_types"]) -> typing.Union['ListItemsFiltersItemTypes', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["external_ids", "ids", "name", "root_files_only", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["external_ids", "ids", "name", "root_files_only", "file_formats", "item_types", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -135,6 +181,8 @@ class ListItemsFilters(
         ids: typing.Union['ListItemsFiltersIds', schemas.Unset] = schemas.unset,
         name: typing.Union[MetaOapg.properties.name, None, str, schemas.Unset] = schemas.unset,
         root_files_only: typing.Union[MetaOapg.properties.root_files_only, None, bool, schemas.Unset] = schemas.unset,
+        file_formats: typing.Union[MetaOapg.properties.file_formats, list, tuple, None, schemas.Unset] = schemas.unset,
+        item_types: typing.Union['ListItemsFiltersItemTypes', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ListItemsFilters':
@@ -145,9 +193,13 @@ class ListItemsFilters(
             ids=ids,
             name=name,
             root_files_only=root_files_only,
+            file_formats=file_formats,
+            item_types=item_types,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.list_items_filters_external_ids import ListItemsFiltersExternalIds
 from carbon.model.list_items_filters_ids import ListItemsFiltersIds
+from carbon.model.list_items_filters_item_types import ListItemsFiltersItemTypes
+from carbon.model.storage_file_formats import StorageFileFormats

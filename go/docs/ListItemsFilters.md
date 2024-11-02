@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Ids** | Pointer to **[]int32** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **RootFilesOnly** | Pointer to **NullableBool** |  | [optional] 
+**FileFormats** | Pointer to [**[]StorageFileFormats**](StorageFileFormats.md) |  | [optional] 
+**ItemTypes** | Pointer to [**[]SIHFNZCGABTypes**](SIHFNZCGABTypes.md) |  | [optional] 
 
 ## Methods
 
@@ -168,6 +170,76 @@ HasRootFilesOnly returns a boolean if a field has been set.
 `func (o *ListItemsFilters) UnsetRootFilesOnly()`
 
 UnsetRootFilesOnly ensures that no value is present for RootFilesOnly, not even an explicit nil
+### GetFileFormats
+
+`func (o *ListItemsFilters) GetFileFormats() []StorageFileFormats`
+
+GetFileFormats returns the FileFormats field if non-nil, zero value otherwise.
+
+### GetFileFormatsOk
+
+`func (o *ListItemsFilters) GetFileFormatsOk() (*[]StorageFileFormats, bool)`
+
+GetFileFormatsOk returns a tuple with the FileFormats field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileFormats
+
+`func (o *ListItemsFilters) SetFileFormats(v []StorageFileFormats)`
+
+SetFileFormats sets FileFormats field to given value.
+
+### HasFileFormats
+
+`func (o *ListItemsFilters) HasFileFormats() bool`
+
+HasFileFormats returns a boolean if a field has been set.
+
+### SetFileFormatsNil
+
+`func (o *ListItemsFilters) SetFileFormatsNil(b bool)`
+
+ SetFileFormatsNil sets the value for FileFormats to be an explicit nil
+
+### UnsetFileFormats
+`func (o *ListItemsFilters) UnsetFileFormats()`
+
+UnsetFileFormats ensures that no value is present for FileFormats, not even an explicit nil
+### GetItemTypes
+
+`func (o *ListItemsFilters) GetItemTypes() []SIHFNZCGABTypes`
+
+GetItemTypes returns the ItemTypes field if non-nil, zero value otherwise.
+
+### GetItemTypesOk
+
+`func (o *ListItemsFilters) GetItemTypesOk() (*[]SIHFNZCGABTypes, bool)`
+
+GetItemTypesOk returns a tuple with the ItemTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemTypes
+
+`func (o *ListItemsFilters) SetItemTypes(v []SIHFNZCGABTypes)`
+
+SetItemTypes sets ItemTypes field to given value.
+
+### HasItemTypes
+
+`func (o *ListItemsFilters) HasItemTypes() bool`
+
+HasItemTypes returns a boolean if a field has been set.
+
+### SetItemTypesNil
+
+`func (o *ListItemsFilters) SetItemTypesNil(b bool)`
+
+ SetItemTypesNil sets the value for ItemTypes to be an explicit nil
+
+### UnsetItemTypes
+`func (o *ListItemsFilters) UnsetItemTypes()`
+
+UnsetItemTypes ensures that no value is present for ItemTypes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

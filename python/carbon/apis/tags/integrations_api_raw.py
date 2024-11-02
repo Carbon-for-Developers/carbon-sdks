@@ -24,6 +24,7 @@ from carbon.paths.integrations_gitbook_spaces.get import ListGitbookSpacesRaw
 from carbon.paths.integrations_gmail_user_labels.get import ListLabelsRaw
 from carbon.paths.integrations_outlook_user_categories.get import ListOutlookCategoriesRaw
 from carbon.paths.integrations_github_repos.get import ListReposRaw
+from carbon.paths.integrations_sharepoint_sites_list.get import ListSharepointSitesRaw
 from carbon.paths.integrations_azure_blob_storage_files.post import SyncAzureBlobFilesRaw
 from carbon.paths.integrations_azure_blob_storage.post import SyncAzureBlobStorageRaw
 from carbon.paths.integrations_confluence_sync.post import SyncConfluenceRaw
@@ -55,6 +56,7 @@ class IntegrationsApiRaw(
     ListLabelsRaw,
     ListOutlookCategoriesRaw,
     ListReposRaw,
+    ListSharepointSitesRaw,
     SyncAzureBlobFilesRaw,
     SyncAzureBlobStorageRaw,
     SyncConfluenceRaw,

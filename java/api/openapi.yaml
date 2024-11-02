@@ -2502,6 +2502,64 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-guru
       x-content-type: application/json
       x-accepts: application/json
+  /integrations/sharepoint/sites/list:
+    get:
+      description: "List all Sharepoint sites in the connected tenant. The site names\
+        \ from the response can be\nused as the site name when connecting a Sharepoint\
+        \ site. If site name is null in the response, then site name should\nbe left\
+        \ null when connecting to the site.\n\nThis endpoint requires an additional\
+        \ Sharepoint scope: \"Sites.Read.All\". Include this scope along with the\
+        \ default\nSharepoint scopes to list Sharepoint sites, connect to a site,\
+        \ and finally sync files from the site. The default\nSharepoint scopes are:\
+        \ [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s,\
+        \ e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].\n \n\
+        data_soure_id: Data source needs to be specified if you have linked multiple\
+        \ Sharepoint accounts\ncursor: Used for pagination. If next_cursor is returned\
+        \ in response, you need to pass it as the cursor in the next request"
+      operationId: Integrations_listSharepointSites
+      parameters:
+      - explode: true
+        in: query
+        name: data_source_id
+        required: false
+        schema:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          nullable: true
+          title: Cursor
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsListSharepointSitesResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: List Sharepoint Sites
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-sharepoint-sites-list
+      x-accepts: application/json
   /auth/v1/access_token:
     get:
       operationId: Auth_getAccessToken
@@ -6076,6 +6134,9 @@ components:
       - source
       title: AzureBlobStorageAuthentication
       type: object
+    AzureBlobStorageTypes:
+      title: AzureBlobStorageTypes
+      type: string
     BaseIncludes:
       description: 'These can be included as children when requesting parent entities '
       enum:
@@ -6542,6 +6603,12 @@ components:
       - subdomain
       title: ConfluenceAuthentication
       type: object
+    ConfluenceFileTypes:
+      enum:
+      - SPACE
+      - PAGE
+      title: ConfluenceFileTypes
+      type: string
     ConnectDataSourceInput:
       example:
         sync_options:
@@ -8991,6 +9058,14 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    GitbookFileTypes:
+      enum:
+      - SPACE
+      - SHEET
+      - GROUP
+      - LINK
+      title: GitbookFileTypes
+      type: string
     GitbookSyncRequest:
       example:
         chunk_size: 1500
@@ -9168,6 +9243,13 @@ components:
       - repos
       title: GithubFetchReposRequest
       type: object
+    GithubFileTypes:
+      enum:
+      - REPOSITORY
+      - DIRECTORY
+      - FILE
+      title: GithubFileTypes
+      type: string
     GmailSyncInput:
       example:
         chunk_size: 1500
@@ -9298,6 +9380,13 @@ components:
       - source
       title: GongAuthentication
       type: object
+    GongFileTypes:
+      enum:
+      - WORKSPACE
+      - FOLDER
+      - CALL
+      title: GongFileTypes
+      type: string
     GoogleDriveCredentials:
       properties:
         client_id:
@@ -9474,6 +9563,13 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    GuruFileTypes:
+      enum:
+      - COLLECTION
+      - FOLDER
+      - CARD
+      title: GuruFileTypes
+      type: string
     HTTPValidationError:
       properties:
         detail:
@@ -9526,6 +9622,19 @@ components:
       - weight_b
       title: HybridSearchTuningParams
       type: object
+    IntercomFileTypes:
+      enum:
+      - ARTICLE
+      - COLLECTION
+      - HELP_CENTER
+      - TICKET
+      - TICKET_ATTACHMENT
+      - CONTACT
+      - ADMIN
+      - TEAM
+      - CONVERSATION
+      title: IntercomFileTypes
+      type: string
     Issue:
       example:
         pull_request:
@@ -10383,10 +10492,22 @@ components:
         order_by: null
         filters:
           root_files_only: true
+          file_formats:
+          - null
+          - null
+          - null
+          - null
+          - null
           name: name
           ids:
           - 6
           - 6
+          item_types:
+          - null
+          - null
+          - null
+          - null
+          - null
           external_ids:
           - external_ids
           - external_ids
@@ -10500,6 +10621,20 @@ components:
           nullable: true
           title: Root Files Only
           type: boolean
+        file_formats:
+          items:
+            $ref: '#/components/schemas/StorageFileFormats'
+          maxItems: 50
+          nullable: true
+          title: File Formats
+          type: array
+        item_types:
+          items:
+            $ref: '#/components/schemas/SIHFNZCGABTypes'
+          maxItems: 50
+          nullable: true
+          title: Item Types
+          type: array
       title: ListItemsFilters
       type: object
     ListRequest:
@@ -13928,6 +14063,12 @@ components:
       - ATTACHMENT
       title: ServiceNowFileTypes
       type: string
+    SharedSourceItemTypes:
+      enum:
+      - FILE
+      - FOLDER
+      title: SharedSourceItemTypes
+      type: string
     SharepointAuthentication:
       properties:
         source:
@@ -14313,6 +14454,44 @@ components:
       x-konfig-properties:
         embedding_model:
           default: OPENAI
+    StorageFileFormats:
+      enum:
+      - TXT
+      - CSV
+      - TSV
+      - PDF
+      - DOCX
+      - PPTX
+      - XLSX
+      - XLSM
+      - MD
+      - RTF
+      - JSON
+      - HTML
+      - JPG
+      - PNG
+      - MP3
+      - MP2
+      - AAC
+      - WAV
+      - FLAC
+      - PCM
+      - M4A
+      - OGG
+      - OPUS
+      - MPEG
+      - MPG
+      - MP4
+      - WMV
+      - AVI
+      - MOV
+      - MKV
+      - FLV
+      - WEBM
+      - EML
+      - MSG
+      title: StorageFileFormats
+      type: string
     SyncDirectoryRequest:
       example:
         data_source_id: 0
@@ -16211,6 +16390,15 @@ components:
       - subdomain
       title: ZendeskAuthentication
       type: object
+    ZendeskFileTypes:
+      enum:
+      - TICKET
+      - ARTICLE
+      - TICKET_ATTACHMENT
+      - SECTION
+      - CATEGORY
+      title: ZendeskFileTypes
+      type: string
     ZoteroAuthentication:
       properties:
         source:
@@ -16728,10 +16916,22 @@ components:
     ListItemsFiltersNullable:
       example:
         root_files_only: true
+        file_formats:
+        - null
+        - null
+        - null
+        - null
+        - null
         name: name
         ids:
         - 6
         - 6
+        item_types:
+        - null
+        - null
+        - null
+        - null
+        - null
         external_ids:
         - external_ids
         - external_ids
@@ -16757,6 +16957,20 @@ components:
           nullable: true
           title: Root Files Only
           type: boolean
+        file_formats:
+          items:
+            $ref: '#/components/schemas/StorageFileFormats'
+          maxItems: 50
+          nullable: true
+          title: File Formats
+          type: array
+        item_types:
+          items:
+            $ref: '#/components/schemas/SIHFNZCGABTypes1'
+          maxItems: 50
+          nullable: true
+          title: Item Types
+          type: array
       title: ListItemsFilters
       type: object
     ServiceNowCredentialsNullable:
@@ -17016,6 +17230,13 @@ components:
       type: object
       x-konfig-original-example: {}
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsSyncSlackResponse
+      x-konfig-is-used-in-successful-response: true
+    IntegrationsListSharepointSitesResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-konfig-original-example: {}
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-IntegrationsListSharepointSitesResponse
       x-konfig-is-used-in-successful-response: true
     FilesMoveToHotStorageResponse:
       title: Response Files Movetohotstorage
@@ -18414,6 +18635,11 @@ components:
       type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-IntegrationsSyncSlackResponse:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-IntegrationsListSharepointSitesResponse:
       example: {}
       properties: {}
       type: object
@@ -20039,6 +20265,21 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--integrations-sharepoint-sites-list:
+      properties:
+        data_source_id:
+          nullable: true
+          title: Data Source Id
+          type: integer
+        cursor:
+          nullable: true
+          title: Cursor
+          type: string
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - data_source_id
+      - cursor
     konfig-generated-schema-single-parameter-schema-get--auth-v1-access_token:
       properties: {}
       type: object
@@ -22193,6 +22434,12 @@ components:
       - CONVERSATION
       title: HelpdeskFileTypes
       type: string
+    SIHFNZCGABTypes:
+      enum:
+      - FILE
+      - FOLDER
+      title: SharedSourceItemTypes
+      type: string
     HSNFileTypes2:
       enum:
       - TICKET
@@ -22206,6 +22453,12 @@ components:
       - ARTICLE
       - CONVERSATION
       title: HelpdeskFileTypes
+      type: string
+    SIHFNZCGABTypes1:
+      enum:
+      - FILE
+      - FOLDER
+      title: SharedSourceItemTypes
       type: string
     GDOSWhiteLabelInput:
       example:

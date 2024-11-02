@@ -17,6 +17,8 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.list_items_filters_nullable_external_ids import ListItemsFiltersNullableExternalIds
 from carbon.pydantic.list_items_filters_nullable_ids import ListItemsFiltersNullableIds
+from carbon.pydantic.list_items_filters_nullable_item_types import ListItemsFiltersNullableItemTypes
+from carbon.pydantic.storage_file_formats import StorageFileFormats
 
 class ListItemsFiltersNullable(BaseModel):
     external_ids: typing.Optional[ListItemsFiltersNullableExternalIds] = Field(None, alias='external_ids')
@@ -26,6 +28,10 @@ class ListItemsFiltersNullable(BaseModel):
     name: typing.Optional[typing.Optional[str]] = Field(None, alias='name')
 
     root_files_only: typing.Optional[typing.Optional[bool]] = Field(None, alias='root_files_only')
+
+    file_formats: typing.Optional[typing.Optional[typing.List[StorageFileFormats]]] = Field(None, alias='file_formats')
+
+    item_types: typing.Optional[ListItemsFiltersNullableItemTypes] = Field(None, alias='item_types')
 
     model_config = ConfigDict(
         protected_namespaces=(),

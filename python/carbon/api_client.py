@@ -70,6 +70,7 @@ from carbon.pydantic.azure_blob_auth_request import AzureBlobAuthRequest
 from carbon.pydantic.azure_blob_file_sync_input import AzureBlobFileSyncInput
 from carbon.pydantic.azure_blob_get_file_input import AzureBlobGetFileInput
 from carbon.pydantic.azure_blob_storage_authentication import AzureBlobStorageAuthentication
+from carbon.pydantic.azure_blob_storage_types import AzureBlobStorageTypes
 from carbon.pydantic.base_includes import BaseIncludes
 from carbon.pydantic.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.pydantic.chunk_properties import ChunkProperties
@@ -89,6 +90,7 @@ from carbon.pydantic.commits_input import CommitsInput
 from carbon.pydantic.commits_response import CommitsResponse
 from carbon.pydantic.configuration_keys import ConfigurationKeys
 from carbon.pydantic.confluence_authentication import ConfluenceAuthentication
+from carbon.pydantic.confluence_file_types import ConfluenceFileTypes
 from carbon.pydantic.connect_data_source_input import ConnectDataSourceInput
 from carbon.pydantic.connect_data_source_response import ConnectDataSourceResponse
 from carbon.pydantic.contact import Contact
@@ -164,23 +166,28 @@ from carbon.pydantic.get_embedding_documents_body_query_vector import GetEmbeddi
 from carbon.pydantic.get_embedding_documents_body_tags import GetEmbeddingDocumentsBodyTags
 from carbon.pydantic.gitbook_authetication import GitbookAuthetication
 from carbon.pydantic.gitbook_connect_request import GitbookConnectRequest
+from carbon.pydantic.gitbook_file_types import GitbookFileTypes
 from carbon.pydantic.gitbook_sync_request import GitbookSyncRequest
 from carbon.pydantic.gitbook_sync_request_space_ids import GitbookSyncRequestSpaceIds
 from carbon.pydantic.github_authentication import GithubAuthentication
 from carbon.pydantic.github_connect_request import GithubConnectRequest
 from carbon.pydantic.github_fetch_repos_request import GithubFetchReposRequest
 from carbon.pydantic.github_fetch_repos_request_repos import GithubFetchReposRequestRepos
+from carbon.pydantic.github_file_types import GithubFileTypes
 from carbon.pydantic.gmail_sync_input import GmailSyncInput
 from carbon.pydantic.gong_authentication import GongAuthentication
+from carbon.pydantic.gong_file_types import GongFileTypes
 from carbon.pydantic.google_drive_credentials import GoogleDriveCredentials
 from carbon.pydantic.google_drive_white_label_input import GoogleDriveWhiteLabelInput
 from carbon.pydantic.guru_authentication import GuruAuthentication
 from carbon.pydantic.guru_connect_request import GuruConnectRequest
+from carbon.pydantic.guru_file_types import GuruFileTypes
 from carbon.pydantic.http_validation_error import HTTPValidationError
 from carbon.pydantic.head_or_base import HeadOrBase
 from carbon.pydantic.helpdesk_file_types import HelpdeskFileTypes
 from carbon.pydantic.hybrid_search_tuning_params import HybridSearchTuningParams
 from carbon.pydantic.hybrid_search_tuning_params_nullable import HybridSearchTuningParamsNullable
+from carbon.pydantic.intercom_file_types import IntercomFileTypes
 from carbon.pydantic.issue import Issue
 from carbon.pydantic.issue_pr import IssuePR
 from carbon.pydantic.issue_pr_nullable import IssuePRNullable
@@ -200,9 +207,11 @@ from carbon.pydantic.list_data_source_items_response import ListDataSourceItemsR
 from carbon.pydantic.list_items_filters import ListItemsFilters
 from carbon.pydantic.list_items_filters_external_ids import ListItemsFiltersExternalIds
 from carbon.pydantic.list_items_filters_ids import ListItemsFiltersIds
+from carbon.pydantic.list_items_filters_item_types import ListItemsFiltersItemTypes
 from carbon.pydantic.list_items_filters_nullable import ListItemsFiltersNullable
 from carbon.pydantic.list_items_filters_nullable_external_ids import ListItemsFiltersNullableExternalIds
 from carbon.pydantic.list_items_filters_nullable_ids import ListItemsFiltersNullableIds
+from carbon.pydantic.list_items_filters_nullable_item_types import ListItemsFiltersNullableItemTypes
 from carbon.pydantic.list_request import ListRequest
 from carbon.pydantic.list_response import ListResponse
 from carbon.pydantic.list_user_response import ListUserResponse
@@ -300,6 +309,7 @@ from carbon.pydantic.service_now_authentication import ServiceNowAuthentication
 from carbon.pydantic.service_now_credentials import ServiceNowCredentials
 from carbon.pydantic.service_now_credentials_nullable import ServiceNowCredentialsNullable
 from carbon.pydantic.service_now_file_types import ServiceNowFileTypes
+from carbon.pydantic.shared_source_item_types import SharedSourceItemTypes
 from carbon.pydantic.sharepoint_authentication import SharepointAuthentication
 from carbon.pydantic.simple_o_auth_data_sources import SimpleOAuthDataSources
 from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
@@ -313,6 +323,7 @@ from carbon.pydantic.sitemap_scrape_request_url_paths_to_include import SitemapS
 from carbon.pydantic.sitemap_scrape_request_urls_to_scrape import SitemapScrapeRequestUrlsToScrape
 from carbon.pydantic.slack_filters import SlackFilters
 from carbon.pydantic.slack_sync_request import SlackSyncRequest
+from carbon.pydantic.storage_file_formats import StorageFileFormats
 from carbon.pydantic.sync_directory_request import SyncDirectoryRequest
 from carbon.pydantic.sync_files_ids import SyncFilesIds
 from carbon.pydantic.sync_files_request import SyncFilesRequest
@@ -373,6 +384,7 @@ from carbon.pydantic.youtube_transcript_response import YoutubeTranscriptRespons
 from carbon.pydantic.youtube_transcript_response_raw_transcript import YoutubeTranscriptResponseRawTranscript
 from carbon.pydantic.youtube_transcript_response_raw_transcript_item import YoutubeTranscriptResponseRawTranscriptItem
 from carbon.pydantic.zendesk_authentication import ZendeskAuthentication
+from carbon.pydantic.zendesk_file_types import ZendeskFileTypes
 from carbon.pydantic.zotero_authentication import ZoteroAuthentication
 
 @dataclass

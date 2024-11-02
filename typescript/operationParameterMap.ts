@@ -1224,6 +1224,16 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/integrations/sharepoint/sites/list-GET': {
+        parameters: [
+            {
+                name: 'data_source_id'
+            },
+            {
+                name: 'cursor'
+            },
+        ]
+    },
     '/integrations/azure_blob_storage/files-POST': {
         parameters: [
             {

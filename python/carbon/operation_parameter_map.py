@@ -1218,6 +1218,16 @@ operation_parameter_map = {
             },
         ]
     },
+    '/integrations/sharepoint/sites/list-GET': {
+        'parameters': [
+            {
+                'name': 'data_source_id'
+            },
+            {
+                'name': 'cursor'
+            },
+        ]
+    },
     '/integrations/azure_blob_storage/files-POST': {
         'parameters': [
             {
