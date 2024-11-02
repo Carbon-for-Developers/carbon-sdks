@@ -42,6 +42,10 @@ examples_3:
     get:
       '200':
         application/json: {}
+  /integrations/sharepoint/sites/list:
+    get:
+      '200':
+        application/json: {}
   /integrations/slack/conversations:
     get:
       '200':
@@ -200,6 +204,8 @@ operationIds:
     post: Integrations_createAwsIamUser
   /integrations/s3/files:
     post: Integrations_syncS3Files
+  /integrations/sharepoint/sites/list:
+    get: Integrations_listSharepointSites
   /integrations/slack/conversations:
     get: Integrations_listConversations
   /integrations/slack/sync:
@@ -320,6 +326,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: IntegrationsListFoldersResponse
+  /integrations/sharepoint/sites/list:
+    get:
+      '200':
+        application/json: IntegrationsListSharepointSitesResponse
   /integrations/slack/conversations:
     get:
       '200':

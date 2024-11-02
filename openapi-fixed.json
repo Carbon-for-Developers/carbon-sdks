@@ -1649,6 +1649,72 @@
         }
       }
     },
+    "/integrations/sharepoint/sites/list": {
+      "get": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "List Sharepoint Sites",
+        "operationId": "Integrations_listSharepointSites",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "description": "List all Sharepoint sites in the connected tenant. The site names from the response can be\nused as the site name when connecting a Sharepoint site. If site name is null in the response, then site name should\nbe left null when connecting to the site.\n\nThis endpoint requires an additional Sharepoint scope: \"Sites.Read.All\". Include this scope along with the default\nSharepoint scopes to list Sharepoint sites, connect to a site, and finally sync files from the site. The default\nSharepoint scopes are: [o, p, e, n, i, d,  , o, f, f, l, i, n, e, _, a, c, c, e, s, s,  , U, s, e, r, ., R, e, a, d,  , F, i, l, e, s, ., R, e, a, d, ., A, l, l].\n \ndata_soure_id: Data source needs to be specified if you have linked multiple Sharepoint accounts\ncursor: Used for pagination. If next_cursor is returned in response, you need to pass it as the cursor in the next request",
+        "parameters": [
+          {
+            "name": "data_source_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Data Source Id",
+              "type": "integer",
+              "nullable": true
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Cursor",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegrationsListSharepointSitesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -5793,6 +5859,11 @@
           "account_key"
         ]
       },
+      "AzureBlobStorageTypes": {
+        "title": "AzureBlobStorageTypes",
+        "type": "string",
+        "const": "Container"
+      },
       "BaseIncludes": {
         "title": "BaseIncludes",
         "description": "These can be included as children when requesting parent entities ",
@@ -6164,6 +6235,14 @@
           "source",
           "access_token",
           "subdomain"
+        ]
+      },
+      "ConfluenceFileTypes": {
+        "title": "ConfluenceFileTypes",
+        "type": "string",
+        "enum": [
+          "SPACE",
+          "PAGE"
         ]
       },
       "ConnectDataSourceInput": {
@@ -8158,6 +8237,16 @@
           }
         }
       },
+      "GitbookFileTypes": {
+        "title": "GitbookFileTypes",
+        "type": "string",
+        "enum": [
+          "SPACE",
+          "SHEET",
+          "GROUP",
+          "LINK"
+        ]
+      },
       "GitbookSyncRequest": {
         "title": "GitbookSyncRequest",
         "properties": {
@@ -8310,6 +8399,15 @@
           "repos"
         ]
       },
+      "GithubFileTypes": {
+        "title": "GithubFileTypes",
+        "type": "string",
+        "enum": [
+          "REPOSITORY",
+          "DIRECTORY",
+          "FILE"
+        ]
+      },
       "GmailSyncInput": {
         "title": "GmailSyncInput",
         "properties": {
@@ -8418,6 +8516,15 @@
           "source",
           "access_token",
           "gong_account_email"
+        ]
+      },
+      "GongFileTypes": {
+        "title": "GongFileTypes",
+        "type": "string",
+        "enum": [
+          "WORKSPACE",
+          "FOLDER",
+          "CALL"
         ]
       },
       "GoogleDriveCredentials": {
@@ -8578,6 +8685,15 @@
           }
         }
       },
+      "GuruFileTypes": {
+        "title": "GuruFileTypes",
+        "type": "string",
+        "enum": [
+          "COLLECTION",
+          "FOLDER",
+          "CARD"
+        ]
+      },
       "HTTPValidationError": {
         "title": "HTTPValidationError",
         "properties": {
@@ -8639,6 +8755,21 @@
         "required": [
           "weight_a",
           "weight_b"
+        ]
+      },
+      "IntercomFileTypes": {
+        "title": "IntercomFileTypes",
+        "type": "string",
+        "enum": [
+          "ARTICLE",
+          "COLLECTION",
+          "HELP_CENTER",
+          "TICKET",
+          "TICKET_ATTACHMENT",
+          "CONTACT",
+          "ADMIN",
+          "TEAM",
+          "CONVERSATION"
         ]
       },
       "Issue": {
@@ -9225,6 +9356,58 @@
           "root_files_only": {
             "title": "Root Files Only",
             "type": "boolean",
+            "nullable": true
+          },
+          "file_formats": {
+            "title": "File Formats",
+            "items": {
+              "$ref": "#/components/schemas/StorageFileFormats"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "nullable": true
+          },
+          "item_types": {
+            "title": "Item Types",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/SharedSourceItemTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ServiceNowFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ZendeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/IntercomFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ConfluenceFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GitbookFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GithubFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GuruFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GongFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/AzureBlobStorageTypes"
+                }
+              ]
+            },
+            "type": "array",
+            "maxItems": 50,
             "nullable": true
           }
         },
@@ -12008,6 +12191,14 @@
           "ATTACHMENT"
         ]
       },
+      "SharedSourceItemTypes": {
+        "title": "SharedSourceItemTypes",
+        "type": "string",
+        "enum": [
+          "FILE",
+          "FOLDER"
+        ]
+      },
       "SharepointAuthentication": {
         "title": "SharepointAuthentication",
         "properties": {
@@ -12364,6 +12555,46 @@
             "default": "OPENAI"
           }
         }
+      },
+      "StorageFileFormats": {
+        "title": "StorageFileFormats",
+        "type": "string",
+        "enum": [
+          "TXT",
+          "CSV",
+          "TSV",
+          "PDF",
+          "DOCX",
+          "PPTX",
+          "XLSX",
+          "XLSM",
+          "MD",
+          "RTF",
+          "JSON",
+          "HTML",
+          "JPG",
+          "PNG",
+          "MP3",
+          "MP2",
+          "AAC",
+          "WAV",
+          "FLAC",
+          "PCM",
+          "M4A",
+          "OGG",
+          "OPUS",
+          "MPEG",
+          "MPG",
+          "MP4",
+          "WMV",
+          "AVI",
+          "MOV",
+          "MKV",
+          "FLV",
+          "WEBM",
+          "EML",
+          "MSG"
+        ]
       },
       "SyncDirectoryRequest": {
         "title": "SyncDirectoryRequest",
@@ -14062,6 +14293,17 @@
           "subdomain"
         ]
       },
+      "ZendeskFileTypes": {
+        "title": "ZendeskFileTypes",
+        "type": "string",
+        "enum": [
+          "TICKET",
+          "ARTICLE",
+          "TICKET_ATTACHMENT",
+          "SECTION",
+          "CATEGORY"
+        ]
+      },
       "ZoteroAuthentication": {
         "title": "ZoteroAuthentication",
         "properties": {
@@ -14663,6 +14905,58 @@
             "title": "Root Files Only",
             "type": "boolean",
             "nullable": true
+          },
+          "file_formats": {
+            "title": "File Formats",
+            "items": {
+              "$ref": "#/components/schemas/StorageFileFormats"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "nullable": true
+          },
+          "item_types": {
+            "title": "Item Types",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/SharedSourceItemTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/HelpdeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ServiceNowFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ZendeskFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/IntercomFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/ConfluenceFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GitbookFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GithubFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GuruFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/GongFileTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/AzureBlobStorageTypes"
+                }
+              ]
+            },
+            "type": "array",
+            "maxItems": 50,
+            "nullable": true
           }
         },
         "type": "object",
@@ -14944,6 +15238,13 @@
         }
       },
       "IntegrationsSyncSlackResponse": {
+        "type": "object",
+        "properties": {
+        },
+        "example": {
+        }
+      },
+      "IntegrationsListSharepointSitesResponse": {
         "type": "object",
         "properties": {
         },
