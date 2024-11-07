@@ -66,6 +66,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());
@@ -292,6 +293,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());
@@ -1265,6 +1267,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());
@@ -1440,6 +1443,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());
@@ -1648,6 +1652,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());
@@ -1820,6 +1825,7 @@ public class Example {
       System.out.println(result.getId());
       System.out.println(result.getSource());
       System.out.println(result.getOrganizationId());
+      System.out.println(result.getOrganizationUserId());
       System.out.println(result.getOrganizationSuppliedUserId());
       System.out.println(result.getOrganizationUserDataSourceId());
       System.out.println(result.getExternalFileId());

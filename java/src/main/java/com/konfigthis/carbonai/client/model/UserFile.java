@@ -74,6 +74,10 @@ public class UserFile {
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private Integer organizationId;
 
+  public static final String SERIALIZED_NAME_ORGANIZATION_USER_ID = "organization_user_id";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION_USER_ID)
+  private Integer organizationUserId;
+
   public static final String SERIALIZED_NAME_ORGANIZATION_SUPPLIED_USER_ID = "organization_supplied_user_id";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_SUPPLIED_USER_ID)
   private String organizationSuppliedUserId;
@@ -326,6 +330,35 @@ public class UserFile {
     
     
     this.organizationId = organizationId;
+  }
+
+
+  public UserFile organizationUserId(Integer organizationUserId) {
+    
+    
+    
+    
+    this.organizationUserId = organizationUserId;
+    return this;
+  }
+
+   /**
+   * Get organizationUserId
+   * @return organizationUserId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(required = true, value = "")
+
+  public Integer getOrganizationUserId() {
+    return organizationUserId;
+  }
+
+
+  public void setOrganizationUserId(Integer organizationUserId) {
+    
+    
+    
+    this.organizationUserId = organizationUserId;
   }
 
 
@@ -1378,6 +1411,7 @@ public class UserFile {
         Objects.equals(this.id, userFile.id) &&
         Objects.equals(this.source, userFile.source) &&
         Objects.equals(this.organizationId, userFile.organizationId) &&
+        Objects.equals(this.organizationUserId, userFile.organizationUserId) &&
         Objects.equals(this.organizationSuppliedUserId, userFile.organizationSuppliedUserId) &&
         Objects.equals(this.organizationUserDataSourceId, userFile.organizationUserDataSourceId) &&
         Objects.equals(this.externalFileId, userFile.externalFileId) &&
@@ -1417,7 +1451,7 @@ public class UserFile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, id, source, organizationId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, uploadId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(tags, id, source, organizationId, organizationUserId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, uploadId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1428,6 +1462,7 @@ public class UserFile {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    organizationUserId: ").append(toIndentedString(organizationUserId)).append("\n");
     sb.append("    organizationSuppliedUserId: ").append(toIndentedString(organizationSuppliedUserId)).append("\n");
     sb.append("    organizationUserDataSourceId: ").append(toIndentedString(organizationUserDataSourceId)).append("\n");
     sb.append("    externalFileId: ").append(toIndentedString(externalFileId)).append("\n");
@@ -1489,6 +1524,7 @@ public class UserFile {
     openapiFields.add("id");
     openapiFields.add("source");
     openapiFields.add("organization_id");
+    openapiFields.add("organization_user_id");
     openapiFields.add("organization_supplied_user_id");
     openapiFields.add("organization_user_data_source_id");
     openapiFields.add("external_file_id");
@@ -1530,6 +1566,7 @@ public class UserFile {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("source");
     openapiRequiredFields.add("organization_id");
+    openapiRequiredFields.add("organization_user_id");
     openapiRequiredFields.add("organization_supplied_user_id");
     openapiRequiredFields.add("organization_user_data_source_id");
     openapiRequiredFields.add("external_file_id");

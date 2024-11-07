@@ -11,6 +11,7 @@
 |**id** | **Integer** |  |  |
 |**source** | **DataSourceType** |  |  |
 |**organizationId** | **Integer** |  |  |
+|**organizationUserId** | **Integer** |  |  |
 |**organizationSuppliedUserId** | **String** |  |  |
 |**organizationUserDataSourceId** | **Integer** |  |  |
 |**externalFileId** | **String** |  |  |

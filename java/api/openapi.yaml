@@ -7783,8 +7783,8 @@ components:
       type: string
     EmbeddingProperties:
       example:
-        chunk_size: 9
-        chunk_overlap: 3
+        chunk_size: 3
+        chunk_overlap: 2
       properties:
         chunk_size:
           nullable: true
@@ -15258,13 +15258,13 @@ components:
     UserFile:
       example:
         additional_presigned_urls: "{}"
-        chunk_size: 2
+        chunk_size: 4
         upload_id: upload_id
-        organization_user_data_source_id: 1
+        organization_user_data_source_id: 5
         embedding_properties:
           key:
-            chunk_size: 9
-            chunk_overlap: 3
+            chunk_size: 3
+            chunk_overlap: 2
         sync_properties: {}
         external_file_id: external_file_id
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -15284,7 +15284,7 @@ components:
         last_sync: 2000-01-23T04:56:07.000+00:00
         chunk_properties:
           prepend_filename_to_chunks: false
-          max_items_per_chunk: 7
+          max_items_per_chunk: 1
           set_page_as_boundary: false
         ocr_properties: {}
         presigned_url: presigned_url
@@ -15293,17 +15293,18 @@ components:
         sync_error_message: sync_error_message
         parent_id: 1
         organization_id: 6
+        organization_user_id: 1
         name: name
         sync_status: null
         file_statistics:
           mime_type: mime_type
-          num_tokens: 2
-          num_embeddings: 7
+          num_tokens: 7
+          num_embeddings: 9
           file_format: null
           file_size: 5
-          num_characters: 5
+          num_characters: 2
         parsed_text_url: parsed_text_url
-        chunk_overlap: 4
+        chunk_overlap: 7
         skip_embedding_generation: true
         request_id: request_id
         messages_metadata: {}
@@ -15319,6 +15320,10 @@ components:
           $ref: '#/components/schemas/DataSourceType'
         organization_id:
           title: Organization Id
+          type: integer
+        organization_user_id:
+          nullable: true
+          title: Organization User Id
           type: integer
         organization_supplied_user_id:
           title: Organization Supplied User Id
@@ -15483,6 +15488,7 @@ components:
       - organization_id
       - organization_supplied_user_id
       - organization_user_data_source_id
+      - organization_user_id
       - parent_id
       - parsed_text_url
       - presigned_url
@@ -15505,13 +15511,13 @@ components:
         count: 0
         results:
         - additional_presigned_urls: "{}"
-          chunk_size: 2
+          chunk_size: 4
           upload_id: upload_id
-          organization_user_data_source_id: 1
+          organization_user_data_source_id: 5
           embedding_properties:
             key:
-              chunk_size: 9
-              chunk_overlap: 3
+              chunk_size: 3
+              chunk_overlap: 2
           sync_properties: {}
           external_file_id: external_file_id
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -15531,7 +15537,7 @@ components:
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
-            max_items_per_chunk: 7
+            max_items_per_chunk: 1
             set_page_as_boundary: false
           ocr_properties: {}
           presigned_url: presigned_url
@@ -15540,28 +15546,29 @@ components:
           sync_error_message: sync_error_message
           parent_id: 1
           organization_id: 6
+          organization_user_id: 1
           name: name
           sync_status: null
           file_statistics:
             mime_type: mime_type
-            num_tokens: 2
-            num_embeddings: 7
+            num_tokens: 7
+            num_embeddings: 9
             file_format: null
             file_size: 5
-            num_characters: 5
+            num_characters: 2
           parsed_text_url: parsed_text_url
-          chunk_overlap: 4
+          chunk_overlap: 7
           skip_embedding_generation: true
           request_id: request_id
           messages_metadata: {}
         - additional_presigned_urls: "{}"
-          chunk_size: 2
+          chunk_size: 4
           upload_id: upload_id
-          organization_user_data_source_id: 1
+          organization_user_data_source_id: 5
           embedding_properties:
             key:
-              chunk_size: 9
-              chunk_overlap: 3
+              chunk_size: 3
+              chunk_overlap: 2
           sync_properties: {}
           external_file_id: external_file_id
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -15581,7 +15588,7 @@ components:
           last_sync: 2000-01-23T04:56:07.000+00:00
           chunk_properties:
             prepend_filename_to_chunks: false
-            max_items_per_chunk: 7
+            max_items_per_chunk: 1
             set_page_as_boundary: false
           ocr_properties: {}
           presigned_url: presigned_url
@@ -15590,17 +15597,18 @@ components:
           sync_error_message: sync_error_message
           parent_id: 1
           organization_id: 6
+          organization_user_id: 1
           name: name
           sync_status: null
           file_statistics:
             mime_type: mime_type
-            num_tokens: 2
-            num_embeddings: 7
+            num_tokens: 7
+            num_embeddings: 9
             file_format: null
             file_size: 5
-            num_characters: 5
+            num_characters: 2
           parsed_text_url: parsed_text_url
-          chunk_overlap: 4
+          chunk_overlap: 7
           skip_embedding_generation: true
           request_id: request_id
           messages_metadata: {}
@@ -17087,11 +17095,11 @@ components:
     FileStatisticsNullable:
       example:
         mime_type: mime_type
-        num_tokens: 2
-        num_embeddings: 7
+        num_tokens: 7
+        num_embeddings: 9
         file_format: null
         file_size: 5
-        num_characters: 5
+        num_characters: 2
       nullable: true
       properties:
         file_format:
@@ -17128,7 +17136,7 @@ components:
     ChunkPropertiesNullable:
       example:
         prepend_filename_to_chunks: false
-        max_items_per_chunk: 7
+        max_items_per_chunk: 1
         set_page_as_boundary: false
       nullable: true
       properties:

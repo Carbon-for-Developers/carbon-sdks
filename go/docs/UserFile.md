@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Id** | **int32** |  | 
 **Source** | [**DataSourceType**](DataSourceType.md) |  | 
 **OrganizationId** | **int32** |  | 
+**OrganizationUserId** | **NullableInt32** |  | 
 **OrganizationSuppliedUserId** | **string** |  | 
 **OrganizationUserDataSourceId** | **NullableInt32** |  | 
 **ExternalFileId** | **string** |  | 
@@ -47,7 +48,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -152,6 +153,36 @@ and a boolean to check if the value has been set.
 SetOrganizationId sets OrganizationId field to given value.
 
 
+### GetOrganizationUserId
+
+`func (o *UserFile) GetOrganizationUserId() int32`
+
+GetOrganizationUserId returns the OrganizationUserId field if non-nil, zero value otherwise.
+
+### GetOrganizationUserIdOk
+
+`func (o *UserFile) GetOrganizationUserIdOk() (*int32, bool)`
+
+GetOrganizationUserIdOk returns a tuple with the OrganizationUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationUserId
+
+`func (o *UserFile) SetOrganizationUserId(v int32)`
+
+SetOrganizationUserId sets OrganizationUserId field to given value.
+
+
+### SetOrganizationUserIdNil
+
+`func (o *UserFile) SetOrganizationUserIdNil(b bool)`
+
+ SetOrganizationUserIdNil sets the value for OrganizationUserId to be an explicit nil
+
+### UnsetOrganizationUserId
+`func (o *UserFile) UnsetOrganizationUserId()`
+
+UnsetOrganizationUserId ensures that no value is present for OrganizationUserId, not even an explicit nil
 ### GetOrganizationSuppliedUserId
 
 `func (o *UserFile) GetOrganizationSuppliedUserId() string`

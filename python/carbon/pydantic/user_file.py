@@ -31,6 +31,8 @@ class UserFile(BaseModel):
 
     organization_id: int = Field(alias='organization_id')
 
+    organization_user_id: typing.Optional[int] = Field(alias='organization_user_id')
+
     organization_supplied_user_id: str = Field(alias='organization_supplied_user_id')
 
     organization_user_data_source_id: typing.Optional[int] = Field(alias='organization_user_data_source_id')

@@ -19,6 +19,8 @@ module Carbon
 
     attr_accessor :organization_id
 
+    attr_accessor :organization_user_id
+
     attr_accessor :organization_supplied_user_id
 
     attr_accessor :organization_user_data_source_id
@@ -94,6 +96,7 @@ module Carbon
         :'id' => :'id',
         :'source' => :'source',
         :'organization_id' => :'organization_id',
+        :'organization_user_id' => :'organization_user_id',
         :'organization_supplied_user_id' => :'organization_supplied_user_id',
         :'organization_user_data_source_id' => :'organization_user_data_source_id',
         :'external_file_id' => :'external_file_id',
@@ -143,6 +146,7 @@ module Carbon
         :'id' => :'Integer',
         :'source' => :'DataSourceType',
         :'organization_id' => :'Integer',
+        :'organization_user_id' => :'Integer',
         :'organization_supplied_user_id' => :'String',
         :'organization_user_data_source_id' => :'Integer',
         :'external_file_id' => :'String',
@@ -184,6 +188,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'tags',
+        :'organization_user_id',
         :'organization_user_data_source_id',
         :'external_url',
         :'sync_error_message',
@@ -238,6 +243,10 @@ module Carbon
 
       if attributes.key?(:'organization_id')
         self.organization_id = attributes[:'organization_id']
+      end
+
+      if attributes.key?(:'organization_user_id')
+        self.organization_user_id = attributes[:'organization_user_id']
       end
 
       if attributes.key?(:'organization_supplied_user_id')
@@ -478,6 +487,7 @@ module Carbon
           id == o.id &&
           source == o.source &&
           organization_id == o.organization_id &&
+          organization_user_id == o.organization_user_id &&
           organization_supplied_user_id == o.organization_supplied_user_id &&
           organization_user_data_source_id == o.organization_user_data_source_id &&
           external_file_id == o.external_file_id &&
@@ -523,7 +533,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tags, id, source, organization_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, upload_id, sync_properties, messages_metadata, file_contents_deleted, supports_cold_storage, hot_storage_time_to_live, embedding_storage_status, created_at, updated_at].hash
+      [tags, id, source, organization_id, organization_user_id, organization_supplied_user_id, organization_user_data_source_id, external_file_id, external_url, sync_status, sync_error_message, last_sync, file_statistics, file_metadata, embedding_properties, chunk_size, chunk_overlap, chunk_properties, ocr_properties, ocr_job_started_at, name, parent_id, enable_auto_sync, presigned_url, parsed_text_url, additional_presigned_urls, skip_embedding_generation, source_created_at, generate_sparse_vectors, request_id, upload_id, sync_properties, messages_metadata, file_contents_deleted, supports_cold_storage, hot_storage_time_to_live, embedding_storage_status, created_at, updated_at].hash
     end
 
     # Builds the object from hash

@@ -13283,6 +13283,11 @@
             "title": "Organization Id",
             "type": "integer"
           },
+          "organization_user_id": {
+            "title": "Organization User Id",
+            "type": "integer",
+            "nullable": true
+          },
           "organization_supplied_user_id": {
             "title": "Organization Supplied User Id",
             "type": "string"
@@ -13456,6 +13461,7 @@
           "id",
           "source",
           "organization_id",
+          "organization_user_id",
           "organization_supplied_user_id",
           "organization_user_data_source_id",
           "external_file_id",
