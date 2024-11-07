@@ -15886,6 +15886,17 @@
             "type": "integer",
             "title": "Organization Id"
           },
+          "organization_user_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organization User Id"
+          },
           "organization_supplied_user_id": {
             "type": "string",
             "title": "Organization Supplied User Id"
@@ -16201,6 +16212,7 @@
           "id",
           "source",
           "organization_id",
+          "organization_user_id",
           "organization_supplied_user_id",
           "organization_user_data_source_id",
           "external_file_id",
