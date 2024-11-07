@@ -21,6 +21,7 @@ type UserFile struct {
 	Id int32 `json:"id"`
 	Source DataSourceType `json:"source"`
 	OrganizationId int32 `json:"organization_id"`
+	OrganizationUserId NullableInt32 `json:"organization_user_id"`
 	OrganizationSuppliedUserId string `json:"organization_supplied_user_id"`
 	OrganizationUserDataSourceId NullableInt32 `json:"organization_user_data_source_id"`
 	ExternalFileId string `json:"external_file_id"`
@@ -61,12 +62,13 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
 	this.Tags = tags
 	this.Id = id
 	this.Source = source
 	this.OrganizationId = organizationId
+	this.OrganizationUserId = organizationUserId
 	this.OrganizationSuppliedUserId = organizationSuppliedUserId
 	this.OrganizationUserDataSourceId = organizationUserDataSourceId
 	this.ExternalFileId = externalFileId
@@ -210,6 +212,32 @@ func (o *UserFile) GetOrganizationIdOk() (*int32, bool) {
 // SetOrganizationId sets field value
 func (o *UserFile) SetOrganizationId(v int32) {
 	o.OrganizationId = v
+}
+
+// GetOrganizationUserId returns the OrganizationUserId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *UserFile) GetOrganizationUserId() int32 {
+	if o == nil || o.OrganizationUserId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.OrganizationUserId.Get()
+}
+
+// GetOrganizationUserIdOk returns a tuple with the OrganizationUserId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserFile) GetOrganizationUserIdOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.OrganizationUserId.Get(), o.OrganizationUserId.IsSet()
+}
+
+// SetOrganizationUserId sets field value
+func (o *UserFile) SetOrganizationUserId(v int32) {
+	o.OrganizationUserId.Set(&v)
 }
 
 // GetOrganizationSuppliedUserId returns the OrganizationSuppliedUserId field value
@@ -1085,6 +1113,9 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["organization_id"] = o.OrganizationId
+	}
+	if true {
+		toSerialize["organization_user_id"] = o.OrganizationUserId.Get()
 	}
 	if true {
 		toSerialize["organization_supplied_user_id"] = o.OrganizationSuppliedUserId

@@ -49,6 +49,12 @@ export interface UserFile {
     'organization_id': number;
     /**
      * 
+     * @type {number}
+     * @memberof UserFile
+     */
+    'organization_user_id': number | null;
+    /**
+     * 
      * @type {string}
      * @memberof UserFile
      */

@@ -80,6 +80,14 @@ public class UserFileTest {
     }
 
     /**
+     * Test the property 'organizationUserId'
+     */
+    @Test
+    public void organizationUserIdTest() {
+        // TODO: test organizationUserId
+    }
+
+    /**
      * Test the property 'organizationSuppliedUserId'
      */
     @Test

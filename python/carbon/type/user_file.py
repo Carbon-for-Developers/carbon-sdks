@@ -30,6 +30,8 @@ class RequiredUserFile(TypedDict):
 
     organization_id: int
 
+    organization_user_id: typing.Optional[int]
+
     organization_supplied_user_id: str
 
     organization_user_data_source_id: typing.Optional[int]
