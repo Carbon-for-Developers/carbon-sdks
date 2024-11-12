@@ -3423,6 +3423,52 @@
         }
       }
     },
+    "/data_sources": {
+      "post": {
+        "tags": [
+          "Data Sources"
+        ],
+        "summary": "Data Sources",
+        "operationId": "data_sources_data_sources_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserDataSourceQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/user_data_sources": {
       "post": {
         "tags": [
@@ -15596,6 +15642,19 @@
             "title": "Max Characters Per Upload",
             "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit."
           },
+          "auto_sync_interval": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]"
+          },
           "customer_ids": {
             "items": {
               "type": "string"
@@ -15868,6 +15927,19 @@
             ],
             "title": "Max Characters Per Upload",
             "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit."
+          },
+          "auto_sync_interval": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]"
           }
         },
         "type": "object",
