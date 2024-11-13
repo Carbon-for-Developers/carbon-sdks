@@ -31,12 +31,11 @@ class RequiredListUserResponse(TypedDict):
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
+class OptionalListUserResponse(TypedDict, total=False):
     custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     auto_sync_enabled_sources: ListUserResponseAutoSyncEnabledSources
-
-class OptionalListUserResponse(TypedDict, total=False):
-    pass
 
 class ListUserResponse(RequiredListUserResponse, OptionalListUserResponse):
     pass

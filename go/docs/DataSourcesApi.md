@@ -5,6 +5,7 @@ All URIs are relative to *https://api.carbon.ai*
 Method | Path | Description
 ------------- | ------------- | -------------
 [**AddTags**](DataSourcesApi.md#AddTags) | **Post** /data_sources/tags/add | Add Data Source Tags
+[**Query**](DataSourcesApi.md#Query) | **Post** /data_sources | Data Sources
 [**QueryUserDataSources**](DataSourcesApi.md#QueryUserDataSources) | **Post** /user_data_sources | User Data Sources
 [**RemoveTags**](DataSourcesApi.md#RemoveTags) | **Post** /data_sources/tags/remove | Remove Data Source Tags
 [**RevokeAccessToken**](DataSourcesApi.md#RevokeAccessToken) | **Post** /revoke_access_token | Revoke Access Token
@@ -69,6 +70,57 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.AddTags.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.AddTags.FilesSyncedAt`: %v\n", resp.FilesSyncedAt)
     fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceAPI.AddTags.DataSourceMetadata`: %v\n", resp.DataSourceMetadata)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Query
+
+Data Sources
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetApiKey("AUTHORIZATION")
+    client := carbon.NewAPIClient(configuration)
+
+    pagination := *carbon.NewPagination()
+    filters := *carbon.NewOrganizationUserDataSourceFilters()
+    
+    organizationUserDataSourceQueryInput := *carbon.NewOrganizationUserDataSourceQueryInput()
+    organizationUserDataSourceQueryInput.SetPagination(pagination)
+    organizationUserDataSourceQueryInput.SetOrderBy(null)
+    organizationUserDataSourceQueryInput.SetOrderDir(null)
+    organizationUserDataSourceQueryInput.SetFilters(filters)
+    
+    request := client.DataSourcesApi.Query(
+        organizationUserDataSourceQueryInput,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DataSourcesApi.Query``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `Query`: OrganizationUserDataSourceResponse
+    fmt.Fprintf(os.Stdout, "Response from `DataSourcesApi.Query`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceResponse.Query.Results`: %v\n", resp.Results)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationUserDataSourceResponse.Query.Count`: %v\n", resp.Count)
 }
 ```
 

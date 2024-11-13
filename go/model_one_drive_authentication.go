@@ -16,7 +16,7 @@ import (
 
 // OneDriveAuthentication struct for OneDriveAuthentication
 type OneDriveAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	TenantName NullableString `json:"tenant_name,omitempty"`
@@ -26,7 +26,7 @@ type OneDriveAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOneDriveAuthentication(source interface{}, accessToken string) *OneDriveAuthentication {
+func NewOneDriveAuthentication(source string, accessToken string) *OneDriveAuthentication {
 	this := OneDriveAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -42,10 +42,9 @@ func NewOneDriveAuthenticationWithDefaults() *OneDriveAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *OneDriveAuthentication) GetSource() interface{} {
+func (o *OneDriveAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *OneDriveAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OneDriveAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *OneDriveAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *OneDriveAuthentication) SetSource(v interface{}) {
+func (o *OneDriveAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -177,7 +175,7 @@ func (o *OneDriveAuthentication) UnsetTenantName() {
 
 func (o OneDriveAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

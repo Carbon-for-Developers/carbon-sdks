@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **Subdomain** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewZendeskAuthentication
 
-`func NewZendeskAuthentication(source interface{}, accessToken string, subdomain string, ) *ZendeskAuthentication`
+`func NewZendeskAuthentication(source string, accessToken string, subdomain string, ) *ZendeskAuthentication`
 
 NewZendeskAuthentication instantiates a new ZendeskAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -29,34 +29,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *ZendeskAuthentication) GetSource() interface{}`
+`func (o *ZendeskAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ZendeskAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *ZendeskAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ZendeskAuthentication) SetSource(v interface{})`
+`func (o *ZendeskAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *ZendeskAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *ZendeskAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *ZendeskAuthentication) GetAccessToken() string`

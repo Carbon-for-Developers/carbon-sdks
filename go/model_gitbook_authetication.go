@@ -16,7 +16,7 @@ import (
 
 // GitbookAuthetication struct for GitbookAuthetication
 type GitbookAuthetication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	OrganizationName string `json:"organization_name"`
 }
@@ -25,7 +25,7 @@ type GitbookAuthetication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGitbookAuthetication(source interface{}, accessToken string, organizationName string) *GitbookAuthetication {
+func NewGitbookAuthetication(source string, accessToken string, organizationName string) *GitbookAuthetication {
 	this := GitbookAuthetication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -42,10 +42,9 @@ func NewGitbookAutheticationWithDefaults() *GitbookAuthetication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GitbookAuthetication) GetSource() interface{} {
+func (o *GitbookAuthetication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *GitbookAuthetication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GitbookAuthetication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *GitbookAuthetication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *GitbookAuthetication) SetSource(v interface{}) {
+func (o *GitbookAuthetication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -117,7 +115,7 @@ func (o *GitbookAuthetication) SetOrganizationName(v string) {
 
 func (o GitbookAuthetication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

@@ -38,18 +38,21 @@ class ModifyUserConfigurationInput(
         }
         
         class properties:
-            configuration_key_name = schemas.StrSchema
+        
+            @staticmethod
+            def configuration_key_name() -> typing.Type['ConfigurationKeys']:
+                return ConfigurationKeys
             value = schemas.DictSchema
             __annotations__ = {
                 "configuration_key_name": configuration_key_name,
                 "value": value,
             }
     
-    configuration_key_name: MetaOapg.properties.configuration_key_name
+    configuration_key_name: 'ConfigurationKeys'
     value: MetaOapg.properties.value
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["configuration_key_name"]) -> MetaOapg.properties.configuration_key_name: ...
+    def __getitem__(self, name: typing_extensions.Literal["configuration_key_name"]) -> 'ConfigurationKeys': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -63,7 +66,7 @@ class ModifyUserConfigurationInput(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["configuration_key_name"]) -> MetaOapg.properties.configuration_key_name: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["configuration_key_name"]) -> 'ConfigurationKeys': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["value"]) -> MetaOapg.properties.value: ...
@@ -78,7 +81,7 @@ class ModifyUserConfigurationInput(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        configuration_key_name: typing.Union[MetaOapg.properties.configuration_key_name, str, ],
+        configuration_key_name: 'ConfigurationKeys',
         value: typing.Union[MetaOapg.properties.value, dict, frozendict.frozendict, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -91,3 +94,5 @@ class ModifyUserConfigurationInput(
             _configuration=_configuration,
             **kwargs,
         )
+
+from carbon.model.configuration_keys import ConfigurationKeys

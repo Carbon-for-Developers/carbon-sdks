@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**status** | **String** |  |  |
-|**error** | **String** |  |  |
-|**data** | **String** |  |  |
-|**rawTranscript** | **List&lt;Map&lt;String, Object&gt;&gt;** |  |  |
+|**error** | **String** |  |  [optional] |
+|**data** | **String** |  |  [optional] |
+|**rawTranscript** | **List&lt;Map&lt;String, Object&gt;&gt;** |  |  [optional] |
 
 
 

@@ -16,7 +16,7 @@ import (
 
 // ZendeskAuthentication struct for ZendeskAuthentication
 type ZendeskAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	Subdomain string `json:"subdomain"`
 }
@@ -25,7 +25,7 @@ type ZendeskAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewZendeskAuthentication(source interface{}, accessToken string, subdomain string) *ZendeskAuthentication {
+func NewZendeskAuthentication(source string, accessToken string, subdomain string) *ZendeskAuthentication {
 	this := ZendeskAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -42,10 +42,9 @@ func NewZendeskAuthenticationWithDefaults() *ZendeskAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ZendeskAuthentication) GetSource() interface{} {
+func (o *ZendeskAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *ZendeskAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ZendeskAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *ZendeskAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *ZendeskAuthentication) SetSource(v interface{}) {
+func (o *ZendeskAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -117,7 +115,7 @@ func (o *ZendeskAuthentication) SetSubdomain(v string) {
 
 func (o ZendeskAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

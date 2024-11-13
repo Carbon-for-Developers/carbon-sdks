@@ -33,6 +33,7 @@ import frozendict  # noqa: F401
 from carbon import schemas  # noqa: F401
 
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
+from carbon.model.data_source_extended_input import DataSourceExtendedInput as DataSourceExtendedInputSchema
 from carbon.model.data_source_type import DataSourceType as DataSourceTypeSchema
 from carbon.model.update_users_input import UpdateUsersInput as UpdateUsersInputSchema
 from carbon.model.update_users_input_customer_ids import UpdateUsersInputCustomerIds as UpdateUsersInputCustomerIdsSchema
@@ -43,6 +44,7 @@ from carbon.type.generic_success_response import GenericSuccessResponse
 from carbon.type.data_source_type import DataSourceType
 from carbon.type.update_users_input import UpdateUsersInput
 from carbon.type.update_users_input_customer_ids import UpdateUsersInputCustomerIds
+from carbon.type.data_source_extended_input import DataSourceExtendedInput
 
 from ...api_client import Dictionary
 from carbon.pydantic.data_source_type import DataSourceType as DataSourceTypePydantic
@@ -50,6 +52,7 @@ from carbon.pydantic.update_users_input_customer_ids import UpdateUsersInputCust
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.update_users_input import UpdateUsersInput as UpdateUsersInputPydantic
+from carbon.pydantic.data_source_extended_input import DataSourceExtendedInput as DataSourceExtendedInputPydantic
 
 from . import path
 
@@ -123,12 +126,13 @@ class BaseApi(api_client.Api):
     def _update_users_mapped_args(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
@@ -144,6 +148,8 @@ class BaseApi(api_client.Api):
             _body["max_characters_per_file"] = max_characters_per_file
         if max_characters_per_upload is not None:
             _body["max_characters_per_upload"] = max_characters_per_upload
+        if auto_sync_interval is not None:
+            _body["auto_sync_interval"] = auto_sync_interval
         if customer_ids is not None:
             _body["customer_ids"] = customer_ids
         args.body = _body
@@ -354,12 +360,13 @@ class UpdateUsersRaw(BaseApi):
     async def aupdate_users(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -374,6 +381,7 @@ class UpdateUsersRaw(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
         )
         return await self._aupdate_users_oapg(
             body=args.body,
@@ -383,12 +391,13 @@ class UpdateUsersRaw(BaseApi):
     def update_users(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -402,6 +411,7 @@ class UpdateUsersRaw(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
         )
         return self._update_users_oapg(
             body=args.body,
@@ -412,12 +422,13 @@ class UpdateUsers(BaseApi):
     async def aupdate_users(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
         **kwargs,
     ) -> GenericSuccessResponsePydantic:
@@ -429,6 +440,7 @@ class UpdateUsers(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
             **kwargs,
         )
         if validate:
@@ -439,12 +451,13 @@ class UpdateUsers(BaseApi):
     def update_users(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
         raw_response = self.raw.update_users(
@@ -455,6 +468,7 @@ class UpdateUsers(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
         )
         if validate:
             return GenericSuccessResponsePydantic(**raw_response.body)
@@ -467,12 +481,13 @@ class ApiForpost(BaseApi):
     async def apost(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -487,6 +502,7 @@ class ApiForpost(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
         )
         return await self._aupdate_users_oapg(
             body=args.body,
@@ -496,12 +512,13 @@ class ApiForpost(BaseApi):
     def post(
         self,
         customer_ids: UpdateUsersInputCustomerIds,
-        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], str]] = None,
+        auto_sync_enabled_sources: typing.Optional[typing.Union[typing.List[DataSourceType], DataSourceExtendedInput]] = None,
         max_files: typing.Optional[typing.Optional[int]] = None,
         max_files_per_upload: typing.Optional[typing.Optional[int]] = None,
         max_characters: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_file: typing.Optional[typing.Optional[int]] = None,
         max_characters_per_upload: typing.Optional[typing.Optional[int]] = None,
+        auto_sync_interval: typing.Optional[typing.Optional[int]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -515,6 +532,7 @@ class ApiForpost(BaseApi):
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
         )
         return self._update_users_oapg(
             body=args.body,

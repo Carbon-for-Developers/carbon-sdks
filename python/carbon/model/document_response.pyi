@@ -33,28 +33,22 @@ class DocumentResponse(
 
     class MetaOapg:
         required = {
-            "chunk_index",
-            "parent_file_id",
-            "presigned_url",
-            "source_type",
-            "source",
-            "content",
-            "source_url",
-            "tags",
-            "score",
             "file_id",
-            "content_metadata",
-            "rank",
             "vector",
+            "content",
         }
         
         class properties:
+            content = schemas.StrSchema
+            file_id = schemas.IntSchema
+        
+            @staticmethod
+            def vector() -> typing.Type['DocumentResponseVector']:
+                return DocumentResponseVector
         
             @staticmethod
             def tags() -> typing.Type['DocumentResponseTags']:
                 return DocumentResponseTags
-            content = schemas.StrSchema
-            file_id = schemas.IntSchema
             
             
             class parent_file_id(
@@ -139,10 +133,6 @@ class DocumentResponse(
                         *args,
                         _configuration=_configuration,
                     )
-        
-            @staticmethod
-            def vector() -> typing.Type['DocumentResponseVector']:
-                return DocumentResponseVector
             
             
             class score(
@@ -245,43 +235,36 @@ class DocumentResponse(
                         _configuration=_configuration,
                     )
             __annotations__ = {
-                "tags": tags,
                 "content": content,
                 "file_id": file_id,
+                "vector": vector,
+                "tags": tags,
                 "parent_file_id": parent_file_id,
                 "source": source,
                 "source_url": source_url,
                 "source_type": source_type,
                 "presigned_url": presigned_url,
-                "vector": vector,
                 "score": score,
                 "rank": rank,
                 "content_metadata": content_metadata,
                 "chunk_index": chunk_index,
             }
     
-    chunk_index: MetaOapg.properties.chunk_index
-    parent_file_id: MetaOapg.properties.parent_file_id
-    presigned_url: MetaOapg.properties.presigned_url
-    source_type: 'DataSourceTypeNullable'
-    source: MetaOapg.properties.source
-    content: MetaOapg.properties.content
-    source_url: MetaOapg.properties.source_url
-    tags: 'DocumentResponseTags'
-    score: MetaOapg.properties.score
     file_id: MetaOapg.properties.file_id
-    content_metadata: MetaOapg.properties.content_metadata
-    rank: MetaOapg.properties.rank
     vector: 'DocumentResponseVector'
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["tags"]) -> 'DocumentResponseTags': ...
+    content: MetaOapg.properties.content
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["content"]) -> MetaOapg.properties.content: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["file_id"]) -> MetaOapg.properties.file_id: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["vector"]) -> 'DocumentResponseVector': ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["tags"]) -> 'DocumentResponseTags': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["parent_file_id"]) -> MetaOapg.properties.parent_file_id: ...
@@ -299,9 +282,6 @@ class DocumentResponse(
     def __getitem__(self, name: typing_extensions.Literal["presigned_url"]) -> MetaOapg.properties.presigned_url: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["vector"]) -> 'DocumentResponseVector': ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["score"]) -> MetaOapg.properties.score: ...
     
     @typing.overload
@@ -316,13 +296,10 @@ class DocumentResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "parent_file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", "chunk_index", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["content", "file_id", "vector", "tags", "parent_file_id", "source", "source_url", "source_type", "presigned_url", "score", "rank", "content_metadata", "chunk_index", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> 'DocumentResponseTags': ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["content"]) -> MetaOapg.properties.content: ...
@@ -331,77 +308,80 @@ class DocumentResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["file_id"]) -> MetaOapg.properties.file_id: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["parent_file_id"]) -> MetaOapg.properties.parent_file_id: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["source"]) -> MetaOapg.properties.source: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["source_url"]) -> MetaOapg.properties.source_url: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["source_type"]) -> 'DataSourceTypeNullable': ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["presigned_url"]) -> MetaOapg.properties.presigned_url: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["vector"]) -> 'DocumentResponseVector': ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["score"]) -> MetaOapg.properties.score: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union['DocumentResponseTags', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["rank"]) -> MetaOapg.properties.rank: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["parent_file_id"]) -> typing.Union[MetaOapg.properties.parent_file_id, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["source"]) -> typing.Union[MetaOapg.properties.source, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["source_url"]) -> typing.Union[MetaOapg.properties.source_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["source_type"]) -> typing.Union['DataSourceTypeNullable', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["presigned_url"]) -> typing.Union[MetaOapg.properties.presigned_url, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["score"]) -> typing.Union[MetaOapg.properties.score, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["rank"]) -> typing.Union[MetaOapg.properties.rank, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> typing.Union[MetaOapg.properties.content_metadata, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["chunk_index"]) -> typing.Union[MetaOapg.properties.chunk_index, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tags", "content", "file_id", "parent_file_id", "source", "source_url", "source_type", "presigned_url", "vector", "score", "rank", "content_metadata", "chunk_index", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["content", "file_id", "vector", "tags", "parent_file_id", "source", "source_url", "source_type", "presigned_url", "score", "rank", "content_metadata", "chunk_index", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, ],
-        parent_file_id: typing.Union[MetaOapg.properties.parent_file_id, None, decimal.Decimal, int, ],
-        presigned_url: typing.Union[MetaOapg.properties.presigned_url, None, str, ],
-        source_type: 'DataSourceTypeNullable',
-        source: typing.Union[MetaOapg.properties.source, None, str, ],
-        content: typing.Union[MetaOapg.properties.content, str, ],
-        source_url: typing.Union[MetaOapg.properties.source_url, None, str, ],
-        tags: 'DocumentResponseTags',
-        score: typing.Union[MetaOapg.properties.score, None, decimal.Decimal, int, float, ],
         file_id: typing.Union[MetaOapg.properties.file_id, decimal.Decimal, int, ],
-        content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, ],
-        rank: typing.Union[MetaOapg.properties.rank, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         vector: 'DocumentResponseVector',
+        content: typing.Union[MetaOapg.properties.content, str, ],
+        tags: typing.Union['DocumentResponseTags', schemas.Unset] = schemas.unset,
+        parent_file_id: typing.Union[MetaOapg.properties.parent_file_id, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        source: typing.Union[MetaOapg.properties.source, None, str, schemas.Unset] = schemas.unset,
+        source_url: typing.Union[MetaOapg.properties.source_url, None, str, schemas.Unset] = schemas.unset,
+        source_type: typing.Union['DataSourceTypeNullable', schemas.Unset] = schemas.unset,
+        presigned_url: typing.Union[MetaOapg.properties.presigned_url, None, str, schemas.Unset] = schemas.unset,
+        score: typing.Union[MetaOapg.properties.score, None, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        rank: typing.Union[MetaOapg.properties.rank, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
+        chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DocumentResponse':
         return super().__new__(
             cls,
             *args,
-            chunk_index=chunk_index,
-            parent_file_id=parent_file_id,
-            presigned_url=presigned_url,
-            source_type=source_type,
-            source=source,
-            content=content,
-            source_url=source_url,
-            tags=tags,
-            score=score,
             file_id=file_id,
-            content_metadata=content_metadata,
-            rank=rank,
             vector=vector,
+            content=content,
+            tags=tags,
+            parent_file_id=parent_file_id,
+            source=source,
+            source_url=source_url,
+            source_type=source_type,
+            presigned_url=presigned_url,
+            score=score,
+            rank=rank,
+            content_metadata=content_metadata,
+            chunk_index=chunk_index,
             _configuration=_configuration,
             **kwargs,
         )

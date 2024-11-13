@@ -33,6 +33,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
   * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
   * [`carbon.data_sources.add_tags`](#carbondata_sourcesadd_tags)
+  * [`carbon.data_sources.query`](#carbondata_sourcesquery)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
   * [`carbon.data_sources.remove_tags`](#carbondata_sourcesremove_tags)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
@@ -659,6 +660,54 @@ add_tags_response = carbon.data_sources.add_tags(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/data_sources/tags/add` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.data_sources.query`<a id="carbondata_sourcesquery"></a>
+
+Data Sources
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+query_response = carbon.data_sources.query(
+    pagination={
+        "limit": 10,
+        "offset": 0,
+        "starting_id": 0,
+    },
+    order_by="created_at",
+    order_dir="desc",
+    filters={
+        "source": "GOOGLE_CLOUD_STORAGE",
+    },
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
+
+
+##### order_by: [`OrganizationUserDataSourceOrderByColumns`](./carbon/type/organization_user_data_source_order_by_columns.py)<a id="order_by-organizationuserdatasourceorderbycolumnscarbontypeorganization_user_data_source_order_by_columnspy"></a>
+
+##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
+
+##### filters: [`OrganizationUserDataSourceFilters`](./carbon/type/organization_user_data_source_filters.py)<a id="filters-organizationuserdatasourcefilterscarbontypeorganization_user_data_source_filterspy"></a>
+
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`OrganizationUserDataSourceQueryInput`](./carbon/type/organization_user_data_source_query_input.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`OrganizationUserDataSourceResponse`](./carbon/pydantic/organization_user_data_source_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1553,20 +1602,12 @@ query_user_files_response = carbon.files.query_user_files(
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 
 
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./carbon/type/organization_user_files_to_sync_order_by_types.py)<a id="order_by-organizationuserfilestosyncorderbytypescarbontypeorganization_user_files_to_sync_order_by_typespy"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
 
-
-Filters to apply to the query.
 
 ##### include_raw_file: `Optional[bool]`<a id="include_raw_file-optionalbool"></a>
 
@@ -1631,20 +1672,12 @@ query_user_files_deprecated_response = carbon.files.query_user_files_deprecated(
 ##### pagination: [`Pagination`](./carbon/type/pagination.py)<a id="pagination-paginationcarbontypepaginationpy"></a>
 
 
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./carbon/type/organization_user_files_to_sync_order_by_types.py)<a id="order_by-organizationuserfilestosyncorderbytypescarbontypeorganization_user_files_to_sync_order_by_typespy"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./carbon/type/order_dir.py)<a id="order_dir-orderdircarbontypeorder_dirpy"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./carbon/type/organization_user_files_to_sync_filters.py)<a id="filters-organizationuserfilestosyncfilterscarbontypeorganization_user_files_to_sync_filterspy"></a>
 
-
-Filters to apply to the query.
 
 ##### include_raw_file: `Optional[bool]`<a id="include_raw_file-optionalbool"></a>
 
@@ -1795,7 +1828,7 @@ Flag to control whether or not embeddings should be generated and stored        
 
 Flag to control whether or not to set the a page's worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information.
 
-##### embedding_model: Union[[`TextEmbeddingGenerators`](./carbon/type/text_embedding_generators.py), `str`]<a id="embedding_model-uniontextembeddinggeneratorscarbontypetext_embedding_generatorspy-str"></a>
+##### embedding_model: Union[[`TextEmbeddingGenerators`](./carbon/type/text_embedding_generators.py), [`MultiModalEmbeddingGenerators`](./carbon/type/multi_modal_embedding_generators.py)]<a id="embedding_model-uniontextembeddinggeneratorscarbontypetext_embedding_generatorspy-multimodalembeddinggeneratorscarbontypemulti_modal_embedding_generatorspy"></a>
 
 
 Embedding model that will be used to embed file chunks.
@@ -4468,14 +4501,14 @@ Toggle User Features
 
 ```python
 toggle_user_features_response = carbon.users.toggle_user_features(
-    configuration_key_name="string_example",
+    configuration_key_name="sparse_vectors",
     value={},
 )
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### configuration_key_name: `str`<a id="configuration_key_name-str"></a>
+##### configuration_key_name: [`ConfigurationKeys`](./carbon/type/configuration_keys.py)<a id="configuration_key_name-configurationkeyscarbontypeconfiguration_keyspy"></a>
 
 ##### value: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="value-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 
@@ -4509,6 +4542,7 @@ update_users_response = carbon.users.update_users(
     max_characters=-1,
     max_characters_per_file=-1,
     max_characters_per_upload=-1,
+    auto_sync_interval=-1,
 )
 ```
 
@@ -4516,7 +4550,7 @@ update_users_response = carbon.users.update_users(
 
 ##### customer_ids: [`UpdateUsersInputCustomerIds`](./carbon/type/update_users_input_customer_ids.py)<a id="customer_ids-updateusersinputcustomeridscarbontypeupdate_users_input_customer_idspy"></a>
 
-##### auto_sync_enabled_sources: Union[List[[`DataSourceType`](./carbon/type/data_source_type.py)], `str`]<a id="auto_sync_enabled_sources-unionlistdatasourcetypecarbontypedata_source_typepy-str"></a>
+##### auto_sync_enabled_sources: Union[List[[`DataSourceType`](./carbon/type/data_source_type.py)], [`DataSourceExtendedInput`](./carbon/type/data_source_extended_input.py)]<a id="auto_sync_enabled_sources-unionlistdatasourcetypecarbontypedata_source_typepy-datasourceextendedinputcarbontypedata_source_extended_inputpy"></a>
 
 
 List of data source types to enable auto sync for. Empty array will remove all sources          and the string \\\"ALL\\\" will enable it for all data sources
@@ -4540,6 +4574,10 @@ A single file upload from the user can not exceed this character limit.         
 ##### max_characters_per_upload: `Optional[int]`<a id="max_characters_per_upload-optionalint"></a>
 
 Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+
+##### auto_sync_interval: `Optional[int]`<a id="auto_sync_interval-optionalint"></a>
+
+The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -5064,7 +5102,7 @@ Create White Labels
 create_response = carbon.white_label.create(
     body=[
         {
-            "data_source_type": None,
+            "data_source_type": "GOOGLE_DRIVE",
             "credentials": {
                 "client_id": "client_id_example",
                 "redirect_uri": "redirect_uri_example",
@@ -5166,7 +5204,7 @@ Update White Label
 ```python
 update_response = carbon.white_label.update(
     body={
-        "data_source_type": None,
+        "data_source_type": "GOOGLE_DRIVE",
         "credentials": {
             "client_id": "client_id_example",
             "redirect_uri": "redirect_uri_example",

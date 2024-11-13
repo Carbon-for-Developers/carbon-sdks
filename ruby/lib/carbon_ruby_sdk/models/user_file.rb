@@ -418,24 +418,8 @@ module Carbon
         invalid_properties.push('invalid value for "sync_status", sync_status cannot be nil.')
       end
 
-      if @ocr_properties.nil?
-        invalid_properties.push('invalid value for "ocr_properties", ocr_properties cannot be nil.')
-      end
-
       if @skip_embedding_generation.nil?
         invalid_properties.push('invalid value for "skip_embedding_generation", skip_embedding_generation cannot be nil.')
-      end
-
-      if @sync_properties.nil?
-        invalid_properties.push('invalid value for "sync_properties", sync_properties cannot be nil.')
-      end
-
-      if @messages_metadata.nil?
-        invalid_properties.push('invalid value for "messages_metadata", messages_metadata cannot be nil.')
-      end
-
-      if @file_contents_deleted.nil?
-        invalid_properties.push('invalid value for "file_contents_deleted", file_contents_deleted cannot be nil.')
       end
 
       if @supports_cold_storage.nil?
@@ -466,11 +450,7 @@ module Carbon
       return false if @organization_supplied_user_id.nil?
       return false if @external_file_id.nil?
       return false if @sync_status.nil?
-      return false if @ocr_properties.nil?
       return false if @skip_embedding_generation.nil?
-      return false if @sync_properties.nil?
-      return false if @messages_metadata.nil?
-      return false if @file_contents_deleted.nil?
       return false if @supports_cold_storage.nil?
       return false if @embedding_storage_status.nil?
       return false if @created_at.nil?

@@ -34,12 +34,12 @@ export interface DirectoryItem {
      * @type {boolean}
      * @memberof DirectoryItem
      */
-    'is_synced': boolean;
+    'is_synced'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof DirectoryItem
      */
-    'has_children': boolean;
+    'has_children'?: boolean;
 }
 

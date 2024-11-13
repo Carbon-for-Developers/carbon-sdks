@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,8 +78,8 @@ public class ChunkPropertiesNullable {
    * Get setPageAsBoundary
    * @return setPageAsBoundary
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
 
   public Boolean getSetPageAsBoundary() {
     return setPageAsBoundary;
@@ -106,8 +107,8 @@ public class ChunkPropertiesNullable {
    * Get prependFilenameToChunks
    * @return prependFilenameToChunks
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
 
   public Boolean getPrependFilenameToChunks() {
     return prependFilenameToChunks;
@@ -136,7 +137,7 @@ public class ChunkPropertiesNullable {
    * @return maxItemsPerChunk
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getMaxItemsPerChunk() {
     return maxItemsPerChunk;
@@ -211,9 +212,20 @@ public class ChunkPropertiesNullable {
         Objects.equals(this.additionalProperties, chunkPropertiesNullable.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(setPageAsBoundary, prependFilenameToChunks, maxItemsPerChunk, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -252,9 +264,6 @@ public class ChunkPropertiesNullable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("set_page_as_boundary");
-    openapiRequiredFields.add("prepend_filename_to_chunks");
-    openapiRequiredFields.add("max_items_per_chunk");
   }
 
  /**
@@ -267,13 +276,6 @@ public class ChunkPropertiesNullable {
       if (jsonObj == null) {
         if (!ChunkPropertiesNullable.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ChunkPropertiesNullable is not found in the empty JSON string", ChunkPropertiesNullable.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ChunkPropertiesNullable.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
   }

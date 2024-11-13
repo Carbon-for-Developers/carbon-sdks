@@ -29,6 +29,6 @@ export interface UserListResponse {
      * @type {number}
      * @memberof UserListResponse
      */
-    'count': number | null;
+    'count'?: number | null;
 }
 

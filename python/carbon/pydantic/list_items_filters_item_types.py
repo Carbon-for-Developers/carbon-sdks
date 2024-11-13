@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
+from carbon.pydantic.azure_blob_storage_types import AzureBlobStorageTypes
 from carbon.pydantic.confluence_file_types import ConfluenceFileTypes
 from carbon.pydantic.gitbook_file_types import GitbookFileTypes
 from carbon.pydantic.github_file_types import GithubFileTypes
@@ -26,4 +27,4 @@ from carbon.pydantic.service_now_file_types import ServiceNowFileTypes
 from carbon.pydantic.shared_source_item_types import SharedSourceItemTypes
 from carbon.pydantic.zendesk_file_types import ZendeskFileTypes
 
-ListItemsFiltersItemTypes = typing.Optional[typing.List[typing.Union[SharedSourceItemTypes, HelpdeskFileTypes, ServiceNowFileTypes, ZendeskFileTypes, IntercomFileTypes, ConfluenceFileTypes, GitbookFileTypes, GithubFileTypes, GuruFileTypes, GongFileTypes, str]]]
+ListItemsFiltersItemTypes = typing.Optional[typing.List[typing.Union[SharedSourceItemTypes, HelpdeskFileTypes, ServiceNowFileTypes, ZendeskFileTypes, IntercomFileTypes, ConfluenceFileTypes, GitbookFileTypes, GithubFileTypes, GuruFileTypes, GongFileTypes, AzureBlobStorageTypes]]]

@@ -17,8 +17,8 @@ import (
 
 // AutoSyncEnabledSourcesProperty List of data source types to enable auto sync for. Empty array will remove all sources          and the string \"ALL\" will enable it for all data sources
 type AutoSyncEnabledSourcesProperty struct {
+	DataSourceExtendedInput *DataSourceExtendedInput
 	DataSourceTypeArray *[]DataSourceType
-	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -27,6 +27,19 @@ func (dst *AutoSyncEnabledSourcesProperty) UnmarshalJSON(data []byte) error {
 	// this object is nullable so check if the payload is null or empty string
 	if string(data) == "" || string(data) == "{}" {
 		return nil
+	}
+
+	// try to unmarshal JSON data into DataSourceExtendedInput
+	err = json.Unmarshal(data, &dst.DataSourceExtendedInput);
+	if err == nil {
+		jsonDataSourceExtendedInput, _ := json.Marshal(dst.DataSourceExtendedInput)
+		if string(jsonDataSourceExtendedInput) == "{}" { // empty struct
+			dst.DataSourceExtendedInput = nil
+		} else {
+			return nil // data stored in dst.DataSourceExtendedInput, return on the first match
+		}
+	} else {
+		dst.DataSourceExtendedInput = nil
 	}
 
 	// try to unmarshal JSON data into []DataSourceType
@@ -42,30 +55,17 @@ func (dst *AutoSyncEnabledSourcesProperty) UnmarshalJSON(data []byte) error {
 		dst.DataSourceTypeArray = nil
 	}
 
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.String);
-	if err == nil {
-		jsonString, _ := json.Marshal(dst.String)
-		if string(jsonString) == "{}" { // empty struct
-			dst.String = nil
-		} else {
-			return nil // data stored in dst.String, return on the first match
-		}
-	} else {
-		dst.String = nil
-	}
-
 	return fmt.Errorf("data failed to match schemas in anyOf(AutoSyncEnabledSourcesProperty)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *AutoSyncEnabledSourcesProperty) MarshalJSON() ([]byte, error) {
-	if src.DataSourceTypeArray != nil {
-		return json.Marshal(&src.DataSourceTypeArray)
+	if src.DataSourceExtendedInput != nil {
+		return json.Marshal(&src.DataSourceExtendedInput)
 	}
 
-	if src.String != nil {
-		return json.Marshal(&src.String)
+	if src.DataSourceTypeArray != nil {
+		return json.Marshal(&src.DataSourceTypeArray)
 	}
 
 	return nil, nil // no data in anyOf schemas

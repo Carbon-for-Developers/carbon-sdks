@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +67,7 @@ public class YoutubeTranscriptResponse {
 
   public static final String SERIALIZED_NAME_RAW_TRANSCRIPT = "raw_transcript";
   @SerializedName(SERIALIZED_NAME_RAW_TRANSCRIPT)
-  private List<Map<String, Object>> rawTranscript = new ArrayList<>();
+  private List<Map<String, Object>> rawTranscript = null;
 
   public YoutubeTranscriptResponse() {
   }
@@ -114,7 +115,7 @@ public class YoutubeTranscriptResponse {
    * @return error
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getError() {
     return error;
@@ -143,7 +144,7 @@ public class YoutubeTranscriptResponse {
    * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getData() {
     return data;
@@ -168,6 +169,9 @@ public class YoutubeTranscriptResponse {
   }
 
   public YoutubeTranscriptResponse addRawTranscriptItem(Map<String, Object> rawTranscriptItem) {
+    if (this.rawTranscript == null) {
+      this.rawTranscript = new ArrayList<>();
+    }
     this.rawTranscript.add(rawTranscriptItem);
     return this;
   }
@@ -177,7 +181,7 @@ public class YoutubeTranscriptResponse {
    * @return rawTranscript
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public List<Map<String, Object>> getRawTranscript() {
     return rawTranscript;
@@ -253,9 +257,20 @@ public class YoutubeTranscriptResponse {
         Objects.equals(this.additionalProperties, youtubeTranscriptResponse.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(status, error, data, rawTranscript, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -297,9 +312,6 @@ public class YoutubeTranscriptResponse {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("error");
-    openapiRequiredFields.add("data");
-    openapiRequiredFields.add("raw_transcript");
   }
 
  /**
@@ -324,17 +336,15 @@ public class YoutubeTranscriptResponse {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if (!jsonObj.get("error").isJsonNull() && !jsonObj.get("error").isJsonPrimitive()) {
+      if (!jsonObj.get("error").isJsonNull() && (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
-      if (!jsonObj.get("data").isJsonNull() && !jsonObj.get("data").isJsonPrimitive()) {
+      if (!jsonObj.get("data").isJsonNull() && (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) && !jsonObj.get("data").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("raw_transcript") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("raw_transcript").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `raw_transcript` to be an array in the JSON string but got `%s`", jsonObj.get("raw_transcript").toString()));
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("raw_transcript") != null && !jsonObj.get("raw_transcript").isJsonNull() && !jsonObj.get("raw_transcript").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `raw_transcript` to be an array in the JSON string or null but got `%s`", jsonObj.get("raw_transcript").toString()));
       }
   }
 

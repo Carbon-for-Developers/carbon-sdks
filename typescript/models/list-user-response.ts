@@ -64,12 +64,12 @@ export interface ListUserResponse {
      * @type {object}
      * @memberof ListUserResponse
      */
-    'custom_limits': object;
+    'custom_limits'?: object;
     /**
      * 
      * @type {Array<any>}
      * @memberof ListUserResponse
      */
-    'auto_sync_enabled_sources': Array<any>;
+    'auto_sync_enabled_sources'?: Array<any>;
 }
 

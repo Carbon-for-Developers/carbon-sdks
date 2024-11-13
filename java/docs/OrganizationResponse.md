@@ -9,10 +9,10 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **Integer** |  |  |
 |**name** | **String** |  |  |
-|**nickname** | **String** |  |  |
+|**nickname** | **String** |  |  [optional] |
 |**removeBranding** | **Boolean** |  |  |
-|**customBranding** | **Object** |  |  |
-|**customLimits** | **Object** |  |  |
+|**customBranding** | **Object** |  |  [optional] |
+|**customLimits** | **Object** |  |  [optional] |
 |**aggregateFileSize** | **Object** |  |  |
 |**aggregateNumCharacters** | **Object** |  |  |
 |**aggregateNumTokens** | **Object** |  |  |
@@ -20,12 +20,12 @@
 |**aggregateNumFilesBySource** | **Object** |  |  |
 |**aggregateNumFilesByFileFormat** | **Object** |  |  |
 |**fileStatisticsAggregatedAt** | **OffsetDateTime** |  |  |
-|**periodEndsAt** | **OffsetDateTime** |  |  |
-|**cancelAtPeriodEnd** | **Boolean** |  |  |
-|**connectorSettings** | **Object** |  |  |
-|**globalUserConfig** | **Object** |  |  |
-|**fileSyncUsage** | **Object** |  |  |
-|**loggingSettings** | **Object** |  |  |
+|**periodEndsAt** | **OffsetDateTime** |  |  [optional] |
+|**cancelAtPeriodEnd** | **Boolean** |  |  [optional] |
+|**connectorSettings** | **Object** |  |  [optional] |
+|**globalUserConfig** | **Object** |  |  [optional] |
+|**fileSyncUsage** | **Object** |  |  [optional] |
+|**loggingSettings** | **Object** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

@@ -33,14 +33,17 @@ import frozendict  # noqa: F401
 from carbon import schemas  # noqa: F401
 
 from carbon.model.modify_user_configuration_input import ModifyUserConfigurationInput as ModifyUserConfigurationInputSchema
+from carbon.model.configuration_keys import ConfigurationKeys as ConfigurationKeysSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from carbon.model.generic_success_response import GenericSuccessResponse as GenericSuccessResponseSchema
 
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.generic_success_response import GenericSuccessResponse
+from carbon.type.configuration_keys import ConfigurationKeys
 from carbon.type.modify_user_configuration_input import ModifyUserConfigurationInput
 
 from ...api_client import Dictionary
+from carbon.pydantic.configuration_keys import ConfigurationKeys as ConfigurationKeysPydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from carbon.pydantic.generic_success_response import GenericSuccessResponse as GenericSuccessResponsePydantic
 from carbon.pydantic.modify_user_configuration_input import ModifyUserConfigurationInput as ModifyUserConfigurationInputPydantic
@@ -107,7 +110,7 @@ class BaseApi(api_client.Api):
 
     def _toggle_user_features_mapped_args(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -324,7 +327,7 @@ class ToggleUserFeaturesRaw(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     async def atoggle_user_features(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
         **kwargs,
     ) -> typing.Union[
@@ -344,7 +347,7 @@ class ToggleUserFeaturesRaw(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     def toggle_user_features(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
     ) -> typing.Union[
         ApiResponseFor200,
@@ -364,7 +367,7 @@ class ToggleUserFeatures(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     async def atoggle_user_features(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
         validate: bool = False,
         **kwargs,
@@ -382,7 +385,7 @@ class ToggleUserFeatures(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     def toggle_user_features(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
         validate: bool = False,
     ) -> GenericSuccessResponsePydantic:
@@ -401,7 +404,7 @@ class ApiForpost(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     async def apost(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
         **kwargs,
     ) -> typing.Union[
@@ -421,7 +424,7 @@ class ApiForpost(BaseApi):
     @api_client.DeprecationWarningOnce(prefix="users")
     def post(
         self,
-        configuration_key_name: str,
+        configuration_key_name: ConfigurationKeys,
         value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]],
     ) -> typing.Union[
         ApiResponseFor200,

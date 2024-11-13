@@ -39,7 +39,16 @@ class NotionAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def NOTION(cls):
+                    return cls("NOTION")
             access_token = schemas.StrSchema
             workspace_id = schemas.StrSchema
             __annotations__ = {
@@ -90,7 +99,7 @@ class NotionAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
         workspace_id: typing.Union[MetaOapg.properties.workspace_id, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NotionAuthentication':

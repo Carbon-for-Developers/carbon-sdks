@@ -249,6 +249,213 @@ public class DataSourcesApiGenerated {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
         return ((DataSourcesApi) this).new AddTagsRequestBuilder(tags, dataSourceId);
     }
+    private okhttp3.Call queryCall(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = organizationUserDataSourceQueryInput;
+
+        // create path and map variables
+        String localVarPath = "/data_sources";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call queryValidateBeforeCall(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'organizationUserDataSourceQueryInput' is set
+        if (organizationUserDataSourceQueryInput == null) {
+            throw new ApiException("Missing the required parameter 'organizationUserDataSourceQueryInput' when calling query(Async)");
+        }
+
+        return queryCall(organizationUserDataSourceQueryInput, _callback);
+
+    }
+
+
+    private ApiResponse<OrganizationUserDataSourceResponse> queryWithHttpInfo(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput) throws ApiException {
+        okhttp3.Call localVarCall = queryValidateBeforeCall(organizationUserDataSourceQueryInput, null);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call queryAsync(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput, final ApiCallback<OrganizationUserDataSourceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = queryValidateBeforeCall(organizationUserDataSourceQueryInput, _callback);
+        Type localVarReturnType = new TypeToken<OrganizationUserDataSourceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class QueryRequestBuilderGenerated {
+        Pagination pagination;
+        OrganizationUserDataSourceOrderByColumns orderBy;
+        OrderDir orderDir;
+        OrganizationUserDataSourceFilters filters;
+
+        public QueryRequestBuilderGenerated() {
+        }
+
+        /**
+         * Set pagination
+         * @param pagination  (optional)
+         * @return DataSourcesApi.QueryRequestBuilder
+         */
+        public DataSourcesApi.QueryRequestBuilder pagination(Pagination pagination) {
+            this.pagination = pagination;
+            return (DataSourcesApi.QueryRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderBy
+         * @param orderBy  (optional)
+         * @return DataSourcesApi.QueryRequestBuilder
+         */
+        public DataSourcesApi.QueryRequestBuilder orderBy(OrganizationUserDataSourceOrderByColumns orderBy) {
+            this.orderBy = orderBy;
+            return (DataSourcesApi.QueryRequestBuilder) this;
+        }
+        
+        /**
+         * Set orderDir
+         * @param orderDir  (optional)
+         * @return DataSourcesApi.QueryRequestBuilder
+         */
+        public DataSourcesApi.QueryRequestBuilder orderDir(OrderDir orderDir) {
+            this.orderDir = orderDir;
+            return (DataSourcesApi.QueryRequestBuilder) this;
+        }
+        
+        /**
+         * Set filters
+         * @param filters  (optional)
+         * @return DataSourcesApi.QueryRequestBuilder
+         */
+        public DataSourcesApi.QueryRequestBuilder filters(OrganizationUserDataSourceFilters filters) {
+            this.filters = filters;
+            return (DataSourcesApi.QueryRequestBuilder) this;
+        }
+        
+        /**
+         * Build call for query
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput = buildBodyParams();
+            return queryCall(organizationUserDataSourceQueryInput, _callback);
+        }
+
+        private OrganizationUserDataSourceQueryInput buildBodyParams() {
+            OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput = new OrganizationUserDataSourceQueryInput();
+            organizationUserDataSourceQueryInput.pagination(this.pagination);
+            organizationUserDataSourceQueryInput.orderBy(this.orderBy);
+            organizationUserDataSourceQueryInput.orderDir(this.orderDir);
+            organizationUserDataSourceQueryInput.filters(this.filters);
+            return organizationUserDataSourceQueryInput;
+        }
+
+        /**
+         * Execute query request
+         * @return OrganizationUserDataSourceResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrganizationUserDataSourceResponse execute() throws ApiException {
+            OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput = buildBodyParams();
+            ApiResponse<OrganizationUserDataSourceResponse> localVarResp = queryWithHttpInfo(organizationUserDataSourceQueryInput);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute query request with HTTP info returned
+         * @return ApiResponse&lt;OrganizationUserDataSourceResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrganizationUserDataSourceResponse> executeWithHttpInfo() throws ApiException {
+            OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput = buildBodyParams();
+            return queryWithHttpInfo(organizationUserDataSourceQueryInput);
+        }
+
+        /**
+         * Execute query request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrganizationUserDataSourceResponse> _callback) throws ApiException {
+            OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput = buildBodyParams();
+            return queryAsync(organizationUserDataSourceQueryInput, _callback);
+        }
+    }
+
+    /**
+     * Data Sources
+     * 
+     * @param organizationUserDataSourceQueryInput  (required)
+     * @return QueryRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public DataSourcesApi.QueryRequestBuilder query() throws IllegalArgumentException {
+        return ((DataSourcesApi) this).new QueryRequestBuilder();
+    }
     private okhttp3.Call queryUserDataSourcesCall(OrganizationUserDataSourceQueryInput organizationUserDataSourceQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers

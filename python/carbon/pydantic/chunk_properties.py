@@ -17,11 +17,11 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class ChunkProperties(BaseModel):
-    set_page_as_boundary: bool = Field(alias='set_page_as_boundary')
+    set_page_as_boundary: typing.Optional[bool] = Field(None, alias='set_page_as_boundary')
 
-    prepend_filename_to_chunks: bool = Field(alias='prepend_filename_to_chunks')
+    prepend_filename_to_chunks: typing.Optional[bool] = Field(None, alias='prepend_filename_to_chunks')
 
-    max_items_per_chunk: typing.Optional[int] = Field(alias='max_items_per_chunk')
+    max_items_per_chunk: typing.Optional[typing.Optional[int]] = Field(None, alias='max_items_per_chunk')
 
     model_config = ConfigDict(
         protected_namespaces=(),

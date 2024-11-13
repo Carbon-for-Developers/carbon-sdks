@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface GithubAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof GithubAuthentication
      */
-    'source': any;
+    'source': GithubAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface GithubAuthentication {
      */
     'username': string;
 }
+
+type GithubAuthenticationSourceEnum = 'GITHUB'
+
 

@@ -10,6 +10,7 @@
 """
 
 from carbon.paths.data_sources_tags_add.post import AddTagsRaw
+from carbon.paths.data_sources.post import QueryRaw
 from carbon.paths.user_data_sources.post import QueryUserDataSourcesRaw
 from carbon.paths.data_sources_tags_remove.post import RemoveTagsRaw
 from carbon.paths.revoke_access_token.post import RevokeAccessTokenRaw
@@ -17,6 +18,7 @@ from carbon.paths.revoke_access_token.post import RevokeAccessTokenRaw
 
 class DataSourcesApiRaw(
     AddTagsRaw,
+    QueryRaw,
     QueryUserDataSourcesRaw,
     RemoveTagsRaw,
     RevokeAccessTokenRaw,

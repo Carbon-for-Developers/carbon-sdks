@@ -7,10 +7,18 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**accessToken** | **String** |  |  |
 |**refreshToken** | **String** |  |  [optional] |
 |**gongAccountEmail** | **String** |  |  |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| GONG | &quot;GONG&quot; |
 
 
 

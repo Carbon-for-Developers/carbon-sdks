@@ -125,13 +125,13 @@ export interface Contact {
      * @type {Array<Task>}
      * @memberof Contact
      */
-    'tasks': Array<Task> | null;
+    'tasks'?: Array<Task> | null;
     /**
      * 
      * @type {Array<Event>}
      * @memberof Contact
      */
-    'events': Array<Event> | null;
+    'events'?: Array<Event> | null;
     /**
      * 
      * @type {object}

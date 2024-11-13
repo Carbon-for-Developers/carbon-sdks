@@ -99,11 +99,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Pagination parameters for the query.
+   * Get pagination
    * @return pagination
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Pagination parameters for the query.")
+  @ApiModelProperty(value = "")
 
   public Pagination getPagination() {
     return pagination;
@@ -128,11 +128,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * The field on OrganizationUserFilesToSYnc to order the results by.
+   * Get orderBy
    * @return orderBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The field on OrganizationUserFilesToSYnc to order the results by.")
+  @ApiModelProperty(value = "")
 
   public OrganizationUserFilesToSyncOrderByTypes getOrderBy() {
     return orderBy;
@@ -157,11 +157,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * The direction to order the results by.
+   * Get orderDir
    * @return orderDir
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The direction to order the results by.")
+  @ApiModelProperty(value = "")
 
   public OrderDir getOrderDir() {
     return orderDir;
@@ -186,11 +186,11 @@ public class OrganizationUserFilesToSyncQueryInput {
   }
 
    /**
-   * Filters to apply to the query.
+   * Get filters
    * @return filters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Filters to apply to the query.")
+  @ApiModelProperty(value = "")
 
   public OrganizationUserFilesToSyncFilters getFilters() {
     return filters;

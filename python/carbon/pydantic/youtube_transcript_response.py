@@ -20,11 +20,11 @@ from carbon.pydantic.youtube_transcript_response_raw_transcript import YoutubeTr
 class YoutubeTranscriptResponse(BaseModel):
     status: str = Field(alias='status')
 
-    error: typing.Optional[str] = Field(alias='error')
+    error: typing.Optional[typing.Optional[str]] = Field(None, alias='error')
 
-    data: typing.Optional[str] = Field(alias='data')
+    data: typing.Optional[typing.Optional[str]] = Field(None, alias='data')
 
-    raw_transcript: YoutubeTranscriptResponseRawTranscript = Field(alias='raw_transcript')
+    raw_transcript: typing.Optional[YoutubeTranscriptResponseRawTranscript] = Field(None, alias='raw_transcript')
 
     model_config = ConfigDict(
         protected_namespaces=(),

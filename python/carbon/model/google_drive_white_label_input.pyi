@@ -38,7 +38,16 @@ class GoogleDriveWhiteLabelInput(
         }
         
         class properties:
-            data_source_type = schemas.AnyTypeSchema
+            
+            
+            class data_source_type(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def GOOGLE_DRIVE(cls):
+                    return cls("GOOGLE_DRIVE")
         
             @staticmethod
             def credentials() -> typing.Type['GoogleDriveCredentials']:
@@ -82,7 +91,7 @@ class GoogleDriveWhiteLabelInput(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         credentials: 'GoogleDriveCredentials',
-        data_source_type: typing.Union[MetaOapg.properties.data_source_type, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        data_source_type: typing.Union[MetaOapg.properties.data_source_type, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'GoogleDriveWhiteLabelInput':

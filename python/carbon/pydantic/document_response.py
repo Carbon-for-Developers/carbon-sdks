@@ -20,31 +20,31 @@ from carbon.pydantic.document_response_tags import DocumentResponseTags
 from carbon.pydantic.document_response_vector import DocumentResponseVector
 
 class DocumentResponse(BaseModel):
-    tags: DocumentResponseTags = Field(alias='tags')
-
     content: str = Field(alias='content')
 
     file_id: int = Field(alias='file_id')
 
-    parent_file_id: typing.Optional[int] = Field(alias='parent_file_id')
-
-    source: typing.Optional[str] = Field(alias='source')
-
-    source_url: typing.Optional[str] = Field(alias='source_url')
-
-    source_type: DataSourceTypeNullable = Field(alias='source_type')
-
-    presigned_url: typing.Optional[str] = Field(alias='presigned_url')
-
     vector: DocumentResponseVector = Field(alias='vector')
 
-    score: typing.Optional[typing.Union[int, float]] = Field(alias='score')
+    tags: typing.Optional[DocumentResponseTags] = Field(None, alias='tags')
 
-    rank: typing.Union[typing.Union[int, float], int] = Field(alias='rank')
+    parent_file_id: typing.Optional[typing.Optional[int]] = Field(None, alias='parent_file_id')
 
-    content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
+    source: typing.Optional[typing.Optional[str]] = Field(None, alias='source')
 
-    chunk_index: typing.Optional[int] = Field(alias='chunk_index')
+    source_url: typing.Optional[typing.Optional[str]] = Field(None, alias='source_url')
+
+    source_type: typing.Optional[DataSourceTypeNullable] = Field(None, alias='source_type')
+
+    presigned_url: typing.Optional[typing.Optional[str]] = Field(None, alias='presigned_url')
+
+    score: typing.Optional[typing.Optional[typing.Union[int, float]]] = Field(None, alias='score')
+
+    rank: typing.Optional[typing.Union[typing.Union[int, float], int]] = Field(None, alias='rank')
+
+    content_metadata: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='content_metadata')
+
+    chunk_index: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_index')
 
     model_config = ConfigDict(
         protected_namespaces=(),

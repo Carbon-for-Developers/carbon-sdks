@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | **string** |  | 
-**Error** | **NullableString** |  | 
-**Data** | **NullableString** |  | 
-**RawTranscript** | [**[]map[string]RawTranscriptPropertyInnerValue**](map[string]RawTranscriptPropertyInnerValue.md) |  | 
+**Error** | Pointer to **NullableString** |  | [optional] 
+**Data** | Pointer to **NullableString** |  | [optional] 
+**RawTranscript** | Pointer to [**[]map[string]RawTranscriptPropertyInnerValue**](map[string]RawTranscriptPropertyInnerValue.md) |  | [optional] 
 
 ## Methods
 
 ### NewYoutubeTranscriptResponse
 
-`func NewYoutubeTranscriptResponse(status string, error_ NullableString, data NullableString, rawTranscript []map[string]RawTranscriptPropertyInnerValue, ) *YoutubeTranscriptResponse`
+`func NewYoutubeTranscriptResponse(status string, ) *YoutubeTranscriptResponse`
 
 NewYoutubeTranscriptResponse instantiates a new YoutubeTranscriptResponse object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +67,11 @@ and a boolean to check if the value has been set.
 
 SetError sets Error field to given value.
 
+### HasError
+
+`func (o *YoutubeTranscriptResponse) HasError() bool`
+
+HasError returns a boolean if a field has been set.
 
 ### SetErrorNil
 
@@ -97,6 +102,11 @@ and a boolean to check if the value has been set.
 
 SetData sets Data field to given value.
 
+### HasData
+
+`func (o *YoutubeTranscriptResponse) HasData() bool`
+
+HasData returns a boolean if a field has been set.
 
 ### SetDataNil
 
@@ -127,6 +137,11 @@ and a boolean to check if the value has been set.
 
 SetRawTranscript sets RawTranscript field to given value.
 
+### HasRawTranscript
+
+`func (o *YoutubeTranscriptResponse) HasRawTranscript() bool`
+
+HasRawTranscript returns a boolean if a field has been set.
 
 ### SetRawTranscriptNil
 

@@ -22,8 +22,6 @@ from carbon.type.file_statistics_nullable import FileStatisticsNullable
 from carbon.type.user_file_embedding_properties import UserFileEmbeddingProperties
 
 class RequiredUserFile(TypedDict):
-    tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
-
     id: int
 
     source: DataSourceType
@@ -34,13 +32,27 @@ class RequiredUserFile(TypedDict):
 
     organization_supplied_user_id: str
 
-    organization_user_data_source_id: typing.Optional[int]
-
     external_file_id: str
 
-    external_url: typing.Optional[str]
-
     sync_status: ExternalFileSyncStatuses
+
+    skip_embedding_generation: bool
+
+    supports_cold_storage: bool
+
+    embedding_storage_status: EmbeddingStorageStatus
+
+    created_at: datetime
+
+    updated_at: datetime
+
+
+class OptionalUserFile(TypedDict, total=False):
+    tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
+    organization_user_data_source_id: typing.Optional[int]
+
+    external_url: typing.Optional[str]
 
     sync_error_message: typing.Optional[str]
 
@@ -74,8 +86,6 @@ class RequiredUserFile(TypedDict):
 
     additional_presigned_urls: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
-    skip_embedding_generation: bool
-
     source_created_at: typing.Optional[datetime]
 
     generate_sparse_vectors: typing.Optional[bool]
@@ -90,18 +100,7 @@ class RequiredUserFile(TypedDict):
 
     file_contents_deleted: bool
 
-    supports_cold_storage: bool
-
     hot_storage_time_to_live: typing.Optional[int]
-
-    embedding_storage_status: EmbeddingStorageStatus
-
-    created_at: datetime
-
-    updated_at: datetime
-
-class OptionalUserFile(TypedDict, total=False):
-    pass
 
 class UserFile(RequiredUserFile, OptionalUserFile):
     pass

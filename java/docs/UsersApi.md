@@ -349,7 +349,7 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    String configurationKeyName = "configurationKeyName_example";
+    ConfigurationKeys configurationKeyName = ConfigurationKeys.fromValue("sparse_vectors");
     Object value = null;
     try {
       GenericSuccessResponse result = client
@@ -447,6 +447,7 @@ public class Example {
     Integer maxCharacters = 56; // Custom character upload limit for the user over *all* user's files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit.
     Integer maxCharactersPerFile = 56; // A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit.
     Integer maxCharactersPerUpload = 56; // Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+    Integer autoSyncInterval = 56; // The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
     try {
       GenericSuccessResponse result = client
               .users
@@ -457,6 +458,7 @@ public class Example {
               .maxCharacters(maxCharacters)
               .maxCharactersPerFile(maxCharactersPerFile)
               .maxCharactersPerUpload(maxCharactersPerUpload)
+              .autoSyncInterval(autoSyncInterval)
               .execute();
       System.out.println(result);
       System.out.println(result.getSuccess());
@@ -479,6 +481,7 @@ public class Example {
               .maxCharacters(maxCharacters)
               .maxCharactersPerFile(maxCharactersPerFile)
               .maxCharactersPerUpload(maxCharactersPerUpload)
+              .autoSyncInterval(autoSyncInterval)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

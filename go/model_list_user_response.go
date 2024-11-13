@@ -24,15 +24,15 @@ type ListUserResponse struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	DeletedAt NullableTime `json:"deleted_at"`
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
-	CustomLimits map[string]interface{} `json:"custom_limits"`
-	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources"`
+	CustomLimits map[string]interface{} `json:"custom_limits,omitempty"`
+	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources,omitempty"`
 }
 
 // NewListUserResponse instantiates a new ListUserResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}) *ListUserResponse {
+func NewListUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, enabledFeatures map[string]interface{}) *ListUserResponse {
 	this := ListUserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -41,8 +41,6 @@ func NewListUserResponse(id int32, organizationId int32, organizationSuppliedUse
 	this.UpdatedAt = updatedAt
 	this.DeletedAt = deletedAt
 	this.EnabledFeatures = enabledFeatures
-	this.CustomLimits = customLimits
-	this.AutoSyncEnabledSources = autoSyncEnabledSources
 	return &this
 }
 
@@ -226,50 +224,66 @@ func (o *ListUserResponse) SetEnabledFeatures(v map[string]interface{}) {
 	o.EnabledFeatures = v
 }
 
-// GetCustomLimits returns the CustomLimits field value
+// GetCustomLimits returns the CustomLimits field value if set, zero value otherwise.
 func (o *ListUserResponse) GetCustomLimits() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.CustomLimits) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.CustomLimits
 }
 
-// GetCustomLimitsOk returns a tuple with the CustomLimits field value
+// GetCustomLimitsOk returns a tuple with the CustomLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListUserResponse) GetCustomLimitsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.CustomLimits) {
     return map[string]interface{}{}, false
 	}
 	return o.CustomLimits, true
 }
 
-// SetCustomLimits sets field value
+// HasCustomLimits returns a boolean if a field has been set.
+func (o *ListUserResponse) HasCustomLimits() bool {
+	if o != nil && !isNil(o.CustomLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLimits gets a reference to the given map[string]interface{} and assigns it to the CustomLimits field.
 func (o *ListUserResponse) SetCustomLimits(v map[string]interface{}) {
 	o.CustomLimits = v
 }
 
-// GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value
+// GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value if set, zero value otherwise.
 func (o *ListUserResponse) GetAutoSyncEnabledSources() []interface{} {
-	if o == nil {
+	if o == nil || isNil(o.AutoSyncEnabledSources) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.AutoSyncEnabledSources
 }
 
-// GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field value
+// GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListUserResponse) GetAutoSyncEnabledSourcesOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.AutoSyncEnabledSources) {
     return nil, false
 	}
 	return o.AutoSyncEnabledSources, true
 }
 
-// SetAutoSyncEnabledSources sets field value
+// HasAutoSyncEnabledSources returns a boolean if a field has been set.
+func (o *ListUserResponse) HasAutoSyncEnabledSources() bool {
+	if o != nil && !isNil(o.AutoSyncEnabledSources) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoSyncEnabledSources gets a reference to the given []interface{} and assigns it to the AutoSyncEnabledSources field.
 func (o *ListUserResponse) SetAutoSyncEnabledSources(v []interface{}) {
 	o.AutoSyncEnabledSources = v
 }
@@ -297,10 +311,10 @@ func (o ListUserResponse) MarshalJSON() ([]byte, error) {
 	if o.EnabledFeatures != nil {
 		toSerialize["enabled_features"] = o.EnabledFeatures
 	}
-	if true {
+	if !isNil(o.CustomLimits) {
 		toSerialize["custom_limits"] = o.CustomLimits
 	}
-	if true {
+	if !isNil(o.AutoSyncEnabledSources) {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources
 	}
 	return json.Marshal(toSerialize)

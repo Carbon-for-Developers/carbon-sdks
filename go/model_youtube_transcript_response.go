@@ -17,21 +17,18 @@ import (
 // YoutubeTranscriptResponse struct for YoutubeTranscriptResponse
 type YoutubeTranscriptResponse struct {
 	Status string `json:"status"`
-	Error NullableString `json:"error"`
-	Data NullableString `json:"data"`
-	RawTranscript []map[string]RawTranscriptPropertyInnerValue `json:"raw_transcript"`
+	Error NullableString `json:"error,omitempty"`
+	Data NullableString `json:"data,omitempty"`
+	RawTranscript []map[string]RawTranscriptPropertyInnerValue `json:"raw_transcript,omitempty"`
 }
 
 // NewYoutubeTranscriptResponse instantiates a new YoutubeTranscriptResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewYoutubeTranscriptResponse(status string, error_ NullableString, data NullableString, rawTranscript []map[string]RawTranscriptPropertyInnerValue) *YoutubeTranscriptResponse {
+func NewYoutubeTranscriptResponse(status string) *YoutubeTranscriptResponse {
 	this := YoutubeTranscriptResponse{}
 	this.Status = status
-	this.Error = error_
-	this.Data = data
-	this.RawTranscript = rawTranscript
 	return &this
 }
 
@@ -67,18 +64,16 @@ func (o *YoutubeTranscriptResponse) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetError returns the Error field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *YoutubeTranscriptResponse) GetError() string {
-	if o == nil || o.Error.Get() == nil {
+	if o == nil || isNil(o.Error.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Error.Get()
 }
 
-// GetErrorOk returns a tuple with the Error field value
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *YoutubeTranscriptResponse) GetErrorOk() (*string, bool) {
@@ -88,23 +83,39 @@ func (o *YoutubeTranscriptResponse) GetErrorOk() (*string, bool) {
 	return o.Error.Get(), o.Error.IsSet()
 }
 
-// SetError sets field value
+// HasError returns a boolean if a field has been set.
+func (o *YoutubeTranscriptResponse) HasError() bool {
+	if o != nil && o.Error.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetError gets a reference to the given NullableString and assigns it to the Error field.
 func (o *YoutubeTranscriptResponse) SetError(v string) {
 	o.Error.Set(&v)
 }
+// SetErrorNil sets the value for Error to be an explicit nil
+func (o *YoutubeTranscriptResponse) SetErrorNil() {
+	o.Error.Set(nil)
+}
 
-// GetData returns the Data field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetError ensures that no value is present for Error, not even an explicit nil
+func (o *YoutubeTranscriptResponse) UnsetError() {
+	o.Error.Unset()
+}
+
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *YoutubeTranscriptResponse) GetData() string {
-	if o == nil || o.Data.Get() == nil {
+	if o == nil || isNil(o.Data.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Data.Get()
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *YoutubeTranscriptResponse) GetDataOk() (*string, bool) {
@@ -114,23 +125,39 @@ func (o *YoutubeTranscriptResponse) GetDataOk() (*string, bool) {
 	return o.Data.Get(), o.Data.IsSet()
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *YoutubeTranscriptResponse) HasData() bool {
+	if o != nil && o.Data.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given NullableString and assigns it to the Data field.
 func (o *YoutubeTranscriptResponse) SetData(v string) {
 	o.Data.Set(&v)
 }
+// SetDataNil sets the value for Data to be an explicit nil
+func (o *YoutubeTranscriptResponse) SetDataNil() {
+	o.Data.Set(nil)
+}
 
-// GetRawTranscript returns the RawTranscript field value
-// If the value is explicit nil, the zero value for []map[string]RawTranscriptPropertyInnerValue will be returned
+// UnsetData ensures that no value is present for Data, not even an explicit nil
+func (o *YoutubeTranscriptResponse) UnsetData() {
+	o.Data.Unset()
+}
+
+// GetRawTranscript returns the RawTranscript field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *YoutubeTranscriptResponse) GetRawTranscript() []map[string]RawTranscriptPropertyInnerValue {
 	if o == nil {
 		var ret []map[string]RawTranscriptPropertyInnerValue
 		return ret
 	}
-
 	return o.RawTranscript
 }
 
-// GetRawTranscriptOk returns a tuple with the RawTranscript field value
+// GetRawTranscriptOk returns a tuple with the RawTranscript field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *YoutubeTranscriptResponse) GetRawTranscriptOk() ([]map[string]RawTranscriptPropertyInnerValue, bool) {
@@ -140,7 +167,16 @@ func (o *YoutubeTranscriptResponse) GetRawTranscriptOk() ([]map[string]RawTransc
 	return o.RawTranscript, true
 }
 
-// SetRawTranscript sets field value
+// HasRawTranscript returns a boolean if a field has been set.
+func (o *YoutubeTranscriptResponse) HasRawTranscript() bool {
+	if o != nil && isNil(o.RawTranscript) {
+		return true
+	}
+
+	return false
+}
+
+// SetRawTranscript gets a reference to the given []map[string]RawTranscriptPropertyInnerValue and assigns it to the RawTranscript field.
 func (o *YoutubeTranscriptResponse) SetRawTranscript(v []map[string]RawTranscriptPropertyInnerValue) {
 	o.RawTranscript = v
 }
@@ -150,10 +186,10 @@ func (o YoutubeTranscriptResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["status"] = o.Status
 	}
-	if true {
+	if o.Error.IsSet() {
 		toSerialize["error"] = o.Error.Get()
 	}
-	if true {
+	if o.Data.IsSet() {
 		toSerialize["data"] = o.Data.Get()
 	}
 	if o.RawTranscript != nil {

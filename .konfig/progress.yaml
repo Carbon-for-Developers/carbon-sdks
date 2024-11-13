@@ -96,6 +96,8 @@ operationIds:
     get: Auth_getWhiteLabeling
   /create_user_file_tags:
     post: Files_createUserFileTags
+  /data_sources:
+    post: DataSources_query
   /data_sources/tags/add:
     post: DataSources_addTags
   /data_sources/tags/remove:

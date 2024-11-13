@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class FreskdeskAuthentication(BaseModel):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None] = Field(alias='source')
+    source: Literal["FRESHDESK"] = Field(alias='source')
 
     domain: str = Field(alias='domain')
 

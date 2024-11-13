@@ -53,11 +53,11 @@ class UserResponse(BaseModel):
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='enabled_features')
 
-    custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='custom_limits')
+    custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='custom_limits')
 
-    auto_sync_enabled_sources: UserResponseAutoSyncEnabledSources = Field(alias='auto_sync_enabled_sources')
+    auto_sync_enabled_sources: typing.Optional[UserResponseAutoSyncEnabledSources] = Field(None, alias='auto_sync_enabled_sources')
 
-    connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='connector_settings')
+    connector_settings: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='connector_settings')
 
     model_config = ConfigDict(
         protected_namespaces=(),

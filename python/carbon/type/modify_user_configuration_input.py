@@ -14,9 +14,10 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.configuration_keys import ConfigurationKeys
 
 class RequiredModifyUserConfigurationInput(TypedDict):
-    configuration_key_name: str
+    configuration_key_name: ConfigurationKeys
 
     value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 

@@ -16,40 +16,30 @@ import (
 
 // DocumentResponse struct for DocumentResponse
 type DocumentResponse struct {
-	Tags map[string]Tags `json:"tags"`
+	Tags map[string]Tags `json:"tags,omitempty"`
 	Content string `json:"content"`
 	FileId int32 `json:"file_id"`
-	ParentFileId NullableInt32 `json:"parent_file_id"`
-	Source NullableString `json:"source"`
-	SourceUrl NullableString `json:"source_url"`
-	SourceType NullableDataSourceTypeNullable `json:"source_type"`
-	PresignedUrl NullableString `json:"presigned_url"`
+	ParentFileId NullableInt32 `json:"parent_file_id,omitempty"`
+	Source NullableString `json:"source,omitempty"`
+	SourceUrl NullableString `json:"source_url,omitempty"`
+	SourceType NullableDataSourceTypeNullable `json:"source_type,omitempty"`
+	PresignedUrl NullableString `json:"presigned_url,omitempty"`
 	Vector []float32 `json:"vector"`
-	Score NullableFloat32 `json:"score"`
-	Rank NullableRankProperty `json:"rank"`
-	ContentMetadata map[string]interface{} `json:"content_metadata"`
-	ChunkIndex NullableInt32 `json:"chunk_index"`
+	Score NullableFloat32 `json:"score,omitempty"`
+	Rank NullableRankProperty `json:"rank,omitempty"`
+	ContentMetadata map[string]interface{} `json:"content_metadata,omitempty"`
+	ChunkIndex NullableInt32 `json:"chunk_index,omitempty"`
 }
 
 // NewDocumentResponse instantiates a new DocumentResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, parentFileId NullableInt32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32) *DocumentResponse {
+func NewDocumentResponse(content string, fileId int32, vector []float32) *DocumentResponse {
 	this := DocumentResponse{}
-	this.Tags = tags
 	this.Content = content
 	this.FileId = fileId
-	this.ParentFileId = parentFileId
-	this.Source = source
-	this.SourceUrl = sourceUrl
-	this.SourceType = sourceType
-	this.PresignedUrl = presignedUrl
 	this.Vector = vector
-	this.Score = score
-	this.Rank = rank
-	this.ContentMetadata = contentMetadata
-	this.ChunkIndex = chunkIndex
 	return &this
 }
 
@@ -61,18 +51,16 @@ func NewDocumentResponseWithDefaults() *DocumentResponse {
 	return &this
 }
 
-// GetTags returns the Tags field value
-// If the value is explicit nil, the zero value for map[string]Tags will be returned
+// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetTags() map[string]Tags {
 	if o == nil {
 		var ret map[string]Tags
 		return ret
 	}
-
 	return o.Tags
 }
 
-// GetTagsOk returns a tuple with the Tags field value
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetTagsOk() (*map[string]Tags, bool) {
@@ -82,7 +70,16 @@ func (o *DocumentResponse) GetTagsOk() (*map[string]Tags, bool) {
 	return &o.Tags, true
 }
 
-// SetTags sets field value
+// HasTags returns a boolean if a field has been set.
+func (o *DocumentResponse) HasTags() bool {
+	if o != nil && isNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string]Tags and assigns it to the Tags field.
 func (o *DocumentResponse) SetTags(v map[string]Tags) {
 	o.Tags = v
 }
@@ -135,18 +132,16 @@ func (o *DocumentResponse) SetFileId(v int32) {
 	o.FileId = v
 }
 
-// GetParentFileId returns the ParentFileId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetParentFileId returns the ParentFileId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetParentFileId() int32 {
-	if o == nil || o.ParentFileId.Get() == nil {
+	if o == nil || isNil(o.ParentFileId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ParentFileId.Get()
 }
 
-// GetParentFileIdOk returns a tuple with the ParentFileId field value
+// GetParentFileIdOk returns a tuple with the ParentFileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetParentFileIdOk() (*int32, bool) {
@@ -156,23 +151,39 @@ func (o *DocumentResponse) GetParentFileIdOk() (*int32, bool) {
 	return o.ParentFileId.Get(), o.ParentFileId.IsSet()
 }
 
-// SetParentFileId sets field value
+// HasParentFileId returns a boolean if a field has been set.
+func (o *DocumentResponse) HasParentFileId() bool {
+	if o != nil && o.ParentFileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParentFileId gets a reference to the given NullableInt32 and assigns it to the ParentFileId field.
 func (o *DocumentResponse) SetParentFileId(v int32) {
 	o.ParentFileId.Set(&v)
 }
+// SetParentFileIdNil sets the value for ParentFileId to be an explicit nil
+func (o *DocumentResponse) SetParentFileIdNil() {
+	o.ParentFileId.Set(nil)
+}
 
-// GetSource returns the Source field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetParentFileId ensures that no value is present for ParentFileId, not even an explicit nil
+func (o *DocumentResponse) UnsetParentFileId() {
+	o.ParentFileId.Unset()
+}
+
+// GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetSource() string {
-	if o == nil || o.Source.Get() == nil {
+	if o == nil || isNil(o.Source.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Source.Get()
 }
 
-// GetSourceOk returns a tuple with the Source field value
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetSourceOk() (*string, bool) {
@@ -182,23 +193,39 @@ func (o *DocumentResponse) GetSourceOk() (*string, bool) {
 	return o.Source.Get(), o.Source.IsSet()
 }
 
-// SetSource sets field value
+// HasSource returns a boolean if a field has been set.
+func (o *DocumentResponse) HasSource() bool {
+	if o != nil && o.Source.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given NullableString and assigns it to the Source field.
 func (o *DocumentResponse) SetSource(v string) {
 	o.Source.Set(&v)
 }
+// SetSourceNil sets the value for Source to be an explicit nil
+func (o *DocumentResponse) SetSourceNil() {
+	o.Source.Set(nil)
+}
 
-// GetSourceUrl returns the SourceUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetSource ensures that no value is present for Source, not even an explicit nil
+func (o *DocumentResponse) UnsetSource() {
+	o.Source.Unset()
+}
+
+// GetSourceUrl returns the SourceUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetSourceUrl() string {
-	if o == nil || o.SourceUrl.Get() == nil {
+	if o == nil || isNil(o.SourceUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.SourceUrl.Get()
 }
 
-// GetSourceUrlOk returns a tuple with the SourceUrl field value
+// GetSourceUrlOk returns a tuple with the SourceUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetSourceUrlOk() (*string, bool) {
@@ -208,23 +235,39 @@ func (o *DocumentResponse) GetSourceUrlOk() (*string, bool) {
 	return o.SourceUrl.Get(), o.SourceUrl.IsSet()
 }
 
-// SetSourceUrl sets field value
+// HasSourceUrl returns a boolean if a field has been set.
+func (o *DocumentResponse) HasSourceUrl() bool {
+	if o != nil && o.SourceUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceUrl gets a reference to the given NullableString and assigns it to the SourceUrl field.
 func (o *DocumentResponse) SetSourceUrl(v string) {
 	o.SourceUrl.Set(&v)
 }
+// SetSourceUrlNil sets the value for SourceUrl to be an explicit nil
+func (o *DocumentResponse) SetSourceUrlNil() {
+	o.SourceUrl.Set(nil)
+}
 
-// GetSourceType returns the SourceType field value
-// If the value is explicit nil, the zero value for DataSourceTypeNullable will be returned
+// UnsetSourceUrl ensures that no value is present for SourceUrl, not even an explicit nil
+func (o *DocumentResponse) UnsetSourceUrl() {
+	o.SourceUrl.Unset()
+}
+
+// GetSourceType returns the SourceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetSourceType() DataSourceTypeNullable {
-	if o == nil || o.SourceType.Get() == nil {
+	if o == nil || isNil(o.SourceType.Get()) {
 		var ret DataSourceTypeNullable
 		return ret
 	}
-
 	return *o.SourceType.Get()
 }
 
-// GetSourceTypeOk returns a tuple with the SourceType field value
+// GetSourceTypeOk returns a tuple with the SourceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetSourceTypeOk() (*DataSourceTypeNullable, bool) {
@@ -234,23 +277,39 @@ func (o *DocumentResponse) GetSourceTypeOk() (*DataSourceTypeNullable, bool) {
 	return o.SourceType.Get(), o.SourceType.IsSet()
 }
 
-// SetSourceType sets field value
+// HasSourceType returns a boolean if a field has been set.
+func (o *DocumentResponse) HasSourceType() bool {
+	if o != nil && o.SourceType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceType gets a reference to the given NullableDataSourceTypeNullable and assigns it to the SourceType field.
 func (o *DocumentResponse) SetSourceType(v DataSourceTypeNullable) {
 	o.SourceType.Set(&v)
 }
+// SetSourceTypeNil sets the value for SourceType to be an explicit nil
+func (o *DocumentResponse) SetSourceTypeNil() {
+	o.SourceType.Set(nil)
+}
 
-// GetPresignedUrl returns the PresignedUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetSourceType ensures that no value is present for SourceType, not even an explicit nil
+func (o *DocumentResponse) UnsetSourceType() {
+	o.SourceType.Unset()
+}
+
+// GetPresignedUrl returns the PresignedUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetPresignedUrl() string {
-	if o == nil || o.PresignedUrl.Get() == nil {
+	if o == nil || isNil(o.PresignedUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.PresignedUrl.Get()
 }
 
-// GetPresignedUrlOk returns a tuple with the PresignedUrl field value
+// GetPresignedUrlOk returns a tuple with the PresignedUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetPresignedUrlOk() (*string, bool) {
@@ -260,9 +319,27 @@ func (o *DocumentResponse) GetPresignedUrlOk() (*string, bool) {
 	return o.PresignedUrl.Get(), o.PresignedUrl.IsSet()
 }
 
-// SetPresignedUrl sets field value
+// HasPresignedUrl returns a boolean if a field has been set.
+func (o *DocumentResponse) HasPresignedUrl() bool {
+	if o != nil && o.PresignedUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPresignedUrl gets a reference to the given NullableString and assigns it to the PresignedUrl field.
 func (o *DocumentResponse) SetPresignedUrl(v string) {
 	o.PresignedUrl.Set(&v)
+}
+// SetPresignedUrlNil sets the value for PresignedUrl to be an explicit nil
+func (o *DocumentResponse) SetPresignedUrlNil() {
+	o.PresignedUrl.Set(nil)
+}
+
+// UnsetPresignedUrl ensures that no value is present for PresignedUrl, not even an explicit nil
+func (o *DocumentResponse) UnsetPresignedUrl() {
+	o.PresignedUrl.Unset()
 }
 
 // GetVector returns the Vector field value
@@ -291,18 +368,16 @@ func (o *DocumentResponse) SetVector(v []float32) {
 	o.Vector = v
 }
 
-// GetScore returns the Score field value
-// If the value is explicit nil, the zero value for float32 will be returned
+// GetScore returns the Score field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetScore() float32 {
-	if o == nil || o.Score.Get() == nil {
+	if o == nil || isNil(o.Score.Get()) {
 		var ret float32
 		return ret
 	}
-
 	return *o.Score.Get()
 }
 
-// GetScoreOk returns a tuple with the Score field value
+// GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetScoreOk() (*float32, bool) {
@@ -312,23 +387,39 @@ func (o *DocumentResponse) GetScoreOk() (*float32, bool) {
 	return o.Score.Get(), o.Score.IsSet()
 }
 
-// SetScore sets field value
+// HasScore returns a boolean if a field has been set.
+func (o *DocumentResponse) HasScore() bool {
+	if o != nil && o.Score.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetScore gets a reference to the given NullableFloat32 and assigns it to the Score field.
 func (o *DocumentResponse) SetScore(v float32) {
 	o.Score.Set(&v)
 }
+// SetScoreNil sets the value for Score to be an explicit nil
+func (o *DocumentResponse) SetScoreNil() {
+	o.Score.Set(nil)
+}
 
-// GetRank returns the Rank field value
-// If the value is explicit nil, the zero value for RankProperty will be returned
+// UnsetScore ensures that no value is present for Score, not even an explicit nil
+func (o *DocumentResponse) UnsetScore() {
+	o.Score.Unset()
+}
+
+// GetRank returns the Rank field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetRank() RankProperty {
-	if o == nil || o.Rank.Get() == nil {
+	if o == nil || isNil(o.Rank.Get()) {
 		var ret RankProperty
 		return ret
 	}
-
 	return *o.Rank.Get()
 }
 
-// GetRankOk returns a tuple with the Rank field value
+// GetRankOk returns a tuple with the Rank field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetRankOk() (*RankProperty, bool) {
@@ -338,23 +429,39 @@ func (o *DocumentResponse) GetRankOk() (*RankProperty, bool) {
 	return o.Rank.Get(), o.Rank.IsSet()
 }
 
-// SetRank sets field value
+// HasRank returns a boolean if a field has been set.
+func (o *DocumentResponse) HasRank() bool {
+	if o != nil && o.Rank.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRank gets a reference to the given NullableRankProperty and assigns it to the Rank field.
 func (o *DocumentResponse) SetRank(v RankProperty) {
 	o.Rank.Set(&v)
 }
+// SetRankNil sets the value for Rank to be an explicit nil
+func (o *DocumentResponse) SetRankNil() {
+	o.Rank.Set(nil)
+}
 
-// GetContentMetadata returns the ContentMetadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// UnsetRank ensures that no value is present for Rank, not even an explicit nil
+func (o *DocumentResponse) UnsetRank() {
+	o.Rank.Unset()
+}
+
+// GetContentMetadata returns the ContentMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetContentMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.ContentMetadata
 }
 
-// GetContentMetadataOk returns a tuple with the ContentMetadata field value
+// GetContentMetadataOk returns a tuple with the ContentMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetContentMetadataOk() (map[string]interface{}, bool) {
@@ -364,23 +471,30 @@ func (o *DocumentResponse) GetContentMetadataOk() (map[string]interface{}, bool)
 	return o.ContentMetadata, true
 }
 
-// SetContentMetadata sets field value
+// HasContentMetadata returns a boolean if a field has been set.
+func (o *DocumentResponse) HasContentMetadata() bool {
+	if o != nil && isNil(o.ContentMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetContentMetadata gets a reference to the given map[string]interface{} and assigns it to the ContentMetadata field.
 func (o *DocumentResponse) SetContentMetadata(v map[string]interface{}) {
 	o.ContentMetadata = v
 }
 
-// GetChunkIndex returns the ChunkIndex field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetChunkIndex returns the ChunkIndex field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DocumentResponse) GetChunkIndex() int32 {
-	if o == nil || o.ChunkIndex.Get() == nil {
+	if o == nil || isNil(o.ChunkIndex.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ChunkIndex.Get()
 }
 
-// GetChunkIndexOk returns a tuple with the ChunkIndex field value
+// GetChunkIndexOk returns a tuple with the ChunkIndex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentResponse) GetChunkIndexOk() (*int32, bool) {
@@ -390,9 +504,27 @@ func (o *DocumentResponse) GetChunkIndexOk() (*int32, bool) {
 	return o.ChunkIndex.Get(), o.ChunkIndex.IsSet()
 }
 
-// SetChunkIndex sets field value
+// HasChunkIndex returns a boolean if a field has been set.
+func (o *DocumentResponse) HasChunkIndex() bool {
+	if o != nil && o.ChunkIndex.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkIndex gets a reference to the given NullableInt32 and assigns it to the ChunkIndex field.
 func (o *DocumentResponse) SetChunkIndex(v int32) {
 	o.ChunkIndex.Set(&v)
+}
+// SetChunkIndexNil sets the value for ChunkIndex to be an explicit nil
+func (o *DocumentResponse) SetChunkIndexNil() {
+	o.ChunkIndex.Set(nil)
+}
+
+// UnsetChunkIndex ensures that no value is present for ChunkIndex, not even an explicit nil
+func (o *DocumentResponse) UnsetChunkIndex() {
+	o.ChunkIndex.Unset()
 }
 
 func (o DocumentResponse) MarshalJSON() ([]byte, error) {
@@ -406,34 +538,34 @@ func (o DocumentResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["file_id"] = o.FileId
 	}
-	if true {
+	if o.ParentFileId.IsSet() {
 		toSerialize["parent_file_id"] = o.ParentFileId.Get()
 	}
-	if true {
+	if o.Source.IsSet() {
 		toSerialize["source"] = o.Source.Get()
 	}
-	if true {
+	if o.SourceUrl.IsSet() {
 		toSerialize["source_url"] = o.SourceUrl.Get()
 	}
-	if true {
+	if o.SourceType.IsSet() {
 		toSerialize["source_type"] = o.SourceType.Get()
 	}
-	if true {
+	if o.PresignedUrl.IsSet() {
 		toSerialize["presigned_url"] = o.PresignedUrl.Get()
 	}
 	if o.Vector != nil {
 		toSerialize["vector"] = o.Vector
 	}
-	if true {
+	if o.Score.IsSet() {
 		toSerialize["score"] = o.Score.Get()
 	}
-	if true {
+	if o.Rank.IsSet() {
 		toSerialize["rank"] = o.Rank.Get()
 	}
 	if o.ContentMetadata != nil {
 		toSerialize["content_metadata"] = o.ContentMetadata
 	}
-	if true {
+	if o.ChunkIndex.IsSet() {
 		toSerialize["chunk_index"] = o.ChunkIndex.Get()
 	}
 	return json.Marshal(toSerialize)

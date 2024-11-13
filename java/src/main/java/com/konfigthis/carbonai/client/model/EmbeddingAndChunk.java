@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,7 +66,7 @@ public class EmbeddingAndChunk {
 
   public static final String SERIALIZED_NAME_EMBEDDING = "embedding";
   @SerializedName(SERIALIZED_NAME_EMBEDDING)
-  private List<Double> embedding = new ArrayList<>();
+  private List<Double> embedding = null;
 
   public static final String SERIALIZED_NAME_CONTENT_METADATA = "content_metadata";
   @SerializedName(SERIALIZED_NAME_CONTENT_METADATA)
@@ -117,7 +118,7 @@ public class EmbeddingAndChunk {
    * @return chunkIndex
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getChunkIndex() {
     return chunkIndex;
@@ -171,6 +172,9 @@ public class EmbeddingAndChunk {
   }
 
   public EmbeddingAndChunk addEmbeddingItem(Double embeddingItem) {
+    if (this.embedding == null) {
+      this.embedding = new ArrayList<>();
+    }
     this.embedding.add(embeddingItem);
     return this;
   }
@@ -180,7 +184,7 @@ public class EmbeddingAndChunk {
    * @return embedding
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public List<Double> getEmbedding() {
     return embedding;
@@ -209,7 +213,7 @@ public class EmbeddingAndChunk {
    * @return contentMetadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getContentMetadata() {
     return contentMetadata;
@@ -286,9 +290,20 @@ public class EmbeddingAndChunk {
         Objects.equals(this.additionalProperties, embeddingAndChunk.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(userFileId, chunkIndex, sourceContent, embedding, contentMetadata, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -332,10 +347,7 @@ public class EmbeddingAndChunk {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("user_file_id");
-    openapiRequiredFields.add("chunk_index");
     openapiRequiredFields.add("source_content");
-    openapiRequiredFields.add("embedding");
-    openapiRequiredFields.add("content_metadata");
   }
 
  /**
@@ -360,11 +372,9 @@ public class EmbeddingAndChunk {
       if (!jsonObj.get("source_content").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_content").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("embedding") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("embedding").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `embedding` to be an array in the JSON string but got `%s`", jsonObj.get("embedding").toString()));
+      // ensure the optional json data is an array if present (nullable)
+      if (jsonObj.get("embedding") != null && !jsonObj.get("embedding").isJsonNull() && !jsonObj.get("embedding").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `embedding` to be an array in the JSON string or null but got `%s`", jsonObj.get("embedding").toString()));
       }
   }
 

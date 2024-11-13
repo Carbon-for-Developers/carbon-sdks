@@ -1012,10 +1012,10 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    Pagination pagination = new Pagination(); // Pagination parameters for the query.
-    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at"); // The field on OrganizationUserFilesToSYnc to order the results by.
-    OrderDir orderDir = OrderDir.fromValue("desc"); // The direction to order the results by.
-    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters(); // Filters to apply to the query.
+    Pagination pagination = new Pagination();
+    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at");
+    OrderDir orderDir = OrderDir.fromValue("desc");
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
     Boolean includeRawFile = true; // If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
     Boolean includeParsedTextFile = true; // If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
     Boolean includeAdditionalFiles = true; // If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.
@@ -1132,10 +1132,10 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    Pagination pagination = new Pagination(); // Pagination parameters for the query.
-    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at"); // The field on OrganizationUserFilesToSYnc to order the results by.
-    OrderDir orderDir = OrderDir.fromValue("desc"); // The direction to order the results by.
-    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters(); // Filters to apply to the query.
+    Pagination pagination = new Pagination();
+    OrganizationUserFilesToSyncOrderByTypes orderBy = OrganizationUserFilesToSyncOrderByTypes.fromValue("created_at");
+    OrderDir orderDir = OrderDir.fromValue("desc");
+    OrganizationUserFilesToSyncFilters filters = new OrganizationUserFilesToSyncFilters();
     Boolean includeRawFile = true; // If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
     Boolean includeParsedTextFile = true; // If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint.
     Boolean includeAdditionalFiles = true; // If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint.

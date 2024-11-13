@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **UpdatedAt** | **time.Time** |  | 
 **DeletedAt** | **NullableTime** |  | 
 **EnabledFeatures** | **map[string]interface{}** |  | 
-**CustomLimits** | **map[string]interface{}** |  | [default to {}]
-**AutoSyncEnabledSources** | **[]interface{}** |  | [default to []]
+**CustomLimits** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**AutoSyncEnabledSources** | Pointer to **[]interface{}** |  | [optional] [default to []]
 
 ## Methods
 
 ### NewListUserResponse
 
-`func NewListUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, ) *ListUserResponse`
+`func NewListUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, enabledFeatures map[string]interface{}, ) *ListUserResponse`
 
 NewListUserResponse instantiates a new ListUserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -212,6 +212,11 @@ and a boolean to check if the value has been set.
 
 SetCustomLimits sets CustomLimits field to given value.
 
+### HasCustomLimits
+
+`func (o *ListUserResponse) HasCustomLimits() bool`
+
+HasCustomLimits returns a boolean if a field has been set.
 
 ### GetAutoSyncEnabledSources
 
@@ -232,6 +237,11 @@ and a boolean to check if the value has been set.
 
 SetAutoSyncEnabledSources sets AutoSyncEnabledSources field to given value.
 
+### HasAutoSyncEnabledSources
+
+`func (o *ListUserResponse) HasAutoSyncEnabledSources() bool`
+
+HasAutoSyncEnabledSources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

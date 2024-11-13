@@ -21,13 +21,7 @@ class OrganizationResponse(BaseModel):
 
     name: str = Field(alias='name')
 
-    nickname: typing.Optional[str] = Field(alias='nickname')
-
     remove_branding: bool = Field(alias='remove_branding')
-
-    custom_branding: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='custom_branding')
-
-    custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='custom_limits')
 
     aggregate_file_size: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='aggregate_file_size')
 
@@ -43,21 +37,27 @@ class OrganizationResponse(BaseModel):
 
     file_statistics_aggregated_at: typing.Optional[datetime] = Field(alias='file_statistics_aggregated_at')
 
-    period_ends_at: typing.Optional[datetime] = Field(alias='period_ends_at')
-
-    cancel_at_period_end: typing.Optional[bool] = Field(alias='cancel_at_period_end')
-
-    connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='connector_settings')
-
-    global_user_config: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='global_user_config')
-
-    file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='file_sync_usage')
-
-    logging_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='logging_settings')
-
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')
+
+    nickname: typing.Optional[typing.Optional[str]] = Field(None, alias='nickname')
+
+    custom_branding: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='custom_branding')
+
+    custom_limits: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='custom_limits')
+
+    period_ends_at: typing.Optional[typing.Optional[datetime]] = Field(None, alias='period_ends_at')
+
+    cancel_at_period_end: typing.Optional[typing.Optional[bool]] = Field(None, alias='cancel_at_period_end')
+
+    connector_settings: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='connector_settings')
+
+    global_user_config: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='global_user_config')
+
+    file_sync_usage: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='file_sync_usage')
+
+    logging_settings: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='logging_settings')
 
     model_config = ConfigDict(
         protected_namespaces=(),

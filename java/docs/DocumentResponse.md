@@ -7,19 +7,19 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**tags** | **Map&lt;String, Object&gt;** |  |  |
+|**tags** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**content** | **String** |  |  |
 |**fileId** | **Integer** |  |  |
-|**parentFileId** | **Integer** |  |  |
-|**source** | **String** |  |  |
-|**sourceUrl** | **String** |  |  |
-|**sourceType** | **DataSourceTypeNullable** |  |  |
-|**presignedUrl** | **String** |  |  |
+|**parentFileId** | **Integer** |  |  [optional] |
+|**source** | **String** |  |  [optional] |
+|**sourceUrl** | **String** |  |  [optional] |
+|**sourceType** | **DataSourceTypeNullable** |  |  [optional] |
+|**presignedUrl** | **String** |  |  [optional] |
 |**vector** | **List&lt;Double&gt;** |  |  |
-|**score** | **Double** |  |  |
-|**rank** | **Object** |  |  |
-|**contentMetadata** | **Object** |  |  |
-|**chunkIndex** | **Integer** |  |  |
+|**score** | **Double** |  |  [optional] |
+|**rank** | **Object** |  |  [optional] |
+|**contentMetadata** | **Object** |  |  [optional] |
+|**chunkIndex** | **Integer** |  |  [optional] |
 
 
 

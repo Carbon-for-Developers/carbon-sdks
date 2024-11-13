@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -212,7 +213,7 @@ public class WebhookNoKey {
    * @return statusReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getStatusReason() {
     return statusReason;
@@ -349,9 +350,20 @@ public class WebhookNoKey {
         Objects.equals(this.additionalProperties, webhookNoKey.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, organizationId, url, status, statusReason, createdAt, updatedAt, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -402,7 +414,6 @@ public class WebhookNoKey {
     openapiRequiredFields.add("organization_id");
     openapiRequiredFields.add("url");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("status_reason");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }
@@ -429,7 +440,7 @@ public class WebhookNoKey {
       if (!jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
-      if (!jsonObj.get("status_reason").isJsonNull() && !jsonObj.get("status_reason").isJsonPrimitive()) {
+      if (!jsonObj.get("status_reason").isJsonNull() && (jsonObj.get("status_reason") != null && !jsonObj.get("status_reason").isJsonNull()) && !jsonObj.get("status_reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status_reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_reason").toString()));
       }
   }

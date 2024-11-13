@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccountName** | **string** |  | 
 **AccountKey** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAzureBlobStorageAuthentication
 
-`func NewAzureBlobStorageAuthentication(source interface{}, accountName string, accountKey string, ) *AzureBlobStorageAuthentication`
+`func NewAzureBlobStorageAuthentication(source string, accountName string, accountKey string, ) *AzureBlobStorageAuthentication`
 
 NewAzureBlobStorageAuthentication instantiates a new AzureBlobStorageAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -29,34 +29,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *AzureBlobStorageAuthentication) GetSource() interface{}`
+`func (o *AzureBlobStorageAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AzureBlobStorageAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *AzureBlobStorageAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AzureBlobStorageAuthentication) SetSource(v interface{})`
+`func (o *AzureBlobStorageAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *AzureBlobStorageAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *AzureBlobStorageAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccountName
 
 `func (o *AzureBlobStorageAuthentication) GetAccountName() string`

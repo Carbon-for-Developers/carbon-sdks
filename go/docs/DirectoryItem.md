@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**IsSynced** | **bool** |  | [default to false]
-**HasChildren** | **bool** |  | [default to false]
+**IsSynced** | Pointer to **bool** |  | [optional] [default to false]
+**HasChildren** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
 ### NewDirectoryItem
 
-`func NewDirectoryItem(id string, name string, isSynced bool, hasChildren bool, ) *DirectoryItem`
+`func NewDirectoryItem(id string, name string, ) *DirectoryItem`
 
 NewDirectoryItem instantiates a new DirectoryItem object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +87,11 @@ and a boolean to check if the value has been set.
 
 SetIsSynced sets IsSynced field to given value.
 
+### HasIsSynced
+
+`func (o *DirectoryItem) HasIsSynced() bool`
+
+HasIsSynced returns a boolean if a field has been set.
 
 ### GetHasChildren
 
@@ -107,6 +112,11 @@ and a boolean to check if the value has been set.
 
 SetHasChildren sets HasChildren field to given value.
 
+### HasHasChildren
+
+`func (o *DirectoryItem) HasHasChildren() bool`
+
+HasHasChildren returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

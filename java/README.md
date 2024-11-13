@@ -33,6 +33,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.crm.getOpportunities`](#carboncrmgetopportunities)
   * [`carbon.crm.getOpportunity`](#carboncrmgetopportunity)
   * [`carbon.dataSources.addTags`](#carbondatasourcesaddtags)
+  * [`carbon.dataSources.query`](#carbondatasourcesquery)
   * [`carbon.dataSources.queryUserDataSources`](#carbondatasourcesqueryuserdatasources)
   * [`carbon.dataSources.removeTags`](#carbondatasourcesremovetags)
   * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
@@ -688,6 +689,46 @@ OrganizationUserDataSourceAPI result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/data_sources/tags/add` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.dataSources.query`<a id="carbondatasourcesquery"></a>
+
+Data Sources
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+OrganizationUserDataSourceResponse result = client
+        .dataSources
+        .query()
+        .pagination(pagination)
+        .orderBy(orderBy)
+        .orderDir(orderDir)
+        .filters(filters)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
+
+##### order_by:<a id="order_by"></a>
+
+##### order_dir:<a id="order_dir"></a>
+
+##### filters: [`OrganizationUserDataSourceFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceFilters.java)<a id="filters-organizationuserdatasourcefilterssrcmainjavacomkonfigthisclientmodelorganizationuserdatasourcefiltersjava"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceResponse](./src/main/java/com/konfigthis/client/model/OrganizationUserDataSourceResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1520,19 +1561,11 @@ UserFilesV2 result = client
 
 ##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-Pagination parameters for the query.
-
 ##### order_by:<a id="order_by"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir:<a id="order_dir"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
-
-Filters to apply to the query.
 
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
@@ -1589,19 +1622,11 @@ List<UserFile> result = client
 
 ##### pagination: [`Pagination`](./src/main/java/com/konfigthis/client/model/Pagination.java)<a id="pagination-paginationsrcmainjavacomkonfigthisclientmodelpaginationjava"></a>
 
-Pagination parameters for the query.
-
 ##### order_by:<a id="order_by"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir:<a id="order_dir"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./src/main/java/com/konfigthis/client/model/OrganizationUserFilesToSyncFilters.java)<a id="filters-organizationuserfilestosyncfilterssrcmainjavacomkonfigthisclientmodelorganizationuserfilestosyncfiltersjava"></a>
-
-Filters to apply to the query.
 
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 
@@ -4239,7 +4264,7 @@ GenericSuccessResponse result = client
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### configuration_key_name: `String`<a id="configuration_key_name-string"></a>
+##### configuration_key_name:<a id="configuration_key_name"></a>
 
 ##### value: `Object`<a id="value-object"></a>
 
@@ -4272,6 +4297,7 @@ GenericSuccessResponse result = client
         .maxCharacters(maxCharacters)
         .maxCharactersPerFile(maxCharactersPerFile)
         .maxCharactersPerUpload(maxCharactersPerUpload)
+        .autoSyncInterval(autoSyncInterval)
         .execute();
 ```
 
@@ -4302,6 +4328,10 @@ A single file upload from the user can not exceed this character limit.         
 ##### max_characters_per_upload: `Integer`<a id="max_characters_per_upload-integer"></a>
 
 Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+
+##### auto_sync_interval: `Integer`<a id="auto_sync_interval-integer"></a>
+
+The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4902,7 +4932,7 @@ Object result = client
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### data_source_type: `Object`<a id="data_source_type-object"></a>
+##### data_source_type: `String`<a id="data_source_type-string"></a>
 
 ##### credentials: [`GoogleDriveCredentialsProperty`](./src/main/java/com/konfigthis/client/model/GoogleDriveCredentialsProperty.java)<a id="credentials-googledrivecredentialspropertysrcmainjavacomkonfigthisclientmodelgoogledrivecredentialspropertyjava"></a>
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MaxCharacters** | Pointer to **NullableInt32** | Custom character upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more characters than this limit. If not set, or if set to -1,         then the user will have no limit. | [optional] 
 **MaxCharactersPerFile** | Pointer to **NullableInt32** | A single file upload from the user can not exceed this character limit.         If set, then the file will not be synced if it exceeds this limit. If not set, or if set to -1, then the          user will have no limit. | [optional] 
 **MaxCharactersPerUpload** | Pointer to **NullableInt32** | Custom character upload limit for the user across a single upload.         If set, then the user won&#39;t be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit. | [optional] 
+**AutoSyncInterval** | Pointer to **NullableInt32** | The interval in hours at which the user&#39;s data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24] | [optional] 
 
 ## Methods
 
@@ -240,6 +241,41 @@ HasMaxCharactersPerUpload returns a boolean if a field has been set.
 `func (o *UserConfigurationNullable) UnsetMaxCharactersPerUpload()`
 
 UnsetMaxCharactersPerUpload ensures that no value is present for MaxCharactersPerUpload, not even an explicit nil
+### GetAutoSyncInterval
+
+`func (o *UserConfigurationNullable) GetAutoSyncInterval() int32`
+
+GetAutoSyncInterval returns the AutoSyncInterval field if non-nil, zero value otherwise.
+
+### GetAutoSyncIntervalOk
+
+`func (o *UserConfigurationNullable) GetAutoSyncIntervalOk() (*int32, bool)`
+
+GetAutoSyncIntervalOk returns a tuple with the AutoSyncInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoSyncInterval
+
+`func (o *UserConfigurationNullable) SetAutoSyncInterval(v int32)`
+
+SetAutoSyncInterval sets AutoSyncInterval field to given value.
+
+### HasAutoSyncInterval
+
+`func (o *UserConfigurationNullable) HasAutoSyncInterval() bool`
+
+HasAutoSyncInterval returns a boolean if a field has been set.
+
+### SetAutoSyncIntervalNil
+
+`func (o *UserConfigurationNullable) SetAutoSyncIntervalNil(b bool)`
+
+ SetAutoSyncIntervalNil sets the value for AutoSyncInterval to be an explicit nil
+
+### UnsetAutoSyncInterval
+`func (o *UserConfigurationNullable) UnsetAutoSyncInterval()`
+
+UnsetAutoSyncInterval ensures that no value is present for AutoSyncInterval, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -32,9 +32,9 @@ class ListUserResponse(BaseModel):
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='enabled_features')
 
-    custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='custom_limits')
+    custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='custom_limits')
 
-    auto_sync_enabled_sources: ListUserResponseAutoSyncEnabledSources = Field(alias='auto_sync_enabled_sources')
+    auto_sync_enabled_sources: typing.Optional[ListUserResponseAutoSyncEnabledSources] = Field(None, alias='auto_sync_enabled_sources')
 
     model_config = ConfigDict(
         protected_namespaces=(),

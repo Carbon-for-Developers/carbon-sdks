@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**dataSource** | [**OrganizationUserDataSourceAPI**](OrganizationUserDataSourceAPI.md) |  |  |
-|**syncUrl** | **String** |  |  |
+|**syncUrl** | **String** |  |  [optional] |
 
 
 

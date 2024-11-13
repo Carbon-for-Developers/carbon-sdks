@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Urls** | **[]string** |  | 
 **HtmlContent** | **string** |  | 
-**ErrorMessage** | **NullableString** |  | 
+**ErrorMessage** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewFetchURLsResponse
 
-`func NewFetchURLsResponse(urls []string, htmlContent string, errorMessage NullableString, ) *FetchURLsResponse`
+`func NewFetchURLsResponse(urls []string, htmlContent string, ) *FetchURLsResponse`
 
 NewFetchURLsResponse instantiates a new FetchURLsResponse object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +86,11 @@ and a boolean to check if the value has been set.
 
 SetErrorMessage sets ErrorMessage field to given value.
 
+### HasErrorMessage
+
+`func (o *FetchURLsResponse) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
 
 ### SetErrorMessageNil
 

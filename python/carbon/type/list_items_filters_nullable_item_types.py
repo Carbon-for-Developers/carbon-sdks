@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from carbon.type.azure_blob_storage_types import AzureBlobStorageTypes
 from carbon.type.confluence_file_types import ConfluenceFileTypes
 from carbon.type.gitbook_file_types import GitbookFileTypes
 from carbon.type.github_file_types import GithubFileTypes
@@ -25,4 +26,4 @@ from carbon.type.service_now_file_types import ServiceNowFileTypes
 from carbon.type.shared_source_item_types import SharedSourceItemTypes
 from carbon.type.zendesk_file_types import ZendeskFileTypes
 
-ListItemsFiltersNullableItemTypes = typing.Optional[typing.List[typing.Union[SharedSourceItemTypes, HelpdeskFileTypes, ServiceNowFileTypes, ZendeskFileTypes, IntercomFileTypes, ConfluenceFileTypes, GitbookFileTypes, GithubFileTypes, GuruFileTypes, GongFileTypes, str]]]
+ListItemsFiltersNullableItemTypes = typing.Optional[typing.List[typing.Union[SharedSourceItemTypes, HelpdeskFileTypes, ServiceNowFileTypes, ZendeskFileTypes, IntercomFileTypes, ConfluenceFileTypes, GitbookFileTypes, GithubFileTypes, GuruFileTypes, GongFileTypes, AzureBlobStorageTypes]]]

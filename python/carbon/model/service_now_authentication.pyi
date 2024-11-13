@@ -42,7 +42,16 @@ class ServiceNowAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def SERVICENOW(cls):
+                    return cls("SERVICENOW")
             access_token = schemas.StrSchema
             instance_subdomain = schemas.StrSchema
             client_id = schemas.StrSchema
@@ -149,7 +158,7 @@ class ServiceNowAuthentication(
         instance_subdomain: typing.Union[MetaOapg.properties.instance_subdomain, str, ],
         client_secret: typing.Union[MetaOapg.properties.client_secret, str, ],
         redirect_uri: typing.Union[MetaOapg.properties.redirect_uri, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         client_id: typing.Union[MetaOapg.properties.client_id, str, ],
         refresh_token: typing.Union[MetaOapg.properties.refresh_token, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,

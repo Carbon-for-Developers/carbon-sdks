@@ -17,17 +17,16 @@ import (
 // UserListResponse struct for UserListResponse
 type UserListResponse struct {
 	Users []ListUserResponse `json:"users"`
-	Count NullableInt32 `json:"count"`
+	Count NullableInt32 `json:"count,omitempty"`
 }
 
 // NewUserListResponse instantiates a new UserListResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserListResponse(users []ListUserResponse, count NullableInt32) *UserListResponse {
+func NewUserListResponse(users []ListUserResponse) *UserListResponse {
 	this := UserListResponse{}
 	this.Users = users
-	this.Count = count
 	return &this
 }
 
@@ -63,18 +62,16 @@ func (o *UserListResponse) SetUsers(v []ListUserResponse) {
 	o.Users = v
 }
 
-// GetCount returns the Count field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCount returns the Count field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserListResponse) GetCount() int32 {
-	if o == nil || o.Count.Get() == nil {
+	if o == nil || isNil(o.Count.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Count.Get()
 }
 
-// GetCountOk returns a tuple with the Count field value
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserListResponse) GetCountOk() (*int32, bool) {
@@ -84,9 +81,27 @@ func (o *UserListResponse) GetCountOk() (*int32, bool) {
 	return o.Count.Get(), o.Count.IsSet()
 }
 
-// SetCount sets field value
+// HasCount returns a boolean if a field has been set.
+func (o *UserListResponse) HasCount() bool {
+	if o != nil && o.Count.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given NullableInt32 and assigns it to the Count field.
 func (o *UserListResponse) SetCount(v int32) {
 	o.Count.Set(&v)
+}
+// SetCountNil sets the value for Count to be an explicit nil
+func (o *UserListResponse) SetCountNil() {
+	o.Count.Set(nil)
+}
+
+// UnsetCount ensures that no value is present for Count, not even an explicit nil
+func (o *UserListResponse) UnsetCount() {
+	o.Count.Unset()
 }
 
 func (o UserListResponse) MarshalJSON() ([]byte, error) {
@@ -94,7 +109,7 @@ func (o UserListResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["users"] = o.Users
 	}
-	if true {
+	if o.Count.IsSet() {
 		toSerialize["count"] = o.Count.Get()
 	}
 	return json.Marshal(toSerialize)

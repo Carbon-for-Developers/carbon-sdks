@@ -33,7 +33,6 @@ class WhiteLabelingResponse(
 
     class MetaOapg:
         required = {
-            "connector_settings",
             "custom_limits",
             "remove_branding",
             "integrations",
@@ -51,7 +50,6 @@ class WhiteLabelingResponse(
                 "connector_settings": connector_settings,
             }
     
-    connector_settings: MetaOapg.properties.connector_settings
     custom_limits: MetaOapg.properties.custom_limits
     remove_branding: MetaOapg.properties.remove_branding
     integrations: MetaOapg.properties.integrations
@@ -86,7 +84,7 @@ class WhiteLabelingResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["connector_settings"]) -> MetaOapg.properties.connector_settings: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["connector_settings"]) -> typing.Union[MetaOapg.properties.connector_settings, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -98,20 +96,20 @@ class WhiteLabelingResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        connector_settings: typing.Union[MetaOapg.properties.connector_settings, dict, frozendict.frozendict, ],
         custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, ],
         remove_branding: typing.Union[MetaOapg.properties.remove_branding, bool, ],
         integrations: typing.Union[MetaOapg.properties.integrations, dict, frozendict.frozendict, ],
+        connector_settings: typing.Union[MetaOapg.properties.connector_settings, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'WhiteLabelingResponse':
         return super().__new__(
             cls,
             *args,
-            connector_settings=connector_settings,
             custom_limits=custom_limits,
             remove_branding=remove_branding,
             integrations=integrations,
+            connector_settings=connector_settings,
             _configuration=_configuration,
             **kwargs,
         )

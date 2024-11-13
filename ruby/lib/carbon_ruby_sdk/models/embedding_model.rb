@@ -38,7 +38,7 @@ module Carbon
     # List of class defined in anyOf (OpenAPI v3)
     def self.openapi_any_of
       [
-      :'String',
+      :'MultiModalEmbeddingGenerators',
       :'TextEmbeddingGenerators'
       ]
     end

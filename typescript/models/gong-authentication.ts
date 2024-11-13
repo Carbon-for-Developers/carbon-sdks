@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface GongAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof GongAuthentication
      */
-    'source': any;
+    'source': GongAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -42,4 +42,7 @@ export interface GongAuthentication {
      */
     'gong_account_email': string;
 }
+
+type GongAuthenticationSourceEnum = 'GONG'
+
 

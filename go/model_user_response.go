@@ -34,16 +34,16 @@ type UserResponse struct {
 	AggregateNumFilesByFileFormat map[string]interface{} `json:"aggregate_num_files_by_file_format"`
 	UniqueFileTags []map[string]interface{} `json:"unique_file_tags"`
 	EnabledFeatures map[string]interface{} `json:"enabled_features"`
-	CustomLimits map[string]interface{} `json:"custom_limits"`
-	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources"`
-	ConnectorSettings map[string]interface{} `json:"connector_settings"`
+	CustomLimits map[string]interface{} `json:"custom_limits,omitempty"`
+	AutoSyncEnabledSources []interface{} `json:"auto_sync_enabled_sources,omitempty"`
+	ConnectorSettings map[string]interface{} `json:"connector_settings,omitempty"`
 }
 
 // NewUserResponse instantiates a new UserResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, connectorSettings map[string]interface{}) *UserResponse {
+func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}) *UserResponse {
 	this := UserResponse{}
 	this.Id = id
 	this.OrganizationId = organizationId
@@ -62,9 +62,6 @@ func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId 
 	this.AggregateNumFilesByFileFormat = aggregateNumFilesByFileFormat
 	this.UniqueFileTags = uniqueFileTags
 	this.EnabledFeatures = enabledFeatures
-	this.CustomLimits = customLimits
-	this.AutoSyncEnabledSources = autoSyncEnabledSources
-	this.ConnectorSettings = connectorSettings
 	return &this
 }
 
@@ -488,74 +485,98 @@ func (o *UserResponse) SetEnabledFeatures(v map[string]interface{}) {
 	o.EnabledFeatures = v
 }
 
-// GetCustomLimits returns the CustomLimits field value
+// GetCustomLimits returns the CustomLimits field value if set, zero value otherwise.
 func (o *UserResponse) GetCustomLimits() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.CustomLimits) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.CustomLimits
 }
 
-// GetCustomLimitsOk returns a tuple with the CustomLimits field value
+// GetCustomLimitsOk returns a tuple with the CustomLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserResponse) GetCustomLimitsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.CustomLimits) {
     return map[string]interface{}{}, false
 	}
 	return o.CustomLimits, true
 }
 
-// SetCustomLimits sets field value
+// HasCustomLimits returns a boolean if a field has been set.
+func (o *UserResponse) HasCustomLimits() bool {
+	if o != nil && !isNil(o.CustomLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLimits gets a reference to the given map[string]interface{} and assigns it to the CustomLimits field.
 func (o *UserResponse) SetCustomLimits(v map[string]interface{}) {
 	o.CustomLimits = v
 }
 
-// GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value
+// GetAutoSyncEnabledSources returns the AutoSyncEnabledSources field value if set, zero value otherwise.
 func (o *UserResponse) GetAutoSyncEnabledSources() []interface{} {
-	if o == nil {
+	if o == nil || isNil(o.AutoSyncEnabledSources) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.AutoSyncEnabledSources
 }
 
-// GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field value
+// GetAutoSyncEnabledSourcesOk returns a tuple with the AutoSyncEnabledSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserResponse) GetAutoSyncEnabledSourcesOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.AutoSyncEnabledSources) {
     return nil, false
 	}
 	return o.AutoSyncEnabledSources, true
 }
 
-// SetAutoSyncEnabledSources sets field value
+// HasAutoSyncEnabledSources returns a boolean if a field has been set.
+func (o *UserResponse) HasAutoSyncEnabledSources() bool {
+	if o != nil && !isNil(o.AutoSyncEnabledSources) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoSyncEnabledSources gets a reference to the given []interface{} and assigns it to the AutoSyncEnabledSources field.
 func (o *UserResponse) SetAutoSyncEnabledSources(v []interface{}) {
 	o.AutoSyncEnabledSources = v
 }
 
-// GetConnectorSettings returns the ConnectorSettings field value
+// GetConnectorSettings returns the ConnectorSettings field value if set, zero value otherwise.
 func (o *UserResponse) GetConnectorSettings() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.ConnectorSettings
 }
 
-// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value
+// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserResponse) GetConnectorSettingsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
     return map[string]interface{}{}, false
 	}
 	return o.ConnectorSettings, true
 }
 
-// SetConnectorSettings sets field value
+// HasConnectorSettings returns a boolean if a field has been set.
+func (o *UserResponse) HasConnectorSettings() bool {
+	if o != nil && !isNil(o.ConnectorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectorSettings gets a reference to the given map[string]interface{} and assigns it to the ConnectorSettings field.
 func (o *UserResponse) SetConnectorSettings(v map[string]interface{}) {
 	o.ConnectorSettings = v
 }
@@ -613,13 +634,13 @@ func (o UserResponse) MarshalJSON() ([]byte, error) {
 	if o.EnabledFeatures != nil {
 		toSerialize["enabled_features"] = o.EnabledFeatures
 	}
-	if true {
+	if !isNil(o.CustomLimits) {
 		toSerialize["custom_limits"] = o.CustomLimits
 	}
-	if true {
+	if !isNil(o.AutoSyncEnabledSources) {
 		toSerialize["auto_sync_enabled_sources"] = o.AutoSyncEnabledSources
 	}
-	if true {
+	if !isNil(o.ConnectorSettings) {
 		toSerialize["connector_settings"] = o.ConnectorSettings
 	}
 	return json.Marshal(toSerialize)

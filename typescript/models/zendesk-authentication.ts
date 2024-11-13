@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface ZendeskAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof ZendeskAuthentication
      */
-    'source': any;
+    'source': ZendeskAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface ZendeskAuthentication {
      */
     'subdomain': string;
 }
+
+type ZendeskAuthenticationSourceEnum = 'ZENDESK'
+
 

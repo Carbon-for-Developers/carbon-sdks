@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +57,7 @@ import com.konfigthis.carbonai.client.JSON;
 public class DocumentResponse {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private Map<String, Object> tags = new HashMap<>();
+  private Map<String, Object> tags = null;
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
@@ -119,6 +120,9 @@ public class DocumentResponse {
   }
 
   public DocumentResponse putTagsItem(String key, Object tagsItem) {
+    if (this.tags == null) {
+      this.tags = new HashMap<>();
+    }
     this.tags.put(key, tagsItem);
     return this;
   }
@@ -128,7 +132,7 @@ public class DocumentResponse {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Map<String, Object> getTags() {
     return tags;
@@ -215,7 +219,7 @@ public class DocumentResponse {
    * @return parentFileId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getParentFileId() {
     return parentFileId;
@@ -244,7 +248,7 @@ public class DocumentResponse {
    * @return source
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getSource() {
     return source;
@@ -273,7 +277,7 @@ public class DocumentResponse {
    * @return sourceUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getSourceUrl() {
     return sourceUrl;
@@ -302,7 +306,7 @@ public class DocumentResponse {
    * @return sourceType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public DataSourceTypeNullable getSourceType() {
     return sourceType;
@@ -331,7 +335,7 @@ public class DocumentResponse {
    * @return presignedUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getPresignedUrl() {
     return presignedUrl;
@@ -403,7 +407,7 @@ public class DocumentResponse {
    * @return score
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Double getScore() {
     return score;
@@ -432,7 +436,7 @@ public class DocumentResponse {
    * @return rank
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getRank() {
     return rank;
@@ -461,7 +465,7 @@ public class DocumentResponse {
    * @return contentMetadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getContentMetadata() {
     return contentMetadata;
@@ -490,7 +494,7 @@ public class DocumentResponse {
    * @return chunkIndex
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getChunkIndex() {
     return chunkIndex;
@@ -575,9 +579,20 @@ public class DocumentResponse {
         Objects.equals(this.additionalProperties, documentResponse.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(tags, content, fileId, parentFileId, source, sourceUrl, sourceType, presignedUrl, vector, score, rank, contentMetadata, chunkIndex, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -636,19 +651,9 @@ public class DocumentResponse {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("tags");
     openapiRequiredFields.add("content");
     openapiRequiredFields.add("file_id");
-    openapiRequiredFields.add("parent_file_id");
-    openapiRequiredFields.add("source");
-    openapiRequiredFields.add("source_url");
-    openapiRequiredFields.add("source_type");
-    openapiRequiredFields.add("presigned_url");
     openapiRequiredFields.add("vector");
-    openapiRequiredFields.add("score");
-    openapiRequiredFields.add("rank");
-    openapiRequiredFields.add("content_metadata");
-    openapiRequiredFields.add("chunk_index");
   }
 
  /**
@@ -673,13 +678,13 @@ public class DocumentResponse {
       if (!jsonObj.get("content").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("content").toString()));
       }
-      if (!jsonObj.get("source").isJsonNull() && !jsonObj.get("source").isJsonPrimitive()) {
+      if (!jsonObj.get("source").isJsonNull() && (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
       }
-      if (!jsonObj.get("source_url").isJsonNull() && !jsonObj.get("source_url").isJsonPrimitive()) {
+      if (!jsonObj.get("source_url").isJsonNull() && (jsonObj.get("source_url") != null && !jsonObj.get("source_url").isJsonNull()) && !jsonObj.get("source_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_url").toString()));
       }
-      if (!jsonObj.get("presigned_url").isJsonNull() && !jsonObj.get("presigned_url").isJsonPrimitive()) {
+      if (!jsonObj.get("presigned_url").isJsonNull() && (jsonObj.get("presigned_url") != null && !jsonObj.get("presigned_url").isJsonNull()) && !jsonObj.get("presigned_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `presigned_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presigned_url").toString()));
       }
       // ensure the required json array is present

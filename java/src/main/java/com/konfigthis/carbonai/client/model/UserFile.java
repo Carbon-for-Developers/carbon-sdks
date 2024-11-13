@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -116,7 +117,7 @@ public class UserFile {
 
   public static final String SERIALIZED_NAME_EMBEDDING_PROPERTIES = "embedding_properties";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_PROPERTIES)
-  private Map<String, EmbeddingProperties> embeddingProperties = new HashMap<>();
+  private Map<String, EmbeddingProperties> embeddingProperties = null;
 
   public static final String SERIALIZED_NAME_CHUNK_SIZE = "chunk_size";
   @SerializedName(SERIALIZED_NAME_CHUNK_SIZE)
@@ -231,7 +232,7 @@ public class UserFile {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getTags() {
     return tags;
@@ -405,7 +406,7 @@ public class UserFile {
    * @return organizationUserDataSourceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getOrganizationUserDataSourceId() {
     return organizationUserDataSourceId;
@@ -463,7 +464,7 @@ public class UserFile {
    * @return externalUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getExternalUrl() {
     return externalUrl;
@@ -521,7 +522,7 @@ public class UserFile {
    * @return syncErrorMessage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getSyncErrorMessage() {
     return syncErrorMessage;
@@ -550,7 +551,7 @@ public class UserFile {
    * @return lastSync
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public OffsetDateTime getLastSync() {
     return lastSync;
@@ -579,7 +580,7 @@ public class UserFile {
    * @return fileStatistics
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public FileStatisticsNullable getFileStatistics() {
     return fileStatistics;
@@ -608,7 +609,7 @@ public class UserFile {
    * @return fileMetadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getFileMetadata() {
     return fileMetadata;
@@ -633,6 +634,9 @@ public class UserFile {
   }
 
   public UserFile putEmbeddingPropertiesItem(String key, EmbeddingProperties embeddingPropertiesItem) {
+    if (this.embeddingProperties == null) {
+      this.embeddingProperties = new HashMap<>();
+    }
     this.embeddingProperties.put(key, embeddingPropertiesItem);
     return this;
   }
@@ -642,7 +646,7 @@ public class UserFile {
    * @return embeddingProperties
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Map<String, EmbeddingProperties> getEmbeddingProperties() {
     return embeddingProperties;
@@ -671,7 +675,7 @@ public class UserFile {
    * @return chunkSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getChunkSize() {
     return chunkSize;
@@ -700,7 +704,7 @@ public class UserFile {
    * @return chunkOverlap
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getChunkOverlap() {
     return chunkOverlap;
@@ -729,7 +733,7 @@ public class UserFile {
    * @return chunkProperties
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public ChunkPropertiesNullable getChunkProperties() {
     return chunkProperties;
@@ -757,8 +761,8 @@ public class UserFile {
    * Get ocrProperties
    * @return ocrProperties
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getOcrProperties() {
     return ocrProperties;
@@ -787,7 +791,7 @@ public class UserFile {
    * @return ocrJobStartedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public OffsetDateTime getOcrJobStartedAt() {
     return ocrJobStartedAt;
@@ -816,7 +820,7 @@ public class UserFile {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -845,7 +849,7 @@ public class UserFile {
    * @return parentId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getParentId() {
     return parentId;
@@ -874,7 +878,7 @@ public class UserFile {
    * @return enableAutoSync
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Boolean getEnableAutoSync() {
     return enableAutoSync;
@@ -903,7 +907,7 @@ public class UserFile {
    * @return presignedUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getPresignedUrl() {
     return presignedUrl;
@@ -932,7 +936,7 @@ public class UserFile {
    * @return parsedTextUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getParsedTextUrl() {
     return parsedTextUrl;
@@ -961,7 +965,7 @@ public class UserFile {
    * @return additionalPresignedUrls
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getAdditionalPresignedUrls() {
     return additionalPresignedUrls;
@@ -1019,7 +1023,7 @@ public class UserFile {
    * @return sourceCreatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public OffsetDateTime getSourceCreatedAt() {
     return sourceCreatedAt;
@@ -1048,7 +1052,7 @@ public class UserFile {
    * @return generateSparseVectors
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Boolean getGenerateSparseVectors() {
     return generateSparseVectors;
@@ -1077,7 +1081,7 @@ public class UserFile {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getRequestId() {
     return requestId;
@@ -1106,7 +1110,7 @@ public class UserFile {
    * @return uploadId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getUploadId() {
     return uploadId;
@@ -1134,8 +1138,8 @@ public class UserFile {
    * Get syncProperties
    * @return syncProperties
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getSyncProperties() {
     return syncProperties;
@@ -1163,8 +1167,8 @@ public class UserFile {
    * Get messagesMetadata
    * @return messagesMetadata
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getMessagesMetadata() {
     return messagesMetadata;
@@ -1192,8 +1196,8 @@ public class UserFile {
    * Get fileContentsDeleted
    * @return fileContentsDeleted
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
 
   public Boolean getFileContentsDeleted() {
     return fileContentsDeleted;
@@ -1251,7 +1255,7 @@ public class UserFile {
    * @return hotStorageTimeToLive
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getHotStorageTimeToLive() {
     return hotStorageTimeToLive;
@@ -1449,9 +1453,20 @@ public class UserFile {
         Objects.equals(this.additionalProperties, userFile.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(tags, id, source, organizationId, organizationUserId, organizationSuppliedUserId, organizationUserDataSourceId, externalFileId, externalUrl, syncStatus, syncErrorMessage, lastSync, fileStatistics, fileMetadata, embeddingProperties, chunkSize, chunkOverlap, chunkProperties, ocrProperties, ocrJobStartedAt, name, parentId, enableAutoSync, presignedUrl, parsedTextUrl, additionalPresignedUrls, skipEmbeddingGeneration, sourceCreatedAt, generateSparseVectors, requestId, uploadId, syncProperties, messagesMetadata, fileContentsDeleted, supportsColdStorage, hotStorageTimeToLive, embeddingStorageStatus, createdAt, updatedAt, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1562,42 +1577,15 @@ public class UserFile {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("tags");
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("source");
     openapiRequiredFields.add("organization_id");
     openapiRequiredFields.add("organization_user_id");
     openapiRequiredFields.add("organization_supplied_user_id");
-    openapiRequiredFields.add("organization_user_data_source_id");
     openapiRequiredFields.add("external_file_id");
-    openapiRequiredFields.add("external_url");
     openapiRequiredFields.add("sync_status");
-    openapiRequiredFields.add("sync_error_message");
-    openapiRequiredFields.add("last_sync");
-    openapiRequiredFields.add("file_statistics");
-    openapiRequiredFields.add("file_metadata");
-    openapiRequiredFields.add("embedding_properties");
-    openapiRequiredFields.add("chunk_size");
-    openapiRequiredFields.add("chunk_overlap");
-    openapiRequiredFields.add("chunk_properties");
-    openapiRequiredFields.add("ocr_properties");
-    openapiRequiredFields.add("ocr_job_started_at");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("parent_id");
-    openapiRequiredFields.add("enable_auto_sync");
-    openapiRequiredFields.add("presigned_url");
-    openapiRequiredFields.add("parsed_text_url");
-    openapiRequiredFields.add("additional_presigned_urls");
     openapiRequiredFields.add("skip_embedding_generation");
-    openapiRequiredFields.add("source_created_at");
-    openapiRequiredFields.add("generate_sparse_vectors");
-    openapiRequiredFields.add("request_id");
-    openapiRequiredFields.add("upload_id");
-    openapiRequiredFields.add("sync_properties");
-    openapiRequiredFields.add("messages_metadata");
-    openapiRequiredFields.add("file_contents_deleted");
     openapiRequiredFields.add("supports_cold_storage");
-    openapiRequiredFields.add("hot_storage_time_to_live");
     openapiRequiredFields.add("embedding_storage_status");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
@@ -1628,33 +1616,33 @@ public class UserFile {
       if (!jsonObj.get("external_file_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `external_file_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("external_file_id").toString()));
       }
-      if (!jsonObj.get("external_url").isJsonNull() && !jsonObj.get("external_url").isJsonPrimitive()) {
+      if (!jsonObj.get("external_url").isJsonNull() && (jsonObj.get("external_url") != null && !jsonObj.get("external_url").isJsonNull()) && !jsonObj.get("external_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `external_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("external_url").toString()));
       }
-      if (!jsonObj.get("sync_error_message").isJsonNull() && !jsonObj.get("sync_error_message").isJsonPrimitive()) {
+      if (!jsonObj.get("sync_error_message").isJsonNull() && (jsonObj.get("sync_error_message") != null && !jsonObj.get("sync_error_message").isJsonNull()) && !jsonObj.get("sync_error_message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sync_error_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sync_error_message").toString()));
       }
-      // validate the required field `file_statistics`
-      if (!jsonObj.get("file_statistics").isJsonNull()) {
+      // validate the optional field `file_statistics`
+      if (jsonObj.get("file_statistics") != null && !jsonObj.get("file_statistics").isJsonNull()) {
         FileStatisticsNullable.validateJsonObject(jsonObj.getAsJsonObject("file_statistics"));
       }
-      // validate the required field `chunk_properties`
-      if (!jsonObj.get("chunk_properties").isJsonNull()) {
+      // validate the optional field `chunk_properties`
+      if (jsonObj.get("chunk_properties") != null && !jsonObj.get("chunk_properties").isJsonNull()) {
         ChunkPropertiesNullable.validateJsonObject(jsonObj.getAsJsonObject("chunk_properties"));
       }
-      if (!jsonObj.get("name").isJsonNull() && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonNull() && (jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("presigned_url").isJsonNull() && !jsonObj.get("presigned_url").isJsonPrimitive()) {
+      if (!jsonObj.get("presigned_url").isJsonNull() && (jsonObj.get("presigned_url") != null && !jsonObj.get("presigned_url").isJsonNull()) && !jsonObj.get("presigned_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `presigned_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presigned_url").toString()));
       }
-      if (!jsonObj.get("parsed_text_url").isJsonNull() && !jsonObj.get("parsed_text_url").isJsonPrimitive()) {
+      if (!jsonObj.get("parsed_text_url").isJsonNull() && (jsonObj.get("parsed_text_url") != null && !jsonObj.get("parsed_text_url").isJsonNull()) && !jsonObj.get("parsed_text_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parsed_text_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parsed_text_url").toString()));
       }
-      if (!jsonObj.get("request_id").isJsonNull() && !jsonObj.get("request_id").isJsonPrimitive()) {
+      if (!jsonObj.get("request_id").isJsonNull() && (jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
-      if (!jsonObj.get("upload_id").isJsonNull() && !jsonObj.get("upload_id").isJsonPrimitive()) {
+      if (!jsonObj.get("upload_id").isJsonNull() && (jsonObj.get("upload_id") != null && !jsonObj.get("upload_id").isJsonNull()) && !jsonObj.get("upload_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `upload_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("upload_id").toString()));
       }
   }

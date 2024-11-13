@@ -39,7 +39,16 @@ class FreskdeskAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def FRESHDESK(cls):
+                    return cls("FRESHDESK")
             domain = schemas.StrSchema
             api_key = schemas.StrSchema
             __annotations__ = {
@@ -90,7 +99,7 @@ class FreskdeskAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         api_key: typing.Union[MetaOapg.properties.api_key, str, ],
         domain: typing.Union[MetaOapg.properties.domain, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FreskdeskAuthentication':

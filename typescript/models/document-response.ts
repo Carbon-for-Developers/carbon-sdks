@@ -25,7 +25,7 @@ export interface DocumentResponse {
      * @type {{ [key: string]: Tags; }}
      * @memberof DocumentResponse
      */
-    'tags': { [key: string]: Tags; } | null;
+    'tags'?: { [key: string]: Tags; } | null;
     /**
      * 
      * @type {string}
@@ -43,31 +43,31 @@ export interface DocumentResponse {
      * @type {number}
      * @memberof DocumentResponse
      */
-    'parent_file_id': number | null;
+    'parent_file_id'?: number | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentResponse
      */
-    'source': string | null;
+    'source'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentResponse
      */
-    'source_url': string | null;
+    'source_url'?: string | null;
     /**
      * 
      * @type {DataSourceTypeNullable}
      * @memberof DocumentResponse
      */
-    'source_type': DataSourceTypeNullable | null;
+    'source_type'?: DataSourceTypeNullable | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentResponse
      */
-    'presigned_url': string | null;
+    'presigned_url'?: string | null;
     /**
      * 
      * @type {Array<number>}
@@ -79,24 +79,24 @@ export interface DocumentResponse {
      * @type {number}
      * @memberof DocumentResponse
      */
-    'score': number | null;
+    'score'?: number | null;
     /**
      * 
      * @type {RankProperty}
      * @memberof DocumentResponse
      */
-    'rank': RankProperty | null;
+    'rank'?: RankProperty | null;
     /**
      * 
      * @type {object}
      * @memberof DocumentResponse
      */
-    'content_metadata': object | null;
+    'content_metadata'?: object | null;
     /**
      * 
      * @type {number}
      * @memberof DocumentResponse
      */
-    'chunk_index': number | null;
+    'chunk_index'?: number | null;
 }
 

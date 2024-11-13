@@ -144,13 +144,13 @@ export interface Lead {
      * @type {Array<Task>}
      * @memberof Lead
      */
-    'tasks': Array<Task> | null;
+    'tasks'?: Array<Task> | null;
     /**
      * 
      * @type {Array<Event>}
      * @memberof Lead
      */
-    'events': Array<Event> | null;
+    'events'?: Array<Event> | null;
     /**
      * 
      * @type {object}

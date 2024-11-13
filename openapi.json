@@ -9,7 +9,7 @@
   },
   "servers": [
     {
-      "url": "https://api.carbon.ai/"
+      "url": "https://api.carbon.ai"
     }
   ],
   "paths": {
@@ -3423,6 +3423,52 @@
         }
       }
     },
+    "/data_sources": {
+      "post": {
+        "tags": [
+          "Data Sources"
+        ],
+        "summary": "Data Sources",
+        "operationId": "data_sources_data_sources_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserDataSourceQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/user_data_sources": {
       "post": {
         "tags": [
@@ -5341,8 +5387,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ],
         "title": "Account"
@@ -5472,11 +5516,7 @@
             "default": []
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AccountFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/AccountFilters",
             "default": {}
           },
           "order_by": {
@@ -5706,11 +5746,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -5849,6 +5885,10 @@
       "AzureBlobStorageAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "AZURE_BLOB_STORAGE"
+            ],
             "const": "AZURE_BLOB_STORAGE",
             "title": "Source"
           },
@@ -5871,6 +5911,9 @@
       },
       "AzureBlobStorageTypes": {
         "type": "string",
+        "enum": [
+          "Container"
+        ],
         "const": "Container",
         "title": "AzureBlobStorageTypes"
       },
@@ -5922,11 +5965,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "set_page_as_boundary",
-          "prepend_filename_to_chunks",
-          "max_items_per_chunk"
-        ],
         "title": "ChunkProperties"
       },
       "ChunksAndEmbeddings": {
@@ -6074,11 +6112,7 @@
             "title": "Pull Number"
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommentsOrderBy"
-              }
-            ],
+            "$ref": "#/components/schemas/CommentsOrderBy",
             "default": "created"
           },
           "order_dir": {
@@ -6285,12 +6319,19 @@
       },
       "ConfigurationKeys": {
         "type": "string",
+        "enum": [
+          "sparse_vectors"
+        ],
         "const": "sparse_vectors",
         "title": "ConfigurationKeys"
       },
       "ConfluenceAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "CONFLUENCE"
+            ],
             "const": "CONFLUENCE",
             "title": "Source"
           },
@@ -6386,24 +6427,20 @@
             "title": "Authentication"
           },
           "sync_options": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncOptions"
-              }
-            ],
+            "$ref": "#/components/schemas/SyncOptions",
             "default": {
-              "chunk_overlap": 20,
               "chunk_size": 1500,
-              "data_source_tags": {},
-              "embedding_model": "OPENAI",
-              "enable_file_picker": true,
-              "generate_sparse_vectors": false,
-              "incremental_sync": false,
-              "prepend_filename_to_chunks": false,
-              "set_page_as_boundary": false,
+              "chunk_overlap": 20,
               "skip_embedding_generation": false,
+              "embedding_model": "OPENAI",
+              "generate_sparse_vectors": false,
+              "prepend_filename_to_chunks": false,
               "sync_files_on_connection": true,
-              "sync_source_items": true
+              "set_page_as_boundary": false,
+              "enable_file_picker": true,
+              "sync_source_items": true,
+              "incremental_sync": false,
+              "data_source_tags": {}
             }
           }
         },
@@ -6432,8 +6469,7 @@
         },
         "type": "object",
         "required": [
-          "data_source",
-          "sync_url"
+          "data_source"
         ],
         "title": "ConnectDataSourceResponse"
       },
@@ -6631,8 +6667,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ],
         "title": "Contact"
@@ -6740,11 +6774,7 @@
             "default": []
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ContactFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/ContactFilters",
             "default": {}
           },
           "order_by": {
@@ -6866,6 +6896,9 @@
       },
       "DataSourceExtendedInput": {
         "type": "string",
+        "enum": [
+          "ALL"
+        ],
         "const": "ALL",
         "title": "DataSourceExtendedInput"
       },
@@ -7009,11 +7042,7 @@
       "DeleteFilesV2QueryInput": {
         "properties": {
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
             "default": {
               "include_all_children": false,
               "non_synced_only": false
@@ -7090,9 +7119,7 @@
         "type": "object",
         "required": [
           "id",
-          "name",
-          "is_synced",
-          "has_children"
+          "name"
         ],
         "title": "DirectoryItem"
       },
@@ -7277,17 +7304,7 @@
         "required": [
           "content",
           "file_id",
-          "parent_file_id",
-          "source",
-          "source_url",
-          "source_type",
-          "presigned_url",
-          "tags",
-          "vector",
-          "score",
-          "rank",
-          "content_metadata",
-          "chunk_index"
+          "vector"
         ],
         "title": "DocumentResponse"
       },
@@ -7382,10 +7399,7 @@
         "type": "object",
         "required": [
           "user_file_id",
-          "chunk_index",
-          "source_content",
-          "embedding",
-          "content_metadata"
+          "source_content"
         ],
         "title": "EmbeddingAndChunk"
       },
@@ -7487,11 +7501,7 @@
       "EmbeddingsAndChunksQueryInput": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -7499,19 +7509,11 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
@@ -7532,11 +7534,7 @@
       "EmbeddingsAndChunksQueryInputV2": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -7544,19 +7542,11 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
@@ -7953,8 +7943,7 @@
         "type": "object",
         "required": [
           "urls",
-          "html_content",
-          "error_message"
+          "html_content"
         ],
         "title": "FetchURLsResponse"
       },
@@ -8098,14 +8087,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "file_format",
-          "file_size",
-          "num_characters",
-          "num_tokens",
-          "num_embeddings",
-          "mime_type"
-        ],
         "title": "FileStatistics"
       },
       "FileStatus": {
@@ -8427,6 +8408,10 @@
       "FreskdeskAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "FRESHDESK"
+            ],
             "const": "FRESHDESK",
             "title": "Source"
           },
@@ -8784,6 +8769,10 @@
       "GitbookAuthetication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "GITBOOK"
+            ],
             "const": "GITBOOK",
             "title": "Source"
           },
@@ -8863,11 +8852,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -9020,11 +9005,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -9083,6 +9064,10 @@
       "GithubAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "GITHUB"
+            ],
             "const": "GITHUB",
             "title": "Source"
           },
@@ -9226,11 +9211,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -9316,6 +9297,10 @@
       "GongAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "GONG"
+            ],
             "const": "GONG",
             "title": "Source"
           },
@@ -9399,6 +9384,10 @@
       "GoogleDriveWhiteLabelInput": {
         "properties": {
           "data_source_type": {
+            "type": "string",
+            "enum": [
+              "GOOGLE_DRIVE"
+            ],
             "const": "GOOGLE_DRIVE",
             "title": "Data Source Type"
           },
@@ -9416,6 +9405,10 @@
       "GuruAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "GURU"
+            ],
             "const": "GURU",
             "title": "Source"
           },
@@ -9495,11 +9488,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -9808,11 +9797,7 @@
       "IssuesFilter": {
         "properties": {
           "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PRStateInput"
-              }
-            ],
+            "$ref": "#/components/schemas/PRStateInput",
             "default": "open"
           }
         },
@@ -9858,21 +9843,13 @@
             "title": "Next Cursor"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/IssuesFilter"
-              }
-            ],
+            "$ref": "#/components/schemas/IssuesFilter",
             "default": {
               "state": "open"
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/IssuesOrderBy"
-              }
-            ],
+            "$ref": "#/components/schemas/IssuesOrderBy",
             "default": "created"
           },
           "order_dir": {
@@ -10171,8 +10148,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ],
         "title": "Lead"
@@ -10290,11 +10265,7 @@
             "default": []
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LeadFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/LeadFilters",
             "default": {}
           },
           "order_by": {
@@ -10375,11 +10346,7 @@
             ]
           },
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -10387,19 +10354,11 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalSourceItemsOrderBy"
-              }
-            ],
+            "$ref": "#/components/schemas/ExternalSourceItemsOrderBy",
             "default": "name"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDirV2"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDirV2",
             "default": "asc"
           }
         },
@@ -10657,9 +10616,7 @@
           "created_at",
           "updated_at",
           "deleted_at",
-          "enabled_features",
-          "custom_limits",
-          "auto_sync_enabled_sources"
+          "enabled_features"
         ],
         "title": "ListUserResponse"
       },
@@ -10710,11 +10667,7 @@
       "ListUsersRequest": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -10722,27 +10675,15 @@
             }
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ListUsersFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/ListUsersFilters",
             "default": {}
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ListUsersOrderByTypes"
-              }
-            ],
+            "$ref": "#/components/schemas/ListUsersOrderByTypes",
             "default": "created_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDirV2"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDirV2",
             "default": "desc"
           },
           "include_count": {
@@ -10757,11 +10698,7 @@
       "ListWhiteLabelRequest": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -10769,30 +10706,18 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WhiteLabelOrderByColumns"
-              }
-            ],
+            "$ref": "#/components/schemas/WhiteLabelOrderByColumns",
             "default": "created_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WhiteLabelFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/WhiteLabelFilters",
             "default": {
-              "data_source_type": [],
-              "ids": []
+              "ids": [],
+              "data_source_type": []
             }
           }
         },
@@ -10802,11 +10727,7 @@
       "ModifyColdStorageParametersQueryInput": {
         "properties": {
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
             "default": {
               "include_all_children": false,
               "non_synced_only": false
@@ -10859,11 +10780,7 @@
       "MoveToHotStorageQueryInput": {
         "properties": {
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
             "default": {
               "include_all_children": false,
               "non_synced_only": false
@@ -10875,12 +10792,19 @@
       },
       "MultiModalEmbeddingGenerators": {
         "type": "string",
+        "enum": [
+          "VERTEX_MULTIMODAL"
+        ],
         "const": "VERTEX_MULTIMODAL",
         "title": "MultiModalEmbeddingGenerators"
       },
       "NotionAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "NOTION"
+            ],
             "const": "NOTION",
             "title": "Source"
           },
@@ -11292,6 +11216,10 @@
       "OneDriveAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "ONEDRIVE"
+            ],
             "const": "ONEDRIVE",
             "title": "Source"
           },
@@ -11466,11 +11394,7 @@
             "default": []
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OpportunityFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OpportunityFilters",
             "default": {}
           },
           "order_by": {
@@ -11696,8 +11620,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ],
         "title": "Opportunity"
@@ -11916,10 +11838,7 @@
         "required": [
           "id",
           "name",
-          "nickname",
           "remove_branding",
-          "custom_branding",
-          "custom_limits",
           "aggregate_file_size",
           "aggregate_num_characters",
           "aggregate_num_tokens",
@@ -11927,12 +11846,6 @@
           "aggregate_num_files_by_source",
           "aggregate_num_files_by_file_format",
           "file_statistics_aggregated_at",
-          "period_ends_at",
-          "cancel_at_period_end",
-          "connector_settings",
-          "global_user_config",
-          "file_sync_usage",
-          "logging_settings",
           "created_at",
           "updated_at"
         ],
@@ -12137,11 +12050,7 @@
       "OrganizationUserDataSourceQueryInput": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -12149,27 +12058,15 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserDataSourceFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserDataSourceFilters",
             "default": {}
           }
         },
@@ -12580,11 +12477,7 @@
       "OrganizationUserFilesToSyncQueryInput": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "description": "Pagination parameters for the query.",
             "default": {
               "limit": 10,
@@ -12593,29 +12486,17 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes",
             "description": "The field on OrganizationUserFilesToSYnc to order the results by.",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "description": "The direction to order the results by.",
             "default": "asc"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
             "description": "Filters to apply to the query.",
             "default": {
               "include_all_children": false,
@@ -12748,11 +12629,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -13466,11 +13343,7 @@
       "PullRequestFilters": {
         "properties": {
           "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PRStateInput"
-              }
-            ],
+            "$ref": "#/components/schemas/PRStateInput",
             "default": "open"
           },
           "base": {
@@ -13568,21 +13441,13 @@
             "title": "Next Cursor"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PullRequestFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/PullRequestFilters",
             "default": {
               "state": "open"
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PROrderBy"
-              }
-            ],
+            "$ref": "#/components/schemas/PROrderBy",
             "default": "created"
           },
           "order_dir": {
@@ -13659,11 +13524,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -13793,11 +13654,7 @@
             "default": false
           },
           "cold_storage_params": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ColdStorageProps"
-              }
-            ],
+            "$ref": "#/components/schemas/ColdStorageProps",
             "default": {
               "enable_cold_storage": false
             }
@@ -13971,6 +13828,10 @@
       "S3Authentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "S3"
+            ],
             "const": "S3",
             "title": "Source"
           },
@@ -14061,11 +13922,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -14204,6 +14061,10 @@
       "SalesforceAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "SALESFORCE"
+            ],
             "const": "SALESFORCE",
             "title": "Source"
           },
@@ -14238,6 +14099,10 @@
       "ServiceNowAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "SERVICENOW"
+            ],
             "const": "SERVICENOW",
             "title": "Source"
           },
@@ -14332,6 +14197,10 @@
       "SharepointAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "SHAREPOINT"
+            ],
             "const": "SHAREPOINT",
             "title": "Source"
           },
@@ -14617,11 +14486,7 @@
             "default": []
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "url_paths_to_include": {
@@ -14792,11 +14657,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -15596,6 +15457,19 @@
             "title": "Max Characters Per Upload",
             "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit."
           },
+          "auto_sync_interval": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]"
+          },
           "customer_ids": {
             "items": {
               "type": "string"
@@ -15662,11 +15536,7 @@
             "default": false
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "generate_sparse_vectors": {
@@ -15738,11 +15608,7 @@
             "default": false
           },
           "cold_storage_params": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ColdStorageProps"
-              }
-            ],
+            "$ref": "#/components/schemas/ColdStorageProps",
             "default": {
               "enable_cold_storage": false
             }
@@ -15868,6 +15734,19 @@
             ],
             "title": "Max Characters Per Upload",
             "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit."
+          },
+          "auto_sync_interval": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": -1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]"
           }
         },
         "type": "object",
@@ -16214,37 +16093,10 @@
           "organization_id",
           "organization_user_id",
           "organization_supplied_user_id",
-          "organization_user_data_source_id",
           "external_file_id",
-          "external_url",
           "sync_status",
-          "sync_error_message",
-          "last_sync",
-          "tags",
-          "file_statistics",
-          "file_metadata",
-          "embedding_properties",
-          "chunk_size",
-          "chunk_overlap",
-          "chunk_properties",
-          "ocr_properties",
-          "ocr_job_started_at",
-          "name",
-          "parent_id",
-          "enable_auto_sync",
-          "presigned_url",
-          "parsed_text_url",
-          "additional_presigned_urls",
           "skip_embedding_generation",
-          "source_created_at",
-          "generate_sparse_vectors",
-          "request_id",
-          "upload_id",
-          "sync_properties",
-          "messages_metadata",
-          "file_contents_deleted",
           "supports_cold_storage",
-          "hot_storage_time_to_live",
           "embedding_storage_status",
           "created_at",
           "updated_at"
@@ -16295,8 +16147,7 @@
         },
         "type": "object",
         "required": [
-          "users",
-          "count"
+          "users"
         ],
         "title": "UserListResponse"
       },
@@ -16438,10 +16289,7 @@
           "aggregate_num_files_by_source",
           "aggregate_num_files_by_file_format",
           "unique_file_tags",
-          "enabled_features",
-          "custom_limits",
-          "auto_sync_enabled_sources",
-          "connector_settings"
+          "enabled_features"
         ],
         "title": "UserResponse"
       },
@@ -16477,19 +16325,11 @@
       "UserWebPagesRequest": {
         "properties": {
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserWebPagesFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/UserWebPagesFilters",
             "default": {}
           },
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -16497,19 +16337,11 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserWebPageOrderByTypes"
-              }
-            ],
+            "$ref": "#/components/schemas/UserWebPageOrderByTypes",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDirV2"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDirV2",
             "default": "desc"
           }
         },
@@ -16599,7 +16431,6 @@
           "url",
           "signing_key",
           "status",
-          "status_reason",
           "created_at",
           "updated_at"
         ],
@@ -16671,7 +16502,6 @@
           "organization_id",
           "url",
           "status",
-          "status_reason",
           "created_at",
           "updated_at"
         ],
@@ -16688,11 +16518,7 @@
       "WebhookQueryInput": {
         "properties": {
           "pagination": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Pagination"
-              }
-            ],
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -16700,27 +16526,15 @@
             }
           },
           "order_by": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WebhookOrderByColumns"
-              }
-            ],
+            "$ref": "#/components/schemas/WebhookOrderByColumns",
             "default": "updated_at"
           },
           "order_dir": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDir"
-              }
-            ],
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WebhookFilters"
-              }
-            ],
+            "$ref": "#/components/schemas/WebhookFilters",
             "default": {
               "ids": []
             }
@@ -16951,11 +16765,7 @@
             "default": []
           },
           "embedding_model": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddingGenerators"
-              }
-            ],
+            "$ref": "#/components/schemas/EmbeddingGenerators",
             "default": "OPENAI"
           },
           "url_paths_to_include": {
@@ -17114,8 +16924,7 @@
         "required": [
           "remove_branding",
           "integrations",
-          "custom_limits",
-          "connector_settings"
+          "custom_limits"
         ],
         "title": "WhiteLabelingResponse"
       },
@@ -17174,16 +16983,17 @@
         },
         "type": "object",
         "required": [
-          "status",
-          "error",
-          "data",
-          "raw_transcript"
+          "status"
         ],
         "title": "YoutubeTranscriptResponse"
       },
       "ZendeskAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "ZENDESK"
+            ],
             "const": "ZENDESK",
             "title": "Source"
           },
@@ -17218,6 +17028,10 @@
       "ZoteroAuthentication": {
         "properties": {
           "source": {
+            "type": "string",
+            "enum": [
+              "ZOTERO"
+            ],
             "const": "ZOTERO",
             "title": "Source"
           },

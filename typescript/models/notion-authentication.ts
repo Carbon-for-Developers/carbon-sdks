@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface NotionAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof NotionAuthentication
      */
-    'source': any;
+    'source': NotionAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface NotionAuthentication {
      */
     'workspace_id': string;
 }
+
+type NotionAuthenticationSourceEnum = 'NOTION'
+
 

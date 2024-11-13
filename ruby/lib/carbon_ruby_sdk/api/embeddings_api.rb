@@ -385,7 +385,7 @@ module Carbon
     # @param include_vectors [Boolean] 
     # @param body [EmbeddingsAndChunksQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_embeddings_and_chunks(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+    def get_embeddings_and_chunks(filters:, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, include_vectors: false, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -406,7 +406,7 @@ module Carbon
     # @param include_vectors [Boolean] 
     # @param body [EmbeddingsAndChunksQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_embeddings_and_chunks_with_http_info(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+    def get_embeddings_and_chunks_with_http_info(filters:, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, include_vectors: false, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -493,7 +493,7 @@ module Carbon
     # @param include_vectors [Boolean] 
     # @param body [EmbeddingsAndChunksQueryInputV2] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+    def list(filters:, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, include_vectors: false, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -514,7 +514,7 @@ module Carbon
     # @param include_vectors [Boolean] 
     # @param body [EmbeddingsAndChunksQueryInputV2] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def list_with_http_info(filters:, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', include_vectors: false, extra: {})
+    def list_with_http_info(filters:, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, include_vectors: false, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL

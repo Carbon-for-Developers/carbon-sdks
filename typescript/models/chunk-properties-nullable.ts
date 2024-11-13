@@ -22,18 +22,18 @@ export interface ChunkPropertiesNullable {
      * @type {boolean}
      * @memberof ChunkPropertiesNullable
      */
-    'set_page_as_boundary': boolean;
+    'set_page_as_boundary'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ChunkPropertiesNullable
      */
-    'prepend_filename_to_chunks': boolean;
+    'prepend_filename_to_chunks'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof ChunkPropertiesNullable
      */
-    'max_items_per_chunk': number | null;
+    'max_items_per_chunk'?: number | null;
 }
 

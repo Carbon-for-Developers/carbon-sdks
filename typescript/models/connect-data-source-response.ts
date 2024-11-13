@@ -29,6 +29,6 @@ export interface ConnectDataSourceResponse {
      * @type {string}
      * @memberof ConnectDataSourceResponse
      */
-    'sync_url': string | null;
+    'sync_url'?: string | null;
 }
 

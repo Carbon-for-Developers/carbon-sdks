@@ -34,7 +34,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source' => :'Object',
+        :'source' => :'Source',
         :'account_name' => :'String',
         :'account_key' => :'String'
       }
@@ -43,7 +43,6 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'source',
       ])
     end
 
@@ -79,6 +78,10 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @source.nil?
+        invalid_properties.push('invalid value for "source", source cannot be nil.')
+      end
+
       if @account_name.nil?
         invalid_properties.push('invalid value for "account_name", account_name cannot be nil.')
       end
@@ -93,6 +96,7 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @source.nil?
       return false if @account_name.nil?
       return false if @account_key.nil?
       true

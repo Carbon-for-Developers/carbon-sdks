@@ -124,8 +124,6 @@ module Carbon
 
       if attributes.key?(:'order_by')
         self.order_by = attributes[:'order_by']
-      else
-        self.order_by = 'created'
       end
 
       if attributes.key?(:'order_dir')

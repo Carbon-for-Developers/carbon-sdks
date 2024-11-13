@@ -7,10 +7,18 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**accessToken** | **String** |  |  |
 |**refreshToken** | **String** |  |  [optional] |
 |**tenantName** | **String** |  |  [optional] |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| ONEDRIVE | &quot;ONEDRIVE&quot; |
 
 
 

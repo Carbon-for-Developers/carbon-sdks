@@ -4,42 +4,42 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tags** | **map[string]interface{}** |  | 
+**Tags** | Pointer to **map[string]interface{}** |  | [optional] 
 **Id** | **int32** |  | 
 **Source** | [**DataSourceType**](DataSourceType.md) |  | 
 **OrganizationId** | **int32** |  | 
 **OrganizationUserId** | **NullableInt32** |  | 
 **OrganizationSuppliedUserId** | **string** |  | 
-**OrganizationUserDataSourceId** | **NullableInt32** |  | 
+**OrganizationUserDataSourceId** | Pointer to **NullableInt32** |  | [optional] 
 **ExternalFileId** | **string** |  | 
-**ExternalUrl** | **NullableString** |  | 
+**ExternalUrl** | Pointer to **NullableString** |  | [optional] 
 **SyncStatus** | [**ExternalFileSyncStatuses**](ExternalFileSyncStatuses.md) |  | 
-**SyncErrorMessage** | **NullableString** |  | 
-**LastSync** | **NullableTime** |  | 
-**FileStatistics** | [**NullableFileStatisticsNullable**](FileStatisticsNullable.md) |  | 
-**FileMetadata** | **map[string]interface{}** |  | 
-**EmbeddingProperties** | [**map[string]EmbeddingProperties**](EmbeddingProperties.md) |  | 
-**ChunkSize** | **NullableInt32** |  | 
-**ChunkOverlap** | **NullableInt32** |  | 
-**ChunkProperties** | [**NullableChunkPropertiesNullable**](ChunkPropertiesNullable.md) |  | 
-**OcrProperties** | **map[string]interface{}** |  | [default to {}]
-**OcrJobStartedAt** | **NullableTime** |  | 
-**Name** | **NullableString** |  | 
-**ParentId** | **NullableInt32** |  | 
-**EnableAutoSync** | **NullableBool** |  | 
-**PresignedUrl** | **NullableString** |  | 
-**ParsedTextUrl** | **NullableString** |  | 
-**AdditionalPresignedUrls** | **map[string]interface{}** |  | 
+**SyncErrorMessage** | Pointer to **NullableString** |  | [optional] 
+**LastSync** | Pointer to **NullableTime** |  | [optional] 
+**FileStatistics** | Pointer to [**NullableFileStatisticsNullable**](FileStatisticsNullable.md) |  | [optional] 
+**FileMetadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**EmbeddingProperties** | Pointer to [**map[string]EmbeddingProperties**](EmbeddingProperties.md) |  | [optional] 
+**ChunkSize** | Pointer to **NullableInt32** |  | [optional] 
+**ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] 
+**ChunkProperties** | Pointer to [**NullableChunkPropertiesNullable**](ChunkPropertiesNullable.md) |  | [optional] 
+**OcrProperties** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**OcrJobStartedAt** | Pointer to **NullableTime** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**ParentId** | Pointer to **NullableInt32** |  | [optional] 
+**EnableAutoSync** | Pointer to **NullableBool** |  | [optional] 
+**PresignedUrl** | Pointer to **NullableString** |  | [optional] 
+**ParsedTextUrl** | Pointer to **NullableString** |  | [optional] 
+**AdditionalPresignedUrls** | Pointer to **map[string]interface{}** |  | [optional] 
 **SkipEmbeddingGeneration** | **bool** |  | 
-**SourceCreatedAt** | **NullableTime** |  | 
-**GenerateSparseVectors** | **NullableBool** |  | 
-**RequestId** | **NullableString** |  | 
-**UploadId** | **NullableString** |  | 
-**SyncProperties** | **map[string]interface{}** |  | [default to {}]
-**MessagesMetadata** | **map[string]interface{}** |  | [default to {}]
-**FileContentsDeleted** | **bool** |  | [default to false]
+**SourceCreatedAt** | Pointer to **NullableTime** |  | [optional] 
+**GenerateSparseVectors** | Pointer to **NullableBool** |  | [optional] 
+**RequestId** | Pointer to **NullableString** |  | [optional] 
+**UploadId** | Pointer to **NullableString** |  | [optional] 
+**SyncProperties** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**MessagesMetadata** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**FileContentsDeleted** | Pointer to **bool** |  | [optional] [default to false]
 **SupportsColdStorage** | **bool** |  | 
-**HotStorageTimeToLive** | **NullableInt32** |  | 
+**HotStorageTimeToLive** | Pointer to **NullableInt32** |  | [optional] 
 **EmbeddingStorageStatus** | [**EmbeddingStorageStatus**](EmbeddingStorageStatus.md) |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 
 ### NewUserFile
 
-`func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
+`func NewUserFile(id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, externalFileId string, syncStatus ExternalFileSyncStatuses, skipEmbeddingGeneration bool, supportsColdStorage bool, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time, ) *UserFile`
 
 NewUserFile instantiates a new UserFile object
 This constructor will assign default values to properties that have it defined,
@@ -82,6 +82,11 @@ and a boolean to check if the value has been set.
 
 SetTags sets Tags field to given value.
 
+### HasTags
+
+`func (o *UserFile) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### SetTagsNil
 
@@ -222,6 +227,11 @@ and a boolean to check if the value has been set.
 
 SetOrganizationUserDataSourceId sets OrganizationUserDataSourceId field to given value.
 
+### HasOrganizationUserDataSourceId
+
+`func (o *UserFile) HasOrganizationUserDataSourceId() bool`
+
+HasOrganizationUserDataSourceId returns a boolean if a field has been set.
 
 ### SetOrganizationUserDataSourceIdNil
 
@@ -272,6 +282,11 @@ and a boolean to check if the value has been set.
 
 SetExternalUrl sets ExternalUrl field to given value.
 
+### HasExternalUrl
+
+`func (o *UserFile) HasExternalUrl() bool`
+
+HasExternalUrl returns a boolean if a field has been set.
 
 ### SetExternalUrlNil
 
@@ -322,6 +337,11 @@ and a boolean to check if the value has been set.
 
 SetSyncErrorMessage sets SyncErrorMessage field to given value.
 
+### HasSyncErrorMessage
+
+`func (o *UserFile) HasSyncErrorMessage() bool`
+
+HasSyncErrorMessage returns a boolean if a field has been set.
 
 ### SetSyncErrorMessageNil
 
@@ -352,6 +372,11 @@ and a boolean to check if the value has been set.
 
 SetLastSync sets LastSync field to given value.
 
+### HasLastSync
+
+`func (o *UserFile) HasLastSync() bool`
+
+HasLastSync returns a boolean if a field has been set.
 
 ### SetLastSyncNil
 
@@ -382,6 +407,11 @@ and a boolean to check if the value has been set.
 
 SetFileStatistics sets FileStatistics field to given value.
 
+### HasFileStatistics
+
+`func (o *UserFile) HasFileStatistics() bool`
+
+HasFileStatistics returns a boolean if a field has been set.
 
 ### SetFileStatisticsNil
 
@@ -412,6 +442,11 @@ and a boolean to check if the value has been set.
 
 SetFileMetadata sets FileMetadata field to given value.
 
+### HasFileMetadata
+
+`func (o *UserFile) HasFileMetadata() bool`
+
+HasFileMetadata returns a boolean if a field has been set.
 
 ### SetFileMetadataNil
 
@@ -442,6 +477,11 @@ and a boolean to check if the value has been set.
 
 SetEmbeddingProperties sets EmbeddingProperties field to given value.
 
+### HasEmbeddingProperties
+
+`func (o *UserFile) HasEmbeddingProperties() bool`
+
+HasEmbeddingProperties returns a boolean if a field has been set.
 
 ### SetEmbeddingPropertiesNil
 
@@ -472,6 +512,11 @@ and a boolean to check if the value has been set.
 
 SetChunkSize sets ChunkSize field to given value.
 
+### HasChunkSize
+
+`func (o *UserFile) HasChunkSize() bool`
+
+HasChunkSize returns a boolean if a field has been set.
 
 ### SetChunkSizeNil
 
@@ -502,6 +547,11 @@ and a boolean to check if the value has been set.
 
 SetChunkOverlap sets ChunkOverlap field to given value.
 
+### HasChunkOverlap
+
+`func (o *UserFile) HasChunkOverlap() bool`
+
+HasChunkOverlap returns a boolean if a field has been set.
 
 ### SetChunkOverlapNil
 
@@ -532,6 +582,11 @@ and a boolean to check if the value has been set.
 
 SetChunkProperties sets ChunkProperties field to given value.
 
+### HasChunkProperties
+
+`func (o *UserFile) HasChunkProperties() bool`
+
+HasChunkProperties returns a boolean if a field has been set.
 
 ### SetChunkPropertiesNil
 
@@ -562,6 +617,11 @@ and a boolean to check if the value has been set.
 
 SetOcrProperties sets OcrProperties field to given value.
 
+### HasOcrProperties
+
+`func (o *UserFile) HasOcrProperties() bool`
+
+HasOcrProperties returns a boolean if a field has been set.
 
 ### GetOcrJobStartedAt
 
@@ -582,6 +642,11 @@ and a boolean to check if the value has been set.
 
 SetOcrJobStartedAt sets OcrJobStartedAt field to given value.
 
+### HasOcrJobStartedAt
+
+`func (o *UserFile) HasOcrJobStartedAt() bool`
+
+HasOcrJobStartedAt returns a boolean if a field has been set.
 
 ### SetOcrJobStartedAtNil
 
@@ -612,6 +677,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *UserFile) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### SetNameNil
 
@@ -642,6 +712,11 @@ and a boolean to check if the value has been set.
 
 SetParentId sets ParentId field to given value.
 
+### HasParentId
+
+`func (o *UserFile) HasParentId() bool`
+
+HasParentId returns a boolean if a field has been set.
 
 ### SetParentIdNil
 
@@ -672,6 +747,11 @@ and a boolean to check if the value has been set.
 
 SetEnableAutoSync sets EnableAutoSync field to given value.
 
+### HasEnableAutoSync
+
+`func (o *UserFile) HasEnableAutoSync() bool`
+
+HasEnableAutoSync returns a boolean if a field has been set.
 
 ### SetEnableAutoSyncNil
 
@@ -702,6 +782,11 @@ and a boolean to check if the value has been set.
 
 SetPresignedUrl sets PresignedUrl field to given value.
 
+### HasPresignedUrl
+
+`func (o *UserFile) HasPresignedUrl() bool`
+
+HasPresignedUrl returns a boolean if a field has been set.
 
 ### SetPresignedUrlNil
 
@@ -732,6 +817,11 @@ and a boolean to check if the value has been set.
 
 SetParsedTextUrl sets ParsedTextUrl field to given value.
 
+### HasParsedTextUrl
+
+`func (o *UserFile) HasParsedTextUrl() bool`
+
+HasParsedTextUrl returns a boolean if a field has been set.
 
 ### SetParsedTextUrlNil
 
@@ -762,6 +852,11 @@ and a boolean to check if the value has been set.
 
 SetAdditionalPresignedUrls sets AdditionalPresignedUrls field to given value.
 
+### HasAdditionalPresignedUrls
+
+`func (o *UserFile) HasAdditionalPresignedUrls() bool`
+
+HasAdditionalPresignedUrls returns a boolean if a field has been set.
 
 ### SetAdditionalPresignedUrlsNil
 
@@ -812,6 +907,11 @@ and a boolean to check if the value has been set.
 
 SetSourceCreatedAt sets SourceCreatedAt field to given value.
 
+### HasSourceCreatedAt
+
+`func (o *UserFile) HasSourceCreatedAt() bool`
+
+HasSourceCreatedAt returns a boolean if a field has been set.
 
 ### SetSourceCreatedAtNil
 
@@ -842,6 +942,11 @@ and a boolean to check if the value has been set.
 
 SetGenerateSparseVectors sets GenerateSparseVectors field to given value.
 
+### HasGenerateSparseVectors
+
+`func (o *UserFile) HasGenerateSparseVectors() bool`
+
+HasGenerateSparseVectors returns a boolean if a field has been set.
 
 ### SetGenerateSparseVectorsNil
 
@@ -872,6 +977,11 @@ and a boolean to check if the value has been set.
 
 SetRequestId sets RequestId field to given value.
 
+### HasRequestId
+
+`func (o *UserFile) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
 
 ### SetRequestIdNil
 
@@ -902,6 +1012,11 @@ and a boolean to check if the value has been set.
 
 SetUploadId sets UploadId field to given value.
 
+### HasUploadId
+
+`func (o *UserFile) HasUploadId() bool`
+
+HasUploadId returns a boolean if a field has been set.
 
 ### SetUploadIdNil
 
@@ -932,6 +1047,11 @@ and a boolean to check if the value has been set.
 
 SetSyncProperties sets SyncProperties field to given value.
 
+### HasSyncProperties
+
+`func (o *UserFile) HasSyncProperties() bool`
+
+HasSyncProperties returns a boolean if a field has been set.
 
 ### GetMessagesMetadata
 
@@ -952,6 +1072,11 @@ and a boolean to check if the value has been set.
 
 SetMessagesMetadata sets MessagesMetadata field to given value.
 
+### HasMessagesMetadata
+
+`func (o *UserFile) HasMessagesMetadata() bool`
+
+HasMessagesMetadata returns a boolean if a field has been set.
 
 ### GetFileContentsDeleted
 
@@ -972,6 +1097,11 @@ and a boolean to check if the value has been set.
 
 SetFileContentsDeleted sets FileContentsDeleted field to given value.
 
+### HasFileContentsDeleted
+
+`func (o *UserFile) HasFileContentsDeleted() bool`
+
+HasFileContentsDeleted returns a boolean if a field has been set.
 
 ### GetSupportsColdStorage
 
@@ -1012,6 +1142,11 @@ and a boolean to check if the value has been set.
 
 SetHotStorageTimeToLive sets HotStorageTimeToLive field to given value.
 
+### HasHotStorageTimeToLive
+
+`func (o *UserFile) HasHotStorageTimeToLive() bool`
+
+HasHotStorageTimeToLive returns a boolean if a field has been set.
 
 ### SetHotStorageTimeToLiveNil
 

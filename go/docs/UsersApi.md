@@ -113,9 +113,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AggregateNumFilesByFileFormat`: %v\n", resp.AggregateNumFilesByFileFormat)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.UniqueFileTags`: %v\n", resp.UniqueFileTags)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.EnabledFeatures`: %v\n", resp.EnabledFeatures)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", resp.CustomLimits)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.ConnectorSettings`: %v\n", resp.ConnectorSettings)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.CustomLimits`: %v\n", *resp.CustomLimits)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.AutoSyncEnabledSources`: %v\n", *resp.AutoSyncEnabledSources)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.Get.ConnectorSettings`: %v\n", *resp.ConnectorSettings)
 }
 ```
 
@@ -169,7 +169,7 @@ func main() {
     // response from `List`: UserListResponse
     fmt.Fprintf(os.Stdout, "Response from `UsersApi.List`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `UserListResponse.List.Users`: %v\n", resp.Users)
-    fmt.Fprintf(os.Stdout, "Response from `UserListResponse.List.Count`: %v\n", resp.Count)
+    fmt.Fprintf(os.Stdout, "Response from `UserListResponse.List.Count`: %v\n", *resp.Count)
 }
 ```
 
@@ -203,7 +203,7 @@ func main() {
 
     
     modifyUserConfigurationInput := *carbon.NewModifyUserConfigurationInput(
-        "null",
+        null,
         null,
     )
     
@@ -259,6 +259,7 @@ func main() {
     updateUsersInput.SetMaxCharacters(null)
     updateUsersInput.SetMaxCharactersPerFile(null)
     updateUsersInput.SetMaxCharactersPerUpload(null)
+    updateUsersInput.SetAutoSyncInterval(null)
     
     request := client.UsersApi.UpdateUsers(
         updateUsersInput,
@@ -331,9 +332,9 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AggregateNumFilesByFileFormat`: %v\n", resp.AggregateNumFilesByFileFormat)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.UniqueFileTags`: %v\n", resp.UniqueFileTags)
     fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.EnabledFeatures`: %v\n", resp.EnabledFeatures)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.CustomLimits`: %v\n", resp.CustomLimits)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AutoSyncEnabledSources`: %v\n", resp.AutoSyncEnabledSources)
-    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.ConnectorSettings`: %v\n", resp.ConnectorSettings)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.CustomLimits`: %v\n", *resp.CustomLimits)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.AutoSyncEnabledSources`: %v\n", *resp.AutoSyncEnabledSources)
+    fmt.Fprintf(os.Stdout, "Response from `UserResponse.WhoAmI.ConnectorSettings`: %v\n", *resp.ConnectorSettings)
 }
 ```
 

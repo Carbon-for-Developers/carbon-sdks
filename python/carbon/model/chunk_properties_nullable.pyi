@@ -35,11 +35,6 @@ class ChunkPropertiesNullable(
 
 
     class MetaOapg:
-        required = {
-            "prepend_filename_to_chunks",
-            "max_items_per_chunk",
-            "set_page_as_boundary",
-        }
         
         class properties:
             set_page_as_boundary = schemas.BoolSchema
@@ -71,10 +66,6 @@ class ChunkPropertiesNullable(
             }
 
     
-    prepend_filename_to_chunks: MetaOapg.properties.prepend_filename_to_chunks
-    max_items_per_chunk: MetaOapg.properties.max_items_per_chunk
-    set_page_as_boundary: MetaOapg.properties.set_page_as_boundary
-    
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
     
@@ -93,13 +84,13 @@ class ChunkPropertiesNullable(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> MetaOapg.properties.set_page_as_boundary: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["set_page_as_boundary"]) -> typing.Union[MetaOapg.properties.set_page_as_boundary, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["prepend_filename_to_chunks"]) -> MetaOapg.properties.prepend_filename_to_chunks: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["prepend_filename_to_chunks"]) -> typing.Union[MetaOapg.properties.prepend_filename_to_chunks, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> MetaOapg.properties.max_items_per_chunk: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["max_items_per_chunk"]) -> typing.Union[MetaOapg.properties.max_items_per_chunk, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -111,12 +102,18 @@ class ChunkPropertiesNullable(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, None, ],
+        set_page_as_boundary: typing.Union[MetaOapg.properties.set_page_as_boundary, bool, schemas.Unset] = schemas.unset,
+        prepend_filename_to_chunks: typing.Union[MetaOapg.properties.prepend_filename_to_chunks, bool, schemas.Unset] = schemas.unset,
+        max_items_per_chunk: typing.Union[MetaOapg.properties.max_items_per_chunk, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ChunkPropertiesNullable':
         return super().__new__(
             cls,
             *args,
+            set_page_as_boundary=set_page_as_boundary,
+            prepend_filename_to_chunks=prepend_filename_to_chunks,
+            max_items_per_chunk=max_items_per_chunk,
             _configuration=_configuration,
             **kwargs,
         )

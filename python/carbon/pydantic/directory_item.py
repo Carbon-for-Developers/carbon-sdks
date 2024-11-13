@@ -21,9 +21,9 @@ class DirectoryItem(BaseModel):
 
     name: str = Field(alias='name')
 
-    is_synced: bool = Field(alias='is_synced')
+    is_synced: typing.Optional[bool] = Field(None, alias='is_synced')
 
-    has_children: bool = Field(alias='has_children')
+    has_children: typing.Optional[bool] = Field(None, alias='has_children')
 
     model_config = ConfigDict(
         protected_namespaces=(),

@@ -16,7 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
 class RequiredAzureBlobStorageAuthentication(TypedDict):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None]
+    source: str
 
     account_name: str
 

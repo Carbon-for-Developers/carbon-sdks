@@ -52,14 +52,13 @@ class RequiredUserResponse(TypedDict):
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
+class OptionalUserResponse(TypedDict, total=False):
     custom_limits: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     auto_sync_enabled_sources: UserResponseAutoSyncEnabledSources
 
     connector_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
-
-class OptionalUserResponse(TypedDict, total=False):
-    pass
 
 class UserResponse(RequiredUserResponse, OptionalUserResponse):
     pass

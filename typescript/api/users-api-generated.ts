@@ -23,6 +23,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { AutoSyncEnabledSourcesProperty } from '../models';
 // @ts-ignore
+import { ConfigurationKeys } from '../models';
+// @ts-ignore
 import { DeleteUsersInput } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -433,6 +435,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
                 max_characters: requestParameters.max_characters,
                 max_characters_per_file: requestParameters.max_characters_per_file,
                 max_characters_per_upload: requestParameters.max_characters_per_upload,
+                auto_sync_interval: requestParameters.auto_sync_interval,
                 customer_ids: requestParameters.customer_ids
             };
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsers(updateUsersInput, options);

@@ -41,7 +41,22 @@ class ZoteroAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    enum_value_to_name = {
+                        "ZOTERO": "ZOTERO",
+                    }
+                
+                @schemas.classproperty
+                def ZOTERO(cls):
+                    return cls("ZOTERO")
             access_token = schemas.StrSchema
             access_token_secret = schemas.StrSchema
             username = schemas.StrSchema
@@ -110,7 +125,7 @@ class ZoteroAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
         zotero_id: typing.Union[MetaOapg.properties.zotero_id, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         access_token_secret: typing.Union[MetaOapg.properties.access_token_secret, str, ],
         username: typing.Union[MetaOapg.properties.username, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,

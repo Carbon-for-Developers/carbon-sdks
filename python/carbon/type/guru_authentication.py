@@ -16,7 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
 class RequiredGuruAuthentication(TypedDict):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None]
+    source: str
 
     access_token: str
 

@@ -47,6 +47,29 @@ func Test_carbon_DataSourcesApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test DataSourcesApiService Query", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        pagination := *carbon.NewPagination()
+        filters := *carbon.NewOrganizationUserDataSourceFilters()
+        
+        organizationUserDataSourceQueryInput := *carbon.NewOrganizationUserDataSourceQueryInput()
+        organizationUserDataSourceQueryInput.SetPagination(pagination)
+        organizationUserDataSourceQueryInput.SetOrderBy(null)
+        organizationUserDataSourceQueryInput.SetOrderDir(null)
+        organizationUserDataSourceQueryInput.SetFilters(filters)
+        
+        request := client.DataSourcesApi.Query(
+            organizationUserDataSourceQueryInput,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test DataSourcesApiService QueryUserDataSources", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         pagination := *carbon.NewPagination()

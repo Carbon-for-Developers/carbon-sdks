@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface GuruAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof GuruAuthentication
      */
-    'source': any;
+    'source': GuruAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface GuruAuthentication {
      */
     'username': string;
 }
+
+type GuruAuthenticationSourceEnum = 'GURU'
+
 

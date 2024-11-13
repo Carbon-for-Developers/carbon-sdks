@@ -16,13 +16,9 @@ import (
 
 // OrganizationUserFilesToSyncQueryInput struct for OrganizationUserFilesToSyncQueryInput
 type OrganizationUserFilesToSyncQueryInput struct {
-	// Pagination parameters for the query.
 	Pagination *Pagination `json:"pagination,omitempty"`
-	// The field on OrganizationUserFilesToSYnc to order the results by.
 	OrderBy *OrganizationUserFilesToSyncOrderByTypes `json:"order_by,omitempty"`
-	// The direction to order the results by.
 	OrderDir *OrderDir `json:"order_dir,omitempty"`
-	// Filters to apply to the query.
 	Filters *OrganizationUserFilesToSyncFilters `json:"filters,omitempty"`
 	// If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
 	IncludeRawFile NullableBool `json:"include_raw_file,omitempty"`

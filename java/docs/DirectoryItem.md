@@ -9,8 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** |  |  |
 |**name** | **String** |  |  |
-|**isSynced** | **Boolean** |  |  |
-|**hasChildren** | **Boolean** |  |  |
+|**isSynced** | **Boolean** |  |  [optional] |
+|**hasChildren** | **Boolean** |  |  [optional] |
 
 
 

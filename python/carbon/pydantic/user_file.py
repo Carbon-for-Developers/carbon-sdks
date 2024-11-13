@@ -23,8 +23,6 @@ from carbon.pydantic.file_statistics_nullable import FileStatisticsNullable
 from carbon.pydantic.user_file_embedding_properties import UserFileEmbeddingProperties
 
 class UserFile(BaseModel):
-    tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='tags')
-
     id: int = Field(alias='id')
 
     source: DataSourceType = Field(alias='source')
@@ -35,71 +33,73 @@ class UserFile(BaseModel):
 
     organization_supplied_user_id: str = Field(alias='organization_supplied_user_id')
 
-    organization_user_data_source_id: typing.Optional[int] = Field(alias='organization_user_data_source_id')
-
     external_file_id: str = Field(alias='external_file_id')
-
-    external_url: typing.Optional[str] = Field(alias='external_url')
 
     sync_status: ExternalFileSyncStatuses = Field(alias='sync_status')
 
-    sync_error_message: typing.Optional[str] = Field(alias='sync_error_message')
-
-    last_sync: typing.Optional[datetime] = Field(alias='last_sync')
-
-    file_statistics: FileStatisticsNullable = Field(alias='file_statistics')
-
-    file_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='file_metadata')
-
-    embedding_properties: UserFileEmbeddingProperties = Field(alias='embedding_properties')
-
-    chunk_size: typing.Optional[int] = Field(alias='chunk_size')
-
-    chunk_overlap: typing.Optional[int] = Field(alias='chunk_overlap')
-
-    chunk_properties: ChunkPropertiesNullable = Field(alias='chunk_properties')
-
-    ocr_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='ocr_properties')
-
-    ocr_job_started_at: typing.Optional[datetime] = Field(alias='ocr_job_started_at')
-
-    name: typing.Optional[str] = Field(alias='name')
-
-    parent_id: typing.Optional[int] = Field(alias='parent_id')
-
-    enable_auto_sync: typing.Optional[bool] = Field(alias='enable_auto_sync')
-
-    presigned_url: typing.Optional[str] = Field(alias='presigned_url')
-
-    parsed_text_url: typing.Optional[str] = Field(alias='parsed_text_url')
-
-    additional_presigned_urls: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='additional_presigned_urls')
-
     skip_embedding_generation: bool = Field(alias='skip_embedding_generation')
 
-    source_created_at: typing.Optional[datetime] = Field(alias='source_created_at')
-
-    generate_sparse_vectors: typing.Optional[bool] = Field(alias='generate_sparse_vectors')
-
-    request_id: typing.Optional[str] = Field(alias='request_id')
-
-    upload_id: typing.Optional[str] = Field(alias='upload_id')
-
-    sync_properties: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='sync_properties')
-
-    messages_metadata: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='messages_metadata')
-
-    file_contents_deleted: bool = Field(alias='file_contents_deleted')
-
     supports_cold_storage: bool = Field(alias='supports_cold_storage')
-
-    hot_storage_time_to_live: typing.Optional[int] = Field(alias='hot_storage_time_to_live')
 
     embedding_storage_status: EmbeddingStorageStatus = Field(alias='embedding_storage_status')
 
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')
+
+    tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags')
+
+    organization_user_data_source_id: typing.Optional[typing.Optional[int]] = Field(None, alias='organization_user_data_source_id')
+
+    external_url: typing.Optional[typing.Optional[str]] = Field(None, alias='external_url')
+
+    sync_error_message: typing.Optional[typing.Optional[str]] = Field(None, alias='sync_error_message')
+
+    last_sync: typing.Optional[typing.Optional[datetime]] = Field(None, alias='last_sync')
+
+    file_statistics: typing.Optional[FileStatisticsNullable] = Field(None, alias='file_statistics')
+
+    file_metadata: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='file_metadata')
+
+    embedding_properties: typing.Optional[UserFileEmbeddingProperties] = Field(None, alias='embedding_properties')
+
+    chunk_size: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_size')
+
+    chunk_overlap: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_overlap')
+
+    chunk_properties: typing.Optional[ChunkPropertiesNullable] = Field(None, alias='chunk_properties')
+
+    ocr_properties: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='ocr_properties')
+
+    ocr_job_started_at: typing.Optional[typing.Optional[datetime]] = Field(None, alias='ocr_job_started_at')
+
+    name: typing.Optional[typing.Optional[str]] = Field(None, alias='name')
+
+    parent_id: typing.Optional[typing.Optional[int]] = Field(None, alias='parent_id')
+
+    enable_auto_sync: typing.Optional[typing.Optional[bool]] = Field(None, alias='enable_auto_sync')
+
+    presigned_url: typing.Optional[typing.Optional[str]] = Field(None, alias='presigned_url')
+
+    parsed_text_url: typing.Optional[typing.Optional[str]] = Field(None, alias='parsed_text_url')
+
+    additional_presigned_urls: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='additional_presigned_urls')
+
+    source_created_at: typing.Optional[typing.Optional[datetime]] = Field(None, alias='source_created_at')
+
+    generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = Field(None, alias='generate_sparse_vectors')
+
+    request_id: typing.Optional[typing.Optional[str]] = Field(None, alias='request_id')
+
+    upload_id: typing.Optional[typing.Optional[str]] = Field(None, alias='upload_id')
+
+    sync_properties: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='sync_properties')
+
+    messages_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='messages_metadata')
+
+    file_contents_deleted: typing.Optional[bool] = Field(None, alias='file_contents_deleted')
+
+    hot_storage_time_to_live: typing.Optional[typing.Optional[int]] = Field(None, alias='hot_storage_time_to_live')
 
     model_config = ConfigDict(
         protected_namespaces=(),

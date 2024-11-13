@@ -33,7 +33,6 @@ class ConnectDataSourceResponse(
 
     class MetaOapg:
         required = {
-            "sync_url",
             "data_source",
         }
         
@@ -67,7 +66,6 @@ class ConnectDataSourceResponse(
                 "sync_url": sync_url,
             }
     
-    sync_url: MetaOapg.properties.sync_url
     data_source: 'OrganizationUserDataSourceAPI'
     
     @typing.overload
@@ -88,7 +86,7 @@ class ConnectDataSourceResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["data_source"]) -> 'OrganizationUserDataSourceAPI': ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["sync_url"]) -> MetaOapg.properties.sync_url: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["sync_url"]) -> typing.Union[MetaOapg.properties.sync_url, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -100,16 +98,16 @@ class ConnectDataSourceResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        sync_url: typing.Union[MetaOapg.properties.sync_url, None, str, ],
         data_source: 'OrganizationUserDataSourceAPI',
+        sync_url: typing.Union[MetaOapg.properties.sync_url, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ConnectDataSourceResponse':
         return super().__new__(
             cls,
             *args,
-            sync_url=sync_url,
             data_source=data_source,
+            sync_url=sync_url,
             _configuration=_configuration,
             **kwargs,
         )

@@ -83,22 +83,12 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @set_page_as_boundary.nil?
-        invalid_properties.push('invalid value for "set_page_as_boundary", set_page_as_boundary cannot be nil.')
-      end
-
-      if @prepend_filename_to_chunks.nil?
-        invalid_properties.push('invalid value for "prepend_filename_to_chunks", prepend_filename_to_chunks cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @set_page_as_boundary.nil?
-      return false if @prepend_filename_to_chunks.nil?
       true
     end
 

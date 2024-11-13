@@ -16,7 +16,7 @@ import (
 
 // ZoteroAuthentication struct for ZoteroAuthentication
 type ZoteroAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	AccessTokenSecret string `json:"access_token_secret"`
 	Username string `json:"username"`
@@ -27,7 +27,7 @@ type ZoteroAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewZoteroAuthentication(source interface{}, accessToken string, accessTokenSecret string, username string, zoteroId string) *ZoteroAuthentication {
+func NewZoteroAuthentication(source string, accessToken string, accessTokenSecret string, username string, zoteroId string) *ZoteroAuthentication {
 	this := ZoteroAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -46,10 +46,9 @@ func NewZoteroAuthenticationWithDefaults() *ZoteroAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ZoteroAuthentication) GetSource() interface{} {
+func (o *ZoteroAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -58,16 +57,15 @@ func (o *ZoteroAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ZoteroAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *ZoteroAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *ZoteroAuthentication) SetSource(v interface{}) {
+func (o *ZoteroAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -169,7 +167,7 @@ func (o *ZoteroAuthentication) SetZoteroId(v string) {
 
 func (o ZoteroAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

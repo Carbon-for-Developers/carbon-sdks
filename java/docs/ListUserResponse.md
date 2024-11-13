@@ -14,8 +14,8 @@
 |**updatedAt** | **OffsetDateTime** |  |  |
 |**deletedAt** | **OffsetDateTime** |  |  |
 |**enabledFeatures** | **Object** |  |  |
-|**customLimits** | **Object** |  |  |
-|**autoSyncEnabledSources** | **List&lt;Object&gt;** |  |  |
+|**customLimits** | **Object** |  |  [optional] |
+|**autoSyncEnabledSources** | **List&lt;Object&gt;** |  |  [optional] |
 
 
 

@@ -16,7 +16,7 @@ import (
 
 // GuruAuthentication struct for GuruAuthentication
 type GuruAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	Username string `json:"username"`
 }
@@ -25,7 +25,7 @@ type GuruAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGuruAuthentication(source interface{}, accessToken string, username string) *GuruAuthentication {
+func NewGuruAuthentication(source string, accessToken string, username string) *GuruAuthentication {
 	this := GuruAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -42,10 +42,9 @@ func NewGuruAuthenticationWithDefaults() *GuruAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GuruAuthentication) GetSource() interface{} {
+func (o *GuruAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *GuruAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GuruAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *GuruAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *GuruAuthentication) SetSource(v interface{}) {
+func (o *GuruAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -117,7 +115,7 @@ func (o *GuruAuthentication) SetUsername(v string) {
 
 func (o GuruAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

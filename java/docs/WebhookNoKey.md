@@ -11,7 +11,7 @@
 |**organizationId** | **Integer** |  |  |
 |**url** | **String** |  |  |
 |**status** | **WebhookStatus** |  |  |
-|**statusReason** | **String** |  |  |
+|**statusReason** | **String** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 

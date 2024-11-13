@@ -7,9 +7,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**accessToken** | **String** |  |  |
 |**subdomain** | **String** |  |  |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| ZENDESK | &quot;ZENDESK&quot; |
 
 
 

@@ -43,7 +43,6 @@ class ListItemsFiltersItemTypes(
         
         
             class MetaOapg:
-                any_of_10 = schemas.StrSchema
                 
                 @classmethod
                 @functools.lru_cache()
@@ -66,7 +65,7 @@ class ListItemsFiltersItemTypes(
                         GithubFileTypes,
                         GuruFileTypes,
                         GongFileTypes,
-                        cls.any_of_10,
+                        AzureBlobStorageTypes,
                     ]
         
         
@@ -95,6 +94,7 @@ class ListItemsFiltersItemTypes(
             _configuration=_configuration,
         )
 
+from carbon.model.azure_blob_storage_types import AzureBlobStorageTypes
 from carbon.model.confluence_file_types import ConfluenceFileTypes
 from carbon.model.gitbook_file_types import GitbookFileTypes
 from carbon.model.github_file_types import GithubFileTypes

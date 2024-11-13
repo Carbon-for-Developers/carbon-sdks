@@ -20,10 +20,10 @@ import { GoogleDriveCredentials } from './google-drive-credentials';
 export interface GoogleDriveWhiteLabelInput {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof GoogleDriveWhiteLabelInput
      */
-    'data_source_type': any;
+    'data_source_type': GoogleDriveWhiteLabelInputDataSourceTypeEnum;
     /**
      * 
      * @type {GoogleDriveCredentials}
@@ -31,4 +31,7 @@ export interface GoogleDriveWhiteLabelInput {
      */
     'credentials': GoogleDriveCredentials;
 }
+
+type GoogleDriveWhiteLabelInputDataSourceTypeEnum = 'GOOGLE_DRIVE'
+
 

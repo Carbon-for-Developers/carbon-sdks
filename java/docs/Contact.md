@@ -23,8 +23,8 @@
 |**createdAt** | **String** |  |  |
 |**updatedAt** | **String** |  |  |
 |**isDeleted** | **Boolean** |  |  |
-|**tasks** | [**List&lt;Task&gt;**](Task.md) |  |  |
-|**events** | [**List&lt;Event&gt;**](Event.md) |  |  |
+|**tasks** | [**List&lt;Task&gt;**](Task.md) |  |  [optional] |
+|**events** | [**List&lt;Event&gt;**](Event.md) |  |  [optional] |
 |**remoteData** | **Object** |  |  |
 
 

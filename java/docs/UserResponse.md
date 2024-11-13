@@ -24,9 +24,9 @@
 |**aggregateNumFilesByFileFormat** | **Object** |  |  |
 |**uniqueFileTags** | **List&lt;Object&gt;** |  |  |
 |**enabledFeatures** | **Object** |  |  |
-|**customLimits** | **Object** |  |  |
-|**autoSyncEnabledSources** | **List&lt;Object&gt;** |  |  |
-|**connectorSettings** | **Object** |  |  |
+|**customLimits** | **Object** |  |  [optional] |
+|**autoSyncEnabledSources** | **List&lt;Object&gt;** |  |  [optional] |
+|**connectorSettings** | **Object** |  |  [optional] |
 
 
 

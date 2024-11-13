@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class ZoteroAuthentication(BaseModel):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None] = Field(alias='source')
+    source: Literal["ZOTERO"] = Field(alias='source')
 
     access_token: str = Field(alias='access_token')
 

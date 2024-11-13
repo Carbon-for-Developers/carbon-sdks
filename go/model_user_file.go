@@ -17,42 +17,42 @@ import (
 
 // UserFile struct for UserFile
 type UserFile struct {
-	Tags map[string]interface{} `json:"tags"`
+	Tags map[string]interface{} `json:"tags,omitempty"`
 	Id int32 `json:"id"`
 	Source DataSourceType `json:"source"`
 	OrganizationId int32 `json:"organization_id"`
 	OrganizationUserId NullableInt32 `json:"organization_user_id"`
 	OrganizationSuppliedUserId string `json:"organization_supplied_user_id"`
-	OrganizationUserDataSourceId NullableInt32 `json:"organization_user_data_source_id"`
+	OrganizationUserDataSourceId NullableInt32 `json:"organization_user_data_source_id,omitempty"`
 	ExternalFileId string `json:"external_file_id"`
-	ExternalUrl NullableString `json:"external_url"`
+	ExternalUrl NullableString `json:"external_url,omitempty"`
 	SyncStatus ExternalFileSyncStatuses `json:"sync_status"`
-	SyncErrorMessage NullableString `json:"sync_error_message"`
-	LastSync NullableTime `json:"last_sync"`
-	FileStatistics NullableFileStatisticsNullable `json:"file_statistics"`
-	FileMetadata map[string]interface{} `json:"file_metadata"`
-	EmbeddingProperties map[string]EmbeddingProperties `json:"embedding_properties"`
-	ChunkSize NullableInt32 `json:"chunk_size"`
-	ChunkOverlap NullableInt32 `json:"chunk_overlap"`
-	ChunkProperties NullableChunkPropertiesNullable `json:"chunk_properties"`
-	OcrProperties map[string]interface{} `json:"ocr_properties"`
-	OcrJobStartedAt NullableTime `json:"ocr_job_started_at"`
-	Name NullableString `json:"name"`
-	ParentId NullableInt32 `json:"parent_id"`
-	EnableAutoSync NullableBool `json:"enable_auto_sync"`
-	PresignedUrl NullableString `json:"presigned_url"`
-	ParsedTextUrl NullableString `json:"parsed_text_url"`
-	AdditionalPresignedUrls map[string]interface{} `json:"additional_presigned_urls"`
+	SyncErrorMessage NullableString `json:"sync_error_message,omitempty"`
+	LastSync NullableTime `json:"last_sync,omitempty"`
+	FileStatistics NullableFileStatisticsNullable `json:"file_statistics,omitempty"`
+	FileMetadata map[string]interface{} `json:"file_metadata,omitempty"`
+	EmbeddingProperties map[string]EmbeddingProperties `json:"embedding_properties,omitempty"`
+	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
+	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`
+	ChunkProperties NullableChunkPropertiesNullable `json:"chunk_properties,omitempty"`
+	OcrProperties map[string]interface{} `json:"ocr_properties,omitempty"`
+	OcrJobStartedAt NullableTime `json:"ocr_job_started_at,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ParentId NullableInt32 `json:"parent_id,omitempty"`
+	EnableAutoSync NullableBool `json:"enable_auto_sync,omitempty"`
+	PresignedUrl NullableString `json:"presigned_url,omitempty"`
+	ParsedTextUrl NullableString `json:"parsed_text_url,omitempty"`
+	AdditionalPresignedUrls map[string]interface{} `json:"additional_presigned_urls,omitempty"`
 	SkipEmbeddingGeneration bool `json:"skip_embedding_generation"`
-	SourceCreatedAt NullableTime `json:"source_created_at"`
-	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors"`
-	RequestId NullableString `json:"request_id"`
-	UploadId NullableString `json:"upload_id"`
-	SyncProperties map[string]interface{} `json:"sync_properties"`
-	MessagesMetadata map[string]interface{} `json:"messages_metadata"`
-	FileContentsDeleted bool `json:"file_contents_deleted"`
+	SourceCreatedAt NullableTime `json:"source_created_at,omitempty"`
+	GenerateSparseVectors NullableBool `json:"generate_sparse_vectors,omitempty"`
+	RequestId NullableString `json:"request_id,omitempty"`
+	UploadId NullableString `json:"upload_id,omitempty"`
+	SyncProperties map[string]interface{} `json:"sync_properties,omitempty"`
+	MessagesMetadata map[string]interface{} `json:"messages_metadata,omitempty"`
+	FileContentsDeleted *bool `json:"file_contents_deleted,omitempty"`
 	SupportsColdStorage bool `json:"supports_cold_storage"`
-	HotStorageTimeToLive NullableInt32 `json:"hot_storage_time_to_live"`
+	HotStorageTimeToLive NullableInt32 `json:"hot_storage_time_to_live,omitempty"`
 	EmbeddingStorageStatus EmbeddingStorageStatus `json:"embedding_storage_status"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
@@ -62,44 +62,19 @@ type UserFile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, organizationUserDataSourceId NullableInt32, externalFileId string, externalUrl NullableString, syncStatus ExternalFileSyncStatuses, syncErrorMessage NullableString, lastSync NullableTime, fileStatistics NullableFileStatisticsNullable, fileMetadata map[string]interface{}, embeddingProperties map[string]EmbeddingProperties, chunkSize NullableInt32, chunkOverlap NullableInt32, chunkProperties NullableChunkPropertiesNullable, ocrProperties map[string]interface{}, ocrJobStartedAt NullableTime, name NullableString, parentId NullableInt32, enableAutoSync NullableBool, presignedUrl NullableString, parsedTextUrl NullableString, additionalPresignedUrls map[string]interface{}, skipEmbeddingGeneration bool, sourceCreatedAt NullableTime, generateSparseVectors NullableBool, requestId NullableString, uploadId NullableString, syncProperties map[string]interface{}, messagesMetadata map[string]interface{}, fileContentsDeleted bool, supportsColdStorage bool, hotStorageTimeToLive NullableInt32, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time) *UserFile {
+func NewUserFile(id int32, source DataSourceType, organizationId int32, organizationUserId NullableInt32, organizationSuppliedUserId string, externalFileId string, syncStatus ExternalFileSyncStatuses, skipEmbeddingGeneration bool, supportsColdStorage bool, embeddingStorageStatus EmbeddingStorageStatus, createdAt time.Time, updatedAt time.Time) *UserFile {
 	this := UserFile{}
-	this.Tags = tags
 	this.Id = id
 	this.Source = source
 	this.OrganizationId = organizationId
 	this.OrganizationUserId = organizationUserId
 	this.OrganizationSuppliedUserId = organizationSuppliedUserId
-	this.OrganizationUserDataSourceId = organizationUserDataSourceId
 	this.ExternalFileId = externalFileId
-	this.ExternalUrl = externalUrl
 	this.SyncStatus = syncStatus
-	this.SyncErrorMessage = syncErrorMessage
-	this.LastSync = lastSync
-	this.FileStatistics = fileStatistics
-	this.FileMetadata = fileMetadata
-	this.EmbeddingProperties = embeddingProperties
-	this.ChunkSize = chunkSize
-	this.ChunkOverlap = chunkOverlap
-	this.ChunkProperties = chunkProperties
-	this.OcrProperties = ocrProperties
-	this.OcrJobStartedAt = ocrJobStartedAt
-	this.Name = name
-	this.ParentId = parentId
-	this.EnableAutoSync = enableAutoSync
-	this.PresignedUrl = presignedUrl
-	this.ParsedTextUrl = parsedTextUrl
-	this.AdditionalPresignedUrls = additionalPresignedUrls
 	this.SkipEmbeddingGeneration = skipEmbeddingGeneration
-	this.SourceCreatedAt = sourceCreatedAt
-	this.GenerateSparseVectors = generateSparseVectors
-	this.RequestId = requestId
-	this.UploadId = uploadId
-	this.SyncProperties = syncProperties
-	this.MessagesMetadata = messagesMetadata
-	this.FileContentsDeleted = fileContentsDeleted
+	var fileContentsDeleted bool = false
+	this.FileContentsDeleted = &fileContentsDeleted
 	this.SupportsColdStorage = supportsColdStorage
-	this.HotStorageTimeToLive = hotStorageTimeToLive
 	this.EmbeddingStorageStatus = embeddingStorageStatus
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
@@ -112,22 +87,20 @@ func NewUserFile(tags map[string]interface{}, id int32, source DataSourceType, o
 func NewUserFileWithDefaults() *UserFile {
 	this := UserFile{}
 	var fileContentsDeleted bool = false
-	this.FileContentsDeleted = fileContentsDeleted
+	this.FileContentsDeleted = &fileContentsDeleted
 	return &this
 }
 
-// GetTags returns the Tags field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetTags() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Tags
 }
 
-// GetTagsOk returns a tuple with the Tags field value
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetTagsOk() (map[string]interface{}, bool) {
@@ -137,7 +110,16 @@ func (o *UserFile) GetTagsOk() (map[string]interface{}, bool) {
 	return o.Tags, true
 }
 
-// SetTags sets field value
+// HasTags returns a boolean if a field has been set.
+func (o *UserFile) HasTags() bool {
+	if o != nil && isNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
 func (o *UserFile) SetTags(v map[string]interface{}) {
 	o.Tags = v
 }
@@ -264,18 +246,16 @@ func (o *UserFile) SetOrganizationSuppliedUserId(v string) {
 	o.OrganizationSuppliedUserId = v
 }
 
-// GetOrganizationUserDataSourceId returns the OrganizationUserDataSourceId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationUserDataSourceId returns the OrganizationUserDataSourceId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetOrganizationUserDataSourceId() int32 {
-	if o == nil || o.OrganizationUserDataSourceId.Get() == nil {
+	if o == nil || isNil(o.OrganizationUserDataSourceId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationUserDataSourceId.Get()
 }
 
-// GetOrganizationUserDataSourceIdOk returns a tuple with the OrganizationUserDataSourceId field value
+// GetOrganizationUserDataSourceIdOk returns a tuple with the OrganizationUserDataSourceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetOrganizationUserDataSourceIdOk() (*int32, bool) {
@@ -285,9 +265,27 @@ func (o *UserFile) GetOrganizationUserDataSourceIdOk() (*int32, bool) {
 	return o.OrganizationUserDataSourceId.Get(), o.OrganizationUserDataSourceId.IsSet()
 }
 
-// SetOrganizationUserDataSourceId sets field value
+// HasOrganizationUserDataSourceId returns a boolean if a field has been set.
+func (o *UserFile) HasOrganizationUserDataSourceId() bool {
+	if o != nil && o.OrganizationUserDataSourceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationUserDataSourceId gets a reference to the given NullableInt32 and assigns it to the OrganizationUserDataSourceId field.
 func (o *UserFile) SetOrganizationUserDataSourceId(v int32) {
 	o.OrganizationUserDataSourceId.Set(&v)
+}
+// SetOrganizationUserDataSourceIdNil sets the value for OrganizationUserDataSourceId to be an explicit nil
+func (o *UserFile) SetOrganizationUserDataSourceIdNil() {
+	o.OrganizationUserDataSourceId.Set(nil)
+}
+
+// UnsetOrganizationUserDataSourceId ensures that no value is present for OrganizationUserDataSourceId, not even an explicit nil
+func (o *UserFile) UnsetOrganizationUserDataSourceId() {
+	o.OrganizationUserDataSourceId.Unset()
 }
 
 // GetExternalFileId returns the ExternalFileId field value
@@ -314,18 +312,16 @@ func (o *UserFile) SetExternalFileId(v string) {
 	o.ExternalFileId = v
 }
 
-// GetExternalUrl returns the ExternalUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetExternalUrl returns the ExternalUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetExternalUrl() string {
-	if o == nil || o.ExternalUrl.Get() == nil {
+	if o == nil || isNil(o.ExternalUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.ExternalUrl.Get()
 }
 
-// GetExternalUrlOk returns a tuple with the ExternalUrl field value
+// GetExternalUrlOk returns a tuple with the ExternalUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetExternalUrlOk() (*string, bool) {
@@ -335,9 +331,27 @@ func (o *UserFile) GetExternalUrlOk() (*string, bool) {
 	return o.ExternalUrl.Get(), o.ExternalUrl.IsSet()
 }
 
-// SetExternalUrl sets field value
+// HasExternalUrl returns a boolean if a field has been set.
+func (o *UserFile) HasExternalUrl() bool {
+	if o != nil && o.ExternalUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalUrl gets a reference to the given NullableString and assigns it to the ExternalUrl field.
 func (o *UserFile) SetExternalUrl(v string) {
 	o.ExternalUrl.Set(&v)
+}
+// SetExternalUrlNil sets the value for ExternalUrl to be an explicit nil
+func (o *UserFile) SetExternalUrlNil() {
+	o.ExternalUrl.Set(nil)
+}
+
+// UnsetExternalUrl ensures that no value is present for ExternalUrl, not even an explicit nil
+func (o *UserFile) UnsetExternalUrl() {
+	o.ExternalUrl.Unset()
 }
 
 // GetSyncStatus returns the SyncStatus field value
@@ -364,18 +378,16 @@ func (o *UserFile) SetSyncStatus(v ExternalFileSyncStatuses) {
 	o.SyncStatus = v
 }
 
-// GetSyncErrorMessage returns the SyncErrorMessage field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetSyncErrorMessage returns the SyncErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetSyncErrorMessage() string {
-	if o == nil || o.SyncErrorMessage.Get() == nil {
+	if o == nil || isNil(o.SyncErrorMessage.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.SyncErrorMessage.Get()
 }
 
-// GetSyncErrorMessageOk returns a tuple with the SyncErrorMessage field value
+// GetSyncErrorMessageOk returns a tuple with the SyncErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetSyncErrorMessageOk() (*string, bool) {
@@ -385,23 +397,39 @@ func (o *UserFile) GetSyncErrorMessageOk() (*string, bool) {
 	return o.SyncErrorMessage.Get(), o.SyncErrorMessage.IsSet()
 }
 
-// SetSyncErrorMessage sets field value
+// HasSyncErrorMessage returns a boolean if a field has been set.
+func (o *UserFile) HasSyncErrorMessage() bool {
+	if o != nil && o.SyncErrorMessage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncErrorMessage gets a reference to the given NullableString and assigns it to the SyncErrorMessage field.
 func (o *UserFile) SetSyncErrorMessage(v string) {
 	o.SyncErrorMessage.Set(&v)
 }
+// SetSyncErrorMessageNil sets the value for SyncErrorMessage to be an explicit nil
+func (o *UserFile) SetSyncErrorMessageNil() {
+	o.SyncErrorMessage.Set(nil)
+}
 
-// GetLastSync returns the LastSync field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// UnsetSyncErrorMessage ensures that no value is present for SyncErrorMessage, not even an explicit nil
+func (o *UserFile) UnsetSyncErrorMessage() {
+	o.SyncErrorMessage.Unset()
+}
+
+// GetLastSync returns the LastSync field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetLastSync() time.Time {
-	if o == nil || o.LastSync.Get() == nil {
+	if o == nil || isNil(o.LastSync.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.LastSync.Get()
 }
 
-// GetLastSyncOk returns a tuple with the LastSync field value
+// GetLastSyncOk returns a tuple with the LastSync field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetLastSyncOk() (*time.Time, bool) {
@@ -411,23 +439,39 @@ func (o *UserFile) GetLastSyncOk() (*time.Time, bool) {
 	return o.LastSync.Get(), o.LastSync.IsSet()
 }
 
-// SetLastSync sets field value
+// HasLastSync returns a boolean if a field has been set.
+func (o *UserFile) HasLastSync() bool {
+	if o != nil && o.LastSync.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSync gets a reference to the given NullableTime and assigns it to the LastSync field.
 func (o *UserFile) SetLastSync(v time.Time) {
 	o.LastSync.Set(&v)
 }
+// SetLastSyncNil sets the value for LastSync to be an explicit nil
+func (o *UserFile) SetLastSyncNil() {
+	o.LastSync.Set(nil)
+}
 
-// GetFileStatistics returns the FileStatistics field value
-// If the value is explicit nil, the zero value for FileStatisticsNullable will be returned
+// UnsetLastSync ensures that no value is present for LastSync, not even an explicit nil
+func (o *UserFile) UnsetLastSync() {
+	o.LastSync.Unset()
+}
+
+// GetFileStatistics returns the FileStatistics field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetFileStatistics() FileStatisticsNullable {
-	if o == nil || o.FileStatistics.Get() == nil {
+	if o == nil || isNil(o.FileStatistics.Get()) {
 		var ret FileStatisticsNullable
 		return ret
 	}
-
 	return *o.FileStatistics.Get()
 }
 
-// GetFileStatisticsOk returns a tuple with the FileStatistics field value
+// GetFileStatisticsOk returns a tuple with the FileStatistics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetFileStatisticsOk() (*FileStatisticsNullable, bool) {
@@ -437,23 +481,39 @@ func (o *UserFile) GetFileStatisticsOk() (*FileStatisticsNullable, bool) {
 	return o.FileStatistics.Get(), o.FileStatistics.IsSet()
 }
 
-// SetFileStatistics sets field value
+// HasFileStatistics returns a boolean if a field has been set.
+func (o *UserFile) HasFileStatistics() bool {
+	if o != nil && o.FileStatistics.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileStatistics gets a reference to the given NullableFileStatisticsNullable and assigns it to the FileStatistics field.
 func (o *UserFile) SetFileStatistics(v FileStatisticsNullable) {
 	o.FileStatistics.Set(&v)
 }
+// SetFileStatisticsNil sets the value for FileStatistics to be an explicit nil
+func (o *UserFile) SetFileStatisticsNil() {
+	o.FileStatistics.Set(nil)
+}
 
-// GetFileMetadata returns the FileMetadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// UnsetFileStatistics ensures that no value is present for FileStatistics, not even an explicit nil
+func (o *UserFile) UnsetFileStatistics() {
+	o.FileStatistics.Unset()
+}
+
+// GetFileMetadata returns the FileMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetFileMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.FileMetadata
 }
 
-// GetFileMetadataOk returns a tuple with the FileMetadata field value
+// GetFileMetadataOk returns a tuple with the FileMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetFileMetadataOk() (map[string]interface{}, bool) {
@@ -463,23 +523,30 @@ func (o *UserFile) GetFileMetadataOk() (map[string]interface{}, bool) {
 	return o.FileMetadata, true
 }
 
-// SetFileMetadata sets field value
+// HasFileMetadata returns a boolean if a field has been set.
+func (o *UserFile) HasFileMetadata() bool {
+	if o != nil && isNil(o.FileMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileMetadata gets a reference to the given map[string]interface{} and assigns it to the FileMetadata field.
 func (o *UserFile) SetFileMetadata(v map[string]interface{}) {
 	o.FileMetadata = v
 }
 
-// GetEmbeddingProperties returns the EmbeddingProperties field value
-// If the value is explicit nil, the zero value for map[string]EmbeddingProperties will be returned
+// GetEmbeddingProperties returns the EmbeddingProperties field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetEmbeddingProperties() map[string]EmbeddingProperties {
 	if o == nil {
 		var ret map[string]EmbeddingProperties
 		return ret
 	}
-
 	return o.EmbeddingProperties
 }
 
-// GetEmbeddingPropertiesOk returns a tuple with the EmbeddingProperties field value
+// GetEmbeddingPropertiesOk returns a tuple with the EmbeddingProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetEmbeddingPropertiesOk() (*map[string]EmbeddingProperties, bool) {
@@ -489,23 +556,30 @@ func (o *UserFile) GetEmbeddingPropertiesOk() (*map[string]EmbeddingProperties, 
 	return &o.EmbeddingProperties, true
 }
 
-// SetEmbeddingProperties sets field value
+// HasEmbeddingProperties returns a boolean if a field has been set.
+func (o *UserFile) HasEmbeddingProperties() bool {
+	if o != nil && isNil(o.EmbeddingProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbeddingProperties gets a reference to the given map[string]EmbeddingProperties and assigns it to the EmbeddingProperties field.
 func (o *UserFile) SetEmbeddingProperties(v map[string]EmbeddingProperties) {
 	o.EmbeddingProperties = v
 }
 
-// GetChunkSize returns the ChunkSize field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetChunkSize returns the ChunkSize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetChunkSize() int32 {
-	if o == nil || o.ChunkSize.Get() == nil {
+	if o == nil || isNil(o.ChunkSize.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ChunkSize.Get()
 }
 
-// GetChunkSizeOk returns a tuple with the ChunkSize field value
+// GetChunkSizeOk returns a tuple with the ChunkSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetChunkSizeOk() (*int32, bool) {
@@ -515,23 +589,39 @@ func (o *UserFile) GetChunkSizeOk() (*int32, bool) {
 	return o.ChunkSize.Get(), o.ChunkSize.IsSet()
 }
 
-// SetChunkSize sets field value
+// HasChunkSize returns a boolean if a field has been set.
+func (o *UserFile) HasChunkSize() bool {
+	if o != nil && o.ChunkSize.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkSize gets a reference to the given NullableInt32 and assigns it to the ChunkSize field.
 func (o *UserFile) SetChunkSize(v int32) {
 	o.ChunkSize.Set(&v)
 }
+// SetChunkSizeNil sets the value for ChunkSize to be an explicit nil
+func (o *UserFile) SetChunkSizeNil() {
+	o.ChunkSize.Set(nil)
+}
 
-// GetChunkOverlap returns the ChunkOverlap field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetChunkSize ensures that no value is present for ChunkSize, not even an explicit nil
+func (o *UserFile) UnsetChunkSize() {
+	o.ChunkSize.Unset()
+}
+
+// GetChunkOverlap returns the ChunkOverlap field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetChunkOverlap() int32 {
-	if o == nil || o.ChunkOverlap.Get() == nil {
+	if o == nil || isNil(o.ChunkOverlap.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ChunkOverlap.Get()
 }
 
-// GetChunkOverlapOk returns a tuple with the ChunkOverlap field value
+// GetChunkOverlapOk returns a tuple with the ChunkOverlap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetChunkOverlapOk() (*int32, bool) {
@@ -541,23 +631,39 @@ func (o *UserFile) GetChunkOverlapOk() (*int32, bool) {
 	return o.ChunkOverlap.Get(), o.ChunkOverlap.IsSet()
 }
 
-// SetChunkOverlap sets field value
+// HasChunkOverlap returns a boolean if a field has been set.
+func (o *UserFile) HasChunkOverlap() bool {
+	if o != nil && o.ChunkOverlap.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkOverlap gets a reference to the given NullableInt32 and assigns it to the ChunkOverlap field.
 func (o *UserFile) SetChunkOverlap(v int32) {
 	o.ChunkOverlap.Set(&v)
 }
+// SetChunkOverlapNil sets the value for ChunkOverlap to be an explicit nil
+func (o *UserFile) SetChunkOverlapNil() {
+	o.ChunkOverlap.Set(nil)
+}
 
-// GetChunkProperties returns the ChunkProperties field value
-// If the value is explicit nil, the zero value for ChunkPropertiesNullable will be returned
+// UnsetChunkOverlap ensures that no value is present for ChunkOverlap, not even an explicit nil
+func (o *UserFile) UnsetChunkOverlap() {
+	o.ChunkOverlap.Unset()
+}
+
+// GetChunkProperties returns the ChunkProperties field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetChunkProperties() ChunkPropertiesNullable {
-	if o == nil || o.ChunkProperties.Get() == nil {
+	if o == nil || isNil(o.ChunkProperties.Get()) {
 		var ret ChunkPropertiesNullable
 		return ret
 	}
-
 	return *o.ChunkProperties.Get()
 }
 
-// GetChunkPropertiesOk returns a tuple with the ChunkProperties field value
+// GetChunkPropertiesOk returns a tuple with the ChunkProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetChunkPropertiesOk() (*ChunkPropertiesNullable, bool) {
@@ -567,47 +673,71 @@ func (o *UserFile) GetChunkPropertiesOk() (*ChunkPropertiesNullable, bool) {
 	return o.ChunkProperties.Get(), o.ChunkProperties.IsSet()
 }
 
-// SetChunkProperties sets field value
+// HasChunkProperties returns a boolean if a field has been set.
+func (o *UserFile) HasChunkProperties() bool {
+	if o != nil && o.ChunkProperties.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkProperties gets a reference to the given NullableChunkPropertiesNullable and assigns it to the ChunkProperties field.
 func (o *UserFile) SetChunkProperties(v ChunkPropertiesNullable) {
 	o.ChunkProperties.Set(&v)
 }
+// SetChunkPropertiesNil sets the value for ChunkProperties to be an explicit nil
+func (o *UserFile) SetChunkPropertiesNil() {
+	o.ChunkProperties.Set(nil)
+}
 
-// GetOcrProperties returns the OcrProperties field value
+// UnsetChunkProperties ensures that no value is present for ChunkProperties, not even an explicit nil
+func (o *UserFile) UnsetChunkProperties() {
+	o.ChunkProperties.Unset()
+}
+
+// GetOcrProperties returns the OcrProperties field value if set, zero value otherwise.
 func (o *UserFile) GetOcrProperties() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.OcrProperties) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.OcrProperties
 }
 
-// GetOcrPropertiesOk returns a tuple with the OcrProperties field value
+// GetOcrPropertiesOk returns a tuple with the OcrProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserFile) GetOcrPropertiesOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.OcrProperties) {
     return map[string]interface{}{}, false
 	}
 	return o.OcrProperties, true
 }
 
-// SetOcrProperties sets field value
+// HasOcrProperties returns a boolean if a field has been set.
+func (o *UserFile) HasOcrProperties() bool {
+	if o != nil && !isNil(o.OcrProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetOcrProperties gets a reference to the given map[string]interface{} and assigns it to the OcrProperties field.
 func (o *UserFile) SetOcrProperties(v map[string]interface{}) {
 	o.OcrProperties = v
 }
 
-// GetOcrJobStartedAt returns the OcrJobStartedAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetOcrJobStartedAt returns the OcrJobStartedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetOcrJobStartedAt() time.Time {
-	if o == nil || o.OcrJobStartedAt.Get() == nil {
+	if o == nil || isNil(o.OcrJobStartedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.OcrJobStartedAt.Get()
 }
 
-// GetOcrJobStartedAtOk returns a tuple with the OcrJobStartedAt field value
+// GetOcrJobStartedAtOk returns a tuple with the OcrJobStartedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetOcrJobStartedAtOk() (*time.Time, bool) {
@@ -617,23 +747,39 @@ func (o *UserFile) GetOcrJobStartedAtOk() (*time.Time, bool) {
 	return o.OcrJobStartedAt.Get(), o.OcrJobStartedAt.IsSet()
 }
 
-// SetOcrJobStartedAt sets field value
+// HasOcrJobStartedAt returns a boolean if a field has been set.
+func (o *UserFile) HasOcrJobStartedAt() bool {
+	if o != nil && o.OcrJobStartedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOcrJobStartedAt gets a reference to the given NullableTime and assigns it to the OcrJobStartedAt field.
 func (o *UserFile) SetOcrJobStartedAt(v time.Time) {
 	o.OcrJobStartedAt.Set(&v)
 }
+// SetOcrJobStartedAtNil sets the value for OcrJobStartedAt to be an explicit nil
+func (o *UserFile) SetOcrJobStartedAtNil() {
+	o.OcrJobStartedAt.Set(nil)
+}
 
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetOcrJobStartedAt ensures that no value is present for OcrJobStartedAt, not even an explicit nil
+func (o *UserFile) UnsetOcrJobStartedAt() {
+	o.OcrJobStartedAt.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetNameOk() (*string, bool) {
@@ -643,23 +789,39 @@ func (o *UserFile) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UserFile) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *UserFile) SetName(v string) {
 	o.Name.Set(&v)
 }
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *UserFile) SetNameNil() {
+	o.Name.Set(nil)
+}
 
-// GetParentId returns the ParentId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *UserFile) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetParentId() int32 {
-	if o == nil || o.ParentId.Get() == nil {
+	if o == nil || isNil(o.ParentId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ParentId.Get()
 }
 
-// GetParentIdOk returns a tuple with the ParentId field value
+// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetParentIdOk() (*int32, bool) {
@@ -669,23 +831,39 @@ func (o *UserFile) GetParentIdOk() (*int32, bool) {
 	return o.ParentId.Get(), o.ParentId.IsSet()
 }
 
-// SetParentId sets field value
+// HasParentId returns a boolean if a field has been set.
+func (o *UserFile) HasParentId() bool {
+	if o != nil && o.ParentId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParentId gets a reference to the given NullableInt32 and assigns it to the ParentId field.
 func (o *UserFile) SetParentId(v int32) {
 	o.ParentId.Set(&v)
 }
+// SetParentIdNil sets the value for ParentId to be an explicit nil
+func (o *UserFile) SetParentIdNil() {
+	o.ParentId.Set(nil)
+}
 
-// GetEnableAutoSync returns the EnableAutoSync field value
-// If the value is explicit nil, the zero value for bool will be returned
+// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
+func (o *UserFile) UnsetParentId() {
+	o.ParentId.Unset()
+}
+
+// GetEnableAutoSync returns the EnableAutoSync field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetEnableAutoSync() bool {
-	if o == nil || o.EnableAutoSync.Get() == nil {
+	if o == nil || isNil(o.EnableAutoSync.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.EnableAutoSync.Get()
 }
 
-// GetEnableAutoSyncOk returns a tuple with the EnableAutoSync field value
+// GetEnableAutoSyncOk returns a tuple with the EnableAutoSync field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetEnableAutoSyncOk() (*bool, bool) {
@@ -695,23 +873,39 @@ func (o *UserFile) GetEnableAutoSyncOk() (*bool, bool) {
 	return o.EnableAutoSync.Get(), o.EnableAutoSync.IsSet()
 }
 
-// SetEnableAutoSync sets field value
+// HasEnableAutoSync returns a boolean if a field has been set.
+func (o *UserFile) HasEnableAutoSync() bool {
+	if o != nil && o.EnableAutoSync.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAutoSync gets a reference to the given NullableBool and assigns it to the EnableAutoSync field.
 func (o *UserFile) SetEnableAutoSync(v bool) {
 	o.EnableAutoSync.Set(&v)
 }
+// SetEnableAutoSyncNil sets the value for EnableAutoSync to be an explicit nil
+func (o *UserFile) SetEnableAutoSyncNil() {
+	o.EnableAutoSync.Set(nil)
+}
 
-// GetPresignedUrl returns the PresignedUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetEnableAutoSync ensures that no value is present for EnableAutoSync, not even an explicit nil
+func (o *UserFile) UnsetEnableAutoSync() {
+	o.EnableAutoSync.Unset()
+}
+
+// GetPresignedUrl returns the PresignedUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetPresignedUrl() string {
-	if o == nil || o.PresignedUrl.Get() == nil {
+	if o == nil || isNil(o.PresignedUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.PresignedUrl.Get()
 }
 
-// GetPresignedUrlOk returns a tuple with the PresignedUrl field value
+// GetPresignedUrlOk returns a tuple with the PresignedUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetPresignedUrlOk() (*string, bool) {
@@ -721,23 +915,39 @@ func (o *UserFile) GetPresignedUrlOk() (*string, bool) {
 	return o.PresignedUrl.Get(), o.PresignedUrl.IsSet()
 }
 
-// SetPresignedUrl sets field value
+// HasPresignedUrl returns a boolean if a field has been set.
+func (o *UserFile) HasPresignedUrl() bool {
+	if o != nil && o.PresignedUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPresignedUrl gets a reference to the given NullableString and assigns it to the PresignedUrl field.
 func (o *UserFile) SetPresignedUrl(v string) {
 	o.PresignedUrl.Set(&v)
 }
+// SetPresignedUrlNil sets the value for PresignedUrl to be an explicit nil
+func (o *UserFile) SetPresignedUrlNil() {
+	o.PresignedUrl.Set(nil)
+}
 
-// GetParsedTextUrl returns the ParsedTextUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetPresignedUrl ensures that no value is present for PresignedUrl, not even an explicit nil
+func (o *UserFile) UnsetPresignedUrl() {
+	o.PresignedUrl.Unset()
+}
+
+// GetParsedTextUrl returns the ParsedTextUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetParsedTextUrl() string {
-	if o == nil || o.ParsedTextUrl.Get() == nil {
+	if o == nil || isNil(o.ParsedTextUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.ParsedTextUrl.Get()
 }
 
-// GetParsedTextUrlOk returns a tuple with the ParsedTextUrl field value
+// GetParsedTextUrlOk returns a tuple with the ParsedTextUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetParsedTextUrlOk() (*string, bool) {
@@ -747,23 +957,39 @@ func (o *UserFile) GetParsedTextUrlOk() (*string, bool) {
 	return o.ParsedTextUrl.Get(), o.ParsedTextUrl.IsSet()
 }
 
-// SetParsedTextUrl sets field value
+// HasParsedTextUrl returns a boolean if a field has been set.
+func (o *UserFile) HasParsedTextUrl() bool {
+	if o != nil && o.ParsedTextUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParsedTextUrl gets a reference to the given NullableString and assigns it to the ParsedTextUrl field.
 func (o *UserFile) SetParsedTextUrl(v string) {
 	o.ParsedTextUrl.Set(&v)
 }
+// SetParsedTextUrlNil sets the value for ParsedTextUrl to be an explicit nil
+func (o *UserFile) SetParsedTextUrlNil() {
+	o.ParsedTextUrl.Set(nil)
+}
 
-// GetAdditionalPresignedUrls returns the AdditionalPresignedUrls field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// UnsetParsedTextUrl ensures that no value is present for ParsedTextUrl, not even an explicit nil
+func (o *UserFile) UnsetParsedTextUrl() {
+	o.ParsedTextUrl.Unset()
+}
+
+// GetAdditionalPresignedUrls returns the AdditionalPresignedUrls field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetAdditionalPresignedUrls() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.AdditionalPresignedUrls
 }
 
-// GetAdditionalPresignedUrlsOk returns a tuple with the AdditionalPresignedUrls field value
+// GetAdditionalPresignedUrlsOk returns a tuple with the AdditionalPresignedUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetAdditionalPresignedUrlsOk() (map[string]interface{}, bool) {
@@ -773,7 +999,16 @@ func (o *UserFile) GetAdditionalPresignedUrlsOk() (map[string]interface{}, bool)
 	return o.AdditionalPresignedUrls, true
 }
 
-// SetAdditionalPresignedUrls sets field value
+// HasAdditionalPresignedUrls returns a boolean if a field has been set.
+func (o *UserFile) HasAdditionalPresignedUrls() bool {
+	if o != nil && isNil(o.AdditionalPresignedUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalPresignedUrls gets a reference to the given map[string]interface{} and assigns it to the AdditionalPresignedUrls field.
 func (o *UserFile) SetAdditionalPresignedUrls(v map[string]interface{}) {
 	o.AdditionalPresignedUrls = v
 }
@@ -802,18 +1037,16 @@ func (o *UserFile) SetSkipEmbeddingGeneration(v bool) {
 	o.SkipEmbeddingGeneration = v
 }
 
-// GetSourceCreatedAt returns the SourceCreatedAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetSourceCreatedAt returns the SourceCreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetSourceCreatedAt() time.Time {
-	if o == nil || o.SourceCreatedAt.Get() == nil {
+	if o == nil || isNil(o.SourceCreatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.SourceCreatedAt.Get()
 }
 
-// GetSourceCreatedAtOk returns a tuple with the SourceCreatedAt field value
+// GetSourceCreatedAtOk returns a tuple with the SourceCreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetSourceCreatedAtOk() (*time.Time, bool) {
@@ -823,23 +1056,39 @@ func (o *UserFile) GetSourceCreatedAtOk() (*time.Time, bool) {
 	return o.SourceCreatedAt.Get(), o.SourceCreatedAt.IsSet()
 }
 
-// SetSourceCreatedAt sets field value
+// HasSourceCreatedAt returns a boolean if a field has been set.
+func (o *UserFile) HasSourceCreatedAt() bool {
+	if o != nil && o.SourceCreatedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceCreatedAt gets a reference to the given NullableTime and assigns it to the SourceCreatedAt field.
 func (o *UserFile) SetSourceCreatedAt(v time.Time) {
 	o.SourceCreatedAt.Set(&v)
 }
+// SetSourceCreatedAtNil sets the value for SourceCreatedAt to be an explicit nil
+func (o *UserFile) SetSourceCreatedAtNil() {
+	o.SourceCreatedAt.Set(nil)
+}
 
-// GetGenerateSparseVectors returns the GenerateSparseVectors field value
-// If the value is explicit nil, the zero value for bool will be returned
+// UnsetSourceCreatedAt ensures that no value is present for SourceCreatedAt, not even an explicit nil
+func (o *UserFile) UnsetSourceCreatedAt() {
+	o.SourceCreatedAt.Unset()
+}
+
+// GetGenerateSparseVectors returns the GenerateSparseVectors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetGenerateSparseVectors() bool {
-	if o == nil || o.GenerateSparseVectors.Get() == nil {
+	if o == nil || isNil(o.GenerateSparseVectors.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.GenerateSparseVectors.Get()
 }
 
-// GetGenerateSparseVectorsOk returns a tuple with the GenerateSparseVectors field value
+// GetGenerateSparseVectorsOk returns a tuple with the GenerateSparseVectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetGenerateSparseVectorsOk() (*bool, bool) {
@@ -849,23 +1098,39 @@ func (o *UserFile) GetGenerateSparseVectorsOk() (*bool, bool) {
 	return o.GenerateSparseVectors.Get(), o.GenerateSparseVectors.IsSet()
 }
 
-// SetGenerateSparseVectors sets field value
+// HasGenerateSparseVectors returns a boolean if a field has been set.
+func (o *UserFile) HasGenerateSparseVectors() bool {
+	if o != nil && o.GenerateSparseVectors.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateSparseVectors gets a reference to the given NullableBool and assigns it to the GenerateSparseVectors field.
 func (o *UserFile) SetGenerateSparseVectors(v bool) {
 	o.GenerateSparseVectors.Set(&v)
 }
+// SetGenerateSparseVectorsNil sets the value for GenerateSparseVectors to be an explicit nil
+func (o *UserFile) SetGenerateSparseVectorsNil() {
+	o.GenerateSparseVectors.Set(nil)
+}
 
-// GetRequestId returns the RequestId field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetGenerateSparseVectors ensures that no value is present for GenerateSparseVectors, not even an explicit nil
+func (o *UserFile) UnsetGenerateSparseVectors() {
+	o.GenerateSparseVectors.Unset()
+}
+
+// GetRequestId returns the RequestId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetRequestId() string {
-	if o == nil || o.RequestId.Get() == nil {
+	if o == nil || isNil(o.RequestId.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.RequestId.Get()
 }
 
-// GetRequestIdOk returns a tuple with the RequestId field value
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetRequestIdOk() (*string, bool) {
@@ -875,23 +1140,39 @@ func (o *UserFile) GetRequestIdOk() (*string, bool) {
 	return o.RequestId.Get(), o.RequestId.IsSet()
 }
 
-// SetRequestId sets field value
+// HasRequestId returns a boolean if a field has been set.
+func (o *UserFile) HasRequestId() bool {
+	if o != nil && o.RequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given NullableString and assigns it to the RequestId field.
 func (o *UserFile) SetRequestId(v string) {
 	o.RequestId.Set(&v)
 }
+// SetRequestIdNil sets the value for RequestId to be an explicit nil
+func (o *UserFile) SetRequestIdNil() {
+	o.RequestId.Set(nil)
+}
 
-// GetUploadId returns the UploadId field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetRequestId ensures that no value is present for RequestId, not even an explicit nil
+func (o *UserFile) UnsetRequestId() {
+	o.RequestId.Unset()
+}
+
+// GetUploadId returns the UploadId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetUploadId() string {
-	if o == nil || o.UploadId.Get() == nil {
+	if o == nil || isNil(o.UploadId.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.UploadId.Get()
 }
 
-// GetUploadIdOk returns a tuple with the UploadId field value
+// GetUploadIdOk returns a tuple with the UploadId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetUploadIdOk() (*string, bool) {
@@ -901,81 +1182,123 @@ func (o *UserFile) GetUploadIdOk() (*string, bool) {
 	return o.UploadId.Get(), o.UploadId.IsSet()
 }
 
-// SetUploadId sets field value
+// HasUploadId returns a boolean if a field has been set.
+func (o *UserFile) HasUploadId() bool {
+	if o != nil && o.UploadId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUploadId gets a reference to the given NullableString and assigns it to the UploadId field.
 func (o *UserFile) SetUploadId(v string) {
 	o.UploadId.Set(&v)
 }
+// SetUploadIdNil sets the value for UploadId to be an explicit nil
+func (o *UserFile) SetUploadIdNil() {
+	o.UploadId.Set(nil)
+}
 
-// GetSyncProperties returns the SyncProperties field value
+// UnsetUploadId ensures that no value is present for UploadId, not even an explicit nil
+func (o *UserFile) UnsetUploadId() {
+	o.UploadId.Unset()
+}
+
+// GetSyncProperties returns the SyncProperties field value if set, zero value otherwise.
 func (o *UserFile) GetSyncProperties() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.SyncProperties) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.SyncProperties
 }
 
-// GetSyncPropertiesOk returns a tuple with the SyncProperties field value
+// GetSyncPropertiesOk returns a tuple with the SyncProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserFile) GetSyncPropertiesOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.SyncProperties) {
     return map[string]interface{}{}, false
 	}
 	return o.SyncProperties, true
 }
 
-// SetSyncProperties sets field value
+// HasSyncProperties returns a boolean if a field has been set.
+func (o *UserFile) HasSyncProperties() bool {
+	if o != nil && !isNil(o.SyncProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncProperties gets a reference to the given map[string]interface{} and assigns it to the SyncProperties field.
 func (o *UserFile) SetSyncProperties(v map[string]interface{}) {
 	o.SyncProperties = v
 }
 
-// GetMessagesMetadata returns the MessagesMetadata field value
+// GetMessagesMetadata returns the MessagesMetadata field value if set, zero value otherwise.
 func (o *UserFile) GetMessagesMetadata() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.MessagesMetadata) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.MessagesMetadata
 }
 
-// GetMessagesMetadataOk returns a tuple with the MessagesMetadata field value
+// GetMessagesMetadataOk returns a tuple with the MessagesMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserFile) GetMessagesMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.MessagesMetadata) {
     return map[string]interface{}{}, false
 	}
 	return o.MessagesMetadata, true
 }
 
-// SetMessagesMetadata sets field value
+// HasMessagesMetadata returns a boolean if a field has been set.
+func (o *UserFile) HasMessagesMetadata() bool {
+	if o != nil && !isNil(o.MessagesMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessagesMetadata gets a reference to the given map[string]interface{} and assigns it to the MessagesMetadata field.
 func (o *UserFile) SetMessagesMetadata(v map[string]interface{}) {
 	o.MessagesMetadata = v
 }
 
-// GetFileContentsDeleted returns the FileContentsDeleted field value
+// GetFileContentsDeleted returns the FileContentsDeleted field value if set, zero value otherwise.
 func (o *UserFile) GetFileContentsDeleted() bool {
-	if o == nil {
+	if o == nil || isNil(o.FileContentsDeleted) {
 		var ret bool
 		return ret
 	}
-
-	return o.FileContentsDeleted
+	return *o.FileContentsDeleted
 }
 
-// GetFileContentsDeletedOk returns a tuple with the FileContentsDeleted field value
+// GetFileContentsDeletedOk returns a tuple with the FileContentsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserFile) GetFileContentsDeletedOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.FileContentsDeleted) {
     return nil, false
 	}
-	return &o.FileContentsDeleted, true
+	return o.FileContentsDeleted, true
 }
 
-// SetFileContentsDeleted sets field value
+// HasFileContentsDeleted returns a boolean if a field has been set.
+func (o *UserFile) HasFileContentsDeleted() bool {
+	if o != nil && !isNil(o.FileContentsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileContentsDeleted gets a reference to the given bool and assigns it to the FileContentsDeleted field.
 func (o *UserFile) SetFileContentsDeleted(v bool) {
-	o.FileContentsDeleted = v
+	o.FileContentsDeleted = &v
 }
 
 // GetSupportsColdStorage returns the SupportsColdStorage field value
@@ -1002,18 +1325,16 @@ func (o *UserFile) SetSupportsColdStorage(v bool) {
 	o.SupportsColdStorage = v
 }
 
-// GetHotStorageTimeToLive returns the HotStorageTimeToLive field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetHotStorageTimeToLive returns the HotStorageTimeToLive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserFile) GetHotStorageTimeToLive() int32 {
-	if o == nil || o.HotStorageTimeToLive.Get() == nil {
+	if o == nil || isNil(o.HotStorageTimeToLive.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.HotStorageTimeToLive.Get()
 }
 
-// GetHotStorageTimeToLiveOk returns a tuple with the HotStorageTimeToLive field value
+// GetHotStorageTimeToLiveOk returns a tuple with the HotStorageTimeToLive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserFile) GetHotStorageTimeToLiveOk() (*int32, bool) {
@@ -1023,9 +1344,27 @@ func (o *UserFile) GetHotStorageTimeToLiveOk() (*int32, bool) {
 	return o.HotStorageTimeToLive.Get(), o.HotStorageTimeToLive.IsSet()
 }
 
-// SetHotStorageTimeToLive sets field value
+// HasHotStorageTimeToLive returns a boolean if a field has been set.
+func (o *UserFile) HasHotStorageTimeToLive() bool {
+	if o != nil && o.HotStorageTimeToLive.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHotStorageTimeToLive gets a reference to the given NullableInt32 and assigns it to the HotStorageTimeToLive field.
 func (o *UserFile) SetHotStorageTimeToLive(v int32) {
 	o.HotStorageTimeToLive.Set(&v)
+}
+// SetHotStorageTimeToLiveNil sets the value for HotStorageTimeToLive to be an explicit nil
+func (o *UserFile) SetHotStorageTimeToLiveNil() {
+	o.HotStorageTimeToLive.Set(nil)
+}
+
+// UnsetHotStorageTimeToLive ensures that no value is present for HotStorageTimeToLive, not even an explicit nil
+func (o *UserFile) UnsetHotStorageTimeToLive() {
+	o.HotStorageTimeToLive.Unset()
 }
 
 // GetEmbeddingStorageStatus returns the EmbeddingStorageStatus field value
@@ -1120,25 +1459,25 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["organization_supplied_user_id"] = o.OrganizationSuppliedUserId
 	}
-	if true {
+	if o.OrganizationUserDataSourceId.IsSet() {
 		toSerialize["organization_user_data_source_id"] = o.OrganizationUserDataSourceId.Get()
 	}
 	if true {
 		toSerialize["external_file_id"] = o.ExternalFileId
 	}
-	if true {
+	if o.ExternalUrl.IsSet() {
 		toSerialize["external_url"] = o.ExternalUrl.Get()
 	}
 	if true {
 		toSerialize["sync_status"] = o.SyncStatus
 	}
-	if true {
+	if o.SyncErrorMessage.IsSet() {
 		toSerialize["sync_error_message"] = o.SyncErrorMessage.Get()
 	}
-	if true {
+	if o.LastSync.IsSet() {
 		toSerialize["last_sync"] = o.LastSync.Get()
 	}
-	if true {
+	if o.FileStatistics.IsSet() {
 		toSerialize["file_statistics"] = o.FileStatistics.Get()
 	}
 	if o.FileMetadata != nil {
@@ -1147,34 +1486,34 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	if o.EmbeddingProperties != nil {
 		toSerialize["embedding_properties"] = o.EmbeddingProperties
 	}
-	if true {
+	if o.ChunkSize.IsSet() {
 		toSerialize["chunk_size"] = o.ChunkSize.Get()
 	}
-	if true {
+	if o.ChunkOverlap.IsSet() {
 		toSerialize["chunk_overlap"] = o.ChunkOverlap.Get()
 	}
-	if true {
+	if o.ChunkProperties.IsSet() {
 		toSerialize["chunk_properties"] = o.ChunkProperties.Get()
 	}
-	if true {
+	if !isNil(o.OcrProperties) {
 		toSerialize["ocr_properties"] = o.OcrProperties
 	}
-	if true {
+	if o.OcrJobStartedAt.IsSet() {
 		toSerialize["ocr_job_started_at"] = o.OcrJobStartedAt.Get()
 	}
-	if true {
+	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if true {
+	if o.ParentId.IsSet() {
 		toSerialize["parent_id"] = o.ParentId.Get()
 	}
-	if true {
+	if o.EnableAutoSync.IsSet() {
 		toSerialize["enable_auto_sync"] = o.EnableAutoSync.Get()
 	}
-	if true {
+	if o.PresignedUrl.IsSet() {
 		toSerialize["presigned_url"] = o.PresignedUrl.Get()
 	}
-	if true {
+	if o.ParsedTextUrl.IsSet() {
 		toSerialize["parsed_text_url"] = o.ParsedTextUrl.Get()
 	}
 	if o.AdditionalPresignedUrls != nil {
@@ -1183,31 +1522,31 @@ func (o UserFile) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["skip_embedding_generation"] = o.SkipEmbeddingGeneration
 	}
-	if true {
+	if o.SourceCreatedAt.IsSet() {
 		toSerialize["source_created_at"] = o.SourceCreatedAt.Get()
 	}
-	if true {
+	if o.GenerateSparseVectors.IsSet() {
 		toSerialize["generate_sparse_vectors"] = o.GenerateSparseVectors.Get()
 	}
-	if true {
+	if o.RequestId.IsSet() {
 		toSerialize["request_id"] = o.RequestId.Get()
 	}
-	if true {
+	if o.UploadId.IsSet() {
 		toSerialize["upload_id"] = o.UploadId.Get()
 	}
-	if true {
+	if !isNil(o.SyncProperties) {
 		toSerialize["sync_properties"] = o.SyncProperties
 	}
-	if true {
+	if !isNil(o.MessagesMetadata) {
 		toSerialize["messages_metadata"] = o.MessagesMetadata
 	}
-	if true {
+	if !isNil(o.FileContentsDeleted) {
 		toSerialize["file_contents_deleted"] = o.FileContentsDeleted
 	}
 	if true {
 		toSerialize["supports_cold_storage"] = o.SupportsColdStorage
 	}
-	if true {
+	if o.HotStorageTimeToLive.IsSet() {
 		toSerialize["hot_storage_time_to_live"] = o.HotStorageTimeToLive.Get()
 	}
 	if true {

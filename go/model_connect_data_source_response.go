@@ -17,17 +17,16 @@ import (
 // ConnectDataSourceResponse struct for ConnectDataSourceResponse
 type ConnectDataSourceResponse struct {
 	DataSource OrganizationUserDataSourceAPI `json:"data_source"`
-	SyncUrl NullableString `json:"sync_url"`
+	SyncUrl NullableString `json:"sync_url,omitempty"`
 }
 
 // NewConnectDataSourceResponse instantiates a new ConnectDataSourceResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectDataSourceResponse(dataSource OrganizationUserDataSourceAPI, syncUrl NullableString) *ConnectDataSourceResponse {
+func NewConnectDataSourceResponse(dataSource OrganizationUserDataSourceAPI) *ConnectDataSourceResponse {
 	this := ConnectDataSourceResponse{}
 	this.DataSource = dataSource
-	this.SyncUrl = syncUrl
 	return &this
 }
 
@@ -63,18 +62,16 @@ func (o *ConnectDataSourceResponse) SetDataSource(v OrganizationUserDataSourceAP
 	o.DataSource = v
 }
 
-// GetSyncUrl returns the SyncUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetSyncUrl returns the SyncUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectDataSourceResponse) GetSyncUrl() string {
-	if o == nil || o.SyncUrl.Get() == nil {
+	if o == nil || isNil(o.SyncUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.SyncUrl.Get()
 }
 
-// GetSyncUrlOk returns a tuple with the SyncUrl field value
+// GetSyncUrlOk returns a tuple with the SyncUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectDataSourceResponse) GetSyncUrlOk() (*string, bool) {
@@ -84,9 +81,27 @@ func (o *ConnectDataSourceResponse) GetSyncUrlOk() (*string, bool) {
 	return o.SyncUrl.Get(), o.SyncUrl.IsSet()
 }
 
-// SetSyncUrl sets field value
+// HasSyncUrl returns a boolean if a field has been set.
+func (o *ConnectDataSourceResponse) HasSyncUrl() bool {
+	if o != nil && o.SyncUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncUrl gets a reference to the given NullableString and assigns it to the SyncUrl field.
 func (o *ConnectDataSourceResponse) SetSyncUrl(v string) {
 	o.SyncUrl.Set(&v)
+}
+// SetSyncUrlNil sets the value for SyncUrl to be an explicit nil
+func (o *ConnectDataSourceResponse) SetSyncUrlNil() {
+	o.SyncUrl.Set(nil)
+}
+
+// UnsetSyncUrl ensures that no value is present for SyncUrl, not even an explicit nil
+func (o *ConnectDataSourceResponse) UnsetSyncUrl() {
+	o.SyncUrl.Unset()
 }
 
 func (o ConnectDataSourceResponse) MarshalJSON() ([]byte, error) {
@@ -94,7 +109,7 @@ func (o ConnectDataSourceResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["data_source"] = o.DataSource
 	}
-	if true {
+	if o.SyncUrl.IsSet() {
 		toSerialize["sync_url"] = o.SyncUrl.Get()
 	}
 	return json.Marshal(toSerialize)

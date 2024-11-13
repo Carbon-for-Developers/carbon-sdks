@@ -17,23 +17,20 @@ import (
 // EmbeddingAndChunk struct for EmbeddingAndChunk
 type EmbeddingAndChunk struct {
 	UserFileId int32 `json:"user_file_id"`
-	ChunkIndex NullableInt32 `json:"chunk_index"`
+	ChunkIndex NullableInt32 `json:"chunk_index,omitempty"`
 	SourceContent string `json:"source_content"`
-	Embedding []float32 `json:"embedding"`
-	ContentMetadata map[string]interface{} `json:"content_metadata"`
+	Embedding []float32 `json:"embedding,omitempty"`
+	ContentMetadata map[string]interface{} `json:"content_metadata,omitempty"`
 }
 
 // NewEmbeddingAndChunk instantiates a new EmbeddingAndChunk object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32, contentMetadata map[string]interface{}) *EmbeddingAndChunk {
+func NewEmbeddingAndChunk(userFileId int32, sourceContent string) *EmbeddingAndChunk {
 	this := EmbeddingAndChunk{}
 	this.UserFileId = userFileId
-	this.ChunkIndex = chunkIndex
 	this.SourceContent = sourceContent
-	this.Embedding = embedding
-	this.ContentMetadata = contentMetadata
 	return &this
 }
 
@@ -69,18 +66,16 @@ func (o *EmbeddingAndChunk) SetUserFileId(v int32) {
 	o.UserFileId = v
 }
 
-// GetChunkIndex returns the ChunkIndex field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetChunkIndex returns the ChunkIndex field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EmbeddingAndChunk) GetChunkIndex() int32 {
-	if o == nil || o.ChunkIndex.Get() == nil {
+	if o == nil || isNil(o.ChunkIndex.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.ChunkIndex.Get()
 }
 
-// GetChunkIndexOk returns a tuple with the ChunkIndex field value
+// GetChunkIndexOk returns a tuple with the ChunkIndex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EmbeddingAndChunk) GetChunkIndexOk() (*int32, bool) {
@@ -90,9 +85,27 @@ func (o *EmbeddingAndChunk) GetChunkIndexOk() (*int32, bool) {
 	return o.ChunkIndex.Get(), o.ChunkIndex.IsSet()
 }
 
-// SetChunkIndex sets field value
+// HasChunkIndex returns a boolean if a field has been set.
+func (o *EmbeddingAndChunk) HasChunkIndex() bool {
+	if o != nil && o.ChunkIndex.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkIndex gets a reference to the given NullableInt32 and assigns it to the ChunkIndex field.
 func (o *EmbeddingAndChunk) SetChunkIndex(v int32) {
 	o.ChunkIndex.Set(&v)
+}
+// SetChunkIndexNil sets the value for ChunkIndex to be an explicit nil
+func (o *EmbeddingAndChunk) SetChunkIndexNil() {
+	o.ChunkIndex.Set(nil)
+}
+
+// UnsetChunkIndex ensures that no value is present for ChunkIndex, not even an explicit nil
+func (o *EmbeddingAndChunk) UnsetChunkIndex() {
+	o.ChunkIndex.Unset()
 }
 
 // GetSourceContent returns the SourceContent field value
@@ -119,18 +132,16 @@ func (o *EmbeddingAndChunk) SetSourceContent(v string) {
 	o.SourceContent = v
 }
 
-// GetEmbedding returns the Embedding field value
-// If the value is explicit nil, the zero value for []float32 will be returned
+// GetEmbedding returns the Embedding field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EmbeddingAndChunk) GetEmbedding() []float32 {
 	if o == nil {
 		var ret []float32
 		return ret
 	}
-
 	return o.Embedding
 }
 
-// GetEmbeddingOk returns a tuple with the Embedding field value
+// GetEmbeddingOk returns a tuple with the Embedding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EmbeddingAndChunk) GetEmbeddingOk() ([]float32, bool) {
@@ -140,23 +151,30 @@ func (o *EmbeddingAndChunk) GetEmbeddingOk() ([]float32, bool) {
 	return o.Embedding, true
 }
 
-// SetEmbedding sets field value
+// HasEmbedding returns a boolean if a field has been set.
+func (o *EmbeddingAndChunk) HasEmbedding() bool {
+	if o != nil && isNil(o.Embedding) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbedding gets a reference to the given []float32 and assigns it to the Embedding field.
 func (o *EmbeddingAndChunk) SetEmbedding(v []float32) {
 	o.Embedding = v
 }
 
-// GetContentMetadata returns the ContentMetadata field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// GetContentMetadata returns the ContentMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EmbeddingAndChunk) GetContentMetadata() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.ContentMetadata
 }
 
-// GetContentMetadataOk returns a tuple with the ContentMetadata field value
+// GetContentMetadataOk returns a tuple with the ContentMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EmbeddingAndChunk) GetContentMetadataOk() (map[string]interface{}, bool) {
@@ -166,7 +184,16 @@ func (o *EmbeddingAndChunk) GetContentMetadataOk() (map[string]interface{}, bool
 	return o.ContentMetadata, true
 }
 
-// SetContentMetadata sets field value
+// HasContentMetadata returns a boolean if a field has been set.
+func (o *EmbeddingAndChunk) HasContentMetadata() bool {
+	if o != nil && isNil(o.ContentMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetContentMetadata gets a reference to the given map[string]interface{} and assigns it to the ContentMetadata field.
 func (o *EmbeddingAndChunk) SetContentMetadata(v map[string]interface{}) {
 	o.ContentMetadata = v
 }
@@ -176,7 +203,7 @@ func (o EmbeddingAndChunk) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["user_file_id"] = o.UserFileId
 	}
-	if true {
+	if o.ChunkIndex.IsSet() {
 		toSerialize["chunk_index"] = o.ChunkIndex.Get()
 	}
 	if true {

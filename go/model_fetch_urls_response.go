@@ -18,18 +18,17 @@ import (
 type FetchURLsResponse struct {
 	Urls []string `json:"urls"`
 	HtmlContent string `json:"html_content"`
-	ErrorMessage NullableString `json:"error_message"`
+	ErrorMessage NullableString `json:"error_message,omitempty"`
 }
 
 // NewFetchURLsResponse instantiates a new FetchURLsResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFetchURLsResponse(urls []string, htmlContent string, errorMessage NullableString) *FetchURLsResponse {
+func NewFetchURLsResponse(urls []string, htmlContent string) *FetchURLsResponse {
 	this := FetchURLsResponse{}
 	this.Urls = urls
 	this.HtmlContent = htmlContent
-	this.ErrorMessage = errorMessage
 	return &this
 }
 
@@ -89,18 +88,16 @@ func (o *FetchURLsResponse) SetHtmlContent(v string) {
 	o.HtmlContent = v
 }
 
-// GetErrorMessage returns the ErrorMessage field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FetchURLsResponse) GetErrorMessage() string {
-	if o == nil || o.ErrorMessage.Get() == nil {
+	if o == nil || isNil(o.ErrorMessage.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.ErrorMessage.Get()
 }
 
-// GetErrorMessageOk returns a tuple with the ErrorMessage field value
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FetchURLsResponse) GetErrorMessageOk() (*string, bool) {
@@ -110,9 +107,27 @@ func (o *FetchURLsResponse) GetErrorMessageOk() (*string, bool) {
 	return o.ErrorMessage.Get(), o.ErrorMessage.IsSet()
 }
 
-// SetErrorMessage sets field value
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *FetchURLsResponse) HasErrorMessage() bool {
+	if o != nil && o.ErrorMessage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given NullableString and assigns it to the ErrorMessage field.
 func (o *FetchURLsResponse) SetErrorMessage(v string) {
 	o.ErrorMessage.Set(&v)
+}
+// SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
+func (o *FetchURLsResponse) SetErrorMessageNil() {
+	o.ErrorMessage.Set(nil)
+}
+
+// UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
+func (o *FetchURLsResponse) UnsetErrorMessage() {
+	o.ErrorMessage.Unset()
 }
 
 func (o FetchURLsResponse) MarshalJSON() ([]byte, error) {
@@ -123,7 +138,7 @@ func (o FetchURLsResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["html_content"] = o.HtmlContent
 	}
-	if true {
+	if o.ErrorMessage.IsSet() {
 		toSerialize["error_message"] = o.ErrorMessage.Get()
 	}
 	return json.Marshal(toSerialize)

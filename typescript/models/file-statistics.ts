@@ -23,36 +23,36 @@ export interface FileStatistics {
      * @type {FileFormatsNullable}
      * @memberof FileStatistics
      */
-    'file_format': FileFormatsNullable | null;
+    'file_format'?: FileFormatsNullable | null;
     /**
      * 
      * @type {number}
      * @memberof FileStatistics
      */
-    'file_size': number | null;
+    'file_size'?: number | null;
     /**
      * 
      * @type {number}
      * @memberof FileStatistics
      */
-    'num_characters': number | null;
+    'num_characters'?: number | null;
     /**
      * 
      * @type {number}
      * @memberof FileStatistics
      */
-    'num_tokens': number | null;
+    'num_tokens'?: number | null;
     /**
      * 
      * @type {number}
      * @memberof FileStatistics
      */
-    'num_embeddings': number | null;
+    'num_embeddings'?: number | null;
     /**
      * 
      * @type {string}
      * @memberof FileStatistics
      */
-    'mime_type': string | null;
+    'mime_type'?: string | null;
 }
 

@@ -17,6 +17,9 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.file_formats_nullable import FileFormatsNullable
 
 class RequiredFileStatisticsNullable(TypedDict):
+    pass
+
+class OptionalFileStatisticsNullable(TypedDict, total=False):
     file_format: typing.Optional[FileFormatsNullable]
 
     file_size: typing.Optional[int]
@@ -28,9 +31,6 @@ class RequiredFileStatisticsNullable(TypedDict):
     num_embeddings: typing.Optional[int]
 
     mime_type: typing.Optional[str]
-
-class OptionalFileStatisticsNullable(TypedDict, total=False):
-    pass
 
 class FileStatisticsNullable(RequiredFileStatisticsNullable, OptionalFileStatisticsNullable):
     pass

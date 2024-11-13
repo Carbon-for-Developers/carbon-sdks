@@ -16,7 +16,7 @@ import (
 
 // ConfluenceAuthentication struct for ConfluenceAuthentication
 type ConfluenceAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	Subdomain string `json:"subdomain"`
@@ -26,7 +26,7 @@ type ConfluenceAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfluenceAuthentication(source interface{}, accessToken string, subdomain string) *ConfluenceAuthentication {
+func NewConfluenceAuthentication(source string, accessToken string, subdomain string) *ConfluenceAuthentication {
 	this := ConfluenceAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -43,10 +43,9 @@ func NewConfluenceAuthenticationWithDefaults() *ConfluenceAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ConfluenceAuthentication) GetSource() interface{} {
+func (o *ConfluenceAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -55,16 +54,15 @@ func (o *ConfluenceAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConfluenceAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *ConfluenceAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *ConfluenceAuthentication) SetSource(v interface{}) {
+func (o *ConfluenceAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -160,7 +158,7 @@ func (o *ConfluenceAuthentication) SetSubdomain(v string) {
 
 func (o ConfluenceAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

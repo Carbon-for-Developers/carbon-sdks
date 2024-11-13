@@ -126,7 +126,7 @@ public class UserResponse {
 
   public static final String SERIALIZED_NAME_AUTO_SYNC_ENABLED_SOURCES = "auto_sync_enabled_sources";
   @SerializedName(SERIALIZED_NAME_AUTO_SYNC_ENABLED_SOURCES)
-  private List<Object> autoSyncEnabledSources = new ArrayList<>();
+  private List<Object> autoSyncEnabledSources = null;
 
   public static final String SERIALIZED_NAME_CONNECTOR_SETTINGS = "connector_settings";
   @SerializedName(SERIALIZED_NAME_CONNECTOR_SETTINGS)
@@ -646,8 +646,8 @@ public class UserResponse {
    * Get customLimits
    * @return customLimits
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getCustomLimits() {
     return customLimits;
@@ -672,6 +672,9 @@ public class UserResponse {
   }
 
   public UserResponse addAutoSyncEnabledSourcesItem(Object autoSyncEnabledSourcesItem) {
+    if (this.autoSyncEnabledSources == null) {
+      this.autoSyncEnabledSources = new ArrayList<>();
+    }
     this.autoSyncEnabledSources.add(autoSyncEnabledSourcesItem);
     return this;
   }
@@ -680,8 +683,8 @@ public class UserResponse {
    * Get autoSyncEnabledSources
    * @return autoSyncEnabledSources
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "[]", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "")
 
   public List<Object> getAutoSyncEnabledSources() {
     return autoSyncEnabledSources;
@@ -709,8 +712,8 @@ public class UserResponse {
    * Get connectorSettings
    * @return connectorSettings
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getConnectorSettings() {
     return connectorSettings;
@@ -894,9 +897,6 @@ public class UserResponse {
     openapiRequiredFields.add("aggregate_num_files_by_file_format");
     openapiRequiredFields.add("unique_file_tags");
     openapiRequiredFields.add("enabled_features");
-    openapiRequiredFields.add("custom_limits");
-    openapiRequiredFields.add("auto_sync_enabled_sources");
-    openapiRequiredFields.add("connector_settings");
   }
 
  /**
@@ -927,10 +927,8 @@ public class UserResponse {
       } else if (!jsonObj.get("unique_file_tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `unique_file_tags` to be an array in the JSON string but got `%s`", jsonObj.get("unique_file_tags").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("auto_sync_enabled_sources") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("auto_sync_enabled_sources").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("auto_sync_enabled_sources") != null && !jsonObj.get("auto_sync_enabled_sources").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `auto_sync_enabled_sources` to be an array in the JSON string but got `%s`", jsonObj.get("auto_sync_enabled_sources").toString()));
       }
   }

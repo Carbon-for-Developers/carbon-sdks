@@ -16,7 +16,7 @@ import (
 
 // NotionAuthentication struct for NotionAuthentication
 type NotionAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	WorkspaceId string `json:"workspace_id"`
 }
@@ -25,7 +25,7 @@ type NotionAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotionAuthentication(source interface{}, accessToken string, workspaceId string) *NotionAuthentication {
+func NewNotionAuthentication(source string, accessToken string, workspaceId string) *NotionAuthentication {
 	this := NotionAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -42,10 +42,9 @@ func NewNotionAuthenticationWithDefaults() *NotionAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *NotionAuthentication) GetSource() interface{} {
+func (o *NotionAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *NotionAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *NotionAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *NotionAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *NotionAuthentication) SetSource(v interface{}) {
+func (o *NotionAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -117,7 +115,7 @@ func (o *NotionAuthentication) SetWorkspaceId(v string) {
 
 func (o NotionAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

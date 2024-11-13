@@ -87,4 +87,12 @@ public class UserConfigurationTest {
         // TODO: test maxCharactersPerUpload
     }
 
+    /**
+     * Test the property 'autoSyncInterval'
+     */
+    @Test
+    public void autoSyncIntervalTest() {
+        // TODO: test autoSyncInterval
+    }
+
 }

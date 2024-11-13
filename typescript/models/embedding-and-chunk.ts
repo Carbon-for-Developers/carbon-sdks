@@ -28,7 +28,7 @@ export interface EmbeddingAndChunk {
      * @type {number}
      * @memberof EmbeddingAndChunk
      */
-    'chunk_index': number | null;
+    'chunk_index'?: number | null;
     /**
      * 
      * @type {string}
@@ -40,12 +40,12 @@ export interface EmbeddingAndChunk {
      * @type {Array<number>}
      * @memberof EmbeddingAndChunk
      */
-    'embedding': Array<number> | null;
+    'embedding'?: Array<number> | null;
     /**
      * 
      * @type {object}
      * @memberof EmbeddingAndChunk
      */
-    'content_metadata': object | null;
+    'content_metadata'?: object | null;
 }
 

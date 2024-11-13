@@ -47,8 +47,6 @@ class Opportunity(
             "name",
             "id",
             "account",
-            "events",
-            "tasks",
             "status",
         }
         
@@ -195,6 +193,28 @@ class Opportunity(
             is_deleted = schemas.BoolSchema
             
             
+            class remote_data(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'remote_data':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
+            
+            
             class tasks(
                 schemas.ListBase,
                 schemas.NoneBase,
@@ -247,28 +267,6 @@ class Opportunity(
                         *args,
                         _configuration=_configuration,
                     )
-            
-            
-            class remote_data(
-                schemas.DictBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneFrozenDictMixin
-            ):
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, None, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                ) -> 'remote_data':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
             __annotations__ = {
                 "description": description,
                 "id": id,
@@ -284,9 +282,9 @@ class Opportunity(
                 "created_at": created_at,
                 "updated_at": updated_at,
                 "is_deleted": is_deleted,
+                "remote_data": remote_data,
                 "tasks": tasks,
                 "events": events,
-                "remote_data": remote_data,
             }
     
     owner: 'PartialOwner'
@@ -303,8 +301,6 @@ class Opportunity(
     name: MetaOapg.properties.name
     id: MetaOapg.properties.id
     account: 'PartialAccountNullable'
-    events: MetaOapg.properties.events
-    tasks: MetaOapg.properties.tasks
     status: 'OpportunityStatusNullable'
     
     @typing.overload
@@ -350,18 +346,18 @@ class Opportunity(
     def __getitem__(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "amount", "account", "contact", "stage", "status", "close_date", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "amount", "account", "contact", "stage", "status", "close_date", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -409,18 +405,18 @@ class Opportunity(
     def get_item_oapg(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> typing.Union[MetaOapg.properties.tasks, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> typing.Union[MetaOapg.properties.events, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "amount", "account", "contact", "stage", "status", "close_date", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "amount", "account", "contact", "stage", "status", "close_date", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -441,9 +437,9 @@ class Opportunity(
         name: typing.Union[MetaOapg.properties.name, None, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
         account: 'PartialAccountNullable',
-        events: typing.Union[MetaOapg.properties.events, list, tuple, None, ],
-        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, ],
         status: 'OpportunityStatusNullable',
+        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, schemas.Unset] = schemas.unset,
+        events: typing.Union[MetaOapg.properties.events, list, tuple, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Opportunity':
@@ -464,9 +460,9 @@ class Opportunity(
             name=name,
             id=id,
             account=account,
-            events=events,
-            tasks=tasks,
             status=status,
+            tasks=tasks,
+            events=events,
             _configuration=_configuration,
             **kwargs,
         )

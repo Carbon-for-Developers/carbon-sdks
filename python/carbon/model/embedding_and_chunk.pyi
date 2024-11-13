@@ -33,15 +33,13 @@ class EmbeddingAndChunk(
 
     class MetaOapg:
         required = {
-            "chunk_index",
             "source_content",
             "user_file_id",
-            "content_metadata",
-            "embedding",
         }
         
         class properties:
             user_file_id = schemas.IntSchema
+            source_content = schemas.StrSchema
             
             
             class chunk_index(
@@ -62,7 +60,6 @@ class EmbeddingAndChunk(
                         *args,
                         _configuration=_configuration,
                     )
-            source_content = schemas.StrSchema
         
             @staticmethod
             def embedding() -> typing.Type['EmbeddingAndChunkEmbedding']:
@@ -91,26 +88,23 @@ class EmbeddingAndChunk(
                     )
             __annotations__ = {
                 "user_file_id": user_file_id,
-                "chunk_index": chunk_index,
                 "source_content": source_content,
+                "chunk_index": chunk_index,
                 "embedding": embedding,
                 "content_metadata": content_metadata,
             }
     
-    chunk_index: MetaOapg.properties.chunk_index
     source_content: MetaOapg.properties.source_content
     user_file_id: MetaOapg.properties.user_file_id
-    content_metadata: MetaOapg.properties.content_metadata
-    embedding: 'EmbeddingAndChunkEmbedding'
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["user_file_id"]) -> MetaOapg.properties.user_file_id: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
+    def __getitem__(self, name: typing_extensions.Literal["source_content"]) -> MetaOapg.properties.source_content: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["source_content"]) -> MetaOapg.properties.source_content: ...
+    def __getitem__(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["embedding"]) -> 'EmbeddingAndChunkEmbedding': ...
@@ -121,7 +115,7 @@ class EmbeddingAndChunk(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", "content_metadata", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["user_file_id", "source_content", "chunk_index", "embedding", "content_metadata", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -130,43 +124,43 @@ class EmbeddingAndChunk(
     def get_item_oapg(self, name: typing_extensions.Literal["user_file_id"]) -> MetaOapg.properties.user_file_id: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["chunk_index"]) -> MetaOapg.properties.chunk_index: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["source_content"]) -> MetaOapg.properties.source_content: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["embedding"]) -> 'EmbeddingAndChunkEmbedding': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["chunk_index"]) -> typing.Union[MetaOapg.properties.chunk_index, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> MetaOapg.properties.content_metadata: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["embedding"]) -> typing.Union['EmbeddingAndChunkEmbedding', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["content_metadata"]) -> typing.Union[MetaOapg.properties.content_metadata, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["user_file_id", "chunk_index", "source_content", "embedding", "content_metadata", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["user_file_id", "source_content", "chunk_index", "embedding", "content_metadata", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, ],
         source_content: typing.Union[MetaOapg.properties.source_content, str, ],
         user_file_id: typing.Union[MetaOapg.properties.user_file_id, decimal.Decimal, int, ],
-        content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, ],
-        embedding: 'EmbeddingAndChunkEmbedding',
+        chunk_index: typing.Union[MetaOapg.properties.chunk_index, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        embedding: typing.Union['EmbeddingAndChunkEmbedding', schemas.Unset] = schemas.unset,
+        content_metadata: typing.Union[MetaOapg.properties.content_metadata, dict, frozendict.frozendict, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'EmbeddingAndChunk':
         return super().__new__(
             cls,
             *args,
-            chunk_index=chunk_index,
             source_content=source_content,
             user_file_id=user_file_id,
-            content_metadata=content_metadata,
+            chunk_index=chunk_index,
             embedding=embedding,
+            content_metadata=content_metadata,
             _configuration=_configuration,
             **kwargs,
         )

@@ -50,8 +50,6 @@ class Contact(
             "department",
             "first_name",
             "account",
-            "events",
-            "tasks",
         }
         
         class properties:
@@ -287,6 +285,28 @@ class Contact(
             is_deleted = schemas.BoolSchema
             
             
+            class remote_data(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'remote_data':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
+            
+            
             class tasks(
                 schemas.ListBase,
                 schemas.NoneBase,
@@ -339,28 +359,6 @@ class Contact(
                         *args,
                         _configuration=_configuration,
                     )
-            
-            
-            class remote_data(
-                schemas.DictBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneFrozenDictMixin
-            ):
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, None, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                ) -> 'remote_data':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
             __annotations__ = {
                 "title": title,
                 "description": description,
@@ -378,9 +376,9 @@ class Contact(
                 "created_at": created_at,
                 "updated_at": updated_at,
                 "is_deleted": is_deleted,
+                "remote_data": remote_data,
                 "tasks": tasks,
                 "events": events,
-                "remote_data": remote_data,
             }
     
     owner: 'PartialOwnerNullable'
@@ -400,8 +398,6 @@ class Contact(
     department: MetaOapg.properties.department
     first_name: MetaOapg.properties.first_name
     account: 'PartialAccountNullable'
-    events: MetaOapg.properties.events
-    tasks: MetaOapg.properties.tasks
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
@@ -452,18 +448,18 @@ class Contact(
     def __getitem__(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["title", "description", "id", "owner", "first_name", "last_name", "name", "department", "addresses", "phone_numbers", "emails", "account", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["title", "description", "id", "owner", "first_name", "last_name", "name", "department", "addresses", "phone_numbers", "emails", "account", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -517,18 +513,18 @@ class Contact(
     def get_item_oapg(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> typing.Union[MetaOapg.properties.tasks, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> typing.Union[MetaOapg.properties.events, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["title", "description", "id", "owner", "first_name", "last_name", "name", "department", "addresses", "phone_numbers", "emails", "account", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["title", "description", "id", "owner", "first_name", "last_name", "name", "department", "addresses", "phone_numbers", "emails", "account", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -552,8 +548,8 @@ class Contact(
         department: typing.Union[MetaOapg.properties.department, None, str, ],
         first_name: typing.Union[MetaOapg.properties.first_name, None, str, ],
         account: 'PartialAccountNullable',
-        events: typing.Union[MetaOapg.properties.events, list, tuple, None, ],
-        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, ],
+        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, schemas.Unset] = schemas.unset,
+        events: typing.Union[MetaOapg.properties.events, list, tuple, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Contact':
@@ -577,8 +573,8 @@ class Contact(
             department=department,
             first_name=first_name,
             account=account,
-            events=events,
             tasks=tasks,
+            events=events,
             _configuration=_configuration,
             **kwargs,
         )

@@ -28,6 +28,9 @@ module Carbon
     # Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
     attr_accessor :max_characters_per_upload
 
+    # The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
+    attr_accessor :auto_sync_interval
+
     # List of organization supplied user IDs
     attr_accessor :customer_ids
 
@@ -40,6 +43,7 @@ module Carbon
         :'max_characters' => :'max_characters',
         :'max_characters_per_file' => :'max_characters_per_file',
         :'max_characters_per_upload' => :'max_characters_per_upload',
+        :'auto_sync_interval' => :'auto_sync_interval',
         :'customer_ids' => :'customer_ids'
       }
     end
@@ -58,6 +62,7 @@ module Carbon
         :'max_characters' => :'Integer',
         :'max_characters_per_file' => :'Integer',
         :'max_characters_per_upload' => :'Integer',
+        :'auto_sync_interval' => :'Integer',
         :'customer_ids' => :'Array<String>'
       }
     end
@@ -71,6 +76,7 @@ module Carbon
         :'max_characters',
         :'max_characters_per_file',
         :'max_characters_per_upload',
+        :'auto_sync_interval',
       ])
     end
 
@@ -113,6 +119,10 @@ module Carbon
         self.max_characters_per_upload = attributes[:'max_characters_per_upload']
       end
 
+      if attributes.key?(:'auto_sync_interval')
+        self.auto_sync_interval = attributes[:'auto_sync_interval']
+      end
+
       if attributes.key?(:'customer_ids')
         if (value = attributes[:'customer_ids']).is_a?(Array)
           self.customer_ids = value
@@ -144,6 +154,10 @@ module Carbon
         invalid_properties.push('invalid value for "max_characters_per_upload", must be greater than or equal to -1.')
       end
 
+      if !@auto_sync_interval.nil? && @auto_sync_interval < -1
+        invalid_properties.push('invalid value for "auto_sync_interval", must be greater than or equal to -1.')
+      end
+
       if @customer_ids.nil?
         invalid_properties.push('invalid value for "customer_ids", customer_ids cannot be nil.')
       end
@@ -163,6 +177,7 @@ module Carbon
       return false if !@max_characters.nil? && @max_characters < -1
       return false if !@max_characters_per_file.nil? && @max_characters_per_file < -1
       return false if !@max_characters_per_upload.nil? && @max_characters_per_upload < -1
+      return false if !@auto_sync_interval.nil? && @auto_sync_interval < -1
       return false if @customer_ids.nil?
       return false if @customer_ids.length > 100
       true
@@ -219,6 +234,16 @@ module Carbon
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] auto_sync_interval Value to be assigned
+    def auto_sync_interval=(auto_sync_interval)
+      if !auto_sync_interval.nil? && auto_sync_interval < -1
+        fail ArgumentError, 'invalid value for "auto_sync_interval", must be greater than or equal to -1.'
+      end
+
+      @auto_sync_interval = auto_sync_interval
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] customer_ids Value to be assigned
     def customer_ids=(customer_ids)
       if customer_ids.nil?
@@ -243,6 +268,7 @@ module Carbon
           max_characters == o.max_characters &&
           max_characters_per_file == o.max_characters_per_file &&
           max_characters_per_upload == o.max_characters_per_upload &&
+          auto_sync_interval == o.auto_sync_interval &&
           customer_ids == o.customer_ids
     end
 
@@ -255,7 +281,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_sync_enabled_sources, max_files, max_files_per_upload, max_characters, max_characters_per_file, max_characters_per_upload, customer_ids].hash
+      [auto_sync_enabled_sources, max_files, max_files_per_upload, max_characters, max_characters_per_file, max_characters_per_upload, auto_sync_interval, customer_ids].hash
     end
 
     # Builds the object from hash

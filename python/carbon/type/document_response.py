@@ -19,11 +19,15 @@ from carbon.type.document_response_tags import DocumentResponseTags
 from carbon.type.document_response_vector import DocumentResponseVector
 
 class RequiredDocumentResponse(TypedDict):
-    tags: typing.Optional[DocumentResponseTags]
-
     content: str
 
     file_id: int
+
+    vector: typing.Optional[DocumentResponseVector]
+
+
+class OptionalDocumentResponse(TypedDict, total=False):
+    tags: typing.Optional[DocumentResponseTags]
 
     parent_file_id: typing.Optional[int]
 
@@ -35,8 +39,6 @@ class RequiredDocumentResponse(TypedDict):
 
     presigned_url: typing.Optional[str]
 
-    vector: typing.Optional[DocumentResponseVector]
-
     score: typing.Optional[typing.Union[int, float]]
 
     rank: typing.Union[typing.Union[int, float], int]
@@ -44,9 +46,6 @@ class RequiredDocumentResponse(TypedDict):
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
     chunk_index: typing.Optional[int]
-
-class OptionalDocumentResponse(TypedDict, total=False):
-    pass
 
 class DocumentResponse(RequiredDocumentResponse, OptionalDocumentResponse):
     pass

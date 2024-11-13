@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessKey** | **string** |  | 
 **AccessKeySecret** | **string** |  | 
 **EndpointUrl** | Pointer to **NullableString** | You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format &lt;region&gt;.digitaloceanspaces.com. It&#39;s not required for S3 buckets. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewS3Authentication
 
-`func NewS3Authentication(source interface{}, accessKey string, accessKeySecret string, ) *S3Authentication`
+`func NewS3Authentication(source string, accessKey string, accessKeySecret string, ) *S3Authentication`
 
 NewS3Authentication instantiates a new S3Authentication object
 This constructor will assign default values to properties that have it defined,
@@ -30,34 +30,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *S3Authentication) GetSource() interface{}`
+`func (o *S3Authentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *S3Authentication) GetSourceOk() (*interface{}, bool)`
+`func (o *S3Authentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *S3Authentication) SetSource(v interface{})`
+`func (o *S3Authentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *S3Authentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *S3Authentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessKey
 
 `func (o *S3Authentication) GetAccessKey() string`

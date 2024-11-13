@@ -55,6 +55,12 @@ export interface UpdateUsersInput {
      */
     'max_characters_per_upload'?: number | null;
     /**
+     * The interval in hours at which the user\'s data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
+     * @type {number}
+     * @memberof UpdateUsersInput
+     */
+    'auto_sync_interval'?: number | null;
+    /**
      * List of organization supplied user IDs
      * @type {Array<string>}
      * @memberof UpdateUsersInput

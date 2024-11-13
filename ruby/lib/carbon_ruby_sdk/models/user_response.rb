@@ -280,18 +280,6 @@ module Carbon
         invalid_properties.push('invalid value for "unique_file_tags", unique_file_tags cannot be nil.')
       end
 
-      if @custom_limits.nil?
-        invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
-      end
-
-      if @auto_sync_enabled_sources.nil?
-        invalid_properties.push('invalid value for "auto_sync_enabled_sources", auto_sync_enabled_sources cannot be nil.')
-      end
-
-      if @connector_settings.nil?
-        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -313,9 +301,6 @@ module Carbon
       return false if @aggregate_num_files_by_source.nil?
       return false if @aggregate_num_files_by_file_format.nil?
       return false if @unique_file_tags.nil?
-      return false if @custom_limits.nil?
-      return false if @auto_sync_enabled_sources.nil?
-      return false if @connector_settings.nil?
       true
     end
 

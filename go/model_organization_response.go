@@ -19,10 +19,10 @@ import (
 type OrganizationResponse struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
-	Nickname NullableString `json:"nickname"`
+	Nickname NullableString `json:"nickname,omitempty"`
 	RemoveBranding bool `json:"remove_branding"`
-	CustomBranding map[string]interface{} `json:"custom_branding"`
-	CustomLimits map[string]interface{} `json:"custom_limits"`
+	CustomBranding map[string]interface{} `json:"custom_branding,omitempty"`
+	CustomLimits map[string]interface{} `json:"custom_limits,omitempty"`
 	AggregateFileSize map[string]interface{} `json:"aggregate_file_size"`
 	AggregateNumCharacters map[string]interface{} `json:"aggregate_num_characters"`
 	AggregateNumTokens map[string]interface{} `json:"aggregate_num_tokens"`
@@ -30,12 +30,12 @@ type OrganizationResponse struct {
 	AggregateNumFilesBySource map[string]interface{} `json:"aggregate_num_files_by_source"`
 	AggregateNumFilesByFileFormat map[string]interface{} `json:"aggregate_num_files_by_file_format"`
 	FileStatisticsAggregatedAt NullableTime `json:"file_statistics_aggregated_at"`
-	PeriodEndsAt NullableTime `json:"period_ends_at"`
-	CancelAtPeriodEnd NullableBool `json:"cancel_at_period_end"`
-	ConnectorSettings map[string]interface{} `json:"connector_settings"`
-	GlobalUserConfig map[string]interface{} `json:"global_user_config"`
-	FileSyncUsage map[string]interface{} `json:"file_sync_usage"`
-	LoggingSettings map[string]interface{} `json:"logging_settings"`
+	PeriodEndsAt NullableTime `json:"period_ends_at,omitempty"`
+	CancelAtPeriodEnd NullableBool `json:"cancel_at_period_end,omitempty"`
+	ConnectorSettings map[string]interface{} `json:"connector_settings,omitempty"`
+	GlobalUserConfig map[string]interface{} `json:"global_user_config,omitempty"`
+	FileSyncUsage map[string]interface{} `json:"file_sync_usage,omitempty"`
+	LoggingSettings map[string]interface{} `json:"logging_settings,omitempty"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -44,14 +44,11 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, loggingSettings map[string]interface{}, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
+func NewOrganizationResponse(id int32, name string, removeBranding bool, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, createdAt time.Time, updatedAt time.Time) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.Name = name
-	this.Nickname = nickname
 	this.RemoveBranding = removeBranding
-	this.CustomBranding = customBranding
-	this.CustomLimits = customLimits
 	this.AggregateFileSize = aggregateFileSize
 	this.AggregateNumCharacters = aggregateNumCharacters
 	this.AggregateNumTokens = aggregateNumTokens
@@ -59,12 +56,6 @@ func NewOrganizationResponse(id int32, name string, nickname NullableString, rem
 	this.AggregateNumFilesBySource = aggregateNumFilesBySource
 	this.AggregateNumFilesByFileFormat = aggregateNumFilesByFileFormat
 	this.FileStatisticsAggregatedAt = fileStatisticsAggregatedAt
-	this.PeriodEndsAt = periodEndsAt
-	this.CancelAtPeriodEnd = cancelAtPeriodEnd
-	this.ConnectorSettings = connectorSettings
-	this.GlobalUserConfig = globalUserConfig
-	this.FileSyncUsage = fileSyncUsage
-	this.LoggingSettings = loggingSettings
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -126,18 +117,16 @@ func (o *OrganizationResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetNickname returns the Nickname field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetNickname returns the Nickname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationResponse) GetNickname() string {
-	if o == nil || o.Nickname.Get() == nil {
+	if o == nil || isNil(o.Nickname.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Nickname.Get()
 }
 
-// GetNicknameOk returns a tuple with the Nickname field value
+// GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetNicknameOk() (*string, bool) {
@@ -147,9 +136,27 @@ func (o *OrganizationResponse) GetNicknameOk() (*string, bool) {
 	return o.Nickname.Get(), o.Nickname.IsSet()
 }
 
-// SetNickname sets field value
+// HasNickname returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasNickname() bool {
+	if o != nil && o.Nickname.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNickname gets a reference to the given NullableString and assigns it to the Nickname field.
 func (o *OrganizationResponse) SetNickname(v string) {
 	o.Nickname.Set(&v)
+}
+// SetNicknameNil sets the value for Nickname to be an explicit nil
+func (o *OrganizationResponse) SetNicknameNil() {
+	o.Nickname.Set(nil)
+}
+
+// UnsetNickname ensures that no value is present for Nickname, not even an explicit nil
+func (o *OrganizationResponse) UnsetNickname() {
+	o.Nickname.Unset()
 }
 
 // GetRemoveBranding returns the RemoveBranding field value
@@ -176,18 +183,16 @@ func (o *OrganizationResponse) SetRemoveBranding(v bool) {
 	o.RemoveBranding = v
 }
 
-// GetCustomBranding returns the CustomBranding field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// GetCustomBranding returns the CustomBranding field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationResponse) GetCustomBranding() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.CustomBranding
 }
 
-// GetCustomBrandingOk returns a tuple with the CustomBranding field value
+// GetCustomBrandingOk returns a tuple with the CustomBranding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetCustomBrandingOk() (map[string]interface{}, bool) {
@@ -197,23 +202,30 @@ func (o *OrganizationResponse) GetCustomBrandingOk() (map[string]interface{}, bo
 	return o.CustomBranding, true
 }
 
-// SetCustomBranding sets field value
+// HasCustomBranding returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasCustomBranding() bool {
+	if o != nil && isNil(o.CustomBranding) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomBranding gets a reference to the given map[string]interface{} and assigns it to the CustomBranding field.
 func (o *OrganizationResponse) SetCustomBranding(v map[string]interface{}) {
 	o.CustomBranding = v
 }
 
-// GetCustomLimits returns the CustomLimits field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+// GetCustomLimits returns the CustomLimits field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationResponse) GetCustomLimits() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.CustomLimits
 }
 
-// GetCustomLimitsOk returns a tuple with the CustomLimits field value
+// GetCustomLimitsOk returns a tuple with the CustomLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetCustomLimitsOk() (map[string]interface{}, bool) {
@@ -223,7 +235,16 @@ func (o *OrganizationResponse) GetCustomLimitsOk() (map[string]interface{}, bool
 	return o.CustomLimits, true
 }
 
-// SetCustomLimits sets field value
+// HasCustomLimits returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasCustomLimits() bool {
+	if o != nil && isNil(o.CustomLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLimits gets a reference to the given map[string]interface{} and assigns it to the CustomLimits field.
 func (o *OrganizationResponse) SetCustomLimits(v map[string]interface{}) {
 	o.CustomLimits = v
 }
@@ -398,18 +419,16 @@ func (o *OrganizationResponse) SetFileStatisticsAggregatedAt(v time.Time) {
 	o.FileStatisticsAggregatedAt.Set(&v)
 }
 
-// GetPeriodEndsAt returns the PeriodEndsAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetPeriodEndsAt returns the PeriodEndsAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationResponse) GetPeriodEndsAt() time.Time {
-	if o == nil || o.PeriodEndsAt.Get() == nil {
+	if o == nil || isNil(o.PeriodEndsAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.PeriodEndsAt.Get()
 }
 
-// GetPeriodEndsAtOk returns a tuple with the PeriodEndsAt field value
+// GetPeriodEndsAtOk returns a tuple with the PeriodEndsAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetPeriodEndsAtOk() (*time.Time, bool) {
@@ -419,23 +438,39 @@ func (o *OrganizationResponse) GetPeriodEndsAtOk() (*time.Time, bool) {
 	return o.PeriodEndsAt.Get(), o.PeriodEndsAt.IsSet()
 }
 
-// SetPeriodEndsAt sets field value
+// HasPeriodEndsAt returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasPeriodEndsAt() bool {
+	if o != nil && o.PeriodEndsAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriodEndsAt gets a reference to the given NullableTime and assigns it to the PeriodEndsAt field.
 func (o *OrganizationResponse) SetPeriodEndsAt(v time.Time) {
 	o.PeriodEndsAt.Set(&v)
 }
+// SetPeriodEndsAtNil sets the value for PeriodEndsAt to be an explicit nil
+func (o *OrganizationResponse) SetPeriodEndsAtNil() {
+	o.PeriodEndsAt.Set(nil)
+}
 
-// GetCancelAtPeriodEnd returns the CancelAtPeriodEnd field value
-// If the value is explicit nil, the zero value for bool will be returned
+// UnsetPeriodEndsAt ensures that no value is present for PeriodEndsAt, not even an explicit nil
+func (o *OrganizationResponse) UnsetPeriodEndsAt() {
+	o.PeriodEndsAt.Unset()
+}
+
+// GetCancelAtPeriodEnd returns the CancelAtPeriodEnd field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationResponse) GetCancelAtPeriodEnd() bool {
-	if o == nil || o.CancelAtPeriodEnd.Get() == nil {
+	if o == nil || isNil(o.CancelAtPeriodEnd.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.CancelAtPeriodEnd.Get()
 }
 
-// GetCancelAtPeriodEndOk returns a tuple with the CancelAtPeriodEnd field value
+// GetCancelAtPeriodEndOk returns a tuple with the CancelAtPeriodEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetCancelAtPeriodEndOk() (*bool, bool) {
@@ -445,103 +480,153 @@ func (o *OrganizationResponse) GetCancelAtPeriodEndOk() (*bool, bool) {
 	return o.CancelAtPeriodEnd.Get(), o.CancelAtPeriodEnd.IsSet()
 }
 
-// SetCancelAtPeriodEnd sets field value
+// HasCancelAtPeriodEnd returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasCancelAtPeriodEnd() bool {
+	if o != nil && o.CancelAtPeriodEnd.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCancelAtPeriodEnd gets a reference to the given NullableBool and assigns it to the CancelAtPeriodEnd field.
 func (o *OrganizationResponse) SetCancelAtPeriodEnd(v bool) {
 	o.CancelAtPeriodEnd.Set(&v)
 }
+// SetCancelAtPeriodEndNil sets the value for CancelAtPeriodEnd to be an explicit nil
+func (o *OrganizationResponse) SetCancelAtPeriodEndNil() {
+	o.CancelAtPeriodEnd.Set(nil)
+}
 
-// GetConnectorSettings returns the ConnectorSettings field value
+// UnsetCancelAtPeriodEnd ensures that no value is present for CancelAtPeriodEnd, not even an explicit nil
+func (o *OrganizationResponse) UnsetCancelAtPeriodEnd() {
+	o.CancelAtPeriodEnd.Unset()
+}
+
+// GetConnectorSettings returns the ConnectorSettings field value if set, zero value otherwise.
 func (o *OrganizationResponse) GetConnectorSettings() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.ConnectorSettings
 }
 
-// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value
+// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetConnectorSettingsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
     return map[string]interface{}{}, false
 	}
 	return o.ConnectorSettings, true
 }
 
-// SetConnectorSettings sets field value
+// HasConnectorSettings returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasConnectorSettings() bool {
+	if o != nil && !isNil(o.ConnectorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectorSettings gets a reference to the given map[string]interface{} and assigns it to the ConnectorSettings field.
 func (o *OrganizationResponse) SetConnectorSettings(v map[string]interface{}) {
 	o.ConnectorSettings = v
 }
 
-// GetGlobalUserConfig returns the GlobalUserConfig field value
+// GetGlobalUserConfig returns the GlobalUserConfig field value if set, zero value otherwise.
 func (o *OrganizationResponse) GetGlobalUserConfig() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.GlobalUserConfig) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.GlobalUserConfig
 }
 
-// GetGlobalUserConfigOk returns a tuple with the GlobalUserConfig field value
+// GetGlobalUserConfigOk returns a tuple with the GlobalUserConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetGlobalUserConfigOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.GlobalUserConfig) {
     return map[string]interface{}{}, false
 	}
 	return o.GlobalUserConfig, true
 }
 
-// SetGlobalUserConfig sets field value
+// HasGlobalUserConfig returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasGlobalUserConfig() bool {
+	if o != nil && !isNil(o.GlobalUserConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetGlobalUserConfig gets a reference to the given map[string]interface{} and assigns it to the GlobalUserConfig field.
 func (o *OrganizationResponse) SetGlobalUserConfig(v map[string]interface{}) {
 	o.GlobalUserConfig = v
 }
 
-// GetFileSyncUsage returns the FileSyncUsage field value
+// GetFileSyncUsage returns the FileSyncUsage field value if set, zero value otherwise.
 func (o *OrganizationResponse) GetFileSyncUsage() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.FileSyncUsage) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.FileSyncUsage
 }
 
-// GetFileSyncUsageOk returns a tuple with the FileSyncUsage field value
+// GetFileSyncUsageOk returns a tuple with the FileSyncUsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetFileSyncUsageOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.FileSyncUsage) {
     return map[string]interface{}{}, false
 	}
 	return o.FileSyncUsage, true
 }
 
-// SetFileSyncUsage sets field value
+// HasFileSyncUsage returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasFileSyncUsage() bool {
+	if o != nil && !isNil(o.FileSyncUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSyncUsage gets a reference to the given map[string]interface{} and assigns it to the FileSyncUsage field.
 func (o *OrganizationResponse) SetFileSyncUsage(v map[string]interface{}) {
 	o.FileSyncUsage = v
 }
 
-// GetLoggingSettings returns the LoggingSettings field value
+// GetLoggingSettings returns the LoggingSettings field value if set, zero value otherwise.
 func (o *OrganizationResponse) GetLoggingSettings() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.LoggingSettings) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.LoggingSettings
 }
 
-// GetLoggingSettingsOk returns a tuple with the LoggingSettings field value
+// GetLoggingSettingsOk returns a tuple with the LoggingSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetLoggingSettingsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.LoggingSettings) {
     return map[string]interface{}{}, false
 	}
 	return o.LoggingSettings, true
 }
 
-// SetLoggingSettings sets field value
+// HasLoggingSettings returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasLoggingSettings() bool {
+	if o != nil && !isNil(o.LoggingSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetLoggingSettings gets a reference to the given map[string]interface{} and assigns it to the LoggingSettings field.
 func (o *OrganizationResponse) SetLoggingSettings(v map[string]interface{}) {
 	o.LoggingSettings = v
 }
@@ -602,7 +687,7 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Nickname.IsSet() {
 		toSerialize["nickname"] = o.Nickname.Get()
 	}
 	if true {
@@ -635,22 +720,22 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["file_statistics_aggregated_at"] = o.FileStatisticsAggregatedAt.Get()
 	}
-	if true {
+	if o.PeriodEndsAt.IsSet() {
 		toSerialize["period_ends_at"] = o.PeriodEndsAt.Get()
 	}
-	if true {
+	if o.CancelAtPeriodEnd.IsSet() {
 		toSerialize["cancel_at_period_end"] = o.CancelAtPeriodEnd.Get()
 	}
-	if true {
+	if !isNil(o.ConnectorSettings) {
 		toSerialize["connector_settings"] = o.ConnectorSettings
 	}
-	if true {
+	if !isNil(o.GlobalUserConfig) {
 		toSerialize["global_user_config"] = o.GlobalUserConfig
 	}
-	if true {
+	if !isNil(o.FileSyncUsage) {
 		toSerialize["file_sync_usage"] = o.FileSyncUsage
 	}
-	if true {
+	if !isNil(o.LoggingSettings) {
 		toSerialize["logging_settings"] = o.LoggingSettings
 	}
 	if true {

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**OAuthAuthenticationSource**](OAuthAuthenticationSource.md) |  | 
+**Source** | **string** |  | 
 **AccessToken** | Pointer to **string** |  | [optional] 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **WorkspaceId** | Pointer to **string** |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewOANDSCZGFB
 
-`func NewOANDSCZGFB(source OAuthAuthenticationSource, ) *OANDSCZGFB`
+`func NewOANDSCZGFB(source string, ) *OANDSCZGFB`
 
 NewOANDSCZGFB instantiates a new OANDSCZGFB object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *OANDSCZGFB) GetSource() OAuthAuthenticationSource`
+`func (o *OANDSCZGFB) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *OANDSCZGFB) GetSourceOk() (*OAuthAuthenticationSource, bool)`
+`func (o *OANDSCZGFB) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *OANDSCZGFB) SetSource(v OAuthAuthenticationSource)`
+`func (o *OANDSCZGFB) SetSource(v string)`
 
 SetSource sets Source field to given value.
 

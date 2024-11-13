@@ -40,12 +40,12 @@
       "name": "Users"
     },
     {
-      "description": "\n---\nEmploy these endpoints for direct vector searches within our managed vector database or to fetch embeddings for storage in your custom vector store. Additionally, we offer hybrid support for keyword-based searches.\n",
-      "name": "Embeddings"
-    },
-    {
       "description": "\n---\nCarbon facilitates user connections and content synchronization with third-party applications. We manage authentication, ingestion, parsing, and sync scheduling. Within Carbon, content from third-party applications is uniformly categorized as \"files\" within our data model. \n\nCarbon also supports websites as a data source (see [here](https://api.carbon.ai/redoc#tag/Data-Sources/operation/web_scrape_web_scrape_post)).\n\n# Google Drive\nThe Carbon Connect `enabledIntegrations` value for Google Drive is `GOOGLE_DRIVE`. Google Slides, Google Docs and Google Sheets are supported with our Google Drive integration, along with regular text, audio and image files.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Google workspace.\n\n## Authorization Flow\n\n**Carbon's Google Drive integration is still pending approval from Google. In the meantime, end users are required to take a couple additional steps to connect their accounts (see gif below).**\n\n![](https://files.readme.io/19f57f6-Carbon_-_Google_OAuth_Flow.gif)\n\nLog into your Google Drive account.\n![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)\n\nOnce you've successfully authenticated your account, you can select files directly.\n![](https://i.ibb.co/wYs9Xbp/image.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/1fSzKHS/image.png)\n\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Google Drive API` and `Google Picker API`.\n2. Then create an `OAuth Client ID` in the `Credentials section` under `Google Drive API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.\n\n![](https://files.readme.io/e7f42e5-image.png)\n\n3. Add [https://api.carbon.ai](https://api.carbon.ai/) as the `Authorized JS origin` and <https://api.carbon.ai/integrations/google> as an `Authorized redirect URI`.\n\n![](https://files.readme.io/60d16d3-image.png)\n\n4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.\n\n![](https://files.readme.io/f265775-image.png)\n\n5. Then create an `API key` in the `Credentials section` under `Google Picker API`. Restrict the application to websites and then add [https://api.carbon.ai](https://api.carbon.ai/) to the list under website restrictions. For `API Restrictions`, pick `Restrict key` and select `Google Picker API` from the list.\n\n6. Save the API key. Copy the API key and share it with Carbon.\n\n7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) to `Authorized domain`.\n\n![](https://files.readme.io/33ebd01-image.png)\n\n![](https://files.readme.io/6d7f247-image.png)\n\n\n8. Click on `Add or Remove Scopes` button to add the following scopes: `userinfo.profile`, `userinfo.email`, `drive.readonly`, `drive.metadata.readonly`\n\n![](https://files.readme.io/6649d66-image.png)\n![](https://i.ibb.co/PNRnYwV/Screen-Shot-2023-08-11-at-2-11-51-PM.png)\n\n9. If you wish to add test users, you can do so. These users will not see the \"App is unverified\" notification. Other users will see this alert.\n10. Click `Publish App` to make this app available to your end-users.\n\n![](https://files.readme.io/d24c355-image.png)\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove Google Drive files and folders via the Google Drive picker. When a user selects a folder to be synced, we auto-sync all files added to the folder as well.\n\nYou can use the `resync_file` API endpoint to programmatically resync specific Google Drive files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Dropbox\nThe Carbon Connect `enabledIntegrations` value for Dropbox is `DROPBOX`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.dropbox.com/oauth-guide)** to connect to Dropbox.\n\n## Authorization Flow\n\nLog into your Dropbox account.\n![](https://files.readme.io/9427ebb-image.png)\n\nOnce you've successfully authenticated your account, you can select files directly.\n![](https://files.readme.io/0efd7b0-image.png)\n\nClick \"Choose\" after selecting files to grant Carbon access to files.\n![](https://files.readme.io/9c32acb-image.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Sign up on [Dropbox Developers](https://www.dropbox.com/developers) and create a new app with `Full Dropbox` access.\n\n![](https://i.ibb.co/fdrPky4/Screen-Shot-2023-09-08-at-12-39-39-PM.png)\n\n2. Copy and share the `App key` and `App secret` under the `Settings` tab with us.\n\n![](https://i.ibb.co/QmR2WXb/Screen-Shot-2023-09-08-at-1-06-46-PM.png)\n\n3. Add <https://api.carbon.ai/integrations/dropbox> as a `Redirect URIs` and [carbon.ai](carbon.ai) as the `Chooser / Saver / Embedder domains`.\n\n![](https://i.ibb.co/5vR8zgf/Screen-Shot-2023-09-08-at-1-15-17-PM.png)\n\n4. Configure your app details under the `Branding` tab. These details will appear on the OAuth Consent Screen as well. Provide your **App name**, **Publisher**, and **App icons**. \n\n![](https://i.ibb.co/wYj1LL7/Screen-Shot-2023-09-08-at-1-10-10-PM.png)\n\n5. Under the `Permissions` tab, add the following scopes: `account_info.read`, `files.metadata.read`, and `files.content.read`.\n\n![](https://i.ibb.co/xSzhgYC/Screen-Shot-2023-09-08-at-1-03-32-PM.png)\n\n6. Click `Apply for Production` under the `Settings` tab to make this app available to your end-users.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Dropbox.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the Dropbox file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Dropbox files. To delete Dropbox files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Dropbox by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Intercom\n\nThe Carbon Connect `enabledIntegrations` value for Intercom is `INTERCOM`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/setting-up-oauth)** to connect to Intercom workspaces.\n\n## Authorization Flow\n\n![](https://files.readme.io/d72b15d-image.png)\n\n![](https://files.readme.io/c2825e3-image.png)\n\n## Functionality\n\nCarbon syncs all `Published` articles under a single Intercom workspace. Any `Draft` article won't be synced. We currently support only having a single Intercom workspace connected per `customer_id`.\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. After you create or log into your [Intercom Developer](https://developers.intercom.com/) account, click `New App` to create your own app.\n\n![](https://i.ibb.co/Y3Nmh4r/Screen-Shot-2023-09-11-at-5-06-46-PM.png)\n\n2. Under the `Authentication` tab, click `Edit` -> `Use OAuth` -> `Add redirect URL` and then enter https://api.carbon.ai/integrations/intercom.\n\n![](https://i.ibb.co/pfzG9VJ/Screen-Shot-2023-09-11-at-5-17-47-PM.png)\n\n3. Under the `Authentication` tab, click `Edit` and then add permissions for `Read one admin`, `Read and List Articles`, and `Read and Write Articles`. You can remove access to the other permissions.\n\n![](https://i.ibb.co/L9BxJFK/Screen-Shot-2023-09-11-at-5-21-01-PM.png)\n\n4. Under the `Basic Info` tab, share the `Client ID` and `Client secret` with us via Slack.\n\n![](https://i.ibb.co/wCnVcQq/Screen-Shot-2023-09-11-at-5-25-39-PM.png)\n\n5. Under the `Basic Info` tab, add an `App icon` and `App name`.\n\n![](https://i.ibb.co/HqS9bhk/Screen-Shot-2023-09-11-at-5-47-31-PM.png)\n\n6. Click `Test and publish` -> `Submit for review` and fill in the details require to publish your app. After your app is approved, then we can enable the white labeling.\n\n![](https://i.ibb.co/Cm0xWBF/Screen-Shot-2023-09-11-at-5-51-09-PM.png)\n\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Intercom OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Intercom files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Notion\n\nThe Carbon Connect `enabledIntegrations` value for Notion is `NOTION`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.notion.com/docs/authorization)** to connect to Notion workspaces.\n\n## Authorization Flow\n\n![](https://files.readme.io/0fa801d-image.png)\n\n![](https://files.readme.io/f72df4f-image.png)\n\n## Functionality\n\nCarbon enables end-users to select top-level pages for synchronization and automatically syncs all sub-pages. For instance, a top-level Company page may contain sub-pages for **`Company Benefits`** and **`PTO Policy`**. Once the end-user selects the Company page in the Authorization flow, Carbon automatically includes the sub-pages **`Company Benefits`** or **`PTO Policy`** to be synced.\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Notion OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Notion files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs. \n\nWhen a user adds a nested page or database record under a selected Notion page, we auto-sync those documents as well.\n\n# OneDrive\n\nThe Carbon Connect `enabledIntegrations` value for OneDrive is `ONEDRIVE`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to OneDrive.\n\n## Authorization Flow\n\nLog into your Microsoft account.\n![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)\n\nClick the \"Confirm\" button to grant us permission to access OneDrive.\n![](https://i.ibb.co/BqxmsJG/2880x1628.png)\n\nClick the \"Select Files from OneDrive\" button to open up the OneDrive file selector.\n![](https://i.ibb.co/Sm90PHL/Screen-Shot-2023-08-31-at-4-32-37-PM.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/t4Kchcv/Screen-Shot-2023-08-31-at-4-35-33-PM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.\n\n2. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n4. Add https://api.carbon.ai/integrations/onedrive as the `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/onedrive`.\n\n![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)\n\n5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.\n\n![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)\n\n6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)\n\n8. Customize your app branding under `Manage` -> `Branding & properties`.\n\n![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)\n\n#### Setting up the File Picker UI\n\n1. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n2. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Under the `Authentication` tab, select `Add a Platform` -> `Single Page Application`. \n\n![](https://i.ibb.co/nLDdQfP/Screen-Shot-2023-09-13-at-3-03-00-PM.png)\n\n4. For the `Redirect URI` of the `Single Page Application`, you can use https://api.carbon.ai/static/loading.html or add a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/static/loading.html`.\n\n![](https://i.ibb.co/0X5Nkz7/Screen-Shot-2023-09-13-at-3-13-53-PM.png)\n\n5. Under the `Authentciation`'s `Implicit grant and hybrid flows` section, check `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)`.\n\n![](https://i.ibb.co/ckVKZgV/Screen-Shot-2023-09-13-at-3-17-44-PM.png)\n\n6. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `Sites.Read.All`, `User.Read`, `AllSites.Read`, and `MyFiles.Read`.\n\n![](https://i.ibb.co/xjtvKTg/Screen-Shot-2023-09-13-at-3-22-12-PM.png)\n\n7. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n8. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from OneDrive.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the OneDrive file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific OneDrive files. To delete OneDrive files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for OneDrive by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# SharePoint\n\nThe Carbon Connect `enabledIntegrations` value for SharePoint is `SHAREPOINT`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to SharePoint.\n\n## Authorization Flow\n\nEnter your Sharepoint `tenant` and `site name`. For example, if the SharePoint site URL is `https://jasoncarbon.sharepoint.com/sites/carbon-dev`, `jasoncarbon` is the tenant and `carbon-dev` is the site name.\n\n![](https://i.ibb.co/sgW9vfQ/Screen-Shot-2023-10-24-at-11-45-21-AM.png)\n\nLog into your Microsoft SharePoint account.\n![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)\n\nClick the \"Confirm\" button to grant us permission to access SharePoint.\n![](https://i.ibb.co/x6L7knS/Screen-Shot-2023-10-24-at-11-45-27-AM.png)\n\nOnce clicking \"Confirm\", you will be taken through a flow to grant permissions.\n![](https://i.ibb.co/HTqCBVR/Screen-Shot-2023-10-24-at-1-00-08-PM.png)\n\nClick the \"Select Files from SharePoint\" button to open up the SharePoint file selector.\n![](https://i.ibb.co/6tn24b3/Screen-Shot-2023-10-24-at-1-00-20-PM.png)\n\nClick \"Select\" after selecting files to grant Carbon access to files.\n![](https://i.ibb.co/WVTwT9P/Screen-Shot-2023-10-24-at-11-45-39-AM.png)\n\nYou'll see a screen confirming that your files have been added.\n![](https://i.ibb.co/nwSRcSS/Screen-Shot-2023-10-24-at-11-45-11-AM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.\n\n2. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n4. Add https://api.carbon.ai/integrations/onedrive and https://api.carbon.ai/integrations/sharepoint to `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain paths must still be `/integrations/onedrive` and `/integrations/sharepoint`.\n\n![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)\n\n5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.\n\n![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)\n\n6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)\n\n8. Customize your app branding under `Manage` -> `Branding & properties`.\n\n![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)\n\n#### Setting up the File Picker UI\n\n1. Under `Azure Services`, select `App Registration` -> `New registration`.\n\n![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)\n\n2. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.\n\n![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)\n\n3. Under the `Authentication` tab, select `Add a Platform` -> `Single Page Application`. \n\n![](https://i.ibb.co/nLDdQfP/Screen-Shot-2023-09-13-at-3-03-00-PM.png)\n\n4. For the `Redirect URI` of the `Single Page Application`, you can use https://api.carbon.ai/static/loading.html or add a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/static/loading.html`.\n\n![](https://i.ibb.co/0X5Nkz7/Screen-Shot-2023-09-13-at-3-13-53-PM.png)\n\n5. Under the `Authentciation`'s `Implicit grant and hybrid flows` section, check `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)`.\n\n![](https://i.ibb.co/ckVKZgV/Screen-Shot-2023-09-13-at-3-17-44-PM.png)\n\n6. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `Sites.Read.All`, `User.Read`, `AllSites.Read`, and `MyFiles.Read`.\n\n![](https://i.ibb.co/xjtvKTg/Screen-Shot-2023-09-13-at-3-22-12-PM.png)\n\n7. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.\n\n![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)\n\n8. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from SharePoint.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the SharePoint file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific SharePoint files. To delete SharePoint files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for SharePoint by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Zotero\n\nThe Carbon Connect `enabledIntegrations` value for ZOTERO is `ZOTERO`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 1.0](https://www.zotero.org/support/dev/web_api/v2/oauth)** to connect to Zotero.\n\n## Authorization Flow\n\nLog into your Zotero account. \n![](https://i.ibb.co/sgnb9xC/Screen-Shot-2023-11-06-at-12-45-31-PM.png)\n\nClick the \"Accept Defaults\" button to grant us permission to access Zotero.\n![](https://i.ibb.co/sJbyWX7/Screen-Shot-2023-11-06-at-12-43-09-PM.png)\n\nOnce clicking \"Accept Defaults\", all Zotero files are synced and you should see the following confirmation:\n![](https://i.ibb.co/HLvPWK8/Screen-Shot-2023-11-06-at-12-42-42-PM.png)\n\n## Configuration\n\n### Custom OAuth Credentials\n\n#### Setting up the OAuth App\n\n1. Create or log into your [Zotero](https://www.zotero.org/) Account.\n\n2. Click [here](https://www.zotero.org/oauth/apps) to set up your OAuth app.\n\n![](https://i.ibb.co/rs41H7N/Screen-Shot-2023-11-06-at-2-41-13-PM.png)\n\n3. Click \"Register a New Application\" and fill out the info below. Add https://api.carbon.ai/integrations/zotero as the `Callback URL`. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zotero`.\n\n![](https://i.ibb.co/5nBwgWT/Screen-Shot-2023-11-06-at-12-51-59-PM.png)\n\n4. Copy and share the Client Key and Client Secret with Carbon.\n\n![](https://i.ibb.co/cTkv51s/Screen-Shot-2023-11-06-at-2-46-20-PM.png)\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Zotero.\n\n## Synchronization\n\nBy default, Carbon syncs all attachments from your Zotero library along with the accompanying info as metadata.\n\nYou can use the `resync_file` API endpoint to programmatically resync specific Zotero files. To delete Zotero files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Zotero by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n# Box\n\nThe Carbon Connect `enabledIntegrations` value for Box is `BOX`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developer.box.com/guides/authentication/oauth2/)** to connect to Box.\n\n## Authorization Flow\n\nLog into your Box account.\n\n![](https://i.ibb.co/8gGpBdg/Screen-Shot-2023-09-08-at-1-34-42-PM.png)\n\nClick the \"Select Files from Box\" button to open up the Box file selector.\n![](https://i.ibb.co/K55H1rp/Screen-Shot-2023-09-08-at-1-38-15-PM.png)\n\nClick the checkmark after selecting files to grant Carbon access to files.\n\n*Limitations*: You can currently only upload individual file(s) via Box's file selector. If you'd like the ability the upload entire folders, please reach out to us on Slack. \n\n![](https://i.ibb.co/Zz2pDPm/Screen-Shot-2023-09-08-at-1-33-30-PM.png)\n\nYou'll receive a confirmation that your file(s) has been uploaded.\n\n![](https://i.ibb.co/ZTZQw03/Screen-Shot-2023-09-08-at-2-03-48-PM.png)\n\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. Sign up for an account under [Box Developer](https://developer.box.com/).\n\n2. Go to `My Apps`, then `Create New App` -> `Choose Custom App`.\n\n![](https://i.ibb.co/cQw41M9/Screen-Shot-2023-09-08-at-2-12-34-PM.png)\n\n2. Fill out the app details in the modal that opens.\n\n![](https://i.ibb.co/TPJpqny/Screen-Shot-2023-09-08-at-2-14-32-PM.png)\n\n3. Select User Auth with OAuth 2.0 in the following step.\n\n![](https://i.ibb.co/Hr3SJJ8/Screen-Shot-2023-09-08-at-2-20-26-PM.png)\n\n4. In the `Configuration` tab copy and paste the `Client ID` and `Client Secret` and share it with us.\n\n![](https://i.ibb.co/1mm1PWM/Screen-Shot-2023-09-08-at-2-22-53-PM.png)\n\n5. Add https://api.carbon.ai/integrations/box as a `Redirect URIs` and https://api.carbon.ai as a `CORS Domains`\n\n![](https://i.ibb.co/374946D/Screen-Shot-2023-09-08-at-2-30-28-PM.png)\n![](https://i.ibb.co/HdtDqfd/Screen-Shot-2023-09-08-at-2-31-14-PM.png)\n\n7. For scopes, select `Read all files and folders stored in Box` and `Write all files and folders stored in Box`.\n\n![](https://i.ibb.co/9wRrqKX/Screen-Shot-2023-09-08-at-2-27-44-PM.png)\n\n8. In the `App Center` tab, you can edit your branding.\n\n![](https://i.ibb.co/GsHQq2g/Screen-Shot-2023-09-08-at-2-34-26-PM.png)\n\n9. Once you're ready, you can also submit your app for approval.\n\n![](https://i.ibb.co/XVg2skh/Screen-Shot-2023-09-08-at-2-37-05-PM.png)\n\n## Functionality\n\nCarbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Box.\n\n## Synchronization\n\nSyncs are triggered when end-users select files to upload via the Box file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Box files. To delete Box files from Carbon, you can use the `deletefile` endpoint directly.\n\nWe do not run our 24-hour batch sync for Box by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.\n\n\n# Zendesk\nThe Carbon Connect `enabledIntegrations` value for Zendesk is `ZENDESK`.\n\n## Authorization Type\n\nCarbon uses **[OAuth 2.0](https://developers.Zendesk.com/building-apps/docs/setting-up-oauth)** to connect to Zendesk workspaces.\n\n## Authorization Flow\n\n![](https://i.ibb.co/Zc1sh5Q/Screen-Shot-2023-09-14-at-5-25-02-PM.png)\n\n![](https://i.ibb.co/DKqsbFC/Screen-Shot-2023-09-14-at-10-40-28-AM.png)\n\n![](https://i.ibb.co/Vw6bF82/Screen-Shot-2023-09-14-at-10-37-47-AM.png)\n\n## Functionality\n\nCarbon syncs all `Published` articles under a single Zendesk workspace. Any `Draft` article won't be synced. We currently support only having a single Zendesk workspace connected per `customer_id`.\n\n## Configuration\n\n### Custom OAuth Credentials\n\n1. In Admin Center, click the `Apps and integrations` icon and then in the sidebar, select `APIs` > `Zendesk` APIs.\n\n![](https://i.ibb.co/3cXNwRj/Screen-Shot-2023-09-14-at-9-05-14-AM.png)\n\n![](https://i.ibb.co/wzvZ9jS/Screen-Shot-2023-09-13-at-5-08-26-PM.png)\n\n2. Click the `OAuth Clients` tab on the Zendesk API page, and then click `Add OAuth client` on the right side of the OAuth client list.\n\n![](https://i.ibb.co/djnzwcx/Screen-Shot-2023-09-13-at-5-06-46-PM.png)\n\n3. Complete the following fields to create a client:\n- Client Name - Enter a name for your app. This is the name that users will see when asked to grant access to your application, and when they check the list of third-party apps that have access to their Zendesk.\nDescription - Optional. This is a short description of your app that users will see when asked to grant access to it.\n- Company - Optional. This is the company name that users will see when asked to grant access to your application. The information can help them understand who they're granting access to.\n- Logo - Optional. This is the logo that users will see when asked to grant access to your application. The image can be a JPG, GIF, or PNG. For best results, upload a square image. It will be resized for the authorization page.\n- Unique Identifier - The field is auto-populated with a reformatted version of the name you entered for your app. You can change it if you want.\n- Redirect URLs - Enter https://api.carbon.ai/integrations/zendesk here. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zendesk`.\n\n![](https://i.ibb.co/yPqPzbD/Screen-Shot-2023-09-13-at-5-15-35-PM.png)\n\n4. Click Save. After the page refreshes, a new pre-populated Secret field appears on the lower side. This is the `client_secret` value specified in the OAuth2 spec. Send us the `client_secret` value over Slack.\n6. Copy the Secret value to your clipboard and save it somewhere safe. Note: The characters may extend past the width of the text box, so make sure to select everything before copying.\n\n![](https://i.ibb.co/Db8TQDJ/Screen-Shot-2023-09-13-at-5-21-34-PM.png)\n\n7. Copy the `Unique Identifier` of the OAuth app and share that value over Slack as well.\n8. In order for us to white-label your OAuth app, you need to request approval first to convert the app from a **local OAuth client** to **global OAuth client**. You can follow the instructions [here](https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client) to do so.\n\n## Synchronization\n\nSyncs are triggered when end-users add or remove pages via the Zendesk OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Zendesk files.\n\nIn addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.\n\n# Slack\n# Confluence\n",
       "name": "Data Sources"
+    },
+    {
+      "description": "\n---\nEmploy these endpoints for direct vector searches within our managed vector database or to fetch embeddings for storage in your custom vector store. Additionally, we offer hybrid support for keyword-based searches.\n",
+      "name": "Embeddings"
     },
     {
       "name": "White Label"
@@ -3568,6 +3568,53 @@
         }
       }
     },
+    "/data_sources": {
+      "post": {
+        "tags": [
+          "Data Sources"
+        ],
+        "summary": "Data Sources",
+        "operationId": "DataSources_query",
+        "security": [
+          {
+            "apiKey": [
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserDataSourceQueryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserDataSourceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user_data_sources": {
       "post": {
         "tags": [
@@ -5500,8 +5547,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ]
       },
@@ -5594,7 +5639,9 @@
             ]
           },
           "filters": {
-            "$ref": "#/components/schemas/AccountFilters"
+            "$ref": "#/components/schemas/AccountFilters",
+            "default": {
+            }
           },
           "order_by": {
             "$ref": "#/components/schemas/AccountsOrderByNullable"
@@ -5603,13 +5650,7 @@
         "type": "object",
         "required": [
           "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-            }
-          }
-        }
+        ]
       },
       "AddDataSourceTagsInput": {
         "title": "AddDataSourceTagsInput",
@@ -5758,7 +5799,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -5813,12 +5855,7 @@
         "type": "object",
         "required": [
           "ids"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "AzureBlobGetFileInput": {
         "title": "AzureBlobGetFileInput",
@@ -5841,6 +5878,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "AZURE_BLOB_STORAGE"
+            ],
             "const": "AZURE_BLOB_STORAGE"
           },
           "account_name": {
@@ -5862,6 +5903,9 @@
       "AzureBlobStorageTypes": {
         "title": "AzureBlobStorageTypes",
         "type": "string",
+        "enum": [
+          "Container"
+        ],
         "const": "Container"
       },
       "BaseIncludes": {
@@ -5906,12 +5950,7 @@
             "nullable": true
           }
         },
-        "type": "object",
-        "required": [
-          "set_page_as_boundary",
-          "prepend_filename_to_chunks",
-          "max_items_per_chunk"
-        ]
+        "type": "object"
       },
       "ChunksAndEmbeddings": {
         "title": "ChunksAndEmbeddings",
@@ -6036,7 +6075,8 @@
             "type": "integer"
           },
           "order_by": {
-            "$ref": "#/components/schemas/CommentsOrderBy"
+            "$ref": "#/components/schemas/CommentsOrderBy",
+            "default": "created"
           },
           "order_dir": {
             "$ref": "#/components/schemas/OrderDirV2Nullable"
@@ -6047,12 +6087,7 @@
           "data_source_id",
           "repository",
           "pull_number"
-        ],
-        "x-konfig-properties": {
-          "order_by": {
-            "default": "created"
-          }
-        }
+        ]
       },
       "CommentsOrderBy": {
         "title": "CommentsOrderBy",
@@ -6207,6 +6242,9 @@
       "ConfigurationKeys": {
         "title": "ConfigurationKeys",
         "type": "string",
+        "enum": [
+          "sparse_vectors"
+        ],
         "const": "sparse_vectors"
       },
       "ConfluenceAuthentication": {
@@ -6214,6 +6252,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "CONFLUENCE"
+            ],
             "const": "CONFLUENCE"
           },
           "access_token": {
@@ -6302,32 +6344,28 @@
             ]
           },
           "sync_options": {
-            "$ref": "#/components/schemas/SyncOptions"
+            "$ref": "#/components/schemas/SyncOptions",
+            "default": {
+              "chunk_size": 1500,
+              "chunk_overlap": 20,
+              "skip_embedding_generation": false,
+              "embedding_model": "OPENAI",
+              "generate_sparse_vectors": false,
+              "prepend_filename_to_chunks": false,
+              "sync_files_on_connection": true,
+              "set_page_as_boundary": false,
+              "enable_file_picker": true,
+              "sync_source_items": true,
+              "incremental_sync": false,
+              "data_source_tags": {
+              }
+            }
           }
         },
         "type": "object",
         "required": [
           "authentication"
-        ],
-        "x-konfig-properties": {
-          "sync_options": {
-            "default": {
-              "chunk_overlap": 20,
-              "chunk_size": 1500,
-              "data_source_tags": {
-              },
-              "embedding_model": "OPENAI",
-              "enable_file_picker": true,
-              "generate_sparse_vectors": false,
-              "incremental_sync": false,
-              "prepend_filename_to_chunks": false,
-              "set_page_as_boundary": false,
-              "skip_embedding_generation": false,
-              "sync_files_on_connection": true,
-              "sync_source_items": true
-            }
-          }
-        }
+        ]
       },
       "ConnectDataSourceResponse": {
         "title": "ConnectDataSourceResponse",
@@ -6343,8 +6381,7 @@
         },
         "type": "object",
         "required": [
-          "data_source",
-          "sync_url"
+          "data_source"
         ]
       },
       "Contact": {
@@ -6468,8 +6505,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ]
       },
@@ -6540,7 +6575,9 @@
             ]
           },
           "filters": {
-            "$ref": "#/components/schemas/ContactFilters"
+            "$ref": "#/components/schemas/ContactFilters",
+            "default": {
+            }
           },
           "order_by": {
             "$ref": "#/components/schemas/ContactsOrderByNullable"
@@ -6549,13 +6586,7 @@
         "type": "object",
         "required": [
           "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-            }
-          }
-        }
+        ]
       },
       "ContactsResponse": {
         "title": "ContactsResponse",
@@ -6643,6 +6674,9 @@
       "DataSourceExtendedInput": {
         "title": "DataSourceExtendedInput",
         "type": "string",
+        "enum": [
+          "ALL"
+        ],
         "const": "ALL"
       },
       "DataSourceLastSyncActions": {
@@ -6774,7 +6808,11 @@
         "title": "DeleteFilesV2QueryInput",
         "properties": {
           "filters": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
           },
           "send_webhook": {
             "title": "Send Webhook",
@@ -6788,15 +6826,7 @@
             "default": false
           }
         },
-        "type": "object",
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-              "include_all_children": false,
-              "non_synced_only": false
-            }
-          }
-        }
+        "type": "object"
       },
       "DeleteUsersInput": {
         "title": "DeleteUsersInput",
@@ -6855,9 +6885,7 @@
         "type": "object",
         "required": [
           "id",
-          "name",
-          "is_synced",
-          "has_children"
+          "name"
         ]
       },
       "DocumentResponse": {
@@ -6979,17 +7007,7 @@
         "required": [
           "content",
           "file_id",
-          "parent_file_id",
-          "source",
-          "source_url",
-          "source_type",
-          "presigned_url",
-          "tags",
-          "vector",
-          "score",
-          "rank",
-          "content_metadata",
-          "chunk_index"
+          "vector"
         ]
       },
       "DocumentResponseList": {
@@ -7060,10 +7078,7 @@
         "type": "object",
         "required": [
           "user_file_id",
-          "chunk_index",
-          "source_content",
-          "embedding",
-          "content_metadata"
+          "source_content"
         ]
       },
       "EmbeddingGenerators": {
@@ -7146,13 +7161,20 @@
         "title": "EmbeddingsAndChunksQueryInput",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
+            "$ref": "#/components/schemas/Pagination",
+            "default": {
+              "limit": 10,
+              "offset": 0,
+              "starting_id": 0
+            }
           },
           "order_by": {
-            "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns"
+            "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns",
+            "default": "updated_at"
           },
           "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
+            "$ref": "#/components/schemas/OrderDir",
+            "default": "asc"
           },
           "filters": {
             "$ref": "#/components/schemas/EmbeddingsAndChunksFilters"
@@ -7166,9 +7188,13 @@
         "type": "object",
         "required": [
           "filters"
-        ],
-        "x-konfig-properties": {
+        ]
+      },
+      "EmbeddingsAndChunksQueryInputV2": {
+        "title": "EmbeddingsAndChunksQueryInputV2",
+        "properties": {
           "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -7176,24 +7202,12 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes",
             "default": "updated_at"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
-          }
-        }
-      },
-      "EmbeddingsAndChunksQueryInputV2": {
-        "title": "EmbeddingsAndChunksQueryInputV2",
-        "properties": {
-          "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
             "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
@@ -7207,22 +7221,7 @@
         "type": "object",
         "required": [
           "filters"
-        ],
-        "x-konfig-properties": {
-          "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0,
-              "starting_id": 0
-            }
-          },
-          "order_by": {
-            "default": "updated_at"
-          },
-          "order_dir": {
-            "default": "asc"
-          }
-        }
+        ]
       },
       "EmbeddingsAndChunksResponse": {
         "title": "EmbeddingsAndChunksResponse",
@@ -7500,8 +7499,7 @@
         "type": "object",
         "required": [
           "urls",
-          "html_content",
-          "error_message"
+          "html_content"
         ]
       },
       "FileContentTypes": {
@@ -7605,15 +7603,7 @@
             "nullable": true
           }
         },
-        "type": "object",
-        "required": [
-          "file_format",
-          "file_size",
-          "num_characters",
-          "num_tokens",
-          "num_embeddings",
-          "mime_type"
-        ]
+        "type": "object"
       },
       "FileStatus": {
         "title": "FileStatus",
@@ -7854,6 +7844,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "FRESHDESK"
+            ],
             "const": "FRESHDESK"
           },
           "domain": {
@@ -8129,6 +8123,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "GITBOOK"
+            ],
             "const": "GITBOOK"
           },
           "access_token": {
@@ -8184,7 +8182,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -8230,12 +8229,7 @@
         "required": [
           "organization",
           "access_token"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "GitbookFileTypes": {
         "title": "GitbookFileTypes",
@@ -8288,7 +8282,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -8315,18 +8310,17 @@
         "required": [
           "space_ids",
           "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "GithubAuthentication": {
         "title": "GithubAuthentication",
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "GITHUB"
+            ],
             "const": "GITHUB"
           },
           "access_token": {
@@ -8441,7 +8435,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -8483,18 +8478,17 @@
         "type": "object",
         "required": [
           "filters"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "GongAuthentication": {
         "title": "GongAuthentication",
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "GONG"
+            ],
             "const": "GONG"
           },
           "access_token": {
@@ -8560,6 +8554,10 @@
         "properties": {
           "data_source_type": {
             "title": "Data Source Type",
+            "type": "string",
+            "enum": [
+              "GOOGLE_DRIVE"
+            ],
             "const": "GOOGLE_DRIVE"
           },
           "credentials": {
@@ -8577,6 +8575,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "GURU"
+            ],
             "const": "GURU"
           },
           "access_token": {
@@ -8632,7 +8634,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -8678,12 +8681,7 @@
         "required": [
           "username",
           "access_token"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "GuruFileTypes": {
         "title": "GuruFileTypes",
@@ -8888,15 +8886,11 @@
         "title": "IssuesFilter",
         "properties": {
           "state": {
-            "$ref": "#/components/schemas/PRStateInput"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "state": {
+            "$ref": "#/components/schemas/PRStateInput",
             "default": "open"
           }
-        }
+        },
+        "type": "object"
       },
       "IssuesInput": {
         "title": "IssuesInput",
@@ -8932,10 +8926,14 @@
             "nullable": true
           },
           "filters": {
-            "$ref": "#/components/schemas/IssuesFilter"
+            "$ref": "#/components/schemas/IssuesFilter",
+            "default": {
+              "state": "open"
+            }
           },
           "order_by": {
-            "$ref": "#/components/schemas/IssuesOrderBy"
+            "$ref": "#/components/schemas/IssuesOrderBy",
+            "default": "created"
           },
           "order_dir": {
             "$ref": "#/components/schemas/OrderDirV2Nullable"
@@ -8945,17 +8943,7 @@
         "required": [
           "data_source_id",
           "repository"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-              "state": "open"
-            }
-          },
-          "order_by": {
-            "default": "created"
-          }
-        }
+        ]
       },
       "IssuesOrderBy": {
         "title": "IssuesOrderBy",
@@ -9143,8 +9131,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ]
       },
@@ -9219,7 +9205,9 @@
             ]
           },
           "filters": {
-            "$ref": "#/components/schemas/LeadFilters"
+            "$ref": "#/components/schemas/LeadFilters",
+            "default": {
+            }
           },
           "order_by": {
             "$ref": "#/components/schemas/LeadsOrderByNullable"
@@ -9228,13 +9216,7 @@
         "type": "object",
         "required": [
           "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-            }
-          }
-        }
+        ]
       },
       "LeadsResponse": {
         "title": "LeadsResponse",
@@ -9279,21 +9261,7 @@
             "$ref": "#/components/schemas/ListItemsFiltersNullable"
           },
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/ExternalSourceItemsOrderBy"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDirV2"
-          }
-        },
-        "type": "object",
-        "required": [
-          "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -9301,12 +9269,18 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/ExternalSourceItemsOrderBy",
             "default": "name"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2",
             "default": "asc"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "data_source_id"
+        ]
       },
       "ListDataSourceItemsResponse": {
         "title": "ListDataSourceItemsResponse",
@@ -9506,9 +9480,7 @@
           "created_at",
           "updated_at",
           "deleted_at",
-          "enabled_features",
-          "custom_limits",
-          "auto_sync_enabled_sources"
+          "enabled_features"
         ]
       },
       "ListUsersFilters": {
@@ -9547,16 +9519,25 @@
         "title": "ListUsersRequest",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
+            "$ref": "#/components/schemas/Pagination",
+            "default": {
+              "limit": 10,
+              "offset": 0,
+              "starting_id": 0
+            }
           },
           "filters": {
-            "$ref": "#/components/schemas/ListUsersFilters"
+            "$ref": "#/components/schemas/ListUsersFilters",
+            "default": {
+            }
           },
           "order_by": {
-            "$ref": "#/components/schemas/ListUsersOrderByTypes"
+            "$ref": "#/components/schemas/ListUsersOrderByTypes",
+            "default": "created_at"
           },
           "order_dir": {
-            "$ref": "#/components/schemas/OrderDirV2"
+            "$ref": "#/components/schemas/OrderDirV2",
+            "default": "desc"
           },
           "include_count": {
             "title": "Include Count",
@@ -9564,46 +9545,13 @@
             "default": false
           }
         },
-        "type": "object",
-        "x-konfig-properties": {
-          "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0,
-              "starting_id": 0
-            }
-          },
-          "filters": {
-            "default": {
-            }
-          },
-          "order_by": {
-            "default": "created_at"
-          },
-          "order_dir": {
-            "default": "desc"
-          }
-        }
+        "type": "object"
       },
       "ListWhiteLabelRequest": {
         "title": "ListWhiteLabelRequest",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/WhiteLabelOrderByColumns"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
-          },
-          "filters": {
-            "$ref": "#/components/schemas/WhiteLabelFilters"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -9611,26 +9559,34 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/WhiteLabelOrderByColumns",
             "default": "created_at"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
+            "$ref": "#/components/schemas/WhiteLabelFilters",
             "default": {
-              "data_source_type": [
-              ],
               "ids": [
+              ],
+              "data_source_type": [
               ]
             }
           }
-        }
+        },
+        "type": "object"
       },
       "ModifyColdStorageParametersQueryInput": {
         "title": "ModifyColdStorageParametersQueryInput",
         "properties": {
           "filters": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
           },
           "enable_cold_storage": {
             "title": "Enable Cold Storage",
@@ -9644,15 +9600,7 @@
             "nullable": true
           }
         },
-        "type": "object",
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-              "include_all_children": false,
-              "non_synced_only": false
-            }
-          }
-        }
+        "type": "object"
       },
       "ModifyUserConfigurationInput": {
         "title": "ModifyUserConfigurationInput",
@@ -9675,22 +9623,21 @@
         "title": "MoveToHotStorageQueryInput",
         "properties": {
           "filters": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "filters": {
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
             "default": {
               "include_all_children": false,
               "non_synced_only": false
             }
           }
-        }
+        },
+        "type": "object"
       },
       "MultiModalEmbeddingGenerators": {
         "title": "MultiModalEmbeddingGenerators",
         "type": "string",
+        "enum": [
+          "VERTEX_MULTIMODAL"
+        ],
         "const": "VERTEX_MULTIMODAL"
       },
       "NotionAuthentication": {
@@ -9698,6 +9645,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "NOTION"
+            ],
             "const": "NOTION"
           },
           "access_token": {
@@ -9950,6 +9901,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "ONEDRIVE"
+            ],
             "const": "ONEDRIVE"
           },
           "access_token": {
@@ -10074,7 +10029,9 @@
             ]
           },
           "filters": {
-            "$ref": "#/components/schemas/OpportunityFilters"
+            "$ref": "#/components/schemas/OpportunityFilters",
+            "default": {
+            }
           },
           "order_by": {
             "$ref": "#/components/schemas/OpportunitiesOrderByNullable"
@@ -10083,13 +10040,7 @@
         "type": "object",
         "required": [
           "data_source_id"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-            }
-          }
-        }
+        ]
       },
       "OpportunitiesResponse": {
         "title": "OpportunitiesResponse",
@@ -10217,8 +10168,6 @@
           "created_at",
           "updated_at",
           "is_deleted",
-          "tasks",
-          "events",
           "remote_data"
         ]
       },
@@ -10380,10 +10329,7 @@
         "required": [
           "id",
           "name",
-          "nickname",
           "remove_branding",
-          "custom_branding",
-          "custom_limits",
           "aggregate_file_size",
           "aggregate_num_characters",
           "aggregate_num_tokens",
@@ -10391,12 +10337,6 @@
           "aggregate_num_files_by_source",
           "aggregate_num_files_by_file_format",
           "file_statistics_aggregated_at",
-          "period_ends_at",
-          "cancel_at_period_end",
-          "connector_settings",
-          "global_user_config",
-          "file_sync_usage",
-          "logging_settings",
           "created_at",
           "updated_at"
         ]
@@ -10546,21 +10486,7 @@
         "title": "OrganizationUserDataSourceQueryInput",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
-          },
-          "filters": {
-            "$ref": "#/components/schemas/OrganizationUserDataSourceFilters"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -10568,16 +10494,20 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns",
             "default": "updated_at"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
+            "$ref": "#/components/schemas/OrganizationUserDataSourceFilters",
             "default": {
             }
           }
-        }
+        },
+        "type": "object"
       },
       "OrganizationUserDataSourceResponse": {
         "title": "OrganizationUserDataSourceResponse",
@@ -10886,16 +10816,31 @@
         "title": "OrganizationUserFilesToSyncQueryInput",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
+            "description": "Pagination parameters for the query.",
+            "$ref": "#/components/schemas/Pagination",
+            "default": {
+              "limit": 10,
+              "offset": 0,
+              "starting_id": 0
+            }
           },
           "order_by": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
+            "description": "The field on OrganizationUserFilesToSYnc to order the results by.",
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes",
+            "default": "updated_at"
           },
           "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
+            "description": "The direction to order the results by.",
+            "$ref": "#/components/schemas/OrderDir",
+            "default": "asc"
           },
           "filters": {
-            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
+            "description": "Filters to apply to the query.",
+            "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters",
+            "default": {
+              "include_all_children": false,
+              "non_synced_only": false
+            }
           },
           "include_raw_file": {
             "title": "Include Raw File",
@@ -10922,32 +10867,7 @@
             "default": 3600
           }
         },
-        "type": "object",
-        "x-konfig-properties": {
-          "pagination": {
-            "description": "Pagination parameters for the query.",
-            "default": {
-              "limit": 10,
-              "offset": 0,
-              "starting_id": 0
-            }
-          },
-          "order_by": {
-            "description": "The field on OrganizationUserFilesToSYnc to order the results by.",
-            "default": "updated_at"
-          },
-          "order_dir": {
-            "description": "The direction to order the results by.",
-            "default": "asc"
-          },
-          "filters": {
-            "description": "Filters to apply to the query.",
-            "default": {
-              "include_all_children": false,
-              "non_synced_only": false
-            }
-          }
-        }
+        "type": "object"
       },
       "OuthURLResponse": {
         "title": "OuthURLResponse",
@@ -11001,7 +10921,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -11043,12 +10964,7 @@
         "type": "object",
         "required": [
           "filters"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "PRComment": {
         "title": "PRComment",
@@ -11572,7 +11488,8 @@
         "title": "PullRequestFilters",
         "properties": {
           "state": {
-            "$ref": "#/components/schemas/PRStateInput"
+            "$ref": "#/components/schemas/PRStateInput",
+            "default": "open"
           },
           "base": {
             "title": "Base",
@@ -11587,12 +11504,7 @@
             "nullable": true
           }
         },
-        "type": "object",
-        "x-konfig-properties": {
-          "state": {
-            "default": "open"
-          }
-        }
+        "type": "object"
       },
       "PullRequestResponse": {
         "title": "PullRequestResponse",
@@ -11650,10 +11562,14 @@
             "nullable": true
           },
           "filters": {
-            "$ref": "#/components/schemas/PullRequestFilters"
+            "$ref": "#/components/schemas/PullRequestFilters",
+            "default": {
+              "state": "open"
+            }
           },
           "order_by": {
-            "$ref": "#/components/schemas/PROrderBy"
+            "$ref": "#/components/schemas/PROrderBy",
+            "default": "created"
           },
           "order_dir": {
             "$ref": "#/components/schemas/OrderDirV2Nullable"
@@ -11663,17 +11579,7 @@
         "required": [
           "data_source_id",
           "repository"
-        ],
-        "x-konfig-properties": {
-          "filters": {
-            "default": {
-              "state": "open"
-            }
-          },
-          "order_by": {
-            "default": "created"
-          }
-        }
+        ]
       },
       "RSSFeedInput": {
         "title": "RSSFeedInput",
@@ -11708,7 +11614,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -11738,12 +11645,7 @@
         "type": "object",
         "required": [
           "url"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "RawTextInput": {
         "title": "RawTextInput",
@@ -11788,7 +11690,10 @@
             "nullable": true
           },
           "cold_storage_params": {
-            "$ref": "#/components/schemas/ColdStorageProps"
+            "$ref": "#/components/schemas/ColdStorageProps",
+            "default": {
+              "enable_cold_storage": false
+            }
           },
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
@@ -11806,14 +11711,7 @@
         "type": "object",
         "required": [
           "contents"
-        ],
-        "x-konfig-properties": {
-          "cold_storage_params": {
-            "default": {
-              "enable_cold_storage": false
-            }
-          }
-        }
+        ]
       },
       "RemoveDataSourceTagsInput": {
         "title": "RemoveDataSourceTagsInput",
@@ -11945,6 +11843,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "S3"
+            ],
             "const": "S3"
           },
           "access_key": {
@@ -12005,7 +11907,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -12060,12 +11963,7 @@
         "type": "object",
         "required": [
           "ids"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "S3GetFileInput": {
         "title": "S3GetFileInput",
@@ -12088,6 +11986,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "SALESFORCE"
+            ],
             "const": "SALESFORCE"
           },
           "access_token": {
@@ -12116,6 +12018,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "SERVICENOW"
+            ],
             "const": "SERVICENOW"
           },
           "access_token": {
@@ -12204,6 +12110,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "SHAREPOINT"
+            ],
             "const": "SHAREPOINT"
           },
           "access_token": {
@@ -12396,7 +12306,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "url_paths_to_include": {
             "title": "Url Paths To Include",
@@ -12462,12 +12373,7 @@
         "type": "object",
         "required": [
           "url"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "SlackFilters": {
         "title": "SlackFilters",
@@ -12521,7 +12427,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -12549,12 +12456,7 @@
         "type": "object",
         "required": [
           "filters"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "StorageFileFormats": {
         "title": "StorageFileFormats",
@@ -13060,6 +12962,13 @@
             "minimum": -1,
             "nullable": true
           },
+          "auto_sync_interval": {
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
           "customer_ids": {
             "title": "Customer Ids",
             "description": "List of organization supplied user IDs",
@@ -13108,7 +13017,8 @@
             "default": false
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "generate_sparse_vectors": {
             "title": "Generate Sparse Vectors",
@@ -13159,7 +13069,10 @@
             "default": false
           },
           "cold_storage_params": {
-            "$ref": "#/components/schemas/ColdStorageProps"
+            "$ref": "#/components/schemas/ColdStorageProps",
+            "default": {
+              "enable_cold_storage": false
+            }
           },
           "generate_chunks_only": {
             "title": "Generate Chunks Only",
@@ -13177,17 +13090,7 @@
         "type": "object",
         "required": [
           "url"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          },
-          "cold_storage_params": {
-            "default": {
-              "enable_cold_storage": false
-            }
-          }
-        }
+        ]
       },
       "User": {
         "title": "User",
@@ -13257,6 +13160,13 @@
           "max_characters_per_upload": {
             "title": "Max Characters Per Upload",
             "description": "Custom character upload limit for the user across a single upload.\n        If set, then the user won't be able to sync more than this many characters in one upload. \n        If not set, or if set to -1, then the user will have no limit.",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
+          },
+          "auto_sync_interval": {
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]",
             "type": "integer",
             "minimum": -1,
             "nullable": true
@@ -13463,37 +13373,10 @@
           "organization_id",
           "organization_user_id",
           "organization_supplied_user_id",
-          "organization_user_data_source_id",
           "external_file_id",
-          "external_url",
           "sync_status",
-          "sync_error_message",
-          "last_sync",
-          "tags",
-          "file_statistics",
-          "file_metadata",
-          "embedding_properties",
-          "chunk_size",
-          "chunk_overlap",
-          "chunk_properties",
-          "ocr_properties",
-          "ocr_job_started_at",
-          "name",
-          "parent_id",
-          "enable_auto_sync",
-          "presigned_url",
-          "parsed_text_url",
-          "additional_presigned_urls",
           "skip_embedding_generation",
-          "source_created_at",
-          "generate_sparse_vectors",
-          "request_id",
-          "upload_id",
-          "sync_properties",
-          "messages_metadata",
-          "file_contents_deleted",
           "supports_cold_storage",
-          "hot_storage_time_to_live",
           "embedding_storage_status",
           "created_at",
           "updated_at"
@@ -13538,8 +13421,7 @@
         },
         "type": "object",
         "required": [
-          "users",
-          "count"
+          "users"
         ]
       },
       "UserRequestContent": {
@@ -13673,10 +13555,7 @@
           "aggregate_num_files_by_source",
           "aggregate_num_files_by_file_format",
           "unique_file_tags",
-          "enabled_features",
-          "custom_limits",
-          "auto_sync_enabled_sources",
-          "connector_settings"
+          "enabled_features"
         ]
       },
       "UserWebPageOrderByTypes": {
@@ -13706,25 +13585,12 @@
         "title": "UserWebPagesRequest",
         "properties": {
           "filters": {
-            "$ref": "#/components/schemas/UserWebPagesFilters"
-          },
-          "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/UserWebPageOrderByTypes"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDirV2"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "filters": {
+            "$ref": "#/components/schemas/UserWebPagesFilters",
             "default": {
             }
           },
           "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -13732,12 +13598,15 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/UserWebPageOrderByTypes",
             "default": "updated_at"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDirV2",
             "default": "desc"
           }
-        }
+        },
+        "type": "object"
       },
       "ValidationError": {
         "title": "ValidationError",
@@ -13817,7 +13686,6 @@
           "url",
           "signing_key",
           "status",
-          "status_reason",
           "created_at",
           "updated_at"
         ]
@@ -13878,7 +13746,6 @@
           "organization_id",
           "url",
           "status",
-          "status_reason",
           "created_at",
           "updated_at"
         ]
@@ -13895,21 +13762,7 @@
         "title": "WebhookQueryInput",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/Pagination"
-          },
-          "order_by": {
-            "$ref": "#/components/schemas/WebhookOrderByColumns"
-          },
-          "order_dir": {
-            "$ref": "#/components/schemas/OrderDir"
-          },
-          "filters": {
-            "$ref": "#/components/schemas/WebhookFilters"
-          }
-        },
-        "type": "object",
-        "x-konfig-properties": {
-          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
             "default": {
               "limit": 10,
               "offset": 0,
@@ -13917,18 +13770,22 @@
             }
           },
           "order_by": {
+            "$ref": "#/components/schemas/WebhookOrderByColumns",
             "default": "updated_at"
           },
           "order_dir": {
+            "$ref": "#/components/schemas/OrderDir",
             "default": "asc"
           },
           "filters": {
+            "$ref": "#/components/schemas/WebhookFilters",
             "default": {
               "ids": [
               ]
             }
           }
-        }
+        },
+        "type": "object"
       },
       "WebhookQueryResponse": {
         "title": "WebhookQueryResponse",
@@ -14085,7 +13942,8 @@
             "nullable": true
           },
           "embedding_model": {
-            "$ref": "#/components/schemas/EmbeddingGenerators"
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
           },
           "url_paths_to_include": {
             "title": "Url Paths To Include",
@@ -14128,12 +13986,7 @@
         "type": "object",
         "required": [
           "url"
-        ],
-        "x-konfig-properties": {
-          "embedding_model": {
-            "default": "OPENAI"
-          }
-        }
+        ]
       },
       "WhiteLabelFilters": {
         "title": "WhiteLabelFilters",
@@ -14228,8 +14081,7 @@
         "required": [
           "remove_branding",
           "integrations",
-          "custom_limits",
-          "connector_settings"
+          "custom_limits"
         ]
       },
       "YoutubeTranscriptResponse": {
@@ -14270,10 +14122,7 @@
         },
         "type": "object",
         "required": [
-          "status",
-          "error",
-          "data",
-          "raw_transcript"
+          "status"
         ]
       },
       "ZendeskAuthentication": {
@@ -14281,6 +14130,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "ZENDESK"
+            ],
             "const": "ZENDESK"
           },
           "access_token": {
@@ -14315,6 +14168,10 @@
         "properties": {
           "source": {
             "title": "Source",
+            "type": "string",
+            "enum": [
+              "ZOTERO"
+            ],
             "const": "ZOTERO"
           },
           "access_token": {
@@ -15074,6 +14931,13 @@
             "type": "integer",
             "minimum": -1,
             "nullable": true
+          },
+          "auto_sync_interval": {
+            "title": "Auto Sync Interval",
+            "description": "The interval in hours at which the user's data sources should be synced. If not set or set to -1, \n        the user will be synced at the organization level interval or default interval if that is also not set. \n        Must be one of [3, 6, 12, 24]",
+            "type": "integer",
+            "minimum": -1,
+            "nullable": true
           }
         },
         "type": "object",
@@ -15112,14 +14976,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "file_format",
-          "file_size",
-          "num_characters",
-          "num_tokens",
-          "num_embeddings",
-          "mime_type"
-        ],
         "nullable": true
       },
       "ChunkPropertiesNullable": {
@@ -15142,11 +14998,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "set_page_as_boundary",
-          "prepend_filename_to_chunks",
-          "max_items_per_chunk"
-        ],
         "nullable": true
       },
       "UtilitiesScrapeWebRequest": {

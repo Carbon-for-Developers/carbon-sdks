@@ -23,16 +23,12 @@ class RequiredOrganizationUserFilesToSyncQueryInput(TypedDict):
     pass
 
 class OptionalOrganizationUserFilesToSyncQueryInput(TypedDict, total=False):
-    # Pagination parameters for the query.
     pagination: Pagination
 
-    # The field on OrganizationUserFilesToSYnc to order the results by.
     order_by: OrganizationUserFilesToSyncOrderByTypes
 
-    # The direction to order the results by.
     order_dir: OrderDir
 
-    # Filters to apply to the query.
     filters: OrganizationUserFilesToSyncFilters
 
     # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.

@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.carbonai.client.model.ConfigurationKeys;
 import com.konfigthis.carbonai.client.model.DeleteUsersInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.ListUsersFilters;
@@ -703,10 +704,10 @@ public class UsersApiGenerated {
     }
 
     public abstract class ToggleUserFeaturesRequestBuilderGenerated {
-        final String configurationKeyName;
+        final ConfigurationKeys configurationKeyName;
         final Object value;
 
-        public ToggleUserFeaturesRequestBuilderGenerated(String configurationKeyName, Object value) {
+        public ToggleUserFeaturesRequestBuilderGenerated(ConfigurationKeys configurationKeyName, Object value) {
             this.configurationKeyName = configurationKeyName;
             this.value = value;
         }
@@ -803,10 +804,8 @@ public class UsersApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public UsersApi.ToggleUserFeaturesRequestBuilder toggleUserFeatures(String configurationKeyName, Object value) throws IllegalArgumentException {
+    public UsersApi.ToggleUserFeaturesRequestBuilder toggleUserFeatures(ConfigurationKeys configurationKeyName, Object value) throws IllegalArgumentException {
         if (configurationKeyName == null) throw new IllegalArgumentException("\"configurationKeyName\" is required but got null");
-            
-
         if (value == null) throw new IllegalArgumentException("\"value\" is required but got null");
         return ((UsersApi) this).new ToggleUserFeaturesRequestBuilder(configurationKeyName, value);
     }
@@ -889,6 +888,7 @@ public class UsersApiGenerated {
         Integer maxCharacters;
         Integer maxCharactersPerFile;
         Integer maxCharactersPerUpload;
+        Integer autoSyncInterval;
 
         public UpdateUsersRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;
@@ -955,6 +955,16 @@ public class UsersApiGenerated {
         }
         
         /**
+         * Set autoSyncInterval
+         * @param autoSyncInterval The interval in hours at which the user&#39;s data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24] (optional)
+         * @return UsersApi.UpdateUsersRequestBuilder
+         */
+        public UsersApi.UpdateUsersRequestBuilder autoSyncInterval(Integer autoSyncInterval) {
+            this.autoSyncInterval = autoSyncInterval;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
+        }
+        
+        /**
          * Build call for updateUsers
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -978,6 +988,7 @@ public class UsersApiGenerated {
             updateUsersInput.maxCharacters(this.maxCharacters);
             updateUsersInput.maxCharactersPerFile(this.maxCharactersPerFile);
             updateUsersInput.maxCharactersPerUpload(this.maxCharactersPerUpload);
+            updateUsersInput.autoSyncInterval(this.autoSyncInterval);
             updateUsersInput.customerIds(this.customerIds);
             return updateUsersInput;
         }

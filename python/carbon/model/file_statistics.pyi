@@ -32,14 +32,6 @@ class FileStatistics(
 
 
     class MetaOapg:
-        required = {
-            "mime_type",
-            "num_tokens",
-            "num_embeddings",
-            "file_format",
-            "file_size",
-            "num_characters",
-        }
         
         class properties:
         
@@ -155,13 +147,6 @@ class FileStatistics(
                 "mime_type": mime_type,
             }
     
-    mime_type: MetaOapg.properties.mime_type
-    num_tokens: MetaOapg.properties.num_tokens
-    num_embeddings: MetaOapg.properties.num_embeddings
-    file_format: 'FileFormatsNullable'
-    file_size: MetaOapg.properties.file_size
-    num_characters: MetaOapg.properties.num_characters
-    
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["file_format"]) -> 'FileFormatsNullable': ...
     
@@ -189,22 +174,22 @@ class FileStatistics(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_format"]) -> 'FileFormatsNullable': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_format"]) -> typing.Union['FileFormatsNullable', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["file_size"]) -> MetaOapg.properties.file_size: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["file_size"]) -> typing.Union[MetaOapg.properties.file_size, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["num_characters"]) -> MetaOapg.properties.num_characters: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["num_characters"]) -> typing.Union[MetaOapg.properties.num_characters, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["num_tokens"]) -> MetaOapg.properties.num_tokens: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["num_tokens"]) -> typing.Union[MetaOapg.properties.num_tokens, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["num_embeddings"]) -> MetaOapg.properties.num_embeddings: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["num_embeddings"]) -> typing.Union[MetaOapg.properties.num_embeddings, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["mime_type"]) -> MetaOapg.properties.mime_type: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["mime_type"]) -> typing.Union[MetaOapg.properties.mime_type, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -216,24 +201,24 @@ class FileStatistics(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        mime_type: typing.Union[MetaOapg.properties.mime_type, None, str, ],
-        num_tokens: typing.Union[MetaOapg.properties.num_tokens, None, decimal.Decimal, int, ],
-        num_embeddings: typing.Union[MetaOapg.properties.num_embeddings, None, decimal.Decimal, int, ],
-        file_format: 'FileFormatsNullable',
-        file_size: typing.Union[MetaOapg.properties.file_size, None, decimal.Decimal, int, ],
-        num_characters: typing.Union[MetaOapg.properties.num_characters, None, decimal.Decimal, int, ],
+        file_format: typing.Union['FileFormatsNullable', schemas.Unset] = schemas.unset,
+        file_size: typing.Union[MetaOapg.properties.file_size, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        num_characters: typing.Union[MetaOapg.properties.num_characters, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        num_tokens: typing.Union[MetaOapg.properties.num_tokens, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        num_embeddings: typing.Union[MetaOapg.properties.num_embeddings, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        mime_type: typing.Union[MetaOapg.properties.mime_type, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FileStatistics':
         return super().__new__(
             cls,
             *args,
-            mime_type=mime_type,
-            num_tokens=num_tokens,
-            num_embeddings=num_embeddings,
             file_format=file_format,
             file_size=file_size,
             num_characters=num_characters,
+            num_tokens=num_tokens,
+            num_embeddings=num_embeddings,
+            mime_type=mime_type,
             _configuration=_configuration,
             **kwargs,
         )

@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class AzureBlobStorageAuthentication(BaseModel):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None] = Field(alias='source')
+    source: Literal["AZURE_BLOB_STORAGE"] = Field(alias='source')
 
     account_name: str = Field(alias='account_name')
 

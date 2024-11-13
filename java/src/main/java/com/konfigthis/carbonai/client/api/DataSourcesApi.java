@@ -27,6 +27,11 @@ public class DataSourcesApi extends DataSourcesApiGenerated {
             super(tags, dataSourceId);
         }
     }
+    public class QueryRequestBuilder extends QueryRequestBuilderGenerated {
+        public QueryRequestBuilder() {
+            super();
+        }
+    }
     public class QueryUserDataSourcesRequestBuilder extends QueryUserDataSourcesRequestBuilderGenerated {
         public QueryUserDataSourcesRequestBuilder() {
             super();

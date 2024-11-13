@@ -19,10 +19,9 @@ from carbon.type.list_user_response import ListUserResponse
 class RequiredUserListResponse(TypedDict):
     users: typing.List[ListUserResponse]
 
-    count: typing.Optional[int]
 
 class OptionalUserListResponse(TypedDict, total=False):
-    pass
+    count: typing.Optional[int]
 
 class UserListResponse(RequiredUserListResponse, OptionalUserListResponse):
     pass

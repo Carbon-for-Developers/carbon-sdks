@@ -16,14 +16,14 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
 class RequiredChunkPropertiesNullable(TypedDict):
+    pass
+
+class OptionalChunkPropertiesNullable(TypedDict, total=False):
     set_page_as_boundary: bool
 
     prepend_filename_to_chunks: bool
 
     max_items_per_chunk: typing.Optional[int]
-
-class OptionalChunkPropertiesNullable(TypedDict, total=False):
-    pass
 
 class ChunkPropertiesNullable(RequiredChunkPropertiesNullable, OptionalChunkPropertiesNullable):
     pass

@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface OneDriveAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof OneDriveAuthentication
      */
-    'source': any;
+    'source': OneDriveAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -42,4 +42,7 @@ export interface OneDriveAuthentication {
      */
     'tenant_name'?: string | null;
 }
+
+type OneDriveAuthenticationSourceEnum = 'ONEDRIVE'
+
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **InstanceSubdomain** | **string** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewServiceNowAuthentication
 
-`func NewServiceNowAuthentication(source interface{}, accessToken string, instanceSubdomain string, clientId string, clientSecret string, redirectUri string, ) *ServiceNowAuthentication`
+`func NewServiceNowAuthentication(source string, accessToken string, instanceSubdomain string, clientId string, clientSecret string, redirectUri string, ) *ServiceNowAuthentication`
 
 NewServiceNowAuthentication instantiates a new ServiceNowAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -33,34 +33,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *ServiceNowAuthentication) GetSource() interface{}`
+`func (o *ServiceNowAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ServiceNowAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *ServiceNowAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ServiceNowAuthentication) SetSource(v interface{})`
+`func (o *ServiceNowAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *ServiceNowAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *ServiceNowAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *ServiceNowAuthentication) GetAccessToken() string`

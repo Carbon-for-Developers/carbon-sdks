@@ -19,19 +19,18 @@ type WhiteLabelingResponse struct {
 	RemoveBranding bool `json:"remove_branding"`
 	Integrations map[string]interface{} `json:"integrations"`
 	CustomLimits map[string]interface{} `json:"custom_limits"`
-	ConnectorSettings map[string]interface{} `json:"connector_settings"`
+	ConnectorSettings map[string]interface{} `json:"connector_settings,omitempty"`
 }
 
 // NewWhiteLabelingResponse instantiates a new WhiteLabelingResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, connectorSettings map[string]interface{}) *WhiteLabelingResponse {
+func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}) *WhiteLabelingResponse {
 	this := WhiteLabelingResponse{}
 	this.RemoveBranding = removeBranding
 	this.Integrations = integrations
 	this.CustomLimits = customLimits
-	this.ConnectorSettings = connectorSettings
 	return &this
 }
 
@@ -115,26 +114,34 @@ func (o *WhiteLabelingResponse) SetCustomLimits(v map[string]interface{}) {
 	o.CustomLimits = v
 }
 
-// GetConnectorSettings returns the ConnectorSettings field value
+// GetConnectorSettings returns the ConnectorSettings field value if set, zero value otherwise.
 func (o *WhiteLabelingResponse) GetConnectorSettings() map[string]interface{} {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.ConnectorSettings
 }
 
-// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value
+// GetConnectorSettingsOk returns a tuple with the ConnectorSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WhiteLabelingResponse) GetConnectorSettingsOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ConnectorSettings) {
     return map[string]interface{}{}, false
 	}
 	return o.ConnectorSettings, true
 }
 
-// SetConnectorSettings sets field value
+// HasConnectorSettings returns a boolean if a field has been set.
+func (o *WhiteLabelingResponse) HasConnectorSettings() bool {
+	if o != nil && !isNil(o.ConnectorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectorSettings gets a reference to the given map[string]interface{} and assigns it to the ConnectorSettings field.
 func (o *WhiteLabelingResponse) SetConnectorSettings(v map[string]interface{}) {
 	o.ConnectorSettings = v
 }
@@ -150,7 +157,7 @@ func (o WhiteLabelingResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["custom_limits"] = o.CustomLimits
 	}
-	if true {
+	if !isNil(o.ConnectorSettings) {
 		toSerialize["connector_settings"] = o.ConnectorSettings
 	}
 	return json.Marshal(toSerialize)
