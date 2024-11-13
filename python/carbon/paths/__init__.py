@@ -68,6 +68,7 @@ class PathValues(str, enum.Enum):
     WEBHOOKS = "/webhooks"
     ADD_WEBHOOK = "/add_webhook"
     DELETE_WEBHOOK_WEBHOOK_ID = "/delete_webhook/{webhook_id}"
+    DATA_SOURCES = "/data_sources"
     USER_DATA_SOURCES = "/user_data_sources"
     REVOKE_ACCESS_TOKEN = "/revoke_access_token"
     DATA_SOURCES_TAGS_ADD = "/data_sources/tags/add"

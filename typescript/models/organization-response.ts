@@ -34,7 +34,7 @@ export interface OrganizationResponse {
      * @type {string}
      * @memberof OrganizationResponse
      */
-    'nickname': string | null;
+    'nickname'?: string | null;
     /**
      * 
      * @type {boolean}
@@ -46,13 +46,13 @@ export interface OrganizationResponse {
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'custom_branding': object | null;
+    'custom_branding'?: object | null;
     /**
      * 
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'custom_limits': object | null;
+    'custom_limits'?: object | null;
     /**
      * 
      * @type {object}
@@ -100,37 +100,37 @@ export interface OrganizationResponse {
      * @type {string}
      * @memberof OrganizationResponse
      */
-    'period_ends_at': string | null;
+    'period_ends_at'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof OrganizationResponse
      */
-    'cancel_at_period_end': boolean | null;
+    'cancel_at_period_end'?: boolean | null;
     /**
      * 
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'connector_settings': object;
+    'connector_settings'?: object;
     /**
      * 
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'global_user_config': object;
+    'global_user_config'?: object;
     /**
      * 
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'file_sync_usage': object;
+    'file_sync_usage'?: object;
     /**
      * 
      * @type {object}
      * @memberof OrganizationResponse
      */
-    'logging_settings': object;
+    'logging_settings'?: object;
     /**
      * 
      * @type {string}

@@ -21,15 +21,15 @@ Name | Type | Description | Notes
 **AggregateNumFilesByFileFormat** | **map[string]interface{}** |  | 
 **UniqueFileTags** | **[]map[string]interface{}** |  | 
 **EnabledFeatures** | **map[string]interface{}** |  | 
-**CustomLimits** | **map[string]interface{}** |  | [default to {}]
-**AutoSyncEnabledSources** | **[]interface{}** |  | [default to []]
-**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
+**CustomLimits** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**AutoSyncEnabledSources** | Pointer to **[]interface{}** |  | [optional] [default to []]
+**ConnectorSettings** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 
 ## Methods
 
 ### NewUserResponse
 
-`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, customLimits map[string]interface{}, autoSyncEnabledSources []interface{}, connectorSettings map[string]interface{}, ) *UserResponse`
+`func NewUserResponse(id int32, organizationId int32, organizationSuppliedUserId string, createdAt time.Time, updatedAt time.Time, deletedAt NullableTime, numFilesSynced int32, numCharactersSynced int32, numTokensSynced int32, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, uniqueFileTags []map[string]interface{}, enabledFeatures map[string]interface{}, ) *UserResponse`
 
 NewUserResponse instantiates a new UserResponse object
 This constructor will assign default values to properties that have it defined,
@@ -423,6 +423,11 @@ and a boolean to check if the value has been set.
 
 SetCustomLimits sets CustomLimits field to given value.
 
+### HasCustomLimits
+
+`func (o *UserResponse) HasCustomLimits() bool`
+
+HasCustomLimits returns a boolean if a field has been set.
 
 ### GetAutoSyncEnabledSources
 
@@ -443,6 +448,11 @@ and a boolean to check if the value has been set.
 
 SetAutoSyncEnabledSources sets AutoSyncEnabledSources field to given value.
 
+### HasAutoSyncEnabledSources
+
+`func (o *UserResponse) HasAutoSyncEnabledSources() bool`
+
+HasAutoSyncEnabledSources returns a boolean if a field has been set.
 
 ### GetConnectorSettings
 
@@ -463,6 +473,11 @@ and a boolean to check if the value has been set.
 
 SetConnectorSettings sets ConnectorSettings field to given value.
 
+### HasConnectorSettings
+
+`func (o *UserResponse) HasConnectorSettings() bool`
+
+HasConnectorSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

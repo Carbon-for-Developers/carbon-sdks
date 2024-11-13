@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**OAuthAuthenticationSource**](OAuthAuthenticationSource.md) |  | 
+**Source** | **string** |  | 
 **AccessToken** | Pointer to **string** |  | [optional] 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **WorkspaceId** | Pointer to **string** |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthAuthentication
 
-`func NewOAuthAuthentication(source OAuthAuthenticationSource, ) *OAuthAuthentication`
+`func NewOAuthAuthentication(source string, ) *OAuthAuthentication`
 
 NewOAuthAuthentication instantiates a new OAuthAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *OAuthAuthentication) GetSource() OAuthAuthenticationSource`
+`func (o *OAuthAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *OAuthAuthentication) GetSourceOk() (*OAuthAuthenticationSource, bool)`
+`func (o *OAuthAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *OAuthAuthentication) SetSource(v OAuthAuthenticationSource)`
+`func (o *OAuthAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 

@@ -40,6 +40,6 @@ export interface WhiteLabelingResponse {
      * @type {object}
      * @memberof WhiteLabelingResponse
      */
-    'connector_settings': object;
+    'connector_settings'?: object;
 }
 

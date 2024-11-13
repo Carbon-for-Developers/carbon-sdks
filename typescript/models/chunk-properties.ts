@@ -22,18 +22,18 @@ export interface ChunkProperties {
      * @type {boolean}
      * @memberof ChunkProperties
      */
-    'set_page_as_boundary': boolean;
+    'set_page_as_boundary'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ChunkProperties
      */
-    'prepend_filename_to_chunks': boolean;
+    'prepend_filename_to_chunks'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof ChunkProperties
      */
-    'max_items_per_chunk': number | null;
+    'max_items_per_chunk'?: number | null;
 }
 

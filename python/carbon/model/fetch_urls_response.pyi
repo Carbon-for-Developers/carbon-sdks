@@ -33,7 +33,6 @@ class FetchURLsResponse(
 
     class MetaOapg:
         required = {
-            "error_message",
             "html_content",
             "urls",
         }
@@ -70,7 +69,6 @@ class FetchURLsResponse(
                 "error_message": error_message,
             }
     
-    error_message: MetaOapg.properties.error_message
     html_content: MetaOapg.properties.html_content
     urls: 'FetchURLsResponseUrls'
     
@@ -98,7 +96,7 @@ class FetchURLsResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["html_content"]) -> MetaOapg.properties.html_content: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["error_message"]) -> MetaOapg.properties.error_message: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["error_message"]) -> typing.Union[MetaOapg.properties.error_message, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -110,18 +108,18 @@ class FetchURLsResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        error_message: typing.Union[MetaOapg.properties.error_message, None, str, ],
         html_content: typing.Union[MetaOapg.properties.html_content, str, ],
         urls: 'FetchURLsResponseUrls',
+        error_message: typing.Union[MetaOapg.properties.error_message, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FetchURLsResponse':
         return super().__new__(
             cls,
             *args,
-            error_message=error_message,
             html_content=html_content,
             urls=urls,
+            error_message=error_message,
             _configuration=_configuration,
             **kwargs,
         )

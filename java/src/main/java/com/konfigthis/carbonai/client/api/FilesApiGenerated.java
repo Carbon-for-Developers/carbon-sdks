@@ -1804,7 +1804,7 @@ public class FilesApiGenerated {
 
         /**
          * Set pagination
-         * @param pagination Pagination parameters for the query. (optional)
+         * @param pagination  (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder pagination(Pagination pagination) {
@@ -1814,7 +1814,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderBy
-         * @param orderBy The field on OrganizationUserFilesToSYnc to order the results by. (optional)
+         * @param orderBy  (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
@@ -1824,7 +1824,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderDir
-         * @param orderDir The direction to order the results by. (optional)
+         * @param orderDir  (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder orderDir(OrderDir orderDir) {
@@ -1834,7 +1834,7 @@ public class FilesApiGenerated {
         
         /**
          * Set filters
-         * @param filters Filters to apply to the query. (optional)
+         * @param filters  (optional)
          * @return FilesApi.QueryUserFilesRequestBuilder
          */
         public FilesApi.QueryUserFilesRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
@@ -2060,7 +2060,7 @@ public class FilesApiGenerated {
 
         /**
          * Set pagination
-         * @param pagination Pagination parameters for the query. (optional)
+         * @param pagination  (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder pagination(Pagination pagination) {
@@ -2070,7 +2070,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderBy
-         * @param orderBy The field on OrganizationUserFilesToSYnc to order the results by. (optional)
+         * @param orderBy  (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
@@ -2080,7 +2080,7 @@ public class FilesApiGenerated {
         
         /**
          * Set orderDir
-         * @param orderDir The direction to order the results by. (optional)
+         * @param orderDir  (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderDir(OrderDir orderDir) {
@@ -2090,7 +2090,7 @@ public class FilesApiGenerated {
         
         /**
          * Set filters
-         * @param filters Filters to apply to the query. (optional)
+         * @param filters  (optional)
          * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
         public FilesApi.QueryUserFilesDeprecatedRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {

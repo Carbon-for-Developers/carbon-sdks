@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface S3Authentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof S3Authentication
      */
-    'source': any;
+    'source': S3AuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -42,4 +42,7 @@ export interface S3Authentication {
      */
     'endpoint_url'?: string | null;
 }
+
+type S3AuthenticationSourceEnum = 'S3'
+
 

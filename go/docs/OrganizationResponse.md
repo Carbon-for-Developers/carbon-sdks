@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int32** |  | 
 **Name** | **string** |  | 
-**Nickname** | **NullableString** |  | 
+**Nickname** | Pointer to **NullableString** |  | [optional] 
 **RemoveBranding** | **bool** |  | 
-**CustomBranding** | **map[string]interface{}** |  | 
-**CustomLimits** | **map[string]interface{}** |  | 
+**CustomBranding** | Pointer to **map[string]interface{}** |  | [optional] 
+**CustomLimits** | Pointer to **map[string]interface{}** |  | [optional] 
 **AggregateFileSize** | **map[string]interface{}** |  | 
 **AggregateNumCharacters** | **map[string]interface{}** |  | 
 **AggregateNumTokens** | **map[string]interface{}** |  | 
@@ -17,12 +17,12 @@ Name | Type | Description | Notes
 **AggregateNumFilesBySource** | **map[string]interface{}** |  | 
 **AggregateNumFilesByFileFormat** | **map[string]interface{}** |  | 
 **FileStatisticsAggregatedAt** | **NullableTime** |  | 
-**PeriodEndsAt** | **NullableTime** |  | 
-**CancelAtPeriodEnd** | **NullableBool** |  | 
-**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
-**GlobalUserConfig** | **map[string]interface{}** |  | [default to {}]
-**FileSyncUsage** | **map[string]interface{}** |  | [default to {}]
-**LoggingSettings** | **map[string]interface{}** |  | [default to {}]
+**PeriodEndsAt** | Pointer to **NullableTime** |  | [optional] 
+**CancelAtPeriodEnd** | Pointer to **NullableBool** |  | [optional] 
+**ConnectorSettings** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**GlobalUserConfig** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**FileSyncUsage** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
+**LoggingSettings** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id int32, name string, nickname NullableString, removeBranding bool, customBranding map[string]interface{}, customLimits map[string]interface{}, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, periodEndsAt NullableTime, cancelAtPeriodEnd NullableBool, connectorSettings map[string]interface{}, globalUserConfig map[string]interface{}, fileSyncUsage map[string]interface{}, loggingSettings map[string]interface{}, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
+`func NewOrganizationResponse(id int32, name string, removeBranding bool, aggregateFileSize map[string]interface{}, aggregateNumCharacters map[string]interface{}, aggregateNumTokens map[string]interface{}, aggregateNumEmbeddings map[string]interface{}, aggregateNumFilesBySource map[string]interface{}, aggregateNumFilesByFileFormat map[string]interface{}, fileStatisticsAggregatedAt NullableTime, createdAt time.Time, updatedAt time.Time, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -104,6 +104,11 @@ and a boolean to check if the value has been set.
 
 SetNickname sets Nickname field to given value.
 
+### HasNickname
+
+`func (o *OrganizationResponse) HasNickname() bool`
+
+HasNickname returns a boolean if a field has been set.
 
 ### SetNicknameNil
 
@@ -154,6 +159,11 @@ and a boolean to check if the value has been set.
 
 SetCustomBranding sets CustomBranding field to given value.
 
+### HasCustomBranding
+
+`func (o *OrganizationResponse) HasCustomBranding() bool`
+
+HasCustomBranding returns a boolean if a field has been set.
 
 ### SetCustomBrandingNil
 
@@ -184,6 +194,11 @@ and a boolean to check if the value has been set.
 
 SetCustomLimits sets CustomLimits field to given value.
 
+### HasCustomLimits
+
+`func (o *OrganizationResponse) HasCustomLimits() bool`
+
+HasCustomLimits returns a boolean if a field has been set.
 
 ### SetCustomLimitsNil
 
@@ -364,6 +379,11 @@ and a boolean to check if the value has been set.
 
 SetPeriodEndsAt sets PeriodEndsAt field to given value.
 
+### HasPeriodEndsAt
+
+`func (o *OrganizationResponse) HasPeriodEndsAt() bool`
+
+HasPeriodEndsAt returns a boolean if a field has been set.
 
 ### SetPeriodEndsAtNil
 
@@ -394,6 +414,11 @@ and a boolean to check if the value has been set.
 
 SetCancelAtPeriodEnd sets CancelAtPeriodEnd field to given value.
 
+### HasCancelAtPeriodEnd
+
+`func (o *OrganizationResponse) HasCancelAtPeriodEnd() bool`
+
+HasCancelAtPeriodEnd returns a boolean if a field has been set.
 
 ### SetCancelAtPeriodEndNil
 
@@ -424,6 +449,11 @@ and a boolean to check if the value has been set.
 
 SetConnectorSettings sets ConnectorSettings field to given value.
 
+### HasConnectorSettings
+
+`func (o *OrganizationResponse) HasConnectorSettings() bool`
+
+HasConnectorSettings returns a boolean if a field has been set.
 
 ### GetGlobalUserConfig
 
@@ -444,6 +474,11 @@ and a boolean to check if the value has been set.
 
 SetGlobalUserConfig sets GlobalUserConfig field to given value.
 
+### HasGlobalUserConfig
+
+`func (o *OrganizationResponse) HasGlobalUserConfig() bool`
+
+HasGlobalUserConfig returns a boolean if a field has been set.
 
 ### GetFileSyncUsage
 
@@ -464,6 +499,11 @@ and a boolean to check if the value has been set.
 
 SetFileSyncUsage sets FileSyncUsage field to given value.
 
+### HasFileSyncUsage
+
+`func (o *OrganizationResponse) HasFileSyncUsage() bool`
+
+HasFileSyncUsage returns a boolean if a field has been set.
 
 ### GetLoggingSettings
 
@@ -484,6 +524,11 @@ and a boolean to check if the value has been set.
 
 SetLoggingSettings sets LoggingSettings field to given value.
 
+### HasLoggingSettings
+
+`func (o *OrganizationResponse) HasLoggingSettings() bool`
+
+HasLoggingSettings returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

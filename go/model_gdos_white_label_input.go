@@ -16,7 +16,7 @@ import (
 
 // GDOSWhiteLabelInput struct for GDOSWhiteLabelInput
 type GDOSWhiteLabelInput struct {
-	DataSourceType GoogleDriveWhiteLabelInputDataSourceType `json:"data_source_type"`
+	DataSourceType string `json:"data_source_type"`
 	Credentials GoogleDriveCredentialsProperty `json:"credentials"`
 }
 
@@ -24,7 +24,7 @@ type GDOSWhiteLabelInput struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGDOSWhiteLabelInput(dataSourceType GoogleDriveWhiteLabelInputDataSourceType, credentials GoogleDriveCredentialsProperty) *GDOSWhiteLabelInput {
+func NewGDOSWhiteLabelInput(dataSourceType string, credentials GoogleDriveCredentialsProperty) *GDOSWhiteLabelInput {
 	this := GDOSWhiteLabelInput{}
 	this.DataSourceType = dataSourceType
 	this.Credentials = credentials
@@ -40,9 +40,9 @@ func NewGDOSWhiteLabelInputWithDefaults() *GDOSWhiteLabelInput {
 }
 
 // GetDataSourceType returns the DataSourceType field value
-func (o *GDOSWhiteLabelInput) GetDataSourceType() GoogleDriveWhiteLabelInputDataSourceType {
+func (o *GDOSWhiteLabelInput) GetDataSourceType() string {
 	if o == nil {
-		var ret GoogleDriveWhiteLabelInputDataSourceType
+		var ret string
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *GDOSWhiteLabelInput) GetDataSourceType() GoogleDriveWhiteLabelInputData
 
 // GetDataSourceTypeOk returns a tuple with the DataSourceType field value
 // and a boolean to check if the value has been set.
-func (o *GDOSWhiteLabelInput) GetDataSourceTypeOk() (*GoogleDriveWhiteLabelInputDataSourceType, bool) {
+func (o *GDOSWhiteLabelInput) GetDataSourceTypeOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *GDOSWhiteLabelInput) GetDataSourceTypeOk() (*GoogleDriveWhiteLabelInput
 }
 
 // SetDataSourceType sets field value
-func (o *GDOSWhiteLabelInput) SetDataSourceType(v GoogleDriveWhiteLabelInputDataSourceType) {
+func (o *GDOSWhiteLabelInput) SetDataSourceType(v string) {
 	o.DataSourceType = v
 }
 

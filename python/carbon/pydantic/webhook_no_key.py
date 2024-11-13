@@ -26,11 +26,11 @@ class WebhookNoKey(BaseModel):
 
     status: WebhookStatus = Field(alias='status')
 
-    status_reason: typing.Optional[str] = Field(alias='status_reason')
-
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')
+
+    status_reason: typing.Optional[typing.Optional[str]] = Field(None, alias='status_reason')
 
     model_config = ConfigDict(
         protected_namespaces=(),

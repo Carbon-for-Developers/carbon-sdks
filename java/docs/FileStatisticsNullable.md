@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fileFormat** | **FileFormatsNullable** |  |  |
-|**fileSize** | **Integer** |  |  |
-|**numCharacters** | **Integer** |  |  |
-|**numTokens** | **Integer** |  |  |
-|**numEmbeddings** | **Integer** |  |  |
-|**mimeType** | **String** |  |  |
+|**fileFormat** | **FileFormatsNullable** |  |  [optional] |
+|**fileSize** | **Integer** |  |  [optional] |
+|**numCharacters** | **Integer** |  |  [optional] |
+|**numTokens** | **Integer** |  |  [optional] |
+|**numEmbeddings** | **Integer** |  |  [optional] |
+|**mimeType** | **String** |  |  [optional] |
 
 
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigurationKeyName** | **string** |  | 
+**ConfigurationKeyName** | [**ConfigurationKeys**](ConfigurationKeys.md) |  | 
 **Value** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewModifyUserConfigurationInput
 
-`func NewModifyUserConfigurationInput(configurationKeyName string, value map[string]interface{}, ) *ModifyUserConfigurationInput`
+`func NewModifyUserConfigurationInput(configurationKeyName ConfigurationKeys, value map[string]interface{}, ) *ModifyUserConfigurationInput`
 
 NewModifyUserConfigurationInput instantiates a new ModifyUserConfigurationInput object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConfigurationKeyName
 
-`func (o *ModifyUserConfigurationInput) GetConfigurationKeyName() string`
+`func (o *ModifyUserConfigurationInput) GetConfigurationKeyName() ConfigurationKeys`
 
 GetConfigurationKeyName returns the ConfigurationKeyName field if non-nil, zero value otherwise.
 
 ### GetConfigurationKeyNameOk
 
-`func (o *ModifyUserConfigurationInput) GetConfigurationKeyNameOk() (*string, bool)`
+`func (o *ModifyUserConfigurationInput) GetConfigurationKeyNameOk() (*ConfigurationKeys, bool)`
 
 GetConfigurationKeyNameOk returns a tuple with the ConfigurationKeyName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfigurationKeyName
 
-`func (o *ModifyUserConfigurationInput) SetConfigurationKeyName(v string)`
+`func (o *ModifyUserConfigurationInput) SetConfigurationKeyName(v ConfigurationKeys)`
 
 SetConfigurationKeyName sets ConfigurationKeyName field to given value.
 

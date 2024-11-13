@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **TenantName** | Pointer to **NullableString** |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewOneDriveAuthentication
 
-`func NewOneDriveAuthentication(source interface{}, accessToken string, ) *OneDriveAuthentication`
+`func NewOneDriveAuthentication(source string, accessToken string, ) *OneDriveAuthentication`
 
 NewOneDriveAuthentication instantiates a new OneDriveAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -30,34 +30,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *OneDriveAuthentication) GetSource() interface{}`
+`func (o *OneDriveAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *OneDriveAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *OneDriveAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *OneDriveAuthentication) SetSource(v interface{})`
+`func (o *OneDriveAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *OneDriveAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *OneDriveAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *OneDriveAuthentication) GetAccessToken() string`

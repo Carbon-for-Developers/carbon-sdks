@@ -39,7 +39,16 @@ class AzureBlobStorageAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def AZURE_BLOB_STORAGE(cls):
+                    return cls("AZURE_BLOB_STORAGE")
             account_name = schemas.StrSchema
             account_key = schemas.StrSchema
             __annotations__ = {
@@ -90,7 +99,7 @@ class AzureBlobStorageAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         account_name: typing.Union[MetaOapg.properties.account_name, str, ],
         account_key: typing.Union[MetaOapg.properties.account_key, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'AzureBlobStorageAuthentication':

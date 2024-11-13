@@ -28,6 +28,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.cRM.getOpportunities`](#carboncrmgetopportunities)
   * [`carbon.cRM.getOpportunity`](#carboncrmgetopportunity)
   * [`carbon.dataSources.addTags`](#carbondatasourcesaddtags)
+  * [`carbon.dataSources.query`](#carbondatasourcesquery)
   * [`carbon.dataSources.queryUserDataSources`](#carbondatasourcesqueryuserdatasources)
   * [`carbon.dataSources.removeTags`](#carbondatasourcesremovetags)
   * [`carbon.dataSources.revokeAccessToken`](#carbondatasourcesrevokeaccesstoken)
@@ -587,6 +588,42 @@ const addTagsResponse = await carbon.dataSources.addTags({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/data_sources/tags/add` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.dataSources.query`<a id="carbondatasourcesquery"></a>
+
+Data Sources
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```typescript
+const queryResponse = await carbon.dataSources.query({
+  order_by: "created_at",
+  order_dir: "desc",
+});
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
+
+##### order_by: [`OrganizationUserDataSourceOrderByColumns`](./models/organization-user-data-source-order-by-columns.ts)<a id="order_by-organizationuserdatasourceorderbycolumnsmodelsorganization-user-data-source-order-by-columnsts"></a>
+
+##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
+
+##### filters: [`OrganizationUserDataSourceFilters`](./models/organization-user-data-source-filters.ts)<a id="filters-organizationuserdatasourcefiltersmodelsorganization-user-data-source-filtersts"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceResponse](./models/organization-user-data-source-response.ts)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1391,19 +1428,11 @@ const queryUserFilesResponse = await carbon.files.queryUserFiles({
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
 
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./models/organization-user-files-to-sync-order-by-types.ts)<a id="order_by-organizationuserfilestosyncorderbytypesmodelsorganization-user-files-to-sync-order-by-typests"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
-
-Filters to apply to the query.
 
 ##### include_raw_file: `boolean`<a id="include_raw_file-boolean"></a>
 
@@ -1454,19 +1483,11 @@ const queryUserFilesDeprecatedResponse =
 
 ##### pagination: [`Pagination`](./models/pagination.ts)<a id="pagination-paginationmodelspaginationts"></a>
 
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./models/organization-user-files-to-sync-order-by-types.ts)<a id="order_by-organizationuserfilestosyncorderbytypesmodelsorganization-user-files-to-sync-order-by-typests"></a>
-
-The field on OrganizationUserFilesToSYnc to order the results by.
 
 ##### order_dir: [`OrderDir`](./models/order-dir.ts)<a id="order_dir-orderdirmodelsorder-dirts"></a>
 
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./models/organization-user-files-to-sync-filters.ts)<a id="filters-organizationuserfilestosyncfiltersmodelsorganization-user-files-to-sync-filtersts"></a>
-
-Filters to apply to the query.
 
 ##### include_raw_file: `boolean`<a id="include_raw_file-boolean"></a>
 
@@ -3950,14 +3971,14 @@ Toggle User Features
 
 ```typescript
 const toggleUserFeaturesResponse = await carbon.users.toggleUserFeatures({
-  configuration_key_name: "configuration_key_name_example",
+  configuration_key_name: "sparse_vectors",
   value: {},
 });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### configuration_key_name: `string`<a id="configuration_key_name-string"></a>
+##### configuration_key_name: [`ConfigurationKeys`](./models/configuration-keys.ts)<a id="configuration_key_name-configurationkeysmodelsconfiguration-keysts"></a>
 
 ##### value: `object`<a id="value-object"></a>
 
@@ -4013,6 +4034,10 @@ A single file upload from the user can not exceed this character limit.         
 ##### max_characters_per_upload: `number`<a id="max_characters_per_upload-number"></a>
 
 Custom character upload limit for the user across a single upload.         If set, then the user won\\\'t be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
+
+##### auto_sync_interval: `number`<a id="auto_sync_interval-number"></a>
+
+The interval in hours at which the user\\\'s data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4515,7 +4540,7 @@ Create White Labels
 ```typescript
 const createResponse = await carbon.whiteLabel.create([
   {
-    data_source_type: null,
+    data_source_type: "GOOGLE_DRIVE",
     credentials: {
       client_id: "client_id_example",
       redirect_uri: "redirect_uri_example",
@@ -4602,7 +4627,7 @@ Update White Label
 
 ```typescript
 const updateResponse = await carbon.whiteLabel.update({
-  data_source_type: null,
+  data_source_type: "GOOGLE_DRIVE",
   credentials: {
     client_id: "client_id_example",
     redirect_uri: "redirect_uri_example",

@@ -65,8 +65,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.IsDeleted`: %v\n", resp.IsDeleted)
-    fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.Tasks`: %v\n", resp.Tasks)
-    fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.Events`: %v\n", resp.Events)
+    fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.Tasks`: %v\n", *resp.Tasks)
+    fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.Events`: %v\n", *resp.Events)
     fmt.Fprintf(os.Stdout, "Response from `Account.GetAccount.RemoteData`: %v\n", resp.RemoteData)
 }
 ```
@@ -187,8 +187,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.IsDeleted`: %v\n", resp.IsDeleted)
-    fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.Tasks`: %v\n", resp.Tasks)
-    fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.Events`: %v\n", resp.Events)
+    fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.Tasks`: %v\n", *resp.Tasks)
+    fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.Events`: %v\n", *resp.Events)
     fmt.Fprintf(os.Stdout, "Response from `Contact.GetContact.RemoteData`: %v\n", resp.RemoteData)
 }
 ```
@@ -312,8 +312,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.IsDeleted`: %v\n", resp.IsDeleted)
-    fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.Tasks`: %v\n", resp.Tasks)
-    fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.Events`: %v\n", resp.Events)
+    fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.Tasks`: %v\n", *resp.Tasks)
+    fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.Events`: %v\n", *resp.Events)
     fmt.Fprintf(os.Stdout, "Response from `Lead.GetLead.RemoteData`: %v\n", resp.RemoteData)
 }
 ```
@@ -490,8 +490,8 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.UpdatedAt`: %v\n", resp.UpdatedAt)
     fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.IsDeleted`: %v\n", resp.IsDeleted)
-    fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.Tasks`: %v\n", resp.Tasks)
-    fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.Events`: %v\n", resp.Events)
+    fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.Tasks`: %v\n", *resp.Tasks)
+    fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.Events`: %v\n", *resp.Events)
     fmt.Fprintf(os.Stdout, "Response from `Opportunity.GetOpportunity.RemoteData`: %v\n", resp.RemoteData)
 }
 ```

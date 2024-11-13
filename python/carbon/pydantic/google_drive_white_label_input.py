@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 from carbon.pydantic.google_drive_credentials import GoogleDriveCredentials
 
 class GoogleDriveWhiteLabelInput(BaseModel):
-    data_source_type: typing.Union[bool, date, datetime, dict, float, int, list, str, None] = Field(alias='data_source_type')
+    data_source_type: Literal["GOOGLE_DRIVE"] = Field(alias='data_source_type')
 
     credentials: GoogleDriveCredentials = Field(alias='credentials')
 

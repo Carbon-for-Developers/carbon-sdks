@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SetPageAsBoundary** | **bool** |  | [default to false]
-**PrependFilenameToChunks** | **bool** |  | [default to false]
-**MaxItemsPerChunk** | **NullableInt32** |  | 
+**SetPageAsBoundary** | Pointer to **bool** |  | [optional] [default to false]
+**PrependFilenameToChunks** | Pointer to **bool** |  | [optional] [default to false]
+**MaxItemsPerChunk** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
 ### NewChunkPropertiesNullable
 
-`func NewChunkPropertiesNullable(setPageAsBoundary bool, prependFilenameToChunks bool, maxItemsPerChunk NullableInt32, ) *ChunkPropertiesNullable`
+`func NewChunkPropertiesNullable() *ChunkPropertiesNullable`
 
 NewChunkPropertiesNullable instantiates a new ChunkPropertiesNullable object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetSetPageAsBoundary sets SetPageAsBoundary field to given value.
 
+### HasSetPageAsBoundary
+
+`func (o *ChunkPropertiesNullable) HasSetPageAsBoundary() bool`
+
+HasSetPageAsBoundary returns a boolean if a field has been set.
 
 ### GetPrependFilenameToChunks
 
@@ -66,6 +71,11 @@ and a boolean to check if the value has been set.
 
 SetPrependFilenameToChunks sets PrependFilenameToChunks field to given value.
 
+### HasPrependFilenameToChunks
+
+`func (o *ChunkPropertiesNullable) HasPrependFilenameToChunks() bool`
+
+HasPrependFilenameToChunks returns a boolean if a field has been set.
 
 ### GetMaxItemsPerChunk
 
@@ -86,6 +96,11 @@ and a boolean to check if the value has been set.
 
 SetMaxItemsPerChunk sets MaxItemsPerChunk field to given value.
 
+### HasMaxItemsPerChunk
+
+`func (o *ChunkPropertiesNullable) HasMaxItemsPerChunk() bool`
+
+HasMaxItemsPerChunk returns a boolean if a field has been set.
 
 ### SetMaxItemsPerChunkNil
 

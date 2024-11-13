@@ -90,6 +90,14 @@ public class UpdateUsersInputTest {
     }
 
     /**
+     * Test the property 'autoSyncInterval'
+     */
+    @Test
+    public void autoSyncIntervalTest() {
+        // TODO: test autoSyncInterval
+    }
+
+    /**
      * Test the property 'customerIds'
      */
     @Test

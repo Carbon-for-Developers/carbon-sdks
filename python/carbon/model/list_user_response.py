@@ -33,14 +33,12 @@ class ListUserResponse(
 
     class MetaOapg:
         required = {
-            "custom_limits",
             "updated_at",
             "organization_id",
             "created_at",
             "id",
             "deleted_at",
             "organization_supplied_user_id",
-            "auto_sync_enabled_sources",
             "enabled_features",
         }
         
@@ -114,14 +112,12 @@ class ListUserResponse(
                 "auto_sync_enabled_sources": auto_sync_enabled_sources,
             }
     
-    custom_limits: MetaOapg.properties.custom_limits
     updated_at: MetaOapg.properties.updated_at
     organization_id: MetaOapg.properties.organization_id
     created_at: MetaOapg.properties.created_at
     id: MetaOapg.properties.id
     deleted_at: MetaOapg.properties.deleted_at
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
-    auto_sync_enabled_sources: 'ListUserResponseAutoSyncEnabledSources'
     enabled_features: MetaOapg.properties.enabled_features
     
     @typing.overload
@@ -181,10 +177,10 @@ class ListUserResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["enabled_features"]) -> MetaOapg.properties.enabled_features: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> typing.Union[MetaOapg.properties.custom_limits, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> 'ListUserResponseAutoSyncEnabledSources': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> typing.Union['ListUserResponseAutoSyncEnabledSources', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -196,30 +192,30 @@ class ListUserResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, ],
         updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, ],
         organization_id: typing.Union[MetaOapg.properties.organization_id, decimal.Decimal, int, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         deleted_at: typing.Union[MetaOapg.properties.deleted_at, None, str, datetime, ],
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
-        auto_sync_enabled_sources: 'ListUserResponseAutoSyncEnabledSources',
         enabled_features: typing.Union[MetaOapg.properties.enabled_features, dict, frozendict.frozendict, None, ],
+        custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        auto_sync_enabled_sources: typing.Union['ListUserResponseAutoSyncEnabledSources', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ListUserResponse':
         return super().__new__(
             cls,
             *args,
-            custom_limits=custom_limits,
             updated_at=updated_at,
             organization_id=organization_id,
             created_at=created_at,
             id=id,
             deleted_at=deleted_at,
             organization_supplied_user_id=organization_supplied_user_id,
-            auto_sync_enabled_sources=auto_sync_enabled_sources,
             enabled_features=enabled_features,
+            custom_limits=custom_limits,
+            auto_sync_enabled_sources=auto_sync_enabled_sources,
             _configuration=_configuration,
             **kwargs,
         )

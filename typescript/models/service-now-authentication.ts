@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface ServiceNowAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof ServiceNowAuthentication
      */
-    'source': any;
+    'source': ServiceNowAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -60,4 +60,7 @@ export interface ServiceNowAuthentication {
      */
     'redirect_uri': string;
 }
+
+type ServiceNowAuthenticationSourceEnum = 'SERVICENOW'
+
 

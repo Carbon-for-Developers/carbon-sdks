@@ -34,6 +34,7 @@ from carbon import schemas  # noqa: F401
 
 from carbon.model.text_embedding_generators import TextEmbeddingGenerators as TextEmbeddingGeneratorsSchema
 from carbon.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
+from carbon.model.multi_modal_embedding_generators import MultiModalEmbeddingGenerators as MultiModalEmbeddingGeneratorsSchema
 from carbon.model.user_file import UserFile as UserFileSchema
 from carbon.model.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullableSchema
 from carbon.model.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost as BodyCreateUploadFileUploadfilePostSchema
@@ -41,12 +42,14 @@ from carbon.model.transcription_service_nullable import TranscriptionServiceNull
 
 from carbon.type.http_validation_error import HTTPValidationError
 from carbon.type.file_content_types_nullable import FileContentTypesNullable
+from carbon.type.multi_modal_embedding_generators import MultiModalEmbeddingGenerators
 from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 from carbon.type.user_file import UserFile
 from carbon.type.body_create_upload_file_uploadfile_post import BodyCreateUploadFileUploadfilePost
 from carbon.type.text_embedding_generators import TextEmbeddingGenerators
 
 from ...api_client import Dictionary
+from carbon.pydantic.multi_modal_embedding_generators import MultiModalEmbeddingGenerators as MultiModalEmbeddingGeneratorsPydantic
 from carbon.pydantic.file_content_types_nullable import FileContentTypesNullable as FileContentTypesNullablePydantic
 from carbon.pydantic.user_file import UserFile as UserFilePydantic
 from carbon.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
@@ -107,7 +110,6 @@ class EmbeddingModelSchema(
 
 
     class MetaOapg:
-        any_of_1 = schemas.StrSchema
         
         @classmethod
         @functools.lru_cache()
@@ -121,7 +123,7 @@ class EmbeddingModelSchema(
             # loading
             return [
                 TextEmbeddingGeneratorsSchema,
-                cls.any_of_1,
+                MultiModalEmbeddingGeneratorsSchema,
             ]
 
 
@@ -415,7 +417,7 @@ class BaseApi(api_client.Api):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -755,7 +757,7 @@ class UploadRaw(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -811,7 +813,7 @@ class UploadRaw(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -867,7 +869,7 @@ class Upload(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -920,7 +922,7 @@ class Upload(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -974,7 +976,7 @@ class ApiForpost(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,
@@ -1030,7 +1032,7 @@ class ApiForpost(BaseApi):
         chunk_overlap: typing.Optional[typing.Optional[int]] = None,
         skip_embedding_generation: typing.Optional[bool] = None,
         set_page_as_boundary: typing.Optional[bool] = None,
-        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, str]] = None,
+        embedding_model: typing.Optional[typing.Union[TextEmbeddingGenerators, MultiModalEmbeddingGenerators]] = None,
         use_ocr: typing.Optional[bool] = None,
         generate_sparse_vectors: typing.Optional[bool] = None,
         prepend_filename_to_chunks: typing.Optional[bool] = None,

@@ -69,6 +69,7 @@ Class | Method | HTTP request | Description
 *CRMApi* | [**GetOpportunities**](docs/CRMApi.md#getopportunities) | **Post** /integrations/data/crm/opportunities | Get Opportunities
 *CRMApi* | [**GetOpportunity**](docs/CRMApi.md#getopportunity) | **Get** /integrations/data/crm/opportunities/{id} | Get Opportunity
 *DataSourcesApi* | [**AddTags**](docs/DataSourcesApi.md#addtags) | **Post** /data_sources/tags/add | Add Data Source Tags
+*DataSourcesApi* | [**Query**](docs/DataSourcesApi.md#query) | **Post** /data_sources | Data Sources
 *DataSourcesApi* | [**QueryUserDataSources**](docs/DataSourcesApi.md#queryuserdatasources) | **Post** /user_data_sources | User Data Sources
 *DataSourcesApi* | [**RemoveTags**](docs/DataSourcesApi.md#removetags) | **Post** /data_sources/tags/remove | Remove Data Source Tags
 *DataSourcesApi* | [**RevokeAccessToken**](docs/DataSourcesApi.md#revokeaccesstoken) | **Post** /revoke_access_token | Revoke Access Token
@@ -169,6 +170,7 @@ Class | Method | HTTP request | Description
  - [AzureBlobFileSyncInput](docs/AzureBlobFileSyncInput.md)
  - [AzureBlobGetFileInput](docs/AzureBlobGetFileInput.md)
  - [AzureBlobStorageAuthentication](docs/AzureBlobStorageAuthentication.md)
+ - [AzureBlobStorageTypes](docs/AzureBlobStorageTypes.md)
  - [BaseIncludes](docs/BaseIncludes.md)
  - [BodyCreateUploadFileUploadfilePost](docs/BodyCreateUploadFileUploadfilePost.md)
  - [ChunkProperties](docs/ChunkProperties.md)
@@ -184,6 +186,7 @@ Class | Method | HTTP request | Description
  - [CommitUserNullable](docs/CommitUserNullable.md)
  - [CommitsInput](docs/CommitsInput.md)
  - [CommitsResponse](docs/CommitsResponse.md)
+ - [ConfigurationKeys](docs/ConfigurationKeys.md)
  - [ConfluenceAuthentication](docs/ConfluenceAuthentication.md)
  - [ConfluenceFileTypes](docs/ConfluenceFileTypes.md)
  - [ConnectDataSourceInput](docs/ConnectDataSourceInput.md)
@@ -197,6 +200,7 @@ Class | Method | HTTP request | Description
  - [Credentials](docs/Credentials.md)
  - [CustomCredentialsType](docs/CustomCredentialsType.md)
  - [DataSourceConfiguration](docs/DataSourceConfiguration.md)
+ - [DataSourceExtendedInput](docs/DataSourceExtendedInput.md)
  - [DataSourceLastSyncActions](docs/DataSourceLastSyncActions.md)
  - [DataSourceSyncStatuses](docs/DataSourceSyncStatuses.md)
  - [DataSourceType](docs/DataSourceType.md)
@@ -256,7 +260,6 @@ Class | Method | HTTP request | Description
  - [GoogleDriveCredentials](docs/GoogleDriveCredentials.md)
  - [GoogleDriveCredentialsProperty](docs/GoogleDriveCredentialsProperty.md)
  - [GoogleDriveWhiteLabelInput](docs/GoogleDriveWhiteLabelInput.md)
- - [GoogleDriveWhiteLabelInputDataSourceType](docs/GoogleDriveWhiteLabelInputDataSourceType.md)
  - [GuruAuthentication](docs/GuruAuthentication.md)
  - [GuruConnectRequest](docs/GuruConnectRequest.md)
  - [GuruFileTypes](docs/GuruFileTypes.md)
@@ -299,10 +302,10 @@ Class | Method | HTTP request | Description
  - [ModifyColdStorageParametersQueryInput](docs/ModifyColdStorageParametersQueryInput.md)
  - [ModifyUserConfigurationInput](docs/ModifyUserConfigurationInput.md)
  - [MoveToHotStorageQueryInput](docs/MoveToHotStorageQueryInput.md)
+ - [MultiModalEmbeddingGenerators](docs/MultiModalEmbeddingGenerators.md)
  - [NotionAuthentication](docs/NotionAuthentication.md)
  - [OANDSCZGFB](docs/OANDSCZGFB.md)
  - [OAuthAuthentication](docs/OAuthAuthentication.md)
- - [OAuthAuthenticationSource](docs/OAuthAuthenticationSource.md)
  - [OAuthURLRequest](docs/OAuthURLRequest.md)
  - [OauthBasedConnectors](docs/OauthBasedConnectors.md)
  - [OneDriveAuthentication](docs/OneDriveAuthentication.md)

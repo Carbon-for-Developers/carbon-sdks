@@ -20,13 +20,7 @@ class RequiredOrganizationResponse(TypedDict):
 
     name: str
 
-    nickname: typing.Optional[str]
-
     remove_branding: bool
-
-    custom_branding: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
-
-    custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
     aggregate_file_size: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
@@ -42,6 +36,18 @@ class RequiredOrganizationResponse(TypedDict):
 
     file_statistics_aggregated_at: typing.Optional[datetime]
 
+    created_at: datetime
+
+    updated_at: datetime
+
+
+class OptionalOrganizationResponse(TypedDict, total=False):
+    nickname: typing.Optional[str]
+
+    custom_branding: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
+    custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
     period_ends_at: typing.Optional[datetime]
 
     cancel_at_period_end: typing.Optional[bool]
@@ -53,13 +59,6 @@ class RequiredOrganizationResponse(TypedDict):
     file_sync_usage: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
     logging_settings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
-
-    created_at: datetime
-
-    updated_at: datetime
-
-class OptionalOrganizationResponse(TypedDict, total=False):
-    pass
 
 class OrganizationResponse(RequiredOrganizationResponse, OptionalOrganizationResponse):
     pass

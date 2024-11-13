@@ -37,6 +37,17 @@ describe 'DataSourcesApi' do
     end
   end
 
+  # unit tests for query
+  # Data Sources
+  # @param organization_user_data_source_query_input 
+  # @param [Hash] opts the optional parameters
+  # @return [OrganizationUserDataSourceResponse]
+  describe 'query test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for query_user_data_sources
   # User Data Sources
   # @param organization_user_data_source_query_input 

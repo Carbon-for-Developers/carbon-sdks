@@ -105,13 +105,13 @@ export interface Account {
      * @type {Array<Task>}
      * @memberof Account
      */
-    'tasks': Array<Task> | null;
+    'tasks'?: Array<Task> | null;
     /**
      * 
      * @type {Array<Event>}
      * @memberof Account
      */
-    'events': Array<Event> | null;
+    'events'?: Array<Event> | null;
     /**
      * 
      * @type {object}

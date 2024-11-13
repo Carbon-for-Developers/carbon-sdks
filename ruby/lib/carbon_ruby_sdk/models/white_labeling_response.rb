@@ -98,10 +98,6 @@ module Carbon
         invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
       end
 
-      if @connector_settings.nil?
-        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -111,7 +107,6 @@ module Carbon
       return false if @remove_branding.nil?
       return false if @integrations.nil?
       return false if @custom_limits.nil?
-      return false if @connector_settings.nil?
       true
     end
 

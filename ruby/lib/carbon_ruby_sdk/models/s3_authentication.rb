@@ -38,7 +38,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source' => :'Object',
+        :'source' => :'S3AuthenticationSource',
         :'access_key' => :'String',
         :'access_key_secret' => :'String',
         :'endpoint_url' => :'String'
@@ -48,7 +48,6 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'source',
         :'endpoint_url'
       ])
     end
@@ -89,6 +88,10 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @source.nil?
+        invalid_properties.push('invalid value for "source", source cannot be nil.')
+      end
+
       if @access_key.nil?
         invalid_properties.push('invalid value for "access_key", access_key cannot be nil.')
       end
@@ -103,6 +106,7 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @source.nil?
       return false if @access_key.nil?
       return false if @access_key_secret.nil?
       true

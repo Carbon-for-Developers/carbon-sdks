@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface AzureBlobStorageAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof AzureBlobStorageAuthentication
      */
-    'source': any;
+    'source': AzureBlobStorageAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface AzureBlobStorageAuthentication {
      */
     'account_key': string;
 }
+
+type AzureBlobStorageAuthenticationSourceEnum = 'AZURE_BLOB_STORAGE'
+
 

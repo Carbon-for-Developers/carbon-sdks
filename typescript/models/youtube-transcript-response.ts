@@ -29,18 +29,18 @@ export interface YoutubeTranscriptResponse {
      * @type {string}
      * @memberof YoutubeTranscriptResponse
      */
-    'error': string | null;
+    'error'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof YoutubeTranscriptResponse
      */
-    'data': string | null;
+    'data'?: string | null;
     /**
      * 
      * @type {Array<{ [key: string]: RawTranscriptPropertyInnerValue; }>}
      * @memberof YoutubeTranscriptResponse
      */
-    'raw_transcript': Array<{ [key: string]: RawTranscriptPropertyInnerValue; }> | null;
+    'raw_transcript'?: Array<{ [key: string]: RawTranscriptPropertyInnerValue; }> | null;
 }
 

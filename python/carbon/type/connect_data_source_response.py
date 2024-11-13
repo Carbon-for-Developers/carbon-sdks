@@ -19,10 +19,9 @@ from carbon.type.organization_user_data_source_api import OrganizationUserDataSo
 class RequiredConnectDataSourceResponse(TypedDict):
     data_source: OrganizationUserDataSourceAPI
 
-    sync_url: typing.Optional[str]
 
 class OptionalConnectDataSourceResponse(TypedDict, total=False):
-    pass
+    sync_url: typing.Optional[str]
 
 class ConnectDataSourceResponse(RequiredConnectDataSourceResponse, OptionalConnectDataSourceResponse):
     pass

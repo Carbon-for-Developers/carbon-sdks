@@ -16,7 +16,7 @@ import (
 
 // OANDSCZGFB struct for OANDSCZGFB
 type OANDSCZGFB struct {
-	Source OAuthAuthenticationSource `json:"source"`
+	Source string `json:"source"`
 	AccessToken *string `json:"access_token,omitempty"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	WorkspaceId *string `json:"workspace_id,omitempty"`
@@ -46,7 +46,7 @@ type OANDSCZGFB struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOANDSCZGFB(source OAuthAuthenticationSource) *OANDSCZGFB {
+func NewOANDSCZGFB(source string) *OANDSCZGFB {
 	this := OANDSCZGFB{}
 	this.Source = source
 	return &this
@@ -61,9 +61,9 @@ func NewOANDSCZGFBWithDefaults() *OANDSCZGFB {
 }
 
 // GetSource returns the Source field value
-func (o *OANDSCZGFB) GetSource() OAuthAuthenticationSource {
+func (o *OANDSCZGFB) GetSource() string {
 	if o == nil {
-		var ret OAuthAuthenticationSource
+		var ret string
 		return ret
 	}
 
@@ -72,7 +72,7 @@ func (o *OANDSCZGFB) GetSource() OAuthAuthenticationSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *OANDSCZGFB) GetSourceOk() (*OAuthAuthenticationSource, bool) {
+func (o *OANDSCZGFB) GetSourceOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -80,7 +80,7 @@ func (o *OANDSCZGFB) GetSourceOk() (*OAuthAuthenticationSource, bool) {
 }
 
 // SetSource sets field value
-func (o *OANDSCZGFB) SetSource(v OAuthAuthenticationSource) {
+func (o *OANDSCZGFB) SetSource(v string) {
 	o.Source = v
 }
 

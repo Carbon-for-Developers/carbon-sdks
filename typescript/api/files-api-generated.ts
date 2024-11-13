@@ -47,6 +47,8 @@ import { ModifyColdStorageParametersQueryInput } from '../models';
 // @ts-ignore
 import { MoveToHotStorageQueryInput } from '../models';
 // @ts-ignore
+import { MultiModalEmbeddingGenerators } from '../models';
+// @ts-ignore
 import { OrderDir } from '../models';
 // @ts-ignore
 import { OrganizationUserFileTagCreate } from '../models';

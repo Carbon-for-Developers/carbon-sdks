@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **AccessTokenSecret** | **string** |  | 
 **Username** | **string** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewZoteroAuthentication
 
-`func NewZoteroAuthentication(source interface{}, accessToken string, accessTokenSecret string, username string, zoteroId string, ) *ZoteroAuthentication`
+`func NewZoteroAuthentication(source string, accessToken string, accessTokenSecret string, username string, zoteroId string, ) *ZoteroAuthentication`
 
 NewZoteroAuthentication instantiates a new ZoteroAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -31,34 +31,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *ZoteroAuthentication) GetSource() interface{}`
+`func (o *ZoteroAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ZoteroAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *ZoteroAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ZoteroAuthentication) SetSource(v interface{})`
+`func (o *ZoteroAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *ZoteroAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *ZoteroAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *ZoteroAuthentication) GetAccessToken() string`

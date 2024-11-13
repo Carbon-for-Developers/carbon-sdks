@@ -66,6 +66,26 @@ public class DataSourcesApiTest {
     }
 
     /**
+     * Data Sources
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void queryTest() throws ApiException {
+        Pagination pagination = null;
+        OrganizationUserDataSourceOrderByColumns orderBy = null;
+        OrderDir orderDir = null;
+        OrganizationUserDataSourceFilters filters = null;
+        OrganizationUserDataSourceResponse response = api.query()
+                .pagination(pagination)
+                .orderBy(orderBy)
+                .orderDir(orderDir)
+                .filters(filters)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
      * User Data Sources
      *
      * @throws ApiException if the Api call fails

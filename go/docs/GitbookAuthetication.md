@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **OrganizationName** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewGitbookAuthetication
 
-`func NewGitbookAuthetication(source interface{}, accessToken string, organizationName string, ) *GitbookAuthetication`
+`func NewGitbookAuthetication(source string, accessToken string, organizationName string, ) *GitbookAuthetication`
 
 NewGitbookAuthetication instantiates a new GitbookAuthetication object
 This constructor will assign default values to properties that have it defined,
@@ -29,34 +29,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *GitbookAuthetication) GetSource() interface{}`
+`func (o *GitbookAuthetication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *GitbookAuthetication) GetSourceOk() (*interface{}, bool)`
+`func (o *GitbookAuthetication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *GitbookAuthetication) SetSource(v interface{})`
+`func (o *GitbookAuthetication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *GitbookAuthetication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *GitbookAuthetication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *GitbookAuthetication) GetAccessToken() string`

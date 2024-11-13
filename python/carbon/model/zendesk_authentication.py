@@ -39,7 +39,22 @@ class ZendeskAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    enum_value_to_name = {
+                        "ZENDESK": "ZENDESK",
+                    }
+                
+                @schemas.classproperty
+                def ZENDESK(cls):
+                    return cls("ZENDESK")
             access_token = schemas.StrSchema
             subdomain = schemas.StrSchema
             __annotations__ = {
@@ -90,7 +105,7 @@ class ZendeskAuthentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
         subdomain: typing.Union[MetaOapg.properties.subdomain, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ZendeskAuthentication':

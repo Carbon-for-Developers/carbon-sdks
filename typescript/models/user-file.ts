@@ -28,7 +28,7 @@ export interface UserFile {
      * @type {object}
      * @memberof UserFile
      */
-    'tags': object | null;
+    'tags'?: object | null;
     /**
      * 
      * @type {number}
@@ -64,7 +64,7 @@ export interface UserFile {
      * @type {number}
      * @memberof UserFile
      */
-    'organization_user_data_source_id': number | null;
+    'organization_user_data_source_id'?: number | null;
     /**
      * 
      * @type {string}
@@ -76,7 +76,7 @@ export interface UserFile {
      * @type {string}
      * @memberof UserFile
      */
-    'external_url': string | null;
+    'external_url'?: string | null;
     /**
      * 
      * @type {ExternalFileSyncStatuses}
@@ -88,97 +88,97 @@ export interface UserFile {
      * @type {string}
      * @memberof UserFile
      */
-    'sync_error_message': string | null;
+    'sync_error_message'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'last_sync': string | null;
+    'last_sync'?: string | null;
     /**
      * 
      * @type {FileStatisticsNullable}
      * @memberof UserFile
      */
-    'file_statistics': FileStatisticsNullable | null;
+    'file_statistics'?: FileStatisticsNullable | null;
     /**
      * 
      * @type {object}
      * @memberof UserFile
      */
-    'file_metadata': object | null;
+    'file_metadata'?: object | null;
     /**
      * 
      * @type {{ [key: string]: EmbeddingProperties; }}
      * @memberof UserFile
      */
-    'embedding_properties': { [key: string]: EmbeddingProperties; } | null;
+    'embedding_properties'?: { [key: string]: EmbeddingProperties; } | null;
     /**
      * 
      * @type {number}
      * @memberof UserFile
      */
-    'chunk_size': number | null;
+    'chunk_size'?: number | null;
     /**
      * 
      * @type {number}
      * @memberof UserFile
      */
-    'chunk_overlap': number | null;
+    'chunk_overlap'?: number | null;
     /**
      * 
      * @type {ChunkPropertiesNullable}
      * @memberof UserFile
      */
-    'chunk_properties': ChunkPropertiesNullable | null;
+    'chunk_properties'?: ChunkPropertiesNullable | null;
     /**
      * 
      * @type {object}
      * @memberof UserFile
      */
-    'ocr_properties': object;
+    'ocr_properties'?: object;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'ocr_job_started_at': string | null;
+    'ocr_job_started_at'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'name': string | null;
+    'name'?: string | null;
     /**
      * 
      * @type {number}
      * @memberof UserFile
      */
-    'parent_id': number | null;
+    'parent_id'?: number | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserFile
      */
-    'enable_auto_sync': boolean | null;
+    'enable_auto_sync'?: boolean | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'presigned_url': string | null;
+    'presigned_url'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'parsed_text_url': string | null;
+    'parsed_text_url'?: string | null;
     /**
      * 
      * @type {object}
      * @memberof UserFile
      */
-    'additional_presigned_urls': object | null;
+    'additional_presigned_urls'?: object | null;
     /**
      * 
      * @type {boolean}
@@ -190,43 +190,43 @@ export interface UserFile {
      * @type {string}
      * @memberof UserFile
      */
-    'source_created_at': string | null;
+    'source_created_at'?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof UserFile
      */
-    'generate_sparse_vectors': boolean | null;
+    'generate_sparse_vectors'?: boolean | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'request_id': string | null;
+    'request_id'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserFile
      */
-    'upload_id': string | null;
+    'upload_id'?: string | null;
     /**
      * 
      * @type {object}
      * @memberof UserFile
      */
-    'sync_properties': object;
+    'sync_properties'?: object;
     /**
      * 
      * @type {object}
      * @memberof UserFile
      */
-    'messages_metadata': object;
+    'messages_metadata'?: object;
     /**
      * 
      * @type {boolean}
      * @memberof UserFile
      */
-    'file_contents_deleted': boolean;
+    'file_contents_deleted'?: boolean;
     /**
      * 
      * @type {boolean}
@@ -238,7 +238,7 @@ export interface UserFile {
      * @type {number}
      * @memberof UserFile
      */
-    'hot_storage_time_to_live': number | null;
+    'hot_storage_time_to_live'?: number | null;
     /**
      * 
      * @type {EmbeddingStorageStatus}

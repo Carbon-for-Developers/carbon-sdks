@@ -18,15 +18,15 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDeleted** | **bool** |  | 
-**Tasks** | [**[]Task**](Task.md) |  | 
-**Events** | [**[]Event**](Event.md) |  | 
+**Tasks** | Pointer to [**[]Task**](Task.md) |  | [optional] 
+**Events** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 **RemoteData** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewOpportunity
 
-`func NewOpportunity(description NullableString, id string, owner PartialOwner, name NullableString, amount NullableInt32, account NullablePartialAccountNullable, contact NullablePartialContactNullable, stage NullableString, status NullableOpportunityStatusNullable, closeDate NullableString, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, tasks []Task, events []Event, remoteData map[string]interface{}, ) *Opportunity`
+`func NewOpportunity(description NullableString, id string, owner PartialOwner, name NullableString, amount NullableInt32, account NullablePartialAccountNullable, contact NullablePartialContactNullable, stage NullableString, status NullableOpportunityStatusNullable, closeDate NullableString, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, remoteData map[string]interface{}, ) *Opportunity`
 
 NewOpportunity instantiates a new Opportunity object
 This constructor will assign default values to properties that have it defined,
@@ -430,6 +430,11 @@ and a boolean to check if the value has been set.
 
 SetTasks sets Tasks field to given value.
 
+### HasTasks
+
+`func (o *Opportunity) HasTasks() bool`
+
+HasTasks returns a boolean if a field has been set.
 
 ### SetTasksNil
 
@@ -460,6 +465,11 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
+### HasEvents
+
+`func (o *Opportunity) HasEvents() bool`
+
+HasEvents returns a boolean if a field has been set.
 
 ### SetEventsNil
 

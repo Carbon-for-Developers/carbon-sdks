@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **Domain** | **string** |  | 
 **ApiKey** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewFreskdeskAuthentication
 
-`func NewFreskdeskAuthentication(source interface{}, domain string, apiKey string, ) *FreskdeskAuthentication`
+`func NewFreskdeskAuthentication(source string, domain string, apiKey string, ) *FreskdeskAuthentication`
 
 NewFreskdeskAuthentication instantiates a new FreskdeskAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -29,34 +29,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *FreskdeskAuthentication) GetSource() interface{}`
+`func (o *FreskdeskAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *FreskdeskAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *FreskdeskAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *FreskdeskAuthentication) SetSource(v interface{})`
+`func (o *FreskdeskAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *FreskdeskAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *FreskdeskAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetDomain
 
 `func (o *FreskdeskAuthentication) GetDomain() string`

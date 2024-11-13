@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -143,7 +144,7 @@ public class FetchURLsResponse {
    * @return errorMessage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getErrorMessage() {
     return errorMessage;
@@ -218,9 +219,20 @@ public class FetchURLsResponse {
         Objects.equals(this.additionalProperties, fetchURLsResponse.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(urls, htmlContent, errorMessage, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -261,7 +273,6 @@ public class FetchURLsResponse {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("urls");
     openapiRequiredFields.add("html_content");
-    openapiRequiredFields.add("error_message");
   }
 
  /**
@@ -292,7 +303,7 @@ public class FetchURLsResponse {
       if (!jsonObj.get("html_content").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `html_content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("html_content").toString()));
       }
-      if (!jsonObj.get("error_message").isJsonNull() && !jsonObj.get("error_message").isJsonPrimitive()) {
+      if (!jsonObj.get("error_message").isJsonNull() && (jsonObj.get("error_message") != null && !jsonObj.get("error_message").isJsonNull()) && !jsonObj.get("error_message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_message").toString()));
       }
   }

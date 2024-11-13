@@ -33,7 +33,6 @@ class UserListResponse(
 
     class MetaOapg:
         required = {
-            "count",
             "users",
         }
         
@@ -89,7 +88,6 @@ class UserListResponse(
                 "count": count,
             }
     
-    count: MetaOapg.properties.count
     users: MetaOapg.properties.users
     
     @typing.overload
@@ -110,7 +108,7 @@ class UserListResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["users"]) -> MetaOapg.properties.users: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["count"]) -> MetaOapg.properties.count: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["count"]) -> typing.Union[MetaOapg.properties.count, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -122,16 +120,16 @@ class UserListResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        count: typing.Union[MetaOapg.properties.count, None, decimal.Decimal, int, ],
         users: typing.Union[MetaOapg.properties.users, list, tuple, ],
+        count: typing.Union[MetaOapg.properties.count, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UserListResponse':
         return super().__new__(
             cls,
             *args,
-            count=count,
             users=users,
+            count=count,
             _configuration=_configuration,
             **kwargs,
         )

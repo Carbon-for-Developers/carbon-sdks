@@ -168,8 +168,8 @@ public class WhiteLabelingResponse {
    * Get connectorSettings
    * @return connectorSettings
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getConnectorSettings() {
     return connectorSettings;
@@ -291,7 +291,6 @@ public class WhiteLabelingResponse {
     openapiRequiredFields.add("remove_branding");
     openapiRequiredFields.add("integrations");
     openapiRequiredFields.add("custom_limits");
-    openapiRequiredFields.add("connector_settings");
   }
 
  /**

@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface FreskdeskAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof FreskdeskAuthentication
      */
-    'source': any;
+    'source': FreskdeskAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -36,4 +36,7 @@ export interface FreskdeskAuthentication {
      */
     'api_key': string;
 }
+
+type FreskdeskAuthenticationSourceEnum = 'FRESHDESK'
+
 

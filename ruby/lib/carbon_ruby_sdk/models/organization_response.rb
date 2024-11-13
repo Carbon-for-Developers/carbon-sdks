@@ -264,22 +264,6 @@ module Carbon
         invalid_properties.push('invalid value for "aggregate_num_files_by_file_format", aggregate_num_files_by_file_format cannot be nil.')
       end
 
-      if @connector_settings.nil?
-        invalid_properties.push('invalid value for "connector_settings", connector_settings cannot be nil.')
-      end
-
-      if @global_user_config.nil?
-        invalid_properties.push('invalid value for "global_user_config", global_user_config cannot be nil.')
-      end
-
-      if @file_sync_usage.nil?
-        invalid_properties.push('invalid value for "file_sync_usage", file_sync_usage cannot be nil.')
-      end
-
-      if @logging_settings.nil?
-        invalid_properties.push('invalid value for "logging_settings", logging_settings cannot be nil.')
-      end
-
       if @created_at.nil?
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
@@ -303,10 +287,6 @@ module Carbon
       return false if @aggregate_num_embeddings.nil?
       return false if @aggregate_num_files_by_source.nil?
       return false if @aggregate_num_files_by_file_format.nil?
-      return false if @connector_settings.nil?
-      return false if @global_user_config.nil?
-      return false if @file_sync_usage.nil?
-      return false if @logging_settings.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
       true

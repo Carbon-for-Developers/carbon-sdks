@@ -17,15 +17,15 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDeleted** | **bool** |  | 
-**Tasks** | [**[]Task**](Task.md) |  | 
-**Events** | [**[]Event**](Event.md) |  | 
+**Tasks** | Pointer to [**[]Task**](Task.md) |  | [optional] 
+**Events** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 **RemoteData** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewAccount
 
-`func NewAccount(description NullableString, id string, owner NullablePartialOwnerNullable, name NullableString, industry NullableString, website NullableString, numberOfEmployees NullableInt32, addresses []Address, phoneNumbers []PhoneNumber, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, tasks []Task, events []Event, remoteData map[string]interface{}, ) *Account`
+`func NewAccount(description NullableString, id string, owner NullablePartialOwnerNullable, name NullableString, industry NullableString, website NullableString, numberOfEmployees NullableInt32, addresses []Address, phoneNumbers []PhoneNumber, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, remoteData map[string]interface{}, ) *Account`
 
 NewAccount instantiates a new Account object
 This constructor will assign default values to properties that have it defined,
@@ -389,6 +389,11 @@ and a boolean to check if the value has been set.
 
 SetTasks sets Tasks field to given value.
 
+### HasTasks
+
+`func (o *Account) HasTasks() bool`
+
+HasTasks returns a boolean if a field has been set.
 
 ### SetTasksNil
 
@@ -419,6 +424,11 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
+### HasEvents
+
+`func (o *Account) HasEvents() bool`
+
+HasEvents returns a boolean if a field has been set.
 
 ### SetEventsNil
 

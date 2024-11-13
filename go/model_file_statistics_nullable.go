@@ -16,26 +16,20 @@ import (
 
 // FileStatisticsNullable struct for FileStatisticsNullable
 type FileStatisticsNullable struct {
-	FileFormat NullableFileFormatsNullable `json:"file_format"`
-	FileSize NullableInt32 `json:"file_size"`
-	NumCharacters NullableInt32 `json:"num_characters"`
-	NumTokens NullableInt32 `json:"num_tokens"`
-	NumEmbeddings NullableInt32 `json:"num_embeddings"`
-	MimeType NullableString `json:"mime_type"`
+	FileFormat NullableFileFormatsNullable `json:"file_format,omitempty"`
+	FileSize NullableInt32 `json:"file_size,omitempty"`
+	NumCharacters NullableInt32 `json:"num_characters,omitempty"`
+	NumTokens NullableInt32 `json:"num_tokens,omitempty"`
+	NumEmbeddings NullableInt32 `json:"num_embeddings,omitempty"`
+	MimeType NullableString `json:"mime_type,omitempty"`
 }
 
 // NewFileStatisticsNullable instantiates a new FileStatisticsNullable object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32, mimeType NullableString) *FileStatisticsNullable {
+func NewFileStatisticsNullable() *FileStatisticsNullable {
 	this := FileStatisticsNullable{}
-	this.FileFormat = fileFormat
-	this.FileSize = fileSize
-	this.NumCharacters = numCharacters
-	this.NumTokens = numTokens
-	this.NumEmbeddings = numEmbeddings
-	this.MimeType = mimeType
 	return &this
 }
 
@@ -47,18 +41,16 @@ func NewFileStatisticsNullableWithDefaults() *FileStatisticsNullable {
 	return &this
 }
 
-// GetFileFormat returns the FileFormat field value
-// If the value is explicit nil, the zero value for FileFormatsNullable will be returned
+// GetFileFormat returns the FileFormat field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetFileFormat() FileFormatsNullable {
-	if o == nil || o.FileFormat.Get() == nil {
+	if o == nil || isNil(o.FileFormat.Get()) {
 		var ret FileFormatsNullable
 		return ret
 	}
-
 	return *o.FileFormat.Get()
 }
 
-// GetFileFormatOk returns a tuple with the FileFormat field value
+// GetFileFormatOk returns a tuple with the FileFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetFileFormatOk() (*FileFormatsNullable, bool) {
@@ -68,23 +60,39 @@ func (o *FileStatisticsNullable) GetFileFormatOk() (*FileFormatsNullable, bool) 
 	return o.FileFormat.Get(), o.FileFormat.IsSet()
 }
 
-// SetFileFormat sets field value
+// HasFileFormat returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasFileFormat() bool {
+	if o != nil && o.FileFormat.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileFormat gets a reference to the given NullableFileFormatsNullable and assigns it to the FileFormat field.
 func (o *FileStatisticsNullable) SetFileFormat(v FileFormatsNullable) {
 	o.FileFormat.Set(&v)
 }
+// SetFileFormatNil sets the value for FileFormat to be an explicit nil
+func (o *FileStatisticsNullable) SetFileFormatNil() {
+	o.FileFormat.Set(nil)
+}
 
-// GetFileSize returns the FileSize field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetFileFormat ensures that no value is present for FileFormat, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetFileFormat() {
+	o.FileFormat.Unset()
+}
+
+// GetFileSize returns the FileSize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetFileSize() int32 {
-	if o == nil || o.FileSize.Get() == nil {
+	if o == nil || isNil(o.FileSize.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.FileSize.Get()
 }
 
-// GetFileSizeOk returns a tuple with the FileSize field value
+// GetFileSizeOk returns a tuple with the FileSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetFileSizeOk() (*int32, bool) {
@@ -94,23 +102,39 @@ func (o *FileStatisticsNullable) GetFileSizeOk() (*int32, bool) {
 	return o.FileSize.Get(), o.FileSize.IsSet()
 }
 
-// SetFileSize sets field value
+// HasFileSize returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasFileSize() bool {
+	if o != nil && o.FileSize.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFileSize gets a reference to the given NullableInt32 and assigns it to the FileSize field.
 func (o *FileStatisticsNullable) SetFileSize(v int32) {
 	o.FileSize.Set(&v)
 }
+// SetFileSizeNil sets the value for FileSize to be an explicit nil
+func (o *FileStatisticsNullable) SetFileSizeNil() {
+	o.FileSize.Set(nil)
+}
 
-// GetNumCharacters returns the NumCharacters field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetFileSize ensures that no value is present for FileSize, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetFileSize() {
+	o.FileSize.Unset()
+}
+
+// GetNumCharacters returns the NumCharacters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetNumCharacters() int32 {
-	if o == nil || o.NumCharacters.Get() == nil {
+	if o == nil || isNil(o.NumCharacters.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.NumCharacters.Get()
 }
 
-// GetNumCharactersOk returns a tuple with the NumCharacters field value
+// GetNumCharactersOk returns a tuple with the NumCharacters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetNumCharactersOk() (*int32, bool) {
@@ -120,23 +144,39 @@ func (o *FileStatisticsNullable) GetNumCharactersOk() (*int32, bool) {
 	return o.NumCharacters.Get(), o.NumCharacters.IsSet()
 }
 
-// SetNumCharacters sets field value
+// HasNumCharacters returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasNumCharacters() bool {
+	if o != nil && o.NumCharacters.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNumCharacters gets a reference to the given NullableInt32 and assigns it to the NumCharacters field.
 func (o *FileStatisticsNullable) SetNumCharacters(v int32) {
 	o.NumCharacters.Set(&v)
 }
+// SetNumCharactersNil sets the value for NumCharacters to be an explicit nil
+func (o *FileStatisticsNullable) SetNumCharactersNil() {
+	o.NumCharacters.Set(nil)
+}
 
-// GetNumTokens returns the NumTokens field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetNumCharacters ensures that no value is present for NumCharacters, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetNumCharacters() {
+	o.NumCharacters.Unset()
+}
+
+// GetNumTokens returns the NumTokens field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetNumTokens() int32 {
-	if o == nil || o.NumTokens.Get() == nil {
+	if o == nil || isNil(o.NumTokens.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.NumTokens.Get()
 }
 
-// GetNumTokensOk returns a tuple with the NumTokens field value
+// GetNumTokensOk returns a tuple with the NumTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetNumTokensOk() (*int32, bool) {
@@ -146,23 +186,39 @@ func (o *FileStatisticsNullable) GetNumTokensOk() (*int32, bool) {
 	return o.NumTokens.Get(), o.NumTokens.IsSet()
 }
 
-// SetNumTokens sets field value
+// HasNumTokens returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasNumTokens() bool {
+	if o != nil && o.NumTokens.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNumTokens gets a reference to the given NullableInt32 and assigns it to the NumTokens field.
 func (o *FileStatisticsNullable) SetNumTokens(v int32) {
 	o.NumTokens.Set(&v)
 }
+// SetNumTokensNil sets the value for NumTokens to be an explicit nil
+func (o *FileStatisticsNullable) SetNumTokensNil() {
+	o.NumTokens.Set(nil)
+}
 
-// GetNumEmbeddings returns the NumEmbeddings field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetNumTokens ensures that no value is present for NumTokens, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetNumTokens() {
+	o.NumTokens.Unset()
+}
+
+// GetNumEmbeddings returns the NumEmbeddings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetNumEmbeddings() int32 {
-	if o == nil || o.NumEmbeddings.Get() == nil {
+	if o == nil || isNil(o.NumEmbeddings.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.NumEmbeddings.Get()
 }
 
-// GetNumEmbeddingsOk returns a tuple with the NumEmbeddings field value
+// GetNumEmbeddingsOk returns a tuple with the NumEmbeddings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetNumEmbeddingsOk() (*int32, bool) {
@@ -172,23 +228,39 @@ func (o *FileStatisticsNullable) GetNumEmbeddingsOk() (*int32, bool) {
 	return o.NumEmbeddings.Get(), o.NumEmbeddings.IsSet()
 }
 
-// SetNumEmbeddings sets field value
+// HasNumEmbeddings returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasNumEmbeddings() bool {
+	if o != nil && o.NumEmbeddings.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNumEmbeddings gets a reference to the given NullableInt32 and assigns it to the NumEmbeddings field.
 func (o *FileStatisticsNullable) SetNumEmbeddings(v int32) {
 	o.NumEmbeddings.Set(&v)
 }
+// SetNumEmbeddingsNil sets the value for NumEmbeddings to be an explicit nil
+func (o *FileStatisticsNullable) SetNumEmbeddingsNil() {
+	o.NumEmbeddings.Set(nil)
+}
 
-// GetMimeType returns the MimeType field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetNumEmbeddings ensures that no value is present for NumEmbeddings, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetNumEmbeddings() {
+	o.NumEmbeddings.Unset()
+}
+
+// GetMimeType returns the MimeType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FileStatisticsNullable) GetMimeType() string {
-	if o == nil || o.MimeType.Get() == nil {
+	if o == nil || isNil(o.MimeType.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.MimeType.Get()
 }
 
-// GetMimeTypeOk returns a tuple with the MimeType field value
+// GetMimeTypeOk returns a tuple with the MimeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FileStatisticsNullable) GetMimeTypeOk() (*string, bool) {
@@ -198,29 +270,47 @@ func (o *FileStatisticsNullable) GetMimeTypeOk() (*string, bool) {
 	return o.MimeType.Get(), o.MimeType.IsSet()
 }
 
-// SetMimeType sets field value
+// HasMimeType returns a boolean if a field has been set.
+func (o *FileStatisticsNullable) HasMimeType() bool {
+	if o != nil && o.MimeType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMimeType gets a reference to the given NullableString and assigns it to the MimeType field.
 func (o *FileStatisticsNullable) SetMimeType(v string) {
 	o.MimeType.Set(&v)
+}
+// SetMimeTypeNil sets the value for MimeType to be an explicit nil
+func (o *FileStatisticsNullable) SetMimeTypeNil() {
+	o.MimeType.Set(nil)
+}
+
+// UnsetMimeType ensures that no value is present for MimeType, not even an explicit nil
+func (o *FileStatisticsNullable) UnsetMimeType() {
+	o.MimeType.Unset()
 }
 
 func (o FileStatisticsNullable) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.FileFormat.IsSet() {
 		toSerialize["file_format"] = o.FileFormat.Get()
 	}
-	if true {
+	if o.FileSize.IsSet() {
 		toSerialize["file_size"] = o.FileSize.Get()
 	}
-	if true {
+	if o.NumCharacters.IsSet() {
 		toSerialize["num_characters"] = o.NumCharacters.Get()
 	}
-	if true {
+	if o.NumTokens.IsSet() {
 		toSerialize["num_tokens"] = o.NumTokens.Get()
 	}
-	if true {
+	if o.NumEmbeddings.IsSet() {
 		toSerialize["num_embeddings"] = o.NumEmbeddings.Get()
 	}
-	if true {
+	if o.MimeType.IsSet() {
 		toSerialize["mime_type"] = o.MimeType.Get()
 	}
 	return json.Marshal(toSerialize)

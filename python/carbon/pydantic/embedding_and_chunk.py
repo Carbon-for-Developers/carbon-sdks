@@ -20,13 +20,13 @@ from carbon.pydantic.embedding_and_chunk_embedding import EmbeddingAndChunkEmbed
 class EmbeddingAndChunk(BaseModel):
     user_file_id: int = Field(alias='user_file_id')
 
-    chunk_index: typing.Optional[int] = Field(alias='chunk_index')
-
     source_content: str = Field(alias='source_content')
 
-    embedding: EmbeddingAndChunkEmbedding = Field(alias='embedding')
+    chunk_index: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_index')
 
-    content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
+    embedding: typing.Optional[EmbeddingAndChunkEmbedding] = Field(None, alias='embedding')
+
+    content_metadata: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='content_metadata')
 
     model_config = ConfigDict(
         protected_namespaces=(),

@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tags** | [**map[string]Tags**](Tags.md) |  | 
+**Tags** | Pointer to [**map[string]Tags**](Tags.md) |  | [optional] 
 **Content** | **string** |  | 
 **FileId** | **int32** |  | 
-**ParentFileId** | **NullableInt32** |  | 
-**Source** | **NullableString** |  | 
-**SourceUrl** | **NullableString** |  | 
-**SourceType** | [**NullableDataSourceTypeNullable**](DataSourceTypeNullable.md) |  | 
-**PresignedUrl** | **NullableString** |  | 
+**ParentFileId** | Pointer to **NullableInt32** |  | [optional] 
+**Source** | Pointer to **NullableString** |  | [optional] 
+**SourceUrl** | Pointer to **NullableString** |  | [optional] 
+**SourceType** | Pointer to [**NullableDataSourceTypeNullable**](DataSourceTypeNullable.md) |  | [optional] 
+**PresignedUrl** | Pointer to **NullableString** |  | [optional] 
 **Vector** | **[]float32** |  | 
-**Score** | **NullableFloat32** |  | 
-**Rank** | [**NullableRankProperty**](RankProperty.md) |  | 
-**ContentMetadata** | **map[string]interface{}** |  | 
-**ChunkIndex** | **NullableInt32** |  | 
+**Score** | Pointer to **NullableFloat32** |  | [optional] 
+**Rank** | Pointer to [**NullableRankProperty**](RankProperty.md) |  | [optional] 
+**ContentMetadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**ChunkIndex** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
 ### NewDocumentResponse
 
-`func NewDocumentResponse(tags map[string]Tags, content string, fileId int32, parentFileId NullableInt32, source NullableString, sourceUrl NullableString, sourceType NullableDataSourceTypeNullable, presignedUrl NullableString, vector []float32, score NullableFloat32, rank NullableRankProperty, contentMetadata map[string]interface{}, chunkIndex NullableInt32, ) *DocumentResponse`
+`func NewDocumentResponse(content string, fileId int32, vector []float32, ) *DocumentResponse`
 
 NewDocumentResponse instantiates a new DocumentResponse object
 This constructor will assign default values to properties that have it defined,
@@ -56,6 +56,11 @@ and a boolean to check if the value has been set.
 
 SetTags sets Tags field to given value.
 
+### HasTags
+
+`func (o *DocumentResponse) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### SetTagsNil
 
@@ -126,6 +131,11 @@ and a boolean to check if the value has been set.
 
 SetParentFileId sets ParentFileId field to given value.
 
+### HasParentFileId
+
+`func (o *DocumentResponse) HasParentFileId() bool`
+
+HasParentFileId returns a boolean if a field has been set.
 
 ### SetParentFileIdNil
 
@@ -156,6 +166,11 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
+### HasSource
+
+`func (o *DocumentResponse) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 ### SetSourceNil
 
@@ -186,6 +201,11 @@ and a boolean to check if the value has been set.
 
 SetSourceUrl sets SourceUrl field to given value.
 
+### HasSourceUrl
+
+`func (o *DocumentResponse) HasSourceUrl() bool`
+
+HasSourceUrl returns a boolean if a field has been set.
 
 ### SetSourceUrlNil
 
@@ -216,6 +236,11 @@ and a boolean to check if the value has been set.
 
 SetSourceType sets SourceType field to given value.
 
+### HasSourceType
+
+`func (o *DocumentResponse) HasSourceType() bool`
+
+HasSourceType returns a boolean if a field has been set.
 
 ### SetSourceTypeNil
 
@@ -246,6 +271,11 @@ and a boolean to check if the value has been set.
 
 SetPresignedUrl sets PresignedUrl field to given value.
 
+### HasPresignedUrl
+
+`func (o *DocumentResponse) HasPresignedUrl() bool`
+
+HasPresignedUrl returns a boolean if a field has been set.
 
 ### SetPresignedUrlNil
 
@@ -306,6 +336,11 @@ and a boolean to check if the value has been set.
 
 SetScore sets Score field to given value.
 
+### HasScore
+
+`func (o *DocumentResponse) HasScore() bool`
+
+HasScore returns a boolean if a field has been set.
 
 ### SetScoreNil
 
@@ -336,6 +371,11 @@ and a boolean to check if the value has been set.
 
 SetRank sets Rank field to given value.
 
+### HasRank
+
+`func (o *DocumentResponse) HasRank() bool`
+
+HasRank returns a boolean if a field has been set.
 
 ### SetRankNil
 
@@ -366,6 +406,11 @@ and a boolean to check if the value has been set.
 
 SetContentMetadata sets ContentMetadata field to given value.
 
+### HasContentMetadata
+
+`func (o *DocumentResponse) HasContentMetadata() bool`
+
+HasContentMetadata returns a boolean if a field has been set.
 
 ### SetContentMetadataNil
 
@@ -396,6 +441,11 @@ and a boolean to check if the value has been set.
 
 SetChunkIndex sets ChunkIndex field to given value.
 
+### HasChunkIndex
+
+`func (o *DocumentResponse) HasChunkIndex() bool`
+
+HasChunkIndex returns a boolean if a field has been set.
 
 ### SetChunkIndexNil
 

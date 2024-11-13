@@ -139,8 +139,8 @@ public class DirectoryItem {
    * Get isSynced
    * @return isSynced
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
 
   public Boolean getIsSynced() {
     return isSynced;
@@ -168,8 +168,8 @@ public class DirectoryItem {
    * Get hasChildren
    * @return hasChildren
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "")
 
   public Boolean getHasChildren() {
     return hasChildren;
@@ -290,8 +290,6 @@ public class DirectoryItem {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("is_synced");
-    openapiRequiredFields.add("has_children");
   }
 
  /**

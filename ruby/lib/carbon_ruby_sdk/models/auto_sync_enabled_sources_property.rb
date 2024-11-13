@@ -39,7 +39,7 @@ module Carbon
     def self.openapi_any_of
       [
       :'Array<DataSourceType>',
-      :'String'
+      :'DataSourceExtendedInput'
       ]
     end
 

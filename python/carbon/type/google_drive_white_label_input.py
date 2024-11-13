@@ -17,7 +17,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.google_drive_credentials import GoogleDriveCredentials
 
 class RequiredGoogleDriveWhiteLabelInput(TypedDict):
-    data_source_type: typing.Union[bool, date, datetime, dict, float, int, list, str, None]
+    data_source_type: str
 
     credentials: GoogleDriveCredentials
 

@@ -23,15 +23,15 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDeleted** | **bool** |  | 
-**Tasks** | [**[]Task**](Task.md) |  | 
-**Events** | [**[]Event**](Event.md) |  | 
+**Tasks** | Pointer to [**[]Task**](Task.md) |  | [optional] 
+**Events** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 **RemoteData** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewLead
 
-`func NewLead(title NullableString, description NullableString, id string, owner PartialOwner, source NullableString, status NullableString, company NullableString, firstName NullableString, lastName NullableString, addresses []Address, phoneNumbers []PhoneNumber, emails []Email, convertedAt NullableString, convertedAccount NullablePartialAccountNullable, convertedContact NullablePartialContactNullable, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, tasks []Task, events []Event, remoteData map[string]interface{}, ) *Lead`
+`func NewLead(title NullableString, description NullableString, id string, owner PartialOwner, source NullableString, status NullableString, company NullableString, firstName NullableString, lastName NullableString, addresses []Address, phoneNumbers []PhoneNumber, emails []Email, convertedAt NullableString, convertedAccount NullablePartialAccountNullable, convertedContact NullablePartialContactNullable, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, remoteData map[string]interface{}, ) *Lead`
 
 NewLead instantiates a new Lead object
 This constructor will assign default values to properties that have it defined,
@@ -555,6 +555,11 @@ and a boolean to check if the value has been set.
 
 SetTasks sets Tasks field to given value.
 
+### HasTasks
+
+`func (o *Lead) HasTasks() bool`
+
+HasTasks returns a boolean if a field has been set.
 
 ### SetTasksNil
 
@@ -585,6 +590,11 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
+### HasEvents
+
+`func (o *Lead) HasEvents() bool`
+
+HasEvents returns a boolean if a field has been set.
 
 ### SetEventsNil
 

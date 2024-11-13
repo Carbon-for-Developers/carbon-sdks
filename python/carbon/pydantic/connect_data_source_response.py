@@ -20,7 +20,7 @@ from carbon.pydantic.organization_user_data_source_api import OrganizationUserDa
 class ConnectDataSourceResponse(BaseModel):
     data_source: OrganizationUserDataSourceAPI = Field(alias='data_source')
 
-    sync_url: typing.Optional[str] = Field(alias='sync_url')
+    sync_url: typing.Optional[typing.Optional[str]] = Field(None, alias='sync_url')
 
     model_config = ConfigDict(
         protected_namespaces=(),

@@ -16,7 +16,7 @@ import (
 
 // ServiceNowAuthentication struct for ServiceNowAuthentication
 type ServiceNowAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	InstanceSubdomain string `json:"instance_subdomain"`
@@ -29,7 +29,7 @@ type ServiceNowAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceNowAuthentication(source interface{}, accessToken string, instanceSubdomain string, clientId string, clientSecret string, redirectUri string) *ServiceNowAuthentication {
+func NewServiceNowAuthentication(source string, accessToken string, instanceSubdomain string, clientId string, clientSecret string, redirectUri string) *ServiceNowAuthentication {
 	this := ServiceNowAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -49,10 +49,9 @@ func NewServiceNowAuthenticationWithDefaults() *ServiceNowAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *ServiceNowAuthentication) GetSource() interface{} {
+func (o *ServiceNowAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -61,16 +60,15 @@ func (o *ServiceNowAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServiceNowAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *ServiceNowAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *ServiceNowAuthentication) SetSource(v interface{}) {
+func (o *ServiceNowAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -238,7 +236,7 @@ func (o *ServiceNowAuthentication) SetRedirectUri(v string) {
 
 func (o ServiceNowAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

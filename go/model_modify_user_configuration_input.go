@@ -16,7 +16,7 @@ import (
 
 // ModifyUserConfigurationInput struct for ModifyUserConfigurationInput
 type ModifyUserConfigurationInput struct {
-	ConfigurationKeyName string `json:"configuration_key_name"`
+	ConfigurationKeyName ConfigurationKeys `json:"configuration_key_name"`
 	Value map[string]interface{} `json:"value"`
 }
 
@@ -24,7 +24,7 @@ type ModifyUserConfigurationInput struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewModifyUserConfigurationInput(configurationKeyName string, value map[string]interface{}) *ModifyUserConfigurationInput {
+func NewModifyUserConfigurationInput(configurationKeyName ConfigurationKeys, value map[string]interface{}) *ModifyUserConfigurationInput {
 	this := ModifyUserConfigurationInput{}
 	this.ConfigurationKeyName = configurationKeyName
 	this.Value = value
@@ -40,9 +40,9 @@ func NewModifyUserConfigurationInputWithDefaults() *ModifyUserConfigurationInput
 }
 
 // GetConfigurationKeyName returns the ConfigurationKeyName field value
-func (o *ModifyUserConfigurationInput) GetConfigurationKeyName() string {
+func (o *ModifyUserConfigurationInput) GetConfigurationKeyName() ConfigurationKeys {
 	if o == nil {
-		var ret string
+		var ret ConfigurationKeys
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *ModifyUserConfigurationInput) GetConfigurationKeyName() string {
 
 // GetConfigurationKeyNameOk returns a tuple with the ConfigurationKeyName field value
 // and a boolean to check if the value has been set.
-func (o *ModifyUserConfigurationInput) GetConfigurationKeyNameOk() (*string, bool) {
+func (o *ModifyUserConfigurationInput) GetConfigurationKeyNameOk() (*ConfigurationKeys, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *ModifyUserConfigurationInput) GetConfigurationKeyNameOk() (*string, boo
 }
 
 // SetConfigurationKeyName sets field value
-func (o *ModifyUserConfigurationInput) SetConfigurationKeyName(v string) {
+func (o *ModifyUserConfigurationInput) SetConfigurationKeyName(v ConfigurationKeys) {
 	o.ConfigurationKeyName = v
 }
 

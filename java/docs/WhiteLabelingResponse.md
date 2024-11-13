@@ -10,7 +10,7 @@
 |**removeBranding** | **Boolean** |  |  |
 |**integrations** | **Object** |  |  |
 |**customLimits** | **Object** |  |  |
-|**connectorSettings** | **Object** |  |  |
+|**connectorSettings** | **Object** |  |  [optional] |
 
 
 

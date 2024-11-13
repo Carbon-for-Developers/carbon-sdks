@@ -47,8 +47,6 @@ class Account(
             "last_activity_at",
             "name",
             "id",
-            "events",
-            "tasks",
         }
         
         class properties:
@@ -234,6 +232,28 @@ class Account(
             is_deleted = schemas.BoolSchema
             
             
+            class remote_data(
+                schemas.DictBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneFrozenDictMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, None, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'remote_data':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
+            
+            
             class tasks(
                 schemas.ListBase,
                 schemas.NoneBase,
@@ -286,28 +306,6 @@ class Account(
                         *args,
                         _configuration=_configuration,
                     )
-            
-            
-            class remote_data(
-                schemas.DictBase,
-                schemas.NoneBase,
-                schemas.Schema,
-                schemas.NoneFrozenDictMixin
-            ):
-            
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, None, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                ) -> 'remote_data':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
             __annotations__ = {
                 "description": description,
                 "id": id,
@@ -322,9 +320,9 @@ class Account(
                 "created_at": created_at,
                 "updated_at": updated_at,
                 "is_deleted": is_deleted,
+                "remote_data": remote_data,
                 "tasks": tasks,
                 "events": events,
-                "remote_data": remote_data,
             }
     
     owner: 'PartialOwnerNullable'
@@ -341,8 +339,6 @@ class Account(
     last_activity_at: MetaOapg.properties.last_activity_at
     name: MetaOapg.properties.name
     id: MetaOapg.properties.id
-    events: MetaOapg.properties.events
-    tasks: MetaOapg.properties.tasks
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["description"]) -> MetaOapg.properties.description: ...
@@ -384,18 +380,18 @@ class Account(
     def __getitem__(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "industry", "website", "number_of_employees", "addresses", "phone_numbers", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "industry", "website", "number_of_employees", "addresses", "phone_numbers", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -440,18 +436,18 @@ class Account(
     def get_item_oapg(self, name: typing_extensions.Literal["is_deleted"]) -> MetaOapg.properties.is_deleted: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> MetaOapg.properties.tasks: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> MetaOapg.properties.events: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["remote_data"]) -> MetaOapg.properties.remote_data: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["tasks"]) -> typing.Union[MetaOapg.properties.tasks, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["events"]) -> typing.Union[MetaOapg.properties.events, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "industry", "website", "number_of_employees", "addresses", "phone_numbers", "last_activity_at", "created_at", "updated_at", "is_deleted", "tasks", "events", "remote_data", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "id", "owner", "name", "industry", "website", "number_of_employees", "addresses", "phone_numbers", "last_activity_at", "created_at", "updated_at", "is_deleted", "remote_data", "tasks", "events", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -472,8 +468,8 @@ class Account(
         last_activity_at: typing.Union[MetaOapg.properties.last_activity_at, None, str, ],
         name: typing.Union[MetaOapg.properties.name, None, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
-        events: typing.Union[MetaOapg.properties.events, list, tuple, None, ],
-        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, ],
+        tasks: typing.Union[MetaOapg.properties.tasks, list, tuple, None, schemas.Unset] = schemas.unset,
+        events: typing.Union[MetaOapg.properties.events, list, tuple, None, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Account':
@@ -494,8 +490,8 @@ class Account(
             last_activity_at=last_activity_at,
             name=name,
             id=id,
-            events=events,
             tasks=tasks,
+            events=events,
             _configuration=_configuration,
             **kwargs,
         )

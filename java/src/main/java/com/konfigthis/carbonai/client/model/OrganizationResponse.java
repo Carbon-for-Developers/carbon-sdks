@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -209,7 +210,7 @@ public class OrganizationResponse {
    * @return nickname
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getNickname() {
     return nickname;
@@ -267,7 +268,7 @@ public class OrganizationResponse {
    * @return customBranding
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getCustomBranding() {
     return customBranding;
@@ -296,7 +297,7 @@ public class OrganizationResponse {
    * @return customLimits
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Object getCustomLimits() {
     return customLimits;
@@ -528,7 +529,7 @@ public class OrganizationResponse {
    * @return periodEndsAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public OffsetDateTime getPeriodEndsAt() {
     return periodEndsAt;
@@ -557,7 +558,7 @@ public class OrganizationResponse {
    * @return cancelAtPeriodEnd
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Boolean getCancelAtPeriodEnd() {
     return cancelAtPeriodEnd;
@@ -585,8 +586,8 @@ public class OrganizationResponse {
    * Get connectorSettings
    * @return connectorSettings
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getConnectorSettings() {
     return connectorSettings;
@@ -614,8 +615,8 @@ public class OrganizationResponse {
    * Get globalUserConfig
    * @return globalUserConfig
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getGlobalUserConfig() {
     return globalUserConfig;
@@ -643,8 +644,8 @@ public class OrganizationResponse {
    * Get fileSyncUsage
    * @return fileSyncUsage
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getFileSyncUsage() {
     return fileSyncUsage;
@@ -672,8 +673,8 @@ public class OrganizationResponse {
    * Get loggingSettings
    * @return loggingSettings
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getLoggingSettings() {
     return loggingSettings;
@@ -824,9 +825,20 @@ public class OrganizationResponse {
         Objects.equals(this.additionalProperties, organizationResponse.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, name, nickname, removeBranding, customBranding, customLimits, aggregateFileSize, aggregateNumCharacters, aggregateNumTokens, aggregateNumEmbeddings, aggregateNumFilesBySource, aggregateNumFilesByFileFormat, fileStatisticsAggregatedAt, periodEndsAt, cancelAtPeriodEnd, connectorSettings, globalUserConfig, fileSyncUsage, loggingSettings, createdAt, updatedAt, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -903,10 +915,7 @@ public class OrganizationResponse {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("nickname");
     openapiRequiredFields.add("remove_branding");
-    openapiRequiredFields.add("custom_branding");
-    openapiRequiredFields.add("custom_limits");
     openapiRequiredFields.add("aggregate_file_size");
     openapiRequiredFields.add("aggregate_num_characters");
     openapiRequiredFields.add("aggregate_num_tokens");
@@ -914,12 +923,6 @@ public class OrganizationResponse {
     openapiRequiredFields.add("aggregate_num_files_by_source");
     openapiRequiredFields.add("aggregate_num_files_by_file_format");
     openapiRequiredFields.add("file_statistics_aggregated_at");
-    openapiRequiredFields.add("period_ends_at");
-    openapiRequiredFields.add("cancel_at_period_end");
-    openapiRequiredFields.add("connector_settings");
-    openapiRequiredFields.add("global_user_config");
-    openapiRequiredFields.add("file_sync_usage");
-    openapiRequiredFields.add("logging_settings");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
   }
@@ -946,7 +949,7 @@ public class OrganizationResponse {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("nickname").isJsonNull() && !jsonObj.get("nickname").isJsonPrimitive()) {
+      if (!jsonObj.get("nickname").isJsonNull() && (jsonObj.get("nickname") != null && !jsonObj.get("nickname").isJsonNull()) && !jsonObj.get("nickname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `nickname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nickname").toString()));
       }
   }

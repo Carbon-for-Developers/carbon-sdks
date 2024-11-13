@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pagination** | Pointer to [**Pagination**](Pagination.md) | Pagination parameters for the query. | [optional] 
-**OrderBy** | Pointer to [**OrganizationUserFilesToSyncOrderByTypes**](OrganizationUserFilesToSyncOrderByTypes.md) | The field on OrganizationUserFilesToSYnc to order the results by. | [optional] 
-**OrderDir** | Pointer to [**OrderDir**](OrderDir.md) | The direction to order the results by. | [optional] 
-**Filters** | Pointer to [**OrganizationUserFilesToSyncFilters**](OrganizationUserFilesToSyncFilters.md) | Filters to apply to the query. | [optional] 
+**Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
+**OrderBy** | Pointer to [**OrganizationUserFilesToSyncOrderByTypes**](OrganizationUserFilesToSyncOrderByTypes.md) |  | [optional] 
+**OrderDir** | Pointer to [**OrderDir**](OrderDir.md) |  | [optional] 
+**Filters** | Pointer to [**OrganizationUserFilesToSyncFilters**](OrganizationUserFilesToSyncFilters.md) |  | [optional] 
 **IncludeRawFile** | Pointer to **NullableBool** | If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint. | [optional] 
 **IncludeParsedTextFile** | Pointer to **NullableBool** | If true, the query will return presigned URLs for the parsed text file. Only relevant for the /user_files_v2 endpoint. | [optional] 
 **IncludeAdditionalFiles** | Pointer to **NullableBool** | If true, the query will return presigned URLs for additional files. Only relevant for the /user_files_v2 endpoint. | [optional] 

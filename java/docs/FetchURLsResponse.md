@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**urls** | **List&lt;String&gt;** |  |  |
 |**htmlContent** | **String** |  |  |
-|**errorMessage** | **String** |  |  |
+|**errorMessage** | **String** |  |  [optional] |
 
 
 

@@ -39,7 +39,22 @@ class S3Authentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    enum_value_to_name = {
+                        "S3": "S3",
+                    }
+                
+                @schemas.classproperty
+                def S3(cls):
+                    return cls("S3")
             access_key = schemas.StrSchema
             access_key_secret = schemas.StrSchema
             
@@ -117,7 +132,7 @@ class S3Authentication(
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_key: typing.Union[MetaOapg.properties.access_key, str, ],
         access_key_secret: typing.Union[MetaOapg.properties.access_key_secret, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         endpoint_url: typing.Union[MetaOapg.properties.endpoint_url, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],

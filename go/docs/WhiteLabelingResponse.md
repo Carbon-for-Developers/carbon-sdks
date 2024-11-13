@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **RemoveBranding** | **bool** |  | 
 **Integrations** | **map[string]interface{}** |  | 
 **CustomLimits** | **map[string]interface{}** |  | 
-**ConnectorSettings** | **map[string]interface{}** |  | [default to {}]
+**ConnectorSettings** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 
 ## Methods
 
 ### NewWhiteLabelingResponse
 
-`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, connectorSettings map[string]interface{}, ) *WhiteLabelingResponse`
+`func NewWhiteLabelingResponse(removeBranding bool, integrations map[string]interface{}, customLimits map[string]interface{}, ) *WhiteLabelingResponse`
 
 NewWhiteLabelingResponse instantiates a new WhiteLabelingResponse object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +107,11 @@ and a boolean to check if the value has been set.
 
 SetConnectorSettings sets ConnectorSettings field to given value.
 
+### HasConnectorSettings
+
+`func (o *WhiteLabelingResponse) HasConnectorSettings() bool`
+
+HasConnectorSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

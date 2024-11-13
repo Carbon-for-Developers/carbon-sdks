@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.carbonai.client.model.ConfigurationKeys;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -51,7 +52,7 @@ import com.konfigthis.carbonai.client.JSON;
 public class ModifyUserConfigurationInput {
   public static final String SERIALIZED_NAME_CONFIGURATION_KEY_NAME = "configuration_key_name";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION_KEY_NAME)
-  private String configurationKeyName;
+  private ConfigurationKeys configurationKeyName;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -60,7 +61,7 @@ public class ModifyUserConfigurationInput {
   public ModifyUserConfigurationInput() {
   }
 
-  public ModifyUserConfigurationInput configurationKeyName(String configurationKeyName) {
+  public ModifyUserConfigurationInput configurationKeyName(ConfigurationKeys configurationKeyName) {
     
     
     
@@ -76,12 +77,12 @@ public class ModifyUserConfigurationInput {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public String getConfigurationKeyName() {
+  public ConfigurationKeys getConfigurationKeyName() {
     return configurationKeyName;
   }
 
 
-  public void setConfigurationKeyName(String configurationKeyName) {
+  public void setConfigurationKeyName(ConfigurationKeys configurationKeyName) {
     
     
     
@@ -238,9 +239,6 @@ public class ModifyUserConfigurationInput {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (!jsonObj.get("configuration_key_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `configuration_key_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configuration_key_name").toString()));
       }
   }
 

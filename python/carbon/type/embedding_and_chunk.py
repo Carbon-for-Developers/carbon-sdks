@@ -19,16 +19,15 @@ from carbon.type.embedding_and_chunk_embedding import EmbeddingAndChunkEmbedding
 class RequiredEmbeddingAndChunk(TypedDict):
     user_file_id: int
 
-    chunk_index: typing.Optional[int]
-
     source_content: str
+
+
+class OptionalEmbeddingAndChunk(TypedDict, total=False):
+    chunk_index: typing.Optional[int]
 
     embedding: typing.Optional[EmbeddingAndChunkEmbedding]
 
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
-
-class OptionalEmbeddingAndChunk(TypedDict, total=False):
-    pass
 
 class EmbeddingAndChunk(RequiredEmbeddingAndChunk, OptionalEmbeddingAndChunk):
     pass

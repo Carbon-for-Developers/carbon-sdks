@@ -86,7 +86,7 @@ public class ListUserResponse {
 
   public static final String SERIALIZED_NAME_AUTO_SYNC_ENABLED_SOURCES = "auto_sync_enabled_sources";
   @SerializedName(SERIALIZED_NAME_AUTO_SYNC_ENABLED_SOURCES)
-  private List<Object> autoSyncEnabledSources = new ArrayList<>();
+  private List<Object> autoSyncEnabledSources = null;
 
   public ListUserResponse() {
   }
@@ -307,8 +307,8 @@ public class ListUserResponse {
    * Get customLimits
    * @return customLimits
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "{}", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{}", value = "")
 
   public Object getCustomLimits() {
     return customLimits;
@@ -333,6 +333,9 @@ public class ListUserResponse {
   }
 
   public ListUserResponse addAutoSyncEnabledSourcesItem(Object autoSyncEnabledSourcesItem) {
+    if (this.autoSyncEnabledSources == null) {
+      this.autoSyncEnabledSources = new ArrayList<>();
+    }
     this.autoSyncEnabledSources.add(autoSyncEnabledSourcesItem);
     return this;
   }
@@ -341,8 +344,8 @@ public class ListUserResponse {
    * Get autoSyncEnabledSources
    * @return autoSyncEnabledSources
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "[]", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[]", value = "")
 
   public List<Object> getAutoSyncEnabledSources() {
     return autoSyncEnabledSources;
@@ -483,8 +486,6 @@ public class ListUserResponse {
     openapiRequiredFields.add("updated_at");
     openapiRequiredFields.add("deleted_at");
     openapiRequiredFields.add("enabled_features");
-    openapiRequiredFields.add("custom_limits");
-    openapiRequiredFields.add("auto_sync_enabled_sources");
   }
 
  /**
@@ -509,10 +510,8 @@ public class ListUserResponse {
       if (!jsonObj.get("organization_supplied_user_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization_supplied_user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_supplied_user_id").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("auto_sync_enabled_sources") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("auto_sync_enabled_sources").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("auto_sync_enabled_sources") != null && !jsonObj.get("auto_sync_enabled_sources").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `auto_sync_enabled_sources` to be an array in the JSON string but got `%s`", jsonObj.get("auto_sync_enabled_sources").toString()));
       }
   }

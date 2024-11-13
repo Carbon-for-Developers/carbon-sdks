@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface ConfluenceAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof ConfluenceAuthentication
      */
-    'source': any;
+    'source': ConfluenceAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -42,4 +42,7 @@ export interface ConfluenceAuthentication {
      */
     'subdomain': string;
 }
+
+type ConfluenceAuthenticationSourceEnum = 'CONFLUENCE'
+
 

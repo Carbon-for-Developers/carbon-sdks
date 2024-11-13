@@ -18,20 +18,22 @@ import (
 type DirectoryItem struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
-	IsSynced bool `json:"is_synced"`
-	HasChildren bool `json:"has_children"`
+	IsSynced *bool `json:"is_synced,omitempty"`
+	HasChildren *bool `json:"has_children,omitempty"`
 }
 
 // NewDirectoryItem instantiates a new DirectoryItem object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDirectoryItem(id string, name string, isSynced bool, hasChildren bool) *DirectoryItem {
+func NewDirectoryItem(id string, name string) *DirectoryItem {
 	this := DirectoryItem{}
 	this.Id = id
 	this.Name = name
-	this.IsSynced = isSynced
-	this.HasChildren = hasChildren
+	var isSynced bool = false
+	this.IsSynced = &isSynced
+	var hasChildren bool = false
+	this.HasChildren = &hasChildren
 	return &this
 }
 
@@ -41,9 +43,9 @@ func NewDirectoryItem(id string, name string, isSynced bool, hasChildren bool) *
 func NewDirectoryItemWithDefaults() *DirectoryItem {
 	this := DirectoryItem{}
 	var isSynced bool = false
-	this.IsSynced = isSynced
+	this.IsSynced = &isSynced
 	var hasChildren bool = false
-	this.HasChildren = hasChildren
+	this.HasChildren = &hasChildren
 	return &this
 }
 
@@ -95,52 +97,68 @@ func (o *DirectoryItem) SetName(v string) {
 	o.Name = v
 }
 
-// GetIsSynced returns the IsSynced field value
+// GetIsSynced returns the IsSynced field value if set, zero value otherwise.
 func (o *DirectoryItem) GetIsSynced() bool {
-	if o == nil {
+	if o == nil || isNil(o.IsSynced) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsSynced
+	return *o.IsSynced
 }
 
-// GetIsSyncedOk returns a tuple with the IsSynced field value
+// GetIsSyncedOk returns a tuple with the IsSynced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DirectoryItem) GetIsSyncedOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.IsSynced) {
     return nil, false
 	}
-	return &o.IsSynced, true
+	return o.IsSynced, true
 }
 
-// SetIsSynced sets field value
+// HasIsSynced returns a boolean if a field has been set.
+func (o *DirectoryItem) HasIsSynced() bool {
+	if o != nil && !isNil(o.IsSynced) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSynced gets a reference to the given bool and assigns it to the IsSynced field.
 func (o *DirectoryItem) SetIsSynced(v bool) {
-	o.IsSynced = v
+	o.IsSynced = &v
 }
 
-// GetHasChildren returns the HasChildren field value
+// GetHasChildren returns the HasChildren field value if set, zero value otherwise.
 func (o *DirectoryItem) GetHasChildren() bool {
-	if o == nil {
+	if o == nil || isNil(o.HasChildren) {
 		var ret bool
 		return ret
 	}
-
-	return o.HasChildren
+	return *o.HasChildren
 }
 
-// GetHasChildrenOk returns a tuple with the HasChildren field value
+// GetHasChildrenOk returns a tuple with the HasChildren field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DirectoryItem) GetHasChildrenOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.HasChildren) {
     return nil, false
 	}
-	return &o.HasChildren, true
+	return o.HasChildren, true
 }
 
-// SetHasChildren sets field value
+// HasHasChildren returns a boolean if a field has been set.
+func (o *DirectoryItem) HasHasChildren() bool {
+	if o != nil && !isNil(o.HasChildren) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasChildren gets a reference to the given bool and assigns it to the HasChildren field.
 func (o *DirectoryItem) SetHasChildren(v bool) {
-	o.HasChildren = v
+	o.HasChildren = &v
 }
 
 func (o DirectoryItem) MarshalJSON() ([]byte, error) {
@@ -151,10 +169,10 @@ func (o DirectoryItem) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if !isNil(o.IsSynced) {
 		toSerialize["is_synced"] = o.IsSynced
 	}
-	if true {
+	if !isNil(o.HasChildren) {
 		toSerialize["has_children"] = o.HasChildren
 	}
 	return json.Marshal(toSerialize)

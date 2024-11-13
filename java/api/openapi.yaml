@@ -62,11 +62,6 @@ tags:
 
     ---
   name: Users
-- description: |2
-
-    ---
-    Employ these endpoints for direct vector searches within our managed vector database or to fetch embeddings for storage in your custom vector store. Additionally, we offer hybrid support for keyword-based searches.
-  name: Embeddings
 - description: "\n---\nCarbon facilitates user connections and content synchronization\
     \ with third-party applications. We manage authentication, ingestion, parsing,\
     \ and sync scheduling. Within Carbon, content from third-party applications is\
@@ -399,6 +394,11 @@ tags:
     \ 24-hour batch sync running in the background. You can request us via Slack to\
     \ run more frequent batch syncs.\n\n# Slack\n# Confluence\n"
   name: Data Sources
+- description: |2
+
+    ---
+    Employ these endpoints for direct vector searches within our managed vector database or to fetch embeddings for storage in your custom vector store. Additionally, we offer hybrid support for keyword-based searches.
+  name: Embeddings
 - name: White Label
 - description: "\n---\nCarbon offers a set of webhooks for a variety of events, listed\
     \ below. Currently, there is no way to choose\nwhich events to receive webhooks\
@@ -4081,6 +4081,38 @@ paths:
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-delete--delete_webhook-webhook_id
       x-accepts: application/json
+  /data_sources:
+    post:
+      operationId: DataSources_query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUserDataSourceQueryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationUserDataSourceResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - apiKey: []
+      summary: Data Sources
+      tags:
+      - Data Sources
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--data_sources
+      x-content-type: application/json
+      x-accepts: application/json
   /user_data_sources:
     post:
       operationId: DataSources_queryUserDataSources
@@ -5547,7 +5579,6 @@ components:
       - addresses
       - created_at
       - description
-      - events
       - id
       - industry
       - is_deleted
@@ -5557,7 +5588,6 @@ components:
       - owner
       - phone_numbers
       - remote_data
-      - tasks
       - updated_at
       - website
       title: Account
@@ -5860,9 +5890,6 @@ components:
       - data_source_id
       title: AccountsRequest
       type: object
-      x-konfig-properties:
-        filters:
-          default: {}
     AddDataSourceTagsInput:
       example:
         data_source_id: 0
@@ -6100,9 +6127,6 @@ components:
       - ids
       title: AzureBlobFileSyncInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     AzureBlobGetFileInput:
       example:
         container: container
@@ -6121,7 +6145,10 @@ components:
     AzureBlobStorageAuthentication:
       properties:
         source:
+          enum:
+          - AZURE_BLOB_STORAGE
           title: Source
+          type: string
         account_name:
           title: Account Name
           type: string
@@ -6135,6 +6162,8 @@ components:
       title: AzureBlobStorageAuthentication
       type: object
     AzureBlobStorageTypes:
+      enum:
+      - Container
       title: AzureBlobStorageTypes
       type: string
     BaseIncludes:
@@ -6174,10 +6203,6 @@ components:
           nullable: true
           title: Max Items Per Chunk
           type: integer
-      required:
-      - max_items_per_chunk
-      - prepend_filename_to_chunks
-      - set_page_as_boundary
       title: ChunkProperties
       type: object
     ChunksAndEmbeddings:
@@ -6357,9 +6382,6 @@ components:
       - repository
       title: CommentsInput
       type: object
-      x-konfig-properties:
-        order_by:
-          default: created
     CommentsOrderBy:
       enum:
       - created
@@ -6581,12 +6603,17 @@ components:
       type: object
       x-konfig-is-used-in-successful-response: true
     ConfigurationKeys:
+      enum:
+      - sparse_vectors
       title: ConfigurationKeys
       type: string
     ConfluenceAuthentication:
       properties:
         source:
+          enum:
+          - CONFLUENCE
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -6642,7 +6669,7 @@ components:
         authentication:
           tenant_name: tenant_name
           account_key: account_key
-          source: ""
+          source: GOOGLE_DRIVE
           organization_name: organization_name
           client_id: client_id
           access_token: access_token
@@ -6672,21 +6699,6 @@ components:
       - authentication
       title: ConnectDataSourceInput
       type: object
-      x-konfig-properties:
-        sync_options:
-          default:
-            chunk_overlap: 20
-            chunk_size: 1500
-            data_source_tags: {}
-            embedding_model: OPENAI
-            enable_file_picker: true
-            generate_sparse_vectors: false
-            incremental_sync: false
-            prepend_filename_to_chunks: false
-            set_page_as_boundary: false
-            skip_embedding_generation: false
-            sync_files_on_connection: true
-            sync_source_items: true
     ConnectDataSourceResponse:
       example:
         sync_url: sync_url
@@ -6718,7 +6730,6 @@ components:
           type: string
       required:
       - data_source
-      - sync_url
       title: ConnectDataSourceResponse
       type: object
       x-konfig-is-used-in-successful-response: true
@@ -6914,7 +6925,6 @@ components:
       - department
       - description
       - emails
-      - events
       - first_name
       - id
       - is_deleted
@@ -6924,7 +6934,6 @@ components:
       - owner
       - phone_numbers
       - remote_data
-      - tasks
       - title
       - updated_at
       title: Contact
@@ -7010,9 +7019,6 @@ components:
       - data_source_id
       title: ContactsRequest
       type: object
-      x-konfig-properties:
-        filters:
-          default: {}
     ContactsResponse:
       example:
         next_cursor: next_cursor
@@ -7304,6 +7310,8 @@ components:
       title: DataSourceConfiguration
       type: object
     DataSourceExtendedInput:
+      enum:
+      - ALL
       title: DataSourceExtendedInput
       type: string
     DataSourceLastSyncActions:
@@ -7509,11 +7517,6 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DeleteFilesV2QueryInput-properties-preserve_file_record
       title: DeleteFilesV2QueryInput
       type: object
-      x-konfig-properties:
-        filters:
-          default:
-            include_all_children: false
-            non_synced_only: false
     DeleteUsersInput:
       example:
         customer_ids:
@@ -7572,9 +7575,7 @@ components:
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-DirectoryItem-properties-has_children
       required:
-      - has_children
       - id
-      - is_synced
       - name
       title: DirectoryItem
       type: object
@@ -7646,18 +7647,8 @@ components:
           title: Chunk Index
           type: integer
       required:
-      - chunk_index
       - content
-      - content_metadata
       - file_id
-      - parent_file_id
-      - presigned_url
-      - rank
-      - score
-      - source
-      - source_type
-      - source_url
-      - tags
       - vector
       title: DocumentResponse
       type: object
@@ -7755,9 +7746,6 @@ components:
           title: Content Metadata
           type: object
       required:
-      - chunk_index
-      - content_metadata
-      - embedding
       - source_content
       - user_file_id
       title: EmbeddingAndChunk
@@ -7860,16 +7848,6 @@ components:
       - filters
       title: EmbeddingsAndChunksQueryInput
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: updated_at
-        order_dir:
-          default: asc
     EmbeddingsAndChunksQueryInputV2:
       example:
         order_dir: null
@@ -7946,16 +7924,6 @@ components:
       - filters
       title: EmbeddingsAndChunksQueryInputV2
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: updated_at
-        order_dir:
-          default: asc
     EmbeddingsAndChunksResponse:
       example:
         count: 5
@@ -8235,7 +8203,6 @@ components:
           title: Error Message
           type: string
       required:
-      - error_message
       - html_content
       - urls
       title: FetchURLsResponse
@@ -8330,13 +8297,6 @@ components:
           nullable: true
           title: Mime Type
           type: string
-      required:
-      - file_format
-      - file_size
-      - mime_type
-      - num_characters
-      - num_embeddings
-      - num_tokens
       title: FileStatistics
       type: object
     FileStatus:
@@ -8653,7 +8613,10 @@ components:
     FreskdeskAuthentication:
       properties:
         source:
+          enum:
+          - FRESHDESK
           title: Source
+          type: string
         domain:
           title: Domain
           type: string
@@ -8924,7 +8887,10 @@ components:
     GitbookAuthetication:
       properties:
         source:
+          enum:
+          - GITBOOK
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -9055,9 +9021,6 @@ components:
       - organization
       title: GitbookConnectRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     GitbookFileTypes:
       enum:
       - SPACE
@@ -9164,13 +9127,13 @@ components:
       - space_ids
       title: GitbookSyncRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     GithubAuthentication:
       properties:
         source:
+          enum:
+          - GITHUB
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -9357,13 +9320,13 @@ components:
       - filters
       title: GmailSyncInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     GongAuthentication:
       properties:
         source:
+          enum:
+          - GONG
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -9418,7 +9381,11 @@ components:
       type: object
     GoogleDriveWhiteLabelInput:
       properties:
-        data_source_type: {}
+        data_source_type:
+          enum:
+          - GOOGLE_DRIVE
+          title: Data Source Type
+          type: string
         credentials:
           $ref: '#/components/schemas/GoogleDriveCredentials_Property'
       required:
@@ -9429,7 +9396,10 @@ components:
     GuruAuthentication:
       properties:
         source:
+          enum:
+          - GURU
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -9560,9 +9530,6 @@ components:
       - username
       title: GuruConnectRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     GuruFileTypes:
       enum:
       - COLLECTION
@@ -9758,9 +9725,6 @@ components:
           $ref: '#/components/schemas/PRStateInput'
       title: IssuesFilter
       type: object
-      x-konfig-properties:
-        state:
-          default: open
     IssuesInput:
       example:
         order_dir: asc
@@ -9818,12 +9782,6 @@ components:
       - repository
       title: IssuesInput
       type: object
-      x-konfig-properties:
-        filters:
-          default:
-            state: open
-        order_by:
-          default: created
     IssuesOrderBy:
       enum:
       - created
@@ -10129,7 +10087,6 @@ components:
       - created_at
       - description
       - emails
-      - events
       - first_name
       - id
       - is_deleted
@@ -10140,7 +10097,6 @@ components:
       - remote_data
       - source
       - status
-      - tasks
       - title
       - updated_at
       title: Lead
@@ -10231,9 +10187,6 @@ components:
       - data_source_id
       title: LeadsRequest
       type: object
-      x-konfig-properties:
-        filters:
-          default: {}
     LeadsResponse:
       example:
         next_cursor: next_cursor
@@ -10532,16 +10485,6 @@ components:
       - data_source_id
       title: ListDataSourceItemsRequest
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: name
-        order_dir:
-          default: asc
     ListDataSourceItemsResponse:
       example:
         count: 2
@@ -10728,9 +10671,7 @@ components:
           x-konfig-original-example: []
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUserResponse-properties-auto_sync_enabled_sources
       required:
-      - auto_sync_enabled_sources
       - created_at
-      - custom_limits
       - deleted_at
       - enabled_features
       - id
@@ -10804,18 +10745,6 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-ListUsersRequest-properties-include_count
       title: ListUsersRequest
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        filters:
-          default: {}
-        order_by:
-          default: created_at
-        order_dir:
-          default: desc
     ListWhiteLabelRequest:
       example:
         order_dir: null
@@ -10838,20 +10767,6 @@ components:
           $ref: '#/components/schemas/WhiteLabelFilters'
       title: ListWhiteLabelRequest
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: created_at
-        order_dir:
-          default: asc
-        filters:
-          default:
-            data_source_type: []
-            ids: []
     ModifyColdStorageParametersQueryInput:
       example:
         hot_storage_time_to_live: 0
@@ -10916,19 +10831,13 @@ components:
           type: integer
       title: ModifyColdStorageParametersQueryInput
       type: object
-      x-konfig-properties:
-        filters:
-          default:
-            include_all_children: false
-            non_synced_only: false
     ModifyUserConfigurationInput:
       example:
-        configuration_key_name: configuration_key_name
+        configuration_key_name: null
         value: "{}"
       properties:
         configuration_key_name:
-          title: ConfigurationKeys
-          type: string
+          $ref: '#/components/schemas/ConfigurationKeys'
         value:
           title: Value
           type: object
@@ -10991,18 +10900,18 @@ components:
           $ref: '#/components/schemas/OrganizationUserFilesToSyncFilters'
       title: MoveToHotStorageQueryInput
       type: object
-      x-konfig-properties:
-        filters:
-          default:
-            include_all_children: false
-            non_synced_only: false
     MultiModalEmbeddingGenerators:
+      enum:
+      - VERTEX_MULTIMODAL
       title: MultiModalEmbeddingGenerators
       type: string
     NotionAuthentication:
       properties:
         source:
+          enum:
+          - NOTION
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -11017,7 +10926,19 @@ components:
       type: object
     OAuthAuthentication:
       properties:
-        source: {}
+        source:
+          enum:
+          - GOOGLE_DRIVE
+          - INTERCOM
+          - DROPBOX
+          - ONEDRIVE
+          - BOX
+          - GMAIL
+          - OUTLOOK
+          - SLACK
+          - GOOGLE_CLOUD_STORAGE
+          title: SimpleOAuthDataSources
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -11376,7 +11297,10 @@ components:
     OneDriveAuthentication:
       properties:
         source:
+          enum:
+          - ONEDRIVE
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -11495,9 +11419,6 @@ components:
       - data_source_id
       title: OpportunitiesRequest
       type: object
-      x-konfig-properties:
-        filters:
-          default: {}
     OpportunitiesResponse:
       example:
         next_cursor: next_cursor
@@ -11845,7 +11766,6 @@ components:
       - contact
       - created_at
       - description
-      - events
       - id
       - is_deleted
       - last_activity_at
@@ -11854,7 +11774,6 @@ components:
       - remote_data
       - stage
       - status
-      - tasks
       - updated_at
       title: Opportunity
       type: object
@@ -12016,19 +11935,10 @@ components:
       - aggregate_num_files_by_file_format
       - aggregate_num_files_by_source
       - aggregate_num_tokens
-      - cancel_at_period_end
-      - connector_settings
       - created_at
-      - custom_branding
-      - custom_limits
       - file_statistics_aggregated_at
-      - file_sync_usage
-      - global_user_config
       - id
-      - logging_settings
       - name
-      - nickname
-      - period_ends_at
       - remove_branding
       - updated_at
       title: OrganizationResponse
@@ -12216,18 +12126,6 @@ components:
           $ref: '#/components/schemas/OrganizationUserDataSourceFilters'
       title: OrganizationUserDataSourceQueryInput
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: updated_at
-        order_dir:
-          default: asc
-        filters:
-          default: {}
     OrganizationUserDataSourceResponse:
       example:
         count: 0
@@ -12632,25 +12530,6 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-OrganizationUserFilesToSyncQueryInput-properties-presigned_url_expiry_time_seconds
       title: OrganizationUserFilesToSyncQueryInput
       type: object
-      x-konfig-properties:
-        pagination:
-          description: Pagination parameters for the query.
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          description: The field on OrganizationUserFilesToSYnc to order the results
-            by.
-          default: updated_at
-        order_dir:
-          description: The direction to order the results by.
-          default: asc
-        filters:
-          description: Filters to apply to the query.
-          default:
-            include_all_children: false
-            non_synced_only: false
     OuthURLResponse:
       example:
         oauth_url: oauth_url
@@ -12779,9 +12658,6 @@ components:
       - filters
       title: OutlookSyncInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     PRComment:
       example:
         path: path
@@ -13353,9 +13229,6 @@ components:
           type: string
       title: PullRequestFilters
       type: object
-      x-konfig-properties:
-        state:
-          default: open
     PullRequestResponse:
       example:
         next_cursor: next_cursor
@@ -13509,12 +13382,6 @@ components:
       - repository
       title: PullRequestsInput
       type: object
-      x-konfig-properties:
-        filters:
-          default:
-            state: open
-        order_by:
-          default: created
     RSSFeedInput:
       example:
         chunk_size: 1500
@@ -13596,9 +13463,6 @@ components:
       - url
       title: RSSFeedInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     RawTextInput:
       example:
         chunk_size: 0
@@ -13677,10 +13541,6 @@ components:
       - contents
       title: RawTextInput
       type: object
-      x-konfig-properties:
-        cold_storage_params:
-          default:
-            enable_cold_storage: false
     RemoveDataSourceTagsInput:
       example:
         tags_to_remove: []
@@ -13816,7 +13676,10 @@ components:
     S3Authentication:
       properties:
         source:
+          enum:
+          - S3
           title: Source
+          type: string
         access_key:
           title: Access Key
           type: string
@@ -13965,9 +13828,6 @@ components:
       - ids
       title: S3FileSyncInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     S3GetFileInput:
       example:
         bucket: bucket
@@ -13986,7 +13846,10 @@ components:
     SalesforceAuthentication:
       properties:
         source:
+          enum:
+          - SALESFORCE
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -14006,7 +13869,10 @@ components:
     ServiceNowAuthentication:
       properties:
         source:
+          enum:
+          - SERVICENOW
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -14072,7 +13938,10 @@ components:
     SharepointAuthentication:
       properties:
         source:
+          enum:
+          - SHAREPOINT
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -14349,9 +14218,6 @@ components:
       - url
       title: SitemapScrapeRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     SlackFilters:
       example:
         conversation_id: conversation_id
@@ -14451,9 +14317,6 @@ components:
       - filters
       title: SlackSyncRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     StorageFileFormats:
       enum:
       - TXT
@@ -14954,6 +14817,7 @@ components:
           max_characters_per_upload: 0
           auto_sync_enabled_sources: ""
           max_files_per_upload: 0
+          auto_sync_interval: 0
         data_source_configs:
           key:
             google_workspace_docs_save_as: google_workspace_docs_save_as
@@ -14985,6 +14849,7 @@ components:
         max_characters_per_upload: 0
         auto_sync_enabled_sources: ""
         max_files_per_upload: 0
+        auto_sync_interval: 0
       properties:
         auto_sync_enabled_sources: {}
         max_files:
@@ -15031,6 +14896,15 @@ components:
           minimum: -1
           nullable: true
           title: Max Characters Per Upload
+          type: integer
+        auto_sync_interval:
+          description: "The interval in hours at which the user's data sources should\
+            \ be synced. If not set or set to -1, \n        the user will be synced\
+            \ at the organization level interval or default interval if that is also\
+            \ not set. \n        Must be one of [3, 6, 12, 24]"
+          minimum: -1
+          nullable: true
+          title: Auto Sync Interval
           type: integer
         customer_ids:
           description: List of organization supplied user IDs
@@ -15183,12 +15057,6 @@ components:
       - url
       title: UploadFileFromUrlInput
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
-        cold_storage_params:
-          default:
-            enable_cold_storage: false
     User:
       example:
         id: 1
@@ -15252,6 +15120,15 @@ components:
           minimum: -1
           nullable: true
           title: Max Characters Per Upload
+          type: integer
+        auto_sync_interval:
+          description: "The interval in hours at which the user's data sources should\
+            \ be synced. If not set or set to -1, \n        the user will be synced\
+            \ at the organization level interval or default interval if that is also\
+            \ not set. \n        Must be one of [3, 6, 12, 24]"
+          minimum: -1
+          nullable: true
+          title: Auto Sync Interval
           type: integer
       title: UserConfiguration
       type: object
@@ -15464,45 +15341,18 @@ components:
           title: Updated At
           type: string
       required:
-      - additional_presigned_urls
-      - chunk_overlap
-      - chunk_properties
-      - chunk_size
       - created_at
-      - embedding_properties
       - embedding_storage_status
-      - enable_auto_sync
       - external_file_id
-      - external_url
-      - file_contents_deleted
-      - file_metadata
-      - file_statistics
-      - generate_sparse_vectors
-      - hot_storage_time_to_live
       - id
-      - last_sync
-      - messages_metadata
-      - name
-      - ocr_job_started_at
-      - ocr_properties
       - organization_id
       - organization_supplied_user_id
-      - organization_user_data_source_id
       - organization_user_id
-      - parent_id
-      - parsed_text_url
-      - presigned_url
-      - request_id
       - skip_embedding_generation
       - source
-      - source_created_at
       - supports_cold_storage
-      - sync_error_message
-      - sync_properties
       - sync_status
-      - tags
       - updated_at
-      - upload_id
       title: UserFile
       type: object
       x-konfig-is-used-in-successful-response: true
@@ -15660,7 +15510,6 @@ components:
           title: Count
           type: integer
       required:
-      - count
       - users
       title: UserListResponse
       type: object
@@ -15786,10 +15635,7 @@ components:
       - aggregate_num_files_by_file_format
       - aggregate_num_files_by_source
       - aggregate_num_tokens
-      - auto_sync_enabled_sources
-      - connector_settings
       - created_at
-      - custom_limits
       - deleted_at
       - enabled_features
       - id
@@ -15847,18 +15693,6 @@ components:
           $ref: '#/components/schemas/OrderDirV2'
       title: UserWebPagesRequest
       type: object
-      x-konfig-properties:
-        filters:
-          default: {}
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: updated_at
-        order_dir:
-          default: desc
     ValidationError:
       properties:
         loc:
@@ -15920,7 +15754,6 @@ components:
       - organization_id
       - signing_key
       - status
-      - status_reason
       - updated_at
       - url
       title: Webhook
@@ -15980,7 +15813,6 @@ components:
       - id
       - organization_id
       - status
-      - status_reason
       - updated_at
       - url
       title: WebhookNoKey
@@ -16012,19 +15844,6 @@ components:
           $ref: '#/components/schemas/WebhookFilters'
       title: WebhookQueryInput
       type: object
-      x-konfig-properties:
-        pagination:
-          default:
-            limit: 10
-            offset: 0
-            starting_id: 0
-        order_by:
-          default: updated_at
-        order_dir:
-          default: asc
-        filters:
-          default:
-            ids: []
     WebhookQueryResponse:
       example:
         count: 1
@@ -16254,9 +16073,6 @@ components:
       - url
       title: WebscrapeRequest
       type: object
-      x-konfig-properties:
-        embedding_model:
-          default: OPENAI
     WhiteLabelFilters:
       example:
         ids: []
@@ -16340,7 +16156,6 @@ components:
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-WhiteLabelingResponse-properties-connector_settings
       required:
-      - connector_settings
       - custom_limits
       - integrations
       - remove_branding
@@ -16375,9 +16190,6 @@ components:
           title: Raw Transcript
           type: array
       required:
-      - data
-      - error
-      - raw_transcript
       - status
       title: YoutubeTranscriptResponse
       type: object
@@ -16385,7 +16197,10 @@ components:
     ZendeskAuthentication:
       properties:
         source:
+          enum:
+          - ZENDESK
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -16410,7 +16225,10 @@ components:
     ZoteroAuthentication:
       properties:
         source:
+          enum:
+          - ZOTERO
           title: Source
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -17042,6 +16860,7 @@ components:
         max_characters_per_upload: 0
         auto_sync_enabled_sources: ""
         max_files_per_upload: 0
+        auto_sync_interval: 0
       nullable: true
       properties:
         auto_sync_enabled_sources: {}
@@ -17090,6 +16909,15 @@ components:
           nullable: true
           title: Max Characters Per Upload
           type: integer
+        auto_sync_interval:
+          description: "The interval in hours at which the user's data sources should\
+            \ be synced. If not set or set to -1, \n        the user will be synced\
+            \ at the organization level interval or default interval if that is also\
+            \ not set. \n        Must be one of [3, 6, 12, 24]"
+          minimum: -1
+          nullable: true
+          title: Auto Sync Interval
+          type: integer
       title: UserConfiguration
       type: object
     FileStatisticsNullable:
@@ -17124,13 +16952,6 @@ components:
           nullable: true
           title: Mime Type
           type: string
-      required:
-      - file_format
-      - file_size
-      - mime_type
-      - num_characters
-      - num_embeddings
-      - num_tokens
       title: FileStatistics
       type: object
     ChunkPropertiesNullable:
@@ -17158,10 +16979,6 @@ components:
           nullable: true
           title: Max Items Per Chunk
           type: integer
-      required:
-      - max_items_per_chunk
-      - prepend_filename_to_chunks
-      - set_page_as_boundary
       title: ChunkProperties
       type: object
     UtilitiesScrapeWebRequest:
@@ -20686,6 +20503,15 @@ components:
           nullable: true
           title: Max Characters Per Upload
           type: integer
+        auto_sync_interval:
+          description: "The interval in hours at which the user's data sources should\
+            \ be synced. If not set or set to -1, \n        the user will be synced\
+            \ at the organization level interval or default interval if that is also\
+            \ not set. \n        Must be one of [3, 6, 12, 24]"
+          minimum: -1
+          nullable: true
+          title: Auto Sync Interval
+          type: integer
         customer_ids:
           description: List of organization supplied user IDs
           items:
@@ -21369,6 +21195,19 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter:
       - webhook_id
+    konfig-generated-schema-single-parameter-schema-post--data_sources:
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        order_by:
+          $ref: '#/components/schemas/OrganizationUserDataSourceOrderByColumns'
+        order_dir:
+          $ref: '#/components/schemas/OrderDir'
+        filters:
+          $ref: '#/components/schemas/OrganizationUserDataSourceFilters'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-post--user_data_sources:
       properties:
         pagination:
@@ -22297,7 +22136,10 @@ components:
     konfig-generated-schema-single-parameter-schema-post--white_label-update:
       properties:
         data_source_type:
+          enum:
+          - GOOGLE_DRIVE
           title: Data Source Type
+          type: string
         credentials:
           $ref: '#/components/schemas/GoogleDriveCredentials'
       required:
@@ -22328,7 +22170,7 @@ components:
       example:
         tenant_name: tenant_name
         account_key: account_key
-        source: ""
+        source: GOOGLE_DRIVE
         organization_name: organization_name
         client_id: client_id
         access_token: access_token
@@ -22350,7 +22192,19 @@ components:
         access_token_secret: access_token_secret
         username: username
       properties:
-        source: {}
+        source:
+          enum:
+          - GOOGLE_DRIVE
+          - INTERCOM
+          - DROPBOX
+          - ONEDRIVE
+          - BOX
+          - GMAIL
+          - OUTLOOK
+          - SLACK
+          - GOOGLE_CLOUD_STORAGE
+          title: SimpleOAuthDataSources
+          type: string
         access_token:
           title: Access Token
           type: string
@@ -22477,9 +22331,13 @@ components:
           client_secret: client_secret
           client_id: client_id
           file_picker_redirect_uri: file_picker_redirect_uri
-        data_source_type: ""
+        data_source_type: GOOGLE_DRIVE
       properties:
-        data_source_type: {}
+        data_source_type:
+          enum:
+          - GOOGLE_DRIVE
+          title: Data Source Type
+          type: string
         credentials:
           $ref: '#/components/schemas/GoogleDriveCredentials_Property'
       required:
@@ -22496,9 +22354,13 @@ components:
           client_secret: client_secret
           client_id: client_id
           file_picker_redirect_uri: file_picker_redirect_uri
-        data_source_type: ""
+        data_source_type: GOOGLE_DRIVE
       properties:
-        data_source_type: {}
+        data_source_type:
+          enum:
+          - GOOGLE_DRIVE
+          title: Data Source Type
+          type: string
         credentials:
           $ref: '#/components/schemas/GoogleDriveCredentials_Property'
       required:

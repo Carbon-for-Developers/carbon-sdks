@@ -29,8 +29,8 @@ type Account struct {
 	CreatedAt string `json:"created_at"`
 	UpdatedAt string `json:"updated_at"`
 	IsDeleted bool `json:"is_deleted"`
-	Tasks []Task `json:"tasks"`
-	Events []Event `json:"events"`
+	Tasks []Task `json:"tasks,omitempty"`
+	Events []Event `json:"events,omitempty"`
 	RemoteData map[string]interface{} `json:"remote_data"`
 }
 
@@ -38,7 +38,7 @@ type Account struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccount(description NullableString, id string, owner NullablePartialOwnerNullable, name NullableString, industry NullableString, website NullableString, numberOfEmployees NullableInt32, addresses []Address, phoneNumbers []PhoneNumber, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, tasks []Task, events []Event, remoteData map[string]interface{}) *Account {
+func NewAccount(description NullableString, id string, owner NullablePartialOwnerNullable, name NullableString, industry NullableString, website NullableString, numberOfEmployees NullableInt32, addresses []Address, phoneNumbers []PhoneNumber, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, remoteData map[string]interface{}) *Account {
 	this := Account{}
 	this.Description = description
 	this.Id = id
@@ -53,8 +53,6 @@ func NewAccount(description NullableString, id string, owner NullablePartialOwne
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	this.IsDeleted = isDeleted
-	this.Tasks = tasks
-	this.Events = events
 	this.RemoteData = remoteData
 	return &this
 }
@@ -393,18 +391,16 @@ func (o *Account) SetIsDeleted(v bool) {
 	o.IsDeleted = v
 }
 
-// GetTasks returns the Tasks field value
-// If the value is explicit nil, the zero value for []Task will be returned
+// GetTasks returns the Tasks field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetTasks() []Task {
 	if o == nil {
 		var ret []Task
 		return ret
 	}
-
 	return o.Tasks
 }
 
-// GetTasksOk returns a tuple with the Tasks field value
+// GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetTasksOk() ([]Task, bool) {
@@ -414,23 +410,30 @@ func (o *Account) GetTasksOk() ([]Task, bool) {
 	return o.Tasks, true
 }
 
-// SetTasks sets field value
+// HasTasks returns a boolean if a field has been set.
+func (o *Account) HasTasks() bool {
+	if o != nil && isNil(o.Tasks) {
+		return true
+	}
+
+	return false
+}
+
+// SetTasks gets a reference to the given []Task and assigns it to the Tasks field.
 func (o *Account) SetTasks(v []Task) {
 	o.Tasks = v
 }
 
-// GetEvents returns the Events field value
-// If the value is explicit nil, the zero value for []Event will be returned
+// GetEvents returns the Events field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetEvents() []Event {
 	if o == nil {
 		var ret []Event
 		return ret
 	}
-
 	return o.Events
 }
 
-// GetEventsOk returns a tuple with the Events field value
+// GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Account) GetEventsOk() ([]Event, bool) {
@@ -440,7 +443,16 @@ func (o *Account) GetEventsOk() ([]Event, bool) {
 	return o.Events, true
 }
 
-// SetEvents sets field value
+// HasEvents returns a boolean if a field has been set.
+func (o *Account) HasEvents() bool {
+	if o != nil && isNil(o.Events) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvents gets a reference to the given []Event and assigns it to the Events field.
 func (o *Account) SetEvents(v []Event) {
 	o.Events = v
 }

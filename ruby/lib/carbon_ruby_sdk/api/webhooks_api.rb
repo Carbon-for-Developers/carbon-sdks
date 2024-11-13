@@ -195,7 +195,7 @@ module Carbon
     # @param filters [WebhookFilters] 
     # @param body [WebhookQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def urls(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, extra: {})
+    def urls(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL
@@ -214,7 +214,7 @@ module Carbon
     # @param filters [WebhookFilters] 
     # @param body [WebhookQueryInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def urls_with_http_info(pagination: SENTINEL, order_by: 'updated_at', order_dir: 'asc', filters: SENTINEL, extra: {})
+    def urls_with_http_info(pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, filters: SENTINEL, extra: {})
       _body = {}
       _body[:pagination] = pagination if pagination != SENTINEL
       _body[:order_by] = order_by if order_by != SENTINEL

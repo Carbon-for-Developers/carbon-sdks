@@ -18,17 +18,17 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 from carbon.pydantic.file_formats_nullable import FileFormatsNullable
 
 class FileStatisticsNullable(BaseModel):
-    file_format: FileFormatsNullable = Field(alias='file_format')
+    file_format: typing.Optional[FileFormatsNullable] = Field(None, alias='file_format')
 
-    file_size: typing.Optional[int] = Field(alias='file_size')
+    file_size: typing.Optional[typing.Optional[int]] = Field(None, alias='file_size')
 
-    num_characters: typing.Optional[int] = Field(alias='num_characters')
+    num_characters: typing.Optional[typing.Optional[int]] = Field(None, alias='num_characters')
 
-    num_tokens: typing.Optional[int] = Field(alias='num_tokens')
+    num_tokens: typing.Optional[typing.Optional[int]] = Field(None, alias='num_tokens')
 
-    num_embeddings: typing.Optional[int] = Field(alias='num_embeddings')
+    num_embeddings: typing.Optional[typing.Optional[int]] = Field(None, alias='num_embeddings')
 
-    mime_type: typing.Optional[str] = Field(alias='mime_type')
+    mime_type: typing.Optional[typing.Optional[str]] = Field(None, alias='mime_type')
 
     model_config = ConfigDict(
         protected_namespaces=(),

@@ -150,14 +150,6 @@ module Carbon
         invalid_properties.push('invalid value for "updated_at", updated_at cannot be nil.')
       end
 
-      if @custom_limits.nil?
-        invalid_properties.push('invalid value for "custom_limits", custom_limits cannot be nil.')
-      end
-
-      if @auto_sync_enabled_sources.nil?
-        invalid_properties.push('invalid value for "auto_sync_enabled_sources", auto_sync_enabled_sources cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -169,8 +161,6 @@ module Carbon
       return false if @organization_supplied_user_id.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
-      return false if @custom_limits.nil?
-      return false if @auto_sync_enabled_sources.nil?
       true
     end
 

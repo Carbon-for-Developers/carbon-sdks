@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DataSourceType** | [**GoogleDriveWhiteLabelInputDataSourceType**](GoogleDriveWhiteLabelInputDataSourceType.md) |  | 
+**DataSourceType** | **string** |  | 
 **Credentials** | [**GoogleDriveCredentialsProperty**](GoogleDriveCredentialsProperty.md) |  | 
 
 ## Methods
 
 ### NewGDOSWhiteLabelInput
 
-`func NewGDOSWhiteLabelInput(dataSourceType GoogleDriveWhiteLabelInputDataSourceType, credentials GoogleDriveCredentialsProperty, ) *GDOSWhiteLabelInput`
+`func NewGDOSWhiteLabelInput(dataSourceType string, credentials GoogleDriveCredentialsProperty, ) *GDOSWhiteLabelInput`
 
 NewGDOSWhiteLabelInput instantiates a new GDOSWhiteLabelInput object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDataSourceType
 
-`func (o *GDOSWhiteLabelInput) GetDataSourceType() GoogleDriveWhiteLabelInputDataSourceType`
+`func (o *GDOSWhiteLabelInput) GetDataSourceType() string`
 
 GetDataSourceType returns the DataSourceType field if non-nil, zero value otherwise.
 
 ### GetDataSourceTypeOk
 
-`func (o *GDOSWhiteLabelInput) GetDataSourceTypeOk() (*GoogleDriveWhiteLabelInputDataSourceType, bool)`
+`func (o *GDOSWhiteLabelInput) GetDataSourceTypeOk() (*string, bool)`
 
 GetDataSourceTypeOk returns a tuple with the DataSourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataSourceType
 
-`func (o *GDOSWhiteLabelInput) SetDataSourceType(v GoogleDriveWhiteLabelInputDataSourceType)`
+`func (o *GDOSWhiteLabelInput) SetDataSourceType(v string)`
 
 SetDataSourceType sets DataSourceType field to given value.
 

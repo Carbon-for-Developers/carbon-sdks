@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **Subdomain** | **string** |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewConfluenceAuthentication
 
-`func NewConfluenceAuthentication(source interface{}, accessToken string, subdomain string, ) *ConfluenceAuthentication`
+`func NewConfluenceAuthentication(source string, accessToken string, subdomain string, ) *ConfluenceAuthentication`
 
 NewConfluenceAuthentication instantiates a new ConfluenceAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -30,34 +30,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *ConfluenceAuthentication) GetSource() interface{}`
+`func (o *ConfluenceAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ConfluenceAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *ConfluenceAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ConfluenceAuthentication) SetSource(v interface{})`
+`func (o *ConfluenceAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *ConfluenceAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *ConfluenceAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *ConfluenceAuthentication) GetAccessToken() string`

@@ -75,7 +75,6 @@ class UpdateUsersInput(
                     
                         def __getitem__(self, i: int) -> 'DataSourceType':
                             return super().__getitem__(i)
-                    any_of_1 = schemas.StrSchema
                     
                     @classmethod
                     @functools.lru_cache()
@@ -89,7 +88,7 @@ class UpdateUsersInput(
                         # loading
                         return [
                             cls.any_of_0,
-                            cls.any_of_1,
+                            DataSourceExtendedInput,
                         ]
             
             
@@ -225,6 +224,30 @@ class UpdateUsersInput(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class auto_sync_interval(
+                schemas.IntBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                class MetaOapg:
+                    inclusive_minimum = -1
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, decimal.Decimal, int, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'auto_sync_interval':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "customer_ids": customer_ids,
                 "auto_sync_enabled_sources": auto_sync_enabled_sources,
@@ -233,6 +256,7 @@ class UpdateUsersInput(
                 "max_characters": max_characters,
                 "max_characters_per_file": max_characters_per_file,
                 "max_characters_per_upload": max_characters_per_upload,
+                "auto_sync_interval": auto_sync_interval,
             }
     
     customer_ids: 'UpdateUsersInputCustomerIds'
@@ -259,9 +283,12 @@ class UpdateUsersInput(
     def __getitem__(self, name: typing_extensions.Literal["max_characters_per_upload"]) -> MetaOapg.properties.max_characters_per_upload: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["auto_sync_interval"]) -> MetaOapg.properties.auto_sync_interval: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", "max_characters", "max_characters_per_file", "max_characters_per_upload", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", "max_characters", "max_characters_per_file", "max_characters_per_upload", "auto_sync_interval", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -288,9 +315,12 @@ class UpdateUsersInput(
     def get_item_oapg(self, name: typing_extensions.Literal["max_characters_per_upload"]) -> typing.Union[MetaOapg.properties.max_characters_per_upload, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_interval"]) -> typing.Union[MetaOapg.properties.auto_sync_interval, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", "max_characters", "max_characters_per_file", "max_characters_per_upload", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["customer_ids", "auto_sync_enabled_sources", "max_files", "max_files_per_upload", "max_characters", "max_characters_per_file", "max_characters_per_upload", "auto_sync_interval", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -304,6 +334,7 @@ class UpdateUsersInput(
         max_characters: typing.Union[MetaOapg.properties.max_characters, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         max_characters_per_file: typing.Union[MetaOapg.properties.max_characters_per_file, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         max_characters_per_upload: typing.Union[MetaOapg.properties.max_characters_per_upload, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        auto_sync_interval: typing.Union[MetaOapg.properties.auto_sync_interval, None, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UpdateUsersInput':
@@ -317,9 +348,11 @@ class UpdateUsersInput(
             max_characters=max_characters,
             max_characters_per_file=max_characters_per_file,
             max_characters_per_upload=max_characters_per_upload,
+            auto_sync_interval=auto_sync_interval,
             _configuration=_configuration,
             **kwargs,
         )
 
+from carbon.model.data_source_extended_input import DataSourceExtendedInput
 from carbon.model.data_source_type import DataSourceType
 from carbon.model.update_users_input_customer_ids import UpdateUsersInputCustomerIds

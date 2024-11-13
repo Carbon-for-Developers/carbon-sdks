@@ -21,16 +21,12 @@ from carbon.pydantic.organization_user_files_to_sync_order_by_types import Organ
 from carbon.pydantic.pagination import Pagination
 
 class OrganizationUserFilesToSyncQueryInput(BaseModel):
-    # Pagination parameters for the query.
     pagination: typing.Optional[Pagination] = Field(None, alias='pagination')
 
-    # The field on OrganizationUserFilesToSYnc to order the results by.
     order_by: typing.Optional[OrganizationUserFilesToSyncOrderByTypes] = Field(None, alias='order_by')
 
-    # The direction to order the results by.
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
-    # Filters to apply to the query.
     filters: typing.Optional[OrganizationUserFilesToSyncFilters] = Field(None, alias='filters')
 
     # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.

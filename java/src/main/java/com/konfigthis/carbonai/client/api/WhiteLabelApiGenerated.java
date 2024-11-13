@@ -691,7 +691,7 @@ public class WhiteLabelApiGenerated {
     }
 
     public abstract class UpdateRequestBuilderGenerated {
-        Object dataSourceType;
+        String dataSourceType;
         GoogleDriveCredentialsProperty credentials;
 
         public UpdateRequestBuilderGenerated() {
@@ -702,7 +702,7 @@ public class WhiteLabelApiGenerated {
          * @param dataSourceType  (optional)
          * @return WhiteLabelApi.UpdateRequestBuilder
          */
-        public WhiteLabelApi.UpdateRequestBuilder dataSourceType(Object dataSourceType) {
+        public WhiteLabelApi.UpdateRequestBuilder dataSourceType(String dataSourceType) {
             this.dataSourceType = dataSourceType;
             return (WhiteLabelApi.UpdateRequestBuilder) this;
         }

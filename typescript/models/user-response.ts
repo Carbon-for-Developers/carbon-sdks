@@ -124,18 +124,18 @@ export interface UserResponse {
      * @type {object}
      * @memberof UserResponse
      */
-    'custom_limits': object;
+    'custom_limits'?: object;
     /**
      * 
      * @type {Array<any>}
      * @memberof UserResponse
      */
-    'auto_sync_enabled_sources': Array<any>;
+    'auto_sync_enabled_sources'?: Array<any>;
     /**
      * 
      * @type {object}
      * @memberof UserResponse
      */
-    'connector_settings': object;
+    'connector_settings'?: object;
 }
 

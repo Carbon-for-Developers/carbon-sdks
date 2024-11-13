@@ -27,6 +27,8 @@ type UpdateUsersInput struct {
 	MaxCharactersPerFile NullableInt32 `json:"max_characters_per_file,omitempty"`
 	// Custom character upload limit for the user across a single upload.         If set, then the user won't be able to sync more than this many characters in one upload.          If not set, or if set to -1, then the user will have no limit.
 	MaxCharactersPerUpload NullableInt32 `json:"max_characters_per_upload,omitempty"`
+	// The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
+	AutoSyncInterval NullableInt32 `json:"auto_sync_interval,omitempty"`
 	// List of organization supplied user IDs
 	CustomerIds []string `json:"customer_ids"`
 }
@@ -301,6 +303,48 @@ func (o *UpdateUsersInput) UnsetMaxCharactersPerUpload() {
 	o.MaxCharactersPerUpload.Unset()
 }
 
+// GetAutoSyncInterval returns the AutoSyncInterval field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateUsersInput) GetAutoSyncInterval() int32 {
+	if o == nil || isNil(o.AutoSyncInterval.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AutoSyncInterval.Get()
+}
+
+// GetAutoSyncIntervalOk returns a tuple with the AutoSyncInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateUsersInput) GetAutoSyncIntervalOk() (*int32, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.AutoSyncInterval.Get(), o.AutoSyncInterval.IsSet()
+}
+
+// HasAutoSyncInterval returns a boolean if a field has been set.
+func (o *UpdateUsersInput) HasAutoSyncInterval() bool {
+	if o != nil && o.AutoSyncInterval.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoSyncInterval gets a reference to the given NullableInt32 and assigns it to the AutoSyncInterval field.
+func (o *UpdateUsersInput) SetAutoSyncInterval(v int32) {
+	o.AutoSyncInterval.Set(&v)
+}
+// SetAutoSyncIntervalNil sets the value for AutoSyncInterval to be an explicit nil
+func (o *UpdateUsersInput) SetAutoSyncIntervalNil() {
+	o.AutoSyncInterval.Set(nil)
+}
+
+// UnsetAutoSyncInterval ensures that no value is present for AutoSyncInterval, not even an explicit nil
+func (o *UpdateUsersInput) UnsetAutoSyncInterval() {
+	o.AutoSyncInterval.Unset()
+}
+
 // GetCustomerIds returns the CustomerIds field value
 func (o *UpdateUsersInput) GetCustomerIds() []string {
 	if o == nil {
@@ -344,6 +388,9 @@ func (o UpdateUsersInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxCharactersPerUpload.IsSet() {
 		toSerialize["max_characters_per_upload"] = o.MaxCharactersPerUpload.Get()
+	}
+	if o.AutoSyncInterval.IsSet() {
+		toSerialize["auto_sync_interval"] = o.AutoSyncInterval.Get()
 	}
 	if true {
 		toSerialize["customer_ids"] = o.CustomerIds

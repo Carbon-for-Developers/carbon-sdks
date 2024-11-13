@@ -21,10 +21,9 @@ class RequiredFetchURLsResponse(TypedDict):
 
     html_content: str
 
-    error_message: typing.Optional[str]
 
 class OptionalFetchURLsResponse(TypedDict, total=False):
-    pass
+    error_message: typing.Optional[str]
 
 class FetchURLsResponse(RequiredFetchURLsResponse, OptionalFetchURLsResponse):
     pass

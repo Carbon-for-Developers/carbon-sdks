@@ -311,7 +311,7 @@ public class Example {
     
     configuration.apiKey  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    Object dataSourceType = null;
+    String dataSourceType = "GOOGLE_DRIVE";
     GoogleDriveCredentialsProperty credentials = new GoogleDriveCredentialsProperty();
     try {
       Object result = client

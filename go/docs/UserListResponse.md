@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Users** | [**[]ListUserResponse**](ListUserResponse.md) |  | 
-**Count** | **NullableInt32** |  | 
+**Count** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
 ### NewUserListResponse
 
-`func NewUserListResponse(users []ListUserResponse, count NullableInt32, ) *UserListResponse`
+`func NewUserListResponse(users []ListUserResponse, ) *UserListResponse`
 
 NewUserListResponse instantiates a new UserListResponse object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetCount sets Count field to given value.
 
+### HasCount
+
+`func (o *UserListResponse) HasCount() bool`
+
+HasCount returns a boolean if a field has been set.
 
 ### SetCountNil
 

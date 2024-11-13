@@ -11,16 +11,12 @@ require 'time'
 
 module Carbon
   class OrganizationUserFilesToSyncQueryInput
-    # Pagination parameters for the query.
     attr_accessor :pagination
 
-    # The field on OrganizationUserFilesToSYnc to order the results by.
     attr_accessor :order_by
 
-    # The direction to order the results by.
     attr_accessor :order_dir
 
-    # Filters to apply to the query.
     attr_accessor :filters
 
     # If true, the query will return presigned URLs for the raw file. Only relevant for the /user_files_v2 endpoint.
@@ -98,14 +94,10 @@ module Carbon
 
       if attributes.key?(:'order_by')
         self.order_by = attributes[:'order_by']
-      else
-        self.order_by = 'updated_at'
       end
 
       if attributes.key?(:'order_dir')
         self.order_dir = attributes[:'order_dir']
-      else
-        self.order_dir = 'asc'
       end
 
       if attributes.key?(:'filters')

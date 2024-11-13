@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface SalesforceAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof SalesforceAuthentication
      */
-    'source': any;
+    'source': SalesforceAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -42,4 +42,7 @@ export interface SalesforceAuthentication {
      */
     'domain': string;
 }
+
+type SalesforceAuthenticationSourceEnum = 'SALESFORCE'
+
 

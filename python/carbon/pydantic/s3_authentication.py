@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 class S3Authentication(BaseModel):
-    source: typing.Union[bool, date, datetime, dict, float, int, list, str, None] = Field(alias='source')
+    source: Literal["S3"] = Field(alias='source')
 
     access_key: str = Field(alias='access_key')
 

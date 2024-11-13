@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataSource** | [**OrganizationUserDataSourceAPI**](OrganizationUserDataSourceAPI.md) |  | 
-**SyncUrl** | **NullableString** |  | 
+**SyncUrl** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewConnectDataSourceResponse
 
-`func NewConnectDataSourceResponse(dataSource OrganizationUserDataSourceAPI, syncUrl NullableString, ) *ConnectDataSourceResponse`
+`func NewConnectDataSourceResponse(dataSource OrganizationUserDataSourceAPI, ) *ConnectDataSourceResponse`
 
 NewConnectDataSourceResponse instantiates a new ConnectDataSourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetSyncUrl sets SyncUrl field to given value.
 
+### HasSyncUrl
+
+`func (o *ConnectDataSourceResponse) HasSyncUrl() bool`
+
+HasSyncUrl returns a boolean if a field has been set.
 
 ### SetSyncUrlNil
 

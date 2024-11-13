@@ -16,7 +16,7 @@ import (
 
 // GongAuthentication struct for GongAuthentication
 type GongAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessToken string `json:"access_token"`
 	RefreshToken NullableString `json:"refresh_token,omitempty"`
 	GongAccountEmail string `json:"gong_account_email"`
@@ -26,7 +26,7 @@ type GongAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGongAuthentication(source interface{}, accessToken string, gongAccountEmail string) *GongAuthentication {
+func NewGongAuthentication(source string, accessToken string, gongAccountEmail string) *GongAuthentication {
 	this := GongAuthentication{}
 	this.Source = source
 	this.AccessToken = accessToken
@@ -43,10 +43,9 @@ func NewGongAuthenticationWithDefaults() *GongAuthentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GongAuthentication) GetSource() interface{} {
+func (o *GongAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -55,16 +54,15 @@ func (o *GongAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GongAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *GongAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *GongAuthentication) SetSource(v interface{}) {
+func (o *GongAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -160,7 +158,7 @@ func (o *GongAuthentication) SetGongAccountEmail(v string) {
 
 func (o GongAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

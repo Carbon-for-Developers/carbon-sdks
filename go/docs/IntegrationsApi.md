@@ -144,7 +144,7 @@ func main() {
     // response from `ConnectDataSource`: ConnectDataSourceResponse
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectDataSource`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.DataSource`: %v\n", resp.DataSource)
-    fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.SyncUrl`: %v\n", resp.SyncUrl)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.SyncUrl`: %v\n", *resp.SyncUrl)
 }
 ```
 

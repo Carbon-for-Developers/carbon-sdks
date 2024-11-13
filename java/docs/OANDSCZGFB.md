@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**accessToken** | **String** |  |  [optional] |
 |**refreshToken** | **String** |  |  [optional] |
 |**workspaceId** | **String** |  |  [optional] |
@@ -30,6 +30,22 @@
 |**clientSecret** | **String** |  |  [optional] |
 |**redirectUri** | **String** |  |  [optional] |
 |**gongAccountEmail** | **String** |  |  [optional] |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| GOOGLE_DRIVE | &quot;GOOGLE_DRIVE&quot; |
+| INTERCOM | &quot;INTERCOM&quot; |
+| DROPBOX | &quot;DROPBOX&quot; |
+| ONEDRIVE | &quot;ONEDRIVE&quot; |
+| BOX | &quot;BOX&quot; |
+| GMAIL | &quot;GMAIL&quot; |
+| OUTLOOK | &quot;OUTLOOK&quot; |
+| SLACK | &quot;SLACK&quot; |
+| GOOGLE_CLOUD_STORAGE | &quot;GOOGLE_CLOUD_STORAGE&quot; |
 
 
 

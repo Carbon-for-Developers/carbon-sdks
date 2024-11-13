@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **OrganizationId** | **int32** |  | 
 **Url** | **string** |  | 
 **Status** | [**WebhookStatus**](WebhookStatus.md) |  | 
-**StatusReason** | **NullableString** |  | 
+**StatusReason** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewWebhookNoKey
 
-`func NewWebhookNoKey(id int32, organizationId int32, url string, status WebhookStatus, statusReason NullableString, createdAt time.Time, updatedAt time.Time, ) *WebhookNoKey`
+`func NewWebhookNoKey(id int32, organizationId int32, url string, status WebhookStatus, createdAt time.Time, updatedAt time.Time, ) *WebhookNoKey`
 
 NewWebhookNoKey instantiates a new WebhookNoKey object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +130,11 @@ and a boolean to check if the value has been set.
 
 SetStatusReason sets StatusReason field to given value.
 
+### HasStatusReason
+
+`func (o *WebhookNoKey) HasStatusReason() bool`
+
+HasStatusReason returns a boolean if a field has been set.
 
 ### SetStatusReasonNil
 

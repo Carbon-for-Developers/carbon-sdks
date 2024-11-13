@@ -23,6 +23,7 @@ import com.konfigthis.carbonai.client.model.FileFormatsNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,7 +92,7 @@ public class FileStatisticsNullable {
    * @return fileFormat
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public FileFormatsNullable getFileFormat() {
     return fileFormat;
@@ -120,7 +121,7 @@ public class FileStatisticsNullable {
    * @return fileSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getFileSize() {
     return fileSize;
@@ -149,7 +150,7 @@ public class FileStatisticsNullable {
    * @return numCharacters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getNumCharacters() {
     return numCharacters;
@@ -178,7 +179,7 @@ public class FileStatisticsNullable {
    * @return numTokens
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getNumTokens() {
     return numTokens;
@@ -207,7 +208,7 @@ public class FileStatisticsNullable {
    * @return numEmbeddings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public Integer getNumEmbeddings() {
     return numEmbeddings;
@@ -236,7 +237,7 @@ public class FileStatisticsNullable {
    * @return mimeType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public String getMimeType() {
     return mimeType;
@@ -314,9 +315,20 @@ public class FileStatisticsNullable {
         Objects.equals(this.additionalProperties, fileStatisticsNullable.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(fileFormat, fileSize, numCharacters, numTokens, numEmbeddings, mimeType, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -361,12 +373,6 @@ public class FileStatisticsNullable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("file_format");
-    openapiRequiredFields.add("file_size");
-    openapiRequiredFields.add("num_characters");
-    openapiRequiredFields.add("num_tokens");
-    openapiRequiredFields.add("num_embeddings");
-    openapiRequiredFields.add("mime_type");
   }
 
  /**
@@ -381,14 +387,7 @@ public class FileStatisticsNullable {
           throw new IllegalArgumentException(String.format("The required field(s) %s in FileStatisticsNullable is not found in the empty JSON string", FileStatisticsNullable.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FileStatisticsNullable.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("mime_type").isJsonNull() && !jsonObj.get("mime_type").isJsonPrimitive()) {
+      if (!jsonObj.get("mime_type").isJsonNull() && (jsonObj.get("mime_type") != null && !jsonObj.get("mime_type").isJsonNull()) && !jsonObj.get("mime_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mime_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mime_type").toString()));
       }
   }

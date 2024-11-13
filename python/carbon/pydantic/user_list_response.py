@@ -20,7 +20,7 @@ from carbon.pydantic.list_user_response import ListUserResponse
 class UserListResponse(BaseModel):
     users: typing.List[ListUserResponse] = Field(alias='users')
 
-    count: typing.Optional[int] = Field(alias='count')
+    count: typing.Optional[typing.Optional[int]] = Field(None, alias='count')
 
     model_config = ConfigDict(
         protected_namespaces=(),

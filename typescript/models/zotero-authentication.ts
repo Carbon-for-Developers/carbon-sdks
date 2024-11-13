@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface ZoteroAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof ZoteroAuthentication
      */
-    'source': any;
+    'source': ZoteroAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -48,4 +48,7 @@ export interface ZoteroAuthentication {
      */
     'zotero_id': string;
 }
+
+type ZoteroAuthenticationSourceEnum = 'ZOTERO'
+
 

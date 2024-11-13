@@ -19,10 +19,10 @@ import type * as buffer from "buffer"
 export interface SharepointAuthentication {
     /**
      * 
-     * @type {any}
+     * @type {string}
      * @memberof SharepointAuthentication
      */
-    'source': any;
+    'source': SharepointAuthenticationSourceEnum;
     /**
      * 
      * @type {string}
@@ -48,4 +48,7 @@ export interface SharepointAuthentication {
      */
     'site_name'?: string | null;
 }
+
+type SharepointAuthenticationSourceEnum = 'SHAREPOINT'
+
 

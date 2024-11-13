@@ -54,7 +54,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.FetchUrls`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.HtmlContent`: %v\n", resp.HtmlContent)
-    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
+    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.FetchUrls.ErrorMessage`: %v\n", *resp.ErrorMessage)
 }
 ```
 
@@ -148,9 +148,9 @@ func main() {
     // response from `FetchYoutubeTranscripts`: YoutubeTranscriptResponse
     fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.FetchYoutubeTranscripts`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.Status`: %v\n", resp.Status)
-    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.Error`: %v\n", resp.Error)
-    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.Data`: %v\n", resp.Data)
-    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.RawTranscript`: %v\n", resp.RawTranscript)
+    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.Error`: %v\n", *resp.Error)
+    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.Data`: %v\n", *resp.Data)
+    fmt.Fprintf(os.Stdout, "Response from `YoutubeTranscriptResponse.FetchYoutubeTranscripts.RawTranscript`: %v\n", *resp.RawTranscript)
 }
 ```
 
@@ -356,7 +356,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UtilitiesApi.SearchUrls`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.Urls`: %v\n", resp.Urls)
     fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.HtmlContent`: %v\n", resp.HtmlContent)
-    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.ErrorMessage`: %v\n", resp.ErrorMessage)
+    fmt.Fprintf(os.Stdout, "Response from `FetchURLsResponse.SearchUrls.ErrorMessage`: %v\n", *resp.ErrorMessage)
 }
 ```
 

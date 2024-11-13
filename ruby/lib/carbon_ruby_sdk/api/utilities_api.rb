@@ -443,7 +443,7 @@ module Carbon
     # @param use_premium_proxies [Boolean] If the default proxies are blocked and not returning results, this flag can be enabled to use alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled. 
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, generate_chunks_only: false, store_file_only: false, use_premium_proxies: false, extra: {})
+    def scrape_sitemap(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: SENTINEL, url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, generate_chunks_only: false, store_file_only: false, use_premium_proxies: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -502,7 +502,7 @@ module Carbon
     # @param use_premium_proxies [Boolean] If the default proxies are blocked and not returning results, this flag can be enabled to use alternate proxies (residential and office). Scrapes might take longer to finish with this flag enabled. 
     # @param body [SitemapScrapeRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: 'OPENAI', url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, generate_chunks_only: false, store_file_only: false, use_premium_proxies: false, extra: {})
+    def scrape_sitemap_with_http_info(url:, tags: SENTINEL, max_pages_to_scrape: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, enable_auto_sync: false, generate_sparse_vectors: false, prepend_filename_to_chunks: false, html_tags_to_skip: SENTINEL, css_classes_to_skip: SENTINEL, css_selectors_to_skip: SENTINEL, embedding_model: SENTINEL, url_paths_to_include: SENTINEL, url_paths_to_exclude: SENTINEL, urls_to_scrape: SENTINEL, download_css_and_media: false, generate_chunks_only: false, store_file_only: false, use_premium_proxies: false, extra: {})
       _body = {}
       _body[:tags] = tags if tags != SENTINEL
       _body[:url] = url if url != SENTINEL
@@ -833,7 +833,7 @@ module Carbon
     # @param order_dir [OrderDirV2] 
     # @param body [UserWebPagesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def user_webpages(filters: SENTINEL, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'desc', extra: {})
+    def user_webpages(filters: SENTINEL, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, extra: {})
       _body = {}
       _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
@@ -852,7 +852,7 @@ module Carbon
     # @param order_dir [OrderDirV2] 
     # @param body [UserWebPagesRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def user_webpages_with_http_info(filters: SENTINEL, pagination: SENTINEL, order_by: 'updated_at', order_dir: 'desc', extra: {})
+    def user_webpages_with_http_info(filters: SENTINEL, pagination: SENTINEL, order_by: SENTINEL, order_dir: SENTINEL, extra: {})
       _body = {}
       _body[:filters] = filters if filters != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL

@@ -33,9 +33,6 @@ class YoutubeTranscriptResponse(
 
     class MetaOapg:
         required = {
-            "data",
-            "error",
-            "raw_transcript",
             "status",
         }
         
@@ -92,9 +89,6 @@ class YoutubeTranscriptResponse(
                 "raw_transcript": raw_transcript,
             }
     
-    data: MetaOapg.properties.data
-    error: MetaOapg.properties.error
-    raw_transcript: 'YoutubeTranscriptResponseRawTranscript'
     status: MetaOapg.properties.status
     
     @typing.overload
@@ -121,13 +115,13 @@ class YoutubeTranscriptResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["error"]) -> MetaOapg.properties.error: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["error"]) -> typing.Union[MetaOapg.properties.error, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["data"]) -> MetaOapg.properties.data: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["data"]) -> typing.Union[MetaOapg.properties.data, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["raw_transcript"]) -> 'YoutubeTranscriptResponseRawTranscript': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["raw_transcript"]) -> typing.Union['YoutubeTranscriptResponseRawTranscript', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -139,20 +133,20 @@ class YoutubeTranscriptResponse(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        data: typing.Union[MetaOapg.properties.data, None, str, ],
-        error: typing.Union[MetaOapg.properties.error, None, str, ],
-        raw_transcript: 'YoutubeTranscriptResponseRawTranscript',
         status: typing.Union[MetaOapg.properties.status, str, ],
+        error: typing.Union[MetaOapg.properties.error, None, str, schemas.Unset] = schemas.unset,
+        data: typing.Union[MetaOapg.properties.data, None, str, schemas.Unset] = schemas.unset,
+        raw_transcript: typing.Union['YoutubeTranscriptResponseRawTranscript', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'YoutubeTranscriptResponse':
         return super().__new__(
             cls,
             *args,
-            data=data,
-            error=error,
-            raw_transcript=raw_transcript,
             status=status,
+            error=error,
+            data=data,
+            raw_transcript=raw_transcript,
             _configuration=_configuration,
             **kwargs,
         )

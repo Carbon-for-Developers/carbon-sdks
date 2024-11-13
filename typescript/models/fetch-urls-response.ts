@@ -34,6 +34,6 @@ export interface FetchURLsResponse {
      * @type {string}
      * @memberof FetchURLsResponse
      */
-    'error_message': string | null;
+    'error_message'?: string | null;
 }
 

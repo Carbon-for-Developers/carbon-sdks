@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**setPageAsBoundary** | **Boolean** |  |  |
-|**prependFilenameToChunks** | **Boolean** |  |  |
-|**maxItemsPerChunk** | **Integer** |  |  |
+|**setPageAsBoundary** | **Boolean** |  |  [optional] |
+|**prependFilenameToChunks** | **Boolean** |  |  [optional] |
+|**maxItemsPerChunk** | **Integer** |  |  [optional] |
 
 
 

@@ -16,6 +16,7 @@ import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.ApiClient;
 import com.konfigthis.carbonai.client.ApiException;
 import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.model.ConfigurationKeys;
 import com.konfigthis.carbonai.client.model.DeleteUsersInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.ListUsersFilters;
@@ -109,7 +110,7 @@ public class UsersApiTest {
      */
     @Test
     public void toggleUserFeaturesTest() throws ApiException {
-        String configurationKeyName = null;
+        ConfigurationKeys configurationKeyName = null;
         Object value = null;
         GenericSuccessResponse response = api.toggleUserFeatures(configurationKeyName, value)
                 .execute();
@@ -130,6 +131,7 @@ public class UsersApiTest {
         Integer maxCharacters = null;
         Integer maxCharactersPerFile = null;
         Integer maxCharactersPerUpload = null;
+        Integer autoSyncInterval = null;
         GenericSuccessResponse response = api.updateUsers(customerIds)
                 .autoSyncEnabledSources(autoSyncEnabledSources)
                 .maxFiles(maxFiles)
@@ -137,6 +139,7 @@ public class UsersApiTest {
                 .maxCharacters(maxCharacters)
                 .maxCharactersPerFile(maxCharactersPerFile)
                 .maxCharactersPerUpload(maxCharactersPerUpload)
+                .autoSyncInterval(autoSyncInterval)
                 .execute();
         // TODO: test validations
     }

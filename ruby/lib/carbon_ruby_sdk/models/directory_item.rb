@@ -98,14 +98,6 @@ module Carbon
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @is_synced.nil?
-        invalid_properties.push('invalid value for "is_synced", is_synced cannot be nil.')
-      end
-
-      if @has_children.nil?
-        invalid_properties.push('invalid value for "has_children", has_children cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -114,8 +106,6 @@ module Carbon
     def valid?
       return false if @id.nil?
       return false if @name.nil?
-      return false if @is_synced.nil?
-      return false if @has_children.nil?
       true
     end
 

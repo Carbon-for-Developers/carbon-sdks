@@ -55,8 +55,6 @@ module Carbon
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
-      else
-        self.state = 'open'
       end
     end
 

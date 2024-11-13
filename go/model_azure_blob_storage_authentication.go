@@ -16,7 +16,7 @@ import (
 
 // AzureBlobStorageAuthentication struct for AzureBlobStorageAuthentication
 type AzureBlobStorageAuthentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccountName string `json:"account_name"`
 	AccountKey string `json:"account_key"`
 }
@@ -25,7 +25,7 @@ type AzureBlobStorageAuthentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureBlobStorageAuthentication(source interface{}, accountName string, accountKey string) *AzureBlobStorageAuthentication {
+func NewAzureBlobStorageAuthentication(source string, accountName string, accountKey string) *AzureBlobStorageAuthentication {
 	this := AzureBlobStorageAuthentication{}
 	this.Source = source
 	this.AccountName = accountName
@@ -42,10 +42,9 @@ func NewAzureBlobStorageAuthenticationWithDefaults() *AzureBlobStorageAuthentica
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *AzureBlobStorageAuthentication) GetSource() interface{} {
+func (o *AzureBlobStorageAuthentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -54,16 +53,15 @@ func (o *AzureBlobStorageAuthentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureBlobStorageAuthentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *AzureBlobStorageAuthentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *AzureBlobStorageAuthentication) SetSource(v interface{}) {
+func (o *AzureBlobStorageAuthentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -117,7 +115,7 @@ func (o *AzureBlobStorageAuthentication) SetAccountKey(v string) {
 
 func (o AzureBlobStorageAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

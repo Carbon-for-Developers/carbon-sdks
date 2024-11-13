@@ -20,12 +20,11 @@ class RequiredDirectoryItem(TypedDict):
 
     name: str
 
+
+class OptionalDirectoryItem(TypedDict, total=False):
     is_synced: bool
 
     has_children: bool
-
-class OptionalDirectoryItem(TypedDict, total=False):
-    pass
 
 class DirectoryItem(RequiredDirectoryItem, OptionalDirectoryItem):
     pass

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **Username** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewGuruAuthentication
 
-`func NewGuruAuthentication(source interface{}, accessToken string, username string, ) *GuruAuthentication`
+`func NewGuruAuthentication(source string, accessToken string, username string, ) *GuruAuthentication`
 
 NewGuruAuthentication instantiates a new GuruAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -29,34 +29,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *GuruAuthentication) GetSource() interface{}`
+`func (o *GuruAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *GuruAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *GuruAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *GuruAuthentication) SetSource(v interface{})`
+`func (o *GuruAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *GuruAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *GuruAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *GuruAuthentication) GetAccessToken() string`

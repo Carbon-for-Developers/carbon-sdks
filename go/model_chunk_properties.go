@@ -16,20 +16,21 @@ import (
 
 // ChunkProperties struct for ChunkProperties
 type ChunkProperties struct {
-	SetPageAsBoundary bool `json:"set_page_as_boundary"`
-	PrependFilenameToChunks bool `json:"prepend_filename_to_chunks"`
-	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk"`
+	SetPageAsBoundary *bool `json:"set_page_as_boundary,omitempty"`
+	PrependFilenameToChunks *bool `json:"prepend_filename_to_chunks,omitempty"`
+	MaxItemsPerChunk NullableInt32 `json:"max_items_per_chunk,omitempty"`
 }
 
 // NewChunkProperties instantiates a new ChunkProperties object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChunkProperties(setPageAsBoundary bool, prependFilenameToChunks bool, maxItemsPerChunk NullableInt32) *ChunkProperties {
+func NewChunkProperties() *ChunkProperties {
 	this := ChunkProperties{}
-	this.SetPageAsBoundary = setPageAsBoundary
-	this.PrependFilenameToChunks = prependFilenameToChunks
-	this.MaxItemsPerChunk = maxItemsPerChunk
+	var setPageAsBoundary bool = false
+	this.SetPageAsBoundary = &setPageAsBoundary
+	var prependFilenameToChunks bool = false
+	this.PrependFilenameToChunks = &prependFilenameToChunks
 	return &this
 }
 
@@ -39,72 +40,86 @@ func NewChunkProperties(setPageAsBoundary bool, prependFilenameToChunks bool, ma
 func NewChunkPropertiesWithDefaults() *ChunkProperties {
 	this := ChunkProperties{}
 	var setPageAsBoundary bool = false
-	this.SetPageAsBoundary = setPageAsBoundary
+	this.SetPageAsBoundary = &setPageAsBoundary
 	var prependFilenameToChunks bool = false
-	this.PrependFilenameToChunks = prependFilenameToChunks
+	this.PrependFilenameToChunks = &prependFilenameToChunks
 	return &this
 }
 
-// GetSetPageAsBoundary returns the SetPageAsBoundary field value
+// GetSetPageAsBoundary returns the SetPageAsBoundary field value if set, zero value otherwise.
 func (o *ChunkProperties) GetSetPageAsBoundary() bool {
-	if o == nil {
+	if o == nil || isNil(o.SetPageAsBoundary) {
 		var ret bool
 		return ret
 	}
-
-	return o.SetPageAsBoundary
+	return *o.SetPageAsBoundary
 }
 
-// GetSetPageAsBoundaryOk returns a tuple with the SetPageAsBoundary field value
+// GetSetPageAsBoundaryOk returns a tuple with the SetPageAsBoundary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChunkProperties) GetSetPageAsBoundaryOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.SetPageAsBoundary) {
     return nil, false
 	}
-	return &o.SetPageAsBoundary, true
+	return o.SetPageAsBoundary, true
 }
 
-// SetSetPageAsBoundary sets field value
+// HasSetPageAsBoundary returns a boolean if a field has been set.
+func (o *ChunkProperties) HasSetPageAsBoundary() bool {
+	if o != nil && !isNil(o.SetPageAsBoundary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSetPageAsBoundary gets a reference to the given bool and assigns it to the SetPageAsBoundary field.
 func (o *ChunkProperties) SetSetPageAsBoundary(v bool) {
-	o.SetPageAsBoundary = v
+	o.SetPageAsBoundary = &v
 }
 
-// GetPrependFilenameToChunks returns the PrependFilenameToChunks field value
+// GetPrependFilenameToChunks returns the PrependFilenameToChunks field value if set, zero value otherwise.
 func (o *ChunkProperties) GetPrependFilenameToChunks() bool {
-	if o == nil {
+	if o == nil || isNil(o.PrependFilenameToChunks) {
 		var ret bool
 		return ret
 	}
-
-	return o.PrependFilenameToChunks
+	return *o.PrependFilenameToChunks
 }
 
-// GetPrependFilenameToChunksOk returns a tuple with the PrependFilenameToChunks field value
+// GetPrependFilenameToChunksOk returns a tuple with the PrependFilenameToChunks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChunkProperties) GetPrependFilenameToChunksOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.PrependFilenameToChunks) {
     return nil, false
 	}
-	return &o.PrependFilenameToChunks, true
+	return o.PrependFilenameToChunks, true
 }
 
-// SetPrependFilenameToChunks sets field value
+// HasPrependFilenameToChunks returns a boolean if a field has been set.
+func (o *ChunkProperties) HasPrependFilenameToChunks() bool {
+	if o != nil && !isNil(o.PrependFilenameToChunks) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrependFilenameToChunks gets a reference to the given bool and assigns it to the PrependFilenameToChunks field.
 func (o *ChunkProperties) SetPrependFilenameToChunks(v bool) {
-	o.PrependFilenameToChunks = v
+	o.PrependFilenameToChunks = &v
 }
 
-// GetMaxItemsPerChunk returns the MaxItemsPerChunk field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetMaxItemsPerChunk returns the MaxItemsPerChunk field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChunkProperties) GetMaxItemsPerChunk() int32 {
-	if o == nil || o.MaxItemsPerChunk.Get() == nil {
+	if o == nil || isNil(o.MaxItemsPerChunk.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.MaxItemsPerChunk.Get()
 }
 
-// GetMaxItemsPerChunkOk returns a tuple with the MaxItemsPerChunk field value
+// GetMaxItemsPerChunkOk returns a tuple with the MaxItemsPerChunk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChunkProperties) GetMaxItemsPerChunkOk() (*int32, bool) {
@@ -114,20 +129,38 @@ func (o *ChunkProperties) GetMaxItemsPerChunkOk() (*int32, bool) {
 	return o.MaxItemsPerChunk.Get(), o.MaxItemsPerChunk.IsSet()
 }
 
-// SetMaxItemsPerChunk sets field value
+// HasMaxItemsPerChunk returns a boolean if a field has been set.
+func (o *ChunkProperties) HasMaxItemsPerChunk() bool {
+	if o != nil && o.MaxItemsPerChunk.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxItemsPerChunk gets a reference to the given NullableInt32 and assigns it to the MaxItemsPerChunk field.
 func (o *ChunkProperties) SetMaxItemsPerChunk(v int32) {
 	o.MaxItemsPerChunk.Set(&v)
+}
+// SetMaxItemsPerChunkNil sets the value for MaxItemsPerChunk to be an explicit nil
+func (o *ChunkProperties) SetMaxItemsPerChunkNil() {
+	o.MaxItemsPerChunk.Set(nil)
+}
+
+// UnsetMaxItemsPerChunk ensures that no value is present for MaxItemsPerChunk, not even an explicit nil
+func (o *ChunkProperties) UnsetMaxItemsPerChunk() {
+	o.MaxItemsPerChunk.Unset()
 }
 
 func (o ChunkProperties) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if !isNil(o.SetPageAsBoundary) {
 		toSerialize["set_page_as_boundary"] = o.SetPageAsBoundary
 	}
-	if true {
+	if !isNil(o.PrependFilenameToChunks) {
 		toSerialize["prepend_filename_to_chunks"] = o.PrependFilenameToChunks
 	}
-	if true {
+	if o.MaxItemsPerChunk.IsSet() {
 		toSerialize["max_items_per_chunk"] = o.MaxItemsPerChunk.Get()
 	}
 	return json.Marshal(toSerialize)

@@ -16,7 +16,7 @@ import (
 
 // S3Authentication struct for S3Authentication
 type S3Authentication struct {
-	Source interface{} `json:"source"`
+	Source string `json:"source"`
 	AccessKey string `json:"access_key"`
 	AccessKeySecret string `json:"access_key_secret"`
 	// You can specify a Digital Ocean endpoint URL to connect a Digital Ocean Space through this endpoint.         The URL should be of format <region>.digitaloceanspaces.com. It's not required for S3 buckets.
@@ -27,7 +27,7 @@ type S3Authentication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewS3Authentication(source interface{}, accessKey string, accessKeySecret string) *S3Authentication {
+func NewS3Authentication(source string, accessKey string, accessKeySecret string) *S3Authentication {
 	this := S3Authentication{}
 	this.Source = source
 	this.AccessKey = accessKey
@@ -44,10 +44,9 @@ func NewS3AuthenticationWithDefaults() *S3Authentication {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *S3Authentication) GetSource() interface{} {
+func (o *S3Authentication) GetSource() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -56,16 +55,15 @@ func (o *S3Authentication) GetSource() interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *S3Authentication) GetSourceOk() (*interface{}, bool) {
-	if o == nil || isNil(o.Source) {
+func (o *S3Authentication) GetSourceOk() (*string, bool) {
+	if o == nil {
     return nil, false
 	}
 	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *S3Authentication) SetSource(v interface{}) {
+func (o *S3Authentication) SetSource(v string) {
 	o.Source = v
 }
 
@@ -161,7 +159,7 @@ func (o *S3Authentication) UnsetEndpointUrl() {
 
 func (o S3Authentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Source != nil {
+	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {

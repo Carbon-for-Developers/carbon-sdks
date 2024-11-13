@@ -29,6 +29,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.crm.get_opportunities`](#carboncrmget_opportunities)
   * [`carbon.crm.get_opportunity`](#carboncrmget_opportunity)
   * [`carbon.data_sources.add_tags`](#carbondata_sourcesadd_tags)
+  * [`carbon.data_sources.query`](#carbondata_sourcesquery)
   * [`carbon.data_sources.query_user_data_sources`](#carbondata_sourcesquery_user_data_sources)
   * [`carbon.data_sources.remove_tags`](#carbondata_sourcesremove_tags)
   * [`carbon.data_sources.revoke_access_token`](#carbondata_sourcesrevoke_access_token)
@@ -561,6 +562,47 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/data_sources/tags/add` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.data_sources.query`<a id="carbondata_sourcesquery"></a>
+
+Data Sources
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.data_sources.query(
+  pagination: {
+        "limit" => 10,
+        "offset" => 0,
+        "starting_id" => 0,
+    },
+  order_by: "created_at",
+  order_dir: "desc",
+  filters: {
+        "source" => "GOOGLE_CLOUD_STORAGE",
+    },
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
+##### order_by: [`OrganizationUserDataSourceOrderByColumns`](./lib/carbon_ruby_sdk/models/organization_user_data_source_order_by_columns.rb)<a id="order_by-organizationuserdatasourceorderbycolumnslibcarbon_ruby_sdkmodelsorganization_user_data_source_order_by_columnsrb"></a>
+##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
+##### filters: [`OrganizationUserDataSourceFilters`](./lib/carbon_ruby_sdk/models/organization_user_data_source_filters.rb)<a id="filters-organizationuserdatasourcefilterslibcarbon_ruby_sdkmodelsorganization_user_data_source_filtersrb"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OrganizationUserDataSourceResponse](./lib/carbon_ruby_sdk/models/organization_user_data_source_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/data_sources` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1420,17 +1462,9 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
-The field on OrganizationUserFilesToSYnc to order the results by.
-
 ##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
-Filters to apply to the query.
-
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 If true, the query will return presigned URLs for the raw file. Only relevant
 for the /user_files_v2 endpoint.
@@ -1491,17 +1525,9 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### pagination: [`Pagination`](./lib/carbon_ruby_sdk/models/pagination.rb)<a id="pagination-paginationlibcarbon_ruby_sdkmodelspaginationrb"></a>
-Pagination parameters for the query.
-
 ##### order_by: [`OrganizationUserFilesToSyncOrderByTypes`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_order_by_types.rb)<a id="order_by-organizationuserfilestosyncorderbytypeslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_order_by_typesrb"></a>
-The field on OrganizationUserFilesToSYnc to order the results by.
-
 ##### order_dir: [`OrderDir`](./lib/carbon_ruby_sdk/models/order_dir.rb)<a id="order_dir-orderdirlibcarbon_ruby_sdkmodelsorder_dirrb"></a>
-The direction to order the results by.
-
 ##### filters: [`OrganizationUserFilesToSyncFilters`](./lib/carbon_ruby_sdk/models/organization_user_files_to_sync_filters.rb)<a id="filters-organizationuserfilestosyncfilterslibcarbon_ruby_sdkmodelsorganization_user_files_to_sync_filtersrb"></a>
-Filters to apply to the query.
-
 ##### include_raw_file: `Boolean`<a id="include_raw_file-boolean"></a>
 If true, the query will return presigned URLs for the raw file. Only relevant
 for the /user_files_v2 endpoint.
@@ -4015,7 +4041,7 @@ Toggle User Features
 
 ```ruby
 result = carbon.users.toggle_user_features(
-  configuration_key_name: "string_example",
+  configuration_key_name: "sparse_vectors",
   value: {},
 )
 p result
@@ -4023,7 +4049,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### configuration_key_name: `String`<a id="configuration_key_name-string"></a>
+##### configuration_key_name: [`ConfigurationKeys`](./lib/carbon_ruby_sdk/models/configuration_keys.rb)<a id="configuration_key_name-configurationkeyslibcarbon_ruby_sdkmodelsconfiguration_keysrb"></a>
 ##### value: `Object`<a id="value-object"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4057,6 +4083,7 @@ result = carbon.users.update_users(
   max_characters: -1,
   max_characters_per_file: -1,
   max_characters_per_upload: -1,
+  auto_sync_interval: -1,
 )
 p result
 ```
@@ -4091,6 +4118,11 @@ to -1, then the user will have no limit.
 Custom character upload limit for the user across a single upload. If set, then
 the user won't be able to sync more than this many characters in one upload. If
 not set, or if set to -1, then the user will have no limit.
+
+##### auto_sync_interval: `Integer`<a id="auto_sync_interval-integer"></a>
+The interval in hours at which the user's data sources should be synced. If not
+set or set to -1, the user will be synced at the organization level interval or
+default interval if that is also not set. Must be one of [3, 6, 12, 24]
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -4601,7 +4633,7 @@ Create White Labels
 result = carbon.white_label.create(
   body: [
         {
-            "data_source_type" => None,
+            "data_source_type" => "GOOGLE_DRIVE",
             "credentials" => {
                 "client_id" => "client_id_example",
                 "redirect_uri" => "redirect_uri_example",
@@ -4703,7 +4735,7 @@ result = carbon.white_label.update(
         "redirect_uri" => "redirect_uri_example",
     },
   body: {
-        "data_source_type" => None,
+        "data_source_type" => "GOOGLE_DRIVE",
         "credentials" => {
             "client_id" => "client_id_example",
             "redirect_uri" => "redirect_uri_example",

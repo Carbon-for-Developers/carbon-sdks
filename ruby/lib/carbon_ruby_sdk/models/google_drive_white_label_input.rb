@@ -31,7 +31,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data_source_type' => :'Object',
+        :'data_source_type' => :'GoogleDriveWhiteLabelInputDataSourceType',
         :'credentials' => :'GoogleDriveCredentials'
       }
     end
@@ -39,7 +39,6 @@ module Carbon
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'data_source_type',
       ])
     end
 
@@ -71,6 +70,10 @@ module Carbon
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @data_source_type.nil?
+        invalid_properties.push('invalid value for "data_source_type", data_source_type cannot be nil.')
+      end
+
       if @credentials.nil?
         invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
       end
@@ -81,6 +84,7 @@ module Carbon
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @data_source_type.nil?
       return false if @credentials.nil?
       true
     end

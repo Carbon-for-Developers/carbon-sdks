@@ -53,7 +53,7 @@ export interface Webhook {
      * @type {string}
      * @memberof Webhook
      */
-    'status_reason': string | null;
+    'status_reason'?: string | null;
     /**
      * 
      * @type {string}

@@ -129,7 +129,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [IssuesInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_issues(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_issues(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL
@@ -158,7 +158,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [IssuesInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_issues_with_http_info(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_issues_with_http_info(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL
@@ -353,7 +353,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [CommentsInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_pr_comments(data_source_id:, repository:, pull_number:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_pr_comments(data_source_id:, repository:, pull_number:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL
@@ -382,7 +382,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [CommentsInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_pr_comments_with_http_info(data_source_id:, repository:, pull_number:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_pr_comments_with_http_info(data_source_id:, repository:, pull_number:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL
@@ -709,7 +709,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [PullRequestsInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_pull_requests(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_pull_requests(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL
@@ -738,7 +738,7 @@ module Carbon
     # @param order_dir [OrderDirV2Nullable] 
     # @param body [PullRequestsInput] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_pull_requests_with_http_info(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: 'created', order_dir: 'asc', extra: {})
+    def get_pull_requests_with_http_info(data_source_id:, repository:, include_remote_data: false, page: 1, page_size: 30, next_cursor: SENTINEL, filters: SENTINEL, order_by: SENTINEL, order_dir: 'asc', extra: {})
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:include_remote_data] = include_remote_data if include_remote_data != SENTINEL

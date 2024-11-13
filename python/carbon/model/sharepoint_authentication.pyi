@@ -38,7 +38,16 @@ class SharepointAuthentication(
         }
         
         class properties:
-            source = schemas.AnyTypeSchema
+            
+            
+            class source(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def SHAREPOINT(cls):
+                    return cls("SHAREPOINT")
             access_token = schemas.StrSchema
             
             
@@ -160,7 +169,7 @@ class SharepointAuthentication(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         access_token: typing.Union[MetaOapg.properties.access_token, str, ],
-        source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+        source: typing.Union[MetaOapg.properties.source, str, ],
         refresh_token: typing.Union[MetaOapg.properties.refresh_token, None, str, schemas.Unset] = schemas.unset,
         tenant_name: typing.Union[MetaOapg.properties.tenant_name, None, str, schemas.Unset] = schemas.unset,
         site_name: typing.Union[MetaOapg.properties.site_name, None, str, schemas.Unset] = schemas.unset,

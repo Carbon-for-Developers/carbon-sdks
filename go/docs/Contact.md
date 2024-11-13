@@ -20,15 +20,15 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** |  | 
 **UpdatedAt** | **string** |  | 
 **IsDeleted** | **bool** |  | 
-**Tasks** | [**[]Task**](Task.md) |  | 
-**Events** | [**[]Event**](Event.md) |  | 
+**Tasks** | Pointer to [**[]Task**](Task.md) |  | [optional] 
+**Events** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 **RemoteData** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewContact
 
-`func NewContact(title NullableString, description NullableString, id string, owner NullablePartialOwnerNullable, firstName NullableString, lastName NullableString, name NullableString, department NullableString, addresses []Address, phoneNumbers []PhoneNumber, emails []Email, account NullablePartialAccountNullable, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, tasks []Task, events []Event, remoteData map[string]interface{}, ) *Contact`
+`func NewContact(title NullableString, description NullableString, id string, owner NullablePartialOwnerNullable, firstName NullableString, lastName NullableString, name NullableString, department NullableString, addresses []Address, phoneNumbers []PhoneNumber, emails []Email, account NullablePartialAccountNullable, lastActivityAt NullableString, createdAt string, updatedAt string, isDeleted bool, remoteData map[string]interface{}, ) *Contact`
 
 NewContact instantiates a new Contact object
 This constructor will assign default values to properties that have it defined,
@@ -472,6 +472,11 @@ and a boolean to check if the value has been set.
 
 SetTasks sets Tasks field to given value.
 
+### HasTasks
+
+`func (o *Contact) HasTasks() bool`
+
+HasTasks returns a boolean if a field has been set.
 
 ### SetTasksNil
 
@@ -502,6 +507,11 @@ and a boolean to check if the value has been set.
 
 SetEvents sets Events field to given value.
 
+### HasEvents
+
+`func (o *Contact) HasEvents() bool`
+
+HasEvents returns a boolean if a field has been set.
 
 ### SetEventsNil
 

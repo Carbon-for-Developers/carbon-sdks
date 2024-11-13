@@ -29,6 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -110,11 +111,11 @@ public class Account {
 
   public static final String SERIALIZED_NAME_TASKS = "tasks";
   @SerializedName(SERIALIZED_NAME_TASKS)
-  private List<Task> tasks = new ArrayList<>();
+  private List<Task> tasks = null;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
-  private List<Event> events = new ArrayList<>();
+  private List<Event> events = null;
 
   public static final String SERIALIZED_NAME_REMOTE_DATA = "remote_data";
   @SerializedName(SERIALIZED_NAME_REMOTE_DATA)
@@ -520,6 +521,9 @@ public class Account {
   }
 
   public Account addTasksItem(Task tasksItem) {
+    if (this.tasks == null) {
+      this.tasks = new ArrayList<>();
+    }
     this.tasks.add(tasksItem);
     return this;
   }
@@ -529,7 +533,7 @@ public class Account {
    * @return tasks
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public List<Task> getTasks() {
     return tasks;
@@ -554,6 +558,9 @@ public class Account {
   }
 
   public Account addEventsItem(Event eventsItem) {
+    if (this.events == null) {
+      this.events = new ArrayList<>();
+    }
     this.events.add(eventsItem);
     return this;
   }
@@ -563,7 +570,7 @@ public class Account {
    * @return events
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   public List<Event> getEvents() {
     return events;
@@ -680,9 +687,20 @@ public class Account {
         Objects.equals(this.additionalProperties, account.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(description, id, owner, name, industry, website, numberOfEmployees, addresses, phoneNumbers, lastActivityAt, createdAt, updatedAt, isDeleted, tasks, events, remoteData, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -760,8 +778,6 @@ public class Account {
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("updated_at");
     openapiRequiredFields.add("is_deleted");
-    openapiRequiredFields.add("tasks");
-    openapiRequiredFields.add("events");
     openapiRequiredFields.add("remote_data");
   }
 
@@ -832,26 +848,34 @@ public class Account {
       if (!jsonObj.get("updated_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("tasks").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tasks` to be an array in the JSON string but got `%s`", jsonObj.get("tasks").toString()));
-      }
+      if (jsonObj.get("tasks") != null && !jsonObj.get("tasks").isJsonNull()) {
+        JsonArray jsonArraytasks = jsonObj.getAsJsonArray("tasks");
+        if (jsonArraytasks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("tasks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `tasks` to be an array in the JSON string but got `%s`", jsonObj.get("tasks").toString()));
+          }
 
-      JsonArray jsonArraytasks = jsonObj.getAsJsonArray("tasks");
-      // validate the required field `tasks` (array)
-      for (int i = 0; i < jsonArraytasks.size(); i++) {
-        Task.validateJsonObject(jsonArraytasks.get(i).getAsJsonObject());
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("events").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
+          // validate the optional field `tasks` (array)
+          for (int i = 0; i < jsonArraytasks.size(); i++) {
+            Task.validateJsonObject(jsonArraytasks.get(i).getAsJsonObject());
+          };
+        }
       }
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        JsonArray jsonArrayevents = jsonObj.getAsJsonArray("events");
+        if (jsonArrayevents != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("events").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
+          }
 
-      JsonArray jsonArrayevents = jsonObj.getAsJsonArray("events");
-      // validate the required field `events` (array)
-      for (int i = 0; i < jsonArrayevents.size(); i++) {
-        Event.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
-      };
+          // validate the optional field `events` (array)
+          for (int i = 0; i < jsonArrayevents.size(); i++) {
+            Event.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

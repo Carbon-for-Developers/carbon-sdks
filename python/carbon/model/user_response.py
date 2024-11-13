@@ -36,9 +36,7 @@ class UserResponse(
             "num_characters_synced",
             "aggregate_file_size",
             "aggregate_num_characters",
-            "connector_settings",
             "aggregate_num_files_by_file_format",
-            "custom_limits",
             "created_at",
             "deleted_at",
             "organization_supplied_user_id",
@@ -51,7 +49,6 @@ class UserResponse(
             "unique_file_tags",
             "id",
             "aggregate_num_tokens",
-            "auto_sync_enabled_sources",
             "num_files_synced",
         }
         
@@ -153,9 +150,7 @@ class UserResponse(
     num_characters_synced: MetaOapg.properties.num_characters_synced
     aggregate_file_size: MetaOapg.properties.aggregate_file_size
     aggregate_num_characters: MetaOapg.properties.aggregate_num_characters
-    connector_settings: MetaOapg.properties.connector_settings
     aggregate_num_files_by_file_format: MetaOapg.properties.aggregate_num_files_by_file_format
-    custom_limits: MetaOapg.properties.custom_limits
     created_at: MetaOapg.properties.created_at
     deleted_at: MetaOapg.properties.deleted_at
     organization_supplied_user_id: MetaOapg.properties.organization_supplied_user_id
@@ -168,7 +163,6 @@ class UserResponse(
     unique_file_tags: 'UserResponseUniqueFileTags'
     id: MetaOapg.properties.id
     aggregate_num_tokens: MetaOapg.properties.aggregate_num_tokens
-    auto_sync_enabled_sources: 'UserResponseAutoSyncEnabledSources'
     num_files_synced: MetaOapg.properties.num_files_synced
     
     @typing.overload
@@ -291,13 +285,13 @@ class UserResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["enabled_features"]) -> MetaOapg.properties.enabled_features: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> MetaOapg.properties.custom_limits: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["custom_limits"]) -> typing.Union[MetaOapg.properties.custom_limits, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> 'UserResponseAutoSyncEnabledSources': ...
+    def get_item_oapg(self, name: typing_extensions.Literal["auto_sync_enabled_sources"]) -> typing.Union['UserResponseAutoSyncEnabledSources', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["connector_settings"]) -> MetaOapg.properties.connector_settings: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["connector_settings"]) -> typing.Union[MetaOapg.properties.connector_settings, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -312,9 +306,7 @@ class UserResponse(
         num_characters_synced: typing.Union[MetaOapg.properties.num_characters_synced, decimal.Decimal, int, ],
         aggregate_file_size: typing.Union[MetaOapg.properties.aggregate_file_size, dict, frozendict.frozendict, ],
         aggregate_num_characters: typing.Union[MetaOapg.properties.aggregate_num_characters, dict, frozendict.frozendict, ],
-        connector_settings: typing.Union[MetaOapg.properties.connector_settings, dict, frozendict.frozendict, ],
         aggregate_num_files_by_file_format: typing.Union[MetaOapg.properties.aggregate_num_files_by_file_format, dict, frozendict.frozendict, ],
-        custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, ],
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         deleted_at: typing.Union[MetaOapg.properties.deleted_at, None, str, datetime, ],
         organization_supplied_user_id: typing.Union[MetaOapg.properties.organization_supplied_user_id, str, ],
@@ -327,8 +319,10 @@ class UserResponse(
         unique_file_tags: 'UserResponseUniqueFileTags',
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         aggregate_num_tokens: typing.Union[MetaOapg.properties.aggregate_num_tokens, dict, frozendict.frozendict, ],
-        auto_sync_enabled_sources: 'UserResponseAutoSyncEnabledSources',
         num_files_synced: typing.Union[MetaOapg.properties.num_files_synced, decimal.Decimal, int, ],
+        custom_limits: typing.Union[MetaOapg.properties.custom_limits, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        auto_sync_enabled_sources: typing.Union['UserResponseAutoSyncEnabledSources', schemas.Unset] = schemas.unset,
+        connector_settings: typing.Union[MetaOapg.properties.connector_settings, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'UserResponse':
@@ -338,9 +332,7 @@ class UserResponse(
             num_characters_synced=num_characters_synced,
             aggregate_file_size=aggregate_file_size,
             aggregate_num_characters=aggregate_num_characters,
-            connector_settings=connector_settings,
             aggregate_num_files_by_file_format=aggregate_num_files_by_file_format,
-            custom_limits=custom_limits,
             created_at=created_at,
             deleted_at=deleted_at,
             organization_supplied_user_id=organization_supplied_user_id,
@@ -353,8 +345,10 @@ class UserResponse(
             unique_file_tags=unique_file_tags,
             id=id,
             aggregate_num_tokens=aggregate_num_tokens,
-            auto_sync_enabled_sources=auto_sync_enabled_sources,
             num_files_synced=num_files_synced,
+            custom_limits=custom_limits,
+            auto_sync_enabled_sources=auto_sync_enabled_sources,
+            connector_settings=connector_settings,
             _configuration=_configuration,
             **kwargs,
         )

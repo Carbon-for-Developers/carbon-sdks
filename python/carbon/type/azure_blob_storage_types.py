@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-AzureBlobStorageTypes = str
+AzureBlobStorageTypes = Literal["Container"]

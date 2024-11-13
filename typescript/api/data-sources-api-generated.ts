@@ -107,6 +107,54 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
+         * @summary Data Sources
+         * @param {OrganizationUserDataSourceQueryInput} organizationUserDataSourceQueryInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        query: async (organizationUserDataSourceQueryInput: OrganizationUserDataSourceQueryInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'organizationUserDataSourceQueryInput' is not null or undefined
+            assertParamExists('query', 'organizationUserDataSourceQueryInput', organizationUserDataSourceQueryInput)
+            const localVarPath = `/data_sources`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: organizationUserDataSourceQueryInput,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/data_sources',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(organizationUserDataSourceQueryInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary User Data Sources
          * @param {OrganizationUserDataSourceQueryInput} organizationUserDataSourceQueryInput 
          * @param {*} [options] Override http request option.
@@ -288,6 +336,23 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Data Sources
+         * @param {DataSourcesApiQueryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async query(requestParameters: DataSourcesApiQueryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceResponse>> {
+            const organizationUserDataSourceQueryInput: OrganizationUserDataSourceQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.query(organizationUserDataSourceQueryInput, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary User Data Sources
          * @param {DataSourcesApiQueryUserDataSourcesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -355,6 +420,16 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
+         * @summary Data Sources
+         * @param {DataSourcesApiQueryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        query(requestParameters: DataSourcesApiQueryRequest, options?: AxiosRequestConfig): AxiosPromise<OrganizationUserDataSourceResponse> {
+            return localVarFp.query(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary User Data Sources
          * @param {DataSourcesApiQueryUserDataSourcesRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -394,6 +469,15 @@ export const DataSourcesApiFactory = function (configuration?: Configuration, ba
 export type DataSourcesApiAddTagsRequest = {
     
 } & AddDataSourceTagsInput
+
+/**
+ * Request parameters for query operation in DataSourcesApi.
+ * @export
+ * @interface DataSourcesApiQueryRequest
+ */
+export type DataSourcesApiQueryRequest = {
+    
+} & OrganizationUserDataSourceQueryInput
 
 /**
  * Request parameters for queryUserDataSources operation in DataSourcesApi.
@@ -439,6 +523,18 @@ export class DataSourcesApiGenerated extends BaseAPI {
      */
     public addTags(requestParameters: DataSourcesApiAddTagsRequest, options?: AxiosRequestConfig) {
         return DataSourcesApiFp(this.configuration).addTags(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Data Sources
+     * @param {DataSourcesApiQueryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DataSourcesApiGenerated
+     */
+    public query(requestParameters: DataSourcesApiQueryRequest, options?: AxiosRequestConfig) {
+        return DataSourcesApiFp(this.configuration).query(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -22,7 +22,7 @@ type Webhook struct {
 	Url string `json:"url"`
 	SigningKey string `json:"signing_key"`
 	Status WebhookStatus `json:"status"`
-	StatusReason NullableString `json:"status_reason"`
+	StatusReason NullableString `json:"status_reason,omitempty"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -31,14 +31,13 @@ type Webhook struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhook(id int32, organizationId int32, url string, signingKey string, status WebhookStatus, statusReason NullableString, createdAt time.Time, updatedAt time.Time) *Webhook {
+func NewWebhook(id int32, organizationId int32, url string, signingKey string, status WebhookStatus, createdAt time.Time, updatedAt time.Time) *Webhook {
 	this := Webhook{}
 	this.Id = id
 	this.OrganizationId = organizationId
 	this.Url = url
 	this.SigningKey = signingKey
 	this.Status = status
-	this.StatusReason = statusReason
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -172,18 +171,16 @@ func (o *Webhook) SetStatus(v WebhookStatus) {
 	o.Status = v
 }
 
-// GetStatusReason returns the StatusReason field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetStatusReason returns the StatusReason field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetStatusReason() string {
-	if o == nil || o.StatusReason.Get() == nil {
+	if o == nil || isNil(o.StatusReason.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.StatusReason.Get()
 }
 
-// GetStatusReasonOk returns a tuple with the StatusReason field value
+// GetStatusReasonOk returns a tuple with the StatusReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetStatusReasonOk() (*string, bool) {
@@ -193,9 +190,27 @@ func (o *Webhook) GetStatusReasonOk() (*string, bool) {
 	return o.StatusReason.Get(), o.StatusReason.IsSet()
 }
 
-// SetStatusReason sets field value
+// HasStatusReason returns a boolean if a field has been set.
+func (o *Webhook) HasStatusReason() bool {
+	if o != nil && o.StatusReason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStatusReason gets a reference to the given NullableString and assigns it to the StatusReason field.
 func (o *Webhook) SetStatusReason(v string) {
 	o.StatusReason.Set(&v)
+}
+// SetStatusReasonNil sets the value for StatusReason to be an explicit nil
+func (o *Webhook) SetStatusReasonNil() {
+	o.StatusReason.Set(nil)
+}
+
+// UnsetStatusReason ensures that no value is present for StatusReason, not even an explicit nil
+func (o *Webhook) UnsetStatusReason() {
+	o.StatusReason.Unset()
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -263,7 +278,7 @@ func (o Webhook) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["status"] = o.Status
 	}
-	if true {
+	if o.StatusReason.IsSet() {
 		toSerialize["status_reason"] = o.StatusReason.Get()
 	}
 	if true {

@@ -76,6 +76,10 @@ public class UpdateUsersInput {
   @SerializedName(SERIALIZED_NAME_MAX_CHARACTERS_PER_UPLOAD)
   private Integer maxCharactersPerUpload;
 
+  public static final String SERIALIZED_NAME_AUTO_SYNC_INTERVAL = "auto_sync_interval";
+  @SerializedName(SERIALIZED_NAME_AUTO_SYNC_INTERVAL)
+  private Integer autoSyncInterval;
+
   public static final String SERIALIZED_NAME_CUSTOMER_IDS = "customer_ids";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_IDS)
   private List<String> customerIds = new ArrayList<>();
@@ -282,6 +286,40 @@ public class UpdateUsersInput {
   }
 
 
+  public UpdateUsersInput autoSyncInterval(Integer autoSyncInterval) {
+    if (autoSyncInterval != null && autoSyncInterval < -1) {
+      throw new IllegalArgumentException("Invalid value for autoSyncInterval. Must be greater than or equal to -1.");
+    }
+    
+    
+    
+    this.autoSyncInterval = autoSyncInterval;
+    return this;
+  }
+
+   /**
+   * The interval in hours at which the user&#39;s data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]
+   * minimum: -1
+   * @return autoSyncInterval
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The interval in hours at which the user's data sources should be synced. If not set or set to -1,          the user will be synced at the organization level interval or default interval if that is also not set.          Must be one of [3, 6, 12, 24]")
+
+  public Integer getAutoSyncInterval() {
+    return autoSyncInterval;
+  }
+
+
+  public void setAutoSyncInterval(Integer autoSyncInterval) {
+    if (autoSyncInterval != null && autoSyncInterval < -1) {
+      throw new IllegalArgumentException("Invalid value for autoSyncInterval. Must be greater than or equal to -1.");
+    }
+    
+    
+    this.autoSyncInterval = autoSyncInterval;
+  }
+
+
   public UpdateUsersInput customerIds(List<String> customerIds) {
     
     
@@ -376,6 +414,7 @@ public class UpdateUsersInput {
         Objects.equals(this.maxCharacters, updateUsersInput.maxCharacters) &&
         Objects.equals(this.maxCharactersPerFile, updateUsersInput.maxCharactersPerFile) &&
         Objects.equals(this.maxCharactersPerUpload, updateUsersInput.maxCharactersPerUpload) &&
+        Objects.equals(this.autoSyncInterval, updateUsersInput.autoSyncInterval) &&
         Objects.equals(this.customerIds, updateUsersInput.customerIds)&&
         Objects.equals(this.additionalProperties, updateUsersInput.additionalProperties);
   }
@@ -386,7 +425,7 @@ public class UpdateUsersInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncEnabledSources, maxFiles, maxFilesPerUpload, maxCharacters, maxCharactersPerFile, maxCharactersPerUpload, customerIds, additionalProperties);
+    return Objects.hash(autoSyncEnabledSources, maxFiles, maxFilesPerUpload, maxCharacters, maxCharactersPerFile, maxCharactersPerUpload, autoSyncInterval, customerIds, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,6 +445,7 @@ public class UpdateUsersInput {
     sb.append("    maxCharacters: ").append(toIndentedString(maxCharacters)).append("\n");
     sb.append("    maxCharactersPerFile: ").append(toIndentedString(maxCharactersPerFile)).append("\n");
     sb.append("    maxCharactersPerUpload: ").append(toIndentedString(maxCharactersPerUpload)).append("\n");
+    sb.append("    autoSyncInterval: ").append(toIndentedString(autoSyncInterval)).append("\n");
     sb.append("    customerIds: ").append(toIndentedString(customerIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -436,6 +476,7 @@ public class UpdateUsersInput {
     openapiFields.add("max_characters");
     openapiFields.add("max_characters_per_file");
     openapiFields.add("max_characters_per_upload");
+    openapiFields.add("auto_sync_interval");
     openapiFields.add("customer_ids");
 
     // a set of required properties/fields (JSON key names)

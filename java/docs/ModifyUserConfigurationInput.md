@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**configurationKeyName** | **String** |  |  |
+|**configurationKeyName** | **ConfigurationKeys** |  |  |
 |**value** | **Object** |  |  |
 
 

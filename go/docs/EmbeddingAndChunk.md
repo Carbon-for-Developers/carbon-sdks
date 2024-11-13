@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UserFileId** | **int32** |  | 
-**ChunkIndex** | **NullableInt32** |  | 
+**ChunkIndex** | Pointer to **NullableInt32** |  | [optional] 
 **SourceContent** | **string** |  | 
-**Embedding** | **[]float32** |  | 
-**ContentMetadata** | **map[string]interface{}** |  | 
+**Embedding** | Pointer to **[]float32** |  | [optional] 
+**ContentMetadata** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewEmbeddingAndChunk
 
-`func NewEmbeddingAndChunk(userFileId int32, chunkIndex NullableInt32, sourceContent string, embedding []float32, contentMetadata map[string]interface{}, ) *EmbeddingAndChunk`
+`func NewEmbeddingAndChunk(userFileId int32, sourceContent string, ) *EmbeddingAndChunk`
 
 NewEmbeddingAndChunk instantiates a new EmbeddingAndChunk object
 This constructor will assign default values to properties that have it defined,
@@ -68,6 +68,11 @@ and a boolean to check if the value has been set.
 
 SetChunkIndex sets ChunkIndex field to given value.
 
+### HasChunkIndex
+
+`func (o *EmbeddingAndChunk) HasChunkIndex() bool`
+
+HasChunkIndex returns a boolean if a field has been set.
 
 ### SetChunkIndexNil
 
@@ -118,6 +123,11 @@ and a boolean to check if the value has been set.
 
 SetEmbedding sets Embedding field to given value.
 
+### HasEmbedding
+
+`func (o *EmbeddingAndChunk) HasEmbedding() bool`
+
+HasEmbedding returns a boolean if a field has been set.
 
 ### SetEmbeddingNil
 
@@ -148,6 +158,11 @@ and a boolean to check if the value has been set.
 
 SetContentMetadata sets ContentMetadata field to given value.
 
+### HasContentMetadata
+
+`func (o *EmbeddingAndChunk) HasContentMetadata() bool`
+
+HasContentMetadata returns a boolean if a field has been set.
 
 ### SetContentMetadataNil
 

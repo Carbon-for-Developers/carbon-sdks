@@ -93,14 +93,10 @@ module Carbon
 
       if attributes.key?(:'order_by')
         self.order_by = attributes[:'order_by']
-      else
-        self.order_by = 'name'
       end
 
       if attributes.key?(:'order_dir')
         self.order_dir = attributes[:'order_dir']
-      else
-        self.order_dir = 'asc'
       end
     end
 

@@ -33,10 +33,8 @@ class DirectoryItem(
 
     class MetaOapg:
         required = {
-            "has_children",
             "name",
             "id",
-            "is_synced",
         }
         
         class properties:
@@ -51,10 +49,8 @@ class DirectoryItem(
                 "has_children": has_children,
             }
     
-    has_children: MetaOapg.properties.has_children
     name: MetaOapg.properties.name
     id: MetaOapg.properties.id
-    is_synced: MetaOapg.properties.is_synced
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
@@ -83,10 +79,10 @@ class DirectoryItem(
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["is_synced"]) -> MetaOapg.properties.is_synced: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["is_synced"]) -> typing.Union[MetaOapg.properties.is_synced, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["has_children"]) -> MetaOapg.properties.has_children: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["has_children"]) -> typing.Union[MetaOapg.properties.has_children, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -98,20 +94,20 @@ class DirectoryItem(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        has_children: typing.Union[MetaOapg.properties.has_children, bool, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         id: typing.Union[MetaOapg.properties.id, str, ],
-        is_synced: typing.Union[MetaOapg.properties.is_synced, bool, ],
+        is_synced: typing.Union[MetaOapg.properties.is_synced, bool, schemas.Unset] = schemas.unset,
+        has_children: typing.Union[MetaOapg.properties.has_children, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DirectoryItem':
         return super().__new__(
             cls,
             *args,
-            has_children=has_children,
             name=name,
             id=id,
             is_synced=is_synced,
+            has_children=has_children,
             _configuration=_configuration,
             **kwargs,
         )

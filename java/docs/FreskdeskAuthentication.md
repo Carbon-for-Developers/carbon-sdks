@@ -7,9 +7,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**domain** | **String** |  |  |
 |**apiKey** | **String** |  |  |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| FRESHDESK | &quot;FRESHDESK&quot; |
 
 
 

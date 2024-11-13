@@ -7,9 +7,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**source** | **Object** |  |  |
+|**source** | [**SourceEnum**](#SourceEnum) |  |  |
 |**accessToken** | **String** |  |  |
 |**organizationName** | **String** |  |  |
+
+
+
+## Enum: SourceEnum
+
+| Name | Value |
+|---- | -----|
+| GITBOOK | &quot;GITBOOK&quot; |
 
 
 

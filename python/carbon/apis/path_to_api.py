@@ -63,6 +63,7 @@ from carbon.apis.paths.delete_files import DeleteFiles
 from carbon.apis.paths.webhooks import Webhooks
 from carbon.apis.paths.add_webhook import AddWebhook
 from carbon.apis.paths.delete_webhook_webhook_id import DeleteWebhookWebhookId
+from carbon.apis.paths.data_sources import DataSources
 from carbon.apis.paths.user_data_sources import UserDataSources
 from carbon.apis.paths.revoke_access_token import RevokeAccessToken
 from carbon.apis.paths.data_sources_tags_add import DataSourcesTagsAdd
@@ -160,6 +161,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,
+        PathValues.DATA_SOURCES: DataSources,
         PathValues.USER_DATA_SOURCES: UserDataSources,
         PathValues.REVOKE_ACCESS_TOKEN: RevokeAccessToken,
         PathValues.DATA_SOURCES_TAGS_ADD: DataSourcesTagsAdd,
@@ -258,6 +260,7 @@ path_to_api = PathToApi(
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,
         PathValues.DELETE_WEBHOOK_WEBHOOK_ID: DeleteWebhookWebhookId,
+        PathValues.DATA_SOURCES: DataSources,
         PathValues.USER_DATA_SOURCES: UserDataSources,
         PathValues.REVOKE_ACCESS_TOKEN: RevokeAccessToken,
         PathValues.DATA_SOURCES_TAGS_ADD: DataSourcesTagsAdd,

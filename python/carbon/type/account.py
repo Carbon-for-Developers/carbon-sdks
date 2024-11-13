@@ -47,14 +47,13 @@ class RequiredAccount(TypedDict):
 
     is_deleted: bool
 
+    remote_data: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
+
+class OptionalAccount(TypedDict, total=False):
     tasks: typing.Optional[typing.List[Task]]
 
     events: typing.Optional[typing.List[Event]]
-
-    remote_data: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
-
-class OptionalAccount(TypedDict, total=False):
-    pass
 
 class Account(RequiredAccount, OptionalAccount):
     pass

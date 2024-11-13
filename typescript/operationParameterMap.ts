@@ -199,6 +199,22 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
+    '/data_sources-POST': {
+        parameters: [
+            {
+                name: 'pagination'
+            },
+            {
+                name: 'order_by'
+            },
+            {
+                name: 'order_dir'
+            },
+            {
+                name: 'filters'
+            },
+        ]
+    },
     '/user_data_sources-POST': {
         parameters: [
             {
@@ -1762,6 +1778,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'max_characters_per_upload'
+            },
+            {
+                name: 'auto_sync_interval'
             },
         ]
     },

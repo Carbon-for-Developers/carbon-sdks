@@ -25,14 +25,13 @@ class RequiredWebhookNoKey(TypedDict):
 
     status: WebhookStatus
 
-    status_reason: typing.Optional[str]
-
     created_at: datetime
 
     updated_at: datetime
 
+
 class OptionalWebhookNoKey(TypedDict, total=False):
-    pass
+    status_reason: typing.Optional[str]
 
 class WebhookNoKey(RequiredWebhookNoKey, OptionalWebhookNoKey):
     pass

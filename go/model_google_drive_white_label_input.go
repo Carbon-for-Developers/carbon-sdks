@@ -16,7 +16,7 @@ import (
 
 // GoogleDriveWhiteLabelInput struct for GoogleDriveWhiteLabelInput
 type GoogleDriveWhiteLabelInput struct {
-	DataSourceType GoogleDriveWhiteLabelInputDataSourceType `json:"data_source_type"`
+	DataSourceType string `json:"data_source_type"`
 	Credentials GoogleDriveCredentialsProperty `json:"credentials"`
 }
 
@@ -24,7 +24,7 @@ type GoogleDriveWhiteLabelInput struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleDriveWhiteLabelInput(dataSourceType GoogleDriveWhiteLabelInputDataSourceType, credentials GoogleDriveCredentialsProperty) *GoogleDriveWhiteLabelInput {
+func NewGoogleDriveWhiteLabelInput(dataSourceType string, credentials GoogleDriveCredentialsProperty) *GoogleDriveWhiteLabelInput {
 	this := GoogleDriveWhiteLabelInput{}
 	this.DataSourceType = dataSourceType
 	this.Credentials = credentials
@@ -40,9 +40,9 @@ func NewGoogleDriveWhiteLabelInputWithDefaults() *GoogleDriveWhiteLabelInput {
 }
 
 // GetDataSourceType returns the DataSourceType field value
-func (o *GoogleDriveWhiteLabelInput) GetDataSourceType() GoogleDriveWhiteLabelInputDataSourceType {
+func (o *GoogleDriveWhiteLabelInput) GetDataSourceType() string {
 	if o == nil {
-		var ret GoogleDriveWhiteLabelInputDataSourceType
+		var ret string
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *GoogleDriveWhiteLabelInput) GetDataSourceType() GoogleDriveWhiteLabelIn
 
 // GetDataSourceTypeOk returns a tuple with the DataSourceType field value
 // and a boolean to check if the value has been set.
-func (o *GoogleDriveWhiteLabelInput) GetDataSourceTypeOk() (*GoogleDriveWhiteLabelInputDataSourceType, bool) {
+func (o *GoogleDriveWhiteLabelInput) GetDataSourceTypeOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *GoogleDriveWhiteLabelInput) GetDataSourceTypeOk() (*GoogleDriveWhiteLab
 }
 
 // SetDataSourceType sets field value
-func (o *GoogleDriveWhiteLabelInput) SetDataSourceType(v GoogleDriveWhiteLabelInputDataSourceType) {
+func (o *GoogleDriveWhiteLabelInput) SetDataSourceType(v string) {
 	o.DataSourceType = v
 }
 

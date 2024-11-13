@@ -31,7 +31,7 @@ module Carbon
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'configuration_key_name' => :'String',
+        :'configuration_key_name' => :'ConfigurationKeys',
         :'value' => :'Object'
       }
     end

@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileFormat** | [**NullableFileFormatsNullable**](FileFormatsNullable.md) |  | 
-**FileSize** | **NullableInt32** |  | 
-**NumCharacters** | **NullableInt32** |  | 
-**NumTokens** | **NullableInt32** |  | 
-**NumEmbeddings** | **NullableInt32** |  | 
-**MimeType** | **NullableString** |  | 
+**FileFormat** | Pointer to [**NullableFileFormatsNullable**](FileFormatsNullable.md) |  | [optional] 
+**FileSize** | Pointer to **NullableInt32** |  | [optional] 
+**NumCharacters** | Pointer to **NullableInt32** |  | [optional] 
+**NumTokens** | Pointer to **NullableInt32** |  | [optional] 
+**NumEmbeddings** | Pointer to **NullableInt32** |  | [optional] 
+**MimeType** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewFileStatisticsNullable
 
-`func NewFileStatisticsNullable(fileFormat NullableFileFormatsNullable, fileSize NullableInt32, numCharacters NullableInt32, numTokens NullableInt32, numEmbeddings NullableInt32, mimeType NullableString, ) *FileStatisticsNullable`
+`func NewFileStatisticsNullable() *FileStatisticsNullable`
 
 NewFileStatisticsNullable instantiates a new FileStatisticsNullable object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetFileFormat sets FileFormat field to given value.
 
+### HasFileFormat
+
+`func (o *FileStatisticsNullable) HasFileFormat() bool`
+
+HasFileFormat returns a boolean if a field has been set.
 
 ### SetFileFormatNil
 
@@ -79,6 +84,11 @@ and a boolean to check if the value has been set.
 
 SetFileSize sets FileSize field to given value.
 
+### HasFileSize
+
+`func (o *FileStatisticsNullable) HasFileSize() bool`
+
+HasFileSize returns a boolean if a field has been set.
 
 ### SetFileSizeNil
 
@@ -109,6 +119,11 @@ and a boolean to check if the value has been set.
 
 SetNumCharacters sets NumCharacters field to given value.
 
+### HasNumCharacters
+
+`func (o *FileStatisticsNullable) HasNumCharacters() bool`
+
+HasNumCharacters returns a boolean if a field has been set.
 
 ### SetNumCharactersNil
 
@@ -139,6 +154,11 @@ and a boolean to check if the value has been set.
 
 SetNumTokens sets NumTokens field to given value.
 
+### HasNumTokens
+
+`func (o *FileStatisticsNullable) HasNumTokens() bool`
+
+HasNumTokens returns a boolean if a field has been set.
 
 ### SetNumTokensNil
 
@@ -169,6 +189,11 @@ and a boolean to check if the value has been set.
 
 SetNumEmbeddings sets NumEmbeddings field to given value.
 
+### HasNumEmbeddings
+
+`func (o *FileStatisticsNullable) HasNumEmbeddings() bool`
+
+HasNumEmbeddings returns a boolean if a field has been set.
 
 ### SetNumEmbeddingsNil
 
@@ -199,6 +224,11 @@ and a boolean to check if the value has been set.
 
 SetMimeType sets MimeType field to given value.
 
+### HasMimeType
+
+`func (o *FileStatisticsNullable) HasMimeType() bool`
+
+HasMimeType returns a boolean if a field has been set.
 
 ### SetMimeTypeNil
 

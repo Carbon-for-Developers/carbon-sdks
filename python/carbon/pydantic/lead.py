@@ -63,11 +63,11 @@ class Lead(BaseModel):
 
     is_deleted: bool = Field(alias='is_deleted')
 
-    tasks: typing.Optional[typing.List[Task]] = Field(alias='tasks')
-
-    events: typing.Optional[typing.List[Event]] = Field(alias='events')
-
     remote_data: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='remote_data')
+
+    tasks: typing.Optional[typing.Optional[typing.List[Task]]] = Field(None, alias='tasks')
+
+    events: typing.Optional[typing.Optional[typing.List[Event]]] = Field(None, alias='events')
 
     model_config = ConfigDict(
         protected_namespaces=(),

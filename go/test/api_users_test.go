@@ -93,7 +93,7 @@ func Test_carbon_UsersApiService(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         
         modifyUserConfigurationInput := *carbon.NewModifyUserConfigurationInput(
-            "null",
+            null,
             null,
         )
         
@@ -122,6 +122,7 @@ func Test_carbon_UsersApiService(t *testing.T) {
         updateUsersInput.SetMaxCharacters(null)
         updateUsersInput.SetMaxCharactersPerFile(null)
         updateUsersInput.SetMaxCharactersPerUpload(null)
+        updateUsersInput.SetAutoSyncInterval(null)
         
         request := client.UsersApi.UpdateUsers(
             updateUsersInput,

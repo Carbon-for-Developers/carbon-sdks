@@ -112,13 +112,13 @@ export interface Opportunity {
      * @type {Array<Task>}
      * @memberof Opportunity
      */
-    'tasks': Array<Task> | null;
+    'tasks'?: Array<Task> | null;
     /**
      * 
      * @type {Array<Event>}
      * @memberof Opportunity
      */
-    'events': Array<Event> | null;
+    'events'?: Array<Event> | null;
     /**
      * 
      * @type {object}

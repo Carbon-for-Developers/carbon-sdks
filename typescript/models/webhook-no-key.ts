@@ -47,7 +47,7 @@ export interface WebhookNoKey {
      * @type {string}
      * @memberof WebhookNoKey
      */
-    'status_reason': string | null;
+    'status_reason'?: string | null;
     /**
      * 
      * @type {string}

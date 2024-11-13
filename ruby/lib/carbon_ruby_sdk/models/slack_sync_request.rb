@@ -125,8 +125,6 @@ module Carbon
 
       if attributes.key?(:'embedding_model')
         self.embedding_model = attributes[:'embedding_model']
-      else
-        self.embedding_model = 'OPENAI'
       end
 
       if attributes.key?(:'generate_sparse_vectors')

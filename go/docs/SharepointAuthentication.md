@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | **interface{}** |  | 
+**Source** | **string** |  | 
 **AccessToken** | **string** |  | 
 **RefreshToken** | Pointer to **NullableString** |  | [optional] 
 **TenantName** | Pointer to **NullableString** |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSharepointAuthentication
 
-`func NewSharepointAuthentication(source interface{}, accessToken string, ) *SharepointAuthentication`
+`func NewSharepointAuthentication(source string, accessToken string, ) *SharepointAuthentication`
 
 NewSharepointAuthentication instantiates a new SharepointAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -31,34 +31,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *SharepointAuthentication) GetSource() interface{}`
+`func (o *SharepointAuthentication) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *SharepointAuthentication) GetSourceOk() (*interface{}, bool)`
+`func (o *SharepointAuthentication) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *SharepointAuthentication) SetSource(v interface{})`
+`func (o *SharepointAuthentication) SetSource(v string)`
 
 SetSource sets Source field to given value.
 
 
-### SetSourceNil
-
-`func (o *SharepointAuthentication) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *SharepointAuthentication) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetAccessToken
 
 `func (o *SharepointAuthentication) GetAccessToken() string`

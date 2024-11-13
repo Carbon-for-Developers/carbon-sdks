@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Url** | **string** |  | 
 **SigningKey** | **string** |  | 
 **Status** | [**WebhookStatus**](WebhookStatus.md) |  | 
-**StatusReason** | **NullableString** |  | 
+**StatusReason** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewWebhook
 
-`func NewWebhook(id int32, organizationId int32, url string, signingKey string, status WebhookStatus, statusReason NullableString, createdAt time.Time, updatedAt time.Time, ) *Webhook`
+`func NewWebhook(id int32, organizationId int32, url string, signingKey string, status WebhookStatus, createdAt time.Time, updatedAt time.Time, ) *Webhook`
 
 NewWebhook instantiates a new Webhook object
 This constructor will assign default values to properties that have it defined,
@@ -151,6 +151,11 @@ and a boolean to check if the value has been set.
 
 SetStatusReason sets StatusReason field to given value.
 
+### HasStatusReason
+
+`func (o *Webhook) HasStatusReason() bool`
+
+HasStatusReason returns a boolean if a field has been set.
 
 ### SetStatusReasonNil
 

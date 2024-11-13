@@ -101,7 +101,7 @@ public class WhiteLabelApiTest {
      */
     @Test
     public void updateTest() throws ApiException {
-        Object dataSourceType = null;
+        String dataSourceType = null;
         GoogleDriveCredentialsProperty credentials = null;
         Object response = api.update()
                 .dataSourceType(dataSourceType)

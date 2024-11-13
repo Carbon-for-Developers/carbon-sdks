@@ -1,6 +1,7 @@
 package com.konfigthis.carbonai.client.api;
 
 import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.model.ConfigurationKeys;
 import com.konfigthis.carbonai.client.model.DeleteUsersInput;
 import com.konfigthis.carbonai.client.model.GenericSuccessResponse;
 import com.konfigthis.carbonai.client.model.ListUsersFilters;
@@ -39,7 +40,7 @@ public class UsersApi extends UsersApiGenerated {
         }
     }
     public class ToggleUserFeaturesRequestBuilder extends ToggleUserFeaturesRequestBuilderGenerated {
-        public ToggleUserFeaturesRequestBuilder(String configurationKeyName, Object value) {
+        public ToggleUserFeaturesRequestBuilder(ConfigurationKeys configurationKeyName, Object value) {
             super(configurationKeyName, value);
         }
     }
