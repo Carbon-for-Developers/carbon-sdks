@@ -162,11 +162,11 @@ public class S3FileSyncInput {
   }
 
    /**
-   * Get ids
+   * Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
    * @return ids
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.")
 
   public List<S3GetFileInput> getIds() {
     return ids;

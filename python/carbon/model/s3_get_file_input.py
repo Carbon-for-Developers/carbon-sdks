@@ -74,9 +74,30 @@ class S3GetFileInput(
                         *args,
                         _configuration=_configuration,
                     )
+            
+            
+            class prefix(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'prefix':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "id": id,
                 "bucket": bucket,
+                "prefix": prefix,
             }
     
     @typing.overload
@@ -86,9 +107,12 @@ class S3GetFileInput(
     def __getitem__(self, name: typing_extensions.Literal["bucket"]) -> MetaOapg.properties.bucket: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["prefix"]) -> MetaOapg.properties.prefix: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "bucket", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "bucket", "prefix", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -100,9 +124,12 @@ class S3GetFileInput(
     def get_item_oapg(self, name: typing_extensions.Literal["bucket"]) -> typing.Union[MetaOapg.properties.bucket, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["prefix"]) -> typing.Union[MetaOapg.properties.prefix, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "bucket", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "bucket", "prefix", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -111,6 +138,7 @@ class S3GetFileInput(
         *args: typing.Union[dict, frozendict.frozendict, ],
         id: typing.Union[MetaOapg.properties.id, None, str, schemas.Unset] = schemas.unset,
         bucket: typing.Union[MetaOapg.properties.bucket, None, str, schemas.Unset] = schemas.unset,
+        prefix: typing.Union[MetaOapg.properties.prefix, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'S3GetFileInput':
@@ -119,6 +147,7 @@ class S3GetFileInput(
             *args,
             id=id,
             bucket=bucket,
+            prefix=prefix,
             _configuration=_configuration,
             **kwargs,
         )

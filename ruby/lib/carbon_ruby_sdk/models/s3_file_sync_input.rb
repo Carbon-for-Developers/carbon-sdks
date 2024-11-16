@@ -13,6 +13,7 @@ module Carbon
   class S3FileSyncInput
     attr_accessor :tags
 
+    # Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
     attr_accessor :ids
 
     attr_accessor :chunk_size

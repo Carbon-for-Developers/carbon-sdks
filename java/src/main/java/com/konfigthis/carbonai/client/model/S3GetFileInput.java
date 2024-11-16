@@ -58,6 +58,10 @@ public class S3GetFileInput {
   @SerializedName(SERIALIZED_NAME_BUCKET)
   private String bucket;
 
+  public static final String SERIALIZED_NAME_PREFIX = "prefix";
+  @SerializedName(SERIALIZED_NAME_PREFIX)
+  private String prefix;
+
   public S3GetFileInput() {
   }
 
@@ -118,6 +122,35 @@ public class S3GetFileInput {
     this.bucket = bucket;
   }
 
+
+  public S3GetFileInput prefix(String prefix) {
+    
+    
+    
+    
+    this.prefix = prefix;
+    return this;
+  }
+
+   /**
+   * Get prefix
+   * @return prefix
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getPrefix() {
+    return prefix;
+  }
+
+
+  public void setPrefix(String prefix) {
+    
+    
+    
+    this.prefix = prefix;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -174,7 +207,8 @@ public class S3GetFileInput {
     }
     S3GetFileInput s3GetFileInput = (S3GetFileInput) o;
     return Objects.equals(this.id, s3GetFileInput.id) &&
-        Objects.equals(this.bucket, s3GetFileInput.bucket)&&
+        Objects.equals(this.bucket, s3GetFileInput.bucket) &&
+        Objects.equals(this.prefix, s3GetFileInput.prefix)&&
         Objects.equals(this.additionalProperties, s3GetFileInput.additionalProperties);
   }
 
@@ -184,7 +218,7 @@ public class S3GetFileInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, bucket, additionalProperties);
+    return Objects.hash(id, bucket, prefix, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -200,6 +234,7 @@ public class S3GetFileInput {
     sb.append("class S3GetFileInput {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    bucket: ").append(toIndentedString(bucket)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,6 +260,7 @@ public class S3GetFileInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("bucket");
+    openapiFields.add("prefix");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -247,6 +283,9 @@ public class S3GetFileInput {
       }
       if (!jsonObj.get("bucket").isJsonNull() && (jsonObj.get("bucket") != null && !jsonObj.get("bucket").isJsonNull()) && !jsonObj.get("bucket").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bucket` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucket").toString()));
+      }
+      if (!jsonObj.get("prefix").isJsonNull() && (jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
       }
   }
 

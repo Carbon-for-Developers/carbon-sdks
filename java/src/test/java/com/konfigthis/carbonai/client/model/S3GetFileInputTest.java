@@ -55,4 +55,12 @@ public class S3GetFileInputTest {
         // TODO: test bucket
     }
 
+    /**
+     * Test the property 'prefix'
+     */
+    @Test
+    public void prefixTest() {
+        // TODO: test prefix
+    }
+
 }

@@ -3245,7 +3245,7 @@ public class Example {
     
     configuration.customerId  = "YOUR API KEY";
     Carbon client = new Carbon(configuration);
-    List<S3GetFileInput> ids = Arrays.asList();
+    List<S3GetFileInput> ids = Arrays.asList(); // Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
     Object tags = null;
     Integer chunkSize = 1500;
     Integer chunkOverlap = 20;

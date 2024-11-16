@@ -17,6 +17,7 @@ import (
 // S3FileSyncInput struct for S3FileSyncInput
 type S3FileSyncInput struct {
 	Tags map[string]interface{} `json:"tags,omitempty"`
+	// Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
 	Ids []S3GetFileInput `json:"ids"`
 	ChunkSize NullableInt32 `json:"chunk_size,omitempty"`
 	ChunkOverlap NullableInt32 `json:"chunk_overlap,omitempty"`

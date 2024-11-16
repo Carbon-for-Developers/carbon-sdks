@@ -3957,6 +3957,8 @@ GenericSuccessResponse result = client
 
 ##### ids: List<[`S3GetFileInput`](./src/main/java/com/konfigthis/client/model/S3GetFileInput.java)><a id="ids-list"></a>
 
+Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
+
 ##### tags: `Object`<a id="tags-object"></a>
 
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>

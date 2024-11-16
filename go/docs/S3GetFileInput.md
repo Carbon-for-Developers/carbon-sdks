@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** |  | [optional] 
 **Bucket** | Pointer to **NullableString** |  | [optional] 
+**Prefix** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -96,6 +97,41 @@ HasBucket returns a boolean if a field has been set.
 `func (o *S3GetFileInput) UnsetBucket()`
 
 UnsetBucket ensures that no value is present for Bucket, not even an explicit nil
+### GetPrefix
+
+`func (o *S3GetFileInput) GetPrefix() string`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *S3GetFileInput) GetPrefixOk() (*string, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *S3GetFileInput) SetPrefix(v string)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *S3GetFileInput) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
+
+### SetPrefixNil
+
+`func (o *S3GetFileInput) SetPrefixNil(b bool)`
+
+ SetPrefixNil sets the value for Prefix to be an explicit nil
+
+### UnsetPrefix
+`func (o *S3GetFileInput) UnsetPrefix()`
+
+UnsetPrefix ensures that no value is present for Prefix, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

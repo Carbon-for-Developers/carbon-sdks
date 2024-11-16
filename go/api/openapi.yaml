@@ -13470,8 +13470,10 @@ components:
         set_page_as_boundary: false
         ids:
         - bucket: bucket
+          prefix: prefix
           id: id
         - bucket: bucket
+          prefix: prefix
           id: id
         chunk_overlap: 20
         skip_embedding_generation: false
@@ -13487,6 +13489,10 @@ components:
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-tags
         ids:
+          description: "Each input should be one of the following: A bucket name,\
+            \ a bucket name and a prefix, or a \n        bucket name and an object\
+            \ key. A prefix is the common path for all objects you want to sync. \n\
+            \        Paths should end with a forward slash."
           items:
             $ref: '#/components/schemas/S3GetFileInput'
           title: Ids
@@ -13579,6 +13585,7 @@ components:
     S3GetFileInput:
       example:
         bucket: bucket
+        prefix: prefix
         id: id
       properties:
         id:
@@ -13588,6 +13595,10 @@ components:
         bucket:
           nullable: true
           title: Bucket
+          type: string
+        prefix:
+          nullable: true
+          title: Prefix
           type: string
       title: S3GetFileInput
       type: object
@@ -18856,6 +18867,10 @@ components:
           x-konfig-original-example: {}
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-S3FileSyncInput-properties-tags
         ids:
+          description: "Each input should be one of the following: A bucket name,\
+            \ a bucket name and a prefix, or a \n        bucket name and an object\
+            \ key. A prefix is the common path for all objects you want to sync. \n\
+            \        Paths should end with a forward slash."
           items:
             $ref: '#/components/schemas/S3GetFileInput'
           title: Ids

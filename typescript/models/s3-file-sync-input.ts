@@ -27,7 +27,7 @@ export interface S3FileSyncInput {
      */
     'tags'?: object | null;
     /**
-     * 
+     * Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
      * @type {Array<S3GetFileInput>}
      * @memberof S3FileSyncInput
      */

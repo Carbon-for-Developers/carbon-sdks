@@ -29,5 +29,11 @@ export interface S3GetFileInput {
      * @memberof S3GetFileInput
      */
     'bucket'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof S3GetFileInput
+     */
+    'prefix'?: string | null;
 }
 

@@ -18,6 +18,7 @@ import (
 type S3GetFileInput struct {
 	Id NullableString `json:"id,omitempty"`
 	Bucket NullableString `json:"bucket,omitempty"`
+	Prefix NullableString `json:"prefix,omitempty"`
 }
 
 // NewS3GetFileInput instantiates a new S3GetFileInput object
@@ -121,6 +122,48 @@ func (o *S3GetFileInput) UnsetBucket() {
 	o.Bucket.Unset()
 }
 
+// GetPrefix returns the Prefix field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *S3GetFileInput) GetPrefix() string {
+	if o == nil || isNil(o.Prefix.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Prefix.Get()
+}
+
+// GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *S3GetFileInput) GetPrefixOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.Prefix.Get(), o.Prefix.IsSet()
+}
+
+// HasPrefix returns a boolean if a field has been set.
+func (o *S3GetFileInput) HasPrefix() bool {
+	if o != nil && o.Prefix.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrefix gets a reference to the given NullableString and assigns it to the Prefix field.
+func (o *S3GetFileInput) SetPrefix(v string) {
+	o.Prefix.Set(&v)
+}
+// SetPrefixNil sets the value for Prefix to be an explicit nil
+func (o *S3GetFileInput) SetPrefixNil() {
+	o.Prefix.Set(nil)
+}
+
+// UnsetPrefix ensures that no value is present for Prefix, not even an explicit nil
+func (o *S3GetFileInput) UnsetPrefix() {
+	o.Prefix.Unset()
+}
+
 func (o S3GetFileInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id.IsSet() {
@@ -128,6 +171,9 @@ func (o S3GetFileInput) MarshalJSON() ([]byte, error) {
 	}
 	if o.Bucket.IsSet() {
 		toSerialize["bucket"] = o.Bucket.Get()
+	}
+	if o.Prefix.IsSet() {
+		toSerialize["prefix"] = o.Prefix.Get()
 	}
 	return json.Marshal(toSerialize)
 }

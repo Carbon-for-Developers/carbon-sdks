@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** |  |  [optional] |
 |**bucket** | **String** |  |  [optional] |
+|**prefix** | **String** |  |  [optional] |
 
 
 

@@ -19,6 +19,7 @@ from carbon.type.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.type.s3_get_file_input import S3GetFileInput
 
 class RequiredS3FileSyncInput(TypedDict):
+    # Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
     ids: typing.List[S3GetFileInput]
 
 

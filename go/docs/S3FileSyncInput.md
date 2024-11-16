@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tags** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
-**Ids** | [**[]S3GetFileInput**](S3GetFileInput.md) |  | 
+**Ids** | [**[]S3GetFileInput**](S3GetFileInput.md) | Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash. | 
 **ChunkSize** | Pointer to **NullableInt32** |  | [optional] [default to 1500]
 **ChunkOverlap** | Pointer to **NullableInt32** |  | [optional] [default to 20]
 **SkipEmbeddingGeneration** | Pointer to **NullableBool** |  | [optional] [default to false]

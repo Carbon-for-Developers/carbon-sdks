@@ -20,6 +20,7 @@ from carbon.pydantic.file_sync_config_nullable import FileSyncConfigNullable
 from carbon.pydantic.s3_get_file_input import S3GetFileInput
 
 class S3FileSyncInput(BaseModel):
+    # Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
     ids: typing.List[S3GetFileInput] = Field(alias='ids')
 
     tags: typing.Optional[typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]] = Field(None, alias='tags')
