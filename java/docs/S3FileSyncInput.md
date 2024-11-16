@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**tags** | **Object** |  |  [optional] |
-|**ids** | [**List&lt;S3GetFileInput&gt;**](S3GetFileInput.md) |  |  |
+|**ids** | [**List&lt;S3GetFileInput&gt;**](S3GetFileInput.md) | Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash. |  |
 |**chunkSize** | **Integer** |  |  [optional] |
 |**chunkOverlap** | **Integer** |  |  [optional] |
 |**skipEmbeddingGeneration** | **Boolean** |  |  [optional] |

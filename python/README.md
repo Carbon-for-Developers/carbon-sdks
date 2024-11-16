@@ -4191,6 +4191,8 @@ sync_s3_files_response = carbon.integrations.sync_s3_files(
 
 ##### ids: List[`S3GetFileInput`]<a id="ids-lists3getfileinput"></a>
 
+Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
+
 ##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
 
 ##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>

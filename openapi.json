@@ -13871,7 +13871,8 @@
               "$ref": "#/components/schemas/S3GetFileInput"
             },
             "type": "array",
-            "title": "Ids"
+            "title": "Ids",
+            "description": "Each input should be one of the following: A bucket name, a bucket name and a prefix, or a \n        bucket name and an object key. A prefix is the common path for all objects you want to sync. \n        Paths should end with a forward slash."
           },
           "tags": {
             "anyOf": [
@@ -14053,6 +14054,17 @@
               }
             ],
             "title": "Bucket"
+          },
+          "prefix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prefix"
           }
         },
         "type": "object",

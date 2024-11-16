@@ -3690,6 +3690,8 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
 
 ##### ids: [`S3GetFileInput`](./models/s3-get-file-input.ts)[]<a id="ids-s3getfileinputmodelss3-get-file-inputts"></a>
 
+Each input should be one of the following: A bucket name, a bucket name and a prefix, or a          bucket name and an object key. A prefix is the common path for all objects you want to sync.          Paths should end with a forward slash.
+
 ##### tags: `object`<a id="tags-object"></a>
 
 ##### chunk_size: `number`<a id="chunk_size-number"></a>

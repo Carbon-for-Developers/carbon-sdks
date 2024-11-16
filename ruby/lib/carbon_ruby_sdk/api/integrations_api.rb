@@ -3668,7 +3668,7 @@ module Carbon
     # and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
     # data with the selected items or modify the sync behavior
     #
-    # @param ids [Array<S3GetFileInput>] 
+    # @param ids [Array<S3GetFileInput>] Each input should be one of the following: A bucket name, a bucket name and a prefix, or a bucket name and an object key. A prefix is the common path for all objects you want to sync. Paths should end with a forward slash.
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 
@@ -3713,7 +3713,7 @@ module Carbon
     # and object key as the ID in this endpoint to sync them into Carbon. Additional parameters below can associate 
     # data with the selected items or modify the sync behavior
     #
-    # @param ids [Array<S3GetFileInput>] 
+    # @param ids [Array<S3GetFileInput>] Each input should be one of the following: A bucket name, a bucket name and a prefix, or a bucket name and an object key. A prefix is the common path for all objects you want to sync. Paths should end with a forward slash.
     # @param tags [Object] 
     # @param chunk_size [Integer] 
     # @param chunk_overlap [Integer] 

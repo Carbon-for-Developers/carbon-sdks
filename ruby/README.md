@@ -3765,6 +3765,10 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### ids: Array<[`S3GetFileInput`](./lib/carbon_ruby_sdk/models/s3_get_file_input.rb)><a id="ids-array"></a>
+Each input should be one of the following: A bucket name, a bucket name and a
+prefix, or a bucket name and an object key. A prefix is the common path for all
+objects you want to sync. Paths should end with a forward slash.
+
 ##### tags: `Object`<a id="tags-object"></a>
 ##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
 ##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>

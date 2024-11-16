@@ -21,6 +21,8 @@ class S3GetFileInput(BaseModel):
 
     bucket: typing.Optional[typing.Optional[str]] = Field(None, alias='bucket')
 
+    prefix: typing.Optional[typing.Optional[str]] = Field(None, alias='prefix')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

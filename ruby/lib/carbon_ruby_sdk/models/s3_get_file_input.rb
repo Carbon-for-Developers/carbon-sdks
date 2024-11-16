@@ -15,11 +15,14 @@ module Carbon
 
     attr_accessor :bucket
 
+    attr_accessor :prefix
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'bucket' => :'bucket'
+        :'bucket' => :'bucket',
+        :'prefix' => :'prefix'
       }
     end
 
@@ -32,7 +35,8 @@ module Carbon
     def self.openapi_types
       {
         :'id' => :'String',
-        :'bucket' => :'String'
+        :'bucket' => :'String',
+        :'prefix' => :'String'
       }
     end
 
@@ -40,7 +44,8 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'id',
-        :'bucket'
+        :'bucket',
+        :'prefix'
       ])
     end
 
@@ -66,6 +71,10 @@ module Carbon
       if attributes.key?(:'bucket')
         self.bucket = attributes[:'bucket']
       end
+
+      if attributes.key?(:'prefix')
+        self.prefix = attributes[:'prefix']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -87,7 +96,8 @@ module Carbon
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          bucket == o.bucket
+          bucket == o.bucket &&
+          prefix == o.prefix
     end
 
     # @see the `==` method
@@ -99,7 +109,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, bucket].hash
+      [id, bucket, prefix].hash
     end
 
     # Builds the object from hash
