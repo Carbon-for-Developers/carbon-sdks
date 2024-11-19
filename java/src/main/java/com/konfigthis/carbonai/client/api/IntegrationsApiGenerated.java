@@ -31,6 +31,7 @@ import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
 import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
+import com.konfigthis.carbonai.client.model.Document360ConnectRequest;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
@@ -448,6 +449,321 @@ public class IntegrationsApiGenerated {
     public IntegrationsApi.ConnectDataSourceRequestBuilder connectDataSource(OANDSCZGFB authentication) throws IllegalArgumentException {
         if (authentication == null) throw new IllegalArgumentException("\"authentication\" is required but got null");
         return ((IntegrationsApi) this).new ConnectDataSourceRequestBuilder(authentication);
+    }
+    private okhttp3.Call connectDocument360Call(Document360ConnectRequest document360ConnectRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = document360ConnectRequest;
+
+        // create path and map variables
+        String localVarPath = "/integrations/document360";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "accessToken", "apiKey", "customerId" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call connectDocument360ValidateBeforeCall(Document360ConnectRequest document360ConnectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'document360ConnectRequest' is set
+        if (document360ConnectRequest == null) {
+            throw new ApiException("Missing the required parameter 'document360ConnectRequest' when calling connectDocument360(Async)");
+        }
+
+        return connectDocument360Call(document360ConnectRequest, _callback);
+
+    }
+
+
+    private ApiResponse<GenericSuccessResponse> connectDocument360WithHttpInfo(Document360ConnectRequest document360ConnectRequest) throws ApiException {
+        okhttp3.Call localVarCall = connectDocument360ValidateBeforeCall(document360ConnectRequest, null);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call connectDocument360Async(Document360ConnectRequest document360ConnectRequest, final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = connectDocument360ValidateBeforeCall(document360ConnectRequest, _callback);
+        Type localVarReturnType = new TypeToken<GenericSuccessResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class ConnectDocument360RequestBuilderGenerated {
+        final String accountEmail;
+        final String accessToken;
+        Object tags;
+        Integer chunkSize;
+        Integer chunkOverlap;
+        Boolean skipEmbeddingGeneration;
+        EmbeddingGenerators embeddingModel;
+        Boolean generateSparseVectors;
+        Boolean prependFilenameToChunks;
+        Boolean syncFilesOnConnection;
+        String requestId;
+        Boolean syncSourceItems;
+        FileSyncConfigNullable fileSyncConfig;
+        Object dataSourceTags;
+
+        public ConnectDocument360RequestBuilderGenerated(String accountEmail, String accessToken) {
+            this.accountEmail = accountEmail;
+            this.accessToken = accessToken;
+        }
+
+        /**
+         * Set tags
+         * @param tags  (optional)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder tags(Object tags) {
+            this.tags = tags;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkSize
+         * @param chunkSize  (optional, default to 1500)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder chunkSize(Integer chunkSize) {
+            this.chunkSize = chunkSize;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set chunkOverlap
+         * @param chunkOverlap  (optional, default to 20)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder chunkOverlap(Integer chunkOverlap) {
+            this.chunkOverlap = chunkOverlap;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set skipEmbeddingGeneration
+         * @param skipEmbeddingGeneration  (optional, default to false)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+            this.skipEmbeddingGeneration = skipEmbeddingGeneration;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set embeddingModel
+         * @param embeddingModel  (optional)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+            this.embeddingModel = embeddingModel;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set generateSparseVectors
+         * @param generateSparseVectors  (optional, default to false)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+            this.generateSparseVectors = generateSparseVectors;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set prependFilenameToChunks
+         * @param prependFilenameToChunks  (optional, default to false)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+            this.prependFilenameToChunks = prependFilenameToChunks;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set syncFilesOnConnection
+         * @param syncFilesOnConnection  (optional, default to true)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder syncFilesOnConnection(Boolean syncFilesOnConnection) {
+            this.syncFilesOnConnection = syncFilesOnConnection;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set requestId
+         * @param requestId  (optional)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder requestId(String requestId) {
+            this.requestId = requestId;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set syncSourceItems
+         * @param syncSourceItems Enabling this flag will fetch all available content from the source to be listed via list items endpoint (optional, default to true)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder syncSourceItems(Boolean syncSourceItems) {
+            this.syncSourceItems = syncSourceItems;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set fileSyncConfig
+         * @param fileSyncConfig  (optional)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder fileSyncConfig(FileSyncConfigNullable fileSyncConfig) {
+            this.fileSyncConfig = fileSyncConfig;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Set dataSourceTags
+         * @param dataSourceTags Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed. (optional)
+         * @return IntegrationsApi.ConnectDocument360RequestBuilder
+         */
+        public IntegrationsApi.ConnectDocument360RequestBuilder dataSourceTags(Object dataSourceTags) {
+            this.dataSourceTags = dataSourceTags;
+            return (IntegrationsApi.ConnectDocument360RequestBuilder) this;
+        }
+        
+        /**
+         * Build call for connectDocument360
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            Document360ConnectRequest document360ConnectRequest = buildBodyParams();
+            return connectDocument360Call(document360ConnectRequest, _callback);
+        }
+
+        private Document360ConnectRequest buildBodyParams() {
+            Document360ConnectRequest document360ConnectRequest = new Document360ConnectRequest();
+            document360ConnectRequest.tags(this.tags);
+            document360ConnectRequest.accountEmail(this.accountEmail);
+            document360ConnectRequest.accessToken(this.accessToken);
+            document360ConnectRequest.chunkSize(this.chunkSize);
+            document360ConnectRequest.chunkOverlap(this.chunkOverlap);
+            document360ConnectRequest.skipEmbeddingGeneration(this.skipEmbeddingGeneration);
+            document360ConnectRequest.embeddingModel(this.embeddingModel);
+            document360ConnectRequest.generateSparseVectors(this.generateSparseVectors);
+            document360ConnectRequest.prependFilenameToChunks(this.prependFilenameToChunks);
+            document360ConnectRequest.syncFilesOnConnection(this.syncFilesOnConnection);
+            document360ConnectRequest.requestId(this.requestId);
+            document360ConnectRequest.syncSourceItems(this.syncSourceItems);
+            document360ConnectRequest.fileSyncConfig(this.fileSyncConfig);
+            document360ConnectRequest.dataSourceTags(this.dataSourceTags);
+            return document360ConnectRequest;
+        }
+
+        /**
+         * Execute connectDocument360 request
+         * @return GenericSuccessResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GenericSuccessResponse execute() throws ApiException {
+            Document360ConnectRequest document360ConnectRequest = buildBodyParams();
+            ApiResponse<GenericSuccessResponse> localVarResp = connectDocument360WithHttpInfo(document360ConnectRequest);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute connectDocument360 request with HTTP info returned
+         * @return ApiResponse&lt;GenericSuccessResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GenericSuccessResponse> executeWithHttpInfo() throws ApiException {
+            Document360ConnectRequest document360ConnectRequest = buildBodyParams();
+            return connectDocument360WithHttpInfo(document360ConnectRequest);
+        }
+
+        /**
+         * Execute connectDocument360 request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GenericSuccessResponse> _callback) throws ApiException {
+            Document360ConnectRequest document360ConnectRequest = buildBodyParams();
+            return connectDocument360Async(document360ConnectRequest, _callback);
+        }
+    }
+
+    /**
+     * Document360 Connect
+     * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+     * @param document360ConnectRequest  (required)
+     * @return ConnectDocument360RequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationsApi.ConnectDocument360RequestBuilder connectDocument360(String accountEmail, String accessToken) throws IllegalArgumentException {
+        if (accountEmail == null) throw new IllegalArgumentException("\"accountEmail\" is required but got null");
+            
+
+        if (accessToken == null) throw new IllegalArgumentException("\"accessToken\" is required but got null");
+            
+
+        return ((IntegrationsApi) this).new ConnectDocument360RequestBuilder(accountEmail, accessToken);
     }
     private okhttp3.Call connectFreshdeskCall(FreshDeskConnectRequest freshDeskConnectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

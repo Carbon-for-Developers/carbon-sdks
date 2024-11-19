@@ -54,6 +54,7 @@ export * from './delete-files-v2-query-input';
 export * from './delete-users-input';
 export * from './delete-white-label-request';
 export * from './directory-item';
+export * from './document360-connect-request';
 export * from './document-response';
 export * from './document-response-list';
 export * from './email';

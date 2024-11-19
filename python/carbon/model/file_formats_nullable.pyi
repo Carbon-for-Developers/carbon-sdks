@@ -68,6 +68,7 @@ class FileFormatsNullable(
             "GURU": "GURU",
             "SERVICENOW": "SERVICENOW",
             "GONG": "GONG",
+            "DOCUMENT360": "DOCUMENT360",
             "JPG": "JPG",
             "PNG": "PNG",
             "MP3": "MP3",
@@ -215,6 +216,10 @@ class FileFormatsNullable(
     @schemas.classproperty
     def GONG(cls):
         return cls("GONG")
+    
+    @schemas.classproperty
+    def DOCUMENT360(cls):
+        return cls("DOCUMENT360")
     
     @schemas.classproperty
     def JPG(cls):

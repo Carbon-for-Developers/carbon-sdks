@@ -59,6 +59,7 @@ const (
 	DATASOURCETYPENULLABLE_SLACK DataSourceTypeNullable = "SLACK"
 	DATASOURCETYPENULLABLE_GURU DataSourceTypeNullable = "GURU"
 	DATASOURCETYPENULLABLE_GONG DataSourceTypeNullable = "GONG"
+	DATASOURCETYPENULLABLE_DOCUMENT360 DataSourceTypeNullable = "DOCUMENT360"
 	DATASOURCETYPENULLABLE_JPG DataSourceTypeNullable = "JPG"
 	DATASOURCETYPENULLABLE_PNG DataSourceTypeNullable = "PNG"
 	DATASOURCETYPENULLABLE_JPEG DataSourceTypeNullable = "JPEG"
@@ -125,6 +126,7 @@ var AllowedDataSourceTypeNullableEnumValues = []DataSourceTypeNullable{
 	"SLACK",
 	"GURU",
 	"GONG",
+	"DOCUMENT360",
 	"JPG",
 	"PNG",
 	"JPEG",

@@ -73,6 +73,7 @@ class DataSourceType(
             "SLACK": "SLACK",
             "GURU": "GURU",
             "GONG": "GONG",
+            "DOCUMENT360": "DOCUMENT360",
             "JPG": "JPG",
             "PNG": "PNG",
             "JPEG": "JPEG",
@@ -253,6 +254,10 @@ class DataSourceType(
     @schemas.classproperty
     def GONG(cls):
         return cls("GONG")
+    
+    @schemas.classproperty
+    def DOCUMENT360(cls):
+        return cls("DOCUMENT360")
     
     @schemas.classproperty
     def JPG(cls):

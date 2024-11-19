@@ -30,6 +30,7 @@ from carbon.apis.paths.integrations_slack_conversations import IntegrationsSlack
 from carbon.apis.paths.integrations_slack_sync import IntegrationsSlackSync
 from carbon.apis.paths.integrations_guru import IntegrationsGuru
 from carbon.apis.paths.integrations_sharepoint_sites_list import IntegrationsSharepointSitesList
+from carbon.apis.paths.integrations_document360 import IntegrationsDocument360
 from carbon.apis.paths.auth_v1_access_token import AuthV1AccessToken
 from carbon.apis.paths.auth_v1_white_labeling import AuthV1WhiteLabeling
 from carbon.apis.paths.embeddings import Embeddings
@@ -128,6 +129,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.INTEGRATIONS_SLACK_SYNC: IntegrationsSlackSync,
         PathValues.INTEGRATIONS_GURU: IntegrationsGuru,
         PathValues.INTEGRATIONS_SHAREPOINT_SITES_LIST: IntegrationsSharepointSitesList,
+        PathValues.INTEGRATIONS_DOCUMENT360: IntegrationsDocument360,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,
@@ -227,6 +229,7 @@ path_to_api = PathToApi(
         PathValues.INTEGRATIONS_SLACK_SYNC: IntegrationsSlackSync,
         PathValues.INTEGRATIONS_GURU: IntegrationsGuru,
         PathValues.INTEGRATIONS_SHAREPOINT_SITES_LIST: IntegrationsSharepointSitesList,
+        PathValues.INTEGRATIONS_DOCUMENT360: IntegrationsDocument360,
         PathValues.AUTH_V1_ACCESS_TOKEN: AuthV1AccessToken,
         PathValues.AUTH_V1_WHITE_LABELING: AuthV1WhiteLabeling,
         PathValues.EMBEDDINGS: Embeddings,

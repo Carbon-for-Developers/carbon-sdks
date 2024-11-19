@@ -65,6 +65,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.github.get_pull_requests`](#carbongithubget_pull_requests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
+  * [`carbon.integrations.connect_document360`](#carbonintegrationsconnect_document360)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`carbon.integrations.connect_guru`](#carbonintegrationsconnect_guru)
@@ -2508,6 +2509,94 @@ connect_data_source_response = carbon.integrations.connect_data_source(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/connect` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `carbon.integrations.connect_document360`<a id="carbonintegrationsconnect_document360"></a>
+
+You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted 
+here https://apidocs.document360.com/apidocs/api-token.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+connect_document360_response = carbon.integrations.connect_document360(
+    account_email="string_example",
+    access_token="string_example",
+    tags={},
+    chunk_size=1500,
+    chunk_overlap=20,
+    skip_embedding_generation=False,
+    embedding_model="OPENAI",
+    generate_sparse_vectors=False,
+    prepend_filename_to_chunks=False,
+    sync_files_on_connection=True,
+    request_id="string_example",
+    sync_source_items=True,
+    file_sync_config={
+        "auto_synced_source_types": ["ARTICLE"],
+        "sync_attachments": False,
+        "detect_audio_language": False,
+        "transcription_service": "assemblyai",
+        "include_speaker_labels": False,
+        "split_rows": False,
+        "generate_chunks_only": False,
+        "store_file_only": False,
+        "skip_file_processing": False,
+    },
+    data_source_tags={},
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_email: `str`<a id="account_email-str"></a>
+
+This email will be used to identify your carbon data source. It should have access to the          Document360 account you wish to connect.
+
+##### access_token: `str`<a id="access_token-str"></a>
+
+##### tags: `Optional[Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]]`<a id="tags-optionaldictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+##### chunk_size: `Optional[int]`<a id="chunk_size-optionalint"></a>
+
+##### chunk_overlap: `Optional[int]`<a id="chunk_overlap-optionalint"></a>
+
+##### skip_embedding_generation: `Optional[bool]`<a id="skip_embedding_generation-optionalbool"></a>
+
+##### embedding_model: [`EmbeddingGenerators`](./carbon/type/embedding_generators.py)<a id="embedding_model-embeddinggeneratorscarbontypeembedding_generatorspy"></a>
+
+##### generate_sparse_vectors: `Optional[bool]`<a id="generate_sparse_vectors-optionalbool"></a>
+
+##### prepend_filename_to_chunks: `Optional[bool]`<a id="prepend_filename_to_chunks-optionalbool"></a>
+
+##### sync_files_on_connection: `Optional[bool]`<a id="sync_files_on_connection-optionalbool"></a>
+
+##### request_id: `Optional[str]`<a id="request_id-optionalstr"></a>
+
+##### sync_source_items: `bool`<a id="sync_source_items-bool"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./carbon/type/file_sync_config_nullable.py)<a id="file_sync_config-filesyncconfignullablecarbontypefile_sync_config_nullablepy"></a>
+
+
+##### data_source_tags: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="data_source_tags-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`Document360ConnectRequest`](./carbon/type/document360_connect_request.py)
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`GenericSuccessResponse`](./carbon/pydantic/generic_success_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/document360` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

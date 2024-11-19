@@ -33,6 +33,8 @@ import { ConnectDataSourceInput } from '../models';
 // @ts-ignore
 import { ConnectDataSourceResponse } from '../models';
 // @ts-ignore
+import { Document360ConnectRequest } from '../models';
+// @ts-ignore
 import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
@@ -210,6 +212,58 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(connectDataSourceInput, localVarRequestOptions, configuration)
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+         * @summary Document360 Connect
+         * @param {Document360ConnectRequest} document360ConnectRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectDocument360: async (document360ConnectRequest: Document360ConnectRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'document360ConnectRequest' is not null or undefined
+            assertParamExists('connectDocument360', 'document360ConnectRequest', document360ConnectRequest)
+            const localVarPath = `/integrations/document360`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication accessToken required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
+            // authentication apiKey required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
+            // authentication customerId required
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                requestBody: document360ConnectRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/integrations/document360',
+                httpMethod: 'POST'
+            });
+            localVarRequestOptions.data = serializeDataIfNeeded(document360ConnectRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -1674,6 +1728,33 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+         * @summary Document360 Connect
+         * @param {IntegrationsApiConnectDocument360Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async connectDocument360(requestParameters: IntegrationsApiConnectDocument360Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
+            const document360ConnectRequest: Document360ConnectRequest = {
+                tags: requestParameters.tags,
+                account_email: requestParameters.account_email,
+                access_token: requestParameters.access_token,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                sync_files_on_connection: requestParameters.sync_files_on_connection,
+                request_id: requestParameters.request_id,
+                sync_source_items: requestParameters.sync_source_items,
+                file_sync_config: requestParameters.file_sync_config,
+                data_source_tags: requestParameters.data_source_tags
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectDocument360(document360ConnectRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
@@ -2260,6 +2341,16 @@ export const IntegrationsApiFactory = function (configuration?: Configuration, b
             return localVarFp.connectDataSource(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
+         * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+         * @summary Document360 Connect
+         * @param {IntegrationsApiConnectDocument360Request} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        connectDocument360(requestParameters: IntegrationsApiConnectDocument360Request, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
+            return localVarFp.connectDocument360(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517. Make sure that your API key has the permission to read solutions from your account and you are on a <b>paid</b> plan. Once you have an API key, you can make a request to this endpoint along with your freshdesk domain. This will  trigger an automatic sync of the articles in your \"solutions\" tab. Additional parameters below can be used to associate  data with the synced articles or modify the sync behavior.
          * @summary Freshdesk Connect
          * @param {IntegrationsApiConnectFreshdeskRequest} requestParameters Request parameters.
@@ -2551,6 +2642,15 @@ export type IntegrationsApiCancelRequest = {
 export type IntegrationsApiConnectDataSourceRequest = {
     
 } & ConnectDataSourceInput
+
+/**
+ * Request parameters for connectDocument360 operation in IntegrationsApi.
+ * @export
+ * @interface IntegrationsApiConnectDocument360Request
+ */
+export type IntegrationsApiConnectDocument360Request = {
+    
+} & Document360ConnectRequest
 
 /**
  * Request parameters for connectFreshdesk operation in IntegrationsApi.
@@ -2915,6 +3015,18 @@ export class IntegrationsApiGenerated extends BaseAPI {
      */
     public connectDataSource(requestParameters: IntegrationsApiConnectDataSourceRequest, options?: AxiosRequestConfig) {
         return IntegrationsApiFp(this.configuration).connectDataSource(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+     * @summary Document360 Connect
+     * @param {IntegrationsApiConnectDocument360Request} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationsApiGenerated
+     */
+    public connectDocument360(requestParameters: IntegrationsApiConnectDocument360Request, options?: AxiosRequestConfig) {
+        return IntegrationsApiFp(this.configuration).connectDocument360(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

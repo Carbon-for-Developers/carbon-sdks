@@ -70,6 +70,7 @@ from carbon.model.delete_users_input_customer_ids import DeleteUsersInputCustome
 from carbon.model.delete_white_label_request import DeleteWhiteLabelRequest
 from carbon.model.delete_white_label_request_ids import DeleteWhiteLabelRequestIds
 from carbon.model.directory_item import DirectoryItem
+from carbon.model.document360_connect_request import Document360ConnectRequest
 from carbon.model.document_response import DocumentResponse
 from carbon.model.document_response_list import DocumentResponseList
 from carbon.model.document_response_tags import DocumentResponseTags

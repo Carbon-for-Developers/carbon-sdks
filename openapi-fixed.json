@@ -1715,6 +1715,60 @@
         }
       }
     },
+    "/integrations/document360": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Document360 Connect",
+        "operationId": "Integrations_connectDocument360",
+        "security": [
+          {
+            "accessToken": [
+            ]
+          },
+          {
+            "apiKey": [
+            ],
+            "customerId": [
+            ]
+          }
+        ],
+        "description": "You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted \nhere https://apidocs.document360.com/apidocs/api-token.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document360ConnectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -6742,6 +6796,7 @@
           "SLACK",
           "GURU",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "PNG",
           "JPEG",
@@ -6886,6 +6941,93 @@
         "required": [
           "id",
           "name"
+        ]
+      },
+      "Document360ConnectRequest": {
+        "title": "Document360ConnectRequest",
+        "properties": {
+          "tags": {
+            "title": "Tags",
+            "default": {
+            },
+            "type": "object",
+            "nullable": true
+          },
+          "account_email": {
+            "title": "Account Email",
+            "description": "This email will be used to identify your carbon data source. It should have access to the \n        Document360 account you wish to connect.",
+            "type": "string"
+          },
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "chunk_size": {
+            "title": "Chunk Size",
+            "default": 1500,
+            "type": "integer",
+            "nullable": true
+          },
+          "chunk_overlap": {
+            "title": "Chunk Overlap",
+            "default": 20,
+            "type": "integer",
+            "nullable": true
+          },
+          "skip_embedding_generation": {
+            "title": "Skip Embedding Generation",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "embedding_model": {
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "title": "Generate Sparse Vectors",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "prepend_filename_to_chunks": {
+            "title": "Prepend Filename To Chunks",
+            "default": false,
+            "type": "boolean",
+            "nullable": true
+          },
+          "sync_files_on_connection": {
+            "title": "Sync Files On Connection",
+            "default": true,
+            "type": "boolean",
+            "nullable": true
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string",
+            "nullable": true
+          },
+          "sync_source_items": {
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "type": "boolean",
+            "default": true
+          },
+          "file_sync_config": {
+            "$ref": "#/components/schemas/FileSyncConfigNullable"
+          },
+          "data_source_tags": {
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "type": "object",
+            "default": {
+            }
+          }
+        },
+        "type": "object",
+        "required": [
+          "account_email",
+          "access_token"
         ]
       },
       "DocumentResponse": {
@@ -7547,6 +7689,7 @@
           "GURU",
           "SERVICENOW",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "PNG",
           "MP3",
@@ -14522,6 +14665,7 @@
           "SLACK",
           "GURU",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "PNG",
           "JPEG",
@@ -14621,6 +14765,7 @@
           "GURU",
           "SERVICENOW",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "PNG",
           "MP3",

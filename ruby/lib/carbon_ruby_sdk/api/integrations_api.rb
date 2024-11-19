@@ -204,6 +204,158 @@ module Carbon
     end
 
 
+    # Document360 Connect
+    #
+    # You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted 
+    # here https://apidocs.document360.com/apidocs/api-token.
+    #
+    # @param account_email [String] This email will be used to identify your carbon data source. It should have access to the Document360 account you wish to connect.
+    # @param access_token [String] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    # @param body [Document360ConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_document360(account_email:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:account_email] = account_email if account_email != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
+      document360_connect_request = _body
+      api_response = connect_document360_with_http_info_impl(document360_connect_request, extra)
+      api_response.data
+    end
+
+    # Document360 Connect
+    #
+    # You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted 
+    # here https://apidocs.document360.com/apidocs/api-token.
+    #
+    # @param account_email [String] This email will be used to identify your carbon data source. It should have access to the Document360 account you wish to connect.
+    # @param access_token [String] 
+    # @param tags [Object] 
+    # @param chunk_size [Integer] 
+    # @param chunk_overlap [Integer] 
+    # @param skip_embedding_generation [Boolean] 
+    # @param embedding_model [EmbeddingGenerators] 
+    # @param generate_sparse_vectors [Boolean] 
+    # @param prepend_filename_to_chunks [Boolean] 
+    # @param sync_files_on_connection [Boolean] 
+    # @param request_id [String] 
+    # @param sync_source_items [Boolean] Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    # @param file_sync_config [FileSyncConfigNullable] 
+    # @param data_source_tags [Object] Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    # @param body [Document360ConnectRequest] 
+    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+    def connect_document360_with_http_info(account_email:, access_token:, tags: SENTINEL, chunk_size: 1500, chunk_overlap: 20, skip_embedding_generation: false, embedding_model: SENTINEL, generate_sparse_vectors: false, prepend_filename_to_chunks: false, sync_files_on_connection: true, request_id: SENTINEL, sync_source_items: true, file_sync_config: SENTINEL, data_source_tags: SENTINEL, extra: {})
+      _body = {}
+      _body[:tags] = tags if tags != SENTINEL
+      _body[:account_email] = account_email if account_email != SENTINEL
+      _body[:access_token] = access_token if access_token != SENTINEL
+      _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
+      _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
+      _body[:skip_embedding_generation] = skip_embedding_generation if skip_embedding_generation != SENTINEL
+      _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
+      _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
+      _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
+      _body[:sync_files_on_connection] = sync_files_on_connection if sync_files_on_connection != SENTINEL
+      _body[:request_id] = request_id if request_id != SENTINEL
+      _body[:sync_source_items] = sync_source_items if sync_source_items != SENTINEL
+      _body[:file_sync_config] = file_sync_config if file_sync_config != SENTINEL
+      _body[:data_source_tags] = data_source_tags if data_source_tags != SENTINEL
+      document360_connect_request = _body
+      connect_document360_with_http_info_impl(document360_connect_request, extra)
+    end
+
+    # Document360 Connect
+    # You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+    # @param document360_connect_request [Document360ConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessResponse]
+    private def connect_document360_impl(document360_connect_request, opts = {})
+      data, _status_code, _headers = connect_document360_with_http_info(document360_connect_request, opts)
+      data
+    end
+
+    # Document360 Connect
+    # You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+    # @param document360_connect_request [Document360ConnectRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [APIResponse] data is GenericSuccessResponse, status code, headers and response
+    private def connect_document360_with_http_info_impl(document360_connect_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationsApi.connect_document360 ...'
+      end
+      # verify the required parameter 'document360_connect_request' is set
+      if @api_client.config.client_side_validation && document360_connect_request.nil?
+        fail ArgumentError, "Missing the required parameter 'document360_connect_request' when calling IntegrationsApi.connect_document360"
+      end
+      # resource path
+      local_var_path = '/integrations/document360'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(document360_connect_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['accessToken', 'apiKey', 'customerId']
+
+      new_options = opts.merge(
+        :operation => :"IntegrationsApi.connect_document360",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers, response = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationsApi#connect_document360\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      APIResponse::new(data, status_code, headers, response)
+    end
+
+
     # Freshdesk Connect
     #
     # Refer this article to obtain an API key https://support.freshdesk.com/en/support/solutions/articles/215517.

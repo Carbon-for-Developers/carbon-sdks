@@ -59,6 +59,7 @@ const (
 	DATASOURCETYPE_SLACK DataSourceType = "SLACK"
 	DATASOURCETYPE_GURU DataSourceType = "GURU"
 	DATASOURCETYPE_GONG DataSourceType = "GONG"
+	DATASOURCETYPE_DOCUMENT360 DataSourceType = "DOCUMENT360"
 	DATASOURCETYPE_JPG DataSourceType = "JPG"
 	DATASOURCETYPE_PNG DataSourceType = "PNG"
 	DATASOURCETYPE_JPEG DataSourceType = "JPEG"
@@ -125,6 +126,7 @@ var AllowedDataSourceTypeEnumValues = []DataSourceType{
 	"SLACK",
 	"GURU",
 	"GONG",
+	"DOCUMENT360",
 	"JPG",
 	"PNG",
 	"JPEG",
