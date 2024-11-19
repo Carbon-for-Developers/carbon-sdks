@@ -6,6 +6,7 @@ import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
 import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
+import com.konfigthis.carbonai.client.model.Document360ConnectRequest;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
@@ -59,6 +60,11 @@ public class IntegrationsApi extends IntegrationsApiGenerated {
     public class ConnectDataSourceRequestBuilder extends ConnectDataSourceRequestBuilderGenerated {
         public ConnectDataSourceRequestBuilder(OANDSCZGFB authentication) {
             super(authentication);
+        }
+    }
+    public class ConnectDocument360RequestBuilder extends ConnectDocument360RequestBuilderGenerated {
+        public ConnectDocument360RequestBuilder(String accountEmail, String accessToken) {
+            super(accountEmail, accessToken);
         }
     }
     public class ConnectFreshdeskRequestBuilder extends ConnectFreshdeskRequestBuilderGenerated {

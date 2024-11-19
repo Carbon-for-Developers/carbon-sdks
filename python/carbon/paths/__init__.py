@@ -35,6 +35,7 @@ class PathValues(str, enum.Enum):
     INTEGRATIONS_SLACK_SYNC = "/integrations/slack/sync"
     INTEGRATIONS_GURU = "/integrations/guru"
     INTEGRATIONS_SHAREPOINT_SITES_LIST = "/integrations/sharepoint/sites/list"
+    INTEGRATIONS_DOCUMENT360 = "/integrations/document360"
     AUTH_V1_ACCESS_TOKEN = "/auth/v1/access_token"
     AUTH_V1_WHITE_LABELING = "/auth/v1/white_labeling"
     EMBEDDINGS = "/embeddings"

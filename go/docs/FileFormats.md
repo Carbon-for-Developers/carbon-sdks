@@ -65,6 +65,8 @@
 
 * `GONG` (value: `"GONG"`)
 
+* `DOCUMENT360` (value: `"DOCUMENT360"`)
+
 * `JPG` (value: `"JPG"`)
 
 * `PNG` (value: `"PNG"`)

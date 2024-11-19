@@ -21,6 +21,7 @@ import com.konfigthis.carbonai.client.model.AzureBlobFileSyncInput;
 import com.konfigthis.carbonai.client.model.AzureBlobGetFileInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceInput;
 import com.konfigthis.carbonai.client.model.ConnectDataSourceResponse;
+import com.konfigthis.carbonai.client.model.Document360ConnectRequest;
 import com.konfigthis.carbonai.client.model.EmbeddingGenerators;
 import com.konfigthis.carbonai.client.model.EmbeddingGeneratorsNullable;
 import com.konfigthis.carbonai.client.model.ExternalSourceItemsOrderBy;
@@ -104,6 +105,46 @@ public class IntegrationsApiTest {
         SyncOptions syncOptions = null;
         ConnectDataSourceResponse response = api.connectDataSource(authentication)
                 .syncOptions(syncOptions)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Document360 Connect
+     *
+     * You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void connectDocument360Test() throws ApiException {
+        String accountEmail = null;
+        String accessToken = null;
+        Object tags = null;
+        Integer chunkSize = null;
+        Integer chunkOverlap = null;
+        Boolean skipEmbeddingGeneration = null;
+        EmbeddingGenerators embeddingModel = null;
+        Boolean generateSparseVectors = null;
+        Boolean prependFilenameToChunks = null;
+        Boolean syncFilesOnConnection = null;
+        String requestId = null;
+        Boolean syncSourceItems = null;
+        FileSyncConfigNullable fileSyncConfig = null;
+        Object dataSourceTags = null;
+        GenericSuccessResponse response = api.connectDocument360(accountEmail, accessToken)
+                .tags(tags)
+                .chunkSize(chunkSize)
+                .chunkOverlap(chunkOverlap)
+                .skipEmbeddingGeneration(skipEmbeddingGeneration)
+                .embeddingModel(embeddingModel)
+                .generateSparseVectors(generateSparseVectors)
+                .prependFilenameToChunks(prependFilenameToChunks)
+                .syncFilesOnConnection(syncFilesOnConnection)
+                .requestId(requestId)
+                .syncSourceItems(syncSourceItems)
+                .fileSyncConfig(fileSyncConfig)
+                .dataSourceTags(dataSourceTags)
                 .execute();
         // TODO: test validations
     }

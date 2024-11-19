@@ -6,6 +6,7 @@ All URIs are relative to *https://api.carbon.ai*
 |------------- | ------------- | -------------|
 | [**cancel**](IntegrationsApi.md#cancel) | **POST** /integrations/items/sync/cancel | Cancel Data Source Items Sync |
 | [**connectDataSource**](IntegrationsApi.md#connectDataSource) | **POST** /integrations/connect | Connect Data Source |
+| [**connectDocument360**](IntegrationsApi.md#connectDocument360) | **POST** /integrations/document360 | Document360 Connect |
 | [**connectFreshdesk**](IntegrationsApi.md#connectFreshdesk) | **POST** /integrations/freshdesk | Freshdesk Connect |
 | [**connectGitbook**](IntegrationsApi.md#connectGitbook) | **POST** /integrations/gitbook | Gitbook Connect |
 | [**connectGuru**](IntegrationsApi.md#connectGuru) | **POST** /integrations/guru | Guru Connect |
@@ -229,6 +230,139 @@ public class Example {
 ### Return type
 
 [**ConnectDataSourceResponse**](ConnectDataSourceResponse.md)
+
+### Authorization
+
+[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+
+<a name="connectDocument360"></a>
+# **connectDocument360**
+> GenericSuccessResponse connectDocument360(document360ConnectRequest).execute();
+
+Document360 Connect
+
+You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted  here https://apidocs.document360.com/apidocs/api-token.
+
+### Example
+```java
+import com.konfigthis.carbonai.client.ApiClient;
+import com.konfigthis.carbonai.client.ApiException;
+import com.konfigthis.carbonai.client.ApiResponse;
+import com.konfigthis.carbonai.client.Carbon;
+import com.konfigthis.carbonai.client.Configuration;
+import com.konfigthis.carbonai.client.auth.*;
+import com.konfigthis.carbonai.client.model.*;
+import com.konfigthis.carbonai.client.api.IntegrationsApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://api.carbon.ai";
+    
+    configuration.accessToken  = "YOUR API KEY";
+    
+    configuration.apiKey  = "YOUR API KEY";
+    
+    configuration.customerId  = "YOUR API KEY";
+    Carbon client = new Carbon(configuration);
+    String accountEmail = "accountEmail_example"; // This email will be used to identify your carbon data source. It should have access to the          Document360 account you wish to connect.
+    String accessToken = "accessToken_example";
+    Object tags = null;
+    Integer chunkSize = 1500;
+    Integer chunkOverlap = 20;
+    Boolean skipEmbeddingGeneration = false;
+    EmbeddingGenerators embeddingModel = EmbeddingGenerators.fromValue("OPENAI");
+    Boolean generateSparseVectors = false;
+    Boolean prependFilenameToChunks = false;
+    Boolean syncFilesOnConnection = true;
+    String requestId = "requestId_example";
+    Boolean syncSourceItems = true; // Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+    FileSyncConfigNullable fileSyncConfig = new FileSyncConfigNullable();
+    Object dataSourceTags = null; // Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+    try {
+      GenericSuccessResponse result = client
+              .integrations
+              .connectDocument360(accountEmail, accessToken)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .syncFilesOnConnection(syncFilesOnConnection)
+              .requestId(requestId)
+              .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getSuccess());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#connectDocument360");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<GenericSuccessResponse> response = client
+              .integrations
+              .connectDocument360(accountEmail, accessToken)
+              .tags(tags)
+              .chunkSize(chunkSize)
+              .chunkOverlap(chunkOverlap)
+              .skipEmbeddingGeneration(skipEmbeddingGeneration)
+              .embeddingModel(embeddingModel)
+              .generateSparseVectors(generateSparseVectors)
+              .prependFilenameToChunks(prependFilenameToChunks)
+              .syncFilesOnConnection(syncFilesOnConnection)
+              .requestId(requestId)
+              .syncSourceItems(syncSourceItems)
+              .fileSyncConfig(fileSyncConfig)
+              .dataSourceTags(dataSourceTags)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationsApi#connectDocument360");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **document360ConnectRequest** | [**Document360ConnectRequest**](Document360ConnectRequest.md)|  | |
+
+### Return type
+
+[**GenericSuccessResponse**](GenericSuccessResponse.md)
 
 ### Authorization
 

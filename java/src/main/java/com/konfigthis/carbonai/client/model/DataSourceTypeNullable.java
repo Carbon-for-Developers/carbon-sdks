@@ -105,6 +105,8 @@ import com.google.gson.stream.JsonWriter;
   
   GONG("GONG"),
   
+  DOCUMENT360("DOCUMENT360"),
+  
   JPG("JPG"),
   
   PNG("PNG"),

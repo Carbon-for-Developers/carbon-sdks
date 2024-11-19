@@ -116,6 +116,7 @@ from carbon.pydantic.delete_users_input_customer_ids import DeleteUsersInputCust
 from carbon.pydantic.delete_white_label_request import DeleteWhiteLabelRequest
 from carbon.pydantic.delete_white_label_request_ids import DeleteWhiteLabelRequestIds
 from carbon.pydantic.directory_item import DirectoryItem
+from carbon.pydantic.document360_connect_request import Document360ConnectRequest
 from carbon.pydantic.document_response import DocumentResponse
 from carbon.pydantic.document_response_list import DocumentResponseList
 from carbon.pydantic.document_response_tags import DocumentResponseTags

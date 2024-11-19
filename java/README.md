@@ -65,6 +65,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.github.getPullRequests`](#carbongithubgetpullrequests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connectDataSource`](#carbonintegrationsconnectdatasource)
+  * [`carbon.integrations.connectDocument360`](#carbonintegrationsconnectdocument360)
   * [`carbon.integrations.connectFreshdesk`](#carbonintegrationsconnectfreshdesk)
   * [`carbon.integrations.connectGitbook`](#carbonintegrationsconnectgitbook)
   * [`carbon.integrations.connectGuru`](#carbonintegrationsconnectguru)
@@ -2409,6 +2410,81 @@ ConnectDataSourceResponse result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/connect` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.connectDocument360`<a id="carbonintegrationsconnectdocument360"></a>
+
+You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted 
+here https://apidocs.document360.com/apidocs/api-token.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+GenericSuccessResponse result = client
+        .integrations
+        .connectDocument360(accountEmail, accessToken)
+        .tags(tags)
+        .chunkSize(chunkSize)
+        .chunkOverlap(chunkOverlap)
+        .skipEmbeddingGeneration(skipEmbeddingGeneration)
+        .embeddingModel(embeddingModel)
+        .generateSparseVectors(generateSparseVectors)
+        .prependFilenameToChunks(prependFilenameToChunks)
+        .syncFilesOnConnection(syncFilesOnConnection)
+        .requestId(requestId)
+        .syncSourceItems(syncSourceItems)
+        .fileSyncConfig(fileSyncConfig)
+        .dataSourceTags(dataSourceTags)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_email: `String`<a id="account_email-string"></a>
+
+This email will be used to identify your carbon data source. It should have access to the          Document360 account you wish to connect.
+
+##### access_token: `String`<a id="access_token-string"></a>
+
+##### tags: `Object`<a id="tags-object"></a>
+
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+
+##### embedding_model:<a id="embedding_model"></a>
+
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+
+##### request_id: `String`<a id="request_id-string"></a>
+
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+
+Enabling this flag will fetch all available content from the source to be listed via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./src/main/java/com/konfigthis/client/model/FileSyncConfigNullable.java)<a id="file_sync_config-filesyncconfignullablesrcmainjavacomkonfigthisclientmodelfilesyncconfignullablejava"></a>
+
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+
+Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/document360` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

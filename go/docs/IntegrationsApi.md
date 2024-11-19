@@ -6,6 +6,7 @@ Method | Path | Description
 ------------- | ------------- | -------------
 [**Cancel**](IntegrationsApi.md#Cancel) | **Post** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 [**ConnectDataSource**](IntegrationsApi.md#ConnectDataSource) | **Post** /integrations/connect | Connect Data Source
+[**ConnectDocument360**](IntegrationsApi.md#ConnectDocument360) | **Post** /integrations/document360 | Document360 Connect
 [**ConnectFreshdesk**](IntegrationsApi.md#ConnectFreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 [**ConnectGitbook**](IntegrationsApi.md#ConnectGitbook) | **Post** /integrations/gitbook | Gitbook Connect
 [**ConnectGuru**](IntegrationsApi.md#ConnectGuru) | **Post** /integrations/guru | Guru Connect
@@ -145,6 +146,70 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectDataSource`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.DataSource`: %v\n", resp.DataSource)
     fmt.Fprintf(os.Stdout, "Response from `ConnectDataSourceResponse.ConnectDataSource.SyncUrl`: %v\n", *resp.SyncUrl)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ConnectDocument360
+
+Document360 Connect
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
+)
+
+func main() {
+    configuration := carbon.NewConfiguration()
+    configuration.SetAccessToken("AUTHORIZATION")
+    configuration.SetApiKey("AUTHORIZATION")
+    configuration.SetCustomerId("CUSTOMER_ID")
+    client := carbon.NewAPIClient(configuration)
+
+    fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+    
+    document360ConnectRequest := *carbon.NewDocument360ConnectRequest(
+        "null",
+        "null",
+    )
+    document360ConnectRequest.SetTags({})
+    document360ConnectRequest.SetChunkSize(1500)
+    document360ConnectRequest.SetChunkOverlap(20)
+    document360ConnectRequest.SetSkipEmbeddingGeneration(false)
+    document360ConnectRequest.SetEmbeddingModel(null)
+    document360ConnectRequest.SetGenerateSparseVectors(false)
+    document360ConnectRequest.SetPrependFilenameToChunks(false)
+    document360ConnectRequest.SetSyncFilesOnConnection(true)
+    document360ConnectRequest.SetRequestId("null")
+    document360ConnectRequest.SetSyncSourceItems(true)
+    document360ConnectRequest.SetFileSyncConfig(fileSyncConfig)
+    document360ConnectRequest.SetDataSourceTags({})
+    
+    request := client.IntegrationsApi.ConnectDocument360(
+        document360ConnectRequest,
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationsApi.ConnectDocument360``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `ConnectDocument360`: GenericSuccessResponse
+    fmt.Fprintf(os.Stdout, "Response from `IntegrationsApi.ConnectDocument360`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.ConnectDocument360.Success`: %v\n", resp.Success)
 }
 ```
 

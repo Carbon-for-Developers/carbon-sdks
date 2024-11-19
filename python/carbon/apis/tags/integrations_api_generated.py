@@ -10,6 +10,7 @@
 
 from carbon.paths.integrations_items_sync_cancel.post import Cancel
 from carbon.paths.integrations_connect.post import ConnectDataSource
+from carbon.paths.integrations_document360.post import ConnectDocument360
 from carbon.paths.integrations_freshdesk.post import ConnectFreshdesk
 from carbon.paths.integrations_gitbook.post import ConnectGitbook
 from carbon.paths.integrations_guru.post import ConnectGuru
@@ -43,6 +44,7 @@ from carbon.apis.tags.integrations_api_raw import IntegrationsApiRaw
 class IntegrationsApiGenerated(
     Cancel,
     ConnectDataSource,
+    ConnectDocument360,
     ConnectFreshdesk,
     ConnectGitbook,
     ConnectGuru,

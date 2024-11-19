@@ -2560,6 +2560,42 @@ paths:
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--integrations-sharepoint-sites-list
       x-accepts: application/json
+  /integrations/document360:
+    post:
+      description: "You will need an access token to connect your Document360 account.\
+        \ To obtain an access token, follow the steps highlighted \nhere https://apidocs.document360.com/apidocs/api-token."
+      operationId: Integrations_connectDocument360
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Document360ConnectRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericSuccessResponse'
+          description: Successful Response
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+          x-do-not-generate: true
+      security:
+      - accessToken: []
+      - apiKey: []
+        customerId: []
+      summary: Document360 Connect
+      tags:
+      - Integrations
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--integrations-document360
+      x-content-type: application/json
+      x-accepts: application/json
   /auth/v1/access_token:
     get:
       operationId: Auth_getAccessToken
@@ -7371,6 +7407,7 @@ components:
       - SLACK
       - GURU
       - GONG
+      - DOCUMENT360
       - JPG
       - PNG
       - JPEG
@@ -7578,6 +7615,127 @@ components:
       - id
       - name
       title: DirectoryItem
+      type: object
+    Document360ConnectRequest:
+      example:
+        chunk_size: 1500
+        prepend_filename_to_chunks: false
+        embedding_model: null
+        file_sync_config:
+          detect_audio_language: false
+          include_speaker_labels: false
+          split_rows: false
+          sync_attachments: false
+          transcription_service: null
+          skip_file_processing: false
+          store_file_only: false
+          auto_synced_source_types:
+          - ARTICLE
+          generate_chunks_only: false
+        data_source_tags: {}
+        tags: {}
+        access_token: access_token
+        account_email: account_email
+        sync_source_items: true
+        generate_sparse_vectors: false
+        sync_files_on_connection: true
+        chunk_overlap: 20
+        skip_embedding_generation: false
+        request_id: request_id
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-tags
+        account_email:
+          description: "This email will be used to identify your carbon data source.\
+            \ It should have access to the \n        Document360 account you wish\
+            \ to connect."
+          title: Account Email
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+        data_source_tags:
+          description: "Tags to be associated with the data source. If the data source\
+            \ already has tags set, then an upsert will be performed."
+          example: {}
+          title: Data Source Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-data_source_tags
+      required:
+      - access_token
+      - account_email
+      title: Document360ConnectRequest
       type: object
     DocumentResponse:
       example:
@@ -8249,6 +8407,7 @@ components:
       - GURU
       - SERVICENOW
       - GONG
+      - DOCUMENT360
       - JPG
       - PNG
       - MP3
@@ -16535,6 +16694,7 @@ components:
       - SLACK
       - GURU
       - GONG
+      - DOCUMENT360
       - JPG
       - PNG
       - JPEG
@@ -16631,6 +16791,7 @@ components:
       - GURU
       - SERVICENOW
       - GONG
+      - DOCUMENT360
       - JPG
       - PNG
       - MP3
@@ -17388,6 +17549,44 @@ components:
     konfig-generated-schema-components-schemas-DirectoryItem-properties-has_children:
       example: false
       type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-tags:
+      example: {}
+      properties: {}
+      type: object
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_size:
+      example: 1500
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_overlap:
+      example: 20
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-skip_embedding_generation:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-generate_sparse_vectors:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-prepend_filename_to_chunks:
+      example: false
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_files_on_connection:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_source_items:
+      example: true
+      type: boolean
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-data_source_tags:
+      example: {}
+      properties: {}
+      type: object
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-EmbeddingsAndChunksQueryInput-properties-include_vectors:
       example: false
@@ -20120,6 +20319,103 @@ components:
       x-konfig-is-parameter:
       - data_source_id
       - cursor
+    konfig-generated-schema-single-parameter-schema-post--integrations-document360:
+      properties:
+        tags:
+          example: {}
+          nullable: true
+          title: Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-tags
+        account_email:
+          description: "This email will be used to identify your carbon data source.\
+            \ It should have access to the \n        Document360 account you wish\
+            \ to connect."
+          title: Account Email
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        chunk_size:
+          default: 1500
+          example: 1500
+          nullable: true
+          title: Chunk Size
+          type: integer
+          x-konfig-original-example: 1500
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_size
+        chunk_overlap:
+          default: 20
+          example: 20
+          nullable: true
+          title: Chunk Overlap
+          type: integer
+          x-konfig-original-example: 20
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-chunk_overlap
+        skip_embedding_generation:
+          default: false
+          example: false
+          nullable: true
+          title: Skip Embedding Generation
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-skip_embedding_generation
+        embedding_model:
+          $ref: '#/components/schemas/EmbeddingGenerators'
+        generate_sparse_vectors:
+          default: false
+          example: false
+          nullable: true
+          title: Generate Sparse Vectors
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-generate_sparse_vectors
+        prepend_filename_to_chunks:
+          default: false
+          example: false
+          nullable: true
+          title: Prepend Filename To Chunks
+          type: boolean
+          x-konfig-original-example: false
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-prepend_filename_to_chunks
+        sync_files_on_connection:
+          default: true
+          example: true
+          nullable: true
+          title: Sync Files On Connection
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_files_on_connection
+        request_id:
+          nullable: true
+          title: Request Id
+          type: string
+        sync_source_items:
+          default: true
+          description: Enabling this flag will fetch all available content from the
+            source to be listed via list items endpoint
+          example: true
+          title: Sync Source Items
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-sync_source_items
+        file_sync_config:
+          $ref: '#/components/schemas/FileSyncConfigNullable'
+        data_source_tags:
+          description: "Tags to be associated with the data source. If the data source\
+            \ already has tags set, then an upsert will be performed."
+          example: {}
+          title: Data Source Tags
+          type: object
+          x-konfig-original-example: {}
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Document360ConnectRequest-properties-data_source_tags
+      required:
+      - access_token
+      - account_email
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-get--auth-v1-access_token:
       properties: {}
       type: object

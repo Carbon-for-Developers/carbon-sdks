@@ -61,6 +61,7 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.github.get_pull_requests`](#carbongithubget_pull_requests)
   * [`carbon.integrations.cancel`](#carbonintegrationscancel)
   * [`carbon.integrations.connect_data_source`](#carbonintegrationsconnect_data_source)
+  * [`carbon.integrations.connect_document360`](#carbonintegrationsconnect_document360)
   * [`carbon.integrations.connect_freshdesk`](#carbonintegrationsconnect_freshdesk)
   * [`carbon.integrations.connect_gitbook`](#carbonintegrationsconnect_gitbook)
   * [`carbon.integrations.connect_guru`](#carbonintegrationsconnect_guru)
@@ -2249,6 +2250,81 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/integrations/connect` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `carbon.integrations.connect_document360`<a id="carbonintegrationsconnect_document360"></a>
+
+You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted 
+here https://apidocs.document360.com/apidocs/api-token.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = carbon.integrations.connect_document360(
+  account_email: "string_example",
+  access_token: "string_example",
+  tags: {},
+  chunk_size: 1500,
+  chunk_overlap: 20,
+  skip_embedding_generation: false,
+  embedding_model: "OPENAI",
+  generate_sparse_vectors: false,
+  prepend_filename_to_chunks: false,
+  sync_files_on_connection: true,
+  request_id: "string_example",
+  sync_source_items: true,
+  file_sync_config: {
+        "auto_synced_source_types" => ["ARTICLE"],
+        "sync_attachments" => false,
+        "detect_audio_language" => false,
+        "transcription_service" => "assemblyai",
+        "include_speaker_labels" => false,
+        "split_rows" => false,
+        "generate_chunks_only" => false,
+        "store_file_only" => false,
+        "skip_file_processing" => false,
+    },
+  data_source_tags: {},
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### account_email: `String`<a id="account_email-string"></a>
+This email will be used to identify your carbon data source. It should have
+access to the Document360 account you wish to connect.
+
+##### access_token: `String`<a id="access_token-string"></a>
+##### tags: `Object`<a id="tags-object"></a>
+##### chunk_size: `Integer`<a id="chunk_size-integer"></a>
+##### chunk_overlap: `Integer`<a id="chunk_overlap-integer"></a>
+##### skip_embedding_generation: `Boolean`<a id="skip_embedding_generation-boolean"></a>
+##### embedding_model: [`EmbeddingGenerators`](./lib/carbon_ruby_sdk/models/embedding_generators.rb)<a id="embedding_model-embeddinggeneratorslibcarbon_ruby_sdkmodelsembedding_generatorsrb"></a>
+##### generate_sparse_vectors: `Boolean`<a id="generate_sparse_vectors-boolean"></a>
+##### prepend_filename_to_chunks: `Boolean`<a id="prepend_filename_to_chunks-boolean"></a>
+##### sync_files_on_connection: `Boolean`<a id="sync_files_on_connection-boolean"></a>
+##### request_id: `String`<a id="request_id-string"></a>
+##### sync_source_items: `Boolean`<a id="sync_source_items-boolean"></a>
+Enabling this flag will fetch all available content from the source to be listed
+via list items endpoint
+
+##### file_sync_config: [`FileSyncConfigNullable`](./lib/carbon_ruby_sdk/models/file_sync_config_nullable.rb)<a id="file_sync_config-filesyncconfignullablelibcarbon_ruby_sdkmodelsfile_sync_config_nullablerb"></a>
+##### data_source_tags: `Object`<a id="data_source_tags-object"></a>
+Tags to be associated with the data source. If the data source already has tags
+set, then an upsert will be performed.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/integrations/document360` `POST`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

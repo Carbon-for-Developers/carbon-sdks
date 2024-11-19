@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *GithubApi* | [**GetPullRequests**](docs/GithubApi.md#getpullrequests) | **Post** /integrations/data/github/pull_requests | Get Prs
 *IntegrationsApi* | [**Cancel**](docs/IntegrationsApi.md#cancel) | **Post** /integrations/items/sync/cancel | Cancel Data Source Items Sync
 *IntegrationsApi* | [**ConnectDataSource**](docs/IntegrationsApi.md#connectdatasource) | **Post** /integrations/connect | Connect Data Source
+*IntegrationsApi* | [**ConnectDocument360**](docs/IntegrationsApi.md#connectdocument360) | **Post** /integrations/document360 | Document360 Connect
 *IntegrationsApi* | [**ConnectFreshdesk**](docs/IntegrationsApi.md#connectfreshdesk) | **Post** /integrations/freshdesk | Freshdesk Connect
 *IntegrationsApi* | [**ConnectGitbook**](docs/IntegrationsApi.md#connectgitbook) | **Post** /integrations/gitbook | Gitbook Connect
 *IntegrationsApi* | [**ConnectGuru**](docs/IntegrationsApi.md#connectguru) | **Post** /integrations/guru | Guru Connect
@@ -210,6 +211,7 @@ Class | Method | HTTP request | Description
  - [DeleteUsersInput](docs/DeleteUsersInput.md)
  - [DeleteWhiteLabelRequest](docs/DeleteWhiteLabelRequest.md)
  - [DirectoryItem](docs/DirectoryItem.md)
+ - [Document360ConnectRequest](docs/Document360ConnectRequest.md)
  - [DocumentResponse](docs/DocumentResponse.md)
  - [DocumentResponseList](docs/DocumentResponseList.md)
  - [Email](docs/Email.md)

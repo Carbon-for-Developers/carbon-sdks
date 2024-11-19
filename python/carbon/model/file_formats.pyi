@@ -156,6 +156,10 @@ class FileFormats(
         return cls("GONG")
     
     @schemas.classproperty
+    def DOCUMENT360(cls):
+        return cls("DOCUMENT360")
+    
+    @schemas.classproperty
     def JPG(cls):
         return cls("JPG")
     

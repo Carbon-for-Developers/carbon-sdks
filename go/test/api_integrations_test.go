@@ -68,6 +68,39 @@ func Test_carbon_IntegrationsApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test IntegrationsApiService ConnectDocument360", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        fileSyncConfig := *carbon.NewFileSyncConfigNullable()
+        
+        document360ConnectRequest := *carbon.NewDocument360ConnectRequest(
+            "null",
+            "null",
+        )
+        document360ConnectRequest.SetTags({})
+        document360ConnectRequest.SetChunkSize(1500)
+        document360ConnectRequest.SetChunkOverlap(20)
+        document360ConnectRequest.SetSkipEmbeddingGeneration(false)
+        document360ConnectRequest.SetEmbeddingModel(null)
+        document360ConnectRequest.SetGenerateSparseVectors(false)
+        document360ConnectRequest.SetPrependFilenameToChunks(false)
+        document360ConnectRequest.SetSyncFilesOnConnection(true)
+        document360ConnectRequest.SetRequestId("null")
+        document360ConnectRequest.SetSyncSourceItems(true)
+        document360ConnectRequest.SetFileSyncConfig(fileSyncConfig)
+        document360ConnectRequest.SetDataSourceTags({})
+        
+        request := client.IntegrationsApi.ConnectDocument360(
+            document360ConnectRequest,
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test IntegrationsApiService ConnectFreshdesk", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         fileSyncConfig := *carbon.NewFileSyncConfigNullable()
