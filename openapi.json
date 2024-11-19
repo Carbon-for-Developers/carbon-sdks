@@ -1590,6 +1590,57 @@
         }
       }
     },
+    "/integrations/document360": {
+      "post": {
+        "tags": [
+          "Integrations"
+        ],
+        "summary": "Document360 Connect",
+        "description": "You will need an access token to connect your Document360 account. To obtain an access token, follow the steps highlighted \nhere https://apidocs.document360.com/apidocs/api-token.",
+        "operationId": "document360_connect_integrations_document360_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document360ConnectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericSuccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessToken": []
+          },
+          {
+            "apiKey": [],
+            "customerId": []
+          }
+        ]
+      }
+    },
     "/auth/v1/access_token": {
       "get": {
         "tags": [
@@ -6964,6 +7015,7 @@
           "SLACK",
           "GURU",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "PNG",
           "JPEG",
@@ -7122,6 +7174,147 @@
           "name"
         ],
         "title": "DirectoryItem"
+      },
+      "Document360ConnectRequest": {
+        "properties": {
+          "account_email": {
+            "type": "string",
+            "title": "Account Email",
+            "description": "This email will be used to identify your carbon data source. It should have access to the \n        Document360 account you wish to connect."
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "default": {}
+          },
+          "chunk_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Size",
+            "default": 1500
+          },
+          "chunk_overlap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chunk Overlap",
+            "default": 20
+          },
+          "skip_embedding_generation": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Embedding Generation",
+            "default": false
+          },
+          "embedding_model": {
+            "$ref": "#/components/schemas/EmbeddingGenerators",
+            "default": "OPENAI"
+          },
+          "generate_sparse_vectors": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Generate Sparse Vectors",
+            "default": false
+          },
+          "prepend_filename_to_chunks": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prepend Filename To Chunks",
+            "default": false
+          },
+          "sync_files_on_connection": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sync Files On Connection",
+            "default": true
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          },
+          "sync_source_items": {
+            "type": "boolean",
+            "title": "Sync Source Items",
+            "description": "Enabling this flag will fetch all available content from the source to be listed via list items endpoint",
+            "default": true
+          },
+          "file_sync_config": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FileSyncConfig"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to configure file syncing when sync_files_on_connection is set to true"
+          },
+          "data_source_tags": {
+            "type": "object",
+            "title": "Data Source Tags",
+            "description": "Tags to be associated with the data source. If the data source already has tags set, then an upsert will be performed.",
+            "default": {}
+          }
+        },
+        "type": "object",
+        "required": [
+          "account_email",
+          "access_token"
+        ],
+        "title": "Document360ConnectRequest"
       },
       "DocumentResponse": {
         "properties": {
@@ -7992,6 +8185,7 @@
           "GURU",
           "SERVICENOW",
           "GONG",
+          "DOCUMENT360",
           "JPG",
           "JPG",
           "PNG",
