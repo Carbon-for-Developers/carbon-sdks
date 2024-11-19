@@ -164,6 +164,8 @@ operationIds:
     post: Github_getPrFiles
   /integrations/data/github/pull_requests/{pull_number}:
     get: Github_getPr
+  /integrations/document360:
+    post: Integrations_connectDocument360
   /integrations/files/sync:
     post: Integrations_syncFiles
   /integrations/freshdesk:
