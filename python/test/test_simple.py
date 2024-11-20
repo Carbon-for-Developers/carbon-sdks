@@ -97,20 +97,20 @@ class TestSimple(unittest.TestCase):
         self.assertTrue(len(res.items) > 0)
         self.assertTrue(type(res.items[0].updated_at) is datetime)
 
-    async def test_white_label_create(self):
-        carbon = Carbon(
+    def test_white_label_create(self):
+        client = Carbon(
             api_key="YOUR_API_KEY",
             customer_id="YOUR_API_KEY",
             host="http://127.0.0.1:4010",
         )
-        res = await carbon.white_label.acreate(
+        res = client.white_label.create(
             body=[
                 {
                     "data_source_type": "SALESFORCE",
                     "credentials": {
                         "client_id": "CLIENT_ID",
                         "client_secret": "CLIENT_SECRET",
-                        "redirect_uri": f"https://carbon.test.app/integrations/SALESFORCE",
+                        "redirect_uri": "https://carbon.test.app/integrations/SALESFORCE",
                     },
                 }
             ],
