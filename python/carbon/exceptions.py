@@ -97,7 +97,6 @@ class ApiException(OpenApiException):
         return error_message
 
 
-
 class SchemaValidationError(OpenApiException):
     def __init__(self, validation_errors: typing.List[typing.Union[ApiValueError, ApiTypeError]]):
         """ Aggregates schema validation errors
@@ -148,7 +147,6 @@ class SchemaValidationError(OpenApiException):
         num_validation_errors = len(self.validation_errors)
         self.msg = "{} invalid argument{}. {}".format(num_validation_errors, "s" if num_validation_errors > 1 else "", sub_msg)
         super().__init__(self.msg)
-
 
 class AnyOfValidationError(OpenApiException):
     def __init__(self, error_list: typing.List[typing.Union[ApiTypeError, ApiValueError, SchemaValidationError]]):

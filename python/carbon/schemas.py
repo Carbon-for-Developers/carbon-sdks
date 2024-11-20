@@ -1877,7 +1877,7 @@ class ComposedBase(Discriminable):
                 continue
             try:
                 path_to_schemas = oneof_cls._validate_oapg(arg, validation_metadata=validation_metadata)
-            except (ApiValueError, ApiTypeError) as ex:
+            except (ApiValueError, ApiTypeError, SchemaValidationError) as ex:
                 if discriminated_cls is not None and oneof_cls is discriminated_cls:
                     raise ex
                 continue
@@ -1903,7 +1903,7 @@ class ComposedBase(Discriminable):
         validation_metadata: ValidationMetadata
     ):
         anyof_classes = []
-        exceptions: typing.List[typing.Union[ApiTypeError, ApiValueError, SchemaValidationError]] = []
+        exceptions: typing.List[typing.Union[ApiTypeError, ApiValueError]] = []
         path_to_schemas = defaultdict(set)
         for anyof_cls in cls.MetaOapg.any_of():
             if validation_metadata.validation_ran_earlier(anyof_cls):
