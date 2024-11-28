@@ -344,6 +344,8 @@ Class | Method | HTTP request | Description
  - [PRState](docs/PRState.md)
  - [PRStateInput](docs/PRStateInput.md)
  - [Pagination](docs/Pagination.md)
+ - [ParsedTextFormats](docs/ParsedTextFormats.md)
+ - [ParsedTextFormatsNullable](docs/ParsedTextFormatsNullable.md)
  - [PartialAccount](docs/PartialAccount.md)
  - [PartialAccountNullable](docs/PartialAccountNullable.md)
  - [PartialContact](docs/PartialContact.md)

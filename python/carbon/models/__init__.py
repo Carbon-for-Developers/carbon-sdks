@@ -232,6 +232,8 @@ from carbon.model.pr_order_by import PROrderBy
 from carbon.model.pr_state import PRState
 from carbon.model.pr_state_input import PRStateInput
 from carbon.model.pagination import Pagination
+from carbon.model.parsed_text_formats import ParsedTextFormats
+from carbon.model.parsed_text_formats_nullable import ParsedTextFormatsNullable
 from carbon.model.partial_account import PartialAccount
 from carbon.model.partial_account_nullable import PartialAccountNullable
 from carbon.model.partial_contact import PartialContact

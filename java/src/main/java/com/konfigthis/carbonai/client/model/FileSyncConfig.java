@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.HSNFileTypes;
+import com.konfigthis.carbonai.client.model.ParsedTextFormatsNullable;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -89,6 +90,10 @@ public class FileSyncConfig {
   public static final String SERIALIZED_NAME_SKIP_FILE_PROCESSING = "skip_file_processing";
   @SerializedName(SERIALIZED_NAME_SKIP_FILE_PROCESSING)
   private Boolean skipFileProcessing = false;
+
+  public static final String SERIALIZED_NAME_PARSED_TEXT_FORMAT = "parsed_text_format";
+  @SerializedName(SERIALIZED_NAME_PARSED_TEXT_FORMAT)
+  private ParsedTextFormatsNullable parsedTextFormat;
 
   public FileSyncConfig() {
   }
@@ -361,6 +366,35 @@ public class FileSyncConfig {
     this.skipFileProcessing = skipFileProcessing;
   }
 
+
+  public FileSyncConfig parsedTextFormat(ParsedTextFormatsNullable parsedTextFormat) {
+    
+    
+    
+    
+    this.parsedTextFormat = parsedTextFormat;
+    return this;
+  }
+
+   /**
+   * Get parsedTextFormat
+   * @return parsedTextFormat
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ParsedTextFormatsNullable getParsedTextFormat() {
+    return parsedTextFormat;
+  }
+
+
+  public void setParsedTextFormat(ParsedTextFormatsNullable parsedTextFormat) {
+    
+    
+    
+    this.parsedTextFormat = parsedTextFormat;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -424,7 +458,8 @@ public class FileSyncConfig {
         Objects.equals(this.splitRows, fileSyncConfig.splitRows) &&
         Objects.equals(this.generateChunksOnly, fileSyncConfig.generateChunksOnly) &&
         Objects.equals(this.storeFileOnly, fileSyncConfig.storeFileOnly) &&
-        Objects.equals(this.skipFileProcessing, fileSyncConfig.skipFileProcessing)&&
+        Objects.equals(this.skipFileProcessing, fileSyncConfig.skipFileProcessing) &&
+        Objects.equals(this.parsedTextFormat, fileSyncConfig.parsedTextFormat)&&
         Objects.equals(this.additionalProperties, fileSyncConfig.additionalProperties);
   }
 
@@ -434,7 +469,7 @@ public class FileSyncConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, storeFileOnly, skipFileProcessing, additionalProperties);
+    return Objects.hash(autoSyncedSourceTypes, syncAttachments, detectAudioLanguage, transcriptionService, includeSpeakerLabels, splitRows, generateChunksOnly, storeFileOnly, skipFileProcessing, parsedTextFormat, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -457,6 +492,7 @@ public class FileSyncConfig {
     sb.append("    generateChunksOnly: ").append(toIndentedString(generateChunksOnly)).append("\n");
     sb.append("    storeFileOnly: ").append(toIndentedString(storeFileOnly)).append("\n");
     sb.append("    skipFileProcessing: ").append(toIndentedString(skipFileProcessing)).append("\n");
+    sb.append("    parsedTextFormat: ").append(toIndentedString(parsedTextFormat)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -489,6 +525,7 @@ public class FileSyncConfig {
     openapiFields.add("generate_chunks_only");
     openapiFields.add("store_file_only");
     openapiFields.add("skip_file_processing");
+    openapiFields.add("parsed_text_format");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

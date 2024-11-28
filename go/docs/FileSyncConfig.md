@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **GenerateChunksOnly** | Pointer to **bool** | If this flag is enabled, the file will be chunked and stored with Carbon,           but no embeddings will be generated. This overrides the skip_embedding_generation flag. | [optional] [default to false]
 **StoreFileOnly** | Pointer to **bool** | If this flag is enabled, the file will be stored with Carbon, but no chunks or embeddings will be generated.            This overrides the skip_embedding_generation and generate_chunks_only flags. | [optional] [default to false]
 **SkipFileProcessing** | Pointer to **bool** | Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status. | [optional] [default to false]
+**ParsedTextFormat** | Pointer to [**NullableParsedTextFormatsNullable**](ParsedTextFormatsNullable.md) |  | [optional] 
 
 ## Methods
 
@@ -268,6 +269,41 @@ SetSkipFileProcessing sets SkipFileProcessing field to given value.
 
 HasSkipFileProcessing returns a boolean if a field has been set.
 
+### GetParsedTextFormat
+
+`func (o *FileSyncConfig) GetParsedTextFormat() ParsedTextFormatsNullable`
+
+GetParsedTextFormat returns the ParsedTextFormat field if non-nil, zero value otherwise.
+
+### GetParsedTextFormatOk
+
+`func (o *FileSyncConfig) GetParsedTextFormatOk() (*ParsedTextFormatsNullable, bool)`
+
+GetParsedTextFormatOk returns a tuple with the ParsedTextFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParsedTextFormat
+
+`func (o *FileSyncConfig) SetParsedTextFormat(v ParsedTextFormatsNullable)`
+
+SetParsedTextFormat sets ParsedTextFormat field to given value.
+
+### HasParsedTextFormat
+
+`func (o *FileSyncConfig) HasParsedTextFormat() bool`
+
+HasParsedTextFormat returns a boolean if a field has been set.
+
+### SetParsedTextFormatNil
+
+`func (o *FileSyncConfig) SetParsedTextFormatNil(b bool)`
+
+ SetParsedTextFormatNil sets the value for ParsedTextFormat to be an explicit nil
+
+### UnsetParsedTextFormat
+`func (o *FileSyncConfig) UnsetParsedTextFormat()`
+
+UnsetParsedTextFormat ensures that no value is present for ParsedTextFormat, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

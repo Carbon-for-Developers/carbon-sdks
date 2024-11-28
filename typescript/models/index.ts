@@ -182,6 +182,8 @@ export * from './prorder-by';
 export * from './prstate';
 export * from './prstate-input';
 export * from './pagination';
+export * from './parsed-text-formats';
+export * from './parsed-text-formats-nullable';
 export * from './partial-account';
 export * from './partial-account-nullable';
 export * from './partial-contact';

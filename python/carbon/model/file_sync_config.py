@@ -49,6 +49,10 @@ class FileSyncConfig(
             generate_chunks_only = schemas.BoolSchema
             store_file_only = schemas.BoolSchema
             skip_file_processing = schemas.BoolSchema
+        
+            @staticmethod
+            def parsed_text_format() -> typing.Type['ParsedTextFormatsNullable']:
+                return ParsedTextFormatsNullable
             __annotations__ = {
                 "auto_synced_source_types": auto_synced_source_types,
                 "sync_attachments": sync_attachments,
@@ -59,6 +63,7 @@ class FileSyncConfig(
                 "generate_chunks_only": generate_chunks_only,
                 "store_file_only": store_file_only,
                 "skip_file_processing": skip_file_processing,
+                "parsed_text_format": parsed_text_format,
             }
     
     @typing.overload
@@ -89,9 +94,12 @@ class FileSyncConfig(
     def __getitem__(self, name: typing_extensions.Literal["skip_file_processing"]) -> MetaOapg.properties.skip_file_processing: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["parsed_text_format"]) -> 'ParsedTextFormatsNullable': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "store_file_only", "skip_file_processing", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "store_file_only", "skip_file_processing", "parsed_text_format", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -124,9 +132,12 @@ class FileSyncConfig(
     def get_item_oapg(self, name: typing_extensions.Literal["skip_file_processing"]) -> typing.Union[MetaOapg.properties.skip_file_processing, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["parsed_text_format"]) -> typing.Union['ParsedTextFormatsNullable', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "store_file_only", "skip_file_processing", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["auto_synced_source_types", "sync_attachments", "detect_audio_language", "transcription_service", "include_speaker_labels", "split_rows", "generate_chunks_only", "store_file_only", "skip_file_processing", "parsed_text_format", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -142,6 +153,7 @@ class FileSyncConfig(
         generate_chunks_only: typing.Union[MetaOapg.properties.generate_chunks_only, bool, schemas.Unset] = schemas.unset,
         store_file_only: typing.Union[MetaOapg.properties.store_file_only, bool, schemas.Unset] = schemas.unset,
         skip_file_processing: typing.Union[MetaOapg.properties.skip_file_processing, bool, schemas.Unset] = schemas.unset,
+        parsed_text_format: typing.Union['ParsedTextFormatsNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'FileSyncConfig':
@@ -157,9 +169,11 @@ class FileSyncConfig(
             generate_chunks_only=generate_chunks_only,
             store_file_only=store_file_only,
             skip_file_processing=skip_file_processing,
+            parsed_text_format=parsed_text_format,
             _configuration=_configuration,
             **kwargs,
         )
 
 from carbon.model.file_sync_config_auto_synced_source_types import FileSyncConfigAutoSyncedSourceTypes
+from carbon.model.parsed_text_formats_nullable import ParsedTextFormatsNullable
 from carbon.model.transcription_service_nullable import TranscriptionServiceNullable
