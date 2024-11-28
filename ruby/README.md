@@ -2287,6 +2287,7 @@ result = carbon.integrations.connect_document360(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   data_source_tags: {},
 )
@@ -2365,6 +2366,7 @@ result = carbon.integrations.connect_freshdesk(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   data_source_tags: {},
 )
@@ -2439,6 +2441,7 @@ result = carbon.integrations.connect_gitbook(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   data_source_tags: {},
 )
@@ -2511,6 +2514,7 @@ result = carbon.integrations.connect_guru(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   data_source_tags: {},
 )
@@ -2655,6 +2659,7 @@ result = carbon.integrations.get_oauth_url(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   automatically_open_file_picker: true,
   gong_account_email: "string_example",
@@ -3087,6 +3092,7 @@ result = carbon.integrations.sync_azure_blob_files(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
 )
 p result
@@ -3220,6 +3226,7 @@ result = carbon.integrations.sync_confluence(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
 )
 p result
@@ -3330,6 +3337,7 @@ result = carbon.integrations.sync_files(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
 )
 p result
@@ -3447,6 +3455,7 @@ result = carbon.integrations.sync_gitbook(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
 )
 p result
@@ -3556,6 +3565,7 @@ result = carbon.integrations.sync_gmail(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   incremental_sync: false,
 )
@@ -3680,6 +3690,7 @@ result = carbon.integrations.sync_outlook(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
   incremental_sync: false,
 )
@@ -3833,6 +3844,7 @@ result = carbon.integrations.sync_s3_files(
         "generate_chunks_only" => false,
         "store_file_only" => false,
         "skip_file_processing" => false,
+        "parsed_text_format" => "PLAIN_TEXT",
     },
 )
 p result

@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.carbonai.client.model.HSNFileTypes;
+import com.konfigthis.carbonai.client.model.ParsedTextFormatsNullable;
 import com.konfigthis.carbonai.client.model.TranscriptionServiceNullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -113,6 +114,14 @@ public class FileSyncConfigTest {
     @Test
     public void skipFileProcessingTest() {
         // TODO: test skipFileProcessing
+    }
+
+    /**
+     * Test the property 'parsedTextFormat'
+     */
+    @Test
+    public void parsedTextFormatTest() {
+        // TODO: test parsedTextFormat
     }
 
 }

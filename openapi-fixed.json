@@ -7826,6 +7826,9 @@
             "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "type": "boolean",
             "default": false
+          },
+          "parsed_text_format": {
+            "$ref": "#/components/schemas/ParsedTextFormatsNullable"
           }
         },
         "type": "object"
@@ -11316,6 +11319,14 @@
         },
         "type": "object"
       },
+      "ParsedTextFormats": {
+        "title": "ParsedTextFormats",
+        "type": "string",
+        "enum": [
+          "PLAIN_TEXT",
+          "MARKDOWN"
+        ]
+      },
       "PartialAccount": {
         "title": "PartialAccount",
         "properties": {
@@ -14571,6 +14582,9 @@
             "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "type": "boolean",
             "default": false
+          },
+          "parsed_text_format": {
+            "$ref": "#/components/schemas/ParsedTextFormatsNullable"
           }
         },
         "type": "object",
@@ -14788,6 +14802,16 @@
           "WEBM",
           "EML",
           "MSG"
+        ],
+        "nullable": true
+      },
+      "ParsedTextFormatsNullable": {
+        "title": "ParsedTextFormats",
+        "description": "The format in which the text content of the file should be parsed. Notion files are the only files\n        that support this feature. The default parsed text format is plain text.",
+        "type": "string",
+        "enum": [
+          "PLAIN_TEXT",
+          "MARKDOWN"
         ],
         "nullable": true
       },

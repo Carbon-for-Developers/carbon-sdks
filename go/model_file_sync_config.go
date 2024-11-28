@@ -33,6 +33,7 @@ type FileSyncConfig struct {
 	StoreFileOnly *bool `json:"store_file_only,omitempty"`
 	// Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
 	SkipFileProcessing *bool `json:"skip_file_processing,omitempty"`
+	ParsedTextFormat NullableParsedTextFormatsNullable `json:"parsed_text_format,omitempty"`
 }
 
 // NewFileSyncConfig instantiates a new FileSyncConfig object
@@ -378,6 +379,48 @@ func (o *FileSyncConfig) SetSkipFileProcessing(v bool) {
 	o.SkipFileProcessing = &v
 }
 
+// GetParsedTextFormat returns the ParsedTextFormat field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FileSyncConfig) GetParsedTextFormat() ParsedTextFormatsNullable {
+	if o == nil || isNil(o.ParsedTextFormat.Get()) {
+		var ret ParsedTextFormatsNullable
+		return ret
+	}
+	return *o.ParsedTextFormat.Get()
+}
+
+// GetParsedTextFormatOk returns a tuple with the ParsedTextFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FileSyncConfig) GetParsedTextFormatOk() (*ParsedTextFormatsNullable, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return o.ParsedTextFormat.Get(), o.ParsedTextFormat.IsSet()
+}
+
+// HasParsedTextFormat returns a boolean if a field has been set.
+func (o *FileSyncConfig) HasParsedTextFormat() bool {
+	if o != nil && o.ParsedTextFormat.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParsedTextFormat gets a reference to the given NullableParsedTextFormatsNullable and assigns it to the ParsedTextFormat field.
+func (o *FileSyncConfig) SetParsedTextFormat(v ParsedTextFormatsNullable) {
+	o.ParsedTextFormat.Set(&v)
+}
+// SetParsedTextFormatNil sets the value for ParsedTextFormat to be an explicit nil
+func (o *FileSyncConfig) SetParsedTextFormatNil() {
+	o.ParsedTextFormat.Set(nil)
+}
+
+// UnsetParsedTextFormat ensures that no value is present for ParsedTextFormat, not even an explicit nil
+func (o *FileSyncConfig) UnsetParsedTextFormat() {
+	o.ParsedTextFormat.Unset()
+}
+
 func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AutoSyncedSourceTypes) {
@@ -406,6 +449,9 @@ func (o FileSyncConfig) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SkipFileProcessing) {
 		toSerialize["skip_file_processing"] = o.SkipFileProcessing
+	}
+	if o.ParsedTextFormat.IsSet() {
+		toSerialize["parsed_text_format"] = o.ParsedTextFormat.Get()
 	}
 	return json.Marshal(toSerialize)
 }

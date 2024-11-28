@@ -278,6 +278,8 @@ from carbon.pydantic.pr_order_by import PROrderBy
 from carbon.pydantic.pr_state import PRState
 from carbon.pydantic.pr_state_input import PRStateInput
 from carbon.pydantic.pagination import Pagination
+from carbon.pydantic.parsed_text_formats import ParsedTextFormats
+from carbon.pydantic.parsed_text_formats_nullable import ParsedTextFormatsNullable
 from carbon.pydantic.partial_account import PartialAccount
 from carbon.pydantic.partial_account_nullable import PartialAccountNullable
 from carbon.pydantic.partial_contact import PartialContact

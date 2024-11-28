@@ -5790,6 +5790,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -6429,6 +6430,7 @@ components:
             include_speaker_labels: false
             split_rows: false
             sync_attachments: false
+            parsed_text_format: null
             transcription_service: null
             skip_file_processing: false
             store_file_only: false
@@ -7367,6 +7369,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -8299,6 +8302,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfig-properties-skip_file_processing
+        parsed_text_format:
+          $ref: '#/components/schemas/ParsedTextFormatsNullable'
       title: FileSyncConfig
       type: object
     FilesInput:
@@ -8402,6 +8407,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -8815,6 +8821,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -8950,6 +8957,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -9129,6 +9137,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -9329,6 +9338,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -10931,6 +10941,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -12456,6 +12467,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -12784,6 +12796,12 @@ components:
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Pagination-properties-starting_id
       title: Pagination
       type: object
+    ParsedTextFormats:
+      enum:
+      - PLAIN_TEXT
+      - MARKDOWN
+      title: ParsedTextFormats
+      type: string
     PartialAccount:
       properties:
         id:
@@ -13616,6 +13634,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -14311,6 +14330,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -14449,6 +14469,7 @@ components:
           include_speaker_labels: false
           split_rows: false
           sync_attachments: false
+          parsed_text_format: null
           transcription_service: null
           skip_file_processing: false
           store_file_only: false
@@ -16273,6 +16294,7 @@ components:
         include_speaker_labels: false
         split_rows: false
         sync_attachments: false
+        parsed_text_format: null
         transcription_service: null
         skip_file_processing: false
         store_file_only: false
@@ -16367,6 +16389,8 @@ components:
           type: boolean
           x-konfig-original-example: false
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-FileSyncConfigNullable-properties-skip_file_processing
+        parsed_text_format:
+          $ref: '#/components/schemas/ParsedTextFormatsNullable'
       title: FileSyncConfig
       type: object
     CommitUserNullable:
@@ -16572,6 +16596,16 @@ components:
       - MSG
       nullable: true
       title: FileFormats
+      type: string
+    ParsedTextFormatsNullable:
+      description: |-
+        The format in which the text content of the file should be parsed. Notion files are the only files
+                that support this feature. The default parsed text format is plain text.
+      enum:
+      - PLAIN_TEXT
+      - MARKDOWN
+      nullable: true
+      title: ParsedTextFormats
       type: string
     HybridSearchTuningParamsNullable:
       description: Hybrid search tuning parameters. See the endpoint description for

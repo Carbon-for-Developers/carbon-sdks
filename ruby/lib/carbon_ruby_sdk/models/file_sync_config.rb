@@ -37,6 +37,9 @@ module Carbon
     # Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
     attr_accessor :skip_file_processing
 
+    # The format in which the text content of the file should be parsed. Notion files are the only files         that support this feature. The default parsed text format is plain text.
+    attr_accessor :parsed_text_format
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -48,7 +51,8 @@ module Carbon
         :'split_rows' => :'split_rows',
         :'generate_chunks_only' => :'generate_chunks_only',
         :'store_file_only' => :'store_file_only',
-        :'skip_file_processing' => :'skip_file_processing'
+        :'skip_file_processing' => :'skip_file_processing',
+        :'parsed_text_format' => :'parsed_text_format'
       }
     end
 
@@ -68,7 +72,8 @@ module Carbon
         :'split_rows' => :'Boolean',
         :'generate_chunks_only' => :'Boolean',
         :'store_file_only' => :'Boolean',
-        :'skip_file_processing' => :'Boolean'
+        :'skip_file_processing' => :'Boolean',
+        :'parsed_text_format' => :'ParsedTextFormatsNullable'
       }
     end
 
@@ -76,6 +81,7 @@ module Carbon
     def self.openapi_nullable
       Set.new([
         :'transcription_service',
+        :'parsed_text_format'
       ])
     end
 
@@ -145,6 +151,10 @@ module Carbon
       else
         self.skip_file_processing = false
       end
+
+      if attributes.key?(:'parsed_text_format')
+        self.parsed_text_format = attributes[:'parsed_text_format']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -173,7 +183,8 @@ module Carbon
           split_rows == o.split_rows &&
           generate_chunks_only == o.generate_chunks_only &&
           store_file_only == o.store_file_only &&
-          skip_file_processing == o.skip_file_processing
+          skip_file_processing == o.skip_file_processing &&
+          parsed_text_format == o.parsed_text_format
     end
 
     # @see the `==` method
@@ -185,7 +196,7 @@ module Carbon
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only, store_file_only, skip_file_processing].hash
+      [auto_synced_source_types, sync_attachments, detect_audio_language, transcription_service, include_speaker_labels, split_rows, generate_chunks_only, store_file_only, skip_file_processing, parsed_text_format].hash
     end
 
     # Builds the object from hash

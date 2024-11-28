@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from carbon.type.file_sync_config_nullable_auto_synced_source_types import FileSyncConfigNullableAutoSyncedSourceTypes
+from carbon.type.parsed_text_formats_nullable import ParsedTextFormatsNullable
 from carbon.type.transcription_service_nullable import TranscriptionServiceNullable
 
 class RequiredFileSyncConfigNullable(TypedDict):
@@ -45,6 +46,8 @@ class OptionalFileSyncConfigNullable(TypedDict, total=False):
 
     # Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
     skip_file_processing: bool
+
+    parsed_text_format: typing.Optional[ParsedTextFormatsNullable]
 
 class FileSyncConfigNullable(RequiredFileSyncConfigNullable, OptionalFileSyncConfigNullable):
     pass

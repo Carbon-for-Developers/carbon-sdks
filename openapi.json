@@ -8368,6 +8368,17 @@
             "title": "Skip File Processing",
             "description": "Setting this flag will create a new file record with Carbon but skip any and all processing. \n        This means that we do not download the remote file content or generate any chunks or embeddings. We will store\n        some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this \n        flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to \n        READY_TO_SYNC status.",
             "default": false
+          },
+          "parsed_text_format": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ParsedTextFormats"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The format in which the text content of the file should be parsed. Notion files are the only files\n        that support this feature. The default parsed text format is plain text."
           }
         },
         "type": "object",
@@ -13162,6 +13173,14 @@
         },
         "type": "object",
         "title": "Pagination"
+      },
+      "ParsedTextFormats": {
+        "type": "string",
+        "enum": [
+          "PLAIN_TEXT",
+          "MARKDOWN"
+        ],
+        "title": "ParsedTextFormats"
       },
       "PartialAccount": {
         "properties": {

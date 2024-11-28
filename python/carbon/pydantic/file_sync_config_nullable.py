@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.file_sync_config_nullable_auto_synced_source_types import FileSyncConfigNullableAutoSyncedSourceTypes
+from carbon.pydantic.parsed_text_formats_nullable import ParsedTextFormatsNullable
 from carbon.pydantic.transcription_service_nullable import TranscriptionServiceNullable
 
 class FileSyncConfigNullable(BaseModel):
@@ -43,6 +44,8 @@ class FileSyncConfigNullable(BaseModel):
 
     # Setting this flag will create a new file record with Carbon but skip any and all processing.          This means that we do not download the remote file content or generate any chunks or embeddings. We will store         some metadata like name, external id, and external URL depending on the source you are syncing from. Note that this          flag overrides both skip_embedding_generation and generate_chunks_only flags. The file will be moved to          READY_TO_SYNC status.
     skip_file_processing: typing.Optional[bool] = Field(None, alias='skip_file_processing')
+
+    parsed_text_format: typing.Optional[ParsedTextFormatsNullable] = Field(None, alias='parsed_text_format')
 
     model_config = ConfigDict(
         protected_namespaces=(),
