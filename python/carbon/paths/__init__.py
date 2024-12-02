@@ -64,7 +64,6 @@ class PathValues(str, enum.Enum):
     RAW_FILE_FILE_ID = "/raw_file/{file_id}"
     PARSED_FILE_FILE_ID = "/parsed_file/{file_id}"
     USER_FILES = "/user_files"
-    DELETEFILE_FILE_ID = "/deletefile/{file_id}"
     DELETE_FILES = "/delete_files"
     WEBHOOKS = "/webhooks"
     ADD_WEBHOOK = "/add_webhook"

@@ -10,7 +10,6 @@
 """
 
 from carbon.paths.create_user_file_tags.post import CreateUserFileTagsRaw
-from carbon.paths.deletefile_file_id.delete import DeleteRaw
 from carbon.paths.delete_user_file_tags.post import DeleteFileTagsRaw
 from carbon.paths.delete_files.post import DeleteManyRaw
 from carbon.paths.delete_files_v2.post import DeleteV2Raw
@@ -28,7 +27,6 @@ from carbon.paths.upload_text.post import UploadTextRaw
 
 class FilesApiRaw(
     CreateUserFileTagsRaw,
-    DeleteRaw,
     DeleteFileTagsRaw,
     DeleteManyRaw,
     DeleteV2Raw,

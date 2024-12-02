@@ -42,7 +42,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.uploadChunksAndEmbeddings`](#carbonembeddingsuploadchunksandembeddings)
   * [`carbon.files.createUserFileTags`](#carbonfilescreateuserfiletags)
-  * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.deleteFileTags`](#carbonfilesdeletefiletags)
   * [`carbon.files.deleteMany`](#carbonfilesdeletemany)
   * [`carbon.files.deleteV2`](#carbonfilesdeletev2)
@@ -1214,37 +1213,6 @@ UserFile result = client
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/create_user_file_tags` `POST`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
-### `carbon.files.delete`<a id="carbonfilesdelete"></a>
-![Deprecated](https://img.shields.io/badge/deprecated-yellow)
-
-Delete File Endpoint
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```java
-GenericSuccessResponse result = client
-        .files
-        .delete(fileId)
-        .execute();
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### fileId: `Integer`<a id="fileid-integer"></a>
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[GenericSuccessResponse](./src/main/java/com/konfigthis/client/model/GenericSuccessResponse.java)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/deletefile/{file_id}` `DELETE`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

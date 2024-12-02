@@ -43,11 +43,6 @@ public class FilesApi extends FilesApiGenerated {
             super(tags, organizationUserFileId);
         }
     }
-    public class DeleteRequestBuilder extends DeleteRequestBuilderGenerated {
-        public DeleteRequestBuilder(Integer fileId) {
-            super(fileId);
-        }
-    }
     public class DeleteFileTagsRequestBuilder extends DeleteFileTagsRequestBuilderGenerated {
         public DeleteFileTagsRequestBuilder(List<String> tags, Integer organizationUserFileId) {
             super(tags, organizationUserFileId);

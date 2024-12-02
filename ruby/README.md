@@ -38,7 +38,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.upload_chunks_and_embeddings`](#carbonembeddingsupload_chunks_and_embeddings)
   * [`carbon.files.create_user_file_tags`](#carbonfilescreate_user_file_tags)
-  * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.delete_file_tags`](#carbonfilesdelete_file_tags)
   * [`carbon.files.delete_many`](#carbonfilesdelete_many)
   * [`carbon.files.delete_v2`](#carbonfilesdelete_v2)
@@ -1110,36 +1109,6 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/create_user_file_tags` `POST`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
-### `carbon.files.delete`<a id="carbonfilesdelete"></a>
-![Deprecated](https://img.shields.io/badge/deprecated-yellow)
-
-Delete File Endpoint
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```ruby
-result = carbon.files.delete(
-  file_id: 1,
-)
-p result
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### file_id: `Integer`<a id="file_id-integer"></a>
-#### 🔄 Return<a id="🔄-return"></a>
-
-[GenericSuccessResponse](./lib/carbon_ruby_sdk/models/generic_success_response.rb)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/deletefile/{file_id}` `DELETE`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

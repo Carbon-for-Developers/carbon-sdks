@@ -37,7 +37,6 @@ Connect external data to LLMs, no matter the source.
   * [`carbon.embeddings.list`](#carbonembeddingslist)
   * [`carbon.embeddings.uploadChunksAndEmbeddings`](#carbonembeddingsuploadchunksandembeddings)
   * [`carbon.files.createUserFileTags`](#carbonfilescreateuserfiletags)
-  * [`carbon.files.delete`](#carbonfilesdelete)
   * [`carbon.files.deleteFileTags`](#carbonfilesdeletefiletags)
   * [`carbon.files.deleteMany`](#carbonfilesdeletemany)
   * [`carbon.files.deleteV2`](#carbonfilesdeletev2)
@@ -1107,36 +1106,6 @@ const createUserFileTagsResponse = await carbon.files.createUserFileTags({
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/create_user_file_tags` `POST`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
-### `carbon.files.delete`<a id="carbonfilesdelete"></a>
-![Deprecated](https://img.shields.io/badge/deprecated-yellow)
-
-Delete File Endpoint
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```typescript
-const deleteResponse = await carbon.files.delete({
-  fileId: 1,
-});
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### fileId: `number`<a id="fileid-number"></a>
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[GenericSuccessResponse](./models/generic-success-response.ts)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/deletefile/{file_id}` `DELETE`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

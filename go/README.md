@@ -78,7 +78,6 @@ Class | Method | HTTP request | Description
 *EmbeddingsApi* | [**List**](docs/EmbeddingsApi.md#list) | **Post** /list_chunks_and_embeddings | Retrieve Embeddings And Content V2
 *EmbeddingsApi* | [**UploadChunksAndEmbeddings**](docs/EmbeddingsApi.md#uploadchunksandembeddings) | **Post** /upload_chunks_and_embeddings | Upload Chunks And Embeddings
 *FilesApi* | [**CreateUserFileTags**](docs/FilesApi.md#createuserfiletags) | **Post** /create_user_file_tags | Create File Tags
-*FilesApi* | [**Delete**](docs/FilesApi.md#delete) | **Delete** /deletefile/{file_id} | Delete File Endpoint
 *FilesApi* | [**DeleteFileTags**](docs/FilesApi.md#deletefiletags) | **Post** /delete_user_file_tags | Delete File Tags
 *FilesApi* | [**DeleteMany**](docs/FilesApi.md#deletemany) | **Post** /delete_files | Delete Files Endpoint
 *FilesApi* | [**DeleteV2**](docs/FilesApi.md#deletev2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint

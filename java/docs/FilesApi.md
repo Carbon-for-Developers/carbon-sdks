@@ -5,7 +5,6 @@ All URIs are relative to *https://api.carbon.ai*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createUserFileTags**](FilesApi.md#createUserFileTags) | **POST** /create_user_file_tags | Create File Tags |
-| [**delete**](FilesApi.md#delete) | **DELETE** /deletefile/{file_id} | Delete File Endpoint |
 | [**deleteFileTags**](FilesApi.md#deleteFileTags) | **POST** /delete_user_file_tags | Delete File Tags |
 | [**deleteMany**](FilesApi.md#deleteMany) | **POST** /delete_files | Delete Files Endpoint |
 | [**deleteV2**](FilesApi.md#deleteV2) | **POST** /delete_files_v2 | Delete Files V2 Endpoint |
@@ -149,100 +148,6 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Successful Response |  -  |
-
-<a name="delete"></a>
-# **delete**
-> GenericSuccessResponse delete(fileId).execute();
-
-Delete File Endpoint
-
-### Example
-```java
-import com.konfigthis.carbonai.client.ApiClient;
-import com.konfigthis.carbonai.client.ApiException;
-import com.konfigthis.carbonai.client.ApiResponse;
-import com.konfigthis.carbonai.client.Carbon;
-import com.konfigthis.carbonai.client.Configuration;
-import com.konfigthis.carbonai.client.auth.*;
-import com.konfigthis.carbonai.client.model.*;
-import com.konfigthis.carbonai.client.api.FilesApi;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-public class Example {
-  public static void main(String[] args) {
-    Configuration configuration = new Configuration();
-    configuration.host = "https://api.carbon.ai";
-    
-    configuration.accessToken  = "YOUR API KEY";
-    
-    configuration.apiKey  = "YOUR API KEY";
-    
-    configuration.customerId  = "YOUR API KEY";
-    Carbon client = new Carbon(configuration);
-    Integer fileId = 56;
-    try {
-      GenericSuccessResponse result = client
-              .files
-              .delete(fileId)
-              .execute();
-      System.out.println(result);
-      System.out.println(result.getSuccess());
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilesApi#delete");
-      System.err.println("Status code: " + e.getStatusCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-
-    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
-    try {
-      ApiResponse<GenericSuccessResponse> response = client
-              .files
-              .delete(fileId)
-              .executeWithHttpInfo();
-      System.out.println(response.getResponseBody());
-      System.out.println(response.getResponseHeaders());
-      System.out.println(response.getStatusCode());
-      System.out.println(response.getRoundTripTime());
-      System.out.println(response.getRequest());
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilesApi#delete");
-      System.err.println("Status code: " + e.getStatusCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **fileId** | **Integer**|  | |
-
-### Return type
-
-[**GenericSuccessResponse**](GenericSuccessResponse.md)
-
-### Authorization
-
-[accessToken](../README.md#accessToken), [apiKey](../README.md#apiKey), [customerId](../README.md#customerId)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
