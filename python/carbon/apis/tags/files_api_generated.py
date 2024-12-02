@@ -9,7 +9,6 @@
 """
 
 from carbon.paths.create_user_file_tags.post import CreateUserFileTags
-from carbon.paths.deletefile_file_id.delete import Delete
 from carbon.paths.delete_user_file_tags.post import DeleteFileTags
 from carbon.paths.delete_files.post import DeleteMany
 from carbon.paths.delete_files_v2.post import DeleteV2
@@ -28,7 +27,6 @@ from carbon.apis.tags.files_api_raw import FilesApiRaw
 
 class FilesApiGenerated(
     CreateUserFileTags,
-    Delete,
     DeleteFileTags,
     DeleteMany,
     DeleteV2,

@@ -382,13 +382,6 @@ export const operationParameterMap: Record<string, Entry> = {
             },
         ]
     },
-    '/deletefile/{file_id}-DELETE': {
-        parameters: [
-            {
-                name: 'file_id'
-            },
-        ]
-    },
     '/delete_user_file_tags-POST': {
         parameters: [
             {

@@ -84,19 +84,6 @@ public class FilesApiTest {
     }
 
     /**
-     * Delete File Endpoint
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void deleteTest() throws ApiException {
-        Integer fileId = null;
-        GenericSuccessResponse response = api.delete(fileId)
-                .execute();
-        // TODO: test validations
-    }
-
-    /**
      * Delete File Tags
      *
      * @throws ApiException if the Api call fails

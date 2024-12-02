@@ -143,55 +143,6 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Delete File Endpoint
-         * @param {number} fileId 
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        delete: async (fileId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'fileId' is not null or undefined
-            assertParamExists('delete', 'fileId', fileId)
-            const localVarPath = `/deletefile/{file_id}`
-                .replace(`{${"file_id"}}`, encodeURIComponent(String(fileId !== undefined ? fileId : `-file_id-`)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions: AxiosRequestConfig = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication accessToken required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "accessToken", configuration, prefix: "Token " })
-            // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "authorization", keyParamName: "apiKey", configuration, prefix: "Bearer " })
-            // authentication customerId required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "customer-id", keyParamName: "customerId", configuration })
-
-    
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            requestBeforeHook({
-                queryParameters: localVarQueryParameter,
-                requestConfig: localVarRequestOptions,
-                path: localVarPath,
-                configuration,
-                pathTemplate: '/deletefile/{file_id}',
-                httpMethod: 'DELETE'
-            });
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Delete File Tags
          * @param {OrganizationUserFileTagsRemove} organizationUserFileTagsRemove 
          * @param {*} [options] Override http request option.
@@ -1037,18 +988,6 @@ export const FilesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Delete File Endpoint
-         * @param {FilesApiDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(requestParameters.fileId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Delete File Tags
          * @param {FilesApiDeleteFileTagsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1305,17 +1244,6 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Delete File Endpoint
-         * @param {FilesApiDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig): AxiosPromise<GenericSuccessResponse> {
-            return localVarFp.delete(requestParameters, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Delete File Tags
          * @param {FilesApiDeleteFileTagsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -1459,22 +1387,6 @@ export const FilesApiFactory = function (configuration?: Configuration, basePath
 export type FilesApiCreateUserFileTagsRequest = {
     
 } & OrganizationUserFileTagCreate
-
-/**
- * Request parameters for delete operation in FilesApi.
- * @export
- * @interface FilesApiDeleteRequest
- */
-export type FilesApiDeleteRequest = {
-    
-    /**
-    * 
-    * @type {number}
-    * @memberof FilesApiDelete
-    */
-    readonly fileId: number
-    
-}
 
 /**
  * Request parameters for deleteFileTags operation in FilesApi.
@@ -1764,19 +1676,6 @@ export class FilesApiGenerated extends BaseAPI {
      */
     public createUserFileTags(requestParameters: FilesApiCreateUserFileTagsRequest, options?: AxiosRequestConfig) {
         return FilesApiFp(this.configuration).createUserFileTags(requestParameters, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Delete File Endpoint
-     * @param {FilesApiDeleteRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     * @memberof FilesApiGenerated
-     */
-    public delete(requestParameters: FilesApiDeleteRequest, options?: AxiosRequestConfig) {
-        return FilesApiFp(this.configuration).delete(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

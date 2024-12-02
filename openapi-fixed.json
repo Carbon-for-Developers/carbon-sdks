@@ -3371,61 +3371,6 @@
         "deprecated": true
       }
     },
-    "/deletefile/{file_id}": {
-      "delete": {
-        "tags": [
-          "Files"
-        ],
-        "summary": "Delete File Endpoint",
-        "operationId": "Files_delete",
-        "security": [
-          {
-            "accessToken": [
-            ]
-          },
-          {
-            "apiKey": [
-            ],
-            "customerId": [
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "file_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "title": "File Id",
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenericSuccessResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": true
-      }
-    },
     "/delete_files": {
       "post": {
         "tags": [

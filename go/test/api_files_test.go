@@ -47,20 +47,6 @@ func Test_carbon_FilesApiService(t *testing.T) {
         */
     })
 
-    t.Run("Test FilesApiService Delete", func(t *testing.T) {
-        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        request := client.FilesApi.Delete(
-            56,
-        )
-        
-        resp, httpRes, err := request.Execute()
-
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
-        */
-    })
-
     t.Run("Test FilesApiService DeleteFileTags", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         

@@ -3947,43 +3947,6 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--user_files
       x-content-type: application/json
       x-accepts: application/json
-  /deletefile/{file_id}:
-    delete:
-      deprecated: true
-      operationId: Files_delete
-      parameters:
-      - explode: false
-        in: path
-        name: file_id
-        required: true
-        schema:
-          title: File Id
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericSuccessResponse'
-          description: Successful Response
-        "422":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-          description: Validation Error
-          x-do-not-generate: true
-      security:
-      - accessToken: []
-      - apiKey: []
-        customerId: []
-      summary: Delete File Endpoint
-      tags:
-      - Files
-      x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id
-      x-accepts: application/json
   /delete_files:
     post:
       deprecated: true
@@ -21457,17 +21420,6 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
-    konfig-generated-schema-single-parameter-schema-delete--deletefile-file_id:
-      properties:
-        file_id:
-          title: File Id
-          type: integer
-      required:
-      - file_id
-      type: object
-      x-do-not-generate: true
-      x-konfig-is-parameter:
-      - file_id
     konfig-generated-schema-single-parameter-schema-post--delete_files:
       properties:
         file_ids:

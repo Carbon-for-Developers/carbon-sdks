@@ -5,7 +5,6 @@ All URIs are relative to *https://api.carbon.ai*
 Method | Path | Description
 ------------- | ------------- | -------------
 [**CreateUserFileTags**](FilesApi.md#CreateUserFileTags) | **Post** /create_user_file_tags | Create File Tags
-[**Delete**](FilesApi.md#Delete) | **Delete** /deletefile/{file_id} | Delete File Endpoint
 [**DeleteFileTags**](FilesApi.md#DeleteFileTags) | **Post** /delete_user_file_tags | Delete File Tags
 [**DeleteMany**](FilesApi.md#DeleteMany) | **Post** /delete_files | Delete Files Endpoint
 [**DeleteV2**](FilesApi.md#DeleteV2) | **Post** /delete_files_v2 | Delete Files V2 Endpoint
@@ -103,50 +102,6 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.EmbeddingStorageStatus`: %v\n", resp.EmbeddingStorageStatus)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.CreatedAt`: %v\n", resp.CreatedAt)
     fmt.Fprintf(os.Stdout, "Response from `UserFile.CreateUserFileTags.UpdatedAt`: %v\n", resp.UpdatedAt)
-}
-```
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Delete
-![Deprecated](https://img.shields.io/badge/deprecated-yellow)
-
-Delete File Endpoint
-
-### Example
-
-```go
-package main
-
-import (
-    "fmt"
-    "os"
-    carbon "github.com/Carbon-for-Developers/carbon-sdks/go"
-)
-
-func main() {
-    configuration := carbon.NewConfiguration()
-    configuration.SetAccessToken("AUTHORIZATION")
-    configuration.SetApiKey("AUTHORIZATION")
-    configuration.SetCustomerId("CUSTOMER_ID")
-    client := carbon.NewAPIClient(configuration)
-
-    request := client.FilesApi.Delete(
-        56,
-    )
-    
-    resp, httpRes, err := request.Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FilesApi.Delete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
-    }
-    // response from `Delete`: GenericSuccessResponse
-    fmt.Fprintf(os.Stdout, "Response from `FilesApi.Delete`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `GenericSuccessResponse.Delete.Success`: %v\n", resp.Success)
 }
 ```
 

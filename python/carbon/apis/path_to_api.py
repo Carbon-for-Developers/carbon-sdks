@@ -59,7 +59,6 @@ from carbon.apis.paths.modify_cold_storage_parameters import ModifyColdStoragePa
 from carbon.apis.paths.raw_file_file_id import RawFileFileId
 from carbon.apis.paths.parsed_file_file_id import ParsedFileFileId
 from carbon.apis.paths.user_files import UserFiles
-from carbon.apis.paths.deletefile_file_id import DeletefileFileId
 from carbon.apis.paths.delete_files import DeleteFiles
 from carbon.apis.paths.webhooks import Webhooks
 from carbon.apis.paths.add_webhook import AddWebhook
@@ -158,7 +157,6 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,
-        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
         PathValues.DELETE_FILES: DeleteFiles,
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,
@@ -258,7 +256,6 @@ path_to_api = PathToApi(
         PathValues.RAW_FILE_FILE_ID: RawFileFileId,
         PathValues.PARSED_FILE_FILE_ID: ParsedFileFileId,
         PathValues.USER_FILES: UserFiles,
-        PathValues.DELETEFILE_FILE_ID: DeletefileFileId,
         PathValues.DELETE_FILES: DeleteFiles,
         PathValues.WEBHOOKS: Webhooks,
         PathValues.ADD_WEBHOOK: AddWebhook,

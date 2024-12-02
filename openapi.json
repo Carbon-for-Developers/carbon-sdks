@@ -3232,58 +3232,6 @@
         ]
       }
     },
-    "/deletefile/{file_id}": {
-      "delete": {
-        "tags": [
-          "Files"
-        ],
-        "summary": "Delete File Endpoint",
-        "operationId": "delete_file_endpoint_deletefile__file_id__delete",
-        "deprecated": true,
-        "security": [
-          {
-            "accessToken": []
-          },
-          {
-            "apiKey": [],
-            "customerId": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "file_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "File Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GenericSuccessResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/delete_files": {
       "post": {
         "tags": [

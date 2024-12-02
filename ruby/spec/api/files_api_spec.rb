@@ -38,17 +38,6 @@ describe 'FilesApi' do
     end
   end
 
-  # unit tests for delete
-  # Delete File Endpoint
-  # @param file_id 
-  # @param [Hash] opts the optional parameters
-  # @return [GenericSuccessResponse]
-  describe 'delete test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for delete_file_tags
   # Delete File Tags
   # @param organization_user_file_tags_remove 
